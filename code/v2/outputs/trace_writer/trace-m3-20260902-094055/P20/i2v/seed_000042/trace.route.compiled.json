@@ -1,0 +1,489 @@
+{
+  "active_stage_summary": [
+    {
+      "stage_id": "setup",
+      "temporal_token_count": 5,
+      "temporal_weight_sum": 4.5
+    },
+    {
+      "stage_id": "onset",
+      "temporal_token_count": 5,
+      "temporal_weight_sum": 4.0
+    },
+    {
+      "stage_id": "evolution",
+      "temporal_token_count": 9,
+      "temporal_weight_sum": 8.0
+    },
+    {
+      "stage_id": "completion",
+      "temporal_token_count": 6,
+      "temporal_weight_sum": 5.0
+    },
+    {
+      "stage_id": "terminal",
+      "temporal_token_count": 4,
+      "temporal_weight_sum": 3.5
+    }
+  ],
+  "constraint_coverage": {
+    "c1": {
+      "stages": [
+        "setup",
+        "onset"
+      ],
+      "violations": [
+        "setup:outcome_preset",
+        "onset:wrong_order"
+      ]
+    },
+    "c2": {
+      "stages": [
+        "evolution"
+      ],
+      "violations": [
+        "evolution:coupling_broken"
+      ]
+    },
+    "c3": {
+      "stages": [
+        "evolution",
+        "completion"
+      ],
+      "violations": [
+        "evolution:coupling_broken",
+        "completion:incomplete_transition"
+      ]
+    },
+    "c4": {
+      "stages": [
+        "completion",
+        "terminal"
+      ],
+      "violations": [
+        "completion:incomplete_transition",
+        "terminal:reversal"
+      ]
+    },
+    "c5": {
+      "stages": [
+        "terminal"
+      ],
+      "violations": [
+        "terminal:exclusion_broken"
+      ]
+    }
+  },
+  "crossfade_tokens": 1,
+  "design_revision": "fixed5-causal-r3",
+  "fallback_selected": false,
+  "flatten_order": "f-y-x",
+  "frames": 25,
+  "input_plan": "/home/liuzhirui/Project/physGen/code/v1/demo/P20/P20-V2-planimg.json",
+  "input_plan_sha256": "91edf6fdd28353731da782609d0dcffb7f6d237bf1903e325be69faec42f54ce",
+  "requested_mode": "i2v",
+  "sample_id": "P20",
+  "schema_version": "trace-writer-v1",
+  "spatial_masks": [
+    {
+      "grid_area": 880,
+      "positive_token_count": 300,
+      "soft_area": 124.097275,
+      "stage_id": "setup"
+    },
+    {
+      "grid_area": 880,
+      "positive_token_count": 300,
+      "soft_area": 124.097275,
+      "stage_id": "onset"
+    },
+    {
+      "grid_area": 880,
+      "positive_token_count": 300,
+      "soft_area": 124.097275,
+      "stage_id": "evolution"
+    },
+    {
+      "grid_area": 880,
+      "positive_token_count": 300,
+      "soft_area": 124.097275,
+      "stage_id": "completion"
+    },
+    {
+      "grid_area": 880,
+      "positive_token_count": 300,
+      "soft_area": 124.097275,
+      "stage_id": "terminal"
+    }
+  ],
+  "spatial_mode": "spacetime",
+  "stage_ids": [
+    "setup",
+    "onset",
+    "evolution",
+    "completion",
+    "terminal"
+  ],
+  "stage_spans": [
+    {
+      "core": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "outgoing_crossfade": [
+        4
+      ],
+      "stage_id": "setup"
+    },
+    {
+      "core": [
+        5,
+        6,
+        7
+      ],
+      "outgoing_crossfade": [
+        8
+      ],
+      "stage_id": "onset"
+    },
+    {
+      "core": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "outgoing_crossfade": [
+        16
+      ],
+      "stage_id": "evolution"
+    },
+    {
+      "core": [
+        17,
+        18,
+        19,
+        20
+      ],
+      "outgoing_crossfade": [
+        21
+      ],
+      "stage_id": "completion"
+    },
+    {
+      "core": [
+        22,
+        23,
+        24
+      ],
+      "outgoing_crossfade": [],
+      "stage_id": "terminal"
+    }
+  ],
+  "stages": [
+    {
+      "affected_roles": [
+        "source",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "setup",
+      "observable_check": "No coffee path yet spans the spout-to-cup gap.",
+      "positive": "The pictured kettle and gray cup retain their layout while the separate left campfire already flickers.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "The gray cup already shows its higher final coffee level before pouring.",
+          "type": "outcome_preset",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "onset",
+      "observable_check": "The initial stream begins exactly at the pictured metal spout.",
+      "positive": "The metal kettle tilts leftward and coffee first connects its spout to the gray cup opening.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "Coffee rises inside the gray cup before any stream reaches its rim.",
+          "type": "wrong_order",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c2",
+        "c3"
+      ],
+      "id": "evolution",
+      "observable_check": "Spout outflow, continuous stream, and dark cup surface advance together.",
+      "positive": "Coffee visibly leaves the spout, crosses the short gap, and raises the surface inside the cup.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c2",
+            "c3"
+          ],
+          "text": "Coffee leaves the spout but misses the cup or fails to raise its level.",
+          "type": "coupling_broken",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c3",
+        "c4"
+      ],
+      "id": "completion",
+      "observable_check": "The dark surface sits higher relative to the same gray rim.",
+      "positive": "The gray cup reaches a visibly higher coffee surface after receiving the pictured stream.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c3",
+            "c4"
+          ],
+          "text": "The stream reaches the gray rim but the coffee surface never rises.",
+          "type": "incomplete_transition",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c4",
+        "c5"
+      ],
+      "id": "terminal",
+      "observable_check": "Coffee stays in the cup and the left campfire remains independently active.",
+      "positive": "The higher cup level remains while the protected left campfire continues flickering in place.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c4"
+          ],
+          "text": "The gray cup returns to its lower starting level in final frames.",
+          "type": "reversal",
+          "weight": 0.5
+        },
+        {
+          "constraint_ids": [
+            "c5"
+          ],
+          "text": "Lower and higher coffee surfaces coexist inside the same pictured cup.",
+          "type": "exclusion_broken",
+          "weight": 0.5
+        }
+      ]
+    }
+  ],
+  "temporal_weights": [
+    [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.5,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.5,
+      1.0,
+      1.0,
+      1.0,
+      0.5,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.5,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.5,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.5,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.5,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.5,
+      1.0,
+      1.0,
+      1.0
+    ]
+  ],
+  "validation": {
+    "errors": 0,
+    "fallback_selected": false,
+    "issues": [
+      {
+        "code": "planner_assumption",
+        "message": "The kettle tilts leftward and slightly downward so its pictured spout directs coffee into the cup below-left.",
+        "path": "$.assumptions[0]",
+        "severity": "warning"
+      },
+      {
+        "code": "planner_warning",
+        "message": "The coffee carrier is absent initially and therefore has no reference-frame box.",
+        "path": "$.warnings[0]",
+        "severity": "warning"
+      },
+      {
+        "code": "planner_warning",
+        "message": "The opaque kettle hides its internal level; source decrease is grounded to cumulative visible spout outflow rather than invented interior detail.",
+        "path": "$.warnings[1]",
+        "severity": "warning"
+      },
+      {
+        "code": "planner_warning",
+        "message": "All boxes are visually estimated from the reference and remain unapproved.",
+        "path": "$.warnings[2]",
+        "severity": "warning"
+      }
+    ],
+    "warnings": 4
+  }
+}

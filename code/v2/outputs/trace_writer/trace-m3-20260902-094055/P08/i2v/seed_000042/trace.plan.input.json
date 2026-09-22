@@ -1,0 +1,368 @@
+{
+  "assumptions": [],
+  "constraints": [
+    {
+      "after": "white_plate_puddle",
+      "before": "pictured_first_melt",
+      "id": "c1",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "precedes"
+    },
+    {
+      "effect": "pictured_ice_recede",
+      "id": "c2",
+      "source_refs": [
+        "origin"
+      ],
+      "transition": "e1",
+      "type": "changes"
+    },
+    {
+      "effects": [
+        "pictured_ice_recede",
+        "white_plate_puddle"
+      ],
+      "id": "c3",
+      "relation": "centered clear solid shrinks as transparent plate footprint grows",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "couples"
+    },
+    {
+      "facts": [
+        "ice_size=smaller_receded_ice",
+        "water_area=wide_puddle"
+      ],
+      "id": "c4",
+      "source_refs": [
+        "origin"
+      ],
+      "state": "z1",
+      "type": "persists"
+    },
+    {
+      "facts": [
+        "ice_size=large_sharp_cube",
+        "ice_size=smaller_receded_ice"
+      ],
+      "id": "c5",
+      "scope": "same_time",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "excludes"
+    }
+  ],
+  "design_revision": "fixed5-causal-r3",
+  "entities": [
+    {
+      "id": "ice",
+      "mention": "the same centered clear cubic ice piece",
+      "role": "source",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    },
+    {
+      "id": "meltwater",
+      "mention": "the transparent meltwater from that ice",
+      "role": "carrier",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "id": "plate",
+      "mention": "the same large shallow white plate",
+      "role": "sink",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "description": "first visible cube-edge recession and wet rim",
+      "id": "pictured_first_melt",
+      "observable": "one sharp edge softens as a narrow transparent rim appears",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    }
+  ],
+  "generation_basis": {
+    "mode": "visual_grounding",
+    "reference_image_usage": "visual_grounding",
+    "semantic_inputs": [
+      "origin",
+      "planner_instructions",
+      "reference_input"
+    ]
+  },
+  "global_semantic": "The single clear cubic ice piece centered on the large white plate shrinks as a transparent puddle spreads around it.",
+  "grounding": {
+    "approved": false,
+    "coordinate_frame": "reference_input",
+    "entity_boxes": [
+      {
+        "box": [
+          0.396,
+          0.243,
+          0.612,
+          0.654
+        ],
+        "entity_id": "ice"
+      },
+      {
+        "box": [
+          0.088,
+          0.143,
+          0.913,
+          0.913
+        ],
+        "entity_id": "plate"
+      }
+    ],
+    "protected_boxes": [],
+    "reference_image": "P08-i0-1280x704.png",
+    "reference_image_usage": "visual_grounding"
+  },
+  "predicates": [
+    {
+      "attribute": "pictured cubic solid extent",
+      "id": "ice_size",
+      "observable": "clear cube silhouette and footprint near plate center",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "subject": "ice",
+      "values": [
+        "large_sharp_cube",
+        "smaller_receded_ice"
+      ]
+    },
+    {
+      "attribute": "transparent wet footprint",
+      "id": "water_area",
+      "observable": "reflective liquid area on white plate around ice",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "subject": "plate",
+      "values": [
+        "absent_or_tiny",
+        "wide_puddle"
+      ]
+    }
+  ],
+  "protected_predicates": [
+    "exactly one clear ice piece",
+    "same large shallow white plate and centered placement",
+    "wood tabletop, warm lighting, three-quarter camera, and plate position remain unchanged"
+  ],
+  "sample_id": "P08",
+  "schema_version": "trace-writer-v1",
+  "source_files": {
+    "origin": "P08-origin.txt",
+    "planner_instructions": "Project/physGen/prompt/generate_trace_writer_v1_plan.txt",
+    "reference_input": "P08-i0-1280x704.png"
+  },
+  "stages": [
+    {
+      "affected_roles": [
+        "source",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "setup",
+      "observable_check": "The clear cube occupies its pictured central box with little visible liquid nearby.",
+      "positive": "The centered clear cube keeps sharp pictured boundaries while the surrounding white plate remains nearly dry.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "A wide transparent puddle already surrounds a reduced rounded ice piece at the start.",
+          "type": "outcome_preset"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "onset",
+      "observable_check": "Local edge recession and a small wet rim precede wide spreading.",
+      "positive": "A narrow wet rim first appears beside a receding clear edge before broad plate coverage develops.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "A broad plate puddle appears while every pictured cube edge remains unchanged.",
+          "type": "early_effect"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c2",
+        "c3"
+      ],
+      "id": "evolution",
+      "observable_check": "The cube box contracts as the surrounding reflective area expands.",
+      "positive": "The clear solid footprint contracts progressively while transparent water spreads outward across the white plate.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c2",
+            "c3"
+          ],
+          "text": "Transparent water spreads across the plate while the clear cube retains its pictured size.",
+          "type": "coupling_broken"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c2",
+        "c3",
+        "c4"
+      ],
+      "id": "completion",
+      "observable_check": "Late plate frames show less clear solid and more connected liquid.",
+      "positive": "The smaller clear remainder continues receding as the transparent puddle covers more central plate area.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c2",
+            "c3",
+            "c4"
+          ],
+          "text": "The pictured cube barely changes and no wide continuous puddle develops on the plate.",
+          "type": "incomplete_transition"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c4",
+        "c5"
+      ],
+      "id": "terminal",
+      "observable_check": "Final ice and liquid footprints remain stable without duplication.",
+      "positive": "The reduced clear ice and wide transparent puddle persist on the same centered white plate.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c4"
+          ],
+          "text": "The ice regains its large sharp pictured shape or the puddle vanishes.",
+          "type": "reversal"
+        },
+        {
+          "constraint_ids": [
+            "c5"
+          ],
+          "text": "Large sharp and reduced ice copies coexist at the plate center.",
+          "type": "exclusion_broken"
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "facts": {
+        "ice_size": "large_sharp_cube",
+        "water_area": "absent_or_tiny"
+      },
+      "id": "z0",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    },
+    {
+      "facts": {
+        "ice_size": "smaller_receded_ice",
+        "water_area": "wide_puddle"
+      },
+      "id": "z1",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "cause_event": null,
+      "effects": [
+        {
+          "direction": "clear solid boundary contracts inward",
+          "from": "large_sharp_cube",
+          "id": "pictured_ice_recede",
+          "predicate": "ice_size",
+          "to": "smaller_receded_ice"
+        },
+        {
+          "direction": "transparent footprint expands over white plate",
+          "from": "absent_or_tiny",
+          "id": "white_plate_puddle",
+          "predicate": "water_area",
+          "to": "wide_puddle"
+        }
+      ],
+      "from": "z0",
+      "id": "e1",
+      "kind": "continuous",
+      "preconditions": [
+        "ice_size=large_sharp_cube",
+        "water_area=absent_or_tiny"
+      ],
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "support_kind": "source_stream_sink",
+      "to": "z1"
+    }
+  ],
+  "warnings": [
+    "Meltwater is not separately visible in the first frame, so no carrier box is inferred; visible boxes remain unapproved."
+  ]
+}

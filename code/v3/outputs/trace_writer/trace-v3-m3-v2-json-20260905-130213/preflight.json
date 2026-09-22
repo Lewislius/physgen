@@ -1,0 +1,266 @@
+{
+  "status": "ready",
+  "method": "TRACE-V3-STRONG_STAGE_JSON-I2V",
+  "mode": "i2v",
+  "conditioning_variant": "strong_stage_json",
+  "conditioning": {
+    "global_positive": "plan.global_semantic verbatim",
+    "stage_c_plus": "each stages[].positive verbatim",
+    "stage_c_minus": "empty; shared plan.cfg_negative whitespace context",
+    "temporal_route": "plan.temporal_route.weights verbatim",
+    "stage_fusion": "per-stage RMS matched to global cross-attention on active temporal tokens",
+    "stage_ratio_to_global_in_selected_blocks": 0.05,
+    "structured_json_text_guidance": true,
+    "json_global_ratio_to_global": 0.01,
+    "json_stage_ratio_to_global": 0.02,
+    "extra_condition_cap_ratio": 0.1,
+    "denoise_step_gate": "constant 1.0",
+    "stage_checkpoints_used_by_model": true,
+    "json_renderer": "explicit typed facts to concise positive stage-local T5 contexts",
+    "legacy_writer_corrector_reader_subsystem": false,
+    "direct_parameter_free_stage_residual": true
+  },
+  "fixed_output_size": [
+    1280,
+    704
+  ],
+  "frame_num": 97,
+  "sampling_steps": 50,
+  "sample_solver": "unipc",
+  "guide_scale": 5.0,
+  "cfg_mode": "separate",
+  "phys_guidance_scale": 1.0,
+  "shift": 5.0,
+  "fps": 24,
+  "stage_strength": 0.0,
+  "stage_ratio_to_global": 0.05,
+  "json_global_ratio_to_global": 0.01,
+  "json_stage_ratio_to_global": 0.02,
+  "condition_extra_cap_ratio": 0.1,
+  "stage_block_interval": [
+    14,
+    24
+  ],
+  "samples": [
+    {
+      "sample_id": "P01",
+      "plan": "/home/liuzhirui/Project/physGen/code/v1/demo/P01/P01-V2-planimg.json",
+      "temporal_route": {
+        "profile": "triggered",
+        "latent_tokens": 25,
+        "crossfade_tokens": 2
+      },
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P01/P01-i0-1280x704.jpg",
+      "structured_guidance": true
+    },
+    {
+      "sample_id": "P02",
+      "plan": "/home/liuzhirui/Project/physGen/code/v1/demo/P02/P02-V2-planimg.json",
+      "temporal_route": {
+        "profile": "triggered",
+        "latent_tokens": 25,
+        "crossfade_tokens": 2
+      },
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P02/P02-i0-1280x704.jpg",
+      "structured_guidance": true
+    },
+    {
+      "sample_id": "P03",
+      "plan": "/home/liuzhirui/Project/physGen/code/v1/demo/P03/P03-V2-planimg.json",
+      "temporal_route": {
+        "profile": "triggered",
+        "latent_tokens": 25,
+        "crossfade_tokens": 2
+      },
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P03/P03-i0-1280x704.jpg",
+      "structured_guidance": true
+    },
+    {
+      "sample_id": "P04",
+      "plan": "/home/liuzhirui/Project/physGen/code/v1/demo/P04/P04-V2-planimg.json",
+      "temporal_route": {
+        "profile": "triggered",
+        "latent_tokens": 25,
+        "crossfade_tokens": 2
+      },
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P04/P04-i0-1280x704.jpg",
+      "structured_guidance": true
+    },
+    {
+      "sample_id": "P05",
+      "plan": "/home/liuzhirui/Project/physGen/code/v1/demo/P05/P05-V2-planimg.json",
+      "temporal_route": {
+        "profile": "multi_transition",
+        "latent_tokens": 25,
+        "crossfade_tokens": 2
+      },
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P05/P05-i0-1280x704.jpg",
+      "structured_guidance": true
+    },
+    {
+      "sample_id": "P06",
+      "plan": "/home/liuzhirui/Project/physGen/code/v1/demo/P06/P06-V2-planimg.json",
+      "temporal_route": {
+        "profile": "multi_transition",
+        "latent_tokens": 25,
+        "crossfade_tokens": 2
+      },
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P06/P06-i0-1280x704.jpg",
+      "structured_guidance": true
+    },
+    {
+      "sample_id": "P07",
+      "plan": "/home/liuzhirui/Project/physGen/code/v1/demo/P07/P07-V2-planimg.json",
+      "temporal_route": {
+        "profile": "triggered",
+        "latent_tokens": 25,
+        "crossfade_tokens": 2
+      },
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P07/P07-i0-1280x704.jpg",
+      "structured_guidance": true
+    },
+    {
+      "sample_id": "P08",
+      "plan": "/home/liuzhirui/Project/physGen/code/v1/demo/P08/P08-V2-planimg.json",
+      "temporal_route": {
+        "profile": "continuous",
+        "latent_tokens": 25,
+        "crossfade_tokens": 2
+      },
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P08/P08-i0-1280x704.jpg",
+      "structured_guidance": true
+    },
+    {
+      "sample_id": "P09",
+      "plan": "/home/liuzhirui/Project/physGen/code/v1/demo/P09/P09-V2-planimg.json",
+      "temporal_route": {
+        "profile": "continuous",
+        "latent_tokens": 25,
+        "crossfade_tokens": 2
+      },
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P09/P09-i0-1280x704.jpg",
+      "structured_guidance": true
+    },
+    {
+      "sample_id": "P10",
+      "plan": "/home/liuzhirui/Project/physGen/code/v1/demo/P10/P10-V2-planimg.json",
+      "temporal_route": {
+        "profile": "multi_transition",
+        "latent_tokens": 25,
+        "crossfade_tokens": 2
+      },
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P10/P10-i0-1280x704.jpg",
+      "structured_guidance": true
+    },
+    {
+      "sample_id": "P11",
+      "plan": "/home/liuzhirui/Project/physGen/code/v1/demo/P11/P11-V2-planimg.json",
+      "temporal_route": {
+        "profile": "triggered",
+        "latent_tokens": 25,
+        "crossfade_tokens": 2
+      },
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P11/P11-i0-1280x704.jpg",
+      "structured_guidance": true
+    },
+    {
+      "sample_id": "P12",
+      "plan": "/home/liuzhirui/Project/physGen/code/v1/demo/P12/P12-V2-planimg.json",
+      "temporal_route": {
+        "profile": "continuous",
+        "latent_tokens": 25,
+        "crossfade_tokens": 2
+      },
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P12/P12-i0-1280x704.jpg",
+      "structured_guidance": true
+    },
+    {
+      "sample_id": "P13",
+      "plan": "/home/liuzhirui/Project/physGen/code/v1/demo/P13/P13-V2-planimg.json",
+      "temporal_route": {
+        "profile": "continuous",
+        "latent_tokens": 25,
+        "crossfade_tokens": 2
+      },
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P13/P13-i0-1280x704.jpg",
+      "structured_guidance": true
+    },
+    {
+      "sample_id": "P14",
+      "plan": "/home/liuzhirui/Project/physGen/code/v1/demo/P14/P14-V2-planimg.json",
+      "temporal_route": {
+        "profile": "continuous",
+        "latent_tokens": 25,
+        "crossfade_tokens": 2
+      },
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P14/P14-i0-1280x704.jpg",
+      "structured_guidance": true
+    },
+    {
+      "sample_id": "P15",
+      "plan": "/home/liuzhirui/Project/physGen/code/v1/demo/P15/P15-V2-planimg.json",
+      "temporal_route": {
+        "profile": "continuous",
+        "latent_tokens": 25,
+        "crossfade_tokens": 2
+      },
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P15/P15-i0-1280x704.jpg",
+      "structured_guidance": true
+    },
+    {
+      "sample_id": "P16",
+      "plan": "/home/liuzhirui/Project/physGen/code/v1/demo/P16/P16-V2-planimg.json",
+      "temporal_route": {
+        "profile": "continuous",
+        "latent_tokens": 25,
+        "crossfade_tokens": 2
+      },
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P16/P16-i0-1280x704.jpg",
+      "structured_guidance": true
+    },
+    {
+      "sample_id": "P17",
+      "plan": "/home/liuzhirui/Project/physGen/code/v1/demo/P17/P17-V2-planimg.json",
+      "temporal_route": {
+        "profile": "multi_transition",
+        "latent_tokens": 25,
+        "crossfade_tokens": 2
+      },
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P17/P17-i0-1280x704.jpg",
+      "structured_guidance": true
+    },
+    {
+      "sample_id": "P18",
+      "plan": "/home/liuzhirui/Project/physGen/code/v1/demo/P18/P18-V2-planimg.json",
+      "temporal_route": {
+        "profile": "triggered",
+        "latent_tokens": 25,
+        "crossfade_tokens": 2
+      },
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P18/P18-i0-1280x704.jpg",
+      "structured_guidance": true
+    },
+    {
+      "sample_id": "P19",
+      "plan": "/home/liuzhirui/Project/physGen/code/v1/demo/P19/P19-V2-planimg.json",
+      "temporal_route": {
+        "profile": "continuous",
+        "latent_tokens": 25,
+        "crossfade_tokens": 2
+      },
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P19/P19-i0-1280x704.jpg",
+      "structured_guidance": true
+    },
+    {
+      "sample_id": "P20",
+      "plan": "/home/liuzhirui/Project/physGen/code/v1/demo/P20/P20-V2-planimg.json",
+      "temporal_route": {
+        "profile": "continuous",
+        "latent_tokens": 25,
+        "crossfade_tokens": 2
+      },
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P20/P20-i0-1280x704.jpg",
+      "structured_guidance": true
+    }
+  ]
+}

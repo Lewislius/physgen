@@ -1,0 +1,94 @@
+{
+  "date": "2026-09-17",
+  "project": "Wan2.2-TI2V-5B + LoRA, FM only",
+  "status": "CPU and static verification passed; full GPU execution not run",
+  "environment": {
+    "python": "/home/liuzhirui/miniconda3/envs/moviestory/bin/python",
+    "torch": "2.8.0+cu128",
+    "cuda_available_to_tests": false
+  },
+  "configuration": {
+    "profiles": ["1x96g", "4x48g"],
+    "loss": "FM only",
+    "train_records": 2279,
+    "validation_records": 121,
+    "global_batch_size": 8,
+    "micro_batch_size": 1,
+    "gradient_accumulation_steps": 8,
+    "optimizer_steps": 1200,
+    "save_every": 100,
+    "lora_rank": 32,
+    "lora_alpha": 32,
+    "lora_dropout": 0,
+    "lora_linear_modules": 240,
+    "trainable_parameters": 47185920,
+    "four_gpu_strategy": "single-process model parallel",
+    "four_gpu_block_counts": [8, 8, 7, 7],
+    "four_gpu_activation_checkpointing": true,
+    "four_gpu_saved_tensor_cpu_offload": true
+  },
+  "unit_tests": {
+    "static_lora_and_four_gpu": {
+      "command": "CUDA_VISIBLE_DEVICES='' OMP_NUM_THREADS=2 /home/liuzhirui/miniconda3/envs/moviestory/bin/python -I -B -m unittest discover -s tests -p 'test_*.py'",
+      "working_directory": "/home/liuzhirui/Project/physGen/code/v4-static-lora",
+      "run": 24,
+      "passed": 23,
+      "skipped": 1,
+      "failed": 0,
+      "duration_seconds": 5.777,
+      "skip_reason": "Optional real four-CUDA-device test requires RUN_FOUR_GPU_TEST=1 and four GPUs"
+    },
+    "original_v42_regression": {
+      "working_directory": "/home/liuzhirui/Project/physGen/code/v4.2",
+      "run": 24,
+      "passed": 24,
+      "failed": 0,
+      "duration_seconds": 4.492
+    },
+    "coverage": [
+      "Native Wan small-model I2V/T2V output and gradient parity, using CPU SDPA",
+      "Full-size model construction on meta device: 240 LoRA targets and 47185920 trainable parameters",
+      "Frozen base parameters; only LoRA matrices update",
+      "Activation checkpointing and CPU saved-tensor offload preserve small-model gradients",
+      "Eight microbatch FM gradients equal the average loss gradient",
+      "All 1200 exposure-plan steps match formal v4.2 source/mode queues",
+      "Training dataset loads VAE/text cache without physics teacher tensors",
+      "CPU toy training saves all 12 checkpoints and restores optimizer, EMA, RNG and exposure state exactly",
+      "Single-GPU and four-GPU configuration/checkpoint identity validation",
+      "Four-stage routing and condition-cache cleanup on CPU",
+      "Four-GPU loader first loads the base on CPU; wrapper isolation preserves original module globals",
+      "Inference uses the same 81 final cases and LoRA in both native CFG branches",
+      "Actual UniPC and FFmpeg video export run with CPU predictor/VAE substitutes"
+    ]
+  },
+  "static_checks": {
+    "python_ast": "passed",
+    "shell_syntax": "passed",
+    "single_and_four_gpu_train_infer_parse_only": "passed",
+    "four_gpu_resume_and_single_prompt_parse_only": "passed",
+    "single_and_four_gpu_config_and_existing_cache_validation": "passed",
+    "four_gpu_determined_yaml": "passed: amp-48g, 4 slots, single node, existing entrypoints"
+  },
+  "preservation": {
+    "v42_original_files": {
+      "manifest": "v42_original_files.json",
+      "checked": 50,
+      "changed": 0
+    },
+    "single_gpu_files_before_four_gpu": {
+      "manifest": "single_gpu_files_before_four_gpu.json",
+      "checked": 18,
+      "changed": 0
+    },
+    "single_gpu_code_sha256": "a57cf856a46001d5afcd7662f717a2c8da945f1c182bc2be777157d0cea5694c",
+    "four_gpu_code_sha256": "224f06d029564845422d3123163d2edd18d47558da4b81b2c430c118f9a7f7e5",
+    "v42_reference_config_digest": "d4ba49a237fed43a6d14e7c177bf837d4cf347a739aa4f4fd461f6db431f4886"
+  },
+  "not_run": [
+    "Real cross-CUDA-device forward/backward test",
+    "Full 5B GPU training or inference",
+    "4x48GB peak memory and throughput measurement",
+    "Generated-video quality evaluation"
+  ],
+  "determined_jobs_submitted": false
+}

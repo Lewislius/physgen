@@ -1,0 +1,373 @@
+{
+  "closed_world": {
+    "allowed_entity_ids": [
+      "hand",
+      "sponge",
+      "surface"
+    ],
+    "empty_regions": [],
+    "external_source_allowed": false,
+    "forbidden_new_categories": [
+      "external source",
+      "extra copy",
+      "unlisted object"
+    ],
+    "provenance": "derived"
+  },
+  "conservation": [
+    {
+      "observable_proxy": "tracked logical entity slots remain consistent",
+      "provenance": "derived",
+      "quantity": "instance_count",
+      "relation": "constant",
+      "rule_id": "entity_slots_constant",
+      "sinks": [
+        "hand",
+        "sponge",
+        "surface"
+      ],
+      "sources": [
+        "hand",
+        "sponge",
+        "surface"
+      ],
+      "tolerance": 0.0
+    }
+  ],
+  "issues": [
+    "surface: exact visual count unresolved; retained as group"
+  ],
+  "lifecycles": [
+    {
+      "entity_id": "hand",
+      "from_stage": "setup",
+      "from_state": "hovering",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "hovering",
+          "pressing"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "pressing"
+    },
+    {
+      "entity_id": "sponge",
+      "from_stage": "setup",
+      "from_state": "original",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "original",
+          "flat"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "flat"
+    },
+    {
+      "entity_id": "hand",
+      "from_stage": "setup",
+      "from_state": "pressing",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "pressing",
+          "lifted"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "lifted"
+    },
+    {
+      "entity_id": "sponge",
+      "from_stage": "setup",
+      "from_state": "flat",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "flat",
+          "recovered"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "recovered"
+    }
+  ],
+  "slots": [
+    {
+      "aliases": [],
+      "canonical_mention": "the same hand",
+      "cardinality": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "hand",
+      "invariant_attributes": [
+        "same hand and dry sponge",
+        "same support surface",
+        "sponge identity and dryness remain unchanged",
+        "camera and background remain unchanged"
+      ],
+      "mutable_attributes": [
+        "contact_state"
+      ],
+      "persistent_identity": true,
+      "provenance": "default",
+      "role": "actor"
+    },
+    {
+      "aliases": [],
+      "canonical_mention": "the same dry sponge",
+      "cardinality": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "sponge",
+      "invariant_attributes": [
+        "same hand and dry sponge",
+        "same support surface",
+        "sponge identity and dryness remain unchanged",
+        "camera and background remain unchanged"
+      ],
+      "mutable_attributes": [
+        "visible_thickness"
+      ],
+      "persistent_identity": true,
+      "provenance": "default",
+      "role": "patient"
+    },
+    {
+      "aliases": [],
+      "canonical_mention": "the same support surface",
+      "cardinality": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "surface",
+      "invariant_attributes": [
+        "same hand and dry sponge",
+        "same support surface",
+        "sponge identity and dryness remain unchanged",
+        "camera and background remain unchanged"
+      ],
+      "mutable_attributes": [],
+      "persistent_identity": true,
+      "provenance": "derived",
+      "role": "environment"
+    }
+  ],
+  "stage_presence": [
+    {
+      "entity_id": "hand",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [
+        "hand_state=hovering"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "sponge",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [
+        "thickness=original"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "surface",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [],
+      "visible": "required"
+    },
+    {
+      "entity_id": "hand",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [
+        "hand_state=hovering"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "sponge",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [
+        "thickness=original"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "surface",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [],
+      "visible": "required"
+    },
+    {
+      "entity_id": "hand",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [
+        "hand_state=pressing"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "sponge",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [
+        "thickness=flat"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "surface",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [],
+      "visible": "required"
+    },
+    {
+      "entity_id": "hand",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [
+        "hand_state=lifted"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "sponge",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [
+        "thickness=recovered"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "surface",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [],
+      "visible": "required"
+    },
+    {
+      "entity_id": "hand",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [
+        "hand_state=lifted"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "sponge",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [
+        "thickness=recovered"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "surface",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [],
+      "visible": "required"
+    }
+  ]
+}

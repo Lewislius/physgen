@@ -1,0 +1,95 @@
+{
+  "date_utc": "2026-09-22",
+  "checks": [
+    {
+      "name": "frame_causal_tests",
+      "command": [
+        "/home/liuzhirui/miniconda3/envs/moviestory/bin/python",
+        "-I",
+        "-B",
+        "tests/test_frame_causal_lora.py"
+      ],
+      "returncode": 0,
+      "log": "frame_causal_tests.log"
+    },
+    {
+      "name": "config_full_4x48g",
+      "command": [
+        "/home/liuzhirui/miniconda3/envs/moviestory/bin/python",
+        "-I",
+        "-B",
+        "frame_causal_lora/train.py",
+        "--config",
+        "configs/train_frame_causal_full_4x48g.yaml",
+        "--check-config"
+      ],
+      "returncode": 0,
+      "log": "config_full_4x48g.log"
+    },
+    {
+      "name": "config_window_1x96g",
+      "command": [
+        "/home/liuzhirui/miniconda3/envs/moviestory/bin/python",
+        "-I",
+        "-B",
+        "frame_causal_lora/train.py",
+        "--config",
+        "configs/train_frame_causal_window_1x96g.yaml",
+        "--check-config"
+      ],
+      "returncode": 0,
+      "log": "config_window_1x96g.log"
+    },
+    {
+      "name": "config_window_4x48g",
+      "command": [
+        "/home/liuzhirui/miniconda3/envs/moviestory/bin/python",
+        "-I",
+        "-B",
+        "frame_causal_lora/train.py",
+        "--config",
+        "configs/train_frame_causal_window_4x48g.yaml",
+        "--check-config"
+      ],
+      "returncode": 0,
+      "log": "config_window_4x48g.log"
+    }
+  ],
+  "shell_syntax_passed": 5,
+  "baseline_source_fingerprints_unchanged": true,
+  "prior_checks": {
+    "baseline_tests": {
+      "run": 15,
+      "passed": 15
+    },
+    "four_gpu_tests": {
+      "run": 9,
+      "passed": 8,
+      "skipped": 1
+    },
+    "inference_tests": {
+      "run": 9,
+      "passed": 9
+    },
+    "config_full_1x96g": {
+      "returncode": 0,
+      "training_records": 2279,
+      "validation_records": 121
+    }
+  },
+  "comparison_source_digest": "70cb302783ddb30c82bad6549feeb4b525edaf81d2296e2b3e5c44ed3ece2d11",
+  "cuda_flash_attention_test": "not run: CUDA initialization unavailable in this session; opt-in CUDA test disabled",
+  "gpu_training_started": false,
+  "determined_submitted": false,
+  "frame_causal_tests": {
+    "run": 15,
+    "passed": 14,
+    "skipped": 1
+  },
+  "all_test_suites": {
+    "run": 48,
+    "passed": 46,
+    "skipped": 2,
+    "failures": 0
+  }
+}

@@ -1,0 +1,185 @@
+{
+  "actual_t5_token_lengths": {
+    "global_semantic": 252,
+    "stage.completion.negative.0": 130,
+    "stage.completion.positive": 135,
+    "stage.evolution.negative.0": 140,
+    "stage.evolution.positive": 133,
+    "stage.onset.negative.0": 134,
+    "stage.onset.positive": 133,
+    "stage.setup.negative.0": 134,
+    "stage.setup.positive": 131,
+    "stage.terminal.negative.0": 159,
+    "stage.terminal.negative.1": 155,
+    "stage.terminal.positive": 164
+  },
+  "global_anchor": "[ENTITY INVENTORY] The closed scene contains scooter: exactly 1; trash can: exactly 1. All declared entities are fully visible from the first frame in the stated layout. [INITIAL STATE] gap=separated, pose=upright, motion=rolling. [PHYSICAL EVENT] One black scooter collides with one metal trash can, tilts, and stops beside it. [INITIAL LAYOUT] black scooter; metal trash can. [PERSISTENT PROTECTION] same scooter identity; same trash-can identity; trash can remains upright; camera and unrelated scene remain unchanged. [CLOSED WORLD] No additional external source, extra copy, unlisted object enters or appears; unoccupied scene regions remain empty. [CONSERVATION] Source loss and result gain stay coupled: tracked logical entity slots remain consistent; tilt increases while rolling displacement decreases. No result appears from an undeclared external source. [TERMINAL STATE] The same logical entity slots persist without duplicates; gap=contact, pose=tilted, motion=stopped remains visible through the final frames.",
+  "issues": [],
+  "max_t5_token_length": 252,
+  "protected_coverage": {
+    "camera and unrelated scene remain unchanged": [
+      "camera_background",
+      "closed_world_or_persistence"
+    ],
+    "same scooter identity": [
+      "identity_count"
+    ],
+    "same trash-can identity": [
+      "identity_count"
+    ],
+    "trash can remains upright": [
+      "closed_world_or_persistence"
+    ]
+  },
+  "stage_pairs": [
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "visible scooter-trash-can contact happens BEFORE body tilt increases.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: scooter: exactly 1, state gap=separated, pose=upright, motion=rolling, required; trash can: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] visible scooter-trash-can contact happens BEFORE body tilt increases.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: scooter: exactly 1, state gap=separated, pose=upright, motion=rolling, required; trash can: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "setup",
+      "violation_constraint_ids": [
+        [
+          "c1"
+        ]
+      ],
+      "violation_kinds": [
+        "outcome_preset"
+      ],
+      "violation_relations": [
+        "body tilt increases is already present BEFORE visible scooter-trash-can contact."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: scooter: exactly 1, state gap=separated, pose=upright, motion=rolling, required; trash can: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] body tilt increases is already present BEFORE visible scooter-trash-can contact."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "visible scooter-trash-can contact happens BEFORE body tilt increases.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: scooter: exactly 1, state gap=separated, pose=upright, motion=rolling, transitioning; trash can: exactly 1, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] visible scooter-trash-can contact happens BEFORE body tilt increases.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: scooter: exactly 1, state gap=separated, pose=upright, motion=rolling, transitioning; trash can: exactly 1, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "onset",
+      "violation_constraint_ids": [
+        [
+          "c1",
+          "c2"
+        ]
+      ],
+      "violation_kinds": [
+        "trigger_missing"
+      ],
+      "violation_relations": [
+        "body tilt increases occurs WITHOUT visible scooter-trash-can contact."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: scooter: exactly 1, state gap=separated, pose=upright, motion=rolling, transitioning; trash can: exactly 1, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] body tilt increases occurs WITHOUT visible scooter-trash-can contact."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The coupled changes occur together: body tilt increases WHILE displacement decreases to zero.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: scooter: exactly 1, state gap=contact, pose=tilted, motion=stopped, required; trash can: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The coupled changes occur together: body tilt increases WHILE displacement decreases to zero.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: scooter: exactly 1, state gap=contact, pose=tilted, motion=stopped, required; trash can: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "evolution",
+      "violation_constraint_ids": [
+        [
+          "c3"
+        ]
+      ],
+      "violation_kinds": [
+        "coupling_broken"
+      ],
+      "violation_relations": [
+        "Only one coupled change occurs while the other remains unchanged: body tilt increases; displacement decreases to zero."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: scooter: exactly 1, state gap=contact, pose=tilted, motion=stopped, required; trash can: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] Only one coupled change occurs while the other remains unchanged: body tilt increases; displacement decreases to zero."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The coupled changes occur together: body tilt increases WHILE displacement decreases to zero.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: scooter: exactly 1, state gap=contact, pose=tilted, motion=stopped, transitioning; trash can: exactly 1, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The coupled changes occur together: body tilt increases WHILE displacement decreases to zero.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: scooter: exactly 1, state gap=contact, pose=tilted, motion=stopped, transitioning; trash can: exactly 1, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "completion",
+      "violation_constraint_ids": [
+        [
+          "c3",
+          "c4"
+        ]
+      ],
+      "violation_kinds": [
+        "incomplete_transition"
+      ],
+      "violation_relations": [
+        "The declared cause occurs BUT the required target change does not become visible."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: scooter: exactly 1, state gap=contact, pose=tilted, motion=stopped, transitioning; trash can: exactly 1, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The declared cause occurs BUT the required target change does not become visible."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The terminal facts pose=tilted, motion=stopped REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts pose=upright, pose=tilted do not coexist.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: scooter: exactly 1, state gap=contact, pose=tilted, motion=stopped, required; trash can: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The terminal facts pose=tilted, motion=stopped REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts pose=upright, pose=tilted do not coexist.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: scooter: exactly 1, state gap=contact, pose=tilted, motion=stopped, required; trash can: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "terminal",
+      "violation_constraint_ids": [
+        [
+          "c4"
+        ],
+        [
+          "c5"
+        ]
+      ],
+      "violation_kinds": [
+        "reversal",
+        "exclusion_broken"
+      ],
+      "violation_relations": [
+        "The valid terminal state returns to its mutually exclusive earlier state.",
+        "Copies of the same logical slot appear in mutually exclusive states at the same time."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: scooter: exactly 1, state gap=contact, pose=tilted, motion=stopped, required; trash can: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The valid terminal state returns to its mutually exclusive earlier state. [AND] The same logical slot has only its valid state; mutually exclusive facts pose=upright, pose=tilted do not coexist.",
+        "[STAGE ENTITY INVENTORY] Present now: scooter: exactly 1, state gap=contact, pose=tilted, motion=stopped, required; trash can: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The terminal facts pose=tilted, motion=stopped REMAIN through the final frames. [AND] Copies of the same logical slot appear in mutually exclusive states at the same time."
+      ],
+      "violation_weights": [
+        0.5,
+        0.5
+      ]
+    }
+  ],
+  "texts": {
+    "global_semantic": "[ENTITY INVENTORY] The closed scene contains scooter: exactly 1; trash can: exactly 1. All declared entities are fully visible from the first frame in the stated layout. [INITIAL STATE] gap=separated, pose=upright, motion=rolling. [PHYSICAL EVENT] One black scooter collides with one metal trash can, tilts, and stops beside it. [INITIAL LAYOUT] black scooter; metal trash can. [PERSISTENT PROTECTION] same scooter identity; same trash-can identity; trash can remains upright; camera and unrelated scene remain unchanged. [CLOSED WORLD] No additional external source, extra copy, unlisted object enters or appears; unoccupied scene regions remain empty. [CONSERVATION] Source loss and result gain stay coupled: tracked logical entity slots remain consistent; tilt increases while rolling displacement decreases. No result appears from an undeclared external source. [TERMINAL STATE] The same logical entity slots persist without duplicates; gap=contact, pose=tilted, motion=stopped remains visible through the final frames.",
+    "stage.completion.negative.0": "[STAGE ENTITY INVENTORY] Present now: scooter: exactly 1, state gap=contact, pose=tilted, motion=stopped, transitioning; trash can: exactly 1, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The declared cause occurs BUT the required target change does not become visible.",
+    "stage.completion.positive": "[STAGE ENTITY INVENTORY] Present now: scooter: exactly 1, state gap=contact, pose=tilted, motion=stopped, transitioning; trash can: exactly 1, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The coupled changes occur together: body tilt increases WHILE displacement decreases to zero.",
+    "stage.evolution.negative.0": "[STAGE ENTITY INVENTORY] Present now: scooter: exactly 1, state gap=contact, pose=tilted, motion=stopped, required; trash can: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] Only one coupled change occurs while the other remains unchanged: body tilt increases; displacement decreases to zero.",
+    "stage.evolution.positive": "[STAGE ENTITY INVENTORY] Present now: scooter: exactly 1, state gap=contact, pose=tilted, motion=stopped, required; trash can: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The coupled changes occur together: body tilt increases WHILE displacement decreases to zero.",
+    "stage.onset.negative.0": "[STAGE ENTITY INVENTORY] Present now: scooter: exactly 1, state gap=separated, pose=upright, motion=rolling, transitioning; trash can: exactly 1, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] body tilt increases occurs WITHOUT visible scooter-trash-can contact.",
+    "stage.onset.positive": "[STAGE ENTITY INVENTORY] Present now: scooter: exactly 1, state gap=separated, pose=upright, motion=rolling, transitioning; trash can: exactly 1, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] visible scooter-trash-can contact happens BEFORE body tilt increases.",
+    "stage.setup.negative.0": "[STAGE ENTITY INVENTORY] Present now: scooter: exactly 1, state gap=separated, pose=upright, motion=rolling, required; trash can: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] body tilt increases is already present BEFORE visible scooter-trash-can contact.",
+    "stage.setup.positive": "[STAGE ENTITY INVENTORY] Present now: scooter: exactly 1, state gap=separated, pose=upright, motion=rolling, required; trash can: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] visible scooter-trash-can contact happens BEFORE body tilt increases.",
+    "stage.terminal.negative.0": "[STAGE ENTITY INVENTORY] Present now: scooter: exactly 1, state gap=contact, pose=tilted, motion=stopped, required; trash can: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The valid terminal state returns to its mutually exclusive earlier state. [AND] The same logical slot has only its valid state; mutually exclusive facts pose=upright, pose=tilted do not coexist.",
+    "stage.terminal.negative.1": "[STAGE ENTITY INVENTORY] Present now: scooter: exactly 1, state gap=contact, pose=tilted, motion=stopped, required; trash can: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The terminal facts pose=tilted, motion=stopped REMAIN through the final frames. [AND] Copies of the same logical slot appear in mutually exclusive states at the same time.",
+    "stage.terminal.positive": "[STAGE ENTITY INVENTORY] Present now: scooter: exactly 1, state gap=contact, pose=tilted, motion=stopped, required; trash can: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The terminal facts pose=tilted, motion=stopped REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts pose=upright, pose=tilted do not coexist."
+  },
+  "token_budget_priority": {
+    "causal": 2,
+    "entity_count": 0,
+    "protected": 1,
+    "style": 3
+  }
+}

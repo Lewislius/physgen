@@ -1,0 +1,1533 @@
+{
+  "config": {
+    "boundary_morph": "cosine_trust",
+    "cap_mode": "aggregate_strict",
+    "cfg_cap_ratio": 0.01,
+    "cfg_outside_cap_ratio": 0.0025,
+    "cosine_high": 0.3,
+    "cosine_low": -0.2,
+    "crossfade_tokens": 2,
+    "dynamic_support_mode": "planned",
+    "event_clock_mode": "plan_prior",
+    "frames": 25,
+    "group_cap_ratio": 0.01,
+    "lambda0": 0.05,
+    "layer_cap_ratio": 0.01,
+    "mask_epsilon": 0.03,
+    "saliency_ema": 0.8,
+    "saliency_max_area": 0.35,
+    "saliency_min_area": 0.03,
+    "temporal_derivative_ratio": 0.05,
+    "token_cap_ratio": 0.05,
+    "writer_block_start": 14,
+    "writer_block_stop": 24
+  },
+  "method": "TRACE-V3-M3",
+  "mode": "i2v",
+  "model_uses_first_frame": true,
+  "sample_count": 20,
+  "sample_ids": [
+    "P01",
+    "P02",
+    "P03",
+    "P04",
+    "P05",
+    "P06",
+    "P07",
+    "P08",
+    "P09",
+    "P10",
+    "P11",
+    "P12",
+    "P13",
+    "P14",
+    "P15",
+    "P16",
+    "P17",
+    "P18",
+    "P19",
+    "P20"
+  ],
+  "samples": [
+    {
+      "context_token_lengths": {
+        "global_semantic": 267,
+        "stage.completion.negative.0": 133,
+        "stage.completion.positive": 143,
+        "stage.evolution.negative.0": 148,
+        "stage.evolution.positive": 141,
+        "stage.onset.negative.0": 139,
+        "stage.onset.positive": 138,
+        "stage.setup.negative.0": 139,
+        "stage.setup.positive": 136,
+        "stage.terminal.negative.0": 165,
+        "stage.terminal.negative.1": 161,
+        "stage.terminal.positive": 173
+      },
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P01/P01-i0-1280x704.png",
+      "issues": [],
+      "max_context_token_length": 267,
+      "overlay": null,
+      "pair_quality": [
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified"
+      ],
+      "plan": "/home/liuzhirui/Project/physGen/code/v1/demo/P01/P01-V2-planimg.json",
+      "sample_id": "P01",
+      "support": {
+        "grid": [
+          25,
+          22,
+          40
+        ],
+        "mode": "planned",
+        "requires_runtime_saliency": false,
+        "source": "plan_boxes_and_tracks",
+        "stage_areas": [
+          {
+            "max_soft_area": 243.28231811523438,
+            "mean_soft_area": 242.66615295410156,
+            "stage_id": "setup"
+          },
+          {
+            "max_soft_area": 217.84158325195312,
+            "mean_soft_area": 217.19383239746094,
+            "stage_id": "onset"
+          },
+          {
+            "max_soft_area": 243.28231811523438,
+            "mean_soft_area": 242.66615295410156,
+            "stage_id": "evolution"
+          },
+          {
+            "max_soft_area": 243.28231811523438,
+            "mean_soft_area": 242.66615295410156,
+            "stage_id": "completion"
+          },
+          {
+            "max_soft_area": 195.0342254638672,
+            "mean_soft_area": 193.37890625,
+            "stage_id": "terminal"
+          }
+        ],
+        "target_provenance": {
+          "scooter": "derived_motion_envelope",
+          "trash_can": "unresolved_static_envelope"
+        }
+      }
+    },
+    {
+      "context_token_lengths": {
+        "global_semantic": 295,
+        "stage.completion.negative.0": 156,
+        "stage.completion.positive": 164,
+        "stage.evolution.negative.0": 169,
+        "stage.evolution.positive": 162,
+        "stage.onset.negative.0": 161,
+        "stage.onset.positive": 160,
+        "stage.setup.negative.0": 161,
+        "stage.setup.positive": 158,
+        "stage.terminal.negative.0": 191,
+        "stage.terminal.negative.1": 189,
+        "stage.terminal.positive": 204
+      },
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P02/P02-i0-1280x704.png",
+      "issues": [],
+      "max_context_token_length": 295,
+      "overlay": null,
+      "pair_quality": [
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified"
+      ],
+      "plan": "/home/liuzhirui/Project/physGen/code/v1/demo/P02/P02-V2-planimg.json",
+      "sample_id": "P02",
+      "support": {
+        "grid": [
+          25,
+          22,
+          40
+        ],
+        "mode": "planned",
+        "requires_runtime_saliency": false,
+        "source": "plan_boxes_and_tracks",
+        "stage_areas": [
+          {
+            "max_soft_area": 191.28353881835938,
+            "mean_soft_area": 186.8029327392578,
+            "stage_id": "setup"
+          },
+          {
+            "max_soft_area": 137.93472290039062,
+            "mean_soft_area": 137.9280548095703,
+            "stage_id": "onset"
+          },
+          {
+            "max_soft_area": 191.28353881835938,
+            "mean_soft_area": 186.8029327392578,
+            "stage_id": "evolution"
+          },
+          {
+            "max_soft_area": 191.28353881835938,
+            "mean_soft_area": 186.8029327392578,
+            "stage_id": "completion"
+          },
+          {
+            "max_soft_area": 96.96947479248047,
+            "mean_soft_area": 96.96947479248047,
+            "stage_id": "terminal"
+          }
+        ],
+        "target_provenance": {
+          "blue_ball": "derived_motion_envelope",
+          "red_ball": "derived_motion_envelope"
+        }
+      }
+    },
+    {
+      "context_token_lengths": {
+        "global_semantic": 269,
+        "stage.completion.negative.0": 133,
+        "stage.completion.positive": 146,
+        "stage.evolution.negative.0": 151,
+        "stage.evolution.positive": 144,
+        "stage.onset.negative.0": 148,
+        "stage.onset.positive": 147,
+        "stage.setup.negative.0": 148,
+        "stage.setup.positive": 145,
+        "stage.terminal.negative.0": 169,
+        "stage.terminal.negative.1": 165,
+        "stage.terminal.positive": 181
+      },
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P03/P03-i0-1280x704.png",
+      "issues": [],
+      "max_context_token_length": 269,
+      "overlay": null,
+      "pair_quality": [
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified"
+      ],
+      "plan": "/home/liuzhirui/Project/physGen/code/v1/demo/P03/P03-V2-planimg.json",
+      "sample_id": "P03",
+      "support": {
+        "grid": [
+          25,
+          22,
+          40
+        ],
+        "mode": "planned",
+        "requires_runtime_saliency": false,
+        "source": "plan_boxes_and_tracks",
+        "stage_areas": [
+          {
+            "max_soft_area": 195.56105041503906,
+            "mean_soft_area": 189.69142150878906,
+            "stage_id": "setup"
+          },
+          {
+            "max_soft_area": 164.96986389160156,
+            "mean_soft_area": 164.96658325195312,
+            "stage_id": "onset"
+          },
+          {
+            "max_soft_area": 195.56105041503906,
+            "mean_soft_area": 189.69142150878906,
+            "stage_id": "evolution"
+          },
+          {
+            "max_soft_area": 195.56105041503906,
+            "mean_soft_area": 189.69142150878906,
+            "stage_id": "completion"
+          },
+          {
+            "max_soft_area": 143.48428344726562,
+            "mean_soft_area": 143.48428344726562,
+            "stage_id": "terminal"
+          }
+        ],
+        "target_provenance": {
+          "ball": "derived_motion_envelope",
+          "racket": "unresolved_static_envelope"
+        }
+      }
+    },
+    {
+      "context_token_lengths": {
+        "global_semantic": 270,
+        "stage.completion.negative.0": 143,
+        "stage.completion.positive": 154,
+        "stage.evolution.negative.0": 159,
+        "stage.evolution.positive": 152,
+        "stage.onset.negative.0": 153,
+        "stage.onset.positive": 152,
+        "stage.setup.negative.0": 153,
+        "stage.setup.positive": 150,
+        "stage.terminal.negative.0": 183,
+        "stage.terminal.negative.1": 176,
+        "stage.terminal.positive": 196
+      },
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P04/P04-i0-1280x704.png",
+      "issues": [
+        "remaining_row: exact visual count unresolved; retained as group"
+      ],
+      "max_context_token_length": 270,
+      "overlay": null,
+      "pair_quality": [
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified"
+      ],
+      "plan": "/home/liuzhirui/Project/physGen/code/v1/demo/P04/P04-V2-planimg.json",
+      "sample_id": "P04",
+      "support": {
+        "grid": [
+          25,
+          22,
+          40
+        ],
+        "mode": "planned",
+        "requires_runtime_saliency": false,
+        "source": "plan_boxes_and_tracks",
+        "stage_areas": [
+          {
+            "max_soft_area": 268.23272705078125,
+            "mean_soft_area": 266.3424072265625,
+            "stage_id": "setup"
+          },
+          {
+            "max_soft_area": 265.2878112792969,
+            "mean_soft_area": 264.8681945800781,
+            "stage_id": "onset"
+          },
+          {
+            "max_soft_area": 268.23272705078125,
+            "mean_soft_area": 266.3424072265625,
+            "stage_id": "evolution"
+          },
+          {
+            "max_soft_area": 268.23272705078125,
+            "mean_soft_area": 266.3424072265625,
+            "stage_id": "completion"
+          },
+          {
+            "max_soft_area": 265.2878112792969,
+            "mean_soft_area": 264.8681640625,
+            "stage_id": "terminal"
+          }
+        ],
+        "target_provenance": {
+          "first_domino": "derived_motion_envelope",
+          "remaining_row": "derived_motion_envelope"
+        }
+      }
+    },
+    {
+      "context_token_lengths": {
+        "global_semantic": 245,
+        "stage.completion.negative.0": 138,
+        "stage.completion.positive": 139,
+        "stage.evolution.negative.0": 138,
+        "stage.evolution.positive": 138,
+        "stage.onset.negative.0": 146,
+        "stage.onset.positive": 145,
+        "stage.setup.negative.0": 146,
+        "stage.setup.positive": 143,
+        "stage.terminal.negative.0": 167,
+        "stage.terminal.negative.1": 166,
+        "stage.terminal.positive": 175
+      },
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P05/P05-i0-1280x704.png",
+      "issues": [
+        "rough_floor: exact visual count unresolved; retained as group"
+      ],
+      "max_context_token_length": 245,
+      "overlay": null,
+      "pair_quality": [
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified"
+      ],
+      "plan": "/home/liuzhirui/Project/physGen/code/v1/demo/P05/P05-V2-planimg.json",
+      "sample_id": "P05",
+      "support": {
+        "grid": [
+          25,
+          22,
+          40
+        ],
+        "mode": "planned",
+        "requires_runtime_saliency": false,
+        "source": "plan_boxes_and_tracks",
+        "stage_areas": [
+          {
+            "max_soft_area": 202.22930908203125,
+            "mean_soft_area": 197.79808044433594,
+            "stage_id": "setup"
+          },
+          {
+            "max_soft_area": 332.9911193847656,
+            "mean_soft_area": 328.7327880859375,
+            "stage_id": "onset"
+          },
+          {
+            "max_soft_area": 332.9911193847656,
+            "mean_soft_area": 328.7327880859375,
+            "stage_id": "evolution"
+          },
+          {
+            "max_soft_area": 332.9911193847656,
+            "mean_soft_area": 328.7327880859375,
+            "stage_id": "completion"
+          },
+          {
+            "max_soft_area": 54.762699127197266,
+            "mean_soft_area": 54.762699127197266,
+            "stage_id": "terminal"
+          }
+        ],
+        "target_provenance": {
+          "block": "derived_motion_envelope",
+          "ramp": "unresolved_static_envelope",
+          "rough_floor": "unresolved_static_envelope"
+        }
+      }
+    },
+    {
+      "context_token_lengths": {
+        "global_semantic": 273,
+        "stage.completion.negative.0": 150,
+        "stage.completion.positive": 150,
+        "stage.evolution.negative.0": 146,
+        "stage.evolution.positive": 149,
+        "stage.onset.negative.0": 163,
+        "stage.onset.positive": 162,
+        "stage.setup.negative.0": 163,
+        "stage.setup.positive": 160,
+        "stage.terminal.negative.0": 181,
+        "stage.terminal.negative.1": 177,
+        "stage.terminal.positive": 188
+      },
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P06/P06-i0-1280x704.png",
+      "issues": [
+        "floor: exact visual count unresolved; retained as group"
+      ],
+      "max_context_token_length": 273,
+      "overlay": null,
+      "pair_quality": [
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified"
+      ],
+      "plan": "/home/liuzhirui/Project/physGen/code/v1/demo/P06/P06-V2-planimg.json",
+      "sample_id": "P06",
+      "support": {
+        "grid": [
+          25,
+          22,
+          40
+        ],
+        "mode": "planned",
+        "requires_runtime_saliency": false,
+        "source": "plan_boxes_and_tracks",
+        "stage_areas": [
+          {
+            "max_soft_area": 270.5048522949219,
+            "mean_soft_area": 261.0190124511719,
+            "stage_id": "setup"
+          },
+          {
+            "max_soft_area": 257.9646911621094,
+            "mean_soft_area": 254.86468505859375,
+            "stage_id": "onset"
+          },
+          {
+            "max_soft_area": 272.77386474609375,
+            "mean_soft_area": 261.91253662109375,
+            "stage_id": "evolution"
+          },
+          {
+            "max_soft_area": 272.77386474609375,
+            "mean_soft_area": 261.91253662109375,
+            "stage_id": "completion"
+          },
+          {
+            "max_soft_area": 154.64517211914062,
+            "mean_soft_area": 154.5324249267578,
+            "stage_id": "terminal"
+          }
+        ],
+        "target_provenance": {
+          "book": "derived_motion_envelope",
+          "floor": "unresolved_static_envelope",
+          "shelf": "unresolved_static_envelope"
+        }
+      }
+    },
+    {
+      "context_token_lengths": {
+        "global_semantic": 260,
+        "stage.completion.negative.0": 136,
+        "stage.completion.positive": 143,
+        "stage.evolution.negative.0": 148,
+        "stage.evolution.positive": 141,
+        "stage.onset.negative.0": 138,
+        "stage.onset.positive": 137,
+        "stage.setup.negative.0": 138,
+        "stage.setup.positive": 135,
+        "stage.terminal.negative.0": 170,
+        "stage.terminal.negative.1": 161,
+        "stage.terminal.positive": 175
+      },
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P07/P07-i0-1280x704.png",
+      "issues": [
+        "floor: exact visual count unresolved; retained as group"
+      ],
+      "max_context_token_length": 260,
+      "overlay": null,
+      "pair_quality": [
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified"
+      ],
+      "plan": "/home/liuzhirui/Project/physGen/code/v1/demo/P07/P07-V2-planimg.json",
+      "sample_id": "P07",
+      "support": {
+        "grid": [
+          25,
+          22,
+          40
+        ],
+        "mode": "planned",
+        "requires_runtime_saliency": false,
+        "source": "plan_boxes_and_tracks",
+        "stage_areas": [
+          {
+            "max_soft_area": 368.3202209472656,
+            "mean_soft_area": 368.3202819824219,
+            "stage_id": "setup"
+          },
+          {
+            "max_soft_area": 362.0873107910156,
+            "mean_soft_area": 362.0873107910156,
+            "stage_id": "onset"
+          },
+          {
+            "max_soft_area": 368.3202209472656,
+            "mean_soft_area": 368.3202819824219,
+            "stage_id": "evolution"
+          },
+          {
+            "max_soft_area": 368.3202209472656,
+            "mean_soft_area": 368.3202819824219,
+            "stage_id": "completion"
+          },
+          {
+            "max_soft_area": 342.03533935546875,
+            "mean_soft_area": 342.0353088378906,
+            "stage_id": "terminal"
+          }
+        ],
+        "target_provenance": {
+          "box": "unresolved_static_envelope",
+          "floor": "unresolved_static_envelope"
+        }
+      }
+    },
+    {
+      "context_token_lengths": {
+        "global_semantic": 299,
+        "stage.completion.negative.0": 166,
+        "stage.completion.positive": 167,
+        "stage.evolution.negative.0": 165,
+        "stage.evolution.positive": 164,
+        "stage.onset.negative.0": 176,
+        "stage.onset.positive": 173,
+        "stage.setup.negative.0": 175,
+        "stage.setup.positive": 172,
+        "stage.terminal.negative.0": 210,
+        "stage.terminal.negative.1": 203,
+        "stage.terminal.positive": 228
+      },
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P08/P08-i0-1280x704.png",
+      "issues": [],
+      "max_context_token_length": 299,
+      "overlay": null,
+      "pair_quality": [
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified"
+      ],
+      "plan": "/home/liuzhirui/Project/physGen/code/v1/demo/P08/P08-V2-planimg.json",
+      "sample_id": "P08",
+      "support": {
+        "grid": [
+          25,
+          22,
+          40
+        ],
+        "mode": "planned",
+        "requires_runtime_saliency": false,
+        "source": "plan_boxes_and_tracks",
+        "stage_areas": [
+          {
+            "max_soft_area": 777.99267578125,
+            "mean_soft_area": 777.9927368164062,
+            "stage_id": "setup"
+          },
+          {
+            "max_soft_area": 777.99267578125,
+            "mean_soft_area": 777.9927368164062,
+            "stage_id": "onset"
+          },
+          {
+            "max_soft_area": 777.99267578125,
+            "mean_soft_area": 777.9927368164062,
+            "stage_id": "evolution"
+          },
+          {
+            "max_soft_area": 777.99267578125,
+            "mean_soft_area": 777.9927368164062,
+            "stage_id": "completion"
+          },
+          {
+            "max_soft_area": 777.99267578125,
+            "mean_soft_area": 777.9927368164062,
+            "stage_id": "terminal"
+          }
+        ],
+        "target_provenance": {
+          "ice": "unresolved_static_envelope",
+          "plate": "derived_motion_envelope"
+        }
+      }
+    },
+    {
+      "context_token_lengths": {
+        "global_semantic": 289,
+        "stage.completion.negative.0": 156,
+        "stage.completion.positive": 161,
+        "stage.evolution.negative.0": 155,
+        "stage.evolution.positive": 158,
+        "stage.onset.negative.0": 167,
+        "stage.onset.positive": 164,
+        "stage.setup.negative.0": 165,
+        "stage.setup.positive": 162,
+        "stage.terminal.negative.0": 191,
+        "stage.terminal.negative.1": 189,
+        "stage.terminal.positive": 205
+      },
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P09/P09-i0-1280x704.png",
+      "issues": [
+        "liquid_butter: exact visual count unresolved; retained as group"
+      ],
+      "max_context_token_length": 289,
+      "overlay": null,
+      "pair_quality": [
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified"
+      ],
+      "plan": "/home/liuzhirui/Project/physGen/code/v1/demo/P09/P09-V2-planimg.json",
+      "sample_id": "P09",
+      "support": {
+        "grid": [
+          25,
+          22,
+          40
+        ],
+        "mode": "planned",
+        "requires_runtime_saliency": false,
+        "source": "plan_boxes_and_tracks",
+        "stage_areas": [
+          {
+            "max_soft_area": 756.8553466796875,
+            "mean_soft_area": 756.8554077148438,
+            "stage_id": "setup"
+          },
+          {
+            "max_soft_area": 777.99267578125,
+            "mean_soft_area": 777.9927368164062,
+            "stage_id": "onset"
+          },
+          {
+            "max_soft_area": 777.99267578125,
+            "mean_soft_area": 777.9927368164062,
+            "stage_id": "evolution"
+          },
+          {
+            "max_soft_area": 777.99267578125,
+            "mean_soft_area": 777.9927368164062,
+            "stage_id": "completion"
+          },
+          {
+            "max_soft_area": 756.8553466796875,
+            "mean_soft_area": 756.8554077148438,
+            "stage_id": "terminal"
+          }
+        ],
+        "target_provenance": {
+          "butter": "unresolved_static_envelope",
+          "pan": "derived_motion_envelope"
+        }
+      }
+    },
+    {
+      "context_token_lengths": {
+        "global_semantic": 272,
+        "stage.completion.negative.0": 137,
+        "stage.completion.positive": 138,
+        "stage.evolution.negative.0": 137,
+        "stage.evolution.positive": 135,
+        "stage.onset.negative.0": 140,
+        "stage.onset.positive": 139,
+        "stage.setup.negative.0": 141,
+        "stage.setup.positive": 138,
+        "stage.terminal.negative.0": 171,
+        "stage.terminal.negative.1": 172,
+        "stage.terminal.positive": 185
+      },
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P10/P10-i0-1280x704.png",
+      "issues": [],
+      "max_context_token_length": 272,
+      "overlay": null,
+      "pair_quality": [
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified"
+      ],
+      "plan": "/home/liuzhirui/Project/physGen/code/v1/demo/P10/P10-V2-planimg.json",
+      "sample_id": "P10",
+      "support": {
+        "grid": [
+          25,
+          22,
+          40
+        ],
+        "mode": "planned",
+        "requires_runtime_saliency": false,
+        "source": "plan_boxes_and_tracks",
+        "stage_areas": [
+          {
+            "max_soft_area": 91.51284790039062,
+            "mean_soft_area": 51.13282775878906,
+            "stage_id": "setup"
+          },
+          {
+            "max_soft_area": 91.51284790039062,
+            "mean_soft_area": 51.13282775878906,
+            "stage_id": "onset"
+          },
+          {
+            "max_soft_area": 91.51284790039062,
+            "mean_soft_area": 51.13282775878906,
+            "stage_id": "evolution"
+          },
+          {
+            "max_soft_area": 91.51284790039062,
+            "mean_soft_area": 51.13282775878906,
+            "stage_id": "completion"
+          },
+          {
+            "max_soft_area": 91.51284790039062,
+            "mean_soft_area": 51.13282775878906,
+            "stage_id": "terminal"
+          }
+        ],
+        "target_provenance": {
+          "balloon": "derived_motion_envelope"
+        }
+      }
+    },
+    {
+      "context_token_lengths": {
+        "global_semantic": 295,
+        "stage.completion.negative.0": 151,
+        "stage.completion.positive": 168,
+        "stage.evolution.negative.0": 172,
+        "stage.evolution.positive": 166,
+        "stage.onset.negative.0": 154,
+        "stage.onset.positive": 153,
+        "stage.setup.negative.0": 154,
+        "stage.setup.positive": 151,
+        "stage.terminal.negative.0": 191,
+        "stage.terminal.negative.1": 187,
+        "stage.terminal.positive": 207
+      },
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P11/P11-i0-1280x704.png",
+      "issues": [
+        "tile_floor: exact visual count unresolved; retained as group"
+      ],
+      "max_context_token_length": 295,
+      "overlay": null,
+      "pair_quality": [
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified"
+      ],
+      "plan": "/home/liuzhirui/Project/physGen/code/v1/demo/P11/P11-V2-planimg.json",
+      "sample_id": "P11",
+      "support": {
+        "grid": [
+          25,
+          22,
+          40
+        ],
+        "mode": "planned",
+        "requires_runtime_saliency": false,
+        "source": "plan_boxes_and_tracks",
+        "stage_areas": [
+          {
+            "max_soft_area": 436.1336975097656,
+            "mean_soft_area": 428.383056640625,
+            "stage_id": "setup"
+          },
+          {
+            "max_soft_area": 413.6182861328125,
+            "mean_soft_area": 412.6834716796875,
+            "stage_id": "onset"
+          },
+          {
+            "max_soft_area": 436.1336975097656,
+            "mean_soft_area": 428.383056640625,
+            "stage_id": "evolution"
+          },
+          {
+            "max_soft_area": 436.1336975097656,
+            "mean_soft_area": 428.383056640625,
+            "stage_id": "completion"
+          },
+          {
+            "max_soft_area": 389.59912109375,
+            "mean_soft_area": 388.5259094238281,
+            "stage_id": "terminal"
+          }
+        ],
+        "target_provenance": {
+          "bottle": "derived_motion_envelope",
+          "tile_floor": "unresolved_static_envelope"
+        }
+      }
+    },
+    {
+      "context_token_lengths": {
+        "global_semantic": 295,
+        "stage.completion.negative.0": 158,
+        "stage.completion.positive": 156,
+        "stage.evolution.negative.0": 157,
+        "stage.evolution.positive": 153,
+        "stage.onset.negative.0": 164,
+        "stage.onset.positive": 163,
+        "stage.setup.negative.0": 163,
+        "stage.setup.positive": 160,
+        "stage.terminal.negative.0": 191,
+        "stage.terminal.negative.1": 190,
+        "stage.terminal.positive": 204
+      },
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P12/P12-i0-1280x704.png",
+      "issues": [
+        "seeds: exact visual count unresolved; retained as group",
+        "drift_region: exact visual count unresolved; retained as group"
+      ],
+      "max_context_token_length": 295,
+      "overlay": null,
+      "pair_quality": [
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified"
+      ],
+      "plan": "/home/liuzhirui/Project/physGen/code/v1/demo/P12/P12-V2-planimg.json",
+      "sample_id": "P12",
+      "support": {
+        "grid": [
+          25,
+          22,
+          40
+        ],
+        "mode": "planned",
+        "requires_runtime_saliency": false,
+        "source": "plan_boxes_and_tracks",
+        "stage_areas": [
+          {
+            "max_soft_area": 249.46829223632812,
+            "mean_soft_area": 246.9376220703125,
+            "stage_id": "setup"
+          },
+          {
+            "max_soft_area": 525.7704467773438,
+            "mean_soft_area": 525.196533203125,
+            "stage_id": "onset"
+          },
+          {
+            "max_soft_area": 525.7704467773438,
+            "mean_soft_area": 525.196533203125,
+            "stage_id": "evolution"
+          },
+          {
+            "max_soft_area": 525.7704467773438,
+            "mean_soft_area": 525.196533203125,
+            "stage_id": "completion"
+          },
+          {
+            "max_soft_area": 249.46829223632812,
+            "mean_soft_area": 246.9376220703125,
+            "stage_id": "terminal"
+          }
+        ],
+        "target_provenance": {
+          "dandelion": "unresolved_static_envelope",
+          "drift_region": "unresolved_static_envelope",
+          "seeds": "derived_motion_envelope"
+        }
+      }
+    },
+    {
+      "context_token_lengths": {
+        "global_semantic": 286,
+        "stage.completion.negative.0": 159,
+        "stage.completion.positive": 160,
+        "stage.evolution.negative.0": 158,
+        "stage.evolution.positive": 157,
+        "stage.onset.negative.0": 163,
+        "stage.onset.positive": 162,
+        "stage.setup.negative.0": 163,
+        "stage.setup.positive": 160,
+        "stage.terminal.negative.0": 194,
+        "stage.terminal.negative.1": 194,
+        "stage.terminal.positive": 209
+      },
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P13/P13-i0-1280x704.png",
+      "issues": [
+        "stream: exact visual count unresolved; retained as group"
+      ],
+      "max_context_token_length": 286,
+      "overlay": null,
+      "pair_quality": [
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified"
+      ],
+      "plan": "/home/liuzhirui/Project/physGen/code/v1/demo/P13/P13-V2-planimg.json",
+      "sample_id": "P13",
+      "support": {
+        "grid": [
+          25,
+          22,
+          40
+        ],
+        "mode": "planned",
+        "requires_runtime_saliency": false,
+        "source": "plan_boxes_and_tracks",
+        "stage_areas": [
+          {
+            "max_soft_area": 496.2259521484375,
+            "mean_soft_area": 494.6276550292969,
+            "stage_id": "setup"
+          },
+          {
+            "max_soft_area": 509.4306335449219,
+            "mean_soft_area": 506.86199951171875,
+            "stage_id": "onset"
+          },
+          {
+            "max_soft_area": 509.4306335449219,
+            "mean_soft_area": 506.86199951171875,
+            "stage_id": "evolution"
+          },
+          {
+            "max_soft_area": 509.4306335449219,
+            "mean_soft_area": 506.86199951171875,
+            "stage_id": "completion"
+          },
+          {
+            "max_soft_area": 496.2259521484375,
+            "mean_soft_area": 494.6276550292969,
+            "stage_id": "terminal"
+          }
+        ],
+        "target_provenance": {
+          "glass": "derived_motion_envelope",
+          "pitcher": "derived_motion_envelope"
+        }
+      }
+    },
+    {
+      "context_token_lengths": {
+        "global_semantic": 296,
+        "stage.completion.negative.0": 173,
+        "stage.completion.positive": 174,
+        "stage.evolution.negative.0": 172,
+        "stage.evolution.positive": 171,
+        "stage.onset.negative.0": 172,
+        "stage.onset.positive": 171,
+        "stage.setup.negative.0": 172,
+        "stage.setup.positive": 169,
+        "stage.terminal.negative.0": 208,
+        "stage.terminal.negative.1": 208,
+        "stage.terminal.positive": 223
+      },
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P14/P14-i0-1280x704.png",
+      "issues": [
+        "bottle: exact visual count unresolved; retained as group",
+        "stream: exact visual count unresolved; retained as group"
+      ],
+      "max_context_token_length": 296,
+      "overlay": null,
+      "pair_quality": [
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified"
+      ],
+      "plan": "/home/liuzhirui/Project/physGen/code/v1/demo/P14/P14-V2-planimg.json",
+      "sample_id": "P14",
+      "support": {
+        "grid": [
+          25,
+          22,
+          40
+        ],
+        "mode": "planned",
+        "requires_runtime_saliency": false,
+        "source": "plan_boxes_and_tracks",
+        "stage_areas": [
+          {
+            "max_soft_area": 178.0464630126953,
+            "mean_soft_area": 177.0918426513672,
+            "stage_id": "setup"
+          },
+          {
+            "max_soft_area": 205.21807861328125,
+            "mean_soft_area": 202.6597137451172,
+            "stage_id": "onset"
+          },
+          {
+            "max_soft_area": 205.21807861328125,
+            "mean_soft_area": 202.6597137451172,
+            "stage_id": "evolution"
+          },
+          {
+            "max_soft_area": 205.21807861328125,
+            "mean_soft_area": 202.6597137451172,
+            "stage_id": "completion"
+          },
+          {
+            "max_soft_area": 178.0464630126953,
+            "mean_soft_area": 177.0918426513672,
+            "stage_id": "terminal"
+          }
+        ],
+        "target_provenance": {
+          "bottle": "derived_motion_envelope",
+          "glass": "unresolved_static_envelope"
+        }
+      }
+    },
+    {
+      "context_token_lengths": {
+        "global_semantic": 313,
+        "stage.completion.negative.0": 170,
+        "stage.completion.positive": 171,
+        "stage.evolution.negative.0": 169,
+        "stage.evolution.positive": 168,
+        "stage.onset.negative.0": 173,
+        "stage.onset.positive": 172,
+        "stage.setup.negative.0": 173,
+        "stage.setup.positive": 170,
+        "stage.terminal.negative.0": 206,
+        "stage.terminal.negative.1": 204,
+        "stage.terminal.positive": 220
+      },
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P15/P15-i0-1280x704.png",
+      "issues": [
+        "cup: exact visual count unresolved; retained as group",
+        "sand_stream: exact visual count unresolved; retained as group"
+      ],
+      "max_context_token_length": 313,
+      "overlay": null,
+      "pair_quality": [
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified"
+      ],
+      "plan": "/home/liuzhirui/Project/physGen/code/v1/demo/P15/P15-V2-planimg.json",
+      "sample_id": "P15",
+      "support": {
+        "grid": [
+          25,
+          22,
+          40
+        ],
+        "mode": "planned",
+        "requires_runtime_saliency": false,
+        "source": "plan_boxes_and_tracks",
+        "stage_areas": [
+          {
+            "max_soft_area": 136.6343994140625,
+            "mean_soft_area": 136.63441467285156,
+            "stage_id": "setup"
+          },
+          {
+            "max_soft_area": 193.13755798339844,
+            "mean_soft_area": 193.13754272460938,
+            "stage_id": "onset"
+          },
+          {
+            "max_soft_area": 193.13755798339844,
+            "mean_soft_area": 193.13754272460938,
+            "stage_id": "evolution"
+          },
+          {
+            "max_soft_area": 193.13755798339844,
+            "mean_soft_area": 193.13754272460938,
+            "stage_id": "completion"
+          },
+          {
+            "max_soft_area": 136.6343994140625,
+            "mean_soft_area": 136.63441467285156,
+            "stage_id": "terminal"
+          }
+        ],
+        "target_provenance": {
+          "cup": "unresolved_static_envelope",
+          "hand": "unresolved_static_envelope",
+          "pile_region": "unresolved_static_envelope"
+        }
+      }
+    },
+    {
+      "context_token_lengths": {
+        "global_semantic": 290,
+        "stage.completion.negative.0": 145,
+        "stage.completion.positive": 146,
+        "stage.evolution.negative.0": 145,
+        "stage.evolution.positive": 144,
+        "stage.onset.negative.0": 156,
+        "stage.onset.positive": 155,
+        "stage.setup.negative.0": 156,
+        "stage.setup.positive": 153,
+        "stage.terminal.negative.0": 181,
+        "stage.terminal.negative.1": 187,
+        "stage.terminal.positive": 203
+      },
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P16/P16-i0-1280x704.png",
+      "issues": [
+        "water: exact visual count unresolved; retained as group"
+      ],
+      "max_context_token_length": 290,
+      "overlay": null,
+      "pair_quality": [
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified"
+      ],
+      "plan": "/home/liuzhirui/Project/physGen/code/v1/demo/P16/P16-V2-planimg.json",
+      "sample_id": "P16",
+      "support": {
+        "grid": [
+          25,
+          22,
+          40
+        ],
+        "mode": "planned",
+        "requires_runtime_saliency": false,
+        "source": "plan_boxes_and_tracks",
+        "stage_areas": [
+          {
+            "max_soft_area": 682.3583984375,
+            "mean_soft_area": 677.6738891601562,
+            "stage_id": "setup"
+          },
+          {
+            "max_soft_area": 682.3583984375,
+            "mean_soft_area": 677.6738891601562,
+            "stage_id": "onset"
+          },
+          {
+            "max_soft_area": 682.3583984375,
+            "mean_soft_area": 677.6738891601562,
+            "stage_id": "evolution"
+          },
+          {
+            "max_soft_area": 682.3583984375,
+            "mean_soft_area": 677.6738891601562,
+            "stage_id": "completion"
+          },
+          {
+            "max_soft_area": 682.3583984375,
+            "mean_soft_area": 677.6738891601562,
+            "stage_id": "terminal"
+          }
+        ],
+        "target_provenance": {
+          "dye": "derived_motion_envelope",
+          "water": "derived_motion_envelope"
+        }
+      }
+    },
+    {
+      "context_token_lengths": {
+        "global_semantic": 254,
+        "stage.completion.negative.0": 145,
+        "stage.completion.positive": 145,
+        "stage.evolution.negative.0": 135,
+        "stage.evolution.positive": 134,
+        "stage.onset.negative.0": 149,
+        "stage.onset.positive": 148,
+        "stage.setup.negative.0": 149,
+        "stage.setup.positive": 146,
+        "stage.terminal.negative.0": 177,
+        "stage.terminal.negative.1": 179,
+        "stage.terminal.positive": 191
+      },
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P17/P17-i0-1280x704.png",
+      "issues": [
+        "surface: exact visual count unresolved; retained as group"
+      ],
+      "max_context_token_length": 254,
+      "overlay": null,
+      "pair_quality": [
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified"
+      ],
+      "plan": "/home/liuzhirui/Project/physGen/code/v1/demo/P17/P17-V2-planimg.json",
+      "sample_id": "P17",
+      "support": {
+        "grid": [
+          25,
+          22,
+          40
+        ],
+        "mode": "planned",
+        "requires_runtime_saliency": false,
+        "source": "plan_boxes_and_tracks",
+        "stage_areas": [
+          {
+            "max_soft_area": 421.1875,
+            "mean_soft_area": 419.98712158203125,
+            "stage_id": "setup"
+          },
+          {
+            "max_soft_area": 419.67529296875,
+            "mean_soft_area": 418.42840576171875,
+            "stage_id": "onset"
+          },
+          {
+            "max_soft_area": 421.1875,
+            "mean_soft_area": 419.98712158203125,
+            "stage_id": "evolution"
+          },
+          {
+            "max_soft_area": 421.1875,
+            "mean_soft_area": 419.98712158203125,
+            "stage_id": "completion"
+          },
+          {
+            "max_soft_area": 413.9246520996094,
+            "mean_soft_area": 412.5877990722656,
+            "stage_id": "terminal"
+          }
+        ],
+        "target_provenance": {
+          "hand": "derived_motion_envelope",
+          "sponge": "unresolved_static_envelope",
+          "surface": "unresolved_static_envelope"
+        }
+      }
+    },
+    {
+      "context_token_lengths": {
+        "global_semantic": 281,
+        "stage.completion.negative.0": 149,
+        "stage.completion.positive": 172,
+        "stage.evolution.negative.0": 176,
+        "stage.evolution.positive": 170,
+        "stage.onset.negative.0": 151,
+        "stage.onset.positive": 150,
+        "stage.setup.negative.0": 151,
+        "stage.setup.positive": 148,
+        "stage.terminal.negative.0": 180,
+        "stage.terminal.negative.1": 193,
+        "stage.terminal.positive": 206
+      },
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P18/P18-i0-1280x704.png",
+      "issues": [
+        "floor: exact visual count unresolved; retained as group"
+      ],
+      "max_context_token_length": 281,
+      "overlay": null,
+      "pair_quality": [
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified"
+      ],
+      "plan": "/home/liuzhirui/Project/physGen/code/v1/demo/P18/P18-V2-planimg.json",
+      "sample_id": "P18",
+      "support": {
+        "grid": [
+          25,
+          22,
+          40
+        ],
+        "mode": "planned",
+        "requires_runtime_saliency": false,
+        "source": "plan_boxes_and_tracks",
+        "stage_areas": [
+          {
+            "max_soft_area": 364.7279052734375,
+            "mean_soft_area": 364.7279052734375,
+            "stage_id": "setup"
+          },
+          {
+            "max_soft_area": 310.065185546875,
+            "mean_soft_area": 310.0651550292969,
+            "stage_id": "onset"
+          },
+          {
+            "max_soft_area": 364.7279052734375,
+            "mean_soft_area": 364.7279052734375,
+            "stage_id": "evolution"
+          },
+          {
+            "max_soft_area": 364.7279052734375,
+            "mean_soft_area": 364.7279052734375,
+            "stage_id": "completion"
+          },
+          {
+            "max_soft_area": 232.3345947265625,
+            "mean_soft_area": 232.33460998535156,
+            "stage_id": "terminal"
+          }
+        ],
+        "target_provenance": {
+          "ball": "unresolved_static_envelope",
+          "floor": "unresolved_static_envelope"
+        }
+      }
+    },
+    {
+      "context_token_lengths": {
+        "global_semantic": 280,
+        "stage.completion.negative.0": 133,
+        "stage.completion.positive": 133,
+        "stage.evolution.negative.0": 134,
+        "stage.evolution.positive": 132,
+        "stage.onset.negative.0": 141,
+        "stage.onset.positive": 140,
+        "stage.setup.negative.0": 142,
+        "stage.setup.positive": 139,
+        "stage.terminal.negative.0": 170,
+        "stage.terminal.negative.1": 163,
+        "stage.terminal.positive": 179
+      },
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P19/P19-i0-1280x704.png",
+      "issues": [],
+      "max_context_token_length": 280,
+      "overlay": null,
+      "pair_quality": [
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified"
+      ],
+      "plan": "/home/liuzhirui/Project/physGen/code/v1/demo/P19/P19-V2-planimg.json",
+      "sample_id": "P19",
+      "support": {
+        "grid": [
+          25,
+          22,
+          40
+        ],
+        "mode": "planned",
+        "requires_runtime_saliency": false,
+        "source": "plan_boxes_and_tracks",
+        "stage_areas": [
+          {
+            "max_soft_area": 777.99267578125,
+            "mean_soft_area": 777.9927368164062,
+            "stage_id": "setup"
+          },
+          {
+            "max_soft_area": 777.99267578125,
+            "mean_soft_area": 777.9927368164062,
+            "stage_id": "onset"
+          },
+          {
+            "max_soft_area": 777.99267578125,
+            "mean_soft_area": 777.9927368164062,
+            "stage_id": "evolution"
+          },
+          {
+            "max_soft_area": 777.99267578125,
+            "mean_soft_area": 777.9927368164062,
+            "stage_id": "completion"
+          },
+          {
+            "max_soft_area": 777.99267578125,
+            "mean_soft_area": 777.9927368164062,
+            "stage_id": "terminal"
+          }
+        ],
+        "target_provenance": {
+          "paper": "derived_motion_envelope"
+        }
+      }
+    },
+    {
+      "context_token_lengths": {
+        "global_semantic": 349,
+        "stage.completion.negative.0": 159,
+        "stage.completion.positive": 183,
+        "stage.evolution.negative.0": 158,
+        "stage.evolution.positive": 159,
+        "stage.onset.negative.0": 173,
+        "stage.onset.positive": 172,
+        "stage.setup.negative.0": 173,
+        "stage.setup.positive": 170,
+        "stage.terminal.negative.0": 192,
+        "stage.terminal.negative.1": 188,
+        "stage.terminal.positive": 201
+      },
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P20/P20-i0-1280x704.png",
+      "issues": [
+        "coffee_stream: exact visual count unresolved; retained as group"
+      ],
+      "max_context_token_length": 349,
+      "overlay": null,
+      "pair_quality": [
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified",
+        "minimal_verified"
+      ],
+      "plan": "/home/liuzhirui/Project/physGen/code/v1/demo/P20/P20-V2-planimg.json",
+      "sample_id": "P20",
+      "support": {
+        "grid": [
+          25,
+          22,
+          40
+        ],
+        "mode": "planned",
+        "requires_runtime_saliency": false,
+        "source": "plan_boxes_and_tracks",
+        "stage_areas": [
+          {
+            "max_soft_area": 135.3558349609375,
+            "mean_soft_area": 135.35581970214844,
+            "stage_id": "setup"
+          },
+          {
+            "max_soft_area": 135.3558349609375,
+            "mean_soft_area": 135.35581970214844,
+            "stage_id": "onset"
+          },
+          {
+            "max_soft_area": 135.3558349609375,
+            "mean_soft_area": 135.35581970214844,
+            "stage_id": "evolution"
+          },
+          {
+            "max_soft_area": 135.3558349609375,
+            "mean_soft_area": 135.35581970214844,
+            "stage_id": "completion"
+          },
+          {
+            "max_soft_area": 135.3558349609375,
+            "mean_soft_area": 135.35581970214844,
+            "stage_id": "terminal"
+          }
+        ],
+        "target_provenance": {
+          "campfire": "unresolved_static_envelope",
+          "cup": "unresolved_static_envelope",
+          "kettle": "unresolved_static_envelope"
+        }
+      }
+    }
+  ],
+  "status": "ready",
+  "upstream": {
+    "checkpoint": "/home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B",
+    "checkpoint_hashes": {
+      "config.json": "d1fea36899d00c2501b836c13ad65af56e2f9529ba622e50886d3f5c3e6c02bc",
+      "diffusion_pytorch_model.safetensors.index.json": "bfa2337f1163e195d24151a72298daf34a620543898109be47e414c8daa5b3fe"
+    },
+    "checkpoint_model_config": {
+      "_class_name": "WanModel",
+      "dim": 3072,
+      "in_dim": 48,
+      "model_type": "ti2v",
+      "num_heads": 24,
+      "num_layers": 30,
+      "out_dim": 48,
+      "text_len": 512
+    },
+    "source_hashes": {
+      "wan/configs/wan_ti2v_5B.py": "26d9e7b9c555eb0900b13751267a596556f869e7aee2d1572afc2a0a4a76f4c7",
+      "wan/modules/attention.py": "c79158e1cc9b7a17bc934e6acb34f42e588a41adb89801146957cda2d6d4379d",
+      "wan/modules/model.py": "8b39115298ca7322806c19b3165b3f435a94fe4a58f0624aec24f8e7f4997432",
+      "wan/modules/t5.py": "8b0cebf3192c542f92a344255a06c203df3ba24160715899a055cc8de0cd930f",
+      "wan/textimage2video.py": "228f2fabf23014ed41ec6b8cd713d5be7371bb558501c71a62a0258b491a877b"
+    },
+    "wan_git_head": "08e890ff01ff8daf9161db472f362efe5d6ba656",
+    "wan_repo": "/home/liuzhirui/model/Wan2.2",
+    "weight_shards": [
+      {
+        "mtime_ns": 1769032249319825600,
+        "name": "diffusion_pytorch_model-00001-of-00003.safetensors",
+        "size_bytes": 9825014472
+      },
+      {
+        "mtime_ns": 1769032417046557795,
+        "name": "diffusion_pytorch_model-00002-of-00003.safetensors",
+        "size_bytes": 9995661736
+      },
+      {
+        "mtime_ns": 1769020338553636583,
+        "name": "diffusion_pytorch_model-00003-of-00003.safetensors",
+        "size_bytes": 178558176
+      }
+    ]
+  },
+  "upstream_mismatches": []
+}

@@ -1,0 +1,67 @@
+{
+  "causal_pair": {
+    "counterfactual_type": [
+      "no_op"
+    ],
+    "origin_prompt_prefixed": true,
+    "single_changed_relation": [
+      "the source bottle level remains static while the target glass level rises"
+    ]
+  },
+  "compiler_version": "ace-router-initial-v1-compat",
+  "mode": "initial_v1",
+  "prompts": {
+    "causal_counterfactual": "A bottle pours orange juice through a visible stream into a glass until the bottle holds less and the glass holds more. The orange-juice stream raises the glass level while the bottle level remains unchanged throughout the transfer.",
+    "causal_positive": "A bottle pours orange juice through a visible stream into a glass until the bottle holds less and the glass holds more. The orange juice forms a continuous stream into the glass as the bottle level falls and the glass level rises together.",
+    "semantic": "A bottle pours orange juice through a visible stream into a glass until the bottle holds less and the glass holds more."
+  },
+  "sample_id": "P14",
+  "schema_version": 1,
+  "semantic_variant": "initial_v1",
+  "source_sections": {
+    "changed_state_variables": [
+      "bottle juice level: higher to lower",
+      "glass juice level: lower to higher",
+      "orange-juice configuration: bottle to stream and glass"
+    ],
+    "counterfactual_type": [
+      "no_op"
+    ],
+    "event_type": [
+      "colored-liquid transfer with coupled volumes"
+    ],
+    "initial_states": [
+      "bottle: intact with a clearly visible initial orange-juice level",
+      "glass: intact, empty, and separated from the bottle opening"
+    ],
+    "layout_requirements": [
+      "bottle opening aligns with the glass opening",
+      "both complete containers and the bottle juice level remain visible",
+      "the intended stream region is unobstructed"
+    ],
+    "preserved_context": [
+      "one bottle",
+      "one glass",
+      "the same orange juice and scene"
+    ],
+    "protected_scene_properties": [
+      "static side-view camera",
+      "bottle and glass identities",
+      "orange-juice color and neutral background"
+    ],
+    "required_visible_entities": [
+      "one bottle containing orange juice",
+      "one glass",
+      "level support surface"
+    ],
+    "single_changed_relation": [
+      "the source bottle level remains static while the target glass level rises"
+    ],
+    "transition_variables": [
+      "bottle orientation",
+      "bottle juice level",
+      "glass juice level",
+      "orange-juice stream shape"
+    ]
+  }
+}

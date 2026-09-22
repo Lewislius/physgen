@@ -1,0 +1,404 @@
+{
+  "assumptions": [
+    "Visible drift proceeds from the left seed head into the broad open right-side sky."
+  ],
+  "constraints": [
+    {
+      "after": "blue_sky_drift",
+      "before": "pictured_first_detachment",
+      "id": "c1",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "precedes"
+    },
+    {
+      "effect": "white_detach",
+      "id": "c2",
+      "source_refs": [
+        "origin"
+      ],
+      "transition": "e1",
+      "type": "changes"
+    },
+    {
+      "effects": [
+        "white_detach",
+        "blue_sky_drift",
+        "pictured_depletion"
+      ],
+      "id": "c3",
+      "relation": "rightward white-seed drift accompanies decreasing white head coverage",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "couples"
+    },
+    {
+      "facts": [
+        "attachment=detached",
+        "fullness=sparse_depleted_head"
+      ],
+      "id": "c4",
+      "source_refs": [
+        "origin"
+      ],
+      "state": "z1",
+      "type": "persists"
+    },
+    {
+      "facts": [
+        "attachment=densely_attached",
+        "attachment=detached"
+      ],
+      "id": "c5",
+      "scope": "same_time",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "excludes"
+    }
+  ],
+  "design_revision": "fixed5-causal-r3",
+  "entities": [
+    {
+      "id": "dandelion",
+      "mention": "the same left-side white dandelion head on its yellow-green stem",
+      "role": "source",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    },
+    {
+      "id": "seeds",
+      "mention": "the same fine white dandelion seeds",
+      "role": "carrier",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    },
+    {
+      "id": "drift_region",
+      "mention": "the open blue-sky region to the right",
+      "role": "sink",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "description": "first white seeds leave the left-side head",
+      "id": "pictured_first_detachment",
+      "observable": "a visible gap opens and white seeds move rightward",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    }
+  ],
+  "generation_basis": {
+    "mode": "visual_grounding",
+    "reference_image_usage": "visual_grounding",
+    "semantic_inputs": [
+      "origin",
+      "planner_instructions",
+      "reference_input"
+    ]
+  },
+  "global_semantic": "Seeds detach from the full white dandelion at left and drift rightward across the blue-sky background as the head depletes.",
+  "grounding": {
+    "approved": false,
+    "coordinate_frame": "reference_input",
+    "entity_boxes": [
+      {
+        "box": [
+          0.13,
+          0.126,
+          0.397,
+          1.0
+        ],
+        "entity_id": "dandelion"
+      },
+      {
+        "box": [
+          0.13,
+          0.126,
+          0.397,
+          0.566
+        ],
+        "entity_id": "seeds"
+      },
+      {
+        "box": [
+          0.4,
+          0.06,
+          0.98,
+          0.82
+        ],
+        "entity_id": "drift_region"
+      }
+    ],
+    "protected_boxes": [],
+    "reference_image": "P12-i0-1280x704.png",
+    "reference_image_usage": "visual_grounding"
+  },
+  "predicates": [
+    {
+      "attribute": "attachment_to:white_head",
+      "id": "attachment",
+      "observable": "fine white filaments connected to the brown center",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "subject": "seeds",
+      "values": [
+        "densely_attached",
+        "detached"
+      ]
+    },
+    {
+      "attribute": "position_in pictured drift corridor",
+      "id": "seed_position",
+      "observable": "white seed displacement across blue background",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "subject": "seeds",
+      "values": [
+        "on_left_head",
+        "rightward_airborne"
+      ]
+    },
+    {
+      "attribute": "white seed coverage",
+      "id": "fullness",
+      "observable": "white radial coverage around the center",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "subject": "dandelion",
+      "values": [
+        "full_round_head",
+        "sparse_depleted_head"
+      ]
+    }
+  ],
+  "protected_predicates": [
+    "same yellow-green stem and brown central head",
+    "white seed identity remains consistent",
+    "blue sky, blurred green field, daylight, focus, and static camera remain unchanged"
+  ],
+  "sample_id": "P12",
+  "schema_version": "trace-writer-v1",
+  "source_files": {
+    "origin": "P12-origin.txt",
+    "planner_instructions": "Project/physGen/prompt/generate_trace_writer_v1_plan.txt",
+    "reference_input": "P12-i0-1280x704.png"
+  },
+  "stages": [
+    {
+      "affected_roles": [
+        "source",
+        "carrier"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "setup",
+      "observable_check": "Dense white radial coverage surrounds the center and right sky stays empty.",
+      "positive": "The pictured round white seed head remains full at left with no seeds in the right sky.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "The left head is already sparse while white seeds fill the right sky.",
+          "type": "outcome_preset"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "onset",
+      "observable_check": "A head gap and first rightward white displacement appear together.",
+      "positive": "The first white seeds visibly separate from the left head and begin moving rightward.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "The pictured head loses white coverage before any seed enters the rightward corridor.",
+          "type": "wrong_order"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c2",
+        "c3"
+      ],
+      "id": "evolution",
+      "observable_check": "Airborne white count rises while radial head coverage falls.",
+      "positive": "Increasing numbers of white seeds cross the blue background as the left head becomes progressively sparser.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c2",
+            "c3"
+          ],
+          "text": "White seeds cross the blue sky while the pictured head remains fully covered.",
+          "type": "coupling_broken"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c2",
+        "c3",
+        "c4"
+      ],
+      "id": "completion",
+      "observable_check": "Late frames show a visibly depleted left head and separated rightward seeds.",
+      "positive": "The seed cloud continues rightward while sparse white filaments remain around the same brown center.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c2",
+            "c3",
+            "c4"
+          ],
+          "text": "Only one pictured seed moves and the round white head remains nearly full.",
+          "type": "incomplete_transition"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier"
+      ],
+      "constraint_ids": [
+        "c4",
+        "c5"
+      ],
+      "id": "terminal",
+      "observable_check": "The sparse head stays sparse and detached seeds do not reattach.",
+      "positive": "The sparse left seed head persists while detached white seeds remain away in the right-side air.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c4"
+          ],
+          "text": "Rightward seeds return and reconstruct the full pictured white head.",
+          "type": "reversal"
+        },
+        {
+          "constraint_ids": [
+            "c5"
+          ],
+          "text": "Attached and airborne copies of identical white seeds coexist on the head.",
+          "type": "exclusion_broken"
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "facts": {
+        "attachment": "densely_attached",
+        "fullness": "full_round_head",
+        "seed_position": "on_left_head"
+      },
+      "id": "z0",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    },
+    {
+      "facts": {
+        "attachment": "detached",
+        "fullness": "sparse_depleted_head",
+        "seed_position": "rightward_airborne"
+      },
+      "id": "z1",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "cause_event": null,
+      "effects": [
+        {
+          "direction": "white seed connections release",
+          "from": "densely_attached",
+          "id": "white_detach",
+          "predicate": "attachment",
+          "to": "detached"
+        },
+        {
+          "direction": "white seeds travel right across blue sky",
+          "from": "on_left_head",
+          "id": "blue_sky_drift",
+          "predicate": "seed_position",
+          "to": "rightward_airborne"
+        },
+        {
+          "direction": "white radial coverage decreases",
+          "from": "full_round_head",
+          "id": "pictured_depletion",
+          "predicate": "fullness",
+          "to": "sparse_depleted_head"
+        }
+      ],
+      "from": "z0",
+      "id": "e1",
+      "kind": "continuous",
+      "preconditions": [
+        "attachment=densely_attached",
+        "seed_position=on_left_head",
+        "fullness=full_round_head"
+      ],
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "support_kind": "source_stream_sink",
+      "to": "z1"
+    }
+  ],
+  "warnings": [
+    "The gust itself is invisible, so onset is grounded to first seed detachment; region boxes are estimated and unapproved."
+  ]
+}

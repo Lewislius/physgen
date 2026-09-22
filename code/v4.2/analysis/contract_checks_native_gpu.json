@@ -1,0 +1,40 @@
+{
+  "status": "passed",
+  "checks": {
+    "event_pts_teacher_geometry": "passed",
+    "differentiable_bounds_known_slice_padding": "passed",
+    "zero_writer_and_aux_gradient_isolation": "passed",
+    "schedule_coverage_resume_accumulation": "passed",
+    "checkpoint_ema_queue_rng_integrity": "passed"
+  },
+  "parameters": {
+    "core": 20246528,
+    "text_init": 14428416,
+    "writer5": 5061888,
+    "writer15": 5061888
+  },
+  "total_parameters": 44798720,
+  "native_gpu": {
+    "wan_zero_writer": {
+      "i2v": {
+        "base_max_abs": 0.0,
+        "zero_writer_max_abs": 0.0,
+        "cfg_max_abs": 0.0
+      },
+      "t2v": {
+        "base_max_abs": 0.0,
+        "zero_writer_max_abs": 0.0,
+        "cfg_max_abs": 0.0
+      }
+    },
+    "wan_nonzero_generation_and_aux_isolation": "passed",
+    "vae_original_vs_checkpoint_output_max_abs": 0.0,
+    "vae_input_gradient_max_abs": 9.313225746154785e-10,
+    "vae_cross_chunk_gradient_norm": 0.0012578004971146584,
+    "gpu": "NVIDIA GeForce RTX 3090",
+    "peak_allocated_gib": 3.3343448638916016,
+    "scope": "Local Wan class with small random dimensions; original FP32 VAE weights; NOT a full 5B/121-frame memory acceptance"
+  },
+  "code": "f6f58afc8546b0986976dca85ae5788402bfa7470fe211d05b93a82f255e53ba",
+  "limitations": "CPU mechanism checks only; full-shape GPU memory and generation quality require actual jobs"
+}

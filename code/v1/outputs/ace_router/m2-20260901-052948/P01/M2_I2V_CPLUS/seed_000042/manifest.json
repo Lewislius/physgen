@@ -1,0 +1,331 @@
+{
+  "ace": {
+    "cfg_scope": "conditional_only",
+    "diagnostics": "summary",
+    "enabled": true,
+    "formula": "semantic + scale * (positive - semantic)",
+    "fp32_delta": true,
+    "lambda0": 0.5,
+    "layer_gates": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.4,
+      0.4,
+      0.4,
+      0.4,
+      0.4,
+      0.4,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "layer_preset": "mvp_mid16",
+    "residual_mode": "positive_only",
+    "step_gates": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "contexts": {
+    "cfg_negative_prompt": "色调艳丽，过曝，静态，细节模糊不清，字幕，风格，作品，画作，画面，静止，整体发灰，最差质量，低质量，JPEG压缩残留，丑陋的，残缺的，多余的手指，画得不好的手部，画得不好的脸部，畸形的，毁容的，形态畸形的肢体，手指融合，静止不动的画面，杂乱的背景，三条腿，背景人很多，倒着走",
+    "counterfactual_text": "A black scooter rolls into a metal trash can, then tilts to one side and stops beside it. The scooter tilts and stops while still separated from the trash can; visible contact occurs afterward.",
+    "positive_text": "A black scooter rolls into a metal trash can, then tilts to one side and stops beside it. The scooter visibly contacts the trash can before tilting, slows during the tilt, and remains stopped beside the can.",
+    "semantic_text": "A black scooter rolls into a metal trash can, then tilts to one side and stops beside it.",
+    "token_lengths": {
+      "cfg_negative": 126,
+      "positive": 50,
+      "semantic": 24
+    },
+    "used_by_model": {
+      "cfg_negative": true,
+      "counterfactual": false,
+      "positive": true,
+      "semantic": true
+    },
+    "utf8_sha256": {
+      "cfg_negative": "ce96e0324e4b54ce4b6e867f669ca520952e1a34cc116543516b1897f0d3c47e",
+      "counterfactual": "9a80c5ecc53891f52fa32248c1a38f80c4835e59351c813d4fb05161780da570",
+      "positive": "25afdfb47846406a4f670892cb738f6e9fb572869da703aca0c95a5037c8e89e",
+      "semantic": "474b29827df92c8bb0b6da0e06347639399d472ea2e9a4e92e98990e3db5e708"
+    }
+  },
+  "diagnostics": {
+    "all_finite": true,
+    "mode": "summary",
+    "raw_delta_l2_max": 179.5850372314453,
+    "raw_delta_l2_min": 27.067672729492188,
+    "record_count": 12,
+    "scaled_to_semantic_max": 0.11355981975793839,
+    "scaled_to_semantic_min": 0.014706567861139774
+  },
+  "generation": {
+    "convert_model_dtype": true,
+    "first_frame_reanchor_count": 51,
+    "fps": 24,
+    "frame_num": 49,
+    "guide_scale": 5.0,
+    "height": 352,
+    "max_area": 225280,
+    "offload_model": true,
+    "sample_solver": "unipc",
+    "sampling_steps": 50,
+    "seed": 42,
+    "shift": 5.0,
+    "t5_cpu": true,
+    "width": 640
+  },
+  "input_hashes": {
+    "causal_json": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P01/P01-cplus-cminus.json",
+      "sha256": "9b147a8a7aac148f090cf7cab90c5ed4983fa5da9942e63a853a1d87357259ef",
+      "size_bytes": 945
+    },
+    "i0_image": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P01/P01-i0.png",
+      "sha256": "f48327b67cae7cc3c2187b385df9ac587d066e0a4bcc56db515a95808ee299f0",
+      "size_bytes": 2587856
+    },
+    "i0_metadata_json": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P01/P01-i0.json",
+      "sha256": "875215fec8ab72aa6c98173530a9d3f54b8c4d136625e9b97a29bfd4f44df4bc",
+      "size_bytes": 1560
+    },
+    "model_reference_image": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/outputs/ace_router/m2-20260901-052948/P01/M2_I2V_CPLUS/seed_000042/reference_input.png",
+      "sha256": "e8cd8464add84d6133c03829aea5a4d473aed4a8ca90f73e0f7613a4d44cafb4",
+      "size_bytes": 1389969
+    },
+    "origin_txt": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P01/P01-origin.txt",
+      "sha256": "edc4e1e81cc3a0e2af310d488f54aae887e0c3de2d9891e57ea9ade074baed11",
+      "size_bytes": 90
+    },
+    "selection_manifest": null,
+    "sizing_image": null
+  },
+  "method": "M2_I2V_CPLUS",
+  "output_video": "/home/liuzhirui/Project/physGen/code/v1/outputs/ace_router/m2-20260901-052948/P01/M2_I2V_CPLUS/seed_000042/video.mp4",
+  "output_video_sha256": "2c38fe7b5cbf9e8745ed7b314874ef287657364f3d872080c0f8b1484dfbeca6",
+  "reference": {
+    "crop_box": [
+      0,
+      89,
+      1536,
+      934
+    ],
+    "crop_policy": "center_crop_to_20x11_or_11x20_then_lanczos_resize",
+    "orientation": "landscape",
+    "original_size": [
+      1536,
+      1024
+    ],
+    "prepared_artifact_path": "/home/liuzhirui/Project/physGen/code/v1/outputs/ace_router/m2-20260901-052948/P01/M2_I2V_CPLUS/seed_000042/reference_input.png",
+    "prepared_artifact_sha256": "e8cd8464add84d6133c03829aea5a4d473aed4a8ca90f73e0f7613a4d44cafb4",
+    "prepared_size": [
+      1280,
+      704
+    ],
+    "resolved_output_size": [
+      640,
+      352
+    ],
+    "selection_manifest": null,
+    "source_path": "/home/liuzhirui/Project/physGen/code/v1/demo/P01/P01-i0.png",
+    "source_sha256": "f48327b67cae7cc3c2187b385df9ac587d066e0a4bcc56db515a95808ee299f0",
+    "used_as_model_condition": true,
+    "used_for_output_sizing_only": false
+  },
+  "run_id": "m2-20260901-052948",
+  "runtime": {
+    "cuda_capability": [
+      8,
+      6
+    ],
+    "cuda_memory_reserved_bytes": 10877927424,
+    "cuda_runtime": "12.8",
+    "cudnn": 91002,
+    "denoising_step_timing": {
+      "all_steps_median_seconds": 1.0416424560546875,
+      "count": 50,
+      "max_seconds": 1.1859998779296874,
+      "min_seconds": 1.0045778198242188,
+      "per_step_seconds": [
+        1.1859998779296874,
+        1.0354451904296875,
+        1.064657958984375,
+        1.03497119140625,
+        1.036306396484375,
+        1.036200927734375,
+        1.0356336669921875,
+        1.034523681640625,
+        1.034744873046875,
+        1.037197265625,
+        1.0374298095703125,
+        1.0397685546875,
+        1.0410506591796875,
+        1.0409482421875,
+        1.044210693359375,
+        1.0450933837890626,
+        1.040195556640625,
+        1.0487869873046876,
+        1.0416793212890625,
+        1.040933837890625,
+        1.0556201171875,
+        1.0435062255859375,
+        1.0416055908203126,
+        1.04310888671875,
+        1.042376708984375,
+        1.04481787109375,
+        1.0442711181640625,
+        1.047251953125,
+        1.044252685546875,
+        1.0496143798828126,
+        1.055898681640625,
+        1.0461737060546874,
+        1.0456094970703125,
+        1.04614404296875,
+        1.045349365234375,
+        1.0465946044921874,
+        1.0472325439453125,
+        1.0459658203125,
+        1.0487490234375,
+        1.0531512451171876,
+        1.0049781494140626,
+        1.0070763549804687,
+        1.0045778198242188,
+        1.0046095581054688,
+        1.005591552734375,
+        1.0048757934570312,
+        1.0087649536132812,
+        1.0072391967773437,
+        1.00518603515625,
+        1.0064865112304688
+      ],
+      "stable_median_seconds": 1.0416055908203126,
+      "warmup_first_step_seconds": 1.1859998779296874
+    },
+    "diffusers": "0.36.0",
+    "elapsed_seconds": 120.57819462521002,
+    "gpu": "NVIDIA RTX A6000",
+    "peak_cuda_bytes": 13714098688,
+    "platform": "Linux-5.15.0-117-generic-x86_64-with-glibc2.35",
+    "python": "3.10.19",
+    "torch": "2.8.0+cu128"
+  },
+  "sample_id": "P01",
+  "seed": 42,
+  "status": "success",
+  "upstream": {
+    "checkpoint": "/home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B",
+    "checkpoint_hashes": {
+      "config.json": "d1fea36899d00c2501b836c13ad65af56e2f9529ba622e50886d3f5c3e6c02bc",
+      "diffusion_pytorch_model.safetensors.index.json": "bfa2337f1163e195d24151a72298daf34a620543898109be47e414c8daa5b3fe"
+    },
+    "checkpoint_model_config": {
+      "_class_name": "WanModel",
+      "dim": 3072,
+      "in_dim": 48,
+      "model_type": "ti2v",
+      "num_heads": 24,
+      "num_layers": 30,
+      "out_dim": 48,
+      "text_len": 512
+    },
+    "source_hashes": {
+      "wan/configs/wan_ti2v_5B.py": "26d9e7b9c555eb0900b13751267a596556f869e7aee2d1572afc2a0a4a76f4c7",
+      "wan/modules/attention.py": "c79158e1cc9b7a17bc934e6acb34f42e588a41adb89801146957cda2d6d4379d",
+      "wan/modules/model.py": "8b39115298ca7322806c19b3165b3f435a94fe4a58f0624aec24f8e7f4997432",
+      "wan/modules/t5.py": "8b0cebf3192c542f92a344255a06c203df3ba24160715899a055cc8de0cd930f",
+      "wan/textimage2video.py": "228f2fabf23014ed41ec6b8cd713d5be7371bb558501c71a62a0258b491a877b"
+    },
+    "wan_git_head": "08e890ff01ff8daf9161db472f362efe5d6ba656",
+    "wan_repo": "/home/liuzhirui/model/Wan2.2",
+    "weight_shards": [
+      {
+        "mtime_ns": 1769032249319825600,
+        "name": "diffusion_pytorch_model-00001-of-00003.safetensors",
+        "size_bytes": 9825014472
+      },
+      {
+        "mtime_ns": 1769032417046557795,
+        "name": "diffusion_pytorch_model-00002-of-00003.safetensors",
+        "size_bytes": 9995661736
+      },
+      {
+        "mtime_ns": 1769020338553636583,
+        "name": "diffusion_pytorch_model-00003-of-00003.safetensors",
+        "size_bytes": 178558176
+      }
+    ]
+  },
+  "warnings": [
+    "selection_manifest_missing"
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "closed_world": {
+    "allowed_entity_ids": [
+      "hand",
+      "sponge",
+      "surface"
+    ],
+    "empty_regions": [],
+    "external_source_allowed": false,
+    "forbidden_new_categories": [
+      "external source",
+      "extra copy",
+      "unlisted object"
+    ],
+    "provenance": "derived"
+  },
+  "conservation": [
+    {
+      "observable_proxy": "tracked logical entity slots remain consistent",
+      "provenance": "derived",
+      "quantity": "instance_count",
+      "relation": "constant",
+      "rule_id": "entity_slots_constant",
+      "sinks": [
+        "hand",
+        "sponge",
+        "surface"
+      ],
+      "sources": [
+        "hand",
+        "sponge",
+        "surface"
+      ],
+      "tolerance": 0.0
+    }
+  ],
+  "lifecycles": [
+    {
+      "entity_id": "hand",
+      "from_stage": "setup",
+      "from_state": "hovering_above",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "hovering_above",
+          "pressing"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "pressing"
+    },
+    {
+      "entity_id": "sponge",
+      "from_stage": "setup",
+      "from_state": "full_rectangular",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "full_rectangular",
+          "flat"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "flat"
+    },
+    {
+      "entity_id": "hand",
+      "from_stage": "setup",
+      "from_state": "pressing",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "pressing",
+          "lifted_above"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "lifted_above"
+    },
+    {
+      "entity_id": "sponge",
+      "from_stage": "setup",
+      "from_state": "flat",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "flat",
+          "recovered_rectangular"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "recovered_rectangular"
+    }
+  ]
+}

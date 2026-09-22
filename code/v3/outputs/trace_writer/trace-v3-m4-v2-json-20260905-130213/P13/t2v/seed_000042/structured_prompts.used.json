@@ -1,0 +1,25 @@
+{
+  "global": "Across the video there is at most one visible human hand, visible only in the stages that explicitly require it, with unchanged natural hand anatomy and single identity. There is exactly one transparent pitcher, kept as the same tracked object with unchanged rigid pitcher geometry, transparent appearance, and single intact identity. There is exactly one clear drinking glass, kept as the same tracked object with unchanged rigid glass geometry, clear appearance, and single intact identity. There is exactly one tracked body of clear water from the pitcher, kept as the same tracked object with unchanged clear appearance, conserved original water material, and fixed total water amount.",
+  "stages": [
+    {
+      "stage_id": "setup",
+      "text": "The hand starts holding the half-filled pitcher upright beside the empty glass. All tracked water starts inside the pitcher and no stream exists. The visible human hand is visible as exactly one instance, holding the pitcher upright. For the visible human hand, this stage changes only pose. The transparent pitcher is visible as exactly one instance, upright and half-filled. The clear drinking glass is visible as exactly one instance, empty and upright. The tracked body of clear water from the pitcher is visible as exactly one instance, entirely inside the pitcher with a still level. A clear air gap separates the pitcher lip and glass; no stream is visible."
+    },
+    {
+      "stage_id": "onset",
+      "text": "The visible human hand is visible as exactly one instance, tilting the pitcher toward the glass. For the visible human hand, this stage changes only pose and position. The transparent pitcher is visible as exactly one instance, tilting while remaining intact. For the transparent pitcher, this stage changes only orientation. The clear drinking glass is visible as exactly one instance, receiving the first water while staying upright. For the clear drinking glass, this stage changes only contained water level. The tracked body of clear water from the pitcher stays continuously visible through the transition as exactly one instance, forming one continuous clear stream into the glass. For the tracked body of clear water from the pitcher, this stage changes only allocation between pitcher stream and glass, free-surface levels, and flow shape. The stream connects the pitcher lip to the inside of the one receiving glass."
+    },
+    {
+      "stage_id": "evolution",
+      "text": "The transparent pitcher is visible as exactly one instance, remaining tilted as its waterline falls. For the transparent pitcher, this stage changes only orientation and contained water level. The clear drinking glass is visible as exactly one instance, remaining upright as its waterline rises. For the clear drinking glass, this stage changes only contained water level. The tracked body of clear water from the pitcher is visible as exactly one instance, flowing continuously from pitcher to glass. For the tracked body of clear water from the pitcher, this stage changes only allocation between pitcher stream and glass, free-surface levels, and flow shape. The pitcher level decreases while the glass level increases from the same water stream."
+    },
+    {
+      "stage_id": "completion",
+      "text": "The visible human hand is visible as exactly one instance, returning the pitcher upright to stop pouring. For the visible human hand, this stage changes only pose and position. The transparent pitcher is visible as exactly one instance, returning upright with less water. For the transparent pitcher, this stage changes only orientation. The clear drinking glass is visible as exactly one instance, holding more water while remaining upright. The tracked body of clear water from the pitcher stays continuously visible through the transition as exactly one instance, ending the stream and settling into the two containers. For the tracked body of clear water from the pitcher, this stage changes only flow shape and free-surface levels. The one stream disappears only after the pitcher returns upright."
+    },
+    {
+      "stage_id": "terminal",
+      "text": "The transparent pitcher is visible as exactly one instance, upright with a lower still waterline. The clear drinking glass is visible as exactly one instance, upright with a higher still waterline. The tracked body of clear water from the pitcher is visible as exactly one instance, conserved between pitcher and glass with no stream. Exactly one pitcher and one glass remain intact with both new levels visible."
+    }
+  ]
+}

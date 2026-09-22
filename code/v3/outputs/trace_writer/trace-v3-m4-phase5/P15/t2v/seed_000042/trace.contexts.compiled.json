@@ -1,0 +1,187 @@
+{
+  "actual_t5_token_lengths": {
+    "global_semantic": 304,
+    "stage.completion.negative.0": 156,
+    "stage.completion.positive": 156,
+    "stage.evolution.negative.0": 155,
+    "stage.evolution.positive": 153,
+    "stage.onset.negative.0": 155,
+    "stage.onset.positive": 154,
+    "stage.setup.negative.0": 155,
+    "stage.setup.positive": 152,
+    "stage.terminal.negative.0": 191,
+    "stage.terminal.negative.1": 190,
+    "stage.terminal.positive": 205
+  },
+  "global_anchor": "[ENTITY INVENTORY] The closed scene contains cup: one declared collective group; sand stream: one declared collective group; pile region: exactly 1. All declared entities are fully visible from the first frame in the stated layout. [INITIAL STATE] source_amount=full, stream_state=absent, pile_size=absent. [PHYSICAL EVENT] Dry sand pours from one cup onto one flat table, emptying the cup while a conical pile grows below. [INITIAL LAYOUT] cup containing dry sand; continuous dry-sand stream; table area directly below the cup. [PERSISTENT PROTECTION] same cup and dry sand; same flat table; sand remains within the source-stream-pile route; camera and unrelated scene remain unchanged. [CLOSED WORLD] No additional external source, extra copy, unlisted object enters or appears; unoccupied scene regions remain empty. [CONSERVATION] Source loss and result gain stay coupled: tracked logical entity slots remain consistent; cup sand decreases through falling grains while conical pile grows. No result appears from an undeclared external source. [TERMINAL STATE] The same logical entity slots persist without duplicates; source_amount=nearly_empty, stream_state=continuous, pile_size=grown_cone remains visible through the final frames.",
+  "issues": [],
+  "max_t5_token_length": 304,
+  "protected_coverage": {
+    "camera and unrelated scene remain unchanged": [
+      "camera_background",
+      "closed_world_or_persistence"
+    ],
+    "same cup and dry sand": [
+      "identity_count"
+    ],
+    "same flat table": [
+      "identity_count",
+      "camera_background"
+    ],
+    "sand remains within the source-stream-pile route": [
+      "closed_world_or_persistence"
+    ]
+  },
+  "stage_pairs": [
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "first dry grains visibly leave the cup happens BEFORE pile height and base expand.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: cup: one declared collective group, state source_amount=full, required; sand stream: exactly 0, state stream_state=absent, forbidden; pile region: exactly 1, state pile_size=absent, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] first dry grains visibly leave the cup happens BEFORE pile height and base expand.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: cup: one declared collective group, state source_amount=full, required; sand stream: exactly 0, state stream_state=absent, forbidden; pile region: exactly 1, state pile_size=absent, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "setup",
+      "violation_constraint_ids": [
+        [
+          "c1"
+        ]
+      ],
+      "violation_kinds": [
+        "outcome_preset"
+      ],
+      "violation_relations": [
+        "pile height and base expand is already present BEFORE first dry grains visibly leave the cup."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: cup: one declared collective group, state source_amount=full, required; sand stream: exactly 0, state stream_state=absent, forbidden; pile region: exactly 1, state pile_size=absent, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] pile height and base expand is already present BEFORE first dry grains visibly leave the cup."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "first dry grains visibly leave the cup happens BEFORE pile height and base expand.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: cup: one declared collective group, state source_amount=full, transitioning; sand stream: one declared collective group, state stream_state=absent, transitioning; pile region: exactly 1, state pile_size=absent, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] first dry grains visibly leave the cup happens BEFORE pile height and base expand.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: cup: one declared collective group, state source_amount=full, transitioning; sand stream: one declared collective group, state stream_state=absent, transitioning; pile region: exactly 1, state pile_size=absent, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "onset",
+      "violation_constraint_ids": [
+        [
+          "c1"
+        ]
+      ],
+      "violation_kinds": [
+        "wrong_order"
+      ],
+      "violation_relations": [
+        "pile height and base expand happens BEFORE first dry grains visibly leave the cup."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: cup: one declared collective group, state source_amount=full, transitioning; sand stream: one declared collective group, state stream_state=absent, transitioning; pile region: exactly 1, state pile_size=absent, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] pile height and base expand happens BEFORE first dry grains visibly leave the cup."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The declared change sand remaining in cup decreases occurs in its stated direction.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: cup: one declared collective group, state source_amount=nearly_empty, required; sand stream: one declared collective group, state stream_state=continuous, required; pile region: exactly 1, state pile_size=grown_cone, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change sand remaining in cup decreases occurs in its stated direction.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: cup: one declared collective group, state source_amount=nearly_empty, required; sand stream: one declared collective group, state stream_state=continuous, required; pile region: exactly 1, state pile_size=grown_cone, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "evolution",
+      "violation_constraint_ids": [
+        [
+          "c2",
+          "c3"
+        ]
+      ],
+      "violation_kinds": [
+        "coupling_broken"
+      ],
+      "violation_relations": [
+        "Only one coupled change occurs while the other remains unchanged: ."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: cup: one declared collective group, state source_amount=nearly_empty, required; sand stream: one declared collective group, state stream_state=continuous, required; pile region: exactly 1, state pile_size=grown_cone, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] Only one coupled change occurs while the other remains unchanged: ."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The declared change sand remaining in cup decreases occurs in its stated direction.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: cup: one declared collective group, state source_amount=nearly_empty, transitioning; sand stream: one declared collective group, state stream_state=continuous, transitioning; pile region: exactly 1, state pile_size=grown_cone, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change sand remaining in cup decreases occurs in its stated direction.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: cup: one declared collective group, state source_amount=nearly_empty, transitioning; sand stream: one declared collective group, state stream_state=continuous, transitioning; pile region: exactly 1, state pile_size=grown_cone, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "completion",
+      "violation_constraint_ids": [
+        [
+          "c2",
+          "c3",
+          "c4"
+        ]
+      ],
+      "violation_kinds": [
+        "incomplete_transition"
+      ],
+      "violation_relations": [
+        "The declared cause occurs BUT the required target change does not become visible."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: cup: one declared collective group, state source_amount=nearly_empty, transitioning; sand stream: one declared collective group, state stream_state=continuous, transitioning; pile region: exactly 1, state pile_size=grown_cone, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The declared cause occurs BUT the required target change does not become visible."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The terminal facts source_amount=nearly_empty, pile_size=grown_cone REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts pile_size=absent, pile_size=grown_cone do not coexist.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: cup: one declared collective group, state source_amount=nearly_empty, required; sand stream: exactly 0, state stream_state=continuous, forbidden; pile region: exactly 1, state pile_size=grown_cone, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The terminal facts source_amount=nearly_empty, pile_size=grown_cone REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts pile_size=absent, pile_size=grown_cone do not coexist.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: cup: one declared collective group, state source_amount=nearly_empty, required; sand stream: exactly 0, state stream_state=continuous, forbidden; pile region: exactly 1, state pile_size=grown_cone, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "terminal",
+      "violation_constraint_ids": [
+        [
+          "c4"
+        ],
+        [
+          "c5"
+        ]
+      ],
+      "violation_kinds": [
+        "reversal",
+        "exclusion_broken"
+      ],
+      "violation_relations": [
+        "The valid terminal state returns to its mutually exclusive earlier state.",
+        "Copies of the same logical slot appear in mutually exclusive states at the same time."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: cup: one declared collective group, state source_amount=nearly_empty, required; sand stream: exactly 0, state stream_state=continuous, forbidden; pile region: exactly 1, state pile_size=grown_cone, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The valid terminal state returns to its mutually exclusive earlier state. [AND] The same logical slot has only its valid state; mutually exclusive facts pile_size=absent, pile_size=grown_cone do not coexist.",
+        "[STAGE ENTITY INVENTORY] Present now: cup: one declared collective group, state source_amount=nearly_empty, required; sand stream: exactly 0, state stream_state=continuous, forbidden; pile region: exactly 1, state pile_size=grown_cone, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The terminal facts source_amount=nearly_empty, pile_size=grown_cone REMAIN through the final frames. [AND] Copies of the same logical slot appear in mutually exclusive states at the same time."
+      ],
+      "violation_weights": [
+        0.5,
+        0.5
+      ]
+    }
+  ],
+  "texts": {
+    "global_semantic": "[ENTITY INVENTORY] The closed scene contains cup: one declared collective group; sand stream: one declared collective group; pile region: exactly 1. All declared entities are fully visible from the first frame in the stated layout. [INITIAL STATE] source_amount=full, stream_state=absent, pile_size=absent. [PHYSICAL EVENT] Dry sand pours from one cup onto one flat table, emptying the cup while a conical pile grows below. [INITIAL LAYOUT] cup containing dry sand; continuous dry-sand stream; table area directly below the cup. [PERSISTENT PROTECTION] same cup and dry sand; same flat table; sand remains within the source-stream-pile route; camera and unrelated scene remain unchanged. [CLOSED WORLD] No additional external source, extra copy, unlisted object enters or appears; unoccupied scene regions remain empty. [CONSERVATION] Source loss and result gain stay coupled: tracked logical entity slots remain consistent; cup sand decreases through falling grains while conical pile grows. No result appears from an undeclared external source. [TERMINAL STATE] The same logical entity slots persist without duplicates; source_amount=nearly_empty, stream_state=continuous, pile_size=grown_cone remains visible through the final frames.",
+    "stage.completion.negative.0": "[STAGE ENTITY INVENTORY] Present now: cup: one declared collective group, state source_amount=nearly_empty, transitioning; sand stream: one declared collective group, state stream_state=continuous, transitioning; pile region: exactly 1, state pile_size=grown_cone, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The declared cause occurs BUT the required target change does not become visible.",
+    "stage.completion.positive": "[STAGE ENTITY INVENTORY] Present now: cup: one declared collective group, state source_amount=nearly_empty, transitioning; sand stream: one declared collective group, state stream_state=continuous, transitioning; pile region: exactly 1, state pile_size=grown_cone, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change sand remaining in cup decreases occurs in its stated direction.",
+    "stage.evolution.negative.0": "[STAGE ENTITY INVENTORY] Present now: cup: one declared collective group, state source_amount=nearly_empty, required; sand stream: one declared collective group, state stream_state=continuous, required; pile region: exactly 1, state pile_size=grown_cone, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] Only one coupled change occurs while the other remains unchanged: .",
+    "stage.evolution.positive": "[STAGE ENTITY INVENTORY] Present now: cup: one declared collective group, state source_amount=nearly_empty, required; sand stream: one declared collective group, state stream_state=continuous, required; pile region: exactly 1, state pile_size=grown_cone, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change sand remaining in cup decreases occurs in its stated direction.",
+    "stage.onset.negative.0": "[STAGE ENTITY INVENTORY] Present now: cup: one declared collective group, state source_amount=full, transitioning; sand stream: one declared collective group, state stream_state=absent, transitioning; pile region: exactly 1, state pile_size=absent, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] pile height and base expand happens BEFORE first dry grains visibly leave the cup.",
+    "stage.onset.positive": "[STAGE ENTITY INVENTORY] Present now: cup: one declared collective group, state source_amount=full, transitioning; sand stream: one declared collective group, state stream_state=absent, transitioning; pile region: exactly 1, state pile_size=absent, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] first dry grains visibly leave the cup happens BEFORE pile height and base expand.",
+    "stage.setup.negative.0": "[STAGE ENTITY INVENTORY] Present now: cup: one declared collective group, state source_amount=full, required; sand stream: exactly 0, state stream_state=absent, forbidden; pile region: exactly 1, state pile_size=absent, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] pile height and base expand is already present BEFORE first dry grains visibly leave the cup.",
+    "stage.setup.positive": "[STAGE ENTITY INVENTORY] Present now: cup: one declared collective group, state source_amount=full, required; sand stream: exactly 0, state stream_state=absent, forbidden; pile region: exactly 1, state pile_size=absent, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] first dry grains visibly leave the cup happens BEFORE pile height and base expand.",
+    "stage.terminal.negative.0": "[STAGE ENTITY INVENTORY] Present now: cup: one declared collective group, state source_amount=nearly_empty, required; sand stream: exactly 0, state stream_state=continuous, forbidden; pile region: exactly 1, state pile_size=grown_cone, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The valid terminal state returns to its mutually exclusive earlier state. [AND] The same logical slot has only its valid state; mutually exclusive facts pile_size=absent, pile_size=grown_cone do not coexist.",
+    "stage.terminal.negative.1": "[STAGE ENTITY INVENTORY] Present now: cup: one declared collective group, state source_amount=nearly_empty, required; sand stream: exactly 0, state stream_state=continuous, forbidden; pile region: exactly 1, state pile_size=grown_cone, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The terminal facts source_amount=nearly_empty, pile_size=grown_cone REMAIN through the final frames. [AND] Copies of the same logical slot appear in mutually exclusive states at the same time.",
+    "stage.terminal.positive": "[STAGE ENTITY INVENTORY] Present now: cup: one declared collective group, state source_amount=nearly_empty, required; sand stream: exactly 0, state stream_state=continuous, forbidden; pile region: exactly 1, state pile_size=grown_cone, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The terminal facts source_amount=nearly_empty, pile_size=grown_cone REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts pile_size=absent, pile_size=grown_cone do not coexist."
+  },
+  "token_budget_priority": {
+    "causal": 2,
+    "entity_count": 0,
+    "protected": 1,
+    "style": 3
+  }
+}

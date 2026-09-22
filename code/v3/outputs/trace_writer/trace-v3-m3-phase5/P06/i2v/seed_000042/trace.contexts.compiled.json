@@ -1,0 +1,186 @@
+{
+  "actual_t5_token_lengths": {
+    "global_semantic": 273,
+    "stage.completion.negative.0": 150,
+    "stage.completion.positive": 150,
+    "stage.evolution.negative.0": 146,
+    "stage.evolution.positive": 149,
+    "stage.onset.negative.0": 163,
+    "stage.onset.positive": 162,
+    "stage.setup.negative.0": 163,
+    "stage.setup.positive": 160,
+    "stage.terminal.negative.0": 181,
+    "stage.terminal.negative.1": 177,
+    "stage.terminal.positive": 188
+  },
+  "global_anchor": "[ENTITY INVENTORY] The closed scene contains book: exactly 1; shelf: exactly 1; floor: one declared collective group. The reference first frame fixes these identities and initial layout. [INITIAL STATE] position=left_shelf, support=wood_shelf_supported, book_state=closed. [PHYSICAL EVENT] The blue-edged closed book leaves the left wooden shelf, falls through the open wall space, and lands open on the wood floor. [PERSISTENT PROTECTION] same cream pages and dark blue cover edges; left wooden shelf and vertical support remain fixed; pale wall, white baseboard, wood-plank floor, lighting, and static side camera remain unchanged. [CLOSED WORLD] No additional external source, extra copy, hand, person, tool, unlisted object enters or appears; unoccupied scene regions remain empty. [CONSERVATION] Source loss and result gain stay coupled: tracked logical entity slots remain consistent. No result appears from an undeclared external source. [TERMINAL STATE] The same logical entity slots persist without duplicates; position=wood_floor, support=floor_supported, book_state=open remains visible through the final frames.",
+  "issues": [],
+  "max_t5_token_length": 273,
+  "protected_coverage": {
+    "left wooden shelf and vertical support remain fixed": [
+      "closed_world_or_persistence"
+    ],
+    "pale wall, white baseboard, wood-plank floor, lighting, and static side camera remain unchanged": [
+      "appearance",
+      "camera_background",
+      "closed_world_or_persistence"
+    ],
+    "same cream pages and dark blue cover edges": [
+      "identity_count"
+    ]
+  },
+  "stage_pairs": [
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "the book passes the visible right end of the wooden shelf happens BEFORE book moves right of shelf then downward.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: book: exactly 1, state position=left_shelf, support=wood_shelf_supported, book_state=closed, required; shelf: exactly 1, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] the book passes the visible right end of the wooden shelf happens BEFORE book moves right of shelf then downward.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: book: exactly 1, state position=left_shelf, support=wood_shelf_supported, book_state=closed, required; shelf: exactly 1, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "setup",
+      "violation_constraint_ids": [
+        [
+          "c1",
+          "c3"
+        ]
+      ],
+      "violation_kinds": [
+        "outcome_preset"
+      ],
+      "violation_relations": [
+        "book moves right of shelf then downward is already present BEFORE the book passes the visible right end of the wooden shelf."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: book: exactly 1, state position=left_shelf, support=wood_shelf_supported, book_state=closed, required; shelf: exactly 1, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] book moves right of shelf then downward is already present BEFORE the book passes the visible right end of the wooden shelf."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "the book passes the visible right end of the wooden shelf happens BEFORE book moves right of shelf then downward.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: book: exactly 1, state position=left_shelf, support=wood_shelf_supported, book_state=closed, transitioning; shelf: exactly 1, transitioning; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] the book passes the visible right end of the wooden shelf happens BEFORE book moves right of shelf then downward.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: book: exactly 1, state position=left_shelf, support=wood_shelf_supported, book_state=closed, transitioning; shelf: exactly 1, transitioning; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "onset",
+      "violation_constraint_ids": [
+        [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ]
+      ],
+      "violation_kinds": [
+        "wrong_order"
+      ],
+      "violation_relations": [
+        "book moves right of shelf then downward happens BEFORE the book passes the visible right end of the wooden shelf."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: book: exactly 1, state position=left_shelf, support=wood_shelf_supported, book_state=closed, transitioning; shelf: exactly 1, transitioning; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] book moves right of shelf then downward happens BEFORE the book passes the visible right end of the wooden shelf."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The declared change book moves right of shelf then downward occurs in its stated direction.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: book: exactly 1, state position=airborne, support=unsupported, book_state=closed, required; shelf: exactly 1, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change book moves right of shelf then downward occurs in its stated direction.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: book: exactly 1, state position=airborne, support=unsupported, book_state=closed, required; shelf: exactly 1, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "evolution",
+      "violation_constraint_ids": [
+        [
+          "c5"
+        ]
+      ],
+      "violation_kinds": [
+        "effect_missing"
+      ],
+      "violation_relations": [
+        "The declared cause occurs BUT the required target change does not become visible."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: book: exactly 1, state position=airborne, support=unsupported, book_state=closed, required; shelf: exactly 1, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The declared cause occurs BUT the required target change does not become visible."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The declared change blue-edged covers separate occurs in its stated direction.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: book: exactly 1, state position=wood_floor, support=floor_supported, book_state=open, transitioning; shelf: exactly 1, required; floor: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change blue-edged covers separate occurs in its stated direction.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: book: exactly 1, state position=wood_floor, support=floor_supported, book_state=open, transitioning; shelf: exactly 1, required; floor: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "completion",
+      "violation_constraint_ids": [
+        [
+          "c6",
+          "c7"
+        ]
+      ],
+      "violation_kinds": [
+        "incomplete_transition"
+      ],
+      "violation_relations": [
+        "The declared cause occurs BUT the required target change does not become visible."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: book: exactly 1, state position=wood_floor, support=floor_supported, book_state=open, transitioning; shelf: exactly 1, required; floor: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The declared cause occurs BUT the required target change does not become visible."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The terminal facts position=wood_floor, book_state=open REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts book_state=closed, book_state=open do not coexist.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: book: exactly 1, state position=wood_floor, support=floor_supported, book_state=open, required; shelf: exactly 1, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The terminal facts position=wood_floor, book_state=open REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts book_state=closed, book_state=open do not coexist.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: book: exactly 1, state position=wood_floor, support=floor_supported, book_state=open, required; shelf: exactly 1, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "terminal",
+      "violation_constraint_ids": [
+        [
+          "c7"
+        ],
+        [
+          "c8"
+        ]
+      ],
+      "violation_kinds": [
+        "reversal",
+        "exclusion_broken"
+      ],
+      "violation_relations": [
+        "The valid terminal state returns to its mutually exclusive earlier state.",
+        "Copies of the same logical slot appear in mutually exclusive states at the same time."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: book: exactly 1, state position=wood_floor, support=floor_supported, book_state=open, required; shelf: exactly 1, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The valid terminal state returns to its mutually exclusive earlier state. [AND] The same logical slot has only its valid state; mutually exclusive facts book_state=closed, book_state=open do not coexist.",
+        "[STAGE ENTITY INVENTORY] Present now: book: exactly 1, state position=wood_floor, support=floor_supported, book_state=open, required; shelf: exactly 1, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The terminal facts position=wood_floor, book_state=open REMAIN through the final frames. [AND] Copies of the same logical slot appear in mutually exclusive states at the same time."
+      ],
+      "violation_weights": [
+        0.5,
+        0.5
+      ]
+    }
+  ],
+  "texts": {
+    "global_semantic": "[ENTITY INVENTORY] The closed scene contains book: exactly 1; shelf: exactly 1; floor: one declared collective group. The reference first frame fixes these identities and initial layout. [INITIAL STATE] position=left_shelf, support=wood_shelf_supported, book_state=closed. [PHYSICAL EVENT] The blue-edged closed book leaves the left wooden shelf, falls through the open wall space, and lands open on the wood floor. [PERSISTENT PROTECTION] same cream pages and dark blue cover edges; left wooden shelf and vertical support remain fixed; pale wall, white baseboard, wood-plank floor, lighting, and static side camera remain unchanged. [CLOSED WORLD] No additional external source, extra copy, hand, person, tool, unlisted object enters or appears; unoccupied scene regions remain empty. [CONSERVATION] Source loss and result gain stay coupled: tracked logical entity slots remain consistent. No result appears from an undeclared external source. [TERMINAL STATE] The same logical entity slots persist without duplicates; position=wood_floor, support=floor_supported, book_state=open remains visible through the final frames.",
+    "stage.completion.negative.0": "[STAGE ENTITY INVENTORY] Present now: book: exactly 1, state position=wood_floor, support=floor_supported, book_state=open, transitioning; shelf: exactly 1, required; floor: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The declared cause occurs BUT the required target change does not become visible.",
+    "stage.completion.positive": "[STAGE ENTITY INVENTORY] Present now: book: exactly 1, state position=wood_floor, support=floor_supported, book_state=open, transitioning; shelf: exactly 1, required; floor: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change blue-edged covers separate occurs in its stated direction.",
+    "stage.evolution.negative.0": "[STAGE ENTITY INVENTORY] Present now: book: exactly 1, state position=airborne, support=unsupported, book_state=closed, required; shelf: exactly 1, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The declared cause occurs BUT the required target change does not become visible.",
+    "stage.evolution.positive": "[STAGE ENTITY INVENTORY] Present now: book: exactly 1, state position=airborne, support=unsupported, book_state=closed, required; shelf: exactly 1, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change book moves right of shelf then downward occurs in its stated direction.",
+    "stage.onset.negative.0": "[STAGE ENTITY INVENTORY] Present now: book: exactly 1, state position=left_shelf, support=wood_shelf_supported, book_state=closed, transitioning; shelf: exactly 1, transitioning; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] book moves right of shelf then downward happens BEFORE the book passes the visible right end of the wooden shelf.",
+    "stage.onset.positive": "[STAGE ENTITY INVENTORY] Present now: book: exactly 1, state position=left_shelf, support=wood_shelf_supported, book_state=closed, transitioning; shelf: exactly 1, transitioning; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] the book passes the visible right end of the wooden shelf happens BEFORE book moves right of shelf then downward.",
+    "stage.setup.negative.0": "[STAGE ENTITY INVENTORY] Present now: book: exactly 1, state position=left_shelf, support=wood_shelf_supported, book_state=closed, required; shelf: exactly 1, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] book moves right of shelf then downward is already present BEFORE the book passes the visible right end of the wooden shelf.",
+    "stage.setup.positive": "[STAGE ENTITY INVENTORY] Present now: book: exactly 1, state position=left_shelf, support=wood_shelf_supported, book_state=closed, required; shelf: exactly 1, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] the book passes the visible right end of the wooden shelf happens BEFORE book moves right of shelf then downward.",
+    "stage.terminal.negative.0": "[STAGE ENTITY INVENTORY] Present now: book: exactly 1, state position=wood_floor, support=floor_supported, book_state=open, required; shelf: exactly 1, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The valid terminal state returns to its mutually exclusive earlier state. [AND] The same logical slot has only its valid state; mutually exclusive facts book_state=closed, book_state=open do not coexist.",
+    "stage.terminal.negative.1": "[STAGE ENTITY INVENTORY] Present now: book: exactly 1, state position=wood_floor, support=floor_supported, book_state=open, required; shelf: exactly 1, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The terminal facts position=wood_floor, book_state=open REMAIN through the final frames. [AND] Copies of the same logical slot appear in mutually exclusive states at the same time.",
+    "stage.terminal.positive": "[STAGE ENTITY INVENTORY] Present now: book: exactly 1, state position=wood_floor, support=floor_supported, book_state=open, required; shelf: exactly 1, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The terminal facts position=wood_floor, book_state=open REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts book_state=closed, book_state=open do not coexist."
+  },
+  "token_budget_priority": {
+    "causal": 2,
+    "entity_count": 0,
+    "protected": 1,
+    "style": 3
+  }
+}

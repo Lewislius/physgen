@@ -1,0 +1,282 @@
+[2026-09-11T08:36:42.562693Z]          || INFO: Scheduling Trial 61512 (Experiment 60720) (id: 60720.070559cd-ee67-463d-9861-579eeca933d4.1)
+[2026-09-11T16:49:51.952903Z]          || INFO: Trial 61512 (Experiment 60720) was assigned to an agent
+[2026-09-11T16:49:51.958803Z] be974350 || INFO: image already found, skipping pull phase: 10.130.130.5:8192/lab-dev:latest
+[2026-09-11T16:49:52.148493Z] be974350 || INFO: copying files to container: /
+[2026-09-11T16:49:52.176715Z] be974350 || INFO: copying files to container: /run/determined
+[2026-09-11T16:49:52.213360Z] be974350 || INFO: copying files to container: /
+[2026-09-11T16:49:52.243600Z] be974350 || INFO: copying files to container: /
+[2026-09-11T16:49:52.268406Z] be974350 || INFO: copying files to container: /
+[2026-09-11T16:49:52.298734Z] be974350 || INFO: copying files to container: /
+[2026-09-11T16:49:52.314984Z] be974350 || INFO: copying files to container: /
+[2026-09-11T16:49:52.331938Z] be974350 || INFO: copying files to container: /
+[2026-09-11T16:49:53.404968Z]          || INFO: Resources for Trial 61512 (Experiment 60720) have started
+[2026-09-11T16:49:53.942308Z] be974350 || WARNING: The directory '/.cache/pip' or its parent directory is not owned or is not writable by the current user. The cache has been disabled. Check the permissions and owner of that directory. If executing pip with sudo, you should use sudo's -H flag.
+[2026-09-11T16:49:55.669238Z] be974350 || ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+[2026-09-11T16:49:55.669388Z] be974350 || determined-common 0.22.2 requires determined==0.22.2, but you have determined 0.38.1 which is incompatible.
+[2026-09-11T16:49:55.669418Z] be974350 || determined-cli 0.22.2 requires determined==0.22.2, but you have determined 0.38.1 which is incompatible.
+[2026-09-11T16:49:56.169791Z] be974350 || INFO: [27] determined: detected 4 gpus
+[2026-09-11T16:49:56.235478Z] be974350 || INFO: [27] determined: detected 4 gpus
+[2026-09-11T16:49:56.235664Z] be974350 || INFO: [27] determined: Running task container on agent_id=node6-a100, hostname=0ab620c16840 with visible GPUs ['GPU-c2ee8bf1-1d4a-a9e5-423c-a34d50ce7303', 'GPU-f4897e05-d5e2-9c96-6eff-316deae69982', 'GPU-f7be8907-3073-bee4-483a-7a7d12645fa6', 'GPU-f8ef8bfe-bedc-4600-d87f-1c98a2d5aee9']
+[2026-09-11T16:49:56.558614Z] be974350 || + test -f /run/determined/dynamic-tcd-startup-hook.sh
+[2026-09-11T16:49:56.558730Z] be974350 || + test -f startup-hook.sh
+[2026-09-11T16:49:56.558749Z] be974350 || + set +x
+[2026-09-11T16:49:57.118145Z] be974350 || INFO: [9] determined: New trial runner in (container be974350-9dc0-4bc5-8dde-693e7ffe1336) on agent node6-a100: {"bind_mounts": [{"host_path": "/mount/HOME/liuzhirui", "container_path": "/home/liuzhirui", "read_only": false, "propagation": "rprivate"}, {"host_path": "/mount/NAS1/public", "container_path": "/run/determined/NAS1/public", "read_only": false, "propagation": "rprivate"}], "checkpoint_policy": "best", "checkpoint_storage": {"host_path": "/mount/HOME/liuzhirui", "propagation": "rprivate", "save_experiment_best": 0, "save_trial_best": 0, "save_trial_latest": 0, "storage_path": "Project/physGen/code/v4/determined_checkpoints", "type": "shared_fs"}, "data": {}, "integrations": null, "debug": false, "description": "Native 1664-channel process correction for frozen Wan TI2V-5B on WISA", "entrypoint": "/home/liuzhirui/Project/physGen/code/v4/train/train_wisa_native_p_4x80g.sh", "environment": {"image": {"cpu": "10.130.130.5:8192/lab-dev:latest", "cuda": "10.130.130.5:8192/lab-dev:latest", "rocm": "10.130.130.5:8192/lab-dev:latest"}, "environment_variables": {"cpu": ["PHASE=A1", "PREPARE=1", "REPORT_DETERMINED=1", "WANDB_ENABLED=0"], "cuda": ["PHASE=A1", "PREPARE=1", "REPORT_DETERMINED=1", "WANDB_ENABLED=0"], "rocm": ["PHASE=A1", "PREPARE=1", "REPORT_DETERMINED=1", "WANDB_ENABLED=0"]}, "proxy_ports": [], "ports": {"trial": 1734}, "registry_auth": {"username": "admin", "password": "********", "serveraddress": "10.130.130.5:8192"}, "force_pull_image": false, "pod_spec": null, "add_capabilities": [], "drop_capabilities": []}, "hyperparameters": {}, "labels": [], "log_policies": [{"name": "CUDA OOM", "pattern": ".*CUDA out of memory.*"}, {"name": "ECC Error", "pattern": ".*uncorrectable ECC error encountered.*"}], "max_restarts": 0, "min_checkpoint_period": {"batches": 0}, "min_validation_period": {"batches": 0}, "name": "physgen-v4-wisa-A1-4x80g", "optimizations": {"aggregation_frequency": 1, "average_aggregated_gradients": true, "average_training_metrics": true, "gradient_compression": false, "grad_updates_size_file": null, "mixed_precision": "O0", "tensor_fusion_threshold": 64, "tensor_fusion_cycle_time": 1, "auto_tune_tensor_fusion": false}, "perform_initial_validation": false, "profiling": {"enabled": true, "begin_on_batch": 0, "end_after_batch": null, "sync_timings": true}, "project": "wan-animate", "records_per_epoch": 0, "reproducibility": {"experiment_seed": 1789115802}, "resources": {"max_slots": null, "slots_per_trial": 4, "weight": 1, "native_parallel": false, "shm_size": 34359738368, "resource_pool": "amp-80g", "priority": 42, "is_single_node": true, "devices": []}, "scheduling_unit": 100, "searcher": {"max_length": {"epochs": 1}, "metric": "validation_loss", "name": "single", "smaller_is_better": true, "source_checkpoint_uuid": null, "source_trial_id": null}, "workspace": "ALL-IN-ONE", "slurm": {}, "pbs": {}, "preemption_timeout": 3600}
+[2026-09-11T16:49:57.118273Z] be974350 || INFO: [9] determined: Validating checkpoint storage ...
+[2026-09-11T16:49:57.150727Z] be974350 || INFO: [9] determined: Launching: ['sh', '-c', '/home/liuzhirui/Project/physGen/code/v4/train/train_wisa_native_p_4x80g.sh']
+[2026-09-11T16:49:57.218769Z] be974350 || Console log: /home/liuzhirui/Project/physGen/code/v4/train/train_log/launcher_A1_4x80g_20260911T164957Z_99.txt
+[2026-09-11T16:50:00.673117Z] be974350 || {'role': 'runtime', 'environment': '/home/liuzhirui/miniconda3/envs/moviestory', 'python': '/home/liuzhirui/miniconda3/envs/moviestory/bin/python'}
+[2026-09-11T16:50:38.819097Z] be974350 || /home/liuzhirui/model/Wan2.2/wan/modules/s2v/motioner.py:30: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+[2026-09-11T16:50:38.819230Z] be974350 ||   @amp.autocast(enabled=False)
+[2026-09-11T16:50:38.819303Z] be974350 || /home/liuzhirui/model/Wan2.2/wan/modules/s2v/motioner.py:41: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+[2026-09-11T16:50:38.819326Z] be974350 ||   @amp.autocast(enabled=False)
+[2026-09-11T16:50:38.823380Z] be974350 || /home/liuzhirui/model/Wan2.2/wan/modules/s2v/model_s2v.py:61: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+[2026-09-11T16:50:38.823474Z] be974350 ||   @amp.autocast(enabled=False)
+[2026-09-11T16:50:38.823518Z] be974350 || /home/liuzhirui/model/Wan2.2/wan/modules/s2v/model_s2v.py:79: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+[2026-09-11T16:50:38.823541Z] be974350 ||   @amp.autocast(enabled=False)
+[2026-09-11T16:50:39.576189Z] be974350 || {"event": "preflight", "stage": "train", "python": "/home/liuzhirui/miniconda3/envs/moviestory/bin/python", "python_version": "3.10.19", "requested_gpus": 4, "imports_only": false, "role": "runtime", "environment": "/home/liuzhirui/miniconda3/envs/moviestory", "torch": "2.8.0+cu128", "torch_cuda": "12.8", "driver": "575.64.03\n575.64.03\n575.64.03\n575.64.03", "devices": [{"index": 0, "name": "NVIDIA A800-SXM4-80GB"}, {"index": 1, "name": "NVIDIA A100-SXM4-80GB"}, {"index": 2, "name": "NVIDIA A100-SXM4-80GB"}, {"index": 3, "name": "NVIDIA A100-SXM4-80GB"}], "imports": ["decord", "physgen_v4.encoders", "wan.modules.vae2_2", "wan.modules.t5", "wan.modules.model", "determined.core"], "online_teacher": null, "determined": {"version": "0.32.1", "source": "/home/liuzhirui/.local/lib/python3.10/site-packages/determined/__init__.py"}, "logging": {"log_root": "/home/liuzhirui/Project/physGen/code/v4/train/train_log", "wandb_enabled": false, "determined": true}, "status": "ok"}
+[2026-09-11T16:50:43.751248Z] be974350 || {'role': 'runtime', 'environment': '/home/liuzhirui/miniconda3/envs/moviestory', 'python': '/home/liuzhirui/miniconda3/envs/moviestory/bin/python'}
+[2026-09-11T16:50:56.941335Z] be974350 || /home/liuzhirui/model/Wan2.2/wan/modules/s2v/motioner.py:30: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+[2026-09-11T16:50:56.941495Z] be974350 ||   @amp.autocast(enabled=False)
+[2026-09-11T16:50:56.941530Z] be974350 || /home/liuzhirui/model/Wan2.2/wan/modules/s2v/motioner.py:41: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+[2026-09-11T16:50:56.941552Z] be974350 ||   @amp.autocast(enabled=False)
+[2026-09-11T16:50:56.941801Z] be974350 || /home/liuzhirui/model/Wan2.2/wan/modules/s2v/model_s2v.py:61: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+[2026-09-11T16:50:56.941926Z] be974350 ||   @amp.autocast(enabled=False)
+[2026-09-11T16:50:56.941957Z] be974350 || /home/liuzhirui/model/Wan2.2/wan/modules/s2v/model_s2v.py:79: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+[2026-09-11T16:50:56.941978Z] be974350 ||   @amp.autocast(enabled=False)
+[2026-09-11T16:50:57.009769Z] be974350 || {"event": "preflight", "stage": "wan", "python": "/home/liuzhirui/miniconda3/envs/moviestory/bin/python", "python_version": "3.10.19", "requested_gpus": 4, "imports_only": false, "role": "runtime", "environment": "/home/liuzhirui/miniconda3/envs/moviestory", "torch": "2.8.0+cu128", "torch_cuda": "12.8", "driver": "575.64.03\n575.64.03\n575.64.03\n575.64.03", "devices": [{"index": 0, "name": "NVIDIA A800-SXM4-80GB"}, {"index": 1, "name": "NVIDIA A100-SXM4-80GB"}, {"index": 2, "name": "NVIDIA A100-SXM4-80GB"}, {"index": 3, "name": "NVIDIA A100-SXM4-80GB"}], "imports": ["decord", "physgen_v4.encoders", "wan.modules.vae2_2", "wan.modules.t5", "wan.modules.model"], "status": "ok"}
+[2026-09-11T16:51:00.118334Z] be974350 || {'role': 'teacher', 'environment': '/home/liuzhirui/miniconda3/envs/vjepa2-312', 'python': '/home/liuzhirui/miniconda3/envs/vjepa2-312/bin/python'}
+[2026-09-11T16:51:23.333966Z] be974350 || /home/liuzhirui/miniconda3/envs/vjepa2-312/lib/python3.12/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+[2026-09-11T16:51:23.334103Z] be974350 ||   warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+[2026-09-11T16:51:23.350598Z] be974350 || {"event": "preflight", "stage": "teacher", "python": "/home/liuzhirui/miniconda3/envs/vjepa2-312/bin/python", "python_version": "3.12.14", "requested_gpus": 4, "imports_only": false, "role": "teacher", "environment": "/home/liuzhirui/miniconda3/envs/vjepa2-312", "torch": "2.8.0+cu128", "torch_cuda": "12.8", "driver": "575.64.03\n575.64.03\n575.64.03\n575.64.03", "devices": [{"index": 0, "name": "NVIDIA A800-SXM4-80GB"}, {"index": 1, "name": "NVIDIA A100-SXM4-80GB"}, {"index": 2, "name": "NVIDIA A100-SXM4-80GB"}, {"index": 3, "name": "NVIDIA A100-SXM4-80GB"}], "imports": ["decord", "physgen_v4.encoders", "app.vjepa_2_1.models.vision_transformer"], "status": "ok"}
+[2026-09-11T16:51:48.598988Z] be974350 || {"selected_samples": 4000, "samples": 3988, "excluded": [{"index": 41, "reason": "fewer_than_5_contiguous_frames", "source_frames": 4, "frames": 1}, {"index": 799, "reason": "fewer_than_5_contiguous_frames", "source_frames": 3, "frames": 1}, {"index": 1002, "reason": "fewer_than_5_contiguous_frames", "source_frames": 3, "frames": 1}, {"index": 1380, "reason": "fewer_than_5_contiguous_frames", "source_frames": 2, "frames": 1}, {"index": 1893, "reason": "fewer_than_5_contiguous_frames", "source_frames": 3, "frames": 1}, {"index": 1974, "reason": "fewer_than_5_contiguous_frames", "source_frames": 4, "frames": 1}, {"index": 2005, "reason": "fewer_than_5_contiguous_frames", "source_frames": 2, "frames": 1}, {"index": 2489, "reason": "fewer_than_5_contiguous_frames", "source_frames": 2, "frames": 1}, {"index": 2726, "reason": "fewer_than_5_contiguous_frames", "source_frames": 3, "frames": 1}, {"index": 3726, "reason": "fewer_than_5_contiguous_frames", "source_frames": 2, "frames": 1}, {"index": 3887, "reason": "fewer_than_5_contiguous_frames", "source_frames": 2, "frames": 1}, {"index": 3971, "reason": "fewer_than_5_contiguous_frames", "source_frames": 2, "frames": 1}], "cache_root": "/home/liuzhirui/Project/physGen/code/v4/cache/wisa4000_nativefps_f101_a147456_t16"}
+[2026-09-11T16:52:12.755254Z] be974350 || {"event": "cache_plan", "pass_name": "vae", "rank": 2, "python": "/home/liuzhirui/miniconda3/envs/moviestory/bin/python", "torch": "2.8.0+cu128", "torch_cuda": "12.8", "assigned": 997, "reused": 997, "pending": 0, "null_text_pending": false}
+[2026-09-11T16:52:12.798994Z] be974350 || {"event": "cache_plan", "pass_name": "vae", "rank": 1, "python": "/home/liuzhirui/miniconda3/envs/moviestory/bin/python", "torch": "2.8.0+cu128", "torch_cuda": "12.8", "assigned": 997, "reused": 997, "pending": 0, "null_text_pending": false}
+[2026-09-11T16:52:13.014865Z] be974350 || {"event": "cache_plan", "pass_name": "vae", "rank": 3, "python": "/home/liuzhirui/miniconda3/envs/moviestory/bin/python", "torch": "2.8.0+cu128", "torch_cuda": "12.8", "assigned": 997, "reused": 997, "pending": 0, "null_text_pending": false}
+[2026-09-11T16:52:13.068550Z] be974350 || {"event": "cache_plan", "pass_name": "vae", "rank": 0, "python": "/home/liuzhirui/miniconda3/envs/moviestory/bin/python", "torch": "2.8.0+cu128", "torch_cuda": "12.8", "assigned": 997, "reused": 997, "pending": 0, "null_text_pending": false}
+[2026-09-11T16:52:29.884102Z] be974350 || {"event": "filter", "selected_samples": 4000, "samples": 3988, "excluded": [{"index": 41, "reason": "fewer_than_5_contiguous_frames", "source_frames": 4, "frames": 1}, {"index": 799, "reason": "fewer_than_5_contiguous_frames", "source_frames": 3, "frames": 1}, {"index": 1002, "reason": "fewer_than_5_contiguous_frames", "source_frames": 3, "frames": 1}, {"index": 1380, "reason": "fewer_than_5_contiguous_frames", "source_frames": 2, "frames": 1}, {"index": 1893, "reason": "fewer_than_5_contiguous_frames", "source_frames": 3, "frames": 1}, {"index": 1974, "reason": "fewer_than_5_contiguous_frames", "source_frames": 4, "frames": 1}, {"index": 2005, "reason": "fewer_than_5_contiguous_frames", "source_frames": 2, "frames": 1}, {"index": 2489, "reason": "fewer_than_5_contiguous_frames", "source_frames": 2, "frames": 1}, {"index": 2726, "reason": "fewer_than_5_contiguous_frames", "source_frames": 3, "frames": 1}, {"index": 3726, "reason": "fewer_than_5_contiguous_frames", "source_frames": 2, "frames": 1}, {"index": 3887, "reason": "fewer_than_5_contiguous_frames", "source_frames": 2, "frames": 1}, {"index": 3971, "reason": "fewer_than_5_contiguous_frames", "source_frames": 2, "frames": 1}]}
+[2026-09-11T16:52:46.866964Z] be974350 || {"event": "cache_plan", "pass_name": "text", "rank": 3, "python": "/home/liuzhirui/miniconda3/envs/moviestory/bin/python", "torch": "2.8.0+cu128", "torch_cuda": "12.8", "assigned": 997, "reused": 997, "pending": 0, "null_text_pending": false}
+[2026-09-11T16:52:46.937476Z] be974350 || {"event": "cache_plan", "pass_name": "text", "rank": 2, "python": "/home/liuzhirui/miniconda3/envs/moviestory/bin/python", "torch": "2.8.0+cu128", "torch_cuda": "12.8", "assigned": 997, "reused": 997, "pending": 0, "null_text_pending": false}
+[2026-09-11T16:52:47.078428Z] be974350 || {"event": "cache_plan", "pass_name": "text", "rank": 1, "python": "/home/liuzhirui/miniconda3/envs/moviestory/bin/python", "torch": "2.8.0+cu128", "torch_cuda": "12.8", "assigned": 997, "reused": 997, "pending": 0, "null_text_pending": false}
+[2026-09-11T16:52:47.697580Z] be974350 || {"event": "cache_plan", "pass_name": "text", "rank": 0, "python": "/home/liuzhirui/miniconda3/envs/moviestory/bin/python", "torch": "2.8.0+cu128", "torch_cuda": "12.8", "assigned": 997, "reused": 997, "pending": 0, "null_text_pending": false}
+[2026-09-11T16:52:51.407137Z] be974350 || {'role': 'teacher', 'environment': '/home/liuzhirui/miniconda3/envs/vjepa2-312', 'python': '/home/liuzhirui/miniconda3/envs/vjepa2-312/bin/python'}
+[2026-09-11T16:54:08.138707Z] be974350 || {"event": "cache_plan", "pass_name": "teacher", "rank": 2, "python": "/home/liuzhirui/miniconda3/envs/vjepa2-312/bin/python", "torch": "2.8.0+cu128", "torch_cuda": "12.8", "assigned": 997, "reused": 997, "pending": 0, "null_text_pending": false}
+[2026-09-11T16:54:08.800776Z] be974350 || {"event": "cache_plan", "pass_name": "teacher", "rank": 1, "python": "/home/liuzhirui/miniconda3/envs/vjepa2-312/bin/python", "torch": "2.8.0+cu128", "torch_cuda": "12.8", "assigned": 997, "reused": 997, "pending": 0, "null_text_pending": false}
+[2026-09-11T16:54:09.785306Z] be974350 || {"event": "cache_plan", "pass_name": "teacher", "rank": 0, "python": "/home/liuzhirui/miniconda3/envs/vjepa2-312/bin/python", "torch": "2.8.0+cu128", "torch_cuda": "12.8", "assigned": 997, "reused": 997, "pending": 0, "null_text_pending": false}
+[2026-09-11T16:54:17.488761Z] be974350 || {"event": "cache_plan", "pass_name": "teacher", "rank": 3, "python": "/home/liuzhirui/miniconda3/envs/vjepa2-312/bin/python", "torch": "2.8.0+cu128", "torch_cuda": "12.8", "assigned": 997, "reused": 997, "pending": 0, "null_text_pending": false}
+[2026-09-11T16:57:02.426323Z] be974350 || {"event": "finalize", "selected_samples": 4000, "samples": 3988, "excluded": [{"index": 41, "reason": "fewer_than_5_contiguous_frames", "source_frames": 4, "frames": 1}, {"index": 799, "reason": "fewer_than_5_contiguous_frames", "source_frames": 3, "frames": 1}, {"index": 1002, "reason": "fewer_than_5_contiguous_frames", "source_frames": 3, "frames": 1}, {"index": 1380, "reason": "fewer_than_5_contiguous_frames", "source_frames": 2, "frames": 1}, {"index": 1893, "reason": "fewer_than_5_contiguous_frames", "source_frames": 3, "frames": 1}, {"index": 1974, "reason": "fewer_than_5_contiguous_frames", "source_frames": 4, "frames": 1}, {"index": 2005, "reason": "fewer_than_5_contiguous_frames", "source_frames": 2, "frames": 1}, {"index": 2489, "reason": "fewer_than_5_contiguous_frames", "source_frames": 2, "frames": 1}, {"index": 2726, "reason": "fewer_than_5_contiguous_frames", "source_frames": 3, "frames": 1}, {"index": 3726, "reason": "fewer_than_5_contiguous_frames", "source_frames": 2, "frames": 1}, {"index": 3887, "reason": "fewer_than_5_contiguous_frames", "source_frames": 2, "frames": 1}, {"index": 3971, "reason": "fewer_than_5_contiguous_frames", "source_frames": 2, "frames": 1}], "stages": {"vae": {"valid": 3988, "invalid": 0}, "text": {"valid": 3988, "invalid": 0}, "teacher": {"valid": 3988, "invalid": 0}}, "null_text_error": null, "complete": true, "examples": []}
+[2026-09-11T16:57:34.138600Z] be974350 || /home/liuzhirui/model/Wan2.2/wan/modules/s2v/motioner.py:30: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+[2026-09-11T16:57:34.138726Z] be974350 ||   @amp.autocast(enabled=False)
+[2026-09-11T16:57:34.138756Z] be974350 || /home/liuzhirui/model/Wan2.2/wan/modules/s2v/motioner.py:30: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+[2026-09-11T16:57:34.138777Z] be974350 ||   @amp.autocast(enabled=False)
+[2026-09-11T16:57:34.138803Z] be974350 || /home/liuzhirui/model/Wan2.2/wan/modules/s2v/motioner.py:30: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+[2026-09-11T16:57:34.138882Z] be974350 ||   @amp.autocast(enabled=False)
+[2026-09-11T16:57:34.138926Z] be974350 || /home/liuzhirui/model/Wan2.2/wan/modules/s2v/motioner.py:41: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+[2026-09-11T16:57:34.138948Z] be974350 ||   @amp.autocast(enabled=False)
+[2026-09-11T16:57:34.138972Z] be974350 || /home/liuzhirui/model/Wan2.2/wan/modules/s2v/motioner.py:41: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+[2026-09-11T16:57:34.138992Z] be974350 ||   @amp.autocast(enabled=False)
+[2026-09-11T16:57:34.139016Z] be974350 || /home/liuzhirui/model/Wan2.2/wan/modules/s2v/motioner.py:41: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+[2026-09-11T16:57:34.139035Z] be974350 ||   @amp.autocast(enabled=False)
+[2026-09-11T16:57:34.139056Z] be974350 || /home/liuzhirui/model/Wan2.2/wan/modules/s2v/motioner.py:30: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+[2026-09-11T16:57:34.139075Z] be974350 ||   @amp.autocast(enabled=False)
+[2026-09-11T16:57:34.139097Z] be974350 || /home/liuzhirui/model/Wan2.2/wan/modules/s2v/motioner.py:41: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+[2026-09-11T16:57:34.139116Z] be974350 ||   @amp.autocast(enabled=False)
+[2026-09-11T16:57:34.140426Z] be974350 || /home/liuzhirui/model/Wan2.2/wan/modules/s2v/model_s2v.py:61: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+[2026-09-11T16:57:34.140495Z] be974350 ||   @amp.autocast(enabled=False)
+[2026-09-11T16:57:34.140523Z] be974350 || /home/liuzhirui/model/Wan2.2/wan/modules/s2v/model_s2v.py:61: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+[2026-09-11T16:57:34.140540Z] be974350 ||   @amp.autocast(enabled=False)
+[2026-09-11T16:57:34.140710Z] be974350 || /home/liuzhirui/model/Wan2.2/wan/modules/s2v/model_s2v.py:79: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+[2026-09-11T16:57:34.140751Z] be974350 ||   @amp.autocast(enabled=False)
+[2026-09-11T16:57:34.140773Z] be974350 || /home/liuzhirui/model/Wan2.2/wan/modules/s2v/model_s2v.py:61: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+[2026-09-11T16:57:34.140789Z] be974350 ||   @amp.autocast(enabled=False)
+[2026-09-11T16:57:34.140809Z] be974350 || /home/liuzhirui/model/Wan2.2/wan/modules/s2v/model_s2v.py:79: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+[2026-09-11T16:57:34.140853Z] be974350 ||   @amp.autocast(enabled=False)
+[2026-09-11T16:57:34.140870Z] be974350 || /home/liuzhirui/model/Wan2.2/wan/modules/s2v/model_s2v.py:79: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+[2026-09-11T16:57:34.140885Z] be974350 ||   @amp.autocast(enabled=False)
+[2026-09-11T16:57:34.140915Z] be974350 || /home/liuzhirui/model/Wan2.2/wan/modules/s2v/model_s2v.py:61: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+[2026-09-11T16:57:34.140931Z] be974350 ||   @amp.autocast(enabled=False)
+[2026-09-11T16:57:34.141169Z] be974350 || /home/liuzhirui/model/Wan2.2/wan/modules/s2v/model_s2v.py:79: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+[2026-09-11T16:57:34.141200Z] be974350 ||   @amp.autocast(enabled=False)
+[2026-09-11T16:57:34.347689Z] be974350 || 
+[2026-09-11T16:57:34.347900Z] be974350 || Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]
+[2026-09-11T16:57:34.388888Z] be974350 || Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]
+[2026-09-11T16:57:34.389019Z] be974350 || Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]
+[2026-09-11T16:57:46.130507Z] be974350 || Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]
+[2026-09-11T16:57:46.170515Z] be974350 || Loading checkpoint shards:  33%|███▎      | 1/3 [00:11<00:23, 11.74s/it]
+[2026-09-11T16:57:46.239695Z] be974350 || Loading checkpoint shards:  33%|███▎      | 1/3 [00:11<00:23, 11.82s/it]
+[2026-09-11T16:57:46.242106Z] be974350 || Loading checkpoint shards:  33%|███▎      | 1/3 [00:11<00:23, 11.85s/it]
+[2026-09-11T16:57:58.745963Z] be974350 || Loading checkpoint shards:  33%|███▎      | 1/3 [00:11<00:23, 11.89s/it]
+[2026-09-11T16:57:58.763881Z] be974350 || Loading checkpoint shards:  67%|██████▋   | 2/3 [00:24<00:12, 12.25s/it]
+[2026-09-11T16:57:58.780753Z] be974350 || Loading checkpoint shards:  67%|██████▋   | 2/3 [00:24<00:12, 12.28s/it]
+[2026-09-11T16:57:58.806455Z] be974350 || Loading checkpoint shards:  67%|██████▋   | 2/3 [00:24<00:12, 12.28s/it]
+[2026-09-11T16:57:58.952644Z] be974350 || Loading checkpoint shards:  67%|██████▋   | 2/3 [00:24<00:12, 12.27s/it]
+[2026-09-11T16:57:58.953100Z] be974350 || Loading checkpoint shards: 100%|██████████| 3/3 [00:24<00:00,  6.76s/it]
+[2026-09-11T16:57:58.953193Z] be974350 || Loading checkpoint shards: 100%|██████████| 3/3 [00:24<00:00,  8.20s/it]
+[2026-09-11T16:57:58.955003Z] be974350 || 
+[2026-09-11T16:57:58.955428Z] be974350 || Loading checkpoint shards: 100%|██████████| 3/3 [00:24<00:00,  6.75s/it]
+[2026-09-11T16:57:58.955502Z] be974350 || Loading checkpoint shards: 100%|██████████| 3/3 [00:24<00:00,  8.19s/it]
+[2026-09-11T16:57:58.955747Z] be974350 || 
+[2026-09-11T16:57:58.956086Z] be974350 || Loading checkpoint shards: 100%|██████████| 3/3 [00:24<00:00,  6.74s/it]
+[2026-09-11T16:57:58.956133Z] be974350 || Loading checkpoint shards: 100%|██████████| 3/3 [00:24<00:00,  8.19s/it]
+[2026-09-11T16:57:58.960510Z] be974350 || 
+[2026-09-11T16:57:58.960833Z] be974350 || Loading checkpoint shards: 100%|██████████| 3/3 [00:24<00:00,  6.76s/it]
+[2026-09-11T16:57:58.960861Z] be974350 || Loading checkpoint shards: 100%|██████████| 3/3 [00:24<00:00,  8.20s/it]
+[2026-09-11T16:58:06.762537Z] be974350 || TensorFlow writer not found
+[2026-09-11T16:58:06.763129Z] be974350 || TensorFlow writer not found
+[2026-09-11T16:58:06.763248Z] be974350 || TensorFlow writer not found
+[2026-09-11T16:58:06.763280Z] be974350 || TensorFlow writer not found
+[2026-09-11T16:58:06.778915Z] be974350 || [rank2]: Traceback (most recent call last):
+[2026-09-11T16:58:06.779017Z] be974350 || [rank2]:   File "/home/liuzhirui/.local/lib/python3.10/site-packages/determined/tensorboard/base.py", line 134, in get_metric_writer
+[2026-09-11T16:58:06.779045Z] be974350 || [rank2]:     from determined.tensorboard.metric_writers import tensorflow
+[2026-09-11T16:58:06.779071Z] be974350 || [rank2]:   File "/home/liuzhirui/.local/lib/python3.10/site-packages/determined/tensorboard/metric_writers/tensorflow.py", line 5, in <module>
+[2026-09-11T16:58:06.779091Z] be974350 || [rank2]:     import tensorflow
+[2026-09-11T16:58:06.779112Z] be974350 || [rank2]: ModuleNotFoundError: No module named 'tensorflow'
+[2026-09-11T16:58:06.779133Z] be974350 || 
+[2026-09-11T16:58:06.779154Z] be974350 || [rank2]: During handling of the above exception, another exception occurred:
+[2026-09-11T16:58:06.779173Z] be974350 || 
+[2026-09-11T16:58:06.779191Z] be974350 || [rank2]: Traceback (most recent call last):
+[2026-09-11T16:58:06.779212Z] be974350 || [rank2]:   File "/home/liuzhirui/Project/physGen/code/v4/train/train_native_p.py", line 282, in <module>
+[2026-09-11T16:58:06.779231Z] be974350 || [rank2]:     main()
+[2026-09-11T16:58:06.779251Z] be974350 || [rank2]:   File "/home/liuzhirui/Project/physGen/code/v4/train/train_native_p.py", line 278, in main
+[2026-09-11T16:58:06.779270Z] be974350 || [rank2]:     train(parser.parse_args())
+[2026-09-11T16:58:06.779291Z] be974350 || [rank2]:   File "/home/liuzhirui/Project/physGen/code/v4/train/train_native_p.py", line 112, in train
+[2026-09-11T16:58:06.779310Z] be974350 || [rank2]:     _train(args, cleanup)
+[2026-09-11T16:58:06.779330Z] be974350 || [rank2]:   File "/home/liuzhirui/Project/physGen/code/v4/train/train_native_p.py", line 158, in _train
+[2026-09-11T16:58:06.779351Z] be974350 || [rank2]:     with metric_context(config["logging"]["determined"]) as core_context, Logger(config, rank, core_context) as logger:
+[2026-09-11T16:58:06.779372Z] be974350 || [rank2]:   File "/home/liuzhirui/Project/physGen/code/v4/physgen_v4/runtime.py", line 62, in metric_context
+[2026-09-11T16:58:06.779392Z] be974350 || [rank2]:     return core.init(distributed=core.DistributedContext.from_torch_distributed())
+[2026-09-11T16:58:06.779413Z] be974350 || [rank2]:   File "/home/liuzhirui/.local/lib/python3.10/site-packages/determined/core/_context.py", line 273, in init
+[2026-09-11T16:58:06.779433Z] be974350 || [rank2]:     tbd_writer = tensorboard.get_metric_writer()
+[2026-09-11T16:58:06.779455Z] be974350 || [rank2]:   File "/home/liuzhirui/.local/lib/python3.10/site-packages/determined/tensorboard/base.py", line 140, in get_metric_writer
+[2026-09-11T16:58:06.779474Z] be974350 || [rank2]:     from determined.tensorboard.metric_writers import pytorch
+[2026-09-11T16:58:06.779496Z] be974350 || [rank2]:   File "/home/liuzhirui/.local/lib/python3.10/site-packages/determined/tensorboard/metric_writers/pytorch.py", line 21, in <module>
+[2026-09-11T16:58:06.779515Z] be974350 || [rank2]:     from torch.utils import tensorboard  # isort:skip
+[2026-09-11T16:58:06.779536Z] be974350 || [rank2]:   File "/home/liuzhirui/miniconda3/envs/moviestory/lib/python3.10/site-packages/torch/utils/tensorboard/__init__.py", line 1, in <module>
+[2026-09-11T16:58:06.779554Z] be974350 || [rank2]:     import tensorboard
+[2026-09-11T16:58:06.779572Z] be974350 || [rank2]: ModuleNotFoundError: No module named 'tensorboard'
+[2026-09-11T16:58:06.779615Z] be974350 || [rank0]: Traceback (most recent call last):
+[2026-09-11T16:58:06.779654Z] be974350 || [rank0]:   File "/home/liuzhirui/.local/lib/python3.10/site-packages/determined/tensorboard/base.py", line 134, in get_metric_writer
+[2026-09-11T16:58:06.779676Z] be974350 || [rank0]:     from determined.tensorboard.metric_writers import tensorflow
+[2026-09-11T16:58:06.779697Z] be974350 || [rank0]:   File "/home/liuzhirui/.local/lib/python3.10/site-packages/determined/tensorboard/metric_writers/tensorflow.py", line 5, in <module>
+[2026-09-11T16:58:06.779717Z] be974350 || [rank0]:     import tensorflow
+[2026-09-11T16:58:06.779737Z] be974350 || [rank0]: ModuleNotFoundError: No module named 'tensorflow'
+[2026-09-11T16:58:06.779756Z] be974350 || 
+[2026-09-11T16:58:06.779776Z] be974350 || [rank0]: During handling of the above exception, another exception occurred:
+[2026-09-11T16:58:06.779795Z] be974350 || 
+[2026-09-11T16:58:06.779854Z] be974350 || [rank0]: Traceback (most recent call last):
+[2026-09-11T16:58:06.779875Z] be974350 || [rank0]:   File "/home/liuzhirui/Project/physGen/code/v4/train/train_native_p.py", line 282, in <module>
+[2026-09-11T16:58:06.779894Z] be974350 || [rank0]:     main()
+[2026-09-11T16:58:06.779914Z] be974350 || [rank0]:   File "/home/liuzhirui/Project/physGen/code/v4/train/train_native_p.py", line 278, in main
+[2026-09-11T16:58:06.779933Z] be974350 || [rank0]:     train(parser.parse_args())
+[2026-09-11T16:58:06.779955Z] be974350 || [rank0]:   File "/home/liuzhirui/Project/physGen/code/v4/train/train_native_p.py", line 112, in train
+[2026-09-11T16:58:06.779975Z] be974350 || [rank0]:     _train(args, cleanup)
+[2026-09-11T16:58:06.779995Z] be974350 || [rank0]:   File "/home/liuzhirui/Project/physGen/code/v4/train/train_native_p.py", line 158, in _train
+[2026-09-11T16:58:06.780015Z] be974350 || [rank0]:     with metric_context(config["logging"]["determined"]) as core_context, Logger(config, rank, core_context) as logger:
+[2026-09-11T16:58:06.780035Z] be974350 || [rank0]:   File "/home/liuzhirui/Project/physGen/code/v4/physgen_v4/runtime.py", line 62, in metric_context
+[2026-09-11T16:58:06.780056Z] be974350 || [rank0]:     return core.init(distributed=core.DistributedContext.from_torch_distributed())
+[2026-09-11T16:58:06.780077Z] be974350 || [rank0]:   File "/home/liuzhirui/.local/lib/python3.10/site-packages/determined/core/_context.py", line 273, in init
+[2026-09-11T16:58:06.780096Z] be974350 || [rank0]:     tbd_writer = tensorboard.get_metric_writer()
+[2026-09-11T16:58:06.780117Z] be974350 || [rank0]:   File "/home/liuzhirui/.local/lib/python3.10/site-packages/determined/tensorboard/base.py", line 140, in get_metric_writer
+[2026-09-11T16:58:06.780137Z] be974350 || [rank0]:     from determined.tensorboard.metric_writers import pytorch
+[2026-09-11T16:58:06.780158Z] be974350 || [rank0]:   File "/home/liuzhirui/.local/lib/python3.10/site-packages/determined/tensorboard/metric_writers/pytorch.py", line 21, in <module>
+[2026-09-11T16:58:06.780178Z] be974350 || [rank0]:     from torch.utils import tensorboard  # isort:skip
+[2026-09-11T16:58:06.780206Z] be974350 || [rank0]:   File "/home/liuzhirui/miniconda3/envs/moviestory/lib/python3.10/site-packages/torch/utils/tensorboard/__init__.py", line 1, in <module>
+[2026-09-11T16:58:06.780226Z] be974350 || [rank0]:     import tensorboard
+[2026-09-11T16:58:06.780246Z] be974350 || [rank0]: ModuleNotFoundError: No module named 'tensorboard'
+[2026-09-11T16:58:06.780265Z] be974350 || [rank3]: Traceback (most recent call last):
+[2026-09-11T16:58:06.780286Z] be974350 || [rank3]:   File "/home/liuzhirui/.local/lib/python3.10/site-packages/determined/tensorboard/base.py", line 134, in get_metric_writer
+[2026-09-11T16:58:06.780306Z] be974350 || [rank3]:     from determined.tensorboard.metric_writers import tensorflow
+[2026-09-11T16:58:06.780327Z] be974350 || [rank3]:   File "/home/liuzhirui/.local/lib/python3.10/site-packages/determined/tensorboard/metric_writers/tensorflow.py", line 5, in <module>
+[2026-09-11T16:58:06.780346Z] be974350 || [rank3]:     import tensorflow
+[2026-09-11T16:58:06.780365Z] be974350 || [rank3]: ModuleNotFoundError: No module named 'tensorflow'
+[2026-09-11T16:58:06.780385Z] be974350 || 
+[2026-09-11T16:58:06.780405Z] be974350 || [rank3]: During handling of the above exception, another exception occurred:
+[2026-09-11T16:58:06.780425Z] be974350 || 
+[2026-09-11T16:58:06.780453Z] be974350 || [rank3]: Traceback (most recent call last):
+[2026-09-11T16:58:06.780484Z] be974350 || [rank3]:   File "/home/liuzhirui/Project/physGen/code/v4/train/train_native_p.py", line 282, in <module>
+[2026-09-11T16:58:06.780509Z] be974350 || [rank3]:     main()
+[2026-09-11T16:58:06.780529Z] be974350 || [rank3]:   File "/home/liuzhirui/Project/physGen/code/v4/train/train_native_p.py", line 278, in main
+[2026-09-11T16:58:06.780549Z] be974350 || [rank3]:     train(parser.parse_args())
+[2026-09-11T16:58:06.780569Z] be974350 || [rank3]:   File "/home/liuzhirui/Project/physGen/code/v4/train/train_native_p.py", line 112, in train
+[2026-09-11T16:58:06.780588Z] be974350 || [rank3]:     _train(args, cleanup)
+[2026-09-11T16:58:06.780607Z] be974350 || [rank3]:   File "/home/liuzhirui/Project/physGen/code/v4/train/train_native_p.py", line 158, in _train
+[2026-09-11T16:58:06.780627Z] be974350 || [rank3]:     with metric_context(config["logging"]["determined"]) as core_context, Logger(config, rank, core_context) as logger:
+[2026-09-11T16:58:06.780647Z] be974350 || [rank3]:   File "/home/liuzhirui/Project/physGen/code/v4/physgen_v4/runtime.py", line 62, in metric_context
+[2026-09-11T16:58:06.780666Z] be974350 || [rank3]:     return core.init(distributed=core.DistributedContext.from_torch_distributed())
+[2026-09-11T16:58:06.780686Z] be974350 || [rank3]:   File "/home/liuzhirui/.local/lib/python3.10/site-packages/determined/core/_context.py", line 273, in init
+[2026-09-11T16:58:06.780707Z] be974350 || [rank3]:     tbd_writer = tensorboard.get_metric_writer()
+[2026-09-11T16:58:06.780727Z] be974350 || [rank3]:   File "/home/liuzhirui/.local/lib/python3.10/site-packages/determined/tensorboard/base.py", line 140, in get_metric_writer
+[2026-09-11T16:58:06.780747Z] be974350 || [rank3]:     from determined.tensorboard.metric_writers import pytorch
+[2026-09-11T16:58:06.780768Z] be974350 || [rank3]:   File "/home/liuzhirui/.local/lib/python3.10/site-packages/determined/tensorboard/metric_writers/pytorch.py", line 21, in <module>
+[2026-09-11T16:58:06.780786Z] be974350 || [rank3]:     from torch.utils import tensorboard  # isort:skip
+[2026-09-11T16:58:06.780808Z] be974350 || [rank3]:   File "/home/liuzhirui/miniconda3/envs/moviestory/lib/python3.10/site-packages/torch/utils/tensorboard/__init__.py", line 1, in <module>
+[2026-09-11T16:58:06.780843Z] be974350 || [rank3]:     import tensorboard
+[2026-09-11T16:58:06.780863Z] be974350 || [rank3]: ModuleNotFoundError: No module named 'tensorboard'
+[2026-09-11T16:58:06.780882Z] be974350 || [rank1]: Traceback (most recent call last):
+[2026-09-11T16:58:06.780902Z] be974350 || [rank1]:   File "/home/liuzhirui/.local/lib/python3.10/site-packages/determined/tensorboard/base.py", line 134, in get_metric_writer
+[2026-09-11T16:58:06.780930Z] be974350 || [rank1]:     from determined.tensorboard.metric_writers import tensorflow
+[2026-09-11T16:58:06.780951Z] be974350 || [rank1]:   File "/home/liuzhirui/.local/lib/python3.10/site-packages/determined/tensorboard/metric_writers/tensorflow.py", line 5, in <module>
+[2026-09-11T16:58:06.780969Z] be974350 || [rank1]:     import tensorflow
+[2026-09-11T16:58:06.780989Z] be974350 || [rank1]: ModuleNotFoundError: No module named 'tensorflow'
+[2026-09-11T16:58:06.781007Z] be974350 || 
+[2026-09-11T16:58:06.781026Z] be974350 || [rank1]: During handling of the above exception, another exception occurred:
+[2026-09-11T16:58:06.781043Z] be974350 || 
+[2026-09-11T16:58:06.781110Z] be974350 || [rank1]: Traceback (most recent call last):
+[2026-09-11T16:58:06.781131Z] be974350 || [rank1]:   File "/home/liuzhirui/Project/physGen/code/v4/train/train_native_p.py", line 282, in <module>
+[2026-09-11T16:58:06.781150Z] be974350 || [rank1]:     main()
+[2026-09-11T16:58:06.781170Z] be974350 || [rank1]:   File "/home/liuzhirui/Project/physGen/code/v4/train/train_native_p.py", line 278, in main
+[2026-09-11T16:58:06.781193Z] be974350 || [rank1]:     train(parser.parse_args())
+[2026-09-11T16:58:06.781214Z] be974350 || [rank1]:   File "/home/liuzhirui/Project/physGen/code/v4/train/train_native_p.py", line 112, in train
+[2026-09-11T16:58:06.781232Z] be974350 || [rank1]:     _train(args, cleanup)
+[2026-09-11T16:58:06.781252Z] be974350 || [rank1]:   File "/home/liuzhirui/Project/physGen/code/v4/train/train_native_p.py", line 158, in _train
+[2026-09-11T16:58:06.781273Z] be974350 || [rank1]:     with metric_context(config["logging"]["determined"]) as core_context, Logger(config, rank, core_context) as logger:
+[2026-09-11T16:58:06.781293Z] be974350 || [rank1]:   File "/home/liuzhirui/Project/physGen/code/v4/physgen_v4/runtime.py", line 62, in metric_context
+[2026-09-11T16:58:06.781314Z] be974350 || [rank1]:     return core.init(distributed=core.DistributedContext.from_torch_distributed())
+[2026-09-11T16:58:06.781333Z] be974350 || [rank1]:   File "/home/liuzhirui/.local/lib/python3.10/site-packages/determined/core/_context.py", line 273, in init
+[2026-09-11T16:58:06.781353Z] be974350 || [rank1]:     tbd_writer = tensorboard.get_metric_writer()
+[2026-09-11T16:58:06.781378Z] be974350 || [rank1]:   File "/home/liuzhirui/.local/lib/python3.10/site-packages/determined/tensorboard/base.py", line 140, in get_metric_writer
+[2026-09-11T16:58:06.781397Z] be974350 || [rank1]:     from determined.tensorboard.metric_writers import pytorch
+[2026-09-11T16:58:06.781417Z] be974350 || [rank1]:   File "/home/liuzhirui/.local/lib/python3.10/site-packages/determined/tensorboard/metric_writers/pytorch.py", line 21, in <module>
+[2026-09-11T16:58:06.781436Z] be974350 || [rank1]:     from torch.utils import tensorboard  # isort:skip
+[2026-09-11T16:58:06.781457Z] be974350 || [rank1]:   File "/home/liuzhirui/miniconda3/envs/moviestory/lib/python3.10/site-packages/torch/utils/tensorboard/__init__.py", line 1, in <module>
+[2026-09-11T16:58:06.781475Z] be974350 || [rank1]:     import tensorboard
+[2026-09-11T16:58:06.781494Z] be974350 || [rank1]: ModuleNotFoundError: No module named 'tensorboard'
+[2026-09-11T16:58:07.419628Z] be974350 || [rank0]:[W911 16:58:07.968666754 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[2026-09-11T16:58:08.526154Z] be974350 || W0911 16:58:08.525000 99 site-packages/torch/distributed/elastic/multiprocessing/api.py:900] Sending process 312 closing signal SIGTERM
+[2026-09-11T16:58:08.526510Z] be974350 || W0911 16:58:08.526000 99 site-packages/torch/distributed/elastic/multiprocessing/api.py:900] Sending process 313 closing signal SIGTERM
+[2026-09-11T16:58:08.526861Z] be974350 || W0911 16:58:08.526000 99 site-packages/torch/distributed/elastic/multiprocessing/api.py:900] Sending process 315 closing signal SIGTERM
+[2026-09-11T16:58:09.057047Z] be974350 || E0911 16:58:09.056000 99 site-packages/torch/distributed/elastic/multiprocessing/api.py:874] failed (exitcode: 1) local_rank: 2 (pid: 314) of binary: /home/liuzhirui/miniconda3/envs/moviestory/bin/python
+[2026-09-11T16:58:09.069930Z] be974350 || Traceback (most recent call last):
+[2026-09-11T16:58:09.070029Z] be974350 ||   File "/home/liuzhirui/miniconda3/envs/moviestory/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+[2026-09-11T16:58:09.070660Z] be974350 ||     return _run_code(code, main_globals, None,
+[2026-09-11T16:58:09.070752Z] be974350 ||   File "/home/liuzhirui/miniconda3/envs/moviestory/lib/python3.10/runpy.py", line 86, in _run_code
+[2026-09-11T16:58:09.071069Z] be974350 ||     exec(code, run_globals)
+[2026-09-11T16:58:09.071154Z] be974350 ||   File "/home/liuzhirui/miniconda3/envs/moviestory/lib/python3.10/site-packages/torch/distributed/run.py", line 905, in <module>
+[2026-09-11T16:58:09.072285Z] be974350 ||     main()
+[2026-09-11T16:58:09.072367Z] be974350 ||   File "/home/liuzhirui/miniconda3/envs/moviestory/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 357, in wrapper
+[2026-09-11T16:58:09.072627Z] be974350 ||     return f(*args, **kwargs)
+[2026-09-11T16:58:09.072660Z] be974350 ||   File "/home/liuzhirui/miniconda3/envs/moviestory/lib/python3.10/site-packages/torch/distributed/run.py", line 901, in main
+[2026-09-11T16:58:09.073500Z] be974350 ||     run(args)
+[2026-09-11T16:58:09.073532Z] be974350 ||   File "/home/liuzhirui/miniconda3/envs/moviestory/lib/python3.10/site-packages/torch/distributed/run.py", line 892, in run
+[2026-09-11T16:58:09.074378Z] be974350 ||     elastic_launch(
+[2026-09-11T16:58:09.074409Z] be974350 ||   File "/home/liuzhirui/miniconda3/envs/moviestory/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 143, in __call__
+[2026-09-11T16:58:09.074568Z] be974350 ||     return launch_agent(self._config, self._entrypoint, list(args))
+[2026-09-11T16:58:09.074595Z] be974350 ||   File "/home/liuzhirui/miniconda3/envs/moviestory/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 277, in launch_agent
+[2026-09-11T16:58:09.074873Z] be974350 ||     raise ChildFailedError(
+[2026-09-11T16:58:09.074927Z] be974350 || torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+[2026-09-11T16:58:09.074954Z] be974350 || ============================================================
+[2026-09-11T16:58:09.074974Z] be974350 || /home/liuzhirui/Project/physGen/code/v4/train/train_native_p.py FAILED
+[2026-09-11T16:58:09.074994Z] be974350 || ------------------------------------------------------------
+[2026-09-11T16:58:09.075014Z] be974350 || Failures:
+[2026-09-11T16:58:09.075035Z] be974350 ||   <NO_OTHER_FAILURES>
+[2026-09-11T16:58:09.075074Z] be974350 || ------------------------------------------------------------
+[2026-09-11T16:58:09.075094Z] be974350 || Root Cause (first observed failure):
+[2026-09-11T16:58:09.075112Z] be974350 || [0]:
+[2026-09-11T16:58:09.075130Z] be974350 ||   time      : 2026-09-11_16:58:08
+[2026-09-11T16:58:09.075148Z] be974350 ||   host      : 0ab620c16840
+[2026-09-11T16:58:09.075167Z] be974350 ||   rank      : 2 (local_rank: 2)
+[2026-09-11T16:58:09.075184Z] be974350 ||   exitcode  : 1 (pid: 314)
+[2026-09-11T16:58:09.075202Z] be974350 ||   error_file: <N/A>
+[2026-09-11T16:58:09.075223Z] be974350 ||   traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+[2026-09-11T16:58:09.075244Z] be974350 || ============================================================
+[2026-09-11T16:58:27.554289Z]          || ERROR: crashed: resources failed with non-zero exit code: container failed with non-zero exit code: 1 (exit code 1)
+[2026-09-11T16:58:27.559355Z]          || ERROR: Trial 61512 (Experiment 60720) was terminated: allocation failed: resources failed with non-zero exit code: container failed with non-zero exit code: 1 (exit code 1)

@@ -1,0 +1,481 @@
+{
+  "active_stage_summary": [
+    {
+      "stage_id": "setup",
+      "temporal_token_count": 5,
+      "temporal_weight_sum": 4.5
+    },
+    {
+      "stage_id": "onset",
+      "temporal_token_count": 5,
+      "temporal_weight_sum": 4.0
+    },
+    {
+      "stage_id": "evolution",
+      "temporal_token_count": 9,
+      "temporal_weight_sum": 8.0
+    },
+    {
+      "stage_id": "completion",
+      "temporal_token_count": 6,
+      "temporal_weight_sum": 5.0
+    },
+    {
+      "stage_id": "terminal",
+      "temporal_token_count": 4,
+      "temporal_weight_sum": 3.5
+    }
+  ],
+  "constraint_coverage": {
+    "c1": {
+      "stages": [
+        "setup",
+        "onset"
+      ],
+      "violations": [
+        "setup:outcome_preset",
+        "onset:wrong_order"
+      ]
+    },
+    "c2": {
+      "stages": [
+        "evolution",
+        "completion"
+      ],
+      "violations": [
+        "evolution:coupling_broken",
+        "completion:incomplete_transition"
+      ]
+    },
+    "c3": {
+      "stages": [
+        "evolution",
+        "completion"
+      ],
+      "violations": [
+        "evolution:coupling_broken",
+        "completion:incomplete_transition"
+      ]
+    },
+    "c4": {
+      "stages": [
+        "completion",
+        "terminal"
+      ],
+      "violations": [
+        "completion:incomplete_transition",
+        "terminal:reversal"
+      ]
+    },
+    "c5": {
+      "stages": [
+        "terminal"
+      ],
+      "violations": [
+        "terminal:exclusion_broken"
+      ]
+    }
+  },
+  "crossfade_tokens": 1,
+  "design_revision": "fixed5-causal-r3",
+  "fallback_selected": false,
+  "flatten_order": "f-y-x",
+  "frames": 25,
+  "input_plan": "/home/liuzhirui/Project/physGen/code/v1/demo/P13/P13-V2-planimg.json",
+  "input_plan_sha256": "7a8b147ceac67c60a6132b94c64c7ad90248c3d1fba5d992c6224065682083f5",
+  "requested_mode": "i2v",
+  "sample_id": "P13",
+  "schema_version": "trace-writer-v1",
+  "spatial_masks": [
+    {
+      "grid_area": 880,
+      "positive_token_count": 604,
+      "soft_area": 327.376953,
+      "stage_id": "setup"
+    },
+    {
+      "grid_area": 880,
+      "positive_token_count": 604,
+      "soft_area": 335.510223,
+      "stage_id": "onset"
+    },
+    {
+      "grid_area": 880,
+      "positive_token_count": 604,
+      "soft_area": 335.510223,
+      "stage_id": "evolution"
+    },
+    {
+      "grid_area": 880,
+      "positive_token_count": 604,
+      "soft_area": 335.510223,
+      "stage_id": "completion"
+    },
+    {
+      "grid_area": 880,
+      "positive_token_count": 604,
+      "soft_area": 327.376953,
+      "stage_id": "terminal"
+    }
+  ],
+  "spatial_mode": "spacetime",
+  "stage_ids": [
+    "setup",
+    "onset",
+    "evolution",
+    "completion",
+    "terminal"
+  ],
+  "stage_spans": [
+    {
+      "core": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "outgoing_crossfade": [
+        4
+      ],
+      "stage_id": "setup"
+    },
+    {
+      "core": [
+        5,
+        6,
+        7
+      ],
+      "outgoing_crossfade": [
+        8
+      ],
+      "stage_id": "onset"
+    },
+    {
+      "core": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "outgoing_crossfade": [
+        16
+      ],
+      "stage_id": "evolution"
+    },
+    {
+      "core": [
+        17,
+        18,
+        19,
+        20
+      ],
+      "outgoing_crossfade": [
+        21
+      ],
+      "stage_id": "completion"
+    },
+    {
+      "core": [
+        22,
+        23,
+        24
+      ],
+      "outgoing_crossfade": [],
+      "stage_id": "terminal"
+    }
+  ],
+  "stages": [
+    {
+      "affected_roles": [
+        "source",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "setup",
+      "observable_check": "Both pictured waterline states remain readable and no stream exists.",
+      "positive": "The pictured left pitcher remains about half full while the right clear tumbler remains empty.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "The right tumbler already contains water before a clear stream spans the gap.",
+          "type": "outcome_preset",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "onset",
+      "observable_check": "The carrier crosses the visible gap before sink-level growth.",
+      "positive": "A clear column first leaves the right-facing pitcher spout and enters the tumbler rim.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "The pictured tumbler waterline rises while the spout-to-rim gap remains empty.",
+          "type": "wrong_order",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c2",
+        "c3"
+      ],
+      "id": "evolution",
+      "observable_check": "Opposite waterline motions remain connected by one visible stream.",
+      "positive": "The left pitcher waterline descends while the connected clear stream raises the right tumbler waterline.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c2",
+            "c3"
+          ],
+          "text": "The right tumbler fills while the pictured half-full pitcher line does not descend.",
+          "type": "coupling_broken",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c2",
+        "c3",
+        "c4"
+      ],
+      "id": "completion",
+      "observable_check": "Late container levels visibly differ from their pictured starting levels.",
+      "positive": "The clear transfer nears completion with a lower left waterline and a higher right waterline.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c2",
+            "c3",
+            "c4"
+          ],
+          "text": "The stream appears but neither pictured container develops the required waterline change.",
+          "type": "incomplete_transition",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c4",
+        "c5"
+      ],
+      "id": "terminal",
+      "observable_check": "One pitcher and one tumbler preserve their changed levels.",
+      "positive": "The same left pitcher retains less water and the same right tumbler retains more.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c4"
+          ],
+          "text": "The right water returns left and restores both pictured starting waterlines.",
+          "type": "reversal",
+          "weight": 0.5
+        },
+        {
+          "constraint_ids": [
+            "c5"
+          ],
+          "text": "Empty and water-filled copies of the right tumbler coexist on the tabletop.",
+          "type": "exclusion_broken",
+          "weight": 0.5
+        }
+      ]
+    }
+  ],
+  "temporal_weights": [
+    [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.5,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.5,
+      1.0,
+      1.0,
+      1.0,
+      0.5,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.5,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.5,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.5,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.5,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.5,
+      1.0,
+      1.0,
+      1.0
+    ]
+  ],
+  "validation": {
+    "errors": 0,
+    "fallback_selected": false,
+    "issues": [
+      {
+        "code": "planner_assumption",
+        "message": "The pictured pitcher tilts rightward enough to align its spout with the tumbler opening.",
+        "path": "$.assumptions[0]",
+        "severity": "warning"
+      },
+      {
+        "code": "planner_warning",
+        "message": "The stream is absent initially, so no carrier box is inferred; visible boxes remain unapproved.",
+        "path": "$.warnings[0]",
+        "severity": "warning"
+      }
+    ],
+    "warnings": 2
+  }
+}

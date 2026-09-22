@@ -1,0 +1,356 @@
+{
+  "assumptions": [
+    "The incoming path follows the visible horizontal line from the right-side ball to the left-side string bed."
+  ],
+  "constraints": [
+    {
+      "after": "horizontal_reverse",
+      "before": "string_contact",
+      "id": "c1",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "precedes"
+    },
+    {
+      "cause": "string_contact",
+      "effect": "horizontal_reverse",
+      "id": "c2",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "requires"
+    },
+    {
+      "effects": [
+        "court_gap_cycle",
+        "horizontal_reverse"
+      ],
+      "id": "c3",
+      "relation": "rightward reversal accompanies reopening separation from the string bed",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "couples"
+    },
+    {
+      "facts": [
+        "gap_state=right_departing",
+        "direction=rightward_away"
+      ],
+      "id": "c4",
+      "source_refs": [
+        "origin"
+      ],
+      "state": "z1",
+      "type": "persists"
+    },
+    {
+      "facts": [
+        "direction=leftward_toward_racket",
+        "direction=rightward_away"
+      ],
+      "id": "c5",
+      "scope": "same_time",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "excludes"
+    }
+  ],
+  "design_revision": "fixed5-causal-r3",
+  "entities": [
+    {
+      "id": "ball",
+      "mention": "the same yellow tennis ball on the right",
+      "role": "actor",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    },
+    {
+      "id": "racket",
+      "mention": "the same black-framed racket with white strings on the left",
+      "role": "patient",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "description": "the yellow ball visibly reaches the white racket strings",
+      "id": "string_contact",
+      "observable": "the horizontal court gap closes at the string bed",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    }
+  ],
+  "generation_basis": {
+    "mode": "visual_grounding",
+    "reference_image_usage": "visual_grounding",
+    "semantic_inputs": [
+      "origin",
+      "planner_instructions",
+      "reference_input"
+    ]
+  },
+  "global_semantic": "The yellow tennis ball crosses the dark green court leftward into the black-and-white racket and departs rightward after contact.",
+  "grounding": {
+    "approved": false,
+    "coordinate_frame": "reference_input",
+    "entity_boxes": [
+      {
+        "box": [
+          0.848,
+          0.39,
+          0.893,
+          0.469
+        ],
+        "entity_id": "ball"
+      },
+      {
+        "box": [
+          0.034,
+          0.287,
+          0.414,
+          0.566
+        ],
+        "entity_id": "racket"
+      }
+    ],
+    "protected_boxes": [],
+    "reference_image": "P03-i0-1280x704.png",
+    "reference_image_usage": "visual_grounding"
+  },
+  "predicates": [
+    {
+      "attribute": "horizontal gap_to:racket_strings",
+      "id": "gap_state",
+      "observable": "dark green interval between the yellow ball and racket strings",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "subject": "ball",
+      "values": [
+        "right_separated",
+        "right_departing"
+      ]
+    },
+    {
+      "attribute": "horizontal travel_direction",
+      "id": "direction",
+      "observable": "yellow-ball displacement across the horizontal court axis",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "subject": "ball",
+      "values": [
+        "leftward_toward_racket",
+        "rightward_away"
+      ]
+    }
+  ],
+  "protected_predicates": [
+    "exactly one yellow tennis ball",
+    "same black racket frame, white strings, and white grip",
+    "dark green backdrop, blue strip, green court, lighting, and static camera remain unchanged"
+  ],
+  "sample_id": "P03",
+  "schema_version": "trace-writer-v1",
+  "source_files": {
+    "origin": "P03-origin.txt",
+    "planner_instructions": "Project/physGen/prompt/generate_trace_writer_v1_plan.txt",
+    "reference_input": "P03-i0-1280x704.png"
+  },
+  "stages": [
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "setup",
+      "observable_check": "The ball remains yellow and closes the right-side court gap leftward.",
+      "positive": "The pictured yellow ball moves leftward over dark green court toward the fixed white string bed.",
+      "support_kind": "motion_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "The yellow ball already moves rightward before crossing the pictured gap to the racket.",
+          "type": "outcome_preset"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c1",
+        "c2"
+      ],
+      "id": "onset",
+      "observable_check": "The ball boundary meets the white string grid before reversal.",
+      "positive": "The yellow ball reaches the white strings before its horizontal displacement changes from leftward to rightward.",
+      "support_kind": "contact_interface",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1",
+            "c2"
+          ],
+          "text": "The yellow ball turns rightward while dark green court still separates it from the strings.",
+          "type": "wrong_order"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c3"
+      ],
+      "id": "evolution",
+      "observable_check": "Rightward displacement begins from the same visible contact point.",
+      "positive": "Following string contact, the same yellow ball travels rightward away from the black racket frame.",
+      "support_kind": "motion_contact_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c3"
+          ],
+          "text": "The ball changes direction but remains attached to the pictured white string bed.",
+          "type": "coupling_broken"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c3",
+        "c4"
+      ],
+      "id": "completion",
+      "observable_check": "The right-side ball-racket interval grows on successive frames.",
+      "positive": "A widening dark green interval separates the outgoing yellow ball from the unchanged racket.",
+      "support_kind": "motion_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c3",
+            "c4"
+          ],
+          "text": "The outgoing yellow ball never gains readable court separation from the racket strings.",
+          "type": "incomplete_transition"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c4",
+        "c5"
+      ],
+      "id": "terminal",
+      "observable_check": "One yellow ball continues rightward while racket appearance stays fixed.",
+      "positive": "The same yellow ball remains on its rightward outgoing path away from the same black-and-white racket.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c4"
+          ],
+          "text": "The yellow ball turns leftward toward the pictured racket again in final frames.",
+          "type": "reversal"
+        },
+        {
+          "constraint_ids": [
+            "c5"
+          ],
+          "text": "Leftward and rightward copies of the yellow ball coexist on the court.",
+          "type": "exclusion_broken"
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "facts": {
+        "direction": "leftward_toward_racket",
+        "gap_state": "right_separated"
+      },
+      "id": "z0",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    },
+    {
+      "facts": {
+        "direction": "rightward_away",
+        "gap_state": "right_departing"
+      },
+      "id": "z1",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "cause_event": "string_contact",
+      "effects": [
+        {
+          "direction": "green interval closes then reopens rightward",
+          "from": "right_separated",
+          "id": "court_gap_cycle",
+          "predicate": "gap_state",
+          "to": "right_departing"
+        },
+        {
+          "direction": "horizontal travel changes from leftward to rightward",
+          "from": "leftward_toward_racket",
+          "id": "horizontal_reverse",
+          "predicate": "direction",
+          "to": "rightward_away"
+        }
+      ],
+      "from": "z0",
+      "id": "e1",
+      "kind": "triggered",
+      "preconditions": [
+        "gap_state=right_separated",
+        "direction=leftward_toward_racket"
+      ],
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "support_kind": "motion_contact_corridor",
+      "to": "z1"
+    }
+  ],
+  "warnings": [
+    "Entity boxes are visually estimated from the reference image and remain unapproved."
+  ]
+}

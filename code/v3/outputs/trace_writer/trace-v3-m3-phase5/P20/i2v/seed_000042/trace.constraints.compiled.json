@@ -1,0 +1,102 @@
+{
+  "closed_world": {
+    "allowed_entity_ids": [
+      "kettle",
+      "coffee_stream",
+      "cup",
+      "campfire"
+    ],
+    "empty_regions": [],
+    "external_source_allowed": false,
+    "forbidden_new_categories": [
+      "external source",
+      "extra copy",
+      "unlisted object"
+    ],
+    "provenance": "derived"
+  },
+  "conservation": [
+    {
+      "observable_proxy": "tracked logical entity slots remain consistent",
+      "provenance": "derived",
+      "quantity": "instance_count",
+      "relation": "constant",
+      "rule_id": "entity_slots_constant",
+      "sinks": [
+        "kettle",
+        "coffee_stream",
+        "cup",
+        "campfire"
+      ],
+      "sources": [
+        "kettle",
+        "coffee_stream",
+        "cup",
+        "campfire"
+      ],
+      "tolerance": 0.0
+    },
+    {
+      "observable_proxy": "visible spout outflow crosses one stream path and raises the dark surface inside the gray cup",
+      "provenance": "derived",
+      "quantity": "material_proxy",
+      "relation": "coupled_monotonic",
+      "rule_id": "conservation_c3",
+      "sinks": [
+        "stream_state",
+        "cup_level"
+      ],
+      "sources": [
+        "source_amount"
+      ],
+      "tolerance": 0.1
+    }
+  ],
+  "lifecycles": [
+    {
+      "entity_id": "kettle",
+      "from_stage": "setup",
+      "from_state": "more",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "more",
+          "less"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "less"
+    },
+    {
+      "entity_id": "coffee_stream",
+      "from_stage": "setup",
+      "from_state": "absent",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "absent",
+          "continuous"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "continuous"
+    },
+    {
+      "entity_id": "cup",
+      "from_stage": "setup",
+      "from_state": "lower",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "lower",
+          "higher"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "higher"
+    }
+  ]
+}

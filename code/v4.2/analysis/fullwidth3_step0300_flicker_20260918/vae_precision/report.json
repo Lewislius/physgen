@@ -1,0 +1,33 @@
+{
+  "torch": "2.8.0+cu128",
+  "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+  "source": "/home/liuzhirui/Project/physGen/code/v4-static-lora/inference_outputs/lora_20260917T140727Z_dae2a0_step0800_ema_demo_seed42/P03_i2v",
+  "default_matmul_tf32": false,
+  "default_cudnn_tf32": true,
+  "variants": {
+    "v42_default": {
+      "cudnn_tf32": true,
+      "seconds": 4.382694306317717,
+      "first_mae_vs_saved": 0.0005715356091968715,
+      "first_max_vs_saved": 0.00616145133972168,
+      "first_rms": 0.5921874642372131,
+      "decoded_mae_vs_existing_mp4": 0.006762553472071886,
+      "color_jump_mean": 0.0008757375180721283,
+      "color_jump_p95": 0.0021759545197710395,
+      "clipping_fraction": 0.024334998899984694,
+      "all_finite": true
+    },
+    "strict_fp32": {
+      "cudnn_tf32": false,
+      "seconds": 12.575683383271098,
+      "first_mae_vs_saved": 0.0,
+      "first_max_vs_saved": 0.0,
+      "first_rms": 0.5921449065208435,
+      "decoded_mae_vs_existing_mp4": 0.00675136037170887,
+      "color_jump_mean": 0.0008758041658438742,
+      "color_jump_p95": 0.00217435258673504,
+      "clipping_fraction": 0.024346712717850858,
+      "all_finite": true
+    }
+  }
+}

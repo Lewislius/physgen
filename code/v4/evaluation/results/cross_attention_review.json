@@ -1,0 +1,32 @@
+{
+  "date": "2026-09-12",
+  "fusion": "cross_attention",
+  "status": "passed CPU implementation checks",
+  "tests": {
+    "contract_checks.py": 23,
+    "test_condition_prior.py": 13,
+    "test_cross_attention.py": 11,
+    "test_launchers.py": 10,
+    "test_training_runtime.py ShortRunTests": 3
+  },
+  "total_passed": 60,
+  "full_shape_result": "cross_attention_full_shape.json",
+  "static_checks": ["Python AST", "local document file links", "source diff review"],
+  "trainable_parameters": {"A": 149992291, "B": 10236418, "AB": 160228709},
+  "checks": [
+    "Unequal P/H token counts, no interpolation in image_text cross_attention path",
+    "Both read and write use global noncausal attention with shared coordinates",
+    "H-addressed write values come from committed P, excluding outer padding tokens",
+    "Two inner iterations requery current P; checkpoint recomputation preserves gradients",
+    "Six A sites share parameters; exact suffix replay and per-site writer ablations",
+    "Zero writer identity, B initial identity, frozen-core input gradients",
+    "Old fusion strict restoration, explicit trainable migration and writer reset",
+    "Same-fusion phase transfer preserves trained writers",
+    "Default A1/1000 records/500 steps and later 250-step phases preserved",
+    "Allocated GPU count still follows slots_per_trial; no startup preflight"
+  ],
+  "full_gpu_training": false,
+  "real_wan_full_shape_forward": false,
+  "video_generation_effect_validated": false,
+  "dependencies_installed": []
+}

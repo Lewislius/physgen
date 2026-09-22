@@ -1,0 +1,180 @@
+{
+  "closed_world": {
+    "allowed_entity_ids": [
+      "paper"
+    ],
+    "empty_regions": [],
+    "external_source_allowed": false,
+    "forbidden_new_categories": [
+      "external source",
+      "extra copy",
+      "unlisted object"
+    ],
+    "provenance": "derived"
+  },
+  "conservation": [
+    {
+      "observable_proxy": "tracked logical entity slots remain consistent",
+      "provenance": "derived",
+      "quantity": "instance_count",
+      "relation": "constant",
+      "rule_id": "entity_slots_constant",
+      "sinks": [
+        "paper"
+      ],
+      "sources": [
+        "paper"
+      ],
+      "tolerance": 0.0
+    },
+    {
+      "observable_proxy": "tear length grows from notch as two resulting sides separate",
+      "provenance": "derived",
+      "quantity": "material_proxy",
+      "relation": "coupled_monotonic",
+      "rule_id": "conservation_c3",
+      "sinks": [
+        "integrity",
+        "separation"
+      ],
+      "sources": [
+        "tear_extent"
+      ],
+      "tolerance": 0.1
+    }
+  ],
+  "issues": [],
+  "lifecycles": [
+    {
+      "entity_id": "paper",
+      "from_stage": "setup",
+      "from_state": "small_notch; one_sheet; connected",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "small_notch",
+          "full_tear"
+        ],
+        [
+          "one_sheet",
+          "two_pieces"
+        ],
+        [
+          "connected",
+          "apart"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "full_tear; two_pieces; apart"
+    }
+  ],
+  "slots": [
+    {
+      "aliases": [],
+      "canonical_mention": "the same notched sheet of paper and its resulting pieces",
+      "cardinality": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "paper",
+      "invariant_attributes": [
+        "same paper material and color",
+        "single original notch and outward tear path",
+        "camera and background remain unchanged"
+      ],
+      "mutable_attributes": [
+        "tear_from_notch",
+        "integrity",
+        "piece_separation"
+      ],
+      "persistent_identity": true,
+      "provenance": "derived",
+      "role": "patient"
+    }
+  ],
+  "stage_presence": [
+    {
+      "entity_id": "paper",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [
+        "tear_extent=small_notch",
+        "integrity=one_sheet",
+        "separation=connected"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "paper",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [
+        "tear_extent=small_notch",
+        "integrity=one_sheet",
+        "separation=connected"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "paper",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [
+        "tear_extent=full_tear",
+        "integrity=two_pieces",
+        "separation=apart"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "paper",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [
+        "tear_extent=full_tear",
+        "integrity=two_pieces",
+        "separation=apart"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "paper",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [
+        "tear_extent=full_tear",
+        "integrity=two_pieces",
+        "separation=apart"
+      ],
+      "visible": "required"
+    }
+  ]
+}

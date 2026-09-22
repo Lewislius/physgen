@@ -1,0 +1,33 @@
+name: 8h-wan22-lora-frame-causal-window-k5-fm-bs8-1x96g
+description: Frame-global self attention; previous 5 latent frames plus current; LoRA r32 FM BS8 1200 steps save100; one 96GB GPU
+workspace: ALL-IN-ONE
+project: wan-animate
+max_restarts: 0
+resources:
+  resource_pool: blk-96g
+  slots_per_trial: 1
+  is_single_node: true
+  shm_size: 34359738368
+bind_mounts:
+  - host_path: /mount/HOME/liuzhirui
+    container_path: /home/liuzhirui
+  - host_path: /mount/NAS1/public
+    container_path: /run/determined/NAS1/public
+environment:
+  image: 10.130.130.5:8192/lab-dev:latest
+  environment_variables:
+    - PREPARE=1
+    - OMP_NUM_THREADS=4
+checkpoint_storage:
+  type: shared_fs
+  host_path: /mount/HOME/liuzhirui
+  storage_path: Project/physGen/code/v4-static-lora/determined_checkpoints/frame_causal_window_k5/1x96g
+  save_experiment_best: 0
+  save_trial_best: 0
+  save_trial_latest: 0
+searcher:
+  name: single
+  metric: validation_loss
+  max_length: {epochs: 1}
+  smaller_is_better: true
+entrypoint: bash /home/liuzhirui/Project/physGen/code/v4-static-lora/train/train_frame_causal_window_1x96g.sh

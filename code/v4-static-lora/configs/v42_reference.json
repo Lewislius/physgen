@@ -1,0 +1,93 @@
+{
+  "model_version": "physgen_v42_f121_independent_correctors_v3",
+  "paths": {
+    "wan_code": "/home/liuzhirui/model/Wan2.2",
+    "wan_checkpoint": "/home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B",
+    "teacher_code": "/home/liuzhirui/model/vjepa2",
+    "teacher_checkpoint": "/home/liuzhirui/model/vjepa2/checkpoint/vjepa2_1_vitG_384.pt",
+    "wisa_index": "/run/determined/NAS1/public/Dataset/WISA/data/wisa-80k.json",
+    "wisa_videos": "/run/determined/NAS1/public/Dataset/WISA/data/videos",
+    "annotations": "/home/liuzhirui/Project/physGen/code/v4.2/data_index2400",
+    "cache": "/home/liuzhirui/Project/physGen/code/v4.2/cache/wisa2400_nativefps_f121_a147456_fp32_jepa32",
+    "asset_lock": "/home/liuzhirui/Project/physGen/code/v4.2/assets/wan_jepa_metadata.json",
+    "checkpoints": "/home/liuzhirui/Project/physGen/code/v4.2/checkpoints",
+    "logs": "/home/liuzhirui/Project/physGen/code/v4.2/train/train_log",
+    "outputs": "/home/liuzhirui/Project/physGen/code/v4.2/inference_outputs",
+    "demo_root": "/home/liuzhirui/Project/physGen/code/v1/demo",
+    "reference_image": "/home/liuzhirui/model/Wan2.2/overfit_ref/overfit_ref5.jpg",
+    "reference_prompt": "The woman smiles and waves at the camera."
+  },
+  "preparation": {
+    "asset_verification": "metadata",
+    "reuse_sources": [
+      "/home/liuzhirui/Project/physGen/code/v4.2/cache/wisa4000_nativefps_f121_a147456_fp32_jepa32",
+      "/home/liuzhirui/Project/physGen/code/v4.2/quick16/work/cache_v4_f121"
+    ]
+  },
+  "data": {
+    "seed": 20260909,
+    "limit": 2400,
+    "source_limit": 4000,
+    "subset_manifest": "/home/liuzhirui/Project/physGen/code/v4.2/cache/wisa4000_nativefps_f121_a147456_fp32_jepa32/manifest.json",
+    "selection_file": null,
+    "clip_annotations": null,
+    "validation_stride": 20,
+    "frames": 121,
+    "max_long_side": 512,
+    "max_area": 147456,
+    "decode_chunk_frames": 8,
+    "teacher_frames": 32,
+    "teacher_size": 384,
+    "categories": [
+      "unlabeled"
+    ]
+  },
+  "state": {
+    "sites": [
+      5,
+      15
+    ],
+    "parameter_sharing": "per_block",
+    "width": 1664,
+    "inner": 512,
+    "heads": 8,
+    "depth": 2,
+    "checkpoint": true
+  },
+  "loss": {
+    "fm": 1.0,
+    "struct": 0.1,
+    "temp": 0.05
+  },
+  "train": {
+    "recipe": "fm_joint_independent_cores_struct_global_share20_v2",
+    "seed": 20260916,
+    "steps": 1200,
+    "world_size": 1,
+    "accumulation": 8,
+    "save_every": 100,
+    "ema_decay": 0.995,
+    "grad_clip": 1.0,
+    "aux_ratio": 0.2,
+    "aux_reference": "all_trainable_sum_of_norms",
+    "decoder_save_on_cpu": true,
+    "peak_lr": {
+      "core5": 5e-05,
+      "core15": 5e-05,
+      "text_init": 2e-05,
+      "writer5": 1e-05,
+      "writer15": 2e-05
+    }
+  },
+  "inference": {
+    "canvas_wh": [
+      512,
+      288
+    ],
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "seed": 42,
+    "duration": 5.0
+  }
+}

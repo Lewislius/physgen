@@ -1,0 +1,34 @@
+name: physgen-v43-bounded-native-flow-oracle-probe-1x96g
+description: One cached clip, exact native widths and real Wan suffix/gradient checks, no optimizer update or training checkpoint
+workspace: ALL-IN-ONE
+project: wan-animate
+max_restarts: 0
+resources:
+  resource_pool: blk-96g
+  slots_per_trial: 1
+  is_single_node: true
+  shm_size: 34359738368
+bind_mounts:
+  - host_path: /mount/HOME/liuzhirui
+    container_path: /home/liuzhirui
+  - host_path: /mount/NAS1/public
+    container_path: /run/determined/NAS1/public
+environment:
+  image: 10.130.130.5:8192/lab-dev:latest
+  environment_variables:
+    - CONFIG=/home/liuzhirui/Project/physGen/code/v4.3/configs/flow_oracle.yaml
+    - OMP_NUM_THREADS=4
+    - PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+checkpoint_storage:
+  type: shared_fs
+  host_path: /mount/HOME/liuzhirui
+  storage_path: Project/physGen/code/v4.3/determined_checkpoints
+  save_experiment_best: 0
+  save_trial_best: 0
+  save_trial_latest: 0
+searcher:
+  name: single
+  metric: validation_loss
+  max_length: {epochs: 1}
+  smaller_is_better: true
+entrypoint: bash /home/liuzhirui/Project/physGen/code/v4.3/tools/probe_1x96g.sh

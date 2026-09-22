@@ -1,0 +1,353 @@
+{
+  "assumptions": [],
+  "constraints": [
+    {
+      "after": "bounce_decay",
+      "before": "first_impact",
+      "id": "c1",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "precedes"
+    },
+    {
+      "cause": "first_impact",
+      "effect": "bounce_decay",
+      "id": "c2",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "requires"
+    },
+    {
+      "effects": [
+        "height_finish",
+        "bounce_decay",
+        "peaks_decay"
+      ],
+      "id": "c3",
+      "relation": "repeated floor contacts produce successively lower peaks until rest",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "couples"
+    },
+    {
+      "facts": [
+        "height_state=resting_on_floor",
+        "motion_state=resting",
+        "peak_envelope=decreasing_to_zero"
+      ],
+      "id": "c4",
+      "source_refs": [
+        "origin"
+      ],
+      "state": "z1",
+      "type": "persists"
+    },
+    {
+      "facts": [
+        "motion_state=bouncing",
+        "motion_state=resting"
+      ],
+      "id": "c5",
+      "scope": "same_time",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "excludes"
+    }
+  ],
+  "control": {},
+  "design_revision": "fixed5-causal-r3",
+  "entities": [
+    {
+      "id": "ball",
+      "mention": "the same rubber ball",
+      "role": "actor",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "id": "floor",
+      "mention": "the same hard floor",
+      "role": "patient",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "description": "the falling ball first visibly contacts the hard floor",
+      "id": "first_impact",
+      "observable": "the ball-floor gap reaches zero",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "generation_basis": {
+    "mode": "identifier_only",
+    "reference_image_usage": "identifier_only",
+    "semantic_inputs": [
+      "origin",
+      "planner_instructions"
+    ]
+  },
+  "global_semantic": "One rubber ball drops onto a hard floor, bounces to progressively lower heights, and comes to rest.",
+  "grounding": {
+    "approved": false,
+    "coordinate_frame": "reference_input",
+    "entity_boxes": [],
+    "protected_boxes": [],
+    "reference_image": "P18-i0-1280x704.png",
+    "reference_image_usage": "identifier_only"
+  },
+  "predicates": [
+    {
+      "attribute": "height_above:floor",
+      "id": "height_state",
+      "observable": "vertical ball-floor gap",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "ball",
+      "values": [
+        "elevated",
+        "resting_on_floor"
+      ]
+    },
+    {
+      "attribute": "motion",
+      "id": "motion_state",
+      "observable": "alternating vertical displacement and final zero displacement",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "ball",
+      "values": [
+        "falling",
+        "bouncing",
+        "resting"
+      ]
+    },
+    {
+      "attribute": "successive_rebound_peaks",
+      "id": "peak_envelope",
+      "observable": "maximum height reached after each floor contact",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "ball",
+      "values": [
+        "initial_height",
+        "decreasing_to_zero"
+      ]
+    }
+  ],
+  "protected_predicates": [
+    "same rubber ball identity and material",
+    "same hard floor",
+    "same impact corridor",
+    "camera and background remain unchanged"
+  ],
+  "sample_id": "P18",
+  "schema_version": "trace-writer-v1",
+  "source_files": {
+    "origin": "P18-origin.txt",
+    "planner_instructions": "Project/physGen/prompt/generate_trace_writer_v1_plan.txt",
+    "reference_input": "P18-i0-1280x704.png"
+  },
+  "stages": [
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "setup",
+      "observable_check": "The vertical gap decreases continuously before first contact.",
+      "positive": "The rubber ball falls from its elevated position toward the hard floor without rebounding early.",
+      "support_kind": "motion_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "The ball is already resting before completing its visible downward fall.",
+          "type": "outcome_preset"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c1",
+        "c2"
+      ],
+      "id": "onset",
+      "observable_check": "The first upward displacement follows a zero floor gap.",
+      "positive": "The falling ball visibly contacts the floor before beginning its first upward rebound.",
+      "support_kind": "contact_interface",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1",
+            "c2"
+          ],
+          "text": "The ball reverses upward while a visible gap from the floor still remains.",
+          "type": "trigger_missing"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c3"
+      ],
+      "id": "evolution",
+      "observable_check": "Ordered peak heights decrease across the repeated bounce sequence.",
+      "positive": "The same ball bounces repeatedly, and every successive rebound reaches a visibly lower peak.",
+      "support_kind": "motion_contact_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c3"
+          ],
+          "text": "Successive floor contacts send the ball to equal or progressively higher peaks.",
+          "type": "coupling_broken"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c3",
+        "c4"
+      ],
+      "id": "completion",
+      "observable_check": "The final rebound envelope contracts and displacement reaches zero.",
+      "positive": "The remaining bounce heights shrink toward zero until the ball settles at the floor.",
+      "support_kind": "motion_contact_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c3",
+            "c4"
+          ],
+          "text": "Late rebounds regain height or continue without converging toward floor-level rest.",
+          "type": "envelope_broken"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c4",
+        "c5"
+      ],
+      "id": "terminal",
+      "observable_check": "One ball holds zero displacement at the floor through the end.",
+      "positive": "The same rubber ball remains motionless at one position on the same hard floor.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c4"
+          ],
+          "text": "The resting ball begins bouncing again during the final frames.",
+          "type": "reversal"
+        },
+        {
+          "constraint_ids": [
+            "c5"
+          ],
+          "text": "Bouncing and resting copies of the same rubber ball coexist simultaneously.",
+          "type": "exclusion_broken"
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "facts": {
+        "height_state": "elevated",
+        "motion_state": "falling",
+        "peak_envelope": "initial_height"
+      },
+      "id": "z0",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "facts": {
+        "height_state": "resting_on_floor",
+        "motion_state": "resting",
+        "peak_envelope": "decreasing_to_zero"
+      },
+      "id": "z1",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "cause_event": "first_impact",
+      "effects": [
+        {
+          "direction": "vertical motion converges to floor",
+          "from": "elevated",
+          "id": "height_finish",
+          "predicate": "height_state",
+          "to": "resting_on_floor"
+        },
+        {
+          "direction": "repeated rebounds decay to zero motion",
+          "from": "falling",
+          "id": "bounce_decay",
+          "predicate": "motion_state",
+          "to": "resting"
+        },
+        {
+          "direction": "each successive rebound peak is lower",
+          "from": "initial_height",
+          "id": "peaks_decay",
+          "predicate": "peak_envelope",
+          "to": "decreasing_to_zero"
+        }
+      ],
+      "from": "z0",
+      "id": "e1",
+      "kind": "triggered",
+      "preconditions": [
+        "height_state=elevated",
+        "motion_state=falling",
+        "peak_envelope=initial_height"
+      ],
+      "source_refs": [
+        "origin"
+      ],
+      "support_kind": "motion_contact_corridor",
+      "to": "z1"
+    }
+  ],
+  "warnings": []
+}

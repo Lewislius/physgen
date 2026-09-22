@@ -1,0 +1,76 @@
+name: physgen-ace-router-v1-m4-t2v-inference
+description: Wan2.2-TI2V-5B M4 without image conditioning, using compiled metadata semantic, relation-only causal pair, and capped ACE residual
+workspace: ALL-IN-ONE
+project: wan-animate
+
+max_restarts: 0
+resources:
+  resource_pool: amp-48g
+  slots_per_trial: 1
+  is_single_node: true
+  shm_size: 34359738368
+
+bind_mounts:
+  - host_path: /mount/HOME/liuzhirui
+    container_path: /home/liuzhirui
+  - host_path: /mount/NAS1/public
+    container_path: /run/determined/NAS1/public
+
+environment:
+  image: 10.130.130.5:8192/lab-dev:latest
+  environment_variables:
+    - HOME=/home/liuzhirui
+    - PYTHONDONTWRITEBYTECODE=1
+    - PYTHONUNBUFFERED=1
+    - TOKENIZERS_PARALLELISM=false
+    - WAN_REPO=/home/liuzhirui/model/Wan2.2
+    - WAN_CHECKPOINT_DIR=/home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B
+    - DEMO_ROOT=/home/liuzhirui/Project/physGen/code/v1/demo
+    - OUTPUT_ROOT=/home/liuzhirui/Project/physGen/code/v1/outputs/ace_router
+    - SAMPLE_IDS=all
+    - SEEDS=42
+    - FRAME_NUM=97
+    - MAX_AREA=901120
+    - SAMPLING_STEPS=50
+    - GUIDE_SCALE=5.0
+    - SHIFT=5.0
+    - SAMPLE_SOLVER=unipc
+    - FPS=24
+    - LAMBDA0=0.08
+    - RESIDUAL_CAP_RATIO=0.015
+    - LAYER_PRESET=mid_b
+    - STEP_PRESET=safe_t2v_v1
+    - CONDITIONING_MODE=compiled
+    - DIAGNOSTICS=full
+    - INFERENCE_DEVICE=0
+    - MINIMUM_CONFIDENCE=0.7
+    - M4_ORIENTATION=landscape
+    - OFFLOAD_MODEL=1
+    - T5_CPU=1
+    - CONVERT_MODEL_DTYPE=1
+    - SHOW_PROGRESS=1
+    - CONTINUE_ON_ERROR=1
+    - ALLOW_UPSTREAM_DRIFT=0
+    - REQUIRE_SELECTION_MANIFEST=0
+    - WAN_FLASH_ATTN_FORCE_VERSION=2
+    - WAN_FLASH_ATTN_FORCE_CONTIGUOUS=1
+
+checkpoint_storage:
+  type: shared_fs
+  host_path: /mount/HOME/liuzhirui
+  storage_path: Project/physGen/code/v1/determined_checkpoints
+  save_experiment_best: 0
+  save_trial_best: 0
+  save_trial_latest: 0
+
+searcher:
+  name: single
+  metric: validation_loss
+  max_length:
+    epochs: 1
+  smaller_is_better: true
+
+profiling:
+  enabled: true
+
+entrypoint: /home/liuzhirui/Project/physGen/code/v1/inference/infer_ace_router_m4.sh

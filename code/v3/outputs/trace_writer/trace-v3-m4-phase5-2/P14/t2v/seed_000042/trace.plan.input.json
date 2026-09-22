@@ -1,0 +1,363 @@
+{
+  "assumptions": [],
+  "constraints": [
+    {
+      "after": "glass_increase",
+      "before": "juice_stream_onset",
+      "id": "c1",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "precedes"
+    },
+    {
+      "effect": "bottle_decrease",
+      "id": "c2",
+      "source_refs": [
+        "origin"
+      ],
+      "transition": "e1",
+      "type": "changes"
+    },
+    {
+      "effects": [
+        "bottle_decrease",
+        "orange_stream",
+        "glass_increase"
+      ],
+      "id": "c3",
+      "relation": "bottle level falls through visible orange stream while glass level rises",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "couples"
+    },
+    {
+      "facts": [
+        "source_level=lower",
+        "sink_level=higher"
+      ],
+      "id": "c4",
+      "source_refs": [
+        "origin"
+      ],
+      "state": "z1",
+      "type": "persists"
+    },
+    {
+      "facts": [
+        "sink_level=empty_or_low",
+        "sink_level=higher"
+      ],
+      "id": "c5",
+      "scope": "same_time",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "excludes"
+    }
+  ],
+  "control": {},
+  "design_revision": "fixed5-causal-r3",
+  "entities": [
+    {
+      "id": "bottle",
+      "mention": "the same bottle containing orange juice",
+      "role": "source",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "id": "stream",
+      "mention": "the visible orange-juice stream",
+      "role": "carrier",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "id": "glass",
+      "mention": "the same receiving glass",
+      "role": "sink",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "description": "orange juice first visibly connects bottle to glass",
+      "id": "juice_stream_onset",
+      "observable": "an orange stream enters the glass opening",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "generation_basis": {
+    "mode": "identifier_only",
+    "reference_image_usage": "identifier_only",
+    "semantic_inputs": [
+      "origin",
+      "planner_instructions"
+    ]
+  },
+  "global_semantic": "One bottle pours orange juice through a visible stream into one glass as source decreases and sink increases.",
+  "grounding": {
+    "approved": false,
+    "coordinate_frame": "reference_input",
+    "entity_boxes": [],
+    "protected_boxes": [],
+    "reference_image": "P14-i0-1280x704.png",
+    "reference_image_usage": "identifier_only"
+  },
+  "predicates": [
+    {
+      "attribute": "juice_level",
+      "id": "source_level",
+      "observable": "orange-juice waterline inside bottle",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "bottle",
+      "values": [
+        "higher",
+        "lower"
+      ]
+    },
+    {
+      "attribute": "visibility",
+      "id": "stream_state",
+      "observable": "connected orange column between bottle and glass",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "stream",
+      "values": [
+        "absent",
+        "continuous"
+      ]
+    },
+    {
+      "attribute": "juice_level",
+      "id": "sink_level",
+      "observable": "orange-juice waterline inside glass",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "glass",
+      "values": [
+        "empty_or_low",
+        "higher"
+      ]
+    }
+  ],
+  "protected_predicates": [
+    "same bottle, glass, and orange juice",
+    "juice stays within the source-stream-sink route",
+    "camera and unrelated scene remain unchanged"
+  ],
+  "sample_id": "P14",
+  "schema_version": "trace-writer-v1",
+  "source_files": {
+    "origin": "P14-origin.txt",
+    "planner_instructions": "Project/physGen/prompt/generate_trace_writer_v1_plan.txt",
+    "reference_input": "P14-i0-1280x704.png"
+  },
+  "stages": [
+    {
+      "affected_roles": [
+        "source",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "setup",
+      "observable_check": "Source and sink show their distinct starting levels without a stream.",
+      "positive": "The bottle begins with more orange juice while the receiving glass contains little or none.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "The glass already holds more juice before any orange stream leaves the bottle.",
+          "type": "outcome_preset"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "onset",
+      "observable_check": "The carrier appears before a measurable increase in the glass.",
+      "positive": "A visible orange stream first spans the bottle opening and the receiving glass.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "The glass juice level rises while no orange stream enters its opening.",
+          "type": "wrong_order"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c2",
+        "c3"
+      ],
+      "id": "evolution",
+      "observable_check": "All three transfer components change together in the requested directions.",
+      "positive": "Orange juice flows continuously as the bottle level falls and the glass level rises.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c2",
+            "c3"
+          ],
+          "text": "The glass gains orange juice while the bottle keeps its original source level.",
+          "type": "coupling_broken"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c2",
+        "c3",
+        "c4"
+      ],
+      "id": "completion",
+      "observable_check": "Late source and sink levels remain visibly changed from setup.",
+      "positive": "The transfer approaches its result with visibly less juice in the bottle and more in the glass.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c2",
+            "c3",
+            "c4"
+          ],
+          "text": "The orange stream persists without producing opposite level changes in both containers.",
+          "type": "incomplete_transition"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c4",
+        "c5"
+      ],
+      "id": "terminal",
+      "observable_check": "The changed container levels persist through the final frames.",
+      "positive": "The same bottle holds less orange juice and the same glass holds more without reversal.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c4"
+          ],
+          "text": "Orange juice returns to the bottle and restores both starting levels.",
+          "type": "reversal"
+        },
+        {
+          "constraint_ids": [
+            "c5"
+          ],
+          "text": "Low-level and high-level copies of the receiving glass coexist simultaneously.",
+          "type": "exclusion_broken"
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "facts": {
+        "sink_level": "empty_or_low",
+        "source_level": "higher",
+        "stream_state": "absent"
+      },
+      "id": "z0",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "facts": {
+        "sink_level": "higher",
+        "source_level": "lower",
+        "stream_state": "continuous"
+      },
+      "id": "z1",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "cause_event": null,
+      "effects": [
+        {
+          "direction": "bottle juice line descends",
+          "from": "higher",
+          "id": "bottle_decrease",
+          "predicate": "source_level",
+          "to": "lower"
+        },
+        {
+          "direction": "orange carrier becomes connected",
+          "from": "absent",
+          "id": "orange_stream",
+          "predicate": "stream_state",
+          "to": "continuous"
+        },
+        {
+          "direction": "glass juice line rises",
+          "from": "empty_or_low",
+          "id": "glass_increase",
+          "predicate": "sink_level",
+          "to": "higher"
+        }
+      ],
+      "from": "z0",
+      "id": "e1",
+      "kind": "continuous",
+      "preconditions": [
+        "source_level=higher",
+        "stream_state=absent",
+        "sink_level=empty_or_low"
+      ],
+      "source_refs": [
+        "origin"
+      ],
+      "support_kind": "source_stream_sink",
+      "to": "z1"
+    }
+  ],
+  "warnings": []
+}

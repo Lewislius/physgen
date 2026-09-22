@@ -1,0 +1,190 @@
+{
+  "actual_t5_token_lengths": {
+    "global_semantic": 280,
+    "stage.completion.negative.0": 133,
+    "stage.completion.positive": 133,
+    "stage.evolution.negative.0": 134,
+    "stage.evolution.positive": 132,
+    "stage.onset.negative.0": 141,
+    "stage.onset.positive": 140,
+    "stage.setup.negative.0": 142,
+    "stage.setup.positive": 139,
+    "stage.terminal.negative.0": 170,
+    "stage.terminal.negative.1": 163,
+    "stage.terminal.positive": 179
+  },
+  "global_anchor": "[ENTITY INVENTORY] The closed scene contains paper: exactly 1. The reference first frame fixes these identities and initial layout. [INITIAL STATE] tear_extent=small_top_notch, integrity=one_wide_sheet, separation=connected. [PHYSICAL EVENT] The wide white horizontal sheet tears downward and outward from its single small top-edge notch and separates into two pieces. [PERSISTENT PROTECTION] same plain white paper material and rectangular outer proportions; single centered top-edge notch remains the tear origin; gray background, lighting, frontal camera, and framing remain unchanged; no pulling hands or tools are added. [CLOSED WORLD] No additional external source, extra copy, unlisted object enters or appears; unoccupied scene regions remain empty. [CONSERVATION] Source loss and result gain stay coupled: tracked logical entity slots remain consistent; centered gray slit lengthens as white sides separate. No result appears from an undeclared external source. [TERMINAL STATE] The same logical entity slots persist without duplicates; tear_extent=full_vertical_tear, integrity=two_white_pieces, separation=apart remains visible through the final frames.",
+  "issues": [],
+  "max_t5_token_length": 280,
+  "protected_coverage": {
+    "gray background, lighting, frontal camera, and framing remain unchanged": [
+      "appearance",
+      "geometry",
+      "camera_background",
+      "closed_world_or_persistence"
+    ],
+    "no pulling hands or tools are added": [
+      "closed_world_or_persistence"
+    ],
+    "same plain white paper material and rectangular outer proportions": [
+      "identity_count",
+      "appearance",
+      "geometry"
+    ],
+    "single centered top-edge notch remains the tear origin": [
+      "closed_world_or_persistence"
+    ]
+  },
+  "stage_pairs": [
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "the centered top-edge notch first lengthens downward happens BEFORE white rectangle divides into two regions.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: paper: exactly 1, state tear_extent=small_top_notch, integrity=one_wide_sheet, separation=connected, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] the centered top-edge notch first lengthens downward happens BEFORE white rectangle divides into two regions.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: paper: exactly 1, state tear_extent=small_top_notch, integrity=one_wide_sheet, separation=connected, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "setup",
+      "violation_constraint_ids": [
+        [
+          "c1"
+        ]
+      ],
+      "violation_kinds": [
+        "outcome_preset"
+      ],
+      "violation_relations": [
+        "white rectangle divides into two regions is already present BEFORE the centered top-edge notch first lengthens downward."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: paper: exactly 1, state tear_extent=small_top_notch, integrity=one_wide_sheet, separation=connected, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] white rectangle divides into two regions is already present BEFORE the centered top-edge notch first lengthens downward."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "the centered top-edge notch first lengthens downward happens BEFORE white rectangle divides into two regions.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: paper: exactly 1, state tear_extent=small_top_notch, integrity=one_wide_sheet, separation=connected, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] the centered top-edge notch first lengthens downward happens BEFORE white rectangle divides into two regions.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: paper: exactly 1, state tear_extent=small_top_notch, integrity=one_wide_sheet, separation=connected, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "onset",
+      "violation_constraint_ids": [
+        [
+          "c1"
+        ]
+      ],
+      "violation_kinds": [
+        "wrong_order"
+      ],
+      "violation_relations": [
+        "white rectangle divides into two regions happens BEFORE the centered top-edge notch first lengthens downward."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: paper: exactly 1, state tear_extent=small_top_notch, integrity=one_wide_sheet, separation=connected, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] white rectangle divides into two regions happens BEFORE the centered top-edge notch first lengthens downward."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The declared change gray slit lengthens downward occurs in its stated direction.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: paper: exactly 1, state tear_extent=full_vertical_tear, integrity=two_white_pieces, separation=apart, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change gray slit lengthens downward occurs in its stated direction.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: paper: exactly 1, state tear_extent=full_vertical_tear, integrity=two_white_pieces, separation=apart, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "evolution",
+      "violation_constraint_ids": [
+        [
+          "c2",
+          "c3"
+        ]
+      ],
+      "violation_kinds": [
+        "coupling_broken"
+      ],
+      "violation_relations": [
+        "Only one coupled change occurs while the other remains unchanged: ."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: paper: exactly 1, state tear_extent=full_vertical_tear, integrity=two_white_pieces, separation=apart, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] Only one coupled change occurs while the other remains unchanged: ."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The declared change gray slit lengthens downward occurs in its stated direction.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: paper: exactly 1, state tear_extent=full_vertical_tear, integrity=two_white_pieces, separation=apart, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change gray slit lengthens downward occurs in its stated direction.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: paper: exactly 1, state tear_extent=full_vertical_tear, integrity=two_white_pieces, separation=apart, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "completion",
+      "violation_constraint_ids": [
+        [
+          "c2",
+          "c3",
+          "c4"
+        ]
+      ],
+      "violation_kinds": [
+        "incomplete_transition"
+      ],
+      "violation_relations": [
+        "The declared cause occurs BUT the required target change does not become visible."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: paper: exactly 1, state tear_extent=full_vertical_tear, integrity=two_white_pieces, separation=apart, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The declared cause occurs BUT the required target change does not become visible."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The terminal facts integrity=two_white_pieces, separation=apart REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts integrity=one_wide_sheet, integrity=two_white_pieces do not coexist.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: paper: exactly 1, state tear_extent=full_vertical_tear, integrity=two_white_pieces, separation=apart, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The terminal facts integrity=two_white_pieces, separation=apart REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts integrity=one_wide_sheet, integrity=two_white_pieces do not coexist.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: paper: exactly 1, state tear_extent=full_vertical_tear, integrity=two_white_pieces, separation=apart, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "terminal",
+      "violation_constraint_ids": [
+        [
+          "c4"
+        ],
+        [
+          "c5"
+        ]
+      ],
+      "violation_kinds": [
+        "reversal",
+        "exclusion_broken"
+      ],
+      "violation_relations": [
+        "The valid terminal state returns to its mutually exclusive earlier state.",
+        "Copies of the same logical slot appear in mutually exclusive states at the same time."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: paper: exactly 1, state tear_extent=full_vertical_tear, integrity=two_white_pieces, separation=apart, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The valid terminal state returns to its mutually exclusive earlier state. [AND] The same logical slot has only its valid state; mutually exclusive facts integrity=one_wide_sheet, integrity=two_white_pieces do not coexist.",
+        "[STAGE ENTITY INVENTORY] Present now: paper: exactly 1, state tear_extent=full_vertical_tear, integrity=two_white_pieces, separation=apart, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The terminal facts integrity=two_white_pieces, separation=apart REMAIN through the final frames. [AND] Copies of the same logical slot appear in mutually exclusive states at the same time."
+      ],
+      "violation_weights": [
+        0.5,
+        0.5
+      ]
+    }
+  ],
+  "texts": {
+    "global_semantic": "[ENTITY INVENTORY] The closed scene contains paper: exactly 1. The reference first frame fixes these identities and initial layout. [INITIAL STATE] tear_extent=small_top_notch, integrity=one_wide_sheet, separation=connected. [PHYSICAL EVENT] The wide white horizontal sheet tears downward and outward from its single small top-edge notch and separates into two pieces. [PERSISTENT PROTECTION] same plain white paper material and rectangular outer proportions; single centered top-edge notch remains the tear origin; gray background, lighting, frontal camera, and framing remain unchanged; no pulling hands or tools are added. [CLOSED WORLD] No additional external source, extra copy, unlisted object enters or appears; unoccupied scene regions remain empty. [CONSERVATION] Source loss and result gain stay coupled: tracked logical entity slots remain consistent; centered gray slit lengthens as white sides separate. No result appears from an undeclared external source. [TERMINAL STATE] The same logical entity slots persist without duplicates; tear_extent=full_vertical_tear, integrity=two_white_pieces, separation=apart remains visible through the final frames.",
+    "stage.completion.negative.0": "[STAGE ENTITY INVENTORY] Present now: paper: exactly 1, state tear_extent=full_vertical_tear, integrity=two_white_pieces, separation=apart, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The declared cause occurs BUT the required target change does not become visible.",
+    "stage.completion.positive": "[STAGE ENTITY INVENTORY] Present now: paper: exactly 1, state tear_extent=full_vertical_tear, integrity=two_white_pieces, separation=apart, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change gray slit lengthens downward occurs in its stated direction.",
+    "stage.evolution.negative.0": "[STAGE ENTITY INVENTORY] Present now: paper: exactly 1, state tear_extent=full_vertical_tear, integrity=two_white_pieces, separation=apart, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] Only one coupled change occurs while the other remains unchanged: .",
+    "stage.evolution.positive": "[STAGE ENTITY INVENTORY] Present now: paper: exactly 1, state tear_extent=full_vertical_tear, integrity=two_white_pieces, separation=apart, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change gray slit lengthens downward occurs in its stated direction.",
+    "stage.onset.negative.0": "[STAGE ENTITY INVENTORY] Present now: paper: exactly 1, state tear_extent=small_top_notch, integrity=one_wide_sheet, separation=connected, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] white rectangle divides into two regions happens BEFORE the centered top-edge notch first lengthens downward.",
+    "stage.onset.positive": "[STAGE ENTITY INVENTORY] Present now: paper: exactly 1, state tear_extent=small_top_notch, integrity=one_wide_sheet, separation=connected, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] the centered top-edge notch first lengthens downward happens BEFORE white rectangle divides into two regions.",
+    "stage.setup.negative.0": "[STAGE ENTITY INVENTORY] Present now: paper: exactly 1, state tear_extent=small_top_notch, integrity=one_wide_sheet, separation=connected, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] white rectangle divides into two regions is already present BEFORE the centered top-edge notch first lengthens downward.",
+    "stage.setup.positive": "[STAGE ENTITY INVENTORY] Present now: paper: exactly 1, state tear_extent=small_top_notch, integrity=one_wide_sheet, separation=connected, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] the centered top-edge notch first lengthens downward happens BEFORE white rectangle divides into two regions.",
+    "stage.terminal.negative.0": "[STAGE ENTITY INVENTORY] Present now: paper: exactly 1, state tear_extent=full_vertical_tear, integrity=two_white_pieces, separation=apart, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The valid terminal state returns to its mutually exclusive earlier state. [AND] The same logical slot has only its valid state; mutually exclusive facts integrity=one_wide_sheet, integrity=two_white_pieces do not coexist.",
+    "stage.terminal.negative.1": "[STAGE ENTITY INVENTORY] Present now: paper: exactly 1, state tear_extent=full_vertical_tear, integrity=two_white_pieces, separation=apart, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The terminal facts integrity=two_white_pieces, separation=apart REMAIN through the final frames. [AND] Copies of the same logical slot appear in mutually exclusive states at the same time.",
+    "stage.terminal.positive": "[STAGE ENTITY INVENTORY] Present now: paper: exactly 1, state tear_extent=full_vertical_tear, integrity=two_white_pieces, separation=apart, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The terminal facts integrity=two_white_pieces, separation=apart REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts integrity=one_wide_sheet, integrity=two_white_pieces do not coexist."
+  },
+  "token_budget_priority": {
+    "causal": 2,
+    "entity_count": 0,
+    "protected": 1,
+    "style": 3
+  }
+}

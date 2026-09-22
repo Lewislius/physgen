@@ -1,0 +1,362 @@
+{
+  "assumptions": [],
+  "constraints": [
+    {
+      "after": "sink_rise",
+      "before": "stream_onset",
+      "id": "c1",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "precedes"
+    },
+    {
+      "effect": "source_fall",
+      "id": "c2",
+      "source_refs": [
+        "origin"
+      ],
+      "transition": "e1",
+      "type": "changes"
+    },
+    {
+      "effects": [
+        "source_fall",
+        "stream_appear",
+        "sink_rise"
+      ],
+      "id": "c3",
+      "relation": "source level falls through a visible stream while sink level rises",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "couples"
+    },
+    {
+      "facts": [
+        "source_level=lower",
+        "sink_level=higher"
+      ],
+      "id": "c4",
+      "source_refs": [
+        "origin"
+      ],
+      "state": "z1",
+      "type": "persists"
+    },
+    {
+      "facts": [
+        "sink_level=empty",
+        "sink_level=higher"
+      ],
+      "id": "c5",
+      "scope": "same_time",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "excludes"
+    }
+  ],
+  "design_revision": "fixed5-causal-r3",
+  "entities": [
+    {
+      "id": "pitcher",
+      "mention": "the same transparent water pitcher",
+      "role": "source",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "id": "stream",
+      "mention": "the continuous water stream",
+      "role": "carrier",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "id": "glass",
+      "mention": "the same clear glass",
+      "role": "sink",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "description": "first water visibly leaves the pitcher and reaches the glass",
+      "id": "stream_onset",
+      "observable": "a connected water path appears between source and sink",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "generation_basis": {
+    "mode": "identifier_only",
+    "reference_image_usage": "identifier_only",
+    "semantic_inputs": [
+      "origin",
+      "planner_instructions"
+    ]
+  },
+  "global_semantic": "One transparent pitcher pours water through a visible stream into one empty clear glass.",
+  "grounding": {
+    "approved": false,
+    "coordinate_frame": "reference_input",
+    "entity_boxes": [],
+    "protected_boxes": [],
+    "reference_image": "P13-i0-1280x704.png",
+    "reference_image_usage": "identifier_only"
+  },
+  "predicates": [
+    {
+      "attribute": "water_level",
+      "id": "source_level",
+      "observable": "visible waterline inside the pitcher",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "pitcher",
+      "values": [
+        "higher",
+        "lower"
+      ]
+    },
+    {
+      "attribute": "visibility",
+      "id": "stream_state",
+      "observable": "connected water column between spout and glass",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "stream",
+      "values": [
+        "absent",
+        "continuous"
+      ]
+    },
+    {
+      "attribute": "water_level",
+      "id": "sink_level",
+      "observable": "visible waterline inside the glass",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "glass",
+      "values": [
+        "empty",
+        "higher"
+      ]
+    }
+  ],
+  "protected_predicates": [
+    "same transparent pitcher and clear glass",
+    "water remains inside the source-stream-sink route",
+    "camera and unrelated scene remain unchanged"
+  ],
+  "sample_id": "P13",
+  "schema_version": "trace-writer-v1",
+  "source_files": {
+    "origin": "P13-origin.txt",
+    "planner_instructions": "Project/physGen/prompt/generate_trace_writer_v1_plan.txt",
+    "reference_input": "P13-i0-1280x704.png"
+  },
+  "stages": [
+    {
+      "affected_roles": [
+        "source",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "setup",
+      "observable_check": "The source waterline is high, the glass is empty, and no stream exists.",
+      "positive": "The transparent pitcher begins with a higher water level while the clear glass remains empty.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "The glass already contains raised water before any stream leaves the pitcher.",
+          "type": "outcome_preset"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "onset",
+      "observable_check": "The carrier becomes visible before a measurable glass waterline rises.",
+      "positive": "A connected water stream first appears from the pitcher spout into the glass opening.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "The glass level rises while no visible stream connects it to the pitcher.",
+          "type": "wrong_order"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c2",
+        "c3"
+      ],
+      "id": "evolution",
+      "observable_check": "Source decrease, connected stream, and sink increase occur together.",
+      "positive": "The pitcher waterline falls while the continuous stream feeds a rising glass waterline.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c2",
+            "c3"
+          ],
+          "text": "The glass fills through the stream while the pitcher waterline remains unchanged.",
+          "type": "coupling_broken"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c2",
+        "c3",
+        "c4"
+      ],
+      "id": "completion",
+      "observable_check": "Late frames retain a lower source line and higher sink line.",
+      "positive": "The transfer approaches completion with visibly less pitcher water and visibly more glass water.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c2",
+            "c3",
+            "c4"
+          ],
+          "text": "The stream continues but the source and sink waterlines never develop opposite changes.",
+          "type": "incomplete_transition"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c4",
+        "c5"
+      ],
+      "id": "terminal",
+      "observable_check": "The changed source and sink levels persist through the end.",
+      "positive": "The same pitcher holds less water and the same glass holds more water without reversal.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c4"
+          ],
+          "text": "Water returns from the glass and restores the pitcher level in final frames.",
+          "type": "reversal"
+        },
+        {
+          "constraint_ids": [
+            "c5"
+          ],
+          "text": "Empty and filled copies of the same clear glass coexist simultaneously.",
+          "type": "exclusion_broken"
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "facts": {
+        "sink_level": "empty",
+        "source_level": "higher",
+        "stream_state": "absent"
+      },
+      "id": "z0",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "facts": {
+        "sink_level": "higher",
+        "source_level": "lower",
+        "stream_state": "continuous"
+      },
+      "id": "z1",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "cause_event": null,
+      "effects": [
+        {
+          "direction": "pitcher waterline moves downward",
+          "from": "higher",
+          "id": "source_fall",
+          "predicate": "source_level",
+          "to": "lower"
+        },
+        {
+          "direction": "connected water stream becomes visible",
+          "from": "absent",
+          "id": "stream_appear",
+          "predicate": "stream_state",
+          "to": "continuous"
+        },
+        {
+          "direction": "glass waterline moves upward",
+          "from": "empty",
+          "id": "sink_rise",
+          "predicate": "sink_level",
+          "to": "higher"
+        }
+      ],
+      "from": "z0",
+      "id": "e1",
+      "kind": "continuous",
+      "preconditions": [
+        "source_level=higher",
+        "stream_state=absent",
+        "sink_level=empty"
+      ],
+      "source_refs": [
+        "origin"
+      ],
+      "support_kind": "source_stream_sink",
+      "to": "z1"
+    }
+  ],
+  "warnings": []
+}

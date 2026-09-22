@@ -1,0 +1,362 @@
+{
+  "assumptions": [
+    "The tear propagates downward from the only visible notch and the two sheet sides separate laterally."
+  ],
+  "constraints": [
+    {
+      "after": "pictured_sheet_split",
+      "before": "pictured_notch_opens",
+      "id": "c1",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "precedes"
+    },
+    {
+      "effect": "pictured_tear_grow",
+      "id": "c2",
+      "source_refs": [
+        "origin"
+      ],
+      "transition": "e1",
+      "type": "changes"
+    },
+    {
+      "effects": [
+        "pictured_tear_grow",
+        "pictured_sheet_split",
+        "pictured_pieces_apart"
+      ],
+      "id": "c3",
+      "relation": "centered gray slit lengthens as white sides separate",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "couples"
+    },
+    {
+      "facts": [
+        "integrity=two_white_pieces",
+        "separation=apart"
+      ],
+      "id": "c4",
+      "source_refs": [
+        "origin"
+      ],
+      "state": "z1",
+      "type": "persists"
+    },
+    {
+      "facts": [
+        "integrity=one_wide_sheet",
+        "integrity=two_white_pieces"
+      ],
+      "id": "c5",
+      "scope": "same_time",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "excludes"
+    }
+  ],
+  "control": {},
+  "design_revision": "fixed5-causal-r3",
+  "entities": [
+    {
+      "id": "paper",
+      "mention": "the same wide white rectangular sheet with one centered top-edge notch",
+      "role": "patient",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "description": "the centered top-edge notch first lengthens downward",
+      "id": "pictured_notch_opens",
+      "observable": "the notch edges separate into a visible gray slit",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    }
+  ],
+  "generation_basis": {
+    "mode": "visual_grounding",
+    "reference_image_usage": "visual_grounding",
+    "semantic_inputs": [
+      "origin",
+      "planner_instructions",
+      "reference_input"
+    ]
+  },
+  "global_semantic": "The wide white horizontal sheet tears downward and outward from its single small top-edge notch and separates into two pieces.",
+  "grounding": {
+    "approved": false,
+    "coordinate_frame": "reference_input",
+    "entity_boxes": [
+      {
+        "box": [
+          0.096,
+          0.106,
+          0.901,
+          0.868
+        ],
+        "entity_id": "paper"
+      }
+    ],
+    "protected_boxes": [],
+    "reference_image": "P19-i0-1280x704.png",
+    "reference_image_usage": "visual_grounding"
+  },
+  "predicates": [
+    {
+      "attribute": "pictured tear from top notch",
+      "id": "tear_extent",
+      "observable": "opening length extending downward from the notch",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "subject": "paper",
+      "values": [
+        "small_top_notch",
+        "full_vertical_tear"
+      ]
+    },
+    {
+      "attribute": "white sheet integrity",
+      "id": "integrity",
+      "observable": "one white rectangle versus two disconnected white regions",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "subject": "paper",
+      "values": [
+        "one_wide_sheet",
+        "two_white_pieces"
+      ]
+    },
+    {
+      "attribute": "pictured piece gap",
+      "id": "separation",
+      "observable": "gray-background gap between paper sides",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "subject": "paper",
+      "values": [
+        "connected",
+        "apart"
+      ]
+    }
+  ],
+  "protected_predicates": [
+    "same plain white paper material and rectangular outer proportions",
+    "single centered top-edge notch remains the tear origin",
+    "gray background, lighting, frontal camera, and framing remain unchanged",
+    "no pulling hands or tools are added"
+  ],
+  "sample_id": "P19",
+  "schema_version": "trace-writer-v1",
+  "source_files": {
+    "origin": "P19-origin.txt",
+    "planner_instructions": "Project/physGen/prompt/generate_trace_writer_v1_plan.txt",
+    "reference_input": "P19-i0-1280x704.png"
+  },
+  "stages": [
+    {
+      "affected_roles": [
+        "patient"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "setup",
+      "observable_check": "The white rectangle is continuous below the small top notch.",
+      "positive": "The pictured wide white sheet remains connected with only one small centered notch at its top edge.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "Two white pieces already occupy the gray background before the top notch opens.",
+          "type": "outcome_preset"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "patient"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "onset",
+      "observable_check": "The first opening remains connected to the pictured notch location.",
+      "positive": "A narrow gray slit first extends downward from the centered notch before complete separation.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "Two complete white pieces appear before a gray slit grows from the notch.",
+          "type": "wrong_order"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "patient"
+      ],
+      "constraint_ids": [
+        "c2",
+        "c3"
+      ],
+      "id": "evolution",
+      "observable_check": "Both slit length and visible gray gap increase across frames.",
+      "positive": "The gray tear slit lengthens downward while the left and right white regions move apart.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c2",
+            "c3"
+          ],
+          "text": "The white sides move apart while the pictured top notch never lengthens.",
+          "type": "coupling_broken"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "patient"
+      ],
+      "constraint_ids": [
+        "c2",
+        "c3",
+        "c4"
+      ],
+      "id": "completion",
+      "observable_check": "No white bridge remains between the resulting regions.",
+      "positive": "The slit reaches the opposite paper edge and leaves two distinct white pieces against gray.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c2",
+            "c3",
+            "c4"
+          ],
+          "text": "The pictured slit stops within the white sheet and leaves a connecting bridge.",
+          "type": "incomplete_transition"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "patient"
+      ],
+      "constraint_ids": [
+        "c4",
+        "c5"
+      ],
+      "id": "terminal",
+      "observable_check": "Exactly two white pieces retain a visible gray gap.",
+      "positive": "The same two white paper pieces remain apart over the unchanged gray background.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c4"
+          ],
+          "text": "The two white pieces reconnect into the original wide sheet in final frames.",
+          "type": "reversal"
+        },
+        {
+          "constraint_ids": [
+            "c5"
+          ],
+          "text": "One-sheet and two-piece white paper versions coexist against the gray background.",
+          "type": "exclusion_broken"
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "facts": {
+        "integrity": "one_wide_sheet",
+        "separation": "connected",
+        "tear_extent": "small_top_notch"
+      },
+      "id": "z0",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    },
+    {
+      "facts": {
+        "integrity": "two_white_pieces",
+        "separation": "apart",
+        "tear_extent": "full_vertical_tear"
+      },
+      "id": "z1",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "cause_event": null,
+      "effects": [
+        {
+          "direction": "gray slit lengthens downward",
+          "from": "small_top_notch",
+          "id": "pictured_tear_grow",
+          "predicate": "tear_extent",
+          "to": "full_vertical_tear"
+        },
+        {
+          "direction": "white rectangle divides into two regions",
+          "from": "one_wide_sheet",
+          "id": "pictured_sheet_split",
+          "predicate": "integrity",
+          "to": "two_white_pieces"
+        },
+        {
+          "direction": "gray gap between white sides widens",
+          "from": "connected",
+          "id": "pictured_pieces_apart",
+          "predicate": "separation",
+          "to": "apart"
+        }
+      ],
+      "from": "z0",
+      "id": "e1",
+      "kind": "continuous",
+      "preconditions": [
+        "tear_extent=small_top_notch",
+        "integrity=one_wide_sheet",
+        "separation=connected"
+      ],
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "support_kind": "role_union",
+      "to": "z1"
+    }
+  ],
+  "warnings": [
+    "Pulling agents are absent from the reference and are not added; the paper box is visually estimated and unapproved."
+  ]
+}

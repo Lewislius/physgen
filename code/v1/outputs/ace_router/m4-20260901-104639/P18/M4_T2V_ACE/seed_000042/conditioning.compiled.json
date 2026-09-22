@@ -1,0 +1,67 @@
+{
+  "causal_pair": {
+    "counterfactual_type": [
+      "terminal_reversal"
+    ],
+    "origin_prompt_prefixed": false,
+    "single_changed_relation": [
+      "successive rebound heights increase rather than decrease"
+    ]
+  },
+  "compiler_version": "ace-conditioning-mvp-v1",
+  "mode": "compiled",
+  "prompts": {
+    "causal_counterfactual": "Each floor contact sends the same ball to a higher rebound peak, so successive bounces grow instead of decay.",
+    "causal_positive": "Each floor contact sends the same ball upward, and every successive rebound reaches a visibly lower peak before the ball rests.",
+    "semantic": "A rubber ball drops onto a hard floor and bounces several times to progressively lower heights before resting. Initial scene: A fixed side view of one intact rubber ball positioned high above a hard level floor, with the ball and the complete vertical space beneath it fully visible. The frame includes ample open height and a broad clear floor area directly below, using a simple background and neutral lighting. Required visible entities: one rubber ball; one hard level floor; visible vertical drop and rebound corridor. At the beginning: rubber ball: intact, elevated, and spatially separated from the floor; floor: clear around one intended impact point. Required layout: ball center aligns vertically with a clear floor impact point; full vertical corridor and ample rebound height fit inside the frame; floor area around the impact point remains unobstructed. Required state changes: ball height: elevated to floor and repeated peaks; rebound peak: progressively lower; ball motion state: bouncing to resting. These event variables are allowed to change: ball vertical position and speed; brief deformation at floor contact; successive rebound peak heights; terminal resting state. Preserve throughout: static side-view camera; hard-floor geometry; rubber-ball identity and material; one rubber ball; one hard floor; the same impact point and ball identity."
+  },
+  "sample_id": "P18",
+  "schema_version": 1,
+  "semantic_variant": "compiled_t2v",
+  "source_sections": {
+    "changed_state_variables": [
+      "ball height: elevated to floor and repeated peaks",
+      "rebound peak: progressively lower",
+      "ball motion state: bouncing to resting"
+    ],
+    "counterfactual_type": [
+      "terminal_reversal"
+    ],
+    "event_type": [
+      "repeated impacts with dissipating rebound height"
+    ],
+    "initial_states": [
+      "rubber ball: intact, elevated, and spatially separated from the floor",
+      "floor: clear around one intended impact point"
+    ],
+    "layout_requirements": [
+      "ball center aligns vertically with a clear floor impact point",
+      "full vertical corridor and ample rebound height fit inside the frame",
+      "floor area around the impact point remains unobstructed"
+    ],
+    "preserved_context": [
+      "one rubber ball",
+      "one hard floor",
+      "the same impact point and ball identity"
+    ],
+    "protected_scene_properties": [
+      "static side-view camera",
+      "hard-floor geometry",
+      "rubber-ball identity and material"
+    ],
+    "required_visible_entities": [
+      "one rubber ball",
+      "one hard level floor",
+      "visible vertical drop and rebound corridor"
+    ],
+    "single_changed_relation": [
+      "successive rebound heights increase rather than decrease"
+    ],
+    "transition_variables": [
+      "ball vertical position and speed",
+      "brief deformation at floor contact",
+      "successive rebound peak heights",
+      "terminal resting state"
+    ]
+  }
+}

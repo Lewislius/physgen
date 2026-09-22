@@ -1,0 +1,375 @@
+{
+  "schema_version": "trace-direct-v1",
+  "design_revision": "p0-stage-direct-json-r2",
+  "sample_id": "P10",
+  "source_files": {
+    "origin": "P10-origin.txt",
+    "frame_zero_metadata": "P10-i0.json",
+    "reference_input": "P10-i0-1280x704.jpg"
+  },
+  "initial_condition": {
+    "type": "visible_actuator",
+    "description": "The balloon is visibly attached to an air-pump nozzle that supplies the inflating air."
+  },
+  "global_semantic": "Fixed medium view of one small unknotted green rubber balloon attached to one black air-pump nozzle. The pump steadily inflates the same balloon from loose and wrinkled to large and taut; it then bursts once, and its green rubber fragments remain near the nozzle.",
+  "cfg_negative": " ",
+  "entities": [
+    {
+      "id": "balloon",
+      "mention": "one green rubber balloon",
+      "role": "patient"
+    },
+    {
+      "id": "pump_nozzle",
+      "mention": "one black air-pump nozzle",
+      "role": "actor"
+    }
+  ],
+  "structured_guidance": {
+    "schema_version": "structured-text-guidance-v1",
+    "entities": [
+      {
+        "id": "balloon",
+        "label": "tracked green rubber material from one balloon",
+        "count": 1,
+        "persistent": true,
+        "invariants": [
+          "green rubber appearance",
+          "conserved original rubber material",
+          "single balloon origin with no duplicate balloon"
+        ]
+      },
+      {
+        "id": "pump_nozzle",
+        "label": "black air-pump nozzle",
+        "count": 1,
+        "persistent": true,
+        "invariants": [
+          "rigid nozzle geometry",
+          "black appearance",
+          "single identity"
+        ]
+      }
+    ],
+    "initial_condition": {
+      "type": "visible_actuator",
+      "active_stages": [
+        "setup"
+      ],
+      "facts": [
+        "The one small unknotted balloon starts intact and attached to the pump nozzle.",
+        "Air supplied through that nozzle begins the inflation."
+      ]
+    },
+    "stages": [
+      {
+        "id": "setup",
+        "entity_states": [
+          {
+            "entity_id": "balloon",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "forming one small loose wrinkled intact balloon"
+            ],
+            "mutable": [
+              "surface wrinkles"
+            ]
+          },
+          {
+            "entity_id": "pump_nozzle",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "attached to the balloon opening"
+            ],
+            "mutable": []
+          }
+        ],
+        "relations": [
+          "No loose fragment is present before inflation."
+        ]
+      },
+      {
+        "id": "onset",
+        "entity_states": [
+          {
+            "entity_id": "balloon",
+            "presence": "transitioning",
+            "count": 1,
+            "states": [
+              "forming the same intact balloon as it begins enlarging"
+            ],
+            "mutable": [
+              "enclosed volume",
+              "rubber shape",
+              "surface wrinkles"
+            ]
+          },
+          {
+            "entity_id": "pump_nozzle",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "supplying air through the same attachment"
+            ],
+            "mutable": []
+          }
+        ],
+        "relations": [
+          "The balloon remains sealed around the nozzle and does not duplicate."
+        ]
+      },
+      {
+        "id": "evolution",
+        "entity_states": [
+          {
+            "entity_id": "balloon",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "forming one steadily larger, smoother, and tauter intact balloon"
+            ],
+            "mutable": [
+              "enclosed volume",
+              "rubber shape",
+              "surface tension"
+            ]
+          }
+        ],
+        "relations": [
+          "Only size, smoothness, and tension change before the burst."
+        ]
+      },
+      {
+        "id": "completion",
+        "entity_states": [
+          {
+            "entity_id": "balloon",
+            "presence": "transitioning",
+            "count": 1,
+            "states": [
+              "bursting once as the taut rubber separates into fragments"
+            ],
+            "mutable": [
+              "rubber topology",
+              "fragment positions"
+            ]
+          }
+        ],
+        "relations": [
+          "All green fragments originate from the one balloon at a single burst event."
+        ]
+      },
+      {
+        "id": "terminal",
+        "entity_states": [
+          {
+            "entity_id": "balloon",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "remaining as the settled group of original green rubber fragments"
+            ],
+            "mutable": []
+          },
+          {
+            "entity_id": "pump_nozzle",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "remaining intact beside the fragments"
+            ],
+            "mutable": []
+          }
+        ],
+        "relations": [
+          "No intact second balloon appears after the burst."
+        ]
+      }
+    ]
+  },
+  "stages": [
+    {
+      "id": "setup",
+      "positive": "The small wrinkled green balloon is intact and attached to the pump nozzle."
+    },
+    {
+      "id": "onset",
+      "positive": "Air from the nozzle begins enlarging the same balloon while its surface stays intact."
+    },
+    {
+      "id": "evolution",
+      "positive": "The balloon grows steadily larger and its green rubber becomes smooth and taut."
+    },
+    {
+      "id": "completion",
+      "positive": "The taut balloon bursts once and its stretched rubber separates into fragments."
+    },
+    {
+      "id": "terminal",
+      "positive": "The green rubber fragments remain near the same pump nozzle."
+    }
+  ],
+  "warnings": [],
+  "generation_basis": {
+    "mode": "identifier_only",
+    "reference_image_usage": "identifier_only"
+  },
+  "grounding": {
+    "coordinate_frame": "reference_input",
+    "reference_image": "P10-i0-1280x704.jpg",
+    "approved": false,
+    "entity_boxes": []
+  },
+  "temporal_route": {
+    "latent_tokens": 25,
+    "crossfade_tokens": 2,
+    "interpolation": "smoothstep_c1",
+    "profile": "multi_transition",
+    "stage_order": [
+      "setup",
+      "onset",
+      "evolution",
+      "completion",
+      "terminal"
+    ],
+    "weights": [
+      [
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0
+      ]
+    ]
+  }
+}

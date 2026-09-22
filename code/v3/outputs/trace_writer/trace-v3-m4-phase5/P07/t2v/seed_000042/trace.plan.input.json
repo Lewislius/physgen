@@ -1,0 +1,325 @@
+{
+  "assumptions": [],
+  "constraints": [
+    {
+      "after": "tip_box",
+      "before": "corner_shift",
+      "id": "c1",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "precedes"
+    },
+    {
+      "cause": "corner_shift",
+      "effect": "tip_box",
+      "id": "c2",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "requires"
+    },
+    {
+      "effects": [
+        "shift_corner",
+        "tip_box"
+      ],
+      "id": "c3",
+      "relation": "sideways lower-corner shift precedes increasing box tilt",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "couples"
+    },
+    {
+      "facts": [
+        "pose=lying_on_side"
+      ],
+      "id": "c4",
+      "source_refs": [
+        "origin"
+      ],
+      "state": "z1",
+      "type": "persists"
+    },
+    {
+      "facts": [
+        "pose=upright",
+        "pose=lying_on_side"
+      ],
+      "id": "c5",
+      "scope": "same_time",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "excludes"
+    }
+  ],
+  "control": {},
+  "design_revision": "fixed5-causal-r3",
+  "entities": [
+    {
+      "id": "box",
+      "mention": "the same tall cardboard box",
+      "role": "actor",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "id": "floor",
+      "mention": "the same supporting floor",
+      "role": "patient",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "description": "the lower box corner visibly moves sideways",
+      "id": "corner_shift",
+      "observable": "the lower corner changes lateral position before tipping",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "generation_basis": {
+    "mode": "identifier_only",
+    "reference_image_usage": "identifier_only",
+    "semantic_inputs": [
+      "origin",
+      "planner_instructions"
+    ]
+  },
+  "global_semantic": "One tall cardboard box is pulled at a lower corner, tips over, and remains lying on one side.",
+  "grounding": {
+    "approved": false,
+    "coordinate_frame": "reference_input",
+    "entity_boxes": [],
+    "protected_boxes": [],
+    "reference_image": "P07-i0-1280x704.png",
+    "reference_image_usage": "identifier_only"
+  },
+  "predicates": [
+    {
+      "attribute": "lower_corner_displacement",
+      "id": "corner_state",
+      "observable": "lateral position of the lower pulling-side corner",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "box",
+      "values": [
+        "undisplaced",
+        "shifted_sideways"
+      ]
+    },
+    {
+      "attribute": "pose",
+      "id": "pose",
+      "observable": "box long-axis angle and supporting face",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "box",
+      "values": [
+        "upright",
+        "lying_on_side"
+      ]
+    }
+  ],
+  "protected_predicates": [
+    "same cardboard-box identity and material",
+    "same floor",
+    "camera and background remain unchanged"
+  ],
+  "sample_id": "P07",
+  "schema_version": "trace-writer-v1",
+  "source_files": {
+    "origin": "P07-origin.txt",
+    "planner_instructions": "Project/physGen/prompt/generate_trace_writer_v1_plan.txt",
+    "reference_input": "P07-i0-1280x704.png"
+  },
+  "stages": [
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "setup",
+      "observable_check": "The box stays upright as the lower corner first changes lateral position.",
+      "positive": "The tall cardboard box stands upright while its lower pulling-side corner begins moving sideways.",
+      "support_kind": "motion_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "The cardboard box is already lying down before its lower corner shifts.",
+          "type": "outcome_preset"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c1",
+        "c2"
+      ],
+      "id": "onset",
+      "observable_check": "Corner displacement is visible before the long axis starts rotating.",
+      "positive": "The shifted lower corner precedes the first visible loss of the box's upright pose.",
+      "support_kind": "contact_interface",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1",
+            "c2"
+          ],
+          "text": "The box tips before any sideways movement appears at its lower corner.",
+          "type": "wrong_order"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c3"
+      ],
+      "id": "evolution",
+      "observable_check": "Box tilt increases continuously around the changing floor contact.",
+      "positive": "The same box rotates progressively toward the floor after the lower corner shifts.",
+      "support_kind": "motion_contact_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c3"
+          ],
+          "text": "The lower corner shifts sideways but the tall box remains completely upright.",
+          "type": "coupling_broken"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c3",
+        "c4"
+      ],
+      "id": "completion",
+      "observable_check": "The long axis reaches a lying orientation and motion ends.",
+      "positive": "The box finishes tipping and settles with one broad side supported by the floor.",
+      "support_kind": "motion_contact_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c3",
+            "c4"
+          ],
+          "text": "The box remains diagonally balanced and never places one side on the floor.",
+          "type": "incomplete_transition"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c4",
+        "c5"
+      ],
+      "id": "terminal",
+      "observable_check": "One side-lying box holds one unchanged final pose.",
+      "positive": "The same cardboard box remains lying on one side on the same floor.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c4"
+          ],
+          "text": "The box rises upright again during the final frames.",
+          "type": "reversal"
+        },
+        {
+          "constraint_ids": [
+            "c5"
+          ],
+          "text": "Upright and side-lying copies of the cardboard box coexist simultaneously.",
+          "type": "exclusion_broken"
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "facts": {
+        "corner_state": "undisplaced",
+        "pose": "upright"
+      },
+      "id": "z0",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "facts": {
+        "corner_state": "shifted_sideways",
+        "pose": "lying_on_side"
+      },
+      "id": "z1",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "cause_event": "corner_shift",
+      "effects": [
+        {
+          "direction": "lower corner moves laterally",
+          "from": "undisplaced",
+          "id": "shift_corner",
+          "predicate": "corner_state",
+          "to": "shifted_sideways"
+        },
+        {
+          "direction": "long axis rotates toward the floor",
+          "from": "upright",
+          "id": "tip_box",
+          "predicate": "pose",
+          "to": "lying_on_side"
+        }
+      ],
+      "from": "z0",
+      "id": "e1",
+      "kind": "triggered",
+      "preconditions": [
+        "corner_state=undisplaced",
+        "pose=upright"
+      ],
+      "source_refs": [
+        "origin"
+      ],
+      "support_kind": "motion_contact_corridor",
+      "to": "z1"
+    }
+  ],
+  "warnings": []
+}

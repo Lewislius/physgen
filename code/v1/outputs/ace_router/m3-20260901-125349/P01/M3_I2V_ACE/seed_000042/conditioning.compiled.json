@@ -1,0 +1,66 @@
+{
+  "causal_pair": {
+    "counterfactual_type": [
+      "cause_effect_reversal"
+    ],
+    "origin_prompt_prefixed": false,
+    "single_changed_relation": [
+      "tilting and stopping occur before rather than after visible contact"
+    ]
+  },
+  "compiler_version": "ace-conditioning-mvp-v1",
+  "mode": "compiled",
+  "prompts": {
+    "causal_counterfactual": "The scooter tilts and stops while still separated from the trash can; visible contact occurs afterward.",
+    "causal_positive": "The scooter visibly contacts the trash can before tilting, slows during the tilt, and remains stopped beside the can.",
+    "semantic": "A black scooter rolls into a metal trash can, then tilts to one side and stops beside it. Required visible entities: one black scooter; one metal trash can; level street surface. At the beginning: scooter: upright, intact, and separated from the trash can; trash can: upright, intact, and stationary. Required state changes: scooter position: separated to beside the trash can; scooter pose: upright to tilted; scooter speed: rolling to stopped. These event variables are allowed to change: scooter position; scooter speed; scooter pose. Preserve throughout: static side-view camera; street background; trash-can identity and material; one black scooter; one metal trash can; the same street scene and entities."
+  },
+  "sample_id": "P01",
+  "schema_version": 1,
+  "semantic_variant": "compiled_i2v",
+  "source_sections": {
+    "changed_state_variables": [
+      "scooter position: separated to beside the trash can",
+      "scooter pose: upright to tilted",
+      "scooter speed: rolling to stopped"
+    ],
+    "counterfactual_type": [
+      "cause_effect_reversal"
+    ],
+    "event_type": [
+      "contact-triggered collision and terminal pose"
+    ],
+    "initial_states": [
+      "scooter: upright, intact, and separated from the trash can",
+      "trash can: upright, intact, and stationary"
+    ],
+    "layout_requirements": [
+      "scooter and trash can lie on the same visible travel line",
+      "open space separates the scooter from the trash can",
+      "both entities and the intended stopping area fit fully inside the frame"
+    ],
+    "preserved_context": [
+      "one black scooter",
+      "one metal trash can",
+      "the same street scene and entities"
+    ],
+    "protected_scene_properties": [
+      "static side-view camera",
+      "street background",
+      "trash-can identity and material"
+    ],
+    "required_visible_entities": [
+      "one black scooter",
+      "one metal trash can",
+      "level street surface"
+    ],
+    "single_changed_relation": [
+      "tilting and stopping occur before rather than after visible contact"
+    ],
+    "transition_variables": [
+      "scooter position",
+      "scooter speed",
+      "scooter pose"
+    ]
+  }
+}

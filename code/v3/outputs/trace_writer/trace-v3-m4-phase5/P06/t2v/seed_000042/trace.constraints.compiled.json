@@ -1,0 +1,84 @@
+{
+  "closed_world": {
+    "allowed_entity_ids": [
+      "book",
+      "shelf",
+      "floor"
+    ],
+    "empty_regions": [],
+    "external_source_allowed": false,
+    "forbidden_new_categories": [
+      "external source",
+      "extra copy",
+      "hand",
+      "person",
+      "tool",
+      "unlisted object"
+    ],
+    "provenance": "derived"
+  },
+  "conservation": [
+    {
+      "observable_proxy": "tracked logical entity slots remain consistent",
+      "provenance": "derived",
+      "quantity": "instance_count",
+      "relation": "constant",
+      "rule_id": "entity_slots_constant",
+      "sinks": [
+        "book",
+        "shelf",
+        "floor"
+      ],
+      "sources": [
+        "book",
+        "shelf",
+        "floor"
+      ],
+      "tolerance": 0.0
+    }
+  ],
+  "lifecycles": [
+    {
+      "entity_id": "book",
+      "from_stage": "setup",
+      "from_state": "on_shelf; shelf_supported",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "on_shelf",
+          "falling"
+        ],
+        [
+          "shelf_supported",
+          "unsupported"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "falling; unsupported"
+    },
+    {
+      "entity_id": "book",
+      "from_stage": "setup",
+      "from_state": "falling; unsupported; closed",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "falling",
+          "on_floor"
+        ],
+        [
+          "unsupported",
+          "floor_supported"
+        ],
+        [
+          "closed",
+          "open"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "on_floor; floor_supported; open"
+    }
+  ]
+}

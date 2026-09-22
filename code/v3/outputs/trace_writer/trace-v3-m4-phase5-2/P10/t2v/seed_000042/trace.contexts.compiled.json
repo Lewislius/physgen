@@ -1,0 +1,186 @@
+{
+  "actual_t5_token_lengths": {
+    "global_semantic": 254,
+    "stage.completion.negative.0": 132,
+    "stage.completion.positive": 133,
+    "stage.evolution.negative.0": 128,
+    "stage.evolution.positive": 127,
+    "stage.onset.negative.0": 130,
+    "stage.onset.positive": 129,
+    "stage.setup.negative.0": 131,
+    "stage.setup.positive": 128,
+    "stage.terminal.negative.0": 166,
+    "stage.terminal.negative.1": 162,
+    "stage.terminal.positive": 175
+  },
+  "global_anchor": "[ENTITY INVENTORY] The closed scene contains balloon: exactly 1. All declared entities are fully visible from the first frame in the stated layout. [INITIAL STATE] size=small, surface=loose, integrity=intact. [PHYSICAL EVENT] One rubber balloon inflates steadily, reaches a large taut state, bursts, and leaves deflated fragments in place. [INITIAL LAYOUT] rubber balloon and its resulting fragments. [PERSISTENT PROTECTION] same rubber material through inflation and fragments; same burst location; camera and background remain unchanged. [CLOSED WORLD] No additional external source, extra copy, hand, person, tool, unlisted object enters or appears; unoccupied scene regions remain empty. [CONSERVATION] Source loss and result gain stay coupled: tracked logical entity slots remain consistent. No result appears from an undeclared external source. [TERMINAL STATE] The same logical entity slots persist without duplicates; size=collapsed, surface=deflated, integrity=ruptured_fragments remains visible through the final frames.",
+  "issues": [],
+  "max_t5_token_length": 254,
+  "protected_coverage": {
+    "camera and background remain unchanged": [
+      "geometry",
+      "camera_background",
+      "closed_world_or_persistence"
+    ],
+    "same burst location": [
+      "identity_count"
+    ],
+    "same rubber material through inflation and fragments": [
+      "identity_count",
+      "appearance"
+    ]
+  },
+  "stage_pairs": [
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "first detectable balloon expansion happens BEFORE intact silhouette expands steadily.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: balloon: exactly 1, state size=small, surface=loose, integrity=intact, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] first detectable balloon expansion happens BEFORE intact silhouette expands steadily.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: balloon: exactly 1, state size=small, surface=loose, integrity=intact, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "setup",
+      "violation_constraint_ids": [
+        [
+          "c1",
+          "c3"
+        ]
+      ],
+      "violation_kinds": [
+        "outcome_preset"
+      ],
+      "violation_relations": [
+        "intact silhouette expands steadily is already present BEFORE first detectable balloon expansion."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: balloon: exactly 1, state size=small, surface=loose, integrity=intact, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] intact silhouette expands steadily is already present BEFORE first detectable balloon expansion."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "first detectable balloon expansion happens BEFORE intact silhouette expands steadily.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: balloon: exactly 1, state size=small, surface=loose, integrity=intact, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] first detectable balloon expansion happens BEFORE intact silhouette expands steadily.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: balloon: exactly 1, state size=small, surface=loose, integrity=intact, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "onset",
+      "violation_constraint_ids": [
+        [
+          "c1",
+          "c3",
+          "c4"
+        ]
+      ],
+      "violation_kinds": [
+        "wrong_order"
+      ],
+      "violation_relations": [
+        "intact silhouette expands steadily happens BEFORE first detectable balloon expansion."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: balloon: exactly 1, state size=small, surface=loose, integrity=intact, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] intact silhouette expands steadily happens BEFORE first detectable balloon expansion."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The declared change intact silhouette expands steadily occurs in its stated direction.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: balloon: exactly 1, state size=large, surface=taut, integrity=intact, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change intact silhouette expands steadily occurs in its stated direction.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: balloon: exactly 1, state size=large, surface=taut, integrity=intact, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "evolution",
+      "violation_constraint_ids": [
+        [
+          "c2"
+        ]
+      ],
+      "violation_kinds": [
+        "wrong_direction"
+      ],
+      "violation_relations": [
+        "The same declared property changes in the opposite or out-of-range direction."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: balloon: exactly 1, state size=large, surface=taut, integrity=intact, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The same declared property changes in the opposite or out-of-range direction."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The declared change continuous envelope separates into fragments occurs in its stated direction.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: balloon: exactly 1, state size=collapsed, surface=deflated, integrity=ruptured_fragments, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change continuous envelope separates into fragments occurs in its stated direction.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: balloon: exactly 1, state size=collapsed, surface=deflated, integrity=ruptured_fragments, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "completion",
+      "violation_constraint_ids": [
+        [
+          "c5",
+          "c6"
+        ]
+      ],
+      "violation_kinds": [
+        "incomplete_transition"
+      ],
+      "violation_relations": [
+        "The declared cause occurs BUT the required target change does not become visible."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: balloon: exactly 1, state size=collapsed, surface=deflated, integrity=ruptured_fragments, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The declared cause occurs BUT the required target change does not become visible."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The terminal facts size=collapsed, integrity=ruptured_fragments REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts integrity=intact, integrity=ruptured_fragments do not coexist.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: balloon: exactly 1, state size=collapsed, surface=deflated, integrity=ruptured_fragments, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The terminal facts size=collapsed, integrity=ruptured_fragments REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts integrity=intact, integrity=ruptured_fragments do not coexist.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: balloon: exactly 1, state size=collapsed, surface=deflated, integrity=ruptured_fragments, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "terminal",
+      "violation_constraint_ids": [
+        [
+          "c6"
+        ],
+        [
+          "c7"
+        ]
+      ],
+      "violation_kinds": [
+        "reversal",
+        "exclusion_broken"
+      ],
+      "violation_relations": [
+        "The valid terminal state returns to its mutually exclusive earlier state.",
+        "Copies of the same logical slot appear in mutually exclusive states at the same time."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: balloon: exactly 1, state size=collapsed, surface=deflated, integrity=ruptured_fragments, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The valid terminal state returns to its mutually exclusive earlier state. [AND] The same logical slot has only its valid state; mutually exclusive facts integrity=intact, integrity=ruptured_fragments do not coexist.",
+        "[STAGE ENTITY INVENTORY] Present now: balloon: exactly 1, state size=collapsed, surface=deflated, integrity=ruptured_fragments, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The terminal facts size=collapsed, integrity=ruptured_fragments REMAIN through the final frames. [AND] Copies of the same logical slot appear in mutually exclusive states at the same time."
+      ],
+      "violation_weights": [
+        0.5,
+        0.5
+      ]
+    }
+  ],
+  "texts": {
+    "global_semantic": "[ENTITY INVENTORY] The closed scene contains balloon: exactly 1. All declared entities are fully visible from the first frame in the stated layout. [INITIAL STATE] size=small, surface=loose, integrity=intact. [PHYSICAL EVENT] One rubber balloon inflates steadily, reaches a large taut state, bursts, and leaves deflated fragments in place. [INITIAL LAYOUT] rubber balloon and its resulting fragments. [PERSISTENT PROTECTION] same rubber material through inflation and fragments; same burst location; camera and background remain unchanged. [CLOSED WORLD] No additional external source, extra copy, hand, person, tool, unlisted object enters or appears; unoccupied scene regions remain empty. [CONSERVATION] Source loss and result gain stay coupled: tracked logical entity slots remain consistent. No result appears from an undeclared external source. [TERMINAL STATE] The same logical entity slots persist without duplicates; size=collapsed, surface=deflated, integrity=ruptured_fragments remains visible through the final frames.",
+    "stage.completion.negative.0": "[STAGE ENTITY INVENTORY] Present now: balloon: exactly 1, state size=collapsed, surface=deflated, integrity=ruptured_fragments, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The declared cause occurs BUT the required target change does not become visible.",
+    "stage.completion.positive": "[STAGE ENTITY INVENTORY] Present now: balloon: exactly 1, state size=collapsed, surface=deflated, integrity=ruptured_fragments, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change continuous envelope separates into fragments occurs in its stated direction.",
+    "stage.evolution.negative.0": "[STAGE ENTITY INVENTORY] Present now: balloon: exactly 1, state size=large, surface=taut, integrity=intact, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The same declared property changes in the opposite or out-of-range direction.",
+    "stage.evolution.positive": "[STAGE ENTITY INVENTORY] Present now: balloon: exactly 1, state size=large, surface=taut, integrity=intact, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change intact silhouette expands steadily occurs in its stated direction.",
+    "stage.onset.negative.0": "[STAGE ENTITY INVENTORY] Present now: balloon: exactly 1, state size=small, surface=loose, integrity=intact, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] intact silhouette expands steadily happens BEFORE first detectable balloon expansion.",
+    "stage.onset.positive": "[STAGE ENTITY INVENTORY] Present now: balloon: exactly 1, state size=small, surface=loose, integrity=intact, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] first detectable balloon expansion happens BEFORE intact silhouette expands steadily.",
+    "stage.setup.negative.0": "[STAGE ENTITY INVENTORY] Present now: balloon: exactly 1, state size=small, surface=loose, integrity=intact, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] intact silhouette expands steadily is already present BEFORE first detectable balloon expansion.",
+    "stage.setup.positive": "[STAGE ENTITY INVENTORY] Present now: balloon: exactly 1, state size=small, surface=loose, integrity=intact, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] first detectable balloon expansion happens BEFORE intact silhouette expands steadily.",
+    "stage.terminal.negative.0": "[STAGE ENTITY INVENTORY] Present now: balloon: exactly 1, state size=collapsed, surface=deflated, integrity=ruptured_fragments, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The valid terminal state returns to its mutually exclusive earlier state. [AND] The same logical slot has only its valid state; mutually exclusive facts integrity=intact, integrity=ruptured_fragments do not coexist.",
+    "stage.terminal.negative.1": "[STAGE ENTITY INVENTORY] Present now: balloon: exactly 1, state size=collapsed, surface=deflated, integrity=ruptured_fragments, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The terminal facts size=collapsed, integrity=ruptured_fragments REMAIN through the final frames. [AND] Copies of the same logical slot appear in mutually exclusive states at the same time.",
+    "stage.terminal.positive": "[STAGE ENTITY INVENTORY] Present now: balloon: exactly 1, state size=collapsed, surface=deflated, integrity=ruptured_fragments, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The terminal facts size=collapsed, integrity=ruptured_fragments REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts integrity=intact, integrity=ruptured_fragments do not coexist."
+  },
+  "token_budget_priority": {
+    "causal": 2,
+    "entity_count": 0,
+    "protected": 1,
+    "style": 3
+  }
+}

@@ -1,0 +1,252 @@
+{
+  "closed_world": {
+    "allowed_entity_ids": [
+      "ball",
+      "racket"
+    ],
+    "empty_regions": [],
+    "external_source_allowed": false,
+    "forbidden_new_categories": [
+      "external source",
+      "extra copy",
+      "unlisted object"
+    ],
+    "provenance": "derived"
+  },
+  "conservation": [
+    {
+      "observable_proxy": "tracked logical entity slots remain consistent",
+      "provenance": "derived",
+      "quantity": "instance_count",
+      "relation": "constant",
+      "rule_id": "entity_slots_constant",
+      "sinks": [
+        "ball",
+        "racket"
+      ],
+      "sources": [
+        "ball",
+        "racket"
+      ],
+      "tolerance": 0.0
+    },
+    {
+      "observable_proxy": "direction reverses as the post-contact gap reopens",
+      "provenance": "derived",
+      "quantity": "material_proxy",
+      "relation": "coupled_monotonic",
+      "rule_id": "conservation_c3",
+      "sinks": [
+        "direction"
+      ],
+      "sources": [
+        "gap_state"
+      ],
+      "tolerance": 0.1
+    }
+  ],
+  "issues": [],
+  "lifecycles": [
+    {
+      "entity_id": "ball",
+      "from_stage": "setup",
+      "from_state": "approaching_separated; toward_racket",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "approaching_separated",
+          "departing_separated"
+        ],
+        [
+          "toward_racket",
+          "opposite_away"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "departing_separated; opposite_away"
+    }
+  ],
+  "slots": [
+    {
+      "aliases": [],
+      "canonical_mention": "the same tennis ball",
+      "cardinality": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "ball",
+      "invariant_attributes": [
+        "same single tennis ball",
+        "same tennis racket",
+        "court and camera remain unchanged"
+      ],
+      "mutable_attributes": [
+        "gap_to:racket",
+        "travel_direction"
+      ],
+      "persistent_identity": true,
+      "provenance": "default",
+      "role": "actor"
+    },
+    {
+      "aliases": [],
+      "canonical_mention": "the same tennis racket",
+      "cardinality": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "racket",
+      "invariant_attributes": [
+        "same single tennis ball",
+        "same tennis racket",
+        "court and camera remain unchanged"
+      ],
+      "mutable_attributes": [],
+      "persistent_identity": true,
+      "provenance": "default",
+      "role": "patient"
+    }
+  ],
+  "stage_presence": [
+    {
+      "entity_id": "ball",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [
+        "gap_state=approaching_separated",
+        "direction=toward_racket"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "racket",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [],
+      "visible": "required"
+    },
+    {
+      "entity_id": "ball",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [
+        "gap_state=approaching_separated",
+        "direction=toward_racket"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "racket",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "ball",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [
+        "gap_state=departing_separated",
+        "direction=opposite_away"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "racket",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [],
+      "visible": "required"
+    },
+    {
+      "entity_id": "ball",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [
+        "gap_state=departing_separated",
+        "direction=opposite_away"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "racket",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "ball",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [
+        "gap_state=departing_separated",
+        "direction=opposite_away"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "racket",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [],
+      "visible": "required"
+    }
+  ]
+}

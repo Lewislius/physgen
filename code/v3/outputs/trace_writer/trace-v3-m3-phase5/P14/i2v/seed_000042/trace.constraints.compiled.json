@@ -1,0 +1,105 @@
+{
+  "closed_world": {
+    "allowed_entity_ids": [
+      "bottle",
+      "stream",
+      "glass"
+    ],
+    "empty_regions": [],
+    "external_source_allowed": false,
+    "forbidden_new_categories": [
+      "dropper",
+      "external liquid stream",
+      "external source",
+      "extra copy",
+      "hand",
+      "person",
+      "pipette",
+      "tool",
+      "unlisted object"
+    ],
+    "provenance": "derived"
+  },
+  "conservation": [
+    {
+      "observable_proxy": "tracked logical entity slots remain consistent",
+      "provenance": "derived",
+      "quantity": "instance_count",
+      "relation": "constant",
+      "rule_id": "entity_slots_constant",
+      "sinks": [
+        "bottle",
+        "stream",
+        "glass"
+      ],
+      "sources": [
+        "bottle",
+        "stream",
+        "glass"
+      ],
+      "tolerance": 0.0
+    },
+    {
+      "observable_proxy": "left orange level falls through bright stream while right level rises",
+      "provenance": "derived",
+      "quantity": "material_proxy",
+      "relation": "coupled_monotonic",
+      "rule_id": "conservation_c3",
+      "sinks": [
+        "stream_state",
+        "sink_level"
+      ],
+      "sources": [
+        "source_level"
+      ],
+      "tolerance": 0.1
+    }
+  ],
+  "lifecycles": [
+    {
+      "entity_id": "bottle",
+      "from_stage": "setup",
+      "from_state": "high",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "high",
+          "visibly_lower"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "visibly_lower"
+    },
+    {
+      "entity_id": "stream",
+      "from_stage": "setup",
+      "from_state": "absent",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "absent",
+          "continuous_orange"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "continuous_orange"
+    },
+    {
+      "entity_id": "glass",
+      "from_stage": "setup",
+      "from_state": "empty",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "empty",
+          "visibly_higher"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "visibly_higher"
+    }
+  ]
+}

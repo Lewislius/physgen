@@ -1,0 +1,188 @@
+{
+  "closed_world": {
+    "allowed_entity_ids": [
+      "balloon"
+    ],
+    "empty_regions": [],
+    "external_source_allowed": false,
+    "forbidden_new_categories": [
+      "external source",
+      "extra copy",
+      "hand",
+      "person",
+      "tool",
+      "unlisted object"
+    ],
+    "provenance": "derived"
+  },
+  "conservation": [
+    {
+      "observable_proxy": "tracked logical entity slots remain consistent",
+      "provenance": "derived",
+      "quantity": "instance_count",
+      "relation": "constant",
+      "rule_id": "entity_slots_constant",
+      "sinks": [
+        "balloon"
+      ],
+      "sources": [
+        "balloon"
+      ],
+      "tolerance": 0.0
+    }
+  ],
+  "issues": [],
+  "lifecycles": [
+    {
+      "entity_id": "balloon",
+      "from_stage": "setup",
+      "from_state": "small_pear_shape; wrinkled_loose",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "small_pear_shape",
+          "large_taut_shape"
+        ],
+        [
+          "wrinkled_loose",
+          "smooth_taut"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "large_taut_shape; smooth_taut"
+    },
+    {
+      "entity_id": "balloon",
+      "from_stage": "setup",
+      "from_state": "large_taut_shape; smooth_taut; intact",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "large_taut_shape",
+          "collapsed_green_pieces"
+        ],
+        [
+          "smooth_taut",
+          "deflated"
+        ],
+        [
+          "intact",
+          "ruptured_fragments"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "collapsed_green_pieces; deflated; ruptured_fragments"
+    }
+  ],
+  "slots": [
+    {
+      "aliases": [],
+      "canonical_mention": "the same tied green rubber balloon and its green fragments",
+      "cardinality": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "balloon",
+      "invariant_attributes": [
+        "same green rubber color through balloon and fragments",
+        "same tied-neck material identity",
+        "plain pale background, soft shadow, lighting, central location, and static camera remain unchanged",
+        "no inflation tool or person is added"
+      ],
+      "mutable_attributes": [
+        "green silhouette extent",
+        "green surface tension appearance",
+        "envelope integrity"
+      ],
+      "persistent_identity": true,
+      "provenance": "derived",
+      "role": "actor"
+    }
+  ],
+  "stage_presence": [
+    {
+      "entity_id": "balloon",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [
+        "size=small_pear_shape",
+        "surface=wrinkled_loose",
+        "integrity=intact"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "balloon",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [
+        "size=small_pear_shape",
+        "surface=wrinkled_loose",
+        "integrity=intact"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "balloon",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [
+        "size=large_taut_shape",
+        "surface=smooth_taut",
+        "integrity=intact"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "balloon",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [
+        "size=collapsed_green_pieces",
+        "surface=deflated",
+        "integrity=ruptured_fragments"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "balloon",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [
+        "size=collapsed_green_pieces",
+        "surface=deflated",
+        "integrity=ruptured_fragments"
+      ],
+      "visible": "required"
+    }
+  ]
+}

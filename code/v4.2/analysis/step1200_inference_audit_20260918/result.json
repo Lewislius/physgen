@@ -1,0 +1,161 @@
+{
+  "status": "passed",
+  "scope": "CPU checkpoint/config/cache/initializer audit; no Wan GPU sampling",
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v4.2/checkpoints/stability_20260917T181001Z_a83129/step1200",
+  "checkpoint_step": 1200,
+  "ema_updates": 1200,
+  "sha256_verified": [
+    "config.json",
+    "ema.pt"
+  ],
+  "strict_load": true,
+  "tensors": 333,
+  "parameters": 68266498,
+  "all_tensors_finite": true,
+  "exact_training_code_match": true,
+  "initializer": "condition_trajectory_v1",
+  "write_gate": true,
+  "initializer_checks": {
+    "P01_i2v": {
+      "shape": [
+        1,
+        16,
+        576,
+        1664
+      ],
+      "finite": true,
+      "first_last_rms": 0.071542888879776
+    },
+    "P01_t2v": {
+      "shape": [
+        1,
+        16,
+        576,
+        1664
+      ],
+      "finite": true,
+      "first_last_rms": 0.08203575760126114
+    }
+  },
+  "cases": 41,
+  "modes": {
+    "i2v": 21,
+    "t2v": 20
+  },
+  "identical_v4_images_and_prompts": true,
+  "gt_future_required": false,
+  "geometries": {
+    "384x384x121": 1,
+    "512x288x121": 40
+  },
+  "cached_texts": 22,
+  "cached_first_images": 21,
+  "cached_anchors": 21,
+  "recipe": {
+    "solver": "unipc",
+    "steps": 50,
+    "shift": 5,
+    "guidance": 5,
+    "adapter_guidance": 1,
+    "seed": 42,
+    "implementation": "20260917_r3_delta_h",
+    "variant": "full",
+    "writer_scales": [
+      1.0,
+      1.0
+    ]
+  },
+  "launchers": {
+    "1x96g": {
+      "pool": "blk-96g",
+      "output": "/home/liuzhirui/Project/physGen/code/v4.2/inference_outputs/stability_20260917T181001Z_a83129_step1200_ema_demo_seed42_r3_full",
+      "commands": [
+        [
+          "/home/liuzhirui/miniconda3/envs/moviestory/bin/python",
+          "-I",
+          "-B",
+          "-u",
+          "/home/liuzhirui/Project/physGen/code/v4.2/inference/infer.py",
+          "--phase",
+          "prepare",
+          "--checkpoint",
+          "/home/liuzhirui/Project/physGen/code/v4.2/checkpoints/stability_20260917T181001Z_a83129/step1200",
+          "--output",
+          "/home/liuzhirui/Project/physGen/code/v4.2/inference_outputs/stability_20260917T181001Z_a83129_step1200_ema_demo_seed42_r3_full",
+          "--suite",
+          "demo",
+          "--variant",
+          "full"
+        ],
+        [
+          "/home/liuzhirui/miniconda3/envs/vjepa2-312/bin/python",
+          "-I",
+          "-B",
+          "-u",
+          "/home/liuzhirui/Project/physGen/code/v4.2/tools/teacher.py",
+          "--phase",
+          "anchors",
+          "--output",
+          "/home/liuzhirui/Project/physGen/code/v4.2/inference_outputs/stability_20260917T181001Z_a83129_step1200_ema_demo_seed42_r3_full"
+        ],
+        [
+          "/home/liuzhirui/miniconda3/envs/moviestory/bin/python",
+          "-I",
+          "-B",
+          "-u",
+          "/home/liuzhirui/Project/physGen/code/v4.2/inference/infer.py",
+          "--phase",
+          "sample",
+          "--output",
+          "/home/liuzhirui/Project/physGen/code/v4.2/inference_outputs/stability_20260917T181001Z_a83129_step1200_ema_demo_seed42_r3_full"
+        ]
+      ]
+    },
+    "1xada48g": {
+      "pool": "ada-48g",
+      "output": "/home/liuzhirui/Project/physGen/code/v4.2/inference_outputs/stability_20260917T181001Z_a83129_step1200_ema_demo_1xada48g_seed42_r3_full",
+      "commands": [
+        [
+          "/home/liuzhirui/miniconda3/envs/moviestory/bin/python",
+          "-I",
+          "-B",
+          "-u",
+          "/home/liuzhirui/Project/physGen/code/v4.2/inference/infer.py",
+          "--phase",
+          "prepare",
+          "--checkpoint",
+          "/home/liuzhirui/Project/physGen/code/v4.2/checkpoints/stability_20260917T181001Z_a83129/step1200",
+          "--output",
+          "/home/liuzhirui/Project/physGen/code/v4.2/inference_outputs/stability_20260917T181001Z_a83129_step1200_ema_demo_1xada48g_seed42_r3_full",
+          "--suite",
+          "demo",
+          "--variant",
+          "full"
+        ],
+        [
+          "/home/liuzhirui/miniconda3/envs/vjepa2-312/bin/python",
+          "-I",
+          "-B",
+          "-u",
+          "/home/liuzhirui/Project/physGen/code/v4.2/tools/teacher.py",
+          "--phase",
+          "anchors",
+          "--output",
+          "/home/liuzhirui/Project/physGen/code/v4.2/inference_outputs/stability_20260917T181001Z_a83129_step1200_ema_demo_1xada48g_seed42_r3_full"
+        ],
+        [
+          "/home/liuzhirui/miniconda3/envs/moviestory/bin/python",
+          "-I",
+          "-B",
+          "-u",
+          "/home/liuzhirui/Project/physGen/code/v4.2/inference/infer.py",
+          "--phase",
+          "sample",
+          "--output",
+          "/home/liuzhirui/Project/physGen/code/v4.2/inference_outputs/stability_20260917T181001Z_a83129_step1200_ema_demo_1xada48g_seed42_r3_full"
+        ]
+      ]
+    }
+  },
+  "gpu_sampling_verified": false
+}

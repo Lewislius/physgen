@@ -1,0 +1,99 @@
+{
+  "closed_world": {
+    "allowed_entity_ids": [
+      "pitcher",
+      "stream",
+      "glass"
+    ],
+    "empty_regions": [],
+    "external_source_allowed": false,
+    "forbidden_new_categories": [
+      "external source",
+      "extra copy",
+      "unlisted object"
+    ],
+    "provenance": "derived"
+  },
+  "conservation": [
+    {
+      "observable_proxy": "tracked logical entity slots remain consistent",
+      "provenance": "derived",
+      "quantity": "instance_count",
+      "relation": "constant",
+      "rule_id": "entity_slots_constant",
+      "sinks": [
+        "pitcher",
+        "stream",
+        "glass"
+      ],
+      "sources": [
+        "pitcher",
+        "stream",
+        "glass"
+      ],
+      "tolerance": 0.0
+    },
+    {
+      "observable_proxy": "left waterline falls through clear stream while right waterline rises",
+      "provenance": "derived",
+      "quantity": "material_proxy",
+      "relation": "coupled_monotonic",
+      "rule_id": "conservation_c3",
+      "sinks": [
+        "stream_state",
+        "sink_level"
+      ],
+      "sources": [
+        "source_level"
+      ],
+      "tolerance": 0.1
+    }
+  ],
+  "lifecycles": [
+    {
+      "entity_id": "pitcher",
+      "from_stage": "setup",
+      "from_state": "about_half_full",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "about_half_full",
+          "visibly_lower"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "visibly_lower"
+    },
+    {
+      "entity_id": "stream",
+      "from_stage": "setup",
+      "from_state": "absent",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "absent",
+          "continuous_clear_stream"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "continuous_clear_stream"
+    },
+    {
+      "entity_id": "glass",
+      "from_stage": "setup",
+      "from_state": "empty",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "empty",
+          "visibly_higher"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "visibly_higher"
+    }
+  ]
+}

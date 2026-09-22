@@ -1,0 +1,391 @@
+{
+  "schema_version": "trace-direct-v1",
+  "design_revision": "p0-stage-direct-json-r2",
+  "sample_id": "P05",
+  "source_files": {
+    "origin": "P05-origin.txt",
+    "frame_zero_metadata": "P05-i0.json",
+    "reference_input": "P05-i0-1280x704.jpg"
+  },
+  "initial_condition": {
+    "type": "gravity_or_instability",
+    "description": "The block begins on the upper ramp so gravity can pull it down the slope."
+  },
+  "global_semantic": "Fixed side view of one light-wood block beginning to slide right under gravity from the upper part of one wooden ramp. The same block follows the slope onto the rough gray floor, slows continuously across the floor, and remains stopped to the right of the ramp.",
+  "cfg_negative": " ",
+  "entities": [
+    {
+      "id": "wood_block",
+      "mention": "one light-wood rectangular block",
+      "role": "actor"
+    },
+    {
+      "id": "ramp",
+      "mention": "one wooden ramp",
+      "role": "environment"
+    },
+    {
+      "id": "rough_floor",
+      "mention": "one broad rough gray floor",
+      "role": "environment"
+    }
+  ],
+  "structured_guidance": {
+    "schema_version": "structured-text-guidance-v1",
+    "entities": [
+      {
+        "id": "wood_block",
+        "label": "light-wood rectangular block",
+        "count": 1,
+        "persistent": true,
+        "invariants": [
+          "rigid rectangular geometry",
+          "light-wood appearance",
+          "single intact identity"
+        ]
+      },
+      {
+        "id": "ramp",
+        "label": "wooden ramp",
+        "count": 1,
+        "persistent": true,
+        "invariants": [
+          "fixed ramp geometry",
+          "wooden appearance",
+          "stationary identity"
+        ]
+      },
+      {
+        "id": "rough_floor",
+        "label": "broad rough gray floor",
+        "count": 1,
+        "persistent": true,
+        "invariants": [
+          "flat fixed geometry",
+          "rough gray appearance",
+          "stationary identity"
+        ]
+      }
+    ],
+    "initial_condition": {
+      "type": "gravity_or_instability",
+      "active_stages": [
+        "setup"
+      ],
+      "facts": [
+        "The block starts on the upper ramp and gravity already pulls it down the rightward slope.",
+        "The ramp and rough floor remain fixed."
+      ]
+    },
+    "stages": [
+      {
+        "id": "setup",
+        "entity_states": [
+          {
+            "entity_id": "wood_block",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "sliding right down the upper ramp"
+            ],
+            "mutable": [
+              "position along ramp",
+              "sliding speed"
+            ]
+          }
+        ],
+        "relations": [
+          "The block stays supported by the ramp surface."
+        ]
+      },
+      {
+        "id": "onset",
+        "entity_states": [
+          {
+            "entity_id": "wood_block",
+            "presence": "transitioning",
+            "count": 1,
+            "states": [
+              "crossing continuously from the ramp end onto the rough floor"
+            ],
+            "mutable": [
+              "position",
+              "sliding speed"
+            ]
+          }
+        ],
+        "relations": [
+          "The same block makes one support transition without jumping or duplicating."
+        ]
+      },
+      {
+        "id": "evolution",
+        "entity_states": [
+          {
+            "entity_id": "wood_block",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "sliding right across the rough floor with decreasing speed"
+            ],
+            "mutable": [
+              "horizontal position",
+              "sliding speed"
+            ]
+          }
+        ],
+        "relations": [
+          "Successive horizontal displacements become smaller under friction."
+        ]
+      },
+      {
+        "id": "completion",
+        "entity_states": [
+          {
+            "entity_id": "wood_block",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "losing its remaining speed and stopping right of the ramp"
+            ],
+            "mutable": [
+              "horizontal position",
+              "sliding speed"
+            ]
+          }
+        ],
+        "relations": [
+          "The block remains supported by the floor."
+        ]
+      },
+      {
+        "id": "terminal",
+        "entity_states": [
+          {
+            "entity_id": "wood_block",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "intact and motionless on the rough floor"
+            ],
+            "mutable": []
+          }
+        ],
+        "relations": [
+          "Exactly one unchanged block remains to the right of the fixed ramp."
+        ]
+      }
+    ]
+  },
+  "stages": [
+    {
+      "id": "setup",
+      "positive": "The wooden block begins sliding right down the upper part of the ramp under gravity."
+    },
+    {
+      "id": "onset",
+      "positive": "The same block reaches the ramp's lower end and crosses onto the rough floor."
+    },
+    {
+      "id": "evolution",
+      "positive": "The block continues right on the floor with visibly smaller displacement each moment."
+    },
+    {
+      "id": "completion",
+      "positive": "The block loses its remaining speed and comes to rest right of the ramp."
+    },
+    {
+      "id": "terminal",
+      "positive": "One intact wooden block remains motionless on the rough floor."
+    }
+  ],
+  "warnings": [],
+  "generation_basis": {
+    "mode": "visual_grounding",
+    "reference_image_usage": "visual_grounding"
+  },
+  "grounding": {
+    "coordinate_frame": "reference_input",
+    "reference_image": "P05-i0-1280x704.jpg",
+    "approved": true,
+    "entity_boxes": [
+      {
+        "entity_id": "wood_block",
+        "box": [
+          0.07,
+          0.33,
+          0.2,
+          0.46
+        ]
+      },
+      {
+        "entity_id": "ramp",
+        "box": [
+          0.04,
+          0.34,
+          0.46,
+          0.78
+        ]
+      },
+      {
+        "entity_id": "rough_floor",
+        "box": [
+          0.0,
+          0.6,
+          1.0,
+          1.0
+        ]
+      }
+    ]
+  },
+  "temporal_route": {
+    "latent_tokens": 25,
+    "crossfade_tokens": 2,
+    "interpolation": "smoothstep_c1",
+    "profile": "multi_transition",
+    "stage_order": [
+      "setup",
+      "onset",
+      "evolution",
+      "completion",
+      "terminal"
+    ],
+    "weights": [
+      [
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0
+      ]
+    ]
+  }
+}

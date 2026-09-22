@@ -1,0 +1,137 @@
+# Training appends a rank-shared UTC timestamp and unique suffix to the run name.
+run_name: wisa_native_p_A1_4x48g
+stage: A
+phase: A1
+paths:
+  wan_code: /home/liuzhirui/model/Wan2.2
+  wan_checkpoint: /home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B
+  teacher_code: /home/liuzhirui/model/vjepa2
+  teacher_checkpoint: /home/liuzhirui/model/vjepa2/checkpoint/vjepa2_1_vitG_384.pt
+  wisa_videos: /run/determined/NAS1/public/Dataset/WISA/data/videos
+  wisa_index: /run/determined/NAS1/public/Dataset/WISA/data/wisa-80k.json
+  cache_root: ${V4_ROOT}/cache/wisa4000_nativefps_f101_a147456_t16
+  checkpoint_root: ${V4_ROOT}/checkpoints
+  log_root: ${V4_ROOT}/train/train_log
+data:
+  limit: 4000
+  selection_file: null
+  split_seed: 20260909
+  validation_stride: 20
+  max_frames: 101
+  max_long_side: 512
+  max_area: 147456
+  decode_chunk_frames: 8
+  clip_annotations: null
+  teacher_size: 384
+  teacher_frames: 16
+corrector:
+  # Saved with checkpoints; old configs without this field retain latent-only initialization.
+  initialization: image_text_gt
+  # P queries H to update its state; H queries committed P to write a residual. No P/H interpolation.
+  fusion: cross_attention
+  prior_width: 512
+  prior_heads: 8
+  prior_depth: 2
+  # GT clean VAE latent: retain every time slot, spatially pool to at most 8 x 8.
+  prior_video_pool: 8
+  # Every A block owns its entire corrector; P0 and B also have separate parameters.
+  # Old checkpoints without parameter_sharing retain their legacy shared architecture.
+  parameter_sharing: per_block
+  a_blocks: [5, 10, 15, 20, 25, 30]
+  a_every: 5
+  block_b: 18
+  iterations: 1
+  checkpoint_cell: true
+  state_strength: 0.2
+  write_strength: 0.1
+  # Only attenuate writing at extreme noise; P can still update. Set width=0 for ablation.
+  early_write_width: 0.1
+  early_write_floor: 0.1
+  handoff_sigma: 0.65
+  handoff_width: 0.15
+  late_sigma: 0.15
+  late_floor: 0.25
+  seconds_scale: 1.0
+loss:
+  fm_weight: 1.0
+  struct_weight: 0.1
+  struct_warmup_steps: 200
+  struct_noise_width: 0.2
+  # Same spatially pooled JEPA supervision for P0 with or without GT conditioning.
+  prior_weight: 0.02
+  out_weight: 0.0
+  out_every: 4
+  out_sigma_min: 0.05
+  out_sigma_max: 0.4
+train:
+  seed: 20260909
+  # Use the first N valid training records from the existing cache; 0 uses all.
+  sample_limit: 1000
+  steps: 500
+  learning_rate: 0.0001
+  weight_decay: 0.01
+  warmup_steps: 100
+  minimum_lr_ratio: 0.1
+  # Accumulation is derived from the actual worker count at launch.
+  global_batch_size: 8
+  workers: 2
+  # Multiprocess cache readers always use spawn, including old checkpoints.
+  pin_memory: true
+  loader_timeout_seconds: 120
+  text_dropout: 0.1
+  # One shared initializer, one P0 per sample. All ranks use the same step-level choice.
+  # 25% no-GT training exercises exactly the input modalities available at inference.
+  gt_condition_dropout: 0.25
+  sigma_min: 0.02
+  sigma_max: 0.999
+  # Optional same-video two-noise-view ablation; full A1 does one Wan pass per sample.
+  state_warmup_every: 0
+  grad_clip: 1.0
+  save_every: 250
+diagnostics:
+  # Startup/validation/checkpoint markers plus the first N optimizer steps.
+  trace_steps: 1
+  stack_timeout_seconds: 120
+  trace_wan_blocks: false
+logging:
+  # Console and JSONL/TXT files are always written. W&B never runs while disabled.
+  wandb:
+    enabled: false
+    project: physgen-v4
+    entity: null
+validation:
+  every: 250
+  samples_per_rank: 1
+  sigmas: [0.1, 0.35, 0.6, 0.85, 0.98]
+  seed: 93001
+phases:
+  A1:
+    stage: A
+    iterations: 1
+    out_weight: 0.0
+    steps: 500
+    learning_rate: 0.0001
+  A2:
+    stage: A
+    iterations: 2
+    out_weight: 0.0
+    steps: 250
+    learning_rate: 0.00005
+  A3:
+    stage: A
+    iterations: 2
+    out_weight: 0.1
+    steps: 250
+    learning_rate: 0.00002
+  B1:
+    stage: B
+    iterations: 2
+    out_weight: 0.1
+    steps: 250
+    learning_rate: 0.00005
+  AB:
+    stage: AB
+    iterations: 2
+    out_weight: 0.1
+    steps: 250
+    learning_rate: 0.00001

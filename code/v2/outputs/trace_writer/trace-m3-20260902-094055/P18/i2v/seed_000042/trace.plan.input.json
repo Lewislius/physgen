@@ -1,0 +1,380 @@
+{
+  "assumptions": [],
+  "constraints": [
+    {
+      "after": "pictured_bounce_decay",
+      "before": "pictured_first_impact",
+      "id": "c1",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "precedes"
+    },
+    {
+      "cause": "pictured_first_impact",
+      "effect": "pictured_bounce_decay",
+      "id": "c2",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "requires"
+    },
+    {
+      "effects": [
+        "pictured_height_finish",
+        "pictured_bounce_decay",
+        "pictured_peaks_decay"
+      ],
+      "id": "c3",
+      "relation": "gray-floor contacts yield successively lower red-ball peaks until rest",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "couples"
+    },
+    {
+      "facts": [
+        "height_state=resting_at_floor",
+        "motion_state=resting",
+        "peak_envelope=decreasing_to_zero"
+      ],
+      "id": "c4",
+      "source_refs": [
+        "origin"
+      ],
+      "state": "z1",
+      "type": "persists"
+    },
+    {
+      "facts": [
+        "motion_state=bouncing",
+        "motion_state=resting"
+      ],
+      "id": "c5",
+      "scope": "same_time",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "excludes"
+    }
+  ],
+  "design_revision": "fixed5-causal-r3",
+  "entities": [
+    {
+      "id": "ball",
+      "mention": "the same single red rubber ball near the upper center",
+      "role": "actor",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    },
+    {
+      "id": "floor",
+      "mention": "the same smooth gray floor below",
+      "role": "patient",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "description": "the red ball first reaches the smooth gray floor",
+      "id": "pictured_first_impact",
+      "observable": "the vertical pale-wall gap closes to zero",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    }
+  ],
+  "generation_basis": {
+    "mode": "visual_grounding",
+    "reference_image_usage": "visual_grounding",
+    "semantic_inputs": [
+      "origin",
+      "planner_instructions",
+      "reference_input"
+    ]
+  },
+  "global_semantic": "The single red rubber ball drops through the centered vertical corridor onto the smooth gray floor, bounces lower, and rests.",
+  "grounding": {
+    "approved": false,
+    "coordinate_frame": "reference_input",
+    "entity_boxes": [
+      {
+        "box": [
+          0.47,
+          0.073,
+          0.533,
+          0.184
+        ],
+        "entity_id": "ball"
+      },
+      {
+        "box": [
+          0.0,
+          0.694,
+          1.0,
+          1.0
+        ],
+        "entity_id": "floor"
+      }
+    ],
+    "protected_boxes": [],
+    "reference_image": "P18-i0-1280x704.png",
+    "reference_image_usage": "visual_grounding"
+  },
+  "predicates": [
+    {
+      "attribute": "pictured height above gray floor",
+      "id": "height_state",
+      "observable": "vertical red-ball gap to gray floor",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "subject": "ball",
+      "values": [
+        "upper_center",
+        "resting_at_floor"
+      ]
+    },
+    {
+      "attribute": "vertical motion",
+      "id": "motion_state",
+      "observable": "alternating red-ball displacement and final stillness",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "subject": "ball",
+      "values": [
+        "falling",
+        "bouncing",
+        "resting"
+      ]
+    },
+    {
+      "attribute": "pictured rebound peaks",
+      "id": "peak_envelope",
+      "observable": "successive maximum red-ball heights against pale wall",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "subject": "ball",
+      "values": [
+        "initial_gap",
+        "decreasing_to_zero"
+      ]
+    }
+  ],
+  "protected_predicates": [
+    "same single red rubber sphere",
+    "smooth gray floor, pale wall, white baseboard, lighting, centered corridor, and static side camera remain unchanged"
+  ],
+  "sample_id": "P18",
+  "schema_version": "trace-writer-v1",
+  "source_files": {
+    "origin": "P18-origin.txt",
+    "planner_instructions": "Project/physGen/prompt/generate_trace_writer_v1_plan.txt",
+    "reference_input": "P18-i0-1280x704.png"
+  },
+  "stages": [
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "setup",
+      "observable_check": "One red sphere moves downward while the floor gap remains positive.",
+      "positive": "The pictured red ball descends from upper center through clear pale-wall space toward gray floor.",
+      "support_kind": "motion_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "The red ball already rests on gray floor before traversing the pictured vertical gap.",
+          "type": "outcome_preset"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c1",
+        "c2"
+      ],
+      "id": "onset",
+      "observable_check": "Zero floor gap precedes the first upward movement.",
+      "positive": "The red sphere reaches the smooth gray floor before its first visible upward displacement.",
+      "support_kind": "contact_interface",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1",
+            "c2"
+          ],
+          "text": "The pictured red ball turns upward while pale wall still separates it from floor.",
+          "type": "wrong_order"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c3"
+      ],
+      "id": "evolution",
+      "observable_check": "Successive red-ball maxima descend against the unchanged pale wall.",
+      "positive": "The same red ball rebounds repeatedly along the centered corridor with a lower peak each time.",
+      "support_kind": "motion_contact_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c3"
+          ],
+          "text": "Gray-floor impacts send the red ball to equal or increasing wall-referenced peaks.",
+          "type": "coupling_broken"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c3",
+        "c4"
+      ],
+      "id": "completion",
+      "observable_check": "Peak height and bounce displacement both approach zero.",
+      "positive": "The remaining red-ball rebounds shrink until its vertical displacement reaches zero at gray floor.",
+      "support_kind": "motion_contact_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c3",
+            "c4"
+          ],
+          "text": "Late red-ball rebounds regain pictured height instead of converging to the floor.",
+          "type": "envelope_broken"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c4",
+        "c5"
+      ],
+      "id": "terminal",
+      "observable_check": "One red sphere holds one floor position through the end.",
+      "positive": "The same red rubber ball remains still at one point on the unchanged smooth gray floor.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c4"
+          ],
+          "text": "The resting red ball begins bouncing again during final frames.",
+          "type": "reversal"
+        },
+        {
+          "constraint_ids": [
+            "c5"
+          ],
+          "text": "Bouncing and resting red-ball copies coexist above the same floor point.",
+          "type": "exclusion_broken"
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "facts": {
+        "height_state": "upper_center",
+        "motion_state": "falling",
+        "peak_envelope": "initial_gap"
+      },
+      "id": "z0",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    },
+    {
+      "facts": {
+        "height_state": "resting_at_floor",
+        "motion_state": "resting",
+        "peak_envelope": "decreasing_to_zero"
+      },
+      "id": "z1",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "cause_event": "pictured_first_impact",
+      "effects": [
+        {
+          "direction": "red-ball vertical path converges to floor",
+          "from": "upper_center",
+          "id": "pictured_height_finish",
+          "predicate": "height_state",
+          "to": "resting_at_floor"
+        },
+        {
+          "direction": "red-ball rebounds decay to stillness",
+          "from": "falling",
+          "id": "pictured_bounce_decay",
+          "predicate": "motion_state",
+          "to": "resting"
+        },
+        {
+          "direction": "each wall-referenced peak is lower",
+          "from": "initial_gap",
+          "id": "pictured_peaks_decay",
+          "predicate": "peak_envelope",
+          "to": "decreasing_to_zero"
+        }
+      ],
+      "from": "z0",
+      "id": "e1",
+      "kind": "triggered",
+      "preconditions": [
+        "height_state=upper_center",
+        "motion_state=falling",
+        "peak_envelope=initial_gap"
+      ],
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "support_kind": "motion_contact_corridor",
+      "to": "z1"
+    }
+  ],
+  "warnings": [
+    "Entity boxes are visually estimated from the reference image and remain unapproved."
+  ]
+}

@@ -1,0 +1,236 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="2610" viewBox="0 0 1800 2610" role="img" aria-labelledby="title desc">
+  <title id="title">20260908-C：可信监督与内部联合循环校正完整流程</title>
+  <desc id="desc">相关性指导读取，过程重要性通过共享预测关联表达，门控学习当前修改需求，带符号增量学习修改方向。这是四种职责，不是四套网络。可信教师为主、少量核验数据校准；训练仅用四项损失：视频 Flow Matching、交互预测、过程执行和门控回归。正式采样只运行 Wan 和共享循环单元：读取实际预测，更新稠密记忆，沿同一预测关联联查结果、前置条件与关联后果，输出有界增量和时空门，累计写入、重算后续 DiT，再读取新结果。每个去噪步只推进一次采样器。参考视频、离线 VLM、视频教师和过程评分器不进入正式采样。转移关联回写为待验证研究设计。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L10 5 L0 10 Z" fill="#385374"/></marker>
+    <marker id="orange" markerWidth="11" markerHeight="11" refX="9" refY="5.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L11 5.5 L0 11 Z" fill="#b65f18"/></marker>
+    <marker id="green" markerWidth="11" markerHeight="11" refX="9" refY="5.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L11 5.5 L0 11 Z" fill="#248069"/></marker>
+    <style>
+      text { font-family: "Noto Sans CJK SC", "Microsoft YaHei", "PingFang SC", "WenQuanYi Micro Hei", sans-serif; fill: #1c314b; }
+      .title { font-size: 36px; font-weight: 700; }
+      .subtitle { font-size: 21px; fill: #52647a; }
+      .section { font-size: 27px; font-weight: 700; }
+      .head { font-size: 25px; font-weight: 700; }
+      .body { font-size: 21px; }
+      .small { font-size: 19px; fill: #4d627a; }
+      .tiny { font-size: 17px; fill: #52647a; }
+      .math { font-family: "DejaVu Sans Mono", monospace; font-size: 23px; }
+      .panel { fill: #ffffff; stroke: #cfdae6; stroke-width: 2; }
+      .blue { fill: #eef5ff; stroke: #85a8d2; stroke-width: 2; }
+      .amber { fill: #fff5e6; stroke: #d99b50; stroke-width: 2.5; }
+      .mint { fill: #ecf8f3; stroke: #71ab98; stroke-width: 2; }
+      .gray { fill: #f4f6f9; stroke: #c3ceda; stroke-width: 2; }
+      .purple { fill: #f3f0fb; stroke: #a496c3; stroke-width: 2; }
+      .flow { fill: none; stroke: #385374; stroke-width: 2.5; marker-end: url(#arrow); }
+      .feedback { fill: none; stroke: #b65f18; stroke-width: 3.5; marker-end: url(#orange); }
+      .memory { fill: none; stroke: #248069; stroke-width: 3; marker-end: url(#green); }
+      .target { fill: none; stroke: #7b6a9b; stroke-width: 2.5; stroke-dasharray: 8 6; marker-end: url(#arrow); }
+      .next { fill: none; stroke: #385374; stroke-width: 2.5; stroke-dasharray: 9 6; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect width="1800" height="2610" fill="#f3f6fa"/>
+  <text x="55" y="62" class="title">20260908-C｜可信监督与内部联合循环校正</text>
+  <text x="57" y="99" class="subtitle">2026-09-08 · 第三篇（C）｜问题驱动的研究方案：不绑定 StateBridge，不预设语义 slot，效果待验证</text>
+
+  <rect x="40" y="125" width="1720" height="235" rx="20" class="panel"/>
+  <text x="65" y="165" class="section">四种职责，一个共享主体：不是把四张预测图相乘，也不是增加四套模型</text>
+  <rect x="70" y="187" width="395" height="116" rx="12" class="blue"/>
+  <text x="91" y="223" class="head">相关｜读什么</text>
+  <text x="91" y="260" class="body">文本—视觉读取、可信事件范围</text>
+  <text x="91" y="288" class="small">相关不等于有错；保留全场景观察</text>
+  <rect x="490" y="187" width="395" height="116" rx="12" class="amber"/>
+  <text x="511" y="223" class="head">重要｜哪些条件影响后果</text>
+  <text x="511" y="260" class="body">共享预测关联；含接触与支撑</text>
+  <text x="511" y="288" class="small">不动、区域小，也可能很重要</text>
+  <rect x="910" y="187" width="395" height="116" rx="12" class="mint"/>
+  <text x="931" y="223" class="head">需求｜哪里当前要改</text>
+  <text x="931" y="260" class="body">一个时空门 G，学习校准误差</text>
+  <text x="931" y="288" class="small">重要但正确：不应被强改</text>
+  <rect x="1330" y="187" width="400" height="116" rx="12" class="purple"/>
+  <text x="1351" y="223" class="head">方向｜如何联合改正</text>
+  <text x="1351" y="260" class="body">带符号增量 D，由实际输出训练</text>
+  <text x="1351" y="288" class="small">改前因与后果；重算后检查变化</text>
+  <text x="71" y="340" class="small">相关／影响软范围只指导训练重点；正式采样复用 M、预测关联、门头与写入头，不增加重要性网络。</text>
+
+  <g transform="translate(0 270)">
+  <rect x="40" y="125" width="1720" height="520" rx="20" class="panel"/>
+  <text x="65" y="166" class="section">A. 训练：可信 teacher 教什么？</text>
+  <text x="665" y="165" class="subtitle">教师为主、少量核验做校准；预测学生不能偷看真实未来</text>
+
+  <rect x="70" y="195" width="410" height="190" rx="13" class="blue"/>
+  <text x="91" y="233" class="head">可信过程视频 + 少量核验</text>
+  <text x="91" y="270" class="body">接触 / 擦过、支撑 / 掉落</text>
+  <text x="91" y="303" class="body">角色、单次事件、身份连续</text>
+  <text x="91" y="338" class="small">补充受控配对与模型自身错误</text>
+  <text x="91" y="367" class="tiny">教师生成的参考也须核查真实过程</text>
+
+  <rect x="515" y="195" width="390" height="190" rx="13" class="purple"/>
+  <text x="536" y="233" class="head">动态教师 + 离线 VLM</text>
+  <text x="536" y="270" class="body">稠密表征、ProPhy 式差异定位</text>
+  <text x="536" y="303" class="body">相关／影响范围、过程软标签</text>
+  <text x="536" y="338" class="small">相关、重要、错误分别核验</text>
+  <text x="536" y="367" class="tiny">教师特征 ≠ 精确物理真值</text>
+
+  <rect x="940" y="195" width="350" height="190" rx="13" class="amber"/>
+  <text x="960" y="233" class="head">共享主体学交互预测</text>
+  <text x="960" y="270" class="body">历史 + 动作 → 后续状态</text>
+  <text x="960" y="303" class="body">学习可用于回写的转移关联</text>
+  <text x="960" y="338" class="small">小规模检验历史遮蔽视图</text>
+  <text x="960" y="367" class="tiny">与正式校正共用主体，不增加语义槽位</text>
+
+  <rect x="1325" y="195" width="405" height="190" rx="13" class="mint"/>
+  <text x="1345" y="233" class="head">错误证据 → 需求门目标</text>
+  <text x="1345" y="270" class="body">配对误差 / 可信局部错误</text>
+  <text x="1345" y="303" class="body">重要性只加权，不代替错误</text>
+  <text x="1345" y="338" class="small">未知区域不标成“已经正确”</text>
+  <text x="1345" y="367" class="tiny">教师门只监督，不替代预测门参与前向</text>
+  <path d="M480 285 H515" class="flow"/>
+  <path d="M905 285 H940" class="target"/>
+  <text x="897" y="414" class="tiny">目标与标签，只在训练中使用</text>
+  <path d="M710 385 V427 H1527 V385" class="target"/>
+
+  <rect x="70" y="455" width="395" height="140" rx="12" class="blue"/>
+  <text x="92" y="492" class="head">① L_video｜视频生成</text>
+  <text x="92" y="530" class="body">适度加权 FM；背景仍有监督</text>
+  <text x="92" y="566" class="small">实际速度 → Wan 后部 → 写入</text>
+
+  <rect x="490" y="455" width="395" height="140" rx="12" class="amber"/>
+  <text x="512" y="492" class="head">② L_pred｜交互预测</text>
+  <text x="512" y="530" class="body">一个稠密表征预测回归目标</text>
+  <text x="512" y="566" class="small">未来目标 → 状态与共享转移关联</text>
+
+  <rect x="910" y="455" width="395" height="140" rx="12" class="purple"/>
+  <text x="932" y="492" class="head">③ L_exec｜过程执行</text>
+  <text x="932" y="530" class="body">同一 BCE：角色 / 交互 / 重放</text>
+  <text x="932" y="566" class="small">实际视频 → 冻结可微评分器</text>
+
+  <rect x="1330" y="455" width="400" height="140" rx="12" class="mint"/>
+  <text x="1352" y="492" class="head">④ L_gate｜修改需求</text>
+  <text x="1352" y="530" class="body">可信误差校准的时空门回归</text>
+  <text x="1352" y="566" class="small">需求不是物理力，也非最优步长</text>
+  <text x="71" y="624" class="small">损失上限 4 项；不单设计数、接触、细节、单调改善或早期保持损失。无独立收益则删除／替换。</text>
+
+  <rect x="40" y="675" width="1720" height="1355" rx="20" class="panel"/>
+  <text x="65" y="719" class="section">B. 正式采样：同一条视频轨迹内部更新，不重新执行一次物理事件</text>
+
+  <rect x="70" y="750" width="435" height="105" rx="13" class="blue"/>
+  <text x="92" y="788" class="head">首帧 F + 完整短文本 c</text>
+  <text x="92" y="825" class="body">起始布局、身份参考、动作角色</text>
+  <rect x="605" y="750" width="530" height="105" rx="13" class="blue"/>
+  <text x="627" y="788" class="head">整段视频 latent z，噪声水平 σ</text>
+  <text x="627" y="825" class="body">请求开始时只初始化一次噪声</text>
+  <rect x="1245" y="750" width="485" height="105" rx="13" class="mint"/>
+  <text x="1268" y="788" class="head">跨去噪步的稠密状态记忆 M</text>
+  <text x="1268" y="825" class="body">保留时间结构；无手工语义槽位</text>
+  <path d="M870 855 V900" class="flow"/>
+  <path d="M505 800 H535 V920 H605" class="flow"/>
+
+  <rect x="605" y="900" width="530" height="125" rx="13" class="blue"/>
+  <text x="627" y="940" class="head">r = 0：先得到真实基准预测</text>
+  <text x="627" y="976" class="body">Wan 前部 + 后部；CFG 及无噪估计</text>
+  <text x="627" y="1006" class="small">该次原生观察计入成本，不是免费读出</text>
+  <rect x="70" y="935" width="435" height="155" rx="13" class="gray"/>
+  <text x="92" y="976" class="head">本步缓存：H0 与无条件预测</text>
+  <text x="92" y="1013" class="body">内轮输入 z、σ 不变时复用</text>
+  <text x="92" y="1048" class="small">每轮都从 H0 + A 重算后部</text>
+  <text x="92" y="1076" class="tiny">新去噪步缓存失效；受修改的后部不可复用</text>
+  <path d="M605 965 H505" class="flow"/>
+  <path d="M870 1025 V1080" class="flow"/>
+
+  <rect x="605" y="1080" width="530" height="140" rx="13" class="blue"/>
+  <text x="627" y="1121" class="head">Read / Update：同一共享主体</text>
+  <text x="627" y="1159" class="body">当前实际预测 + 上轮实际变化 + M、F、c</text>
+  <text x="627" y="1195" class="body">更新状态，并形成分解时空转移关联</text>
+  <path d="M1487 855 V1045 H1160 V1103 H1135" class="memory"/>
+  <path d="M870 1220 V1270" class="flow"/>
+
+  <rect x="70" y="1150" width="435" height="250" rx="13" class="amber"/>
+  <text x="92" y="1190" class="head">目标：结果错了，前因也要检查</text>
+  <text x="92" y="1230" class="body">球提前飞走 → 回看拍面接近与接触</text>
+  <text x="92" y="1270" class="body">书掉落且复制 → 联查轨迹与旧位置</text>
+  <text x="92" y="1310" class="body">事件重放 → 联查结束与再次起因</text>
+  <text x="92" y="1350" class="small">既读全段上下文，也保留局部直接修正</text>
+  <text x="92" y="1380" class="tiny">学习关联 ≠ 已识别的真实因果图</text>
+
+  <rect x="605" y="1270" width="530" height="140" rx="13" class="amber"/>
+  <text x="627" y="1311" class="head">TLU：转移关联回写（研究候选）</text>
+  <text x="627" y="1349" class="body">错误结果 → 前置条件 → 关联后果</text>
+  <text x="627" y="1385" class="body">复用同一预测关联；对照普通注意力</text>
+  <path d="M505 1318 H605" class="target"/>
+  <path d="M870 1410 V1460" class="flow"/>
+
+  <rect x="1260" y="1120" width="445" height="205" rx="13" class="gray"/>
+  <text x="1282" y="1160" class="head">正式采样不调用</text>
+  <text x="1282" y="1198" class="body">参考视频、教师门或人工阶段表</text>
+  <text x="1282" y="1234" class="body">离线 VLM、视频教师、过程评分器</text>
+  <text x="1282" y="1270" class="body">外部物理损失反向传播</text>
+  <text x="1282" y="1304" class="small">新预测是反馈，不是新增真实观测</text>
+
+  <rect x="70" y="1460" width="435" height="140" rx="13" class="mint"/>
+  <text x="92" y="1501" class="head">A：仅本步的修改缓存</text>
+  <text x="92" y="1539" class="body">门变小 → 保留此前已生效修改</text>
+  <text x="92" y="1575" class="small">允许负向增量撤销错误；跨步清零</text>
+  <rect x="605" y="1460" width="530" height="140" rx="13" class="mint"/>
+  <text x="627" y="1501" class="head">细网格写入方向 D + 时空需求门 G</text>
+  <text x="627" y="1541" class="math">A_next = bound(A + G * bounded(D))</text>
+  <text x="627" y="1575" class="small">门控制新增量；固定首帧不改；记忆继续读</text>
+  <path d="M505 1530 H605" class="flow"/>
+  <path d="M870 1600 V1650" class="flow"/>
+
+  <rect x="605" y="1650" width="530" height="125" rx="13" class="blue"/>
+  <text x="627" y="1691" class="head">从 H0 + A 重算 Wan 后续层</text>
+  <text x="627" y="1728" class="body">新速度 → 新无噪估计 → 新视觉证据</text>
+  <text x="627" y="1757" class="small">不能用旧输出冒充已执行的校正</text>
+  <path d="M505 1048 H535 V1720 H605" class="flow"/>
+  <path d="M1135 1685 H1195 V1160 H1135" class="feedback"/>
+
+  <rect x="1250" y="1390" width="455" height="100" rx="12" fill="#fff5e6" stroke="#d99b50" stroke-width="2"/>
+  <text x="1272" y="1430" class="head" style="fill:#985014">橙色回路：继续本步内部校正</text>
+  <text x="1272" y="1467" class="body">同一 k、同一 σ；读取刚生成的新结果</text>
+
+  <rect x="1260" y="1540" width="445" height="210" rx="13" class="gray"/>
+  <text x="1282" y="1581" class="head">强度不等于运动幅度</text>
+  <text x="1282" y="1620" class="body">正确的接触区域：可少改</text>
+  <text x="1282" y="1657" class="body">不动的旧书／支撑位置：也可能要改</text>
+  <text x="1282" y="1694" class="body">相机晃动／静止：不算动作完成</text>
+  <text x="1282" y="1729" class="small">相关、过程重要性与修改需求分开</text>
+  <path d="M870 1775 V1840" class="flow"/>
+  <text x="887" y="1815" class="small">本步额外轮次结束</text>
+
+  <rect x="605" y="1840" width="530" height="140" rx="13" class="blue"/>
+  <text x="627" y="1881" class="head">吸收最终观察；提交 M</text>
+  <text x="627" y="1919" class="body">采样器推进一次，得到下一步 z</text>
+  <text x="627" y="1955" class="small">未完成：新步重建 A、H0 与无条件缓存</text>
+  <path d="M605 1890 H570 V790 H605" class="next"/>
+  <text x="75" y="1900" class="small">蓝色虚线：进入下一个去噪步</text>
+  <text x="75" y="1935" class="small">绿色外回路：跨步状态记忆</text>
+  <text x="75" y="1970" class="tiny">若本步 R = 0：只吸收观察，直接提交</text>
+  <path d="M1135 1870 H1740 V800 H1730" class="memory"/>
+
+  <rect x="1260" y="1895" width="445" height="85" rx="13" class="purple"/>
+  <text x="1282" y="1930" class="head">去噪完成 → VAE 解码</text>
+  <text x="1282" y="1962" class="body">输出一条完整视频</text>
+  <path d="M1135 1935 H1260" class="flow"/>
+  <text x="1170" y="1960" class="tiny">完成</text>
+
+  <rect x="40" y="2060" width="1720" height="225" rx="20" class="panel"/>
+  <rect x="65" y="2085" width="530" height="170" rx="12" class="gray"/>
+  <text x="88" y="2125" class="head">区分三种时间</text>
+  <text x="88" y="2163" class="body">τ：视频中的动作过程</text>
+  <text x="88" y="2198" class="body">k：去噪进程；r：同一步的校正次数</text>
+  <text x="88" y="2231" class="small">短视频整段生成；事件区间用于监督</text>
+
+  <rect x="635" y="2085" width="530" height="170" rx="12" class="amber"/>
+  <text x="658" y="2125" class="head">有价值才保留，不为名称堆模块</text>
+  <text x="658" y="2163" class="body">TLU 对照普通注意力；门监督单独消融</text>
+  <text x="658" y="2198" class="body">循环对照新 / 旧证据及等耗时采样</text>
+  <text x="658" y="2231" class="small">学物理、加 gate、加 recurrent 本身不新</text>
+
+  <rect x="1205" y="2085" width="530" height="170" rx="12" class="mint"/>
+  <text x="1228" y="2125" class="head">验证真正学会，而非看着合理</text>
+  <text x="1228" y="2163" class="body">无未来泄漏预测 + 受控条件响应</text>
+  <text x="1228" y="2198" class="body">执行、角色、接触、数量、次数、形态</text>
+  <text x="1228" y="2231" class="small">内部状态的改变必须落实到实际视频</text>
+  <text x="57" y="2320" class="subtitle">配套文档：20260908-C-可信监督驱动的物理学习与内部循环校正设计.md｜公式、实现、成本与否证条件见正文</text>
+  </g>
+</svg>

@@ -1,0 +1,73 @@
+{
+  "closed_world": {
+    "allowed_entity_ids": [
+      "block",
+      "ramp",
+      "rough_floor"
+    ],
+    "empty_regions": [],
+    "external_source_allowed": false,
+    "forbidden_new_categories": [
+      "external source",
+      "extra copy",
+      "unlisted object"
+    ],
+    "provenance": "derived"
+  },
+  "conservation": [
+    {
+      "observable_proxy": "tracked logical entity slots remain consistent",
+      "provenance": "derived",
+      "quantity": "instance_count",
+      "relation": "constant",
+      "rule_id": "entity_slots_constant",
+      "sinks": [
+        "block",
+        "ramp",
+        "rough_floor"
+      ],
+      "sources": [
+        "block",
+        "ramp",
+        "rough_floor"
+      ],
+      "tolerance": 0.0
+    }
+  ],
+  "lifecycles": [
+    {
+      "entity_id": "block",
+      "from_stage": "setup",
+      "from_state": "upper_left_ramp; still",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "upper_left_ramp",
+          "right_gray_floor"
+        ],
+        [
+          "still",
+          "sliding"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "right_gray_floor; sliding"
+    },
+    {
+      "entity_id": "block",
+      "from_stage": "setup",
+      "from_state": "sliding",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "sliding",
+          "stopped"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "stopped"
+    }
+  ]
+}

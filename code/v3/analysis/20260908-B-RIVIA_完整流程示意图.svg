@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1560" height="1390" viewBox="0 0 1560 1390" role="img" aria-labelledby="title desc">
+  <title id="title">20260908-B RIVIA 多 latent 内部循环校正完整流程</title>
+  <desc id="desc">一次噪声初始化。视觉、动态物理和细粒度修正 latent 通过共享注意力交互。每轮重新计算被修改接口之后的 DiT 并重新观察预测。内循环结束后采样器仅推进一次；动态记忆进入下一去噪步。训练监督作用于每轮实际视频预测。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#42556d"/></marker>
+    <marker id="tealArrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#087f8c"/></marker>
+    <marker id="orangeArrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#ba6425"/></marker>
+    <style>
+      text { font-family: "Noto Sans CJK SC", "Microsoft YaHei", "PingFang SC", sans-serif; fill: #193149; }
+      .title { font-size: 30px; font-weight: 700; }
+      .subtitle { font-size: 18px; fill: #52667c; }
+      .head { font-size: 22px; font-weight: 650; }
+      .body { font-size: 18px; }
+      .small { font-size: 16px; fill: #52667c; }
+      .box { stroke: #b9c9da; stroke-width: 1.7; rx: 15; fill: white; }
+      .visual { fill: #edf4ff; stroke: #7d9fc4; }
+      .dynamic { fill: #e7f5f0; stroke: #69a692; }
+      .refine { fill: #fff1e6; stroke: #cb9772; }
+      .edge { fill: none; stroke: #42556d; stroke-width: 2.4; marker-end: url(#arrow); }
+      .feedback { fill: none; stroke: #087f8c; stroke-width: 3; marker-end: url(#tealArrow); }
+      .train { fill: none; stroke: #ba6425; stroke-width: 2; stroke-dasharray: 7 6; marker-end: url(#orangeArrow); }
+    </style>
+  </defs>
+  <rect width="1560" height="1390" fill="#f8fafc"/>
+  <text x="60" y="55" class="title">20260908-B · RIVIA 内部循环校正</text>
+  <text x="60" y="88" class="subtitle">共享注意力更新多类 latent；写入后重新生成、重新观察；一条采样轨迹输出一条视频</text>
+
+  <rect x="60" y="125" width="370" height="110" class="box"/>
+  <text x="85" y="160" class="head">首帧与简短动作文本</text>
+  <text x="85" y="190" class="body">首帧参考 F · 完整文本上下文</text>
+  <text x="85" y="216" class="small">供视觉读取、动态判断和细节恢复</text>
+  <rect x="540" y="125" width="410" height="110" class="box visual"/>
+  <text x="565" y="160" class="head">当前整段视频 latent z</text>
+  <text x="565" y="190" class="body">请求开始时初始化一次噪声</text>
+  <text x="565" y="216" class="small">每个外层去噪步更新一次</text>
+  <rect x="1060" y="125" width="430" height="110" class="box"/>
+  <text x="1085" y="160" class="head">本步固定的计算与条件</text>
+  <text x="1085" y="190" class="body">噪声水平 · 首帧条件 · 文本</text>
+  <text x="1085" y="216" class="small">无条件预测本步计算一次并缓存</text>
+  <path d="M430 180 H540" class="edge"/>
+  <path d="M950 180 H1060" class="edge"/>
+
+  <rect x="45" y="275" width="1460" height="730" rx="20" fill="#ffffff" stroke="#93b2c9" stroke-width="2"/>
+  <text x="75" y="310" class="head">同一去噪步内部：第一轮更新 + 按预算增加校正轮次</text>
+  <text x="75" y="339" class="small">参数跨轮共享；下方绿色回路读取上一轮实际预测；内部循环不推进视频时间或采样器</text>
+
+  <rect x="80" y="375" width="375" height="140" class="box visual"/>
+  <text x="105" y="411" class="head">视觉证据 H 与当前预测</text>
+  <text x="105" y="443" class="body">当前局部内容 · 跨时刻注意力</text>
+  <text x="105" y="471" class="body">首帧对应 · 上轮修正后的变化</text>
+  <text x="105" y="499" class="small">首轮来自前部网络；后轮加入新预测</text>
+  <rect x="575" y="375" width="360" height="140" class="box dynamic"/>
+  <text x="600" y="411" class="head">动态／物理 latent P</text>
+  <text x="600" y="443" class="body">观察与文本交叉注意力</text>
+  <text x="600" y="471" class="body">全段时空关系 · 跨步记忆更新</text>
+  <text x="600" y="499" class="small">分布式表示；无固定语义 slot</text>
+  <rect x="1055" y="375" width="400" height="140" class="box refine"/>
+  <text x="1080" y="411" class="head">细粒度 refinement latent U</text>
+  <text x="1080" y="443" class="body">融合 P、视觉特征与首帧参考</text>
+  <text x="1080" y="471" class="body">重点区间 · 接触处 · 边缘与遗留区</text>
+  <text x="1080" y="499" class="small">本步内反复更新，生成连续修正特征</text>
+  <path d="M455 445 H575" class="edge"/>
+  <text x="478" y="431" class="small">观察</text>
+  <path d="M935 445 H1055" class="edge"/>
+  <text x="958" y="431" class="small">引导</text>
+  <path d="M745 235 V255 H268 V375" class="edge"/>
+
+  <rect x="80" y="600" width="375" height="130" class="box visual"/>
+  <text x="105" y="636" class="head">缓存原始接口 H_original</text>
+  <text x="105" y="668" class="body">Wan 前部本步只计算一次</text>
+  <text x="105" y="699" class="small">每轮都从同一接口加最新修正开始</text>
+  <rect x="575" y="600" width="360" height="130" class="box refine"/>
+  <text x="600" y="636" class="head">投影写入 + 重算后续 DiT</text>
+  <text x="600" y="668" class="body">A = Write(U)</text>
+  <text x="600" y="699" class="body">v_cond = Tail(H_original + A)</text>
+  <rect x="1055" y="600" width="400" height="130" class="box visual"/>
+  <text x="1080" y="636" class="head">新的实际视频预测</text>
+  <text x="1080" y="668" class="body">最新后层特征 · CFG 合成</text>
+  <text x="1080" y="699" class="body">当前清楚视频估计</text>
+  <path d="M268 515 V600" class="edge"/>
+  <path d="M455 665 H575" class="edge"/>
+  <path d="M935 665 H1055" class="edge"/>
+  <path d="M1255 515 V558 H755 V600" class="edge"/>
+  <text x="960" y="550" class="small">当前 U 投影写入</text>
+
+  <rect x="80" y="810" width="375" height="115" class="box dynamic"/>
+  <text x="105" y="847" class="head">重新观察实际变化</text>
+  <text x="105" y="879" class="body">上一轮修正落实到了哪里？</text>
+  <text x="105" y="907" class="small">按固定预算继续校正，后续再学停止策略</text>
+  <path d="M1255 730 V775 H490 V868 H455" class="feedback"/>
+  <text x="725" y="765" class="small">下一轮使用新证据，而非重复首次特征</text>
+  <path d="M80 867 H62 V445 H80" class="feedback"/>
+  <rect x="575" y="820" width="880" height="105" rx="14" fill="#f5f8fb"/>
+  <text x="600" y="853" class="head">额外校正重点覆盖原因与响应的完整范围</text>
+  <text x="600" y="883" class="body">接触前路径 → 接触／施力 → 运动或形变响应 → 停留与空出区域</text>
+  <text x="600" y="910" class="small">修正不只作用于结果位置；低成本全段观察继续发现新问题</text>
+  <text x="575" y="976" class="small">若本步结束：同化最后一次观察，提交动态记忆 P，然后执行一次采样更新</text>
+
+  <rect x="80" y="1050" width="620" height="110" class="box dynamic"/>
+  <text x="105" y="1088" class="head">下一去噪步</text>
+  <text x="105" y="1120" class="body">继承 P · 更新 z · 保留首帧条件 · 重算前部网络</text>
+  <text x="105" y="1148" class="small">refinement latent U 随新接口重建</text>
+  <rect x="835" y="1050" width="620" height="110" class="box visual"/>
+  <text x="860" y="1088" class="head">完成采样后：VAE 解码完整视频</text>
+  <text x="860" y="1120" class="body">动作实际执行 · 交互因果 · 文视对齐 · 运动画质</text>
+  <text x="860" y="1148" class="small">当前短视频整体生成；独立过程评价确认最终结果</text>
+  <path d="M680 1005 V1030 H390 V1050" class="edge"/>
+  <path d="M1150 1005 V1050" class="edge"/>
+  <text x="703" y="1042" class="small">继续 / 完成</text>
+  <path d="M390 1160 V1180 H25 V107 H745 V125" class="feedback"/>
+
+  <rect x="60" y="1200" width="1430" height="155" rx="17" fill="#fff5eb" stroke="#d6a27c" stroke-width="1.7"/>
+  <text x="85" y="1237" class="head">仅训练：监督每轮实际预测，梯度经过冻结的后续 DiT 返回共享单元</text>
+  <text x="85" y="1272" class="body">Flow Matching + 动态对应 + 事件执行 + 视频文本对齐 + 循环改善与保持 + 局部细节</text>
+  <text x="85" y="1306" class="body">真实完整过程 · 受控因果配对 · 本模型失败 · 冻结教师与可靠标注</text>
+  <text x="85" y="1336" class="small">静止、角色颠倒、缺接触、重复实体、重复事件均需单独检验；内部评分不能替代输出视频验收</text>
+</svg>

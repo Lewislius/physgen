@@ -1,0 +1,347 @@
+{
+  "ace": {
+    "cfg_scope": "conditional_only",
+    "diagnostics": "full",
+    "enabled": true,
+    "formula": "semantic + relative_cap(scale * (positive - counterfactual), semantic)",
+    "fp32_delta": true,
+    "lambda0": 0.1,
+    "layer_gates": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "layer_preset": "mid_b",
+    "residual_cap_eps": 1e-12,
+    "residual_cap_ratio": 0.02,
+    "residual_mode": "positive_minus_counterfactual",
+    "step_gates": [
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1
+    ],
+    "step_preset": "safe_i2v_v1"
+  },
+  "contexts": {
+    "causal_origin_prompt_prefixed": false,
+    "cfg_negative_prompt": "",
+    "compiler_version": "ace-conditioning-mvp-v1",
+    "conditioning_mode": "compiled",
+    "counterfactual_text": "The bottle breaks into scattered glass pieces while still above the tile, and the pieces reach the floor afterward.",
+    "positive_text": "The bottle falls continuously, visibly contacts the tile, fractures at impact, and the resulting glass pieces remain scattered.",
+    "semantic_text": "A glass bottle falls onto a hard tile floor, breaks on impact, and its fragments remain scattered. Required visible entities: one intact glass bottle; one hard tile floor; visible vertical falling corridor. At the beginning: glass bottle: intact, uncracked, and elevated above the tile floor; tile floor: clear around the intended impact area. Required state changes: bottle position: elevated to tile floor; bottle integrity: intact to fractured; glass configuration: single bottle to scattered fragments. These event variables are allowed to change: bottle vertical position; bottle integrity; fragment count and spatial distribution. Preserve throughout: static side-view camera; hard tile floor geometry; background and lighting; one glass bottle and its resulting fragments; one hard tile floor; the same impact area and camera view.",
+    "semantic_variant": "compiled_i2v",
+    "token_lengths": {
+      "cfg_negative": 1,
+      "counterfactual": 25,
+      "positive": 27,
+      "semantic": 179
+    },
+    "used_by_model": {
+      "cfg_negative": false,
+      "cfg_unconditional_empty": true,
+      "counterfactual": true,
+      "positive": true,
+      "semantic": true
+    },
+    "utf8_sha256": {
+      "cfg_negative": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "counterfactual": "68b4f372233136049e1ffff39c9bd70c774c7e3c34b8c060c7cb222108ea7f1f",
+      "positive": "0c6bbf51857d6e96e4fddd90e21fff7e6716bbc673ee2c06c3f94debd741f0b2",
+      "semantic": "89c56ee08c17aa7bd6abac1eaa111a38545f16c6ca1546d560876878d241222b"
+    }
+  },
+  "diagnostics": {
+    "all_finite": true,
+    "applied_to_semantic_max": 0.020010562613606453,
+    "applied_to_semantic_min": 0.0008326293318532407,
+    "candidate_to_semantic_max": 0.03236982598900795,
+    "candidate_to_semantic_min": 0.0008326068636961281,
+    "clip_coefficient_min": 0.6178593039512634,
+    "clip_fraction": 0.138,
+    "clipped_record_count": 69,
+    "mode": "full",
+    "raw_delta_l2_max": 164.1680908203125,
+    "raw_delta_l2_min": 24.488483428955078,
+    "record_count": 500,
+    "scaled_to_semantic_max": 0.020010562613606453,
+    "scaled_to_semantic_min": 0.0008326293318532407
+  },
+  "generation": {
+    "convert_model_dtype": true,
+    "first_frame_reanchor_count": 51,
+    "fps": 24,
+    "frame_num": 97,
+    "guide_scale": 5.0,
+    "height": 704,
+    "max_area": 901120,
+    "offload_model": true,
+    "sample_solver": "unipc",
+    "sampling_steps": 50,
+    "seed": 42,
+    "shift": 5.0,
+    "t5_cpu": true,
+    "width": 1280
+  },
+  "input_hashes": {
+    "causal_json": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P11/P11-cplus-cminus.json",
+      "sha256": "2dd15c113a2fc11cc208bb2df47d95452ae361544e2de2c1cfdcd2d3991c99f3",
+      "size_bytes": 1001
+    },
+    "i0_image": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P11/P11-i0-1280x704.png",
+      "sha256": "d15c2c33446b700415045563f2556a1c423b0afbff20d2fafc1c9818600026a3",
+      "size_bytes": 1240585
+    },
+    "i0_metadata_json": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P11/P11-i0.json",
+      "sha256": "92d4cb2425caf99a99a880887d8ffc0fd725f7b3685645e3ce5e904740cf44eb",
+      "size_bytes": 1587
+    },
+    "model_reference_image": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/outputs/ace_router/m3-20260901-125349/P11/M3_I2V_ACE/seed_000042/reference_input.png",
+      "sha256": "c523562d9231b3963126638e3f9666c31a58e8943c49c31d7b1867b3061b243b",
+      "size_bytes": 924934
+    },
+    "origin_txt": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P11/P11-origin.txt",
+      "sha256": "7a1a9cf32b93fd2a8aea6fab759900d314c77b7446f8a0dfb28af9765c525487",
+      "size_bytes": 99
+    },
+    "selection_manifest": null,
+    "sizing_image": null
+  },
+  "method": "M3_I2V_ACE",
+  "output_video": "/home/liuzhirui/Project/physGen/code/v1/outputs/ace_router/m3-20260901-125349/P11/M3_I2V_ACE/seed_000042/video.mp4",
+  "output_video_sha256": "e369ddcb6bf04bb431160a17bf596c13b598986d06e0f71cfd95866922cc67ee",
+  "reference": {
+    "crop_box": [
+      0,
+      0,
+      1280,
+      704
+    ],
+    "crop_policy": "center_crop_to_20x11_or_11x20_then_lanczos_resize",
+    "orientation": "landscape",
+    "original_size": [
+      1280,
+      704
+    ],
+    "prepared_artifact_path": "/home/liuzhirui/Project/physGen/code/v1/outputs/ace_router/m3-20260901-125349/P11/M3_I2V_ACE/seed_000042/reference_input.png",
+    "prepared_artifact_sha256": "c523562d9231b3963126638e3f9666c31a58e8943c49c31d7b1867b3061b243b",
+    "prepared_size": [
+      1280,
+      704
+    ],
+    "resolved_output_size": [
+      1280,
+      704
+    ],
+    "selection_manifest": null,
+    "source_path": "/home/liuzhirui/Project/physGen/code/v1/demo/P11/P11-i0-1280x704.png",
+    "source_sha256": "d15c2c33446b700415045563f2556a1c423b0afbff20d2fafc1c9818600026a3",
+    "used_as_model_condition": true,
+    "used_for_output_sizing_only": false
+  },
+  "run_id": "m3-20260901-125349",
+  "runtime": {
+    "cuda_capability": [
+      8,
+      6
+    ],
+    "cuda_memory_reserved_bytes": 34779168768,
+    "cuda_runtime": "12.8",
+    "cudnn": 91002,
+    "denoising_step_timing": {
+      "all_steps_median_seconds": 10.3052900390625,
+      "count": 50,
+      "max_seconds": 12.5920224609375,
+      "min_seconds": 10.071712890625,
+      "per_step_seconds": [
+        10.0814765625,
+        10.071712890625,
+        12.2632939453125,
+        11.0390771484375,
+        10.2007666015625,
+        10.239205078125,
+        10.2586318359375,
+        10.3931728515625,
+        10.295482421875,
+        10.3092978515625,
+        10.31773828125,
+        10.322673828125,
+        10.3259736328125,
+        12.3363603515625,
+        11.395484375,
+        10.30531640625,
+        11.6483193359375,
+        10.3055224609375,
+        10.3142958984375,
+        10.31190625,
+        10.3071826171875,
+        10.312919921875,
+        10.3108515625,
+        10.3162333984375,
+        10.3105966796875,
+        10.3118349609375,
+        12.4349892578125,
+        10.2939677734375,
+        10.29716796875,
+        10.297857421875,
+        10.302728515625,
+        10.3046142578125,
+        12.268296875,
+        10.284369140625,
+        10.292236328125,
+        10.29814453125,
+        10.303166015625,
+        10.3047890625,
+        10.2981064453125,
+        10.303064453125,
+        10.305263671875,
+        10.305560546875,
+        12.5920224609375,
+        10.2909990234375,
+        10.290107421875,
+        10.293013671875,
+        10.2915810546875,
+        10.3015888671875,
+        10.3034248046875,
+        11.3793017578125
+      ],
+      "stable_median_seconds": 10.30531640625,
+      "warmup_first_step_seconds": 10.0814765625
+    },
+    "diffusers": "0.36.0",
+    "elapsed_seconds": 659.3027850999497,
+    "gpu": "NVIDIA RTX A6000",
+    "peak_cuda_bytes": 24456212992,
+    "platform": "Linux-5.15.0-139-generic-x86_64-with-glibc2.35",
+    "python": "3.10.19",
+    "torch": "2.8.0+cu128"
+  },
+  "sample_id": "P11",
+  "seed": 42,
+  "status": "success",
+  "upstream": {
+    "checkpoint": "/home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B",
+    "checkpoint_hashes": {
+      "config.json": "d1fea36899d00c2501b836c13ad65af56e2f9529ba622e50886d3f5c3e6c02bc",
+      "diffusion_pytorch_model.safetensors.index.json": "bfa2337f1163e195d24151a72298daf34a620543898109be47e414c8daa5b3fe"
+    },
+    "checkpoint_model_config": {
+      "_class_name": "WanModel",
+      "dim": 3072,
+      "in_dim": 48,
+      "model_type": "ti2v",
+      "num_heads": 24,
+      "num_layers": 30,
+      "out_dim": 48,
+      "text_len": 512
+    },
+    "source_hashes": {
+      "wan/configs/wan_ti2v_5B.py": "26d9e7b9c555eb0900b13751267a596556f869e7aee2d1572afc2a0a4a76f4c7",
+      "wan/modules/attention.py": "c79158e1cc9b7a17bc934e6acb34f42e588a41adb89801146957cda2d6d4379d",
+      "wan/modules/model.py": "8b39115298ca7322806c19b3165b3f435a94fe4a58f0624aec24f8e7f4997432",
+      "wan/modules/t5.py": "8b0cebf3192c542f92a344255a06c203df3ba24160715899a055cc8de0cd930f",
+      "wan/textimage2video.py": "228f2fabf23014ed41ec6b8cd713d5be7371bb558501c71a62a0258b491a877b"
+    },
+    "wan_git_head": "08e890ff01ff8daf9161db472f362efe5d6ba656",
+    "wan_repo": "/home/liuzhirui/model/Wan2.2",
+    "weight_shards": [
+      {
+        "mtime_ns": 1769032249319825600,
+        "name": "diffusion_pytorch_model-00001-of-00003.safetensors",
+        "size_bytes": 9825014472
+      },
+      {
+        "mtime_ns": 1769032417046557795,
+        "name": "diffusion_pytorch_model-00002-of-00003.safetensors",
+        "size_bytes": 9995661736
+      },
+      {
+        "mtime_ns": 1769020338553636583,
+        "name": "diffusion_pytorch_model-00003-of-00003.safetensors",
+        "size_bytes": 178558176
+      }
+    ]
+  },
+  "warnings": [
+    "selection_manifest_missing"
+  ]
+}

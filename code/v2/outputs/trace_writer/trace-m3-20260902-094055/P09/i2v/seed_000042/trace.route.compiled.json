@@ -1,0 +1,476 @@
+{
+  "active_stage_summary": [
+    {
+      "stage_id": "setup",
+      "temporal_token_count": 5,
+      "temporal_weight_sum": 4.5
+    },
+    {
+      "stage_id": "onset",
+      "temporal_token_count": 5,
+      "temporal_weight_sum": 4.0
+    },
+    {
+      "stage_id": "evolution",
+      "temporal_token_count": 9,
+      "temporal_weight_sum": 8.0
+    },
+    {
+      "stage_id": "completion",
+      "temporal_token_count": 6,
+      "temporal_weight_sum": 5.0
+    },
+    {
+      "stage_id": "terminal",
+      "temporal_token_count": 4,
+      "temporal_weight_sum": 3.5
+    }
+  ],
+  "constraint_coverage": {
+    "c1": {
+      "stages": [
+        "setup",
+        "onset"
+      ],
+      "violations": [
+        "setup:outcome_preset",
+        "onset:early_effect"
+      ]
+    },
+    "c2": {
+      "stages": [
+        "evolution",
+        "completion"
+      ],
+      "violations": [
+        "evolution:coupling_broken",
+        "completion:incomplete_transition"
+      ]
+    },
+    "c3": {
+      "stages": [
+        "evolution",
+        "completion"
+      ],
+      "violations": [
+        "evolution:coupling_broken",
+        "completion:incomplete_transition"
+      ]
+    },
+    "c4": {
+      "stages": [
+        "completion",
+        "terminal"
+      ],
+      "violations": [
+        "completion:incomplete_transition",
+        "terminal:reversal"
+      ]
+    },
+    "c5": {
+      "stages": [
+        "terminal"
+      ],
+      "violations": [
+        "terminal:exclusion_broken"
+      ]
+    }
+  },
+  "crossfade_tokens": 1,
+  "design_revision": "fixed5-causal-r3",
+  "fallback_selected": false,
+  "flatten_order": "f-y-x",
+  "frames": 25,
+  "input_plan": "/home/liuzhirui/Project/physGen/code/v1/demo/P09/P09-V2-planimg.json",
+  "input_plan_sha256": "d123fd2cefd465348a830590f150889d3a539370a7a7cc3890484527a7cd7c4d",
+  "requested_mode": "i2v",
+  "sample_id": "P09",
+  "schema_version": "trace-writer-v1",
+  "spatial_masks": [
+    {
+      "grid_area": 880,
+      "positive_token_count": 880,
+      "soft_area": 777.992676,
+      "stage_id": "setup"
+    },
+    {
+      "grid_area": 880,
+      "positive_token_count": 880,
+      "soft_area": 777.992676,
+      "stage_id": "onset"
+    },
+    {
+      "grid_area": 880,
+      "positive_token_count": 880,
+      "soft_area": 777.992676,
+      "stage_id": "evolution"
+    },
+    {
+      "grid_area": 880,
+      "positive_token_count": 880,
+      "soft_area": 777.992676,
+      "stage_id": "completion"
+    },
+    {
+      "grid_area": 880,
+      "positive_token_count": 880,
+      "soft_area": 777.992676,
+      "stage_id": "terminal"
+    }
+  ],
+  "spatial_mode": "spacetime",
+  "stage_ids": [
+    "setup",
+    "onset",
+    "evolution",
+    "completion",
+    "terminal"
+  ],
+  "stage_spans": [
+    {
+      "core": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "outgoing_crossfade": [
+        4
+      ],
+      "stage_id": "setup"
+    },
+    {
+      "core": [
+        5,
+        6,
+        7
+      ],
+      "outgoing_crossfade": [
+        8
+      ],
+      "stage_id": "onset"
+    },
+    {
+      "core": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "outgoing_crossfade": [
+        16
+      ],
+      "stage_id": "evolution"
+    },
+    {
+      "core": [
+        17,
+        18,
+        19,
+        20
+      ],
+      "outgoing_crossfade": [
+        21
+      ],
+      "stage_id": "completion"
+    },
+    {
+      "core": [
+        22,
+        23,
+        24
+      ],
+      "outgoing_crossfade": [],
+      "stage_id": "terminal"
+    }
+  ],
+  "stages": [
+    {
+      "affected_roles": [
+        "source",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "setup",
+      "observable_check": "The solid rectangle remains distinct against the stainless pan base.",
+      "positive": "The pictured pale-yellow pat keeps its compact rectangular footprint and sharp corners near the pan center.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "A broad yellow pool already replaces the pictured rectangular pat in the opening frames.",
+          "type": "outcome_preset",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "onset",
+      "observable_check": "Local rounding precedes expansion beyond the original rectangular box.",
+      "positive": "One pale-yellow corner first rounds and lowers before yellow liquid spreads broadly across the steel.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "A broad yellow footprint appears while every pictured butter corner remains sharp.",
+          "type": "early_effect",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c2",
+        "c3"
+      ],
+      "id": "evolution",
+      "observable_check": "The solid box contracts as the yellow surface footprint widens.",
+      "positive": "The pale solid loses height and sharpness while a connected yellow footprint spreads across the stainless base.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c2",
+            "c3"
+          ],
+          "text": "Yellow liquid spreads over the pan while the pale rectangular pat stays unchanged.",
+          "type": "coupling_broken",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c2",
+        "c3",
+        "c4"
+      ],
+      "id": "completion",
+      "observable_check": "Late frames show low rounded remnants within connected liquid.",
+      "positive": "The remaining rounded butter recedes into a broad continuous pale-yellow pool near the pan center.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c2",
+            "c3",
+            "c4"
+          ],
+          "text": "The pictured pat remains tall and compact without producing a broad connected pool.",
+          "type": "incomplete_transition",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c4",
+        "c5"
+      ],
+      "id": "terminal",
+      "observable_check": "The final yellow footprint stays fixed without restoring sharp corners.",
+      "positive": "The broad pale-yellow pool and reduced rounded remnant persist on the same stainless pan base.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c4"
+          ],
+          "text": "The yellow pool retracts into the original sharp rectangular pat in final frames.",
+          "type": "reversal",
+          "weight": 0.5
+        },
+        {
+          "constraint_ids": [
+            "c5"
+          ],
+          "text": "Original rectangular and melted spread versions of the butter coexist in the pan.",
+          "type": "exclusion_broken",
+          "weight": 0.5
+        }
+      ]
+    }
+  ],
+  "temporal_weights": [
+    [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.5,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.5,
+      1.0,
+      1.0,
+      1.0,
+      0.5,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.5,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.5,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.5,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.5,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.5,
+      1.0,
+      1.0,
+      1.0
+    ]
+  ],
+  "validation": {
+    "errors": 0,
+    "fallback_selected": false,
+    "issues": [
+      {
+        "code": "planner_warning",
+        "message": "Liquid butter is absent in the first frame, so no carrier box is inferred; visible boxes remain unapproved.",
+        "path": "$.warnings[0]",
+        "severity": "warning"
+      }
+    ],
+    "warnings": 1
+  }
+}

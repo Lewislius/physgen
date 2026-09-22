@@ -1,0 +1,102 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v4/checkpoints/wisa_native_p_A1_4x96g_20260912T151800Z-e189c27c/checkpoint-final",
+  "phase": "A1",
+  "stage": "A",
+  "initialization": "image_text_gt",
+  "fusion": "cross_attention",
+  "parameter_sharing": "per_block",
+  "a_blocks": [
+    5,
+    10,
+    15,
+    20,
+    25,
+    30
+  ],
+  "block_b": 18,
+  "iterations": 1,
+  "enable_b": false,
+  "strict_load": true,
+  "state_dict_tensors": 791,
+  "parameters": 974182486,
+  "weight_bytes": 3896729944,
+  "weight_dtypes": {
+    "torch.float32": 791
+  },
+  "optimizer_loaded": false,
+  "teacher_loaded": false,
+  "assets": {
+    "wan_checkpoint": "/home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B",
+    "wan_config": {
+      "_class_name": "WanModel",
+      "_diffusers_version": "0.33.0",
+      "dim": 3072,
+      "eps": 1e-06,
+      "ffn_dim": 14336,
+      "freq_dim": 256,
+      "in_dim": 48,
+      "model_type": "ti2v",
+      "num_heads": 24,
+      "num_layers": 30,
+      "out_dim": 48,
+      "text_len": 512
+    },
+    "wan_shards": 3
+  },
+  "correction_sites": [
+    [
+      5,
+      "A",
+      "A@5"
+    ],
+    [
+      10,
+      "A",
+      "A@10"
+    ],
+    [
+      15,
+      "A",
+      "A@15"
+    ],
+    [
+      20,
+      "A",
+      "A@20"
+    ],
+    [
+      25,
+      "A",
+      "A@25"
+    ],
+    [
+      30,
+      "A",
+      "A@30"
+    ]
+  ],
+  "video": {
+    "requested_frames": 101,
+    "frames": 101,
+    "duration": 4.166666666666667,
+    "output_fps": 24.0
+  },
+  "all_weights_finite": true,
+  "writer_norms": {
+    "A@5": 2.5531651973724365,
+    "A@10": 2.7322492599487305,
+    "A@15": 2.557258129119873,
+    "A@20": 2.22676944732666,
+    "A@25": 2.3646836280822754,
+    "A@30": 0.7921019196510315,
+    "B": 0.0
+  },
+  "b_state_scale_parameter": 0.0,
+  "runtime": {
+    "role": "runtime",
+    "environment": "/home/liuzhirui/miniconda3/envs/moviestory",
+    "python": "/home/liuzhirui/miniconda3/envs/moviestory/bin/python"
+  },
+  "torch_version": "2.8.0+cu128",
+  "status": "checkpoint_compatible"
+}

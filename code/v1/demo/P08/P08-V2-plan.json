@@ -1,0 +1,416 @@
+{
+  "schema_version": "trace-direct-v1",
+  "design_revision": "p0-stage-direct-json-r2",
+  "sample_id": "P08",
+  "source_files": {
+    "origin": "P08-origin.txt",
+    "frame_zero_metadata": "P08-i0.json",
+    "reference_input": "P08-i0-1280x704.jpg"
+  },
+  "initial_condition": {
+    "type": "environmental_field",
+    "description": "Warm ambient sunlight supplies the heat that melts the ice."
+  },
+  "global_semantic": "Fixed close view of one clear ice cube on a dry white plate in a warm sunlit room. Ambient heat gradually shrinks the same solid cube while a transparent meltwater puddle grows from its edges, and the smaller ice remnant and larger puddle remain on the plate.",
+  "cfg_negative": " ",
+  "entities": [
+    {
+      "id": "ice_cube",
+      "mention": "one clear ice cube",
+      "role": "source"
+    },
+    {
+      "id": "meltwater",
+      "mention": "one connected transparent meltwater puddle",
+      "role": "sink"
+    },
+    {
+      "id": "plate",
+      "mention": "one shallow white plate",
+      "role": "environment"
+    }
+  ],
+  "structured_guidance": {
+    "schema_version": "structured-text-guidance-v1",
+    "entities": [
+      {
+        "id": "ice_cube",
+        "label": "clear solid ice portion from the original cube",
+        "count": 1,
+        "persistent": false,
+        "invariants": [
+          "conserved original water material",
+          "transparent appearance",
+          "single material origin"
+        ]
+      },
+      {
+        "id": "meltwater",
+        "label": "connected transparent meltwater puddle from that ice",
+        "count": 1,
+        "persistent": false,
+        "invariants": [
+          "conserved original water material",
+          "transparent appearance",
+          "one connected region"
+        ]
+      },
+      {
+        "id": "plate",
+        "label": "shallow white plate",
+        "count": 1,
+        "persistent": true,
+        "invariants": [
+          "rigid plate geometry",
+          "white appearance",
+          "stationary identity"
+        ]
+      }
+    ],
+    "initial_condition": {
+      "type": "environmental_field",
+      "active_stages": [
+        "setup"
+      ],
+      "facts": [
+        "Warm ambient sunlight supplies heat from the first video frame onward.",
+        "One sharp solid ice cube starts on a dry plate with no visible meltwater."
+      ]
+    },
+    "stages": [
+      {
+        "id": "setup",
+        "entity_states": [
+          {
+            "entity_id": "ice_cube",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "solid with sharp edges and resting on the plate"
+            ],
+            "mutable": []
+          },
+          {
+            "entity_id": "meltwater",
+            "presence": "absent",
+            "count": 0,
+            "states": [
+              "not yet visible as a separate puddle"
+            ],
+            "mutable": []
+          }
+        ],
+        "relations": [
+          "The plate surface around the ice is initially dry."
+        ]
+      },
+      {
+        "id": "onset",
+        "entity_states": [
+          {
+            "entity_id": "ice_cube",
+            "presence": "transitioning",
+            "count": 1,
+            "states": [
+              "rounding at its lower edges as melting begins"
+            ],
+            "mutable": [
+              "solid shape",
+              "solid volume",
+              "phase allocation"
+            ]
+          },
+          {
+            "entity_id": "meltwater",
+            "presence": "transitioning",
+            "count": 1,
+            "states": [
+              "appearing as one thin connected wet rim"
+            ],
+            "mutable": [
+              "puddle extent",
+              "liquid volume"
+            ]
+          }
+        ],
+        "relations": [
+          "The first liquid remains connected to the base of the same ice cube."
+        ]
+      },
+      {
+        "id": "evolution",
+        "entity_states": [
+          {
+            "entity_id": "ice_cube",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "remaining solid but becoming progressively smaller"
+            ],
+            "mutable": [
+              "solid shape",
+              "solid volume",
+              "phase allocation"
+            ]
+          },
+          {
+            "entity_id": "meltwater",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "spreading outward as one wider transparent puddle"
+            ],
+            "mutable": [
+              "puddle extent",
+              "liquid volume"
+            ]
+          }
+        ],
+        "relations": [
+          "As solid ice decreases, meltwater from it increases without a second cube or puddle."
+        ]
+      },
+      {
+        "id": "completion",
+        "entity_states": [
+          {
+            "entity_id": "ice_cube",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "reduced to one small solid remnant"
+            ],
+            "mutable": [
+              "solid shape",
+              "solid volume"
+            ]
+          },
+          {
+            "entity_id": "meltwater",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "forming one visibly larger connected puddle around the remnant"
+            ],
+            "mutable": [
+              "puddle extent",
+              "liquid volume"
+            ]
+          }
+        ],
+        "relations": [
+          "The ice remnant stays inside its own meltwater on the plate."
+        ]
+      },
+      {
+        "id": "terminal",
+        "entity_states": [
+          {
+            "entity_id": "ice_cube",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "remaining as one small transparent solid remnant"
+            ],
+            "mutable": []
+          },
+          {
+            "entity_id": "meltwater",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "remaining as one transparent connected puddle"
+            ],
+            "mutable": []
+          }
+        ],
+        "relations": [
+          "Both phases remain together on the one plate with no material duplication."
+        ]
+      }
+    ]
+  },
+  "stages": [
+    {
+      "id": "setup",
+      "positive": "One sharp solid ice cube rests on a dry white plate in warm sunlight."
+    },
+    {
+      "id": "onset",
+      "positive": "The cube's lower edges round and the first thin wet rim appears around its base."
+    },
+    {
+      "id": "evolution",
+      "positive": "The same ice cube becomes smaller while its connected water puddle spreads wider."
+    },
+    {
+      "id": "completion",
+      "positive": "A small ice remnant sits inside a visibly larger transparent puddle."
+    },
+    {
+      "id": "terminal",
+      "positive": "The smaller ice remnant and its meltwater remain together on the plate."
+    }
+  ],
+  "warnings": [],
+  "generation_basis": {
+    "mode": "identifier_only",
+    "reference_image_usage": "identifier_only"
+  },
+  "grounding": {
+    "coordinate_frame": "reference_input",
+    "reference_image": "P08-i0-1280x704.jpg",
+    "approved": false,
+    "entity_boxes": []
+  },
+  "temporal_route": {
+    "latent_tokens": 25,
+    "crossfade_tokens": 2,
+    "interpolation": "smoothstep_c1",
+    "profile": "continuous",
+    "stage_order": [
+      "setup",
+      "onset",
+      "evolution",
+      "completion",
+      "terminal"
+    ],
+    "weights": [
+      [
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0
+      ]
+    ]
+  }
+}

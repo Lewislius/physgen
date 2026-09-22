@@ -1,0 +1,264 @@
+{
+  "closed_world": {
+    "allowed_entity_ids": [
+      "scooter",
+      "trash_can"
+    ],
+    "empty_regions": [],
+    "external_source_allowed": false,
+    "forbidden_new_categories": [
+      "external source",
+      "extra copy",
+      "unlisted object"
+    ],
+    "provenance": "derived"
+  },
+  "conservation": [
+    {
+      "observable_proxy": "tracked logical entity slots remain consistent",
+      "provenance": "derived",
+      "quantity": "instance_count",
+      "relation": "constant",
+      "rule_id": "entity_slots_constant",
+      "sinks": [
+        "scooter",
+        "trash_can"
+      ],
+      "sources": [
+        "scooter",
+        "trash_can"
+      ],
+      "tolerance": 0.0
+    },
+    {
+      "observable_proxy": "tilt increases while rolling displacement decreases",
+      "provenance": "derived",
+      "quantity": "motion_transfer",
+      "relation": "coupled_monotonic",
+      "rule_id": "conservation_c3",
+      "sinks": [
+        "motion"
+      ],
+      "sources": [
+        "pose"
+      ],
+      "tolerance": 0.1
+    }
+  ],
+  "issues": [],
+  "lifecycles": [
+    {
+      "entity_id": "scooter",
+      "from_stage": "setup",
+      "from_state": "separated; upright; rolling",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "separated",
+          "contact"
+        ],
+        [
+          "upright",
+          "tilted"
+        ],
+        [
+          "rolling",
+          "stopped"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "contact; tilted; stopped"
+    }
+  ],
+  "slots": [
+    {
+      "aliases": [],
+      "canonical_mention": "the same black scooter",
+      "cardinality": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "scooter",
+      "invariant_attributes": [
+        "same scooter identity",
+        "same trash-can identity",
+        "trash can remains upright",
+        "camera and unrelated scene remain unchanged"
+      ],
+      "mutable_attributes": [
+        "gap_to:trash_can",
+        "pose",
+        "motion"
+      ],
+      "persistent_identity": true,
+      "provenance": "default",
+      "role": "actor"
+    },
+    {
+      "aliases": [],
+      "canonical_mention": "the same metal trash can",
+      "cardinality": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "trash_can",
+      "invariant_attributes": [
+        "same scooter identity",
+        "same trash-can identity",
+        "trash can remains upright",
+        "camera and unrelated scene remain unchanged"
+      ],
+      "mutable_attributes": [],
+      "persistent_identity": true,
+      "provenance": "default",
+      "role": "patient"
+    }
+  ],
+  "stage_presence": [
+    {
+      "entity_id": "scooter",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [
+        "gap=separated",
+        "pose=upright",
+        "motion=rolling"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "trash_can",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [],
+      "visible": "required"
+    },
+    {
+      "entity_id": "scooter",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [
+        "gap=separated",
+        "pose=upright",
+        "motion=rolling"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "trash_can",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "scooter",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [
+        "gap=contact",
+        "pose=tilted",
+        "motion=stopped"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "trash_can",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [],
+      "visible": "required"
+    },
+    {
+      "entity_id": "scooter",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [
+        "gap=contact",
+        "pose=tilted",
+        "motion=stopped"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "trash_can",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "scooter",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [
+        "gap=contact",
+        "pose=tilted",
+        "motion=stopped"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "trash_can",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [],
+      "visible": "required"
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "closed_world": {
+    "allowed_entity_ids": [
+      "ball",
+      "floor"
+    ],
+    "empty_regions": [],
+    "external_source_allowed": false,
+    "forbidden_new_categories": [
+      "external source",
+      "extra copy",
+      "unlisted object"
+    ],
+    "provenance": "derived"
+  },
+  "conservation": [
+    {
+      "observable_proxy": "tracked logical entity slots remain consistent",
+      "provenance": "derived",
+      "quantity": "instance_count",
+      "relation": "constant",
+      "rule_id": "entity_slots_constant",
+      "sinks": [
+        "ball",
+        "floor"
+      ],
+      "sources": [
+        "ball",
+        "floor"
+      ],
+      "tolerance": 0.0
+    },
+    {
+      "observable_proxy": "repeated floor contacts produce successively lower peaks until rest",
+      "provenance": "derived",
+      "quantity": "motion_transfer",
+      "relation": "coupled_monotonic",
+      "rule_id": "conservation_c3",
+      "sinks": [
+        "motion_state",
+        "peak_envelope"
+      ],
+      "sources": [
+        "height_state"
+      ],
+      "tolerance": 0.1
+    }
+  ],
+  "lifecycles": [
+    {
+      "entity_id": "ball",
+      "from_stage": "setup",
+      "from_state": "elevated; falling; initial_height",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "elevated",
+          "resting_on_floor"
+        ],
+        [
+          "falling",
+          "resting"
+        ],
+        [
+          "initial_height",
+          "decreasing_to_zero"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "resting_on_floor; resting; decreasing_to_zero"
+    }
+  ]
+}

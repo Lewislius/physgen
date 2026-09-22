@@ -1,0 +1,187 @@
+{
+  "actual_t5_token_lengths": {
+    "global_semantic": 295,
+    "stage.completion.negative.0": 151,
+    "stage.completion.positive": 168,
+    "stage.evolution.negative.0": 172,
+    "stage.evolution.positive": 166,
+    "stage.onset.negative.0": 154,
+    "stage.onset.positive": 153,
+    "stage.setup.negative.0": 154,
+    "stage.setup.positive": 151,
+    "stage.terminal.negative.0": 191,
+    "stage.terminal.negative.1": 187,
+    "stage.terminal.positive": 207
+  },
+  "global_anchor": "[ENTITY INVENTORY] The closed scene contains bottle: exactly 1; tile floor: one declared collective group. The reference first frame fixes these identities and initial layout. [INITIAL STATE] position=upper_left_support, integrity=intact_horizontal_bottle, configuration=single_bottle. [PHYSICAL EVENT] The clear horizontal bottle leaves the upper-left beige support, falls across the pale wall, and shatters on the beige tile floor. [PERSISTENT PROTECTION] same clear colorless glass material; upper-left beige support and vertical leg remain fixed; beige tile grid, pale wall, baseboard, lighting, and static camera remain unchanged; no release hand or tool is added. [CLOSED WORLD] No additional external source, extra copy, hand, person, tool, unlisted object enters or appears; unoccupied scene regions remain empty. [CONSERVATION] Source loss and result gain stay coupled: tracked logical entity slots remain consistent; beige-tile arrival produces clear fracture and local spread. No result appears from an undeclared external source. [TERMINAL STATE] The same logical entity slots persist without duplicates; position=beige_tile, integrity=fractured_clear_glass, configuration=scattered_floor_fragments remains visible through the final frames.",
+  "issues": [],
+  "max_t5_token_length": 295,
+  "protected_coverage": {
+    "beige tile grid, pale wall, baseboard, lighting, and static camera remain unchanged": [
+      "appearance",
+      "camera_background",
+      "closed_world_or_persistence"
+    ],
+    "no release hand or tool is added": [
+      "closed_world_or_persistence"
+    ],
+    "same clear colorless glass material": [
+      "identity_count",
+      "appearance"
+    ],
+    "upper-left beige support and vertical leg remain fixed": [
+      "closed_world_or_persistence"
+    ]
+  },
+  "stage_pairs": [
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "the clear bottle reaches the beige tile surface happens BEFORE transparent bottle body breaks.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: bottle: exactly 1, state position=upper_left_support, integrity=intact_horizontal_bottle, configuration=single_bottle, required; tile floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] the clear bottle reaches the beige tile surface happens BEFORE transparent bottle body breaks.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: bottle: exactly 1, state position=upper_left_support, integrity=intact_horizontal_bottle, configuration=single_bottle, required; tile floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "setup",
+      "violation_constraint_ids": [
+        [
+          "c1"
+        ]
+      ],
+      "violation_kinds": [
+        "outcome_preset"
+      ],
+      "violation_relations": [
+        "transparent bottle body breaks is already present BEFORE the clear bottle reaches the beige tile surface."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: bottle: exactly 1, state position=upper_left_support, integrity=intact_horizontal_bottle, configuration=single_bottle, required; tile floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] transparent bottle body breaks is already present BEFORE the clear bottle reaches the beige tile surface."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "the clear bottle reaches the beige tile surface happens BEFORE transparent bottle body breaks.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: bottle: exactly 1, state position=upper_left_support, integrity=intact_horizontal_bottle, configuration=single_bottle, transitioning; tile floor: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] the clear bottle reaches the beige tile surface happens BEFORE transparent bottle body breaks.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: bottle: exactly 1, state position=upper_left_support, integrity=intact_horizontal_bottle, configuration=single_bottle, transitioning; tile floor: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "onset",
+      "violation_constraint_ids": [
+        [
+          "c1",
+          "c2"
+        ]
+      ],
+      "violation_kinds": [
+        "wrong_order"
+      ],
+      "violation_relations": [
+        "transparent bottle body breaks happens BEFORE the clear bottle reaches the beige tile surface."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: bottle: exactly 1, state position=upper_left_support, integrity=intact_horizontal_bottle, configuration=single_bottle, transitioning; tile floor: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] transparent bottle body breaks happens BEFORE the clear bottle reaches the beige tile surface."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The coupled changes occur together: clear bottle descends through open wall corridor WHILE transparent bottle body breaks WHILE clear pieces spread over beige tile.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: bottle: exactly 1, state position=beige_tile, integrity=fractured_clear_glass, configuration=scattered_floor_fragments, required; tile floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The coupled changes occur together: clear bottle descends through open wall corridor WHILE transparent bottle body breaks WHILE clear pieces spread over beige tile.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: bottle: exactly 1, state position=beige_tile, integrity=fractured_clear_glass, configuration=scattered_floor_fragments, required; tile floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "evolution",
+      "violation_constraint_ids": [
+        [
+          "c3"
+        ]
+      ],
+      "violation_kinds": [
+        "coupling_broken"
+      ],
+      "violation_relations": [
+        "Only one coupled change occurs while the other remains unchanged: clear bottle descends through open wall corridor; transparent bottle body breaks; clear pieces spread over beige tile."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: bottle: exactly 1, state position=beige_tile, integrity=fractured_clear_glass, configuration=scattered_floor_fragments, required; tile floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] Only one coupled change occurs while the other remains unchanged: clear bottle descends through open wall corridor; transparent bottle body breaks; clear pieces spread over beige tile."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The coupled changes occur together: clear bottle descends through open wall corridor WHILE transparent bottle body breaks WHILE clear pieces spread over beige tile.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: bottle: exactly 1, state position=beige_tile, integrity=fractured_clear_glass, configuration=scattered_floor_fragments, transitioning; tile floor: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The coupled changes occur together: clear bottle descends through open wall corridor WHILE transparent bottle body breaks WHILE clear pieces spread over beige tile.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: bottle: exactly 1, state position=beige_tile, integrity=fractured_clear_glass, configuration=scattered_floor_fragments, transitioning; tile floor: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "completion",
+      "violation_constraint_ids": [
+        [
+          "c3",
+          "c4"
+        ]
+      ],
+      "violation_kinds": [
+        "incomplete_transition"
+      ],
+      "violation_relations": [
+        "The declared cause occurs BUT the required target change does not become visible."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: bottle: exactly 1, state position=beige_tile, integrity=fractured_clear_glass, configuration=scattered_floor_fragments, transitioning; tile floor: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The declared cause occurs BUT the required target change does not become visible."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The terminal facts integrity=fractured_clear_glass, configuration=scattered_floor_fragments REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts integrity=intact_horizontal_bottle, integrity=fractured_clear_glass do not coexist.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: bottle: exactly 1, state position=beige_tile, integrity=fractured_clear_glass, configuration=scattered_floor_fragments, required; tile floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The terminal facts integrity=fractured_clear_glass, configuration=scattered_floor_fragments REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts integrity=intact_horizontal_bottle, integrity=fractured_clear_glass do not coexist.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: bottle: exactly 1, state position=beige_tile, integrity=fractured_clear_glass, configuration=scattered_floor_fragments, required; tile floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "terminal",
+      "violation_constraint_ids": [
+        [
+          "c4"
+        ],
+        [
+          "c5"
+        ]
+      ],
+      "violation_kinds": [
+        "reversal",
+        "exclusion_broken"
+      ],
+      "violation_relations": [
+        "The valid terminal state returns to its mutually exclusive earlier state.",
+        "Copies of the same logical slot appear in mutually exclusive states at the same time."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: bottle: exactly 1, state position=beige_tile, integrity=fractured_clear_glass, configuration=scattered_floor_fragments, required; tile floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The valid terminal state returns to its mutually exclusive earlier state. [AND] The same logical slot has only its valid state; mutually exclusive facts integrity=intact_horizontal_bottle, integrity=fractured_clear_glass do not coexist.",
+        "[STAGE ENTITY INVENTORY] Present now: bottle: exactly 1, state position=beige_tile, integrity=fractured_clear_glass, configuration=scattered_floor_fragments, required; tile floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The terminal facts integrity=fractured_clear_glass, configuration=scattered_floor_fragments REMAIN through the final frames. [AND] Copies of the same logical slot appear in mutually exclusive states at the same time."
+      ],
+      "violation_weights": [
+        0.5,
+        0.5
+      ]
+    }
+  ],
+  "texts": {
+    "global_semantic": "[ENTITY INVENTORY] The closed scene contains bottle: exactly 1; tile floor: one declared collective group. The reference first frame fixes these identities and initial layout. [INITIAL STATE] position=upper_left_support, integrity=intact_horizontal_bottle, configuration=single_bottle. [PHYSICAL EVENT] The clear horizontal bottle leaves the upper-left beige support, falls across the pale wall, and shatters on the beige tile floor. [PERSISTENT PROTECTION] same clear colorless glass material; upper-left beige support and vertical leg remain fixed; beige tile grid, pale wall, baseboard, lighting, and static camera remain unchanged; no release hand or tool is added. [CLOSED WORLD] No additional external source, extra copy, hand, person, tool, unlisted object enters or appears; unoccupied scene regions remain empty. [CONSERVATION] Source loss and result gain stay coupled: tracked logical entity slots remain consistent; beige-tile arrival produces clear fracture and local spread. No result appears from an undeclared external source. [TERMINAL STATE] The same logical entity slots persist without duplicates; position=beige_tile, integrity=fractured_clear_glass, configuration=scattered_floor_fragments remains visible through the final frames.",
+    "stage.completion.negative.0": "[STAGE ENTITY INVENTORY] Present now: bottle: exactly 1, state position=beige_tile, integrity=fractured_clear_glass, configuration=scattered_floor_fragments, transitioning; tile floor: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The declared cause occurs BUT the required target change does not become visible.",
+    "stage.completion.positive": "[STAGE ENTITY INVENTORY] Present now: bottle: exactly 1, state position=beige_tile, integrity=fractured_clear_glass, configuration=scattered_floor_fragments, transitioning; tile floor: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The coupled changes occur together: clear bottle descends through open wall corridor WHILE transparent bottle body breaks WHILE clear pieces spread over beige tile.",
+    "stage.evolution.negative.0": "[STAGE ENTITY INVENTORY] Present now: bottle: exactly 1, state position=beige_tile, integrity=fractured_clear_glass, configuration=scattered_floor_fragments, required; tile floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] Only one coupled change occurs while the other remains unchanged: clear bottle descends through open wall corridor; transparent bottle body breaks; clear pieces spread over beige tile.",
+    "stage.evolution.positive": "[STAGE ENTITY INVENTORY] Present now: bottle: exactly 1, state position=beige_tile, integrity=fractured_clear_glass, configuration=scattered_floor_fragments, required; tile floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The coupled changes occur together: clear bottle descends through open wall corridor WHILE transparent bottle body breaks WHILE clear pieces spread over beige tile.",
+    "stage.onset.negative.0": "[STAGE ENTITY INVENTORY] Present now: bottle: exactly 1, state position=upper_left_support, integrity=intact_horizontal_bottle, configuration=single_bottle, transitioning; tile floor: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] transparent bottle body breaks happens BEFORE the clear bottle reaches the beige tile surface.",
+    "stage.onset.positive": "[STAGE ENTITY INVENTORY] Present now: bottle: exactly 1, state position=upper_left_support, integrity=intact_horizontal_bottle, configuration=single_bottle, transitioning; tile floor: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] the clear bottle reaches the beige tile surface happens BEFORE transparent bottle body breaks.",
+    "stage.setup.negative.0": "[STAGE ENTITY INVENTORY] Present now: bottle: exactly 1, state position=upper_left_support, integrity=intact_horizontal_bottle, configuration=single_bottle, required; tile floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] transparent bottle body breaks is already present BEFORE the clear bottle reaches the beige tile surface.",
+    "stage.setup.positive": "[STAGE ENTITY INVENTORY] Present now: bottle: exactly 1, state position=upper_left_support, integrity=intact_horizontal_bottle, configuration=single_bottle, required; tile floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] the clear bottle reaches the beige tile surface happens BEFORE transparent bottle body breaks.",
+    "stage.terminal.negative.0": "[STAGE ENTITY INVENTORY] Present now: bottle: exactly 1, state position=beige_tile, integrity=fractured_clear_glass, configuration=scattered_floor_fragments, required; tile floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The valid terminal state returns to its mutually exclusive earlier state. [AND] The same logical slot has only its valid state; mutually exclusive facts integrity=intact_horizontal_bottle, integrity=fractured_clear_glass do not coexist.",
+    "stage.terminal.negative.1": "[STAGE ENTITY INVENTORY] Present now: bottle: exactly 1, state position=beige_tile, integrity=fractured_clear_glass, configuration=scattered_floor_fragments, required; tile floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The terminal facts integrity=fractured_clear_glass, configuration=scattered_floor_fragments REMAIN through the final frames. [AND] Copies of the same logical slot appear in mutually exclusive states at the same time.",
+    "stage.terminal.positive": "[STAGE ENTITY INVENTORY] Present now: bottle: exactly 1, state position=beige_tile, integrity=fractured_clear_glass, configuration=scattered_floor_fragments, required; tile floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The terminal facts integrity=fractured_clear_glass, configuration=scattered_floor_fragments REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts integrity=intact_horizontal_bottle, integrity=fractured_clear_glass do not coexist."
+  },
+  "token_budget_priority": {
+    "causal": 2,
+    "entity_count": 0,
+    "protected": 1,
+    "style": 3
+  }
+}

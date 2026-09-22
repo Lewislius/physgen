@@ -1,0 +1,383 @@
+{
+  "closed_world": {
+    "allowed_entity_ids": [
+      "pitcher",
+      "stream",
+      "glass"
+    ],
+    "empty_regions": [],
+    "external_source_allowed": false,
+    "forbidden_new_categories": [
+      "external source",
+      "extra copy",
+      "unlisted object"
+    ],
+    "provenance": "derived"
+  },
+  "conservation": [
+    {
+      "observable_proxy": "tracked logical entity slots remain consistent",
+      "provenance": "derived",
+      "quantity": "instance_count",
+      "relation": "constant",
+      "rule_id": "entity_slots_constant",
+      "sinks": [
+        "pitcher",
+        "stream",
+        "glass"
+      ],
+      "sources": [
+        "pitcher",
+        "stream",
+        "glass"
+      ],
+      "tolerance": 0.0
+    },
+    {
+      "observable_proxy": "source level falls through a visible stream while sink level rises",
+      "provenance": "derived",
+      "quantity": "material_proxy",
+      "relation": "coupled_monotonic",
+      "rule_id": "conservation_c3",
+      "sinks": [
+        "stream_state",
+        "sink_level"
+      ],
+      "sources": [
+        "source_level"
+      ],
+      "tolerance": 0.1
+    }
+  ],
+  "issues": [
+    "pitcher: exact visual count unresolved; retained as group",
+    "stream: exact visual count unresolved; retained as group"
+  ],
+  "lifecycles": [
+    {
+      "entity_id": "pitcher",
+      "from_stage": "setup",
+      "from_state": "higher",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "higher",
+          "lower"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "lower"
+    },
+    {
+      "entity_id": "stream",
+      "from_stage": "setup",
+      "from_state": "absent",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "absent",
+          "continuous"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "continuous"
+    },
+    {
+      "entity_id": "glass",
+      "from_stage": "setup",
+      "from_state": "empty",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "empty",
+          "higher"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "higher"
+    }
+  ],
+  "slots": [
+    {
+      "aliases": [],
+      "canonical_mention": "the same transparent water pitcher",
+      "cardinality": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "pitcher",
+      "invariant_attributes": [
+        "same transparent pitcher and clear glass",
+        "water remains inside the source-stream-sink route",
+        "camera and unrelated scene remain unchanged"
+      ],
+      "mutable_attributes": [
+        "water_level"
+      ],
+      "persistent_identity": true,
+      "provenance": "derived",
+      "role": "source"
+    },
+    {
+      "aliases": [],
+      "canonical_mention": "the continuous water stream",
+      "cardinality": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "stream",
+      "invariant_attributes": [
+        "same transparent pitcher and clear glass",
+        "water remains inside the source-stream-sink route",
+        "camera and unrelated scene remain unchanged"
+      ],
+      "mutable_attributes": [
+        "visibility"
+      ],
+      "persistent_identity": true,
+      "provenance": "derived",
+      "role": "carrier"
+    },
+    {
+      "aliases": [],
+      "canonical_mention": "the same clear glass",
+      "cardinality": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "glass",
+      "invariant_attributes": [
+        "same transparent pitcher and clear glass",
+        "water remains inside the source-stream-sink route",
+        "camera and unrelated scene remain unchanged"
+      ],
+      "mutable_attributes": [
+        "water_level"
+      ],
+      "persistent_identity": true,
+      "provenance": "default",
+      "role": "sink"
+    }
+  ],
+  "stage_presence": [
+    {
+      "entity_id": "pitcher",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [
+        "source_level=higher"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "stream",
+      "logical_count": {
+        "exact": 0,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [
+        "stream_state=absent"
+      ],
+      "visible": "forbidden"
+    },
+    {
+      "entity_id": "glass",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [
+        "sink_level=empty"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "pitcher",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [
+        "source_level=higher"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "stream",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [
+        "stream_state=absent"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "glass",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [
+        "sink_level=empty"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "pitcher",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [
+        "source_level=lower"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "stream",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [
+        "stream_state=continuous"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "glass",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [
+        "sink_level=higher"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "pitcher",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [
+        "source_level=lower"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "stream",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [
+        "stream_state=continuous"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "glass",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [
+        "sink_level=higher"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "pitcher",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [
+        "source_level=lower"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "stream",
+      "logical_count": {
+        "exact": 0,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [
+        "stream_state=continuous"
+      ],
+      "visible": "forbidden"
+    },
+    {
+      "entity_id": "glass",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [
+        "sink_level=higher"
+      ],
+      "visible": "required"
+    }
+  ]
+}

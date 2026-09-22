@@ -1,0 +1,66 @@
+{
+  "causal_pair": {
+    "counterfactual_type": [
+      "cause_effect_reversal"
+    ],
+    "origin_prompt_prefixed": false,
+    "single_changed_relation": [
+      "the book opens before rather than as a result of the fall and landing"
+    ]
+  },
+  "compiler_version": "ace-conditioning-mvp-v1",
+  "mode": "compiled",
+  "prompts": {
+    "causal_counterfactual": "The closed book opens while still resting on the shelf, then crosses the edge and falls to the floor.",
+    "causal_positive": "The closed book crosses the shelf edge, loses support, falls continuously, strikes the floor, and settles open.",
+    "semantic": "A closed book is pushed past the edge of a shelf, falls, and lands open on the floor. Initial scene: A fixed side view shows one closed book resting near the edge of a shelf while still fully supported. The shelf edge, the complete book, the clear vertical space, and the floor below are all visible at useful scale, with the area between shelf and floor unobstructed. Required visible entities: one closed book; one shelf with a visible edge; floor below the shelf. At the beginning: book: closed, intact, and fully supported near the shelf edge; floor: clear beneath the book. Required layout: book lies close to the shelf edge while remaining fully supported; the vertical corridor from shelf to floor is clear; book, shelf edge, and landing area fit inside the frame. Required state changes: book support: shelf-supported to unsupported; book position: shelf to floor; book state: closed to open. These event variables are allowed to change: book position; book support state; book orientation and open-versus-closed state. Preserve throughout: static side-view camera; shelf and floor geometry; book identity and cover appearance; one closed book at the start; one shelf and the floor below; the same book through the fall."
+  },
+  "sample_id": "P06",
+  "schema_version": 1,
+  "semantic_variant": "compiled_t2v",
+  "source_sections": {
+    "changed_state_variables": [
+      "book support: shelf-supported to unsupported",
+      "book position: shelf to floor",
+      "book state: closed to open"
+    ],
+    "counterfactual_type": [
+      "cause_effect_reversal"
+    ],
+    "event_type": [
+      "support loss, fall, and landing-state change"
+    ],
+    "initial_states": [
+      "book: closed, intact, and fully supported near the shelf edge",
+      "floor: clear beneath the book"
+    ],
+    "layout_requirements": [
+      "book lies close to the shelf edge while remaining fully supported",
+      "the vertical corridor from shelf to floor is clear",
+      "book, shelf edge, and landing area fit inside the frame"
+    ],
+    "preserved_context": [
+      "one closed book at the start",
+      "one shelf and the floor below",
+      "the same book through the fall"
+    ],
+    "protected_scene_properties": [
+      "static side-view camera",
+      "shelf and floor geometry",
+      "book identity and cover appearance"
+    ],
+    "required_visible_entities": [
+      "one closed book",
+      "one shelf with a visible edge",
+      "floor below the shelf"
+    ],
+    "single_changed_relation": [
+      "the book opens before rather than as a result of the fall and landing"
+    ],
+    "transition_variables": [
+      "book position",
+      "book support state",
+      "book orientation and open-versus-closed state"
+    ]
+  }
+}

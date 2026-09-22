@@ -1,0 +1,32 @@
+name: physgen-v42-quick16-2epochs-1x96g
+description: v4 data pipeline with frame limit 121; 16 clips, 2 epochs, saved EMA I2V/T2V inference
+workspace: ALL-IN-ONE
+project: wan-animate
+max_restarts: 0
+resources:
+  resource_pool: blk-96g
+  slots_per_trial: 1
+  is_single_node: true
+  shm_size: 34359738368
+bind_mounts:
+  - host_path: /mount/HOME/liuzhirui
+    container_path: /home/liuzhirui
+  - host_path: /mount/NAS1/public
+    container_path: /run/determined/NAS1/public
+environment:
+  image: 10.130.130.5:8192/lab-dev:latest
+  environment_variables:
+    - OMP_NUM_THREADS=4
+checkpoint_storage:
+  type: shared_fs
+  host_path: /mount/HOME/liuzhirui
+  storage_path: Project/physGen/code/v4.2/quick16/work/determined_checkpoints
+  save_experiment_best: 0
+  save_trial_best: 0
+  save_trial_latest: 0
+searcher:
+  name: single
+  metric: validation_loss
+  max_length: {epochs: 2}
+  smaller_is_better: true
+entrypoint: bash /home/liuzhirui/Project/physGen/code/v4.2/train/train_quick16_2epochs_1x96g.sh

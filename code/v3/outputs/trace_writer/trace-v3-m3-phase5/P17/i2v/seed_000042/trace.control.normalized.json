@@ -1,0 +1,370 @@
+{
+  "closed_world": {
+    "allowed_entity_ids": [
+      "hand",
+      "sponge",
+      "surface"
+    ],
+    "empty_regions": [],
+    "external_source_allowed": false,
+    "forbidden_new_categories": [
+      "external source",
+      "extra copy",
+      "unlisted object"
+    ],
+    "provenance": "derived"
+  },
+  "conservation": [
+    {
+      "observable_proxy": "tracked logical entity slots remain consistent",
+      "provenance": "derived",
+      "quantity": "instance_count",
+      "relation": "constant",
+      "rule_id": "entity_slots_constant",
+      "sinks": [
+        "hand",
+        "sponge",
+        "surface"
+      ],
+      "sources": [
+        "hand",
+        "sponge",
+        "surface"
+      ],
+      "tolerance": 0.0
+    }
+  ],
+  "issues": [
+    "surface: exact visual count unresolved; retained as group"
+  ],
+  "lifecycles": [
+    {
+      "entity_id": "hand",
+      "from_stage": "setup",
+      "from_state": "hovering_above",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "hovering_above",
+          "pressing"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "pressing"
+    },
+    {
+      "entity_id": "sponge",
+      "from_stage": "setup",
+      "from_state": "full_rectangular",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "full_rectangular",
+          "flat"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "flat"
+    },
+    {
+      "entity_id": "hand",
+      "from_stage": "setup",
+      "from_state": "pressing",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "pressing",
+          "lifted_above"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "lifted_above"
+    },
+    {
+      "entity_id": "sponge",
+      "from_stage": "setup",
+      "from_state": "flat",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "flat",
+          "recovered_rectangular"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "recovered_rectangular"
+    }
+  ],
+  "slots": [
+    {
+      "aliases": [],
+      "canonical_mention": "the same open left hand entering from the left",
+      "cardinality": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "hand",
+      "invariant_attributes": [
+        "same left hand skin appearance",
+        "same rectangular yellow porous dry sponge",
+        "white marble surface, pale background, lighting, side camera, and framing remain unchanged"
+      ],
+      "mutable_attributes": [
+        "pictured contact state"
+      ],
+      "persistent_identity": true,
+      "provenance": "default",
+      "role": "actor"
+    },
+    {
+      "aliases": [],
+      "canonical_mention": "the same rectangular yellow porous sponge",
+      "cardinality": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "sponge",
+      "invariant_attributes": [
+        "same left hand skin appearance",
+        "same rectangular yellow porous dry sponge",
+        "white marble surface, pale background, lighting, side camera, and framing remain unchanged"
+      ],
+      "mutable_attributes": [
+        "pictured yellow thickness"
+      ],
+      "persistent_identity": true,
+      "provenance": "default",
+      "role": "patient"
+    },
+    {
+      "aliases": [],
+      "canonical_mention": "the same white marble support surface",
+      "cardinality": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "surface",
+      "invariant_attributes": [
+        "same left hand skin appearance",
+        "same rectangular yellow porous dry sponge",
+        "white marble surface, pale background, lighting, side camera, and framing remain unchanged"
+      ],
+      "mutable_attributes": [],
+      "persistent_identity": true,
+      "provenance": "derived",
+      "role": "environment"
+    }
+  ],
+  "stage_presence": [
+    {
+      "entity_id": "hand",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [
+        "hand_state=hovering_above"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "sponge",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [
+        "thickness=full_rectangular"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "surface",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [],
+      "visible": "required"
+    },
+    {
+      "entity_id": "hand",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [
+        "hand_state=hovering_above"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "sponge",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [
+        "thickness=full_rectangular"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "surface",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [],
+      "visible": "required"
+    },
+    {
+      "entity_id": "hand",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [
+        "hand_state=pressing"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "sponge",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [
+        "thickness=flat"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "surface",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [],
+      "visible": "required"
+    },
+    {
+      "entity_id": "hand",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [
+        "hand_state=lifted_above"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "sponge",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [
+        "thickness=recovered_rectangular"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "surface",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [],
+      "visible": "required"
+    },
+    {
+      "entity_id": "hand",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [
+        "hand_state=lifted_above"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "sponge",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [
+        "thickness=recovered_rectangular"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "surface",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [],
+      "visible": "required"
+    }
+  ]
+}

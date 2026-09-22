@@ -1,0 +1,326 @@
+{
+  "purpose": "real 5B model; 64x64, 5 frames, two one-micro updates; gradient check only",
+  "steps": [
+    {
+      "step": 1,
+      "mode": "t2v",
+      "fm": 0.8288974165916443,
+      "fm_base": 0.8288974165916443,
+      "fm_delta": 0.0,
+      "struct": 0.7439640760421753,
+      "struct_coefficient": 0.0005000000237487257,
+      "write": 0.6808257699012756,
+      "write_supervision": {
+        "5": {
+          "loss": 0.6937510967254639,
+          "target_compression": 0.706855833530426,
+          "target_feasibility_max": 0.949999988079071,
+          "prediction_target_cosine": null,
+          "target_rms": 0.019690120592713356,
+          "actual_rms": 0.0
+        },
+        "15": {
+          "loss": 0.6679004430770874,
+          "target_compression": 0.4067634046077728,
+          "target_feasibility_max": 0.949999988079071,
+          "prediction_target_cosine": null,
+          "target_rms": 0.026692043989896774,
+          "actual_rms": 0.0
+        }
+      },
+      "paired_repair": {
+        "active": true,
+        "strength": 0.12121672928333282,
+        "relative_input_rms": 0.02711734175682068,
+        "definition": "latent warp + smooth channel drift; not a physical violation label"
+      },
+      "write_credit": {
+        "writer5": {
+          "dloss_dscale": 0.0,
+          "grad_delta_cosine": null,
+          "interpretation": "positive: locally increasing this write worsens conditional FM"
+        },
+        "writer15": {
+          "dloss_dscale": 0.0,
+          "grad_delta_cosine": null,
+          "interpretation": "positive: locally increasing this write worsens conditional FM"
+        }
+      },
+      "correction_benefit": {
+        "delta_energy": 0.0,
+        "twice_residual_dot_delta": 0.0,
+        "predicted_fm_gain": 0.0,
+        "residual_cosine": null
+      },
+      "structure_components": {
+        "static_error": 0.6350988745689392,
+        "dynamic_error": 0.10886526852846146
+      },
+      "fm_grad_groups": {
+        "core5": 0.0,
+        "core15": 0.0,
+        "text_init": 0.0,
+        "writer5": 0.6335828304290771,
+        "writer15": 0.40179896354675293
+      },
+      "combined_grad_groups": {
+        "core5": 7.163894042605534e-05,
+        "core15": 6.817511166445911e-05,
+        "text_init": 7.021507190074772e-05,
+        "writer5": 0.6335862278938293,
+        "writer15": 0.4017990231513977
+      },
+      "combined": {
+        "core_generation_grad": 0.0,
+        "generation_grad_all": 0.7502463459968567,
+        "core_auxiliary_grad": 9.889380453387275e-05,
+        "auxiliary_grad_all": 0.0003314983914606273,
+        "aux_alpha": 1.0,
+        "effective_aux_grad": 0.0003314983914606273,
+        "aux_grad_budget": null,
+        "aux_grad_share": 0.00044165755389258265,
+        "aux_max_share": null,
+        "core_generation_struct_cosine": null,
+        "core_struct_to_generation": null,
+        "alignment": {
+          "core5": {
+            "fm_norm": 0.0,
+            "auxiliary_norm_before": 7.163894042605534e-05,
+            "auxiliary_norm_after": 7.163894042605534e-05,
+            "dot_before": 0.0,
+            "dot_after": 0.0,
+            "conflict": false,
+            "cosine_before": null,
+            "removed_norm": 0.0
+          },
+          "core15": {
+            "fm_norm": 0.0,
+            "auxiliary_norm_before": 6.817511166445911e-05,
+            "auxiliary_norm_after": 6.817511166445911e-05,
+            "dot_before": 0.0,
+            "dot_after": 0.0,
+            "conflict": false,
+            "cosine_before": null,
+            "removed_norm": 0.0
+          },
+          "text_init": {
+            "fm_norm": 0.0,
+            "auxiliary_norm_before": 7.021507190074772e-05,
+            "auxiliary_norm_after": 7.021507190074772e-05,
+            "dot_before": 0.0,
+            "dot_after": 0.0,
+            "conflict": false,
+            "cosine_before": null,
+            "removed_norm": 0.0
+          },
+          "writer5": {
+            "fm_norm": 0.6335828304290771,
+            "auxiliary_norm_before": 0.0002689059474505484,
+            "auxiliary_norm_after": 0.0002689059474505484,
+            "dot_before": 2.1469322746270336e-06,
+            "dot_after": 2.1469322746270336e-06,
+            "conflict": false,
+            "cosine_before": 0.012601276859641075,
+            "removed_norm": 0.0
+          },
+          "writer15": {
+            "fm_norm": 0.40179896354675293,
+            "auxiliary_norm_before": 0.0001512425224063918,
+            "auxiliary_norm_after": 0.00015123038610909134,
+            "dot_before": -7.692502208556107e-07,
+            "dot_after": 6.927791673660977e-14,
+            "conflict": true,
+            "cosine_before": -0.012658577412366867,
+            "removed_norm": 1.9145149963151198e-06
+          }
+        }
+      },
+      "global_grad_norm": 0.7502493262290955,
+      "seconds": 1.4017141820222605,
+      "gate_means": {
+        "writer5": 0.5,
+        "writer15": 0.5
+      }
+    },
+    {
+      "step": 2,
+      "mode": "i2v",
+      "fm": 0.5560145378112793,
+      "fm_base": 0.556016743183136,
+      "fm_delta": -2.205371856689453e-06,
+      "struct": 0.19237516820430756,
+      "struct_coefficient": 0.0010000000474974513,
+      "write": 0.48716598749160767,
+      "write_supervision": {
+        "5": {
+          "loss": 0.6113831996917725,
+          "target_compression": 1.0,
+          "target_feasibility_max": 0.8845206499099731,
+          "prediction_target_cosine": 0.0017890747403725982,
+          "target_rms": 0.008295192383229733,
+          "actual_rms": 4.316523245506687e-06
+        },
+        "15": {
+          "loss": 0.36294877529144287,
+          "target_compression": 1.0,
+          "target_feasibility_max": 0.6976067423820496,
+          "prediction_target_cosine": -0.01089987251907587,
+          "target_rms": 0.009295206516981125,
+          "actual_rms": 8.184944817912765e-06
+        }
+      },
+      "paired_repair": {
+        "active": true,
+        "strength": 0.07009416073560715,
+        "relative_input_rms": 0.017521360889077187,
+        "definition": "latent warp + smooth channel drift; not a physical violation label"
+      },
+      "write_credit": {
+        "writer5": {
+          "dloss_dscale": 1.215757606587431e-06,
+          "grad_delta_cosine": 0.011066445149481297,
+          "interpretation": "positive: locally increasing this write worsens conditional FM"
+        },
+        "writer15": {
+          "dloss_dscale": 6.640723313466879e-06,
+          "grad_delta_cosine": 0.03409123793244362,
+          "interpretation": "positive: locally increasing this write worsens conditional FM"
+        }
+      },
+      "correction_benefit": {
+        "delta_energy": 7.49242608435452e-05,
+        "twice_residual_dot_delta": 7.71471532061696e-05,
+        "predicted_fm_gain": 2.222892362624407e-06,
+        "residual_cosine": 0.005976331885904074
+      },
+      "structure_components": {
+        "static_error": 0.08350995182991028,
+        "dynamic_error": 0.10886522382497787
+      },
+      "fm_grad_groups": {
+        "core5": 3.5053105875704205e-06,
+        "core15": 3.244872459617909e-06,
+        "text_init": 3.3237963634746848e-06,
+        "writer5": 0.29177308082580566,
+        "writer15": 0.2502584159374237
+      },
+      "combined_grad_groups": {
+        "core5": 6.401990685844794e-05,
+        "core15": 6.198268238222227e-05,
+        "text_init": 6.0745791415683925e-05,
+        "writer5": 0.29177388548851013,
+        "writer15": 0.25025856494903564
+      },
+      "combined": {
+        "core_generation_grad": 4.77665116704884e-06,
+        "generation_grad_all": 0.38439667224884033,
+        "core_auxiliary_grad": 8.898081432562321e-05,
+        "auxiliary_grad_all": 0.0007511671865358949,
+        "aux_alpha": 1.0,
+        "effective_aux_grad": 0.0007511671865358949,
+        "aux_grad_budget": null,
+        "aux_grad_share": 0.0019503346411511302,
+        "aux_max_share": null,
+        "core_generation_struct_cosine": -4.268356224024217e-10,
+        "core_struct_to_generation": 18.628284454345703,
+        "alignment": {
+          "core5": {
+            "fm_norm": 3.5053105875704205e-06,
+            "auxiliary_norm_before": 6.393405055860057e-05,
+            "auxiliary_norm_after": 6.392387876985595e-05,
+            "dot_before": -3.998046685382839e-12,
+            "dot_after": -5.590946847470416e-19,
+            "conflict": true,
+            "cosine_before": -0.017839767038822174,
+            "removed_norm": 1.1405685427234857e-06
+          },
+          "core15": {
+            "fm_norm": 3.244872459617909e-06,
+            "auxiliary_norm_before": 6.190710701048374e-05,
+            "auxiliary_norm_after": 6.189769192133099e-05,
+            "dot_before": -3.504195848422209e-12,
+            "dot_after": 3.7761787579780777e-19,
+            "conflict": true,
+            "cosine_before": -0.01744416542351246,
+            "removed_norm": 1.0799179790410562e-06
+          },
+          "text_init": {
+            "fm_norm": 3.3237963634746848e-06,
+            "auxiliary_norm_before": 6.066432251827791e-05,
+            "auxiliary_norm_after": 6.065479101380333e-05,
+            "dot_before": -3.574433934602772e-12,
+            "dot_after": -1.0407917339387215e-19,
+            "conflict": true,
+            "cosine_before": -0.01772717572748661,
+            "removed_norm": 1.0754069990071002e-06
+          },
+          "writer5": {
+            "fm_norm": 0.29177308082580566,
+            "auxiliary_norm_before": 0.0006888332427479327,
+            "auxiliary_norm_after": 0.0006887727649882436,
+            "dot_before": -2.664471367097576e-06,
+            "dot_after": -7.704890870284531e-13,
+            "conflict": true,
+            "cosine_before": -0.013257197104394436,
+            "removed_norm": 9.13199892238481e-06
+          },
+          "writer15": {
+            "fm_norm": 0.2502584159374237,
+            "auxiliary_norm_before": 0.00027983690961264074,
+            "auxiliary_norm_after": 0.000279727770248428,
+            "dot_before": -1.955829702637857e-06,
+            "dot_after": -2.876251483079767e-14,
+            "conflict": true,
+            "cosine_before": -0.027927840128540993,
+            "removed_norm": 7.81524067861028e-06
+          }
+        }
+      },
+      "global_grad_norm": 0.38439738750457764,
+      "seconds": 1.0637054249818902,
+      "gate_means": {
+        "writer5": 0.5,
+        "writer15": 0.5
+      }
+    }
+  ],
+  "health": {
+    "validation_loss": 3.827652335166931,
+    "base_loss": 3.8340445160865784,
+    "count": 2,
+    "weights": "raw",
+    "improves": 2,
+    "fm_delta": -0.006392180919647217,
+    "writer_ablation": {
+      "cases": 2,
+      "mean_fm": {
+        "full": 3.827652335166931,
+        "half": 3.823889195919037,
+        "writer5_only": 3.8229254484176636,
+        "writer15_only": 3.829065978527069,
+        "base": 3.8340445160865784
+      },
+      "caveat": "Paired GT-noised interventions; positive removal_gain means removal lowers FM, not proof of video improvement"
+    },
+    "paired_repair": {
+      "cases": 2,
+      "endpoint_velocity_mse": 3.8251936435699463,
+      "base_endpoint_velocity_mse": 3.8221723437309265
+    },
+    "by_mode": {
+      "i2v": {
+        "count": 1,
+        "corrected": 6.440145015716553,
+        "base": 6.450878143310547
+      },
+      "t2v": {
+        "count": 1,
+        "corrected": 1.2151596546173096,
+        "base": 1.2172108888626099
+      }
+    }
+  },
+  "health_rng_restored": true,
+  "parameters": 68266498,
+  "peak_allocated_gib": 12.691839218139648
+}

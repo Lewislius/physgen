@@ -1,0 +1,175 @@
+{
+  "purpose": "real 5B model; 64x64, 5 frames, two one-micro updates; gradient check only",
+  "steps": [
+    {
+      "step": 1,
+      "mode": "t2v",
+      "fm": 0.8288974165916443,
+      "fm_base": 0.8288974165916443,
+      "fm_delta": 0.0,
+      "struct": 0.7439640760421753,
+      "struct_coefficient": 0.0005000000237487257,
+      "correction_benefit": {
+        "delta_energy": 0.0,
+        "twice_residual_dot_delta": 0.0,
+        "predicted_fm_gain": 0.0,
+        "residual_cosine": null
+      },
+      "structure_components": {
+        "static_error": 0.6350988745689392,
+        "dynamic_error": 0.10886526852846146
+      },
+      "fm_grad_groups": {
+        "core5": 0.0,
+        "core15": 0.0,
+        "text_init": 0.0,
+        "writer5": 0.6342242956161499,
+        "writer15": 0.40239354968070984
+      },
+      "combined_grad_groups": {
+        "core5": 7.163797999965027e-05,
+        "core15": 6.817526445956901e-05,
+        "text_init": 7.32841290300712e-05,
+        "writer5": 0.6342242956161499,
+        "writer15": 0.40239354968070984
+      },
+      "combined": {
+        "core_generation_grad": 0.0,
+        "generation_grad_all": 0.7511065602302551,
+        "core_auxiliary_grad": 9.889320790534839e-05,
+        "auxiliary_grad_all": 0.00012308708392083645,
+        "aux_alpha": 1.0,
+        "effective_aux_grad": 0.00012308708392083645,
+        "aux_grad_budget": null,
+        "aux_grad_share": 0.00016384747868869454,
+        "aux_max_share": null,
+        "core_generation_struct_cosine": null,
+        "core_struct_to_generation": null,
+        "alignment": {
+          "core5": {
+            "fm_norm": 0.0,
+            "struct_norm_before": 7.163797999965027e-05,
+            "struct_norm_after": 7.163797999965027e-05,
+            "dot_before": 0.0,
+            "dot_after": 0.0,
+            "conflict": false,
+            "cosine_before": null,
+            "removed_norm": 0.0
+          },
+          "core15": {
+            "fm_norm": 0.0,
+            "struct_norm_before": 6.817526445956901e-05,
+            "struct_norm_after": 6.817526445956901e-05,
+            "dot_before": 0.0,
+            "dot_after": 0.0,
+            "conflict": false,
+            "cosine_before": null,
+            "removed_norm": 0.0
+          },
+          "text_init": {
+            "fm_norm": 0.0,
+            "struct_norm_before": 7.32841290300712e-05,
+            "struct_norm_after": 7.32841290300712e-05,
+            "dot_before": 0.0,
+            "dot_after": 0.0,
+            "conflict": false,
+            "cosine_before": null,
+            "removed_norm": 0.0
+          }
+        }
+      },
+      "global_grad_norm": 0.7511065602302551,
+      "seconds": 1.3222319839987904,
+      "gate_means": {
+        "writer5": 0.5,
+        "writer15": 0.5
+      }
+    },
+    {
+      "step": 2,
+      "mode": "i2v",
+      "fm": 0.8014041781425476,
+      "fm_base": 0.8011333346366882,
+      "fm_delta": 0.000270843505859375,
+      "struct": 0.19237636029720306,
+      "struct_coefficient": 0.0010000000474974513,
+      "correction_benefit": {
+        "delta_energy": 0.00013854578719474375,
+        "twice_residual_dot_delta": -0.0001322613679803908,
+        "predicted_fm_gain": -0.00027080715517513454,
+        "residual_cosine": -0.006277026142925024
+      },
+      "structure_components": {
+        "static_error": 0.08351112902164459,
+        "dynamic_error": 0.10886523872613907
+      },
+      "fm_grad_groups": {
+        "core5": 7.091510724421823e-06,
+        "core15": 6.375221801135922e-06,
+        "text_init": 0.0,
+        "writer5": 0.5027472972869873,
+        "writer15": 0.4212392270565033
+      },
+      "combined_grad_groups": {
+        "core5": 6.500301969936118e-05,
+        "core15": 6.146415398688987e-05,
+        "text_init": 0.0,
+        "writer5": 0.5027472972869873,
+        "writer15": 0.4212392270565033
+      },
+      "combined": {
+        "core_generation_grad": 9.535878234601114e-06,
+        "generation_grad_all": 0.6558942794799805,
+        "core_auxiliary_grad": 8.890098979463801e-05,
+        "auxiliary_grad_all": 8.890098979463801e-05,
+        "aux_alpha": 1.0,
+        "effective_aux_grad": 8.890098979463801e-05,
+        "aux_grad_budget": null,
+        "aux_grad_share": 0.0001355232670903206,
+        "aux_max_share": null,
+        "core_generation_struct_cosine": 0.005258491728454828,
+        "core_struct_to_generation": 9.322790145874023,
+        "alignment": {
+          "core5": {
+            "fm_norm": 7.091510724421823e-06,
+            "struct_norm_before": 6.45860709482804e-05,
+            "struct_norm_after": 6.45860709482804e-05,
+            "dot_before": 1.8717878809415556e-12,
+            "dot_after": 1.8717878809415556e-12,
+            "conflict": false,
+            "cosine_before": 0.004086759407073259,
+            "removed_norm": 0.0
+          },
+          "core15": {
+            "fm_norm": 6.375221801135922e-06,
+            "struct_norm_before": 6.109032256063074e-05,
+            "struct_norm_after": 6.109032256063074e-05,
+            "dot_before": 2.586093448761484e-12,
+            "dot_after": 2.586093448761484e-12,
+            "conflict": false,
+            "cosine_before": 0.006640129256993532,
+            "removed_norm": 0.0
+          },
+          "text_init": {
+            "fm_norm": 0.0,
+            "struct_norm_before": 0.0,
+            "struct_norm_after": 0.0,
+            "dot_before": 0.0,
+            "dot_after": 0.0,
+            "conflict": false,
+            "cosine_before": null,
+            "removed_norm": 0.0
+          }
+        }
+      },
+      "global_grad_norm": 0.6558942794799805,
+      "seconds": 0.8928259079984855,
+      "gate_means": {
+        "writer5": 0.5,
+        "writer15": 0.5
+      }
+    }
+  ],
+  "parameters": 65046274,
+  "peak_allocated_gib": 12.167868614196777
+}

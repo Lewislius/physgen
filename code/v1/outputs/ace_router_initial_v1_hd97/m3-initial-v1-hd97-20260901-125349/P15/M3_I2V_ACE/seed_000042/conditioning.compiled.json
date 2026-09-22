@@ -1,0 +1,68 @@
+{
+  "causal_pair": {
+    "counterfactual_type": [
+      "no_op"
+    ],
+    "origin_prompt_prefixed": true,
+    "single_changed_relation": [
+      "the source sand amount remains static while the target pile grows"
+    ]
+  },
+  "compiler_version": "ace-router-initial-v1-compat",
+  "mode": "initial_v1",
+  "prompts": {
+    "causal_counterfactual": "Dry sand pours from a cup onto a flat table, emptying the cup as a conical pile grows below. A conical sand pile grows below the cup while the dry sand inside the cup remains unchanged.",
+    "causal_positive": "Dry sand pours from a cup onto a flat table, emptying the cup as a conical pile grows below. A continuous sand stream leaves the cup, the sand inside decreases, and a conical pile grows directly below.",
+    "semantic": "Dry sand pours from a cup onto a flat table, emptying the cup as a conical pile grows below."
+  },
+  "sample_id": "P15",
+  "schema_version": 1,
+  "semantic_variant": "initial_v1",
+  "source_sections": {
+    "changed_state_variables": [
+      "sand amount in cup: high to low",
+      "sand pile size: absent to larger",
+      "sand configuration: cup contents to stream and conical pile"
+    ],
+    "counterfactual_type": [
+      "no_op"
+    ],
+    "event_type": [
+      "granular transfer and pile formation"
+    ],
+    "initial_states": [
+      "cup: filled with dry sand and slightly tilted",
+      "sand: fully retained inside the cup",
+      "table: clear beneath the cup with an empty pile region"
+    ],
+    "layout_requirements": [
+      "cup opening faces the clear table area below",
+      "source sand, transfer region, and pile area fit inside the frame",
+      "broad table surface remains visible around the intended pile"
+    ],
+    "preserved_context": [
+      "one cup",
+      "one flat table",
+      "the same dry sand and local scene"
+    ],
+    "protected_scene_properties": [
+      "static side-view camera",
+      "cup identity",
+      "flat table and background"
+    ],
+    "required_visible_entities": [
+      "one cup filled with dry sand",
+      "one flat table",
+      "clear pile-forming area below the cup"
+    ],
+    "single_changed_relation": [
+      "the source sand amount remains static while the target pile grows"
+    ],
+    "transition_variables": [
+      "cup orientation",
+      "sand amount inside the cup",
+      "sand-stream shape",
+      "pile height, width, and slope"
+    ]
+  }
+}

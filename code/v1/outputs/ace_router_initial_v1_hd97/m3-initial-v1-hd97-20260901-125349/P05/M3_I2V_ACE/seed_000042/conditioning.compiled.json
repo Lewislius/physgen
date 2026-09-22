@@ -1,0 +1,66 @@
+{
+  "causal_pair": {
+    "counterfactual_type": [
+      "trigger_missing"
+    ],
+    "origin_prompt_prefixed": true,
+    "single_changed_relation": [
+      "contact with the rough floor fails to produce continuous slowing"
+    ]
+  },
+  "compiler_version": "ace-router-initial-v1-compat",
+  "mode": "initial_v1",
+  "prompts": {
+    "causal_counterfactual": "A wooden block slides down a ramp onto a rough floor, slows continuously, and comes to rest. The wooden block reaches the rough floor and continues across it at unchanged speed to the end of the visible corridor.",
+    "causal_positive": "A wooden block slides down a ramp onto a rough floor, slows continuously, and comes to rest. The wooden block moves continuously down the ramp, reaches the rough floor, and then loses speed steadily until it remains at rest.",
+    "semantic": "A wooden block slides down a ramp onto a rough floor, slows continuously, and comes to rest."
+  },
+  "sample_id": "P05",
+  "schema_version": 1,
+  "semantic_variant": "initial_v1",
+  "source_sections": {
+    "changed_state_variables": [
+      "block position: upper ramp to floor",
+      "block speed: increasing on ramp to decreasing on rough floor",
+      "block motion state: moving to resting"
+    ],
+    "counterfactual_type": [
+      "trigger_missing"
+    ],
+    "event_type": [
+      "gravity-driven slide with frictional dissipation"
+    ],
+    "initial_states": [
+      "wooden block: intact and resting near the upper ramp end",
+      "ramp and rough floor: connected by one visible transition edge"
+    ],
+    "layout_requirements": [
+      "ramp descends directly onto the rough floor",
+      "a long visible floor corridor extends beyond the ramp",
+      "block, ramp, transition edge, and stopping area fit inside the frame"
+    ],
+    "preserved_context": [
+      "one wooden block",
+      "one ramp leading to one rough floor",
+      "the same block and fixed scene"
+    ],
+    "protected_scene_properties": [
+      "static side-view camera",
+      "ramp geometry",
+      "rough-floor texture and background"
+    ],
+    "required_visible_entities": [
+      "one wooden block",
+      "one sloped ramp",
+      "one rough level floor"
+    ],
+    "single_changed_relation": [
+      "contact with the rough floor fails to produce continuous slowing"
+    ],
+    "transition_variables": [
+      "block position",
+      "block speed",
+      "block motion state"
+    ]
+  }
+}

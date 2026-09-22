@@ -1,0 +1,71 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v4.2/checkpoints/stability_20260917T113347Z_5d0494/step0100",
+  "weights": "ema.pt",
+  "checkpoint_step": 100,
+  "ema_updates": 100,
+  "cpu_preflight": {
+    "status": "passed",
+    "strict_loaded_parameters": 65045248,
+    "state_tensors": 307,
+    "finite": true
+  },
+  "demo_cases": {
+    "status": "passed",
+    "cases": 41,
+    "reference_i2v": 1,
+    "demo_i2v": 20,
+    "demo_t2v": 20,
+    "original_prompts_exact": true,
+    "first_image_paths_exact": true,
+    "v4_files_modified": false
+  },
+  "source_audit": {
+    "before": {
+      "v42": "884783d118728ccb38418d80c69ea7f47975fb7038073314d7d5935e9ed56fd0",
+      "batch1": "438eb861cf92c7deaf95bed36831c0fc249c37d191e71dfdc034389ac6992b93",
+      "quick16": "b8d0779770919a20690d01e1839cc629fd5e421c60e5cf027b10c0eecd9da977",
+      "lora": "b8fb3d280d088bca1f3bfcc67f75b50d5f4f07a0be3d57e3e252abeb388ef17d",
+      "four_gpu": "66a842932f6831c3d23e0d70f4c4f9aee2f3857ffda2199d40c4a7959311a6ea"
+    },
+    "after": {
+      "v42": "aa02d125a1ce906c3b5a002b965b286695217ac477f7c40a46bf25a381b0467f",
+      "batch1": "9662f850bdd693071dab1a968f66867e554b72285426fd192d32e61e99a0b991",
+      "quick16": "e1abaa0e049cdf2d14d3ea2dbffb968ba4d7a0e6d66817612344c7a8989e334c",
+      "lora": "f42c5cf2e2bf0783b68637a6e6cced43192d917ea54d0d0ac7d391209f484951",
+      "four_gpu": "e9ff0625d4bc0bf63a9d62571aa61f9d3d85166524c85900e3535e310c0ee1d5"
+    },
+    "changed_python": [
+      "inference/infer.py",
+      "inference/report.py",
+      "physgen_v42/runtime.py"
+    ],
+    "protected_numerical_sources_unchanged": true
+  },
+  "gpu_smoke": {
+    "status": "passed",
+    "device": "NVIDIA GeForce RTX 3090",
+    "scope": "Real models, 64x64, 5 frames, 4 steps; not a quality evaluation or full 96GB batch",
+    "modes": [
+      "i2v",
+      "t2v"
+    ],
+    "peak_sampling_allocated_gib": 12.88550090789795,
+    "teacher_anchors_passed": true,
+    "generated_teacher_and_report_passed": true,
+    "videos_and_temporary_tests_removed": true,
+    "full_41_video_batch_tested": false,
+    "ada_48gb_tested": false
+  },
+  "launchers": {
+    "blk_96g": "passed YAML/shell/five-phase command validation",
+    "ada_48g": "passed YAML/shell/five-phase command validation"
+  },
+  "regressions": {
+    "inference_contracts": 6,
+    "independent_correctors": 3,
+    "batch1": 10,
+    "checkpoint_training_loops": 7,
+    "all_passed": true
+  },
+  "cleanup": "Removed the new one-off inference test, GPU smoke scripts/outputs and source backup. Existing training tests retained."
+}

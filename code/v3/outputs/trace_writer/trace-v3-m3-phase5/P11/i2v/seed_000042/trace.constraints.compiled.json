@@ -1,0 +1,77 @@
+{
+  "closed_world": {
+    "allowed_entity_ids": [
+      "bottle",
+      "tile_floor"
+    ],
+    "empty_regions": [],
+    "external_source_allowed": false,
+    "forbidden_new_categories": [
+      "external source",
+      "extra copy",
+      "hand",
+      "person",
+      "tool",
+      "unlisted object"
+    ],
+    "provenance": "derived"
+  },
+  "conservation": [
+    {
+      "observable_proxy": "tracked logical entity slots remain consistent",
+      "provenance": "derived",
+      "quantity": "instance_count",
+      "relation": "constant",
+      "rule_id": "entity_slots_constant",
+      "sinks": [
+        "bottle",
+        "tile_floor"
+      ],
+      "sources": [
+        "bottle",
+        "tile_floor"
+      ],
+      "tolerance": 0.0
+    },
+    {
+      "observable_proxy": "beige-tile arrival produces clear fracture and local spread",
+      "provenance": "derived",
+      "quantity": "material_proxy",
+      "relation": "coupled_monotonic",
+      "rule_id": "conservation_c3",
+      "sinks": [
+        "integrity",
+        "configuration"
+      ],
+      "sources": [
+        "position"
+      ],
+      "tolerance": 0.1
+    }
+  ],
+  "lifecycles": [
+    {
+      "entity_id": "bottle",
+      "from_stage": "setup",
+      "from_state": "upper_left_support; intact_horizontal_bottle; single_bottle",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "upper_left_support",
+          "beige_tile"
+        ],
+        [
+          "intact_horizontal_bottle",
+          "fractured_clear_glass"
+        ],
+        [
+          "single_bottle",
+          "scattered_floor_fragments"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "beige_tile; fractured_clear_glass; scattered_floor_fragments"
+    }
+  ]
+}

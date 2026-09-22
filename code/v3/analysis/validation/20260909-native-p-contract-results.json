@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "checks": [
+    "native_1664_MSE_GT_immutable_mask_sigma_gradient",
+    "all_invalid_NaN_target_finite_graph_zero",
+    "valid_NaN_negative_weights_wrong_width_rejected",
+    "after_state_supervision_residual_identity_and_detach_distinction",
+    "two_channel_example",
+    "native_1664_two_block_meta_parameter_count_no_R",
+    "26_heads_times_64_CPU_SDPA_backward",
+    "B_double_zero_identity_initial_gradient_exceptions",
+    "frozen_cell_and_tail_pass_input_grad_to_B_read_write",
+    "shared_affine_bottleneck_rank_bound_includes_bias",
+    "native_grid_reshape_roundtrip"
+  ],
+  "parameter_budget": {
+    "shared": 103968385,
+    "A": 10236417,
+    "B": 10236418,
+    "A_only": 114204802,
+    "joint": 124441220
+  },
+  "scope": "CPU direct-loss tests; meta native-width parameter containers; scaled graph; no pretrained teacher, Wan, VAE, GPU or training/effect validation"
+}

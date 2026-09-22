@@ -1,0 +1,193 @@
+{
+  "actual_t5_token_lengths": {
+    "global_semantic": 349,
+    "stage.completion.negative.0": 159,
+    "stage.completion.positive": 183,
+    "stage.evolution.negative.0": 158,
+    "stage.evolution.positive": 159,
+    "stage.onset.negative.0": 173,
+    "stage.onset.positive": 172,
+    "stage.setup.negative.0": 173,
+    "stage.setup.positive": 170,
+    "stage.terminal.negative.0": 192,
+    "stage.terminal.negative.1": 188,
+    "stage.terminal.positive": 201
+  },
+  "global_anchor": "[ENTITY INVENTORY] The closed scene contains kettle: exactly 1; coffee stream: one declared collective group; cup: exactly 1; campfire: exactly 1. The reference first frame fixes these identities and initial layout. [INITIAL STATE] source_amount=more, stream_state=absent, cup_level=lower. [PHYSICAL EVENT] The stainless kettle at right tilts its left-pointing spout toward the gray cup and pours coffee into it while the campfire at left keeps flickering. [PERSISTENT PROTECTION] same stainless kettle, black handle, lid, and left-pointing spout; same small gray cup below-left of the kettle; campfire, logs, stones, and flames remain in their left-side region; campfire keeps flickering without reacting to the coffee transfer; snowy ground, framing, and daylight remain unchanged; no coffee spills onto the snow or campfire. [CLOSED WORLD] No additional external source, extra copy, unlisted object enters or appears; unoccupied scene regions remain empty. [CONSERVATION] Source loss and result gain stay coupled: tracked logical entity slots remain consistent; visible spout outflow crosses one stream path and raises the dark surface inside the gray cup. No result appears from an undeclared external source. [TERMINAL STATE] The same logical entity slots persist without duplicates; source_amount=less, stream_state=continuous, cup_level=higher remains visible through the final frames.",
+  "issues": [],
+  "max_t5_token_length": 349,
+  "protected_coverage": {
+    "campfire keeps flickering without reacting to the coffee transfer": [
+      "generic_anchor"
+    ],
+    "campfire, logs, stones, and flames remain in their left-side region": [
+      "identity_count",
+      "closed_world_or_persistence"
+    ],
+    "no coffee spills onto the snow or campfire": [
+      "closed_world_or_persistence"
+    ],
+    "same small gray cup below-left of the kettle": [
+      "identity_count"
+    ],
+    "same stainless kettle, black handle, lid, and left-pointing spout": [
+      "identity_count"
+    ],
+    "snowy ground, framing, and daylight remain unchanged": [
+      "geometry",
+      "camera_background",
+      "closed_world_or_persistence"
+    ]
+  },
+  "stage_pairs": [
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "coffee first leaves the left-pointing spout and reaches the gray cup happens BEFORE dark coffee surface rises inside gray rim.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=more, required; coffee stream: exactly 0, state stream_state=absent, forbidden; cup: exactly 1, state cup_level=lower, required; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] coffee first leaves the left-pointing spout and reaches the gray cup happens BEFORE dark coffee surface rises inside gray rim.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=more, required; coffee stream: exactly 0, state stream_state=absent, forbidden; cup: exactly 1, state cup_level=lower, required; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "setup",
+      "violation_constraint_ids": [
+        [
+          "c1"
+        ]
+      ],
+      "violation_kinds": [
+        "outcome_preset"
+      ],
+      "violation_relations": [
+        "dark coffee surface rises inside gray rim is already present BEFORE coffee first leaves the left-pointing spout and reaches the gray cup."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=more, required; coffee stream: exactly 0, state stream_state=absent, forbidden; cup: exactly 1, state cup_level=lower, required; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] dark coffee surface rises inside gray rim is already present BEFORE coffee first leaves the left-pointing spout and reaches the gray cup."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "coffee first leaves the left-pointing spout and reaches the gray cup happens BEFORE dark coffee surface rises inside gray rim.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=more, transitioning; coffee stream: one declared collective group, state stream_state=absent, transitioning; cup: exactly 1, state cup_level=lower, transitioning; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] coffee first leaves the left-pointing spout and reaches the gray cup happens BEFORE dark coffee surface rises inside gray rim.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=more, transitioning; coffee stream: one declared collective group, state stream_state=absent, transitioning; cup: exactly 1, state cup_level=lower, transitioning; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "onset",
+      "violation_constraint_ids": [
+        [
+          "c1"
+        ]
+      ],
+      "violation_kinds": [
+        "wrong_order"
+      ],
+      "violation_relations": [
+        "dark coffee surface rises inside gray rim happens BEFORE coffee first leaves the left-pointing spout and reaches the gray cup."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=more, transitioning; coffee stream: one declared collective group, state stream_state=absent, transitioning; cup: exactly 1, state cup_level=lower, transitioning; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] dark coffee surface rises inside gray rim happens BEFORE coffee first leaves the left-pointing spout and reaches the gray cup."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The declared change coffee visibly exits the metal spout occurs in its stated direction.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=less, required; coffee stream: one declared collective group, state stream_state=continuous, required; cup: exactly 1, state cup_level=higher, required; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change coffee visibly exits the metal spout occurs in its stated direction.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=less, required; coffee stream: one declared collective group, state stream_state=continuous, required; cup: exactly 1, state cup_level=higher, required; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "evolution",
+      "violation_constraint_ids": [
+        [
+          "c2",
+          "c3"
+        ]
+      ],
+      "violation_kinds": [
+        "coupling_broken"
+      ],
+      "violation_relations": [
+        "Only one coupled change occurs while the other remains unchanged: ."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=less, required; coffee stream: one declared collective group, state stream_state=continuous, required; cup: exactly 1, state cup_level=higher, required; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] Only one coupled change occurs while the other remains unchanged: ."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The coupled changes occur together: coffee visibly exits the metal spout WHILE coffee bridges the gap from spout to cup WHILE dark coffee surface rises inside gray rim.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=less, transitioning; coffee stream: one declared collective group, state stream_state=continuous, transitioning; cup: exactly 1, state cup_level=higher, transitioning; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The coupled changes occur together: coffee visibly exits the metal spout WHILE coffee bridges the gap from spout to cup WHILE dark coffee surface rises inside gray rim.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=less, transitioning; coffee stream: one declared collective group, state stream_state=continuous, transitioning; cup: exactly 1, state cup_level=higher, transitioning; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "completion",
+      "violation_constraint_ids": [
+        [
+          "c3",
+          "c4"
+        ]
+      ],
+      "violation_kinds": [
+        "incomplete_transition"
+      ],
+      "violation_relations": [
+        "The declared cause occurs BUT the required target change does not become visible."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=less, transitioning; coffee stream: one declared collective group, state stream_state=continuous, transitioning; cup: exactly 1, state cup_level=higher, transitioning; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The declared cause occurs BUT the required target change does not become visible."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The terminal facts source_amount=less, cup_level=higher REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts cup_level=lower, cup_level=higher do not coexist.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=less, required; coffee stream: exactly 0, state stream_state=continuous, forbidden; cup: exactly 1, state cup_level=higher, required; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The terminal facts source_amount=less, cup_level=higher REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts cup_level=lower, cup_level=higher do not coexist.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=less, required; coffee stream: exactly 0, state stream_state=continuous, forbidden; cup: exactly 1, state cup_level=higher, required; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "terminal",
+      "violation_constraint_ids": [
+        [
+          "c4"
+        ],
+        [
+          "c5"
+        ]
+      ],
+      "violation_kinds": [
+        "reversal",
+        "exclusion_broken"
+      ],
+      "violation_relations": [
+        "The valid terminal state returns to its mutually exclusive earlier state.",
+        "Copies of the same logical slot appear in mutually exclusive states at the same time."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=less, required; coffee stream: exactly 0, state stream_state=continuous, forbidden; cup: exactly 1, state cup_level=higher, required; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The valid terminal state returns to its mutually exclusive earlier state. [AND] The same logical slot has only its valid state; mutually exclusive facts cup_level=lower, cup_level=higher do not coexist.",
+        "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=less, required; coffee stream: exactly 0, state stream_state=continuous, forbidden; cup: exactly 1, state cup_level=higher, required; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The terminal facts source_amount=less, cup_level=higher REMAIN through the final frames. [AND] Copies of the same logical slot appear in mutually exclusive states at the same time."
+      ],
+      "violation_weights": [
+        0.5,
+        0.5
+      ]
+    }
+  ],
+  "texts": {
+    "global_semantic": "[ENTITY INVENTORY] The closed scene contains kettle: exactly 1; coffee stream: one declared collective group; cup: exactly 1; campfire: exactly 1. The reference first frame fixes these identities and initial layout. [INITIAL STATE] source_amount=more, stream_state=absent, cup_level=lower. [PHYSICAL EVENT] The stainless kettle at right tilts its left-pointing spout toward the gray cup and pours coffee into it while the campfire at left keeps flickering. [PERSISTENT PROTECTION] same stainless kettle, black handle, lid, and left-pointing spout; same small gray cup below-left of the kettle; campfire, logs, stones, and flames remain in their left-side region; campfire keeps flickering without reacting to the coffee transfer; snowy ground, framing, and daylight remain unchanged; no coffee spills onto the snow or campfire. [CLOSED WORLD] No additional external source, extra copy, unlisted object enters or appears; unoccupied scene regions remain empty. [CONSERVATION] Source loss and result gain stay coupled: tracked logical entity slots remain consistent; visible spout outflow crosses one stream path and raises the dark surface inside the gray cup. No result appears from an undeclared external source. [TERMINAL STATE] The same logical entity slots persist without duplicates; source_amount=less, stream_state=continuous, cup_level=higher remains visible through the final frames.",
+    "stage.completion.negative.0": "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=less, transitioning; coffee stream: one declared collective group, state stream_state=continuous, transitioning; cup: exactly 1, state cup_level=higher, transitioning; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The declared cause occurs BUT the required target change does not become visible.",
+    "stage.completion.positive": "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=less, transitioning; coffee stream: one declared collective group, state stream_state=continuous, transitioning; cup: exactly 1, state cup_level=higher, transitioning; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The coupled changes occur together: coffee visibly exits the metal spout WHILE coffee bridges the gap from spout to cup WHILE dark coffee surface rises inside gray rim.",
+    "stage.evolution.negative.0": "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=less, required; coffee stream: one declared collective group, state stream_state=continuous, required; cup: exactly 1, state cup_level=higher, required; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] Only one coupled change occurs while the other remains unchanged: .",
+    "stage.evolution.positive": "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=less, required; coffee stream: one declared collective group, state stream_state=continuous, required; cup: exactly 1, state cup_level=higher, required; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change coffee visibly exits the metal spout occurs in its stated direction.",
+    "stage.onset.negative.0": "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=more, transitioning; coffee stream: one declared collective group, state stream_state=absent, transitioning; cup: exactly 1, state cup_level=lower, transitioning; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] dark coffee surface rises inside gray rim happens BEFORE coffee first leaves the left-pointing spout and reaches the gray cup.",
+    "stage.onset.positive": "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=more, transitioning; coffee stream: one declared collective group, state stream_state=absent, transitioning; cup: exactly 1, state cup_level=lower, transitioning; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] coffee first leaves the left-pointing spout and reaches the gray cup happens BEFORE dark coffee surface rises inside gray rim.",
+    "stage.setup.negative.0": "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=more, required; coffee stream: exactly 0, state stream_state=absent, forbidden; cup: exactly 1, state cup_level=lower, required; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] dark coffee surface rises inside gray rim is already present BEFORE coffee first leaves the left-pointing spout and reaches the gray cup.",
+    "stage.setup.positive": "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=more, required; coffee stream: exactly 0, state stream_state=absent, forbidden; cup: exactly 1, state cup_level=lower, required; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] coffee first leaves the left-pointing spout and reaches the gray cup happens BEFORE dark coffee surface rises inside gray rim.",
+    "stage.terminal.negative.0": "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=less, required; coffee stream: exactly 0, state stream_state=continuous, forbidden; cup: exactly 1, state cup_level=higher, required; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The valid terminal state returns to its mutually exclusive earlier state. [AND] The same logical slot has only its valid state; mutually exclusive facts cup_level=lower, cup_level=higher do not coexist.",
+    "stage.terminal.negative.1": "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=less, required; coffee stream: exactly 0, state stream_state=continuous, forbidden; cup: exactly 1, state cup_level=higher, required; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The terminal facts source_amount=less, cup_level=higher REMAIN through the final frames. [AND] Copies of the same logical slot appear in mutually exclusive states at the same time.",
+    "stage.terminal.positive": "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=less, required; coffee stream: exactly 0, state stream_state=continuous, forbidden; cup: exactly 1, state cup_level=higher, required; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The terminal facts source_amount=less, cup_level=higher REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts cup_level=lower, cup_level=higher do not coexist."
+  },
+  "token_budget_priority": {
+    "causal": 2,
+    "entity_count": 0,
+    "protected": 1,
+    "style": 3
+  }
+}

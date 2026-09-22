@@ -1,0 +1,443 @@
+{
+  "schema_version": "trace-direct-v1",
+  "design_revision": "p0-stage-direct-json-r2",
+  "sample_id": "P16",
+  "source_files": {
+    "origin": "P16-origin.txt",
+    "frame_zero_metadata": "P16-i0.json",
+    "reference_input": "P16-i0-1280x704.jpg"
+  },
+  "initial_condition": {
+    "type": "gravity_or_instability",
+    "description": "The compact dye drop is already falling under gravity toward the water surface."
+  },
+  "global_semantic": "Fixed close side view of one compact dark-blue dye drop falling into still clear water inside one rectangular glass vessel. The same drop crosses the water surface and spreads outward through the water, forming one expanding blue region that remains inside the vessel.",
+  "cfg_negative": " ",
+  "entities": [
+    {
+      "id": "dye",
+      "mention": "one compact dark-blue dye drop",
+      "role": "source"
+    },
+    {
+      "id": "water",
+      "mention": "still clear water",
+      "role": "sink"
+    },
+    {
+      "id": "vessel",
+      "mention": "one rectangular glass vessel",
+      "role": "environment"
+    }
+  ],
+  "structured_guidance": {
+    "schema_version": "structured-text-guidance-v1",
+    "entities": [
+      {
+        "id": "dye",
+        "label": "tracked amount of dark-blue dye",
+        "count": 1,
+        "persistent": true,
+        "invariants": [
+          "dark-blue material appearance",
+          "conserved original dye",
+          "fixed total dye amount"
+        ]
+      },
+      {
+        "id": "water",
+        "label": "one body of initially clear still water",
+        "count": 1,
+        "persistent": true,
+        "invariants": [
+          "same water body",
+          "transparent uncolored region outside the dye",
+          "contained identity"
+        ]
+      },
+      {
+        "id": "vessel",
+        "label": "rectangular glass vessel",
+        "count": 1,
+        "persistent": true,
+        "invariants": [
+          "rigid rectangular geometry",
+          "transparent glass appearance",
+          "single intact identity"
+        ]
+      }
+    ],
+    "initial_condition": {
+      "type": "gravity_or_instability",
+      "active_stages": [
+        "setup"
+      ],
+      "facts": [
+        "The compact dark-blue dye drop is already falling under gravity toward the water surface.",
+        "The water starts still and clear inside the one vessel."
+      ]
+    },
+    "stages": [
+      {
+        "id": "setup",
+        "entity_states": [
+          {
+            "entity_id": "dye",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "compact and falling toward the flat water surface"
+            ],
+            "mutable": [
+              "vertical position",
+              "falling speed"
+            ]
+          },
+          {
+            "entity_id": "water",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "still and clear below the separated drop"
+            ],
+            "mutable": []
+          }
+        ],
+        "relations": [
+          "An air gap separates the compact dye drop and water surface."
+        ]
+      },
+      {
+        "id": "onset",
+        "entity_states": [
+          {
+            "entity_id": "dye",
+            "presence": "transitioning",
+            "count": 1,
+            "states": [
+              "crossing the water surface at one visible entry point"
+            ],
+            "mutable": [
+              "vertical position",
+              "drop shape"
+            ]
+          },
+          {
+            "entity_id": "water",
+            "presence": "transitioning",
+            "count": 1,
+            "states": [
+              "disturbed only at that one entry point"
+            ],
+            "mutable": [
+              "local surface shape"
+            ]
+          }
+        ],
+        "relations": [
+          "The same drop enters the vessel without splashing outside it."
+        ]
+      },
+      {
+        "id": "evolution",
+        "entity_states": [
+          {
+            "entity_id": "dye",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "spreading outward and downward from the entry point"
+            ],
+            "mutable": [
+              "spatial extent",
+              "concentration distribution",
+              "shape"
+            ]
+          },
+          {
+            "entity_id": "water",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "remaining inside the vessel as part of it becomes blue"
+            ],
+            "mutable": [
+              "local color distribution"
+            ]
+          }
+        ],
+        "relations": [
+          "The colored region expands continuously from the original dye location."
+        ]
+      },
+      {
+        "id": "completion",
+        "entity_states": [
+          {
+            "entity_id": "dye",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "forming one broad continuous blue region"
+            ],
+            "mutable": [
+              "spatial extent",
+              "concentration distribution"
+            ]
+          },
+          {
+            "entity_id": "water",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "containing the broad dye region with clear water still around it"
+            ],
+            "mutable": [
+              "local color distribution"
+            ]
+          }
+        ],
+        "relations": [
+          "All blue color remains within the glass vessel."
+        ]
+      },
+      {
+        "id": "terminal",
+        "entity_states": [
+          {
+            "entity_id": "dye",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "remaining distributed as one expanded blue region inside the water"
+            ],
+            "mutable": []
+          },
+          {
+            "entity_id": "water",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "contained inside the intact vessel around the dye region"
+            ],
+            "mutable": []
+          }
+        ],
+        "relations": [
+          "No dye leaves the vessel and no second dye source appears."
+        ]
+      }
+    ]
+  },
+  "stages": [
+    {
+      "id": "setup",
+      "positive": "The compact blue drop falls toward the flat surface while the water remains clear."
+    },
+    {
+      "id": "onset",
+      "positive": "The same drop crosses the water surface at one visible entry point."
+    },
+    {
+      "id": "evolution",
+      "positive": "Blue dye spreads outward and downward from that entry point through the clear water."
+    },
+    {
+      "id": "completion",
+      "positive": "The colored region grows broad while remaining continuous with the original dye."
+    },
+    {
+      "id": "terminal",
+      "positive": "One expanded blue region remains distributed inside the same glass vessel."
+    }
+  ],
+  "warnings": [],
+  "generation_basis": {
+    "mode": "visual_grounding",
+    "reference_image_usage": "visual_grounding"
+  },
+  "grounding": {
+    "coordinate_frame": "reference_input",
+    "reference_image": "P16-i0-1280x704.jpg",
+    "approved": true,
+    "entity_boxes": [
+      {
+        "entity_id": "dye",
+        "box": [
+          0.48,
+          0.06,
+          0.52,
+          0.14
+        ]
+      },
+      {
+        "entity_id": "water",
+        "box": [
+          0.27,
+          0.34,
+          0.73,
+          0.84
+        ]
+      },
+      {
+        "entity_id": "vessel",
+        "box": [
+          0.25,
+          0.19,
+          0.75,
+          0.91
+        ]
+      }
+    ]
+  },
+  "temporal_route": {
+    "latent_tokens": 25,
+    "crossfade_tokens": 2,
+    "interpolation": "smoothstep_c1",
+    "profile": "continuous",
+    "stage_order": [
+      "setup",
+      "onset",
+      "evolution",
+      "completion",
+      "terminal"
+    ],
+    "weights": [
+      [
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0
+      ]
+    ]
+  }
+}

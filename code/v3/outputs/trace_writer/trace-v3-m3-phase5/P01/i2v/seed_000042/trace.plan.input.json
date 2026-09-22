@@ -1,0 +1,381 @@
+{
+  "assumptions": [
+    "The scooter follows the visible left-to-right street corridor toward the can."
+  ],
+  "constraints": [
+    {
+      "after": "side_tilt",
+      "before": "front_contact",
+      "id": "c1",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "precedes"
+    },
+    {
+      "cause": "front_contact",
+      "effect": "side_tilt",
+      "id": "c2",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "requires"
+    },
+    {
+      "effects": [
+        "side_tilt",
+        "rightward_stop"
+      ],
+      "id": "c3",
+      "relation": "sideways tilt grows while rightward displacement diminishes",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "couples"
+    },
+    {
+      "facts": [
+        "pose=tilted_sideways",
+        "motion=stopped"
+      ],
+      "id": "c4",
+      "source_refs": [
+        "origin"
+      ],
+      "state": "z1",
+      "type": "persists"
+    },
+    {
+      "facts": [
+        "pose=upright",
+        "pose=tilted_sideways"
+      ],
+      "id": "c5",
+      "scope": "same_time",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "excludes"
+    }
+  ],
+  "control": {},
+  "design_revision": "fixed5-causal-r3",
+  "entities": [
+    {
+      "id": "scooter",
+      "mention": "the same upright black electric scooter",
+      "role": "actor",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    },
+    {
+      "id": "trash_can",
+      "mention": "the same upright black slatted metal trash can",
+      "role": "patient",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "description": "the scooter front visibly reaches the trash can",
+      "id": "front_contact",
+      "observable": "the street gap between scooter and can closes to zero",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    }
+  ],
+  "generation_basis": {
+    "mode": "visual_grounding",
+    "reference_image_usage": "visual_grounding",
+    "semantic_inputs": [
+      "origin",
+      "planner_instructions",
+      "reference_input"
+    ]
+  },
+  "global_semantic": "The same black scooter crosses the gray street into the same black slatted trash can, then tilts and stops.",
+  "grounding": {
+    "approved": false,
+    "coordinate_frame": "reference_input",
+    "entity_boxes": [
+      {
+        "box": [
+          0.115,
+          0.323,
+          0.37,
+          0.801
+        ],
+        "entity_id": "scooter"
+      },
+      {
+        "box": [
+          0.777,
+          0.505,
+          0.894,
+          0.8
+        ],
+        "entity_id": "trash_can"
+      }
+    ],
+    "protected_boxes": [],
+    "reference_image": "P01-i0-1280x704.png",
+    "reference_image_usage": "visual_grounding"
+  },
+  "predicates": [
+    {
+      "attribute": "horizontal street gap_to:trash_can",
+      "id": "gap",
+      "observable": "clear road space between scooter front and can",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "subject": "scooter",
+      "values": [
+        "wide",
+        "contact"
+      ]
+    },
+    {
+      "attribute": "body pose",
+      "id": "pose",
+      "observable": "angle of the scooter stem and deck against the street",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "subject": "scooter",
+      "values": [
+        "upright",
+        "tilted_sideways"
+      ]
+    },
+    {
+      "attribute": "street motion",
+      "id": "motion",
+      "observable": "rightward frame-to-frame scooter displacement",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "scooter",
+      "values": [
+        "rolling_right",
+        "stopped"
+      ]
+    }
+  ],
+  "protected_predicates": [
+    "same black scooter identity and red cable detail",
+    "same black slatted metal trash can",
+    "trash can remains upright",
+    "gray street, curb, hedge, concrete wall, daylight, and static side camera remain unchanged"
+  ],
+  "sample_id": "P01",
+  "schema_version": "trace-writer-v1",
+  "source_files": {
+    "origin": "P01-origin.txt",
+    "planner_instructions": "Project/physGen/prompt/generate_trace_writer_v1_plan.txt",
+    "reference_input": "P01-i0-1280x704.png"
+  },
+  "stages": [
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "setup",
+      "observable_check": "The black scooter remains upright while the broad road gap narrows.",
+      "positive": "The black scooter rolls rightward across the road gap while both objects retain their pictured upright appearances.",
+      "support_kind": "motion_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "The pictured scooter is already sideways beside the can before crossing the open road gap.",
+          "type": "outcome_preset"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c1",
+        "c2"
+      ],
+      "id": "onset",
+      "observable_check": "The visible interface closes before the scooter stem angle changes.",
+      "positive": "The scooter front reaches the slatted can before the pictured upright scooter begins rotating sideways.",
+      "support_kind": "contact_interface",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1",
+            "c2"
+          ],
+          "text": "The scooter rotates sideways over empty road while separation from the can remains visible.",
+          "type": "wrong_order"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c3"
+      ],
+      "id": "evolution",
+      "observable_check": "The scooter angle increases while successive road displacements shrink.",
+      "positive": "Following contact, the same black scooter tilts sideways as its rightward travel visibly diminishes beside the upright can.",
+      "support_kind": "motion_contact_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c3"
+          ],
+          "text": "The scooter tilts beside the can while continuing its original rightward displacement unchanged.",
+          "type": "coupling_broken"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c3",
+        "c4"
+      ],
+      "id": "completion",
+      "observable_check": "One sideways scooter reaches zero displacement beside the upright can.",
+      "positive": "The scooter reaches a clear sideways pose and settles on the street immediately beside the unchanged slatted can.",
+      "support_kind": "motion_contact_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c3",
+            "c4"
+          ],
+          "text": "The scooter keeps a partly upright pictured pose or continues translating past the can.",
+          "type": "incomplete_transition"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c4",
+        "c5"
+      ],
+      "id": "terminal",
+      "observable_check": "Identity, black appearance, final tilt, and zero motion persist without duplication.",
+      "positive": "The same black scooter remains sideways and motionless beside the same upright black slatted trash can.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c4"
+          ],
+          "text": "The sideways scooter rises upright or resumes rolling across the street in final frames.",
+          "type": "reversal"
+        },
+        {
+          "constraint_ids": [
+            "c5"
+          ],
+          "text": "Upright and sideways copies of the black scooter coexist beside the pictured can.",
+          "type": "exclusion_broken"
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "facts": {
+        "gap": "wide",
+        "motion": "rolling_right",
+        "pose": "upright"
+      },
+      "id": "z0",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    },
+    {
+      "facts": {
+        "gap": "contact",
+        "motion": "stopped",
+        "pose": "tilted_sideways"
+      },
+      "id": "z1",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "cause_event": "front_contact",
+      "effects": [
+        {
+          "direction": "horizontal gap decreases to zero",
+          "from": "wide",
+          "id": "street_gap_close",
+          "predicate": "gap",
+          "to": "contact"
+        },
+        {
+          "direction": "stem and deck rotate sideways",
+          "from": "upright",
+          "id": "side_tilt",
+          "predicate": "pose",
+          "to": "tilted_sideways"
+        },
+        {
+          "direction": "rightward displacement decreases to zero",
+          "from": "rolling_right",
+          "id": "rightward_stop",
+          "predicate": "motion",
+          "to": "stopped"
+        }
+      ],
+      "from": "z0",
+      "id": "e1",
+      "kind": "triggered",
+      "preconditions": [
+        "gap=wide",
+        "pose=upright",
+        "motion=rolling_right"
+      ],
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "support_kind": "motion_contact_corridor",
+      "to": "z1"
+    }
+  ],
+  "warnings": [
+    "Entity boxes are visually estimated from the reference image and remain unapproved."
+  ]
+}

@@ -1,0 +1,433 @@
+{
+  "schema_version": "trace-direct-v1",
+  "design_revision": "p0-stage-direct-json-r2",
+  "sample_id": "P12",
+  "source_files": {
+    "origin": "P12-origin.txt",
+    "frame_zero_metadata": "P12-i0.json",
+    "reference_input": "P12-i0-1280x704.jpg"
+  },
+  "initial_condition": {
+    "type": "environmental_field",
+    "description": "A visible left-to-right gust supplies the force that removes the dandelion seeds."
+  },
+  "global_semantic": "Fixed close side view of one full white dandelion at the left of a blue-sky frame. A steady left-to-right gust detaches its seeds progressively; the same seeds drift right while the original head becomes visibly sparse, and the depleted head remains on its stem.",
+  "cfg_negative": " ",
+  "entities": [
+    {
+      "id": "dandelion",
+      "mention": "one dry white dandelion seed head",
+      "role": "source"
+    },
+    {
+      "id": "wind",
+      "mention": "one steady left-to-right gust",
+      "role": "environment"
+    },
+    {
+      "id": "seeds",
+      "mention": "the seeds from the same dandelion",
+      "role": "patient"
+    }
+  ],
+  "structured_guidance": {
+    "schema_version": "structured-text-guidance-v1",
+    "entities": [
+      {
+        "id": "dandelion",
+        "label": "dry white dandelion seed head on its stem",
+        "count": 1,
+        "persistent": true,
+        "invariants": [
+          "fixed stem and central head identity",
+          "white natural appearance",
+          "fixed rooted position"
+        ]
+      },
+      {
+        "id": "wind",
+        "label": "steady left-to-right gust",
+        "count": 1,
+        "persistent": true,
+        "invariants": [
+          "left-to-right direction",
+          "continuous ambient cause",
+          "single wind field"
+        ]
+      },
+      {
+        "id": "seeds",
+        "label": "tracked group of original dandelion seeds",
+        "count": 1,
+        "persistent": true,
+        "invariants": [
+          "fixed membership of the original seeds",
+          "white tufted appearance",
+          "single source dandelion"
+        ]
+      }
+    ],
+    "initial_condition": {
+      "type": "environmental_field",
+      "active_stages": [
+        "setup"
+      ],
+      "facts": [
+        "A visible steady gust moves from left to right from the first video frame.",
+        "All tracked seeds begin attached to the one full round dandelion head."
+      ]
+    },
+    "stages": [
+      {
+        "id": "setup",
+        "entity_states": [
+          {
+            "entity_id": "dandelion",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "full and intact on its stem"
+            ],
+            "mutable": []
+          },
+          {
+            "entity_id": "seeds",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "attached together across the full seed head"
+            ],
+            "mutable": [
+              "tuft motion"
+            ]
+          }
+        ],
+        "relations": [
+          "The rooted stem stays at the left while the breeze begins."
+        ]
+      },
+      {
+        "id": "onset",
+        "entity_states": [
+          {
+            "entity_id": "dandelion",
+            "presence": "transitioning",
+            "count": 1,
+            "states": [
+              "beginning to lose seeds from its right-facing side"
+            ],
+            "mutable": [
+              "attached seed density"
+            ]
+          },
+          {
+            "entity_id": "seeds",
+            "presence": "transitioning",
+            "count": 1,
+            "states": [
+              "beginning to detach from the right-facing side"
+            ],
+            "mutable": [
+              "attachment state",
+              "positions"
+            ]
+          }
+        ],
+        "relations": [
+          "The first detached seeds immediately follow the left-to-right wind."
+        ]
+      },
+      {
+        "id": "evolution",
+        "entity_states": [
+          {
+            "entity_id": "dandelion",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "becoming progressively sparser while staying on the stem"
+            ],
+            "mutable": [
+              "attached seed density"
+            ]
+          },
+          {
+            "entity_id": "seeds",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "separating progressively and drifting right"
+            ],
+            "mutable": [
+              "attachment state",
+              "positions",
+              "group spread"
+            ]
+          }
+        ],
+        "relations": [
+          "Every drifting seed comes from the same original head; none appear from elsewhere."
+        ]
+      },
+      {
+        "id": "completion",
+        "entity_states": [
+          {
+            "entity_id": "dandelion",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "remaining as one visibly depleted head on its stem"
+            ],
+            "mutable": []
+          },
+          {
+            "entity_id": "seeds",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "forming one loose cloud farther to the right"
+            ],
+            "mutable": [
+              "positions",
+              "group spread"
+            ]
+          }
+        ],
+        "relations": [
+          "The detached cloud and depleted head show the same one-way transfer of seeds."
+        ]
+      },
+      {
+        "id": "terminal",
+        "entity_states": [
+          {
+            "entity_id": "dandelion",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "sparse and fixed on the original stem"
+            ],
+            "mutable": []
+          },
+          {
+            "entity_id": "seeds",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "continuing rightward as the original detached seed group"
+            ],
+            "mutable": [
+              "positions"
+            ]
+          }
+        ],
+        "relations": [
+          "No new full dandelion head or additional seed source appears."
+        ]
+      }
+    ]
+  },
+  "stages": [
+    {
+      "id": "setup",
+      "positive": "The full round seed head is intact at the left as the breeze begins moving right."
+    },
+    {
+      "id": "onset",
+      "positive": "The first seeds detach from the right-facing side of the same dandelion."
+    },
+    {
+      "id": "evolution",
+      "positive": "More original seeds drift right while the attached seed head becomes progressively sparse."
+    },
+    {
+      "id": "completion",
+      "positive": "A loose seed cloud has moved right and only a depleted head remains on the stem."
+    },
+    {
+      "id": "terminal",
+      "positive": "The sparse original head stays on its stem while its detached seeds continue rightward."
+    }
+  ],
+  "warnings": [],
+  "generation_basis": {
+    "mode": "visual_grounding",
+    "reference_image_usage": "visual_grounding"
+  },
+  "grounding": {
+    "coordinate_frame": "reference_input",
+    "reference_image": "P12-i0-1280x704.jpg",
+    "approved": true,
+    "entity_boxes": [
+      {
+        "entity_id": "dandelion",
+        "box": [
+          0.21,
+          0.18,
+          0.45,
+          0.62
+        ]
+      },
+      {
+        "entity_id": "wind",
+        "box": [
+          0.46,
+          0.0,
+          1.0,
+          1.0
+        ]
+      }
+    ]
+  },
+  "temporal_route": {
+    "latent_tokens": 25,
+    "crossfade_tokens": 2,
+    "interpolation": "smoothstep_c1",
+    "profile": "continuous",
+    "stage_order": [
+      "setup",
+      "onset",
+      "evolution",
+      "completion",
+      "terminal"
+    ],
+    "weights": [
+      [
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0
+      ]
+    ]
+  }
+}

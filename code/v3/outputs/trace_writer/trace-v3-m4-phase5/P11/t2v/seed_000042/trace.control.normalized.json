@@ -1,0 +1,268 @@
+{
+  "closed_world": {
+    "allowed_entity_ids": [
+      "bottle",
+      "tile_floor"
+    ],
+    "empty_regions": [],
+    "external_source_allowed": false,
+    "forbidden_new_categories": [
+      "external source",
+      "extra copy",
+      "hand",
+      "person",
+      "tool",
+      "unlisted object"
+    ],
+    "provenance": "derived"
+  },
+  "conservation": [
+    {
+      "observable_proxy": "tracked logical entity slots remain consistent",
+      "provenance": "derived",
+      "quantity": "instance_count",
+      "relation": "constant",
+      "rule_id": "entity_slots_constant",
+      "sinks": [
+        "bottle",
+        "tile_floor"
+      ],
+      "sources": [
+        "bottle",
+        "tile_floor"
+      ],
+      "tolerance": 0.0
+    },
+    {
+      "observable_proxy": "floor arrival triggers fracture and outward fragment spread",
+      "provenance": "derived",
+      "quantity": "material_proxy",
+      "relation": "coupled_monotonic",
+      "rule_id": "conservation_c3",
+      "sinks": [
+        "integrity",
+        "configuration"
+      ],
+      "sources": [
+        "position"
+      ],
+      "tolerance": 0.1
+    }
+  ],
+  "issues": [
+    "tile_floor: exact visual count unresolved; retained as group"
+  ],
+  "lifecycles": [
+    {
+      "entity_id": "bottle",
+      "from_stage": "setup",
+      "from_state": "elevated; intact; single_bottle",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "elevated",
+          "at_floor"
+        ],
+        [
+          "intact",
+          "fractured"
+        ],
+        [
+          "single_bottle",
+          "scattered_fragments"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "at_floor; fractured; scattered_fragments"
+    }
+  ],
+  "slots": [
+    {
+      "aliases": [],
+      "canonical_mention": "the same glass bottle and its fragments",
+      "cardinality": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "bottle",
+      "invariant_attributes": [
+        "same glass material through bottle and fragments",
+        "same hard tile floor",
+        "camera and unrelated scene remain unchanged"
+      ],
+      "mutable_attributes": [
+        "position_relative_to:tile_floor",
+        "integrity",
+        "glass_configuration"
+      ],
+      "persistent_identity": true,
+      "provenance": "derived",
+      "role": "actor"
+    },
+    {
+      "aliases": [],
+      "canonical_mention": "the same hard tile floor",
+      "cardinality": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "tile_floor",
+      "invariant_attributes": [
+        "same glass material through bottle and fragments",
+        "same hard tile floor",
+        "camera and unrelated scene remain unchanged"
+      ],
+      "mutable_attributes": [],
+      "persistent_identity": true,
+      "provenance": "derived",
+      "role": "patient"
+    }
+  ],
+  "stage_presence": [
+    {
+      "entity_id": "bottle",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [
+        "position=elevated",
+        "integrity=intact",
+        "configuration=single_bottle"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "tile_floor",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [],
+      "visible": "required"
+    },
+    {
+      "entity_id": "bottle",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [
+        "position=elevated",
+        "integrity=intact",
+        "configuration=single_bottle"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "tile_floor",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "bottle",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [
+        "position=at_floor",
+        "integrity=fractured",
+        "configuration=scattered_fragments"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "tile_floor",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [],
+      "visible": "required"
+    },
+    {
+      "entity_id": "bottle",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [
+        "position=at_floor",
+        "integrity=fractured",
+        "configuration=scattered_fragments"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "tile_floor",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "bottle",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [
+        "position=at_floor",
+        "integrity=fractured",
+        "configuration=scattered_fragments"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "tile_floor",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [],
+      "visible": "required"
+    }
+  ]
+}

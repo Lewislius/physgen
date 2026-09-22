@@ -1,0 +1,468 @@
+{
+  "active_stage_summary": [
+    {
+      "stage_id": "setup",
+      "temporal_token_count": 5,
+      "temporal_weight_sum": 4.5
+    },
+    {
+      "stage_id": "onset",
+      "temporal_token_count": 5,
+      "temporal_weight_sum": 4.0
+    },
+    {
+      "stage_id": "evolution",
+      "temporal_token_count": 9,
+      "temporal_weight_sum": 8.0
+    },
+    {
+      "stage_id": "completion",
+      "temporal_token_count": 6,
+      "temporal_weight_sum": 5.0
+    },
+    {
+      "stage_id": "terminal",
+      "temporal_token_count": 4,
+      "temporal_weight_sum": 3.5
+    }
+  ],
+  "constraint_coverage": {
+    "c1": {
+      "stages": [
+        "setup",
+        "onset"
+      ],
+      "violations": [
+        "setup:outcome_preset",
+        "onset:wrong_order"
+      ]
+    },
+    "c2": {
+      "stages": [
+        "evolution",
+        "completion"
+      ],
+      "violations": [
+        "evolution:coupling_broken",
+        "completion:incomplete_transition"
+      ]
+    },
+    "c3": {
+      "stages": [
+        "evolution",
+        "completion"
+      ],
+      "violations": [
+        "evolution:coupling_broken",
+        "completion:incomplete_transition"
+      ]
+    },
+    "c4": {
+      "stages": [
+        "completion",
+        "terminal"
+      ],
+      "violations": [
+        "completion:incomplete_transition",
+        "terminal:reversal"
+      ]
+    },
+    "c5": {
+      "stages": [
+        "terminal"
+      ],
+      "violations": [
+        "terminal:exclusion_broken"
+      ]
+    }
+  },
+  "crossfade_tokens": 1,
+  "design_revision": "fixed5-causal-r3",
+  "fallback_selected": false,
+  "flatten_order": "f-y-x",
+  "frames": 25,
+  "input_plan": "/home/liuzhirui/Project/physGen/code/v1/demo/P15/P15-V2-plan.json",
+  "input_plan_sha256": "033db42263a4e37915e5345ae2b1ef39992a5f9379626b4e524ba7b26943c23d",
+  "requested_mode": "t2v",
+  "sample_id": "P15",
+  "schema_version": "trace-writer-v1",
+  "spatial_masks": [
+    {
+      "grid_area": 880,
+      "positive_token_count": 880,
+      "soft_area": 880.0,
+      "stage_id": "setup"
+    },
+    {
+      "grid_area": 880,
+      "positive_token_count": 880,
+      "soft_area": 880.0,
+      "stage_id": "onset"
+    },
+    {
+      "grid_area": 880,
+      "positive_token_count": 880,
+      "soft_area": 880.0,
+      "stage_id": "evolution"
+    },
+    {
+      "grid_area": 880,
+      "positive_token_count": 880,
+      "soft_area": 880.0,
+      "stage_id": "completion"
+    },
+    {
+      "grid_area": 880,
+      "positive_token_count": 880,
+      "soft_area": 880.0,
+      "stage_id": "terminal"
+    }
+  ],
+  "spatial_mode": "time",
+  "stage_ids": [
+    "setup",
+    "onset",
+    "evolution",
+    "completion",
+    "terminal"
+  ],
+  "stage_spans": [
+    {
+      "core": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "outgoing_crossfade": [
+        4
+      ],
+      "stage_id": "setup"
+    },
+    {
+      "core": [
+        5,
+        6,
+        7
+      ],
+      "outgoing_crossfade": [
+        8
+      ],
+      "stage_id": "onset"
+    },
+    {
+      "core": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "outgoing_crossfade": [
+        16
+      ],
+      "stage_id": "evolution"
+    },
+    {
+      "core": [
+        17,
+        18,
+        19,
+        20
+      ],
+      "outgoing_crossfade": [
+        21
+      ],
+      "stage_id": "completion"
+    },
+    {
+      "core": [
+        22,
+        23,
+        24
+      ],
+      "outgoing_crossfade": [],
+      "stage_id": "terminal"
+    }
+  ],
+  "stages": [
+    {
+      "affected_roles": [
+        "source",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "setup",
+      "observable_check": "The source is full, the sink region is clear, and no stream exists.",
+      "positive": "The cup begins full of dry sand while the flat table below has no pile.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "A grown conical pile already exists before any grains leave the cup.",
+          "type": "outcome_preset",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "onset",
+      "observable_check": "A granular carrier appears before measurable pile height develops.",
+      "positive": "The first dry grains leave the cup and form a visible falling stream toward the table.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "The conical pile grows while no falling grains connect it to the cup.",
+          "type": "wrong_order",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c2",
+        "c3"
+      ],
+      "id": "evolution",
+      "observable_check": "Source amount falls while pile height and base increase together.",
+      "positive": "The cup's sand decreases as the continuous stream builds a widening conical pile directly below.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c2",
+            "c3"
+          ],
+          "text": "The pile grows through falling sand while the cup remains completely full.",
+          "type": "coupling_broken",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c2",
+        "c3",
+        "c4"
+      ],
+      "id": "completion",
+      "observable_check": "Late frames show little source sand and a broad peaked pile.",
+      "positive": "The source approaches empty while the same pile reaches a clear stable conical form.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c2",
+            "c3",
+            "c4"
+          ],
+          "text": "The stream continues but the cup never empties or the pile never forms a cone.",
+          "type": "incomplete_transition",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c4",
+        "c5"
+      ],
+      "id": "terminal",
+      "observable_check": "The terminal source amount and pile shape remain stable.",
+      "positive": "The nearly empty cup and grown conical sand pile persist over the same table.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c4"
+          ],
+          "text": "The pile disappears and the nearly empty cup refills during final frames.",
+          "type": "reversal",
+          "weight": 0.5
+        },
+        {
+          "constraint_ids": [
+            "c5"
+          ],
+          "text": "Empty and grown-pile versions of the same table region coexist simultaneously.",
+          "type": "exclusion_broken",
+          "weight": 0.5
+        }
+      ]
+    }
+  ],
+  "temporal_weights": [
+    [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.5,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.5,
+      1.0,
+      1.0,
+      1.0,
+      0.5,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.5,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.5,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.5,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.5,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.5,
+      1.0,
+      1.0,
+      1.0
+    ]
+  ],
+  "validation": {
+    "errors": 0,
+    "fallback_selected": false,
+    "issues": [],
+    "warnings": 0
+  }
+}

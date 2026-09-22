@@ -1,0 +1,20 @@
+Inference checkpoint: /home/liuzhirui/Project/physGen/code/v4/checkpoints/wisa_native_p_A1_4x96g_20260912T151800Z-e189c27c/checkpoint-final
+Runtime temporary directory: /tmp/physgen-v4.IR9A3dtT
+Single GPU inference: 1x96g; Python: /home/liuzhirui/miniconda3/envs/moviestory/bin/python
+{"event": "start", "checkpoint": {"checkpoint": "/home/liuzhirui/Project/physGen/code/v4/checkpoints/wisa_native_p_A1_4x96g_20260912T151800Z-e189c27c/checkpoint-final", "phase": "A1", "stage": "A", "initialization": "image_text_gt", "fusion": "cross_attention", "parameter_sharing": "per_block", "a_blocks": [5, 10, 15, 20, 25, 30], "block_b": 18, "iterations": 1, "enable_b": false, "strict_load": true, "state_dict_tensors": 791, "parameters": 974182486, "weight_bytes": 3896729944, "weight_dtypes": {"torch.float32": 791}, "optimizer_loaded": false, "teacher_loaded": false}, "video": {"requested_frames": 101, "frames": 101, "duration": 4.166666666666667, "output_fps": 24.0}, "height": 384, "width": 384, "gpu": "NVIDIA GeForce RTX 3090"}
+Loading and encoding UMT5 prompts
+/home/liuzhirui/model/Wan2.2/wan/modules/s2v/motioner.py:30: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  @amp.autocast(enabled=False)
+/home/liuzhirui/model/Wan2.2/wan/modules/s2v/motioner.py:41: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  @amp.autocast(enabled=False)
+/home/liuzhirui/model/Wan2.2/wan/modules/s2v/model_s2v.py:61: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  @amp.autocast(enabled=False)
+/home/liuzhirui/model/Wan2.2/wan/modules/s2v/model_s2v.py:79: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  @amp.autocast(enabled=False)
+Encoding the reference image with VAE
+Loading frozen Wan and the trained correctors
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:  33%|███▎      | 1/3 [00:04<00:09,  4.89s/it]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:09<00:04,  4.94s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:09<00:00,  3.32s/it]
+{"step": 1, "total": 2, "sigma": 1.0, "wall_seconds": 3.1331175660016015}
+{"step": 2, "total": 2, "sigma": 0.8333333134651184, "wall_seconds": 3.134768742020242}
+Decoding the final video
+/home/liuzhirui/Project/physGen/code/v4/inference_outputs/checkpoint_final_20260913/smoke_before.mp4

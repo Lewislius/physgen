@@ -1,0 +1,465 @@
+{
+  "active_stage_summary": [
+    {
+      "stage_id": "setup",
+      "temporal_token_count": 5,
+      "temporal_weight_sum": 4.5
+    },
+    {
+      "stage_id": "onset",
+      "temporal_token_count": 5,
+      "temporal_weight_sum": 4.0
+    },
+    {
+      "stage_id": "evolution",
+      "temporal_token_count": 9,
+      "temporal_weight_sum": 8.0
+    },
+    {
+      "stage_id": "completion",
+      "temporal_token_count": 6,
+      "temporal_weight_sum": 5.0
+    },
+    {
+      "stage_id": "terminal",
+      "temporal_token_count": 4,
+      "temporal_weight_sum": 3.5
+    }
+  ],
+  "constraint_coverage": {
+    "c1": {
+      "stages": [
+        "setup",
+        "onset"
+      ],
+      "violations": [
+        "setup:outcome_preset",
+        "onset:wrong_order"
+      ]
+    },
+    "c2": {
+      "stages": [
+        "evolution",
+        "completion"
+      ],
+      "violations": [
+        "evolution:coupling_broken",
+        "completion:incomplete_transition"
+      ]
+    },
+    "c3": {
+      "stages": [
+        "evolution",
+        "completion"
+      ],
+      "violations": [
+        "evolution:coupling_broken",
+        "completion:incomplete_transition"
+      ]
+    },
+    "c4": {
+      "stages": [
+        "completion",
+        "terminal"
+      ],
+      "violations": [
+        "completion:incomplete_transition",
+        "terminal:reversal"
+      ]
+    },
+    "c5": {
+      "stages": [
+        "terminal"
+      ],
+      "violations": [
+        "terminal:exclusion_broken"
+      ]
+    }
+  },
+  "crossfade_tokens": 1,
+  "design_revision": "fixed5-causal-r3",
+  "fallback_selected": false,
+  "flatten_order": "f-y-x",
+  "frames": 25,
+  "input_plan": "/home/liuzhirui/Project/physGen/code/v1/demo/P16/P16-V2-plan.json",
+  "input_plan_sha256": "44e500d6a2150e09f2a89ddb6d7223e7c40555ff7a7053d2dbe6b0e9f0d3a023",
+  "requested_mode": "t2v",
+  "sample_id": "P16",
+  "schema_version": "trace-writer-v1",
+  "spatial_masks": [
+    {
+      "grid_area": 880,
+      "positive_token_count": 880,
+      "soft_area": 880.0,
+      "stage_id": "setup"
+    },
+    {
+      "grid_area": 880,
+      "positive_token_count": 880,
+      "soft_area": 880.0,
+      "stage_id": "onset"
+    },
+    {
+      "grid_area": 880,
+      "positive_token_count": 880,
+      "soft_area": 880.0,
+      "stage_id": "evolution"
+    },
+    {
+      "grid_area": 880,
+      "positive_token_count": 880,
+      "soft_area": 880.0,
+      "stage_id": "completion"
+    },
+    {
+      "grid_area": 880,
+      "positive_token_count": 880,
+      "soft_area": 880.0,
+      "stage_id": "terminal"
+    }
+  ],
+  "spatial_mode": "time",
+  "stage_ids": [
+    "setup",
+    "onset",
+    "evolution",
+    "completion",
+    "terminal"
+  ],
+  "stage_spans": [
+    {
+      "core": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "outgoing_crossfade": [
+        4
+      ],
+      "stage_id": "setup"
+    },
+    {
+      "core": [
+        5,
+        6,
+        7
+      ],
+      "outgoing_crossfade": [
+        8
+      ],
+      "stage_id": "onset"
+    },
+    {
+      "core": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "outgoing_crossfade": [
+        16
+      ],
+      "stage_id": "evolution"
+    },
+    {
+      "core": [
+        17,
+        18,
+        19,
+        20
+      ],
+      "outgoing_crossfade": [
+        21
+      ],
+      "stage_id": "completion"
+    },
+    {
+      "core": [
+        22,
+        23,
+        24
+      ],
+      "outgoing_crossfade": [],
+      "stage_id": "terminal"
+    }
+  ],
+  "stages": [
+    {
+      "affected_roles": [
+        "source",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "setup",
+      "observable_check": "One compact drop remains outside and the water is uniformly clear.",
+      "positive": "The compact blue dye drop approaches still clear water while the water remains uncolored.",
+      "support_kind": "motion_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "A broad blue region already colors the water before the compact drop enters.",
+          "type": "outcome_preset",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "onset",
+      "observable_check": "Entry is visible before outward color expansion.",
+      "positive": "The compact blue drop crosses the water boundary before any broad colored region appears.",
+      "support_kind": "contact_interface",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "The water becomes broadly blue while the compact drop remains outside.",
+          "type": "wrong_order",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c2",
+        "c3"
+      ],
+      "id": "evolution",
+      "observable_check": "The colored boundary moves outward without instant uniform replacement.",
+      "positive": "A localized blue region expands progressively outward through the otherwise still clear water.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c2",
+            "c3"
+          ],
+          "text": "The dye enters but remains a fixed compact spot without coloring surrounding water.",
+          "type": "coupling_broken",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c2",
+        "c3",
+        "c4"
+      ],
+      "id": "completion",
+      "observable_check": "Late colored area exceeds its onset footprint with a readable boundary.",
+      "positive": "The blue region continues widening while some farther water remains visibly less colored.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c2",
+            "c3",
+            "c4"
+          ],
+          "text": "The blue area stalls near the entry point and never becomes visibly expanded.",
+          "type": "incomplete_transition",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c4",
+        "c5"
+      ],
+      "id": "terminal",
+      "observable_check": "The final colored footprint persists through the end.",
+      "positive": "The expanded blue region remains inside the same water without contracting back into one drop.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c4"
+          ],
+          "text": "The expanded blue area contracts back into a compact outside drop.",
+          "type": "reversal",
+          "weight": 0.5
+        },
+        {
+          "constraint_ids": [
+            "c5"
+          ],
+          "text": "Clear and locally blue duplicate water regions occupy the same location simultaneously.",
+          "type": "exclusion_broken",
+          "weight": 0.5
+        }
+      ]
+    }
+  ],
+  "temporal_weights": [
+    [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.5,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.5,
+      1.0,
+      1.0,
+      1.0,
+      0.5,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.5,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.5,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.5,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.5,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.5,
+      1.0,
+      1.0,
+      1.0
+    ]
+  ],
+  "validation": {
+    "errors": 0,
+    "fallback_selected": false,
+    "issues": [],
+    "warnings": 0
+  }
+}

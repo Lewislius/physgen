@@ -1,0 +1,589 @@
+{
+  "schema_version": "trace-direct-v1",
+  "design_revision": "p0-stage-direct-json-r2",
+  "sample_id": "P20",
+  "source_files": {
+    "origin": "P20-origin.txt",
+    "frame_zero_metadata": "P20-i0.json",
+    "reference_input": "P20-i0-1280x704.jpg"
+  },
+  "initial_condition": {
+    "type": "visible_actuator",
+    "description": "A visible gloved hand holds the kettle so it can tilt and control the coffee pour."
+  },
+  "global_semantic": "Fixed three-quarter view on snowy ground beside one flickering campfire. One gloved hand tilts one stainless-steel kettle over one empty gray cup; dark coffee flows into the cup, the cup level rises, pouring stops, and the same fire continues flickering at the left.",
+  "cfg_negative": " ",
+  "entities": [
+    {
+      "id": "hand",
+      "mention": "one visible gloved hand",
+      "role": "actor"
+    },
+    {
+      "id": "kettle",
+      "mention": "one stainless-steel kettle",
+      "role": "source"
+    },
+    {
+      "id": "cup",
+      "mention": "one gray camping cup",
+      "role": "sink"
+    },
+    {
+      "id": "coffee",
+      "mention": "the dark coffee from the kettle",
+      "role": "carrier"
+    },
+    {
+      "id": "campfire",
+      "mention": "one small campfire",
+      "role": "environment"
+    }
+  ],
+  "structured_guidance": {
+    "schema_version": "structured-text-guidance-v1",
+    "entities": [
+      {
+        "id": "hand",
+        "label": "visible gloved hand",
+        "count": 1,
+        "persistent": false,
+        "invariants": [
+          "glove appearance",
+          "single hand identity"
+        ]
+      },
+      {
+        "id": "kettle",
+        "label": "stainless-steel kettle",
+        "count": 1,
+        "persistent": true,
+        "invariants": [
+          "rigid kettle geometry",
+          "stainless-steel appearance",
+          "single intact identity"
+        ]
+      },
+      {
+        "id": "cup",
+        "label": "gray camping cup",
+        "count": 1,
+        "persistent": true,
+        "invariants": [
+          "rigid cup geometry",
+          "gray appearance",
+          "single intact identity"
+        ]
+      },
+      {
+        "id": "coffee",
+        "label": "tracked body of dark coffee from the kettle",
+        "count": 1,
+        "persistent": true,
+        "invariants": [
+          "dark coffee appearance",
+          "conserved original coffee material",
+          "fixed total coffee amount"
+        ]
+      },
+      {
+        "id": "campfire",
+        "label": "small campfire",
+        "count": 1,
+        "persistent": true,
+        "invariants": [
+          "single fixed fire location",
+          "orange flame appearance",
+          "continuous burning identity"
+        ]
+      }
+    ],
+    "initial_condition": {
+      "type": "visible_actuator",
+      "active_stages": [
+        "setup"
+      ],
+      "facts": [
+        "The gloved hand starts holding the kettle upright beside the empty cup on snow.",
+        "All tracked coffee starts inside the kettle with no stream, while the one campfire already flickers."
+      ]
+    },
+    "stages": [
+      {
+        "id": "setup",
+        "entity_states": [
+          {
+            "entity_id": "hand",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "holding the kettle upright"
+            ],
+            "mutable": [
+              "pose"
+            ]
+          },
+          {
+            "entity_id": "kettle",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "upright with all coffee inside"
+            ],
+            "mutable": []
+          },
+          {
+            "entity_id": "cup",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "empty and upright on the snow"
+            ],
+            "mutable": []
+          },
+          {
+            "entity_id": "coffee",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "entirely inside the kettle with no stream"
+            ],
+            "mutable": []
+          },
+          {
+            "entity_id": "campfire",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "flickering at the fixed left location"
+            ],
+            "mutable": [
+              "flame shape",
+              "flame brightness"
+            ]
+          }
+        ],
+        "relations": [
+          "The kettle lip and cup are separated by air before pouring."
+        ]
+      },
+      {
+        "id": "onset",
+        "entity_states": [
+          {
+            "entity_id": "hand",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "tilting the kettle over the cup"
+            ],
+            "mutable": [
+              "pose",
+              "position"
+            ]
+          },
+          {
+            "entity_id": "kettle",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "tilting while remaining intact"
+            ],
+            "mutable": [
+              "orientation"
+            ]
+          },
+          {
+            "entity_id": "cup",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "receiving the first coffee while staying upright"
+            ],
+            "mutable": [
+              "contained coffee level"
+            ]
+          },
+          {
+            "entity_id": "coffee",
+            "presence": "transitioning",
+            "count": 1,
+            "states": [
+              "forming one continuous dark stream into the cup"
+            ],
+            "mutable": [
+              "allocation between kettle stream and cup",
+              "free-surface levels",
+              "flow shape"
+            ]
+          },
+          {
+            "entity_id": "campfire",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "continuing to flicker at the left"
+            ],
+            "mutable": [
+              "flame shape",
+              "flame brightness"
+            ]
+          }
+        ],
+        "relations": [
+          "The stream connects the kettle spout to the inside of the one cup."
+        ]
+      },
+      {
+        "id": "evolution",
+        "entity_states": [
+          {
+            "entity_id": "kettle",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "remaining tilted as coffee leaves it"
+            ],
+            "mutable": [
+              "orientation",
+              "contained coffee level"
+            ]
+          },
+          {
+            "entity_id": "cup",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "remaining upright as its coffee level rises"
+            ],
+            "mutable": [
+              "contained coffee level"
+            ]
+          },
+          {
+            "entity_id": "coffee",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "flowing continuously from kettle to cup"
+            ],
+            "mutable": [
+              "allocation between kettle stream and cup",
+              "free-surface levels",
+              "flow shape"
+            ]
+          },
+          {
+            "entity_id": "campfire",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "continuing to flicker independently at the left"
+            ],
+            "mutable": [
+              "flame shape",
+              "flame brightness"
+            ]
+          }
+        ],
+        "relations": [
+          "The cup gains the same coffee that leaves the kettle; the fire does not move or multiply."
+        ]
+      },
+      {
+        "id": "completion",
+        "entity_states": [
+          {
+            "entity_id": "hand",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "returning the kettle upright to stop pouring"
+            ],
+            "mutable": [
+              "pose",
+              "position"
+            ]
+          },
+          {
+            "entity_id": "kettle",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "returning upright with less coffee"
+            ],
+            "mutable": [
+              "orientation"
+            ]
+          },
+          {
+            "entity_id": "cup",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "holding the poured coffee while remaining upright"
+            ],
+            "mutable": []
+          },
+          {
+            "entity_id": "coffee",
+            "presence": "transitioning",
+            "count": 1,
+            "states": [
+              "ending the stream and settling in the cup and kettle"
+            ],
+            "mutable": [
+              "flow shape",
+              "free-surface levels"
+            ]
+          },
+          {
+            "entity_id": "campfire",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "continuing to flicker at the same location"
+            ],
+            "mutable": [
+              "flame shape",
+              "flame brightness"
+            ]
+          }
+        ],
+        "relations": [
+          "The dark stream disappears after the kettle returns upright."
+        ]
+      },
+      {
+        "id": "terminal",
+        "entity_states": [
+          {
+            "entity_id": "kettle",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "upright and intact beside the cup"
+            ],
+            "mutable": []
+          },
+          {
+            "entity_id": "cup",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "upright with a still dark coffee level"
+            ],
+            "mutable": []
+          },
+          {
+            "entity_id": "coffee",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "conserved with no stream and visibly present in the cup"
+            ],
+            "mutable": []
+          },
+          {
+            "entity_id": "campfire",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "still flickering at the fixed left location"
+            ],
+            "mutable": [
+              "flame shape",
+              "flame brightness"
+            ]
+          }
+        ],
+        "relations": [
+          "Exactly one filled cup and one continuously flickering campfire remain visible on the snow."
+        ]
+      }
+    ]
+  },
+  "stages": [
+    {
+      "id": "setup",
+      "positive": "The gloved hand holds the kettle upright beside the empty cup while the campfire flickers."
+    },
+    {
+      "id": "onset",
+      "positive": "The hand tilts the kettle and one dark coffee stream begins entering the cup."
+    },
+    {
+      "id": "evolution",
+      "positive": "The coffee level rises inside the cup while the same fire continues flickering at the left."
+    },
+    {
+      "id": "completion",
+      "positive": "The hand returns the kettle upright and the coffee stream stops."
+    },
+    {
+      "id": "terminal",
+      "positive": "The filled cup remains on the snow beside the continuously flickering campfire."
+    }
+  ],
+  "warnings": [],
+  "generation_basis": {
+    "mode": "identifier_only",
+    "reference_image_usage": "identifier_only"
+  },
+  "grounding": {
+    "coordinate_frame": "reference_input",
+    "reference_image": "P20-i0-1280x704.jpg",
+    "approved": false,
+    "entity_boxes": []
+  },
+  "temporal_route": {
+    "latent_tokens": 25,
+    "crossfade_tokens": 2,
+    "interpolation": "smoothstep_c1",
+    "profile": "continuous",
+    "stage_order": [
+      "setup",
+      "onset",
+      "evolution",
+      "completion",
+      "terminal"
+    ],
+    "weights": [
+      [
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0
+      ]
+    ]
+  }
+}

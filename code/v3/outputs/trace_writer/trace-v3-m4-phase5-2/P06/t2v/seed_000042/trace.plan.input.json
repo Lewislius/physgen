@@ -1,0 +1,440 @@
+{
+  "assumptions": [],
+  "constraints": [
+    {
+      "after": "begin_fall",
+      "before": "edge_crossing",
+      "id": "c1",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "precedes"
+    },
+    {
+      "cause": "edge_crossing",
+      "effect": "begin_fall",
+      "id": "c2",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "requires"
+    },
+    {
+      "after": "open_book",
+      "before": "floor_contact",
+      "id": "c3",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "precedes"
+    },
+    {
+      "cause": "floor_contact",
+      "effect": "open_book",
+      "id": "c4",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "requires"
+    },
+    {
+      "effect": "begin_fall",
+      "id": "c5",
+      "source_refs": [
+        "origin"
+      ],
+      "transition": "e1",
+      "type": "changes"
+    },
+    {
+      "effect": "open_book",
+      "id": "c6",
+      "source_refs": [
+        "origin"
+      ],
+      "transition": "e2",
+      "type": "changes"
+    },
+    {
+      "facts": [
+        "position=on_floor",
+        "book_state=open"
+      ],
+      "id": "c7",
+      "source_refs": [
+        "origin"
+      ],
+      "state": "z2",
+      "type": "persists"
+    },
+    {
+      "facts": [
+        "book_state=closed",
+        "book_state=open"
+      ],
+      "id": "c8",
+      "scope": "same_time",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "excludes"
+    }
+  ],
+  "control": {},
+  "design_revision": "fixed5-causal-r3",
+  "entities": [
+    {
+      "id": "book",
+      "mention": "the same closed book",
+      "role": "actor",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "id": "shelf",
+      "mention": "the same shelf edge",
+      "role": "patient",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "id": "floor",
+      "mention": "the same floor below",
+      "role": "sink",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "description": "the book passes beyond the shelf edge",
+      "id": "edge_crossing",
+      "observable": "no shelf remains beneath the book",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "description": "the falling book visibly contacts the floor",
+      "id": "floor_contact",
+      "observable": "the book boundary reaches the floor",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "generation_basis": {
+    "mode": "identifier_only",
+    "reference_image_usage": "identifier_only",
+    "semantic_inputs": [
+      "origin",
+      "planner_instructions"
+    ]
+  },
+  "global_semantic": "One closed book passes a shelf edge, falls, strikes the floor, and lands open.",
+  "grounding": {
+    "approved": false,
+    "coordinate_frame": "reference_input",
+    "entity_boxes": [],
+    "protected_boxes": [],
+    "reference_image": "P06-i0-1280x704.png",
+    "reference_image_usage": "identifier_only"
+  },
+  "predicates": [
+    {
+      "attribute": "position",
+      "id": "position",
+      "observable": "book location relative to shelf and floor",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "book",
+      "values": [
+        "on_shelf",
+        "falling",
+        "on_floor"
+      ]
+    },
+    {
+      "attribute": "support_state",
+      "id": "support",
+      "observable": "visible contact supporting the book",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "book",
+      "values": [
+        "shelf_supported",
+        "unsupported",
+        "floor_supported"
+      ]
+    },
+    {
+      "attribute": "open_state",
+      "id": "book_state",
+      "observable": "visible separation of covers and pages",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "book",
+      "values": [
+        "closed",
+        "open"
+      ]
+    }
+  ],
+  "protected_predicates": [
+    "same single book and cover identity",
+    "same shelf and floor geometry",
+    "camera and background remain unchanged"
+  ],
+  "sample_id": "P06",
+  "schema_version": "trace-writer-v1",
+  "source_files": {
+    "origin": "P06-origin.txt",
+    "planner_instructions": "Project/physGen/prompt/generate_trace_writer_v1_plan.txt",
+    "reference_input": "P06-i0-1280x704.png"
+  },
+  "stages": [
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c1",
+        "c3"
+      ],
+      "id": "setup",
+      "observable_check": "The book remains closed and shelf-supported while approaching the edge.",
+      "positive": "The closed book moves toward the shelf edge while remaining visibly supported.",
+      "support_kind": "motion_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1",
+            "c3"
+          ],
+          "text": "The book is already open on the floor before leaving the shelf.",
+          "type": "outcome_preset"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c1",
+        "c2",
+        "c3",
+        "c4"
+      ],
+      "id": "onset",
+      "observable_check": "Shelf support disappears before downward motion and before opening.",
+      "positive": "The closed book crosses the shelf edge and visibly loses support before falling.",
+      "support_kind": "contact_interface",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ],
+          "text": "The book begins falling or opening while the shelf still visibly supports it.",
+          "type": "trigger_missing"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c5"
+      ],
+      "id": "evolution",
+      "observable_check": "Book height decreases continuously while the covers remain together.",
+      "positive": "The same closed book falls continuously through the clear space toward the floor.",
+      "support_kind": "motion_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c5"
+          ],
+          "text": "The book crosses the edge but remains suspended instead of moving toward the floor.",
+          "type": "effect_missing"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c6",
+        "c7"
+      ],
+      "id": "completion",
+      "observable_check": "Floor contact precedes visible opening and a stable floor position.",
+      "positive": "The falling book reaches the floor, opens visibly, and settles on its separated covers.",
+      "support_kind": "motion_contact_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c6",
+            "c7"
+          ],
+          "text": "The book reaches the floor but stays closed or never settles into floor support.",
+          "type": "incomplete_transition"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c7",
+        "c8"
+      ],
+      "id": "terminal",
+      "observable_check": "One open book holds one unchanged floor position through the end.",
+      "positive": "The same book remains open and supported on the same floor below the shelf.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c7"
+          ],
+          "text": "The open floor book closes again or rises during the final frames.",
+          "type": "reversal"
+        },
+        {
+          "constraint_ids": [
+            "c8"
+          ],
+          "text": "Closed and open copies of the same book coexist on the floor.",
+          "type": "exclusion_broken"
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "facts": {
+        "book_state": "closed",
+        "position": "on_shelf",
+        "support": "shelf_supported"
+      },
+      "id": "z0",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "facts": {
+        "book_state": "closed",
+        "position": "falling",
+        "support": "unsupported"
+      },
+      "id": "z1",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "facts": {
+        "book_state": "open",
+        "position": "on_floor",
+        "support": "floor_supported"
+      },
+      "id": "z2",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "cause_event": "edge_crossing",
+      "effects": [
+        {
+          "direction": "position moves downward from shelf",
+          "from": "on_shelf",
+          "id": "begin_fall",
+          "predicate": "position",
+          "to": "falling"
+        },
+        {
+          "direction": "support contact disappears",
+          "from": "shelf_supported",
+          "id": "lose_support",
+          "predicate": "support",
+          "to": "unsupported"
+        }
+      ],
+      "from": "z0",
+      "id": "e1",
+      "kind": "triggered",
+      "preconditions": [
+        "position=on_shelf",
+        "support=shelf_supported",
+        "book_state=closed"
+      ],
+      "source_refs": [
+        "origin"
+      ],
+      "support_kind": "motion_contact_corridor",
+      "to": "z1"
+    },
+    {
+      "cause_event": "floor_contact",
+      "effects": [
+        {
+          "direction": "downward path ends at floor",
+          "from": "falling",
+          "id": "reach_floor",
+          "predicate": "position",
+          "to": "on_floor"
+        },
+        {
+          "direction": "floor contact becomes support",
+          "from": "unsupported",
+          "id": "gain_floor_support",
+          "predicate": "support",
+          "to": "floor_supported"
+        },
+        {
+          "direction": "covers and pages separate",
+          "from": "closed",
+          "id": "open_book",
+          "predicate": "book_state",
+          "to": "open"
+        }
+      ],
+      "from": "z1",
+      "id": "e2",
+      "kind": "triggered",
+      "preconditions": [
+        "position=falling",
+        "support=unsupported",
+        "book_state=closed"
+      ],
+      "source_refs": [
+        "origin"
+      ],
+      "support_kind": "motion_contact_corridor",
+      "to": "z2"
+    }
+  ],
+  "warnings": []
+}

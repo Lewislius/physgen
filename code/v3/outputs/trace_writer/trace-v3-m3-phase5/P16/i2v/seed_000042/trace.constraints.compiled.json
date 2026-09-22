@@ -1,0 +1,85 @@
+{
+  "closed_world": {
+    "allowed_entity_ids": [
+      "dye",
+      "water"
+    ],
+    "empty_regions": [],
+    "external_source_allowed": false,
+    "forbidden_new_categories": [
+      "external source",
+      "extra copy",
+      "unlisted object"
+    ],
+    "provenance": "derived"
+  },
+  "conservation": [
+    {
+      "observable_proxy": "tracked logical entity slots remain consistent",
+      "provenance": "derived",
+      "quantity": "instance_count",
+      "relation": "constant",
+      "rule_id": "entity_slots_constant",
+      "sinks": [
+        "dye",
+        "water"
+      ],
+      "sources": [
+        "dye",
+        "water"
+      ],
+      "tolerance": 0.0
+    },
+    {
+      "observable_proxy": "center entry precedes outward blue growth within clear vessel",
+      "provenance": "derived",
+      "quantity": "material_proxy",
+      "relation": "coupled_monotonic",
+      "rule_id": "conservation_c3",
+      "sinks": [
+        "colored_area",
+        "water_state"
+      ],
+      "sources": [
+        "dye_position"
+      ],
+      "tolerance": 0.1
+    }
+  ],
+  "lifecycles": [
+    {
+      "entity_id": "dye",
+      "from_stage": "setup",
+      "from_state": "above_center_surface",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "above_center_surface",
+          "inside_water"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "inside_water"
+    },
+    {
+      "entity_id": "water",
+      "from_stage": "setup",
+      "from_state": "none; fully_clear",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "none",
+          "expanded"
+        ],
+        [
+          "fully_clear",
+          "locally_blue"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "expanded; locally_blue"
+    }
+  ]
+}

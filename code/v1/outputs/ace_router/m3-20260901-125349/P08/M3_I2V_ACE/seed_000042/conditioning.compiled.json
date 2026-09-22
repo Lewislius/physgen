@@ -1,0 +1,66 @@
+{
+  "causal_pair": {
+    "counterfactual_type": [
+      "instant_replacement"
+    ],
+    "origin_prompt_prefixed": false,
+    "single_changed_relation": [
+      "the gradual coupled shrinkage and water growth are replaced by a single-step endpoint"
+    ]
+  },
+  "compiler_version": "ace-conditioning-mvp-v1",
+  "mode": "compiled",
+  "prompts": {
+    "causal_counterfactual": "The intact ice cube is suddenly replaced by a finished puddle covering the same plate area.",
+    "causal_positive": "The same ice cube becomes progressively smaller as liquid water spreads outward in a growing puddle on the plate.",
+    "semantic": "A clear ice cube on a shallow plate gradually shrinks while a puddle of water grows around it. Required visible entities: one clear ice cube; one shallow plate; exposed plate area around the cube. At the beginning: ice cube: intact, clearly bounded, and near full initial size; plate: shallow with a dry exposed surface around the ice. Required state changes: ice visible size: large to progressively smaller; ice boundary: sharp to receding; water area: minimal to progressively larger. These event variables are allowed to change: ice-cube size and boundary; solid fraction and visible ice presence; liquid-water area on the plate. Preserve throughout: static close camera; plate identity and position; background and lighting; one clear ice cube and its resulting water; one shallow plate; the same material system and camera view."
+  },
+  "sample_id": "P08",
+  "schema_version": 1,
+  "semantic_variant": "compiled_i2v",
+  "source_sections": {
+    "changed_state_variables": [
+      "ice visible size: large to progressively smaller",
+      "ice boundary: sharp to receding",
+      "water area: minimal to progressively larger"
+    ],
+    "counterfactual_type": [
+      "instant_replacement"
+    ],
+    "event_type": [
+      "continuous solid-to-liquid phase transition"
+    ],
+    "initial_states": [
+      "ice cube: intact, clearly bounded, and near full initial size",
+      "plate: shallow with a dry exposed surface around the ice"
+    ],
+    "layout_requirements": [
+      "ice cube is centered within the plate",
+      "enough surrounding plate area is visible for puddle growth",
+      "cube boundary and plate surface are unobstructed"
+    ],
+    "preserved_context": [
+      "one clear ice cube and its resulting water",
+      "one shallow plate",
+      "the same material system and camera view"
+    ],
+    "protected_scene_properties": [
+      "static close camera",
+      "plate identity and position",
+      "background and lighting"
+    ],
+    "required_visible_entities": [
+      "one clear ice cube",
+      "one shallow plate",
+      "exposed plate area around the cube"
+    ],
+    "single_changed_relation": [
+      "the gradual coupled shrinkage and water growth are replaced by a single-step endpoint"
+    ],
+    "transition_variables": [
+      "ice-cube size and boundary",
+      "solid fraction and visible ice presence",
+      "liquid-water area on the plate"
+    ]
+  }
+}

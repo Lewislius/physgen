@@ -1,0 +1,185 @@
+{
+  "actual_t5_token_lengths": {
+    "global_semantic": 289,
+    "stage.completion.negative.0": 156,
+    "stage.completion.positive": 161,
+    "stage.evolution.negative.0": 155,
+    "stage.evolution.positive": 158,
+    "stage.onset.negative.0": 167,
+    "stage.onset.positive": 164,
+    "stage.setup.negative.0": 165,
+    "stage.setup.positive": 162,
+    "stage.terminal.negative.0": 191,
+    "stage.terminal.negative.1": 189,
+    "stage.terminal.positive": 205
+  },
+  "global_anchor": "[ENTITY INVENTORY] The closed scene contains butter: exactly 1; liquid butter: one declared collective group; pan: exactly 1. The reference first frame fixes these identities and initial layout. [INITIAL STATE] edge_shape=sharp_rectangular, footprint=small_rectangle. [PHYSICAL EVENT] The pale-yellow rectangular butter pat near the center of the stainless pan rounds, recedes, and spreads into a yellow liquid pool. [PERSISTENT PROTECTION] same pale-yellow butter material; same large stainless pan, rim, rivets, and handle; black stovetop, lighting, close three-quarter camera, and pan position remain unchanged. [CLOSED WORLD] No additional dropper, external liquid stream, external source, extra copy, pipette, unlisted object enters or appears; unoccupied scene regions remain empty. [CONSERVATION] Source loss and result gain stay coupled: tracked logical entity slots remain consistent; pale solid rounds and lowers while yellow pan footprint expands. No result appears from an undeclared external source. [TERMINAL STATE] The same logical entity slots persist without duplicates; edge_shape=rounded_receded, footprint=broad_liquid_pool remains visible through the final frames.",
+  "issues": [],
+  "max_t5_token_length": 289,
+  "protected_coverage": {
+    "black stovetop, lighting, close three-quarter camera, and pan position remain unchanged": [
+      "appearance",
+      "camera_background",
+      "closed_world_or_persistence"
+    ],
+    "same large stainless pan, rim, rivets, and handle": [
+      "identity_count"
+    ],
+    "same pale-yellow butter material": [
+      "identity_count",
+      "appearance"
+    ]
+  },
+  "stage_pairs": [
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "first visible rounding of a pale-yellow butter corner happens BEFORE yellow footprint expands over stainless base.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: butter: exactly 1, state edge_shape=sharp_rectangular, required; liquid butter: exactly 0, forbidden; pan: exactly 1, state footprint=small_rectangle, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, pipette, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] first visible rounding of a pale-yellow butter corner happens BEFORE yellow footprint expands over stainless base.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: butter: exactly 1, state edge_shape=sharp_rectangular, required; liquid butter: exactly 0, forbidden; pan: exactly 1, state footprint=small_rectangle, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, pipette, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "setup",
+      "violation_constraint_ids": [
+        [
+          "c1"
+        ]
+      ],
+      "violation_kinds": [
+        "outcome_preset"
+      ],
+      "violation_relations": [
+        "yellow footprint expands over stainless base is already present BEFORE first visible rounding of a pale-yellow butter corner."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: butter: exactly 1, state edge_shape=sharp_rectangular, required; liquid butter: exactly 0, forbidden; pan: exactly 1, state footprint=small_rectangle, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, pipette, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] yellow footprint expands over stainless base is already present BEFORE first visible rounding of a pale-yellow butter corner."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "first visible rounding of a pale-yellow butter corner happens BEFORE yellow footprint expands over stainless base.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: butter: exactly 1, state edge_shape=sharp_rectangular, transitioning; liquid butter: one declared collective group, transitioning; pan: exactly 1, state footprint=small_rectangle, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, pipette, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] first visible rounding of a pale-yellow butter corner happens BEFORE yellow footprint expands over stainless base.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: butter: exactly 1, state edge_shape=sharp_rectangular, transitioning; liquid butter: one declared collective group, transitioning; pan: exactly 1, state footprint=small_rectangle, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, pipette, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "onset",
+      "violation_constraint_ids": [
+        [
+          "c1"
+        ]
+      ],
+      "violation_kinds": [
+        "early_effect"
+      ],
+      "violation_relations": [
+        "yellow footprint expands over stainless base is already present BEFORE first visible rounding of a pale-yellow butter corner."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: butter: exactly 1, state edge_shape=sharp_rectangular, transitioning; liquid butter: one declared collective group, transitioning; pan: exactly 1, state footprint=small_rectangle, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, pipette, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] yellow footprint expands over stainless base is already present BEFORE first visible rounding of a pale-yellow butter corner."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The declared change pale-yellow corners round and solid height lowers occurs in its stated direction.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: butter: exactly 1, state edge_shape=rounded_receded, required; liquid butter: one declared collective group, required; pan: exactly 1, state footprint=broad_liquid_pool, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, pipette, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change pale-yellow corners round and solid height lowers occurs in its stated direction.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: butter: exactly 1, state edge_shape=rounded_receded, required; liquid butter: one declared collective group, required; pan: exactly 1, state footprint=broad_liquid_pool, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, pipette, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "evolution",
+      "violation_constraint_ids": [
+        [
+          "c2",
+          "c3"
+        ]
+      ],
+      "violation_kinds": [
+        "coupling_broken"
+      ],
+      "violation_relations": [
+        "Only one coupled change occurs while the other remains unchanged: ."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: butter: exactly 1, state edge_shape=rounded_receded, required; liquid butter: one declared collective group, required; pan: exactly 1, state footprint=broad_liquid_pool, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, pipette, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] Only one coupled change occurs while the other remains unchanged: ."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The declared change pale-yellow corners round and solid height lowers occurs in its stated direction.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: butter: exactly 1, state edge_shape=rounded_receded, transitioning; liquid butter: one declared collective group, transitioning; pan: exactly 1, state footprint=broad_liquid_pool, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, pipette, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change pale-yellow corners round and solid height lowers occurs in its stated direction.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: butter: exactly 1, state edge_shape=rounded_receded, transitioning; liquid butter: one declared collective group, transitioning; pan: exactly 1, state footprint=broad_liquid_pool, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, pipette, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "completion",
+      "violation_constraint_ids": [
+        [
+          "c2",
+          "c3",
+          "c4"
+        ]
+      ],
+      "violation_kinds": [
+        "incomplete_transition"
+      ],
+      "violation_relations": [
+        "The declared cause occurs BUT the required target change does not become visible."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: butter: exactly 1, state edge_shape=rounded_receded, transitioning; liquid butter: one declared collective group, transitioning; pan: exactly 1, state footprint=broad_liquid_pool, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, pipette, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The declared cause occurs BUT the required target change does not become visible."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The terminal facts edge_shape=rounded_receded, footprint=broad_liquid_pool REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts footprint=small_rectangle, footprint=broad_liquid_pool do not coexist.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: butter: exactly 1, state edge_shape=rounded_receded, required; liquid butter: one declared collective group, required; pan: exactly 1, state footprint=broad_liquid_pool, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, pipette, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The terminal facts edge_shape=rounded_receded, footprint=broad_liquid_pool REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts footprint=small_rectangle, footprint=broad_liquid_pool do not coexist.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: butter: exactly 1, state edge_shape=rounded_receded, required; liquid butter: one declared collective group, required; pan: exactly 1, state footprint=broad_liquid_pool, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, pipette, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "terminal",
+      "violation_constraint_ids": [
+        [
+          "c4"
+        ],
+        [
+          "c5"
+        ]
+      ],
+      "violation_kinds": [
+        "reversal",
+        "exclusion_broken"
+      ],
+      "violation_relations": [
+        "The valid terminal state returns to its mutually exclusive earlier state.",
+        "Copies of the same logical slot appear in mutually exclusive states at the same time."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: butter: exactly 1, state edge_shape=rounded_receded, required; liquid butter: one declared collective group, required; pan: exactly 1, state footprint=broad_liquid_pool, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, pipette, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The valid terminal state returns to its mutually exclusive earlier state. [AND] The same logical slot has only its valid state; mutually exclusive facts footprint=small_rectangle, footprint=broad_liquid_pool do not coexist.",
+        "[STAGE ENTITY INVENTORY] Present now: butter: exactly 1, state edge_shape=rounded_receded, required; liquid butter: one declared collective group, required; pan: exactly 1, state footprint=broad_liquid_pool, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, pipette, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The terminal facts edge_shape=rounded_receded, footprint=broad_liquid_pool REMAIN through the final frames. [AND] Copies of the same logical slot appear in mutually exclusive states at the same time."
+      ],
+      "violation_weights": [
+        0.5,
+        0.5
+      ]
+    }
+  ],
+  "texts": {
+    "global_semantic": "[ENTITY INVENTORY] The closed scene contains butter: exactly 1; liquid butter: one declared collective group; pan: exactly 1. The reference first frame fixes these identities and initial layout. [INITIAL STATE] edge_shape=sharp_rectangular, footprint=small_rectangle. [PHYSICAL EVENT] The pale-yellow rectangular butter pat near the center of the stainless pan rounds, recedes, and spreads into a yellow liquid pool. [PERSISTENT PROTECTION] same pale-yellow butter material; same large stainless pan, rim, rivets, and handle; black stovetop, lighting, close three-quarter camera, and pan position remain unchanged. [CLOSED WORLD] No additional dropper, external liquid stream, external source, extra copy, pipette, unlisted object enters or appears; unoccupied scene regions remain empty. [CONSERVATION] Source loss and result gain stay coupled: tracked logical entity slots remain consistent; pale solid rounds and lowers while yellow pan footprint expands. No result appears from an undeclared external source. [TERMINAL STATE] The same logical entity slots persist without duplicates; edge_shape=rounded_receded, footprint=broad_liquid_pool remains visible through the final frames.",
+    "stage.completion.negative.0": "[STAGE ENTITY INVENTORY] Present now: butter: exactly 1, state edge_shape=rounded_receded, transitioning; liquid butter: one declared collective group, transitioning; pan: exactly 1, state footprint=broad_liquid_pool, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, pipette, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The declared cause occurs BUT the required target change does not become visible.",
+    "stage.completion.positive": "[STAGE ENTITY INVENTORY] Present now: butter: exactly 1, state edge_shape=rounded_receded, transitioning; liquid butter: one declared collective group, transitioning; pan: exactly 1, state footprint=broad_liquid_pool, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, pipette, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change pale-yellow corners round and solid height lowers occurs in its stated direction.",
+    "stage.evolution.negative.0": "[STAGE ENTITY INVENTORY] Present now: butter: exactly 1, state edge_shape=rounded_receded, required; liquid butter: one declared collective group, required; pan: exactly 1, state footprint=broad_liquid_pool, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, pipette, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] Only one coupled change occurs while the other remains unchanged: .",
+    "stage.evolution.positive": "[STAGE ENTITY INVENTORY] Present now: butter: exactly 1, state edge_shape=rounded_receded, required; liquid butter: one declared collective group, required; pan: exactly 1, state footprint=broad_liquid_pool, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, pipette, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change pale-yellow corners round and solid height lowers occurs in its stated direction.",
+    "stage.onset.negative.0": "[STAGE ENTITY INVENTORY] Present now: butter: exactly 1, state edge_shape=sharp_rectangular, transitioning; liquid butter: one declared collective group, transitioning; pan: exactly 1, state footprint=small_rectangle, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, pipette, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] yellow footprint expands over stainless base is already present BEFORE first visible rounding of a pale-yellow butter corner.",
+    "stage.onset.positive": "[STAGE ENTITY INVENTORY] Present now: butter: exactly 1, state edge_shape=sharp_rectangular, transitioning; liquid butter: one declared collective group, transitioning; pan: exactly 1, state footprint=small_rectangle, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, pipette, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] first visible rounding of a pale-yellow butter corner happens BEFORE yellow footprint expands over stainless base.",
+    "stage.setup.negative.0": "[STAGE ENTITY INVENTORY] Present now: butter: exactly 1, state edge_shape=sharp_rectangular, required; liquid butter: exactly 0, forbidden; pan: exactly 1, state footprint=small_rectangle, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, pipette, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] yellow footprint expands over stainless base is already present BEFORE first visible rounding of a pale-yellow butter corner.",
+    "stage.setup.positive": "[STAGE ENTITY INVENTORY] Present now: butter: exactly 1, state edge_shape=sharp_rectangular, required; liquid butter: exactly 0, forbidden; pan: exactly 1, state footprint=small_rectangle, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, pipette, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] first visible rounding of a pale-yellow butter corner happens BEFORE yellow footprint expands over stainless base.",
+    "stage.terminal.negative.0": "[STAGE ENTITY INVENTORY] Present now: butter: exactly 1, state edge_shape=rounded_receded, required; liquid butter: one declared collective group, required; pan: exactly 1, state footprint=broad_liquid_pool, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, pipette, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The valid terminal state returns to its mutually exclusive earlier state. [AND] The same logical slot has only its valid state; mutually exclusive facts footprint=small_rectangle, footprint=broad_liquid_pool do not coexist.",
+    "stage.terminal.negative.1": "[STAGE ENTITY INVENTORY] Present now: butter: exactly 1, state edge_shape=rounded_receded, required; liquid butter: one declared collective group, required; pan: exactly 1, state footprint=broad_liquid_pool, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, pipette, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The terminal facts edge_shape=rounded_receded, footprint=broad_liquid_pool REMAIN through the final frames. [AND] Copies of the same logical slot appear in mutually exclusive states at the same time.",
+    "stage.terminal.positive": "[STAGE ENTITY INVENTORY] Present now: butter: exactly 1, state edge_shape=rounded_receded, required; liquid butter: one declared collective group, required; pan: exactly 1, state footprint=broad_liquid_pool, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, pipette, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The terminal facts edge_shape=rounded_receded, footprint=broad_liquid_pool REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts footprint=small_rectangle, footprint=broad_liquid_pool do not coexist."
+  },
+  "token_budget_priority": {
+    "causal": 2,
+    "entity_count": 0,
+    "protected": 1,
+    "style": 3
+  }
+}

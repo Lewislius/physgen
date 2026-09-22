@@ -1,0 +1,365 @@
+{
+  "schema_version": "trace-direct-v1",
+  "design_revision": "p0-stage-direct-json-r2",
+  "sample_id": "P11",
+  "source_files": {
+    "origin": "P11-origin.txt",
+    "frame_zero_metadata": "P11-i0.json",
+    "reference_input": "P11-i0-1280x704.jpg"
+  },
+  "initial_condition": {
+    "type": "gravity_or_instability",
+    "description": "The bottle is already slipping beyond a shelf edge so gravity can pull it down."
+  },
+  "global_semantic": "Fixed side view of one intact clear glass bottle already slipping from the edge of one low shelf under gravity. The same bottle falls through the open space, strikes the hard tile floor once, shatters, and its transparent fragments settle and remain around the impact point.",
+  "cfg_negative": " ",
+  "entities": [
+    {
+      "id": "bottle",
+      "mention": "one clear glass bottle",
+      "role": "source"
+    },
+    {
+      "id": "shelf",
+      "mention": "one low shelf",
+      "role": "environment"
+    },
+    {
+      "id": "tile_floor",
+      "mention": "one hard gray tile floor",
+      "role": "environment"
+    }
+  ],
+  "structured_guidance": {
+    "schema_version": "structured-text-guidance-v1",
+    "entities": [
+      {
+        "id": "bottle",
+        "label": "tracked clear glass material from one bottle",
+        "count": 1,
+        "persistent": true,
+        "invariants": [
+          "transparent glass appearance",
+          "conserved original glass material",
+          "single bottle origin with no duplicate bottle"
+        ]
+      },
+      {
+        "id": "shelf",
+        "label": "low shelf",
+        "count": 1,
+        "persistent": true,
+        "invariants": [
+          "rigid fixed geometry",
+          "stationary identity",
+          "single support surface"
+        ]
+      },
+      {
+        "id": "tile_floor",
+        "label": "hard gray tile floor",
+        "count": 1,
+        "persistent": true,
+        "invariants": [
+          "flat rigid geometry",
+          "gray tile appearance",
+          "stationary identity"
+        ]
+      }
+    ],
+    "initial_condition": {
+      "type": "gravity_or_instability",
+      "active_stages": [
+        "setup"
+      ],
+      "facts": [
+        "The one intact bottle is already slipping beyond the shelf edge in the first video frame.",
+        "Gravity pulls it downward toward the hard tile floor."
+      ]
+    },
+    "stages": [
+      {
+        "id": "setup",
+        "entity_states": [
+          {
+            "entity_id": "bottle",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "forming one intact bottle while slipping past the shelf edge"
+            ],
+            "mutable": [
+              "position",
+              "sliding speed"
+            ]
+          }
+        ],
+        "relations": [
+          "Part of the bottle is still supported by the shelf."
+        ]
+      },
+      {
+        "id": "onset",
+        "entity_states": [
+          {
+            "entity_id": "bottle",
+            "presence": "transitioning",
+            "count": 1,
+            "states": [
+              "forming the same intact bottle as it fully clears the shelf"
+            ],
+            "mutable": [
+              "position",
+              "vertical speed",
+              "orientation"
+            ]
+          }
+        ],
+        "relations": [
+          "The bottle loses shelf support once and begins a continuous fall."
+        ]
+      },
+      {
+        "id": "evolution",
+        "entity_states": [
+          {
+            "entity_id": "bottle",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "forming one intact bottle descending through the open gap"
+            ],
+            "mutable": [
+              "position",
+              "vertical speed",
+              "orientation"
+            ]
+          }
+        ],
+        "relations": [
+          "The bottle remains above the tile floor until impact."
+        ]
+      },
+      {
+        "id": "completion",
+        "entity_states": [
+          {
+            "entity_id": "bottle",
+            "presence": "transitioning",
+            "count": 1,
+            "states": [
+              "striking the tile once and changing from one intact bottle into glass fragments"
+            ],
+            "mutable": [
+              "glass topology",
+              "fragment positions"
+            ]
+          }
+        ],
+        "relations": [
+          "All transparent fragments originate at one impact point from the original bottle."
+        ]
+      },
+      {
+        "id": "terminal",
+        "entity_states": [
+          {
+            "entity_id": "bottle",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "remaining as the settled group of original transparent glass fragments"
+            ],
+            "mutable": []
+          }
+        ],
+        "relations": [
+          "No intact duplicate bottle remains; all fragments stay around the one impact point."
+        ]
+      }
+    ]
+  },
+  "stages": [
+    {
+      "id": "setup",
+      "positive": "The intact bottle begins slipping past the shelf edge under gravity."
+    },
+    {
+      "id": "onset",
+      "positive": "The same bottle clears the shelf completely and starts a continuous fall."
+    },
+    {
+      "id": "evolution",
+      "positive": "The intact bottle descends through the open gap toward the tile floor."
+    },
+    {
+      "id": "completion",
+      "positive": "The bottle strikes the floor once and breaks into transparent fragments."
+    },
+    {
+      "id": "terminal",
+      "positive": "The fragments from the original bottle remain settled around one impact point."
+    }
+  ],
+  "warnings": [],
+  "generation_basis": {
+    "mode": "identifier_only",
+    "reference_image_usage": "identifier_only"
+  },
+  "grounding": {
+    "coordinate_frame": "reference_input",
+    "reference_image": "P11-i0-1280x704.jpg",
+    "approved": false,
+    "entity_boxes": []
+  },
+  "temporal_route": {
+    "latent_tokens": 25,
+    "crossfade_tokens": 2,
+    "interpolation": "smoothstep_c1",
+    "profile": "triggered",
+    "stage_order": [
+      "setup",
+      "onset",
+      "evolution",
+      "completion",
+      "terminal"
+    ],
+    "weights": [
+      [
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0
+      ]
+    ]
+  }
+}

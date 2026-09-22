@@ -1,0 +1,29 @@
+{
+  "date": "2026-09-12",
+  "tests": {
+    "monitoring": 14
+  },
+  "total_passed": 14,
+  "validation": {
+    "training_imports_and_resumed_logging": "passed in a fresh interpreter rejecting imports of determined, tensorflow, tensorboard, torch.utils.tensorboard and wandb",
+    "removed_integration_scan": "34 active source/config files checked; no removed SDK calls, options or profiling settings",
+    "python_shell_yaml_syntax": "passed",
+    "training_and_preflight_cli_help": "passed; removed reporting option is absent",
+    "training_preflight_with_cuda_hidden": "not passed: upstream Wan imports require CUDA even with --imports-only; No CUDA GPUs are available",
+    "full_gpu_training_run": false
+  },
+  "removed": [
+    "Determined Core loader, initialization and metric reporting",
+    "REPORT_DETERMINED environment and command-line options",
+    "TensorBoard integration",
+    "profiling blocks in all training and inference submission YAMLs",
+    "tmp/moviestory-tensorboard-plan.json"
+  ],
+  "logging": {
+    "outputs": ["console", "TXT", "JSONL"],
+    "wandb_enabled": false,
+    "log_root": "/home/liuzhirui/Project/physGen/code/v4/train/train_log"
+  },
+  "wandb_network_calls": "mocked in tests; no real login or uploads",
+  "dependencies_installed": []
+}

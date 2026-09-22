@@ -1,0 +1,384 @@
+{
+  "assumptions": [],
+  "constraints": [
+    {
+      "after": "pictured_blue_expand",
+      "before": "pictured_surface_entry",
+      "id": "c1",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "precedes"
+    },
+    {
+      "effect": "pictured_blue_expand",
+      "id": "c2",
+      "source_refs": [
+        "origin"
+      ],
+      "transition": "e1",
+      "type": "changes"
+    },
+    {
+      "effects": [
+        "pictured_entry",
+        "pictured_blue_expand",
+        "pictured_water_color"
+      ],
+      "id": "c3",
+      "relation": "center entry precedes outward blue growth within clear vessel",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "couples"
+    },
+    {
+      "facts": [
+        "dye_position=inside_water",
+        "colored_area=expanded",
+        "water_state=locally_blue"
+      ],
+      "id": "c4",
+      "source_refs": [
+        "origin"
+      ],
+      "state": "z1",
+      "type": "persists"
+    },
+    {
+      "facts": [
+        "water_state=fully_clear",
+        "water_state=locally_blue"
+      ],
+      "id": "c5",
+      "scope": "same_time",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "excludes"
+    }
+  ],
+  "control": {},
+  "design_revision": "fixed5-causal-r3",
+  "entities": [
+    {
+      "id": "dye",
+      "mention": "the same compact dark-blue drop above center",
+      "role": "source",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    },
+    {
+      "id": "water",
+      "mention": "the same still clear water inside the rectangular vessel",
+      "role": "sink",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "description": "the dark-blue drop crosses the centered horizontal waterline",
+      "id": "pictured_surface_entry",
+      "observable": "the drop boundary moves from above to below the surface",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    }
+  ],
+  "generation_basis": {
+    "mode": "visual_grounding",
+    "reference_image_usage": "visual_grounding",
+    "semantic_inputs": [
+      "origin",
+      "planner_instructions",
+      "reference_input"
+    ]
+  },
+  "global_semantic": "The single compact dark-blue drop above the centered water surface enters the clear rectangular glass vessel and spreads outward.",
+  "grounding": {
+    "approved": false,
+    "coordinate_frame": "reference_input",
+    "entity_boxes": [
+      {
+        "box": [
+          0.493,
+          0.245,
+          0.514,
+          0.303
+        ],
+        "entity_id": "dye"
+      },
+      {
+        "box": [
+          0.18,
+          0.37,
+          0.82,
+          0.878
+        ],
+        "entity_id": "water"
+      }
+    ],
+    "protected_boxes": [],
+    "reference_image": "P16-i0-1280x704.png",
+    "reference_image_usage": "visual_grounding"
+  },
+  "predicates": [
+    {
+      "attribute": "position_to pictured surface",
+      "id": "dye_position",
+      "observable": "dark-blue drop position relative to horizontal waterline",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "subject": "dye",
+      "values": [
+        "above_center_surface",
+        "inside_water"
+      ]
+    },
+    {
+      "attribute": "dark-blue region area",
+      "id": "colored_area",
+      "observable": "blue footprint within the clear water box",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "subject": "water",
+      "values": [
+        "none",
+        "expanded"
+      ]
+    },
+    {
+      "attribute": "pictured color distribution",
+      "id": "water_state",
+      "observable": "clear and blue portions inside the vessel",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "subject": "water",
+      "values": [
+        "fully_clear",
+        "locally_blue"
+      ]
+    }
+  ],
+  "protected_predicates": [
+    "same dark-blue dye color",
+    "same transparent rectangular glass vessel and horizontal waterline",
+    "pale background, tabletop reflection, lighting, centered framing, and static camera remain unchanged",
+    "blue color stays inside the vessel"
+  ],
+  "sample_id": "P16",
+  "schema_version": "trace-writer-v1",
+  "source_files": {
+    "origin": "P16-origin.txt",
+    "planner_instructions": "Project/physGen/prompt/generate_trace_writer_v1_plan.txt",
+    "reference_input": "P16-i0-1280x704.png"
+  },
+  "stages": [
+    {
+      "affected_roles": [
+        "source",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "setup",
+      "observable_check": "The compact drop stays above the horizontal waterline and water stays clear.",
+      "positive": "The pictured dark-blue drop descends toward the centered surface while all water below remains clear.",
+      "support_kind": "motion_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "A broad blue cloud already fills the vessel before the pictured drop enters.",
+          "type": "outcome_preset"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "onset",
+      "observable_check": "The centered surface entry precedes expansion below it.",
+      "positive": "The dark-blue boundary crosses the horizontal waterline before a broad internal blue region develops.",
+      "support_kind": "contact_interface",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "The clear vessel becomes broadly blue while the pictured drop remains above water.",
+          "type": "wrong_order"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c2",
+        "c3"
+      ],
+      "id": "evolution",
+      "observable_check": "The blue boundary widens while remaining confined inside the water box.",
+      "positive": "A localized dark-blue region expands outward through the still clear water inside the glass walls.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c2",
+            "c3"
+          ],
+          "text": "The dark-blue drop enters but remains compact without coloring nearby clear water.",
+          "type": "coupling_broken"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c2",
+        "c3",
+        "c4"
+      ],
+      "id": "completion",
+      "observable_check": "Late blue area is larger than onset without instant uniform color.",
+      "positive": "The blue footprint widens farther across the vessel while a visible concentration boundary remains.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c2",
+            "c3",
+            "c4"
+          ],
+          "text": "The pictured blue spot stays tiny and never expands through a readable water region.",
+          "type": "incomplete_transition"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c4",
+        "c5"
+      ],
+      "id": "terminal",
+      "observable_check": "One expanded internal blue footprint remains through the end.",
+      "positive": "The expanded blue region persists inside the same clear rectangular vessel without contracting.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c4"
+          ],
+          "text": "The expanded blue area retracts above the water into the original compact drop.",
+          "type": "reversal"
+        },
+        {
+          "constraint_ids": [
+            "c5"
+          ],
+          "text": "Fully clear and locally blue duplicate water volumes coexist inside the vessel.",
+          "type": "exclusion_broken"
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "facts": {
+        "colored_area": "none",
+        "dye_position": "above_center_surface",
+        "water_state": "fully_clear"
+      },
+      "id": "z0",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    },
+    {
+      "facts": {
+        "colored_area": "expanded",
+        "dye_position": "inside_water",
+        "water_state": "locally_blue"
+      },
+      "id": "z1",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "cause_event": null,
+      "effects": [
+        {
+          "direction": "drop crosses centered waterline downward",
+          "from": "above_center_surface",
+          "id": "pictured_entry",
+          "predicate": "dye_position",
+          "to": "inside_water"
+        },
+        {
+          "direction": "blue boundary widens inside vessel",
+          "from": "none",
+          "id": "pictured_blue_expand",
+          "predicate": "colored_area",
+          "to": "expanded"
+        },
+        {
+          "direction": "increasing clear-water area becomes blue",
+          "from": "fully_clear",
+          "id": "pictured_water_color",
+          "predicate": "water_state",
+          "to": "locally_blue"
+        }
+      ],
+      "from": "z0",
+      "id": "e1",
+      "kind": "continuous",
+      "preconditions": [
+        "dye_position=above_center_surface",
+        "colored_area=none",
+        "water_state=fully_clear"
+      ],
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "support_kind": "motion_contact_corridor",
+      "to": "z1"
+    }
+  ],
+  "warnings": [
+    "Entity boxes are visually estimated from the reference image and remain unapproved."
+  ]
+}

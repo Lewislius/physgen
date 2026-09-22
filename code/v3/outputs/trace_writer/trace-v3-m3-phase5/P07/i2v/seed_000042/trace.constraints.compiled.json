@@ -1,0 +1,69 @@
+{
+  "closed_world": {
+    "allowed_entity_ids": [
+      "box",
+      "floor"
+    ],
+    "empty_regions": [],
+    "external_source_allowed": false,
+    "forbidden_new_categories": [
+      "external source",
+      "extra copy",
+      "unlisted object"
+    ],
+    "provenance": "derived"
+  },
+  "conservation": [
+    {
+      "observable_proxy": "tracked logical entity slots remain consistent",
+      "provenance": "derived",
+      "quantity": "instance_count",
+      "relation": "constant",
+      "rule_id": "entity_slots_constant",
+      "sinks": [
+        "box",
+        "floor"
+      ],
+      "sources": [
+        "box",
+        "floor"
+      ],
+      "tolerance": 0.0
+    },
+    {
+      "observable_proxy": "bottom shift is followed by increasing rotation toward floor",
+      "provenance": "derived",
+      "quantity": "material_proxy",
+      "relation": "coupled_monotonic",
+      "rule_id": "conservation_c3",
+      "sinks": [
+        "pose"
+      ],
+      "sources": [
+        "corner_state"
+      ],
+      "tolerance": 0.1
+    }
+  ],
+  "lifecycles": [
+    {
+      "entity_id": "box",
+      "from_stage": "setup",
+      "from_state": "centered_support; vertical",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "centered_support",
+          "shifted_sideways"
+        ],
+        [
+          "vertical",
+          "horizontal_side_supported"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "shifted_sideways; horizontal_side_supported"
+    }
+  ]
+}

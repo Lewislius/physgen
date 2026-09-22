@@ -1,0 +1,326 @@
+{
+  "assumptions": [],
+  "constraints": [
+    {
+      "after": "direction_reverse",
+      "before": "racket_contact",
+      "id": "c1",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "precedes"
+    },
+    {
+      "cause": "racket_contact",
+      "effect": "direction_reverse",
+      "id": "c2",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "requires"
+    },
+    {
+      "effects": [
+        "gap_cycle",
+        "direction_reverse"
+      ],
+      "id": "c3",
+      "relation": "direction reverses as the post-contact gap reopens",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "couples"
+    },
+    {
+      "facts": [
+        "gap_state=departing_separated",
+        "direction=opposite_away"
+      ],
+      "id": "c4",
+      "source_refs": [
+        "origin"
+      ],
+      "state": "z1",
+      "type": "persists"
+    },
+    {
+      "facts": [
+        "direction=toward_racket",
+        "direction=opposite_away"
+      ],
+      "id": "c5",
+      "scope": "same_time",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "excludes"
+    }
+  ],
+  "control": {},
+  "design_revision": "fixed5-causal-r3",
+  "entities": [
+    {
+      "id": "ball",
+      "mention": "the same tennis ball",
+      "role": "actor",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "id": "racket",
+      "mention": "the same tennis racket",
+      "role": "patient",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "description": "visible tennis ball-racket contact",
+      "id": "racket_contact",
+      "observable": "the ball boundary meets the racket strings",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "generation_basis": {
+    "mode": "identifier_only",
+    "reference_image_usage": "identifier_only",
+    "semantic_inputs": [
+      "origin",
+      "planner_instructions"
+    ]
+  },
+  "global_semantic": "One tennis racket strikes one approaching tennis ball and sends the same ball back in the opposite direction.",
+  "grounding": {
+    "approved": false,
+    "coordinate_frame": "reference_input",
+    "entity_boxes": [],
+    "protected_boxes": [],
+    "reference_image": "P03-i0-1280x704.png",
+    "reference_image_usage": "identifier_only"
+  },
+  "predicates": [
+    {
+      "attribute": "gap_to:racket",
+      "id": "gap_state",
+      "observable": "gap closes before contact and reopens afterward",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "ball",
+      "values": [
+        "approaching_separated",
+        "departing_separated"
+      ]
+    },
+    {
+      "attribute": "travel_direction",
+      "id": "direction",
+      "observable": "ball displacement direction relative to the racket",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "ball",
+      "values": [
+        "toward_racket",
+        "opposite_away"
+      ]
+    }
+  ],
+  "protected_predicates": [
+    "same single tennis ball",
+    "same tennis racket",
+    "court and camera remain unchanged"
+  ],
+  "sample_id": "P03",
+  "schema_version": "trace-writer-v1",
+  "source_files": {
+    "origin": "P03-origin.txt",
+    "planner_instructions": "Project/physGen/prompt/generate_trace_writer_v1_plan.txt",
+    "reference_input": "P03-i0-1280x704.png"
+  },
+  "stages": [
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "setup",
+      "observable_check": "The same ball moves toward the racket and the gap shrinks.",
+      "positive": "The tennis ball approaches the racket along one visible path while a gap remains.",
+      "support_kind": "motion_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "The ball already travels away from the racket before completing its incoming approach.",
+          "type": "outcome_preset"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c1",
+        "c2"
+      ],
+      "id": "onset",
+      "observable_check": "Ball-racket contact ends the incoming path before reversal.",
+      "positive": "The approaching tennis ball visibly meets the racket strings before reversing direction.",
+      "support_kind": "contact_interface",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1",
+            "c2"
+          ],
+          "text": "The tennis ball reverses while a visible gap from the racket still remains.",
+          "type": "trigger_missing"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c3"
+      ],
+      "id": "evolution",
+      "observable_check": "The ball leaves the contact point along the opposite path.",
+      "positive": "After contact, the same ball reverses and travels back along the opposite direction.",
+      "support_kind": "motion_contact_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c3"
+          ],
+          "text": "The ball reverses direction but its gap from the racket never reopens.",
+          "type": "coupling_broken"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c3",
+        "c4"
+      ],
+      "id": "completion",
+      "observable_check": "The post-contact gap grows consistently in the outgoing direction.",
+      "positive": "The outgoing ball gains visible separation from the racket along its reversed path.",
+      "support_kind": "motion_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c3",
+            "c4"
+          ],
+          "text": "The ball lingers at the racket and never establishes a separated outgoing path.",
+          "type": "incomplete_transition"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c4",
+        "c5"
+      ],
+      "id": "terminal",
+      "observable_check": "Final displacement continues away from the racket without another reversal.",
+      "positive": "The same tennis ball remains on the opposite outgoing path away from the racket.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c4"
+          ],
+          "text": "The outgoing ball turns back toward the racket again during the final frames.",
+          "type": "reversal"
+        },
+        {
+          "constraint_ids": [
+            "c5"
+          ],
+          "text": "Duplicated tennis balls travel toward and away from the racket simultaneously.",
+          "type": "exclusion_broken"
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "facts": {
+        "direction": "toward_racket",
+        "gap_state": "approaching_separated"
+      },
+      "id": "z0",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "facts": {
+        "direction": "opposite_away",
+        "gap_state": "departing_separated"
+      },
+      "id": "z1",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "cause_event": "racket_contact",
+      "effects": [
+        {
+          "direction": "gap closes to contact then reopens",
+          "from": "approaching_separated",
+          "id": "gap_cycle",
+          "predicate": "gap_state",
+          "to": "departing_separated"
+        },
+        {
+          "direction": "travel reverses through the contact point",
+          "from": "toward_racket",
+          "id": "direction_reverse",
+          "predicate": "direction",
+          "to": "opposite_away"
+        }
+      ],
+      "from": "z0",
+      "id": "e1",
+      "kind": "triggered",
+      "preconditions": [
+        "gap_state=approaching_separated",
+        "direction=toward_racket"
+      ],
+      "source_refs": [
+        "origin"
+      ],
+      "support_kind": "motion_contact_corridor",
+      "to": "z1"
+    }
+  ],
+  "warnings": []
+}

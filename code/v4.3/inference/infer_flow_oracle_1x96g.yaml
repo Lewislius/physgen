@@ -1,0 +1,49 @@
+name: 2h-physgen-v43-flow-oracle-step0100-demo41-infer-1x96g
+description: Native V4.3 step100 corrector; reference I2V plus P01-P20 I2V/T2V, 41 videos; 121 frames; UniPC50 shift5 CFG5 seed42; empty negative prompt; no GT, JEPA or Oracle at inference
+workspace: ALL-IN-ONE
+project: wan-animate
+max_restarts: 0
+resources:
+  resource_pool: blk-96g
+  slots_per_trial: 1
+  is_single_node: true
+  shm_size: 34359738368
+bind_mounts:
+  - host_path: /mount/HOME/liuzhirui
+    container_path: /home/liuzhirui
+  - host_path: /mount/NAS1/public
+    container_path: /run/determined/NAS1/public
+environment:
+  image: 10.130.130.5:8192/lab-dev:latest
+  environment_variables:
+    - CHECKPOINT=/home/liuzhirui/Project/physGen/code/v4.3/checkpoints/v43_native_joint_flow_oracle_20260918T143237Z-e47bdd74/checkpoint-final
+    - SUITE=both
+    - DEMO_MODES=both
+    - SAMPLE_IDS=all
+    - VARIANT=full
+    - SOLVER=unipc
+    - SAMPLING_STEPS=50
+    - FRAMES=121
+    - FPS=24
+    - DURATION=5
+    - SHIFT=5
+    - GUIDANCE=5
+    - SEED=42
+    - DEVICE=0
+    - OMP_NUM_THREADS=4
+    - PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+    # The launcher passes --negative-prompt '' to use the trained empty-text CFG branch.
+    # Set OUTPUT and RESUME_INFERENCE=1 to resume an existing, matching batch plan.
+checkpoint_storage:
+  type: shared_fs
+  host_path: /mount/HOME/liuzhirui
+  storage_path: Project/physGen/code/v4.3/determined_checkpoints
+  save_experiment_best: 0
+  save_trial_best: 0
+  save_trial_latest: 0
+searcher:
+  name: single
+  metric: completed_cases
+  max_length: {epochs: 1}
+  smaller_is_better: false
+entrypoint: bash /home/liuzhirui/Project/physGen/code/v4.3/inference/infer_flow_oracle_1x96g.sh

@@ -1,0 +1,115 @@
+# V4 A1 architecture/optimization; user-specified 121 frames, JEPA32, I2V only.
+run_name: v42_v4_fullwidth3_without_prior_A1_1x96g
+stage: A
+phase: A1
+paths:
+  wan_code: /home/liuzhirui/model/Wan2.2
+  wan_checkpoint: /home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B
+  teacher_code: /home/liuzhirui/model/vjepa2
+  teacher_checkpoint: /home/liuzhirui/model/vjepa2/checkpoint/vjepa2_1_vitG_384.pt
+  wisa_videos: /run/determined/NAS1/public/Dataset/WISA/data/videos
+  wisa_index: /run/determined/NAS1/public/Dataset/WISA/data/wisa-80k.json
+  cache_root: ${V42_ROOT}/cache/wisa2400_nativefps_f121_a147456_fp32_jepa32
+  null_text_cache: ${V42_ROOT}/cache/inference_conditions/v4_empty_text.pt
+  checkpoint_root: ${V42_ROOT}/checkpoints
+  log_root: ${V42_ROOT}/train/train_log
+data:
+  cache_format: v42_f121_jepa32
+  training_mode: i2v
+  vae_dtype: float32
+  teacher_sampling: adjacent_pairs
+  limit: 2400
+  selection_file: null
+  split_seed: 20260909
+  validation_stride: 20
+  max_frames: 121
+  max_long_side: 512
+  max_area: 147456
+  decode_chunk_frames: 8
+  clip_annotations: null
+  teacher_size: 384
+  teacher_frames: 32
+corrector:
+  architecture: v4_fullwidth3_write_v1
+  initialization: image_text_gt
+  fusion: cross_attention
+  # Original V4 P0 initializer only. Corrector attention/MLPs are all 1664/26 heads.
+  prior_width: 512
+  prior_heads: 8
+  prior_depth: 2
+  prior_video_pool: 8
+  parameter_sharing: per_block
+  a_blocks: [5, 15, 25]
+  a_every: 0
+  include_b: false
+  block_b: 18
+  iterations: 1
+  checkpoint_cell: true
+  state_strength: 0.2
+  write_strength: 0.1
+  early_write_width: 0.1
+  early_write_floor: 0.1
+  handoff_sigma: 0.65
+  handoff_width: 0.15
+  late_sigma: 0.15
+  late_floor: 0.25
+  seconds_scale: 1.0
+loss:
+  fm_weight: 1.0
+  struct_weight: 0.1
+  struct_warmup_steps: 200
+  struct_noise_width: 0.2
+  prior_weight: 0.0  # Disabled; P0 remains trained through FM and STRUCT.
+  # Raw MSE in V4 Wan hidden coordinates; no budget-based normalization/clipping.
+  # Native-H MSE measured ~0.0042 on full121; 1.0 replaces the ineffective 0.01.
+  # Keep observing the independent gradients; this is not a gradient cap/projection.
+  write_weight: 1.0
+  out_weight: 0.0
+  out_every: 4
+  out_sigma_min: 0.05
+  out_sigma_max: 0.4
+write_supervision:
+  max_relative_strength: 0.2
+  warp_latent_pixels: 0.5
+train:
+  seed: 20260909
+  sample_limit: 0
+  steps: 800
+  learning_rate: 0.0001
+  weight_decay: 0.01
+  warmup_steps: 100
+  minimum_lr_ratio: 0.1
+  global_batch_size: 8
+  workers: 2
+  pin_memory: true
+  loader_timeout_seconds: 120
+  text_dropout: 0.1
+  gt_condition_dropout: 0.25
+  sigma_min: 0.02
+  sigma_max: 0.999
+  state_warmup_every: 0
+  grad_clip: 1.0
+  save_every: 100
+diagnostics:
+  trace_steps: 1
+  stack_timeout_seconds: 120
+  trace_wan_blocks: false
+  # Observation only: weighted gradients on one perturbed microbatch every 25 steps.
+  loss_grad_every: 25
+logging:
+  wandb:
+    enabled: false
+    project: physgen-v42-v4-restored
+    entity: null
+validation:
+  every: 100
+  samples_per_rank: 1
+  sigmas: [0.1, 0.35, 0.6, 0.85, 0.98]
+  seed: 93001
+phases:
+  A1:
+    stage: A
+    iterations: 1
+    out_weight: 0.0
+    steps: 800
+    learning_rate: 0.0001

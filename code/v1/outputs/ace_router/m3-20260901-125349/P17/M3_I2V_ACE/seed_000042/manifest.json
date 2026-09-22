@@ -1,0 +1,347 @@
+{
+  "ace": {
+    "cfg_scope": "conditional_only",
+    "diagnostics": "full",
+    "enabled": true,
+    "formula": "semantic + relative_cap(scale * (positive - counterfactual), semantic)",
+    "fp32_delta": true,
+    "lambda0": 0.1,
+    "layer_gates": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "layer_preset": "mid_b",
+    "residual_cap_eps": 1e-12,
+    "residual_cap_ratio": 0.02,
+    "residual_mode": "positive_minus_counterfactual",
+    "step_gates": [
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1
+    ],
+    "step_preset": "safe_i2v_v1"
+  },
+  "contexts": {
+    "causal_origin_prompt_prefixed": false,
+    "cfg_negative_prompt": "",
+    "compiler_version": "ace-conditioning-mvp-v1",
+    "conditioning_mode": "compiled",
+    "counterfactual_text": "The sponge regains its original shape while the hand is still pressing it, and the hand lifts afterward.",
+    "positive_text": "The hand compresses the sponge until visibly flattened, lifts away, and the same sponge then expands gradually toward its original shape.",
+    "semantic_text": "A hand presses a dry sponge flat, then lifts away as the same sponge gradually regains its shape. Required visible entities: one hand; one dry sponge; flat support surface. At the beginning: sponge: dry, intact, uncompressed, and at its original thickness; hand: open, hovering above the sponge, and spatially separated. Required state changes: sponge thickness: original to flattened; hand contact: hovering to pressing to lifted; sponge shape: compressed to gradually recovered. These event variables are allowed to change: hand vertical position and contact state; sponge thickness and shape; sponge recovery progress. Preserve throughout: static side three-quarter camera; sponge identity, color, and dry material appearance; flat surface and background; one hand; one dry sponge; the same sponge and support surface.",
+    "semantic_variant": "compiled_i2v",
+    "token_lengths": {
+      "cfg_negative": 1,
+      "counterfactual": 25,
+      "positive": 33,
+      "semantic": 190
+    },
+    "used_by_model": {
+      "cfg_negative": false,
+      "cfg_unconditional_empty": true,
+      "counterfactual": true,
+      "positive": true,
+      "semantic": true
+    },
+    "utf8_sha256": {
+      "cfg_negative": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "counterfactual": "be261455e9ffe2975aabad68862283bd5ac2e961fd10e47c8f3cf742f1de0f4d",
+      "positive": "dcf8c5ea19bde951ad305897c55a834f5811e7990307803fe334e9b66338150c",
+      "semantic": "3dd9277a507380079b7ed9148dac006905ce23f0a4d1ba43eb65a869545bb569"
+    }
+  },
+  "diagnostics": {
+    "all_finite": true,
+    "applied_to_semantic_max": 0.02000308223068714,
+    "applied_to_semantic_min": 0.0010285725584253669,
+    "candidate_to_semantic_max": 0.02823025733232498,
+    "candidate_to_semantic_min": 0.0010285956086590886,
+    "clip_coefficient_min": 0.7084596753120422,
+    "clip_fraction": 0.16,
+    "clipped_record_count": 80,
+    "mode": "full",
+    "raw_delta_l2_max": 154.12905883789062,
+    "raw_delta_l2_min": 30.061084747314453,
+    "record_count": 500,
+    "scaled_to_semantic_max": 0.02000308223068714,
+    "scaled_to_semantic_min": 0.0010285725584253669
+  },
+  "generation": {
+    "convert_model_dtype": true,
+    "first_frame_reanchor_count": 51,
+    "fps": 24,
+    "frame_num": 97,
+    "guide_scale": 5.0,
+    "height": 704,
+    "max_area": 901120,
+    "offload_model": true,
+    "sample_solver": "unipc",
+    "sampling_steps": 50,
+    "seed": 42,
+    "shift": 5.0,
+    "t5_cpu": true,
+    "width": 1280
+  },
+  "input_hashes": {
+    "causal_json": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P17/P17-cplus-cminus.json",
+      "sha256": "105eb273a1362fde54edafae5aa215079d1ec03823ace91a8401a09606016473",
+      "size_bytes": 977
+    },
+    "i0_image": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P17/P17-i0-1280x704.png",
+      "sha256": "d91746f1a984f6f5534b315d091aaeca8a97cc4799c32be3815c30a2522bd17a",
+      "size_bytes": 1266143
+    },
+    "i0_metadata_json": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P17/P17-i0.json",
+      "sha256": "44792aa4a8e92a2ba54c49d7c49330b783e7e6554ee4a3f5d700aeeeb804025b",
+      "size_bytes": 1627
+    },
+    "model_reference_image": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/outputs/ace_router/m3-20260901-125349/P17/M3_I2V_ACE/seed_000042/reference_input.png",
+      "sha256": "f551009c985adf368a402b23ce0b739120c26118040ae42ca9c13357fe60bc78",
+      "size_bytes": 954182
+    },
+    "origin_txt": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P17/P17-origin.txt",
+      "sha256": "04c44fc59fad4814fb3823d66fe5a5c113bee3f5f6393c99ea9780e43defefd1",
+      "size_bytes": 98
+    },
+    "selection_manifest": null,
+    "sizing_image": null
+  },
+  "method": "M3_I2V_ACE",
+  "output_video": "/home/liuzhirui/Project/physGen/code/v1/outputs/ace_router/m3-20260901-125349/P17/M3_I2V_ACE/seed_000042/video.mp4",
+  "output_video_sha256": "6ec07b13434177ba031995c9c1479de2497bdd99a4a09429bffd8f90056a9036",
+  "reference": {
+    "crop_box": [
+      0,
+      0,
+      1280,
+      704
+    ],
+    "crop_policy": "center_crop_to_20x11_or_11x20_then_lanczos_resize",
+    "orientation": "landscape",
+    "original_size": [
+      1280,
+      704
+    ],
+    "prepared_artifact_path": "/home/liuzhirui/Project/physGen/code/v1/outputs/ace_router/m3-20260901-125349/P17/M3_I2V_ACE/seed_000042/reference_input.png",
+    "prepared_artifact_sha256": "f551009c985adf368a402b23ce0b739120c26118040ae42ca9c13357fe60bc78",
+    "prepared_size": [
+      1280,
+      704
+    ],
+    "resolved_output_size": [
+      1280,
+      704
+    ],
+    "selection_manifest": null,
+    "source_path": "/home/liuzhirui/Project/physGen/code/v1/demo/P17/P17-i0-1280x704.png",
+    "source_sha256": "d91746f1a984f6f5534b315d091aaeca8a97cc4799c32be3815c30a2522bd17a",
+    "used_as_model_condition": true,
+    "used_for_output_sizing_only": false
+  },
+  "run_id": "m3-20260901-125349",
+  "runtime": {
+    "cuda_capability": [
+      8,
+      6
+    ],
+    "cuda_memory_reserved_bytes": 34779168768,
+    "cuda_runtime": "12.8",
+    "cudnn": 91002,
+    "denoising_step_timing": {
+      "all_steps_median_seconds": 10.29254443359375,
+      "count": 50,
+      "max_seconds": 14.668158203125,
+      "min_seconds": 9.9969619140625,
+      "per_step_seconds": [
+        9.9969619140625,
+        10.0698125,
+        10.12257421875,
+        10.16875,
+        10.20385546875,
+        11.910447265625,
+        10.2554697265625,
+        10.26778515625,
+        10.280884765625,
+        10.2984306640625,
+        10.3034609375,
+        10.3052451171875,
+        10.3233466796875,
+        10.3306044921875,
+        10.330615234375,
+        12.247064453125,
+        10.300412109375,
+        10.2993662109375,
+        10.3046728515625,
+        10.3003125,
+        10.302203125,
+        10.3100234375,
+        11.5773125,
+        10.293673828125,
+        11.5100341796875,
+        10.2830673828125,
+        10.2835439453125,
+        10.289453125,
+        10.29242578125,
+        10.295046875,
+        10.2881083984375,
+        10.2926630859375,
+        10.29166796875,
+        10.2977041015625,
+        14.668158203125,
+        10.2674296875,
+        10.2731728515625,
+        10.27945703125,
+        10.275640625,
+        10.2839453125,
+        10.4508701171875,
+        10.29154296875,
+        10.28791015625,
+        10.29029296875,
+        10.29502734375,
+        10.29048828125,
+        12.114787109375,
+        10.9428388671875,
+        10.28168359375,
+        10.2839345703125
+      ],
+      "stable_median_seconds": 10.2926630859375,
+      "warmup_first_step_seconds": 9.9969619140625
+    },
+    "diffusers": "0.36.0",
+    "elapsed_seconds": 657.9530330798589,
+    "gpu": "NVIDIA RTX A6000",
+    "peak_cuda_bytes": 24456262144,
+    "platform": "Linux-5.15.0-139-generic-x86_64-with-glibc2.35",
+    "python": "3.10.19",
+    "torch": "2.8.0+cu128"
+  },
+  "sample_id": "P17",
+  "seed": 42,
+  "status": "success",
+  "upstream": {
+    "checkpoint": "/home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B",
+    "checkpoint_hashes": {
+      "config.json": "d1fea36899d00c2501b836c13ad65af56e2f9529ba622e50886d3f5c3e6c02bc",
+      "diffusion_pytorch_model.safetensors.index.json": "bfa2337f1163e195d24151a72298daf34a620543898109be47e414c8daa5b3fe"
+    },
+    "checkpoint_model_config": {
+      "_class_name": "WanModel",
+      "dim": 3072,
+      "in_dim": 48,
+      "model_type": "ti2v",
+      "num_heads": 24,
+      "num_layers": 30,
+      "out_dim": 48,
+      "text_len": 512
+    },
+    "source_hashes": {
+      "wan/configs/wan_ti2v_5B.py": "26d9e7b9c555eb0900b13751267a596556f869e7aee2d1572afc2a0a4a76f4c7",
+      "wan/modules/attention.py": "c79158e1cc9b7a17bc934e6acb34f42e588a41adb89801146957cda2d6d4379d",
+      "wan/modules/model.py": "8b39115298ca7322806c19b3165b3f435a94fe4a58f0624aec24f8e7f4997432",
+      "wan/modules/t5.py": "8b0cebf3192c542f92a344255a06c203df3ba24160715899a055cc8de0cd930f",
+      "wan/textimage2video.py": "228f2fabf23014ed41ec6b8cd713d5be7371bb558501c71a62a0258b491a877b"
+    },
+    "wan_git_head": "08e890ff01ff8daf9161db472f362efe5d6ba656",
+    "wan_repo": "/home/liuzhirui/model/Wan2.2",
+    "weight_shards": [
+      {
+        "mtime_ns": 1769032249319825600,
+        "name": "diffusion_pytorch_model-00001-of-00003.safetensors",
+        "size_bytes": 9825014472
+      },
+      {
+        "mtime_ns": 1769032417046557795,
+        "name": "diffusion_pytorch_model-00002-of-00003.safetensors",
+        "size_bytes": 9995661736
+      },
+      {
+        "mtime_ns": 1769020338553636583,
+        "name": "diffusion_pytorch_model-00003-of-00003.safetensors",
+        "size_bytes": 178558176
+      }
+    ]
+  },
+  "warnings": [
+    "selection_manifest_missing"
+  ]
+}

@@ -1,0 +1,433 @@
+{
+  "schema_version": "trace-direct-v1",
+  "design_revision": "p0-stage-direct-json-r2",
+  "sample_id": "P17",
+  "source_files": {
+    "origin": "P17-origin.txt",
+    "frame_zero_metadata": "P17-i0.json",
+    "reference_input": "P17-i0-1280x704.jpg"
+  },
+  "initial_condition": {
+    "type": "visible_actuator",
+    "description": "A visible hand above the sponge supplies the downward pressing force."
+  },
+  "global_semantic": "Fixed three-quarter side view of one hand pressing one dry yellow sponge straight down on a white marble surface. The same sponge becomes flatter under the palm; after the hand lifts, it gradually regains its original thickness and remains resting on the table.",
+  "cfg_negative": " ",
+  "entities": [
+    {
+      "id": "hand",
+      "mention": "one visible hand",
+      "role": "actor"
+    },
+    {
+      "id": "sponge",
+      "mention": "one dry yellow rectangular sponge",
+      "role": "patient"
+    },
+    {
+      "id": "surface",
+      "mention": "one white marble surface",
+      "role": "environment"
+    }
+  ],
+  "structured_guidance": {
+    "schema_version": "structured-text-guidance-v1",
+    "entities": [
+      {
+        "id": "hand",
+        "label": "visible human hand",
+        "count": 1,
+        "persistent": false,
+        "invariants": [
+          "natural hand anatomy",
+          "single identity"
+        ]
+      },
+      {
+        "id": "sponge",
+        "label": "dry yellow rectangular sponge",
+        "count": 1,
+        "persistent": true,
+        "invariants": [
+          "yellow porous material appearance",
+          "intact sponge identity",
+          "continuous material with no tearing"
+        ]
+      },
+      {
+        "id": "surface",
+        "label": "white marble surface",
+        "count": 1,
+        "persistent": true,
+        "invariants": [
+          "flat rigid geometry",
+          "white marble appearance",
+          "stationary identity"
+        ]
+      }
+    ],
+    "initial_condition": {
+      "type": "visible_actuator",
+      "active_stages": [
+        "setup"
+      ],
+      "facts": [
+        "The open hand begins above the sponge and supplies a straight downward pressing force.",
+        "The dry sponge starts at its full uncompressed thickness on the marble surface."
+      ]
+    },
+    "stages": [
+      {
+        "id": "setup",
+        "entity_states": [
+          {
+            "entity_id": "hand",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "moving straight down above the sponge"
+            ],
+            "mutable": [
+              "vertical position",
+              "pose"
+            ]
+          },
+          {
+            "entity_id": "sponge",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "uncompressed at full thickness"
+            ],
+            "mutable": []
+          }
+        ],
+        "relations": [
+          "A small air gap initially separates the palm and sponge top."
+        ]
+      },
+      {
+        "id": "onset",
+        "entity_states": [
+          {
+            "entity_id": "hand",
+            "presence": "transitioning",
+            "count": 1,
+            "states": [
+              "making first palm contact and beginning to press"
+            ],
+            "mutable": [
+              "vertical position",
+              "pose"
+            ]
+          },
+          {
+            "entity_id": "sponge",
+            "presence": "transitioning",
+            "count": 1,
+            "states": [
+              "beginning one elastic downward compression"
+            ],
+            "mutable": [
+              "thickness",
+              "elastic shape"
+            ]
+          }
+        ],
+        "relations": [
+          "The sponge remains supported by the marble and does not slide away."
+        ]
+      },
+      {
+        "id": "evolution",
+        "entity_states": [
+          {
+            "entity_id": "hand",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "continuing steady downward pressure"
+            ],
+            "mutable": [
+              "vertical position"
+            ]
+          },
+          {
+            "entity_id": "sponge",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "becoming visibly flatter under the palm"
+            ],
+            "mutable": [
+              "thickness",
+              "elastic shape"
+            ]
+          }
+        ],
+        "relations": [
+          "Only elastic shape and thickness change; the sponge stays one intact object."
+        ]
+      },
+      {
+        "id": "completion",
+        "entity_states": [
+          {
+            "entity_id": "hand",
+            "presence": "transitioning",
+            "count": 1,
+            "states": [
+              "lifting fully clear of the sponge"
+            ],
+            "mutable": [
+              "vertical position"
+            ]
+          },
+          {
+            "entity_id": "sponge",
+            "presence": "transitioning",
+            "count": 1,
+            "states": [
+              "expanding upward toward its original thickness"
+            ],
+            "mutable": [
+              "thickness",
+              "elastic shape"
+            ]
+          }
+        ],
+        "relations": [
+          "Recovery begins only after pressure is removed."
+        ]
+      },
+      {
+        "id": "terminal",
+        "entity_states": [
+          {
+            "entity_id": "sponge",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "recovered to full thickness and resting motionless"
+            ],
+            "mutable": []
+          }
+        ],
+        "relations": [
+          "Exactly one intact yellow sponge remains on the same marble surface."
+        ]
+      }
+    ]
+  },
+  "stages": [
+    {
+      "id": "setup",
+      "positive": "The uncompressed sponge rests at full thickness while the open hand moves down above it."
+    },
+    {
+      "id": "onset",
+      "positive": "The palm first contacts the sponge's top surface and begins pressing downward."
+    },
+    {
+      "id": "evolution",
+      "positive": "The same sponge becomes visibly flatter under the continuing hand pressure."
+    },
+    {
+      "id": "completion",
+      "positive": "The hand lifts clear and the sponge expands upward toward its original thickness."
+    },
+    {
+      "id": "terminal",
+      "positive": "The recovered sponge remains resting at full thickness on the marble surface."
+    }
+  ],
+  "warnings": [],
+  "generation_basis": {
+    "mode": "visual_grounding",
+    "reference_image_usage": "visual_grounding"
+  },
+  "grounding": {
+    "coordinate_frame": "reference_input",
+    "reference_image": "P17-i0-1280x704.jpg",
+    "approved": true,
+    "entity_boxes": [
+      {
+        "entity_id": "hand",
+        "box": [
+          0.23,
+          0.08,
+          0.77,
+          0.44
+        ]
+      },
+      {
+        "entity_id": "sponge",
+        "box": [
+          0.32,
+          0.52,
+          0.69,
+          0.81
+        ]
+      },
+      {
+        "entity_id": "surface",
+        "box": [
+          0.0,
+          0.7,
+          1.0,
+          1.0
+        ]
+      }
+    ]
+  },
+  "temporal_route": {
+    "latent_tokens": 25,
+    "crossfade_tokens": 2,
+    "interpolation": "smoothstep_c1",
+    "profile": "multi_transition",
+    "stage_order": [
+      "setup",
+      "onset",
+      "evolution",
+      "completion",
+      "terminal"
+    ],
+    "weights": [
+      [
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0
+      ]
+    ]
+  }
+}

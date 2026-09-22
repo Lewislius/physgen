@@ -1,0 +1,67 @@
+{
+  "causal_pair": {
+    "counterfactual_type": [
+      "no_op"
+    ],
+    "origin_prompt_prefixed": false,
+    "single_changed_relation": [
+      "the source bottle level remains static while the target glass level rises"
+    ]
+  },
+  "compiler_version": "ace-conditioning-mvp-v1",
+  "mode": "compiled",
+  "prompts": {
+    "causal_counterfactual": "The orange-juice stream raises the glass level while the bottle level remains unchanged throughout the transfer.",
+    "causal_positive": "The orange juice forms a continuous stream into the glass as the bottle level falls and the glass level rises together.",
+    "semantic": "A bottle pours orange juice through a visible stream into a glass until the bottle holds less and the glass holds more. Initial scene: A fixed side view of one bottle containing bright orange juice beside one empty glass on a level surface. The bottle opening is aligned above and slightly beside the glass, with the bottle contents, complete glass, and clear space between them fully visible and unobstructed under neutral lighting. Required visible entities: one bottle containing orange juice; one glass; level support surface. At the beginning: bottle: intact with a clearly visible initial orange-juice level; glass: intact, empty, and separated from the bottle opening. Required layout: bottle opening aligns with the glass opening; both complete containers and the bottle juice level remain visible; the intended stream region is unobstructed. Required state changes: bottle juice level: higher to lower; glass juice level: lower to higher; orange-juice configuration: bottle to stream and glass. These event variables are allowed to change: bottle orientation; bottle juice level; glass juice level; orange-juice stream shape. Preserve throughout: static side-view camera; bottle and glass identities; orange-juice color and neutral background; one bottle; one glass; the same orange juice and scene."
+  },
+  "sample_id": "P14",
+  "schema_version": 1,
+  "semantic_variant": "compiled_t2v",
+  "source_sections": {
+    "changed_state_variables": [
+      "bottle juice level: higher to lower",
+      "glass juice level: lower to higher",
+      "orange-juice configuration: bottle to stream and glass"
+    ],
+    "counterfactual_type": [
+      "no_op"
+    ],
+    "event_type": [
+      "colored-liquid transfer with coupled volumes"
+    ],
+    "initial_states": [
+      "bottle: intact with a clearly visible initial orange-juice level",
+      "glass: intact, empty, and separated from the bottle opening"
+    ],
+    "layout_requirements": [
+      "bottle opening aligns with the glass opening",
+      "both complete containers and the bottle juice level remain visible",
+      "the intended stream region is unobstructed"
+    ],
+    "preserved_context": [
+      "one bottle",
+      "one glass",
+      "the same orange juice and scene"
+    ],
+    "protected_scene_properties": [
+      "static side-view camera",
+      "bottle and glass identities",
+      "orange-juice color and neutral background"
+    ],
+    "required_visible_entities": [
+      "one bottle containing orange juice",
+      "one glass",
+      "level support surface"
+    ],
+    "single_changed_relation": [
+      "the source bottle level remains static while the target glass level rises"
+    ],
+    "transition_variables": [
+      "bottle orientation",
+      "bottle juice level",
+      "glass juice level",
+      "orange-juice stream shape"
+    ]
+  }
+}

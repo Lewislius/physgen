@@ -1,0 +1,413 @@
+{
+  "schema_version": "trace-direct-v1",
+  "design_revision": "p0-stage-direct-json-r2",
+  "sample_id": "P07",
+  "source_files": {
+    "origin": "P07-origin.txt",
+    "frame_zero_metadata": "P07-i0.json",
+    "reference_input": "P07-i0-1280x704.jpg"
+  },
+  "initial_condition": {
+    "type": "visible_actuator",
+    "description": "A visible hand pulls the lower corner so the tall box loses support and tips."
+  },
+  "global_semantic": "Fixed side view of one hand pulling the lower right corner of one tall tan cardboard box across a smooth gray floor. The same box loses its support, tips to the right onto one broad side, stops rotating, and remains lying there.",
+  "cfg_negative": " ",
+  "entities": [
+    {
+      "id": "hand",
+      "mention": "one visible hand",
+      "role": "actor"
+    },
+    {
+      "id": "box",
+      "mention": "one tall tan cardboard box",
+      "role": "patient"
+    },
+    {
+      "id": "floor",
+      "mention": "one smooth gray floor",
+      "role": "environment"
+    }
+  ],
+  "structured_guidance": {
+    "schema_version": "structured-text-guidance-v1",
+    "entities": [
+      {
+        "id": "hand",
+        "label": "visible human hand",
+        "count": 1,
+        "persistent": false,
+        "invariants": [
+          "natural hand anatomy",
+          "single identity"
+        ]
+      },
+      {
+        "id": "box",
+        "label": "tall tan cardboard box",
+        "count": 1,
+        "persistent": true,
+        "invariants": [
+          "rigid rectangular box geometry",
+          "tan cardboard appearance",
+          "single intact identity"
+        ]
+      },
+      {
+        "id": "floor",
+        "label": "smooth gray floor",
+        "count": 1,
+        "persistent": true,
+        "invariants": [
+          "flat fixed geometry",
+          "smooth gray appearance",
+          "stationary identity"
+        ]
+      }
+    ],
+    "initial_condition": {
+      "type": "visible_actuator",
+      "active_stages": [
+        "setup"
+      ],
+      "facts": [
+        "The hand initially pulls the lower right corner of the upright box.",
+        "The tall box begins with its base supported by the floor."
+      ]
+    },
+    "stages": [
+      {
+        "id": "setup",
+        "entity_states": [
+          {
+            "entity_id": "hand",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "pulling the lower right corner"
+            ],
+            "mutable": [
+              "position",
+              "pose"
+            ]
+          },
+          {
+            "entity_id": "box",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "upright with its weight still over its base"
+            ],
+            "mutable": [
+              "base position"
+            ]
+          }
+        ],
+        "relations": [
+          "The hand acts on only the one original box."
+        ]
+      },
+      {
+        "id": "onset",
+        "entity_states": [
+          {
+            "entity_id": "box",
+            "presence": "transitioning",
+            "count": 1,
+            "states": [
+              "losing support as its upper edge starts moving right"
+            ],
+            "mutable": [
+              "center position",
+              "orientation"
+            ]
+          }
+        ],
+        "relations": [
+          "The box begins one continuous rightward tip without bending."
+        ]
+      },
+      {
+        "id": "evolution",
+        "entity_states": [
+          {
+            "entity_id": "box",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "rotating continuously toward its broad right side"
+            ],
+            "mutable": [
+              "position",
+              "orientation",
+              "angular speed"
+            ]
+          }
+        ],
+        "relations": [
+          "The same box stays intact while approaching the floor."
+        ]
+      },
+      {
+        "id": "completion",
+        "entity_states": [
+          {
+            "entity_id": "hand",
+            "presence": "transitioning",
+            "count": 1,
+            "states": [
+              "releasing after the box lands"
+            ],
+            "mutable": [
+              "position"
+            ]
+          },
+          {
+            "entity_id": "box",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "placing its broad right side on the floor and stopping rotation"
+            ],
+            "mutable": [
+              "orientation",
+              "angular speed"
+            ]
+          }
+        ],
+        "relations": [
+          "The broad side contacts the floor once."
+        ]
+      },
+      {
+        "id": "terminal",
+        "entity_states": [
+          {
+            "entity_id": "box",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "lying motionless on its right side"
+            ],
+            "mutable": []
+          }
+        ],
+        "relations": [
+          "Exactly one intact cardboard box remains on the fixed floor."
+        ]
+      }
+    ]
+  },
+  "stages": [
+    {
+      "id": "setup",
+      "positive": "The hand pulls the box's lower right corner while the tall box is still upright."
+    },
+    {
+      "id": "onset",
+      "positive": "The box's weight shifts beyond its base and the upper edge starts moving right."
+    },
+    {
+      "id": "evolution",
+      "positive": "The same box rotates continuously toward its broad right side."
+    },
+    {
+      "id": "completion",
+      "positive": "The broad side contacts the floor, rotation stops, and the hand releases."
+    },
+    {
+      "id": "terminal",
+      "positive": "One cardboard box remains lying motionless on its right side."
+    }
+  ],
+  "warnings": [],
+  "generation_basis": {
+    "mode": "visual_grounding",
+    "reference_image_usage": "visual_grounding"
+  },
+  "grounding": {
+    "coordinate_frame": "reference_input",
+    "reference_image": "P07-i0-1280x704.jpg",
+    "approved": true,
+    "entity_boxes": [
+      {
+        "entity_id": "hand",
+        "box": [
+          0.15,
+          0.65,
+          0.37,
+          0.96
+        ]
+      },
+      {
+        "entity_id": "box",
+        "box": [
+          0.29,
+          0.04,
+          0.55,
+          0.96
+        ]
+      },
+      {
+        "entity_id": "floor",
+        "box": [
+          0.0,
+          0.66,
+          1.0,
+          1.0
+        ]
+      }
+    ]
+  },
+  "temporal_route": {
+    "latent_tokens": 25,
+    "crossfade_tokens": 2,
+    "interpolation": "smoothstep_c1",
+    "profile": "triggered",
+    "stage_order": [
+      "setup",
+      "onset",
+      "evolution",
+      "completion",
+      "terminal"
+    ],
+    "weights": [
+      [
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0
+      ]
+    ]
+  }
+}

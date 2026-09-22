@@ -1,0 +1,26 @@
+{
+  "date": "2026-09-12",
+  "status": "passed",
+  "scope": "Per-invocation timestamped training output, including resumed runs; collision rejection; completed-run discovery; launcher compatibility.",
+  "tests": {
+    "command": "/home/liuzhirui/miniconda3/envs/moviestory/bin/python -B -m unittest evaluation.test_checkpoint_paths evaluation.test_launchers evaluation.test_training_runtime evaluation.test_monitoring",
+    "count": 50,
+    "result": "OK",
+    "seconds": 22.766,
+    "environment": "CPU; rerun outside filesystem sandbox after local multiprocessing socket creation was denied",
+    "shell_syntax": "bash -n passed for training launcher, shared inference launcher, legacy inference entry and all three single-GPU entries"
+  },
+  "verified": [
+    "Repeated launches in the same second receive distinct output names.",
+    "Old and timestamped checkpoints resume to a new directory without accumulating old suffixes.",
+    "Resume retains optimizer schedule configuration and save_every=250.",
+    "A repeated checkpoint save fails before altering existing weights, RNG, configuration or latest metadata.",
+    "Directory reservation errors reach nonzero ranks before any write.",
+    "Completed-run selection skips unfinished saves, honors custom checkpoint roots and supports legacy names.",
+    "Stage and inference launchers preserve explicitly selected checkpoint paths."
+  ],
+  "limits": [
+    "No real GPU training or distributed NCCL save was launched for this change.",
+    "Already-started training processes keep the code and output paths loaded at startup."
+  ]
+}

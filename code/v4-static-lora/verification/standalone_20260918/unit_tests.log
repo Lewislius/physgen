@@ -1,0 +1,51 @@
+/home/liuzhirui/miniconda3/envs/moviestory/lib/python3.10/site-packages/torch/cuda/__init__.py:182: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 304: OS call failed or operation not supported on this OS (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+test_actual_four_cuda_devices_preserve_outputs_gradients_and_clipping (test_four_gpu.FourGpuTests) ... skipped 'Set RUN_FOUR_GPU_TEST=1 inside a four-GPU allocation'
+test_conditioning_cache_never_survives_a_forward (test_four_gpu.FourGpuTests) ... /home/liuzhirui/miniconda3/envs/moviestory/lib/python3.10/site-packages/torch/amp/autocast_mode.py:266: UserWarning: User provided device_type of 'cuda', but CUDA is not available. Disabling
+  warnings.warn(
+ok
+test_four_gpu_checkpoint_config_resume_and_inference_identity (test_four_gpu.FourGpuTests) ... ok
+test_layout_covers_all_thirty_blocks (test_four_gpu.FourGpuTests) ... ok
+test_loader_starts_from_cpu_instead_of_a_full_model_on_gpu0 (test_four_gpu.FourGpuTests) ... ok
+test_profile_preserves_bs8_and_all_training_hyperparameters (test_four_gpu.FourGpuTests) ... ok
+test_stage_hooks_cpu_offload_preserve_native_output_and_gradients (test_four_gpu.FourGpuTests) ... ok
+test_wrappers_do_not_patch_single_gpu_module_globals (test_four_gpu.FourGpuTests) ... ok
+test_wrong_launch_shape_fails_before_loading_model (test_four_gpu.FourGpuTests) ... ok
+test_batch_failure_keeps_completed_cases_and_reports_failed_case (test_inference.InferenceTests) ... {"event": "batch_start", "total": 2, "pending": 2, "checkpoint": "/home/liuzhirui/Project/physGen/code/v4-static-lora/tmp/tmpwj4_slq_/step0800"}
+{"event": "loading_wan", "path": "/home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B"}
+{"event": "ema_loaded", "checkpoint_step": 800, "path": "/home/liuzhirui/Project/physGen/code/v4-static-lora/tmp/tmpwj4_slq_/step0800"}
+{"event": "batch_progress", "completed": 1, "total": 2, "key": "P01_i2v"}
+ok
+test_demo41_matches_v4_prompt_image_mode_and_order (test_inference.InferenceTests) ... ok
+test_demo_prepare_does_not_read_training_cache_or_load_teacher (test_inference.InferenceTests) ... ok
+test_inference_needs_only_saved_config_and_ema_training_still_needs_resume_state (test_inference.InferenceTests) ... ok
+test_inference_rejects_wrong_config_and_unfinished_ema (test_inference.InferenceTests) ... ok
+test_real_preflight_forbids_all_v42_imports_and_file_access (test_inference.InferenceTests) ... ok
+test_resuming_completed_batch_skips_model_and_vae_loading (test_inference.InferenceTests) ... {"event": "batch_start", "total": 2, "pending": 0, "checkpoint": "/home/liuzhirui/Project/physGen/code/v4-static-lora/tmp/tmpo2_3zh9v/step0800"}
+ok
+test_source_compatibility_is_exact_and_inference_only (test_inference.InferenceTests) ... ok
+test_yaml_and_direct_shell_select_step0800_saved_config_demo41 (test_inference.InferenceTests) ... ok
+test_accumulated_fm_gradient_is_the_mean_of_eight_sources (test_static_lora.LoRATests) ... /home/liuzhirui/miniconda3/envs/moviestory/lib/python3.10/site-packages/torch/amp/autocast_mode.py:266: UserWarning: User provided device_type of 'cuda', but CUDA is not available. Disabling
+  warnings.warn(
+ok
+test_bfloat16_base_and_fp32_lora_weights_work_under_autocast (test_static_lora.LoRATests) ... ok
+test_cfg_uses_lora_on_both_branches (test_static_lora.LoRATests) ... ok
+test_checkpoint_every100_and_exact_optimizer_ema_rng_queue_resume (test_static_lora.LoRATests) ... ok
+test_checkpointed_native_blocks_preserve_output_and_parameter_gradients (test_static_lora.LoRATests) ... ok
+test_configuration_matches_formal_data_schedule_and_saved_json (test_static_lora.LoRATests) ... ok
+test_dataset_loads_only_vae_and_text_no_teacher_or_anchor (test_static_lora.LoRATests) ... ok
+test_final_inference_cases_exactly_match_formal_v42 (test_static_lora.LoRATests) ... ok
+test_fm_updates_only_lora_and_trains_a_after_b_leaves_zero (test_static_lora.LoRATests) ... ok
+test_full_5b_meta_model_has_only_240_lora_targets_and_47185920_trainables (test_static_lora.LoRATests) ... ok
+test_inference_preparation_reuses_cached_conditions_without_teacher (test_static_lora.LoRATests) ... ok
+test_lora_state_rejects_base_weights_and_changed_rank (test_static_lora.LoRATests) ... ok
+test_real_unipc_sampling_export_and_per_case_resume_on_cpu (test_static_lora.LoRATests) ... ok
+test_source_mode_noise_queues_match_formal_v42_for_all_1200_steps (test_static_lora.LoRATests) ... ok
+test_zero_lora_is_exactly_native_wan_in_both_modes (test_static_lora.LoRATests) ... /home/liuzhirui/miniconda3/envs/moviestory/lib/python3.10/site-packages/torch/amp/autocast_mode.py:266: UserWarning: User provided device_type of 'cuda', but CUDA is not available. Disabling
+  warnings.warn(
+ok
+
+----------------------------------------------------------------------
+Ran 33 tests in 8.800s
+
+OK (skipped=1)

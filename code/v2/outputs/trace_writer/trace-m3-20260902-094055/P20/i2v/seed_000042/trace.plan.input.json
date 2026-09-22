@@ -1,0 +1,426 @@
+{
+  "assumptions": [
+    "The kettle tilts leftward and slightly downward so its pictured spout directs coffee into the cup below-left."
+  ],
+  "constraints": [
+    {
+      "after": "pictured_cup_increase",
+      "before": "pictured_stream_onset",
+      "id": "c1",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "precedes"
+    },
+    {
+      "effect": "pictured_source_decrease",
+      "id": "c2",
+      "source_refs": [
+        "origin"
+      ],
+      "transition": "e1",
+      "type": "changes"
+    },
+    {
+      "effects": [
+        "pictured_source_decrease",
+        "pictured_stream_form",
+        "pictured_cup_increase"
+      ],
+      "id": "c3",
+      "relation": "visible spout outflow crosses one stream path and raises the dark surface inside the gray cup",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "type": "couples"
+    },
+    {
+      "facts": [
+        "source_amount=less",
+        "cup_level=higher"
+      ],
+      "id": "c4",
+      "source_refs": [
+        "origin"
+      ],
+      "state": "z1",
+      "type": "persists"
+    },
+    {
+      "facts": [
+        "cup_level=lower",
+        "cup_level=higher"
+      ],
+      "id": "c5",
+      "scope": "same_time",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "excludes"
+    }
+  ],
+  "design_revision": "fixed5-causal-r3",
+  "entities": [
+    {
+      "id": "kettle",
+      "mention": "the same stainless kettle with black handle and left-pointing spout at mid-right",
+      "role": "source",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    },
+    {
+      "id": "coffee_stream",
+      "mention": "coffee traveling from the pictured kettle spout to the cup",
+      "role": "carrier",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "id": "cup",
+      "mention": "the same small gray ceramic cup below and left of the kettle",
+      "role": "sink",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    },
+    {
+      "id": "campfire",
+      "mention": "the same small log campfire on the snowy ground at left",
+      "role": "environment",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "description": "coffee first leaves the left-pointing spout and reaches the gray cup",
+      "id": "pictured_stream_onset",
+      "observable": "the first continuous stream connects the metal spout to the cup opening",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    }
+  ],
+  "generation_basis": {
+    "mode": "visual_grounding",
+    "reference_image_usage": "visual_grounding",
+    "semantic_inputs": [
+      "origin",
+      "planner_instructions",
+      "reference_input"
+    ]
+  },
+  "global_semantic": "The stainless kettle at right tilts its left-pointing spout toward the gray cup and pours coffee into it while the campfire at left keeps flickering.",
+  "grounding": {
+    "approved": false,
+    "coordinate_frame": "reference_input",
+    "entity_boxes": [
+      {
+        "box": [
+          0.542,
+          0.242,
+          0.832,
+          0.708
+        ],
+        "entity_id": "kettle"
+      },
+      {
+        "box": [
+          0.458,
+          0.616,
+          0.619,
+          0.838
+        ],
+        "entity_id": "cup"
+      },
+      {
+        "box": [
+          0.102,
+          0.262,
+          0.509,
+          0.742
+        ],
+        "entity_id": "campfire"
+      }
+    ],
+    "protected_boxes": [
+      {
+        "box": [
+          0.102,
+          0.262,
+          0.509,
+          0.742
+        ],
+        "label": "unrelated campfire flicker region"
+      }
+    ],
+    "reference_image": "P20-i0-1280x704.png",
+    "reference_image_usage": "visual_grounding"
+  },
+  "predicates": [
+    {
+      "attribute": "coffee remaining at pictured source",
+      "id": "source_amount",
+      "observable": "cumulative coffee visibly leaving the left-pointing spout",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "subject": "kettle",
+      "values": [
+        "more",
+        "less"
+      ]
+    },
+    {
+      "attribute": "pictured transfer continuity",
+      "id": "stream_state",
+      "observable": "uninterrupted coffee path from the spout to the gray cup opening",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "subject": "coffee_stream",
+      "values": [
+        "absent",
+        "continuous"
+      ]
+    },
+    {
+      "attribute": "coffee level in gray cup",
+      "id": "cup_level",
+      "observable": "dark coffee surface rising within the cup rim",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "subject": "cup",
+      "values": [
+        "lower",
+        "higher"
+      ]
+    }
+  ],
+  "protected_predicates": [
+    "same stainless kettle, black handle, lid, and left-pointing spout",
+    "same small gray cup below-left of the kettle",
+    "campfire, logs, stones, and flames remain in their left-side region",
+    "campfire keeps flickering without reacting to the coffee transfer",
+    "snowy ground, framing, and daylight remain unchanged",
+    "no coffee spills onto the snow or campfire"
+  ],
+  "sample_id": "P20",
+  "schema_version": "trace-writer-v1",
+  "source_files": {
+    "origin": "P20-origin.txt",
+    "planner_instructions": "Project/physGen/prompt/generate_trace_writer_v1_plan.txt",
+    "reference_input": "P20-i0-1280x704.png"
+  },
+  "stages": [
+    {
+      "affected_roles": [
+        "source",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "setup",
+      "observable_check": "No coffee path yet spans the spout-to-cup gap.",
+      "positive": "The pictured kettle and gray cup retain their layout while the separate left campfire already flickers.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "The gray cup already shows its higher final coffee level before pouring.",
+          "type": "outcome_preset"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "onset",
+      "observable_check": "The initial stream begins exactly at the pictured metal spout.",
+      "positive": "The metal kettle tilts leftward and coffee first connects its spout to the gray cup opening.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "Coffee rises inside the gray cup before any stream reaches its rim.",
+          "type": "wrong_order"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c2",
+        "c3"
+      ],
+      "id": "evolution",
+      "observable_check": "Spout outflow, continuous stream, and dark cup surface advance together.",
+      "positive": "Coffee visibly leaves the spout, crosses the short gap, and raises the surface inside the cup.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c2",
+            "c3"
+          ],
+          "text": "Coffee leaves the spout but misses the cup or fails to raise its level.",
+          "type": "coupling_broken"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c3",
+        "c4"
+      ],
+      "id": "completion",
+      "observable_check": "The dark surface sits higher relative to the same gray rim.",
+      "positive": "The gray cup reaches a visibly higher coffee surface after receiving the pictured stream.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c3",
+            "c4"
+          ],
+          "text": "The stream reaches the gray rim but the coffee surface never rises.",
+          "type": "incomplete_transition"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c4",
+        "c5"
+      ],
+      "id": "terminal",
+      "observable_check": "Coffee stays in the cup and the left campfire remains independently active.",
+      "positive": "The higher cup level remains while the protected left campfire continues flickering in place.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c4"
+          ],
+          "text": "The gray cup returns to its lower starting level in final frames.",
+          "type": "reversal"
+        },
+        {
+          "constraint_ids": [
+            "c5"
+          ],
+          "text": "Lower and higher coffee surfaces coexist inside the same pictured cup.",
+          "type": "exclusion_broken"
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "facts": {
+        "cup_level": "lower",
+        "source_amount": "more",
+        "stream_state": "absent"
+      },
+      "id": "z0",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    },
+    {
+      "facts": {
+        "cup_level": "higher",
+        "source_amount": "less",
+        "stream_state": "continuous"
+      },
+      "id": "z1",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "cause_event": "pictured_stream_onset",
+      "effects": [
+        {
+          "direction": "coffee visibly exits the metal spout",
+          "from": "more",
+          "id": "pictured_source_decrease",
+          "predicate": "source_amount",
+          "to": "less"
+        },
+        {
+          "direction": "coffee bridges the gap from spout to cup",
+          "from": "absent",
+          "id": "pictured_stream_form",
+          "predicate": "stream_state",
+          "to": "continuous"
+        },
+        {
+          "direction": "dark coffee surface rises inside gray rim",
+          "from": "lower",
+          "id": "pictured_cup_increase",
+          "predicate": "cup_level",
+          "to": "higher"
+        }
+      ],
+      "from": "z0",
+      "id": "e1",
+      "kind": "continuous",
+      "preconditions": [
+        "source_amount=more",
+        "stream_state=absent",
+        "cup_level=lower"
+      ],
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "support_kind": "source_stream_sink",
+      "to": "z1"
+    }
+  ],
+  "warnings": [
+    "The coffee carrier is absent initially and therefore has no reference-frame box.",
+    "The opaque kettle hides its internal level; source decrease is grounded to cumulative visible spout outflow rather than invented interior detail.",
+    "All boxes are visually estimated from the reference and remain unapproved."
+  ]
+}

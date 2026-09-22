@@ -1,0 +1,160 @@
+{
+  "reason": "2026-09-17 checkpoint logging path collision fix and exact-digest resume compatibility; model, losses, optimizer, queue and schedule numerics unchanged.",
+  "transitions": [
+    {
+      "profile": "v42",
+      "before": "b21b941d761246d39078a1144712d174eea8046ec2286416fc1bf43c9fe45ddb",
+      "after": "884783d118728ccb38418d80c69ea7f47975fb7038073314d7d5935e9ed56fd0"
+    },
+    {
+      "profile": "batch1",
+      "before": "02645e71a7adf18e1a18ad4adb36ab501263bf3ab17dd8205a8dfb0167668897",
+      "after": "438eb861cf92c7deaf95bed36831c0fc249c37d191e71dfdc034389ac6992b93"
+    },
+    {
+      "profile": "lora",
+      "before": "a57cf856a46001d5afcd7662f717a2c8da945f1c182bc2be777157d0cea5694c",
+      "after": "b8fb3d280d088bca1f3bfcc67f75b50d5f4f07a0be3d57e3e252abeb388ef17d"
+    },
+    {
+      "profile": "four_gpu",
+      "before": "224f06d029564845422d3123163d2edd18d47558da4b81b2c430c118f9a7f7e5",
+      "after": "66a842932f6831c3d23e0d70f4c4f9aee2f3857ffda2199d40c4a7959311a6ea"
+    },
+    {
+      "profile": "quick16",
+      "before": "3b58a0ff7d2b95a784dfd38cf967c72d576a8beb670fa09660bb890502c3a8f0",
+      "after": "b8d0779770919a20690d01e1839cc629fd5e421c60e5cf027b10c0eecd9da977"
+    },
+    {
+      "profile": "v42",
+      "before": "884783d118728ccb38418d80c69ea7f47975fb7038073314d7d5935e9ed56fd0",
+      "after": "aa02d125a1ce906c3b5a002b965b286695217ac477f7c40a46bf25a381b0467f",
+      "reason": "2026-09-17 intermediate EMA/demo41 inference and JSON config numeric parsing; model, losses, optimizer, training schedule and sampling numerics unchanged."
+    },
+    {
+      "profile": "v42",
+      "before": "b21b941d761246d39078a1144712d174eea8046ec2286416fc1bf43c9fe45ddb",
+      "after": "aa02d125a1ce906c3b5a002b965b286695217ac477f7c40a46bf25a381b0467f",
+      "reason": "2026-09-17 intermediate EMA/demo41 inference and JSON config numeric parsing; model, losses, optimizer, training schedule and sampling numerics unchanged."
+    },
+    {
+      "profile": "batch1",
+      "before": "02645e71a7adf18e1a18ad4adb36ab501263bf3ab17dd8205a8dfb0167668897",
+      "after": "9662f850bdd693071dab1a968f66867e554b72285426fd192d32e61e99a0b991",
+      "reason": "2026-09-17 intermediate EMA/demo41 inference and JSON config numeric parsing; model, losses, optimizer, training schedule and sampling numerics unchanged."
+    },
+    {
+      "profile": "batch1",
+      "before": "438eb861cf92c7deaf95bed36831c0fc249c37d191e71dfdc034389ac6992b93",
+      "after": "9662f850bdd693071dab1a968f66867e554b72285426fd192d32e61e99a0b991",
+      "reason": "2026-09-17 intermediate EMA/demo41 inference and JSON config numeric parsing; model, losses, optimizer, training schedule and sampling numerics unchanged."
+    },
+    {
+      "profile": "quick16",
+      "before": "3b58a0ff7d2b95a784dfd38cf967c72d576a8beb670fa09660bb890502c3a8f0",
+      "after": "e1abaa0e049cdf2d14d3ea2dbffb968ba4d7a0e6d66817612344c7a8989e334c",
+      "reason": "2026-09-17 intermediate EMA/demo41 inference and JSON config numeric parsing; model, losses, optimizer, training schedule and sampling numerics unchanged."
+    },
+    {
+      "profile": "quick16",
+      "before": "b8d0779770919a20690d01e1839cc629fd5e421c60e5cf027b10c0eecd9da977",
+      "after": "e1abaa0e049cdf2d14d3ea2dbffb968ba4d7a0e6d66817612344c7a8989e334c",
+      "reason": "2026-09-17 intermediate EMA/demo41 inference and JSON config numeric parsing; model, losses, optimizer, training schedule and sampling numerics unchanged."
+    },
+    {
+      "profile": "lora",
+      "before": "b8fb3d280d088bca1f3bfcc67f75b50d5f4f07a0be3d57e3e252abeb388ef17d",
+      "after": "f42c5cf2e2bf0783b68637a6e6cced43192d917ea54d0d0ac7d391209f484951",
+      "reason": "Audited intermediate-checkpoint inference/reporting changes and JSON config parsing; production training source otherwise byte-identical to the tested checkpoint logging fix."
+    },
+    {
+      "profile": "lora",
+      "before": "a57cf856a46001d5afcd7662f717a2c8da945f1c182bc2be777157d0cea5694c",
+      "after": "f42c5cf2e2bf0783b68637a6e6cced43192d917ea54d0d0ac7d391209f484951",
+      "reason": "Audited intermediate-checkpoint inference/reporting changes and JSON config parsing; production training source otherwise byte-identical to the tested checkpoint logging fix."
+    },
+    {
+      "profile": "four_gpu",
+      "before": "66a842932f6831c3d23e0d70f4c4f9aee2f3857ffda2199d40c4a7959311a6ea",
+      "after": "e9ff0625d4bc0bf63a9d62571aa61f9d3d85166524c85900e3535e310c0ee1d5",
+      "reason": "Audited intermediate-checkpoint inference/reporting changes and JSON config parsing; production training source otherwise byte-identical to the tested checkpoint logging fix."
+    },
+    {
+      "profile": "four_gpu",
+      "before": "224f06d029564845422d3123163d2edd18d47558da4b81b2c430c118f9a7f7e5",
+      "after": "e9ff0625d4bc0bf63a9d62571aa61f9d3d85166524c85900e3535e310c0ee1d5",
+      "reason": "Audited intermediate-checkpoint inference/reporting changes and JSON config parsing; production training source otherwise byte-identical to the tested checkpoint logging fix."
+    },
+    {
+      "profile": "v42",
+      "before": "884783d118728ccb38418d80c69ea7f47975fb7038073314d7d5935e9ed56fd0",
+      "after": "077bf4ae3529e3f1a39b7d7164b3392864968172bfd1a2f00af1f16381e87333",
+      "reason": "Inference-only direct EMA loading, reusable input encodings and optional evaluation. Training/model/optimizer numerics unchanged."
+    },
+    {
+      "profile": "v42",
+      "before": "aa02d125a1ce906c3b5a002b965b286695217ac477f7c40a46bf25a381b0467f",
+      "after": "077bf4ae3529e3f1a39b7d7164b3392864968172bfd1a2f00af1f16381e87333",
+      "reason": "Inference-only direct EMA loading, reusable input encodings and optional evaluation. Training/model/optimizer numerics unchanged."
+    },
+    {
+      "profile": "v42",
+      "before": "b21b941d761246d39078a1144712d174eea8046ec2286416fc1bf43c9fe45ddb",
+      "after": "077bf4ae3529e3f1a39b7d7164b3392864968172bfd1a2f00af1f16381e87333",
+      "reason": "Inference-only direct EMA loading, reusable input encodings and optional evaluation. Training/model/optimizer numerics unchanged."
+    },
+    {
+      "profile": "batch1",
+      "before": "02645e71a7adf18e1a18ad4adb36ab501263bf3ab17dd8205a8dfb0167668897",
+      "after": "78b98c26d7c00502f55c5295eb556bf93359f20fe2aeade8d21db200f8a2919c",
+      "reason": "Inference-only direct EMA loading, reusable input encodings and optional evaluation. Training/model/optimizer numerics unchanged."
+    },
+    {
+      "profile": "batch1",
+      "before": "438eb861cf92c7deaf95bed36831c0fc249c37d191e71dfdc034389ac6992b93",
+      "after": "78b98c26d7c00502f55c5295eb556bf93359f20fe2aeade8d21db200f8a2919c",
+      "reason": "Inference-only direct EMA loading, reusable input encodings and optional evaluation. Training/model/optimizer numerics unchanged."
+    },
+    {
+      "profile": "batch1",
+      "before": "9662f850bdd693071dab1a968f66867e554b72285426fd192d32e61e99a0b991",
+      "after": "78b98c26d7c00502f55c5295eb556bf93359f20fe2aeade8d21db200f8a2919c",
+      "reason": "Inference-only direct EMA loading, reusable input encodings and optional evaluation. Training/model/optimizer numerics unchanged."
+    },
+    {
+      "profile": "quick16",
+      "before": "3b58a0ff7d2b95a784dfd38cf967c72d576a8beb670fa09660bb890502c3a8f0",
+      "after": "ef928d855eba33721b0c5d08222e20c53b22bd1097655d5b751010820f8d11dc",
+      "reason": "Inference-only direct EMA loading, reusable input encodings and optional evaluation. Training/model/optimizer numerics unchanged."
+    },
+    {
+      "profile": "quick16",
+      "before": "b8d0779770919a20690d01e1839cc629fd5e421c60e5cf027b10c0eecd9da977",
+      "after": "ef928d855eba33721b0c5d08222e20c53b22bd1097655d5b751010820f8d11dc",
+      "reason": "Inference-only direct EMA loading, reusable input encodings and optional evaluation. Training/model/optimizer numerics unchanged."
+    },
+    {
+      "profile": "quick16",
+      "before": "e1abaa0e049cdf2d14d3ea2dbffb968ba4d7a0e6d66817612344c7a8989e334c",
+      "after": "ef928d855eba33721b0c5d08222e20c53b22bd1097655d5b751010820f8d11dc",
+      "reason": "Inference-only direct EMA loading, reusable input encodings and optional evaluation. Training/model/optimizer numerics unchanged."
+    }
+  ],
+  "inference_update_reason": "2026-09-17 intermediate EMA/demo41 inference and JSON config numeric parsing; model, losses, optimizer, training schedule and sampling numerics unchanged.",
+  "audits": [
+    {
+      "verified_at": "2026-09-17T14:12:23.919177+00:00",
+      "current_digests": {
+        "v42": "aa02d125a1ce906c3b5a002b965b286695217ac477f7c40a46bf25a381b0467f",
+        "batch1": "9662f850bdd693071dab1a968f66867e554b72285426fd192d32e61e99a0b991",
+        "lora": "f42c5cf2e2bf0783b68637a6e6cced43192d917ea54d0d0ac7d391209f484951",
+        "four_gpu": "e9ff0625d4bc0bf63a9d62571aa61f9d3d85166524c85900e3535e310c0ee1d5",
+        "quick16": "e1abaa0e049cdf2d14d3ea2dbffb968ba4d7a0e6d66817612344c7a8989e334c"
+      },
+      "source_audit": "Reconstructed all four previously tested code digests exactly after reverting only inference/infer.py, inference/report.py and the JSON read_config branch in memory.",
+      "yaml_equals_saved_json": true,
+      "training_numerics_changed": false
+    }
+  ]
+}

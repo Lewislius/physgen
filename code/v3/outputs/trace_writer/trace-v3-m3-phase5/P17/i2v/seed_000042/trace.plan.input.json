@@ -1,0 +1,456 @@
+{
+  "assumptions": [],
+  "constraints": [
+    {
+      "after": "pictured_flatten",
+      "before": "pictured_hand_contact",
+      "id": "c1",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "precedes"
+    },
+    {
+      "cause": "pictured_hand_contact",
+      "effect": "pictured_flatten",
+      "id": "c2",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "requires"
+    },
+    {
+      "after": "pictured_recover",
+      "before": "pictured_release",
+      "id": "c3",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "precedes"
+    },
+    {
+      "cause": "pictured_release",
+      "effect": "pictured_recover",
+      "id": "c4",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "requires"
+    },
+    {
+      "effect": "pictured_flatten",
+      "id": "c5",
+      "source_refs": [
+        "origin"
+      ],
+      "transition": "e1",
+      "type": "changes"
+    },
+    {
+      "effect": "pictured_recover",
+      "id": "c6",
+      "source_refs": [
+        "origin"
+      ],
+      "transition": "e2",
+      "type": "changes"
+    },
+    {
+      "facts": [
+        "hand_state=lifted_above",
+        "thickness=recovered_rectangular"
+      ],
+      "id": "c7",
+      "source_refs": [
+        "origin"
+      ],
+      "state": "z2",
+      "type": "persists"
+    },
+    {
+      "facts": [
+        "thickness=flat",
+        "thickness=recovered_rectangular"
+      ],
+      "id": "c8",
+      "scope": "same_time",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "excludes"
+    }
+  ],
+  "control": {},
+  "design_revision": "fixed5-causal-r3",
+  "entities": [
+    {
+      "id": "hand",
+      "mention": "the same open left hand entering from the left",
+      "role": "actor",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    },
+    {
+      "id": "sponge",
+      "mention": "the same rectangular yellow porous sponge",
+      "role": "patient",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    },
+    {
+      "id": "surface",
+      "mention": "the same white marble support surface",
+      "role": "environment",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "description": "the open palm reaches the yellow sponge top",
+      "id": "pictured_hand_contact",
+      "observable": "the pictured vertical gap closes to zero",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    },
+    {
+      "description": "the palm lifts from the flattened sponge",
+      "id": "pictured_release",
+      "observable": "a visible gap reopens above the yellow top",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    }
+  ],
+  "generation_basis": {
+    "mode": "visual_grounding",
+    "reference_image_usage": "visual_grounding",
+    "semantic_inputs": [
+      "origin",
+      "planner_instructions",
+      "reference_input"
+    ]
+  },
+  "global_semantic": "The open left hand presses the rectangular yellow sponge on the white marble surface, lifts, and the sponge recovers.",
+  "grounding": {
+    "approved": false,
+    "coordinate_frame": "reference_input",
+    "entity_boxes": [
+      {
+        "box": [
+          0.0,
+          0.029,
+          0.717,
+          0.491
+        ],
+        "entity_id": "hand"
+      },
+      {
+        "box": [
+          0.303,
+          0.614,
+          0.74,
+          0.825
+        ],
+        "entity_id": "sponge"
+      },
+      {
+        "box": [
+          0.0,
+          0.59,
+          1.0,
+          1.0
+        ],
+        "entity_id": "surface"
+      }
+    ],
+    "protected_boxes": [],
+    "reference_image": "P17-i0-1280x704.png",
+    "reference_image_usage": "visual_grounding"
+  },
+  "predicates": [
+    {
+      "attribute": "pictured contact state",
+      "id": "hand_state",
+      "observable": "vertical hand gap above the yellow sponge",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "subject": "hand",
+      "values": [
+        "hovering_above",
+        "pressing",
+        "lifted_above"
+      ]
+    },
+    {
+      "attribute": "pictured yellow thickness",
+      "id": "thickness",
+      "observable": "yellow top-to-marble vertical extent",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "subject": "sponge",
+      "values": [
+        "full_rectangular",
+        "flat",
+        "recovered_rectangular"
+      ]
+    }
+  ],
+  "protected_predicates": [
+    "same left hand skin appearance",
+    "same rectangular yellow porous dry sponge",
+    "white marble surface, pale background, lighting, side camera, and framing remain unchanged"
+  ],
+  "sample_id": "P17",
+  "schema_version": "trace-writer-v1",
+  "source_files": {
+    "origin": "P17-origin.txt",
+    "planner_instructions": "Project/physGen/prompt/generate_trace_writer_v1_plan.txt",
+    "reference_input": "P17-i0-1280x704.png"
+  },
+  "stages": [
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c1",
+        "c3"
+      ],
+      "id": "setup",
+      "observable_check": "The rectangular yellow thickness stays unchanged while the hand gap narrows.",
+      "positive": "The pictured open palm descends toward the full yellow sponge while a narrow air gap remains.",
+      "support_kind": "motion_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1",
+            "c3"
+          ],
+          "text": "The yellow sponge is already flat before the pictured palm reaches it.",
+          "type": "outcome_preset"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c1",
+        "c2",
+        "c3",
+        "c4"
+      ],
+      "id": "onset",
+      "observable_check": "Palm contact precedes downward yellow-surface motion.",
+      "positive": "The open palm reaches the yellow top before the sponge's pictured thickness begins decreasing.",
+      "support_kind": "contact_interface",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ],
+          "text": "The yellow sponge flattens without palm contact or recovers before palm release.",
+          "type": "wrong_order"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c5"
+      ],
+      "id": "evolution",
+      "observable_check": "Yellow top height decreases while the base remains on marble.",
+      "positive": "The same palm presses downward as the porous yellow rectangle becomes visibly flatter against marble.",
+      "support_kind": "motion_contact_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c5"
+          ],
+          "text": "The pictured palm presses but the yellow sponge keeps its full rectangular thickness.",
+          "type": "effect_missing"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c6",
+        "c7"
+      ],
+      "id": "completion",
+      "observable_check": "The reopened hand gap accompanies progressive yellow-height recovery.",
+      "positive": "After the palm lifts, the flattened yellow sponge rises gradually toward its pictured rectangular thickness.",
+      "support_kind": "motion_contact_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c6",
+            "c7"
+          ],
+          "text": "The pictured palm lifts but the yellow sponge remains permanently flat.",
+          "type": "incomplete_transition"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c7",
+        "c8"
+      ],
+      "id": "terminal",
+      "observable_check": "Yellow shape, hand separation, marble, and camera remain stable.",
+      "positive": "The same yellow porous sponge remains recovered while the same left hand stays lifted.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c7"
+          ],
+          "text": "The recovered yellow sponge becomes flat again after the pictured hand lifts.",
+          "type": "reversal"
+        },
+        {
+          "constraint_ids": [
+            "c8"
+          ],
+          "text": "Flat and recovered yellow sponge copies coexist on the marble surface.",
+          "type": "exclusion_broken"
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "facts": {
+        "hand_state": "hovering_above",
+        "thickness": "full_rectangular"
+      },
+      "id": "z0",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    },
+    {
+      "facts": {
+        "hand_state": "pressing",
+        "thickness": "flat"
+      },
+      "id": "z1",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "facts": {
+        "hand_state": "lifted_above",
+        "thickness": "recovered_rectangular"
+      },
+      "id": "z2",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "cause_event": "pictured_hand_contact",
+      "effects": [
+        {
+          "direction": "open palm gap closes downward",
+          "from": "hovering_above",
+          "id": "pictured_press",
+          "predicate": "hand_state",
+          "to": "pressing"
+        },
+        {
+          "direction": "yellow vertical extent decreases",
+          "from": "full_rectangular",
+          "id": "pictured_flatten",
+          "predicate": "thickness",
+          "to": "flat"
+        }
+      ],
+      "from": "z0",
+      "id": "e1",
+      "kind": "triggered",
+      "preconditions": [
+        "hand_state=hovering_above",
+        "thickness=full_rectangular"
+      ],
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "support_kind": "motion_contact_corridor",
+      "to": "z1"
+    },
+    {
+      "cause_event": "pictured_release",
+      "effects": [
+        {
+          "direction": "palm-sponge gap increases",
+          "from": "pressing",
+          "id": "pictured_lift",
+          "predicate": "hand_state",
+          "to": "lifted_above"
+        },
+        {
+          "direction": "yellow vertical extent rises gradually",
+          "from": "flat",
+          "id": "pictured_recover",
+          "predicate": "thickness",
+          "to": "recovered_rectangular"
+        }
+      ],
+      "from": "z1",
+      "id": "e2",
+      "kind": "triggered",
+      "preconditions": [
+        "hand_state=pressing",
+        "thickness=flat"
+      ],
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "support_kind": "motion_contact_corridor",
+      "to": "z2"
+    }
+  ],
+  "warnings": [
+    "Entity boxes are visually estimated from the reference image and remain unapproved."
+  ]
+}

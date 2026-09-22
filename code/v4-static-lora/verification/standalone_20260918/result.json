@@ -1,0 +1,67 @@
+{
+  "status": "passed",
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v4-static-lora/checkpoints/lora_20260917T140727Z_dae2a0/step0800",
+  "checkpoint_step": 800,
+  "ema_updates": 800,
+  "ema_sha256": "5ee21295f1b8fc3b4ecfda3e29bea4bc4199bb680ae0ff7c7a250427885b3c9c",
+  "lora": {
+    "rank": 32,
+    "alpha": 32,
+    "dropout": 0.0,
+    "targets": [
+      "self_attn.q",
+      "self_attn.k",
+      "self_attn.v",
+      "self_attn.o",
+      "cross_attn.q",
+      "cross_attn.k",
+      "cross_attn.v",
+      "cross_attn.o"
+    ]
+  },
+  "weights": {
+    "tensors": 480,
+    "parameters": 47185920,
+    "dtype": "float32",
+    "finite": true,
+    "base_tensor_shapes_verified": true
+  },
+  "strict_load_into_native_model": true,
+  "all_loaded_tensors_equal": true,
+  "actual_trained_projection_rms_delta": 0.004869234282523394,
+  "cases": 41,
+  "modes": {
+    "i2v": 21,
+    "t2v": 20
+  },
+  "ordered_conditions_match_v4_and_v42": true,
+  "source_image_hashes_match_v4": true,
+  "canvases": {
+    "384x384": 1,
+    "512x288": 40
+  },
+  "frame_counts": [
+    121
+  ],
+  "durations": [
+    5.0
+  ],
+  "recipe": {
+    "solver": "unipc",
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "seed": 42,
+    "cfg_scheme": "native_cfg_with_lora_on_both_branches"
+  },
+  "gpu_sampling_run": false,
+  "cpu_base_weights": "meta, except one original q projection",
+  "unit_tests": {
+    "status": "passed",
+    "log": "unit_tests.log",
+    "run": 33,
+    "passed": 32,
+    "skipped": 1,
+    "failed": 0
+  }
+}

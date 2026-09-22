@@ -1,0 +1,65 @@
+{
+  "causal_pair": {
+    "counterfactual_type": [
+      "middle_deletion"
+    ],
+    "origin_prompt_prefixed": false,
+    "single_changed_relation": [
+      "the terminal fall appears while the intermediate contact propagation is missing"
+    ]
+  },
+  "compiler_version": "ace-conditioning-mvp-v1",
+  "mode": "compiled",
+  "prompts": {
+    "causal_counterfactual": "The first domino tips, and the last domino lies down while every middle domino remains upright.",
+    "causal_positive": "The first domino tips into the second, and each visible contact propagates the fall down the row in order.",
+    "semantic": "A row of upright wooden dominoes falls in sequence after the first domino is pushed. Initial scene: A fixed three-quarter side view of a single straight row of upright wooden dominoes on a flat surface. Every domino is fully visible with small uniform gaps, the first domino is accessible at one end, and open frame space shows the complete row and surrounding surface under neutral lighting. Required visible entities: one row of wooden dominoes; flat support surface. At the beginning: all dominoes: upright, intact, and arranged in one ordered row; first domino: upright and visible at an accessible row end. Required layout: small uniform gaps permit contact between successive dominoes; the full row from first to last domino fits inside the frame; each domino silhouette remains separately visible. Required state changes: domino pose: upright to fallen; fall progress: first domino to successive dominoes; contact front: propagates along the row. These event variables are allowed to change: individual domino pose; contact-propagation position; number of fallen dominoes over time. Preserve throughout: static camera; flat support surface; wooden domino identity and row order; one row of wooden dominoes; the same domino order; the same flat support surface."
+  },
+  "sample_id": "P04",
+  "schema_version": 1,
+  "semantic_variant": "compiled_t2v",
+  "source_sections": {
+    "changed_state_variables": [
+      "domino pose: upright to fallen",
+      "fall progress: first domino to successive dominoes",
+      "contact front: propagates along the row"
+    ],
+    "counterfactual_type": [
+      "middle_deletion"
+    ],
+    "event_type": [
+      "contact-propagated chain reaction"
+    ],
+    "initial_states": [
+      "all dominoes: upright, intact, and arranged in one ordered row",
+      "first domino: upright and visible at an accessible row end"
+    ],
+    "layout_requirements": [
+      "small uniform gaps permit contact between successive dominoes",
+      "the full row from first to last domino fits inside the frame",
+      "each domino silhouette remains separately visible"
+    ],
+    "preserved_context": [
+      "one row of wooden dominoes",
+      "the same domino order",
+      "the same flat support surface"
+    ],
+    "protected_scene_properties": [
+      "static camera",
+      "flat support surface",
+      "wooden domino identity and row order"
+    ],
+    "required_visible_entities": [
+      "one row of wooden dominoes",
+      "flat support surface"
+    ],
+    "single_changed_relation": [
+      "the terminal fall appears while the intermediate contact propagation is missing"
+    ],
+    "transition_variables": [
+      "individual domino pose",
+      "contact-propagation position",
+      "number of fallen dominoes over time"
+    ]
+  }
+}

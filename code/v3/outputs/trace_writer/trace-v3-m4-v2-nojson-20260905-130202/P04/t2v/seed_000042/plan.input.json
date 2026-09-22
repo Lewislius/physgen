@@ -1,0 +1,364 @@
+{
+  "schema_version": "trace-direct-v1",
+  "design_revision": "p0-stage-direct-json-r2",
+  "sample_id": "P04",
+  "source_files": {
+    "origin": "P04-origin.txt",
+    "frame_zero_metadata": "P04-i0.json",
+    "reference_input": "P04-i0-1280x704.jpg"
+  },
+  "initial_condition": {
+    "type": "visible_actuator",
+    "description": "A visible fingertip is touching the first domino to start the chain."
+  },
+  "global_semantic": "Fixed three-quarter view of one fingertip pushing the first piece in one straight row of upright pale wooden dominoes. Each domino knocks down its next neighbor from left to right, the fall reaches the last piece once, and the whole row remains down.",
+  "cfg_negative": " ",
+  "entities": [
+    {
+      "id": "fingertip",
+      "mention": "one visible fingertip",
+      "role": "actor"
+    },
+    {
+      "id": "domino_row",
+      "mention": "one straight row of pale wooden dominoes",
+      "role": "patient"
+    }
+  ],
+  "structured_guidance": {
+    "schema_version": "structured-text-guidance-v1",
+    "entities": [
+      {
+        "id": "fingertip",
+        "label": "visible fingertip",
+        "count": 1,
+        "persistent": false,
+        "invariants": [
+          "natural fingertip anatomy",
+          "single identity"
+        ]
+      },
+      {
+        "id": "domino_row",
+        "label": "straight row of pale wooden dominoes",
+        "count": 1,
+        "persistent": true,
+        "invariants": [
+          "fixed membership of the original dominoes",
+          "pale wooden appearance",
+          "left-to-right order"
+        ]
+      }
+    ],
+    "initial_condition": {
+      "type": "visible_actuator",
+      "active_stages": [
+        "setup"
+      ],
+      "facts": [
+        "A fingertip initially touches and pushes only the leftmost domino.",
+        "Every domino in the one row starts upright."
+      ]
+    },
+    "stages": [
+      {
+        "id": "setup",
+        "entity_states": [
+          {
+            "entity_id": "fingertip",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "pushing only the first upright domino"
+            ],
+            "mutable": [
+              "position"
+            ]
+          },
+          {
+            "entity_id": "domino_row",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "fully upright except for the first piece beginning to tilt"
+            ],
+            "mutable": [
+              "first domino orientation"
+            ]
+          }
+        ],
+        "relations": [
+          "The fingertip does not touch any later domino."
+        ]
+      },
+      {
+        "id": "onset",
+        "entity_states": [
+          {
+            "entity_id": "fingertip",
+            "presence": "transitioning",
+            "count": 1,
+            "states": [
+              "withdrawing after the initial push"
+            ],
+            "mutable": [
+              "position"
+            ]
+          },
+          {
+            "entity_id": "domino_row",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "starting one chain as the first domino contacts the second"
+            ],
+            "mutable": [
+              "orientations of contacted dominoes"
+            ]
+          }
+        ],
+        "relations": [
+          "There is one left-to-right falling front and no second trigger."
+        ]
+      },
+      {
+        "id": "evolution",
+        "entity_states": [
+          {
+            "entity_id": "domino_row",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "falling sequentially from left to right"
+            ],
+            "mutable": [
+              "orientations of the advancing neighboring dominoes"
+            ]
+          }
+        ],
+        "relations": [
+          "Each falling domino contacts only its next neighbor in the same row."
+        ]
+      },
+      {
+        "id": "completion",
+        "entity_states": [
+          {
+            "entity_id": "domino_row",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "reaching the last domino as that final piece falls"
+            ],
+            "mutable": [
+              "last domino orientation"
+            ]
+          }
+        ],
+        "relations": [
+          "The chain reaches the right end exactly once without creating new pieces."
+        ]
+      },
+      {
+        "id": "terminal",
+        "entity_states": [
+          {
+            "entity_id": "domino_row",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "fully down and motionless"
+            ],
+            "mutable": []
+          }
+        ],
+        "relations": [
+          "All original dominoes remain present in their original left-to-right row order."
+        ]
+      }
+    ]
+  },
+  "stages": [
+    {
+      "id": "setup",
+      "positive": "The fingertip pushes only the first upright domino at the left end of the row."
+    },
+    {
+      "id": "onset",
+      "positive": "The first domino falls into the second and starts a single chain reaction."
+    },
+    {
+      "id": "evolution",
+      "positive": "The falling front advances domino by domino from left to right."
+    },
+    {
+      "id": "completion",
+      "positive": "The chain reaches the last domino and that final piece falls."
+    },
+    {
+      "id": "terminal",
+      "positive": "The same row remains fully down and motionless on the tabletop."
+    }
+  ],
+  "warnings": [],
+  "generation_basis": {
+    "mode": "identifier_only",
+    "reference_image_usage": "identifier_only"
+  },
+  "grounding": {
+    "coordinate_frame": "reference_input",
+    "reference_image": "P04-i0-1280x704.jpg",
+    "approved": false,
+    "entity_boxes": []
+  },
+  "temporal_route": {
+    "latent_tokens": 25,
+    "crossfade_tokens": 2,
+    "interpolation": "smoothstep_c1",
+    "profile": "triggered",
+    "stage_order": [
+      "setup",
+      "onset",
+      "evolution",
+      "completion",
+      "terminal"
+    ],
+    "weights": [
+      [
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0
+      ]
+    ]
+  }
+}

@@ -1,0 +1,6 @@
+# K counts previous compressed VAE frames, excluding the fully visible current frame.
+base_config: ${LORA_ROOT}/configs/train_4x48g.yaml
+profile: 4x48g
+attention:
+  mode: frame_causal_window
+  previous_frames: 5

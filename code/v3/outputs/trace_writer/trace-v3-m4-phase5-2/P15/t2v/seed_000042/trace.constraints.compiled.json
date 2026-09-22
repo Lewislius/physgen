@@ -1,0 +1,99 @@
+{
+  "closed_world": {
+    "allowed_entity_ids": [
+      "cup",
+      "sand_stream",
+      "pile_region"
+    ],
+    "empty_regions": [],
+    "external_source_allowed": false,
+    "forbidden_new_categories": [
+      "external source",
+      "extra copy",
+      "unlisted object"
+    ],
+    "provenance": "derived"
+  },
+  "conservation": [
+    {
+      "observable_proxy": "tracked logical entity slots remain consistent",
+      "provenance": "derived",
+      "quantity": "instance_count",
+      "relation": "constant",
+      "rule_id": "entity_slots_constant",
+      "sinks": [
+        "cup",
+        "sand_stream",
+        "pile_region"
+      ],
+      "sources": [
+        "cup",
+        "sand_stream",
+        "pile_region"
+      ],
+      "tolerance": 0.0
+    },
+    {
+      "observable_proxy": "cup sand decreases through falling grains while conical pile grows",
+      "provenance": "derived",
+      "quantity": "material_proxy",
+      "relation": "coupled_monotonic",
+      "rule_id": "conservation_c3",
+      "sinks": [
+        "stream_state",
+        "pile_size"
+      ],
+      "sources": [
+        "source_amount"
+      ],
+      "tolerance": 0.1
+    }
+  ],
+  "lifecycles": [
+    {
+      "entity_id": "cup",
+      "from_stage": "setup",
+      "from_state": "full",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "full",
+          "nearly_empty"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "nearly_empty"
+    },
+    {
+      "entity_id": "sand_stream",
+      "from_stage": "setup",
+      "from_state": "absent",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "absent",
+          "continuous"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "continuous"
+    },
+    {
+      "entity_id": "pile_region",
+      "from_stage": "setup",
+      "from_state": "absent",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "absent",
+          "grown_cone"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "grown_cone"
+    }
+  ]
+}

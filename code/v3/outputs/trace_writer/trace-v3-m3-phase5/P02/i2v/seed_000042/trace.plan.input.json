@@ -1,0 +1,380 @@
+{
+  "assumptions": [
+    "Motion follows the visible left-to-right line joining the two ball centers."
+  ],
+  "constraints": [
+    {
+      "after": "blue_depart",
+      "before": "boundary_contact",
+      "id": "c1",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "precedes"
+    },
+    {
+      "cause": "boundary_contact",
+      "effect": "blue_depart",
+      "id": "c2",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "requires"
+    },
+    {
+      "effects": [
+        "red_decelerate",
+        "blue_depart"
+      ],
+      "id": "c3",
+      "relation": "red rightward displacement decreases while blue rightward displacement begins",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "couples"
+    },
+    {
+      "facts": [
+        "red_motion=slower_right",
+        "blue_motion=moving_right"
+      ],
+      "id": "c4",
+      "source_refs": [
+        "origin"
+      ],
+      "state": "z1",
+      "type": "persists"
+    },
+    {
+      "facts": [
+        "blue_motion=stationary",
+        "blue_motion=moving_right"
+      ],
+      "id": "c5",
+      "scope": "same_time",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "excludes"
+    }
+  ],
+  "control": {},
+  "design_revision": "fixed5-causal-r3",
+  "entities": [
+    {
+      "id": "red_ball",
+      "mention": "the same glossy red billiard ball on the left",
+      "role": "actor",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    },
+    {
+      "id": "blue_ball",
+      "mention": "the same glossy blue billiard ball on the right",
+      "role": "patient",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "description": "the red and blue glossy ball boundaries visibly meet",
+      "id": "boundary_contact",
+      "observable": "the green interval between both balls disappears",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    }
+  ],
+  "generation_basis": {
+    "mode": "visual_grounding",
+    "reference_image_usage": "visual_grounding",
+    "semantic_inputs": [
+      "origin",
+      "planner_instructions",
+      "reference_input"
+    ]
+  },
+  "global_semantic": "The glossy red ball crosses the green billiard cloth into the glossy blue ball and transfers motion on contact.",
+  "grounding": {
+    "approved": false,
+    "coordinate_frame": "reference_input",
+    "entity_boxes": [
+      {
+        "box": [
+          0.085,
+          0.484,
+          0.164,
+          0.624
+        ],
+        "entity_id": "red_ball"
+      },
+      {
+        "box": [
+          0.848,
+          0.486,
+          0.923,
+          0.625
+        ],
+        "entity_id": "blue_ball"
+      }
+    ],
+    "protected_boxes": [],
+    "reference_image": "P02-i0-1280x704.png",
+    "reference_image_usage": "visual_grounding"
+  },
+  "predicates": [
+    {
+      "attribute": "horizontal gap_to:blue_ball",
+      "id": "gap",
+      "observable": "green-cloth interval between ball boundaries",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "subject": "red_ball",
+      "values": [
+        "wide",
+        "contact"
+      ]
+    },
+    {
+      "attribute": "rightward motion",
+      "id": "red_motion",
+      "observable": "rightward red-ball displacement",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "subject": "red_ball",
+      "values": [
+        "rolling_right",
+        "slower_right"
+      ]
+    },
+    {
+      "attribute": "rightward motion",
+      "id": "blue_motion",
+      "observable": "rightward blue-ball displacement",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "subject": "blue_ball",
+      "values": [
+        "stationary",
+        "moving_right"
+      ]
+    }
+  ],
+  "protected_predicates": [
+    "exactly one glossy red ball and one glossy blue ball",
+    "ball colors, size, and roundness remain unchanged",
+    "green billiard cloth, dark top rail, gray wall, lighting, and static camera remain unchanged"
+  ],
+  "sample_id": "P02",
+  "schema_version": "trace-writer-v1",
+  "source_files": {
+    "origin": "P02-origin.txt",
+    "planner_instructions": "Project/physGen/prompt/generate_trace_writer_v1_plan.txt",
+    "reference_input": "P02-i0-1280x704.png"
+  },
+  "stages": [
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "setup",
+      "observable_check": "Only the red ball changes position while the wide green interval narrows.",
+      "positive": "The left glossy red ball rolls rightward across green cloth toward the stationary glossy blue ball.",
+      "support_kind": "motion_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "The pictured blue ball already moves rightward before the red ball crosses the wide gap.",
+          "type": "outcome_preset"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c1",
+        "c2"
+      ],
+      "id": "onset",
+      "observable_check": "Boundary contact is visible before any blue-ball displacement.",
+      "positive": "The red boundary reaches the blue boundary before the right blue ball first changes position.",
+      "support_kind": "contact_interface",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1",
+            "c2"
+          ],
+          "text": "The right blue ball moves while green cloth remains visible between the ball boundaries.",
+          "type": "wrong_order"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c3"
+      ],
+      "id": "evolution",
+      "observable_check": "Blue motion and reduced red motion appear together after contact.",
+      "positive": "Following contact, the blue ball travels rightward while the red ball's rightward displacement becomes smaller.",
+      "support_kind": "motion_contact_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c3"
+          ],
+          "text": "The blue ball departs rightward while the red ball preserves its original displacement rate.",
+          "type": "coupling_broken"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c3",
+        "c4"
+      ],
+      "id": "completion",
+      "observable_check": "The blue ball leads across the cloth and the red ball trails more slowly.",
+      "positive": "A renewed green gap opens between the balls with the blue ball leading and the red ball slower.",
+      "support_kind": "motion_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c3",
+            "c4"
+          ],
+          "text": "The pictured balls remain clustered without a readable post-contact gap or motion transfer.",
+          "type": "incomplete_transition"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c4",
+        "c5"
+      ],
+      "id": "terminal",
+      "observable_check": "Ball colors, counts, and post-contact motion states remain stable.",
+      "positive": "The same glossy blue ball remains ahead and moving while the same red ball remains slower.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c4"
+          ],
+          "text": "The blue ball returns to its pictured stationary location in the final frames.",
+          "type": "reversal"
+        },
+        {
+          "constraint_ids": [
+            "c5"
+          ],
+          "text": "Stationary and moving copies of the glossy blue ball coexist on the table.",
+          "type": "exclusion_broken"
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "facts": {
+        "blue_motion": "stationary",
+        "gap": "wide",
+        "red_motion": "rolling_right"
+      },
+      "id": "z0",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    },
+    {
+      "facts": {
+        "blue_motion": "moving_right",
+        "gap": "contact",
+        "red_motion": "slower_right"
+      },
+      "id": "z1",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "cause_event": "boundary_contact",
+      "effects": [
+        {
+          "direction": "horizontal green interval closes",
+          "from": "wide",
+          "id": "green_gap_close",
+          "predicate": "gap",
+          "to": "contact"
+        },
+        {
+          "direction": "rightward red displacement decreases",
+          "from": "rolling_right",
+          "id": "red_decelerate",
+          "predicate": "red_motion",
+          "to": "slower_right"
+        },
+        {
+          "direction": "rightward blue displacement begins",
+          "from": "stationary",
+          "id": "blue_depart",
+          "predicate": "blue_motion",
+          "to": "moving_right"
+        }
+      ],
+      "from": "z0",
+      "id": "e1",
+      "kind": "triggered",
+      "preconditions": [
+        "gap=wide",
+        "blue_motion=stationary"
+      ],
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "support_kind": "motion_contact_corridor",
+      "to": "z1"
+    }
+  ],
+  "warnings": [
+    "Entity boxes are visually estimated from the reference image and remain unapproved."
+  ]
+}

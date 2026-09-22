@@ -1,0 +1,53 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v4.2/checkpoints/v4_joint_20260918T034836Z_16183b/step0200",
+  "step": 200,
+  "weights": "ema.pt",
+  "hashes_verified": [
+    "config.json",
+    "ema.pt"
+  ],
+  "saved_config_matches_formal_training": true,
+  "strict_ema_load": true,
+  "state_tensors": 338,
+  "parameters": 68292194,
+  "finite": true,
+  "no_gt_initializer_shapes": {
+    "t2v": [
+      1,
+      16,
+      576,
+      1664
+    ],
+    "i2v": [
+      1,
+      16,
+      576,
+      1664
+    ]
+  },
+  "cases": 41,
+  "modes": {
+    "i2v": 21,
+    "t2v": 20
+  },
+  "recipe": {
+    "solver": "unipc",
+    "steps": 50,
+    "shift": 5,
+    "guidance": 5,
+    "adapter_guidance": 1,
+    "seed": 42,
+    "implementation": "20260917_r3_delta_h",
+    "variant": "full",
+    "writer_scales": [
+      1.0,
+      1.0
+    ]
+  },
+  "launch_parse_only": [
+    "/home/liuzhirui/miniconda3/envs/moviestory/bin/python -I -B -u /home/liuzhirui/Project/physGen/code/v4.2/inference/infer.py --phase prepare --checkpoint /home/liuzhirui/Project/physGen/code/v4.2/checkpoints/v4_joint_20260918T034836Z_16183b/step0200 --output /home/liuzhirui/Project/physGen/code/v4.2/inference_outputs/v4_joint_20260918T034836Z_16183b_step0200_ema_demo_1xada48g_seed42_r3_full --suite demo --variant full ",
+    "/home/liuzhirui/miniconda3/envs/vjepa2-312/bin/python -I -B -u /home/liuzhirui/Project/physGen/code/v4.2/tools/teacher.py --phase anchors --output /home/liuzhirui/Project/physGen/code/v4.2/inference_outputs/v4_joint_20260918T034836Z_16183b_step0200_ema_demo_1xada48g_seed42_r3_full ",
+    "/home/liuzhirui/miniconda3/envs/moviestory/bin/python -I -B -u /home/liuzhirui/Project/physGen/code/v4.2/inference/infer.py --phase sample --output /home/liuzhirui/Project/physGen/code/v4.2/inference_outputs/v4_joint_20260918T034836Z_16183b_step0200_ema_demo_1xada48g_seed42_r3_full "
+  ],
+  "gpu_generation_run": false
+}

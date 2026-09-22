@@ -1,0 +1,66 @@
+{
+  "causal_pair": {
+    "counterfactual_type": [
+      "cause_effect_reversal"
+    ],
+    "origin_prompt_prefixed": true,
+    "single_changed_relation": [
+      "brittle fracture occurs before rather than at tile impact"
+    ]
+  },
+  "compiler_version": "ace-router-initial-v1-compat",
+  "mode": "initial_v1",
+  "prompts": {
+    "causal_counterfactual": "A glass bottle falls onto a hard tile floor, breaks on impact, and its fragments remain scattered. The bottle breaks into scattered glass pieces while still above the tile, and the pieces reach the floor afterward.",
+    "causal_positive": "A glass bottle falls onto a hard tile floor, breaks on impact, and its fragments remain scattered. The bottle falls continuously, visibly contacts the tile, fractures at impact, and the resulting glass pieces remain scattered.",
+    "semantic": "A glass bottle falls onto a hard tile floor, breaks on impact, and its fragments remain scattered."
+  },
+  "sample_id": "P11",
+  "schema_version": 1,
+  "semantic_variant": "initial_v1",
+  "source_sections": {
+    "changed_state_variables": [
+      "bottle position: elevated to tile floor",
+      "bottle integrity: intact to fractured",
+      "glass configuration: single bottle to scattered fragments"
+    ],
+    "counterfactual_type": [
+      "cause_effect_reversal"
+    ],
+    "event_type": [
+      "impact-triggered brittle fracture"
+    ],
+    "initial_states": [
+      "glass bottle: intact, uncracked, and elevated above the tile floor",
+      "tile floor: clear around the intended impact area"
+    ],
+    "layout_requirements": [
+      "bottle is elevated directly above a visible tile impact area",
+      "the full vertical falling corridor is unobstructed",
+      "impact area and surrounding fragment region fit inside the frame"
+    ],
+    "preserved_context": [
+      "one glass bottle and its resulting fragments",
+      "one hard tile floor",
+      "the same impact area and camera view"
+    ],
+    "protected_scene_properties": [
+      "static side-view camera",
+      "hard tile floor geometry",
+      "background and lighting"
+    ],
+    "required_visible_entities": [
+      "one intact glass bottle",
+      "one hard tile floor",
+      "visible vertical falling corridor"
+    ],
+    "single_changed_relation": [
+      "brittle fracture occurs before rather than at tile impact"
+    ],
+    "transition_variables": [
+      "bottle vertical position",
+      "bottle integrity",
+      "fragment count and spatial distribution"
+    ]
+  }
+}

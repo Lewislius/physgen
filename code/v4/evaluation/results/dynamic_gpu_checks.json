@@ -1,0 +1,37 @@
+{
+  "date": "2026-09-12",
+  "status": "passed",
+  "tests": {
+    "allocation_and_launchers": 9,
+    "monitoring": 13,
+    "preparation": 14,
+    "environment_and_teacher_bridge": 9
+  },
+  "total_passed": 45,
+  "launcher_validation": {
+    "resource_pools": ["amp-48g", "amp-80g", "blk-96g"],
+    "simulated_slots_per_trial": [1, 2, 3, 4, 8],
+    "preparation_modes": [0, 1],
+    "cases": 30,
+    "allocation_source": "DET_SLOT_IDS derived from each modified submission YAML",
+    "execution": "Production shell launchers and slot reader, with activation and GPU workloads replaced by a command recorder",
+    "verified": [
+      "Only resources.slots_per_trial changes between allocations",
+      "VAE, text, teacher and training worker counts match the allocation",
+      "Run/checkpoint labels remain stable across card-count changes",
+      "No startup preflight is called",
+      "PREPARE=0 enters training without an extra cache audit"
+    ]
+  },
+  "batch_validation": {
+    "world_sizes": [1, 2, 3, 4, 8, 12],
+    "phases": ["A1", "A2", "A3", "B1", "AB"],
+    "default_target_global_batch": 8,
+    "accumulation": "ceil(target_global_batch / world_size)",
+    "resume": "Preserves optimizer schedule and run name; adapts accumulation; restores RNG at the same world size and reseeds after a world-size change"
+  },
+  "syntax_checks": "Python, shell and YAML passed",
+  "startup_preflight": "deleted",
+  "full_gpu_training_run": false,
+  "dependencies_installed": []
+}

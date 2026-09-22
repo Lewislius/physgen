@@ -1,0 +1,357 @@
+{
+  "closed_world": {
+    "allowed_entity_ids": [
+      "butter",
+      "liquid_butter",
+      "pan"
+    ],
+    "empty_regions": [],
+    "external_source_allowed": false,
+    "forbidden_new_categories": [
+      "dropper",
+      "external liquid stream",
+      "external source",
+      "extra copy",
+      "pipette",
+      "unlisted object"
+    ],
+    "provenance": "derived"
+  },
+  "conservation": [
+    {
+      "observable_proxy": "tracked logical entity slots remain consistent",
+      "provenance": "derived",
+      "quantity": "instance_count",
+      "relation": "constant",
+      "rule_id": "entity_slots_constant",
+      "sinks": [
+        "butter",
+        "liquid_butter",
+        "pan"
+      ],
+      "sources": [
+        "butter",
+        "liquid_butter",
+        "pan"
+      ],
+      "tolerance": 0.0
+    },
+    {
+      "observable_proxy": "solid edges round and recede while liquid footprint expands",
+      "provenance": "derived",
+      "quantity": "material_proxy",
+      "relation": "coupled_monotonic",
+      "rule_id": "conservation_c3",
+      "sinks": [
+        "footprint"
+      ],
+      "sources": [
+        "edge_shape"
+      ],
+      "tolerance": 0.1
+    }
+  ],
+  "issues": [
+    "liquid_butter: exact visual count unresolved; retained as group"
+  ],
+  "lifecycles": [
+    {
+      "entity_id": "butter",
+      "from_stage": "setup",
+      "from_state": "sharp",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "sharp",
+          "rounded_receded"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "rounded_receded"
+    },
+    {
+      "entity_id": "pan",
+      "from_stage": "setup",
+      "from_state": "compact_pat",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "compact_pat",
+          "liquid_pool"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "liquid_pool"
+    }
+  ],
+  "slots": [
+    {
+      "aliases": [],
+      "canonical_mention": "the same pat of butter",
+      "cardinality": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "butter",
+      "invariant_attributes": [
+        "same butter material",
+        "same warm pan",
+        "camera and unrelated scene remain unchanged"
+      ],
+      "mutable_attributes": [
+        "edge_shape"
+      ],
+      "persistent_identity": true,
+      "provenance": "default",
+      "role": "source"
+    },
+    {
+      "aliases": [],
+      "canonical_mention": "liquid from the same butter",
+      "cardinality": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "liquid_butter",
+      "invariant_attributes": [
+        "same butter material",
+        "same warm pan",
+        "camera and unrelated scene remain unchanged"
+      ],
+      "mutable_attributes": [],
+      "persistent_identity": true,
+      "provenance": "derived",
+      "role": "carrier"
+    },
+    {
+      "aliases": [],
+      "canonical_mention": "the same warm pan",
+      "cardinality": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "pan",
+      "invariant_attributes": [
+        "same butter material",
+        "same warm pan",
+        "camera and unrelated scene remain unchanged"
+      ],
+      "mutable_attributes": [
+        "butter_footprint"
+      ],
+      "persistent_identity": true,
+      "provenance": "default",
+      "role": "sink"
+    }
+  ],
+  "stage_presence": [
+    {
+      "entity_id": "butter",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [
+        "edge_shape=sharp"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "liquid_butter",
+      "logical_count": {
+        "exact": 0,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [],
+      "visible": "forbidden"
+    },
+    {
+      "entity_id": "pan",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [
+        "footprint=compact_pat"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "butter",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [
+        "edge_shape=sharp"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "liquid_butter",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "pan",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [
+        "footprint=compact_pat"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "butter",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [
+        "edge_shape=rounded_receded"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "liquid_butter",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [],
+      "visible": "required"
+    },
+    {
+      "entity_id": "pan",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [
+        "footprint=liquid_pool"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "butter",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [
+        "edge_shape=rounded_receded"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "liquid_butter",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "pan",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [
+        "footprint=liquid_pool"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "butter",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [
+        "edge_shape=rounded_receded"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "liquid_butter",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [],
+      "visible": "required"
+    },
+    {
+      "entity_id": "pan",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [
+        "footprint=liquid_pool"
+      ],
+      "visible": "required"
+    }
+  ]
+}

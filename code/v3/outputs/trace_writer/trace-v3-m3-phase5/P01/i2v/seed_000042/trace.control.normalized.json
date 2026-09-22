@@ -1,0 +1,264 @@
+{
+  "closed_world": {
+    "allowed_entity_ids": [
+      "scooter",
+      "trash_can"
+    ],
+    "empty_regions": [],
+    "external_source_allowed": false,
+    "forbidden_new_categories": [
+      "external source",
+      "extra copy",
+      "unlisted object"
+    ],
+    "provenance": "derived"
+  },
+  "conservation": [
+    {
+      "observable_proxy": "tracked logical entity slots remain consistent",
+      "provenance": "derived",
+      "quantity": "instance_count",
+      "relation": "constant",
+      "rule_id": "entity_slots_constant",
+      "sinks": [
+        "scooter",
+        "trash_can"
+      ],
+      "sources": [
+        "scooter",
+        "trash_can"
+      ],
+      "tolerance": 0.0
+    },
+    {
+      "observable_proxy": "sideways tilt grows while rightward displacement diminishes",
+      "provenance": "derived",
+      "quantity": "motion_transfer",
+      "relation": "coupled_monotonic",
+      "rule_id": "conservation_c3",
+      "sinks": [
+        "motion"
+      ],
+      "sources": [
+        "pose"
+      ],
+      "tolerance": 0.1
+    }
+  ],
+  "issues": [],
+  "lifecycles": [
+    {
+      "entity_id": "scooter",
+      "from_stage": "setup",
+      "from_state": "wide; upright; rolling_right",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "wide",
+          "contact"
+        ],
+        [
+          "upright",
+          "tilted_sideways"
+        ],
+        [
+          "rolling_right",
+          "stopped"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "contact; tilted_sideways; stopped"
+    }
+  ],
+  "slots": [
+    {
+      "aliases": [],
+      "canonical_mention": "the same upright black electric scooter",
+      "cardinality": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "scooter",
+      "invariant_attributes": [
+        "same black scooter identity and red cable detail",
+        "same black slatted metal trash can",
+        "trash can remains upright",
+        "gray street, curb, hedge, concrete wall, daylight, and static side camera remain unchanged"
+      ],
+      "mutable_attributes": [
+        "horizontal street gap_to:trash_can",
+        "body pose",
+        "street motion"
+      ],
+      "persistent_identity": true,
+      "provenance": "default",
+      "role": "actor"
+    },
+    {
+      "aliases": [],
+      "canonical_mention": "the same upright black slatted metal trash can",
+      "cardinality": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "trash_can",
+      "invariant_attributes": [
+        "same black scooter identity and red cable detail",
+        "same black slatted metal trash can",
+        "trash can remains upright",
+        "gray street, curb, hedge, concrete wall, daylight, and static side camera remain unchanged"
+      ],
+      "mutable_attributes": [],
+      "persistent_identity": true,
+      "provenance": "default",
+      "role": "patient"
+    }
+  ],
+  "stage_presence": [
+    {
+      "entity_id": "scooter",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [
+        "gap=wide",
+        "pose=upright",
+        "motion=rolling_right"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "trash_can",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [],
+      "visible": "required"
+    },
+    {
+      "entity_id": "scooter",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [
+        "gap=wide",
+        "pose=upright",
+        "motion=rolling_right"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "trash_can",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "scooter",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [
+        "gap=contact",
+        "pose=tilted_sideways",
+        "motion=stopped"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "trash_can",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [],
+      "visible": "required"
+    },
+    {
+      "entity_id": "scooter",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [
+        "gap=contact",
+        "pose=tilted_sideways",
+        "motion=stopped"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "trash_can",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "scooter",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [
+        "gap=contact",
+        "pose=tilted_sideways",
+        "motion=stopped"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "trash_can",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [],
+      "visible": "required"
+    }
+  ]
+}

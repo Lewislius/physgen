@@ -1,0 +1,356 @@
+{
+  "assumptions": [
+    "The box tips into the open lateral floor space without introducing a pulling agent."
+  ],
+  "constraints": [
+    {
+      "after": "tan_box_tip",
+      "before": "pictured_corner_shift",
+      "id": "c1",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "precedes"
+    },
+    {
+      "cause": "pictured_corner_shift",
+      "effect": "tan_box_tip",
+      "id": "c2",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "requires"
+    },
+    {
+      "effects": [
+        "bottom_shift",
+        "tan_box_tip"
+      ],
+      "id": "c3",
+      "relation": "bottom shift is followed by increasing rotation toward floor",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "couples"
+    },
+    {
+      "facts": [
+        "pose=horizontal_side_supported"
+      ],
+      "id": "c4",
+      "source_refs": [
+        "origin"
+      ],
+      "state": "z1",
+      "type": "persists"
+    },
+    {
+      "facts": [
+        "pose=vertical",
+        "pose=horizontal_side_supported"
+      ],
+      "id": "c5",
+      "scope": "same_time",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "excludes"
+    }
+  ],
+  "control": {},
+  "design_revision": "fixed5-causal-r3",
+  "entities": [
+    {
+      "id": "box",
+      "mention": "the same centered tall tan cardboard box",
+      "role": "actor",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    },
+    {
+      "id": "floor",
+      "mention": "the same smooth gray floor",
+      "role": "patient",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "description": "one visible bottom corner of the tan box moves sideways",
+      "id": "pictured_corner_shift",
+      "observable": "the bottom edge changes lateral support before rotation",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    }
+  ],
+  "generation_basis": {
+    "mode": "visual_grounding",
+    "reference_image_usage": "visual_grounding",
+    "semantic_inputs": [
+      "origin",
+      "planner_instructions",
+      "reference_input"
+    ]
+  },
+  "global_semantic": "The centered tall tan cardboard box shifts at one lower corner, tips across the gray floor, and remains on its side.",
+  "grounding": {
+    "approved": false,
+    "coordinate_frame": "reference_input",
+    "entity_boxes": [
+      {
+        "box": [
+          0.397,
+          0.145,
+          0.584,
+          0.865
+        ],
+        "entity_id": "box"
+      },
+      {
+        "box": [
+          0.0,
+          0.63,
+          1.0,
+          1.0
+        ],
+        "entity_id": "floor"
+      }
+    ],
+    "protected_boxes": [],
+    "reference_image": "P07-i0-1280x704.png",
+    "reference_image_usage": "visual_grounding"
+  },
+  "predicates": [
+    {
+      "attribute": "pictured lower-corner displacement",
+      "id": "corner_state",
+      "observable": "lateral movement of one bottom corner on gray floor",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "subject": "box",
+      "values": [
+        "centered_support",
+        "shifted_sideways"
+      ]
+    },
+    {
+      "attribute": "long-axis pose",
+      "id": "pose",
+      "observable": "angle of the tall rectangular silhouette",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "subject": "box",
+      "values": [
+        "vertical",
+        "horizontal_side_supported"
+      ]
+    }
+  ],
+  "protected_predicates": [
+    "same tall tan cardboard surface and rectangular proportions",
+    "smooth gray floor, white wall, baseboard, lighting, and static frontal camera remain unchanged",
+    "no pulling hand or tool is added"
+  ],
+  "sample_id": "P07",
+  "schema_version": "trace-writer-v1",
+  "source_files": {
+    "origin": "P07-origin.txt",
+    "planner_instructions": "Project/physGen/prompt/generate_trace_writer_v1_plan.txt",
+    "reference_input": "P07-i0-1280x704.png"
+  },
+  "stages": [
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "setup",
+      "observable_check": "The rectangular silhouette stays vertical during the first bottom-edge shift.",
+      "positive": "The centered tan box remains vertical while one pictured lower corner begins sliding across gray floor.",
+      "support_kind": "motion_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "The tan box already lies horizontally before its pictured bottom support shifts.",
+          "type": "outcome_preset"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c1",
+        "c2"
+      ],
+      "id": "onset",
+      "observable_check": "Lateral corner motion appears before increasing long-axis angle.",
+      "positive": "The bottom support shifts sideways before the tall tan silhouette first rotates from vertical.",
+      "support_kind": "contact_interface",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1",
+            "c2"
+          ],
+          "text": "The centered tan box rotates before either pictured lower corner moves sideways.",
+          "type": "wrong_order"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c3"
+      ],
+      "id": "evolution",
+      "observable_check": "The rectangular silhouette angle increases without changing box identity or shape.",
+      "positive": "The same tan box rotates progressively through the open floor space toward one broad side.",
+      "support_kind": "motion_contact_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c3"
+          ],
+          "text": "The pictured bottom edge shifts while the tall box remains perfectly vertical.",
+          "type": "coupling_broken"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c3",
+        "c4"
+      ],
+      "id": "completion",
+      "observable_check": "A broad side becomes floor-supported and angular motion reaches zero.",
+      "positive": "One broad tan side reaches the smooth gray floor and the box stops rotating.",
+      "support_kind": "motion_contact_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c3",
+            "c4"
+          ],
+          "text": "The tan box remains diagonally balanced without placing a broad side on gray floor.",
+          "type": "incomplete_transition"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c4",
+        "c5"
+      ],
+      "id": "terminal",
+      "observable_check": "One tan box keeps one side-supported horizontal pose through the end.",
+      "positive": "The same tan cardboard box remains horizontal on one side across the unchanged gray floor.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c4"
+          ],
+          "text": "The pictured side-lying box rises vertical again during final frames.",
+          "type": "reversal"
+        },
+        {
+          "constraint_ids": [
+            "c5"
+          ],
+          "text": "Vertical and horizontal copies of the tan box coexist on gray floor.",
+          "type": "exclusion_broken"
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "facts": {
+        "corner_state": "centered_support",
+        "pose": "vertical"
+      },
+      "id": "z0",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    },
+    {
+      "facts": {
+        "corner_state": "shifted_sideways",
+        "pose": "horizontal_side_supported"
+      },
+      "id": "z1",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "cause_event": "pictured_corner_shift",
+      "effects": [
+        {
+          "direction": "bottom support moves laterally",
+          "from": "centered_support",
+          "id": "bottom_shift",
+          "predicate": "corner_state",
+          "to": "shifted_sideways"
+        },
+        {
+          "direction": "tall silhouette rotates toward gray floor",
+          "from": "vertical",
+          "id": "tan_box_tip",
+          "predicate": "pose",
+          "to": "horizontal_side_supported"
+        }
+      ],
+      "from": "z0",
+      "id": "e1",
+      "kind": "triggered",
+      "preconditions": [
+        "corner_state=centered_support",
+        "pose=vertical"
+      ],
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "support_kind": "motion_contact_corridor",
+      "to": "z1"
+    }
+  ],
+  "warnings": [
+    "No pulling agent is visible, so the first auditable cause is lower-corner motion; boxes are estimated and unapproved."
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "causal_pair": {
+    "counterfactual_type": [
+      "cause_effect_reversal"
+    ],
+    "origin_prompt_prefixed": false,
+    "single_changed_relation": [
+      "the ball reverses direction before rather than after racket contact"
+    ]
+  },
+  "compiler_version": "ace-conditioning-mvp-v1",
+  "mode": "compiled",
+  "prompts": {
+    "causal_counterfactual": "The approaching tennis ball reverses direction while still separated from the racket; racket contact occurs afterward.",
+    "causal_positive": "The approaching tennis ball visibly contacts the racket, compresses briefly, and then travels back in the opposite direction.",
+    "semantic": "A tennis racket strikes an approaching tennis ball, sending the same ball back in the opposite direction. Initial scene: A fixed side view of one tennis racket and one tennis ball in a simple tennis practice setting. The ball is several ball diameters in front of the center of the racket face on a clear horizontal alignment, with both objects fully visible, unobstructed, and framed at a useful medium scale. Required visible entities: one tennis racket; one tennis ball. At the beginning: racket: intact with its full face visible; tennis ball: intact and spatially separated from the racket face. Required layout: ball center aligns with the central racket-face region; clear visible space separates the ball and racket; the interaction line and return-direction space remain inside the frame. Required state changes: ball position: approaches and contacts the racket; ball deformation: brief contact compression; ball direction: incoming to outgoing opposite direction. These event variables are allowed to change: ball position; ball travel direction; brief ball deformation at contact. Preserve throughout: static side-view camera; racket identity; tennis-ball identity and color; one tennis racket; one tennis ball; the same ball before and after contact."
+  },
+  "sample_id": "P03",
+  "schema_version": 1,
+  "semantic_variant": "compiled_t2v",
+  "source_sections": {
+    "changed_state_variables": [
+      "ball position: approaches and contacts the racket",
+      "ball deformation: brief contact compression",
+      "ball direction: incoming to outgoing opposite direction"
+    ],
+    "counterfactual_type": [
+      "cause_effect_reversal"
+    ],
+    "event_type": [
+      "contact-triggered direction reversal"
+    ],
+    "initial_states": [
+      "racket: intact with its full face visible",
+      "tennis ball: intact and spatially separated from the racket face"
+    ],
+    "layout_requirements": [
+      "ball center aligns with the central racket-face region",
+      "clear visible space separates the ball and racket",
+      "the interaction line and return-direction space remain inside the frame"
+    ],
+    "preserved_context": [
+      "one tennis racket",
+      "one tennis ball",
+      "the same ball before and after contact"
+    ],
+    "protected_scene_properties": [
+      "static side-view camera",
+      "racket identity",
+      "tennis-ball identity and color"
+    ],
+    "required_visible_entities": [
+      "one tennis racket",
+      "one tennis ball"
+    ],
+    "single_changed_relation": [
+      "the ball reverses direction before rather than after racket contact"
+    ],
+    "transition_variables": [
+      "ball position",
+      "ball travel direction",
+      "brief ball deformation at contact"
+    ]
+  }
+}

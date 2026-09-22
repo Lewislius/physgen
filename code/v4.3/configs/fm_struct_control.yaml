@@ -1,0 +1,95 @@
+# Same architecture and data; disable only Flow-Oracle for a controlled comparison.
+run_name: v43_native_joint_fm_struct
+stage: A
+phase: A1
+paths:
+  wan_code: /home/liuzhirui/model/Wan2.2
+  wan_checkpoint: /home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B
+  teacher_code: /home/liuzhirui/model/vjepa2
+  teacher_checkpoint: /home/liuzhirui/model/vjepa2/checkpoint/vjepa2_1_vitG_384.pt
+  cache_root: /home/liuzhirui/Project/physGen/code/v4.2/cache/wisa2400_nativefps_f121_a147456_fp32_jepa32
+  null_text_cache: /home/liuzhirui/Project/physGen/code/v4.2/cache/inference_conditions/v4_empty_text.pt
+  checkpoint_root: ${V43_ROOT}/checkpoints
+  log_root: ${V43_ROOT}/train/train_log
+data:
+  cache_format: v42_f121_jepa32
+  training_mode: i2v
+  vae_dtype: float32
+  teacher_sampling: adjacent_pairs
+  limit: 2400
+  max_frames: 121
+  max_long_side: 512
+  max_area: 147456
+  teacher_size: 384
+  teacher_frames: 32
+corrector:
+  architecture: v43_native_joint_flow_oracle_v1
+  initialization: image_text
+  a_blocks: [5, 15, 25]
+  hidden_width: 3072
+  jepa_width: 1664
+  position_width: 1664
+  text_width: 4096
+  latent_channels: 48
+  heads: 24
+  depth: 2
+  mlp_ratio: 4
+  mapping_width: 3072
+  initializer_width: 1664
+  initializer_heads: 26
+  initializer_depth: 2
+  checkpoint_cell: true
+  seconds_scale: 1.0
+loss:
+  fm_weight: 1.0
+  struct_weight: 0.01
+  oracle_weight: 0.0
+  warmup_steps: 200
+  struct_noise_width: 0.2
+oracle:
+  inner_steps: 2
+  # Proposal step RMS / input H RMS. This is NOT a cap on the deployed writer.
+  relative_step: 0.01
+  regularization: 0.001
+  max_backtracks: 4
+  backtrack_factor: 0.5
+  armijo: 0.0001
+  min_relative_gain: 0.00001
+  min_absolute_gain: 0.00000001
+  scale_floor: 0.0001
+  gradient_floor: 1.0e-20
+  # 0 means all three sites. A positive count rotates deterministically across microbatches.
+  sites_per_micro: 0
+train:
+  seed: 20260909
+  steps: 800
+  # Same optimizer schedule as the Oracle run; only oracle_weight differs.
+  learning_rate: 0.00005
+  weight_decay: 0.01
+  warmup_steps: 100
+  minimum_lr_ratio: 0.1
+  global_batch_size: 8
+  workers: 2
+  pin_memory: true
+  loader_timeout_seconds: 120
+  sample_limit: 0
+  text_dropout: 0.1
+  sigma_min: 0.02
+  sigma_max: 0.999
+  state_warmup_every: 0
+  grad_clip: 1.0
+  save_every: 100
+diagnostics:
+  trace_steps: 1
+  stack_timeout_seconds: 120
+  trace_wan_blocks: false
+logging:
+  wandb:
+    enabled: false
+    project: physgen-v43
+    entity: null
+validation:
+  every: 100
+  samples_per_rank: 1
+  sigmas: [0.1, 0.35, 0.6, 0.85, 0.98]
+  seed: 93001

@@ -1,0 +1,11 @@
+# Pipeline verification only. Formal stability.yaml remains unchanged.
+base_config: ${V42_ROOT}/configs/stability.yaml
+purpose: quick16_pipeline_only
+train_samples: 12
+validation_samples: 4
+epochs: 2
+accumulation: 4
+# Exercise FM from step 1, the unchanged step-800 path, and repair from step 801.
+schedule_steps: [1, 100, 800, 801, 802, 1200]
+inference_steps: 4
+work_dir: ${V42_ROOT}/quick16/work

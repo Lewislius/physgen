@@ -1,0 +1,391 @@
+{
+  "schema_version": "trace-direct-v1",
+  "design_revision": "p0-stage-direct-json-r2",
+  "sample_id": "P06",
+  "source_files": {
+    "origin": "P06-origin.txt",
+    "frame_zero_metadata": "P06-i0.json",
+    "reference_input": "P06-i0-1280x704.jpg"
+  },
+  "initial_condition": {
+    "type": "visible_actuator",
+    "description": "A visible hand pushes the book toward the open end of the shelf."
+  },
+  "global_semantic": "Static side view of one hand pushing one closed blue-edged book rightward from the end of a wooden shelf. The same book clears the shelf, falls continuously through the open space, hits the wooden floor, opens once, and remains open there.",
+  "cfg_negative": " ",
+  "entities": [
+    {
+      "id": "hand",
+      "mention": "one visible hand",
+      "role": "actor"
+    },
+    {
+      "id": "book",
+      "mention": "one closed blue-edged book",
+      "role": "patient"
+    },
+    {
+      "id": "shelf",
+      "mention": "one wooden shelf",
+      "role": "environment"
+    },
+    {
+      "id": "floor",
+      "mention": "one wooden floor",
+      "role": "environment"
+    }
+  ],
+  "structured_guidance": {
+    "schema_version": "structured-text-guidance-v1",
+    "entities": [
+      {
+        "id": "hand",
+        "label": "visible human hand",
+        "count": 1,
+        "persistent": false,
+        "invariants": [
+          "natural hand anatomy",
+          "single identity"
+        ]
+      },
+      {
+        "id": "book",
+        "label": "blue-edged book",
+        "count": 1,
+        "persistent": true,
+        "invariants": [
+          "blue-edged cover appearance",
+          "same complete set of pages",
+          "single intact identity"
+        ]
+      },
+      {
+        "id": "shelf",
+        "label": "wooden shelf",
+        "count": 1,
+        "persistent": true,
+        "invariants": [
+          "rigid fixed geometry",
+          "wooden appearance",
+          "stationary identity"
+        ]
+      },
+      {
+        "id": "floor",
+        "label": "wooden floor",
+        "count": 1,
+        "persistent": true,
+        "invariants": [
+          "flat fixed geometry",
+          "wooden appearance",
+          "stationary identity"
+        ]
+      }
+    ],
+    "initial_condition": {
+      "type": "visible_actuator",
+      "active_stages": [
+        "setup"
+      ],
+      "facts": [
+        "The visible hand initially pushes the single closed book rightward.",
+        "The shelf supports the book and the floor waits below the open gap."
+      ]
+    },
+    "stages": [
+      {
+        "id": "setup",
+        "entity_states": [
+          {
+            "entity_id": "hand",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "pushing the closed book rightward"
+            ],
+            "mutable": [
+              "position",
+              "pose"
+            ]
+          },
+          {
+            "entity_id": "book",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "closed and still supported by the shelf"
+            ],
+            "mutable": [
+              "horizontal position"
+            ]
+          }
+        ],
+        "relations": [
+          "No second book or loose page appears."
+        ]
+      },
+      {
+        "id": "onset",
+        "entity_states": [
+          {
+            "entity_id": "book",
+            "presence": "transitioning",
+            "count": 1,
+            "states": [
+              "clearing the shelf edge while still closed and beginning to fall"
+            ],
+            "mutable": [
+              "position",
+              "vertical speed"
+            ]
+          }
+        ],
+        "relations": [
+          "The shelf becomes empty as the same book loses support once."
+        ]
+      },
+      {
+        "id": "evolution",
+        "entity_states": [
+          {
+            "entity_id": "book",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "falling continuously through the open gap as one intact closed book"
+            ],
+            "mutable": [
+              "position",
+              "vertical speed",
+              "orientation"
+            ]
+          }
+        ],
+        "relations": [
+          "The book remains above the floor until landing."
+        ]
+      },
+      {
+        "id": "completion",
+        "entity_states": [
+          {
+            "entity_id": "book",
+            "presence": "transitioning",
+            "count": 1,
+            "states": [
+              "contacting the floor and opening once at the landing point"
+            ],
+            "mutable": [
+              "position",
+              "orientation",
+              "cover opening angle"
+            ]
+          }
+        ],
+        "relations": [
+          "All pages stay attached to the one original book."
+        ]
+      },
+      {
+        "id": "terminal",
+        "entity_states": [
+          {
+            "entity_id": "book",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "open, intact, and motionless on the wooden floor"
+            ],
+            "mutable": []
+          }
+        ],
+        "relations": [
+          "The shelf is empty and exactly one original book remains on the floor."
+        ]
+      }
+    ]
+  },
+  "stages": [
+    {
+      "id": "setup",
+      "positive": "The hand pushes the one closed book rightward while the shelf still supports it."
+    },
+    {
+      "id": "onset",
+      "positive": "The same closed book clears the shelf edge and begins one continuous fall."
+    },
+    {
+      "id": "evolution",
+      "positive": "The book descends through the open gap while the shelf above becomes empty."
+    },
+    {
+      "id": "completion",
+      "positive": "The book contacts the wooden floor and opens once at the landing point."
+    },
+    {
+      "id": "terminal",
+      "positive": "The single original book remains open and still on the floor."
+    }
+  ],
+  "warnings": [],
+  "generation_basis": {
+    "mode": "identifier_only",
+    "reference_image_usage": "identifier_only"
+  },
+  "grounding": {
+    "coordinate_frame": "reference_input",
+    "reference_image": "P06-i0-1280x704.jpg",
+    "approved": false,
+    "entity_boxes": []
+  },
+  "temporal_route": {
+    "latent_tokens": 25,
+    "crossfade_tokens": 2,
+    "interpolation": "smoothstep_c1",
+    "profile": "multi_transition",
+    "stage_order": [
+      "setup",
+      "onset",
+      "evolution",
+      "completion",
+      "terminal"
+    ],
+    "weights": [
+      [
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0
+      ]
+    ]
+  }
+}

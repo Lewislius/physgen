@@ -1,0 +1,170 @@
+{
+  "config": {
+    "model_version": "physgen_v42_f121_independent_correctors_v3",
+    "paths": {
+      "wan_code": "/home/liuzhirui/model/Wan2.2",
+      "wan_checkpoint": "/home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B",
+      "teacher_code": "/home/liuzhirui/model/vjepa2",
+      "teacher_checkpoint": "/home/liuzhirui/model/vjepa2/checkpoint/vjepa2_1_vitG_384.pt",
+      "wisa_index": "/run/determined/NAS1/public/Dataset/WISA/data/wisa-80k.json",
+      "wisa_videos": "/run/determined/NAS1/public/Dataset/WISA/data/videos",
+      "annotations": "/home/liuzhirui/Project/physGen/code/v4.2/data_index2400",
+      "cache": "/home/liuzhirui/Project/physGen/code/v4.2/cache/wisa2400_nativefps_f121_a147456_fp32_jepa32",
+      "asset_lock": "/home/liuzhirui/Project/physGen/code/v4.2/assets/wan_jepa_metadata.json",
+      "checkpoints": "/home/liuzhirui/Project/physGen/code/v4.2/checkpoints",
+      "logs": "/home/liuzhirui/Project/physGen/code/v4.2/train/train_log",
+      "outputs": "/home/liuzhirui/Project/physGen/code/v4.2/inference_outputs",
+      "demo_root": "/home/liuzhirui/Project/physGen/code/v1/demo",
+      "reference_image": "/home/liuzhirui/model/Wan2.2/overfit_ref/overfit_ref5.jpg",
+      "reference_prompt": "The woman smiles and waves at the camera."
+    },
+    "preparation": {
+      "asset_verification": "metadata",
+      "reuse_sources": [
+        "/home/liuzhirui/Project/physGen/code/v4.2/cache/wisa4000_nativefps_f121_a147456_fp32_jepa32",
+        "/home/liuzhirui/Project/physGen/code/v4.2/quick16/work/cache_v4_f121"
+      ]
+    },
+    "data": {
+      "seed": 20260909,
+      "limit": 2400,
+      "source_limit": 4000,
+      "subset_manifest": "/home/liuzhirui/Project/physGen/code/v4.2/cache/wisa4000_nativefps_f121_a147456_fp32_jepa32/manifest.json",
+      "selection_file": null,
+      "clip_annotations": null,
+      "validation_stride": 20,
+      "frames": 121,
+      "max_long_side": 512,
+      "max_area": 147456,
+      "decode_chunk_frames": 8,
+      "teacher_frames": 32,
+      "teacher_size": 384,
+      "categories": [
+        "unlabeled"
+      ]
+    },
+    "state": {
+      "sites": [
+        5,
+        15
+      ],
+      "parameter_sharing": "per_block",
+      "width": 1664,
+      "inner": 512,
+      "heads": 8,
+      "depth": 2,
+      "checkpoint": true,
+      "write_gate": true,
+      "initializer": "condition_trajectory_v1"
+    },
+    "loss": {
+      "fm": 1.0,
+      "struct": 0.1,
+      "struct_warmup_steps": 200,
+      "struct_noise_width": 0.2,
+      "struct_initialization_gradient": true,
+      "temp": 0.0,
+      "write": 0.05
+    },
+    "train": {
+      "recipe": "fm_struct_write_repair_trajectory_v1",
+      "seed": 20260916,
+      "steps": 1200,
+      "world_size": 1,
+      "accumulation": 8,
+      "save_every": 100,
+      "validate_every": 100,
+      "ema_decay": 0.995,
+      "grad_clip": 1.0,
+      "sampling": "uniform_modes_v1",
+      "auxiliary_gradient_policy": "project_conflicts",
+      "peak_lr": {
+        "core5": 5e-05,
+        "core15": 5e-05,
+        "text_init": 2e-05,
+        "writer5": 1e-05,
+        "writer15": 2e-05
+      }
+    },
+    "repair": {
+      "clean_probability": 0.25,
+      "max_relative_strength": 0.2,
+      "warp_latent_pixels": 0.5
+    },
+    "monitoring": {
+      "train_every": 25,
+      "health_ablation_cases": 4
+    },
+    "inference": {
+      "canvas_wh": [
+        512,
+        288
+      ],
+      "steps": 50,
+      "shift": 5.0,
+      "guidance": 5.0,
+      "seed": 42,
+      "duration": 5.0
+    }
+  },
+  "checkpoint": "zero_adapter_contract_only",
+  "checkpoint_step": 0,
+  "ema_updates": 0,
+  "ema_file": {
+    "purpose": "new zero-initialized adapter, no trained checkpoint"
+  },
+  "negative": "\u8272\u8c03\u8273\u4e3d\uff0c\u8fc7\u66dd\uff0c\u9759\u6001\uff0c\u7ec6\u8282\u6a21\u7cca\u4e0d\u6e05\uff0c\u5b57\u5e55\uff0c\u98ce\u683c\uff0c\u4f5c\u54c1\uff0c\u753b\u4f5c\uff0c\u753b\u9762\uff0c\u9759\u6b62\uff0c\u6574\u4f53\u53d1\u7070\uff0c\u6700\u5dee\u8d28\u91cf\uff0c\u4f4e\u8d28\u91cf\uff0cJPEG\u538b\u7f29\u6b8b\u7559\uff0c\u4e11\u964b\u7684\uff0c\u6b8b\u7f3a\u7684\uff0c\u591a\u4f59\u7684\u624b\u6307\uff0c\u753b\u5f97\u4e0d\u597d\u7684\u624b\u90e8\uff0c\u753b\u5f97\u4e0d\u597d\u7684\u8138\u90e8\uff0c\u7578\u5f62\u7684\uff0c\u6bc1\u5bb9\u7684\uff0c\u5f62\u6001\u7578\u5f62\u7684\u80a2\u4f53\uff0c\u624b\u6307\u878d\u5408\uff0c\u9759\u6b62\u4e0d\u52a8\u7684\u753b\u9762\uff0c\u6742\u4e71\u7684\u80cc\u666f\uff0c\u4e09\u6761\u817f\uff0c\u80cc\u666f\u4eba\u5f88\u591a\uff0c\u5012\u7740\u8d70",
+  "negative_sha256": "aaf43b562e043b3f02bd4302b2c65a0b7b5cb685cc0ef5406b1f8b804dcc4981",
+  "cases": [
+    {
+      "key": "single_t2v",
+      "id": "contract",
+      "group": "contract",
+      "mode": "t2v",
+      "duration": 5.0,
+      "prompt": "A black scooter rolls into a metal trash can, then tilts to one side and stops beside it.",
+      "geometry": {
+        "source_h": 64,
+        "source_w": 64,
+        "h": 64,
+        "w": 64,
+        "rh": 64,
+        "rw": 64,
+        "top": 0,
+        "left": 0,
+        "frames": 5
+      }
+    }
+  ],
+  "encoders": {
+    "text": {
+      "path": "/home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B/models_t5_umt5-xxl-enc-bf16.pth",
+      "bytes": 11361920418,
+      "mtime_ns": 1769032794748252447
+    },
+    "vae": {
+      "path": "/home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B/Wan2.2_VAE.pth",
+      "bytes": 2818839170,
+      "mtime_ns": 1769023849137199865
+    },
+    "teacher": {
+      "path": "/home/liuzhirui/model/vjepa2/checkpoint/vjepa2_1_vitG_384.pt",
+      "bytes": 30238058912,
+      "mtime_ns": 1773652593000000000
+    }
+  },
+  "recipe": {
+    "solver": "unipc",
+    "steps": 4,
+    "shift": 5,
+    "guidance": 5,
+    "adapter_guidance": 1,
+    "seed": 42,
+    "implementation": "20260917_r3_delta_h",
+    "variant": "base",
+    "writer_scales": [
+      0.0,
+      0.0
+    ]
+  }
+}

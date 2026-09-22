@@ -1,0 +1,190 @@
+{
+  "date": "2026-09-12",
+  "python_files": 37,
+  "python_excluded": [
+    "train/wandb_credentials.py"
+  ],
+  "shell_files": 7,
+  "yaml_files": 5,
+  "markdown_files": 13,
+  "local_links": 128,
+  "missing_links": [],
+  "formal_launches": [
+    {
+      "file": "4x48g",
+      "resources": {
+        "resource_pool": "ada-24g",
+        "slots_per_trial": 2,
+        "is_single_node": true,
+        "shm_size": 34359738368
+      },
+      "steps": 500,
+      "phase": "A1",
+      "check_steps": 0,
+      "initialization": "image_text_gt",
+      "gt_condition_dropout": 0.25,
+      "gt_steps": 374,
+      "no_gt_steps": 126,
+      "warm_every": 0,
+      "accumulation": 4
+    },
+    {
+      "file": "4x80g",
+      "resources": {
+        "resource_pool": "amp-80g",
+        "slots_per_trial": 4,
+        "is_single_node": true,
+        "shm_size": 34359738368
+      },
+      "steps": 500,
+      "phase": "A1",
+      "check_steps": 0,
+      "initialization": "image_text_gt",
+      "gt_condition_dropout": 0.25,
+      "gt_steps": 374,
+      "no_gt_steps": 126,
+      "warm_every": 0,
+      "accumulation": 2
+    },
+    {
+      "file": "4x96g",
+      "resources": {
+        "resource_pool": "blk-96g",
+        "slots_per_trial": 1,
+        "is_single_node": true,
+        "shm_size": 34359738368
+      },
+      "steps": 500,
+      "phase": "A1",
+      "check_steps": 0,
+      "initialization": "image_text_gt",
+      "gt_condition_dropout": 0.25,
+      "gt_steps": 374,
+      "no_gt_steps": 126,
+      "warm_every": 0,
+      "accumulation": 8
+    }
+  ],
+  "parameter_counts": {
+    "A": 837957970,
+    "B": 136224516,
+    "AB": 974182486
+  },
+  "changed_v4_sources": [
+    {
+      "file": "evaluation/check_gt_prior_full_shape.py",
+      "sha256": "3626a8054de0e0d9abe2b15e5f6dfebf18ebd5fd4f19b9957401fb0ceb98b470"
+    },
+    {
+      "file": "evaluation/contract_checks.py",
+      "sha256": "03485edd31cef3a96ea435b839d0b2dfb150183af47ce5a3b7786aec52cd7dab"
+    },
+    {
+      "file": "evaluation/test_checkpoint_autocast.py",
+      "sha256": "6cf80c522f1773b27740355179e61ec98e4046157b5194833d2c437cb5cf33a7"
+    },
+    {
+      "file": "evaluation/test_condition_prior.py",
+      "sha256": "4743b739467ea1d91fde6ecdf404946026e78beda20d5c71389b5d19a3e0bdd5"
+    },
+    {
+      "file": "evaluation/test_cross_attention.py",
+      "sha256": "4df053bfb4e1072a56c08c1f06634a67ab20d5090f20fee83bf3e903793e7eb8"
+    },
+    {
+      "file": "evaluation/test_gt_condition_prior.py",
+      "sha256": "9b76265578b5972a0618ba8f93470b94eaa299cad2e77d12eec26973ad0c9ec2"
+    },
+    {
+      "file": "evaluation/test_independent_correctors.py",
+      "sha256": "db0b56965f780b2f2ba57a4ed503a86b0b675187feebccb7879649e32ba086e0"
+    },
+    {
+      "file": "evaluation/test_launchers.py",
+      "sha256": "402523a7202025d13f44990d7b4e345d2fb92d783558ea915aea2e730be83626"
+    },
+    {
+      "file": "evaluation/test_training_runtime.py",
+      "sha256": "212e6a650fdaf019943f686a85dd30b27e18f66affc595913910a72baf0bb5b5"
+    },
+    {
+      "file": "physgen_v4/backbone.py",
+      "sha256": "115cb9b2a364df8f43bd6de6f70b01430fdc6746c08f58755d8a41264ab33bb5"
+    },
+    {
+      "file": "physgen_v4/coordinates.py",
+      "sha256": "81e0c6126b1269cf060435e8a98fb00681f75dd2d30f4f7f32e83a6341e04e11"
+    },
+    {
+      "file": "physgen_v4/corrector.py",
+      "sha256": "9f7ab512d4e409eb207ae8b08fb25cef3aa75b7fedab4d172a358567d4a55d63"
+    },
+    {
+      "file": "physgen_v4/losses.py",
+      "sha256": "7fd4c986fad638377eb72f0887a9c6553b745c919938f0b8eb65cce8525b55c5"
+    },
+    {
+      "file": "physgen_v4/monitoring.py",
+      "sha256": "f497d2f32e86d3713e1f96d1e59db81adfe2b02a70ffbd8a7424fcd9b2f9a58e"
+    },
+    {
+      "file": "train/train_native_p.py",
+      "sha256": "306e7229d7ad350ae3e957c3557fa6479795b303f2fec0b89f035139472fac6d"
+    },
+    {
+      "file": "train/run_training.sh",
+      "sha256": "2b94776f83949a4600875312a43caf5787754b154b6ae08f5e989f1d42dc93c6"
+    },
+    {
+      "file": "configs/wisa_native_p.yaml",
+      "sha256": "6f1f8c7756eb5268dbe9e61f335322ef3b497c8c787920cdad8221610571f487"
+    },
+    {
+      "file": "train/train_wisa_native_p_4x48g.yaml",
+      "sha256": "977d8a0889cff483370cc1e269969b912355f7470dbf55e024c922404ee403f6"
+    },
+    {
+      "file": "train/train_wisa_native_p_4x80g.yaml",
+      "sha256": "ac375743aa999429b8768cdd3f606226aa0bfdc42dd22fefc94e1f5f58f9c265"
+    },
+    {
+      "file": "train/train_wisa_native_p_4x96g.yaml",
+      "sha256": "a14bda8e3d141a0f8f9e213880a304febf8149d1702d0861e81ac16e68fbaa6b"
+    },
+    {
+      "file": "20260909-D-原生P校正器训练与推理实现方案.md",
+      "sha256": "9e96426e2836210d185149e59d76eff3aa259be658ccb16bdb830530411439e4"
+    },
+    {
+      "file": "README.md",
+      "sha256": "a814215b9bb591465b91c86a8111468219a26a28ac1016460f384aa4d14f2710"
+    },
+    {
+      "file": "evaluation/INDEPENDENT_CORRECTORS.md",
+      "sha256": "9cbcb9f559466b31a1b164dbbf4af954f534a2a04d715b5f1bb9b7b858140265"
+    },
+    {
+      "file": "evaluation/NCCL_HANG_CHECKLIST.md",
+      "sha256": "fb0e0e8a1d8ba47dc404f3adb24e1954ca0a36c09a55bd0bb391b0998e01288f"
+    },
+    {
+      "file": "evaluation/CHECKPOINT_AUTOCAST_FIX.md",
+      "sha256": "cb65057ac2dc9cbccd75db87a245d5937a0a0d32da5a137b3f40d1eb52ce5ff3"
+    },
+    {
+      "file": "evaluation/GT_CONDITION_PRIOR.md",
+      "sha256": "8b349f7c86cc27a79146e3f7965108b838eafaf89a133725d899e9ab0ea655e7"
+    }
+  ],
+  "changed_v3_documents": [
+    "/home/liuzhirui/Project/physGen/code/v3/analysis/20260908-E-实际过程监督与反馈校正_增量模型构建及周度验证方案.md",
+    "/home/liuzhirui/Project/physGen/code/v3/analysis/20260912-D-原生P蒸馏与写回流程_简明说明.md",
+    "/home/liuzhirui/Project/physGen/code/v3/analysis/20260909-D-完整实现前不确定性与监督根因审查.md",
+    "/home/liuzhirui/Project/physGen/code/v3/analysis/20260909-D-Hplus中间监督与SharedCell对齐方向_方法调研.md",
+    "/home/liuzhirui/Project/physGen/code/v3/analysis/20260909-D-L_struct_L_out_L_align监督方式说明.md",
+    "/home/liuzhirui/Project/physGen/code/v3/analysis/20260908-D-结构先导与细粒度响应校正_方法重构.md",
+    "/home/liuzhirui/Project/physGen/code/v3/analysis/20260912-D-PH双向交叉注意力与加法融合_实现审查.md"
+  ],
+  "passed": true,
+  "scope": "Static parsing, local links, real config resolution and meta parameter enumeration; no GPU execution."
+}

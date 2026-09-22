@@ -1,0 +1,189 @@
+{
+  "actual_t5_token_lengths": {
+    "global_semantic": 254,
+    "stage.completion.negative.0": 145,
+    "stage.completion.positive": 145,
+    "stage.evolution.negative.0": 135,
+    "stage.evolution.positive": 134,
+    "stage.onset.negative.0": 149,
+    "stage.onset.positive": 148,
+    "stage.setup.negative.0": 149,
+    "stage.setup.positive": 146,
+    "stage.terminal.negative.0": 177,
+    "stage.terminal.negative.1": 179,
+    "stage.terminal.positive": 191
+  },
+  "global_anchor": "[ENTITY INVENTORY] The closed scene contains hand: exactly 1; sponge: exactly 1; surface: one declared collective group. The reference first frame fixes these identities and initial layout. [INITIAL STATE] hand_state=hovering_above, thickness=full_rectangular. [PHYSICAL EVENT] The open left hand presses the rectangular yellow sponge on the white marble surface, lifts, and the sponge recovers. [PERSISTENT PROTECTION] same left hand skin appearance; same rectangular yellow porous dry sponge; white marble surface, pale background, lighting, side camera, and framing remain unchanged. [CLOSED WORLD] No additional external source, extra copy, unlisted object enters or appears; unoccupied scene regions remain empty. [CONSERVATION] Source loss and result gain stay coupled: tracked logical entity slots remain consistent. No result appears from an undeclared external source. [TERMINAL STATE] The same logical entity slots persist without duplicates; hand_state=lifted_above, thickness=recovered_rectangular remains visible through the final frames.",
+  "issues": [],
+  "max_t5_token_length": 254,
+  "protected_coverage": {
+    "same left hand skin appearance": [
+      "identity_count",
+      "appearance"
+    ],
+    "same rectangular yellow porous dry sponge": [
+      "identity_count",
+      "geometry"
+    ],
+    "white marble surface, pale background, lighting, side camera, and framing remain unchanged": [
+      "appearance",
+      "geometry",
+      "camera_background",
+      "closed_world_or_persistence"
+    ]
+  },
+  "stage_pairs": [
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "the open palm reaches the yellow sponge top happens BEFORE yellow vertical extent decreases.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=hovering_above, required; sponge: exactly 1, state thickness=full_rectangular, required; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] the open palm reaches the yellow sponge top happens BEFORE yellow vertical extent decreases.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=hovering_above, required; sponge: exactly 1, state thickness=full_rectangular, required; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "setup",
+      "violation_constraint_ids": [
+        [
+          "c1",
+          "c3"
+        ]
+      ],
+      "violation_kinds": [
+        "outcome_preset"
+      ],
+      "violation_relations": [
+        "yellow vertical extent decreases is already present BEFORE the open palm reaches the yellow sponge top."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=hovering_above, required; sponge: exactly 1, state thickness=full_rectangular, required; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] yellow vertical extent decreases is already present BEFORE the open palm reaches the yellow sponge top."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "the open palm reaches the yellow sponge top happens BEFORE yellow vertical extent decreases.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=hovering_above, transitioning; sponge: exactly 1, state thickness=full_rectangular, transitioning; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] the open palm reaches the yellow sponge top happens BEFORE yellow vertical extent decreases.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=hovering_above, transitioning; sponge: exactly 1, state thickness=full_rectangular, transitioning; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "onset",
+      "violation_constraint_ids": [
+        [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ]
+      ],
+      "violation_kinds": [
+        "wrong_order"
+      ],
+      "violation_relations": [
+        "yellow vertical extent decreases happens BEFORE the open palm reaches the yellow sponge top."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=hovering_above, transitioning; sponge: exactly 1, state thickness=full_rectangular, transitioning; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] yellow vertical extent decreases happens BEFORE the open palm reaches the yellow sponge top."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The declared change yellow vertical extent decreases occurs in its stated direction.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=pressing, required; sponge: exactly 1, state thickness=flat, required; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change yellow vertical extent decreases occurs in its stated direction.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=pressing, required; sponge: exactly 1, state thickness=flat, required; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "evolution",
+      "violation_constraint_ids": [
+        [
+          "c5"
+        ]
+      ],
+      "violation_kinds": [
+        "effect_missing"
+      ],
+      "violation_relations": [
+        "The declared cause occurs BUT the required target change does not become visible."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=pressing, required; sponge: exactly 1, state thickness=flat, required; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The declared cause occurs BUT the required target change does not become visible."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The declared change yellow vertical extent rises gradually occurs in its stated direction.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=lifted_above, transitioning; sponge: exactly 1, state thickness=recovered_rectangular, transitioning; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change yellow vertical extent rises gradually occurs in its stated direction.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=lifted_above, transitioning; sponge: exactly 1, state thickness=recovered_rectangular, transitioning; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "completion",
+      "violation_constraint_ids": [
+        [
+          "c6",
+          "c7"
+        ]
+      ],
+      "violation_kinds": [
+        "incomplete_transition"
+      ],
+      "violation_relations": [
+        "The declared cause occurs BUT the required target change does not become visible."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=lifted_above, transitioning; sponge: exactly 1, state thickness=recovered_rectangular, transitioning; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The declared cause occurs BUT the required target change does not become visible."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The terminal facts hand_state=lifted_above, thickness=recovered_rectangular REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts thickness=flat, thickness=recovered_rectangular do not coexist.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=lifted_above, required; sponge: exactly 1, state thickness=recovered_rectangular, required; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The terminal facts hand_state=lifted_above, thickness=recovered_rectangular REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts thickness=flat, thickness=recovered_rectangular do not coexist.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=lifted_above, required; sponge: exactly 1, state thickness=recovered_rectangular, required; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "terminal",
+      "violation_constraint_ids": [
+        [
+          "c7"
+        ],
+        [
+          "c8"
+        ]
+      ],
+      "violation_kinds": [
+        "reversal",
+        "exclusion_broken"
+      ],
+      "violation_relations": [
+        "The valid terminal state returns to its mutually exclusive earlier state.",
+        "Copies of the same logical slot appear in mutually exclusive states at the same time."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=lifted_above, required; sponge: exactly 1, state thickness=recovered_rectangular, required; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The valid terminal state returns to its mutually exclusive earlier state. [AND] The same logical slot has only its valid state; mutually exclusive facts thickness=flat, thickness=recovered_rectangular do not coexist.",
+        "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=lifted_above, required; sponge: exactly 1, state thickness=recovered_rectangular, required; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The terminal facts hand_state=lifted_above, thickness=recovered_rectangular REMAIN through the final frames. [AND] Copies of the same logical slot appear in mutually exclusive states at the same time."
+      ],
+      "violation_weights": [
+        0.5,
+        0.5
+      ]
+    }
+  ],
+  "texts": {
+    "global_semantic": "[ENTITY INVENTORY] The closed scene contains hand: exactly 1; sponge: exactly 1; surface: one declared collective group. The reference first frame fixes these identities and initial layout. [INITIAL STATE] hand_state=hovering_above, thickness=full_rectangular. [PHYSICAL EVENT] The open left hand presses the rectangular yellow sponge on the white marble surface, lifts, and the sponge recovers. [PERSISTENT PROTECTION] same left hand skin appearance; same rectangular yellow porous dry sponge; white marble surface, pale background, lighting, side camera, and framing remain unchanged. [CLOSED WORLD] No additional external source, extra copy, unlisted object enters or appears; unoccupied scene regions remain empty. [CONSERVATION] Source loss and result gain stay coupled: tracked logical entity slots remain consistent. No result appears from an undeclared external source. [TERMINAL STATE] The same logical entity slots persist without duplicates; hand_state=lifted_above, thickness=recovered_rectangular remains visible through the final frames.",
+    "stage.completion.negative.0": "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=lifted_above, transitioning; sponge: exactly 1, state thickness=recovered_rectangular, transitioning; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The declared cause occurs BUT the required target change does not become visible.",
+    "stage.completion.positive": "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=lifted_above, transitioning; sponge: exactly 1, state thickness=recovered_rectangular, transitioning; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change yellow vertical extent rises gradually occurs in its stated direction.",
+    "stage.evolution.negative.0": "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=pressing, required; sponge: exactly 1, state thickness=flat, required; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The declared cause occurs BUT the required target change does not become visible.",
+    "stage.evolution.positive": "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=pressing, required; sponge: exactly 1, state thickness=flat, required; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change yellow vertical extent decreases occurs in its stated direction.",
+    "stage.onset.negative.0": "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=hovering_above, transitioning; sponge: exactly 1, state thickness=full_rectangular, transitioning; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] yellow vertical extent decreases happens BEFORE the open palm reaches the yellow sponge top.",
+    "stage.onset.positive": "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=hovering_above, transitioning; sponge: exactly 1, state thickness=full_rectangular, transitioning; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] the open palm reaches the yellow sponge top happens BEFORE yellow vertical extent decreases.",
+    "stage.setup.negative.0": "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=hovering_above, required; sponge: exactly 1, state thickness=full_rectangular, required; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] yellow vertical extent decreases is already present BEFORE the open palm reaches the yellow sponge top.",
+    "stage.setup.positive": "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=hovering_above, required; sponge: exactly 1, state thickness=full_rectangular, required; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] the open palm reaches the yellow sponge top happens BEFORE yellow vertical extent decreases.",
+    "stage.terminal.negative.0": "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=lifted_above, required; sponge: exactly 1, state thickness=recovered_rectangular, required; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The valid terminal state returns to its mutually exclusive earlier state. [AND] The same logical slot has only its valid state; mutually exclusive facts thickness=flat, thickness=recovered_rectangular do not coexist.",
+    "stage.terminal.negative.1": "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=lifted_above, required; sponge: exactly 1, state thickness=recovered_rectangular, required; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The terminal facts hand_state=lifted_above, thickness=recovered_rectangular REMAIN through the final frames. [AND] Copies of the same logical slot appear in mutually exclusive states at the same time.",
+    "stage.terminal.positive": "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=lifted_above, required; sponge: exactly 1, state thickness=recovered_rectangular, required; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The terminal facts hand_state=lifted_above, thickness=recovered_rectangular REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts thickness=flat, thickness=recovered_rectangular do not coexist."
+  },
+  "token_budget_priority": {
+    "causal": 2,
+    "entity_count": 0,
+    "protected": 1,
+    "style": 3
+  }
+}

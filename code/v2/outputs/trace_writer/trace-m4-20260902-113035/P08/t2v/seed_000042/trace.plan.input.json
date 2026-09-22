@@ -1,0 +1,339 @@
+{
+  "assumptions": [],
+  "constraints": [
+    {
+      "after": "puddle_grow",
+      "before": "first_melt_change",
+      "id": "c1",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "precedes"
+    },
+    {
+      "effect": "ice_shrink",
+      "id": "c2",
+      "source_refs": [
+        "origin"
+      ],
+      "transition": "e1",
+      "type": "changes"
+    },
+    {
+      "effects": [
+        "ice_shrink",
+        "puddle_grow"
+      ],
+      "id": "c3",
+      "relation": "visible solid decreases while surrounding liquid area increases",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "couples"
+    },
+    {
+      "facts": [
+        "ice_size=smaller",
+        "water_area=grown_puddle"
+      ],
+      "id": "c4",
+      "source_refs": [
+        "origin"
+      ],
+      "state": "z1",
+      "type": "persists"
+    },
+    {
+      "facts": [
+        "ice_size=full",
+        "ice_size=smaller"
+      ],
+      "id": "c5",
+      "scope": "same_time",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "excludes"
+    }
+  ],
+  "design_revision": "fixed5-causal-r3",
+  "entities": [
+    {
+      "id": "ice",
+      "mention": "the same clear ice cube",
+      "role": "source",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "id": "meltwater",
+      "mention": "the liquid water produced from the same ice",
+      "role": "carrier",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "id": "plate",
+      "mention": "the same shallow plate",
+      "role": "sink",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "description": "first detectable ice recession with liquid appearing",
+      "id": "first_melt_change",
+      "observable": "an ice edge recedes as a small wet area appears",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "generation_basis": {
+    "mode": "identifier_only",
+    "reference_image_usage": "identifier_only",
+    "semantic_inputs": [
+      "origin",
+      "planner_instructions"
+    ]
+  },
+  "global_semantic": "One clear ice cube gradually shrinks while liquid water forms a growing puddle on one shallow plate.",
+  "grounding": {
+    "approved": false,
+    "coordinate_frame": "reference_input",
+    "entity_boxes": [],
+    "protected_boxes": [],
+    "reference_image": "P08-i0-1280x704.png",
+    "reference_image_usage": "identifier_only"
+  },
+  "predicates": [
+    {
+      "attribute": "visible_solid_size",
+      "id": "ice_size",
+      "observable": "ice boundary and projected solid area",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "ice",
+      "values": [
+        "full",
+        "smaller"
+      ]
+    },
+    {
+      "attribute": "meltwater_footprint",
+      "id": "water_area",
+      "observable": "liquid area spreading around the ice",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "plate",
+      "values": [
+        "minimal",
+        "grown_puddle"
+      ]
+    }
+  ],
+  "protected_predicates": [
+    "same ice-water material system",
+    "same shallow plate",
+    "camera and unrelated scene remain unchanged"
+  ],
+  "sample_id": "P08",
+  "schema_version": "trace-writer-v1",
+  "source_files": {
+    "origin": "P08-origin.txt",
+    "planner_instructions": "Project/physGen/prompt/generate_trace_writer_v1_plan.txt",
+    "reference_input": "P08-i0-1280x704.png"
+  },
+  "stages": [
+    {
+      "affected_roles": [
+        "source",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "setup",
+      "observable_check": "A clearly bounded cube dominates over any visible wet area.",
+      "positive": "The clear ice cube remains near full size on a plate with minimal surrounding water.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "A finished puddle already surrounds a greatly reduced ice cube in the opening frames.",
+          "type": "outcome_preset"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "onset",
+      "observable_check": "A local boundary change precedes broad liquid spreading.",
+      "positive": "The first detectable edge recession appears together with a small liquid area beside the ice.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "A broad puddle appears before any detectable change in the ice boundary.",
+          "type": "early_effect"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c2",
+        "c3"
+      ],
+      "id": "evolution",
+      "observable_check": "Solid area decreases across frames as liquid area increases.",
+      "positive": "The same ice cube becomes progressively smaller while the surrounding puddle expands outward.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c2",
+            "c3"
+          ],
+          "text": "The puddle expands while the visible ice cube keeps its full original size.",
+          "type": "coupling_broken"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c2",
+        "c3",
+        "c4"
+      ],
+      "id": "completion",
+      "observable_check": "Late frames show less solid and a wider continuous water footprint.",
+      "positive": "The remaining ice continues receding as the puddle approaches its largest requested footprint.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c2",
+            "c3",
+            "c4"
+          ],
+          "text": "Ice shrinkage stalls early and the surrounding liquid never forms a grown puddle.",
+          "type": "incomplete_transition"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c4",
+        "c5"
+      ],
+      "id": "terminal",
+      "observable_check": "The final solid and liquid extents remain unchanged through the end.",
+      "positive": "The smaller remaining ice and grown puddle persist together on the same shallow plate.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c4"
+          ],
+          "text": "The reduced ice returns to full size or the grown puddle disappears in final frames.",
+          "type": "reversal"
+        },
+        {
+          "constraint_ids": [
+            "c5"
+          ],
+          "text": "Full-sized and reduced copies of the same ice cube coexist simultaneously.",
+          "type": "exclusion_broken"
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "facts": {
+        "ice_size": "full",
+        "water_area": "minimal"
+      },
+      "id": "z0",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "facts": {
+        "ice_size": "smaller",
+        "water_area": "grown_puddle"
+      },
+      "id": "z1",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "cause_event": null,
+      "effects": [
+        {
+          "direction": "solid boundary recedes",
+          "from": "full",
+          "id": "ice_shrink",
+          "predicate": "ice_size",
+          "to": "smaller"
+        },
+        {
+          "direction": "liquid footprint expands outward",
+          "from": "minimal",
+          "id": "puddle_grow",
+          "predicate": "water_area",
+          "to": "grown_puddle"
+        }
+      ],
+      "from": "z0",
+      "id": "e1",
+      "kind": "continuous",
+      "preconditions": [
+        "ice_size=full",
+        "water_area=minimal"
+      ],
+      "source_refs": [
+        "origin"
+      ],
+      "support_kind": "source_stream_sink",
+      "to": "z1"
+    }
+  ],
+  "warnings": []
+}

@@ -1,0 +1,416 @@
+{
+  "assumptions": [],
+  "constraints": [
+    {
+      "after": "flatten",
+      "before": "hand_contact",
+      "id": "c1",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "precedes"
+    },
+    {
+      "cause": "hand_contact",
+      "effect": "flatten",
+      "id": "c2",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "requires"
+    },
+    {
+      "after": "recover",
+      "before": "pressure_release",
+      "id": "c3",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "precedes"
+    },
+    {
+      "cause": "pressure_release",
+      "effect": "recover",
+      "id": "c4",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "requires"
+    },
+    {
+      "effect": "flatten",
+      "id": "c5",
+      "source_refs": [
+        "origin"
+      ],
+      "transition": "e1",
+      "type": "changes"
+    },
+    {
+      "effect": "recover",
+      "id": "c6",
+      "source_refs": [
+        "origin"
+      ],
+      "transition": "e2",
+      "type": "changes"
+    },
+    {
+      "facts": [
+        "hand_state=lifted",
+        "thickness=recovered"
+      ],
+      "id": "c7",
+      "source_refs": [
+        "origin"
+      ],
+      "state": "z2",
+      "type": "persists"
+    },
+    {
+      "facts": [
+        "thickness=flat",
+        "thickness=recovered"
+      ],
+      "id": "c8",
+      "scope": "same_time",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "excludes"
+    }
+  ],
+  "control": {},
+  "design_revision": "fixed5-causal-r3",
+  "entities": [
+    {
+      "id": "hand",
+      "mention": "the same hand",
+      "role": "actor",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "id": "sponge",
+      "mention": "the same dry sponge",
+      "role": "patient",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "id": "surface",
+      "mention": "the same support surface",
+      "role": "environment",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "description": "the hand visibly contacts and begins pressing the sponge",
+      "id": "hand_contact",
+      "observable": "the hand-sponge gap reaches zero",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "description": "the hand visibly lifts away from the flattened sponge",
+      "id": "pressure_release",
+      "observable": "a growing gap appears above the sponge",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "generation_basis": {
+    "mode": "identifier_only",
+    "reference_image_usage": "identifier_only",
+    "semantic_inputs": [
+      "origin",
+      "planner_instructions"
+    ]
+  },
+  "global_semantic": "One hand presses one dry sponge flat, lifts away, and the same sponge gradually regains its shape.",
+  "grounding": {
+    "approved": false,
+    "coordinate_frame": "reference_input",
+    "entity_boxes": [],
+    "protected_boxes": [],
+    "reference_image": "P17-i0-1280x704.png",
+    "reference_image_usage": "identifier_only"
+  },
+  "predicates": [
+    {
+      "attribute": "contact_state",
+      "id": "hand_state",
+      "observable": "hand-sponge gap and contact",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "hand",
+      "values": [
+        "hovering",
+        "pressing",
+        "lifted"
+      ]
+    },
+    {
+      "attribute": "visible_thickness",
+      "id": "thickness",
+      "observable": "vertical distance between sponge top and support",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "sponge",
+      "values": [
+        "original",
+        "flat",
+        "recovered"
+      ]
+    }
+  ],
+  "protected_predicates": [
+    "same hand and dry sponge",
+    "same support surface",
+    "sponge identity and dryness remain unchanged",
+    "camera and background remain unchanged"
+  ],
+  "sample_id": "P17",
+  "schema_version": "trace-writer-v1",
+  "source_files": {
+    "origin": "P17-origin.txt",
+    "planner_instructions": "Project/physGen/prompt/generate_trace_writer_v1_plan.txt",
+    "reference_input": "P17-i0-1280x704.png"
+  },
+  "stages": [
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c1",
+        "c3"
+      ],
+      "id": "setup",
+      "observable_check": "The sponge keeps original thickness as the hand gap narrows.",
+      "positive": "The hand approaches the full-thickness dry sponge while a visible gap remains.",
+      "support_kind": "motion_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1",
+            "c3"
+          ],
+          "text": "The sponge is already flat or recovered before the hand makes contact.",
+          "type": "outcome_preset"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c1",
+        "c2",
+        "c3",
+        "c4"
+      ],
+      "id": "onset",
+      "observable_check": "Contact precedes flattening, and release has not yet occurred.",
+      "positive": "The hand contacts the sponge and begins reducing its visible thickness downward.",
+      "support_kind": "contact_interface",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ],
+          "text": "The sponge flattens without hand contact or recovers before the hand lifts.",
+          "type": "wrong_order"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c5"
+      ],
+      "id": "evolution",
+      "observable_check": "Sponge top moves downward while its base stays supported.",
+      "positive": "Continued hand pressure compresses the same sponge to a clearly flattened state.",
+      "support_kind": "motion_contact_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c5"
+          ],
+          "text": "The hand presses visibly but the dry sponge retains its original thickness.",
+          "type": "effect_missing"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c6",
+        "c7"
+      ],
+      "id": "completion",
+      "observable_check": "A hand gap grows while sponge thickness rises progressively.",
+      "positive": "After the hand lifts, the flattened sponge gradually expands toward its original thickness.",
+      "support_kind": "motion_contact_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c6",
+            "c7"
+          ],
+          "text": "The hand lifts but the flattened sponge never visibly increases its thickness.",
+          "type": "incomplete_transition"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c7",
+        "c8"
+      ],
+      "id": "terminal",
+      "observable_check": "Recovered thickness and visible hand separation persist through the end.",
+      "positive": "The same dry sponge remains recovered while the same hand stays lifted away.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c7"
+          ],
+          "text": "The recovered sponge collapses flat again after the hand has lifted.",
+          "type": "reversal"
+        },
+        {
+          "constraint_ids": [
+            "c8"
+          ],
+          "text": "Flat and recovered copies of the same sponge coexist on the surface.",
+          "type": "exclusion_broken"
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "facts": {
+        "hand_state": "hovering",
+        "thickness": "original"
+      },
+      "id": "z0",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "facts": {
+        "hand_state": "pressing",
+        "thickness": "flat"
+      },
+      "id": "z1",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "facts": {
+        "hand_state": "lifted",
+        "thickness": "recovered"
+      },
+      "id": "z2",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "cause_event": "hand_contact",
+      "effects": [
+        {
+          "direction": "hand gap closes and downward contact continues",
+          "from": "hovering",
+          "id": "begin_press",
+          "predicate": "hand_state",
+          "to": "pressing"
+        },
+        {
+          "direction": "sponge thickness decreases",
+          "from": "original",
+          "id": "flatten",
+          "predicate": "thickness",
+          "to": "flat"
+        }
+      ],
+      "from": "z0",
+      "id": "e1",
+      "kind": "triggered",
+      "preconditions": [
+        "hand_state=hovering",
+        "thickness=original"
+      ],
+      "source_refs": [
+        "origin"
+      ],
+      "support_kind": "motion_contact_corridor",
+      "to": "z1"
+    },
+    {
+      "cause_event": "pressure_release",
+      "effects": [
+        {
+          "direction": "hand-sponge gap increases",
+          "from": "pressing",
+          "id": "lift_hand",
+          "predicate": "hand_state",
+          "to": "lifted"
+        },
+        {
+          "direction": "sponge thickness increases gradually",
+          "from": "flat",
+          "id": "recover",
+          "predicate": "thickness",
+          "to": "recovered"
+        }
+      ],
+      "from": "z1",
+      "id": "e2",
+      "kind": "triggered",
+      "preconditions": [
+        "hand_state=pressing",
+        "thickness=flat"
+      ],
+      "source_refs": [
+        "origin"
+      ],
+      "support_kind": "motion_contact_corridor",
+      "to": "z2"
+    }
+  ],
+  "warnings": []
+}

@@ -1,0 +1,78 @@
+{
+  "closed_world": {
+    "allowed_entity_ids": [
+      "balloon"
+    ],
+    "empty_regions": [],
+    "external_source_allowed": false,
+    "forbidden_new_categories": [
+      "external source",
+      "extra copy",
+      "hand",
+      "person",
+      "tool",
+      "unlisted object"
+    ],
+    "provenance": "derived"
+  },
+  "conservation": [
+    {
+      "observable_proxy": "tracked logical entity slots remain consistent",
+      "provenance": "derived",
+      "quantity": "instance_count",
+      "relation": "constant",
+      "rule_id": "entity_slots_constant",
+      "sinks": [
+        "balloon"
+      ],
+      "sources": [
+        "balloon"
+      ],
+      "tolerance": 0.0
+    }
+  ],
+  "lifecycles": [
+    {
+      "entity_id": "balloon",
+      "from_stage": "setup",
+      "from_state": "small_pear_shape; wrinkled_loose",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "small_pear_shape",
+          "large_taut_shape"
+        ],
+        [
+          "wrinkled_loose",
+          "smooth_taut"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "large_taut_shape; smooth_taut"
+    },
+    {
+      "entity_id": "balloon",
+      "from_stage": "setup",
+      "from_state": "large_taut_shape; smooth_taut; intact",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "large_taut_shape",
+          "collapsed_green_pieces"
+        ],
+        [
+          "smooth_taut",
+          "deflated"
+        ],
+        [
+          "intact",
+          "ruptured_fragments"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "collapsed_green_pieces; deflated; ruptured_fragments"
+    }
+  ]
+}

@@ -1,0 +1,347 @@
+{
+  "ace": {
+    "cfg_scope": "conditional_only",
+    "diagnostics": "summary",
+    "enabled": true,
+    "formula": "semantic + scale * (positive - counterfactual)",
+    "fp32_delta": true,
+    "lambda0": 0.5,
+    "layer_gates": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.4,
+      0.4,
+      0.4,
+      0.4,
+      0.4,
+      0.4,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "layer_preset": "mvp_mid16",
+    "residual_cap_eps": 1e-12,
+    "residual_cap_ratio": null,
+    "residual_mode": "positive_minus_counterfactual",
+    "step_gates": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "step_preset": "legacy"
+  },
+  "contexts": {
+    "causal_origin_prompt_prefixed": true,
+    "cfg_negative_prompt": "色调艳丽，过曝，静态，细节模糊不清，字幕，风格，作品，画作，画面，静止，整体发灰，最差质量，低质量，JPEG压缩残留，丑陋的，残缺的，多余的手指，画得不好的手部，画得不好的脸部，畸形的，毁容的，形态畸形的肢体，手指融合，静止不动的画面，杂乱的背景，三条腿，背景人很多，倒着走",
+    "compiler_version": "ace-router-initial-v1-compat",
+    "conditioning_mode": "initial_v1",
+    "counterfactual_text": "A wooden block slides down a ramp onto a rough floor, slows continuously, and comes to rest. The wooden block reaches the rough floor and continues across it at unchanged speed to the end of the visible corridor.",
+    "positive_text": "A wooden block slides down a ramp onto a rough floor, slows continuously, and comes to rest. The wooden block moves continuously down the ramp, reaches the rough floor, and then loses speed steadily until it remains at rest.",
+    "semantic_text": "A wooden block slides down a ramp onto a rough floor, slows continuously, and comes to rest.",
+    "semantic_variant": "initial_v1",
+    "token_lengths": {
+      "cfg_negative": 126,
+      "counterfactual": 48,
+      "positive": 51,
+      "semantic": 22
+    },
+    "used_by_model": {
+      "cfg_negative": true,
+      "cfg_unconditional_empty": false,
+      "counterfactual": true,
+      "positive": true,
+      "semantic": true
+    },
+    "utf8_sha256": {
+      "cfg_negative": "ce96e0324e4b54ce4b6e867f669ca520952e1a34cc116543516b1897f0d3c47e",
+      "counterfactual": "2081244e1afa2a0087ac4f43742f335fc9f684b9f62f96ed741621dbadea63c6",
+      "positive": "779cc01fcc4523937d9f7c0bd2f655fb74895976e7948a0500518d1dc819609c",
+      "semantic": "8098f25d1652b727ca5b0ba9ed8730387b36a3f433e5994f7592c9b86708cd4b"
+    }
+  },
+  "diagnostics": {
+    "all_finite": true,
+    "applied_to_semantic_max": 0.1836838722229004,
+    "applied_to_semantic_min": 0.010733132250607014,
+    "candidate_to_semantic_max": 0.1836840659379959,
+    "candidate_to_semantic_min": 0.010733362287282944,
+    "clip_coefficient_min": 1.0,
+    "clip_fraction": 0.0,
+    "clipped_record_count": 0,
+    "mode": "summary",
+    "raw_delta_l2_max": 635.551025390625,
+    "raw_delta_l2_min": 31.053937911987305,
+    "record_count": 12,
+    "scaled_to_semantic_max": 0.1836838722229004,
+    "scaled_to_semantic_min": 0.010733132250607014
+  },
+  "generation": {
+    "convert_model_dtype": true,
+    "first_frame_reanchor_count": 51,
+    "fps": 24,
+    "frame_num": 97,
+    "guide_scale": 5.0,
+    "height": 704,
+    "max_area": 901120,
+    "offload_model": true,
+    "sample_solver": "unipc",
+    "sampling_steps": 50,
+    "seed": 42,
+    "shift": 5.0,
+    "t5_cpu": true,
+    "width": 1280
+  },
+  "input_hashes": {
+    "causal_json": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P05/P05-cplus-cminus.json",
+      "sha256": "d8341e80623abd9ba316b8f9616eae18f6153e7a023d6285425df2e7daf48221",
+      "size_bytes": 1000
+    },
+    "i0_image": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P05/P05-i0-1280x704.png",
+      "sha256": "cb99b014b8b95b7976e9002a8605c6a10f96126ddd5cc072134349f1186995f9",
+      "size_bytes": 1612156
+    },
+    "i0_metadata_json": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P05/P05-i0.json",
+      "sha256": "3203097f150e6e464dabfe444d98031b5ef9fa59787e3b131dc90bb093c6cd19",
+      "size_bytes": 1483
+    },
+    "model_reference_image": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/outputs/ace_router_initial_v1_hd97/m3-initial-v1-hd97-20260901-125349/P05/M3_I2V_ACE/seed_000042/reference_input.png",
+      "sha256": "83b006f10135786acf1cd67afd35e9919ecedb60491636d2aea249cab711317a",
+      "size_bytes": 1289684
+    },
+    "origin_txt": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P05/P05-origin.txt",
+      "sha256": "12fb9be7ece1d49f30d03fd9d352d6168c80ebfb83efb84c41ecb9501cfcf85e",
+      "size_bytes": 93
+    },
+    "selection_manifest": null,
+    "sizing_image": null
+  },
+  "method": "M3_I2V_ACE",
+  "output_video": "/home/liuzhirui/Project/physGen/code/v1/outputs/ace_router_initial_v1_hd97/m3-initial-v1-hd97-20260901-125349/P05/M3_I2V_ACE/seed_000042/video.mp4",
+  "output_video_sha256": "985ad03ba0b353626eaf610d0e008224329a2c535a7fb3c55ad7c7c9d195b509",
+  "reference": {
+    "crop_box": [
+      0,
+      0,
+      1280,
+      704
+    ],
+    "crop_policy": "center_crop_to_20x11_or_11x20_then_lanczos_resize",
+    "orientation": "landscape",
+    "original_size": [
+      1280,
+      704
+    ],
+    "prepared_artifact_path": "/home/liuzhirui/Project/physGen/code/v1/outputs/ace_router_initial_v1_hd97/m3-initial-v1-hd97-20260901-125349/P05/M3_I2V_ACE/seed_000042/reference_input.png",
+    "prepared_artifact_sha256": "83b006f10135786acf1cd67afd35e9919ecedb60491636d2aea249cab711317a",
+    "prepared_size": [
+      1280,
+      704
+    ],
+    "resolved_output_size": [
+      1280,
+      704
+    ],
+    "selection_manifest": null,
+    "source_path": "/home/liuzhirui/Project/physGen/code/v1/demo/P05/P05-i0-1280x704.png",
+    "source_sha256": "cb99b014b8b95b7976e9002a8605c6a10f96126ddd5cc072134349f1186995f9",
+    "used_as_model_condition": true,
+    "used_for_output_sizing_only": false
+  },
+  "run_id": "m3-initial-v1-hd97-20260901-125349",
+  "runtime": {
+    "cuda_capability": [
+      8,
+      6
+    ],
+    "cuda_memory_reserved_bytes": 34781265920,
+    "cuda_runtime": "12.8",
+    "cudnn": 91002,
+    "denoising_step_timing": {
+      "all_steps_median_seconds": 10.39189794921875,
+      "count": 50,
+      "max_seconds": 14.94297265625,
+      "min_seconds": 9.874607421875,
+      "per_step_seconds": [
+        10.095912109375,
+        10.146466796875,
+        10.2146337890625,
+        10.272576171875,
+        10.3116552734375,
+        11.3035634765625,
+        10.37187890625,
+        10.391603515625,
+        14.94297265625,
+        10.37566015625,
+        10.3889462890625,
+        12.617642578125,
+        10.3792548828125,
+        10.395384765625,
+        12.6085703125,
+        10.4257216796875,
+        10.3997607421875,
+        12.5591591796875,
+        10.391962890625,
+        11.993064453125,
+        11.01376953125,
+        10.39562109375,
+        10.39853125,
+        12.56305859375,
+        10.390189453125,
+        10.3988369140625,
+        12.5749150390625,
+        10.386236328125,
+        10.4010751953125,
+        12.594271484375,
+        11.411712890625,
+        10.3918330078125,
+        11.59591796875,
+        10.3872998046875,
+        10.39850390625,
+        12.6019619140625,
+        10.383654296875,
+        10.389494140625,
+        12.6231953125,
+        10.4144267578125,
+        9.874607421875,
+        9.8846298828125,
+        10.47897265625,
+        9.888708984375,
+        9.88852734375,
+        9.88643359375,
+        9.89112109375,
+        9.8876416015625,
+        9.896373046875,
+        9.8907109375
+      ],
+      "stable_median_seconds": 10.391962890625,
+      "warmup_first_step_seconds": 10.095912109375
+    },
+    "diffusers": "0.36.0",
+    "elapsed_seconds": 678.7386580342427,
+    "gpu": "NVIDIA RTX A6000",
+    "peak_cuda_bytes": 24455901696,
+    "platform": "Linux-5.15.0-139-generic-x86_64-with-glibc2.35",
+    "python": "3.10.19",
+    "torch": "2.8.0+cu128"
+  },
+  "sample_id": "P05",
+  "seed": 42,
+  "status": "success",
+  "upstream": {
+    "checkpoint": "/home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B",
+    "checkpoint_hashes": {
+      "config.json": "d1fea36899d00c2501b836c13ad65af56e2f9529ba622e50886d3f5c3e6c02bc",
+      "diffusion_pytorch_model.safetensors.index.json": "bfa2337f1163e195d24151a72298daf34a620543898109be47e414c8daa5b3fe"
+    },
+    "checkpoint_model_config": {
+      "_class_name": "WanModel",
+      "dim": 3072,
+      "in_dim": 48,
+      "model_type": "ti2v",
+      "num_heads": 24,
+      "num_layers": 30,
+      "out_dim": 48,
+      "text_len": 512
+    },
+    "source_hashes": {
+      "wan/configs/wan_ti2v_5B.py": "26d9e7b9c555eb0900b13751267a596556f869e7aee2d1572afc2a0a4a76f4c7",
+      "wan/modules/attention.py": "c79158e1cc9b7a17bc934e6acb34f42e588a41adb89801146957cda2d6d4379d",
+      "wan/modules/model.py": "8b39115298ca7322806c19b3165b3f435a94fe4a58f0624aec24f8e7f4997432",
+      "wan/modules/t5.py": "8b0cebf3192c542f92a344255a06c203df3ba24160715899a055cc8de0cd930f",
+      "wan/textimage2video.py": "228f2fabf23014ed41ec6b8cd713d5be7371bb558501c71a62a0258b491a877b"
+    },
+    "wan_git_head": "08e890ff01ff8daf9161db472f362efe5d6ba656",
+    "wan_repo": "/home/liuzhirui/model/Wan2.2",
+    "weight_shards": [
+      {
+        "mtime_ns": 1769032249319825600,
+        "name": "diffusion_pytorch_model-00001-of-00003.safetensors",
+        "size_bytes": 9825014472
+      },
+      {
+        "mtime_ns": 1769032417046557795,
+        "name": "diffusion_pytorch_model-00002-of-00003.safetensors",
+        "size_bytes": 9995661736
+      },
+      {
+        "mtime_ns": 1769020338553636583,
+        "name": "diffusion_pytorch_model-00003-of-00003.safetensors",
+        "size_bytes": 178558176
+      }
+    ]
+  },
+  "warnings": [
+    "selection_manifest_missing"
+  ]
+}

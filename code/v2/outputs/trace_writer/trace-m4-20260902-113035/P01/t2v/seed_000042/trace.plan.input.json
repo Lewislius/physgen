@@ -1,0 +1,349 @@
+{
+  "assumptions": [],
+  "constraints": [
+    {
+      "after": "pose_tilt",
+      "before": "contact",
+      "id": "c1",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "precedes"
+    },
+    {
+      "cause": "contact",
+      "effect": "pose_tilt",
+      "id": "c2",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "requires"
+    },
+    {
+      "effects": [
+        "pose_tilt",
+        "motion_stop"
+      ],
+      "id": "c3",
+      "relation": "tilt increases while rolling displacement decreases",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "couples"
+    },
+    {
+      "facts": [
+        "pose=tilted",
+        "motion=stopped"
+      ],
+      "id": "c4",
+      "source_refs": [
+        "origin"
+      ],
+      "state": "z1",
+      "type": "persists"
+    },
+    {
+      "facts": [
+        "pose=upright",
+        "pose=tilted"
+      ],
+      "id": "c5",
+      "scope": "same_time",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "excludes"
+    }
+  ],
+  "design_revision": "fixed5-causal-r3",
+  "entities": [
+    {
+      "id": "scooter",
+      "mention": "the same black scooter",
+      "role": "actor",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "id": "trash_can",
+      "mention": "the same metal trash can",
+      "role": "patient",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "description": "visible scooter-trash-can contact",
+      "id": "contact",
+      "observable": "the visible gap reaches zero",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "generation_basis": {
+    "mode": "identifier_only",
+    "reference_image_usage": "identifier_only",
+    "semantic_inputs": [
+      "origin",
+      "planner_instructions"
+    ]
+  },
+  "global_semantic": "One black scooter collides with one metal trash can, tilts, and stops beside it.",
+  "grounding": {
+    "approved": false,
+    "coordinate_frame": "reference_input",
+    "entity_boxes": [],
+    "protected_boxes": [],
+    "reference_image": "P01-i0-1280x704.png",
+    "reference_image_usage": "identifier_only"
+  },
+  "predicates": [
+    {
+      "attribute": "gap_to:trash_can",
+      "id": "gap",
+      "observable": "visible separation between scooter and trash can",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "scooter",
+      "values": [
+        "separated",
+        "contact"
+      ]
+    },
+    {
+      "attribute": "pose",
+      "id": "pose",
+      "observable": "scooter body-axis angle",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "scooter",
+      "values": [
+        "upright",
+        "tilted"
+      ]
+    },
+    {
+      "attribute": "motion",
+      "id": "motion",
+      "observable": "frame-to-frame scooter displacement",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "scooter",
+      "values": [
+        "rolling",
+        "stopped"
+      ]
+    }
+  ],
+  "protected_predicates": [
+    "same scooter identity",
+    "same trash-can identity",
+    "trash can remains upright",
+    "camera and unrelated scene remain unchanged"
+  ],
+  "sample_id": "P01",
+  "schema_version": "trace-writer-v1",
+  "source_files": {
+    "origin": "P01-origin.txt",
+    "planner_instructions": "Project/physGen/prompt/generate_trace_writer_v1_plan.txt",
+    "reference_input": "P01-i0-1280x704.png"
+  },
+  "stages": [
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "setup",
+      "observable_check": "The scooter stays upright and the nonzero gap narrows.",
+      "positive": "The upright black scooter rolls toward the metal trash can while a visible gap remains.",
+      "support_kind": "motion_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "The scooter is already tilted and stopped before reaching the trash can.",
+          "type": "outcome_preset"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c1",
+        "c2"
+      ],
+      "id": "onset",
+      "observable_check": "Contact appears before the scooter body axis changes.",
+      "positive": "The narrowing gap reaches visible contact before the same scooter begins tilting.",
+      "support_kind": "contact_interface",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1",
+            "c2"
+          ],
+          "text": "The scooter tilts while visible separation from the trash can still remains.",
+          "type": "trigger_missing"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c3"
+      ],
+      "id": "evolution",
+      "observable_check": "Tilt increases as successive scooter displacements become smaller.",
+      "positive": "After contact, the scooter progressively tilts while its rolling displacement visibly decreases.",
+      "support_kind": "motion_contact_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c3"
+          ],
+          "text": "The scooter tilts after contact but continues rolling without any visible slowing.",
+          "type": "coupling_broken"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c3",
+        "c4"
+      ],
+      "id": "completion",
+      "observable_check": "The requested tilted pose is reached and motion vanishes.",
+      "positive": "The scooter finishes tilting as its remaining displacement decreases to zero beside the can.",
+      "support_kind": "motion_contact_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c3",
+            "c4"
+          ],
+          "text": "The scooter remains partly upright or moving and never reaches the stopped tilted state.",
+          "type": "incomplete_transition"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c4",
+        "c5"
+      ],
+      "id": "terminal",
+      "observable_check": "One tilted scooter remains stationary through the final frames.",
+      "positive": "The same scooter remains tilted and stopped beside the same metal trash can.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c4"
+          ],
+          "text": "The scooter becomes upright again or resumes rolling during the final frames.",
+          "type": "reversal"
+        },
+        {
+          "constraint_ids": [
+            "c5"
+          ],
+          "text": "Duplicated scooters appear upright and tilted beside the can at the same time.",
+          "type": "exclusion_broken"
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "facts": {
+        "gap": "separated",
+        "motion": "rolling",
+        "pose": "upright"
+      },
+      "id": "z0",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "facts": {
+        "gap": "contact",
+        "motion": "stopped",
+        "pose": "tilted"
+      },
+      "id": "z1",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "cause_event": "contact",
+      "effects": [
+        {
+          "direction": "gap closes to zero",
+          "from": "separated",
+          "id": "gap_close",
+          "predicate": "gap",
+          "to": "contact"
+        },
+        {
+          "direction": "body tilt increases",
+          "from": "upright",
+          "id": "pose_tilt",
+          "predicate": "pose",
+          "to": "tilted"
+        },
+        {
+          "direction": "displacement decreases to zero",
+          "from": "rolling",
+          "id": "motion_stop",
+          "predicate": "motion",
+          "to": "stopped"
+        }
+      ],
+      "from": "z0",
+      "id": "e1",
+      "kind": "triggered",
+      "preconditions": [
+        "gap=separated",
+        "pose=upright",
+        "motion=rolling"
+      ],
+      "source_refs": [
+        "origin"
+      ],
+      "support_kind": "motion_contact_corridor",
+      "to": "z1"
+    }
+  ],
+  "warnings": []
+}

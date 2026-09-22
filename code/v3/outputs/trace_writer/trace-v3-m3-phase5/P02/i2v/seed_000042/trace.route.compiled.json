@@ -1,0 +1,751 @@
+{
+  "compiled_schema_version": "trace-writer-v2",
+  "contexts": {
+    "global_anchor": "[ENTITY INVENTORY] The closed scene contains red ball: exactly 1; blue ball: exactly 1. The reference first frame fixes these identities and initial layout. [INITIAL STATE] gap=wide, red_motion=rolling_right, blue_motion=stationary. [PHYSICAL EVENT] The glossy red ball crosses the green billiard cloth into the glossy blue ball and transfers motion on contact. [PERSISTENT PROTECTION] exactly one glossy red ball and one glossy blue ball; ball colors, size, and roundness remain unchanged; green billiard cloth, dark top rail, gray wall, lighting, and static camera remain unchanged. [CLOSED WORLD] No additional cue, cue stick, external source, extra ball, extra copy, hand, person, tool, unlisted object enters or appears; unoccupied scene regions remain empty. [CONSERVATION] Source loss and result gain stay coupled: tracked logical entity slots remain consistent; red rightward displacement decreases while blue rightward displacement begins. No result appears from an undeclared external source. [TERMINAL STATE] The same logical entity slots persist without duplicates; gap=contact, red_motion=slower_right, blue_motion=moving_right remains visible through the final frames.",
+    "issues": [],
+    "protected_coverage": {
+      "ball colors, size, and roundness remain unchanged": [
+        "appearance",
+        "geometry",
+        "closed_world_or_persistence"
+      ],
+      "exactly one glossy red ball and one glossy blue ball": [
+        "identity_count"
+      ],
+      "green billiard cloth, dark top rail, gray wall, lighting, and static camera remain unchanged": [
+        "appearance",
+        "camera_background",
+        "closed_world_or_persistence"
+      ]
+    },
+    "stage_pairs": [
+      {
+        "pair_quality": "minimal_verified",
+        "positive_relation": "the red and blue glossy ball boundaries visibly meet happens BEFORE rightward blue displacement begins.",
+        "positive_text": "[STAGE ENTITY INVENTORY] Present now: red ball: exactly 1, state gap=wide, red_motion=rolling_right, required; blue ball: exactly 1, state blue_motion=stationary, required. Counts and identities stay fixed; no duplicate state copy is created. No additional cue, cue stick, external source, extra ball, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] the red and blue glossy ball boundaries visibly meet happens BEFORE rightward blue displacement begins.",
+        "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: red ball: exactly 1, state gap=wide, red_motion=rolling_right, required; blue ball: exactly 1, state blue_motion=stationary, required. Counts and identities stay fixed; no duplicate state copy is created. No additional cue, cue stick, external source, extra ball, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+        "stage_id": "setup",
+        "violation_constraint_ids": [
+          [
+            "c1"
+          ]
+        ],
+        "violation_kinds": [
+          "outcome_preset"
+        ],
+        "violation_relations": [
+          "rightward blue displacement begins is already present BEFORE the red and blue glossy ball boundaries visibly meet."
+        ],
+        "violation_texts": [
+          "[STAGE ENTITY INVENTORY] Present now: red ball: exactly 1, state gap=wide, red_motion=rolling_right, required; blue ball: exactly 1, state blue_motion=stationary, required. Counts and identities stay fixed; no duplicate state copy is created. No additional cue, cue stick, external source, extra ball, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] rightward blue displacement begins is already present BEFORE the red and blue glossy ball boundaries visibly meet."
+        ],
+        "violation_weights": [
+          1.0
+        ]
+      },
+      {
+        "pair_quality": "minimal_verified",
+        "positive_relation": "the red and blue glossy ball boundaries visibly meet happens BEFORE rightward blue displacement begins.",
+        "positive_text": "[STAGE ENTITY INVENTORY] Present now: red ball: exactly 1, state gap=wide, red_motion=rolling_right, transitioning; blue ball: exactly 1, state blue_motion=stationary, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional cue, cue stick, external source, extra ball, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] the red and blue glossy ball boundaries visibly meet happens BEFORE rightward blue displacement begins.",
+        "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: red ball: exactly 1, state gap=wide, red_motion=rolling_right, transitioning; blue ball: exactly 1, state blue_motion=stationary, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional cue, cue stick, external source, extra ball, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+        "stage_id": "onset",
+        "violation_constraint_ids": [
+          [
+            "c1",
+            "c2"
+          ]
+        ],
+        "violation_kinds": [
+          "wrong_order"
+        ],
+        "violation_relations": [
+          "rightward blue displacement begins happens BEFORE the red and blue glossy ball boundaries visibly meet."
+        ],
+        "violation_texts": [
+          "[STAGE ENTITY INVENTORY] Present now: red ball: exactly 1, state gap=wide, red_motion=rolling_right, transitioning; blue ball: exactly 1, state blue_motion=stationary, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional cue, cue stick, external source, extra ball, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] rightward blue displacement begins happens BEFORE the red and blue glossy ball boundaries visibly meet."
+        ],
+        "violation_weights": [
+          1.0
+        ]
+      },
+      {
+        "pair_quality": "minimal_verified",
+        "positive_relation": "The coupled changes occur together: rightward red displacement decreases WHILE rightward blue displacement begins.",
+        "positive_text": "[STAGE ENTITY INVENTORY] Present now: red ball: exactly 1, state gap=contact, red_motion=slower_right, required; blue ball: exactly 1, state blue_motion=moving_right, required. Counts and identities stay fixed; no duplicate state copy is created. No additional cue, cue stick, external source, extra ball, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The coupled changes occur together: rightward red displacement decreases WHILE rightward blue displacement begins.",
+        "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: red ball: exactly 1, state gap=contact, red_motion=slower_right, required; blue ball: exactly 1, state blue_motion=moving_right, required. Counts and identities stay fixed; no duplicate state copy is created. No additional cue, cue stick, external source, extra ball, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+        "stage_id": "evolution",
+        "violation_constraint_ids": [
+          [
+            "c3"
+          ]
+        ],
+        "violation_kinds": [
+          "coupling_broken"
+        ],
+        "violation_relations": [
+          "Only one coupled change occurs while the other remains unchanged: rightward red displacement decreases; rightward blue displacement begins."
+        ],
+        "violation_texts": [
+          "[STAGE ENTITY INVENTORY] Present now: red ball: exactly 1, state gap=contact, red_motion=slower_right, required; blue ball: exactly 1, state blue_motion=moving_right, required. Counts and identities stay fixed; no duplicate state copy is created. No additional cue, cue stick, external source, extra ball, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] Only one coupled change occurs while the other remains unchanged: rightward red displacement decreases; rightward blue displacement begins."
+        ],
+        "violation_weights": [
+          1.0
+        ]
+      },
+      {
+        "pair_quality": "minimal_verified",
+        "positive_relation": "The coupled changes occur together: rightward red displacement decreases WHILE rightward blue displacement begins.",
+        "positive_text": "[STAGE ENTITY INVENTORY] Present now: red ball: exactly 1, state gap=contact, red_motion=slower_right, transitioning; blue ball: exactly 1, state blue_motion=moving_right, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional cue, cue stick, external source, extra ball, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The coupled changes occur together: rightward red displacement decreases WHILE rightward blue displacement begins.",
+        "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: red ball: exactly 1, state gap=contact, red_motion=slower_right, transitioning; blue ball: exactly 1, state blue_motion=moving_right, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional cue, cue stick, external source, extra ball, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+        "stage_id": "completion",
+        "violation_constraint_ids": [
+          [
+            "c3",
+            "c4"
+          ]
+        ],
+        "violation_kinds": [
+          "incomplete_transition"
+        ],
+        "violation_relations": [
+          "The declared cause occurs BUT the required target change does not become visible."
+        ],
+        "violation_texts": [
+          "[STAGE ENTITY INVENTORY] Present now: red ball: exactly 1, state gap=contact, red_motion=slower_right, transitioning; blue ball: exactly 1, state blue_motion=moving_right, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional cue, cue stick, external source, extra ball, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The declared cause occurs BUT the required target change does not become visible."
+        ],
+        "violation_weights": [
+          1.0
+        ]
+      },
+      {
+        "pair_quality": "minimal_verified",
+        "positive_relation": "The terminal facts red_motion=slower_right, blue_motion=moving_right REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts blue_motion=stationary, blue_motion=moving_right do not coexist.",
+        "positive_text": "[STAGE ENTITY INVENTORY] Present now: red ball: exactly 1, state gap=contact, red_motion=slower_right, required; blue ball: exactly 1, state blue_motion=moving_right, required. Counts and identities stay fixed; no duplicate state copy is created. No additional cue, cue stick, external source, extra ball, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The terminal facts red_motion=slower_right, blue_motion=moving_right REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts blue_motion=stationary, blue_motion=moving_right do not coexist.",
+        "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: red ball: exactly 1, state gap=contact, red_motion=slower_right, required; blue ball: exactly 1, state blue_motion=moving_right, required. Counts and identities stay fixed; no duplicate state copy is created. No additional cue, cue stick, external source, extra ball, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+        "stage_id": "terminal",
+        "violation_constraint_ids": [
+          [
+            "c4"
+          ],
+          [
+            "c5"
+          ]
+        ],
+        "violation_kinds": [
+          "reversal",
+          "exclusion_broken"
+        ],
+        "violation_relations": [
+          "The valid terminal state returns to its mutually exclusive earlier state.",
+          "Copies of the same logical slot appear in mutually exclusive states at the same time."
+        ],
+        "violation_texts": [
+          "[STAGE ENTITY INVENTORY] Present now: red ball: exactly 1, state gap=contact, red_motion=slower_right, required; blue ball: exactly 1, state blue_motion=moving_right, required. Counts and identities stay fixed; no duplicate state copy is created. No additional cue, cue stick, external source, extra ball, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The valid terminal state returns to its mutually exclusive earlier state. [AND] The same logical slot has only its valid state; mutually exclusive facts blue_motion=stationary, blue_motion=moving_right do not coexist.",
+          "[STAGE ENTITY INVENTORY] Present now: red ball: exactly 1, state gap=contact, red_motion=slower_right, required; blue ball: exactly 1, state blue_motion=moving_right, required. Counts and identities stay fixed; no duplicate state copy is created. No additional cue, cue stick, external source, extra ball, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The terminal facts red_motion=slower_right, blue_motion=moving_right REMAIN through the final frames. [AND] Copies of the same logical slot appear in mutually exclusive states at the same time."
+        ],
+        "violation_weights": [
+          0.5,
+          0.5
+        ]
+      }
+    ],
+    "texts": {
+      "global_semantic": "[ENTITY INVENTORY] The closed scene contains red ball: exactly 1; blue ball: exactly 1. The reference first frame fixes these identities and initial layout. [INITIAL STATE] gap=wide, red_motion=rolling_right, blue_motion=stationary. [PHYSICAL EVENT] The glossy red ball crosses the green billiard cloth into the glossy blue ball and transfers motion on contact. [PERSISTENT PROTECTION] exactly one glossy red ball and one glossy blue ball; ball colors, size, and roundness remain unchanged; green billiard cloth, dark top rail, gray wall, lighting, and static camera remain unchanged. [CLOSED WORLD] No additional cue, cue stick, external source, extra ball, extra copy, hand, person, tool, unlisted object enters or appears; unoccupied scene regions remain empty. [CONSERVATION] Source loss and result gain stay coupled: tracked logical entity slots remain consistent; red rightward displacement decreases while blue rightward displacement begins. No result appears from an undeclared external source. [TERMINAL STATE] The same logical entity slots persist without duplicates; gap=contact, red_motion=slower_right, blue_motion=moving_right remains visible through the final frames.",
+      "stage.completion.negative.0": "[STAGE ENTITY INVENTORY] Present now: red ball: exactly 1, state gap=contact, red_motion=slower_right, transitioning; blue ball: exactly 1, state blue_motion=moving_right, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional cue, cue stick, external source, extra ball, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The declared cause occurs BUT the required target change does not become visible.",
+      "stage.completion.positive": "[STAGE ENTITY INVENTORY] Present now: red ball: exactly 1, state gap=contact, red_motion=slower_right, transitioning; blue ball: exactly 1, state blue_motion=moving_right, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional cue, cue stick, external source, extra ball, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The coupled changes occur together: rightward red displacement decreases WHILE rightward blue displacement begins.",
+      "stage.evolution.negative.0": "[STAGE ENTITY INVENTORY] Present now: red ball: exactly 1, state gap=contact, red_motion=slower_right, required; blue ball: exactly 1, state blue_motion=moving_right, required. Counts and identities stay fixed; no duplicate state copy is created. No additional cue, cue stick, external source, extra ball, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] Only one coupled change occurs while the other remains unchanged: rightward red displacement decreases; rightward blue displacement begins.",
+      "stage.evolution.positive": "[STAGE ENTITY INVENTORY] Present now: red ball: exactly 1, state gap=contact, red_motion=slower_right, required; blue ball: exactly 1, state blue_motion=moving_right, required. Counts and identities stay fixed; no duplicate state copy is created. No additional cue, cue stick, external source, extra ball, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The coupled changes occur together: rightward red displacement decreases WHILE rightward blue displacement begins.",
+      "stage.onset.negative.0": "[STAGE ENTITY INVENTORY] Present now: red ball: exactly 1, state gap=wide, red_motion=rolling_right, transitioning; blue ball: exactly 1, state blue_motion=stationary, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional cue, cue stick, external source, extra ball, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] rightward blue displacement begins happens BEFORE the red and blue glossy ball boundaries visibly meet.",
+      "stage.onset.positive": "[STAGE ENTITY INVENTORY] Present now: red ball: exactly 1, state gap=wide, red_motion=rolling_right, transitioning; blue ball: exactly 1, state blue_motion=stationary, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional cue, cue stick, external source, extra ball, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] the red and blue glossy ball boundaries visibly meet happens BEFORE rightward blue displacement begins.",
+      "stage.setup.negative.0": "[STAGE ENTITY INVENTORY] Present now: red ball: exactly 1, state gap=wide, red_motion=rolling_right, required; blue ball: exactly 1, state blue_motion=stationary, required. Counts and identities stay fixed; no duplicate state copy is created. No additional cue, cue stick, external source, extra ball, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] rightward blue displacement begins is already present BEFORE the red and blue glossy ball boundaries visibly meet.",
+      "stage.setup.positive": "[STAGE ENTITY INVENTORY] Present now: red ball: exactly 1, state gap=wide, red_motion=rolling_right, required; blue ball: exactly 1, state blue_motion=stationary, required. Counts and identities stay fixed; no duplicate state copy is created. No additional cue, cue stick, external source, extra ball, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] the red and blue glossy ball boundaries visibly meet happens BEFORE rightward blue displacement begins.",
+      "stage.terminal.negative.0": "[STAGE ENTITY INVENTORY] Present now: red ball: exactly 1, state gap=contact, red_motion=slower_right, required; blue ball: exactly 1, state blue_motion=moving_right, required. Counts and identities stay fixed; no duplicate state copy is created. No additional cue, cue stick, external source, extra ball, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The valid terminal state returns to its mutually exclusive earlier state. [AND] The same logical slot has only its valid state; mutually exclusive facts blue_motion=stationary, blue_motion=moving_right do not coexist.",
+      "stage.terminal.negative.1": "[STAGE ENTITY INVENTORY] Present now: red ball: exactly 1, state gap=contact, red_motion=slower_right, required; blue ball: exactly 1, state blue_motion=moving_right, required. Counts and identities stay fixed; no duplicate state copy is created. No additional cue, cue stick, external source, extra ball, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The terminal facts red_motion=slower_right, blue_motion=moving_right REMAIN through the final frames. [AND] Copies of the same logical slot appear in mutually exclusive states at the same time.",
+      "stage.terminal.positive": "[STAGE ENTITY INVENTORY] Present now: red ball: exactly 1, state gap=contact, red_motion=slower_right, required; blue ball: exactly 1, state blue_motion=moving_right, required. Counts and identities stay fixed; no duplicate state copy is created. No additional cue, cue stick, external source, extra ball, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The terminal facts red_motion=slower_right, blue_motion=moving_right REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts blue_motion=stationary, blue_motion=moving_right do not coexist."
+    },
+    "token_budget_priority": {
+      "causal": 2,
+      "entity_count": 0,
+      "protected": 1,
+      "style": 3
+    }
+  },
+  "design_revision": "fixed5-causal-r4",
+  "entity_ledger": {
+    "closed_world": {
+      "allowed_entity_ids": [
+        "red_ball",
+        "blue_ball"
+      ],
+      "empty_regions": [],
+      "external_source_allowed": false,
+      "forbidden_new_categories": [
+        "cue",
+        "cue stick",
+        "external source",
+        "extra ball",
+        "extra copy",
+        "hand",
+        "person",
+        "tool",
+        "unlisted object"
+      ],
+      "provenance": "derived"
+    },
+    "conservation": [
+      {
+        "observable_proxy": "tracked logical entity slots remain consistent",
+        "provenance": "derived",
+        "quantity": "instance_count",
+        "relation": "constant",
+        "rule_id": "entity_slots_constant",
+        "sinks": [
+          "red_ball",
+          "blue_ball"
+        ],
+        "sources": [
+          "red_ball",
+          "blue_ball"
+        ],
+        "tolerance": 0.0
+      },
+      {
+        "observable_proxy": "red rightward displacement decreases while blue rightward displacement begins",
+        "provenance": "derived",
+        "quantity": "motion_transfer",
+        "relation": "coupled_monotonic",
+        "rule_id": "conservation_c3",
+        "sinks": [
+          "blue_motion"
+        ],
+        "sources": [
+          "red_motion"
+        ],
+        "tolerance": 0.1
+      }
+    ],
+    "issues": [],
+    "lifecycles": [
+      {
+        "entity_id": "red_ball",
+        "from_stage": "setup",
+        "from_state": "wide; rolling_right",
+        "identity_preserved": true,
+        "mutually_exclusive_states": [
+          [
+            "wide",
+            "contact"
+          ],
+          [
+            "rolling_right",
+            "slower_right"
+          ]
+        ],
+        "provenance": "derived",
+        "to_stage": "terminal",
+        "to_state": "contact; slower_right"
+      },
+      {
+        "entity_id": "blue_ball",
+        "from_stage": "setup",
+        "from_state": "stationary",
+        "identity_preserved": true,
+        "mutually_exclusive_states": [
+          [
+            "stationary",
+            "moving_right"
+          ]
+        ],
+        "provenance": "derived",
+        "to_stage": "terminal",
+        "to_state": "moving_right"
+      }
+    ],
+    "slots": [
+      {
+        "aliases": [],
+        "canonical_mention": "the same glossy red billiard ball on the left",
+        "cardinality": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "entity_id": "red_ball",
+        "invariant_attributes": [
+          "exactly one glossy red ball and one glossy blue ball",
+          "ball colors, size, and roundness remain unchanged",
+          "green billiard cloth, dark top rail, gray wall, lighting, and static camera remain unchanged"
+        ],
+        "mutable_attributes": [
+          "horizontal gap_to:blue_ball",
+          "rightward motion"
+        ],
+        "persistent_identity": true,
+        "provenance": "derived",
+        "role": "actor"
+      },
+      {
+        "aliases": [],
+        "canonical_mention": "the same glossy blue billiard ball on the right",
+        "cardinality": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "entity_id": "blue_ball",
+        "invariant_attributes": [
+          "exactly one glossy red ball and one glossy blue ball",
+          "ball colors, size, and roundness remain unchanged",
+          "green billiard cloth, dark top rail, gray wall, lighting, and static camera remain unchanged"
+        ],
+        "mutable_attributes": [
+          "rightward motion"
+        ],
+        "persistent_identity": true,
+        "provenance": "derived",
+        "role": "patient"
+      }
+    ],
+    "stage_presence": [
+      {
+        "entity_id": "red_ball",
+        "logical_count": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "setup",
+        "state_facts": [
+          "gap=wide",
+          "red_motion=rolling_right"
+        ],
+        "visible": "required"
+      },
+      {
+        "entity_id": "blue_ball",
+        "logical_count": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "setup",
+        "state_facts": [
+          "blue_motion=stationary"
+        ],
+        "visible": "required"
+      },
+      {
+        "entity_id": "red_ball",
+        "logical_count": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "onset",
+        "state_facts": [
+          "gap=wide",
+          "red_motion=rolling_right"
+        ],
+        "visible": "transitioning"
+      },
+      {
+        "entity_id": "blue_ball",
+        "logical_count": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "onset",
+        "state_facts": [
+          "blue_motion=stationary"
+        ],
+        "visible": "transitioning"
+      },
+      {
+        "entity_id": "red_ball",
+        "logical_count": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "evolution",
+        "state_facts": [
+          "gap=contact",
+          "red_motion=slower_right"
+        ],
+        "visible": "required"
+      },
+      {
+        "entity_id": "blue_ball",
+        "logical_count": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "evolution",
+        "state_facts": [
+          "blue_motion=moving_right"
+        ],
+        "visible": "required"
+      },
+      {
+        "entity_id": "red_ball",
+        "logical_count": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "completion",
+        "state_facts": [
+          "gap=contact",
+          "red_motion=slower_right"
+        ],
+        "visible": "transitioning"
+      },
+      {
+        "entity_id": "blue_ball",
+        "logical_count": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "completion",
+        "state_facts": [
+          "blue_motion=moving_right"
+        ],
+        "visible": "transitioning"
+      },
+      {
+        "entity_id": "red_ball",
+        "logical_count": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "terminal",
+        "state_facts": [
+          "gap=contact",
+          "red_motion=slower_right"
+        ],
+        "visible": "required"
+      },
+      {
+        "entity_id": "blue_ball",
+        "logical_count": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "terminal",
+        "state_facts": [
+          "blue_motion=moving_right"
+        ],
+        "visible": "required"
+      }
+    ]
+  },
+  "frames": 25,
+  "input_schema_version": "trace-writer-v1",
+  "issues": [],
+  "mode": "i2v",
+  "raw_plan_sha256": "816de41a2aca6a4b0a386b47226a3f6f897bb5449a4221aa65581a457e474e3f",
+  "sample_id": "P02",
+  "stage_ids": [
+    "setup",
+    "onset",
+    "evolution",
+    "completion",
+    "terminal"
+  ],
+  "temporal": {
+    "boundaries": [
+      {
+        "frames": [
+          3,
+          4
+        ],
+        "left": "setup",
+        "right": "onset",
+        "right_weights": [
+          0.25925925925925924,
+          0.7407407407407407
+        ]
+      },
+      {
+        "frames": [
+          7,
+          8
+        ],
+        "left": "onset",
+        "right": "evolution",
+        "right_weights": [
+          0.25925925925925924,
+          0.7407407407407407
+        ]
+      },
+      {
+        "frames": [
+          15,
+          16
+        ],
+        "left": "evolution",
+        "right": "completion",
+        "right_weights": [
+          0.25925925925925924,
+          0.7407407407407407
+        ]
+      },
+      {
+        "frames": [
+          20,
+          21
+        ],
+        "left": "completion",
+        "right": "terminal",
+        "right_weights": [
+          0.25925925925925924,
+          0.7407407407407407
+        ]
+      }
+    ],
+    "core_lengths": [
+      3,
+      2,
+      6,
+      3,
+      3
+    ],
+    "crossfade_tokens": 2,
+    "interpolation": "smoothstep_c1",
+    "mode": "plan_prior",
+    "profile": "triggered",
+    "spans": [
+      {
+        "core": [
+          0,
+          1,
+          2
+        ],
+        "outgoing": [
+          3,
+          4
+        ],
+        "stage_id": "setup"
+      },
+      {
+        "core": [
+          5,
+          6
+        ],
+        "outgoing": [
+          7,
+          8
+        ],
+        "stage_id": "onset"
+      },
+      {
+        "core": [
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "outgoing": [
+          15,
+          16
+        ],
+        "stage_id": "evolution"
+      },
+      {
+        "core": [
+          17,
+          18,
+          19
+        ],
+        "outgoing": [
+          20,
+          21
+        ],
+        "stage_id": "completion"
+      },
+      {
+        "core": [
+          22,
+          23,
+          24
+        ],
+        "outgoing": [],
+        "stage_id": "terminal"
+      }
+    ],
+    "weights": [
+      [
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0
+      ]
+    ]
+  },
+  "validation": {
+    "errors": 0,
+    "issues": [
+      {
+        "code": "planner_assumption",
+        "message": "Motion follows the visible left-to-right line joining the two ball centers.",
+        "path": "$.assumptions[0]",
+        "severity": "warning"
+      },
+      {
+        "code": "planner_warning",
+        "message": "Entity boxes are visually estimated from the reference image and remain unapproved.",
+        "path": "$.warnings[0]",
+        "severity": "warning"
+      }
+    ],
+    "warnings": 2
+  }
+}

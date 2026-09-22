@@ -1,0 +1,366 @@
+{
+  "closed_world": {
+    "allowed_entity_ids": [
+      "dandelion",
+      "seeds",
+      "drift_region"
+    ],
+    "empty_regions": [],
+    "external_source_allowed": false,
+    "forbidden_new_categories": [
+      "external source",
+      "extra copy",
+      "unlisted object"
+    ],
+    "provenance": "derived"
+  },
+  "conservation": [
+    {
+      "observable_proxy": "tracked logical entity slots remain consistent",
+      "provenance": "derived",
+      "quantity": "instance_count",
+      "relation": "constant",
+      "rule_id": "entity_slots_constant",
+      "sinks": [
+        "dandelion",
+        "seeds",
+        "drift_region"
+      ],
+      "sources": [
+        "dandelion",
+        "seeds",
+        "drift_region"
+      ],
+      "tolerance": 0.0
+    },
+    {
+      "observable_proxy": "rightward white-seed drift accompanies decreasing white head coverage",
+      "provenance": "derived",
+      "quantity": "material_proxy",
+      "relation": "coupled_monotonic",
+      "rule_id": "conservation_c3",
+      "sinks": [
+        "seed_position",
+        "fullness"
+      ],
+      "sources": [
+        "attachment"
+      ],
+      "tolerance": 0.1
+    }
+  ],
+  "issues": [
+    "seeds: exact visual count unresolved; retained as group",
+    "drift_region: exact visual count unresolved; retained as group"
+  ],
+  "lifecycles": [
+    {
+      "entity_id": "seeds",
+      "from_stage": "setup",
+      "from_state": "densely_attached; on_left_head",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "densely_attached",
+          "detached"
+        ],
+        [
+          "on_left_head",
+          "rightward_airborne"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "detached; rightward_airborne"
+    },
+    {
+      "entity_id": "dandelion",
+      "from_stage": "setup",
+      "from_state": "full_round_head",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "full_round_head",
+          "sparse_depleted_head"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "sparse_depleted_head"
+    }
+  ],
+  "slots": [
+    {
+      "aliases": [],
+      "canonical_mention": "the same left-side white dandelion head on its yellow-green stem",
+      "cardinality": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "dandelion",
+      "invariant_attributes": [
+        "same yellow-green stem and brown central head",
+        "white seed identity remains consistent",
+        "blue sky, blurred green field, daylight, focus, and static camera remain unchanged"
+      ],
+      "mutable_attributes": [
+        "white seed coverage"
+      ],
+      "persistent_identity": true,
+      "provenance": "default",
+      "role": "source"
+    },
+    {
+      "aliases": [],
+      "canonical_mention": "the same fine white dandelion seeds",
+      "cardinality": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "seeds",
+      "invariant_attributes": [
+        "same yellow-green stem and brown central head",
+        "white seed identity remains consistent",
+        "blue sky, blurred green field, daylight, focus, and static camera remain unchanged"
+      ],
+      "mutable_attributes": [
+        "attachment_to:white_head",
+        "position_in pictured drift corridor"
+      ],
+      "persistent_identity": true,
+      "provenance": "derived",
+      "role": "carrier"
+    },
+    {
+      "aliases": [],
+      "canonical_mention": "the open blue-sky region to the right",
+      "cardinality": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "drift_region",
+      "invariant_attributes": [
+        "same yellow-green stem and brown central head",
+        "white seed identity remains consistent",
+        "blue sky, blurred green field, daylight, focus, and static camera remain unchanged"
+      ],
+      "mutable_attributes": [],
+      "persistent_identity": true,
+      "provenance": "derived",
+      "role": "sink"
+    }
+  ],
+  "stage_presence": [
+    {
+      "entity_id": "dandelion",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [
+        "fullness=full_round_head"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "seeds",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [
+        "attachment=densely_attached",
+        "seed_position=on_left_head"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "drift_region",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [],
+      "visible": "required"
+    },
+    {
+      "entity_id": "dandelion",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [
+        "fullness=full_round_head"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "seeds",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [
+        "attachment=densely_attached",
+        "seed_position=on_left_head"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "drift_region",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "dandelion",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [
+        "fullness=sparse_depleted_head"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "seeds",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [
+        "attachment=detached",
+        "seed_position=rightward_airborne"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "drift_region",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [],
+      "visible": "required"
+    },
+    {
+      "entity_id": "dandelion",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [
+        "fullness=sparse_depleted_head"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "seeds",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [
+        "attachment=detached",
+        "seed_position=rightward_airborne"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "drift_region",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "dandelion",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [
+        "fullness=sparse_depleted_head"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "seeds",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [
+        "attachment=detached",
+        "seed_position=rightward_airborne"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "drift_region",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [],
+      "visible": "required"
+    }
+  ]
+}

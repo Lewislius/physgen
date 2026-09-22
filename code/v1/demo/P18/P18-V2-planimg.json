@@ -1,0 +1,369 @@
+{
+  "schema_version": "trace-direct-v1",
+  "design_revision": "p0-stage-direct-json-r2",
+  "sample_id": "P18",
+  "source_files": {
+    "origin": "P18-origin.txt",
+    "frame_zero_metadata": "P18-i0.json",
+    "reference_input": "P18-i0-1280x704.jpg"
+  },
+  "initial_condition": {
+    "type": "initial_momentum",
+    "description": "The ball is already falling vertically toward the hard floor when the clip begins."
+  },
+  "global_semantic": "Fixed side view of one red rubber ball already falling down a clear vertical path toward one hard gray floor. The same ball contacts the floor and rebounds several times to progressively lower heights, then stops at the impact area and retains its size.",
+  "cfg_negative": " ",
+  "entities": [
+    {
+      "id": "ball",
+      "mention": "one red rubber ball",
+      "role": "actor"
+    },
+    {
+      "id": "floor",
+      "mention": "one hard gray floor",
+      "role": "environment"
+    }
+  ],
+  "structured_guidance": {
+    "schema_version": "structured-text-guidance-v1",
+    "entities": [
+      {
+        "id": "ball",
+        "label": "red rubber ball",
+        "count": 1,
+        "persistent": true,
+        "invariants": [
+          "red rubber appearance",
+          "intact ball identity",
+          "equilibrium size between contacts"
+        ]
+      },
+      {
+        "id": "floor",
+        "label": "hard gray floor",
+        "count": 1,
+        "persistent": true,
+        "invariants": [
+          "flat rigid geometry",
+          "hard gray appearance",
+          "stationary identity"
+        ]
+      }
+    ],
+    "initial_condition": {
+      "type": "initial_momentum",
+      "active_stages": [
+        "setup"
+      ],
+      "facts": [
+        "The one red ball is already falling vertically toward the floor in the first video frame.",
+        "The hard floor remains fixed below the clear vertical path."
+      ]
+    },
+    "stages": [
+      {
+        "id": "setup",
+        "entity_states": [
+          {
+            "entity_id": "ball",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "intact and descending vertically toward the floor"
+            ],
+            "mutable": [
+              "vertical position",
+              "vertical speed"
+            ]
+          }
+        ],
+        "relations": [
+          "A visible air gap below the ball continuously narrows."
+        ]
+      },
+      {
+        "id": "onset",
+        "entity_states": [
+          {
+            "entity_id": "ball",
+            "presence": "transitioning",
+            "count": 1,
+            "states": [
+              "making its first floor contact and briefly compressing elastically"
+            ],
+            "mutable": [
+              "vertical speed",
+              "travel direction",
+              "elastic shape"
+            ]
+          }
+        ],
+        "relations": [
+          "The ball contacts the floor at one fixed impact area without penetrating it."
+        ]
+      },
+      {
+        "id": "evolution",
+        "entity_states": [
+          {
+            "entity_id": "ball",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "rebounding repeatedly to progressively lower peak heights"
+            ],
+            "mutable": [
+              "vertical position",
+              "vertical speed",
+              "travel direction",
+              "elastic shape at contacts"
+            ]
+          }
+        ],
+        "relations": [
+          "Each bounce peak is lower than the preceding peak and stays near the same vertical path."
+        ]
+      },
+      {
+        "id": "completion",
+        "entity_states": [
+          {
+            "entity_id": "ball",
+            "presence": "transitioning",
+            "count": 1,
+            "states": [
+              "ending its final small rebound at the impact area"
+            ],
+            "mutable": [
+              "vertical position",
+              "vertical speed"
+            ]
+          }
+        ],
+        "relations": [
+          "The repeated rebounds decay into rest without a new ball appearing."
+        ]
+      },
+      {
+        "id": "terminal",
+        "entity_states": [
+          {
+            "entity_id": "ball",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "round, full-sized, intact, and motionless on the floor"
+            ],
+            "mutable": []
+          }
+        ],
+        "relations": [
+          "Exactly one original red ball remains at the impact area."
+        ]
+      }
+    ]
+  },
+  "stages": [
+    {
+      "id": "setup",
+      "positive": "The intact red ball is already descending vertically toward the hard floor."
+    },
+    {
+      "id": "onset",
+      "positive": "The same ball reaches the floor for its first visible contact."
+    },
+    {
+      "id": "evolution",
+      "positive": "The ball rebounds repeatedly, with each new peak lower than the previous peak."
+    },
+    {
+      "id": "completion",
+      "positive": "The final small rebound ends and the ball returns to the impact area."
+    },
+    {
+      "id": "terminal",
+      "positive": "One round red ball remains at rest on the floor without changing size."
+    }
+  ],
+  "warnings": [],
+  "generation_basis": {
+    "mode": "visual_grounding",
+    "reference_image_usage": "visual_grounding"
+  },
+  "grounding": {
+    "coordinate_frame": "reference_input",
+    "reference_image": "P18-i0-1280x704.jpg",
+    "approved": true,
+    "entity_boxes": [
+      {
+        "entity_id": "ball",
+        "box": [
+          0.45,
+          0.03,
+          0.55,
+          0.2
+        ]
+      },
+      {
+        "entity_id": "floor",
+        "box": [
+          0.0,
+          0.7,
+          1.0,
+          1.0
+        ]
+      }
+    ]
+  },
+  "temporal_route": {
+    "latent_tokens": 25,
+    "crossfade_tokens": 2,
+    "interpolation": "smoothstep_c1",
+    "profile": "triggered",
+    "stage_order": [
+      "setup",
+      "onset",
+      "evolution",
+      "completion",
+      "terminal"
+    ],
+    "weights": [
+      [
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0
+      ]
+    ]
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "status": "PASS",
+  "verified_at": "2026-09-17T14:13:21.899428+00:00",
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v4.2/checkpoints/stability_20260917T113347Z_5d0494/step0100",
+  "device": "cpu",
+  "saved_identity": {
+    "manifest": "d2dd70f6bd8347571139900927e7764b2602140dfe87525be494c5c0e541fa28",
+    "statistics": "d7c9fefd809192ec34686f9799db56098bad5c0453496f31ab49fd2bd9143f34",
+    "assets": "fa258b270fc12ebce71e23d6c33faa97789177ed8b476f21dc445422844143ff",
+    "code": "b21b941d761246d39078a1144712d174eea8046ec2286416fc1bf43c9fe45ddb"
+  },
+  "current_identity": {
+    "manifest": "d2dd70f6bd8347571139900927e7764b2602140dfe87525be494c5c0e541fa28",
+    "statistics": "d7c9fefd809192ec34686f9799db56098bad5c0453496f31ab49fd2bd9143f34",
+    "assets": "fa258b270fc12ebce71e23d6c33faa97789177ed8b476f21dc445422844143ff",
+    "code": "aa02d125a1ce906c3b5a002b965b286695217ac477f7c40a46bf25a381b0467f"
+  },
+  "only_code_changed": true,
+  "complete_file_sha256_checked_by_load_training": true,
+  "real_adapter_optimizer_ema_and_queue_loaded": true,
+  "completed_step": 100,
+  "next_step": 101,
+  "remaining_updates": 1100,
+  "optimizer_state_count": 300,
+  "cuda_rng_states": 1,
+  "gpu_training_started": false,
+  "seconds": 7.496719621994998,
+  "regression_tests": {
+    "suite": "tests/test_checkpoint_training_loops.py",
+    "passed": 7,
+    "failed": 0,
+    "seconds": 55.445,
+    "coverage": [
+      "all audited pre-fix and post-fix source revisions",
+      "checkpoint JSONL path payload",
+      "v42/batch1/LoRA single/four production loops on CPU small models",
+      "1200-step continuous run and 100-to-1200 resume with identical final training state"
+    ]
+  },
+  "source_audit": {
+    "verified_at": "2026-09-17T14:12:23.919177+00:00",
+    "current_digests": {
+      "v42": "aa02d125a1ce906c3b5a002b965b286695217ac477f7c40a46bf25a381b0467f",
+      "batch1": "9662f850bdd693071dab1a968f66867e554b72285426fd192d32e61e99a0b991",
+      "lora": "f42c5cf2e2bf0783b68637a6e6cced43192d917ea54d0d0ac7d391209f484951",
+      "four_gpu": "e9ff0625d4bc0bf63a9d62571aa61f9d3d85166524c85900e3535e310c0ee1d5",
+      "quick16": "e1abaa0e049cdf2d14d3ea2dbffb968ba4d7a0e6d66817612344c7a8989e334c"
+    },
+    "source_audit": "Reconstructed all four previously tested code digests exactly after reverting only inference/infer.py, inference/report.py and the JSON read_config branch in memory.",
+    "yaml_equals_saved_json": true,
+    "training_numerics_changed": false
+  },
+  "final_source_compatibility_rechecked": true
+}

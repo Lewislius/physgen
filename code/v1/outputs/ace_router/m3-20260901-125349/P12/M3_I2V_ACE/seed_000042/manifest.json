@@ -1,0 +1,347 @@
+{
+  "ace": {
+    "cfg_scope": "conditional_only",
+    "diagnostics": "full",
+    "enabled": true,
+    "formula": "semantic + relative_cap(scale * (positive - counterfactual), semantic)",
+    "fp32_delta": true,
+    "lambda0": 0.1,
+    "layer_gates": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "layer_preset": "mid_b",
+    "residual_cap_eps": 1e-12,
+    "residual_cap_ratio": 0.02,
+    "residual_mode": "positive_minus_counterfactual",
+    "step_gates": [
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1
+    ],
+    "step_preset": "safe_i2v_v1"
+  },
+  "contexts": {
+    "causal_origin_prompt_prefixed": false,
+    "cfg_negative_prompt": "",
+    "compiler_version": "ace-conditioning-mvp-v1",
+    "conditioning_mode": "compiled",
+    "counterfactual_text": "The dry dandelion head becomes depleted before the gust reaches it, and the detached seeds begin drifting afterward.",
+    "positive_text": "The gust reaches the dry dandelion, seeds detach progressively from the head, drift away, and leave the same seed head visibly depleted.",
+    "semantic_text": "A gust blows across a dry dandelion, detaching seeds that drift away while the seed head becomes depleted. Required visible entities: one dry dandelion; full attached seed head; visible stem. At the beginning: dandelion seed head: full, dry, intact, and densely covered with attached seeds; seeds: attached to the same central head. Required state changes: seed attachment: attached to detached; seed positions: head to drifting away; seed-head fullness: full to depleted. These event variables are allowed to change: seed attachment state; seed positions; seed-head fullness. Preserve throughout: static side-view camera; dandelion stem and central-head identity; simple natural background; one dry dandelion seed head; the same seeds and stem; the same outdoor scene.",
+    "semantic_variant": "compiled_i2v",
+    "token_lengths": {
+      "cfg_negative": 1,
+      "counterfactual": 29,
+      "positive": 35,
+      "semantic": 181
+    },
+    "used_by_model": {
+      "cfg_negative": false,
+      "cfg_unconditional_empty": true,
+      "counterfactual": true,
+      "positive": true,
+      "semantic": true
+    },
+    "utf8_sha256": {
+      "cfg_negative": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "counterfactual": "7a461617b9d32ce19ae15ad8e6031565ef35773d8f2186faf14a30b45e8c5478",
+      "positive": "bf2634b56ed465c4d7c2db89db76fad132cbd4930c141557bfd62e2d8acd2949",
+      "semantic": "e6dfce19dac6cbf2ec8d34145e9046f5791cad9a6abd05e997baa216d1ae0495"
+    }
+  },
+  "diagnostics": {
+    "all_finite": true,
+    "applied_to_semantic_max": 0.0200047604739666,
+    "applied_to_semantic_min": 0.0011261809850111604,
+    "candidate_to_semantic_max": 0.03392622247338295,
+    "candidate_to_semantic_min": 0.0011261404724791646,
+    "clip_coefficient_min": 0.5895144939422607,
+    "clip_fraction": 0.322,
+    "clipped_record_count": 161,
+    "mode": "full",
+    "raw_delta_l2_max": 177.24105834960938,
+    "raw_delta_l2_min": 35.57255935668945,
+    "record_count": 500,
+    "scaled_to_semantic_max": 0.0200047604739666,
+    "scaled_to_semantic_min": 0.0011261809850111604
+  },
+  "generation": {
+    "convert_model_dtype": true,
+    "first_frame_reanchor_count": 51,
+    "fps": 24,
+    "frame_num": 97,
+    "guide_scale": 5.0,
+    "height": 704,
+    "max_area": 901120,
+    "offload_model": true,
+    "sample_solver": "unipc",
+    "sampling_steps": 50,
+    "seed": 42,
+    "shift": 5.0,
+    "t5_cpu": true,
+    "width": 1280
+  },
+  "input_hashes": {
+    "causal_json": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P12/P12-cplus-cminus.json",
+      "sha256": "41a5f7b8513fa5adbdfaad0ca0f2da6fef46aa6e78f2447a894debbf61199587",
+      "size_bytes": 1001
+    },
+    "i0_image": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P12/P12-i0-1280x704.png",
+      "sha256": "f3e15b4dc796628db7198e794820a5cd600586018d5e0f9183fc2a155912308a",
+      "size_bytes": 1204166
+    },
+    "i0_metadata_json": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P12/P12-i0.json",
+      "sha256": "b1e27f69acfe5c045c6a4fb19165cbb604264917f3148a74d3a934b5e25fd07e",
+      "size_bytes": 1529
+    },
+    "model_reference_image": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/outputs/ace_router/m3-20260901-125349/P12/M3_I2V_ACE/seed_000042/reference_input.png",
+      "sha256": "ff4db7998aa6cac93d8f914298c1962a768c06278899a8a2934a07cc9980e0fd",
+      "size_bytes": 941753
+    },
+    "origin_txt": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P12/P12-origin.txt",
+      "sha256": "6ea41cab6a05a753c09647cab90a933b7561c4260a9aeb641331a5521bb4f2cf",
+      "size_bytes": 107
+    },
+    "selection_manifest": null,
+    "sizing_image": null
+  },
+  "method": "M3_I2V_ACE",
+  "output_video": "/home/liuzhirui/Project/physGen/code/v1/outputs/ace_router/m3-20260901-125349/P12/M3_I2V_ACE/seed_000042/video.mp4",
+  "output_video_sha256": "9c347fe4be8419224a67c21db9d97e82ae491ded30a0a6c2c5793691afd69c39",
+  "reference": {
+    "crop_box": [
+      0,
+      0,
+      1280,
+      704
+    ],
+    "crop_policy": "center_crop_to_20x11_or_11x20_then_lanczos_resize",
+    "orientation": "landscape",
+    "original_size": [
+      1280,
+      704
+    ],
+    "prepared_artifact_path": "/home/liuzhirui/Project/physGen/code/v1/outputs/ace_router/m3-20260901-125349/P12/M3_I2V_ACE/seed_000042/reference_input.png",
+    "prepared_artifact_sha256": "ff4db7998aa6cac93d8f914298c1962a768c06278899a8a2934a07cc9980e0fd",
+    "prepared_size": [
+      1280,
+      704
+    ],
+    "resolved_output_size": [
+      1280,
+      704
+    ],
+    "selection_manifest": null,
+    "source_path": "/home/liuzhirui/Project/physGen/code/v1/demo/P12/P12-i0-1280x704.png",
+    "source_sha256": "f3e15b4dc796628db7198e794820a5cd600586018d5e0f9183fc2a155912308a",
+    "used_as_model_condition": true,
+    "used_for_output_sizing_only": false
+  },
+  "run_id": "m3-20260901-125349",
+  "runtime": {
+    "cuda_capability": [
+      8,
+      6
+    ],
+    "cuda_memory_reserved_bytes": 34779168768,
+    "cuda_runtime": "12.8",
+    "cudnn": 91002,
+    "denoising_step_timing": {
+      "all_steps_median_seconds": 10.3133212890625,
+      "count": 50,
+      "max_seconds": 14.9462275390625,
+      "min_seconds": 9.9917548828125,
+      "per_step_seconds": [
+        9.9917548828125,
+        10.38800390625,
+        10.144626953125,
+        10.16311328125,
+        10.202103515625,
+        10.502029296875,
+        10.2511220703125,
+        10.276017578125,
+        10.2925439453125,
+        10.34155859375,
+        11.8984765625,
+        10.8155517578125,
+        10.3227587890625,
+        10.318525390625,
+        12.390310546875,
+        10.3148818359375,
+        10.316705078125,
+        10.3307421875,
+        10.3182294921875,
+        10.319388671875,
+        10.71380859375,
+        11.4457548828125,
+        10.308501953125,
+        11.6048251953125,
+        10.307208984375,
+        10.3127998046875,
+        10.31519921875,
+        12.3643505859375,
+        12.5953291015625,
+        10.931595703125,
+        10.2861865234375,
+        10.3069541015625,
+        14.9462275390625,
+        10.24812109375,
+        10.2755986328125,
+        10.28552734375,
+        10.2923037109375,
+        10.3007841796875,
+        10.3014453125,
+        10.3129052734375,
+        10.312248046875,
+        10.3137373046875,
+        12.266427734375,
+        10.2993828125,
+        12.2066083984375,
+        10.796248046875,
+        10.2902470703125,
+        10.296529296875,
+        10.295349609375,
+        10.2977275390625
+      ],
+      "stable_median_seconds": 10.3137373046875,
+      "warmup_first_step_seconds": 9.9917548828125
+    },
+    "diffusers": "0.36.0",
+    "elapsed_seconds": 667.5378017970361,
+    "gpu": "NVIDIA RTX A6000",
+    "peak_cuda_bytes": 24456311296,
+    "platform": "Linux-5.15.0-139-generic-x86_64-with-glibc2.35",
+    "python": "3.10.19",
+    "torch": "2.8.0+cu128"
+  },
+  "sample_id": "P12",
+  "seed": 42,
+  "status": "success",
+  "upstream": {
+    "checkpoint": "/home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B",
+    "checkpoint_hashes": {
+      "config.json": "d1fea36899d00c2501b836c13ad65af56e2f9529ba622e50886d3f5c3e6c02bc",
+      "diffusion_pytorch_model.safetensors.index.json": "bfa2337f1163e195d24151a72298daf34a620543898109be47e414c8daa5b3fe"
+    },
+    "checkpoint_model_config": {
+      "_class_name": "WanModel",
+      "dim": 3072,
+      "in_dim": 48,
+      "model_type": "ti2v",
+      "num_heads": 24,
+      "num_layers": 30,
+      "out_dim": 48,
+      "text_len": 512
+    },
+    "source_hashes": {
+      "wan/configs/wan_ti2v_5B.py": "26d9e7b9c555eb0900b13751267a596556f869e7aee2d1572afc2a0a4a76f4c7",
+      "wan/modules/attention.py": "c79158e1cc9b7a17bc934e6acb34f42e588a41adb89801146957cda2d6d4379d",
+      "wan/modules/model.py": "8b39115298ca7322806c19b3165b3f435a94fe4a58f0624aec24f8e7f4997432",
+      "wan/modules/t5.py": "8b0cebf3192c542f92a344255a06c203df3ba24160715899a055cc8de0cd930f",
+      "wan/textimage2video.py": "228f2fabf23014ed41ec6b8cd713d5be7371bb558501c71a62a0258b491a877b"
+    },
+    "wan_git_head": "08e890ff01ff8daf9161db472f362efe5d6ba656",
+    "wan_repo": "/home/liuzhirui/model/Wan2.2",
+    "weight_shards": [
+      {
+        "mtime_ns": 1769032249319825600,
+        "name": "diffusion_pytorch_model-00001-of-00003.safetensors",
+        "size_bytes": 9825014472
+      },
+      {
+        "mtime_ns": 1769032417046557795,
+        "name": "diffusion_pytorch_model-00002-of-00003.safetensors",
+        "size_bytes": 9995661736
+      },
+      {
+        "mtime_ns": 1769020338553636583,
+        "name": "diffusion_pytorch_model-00003-of-00003.safetensors",
+        "size_bytes": 178558176
+      }
+    ]
+  },
+  "warnings": [
+    "selection_manifest_missing"
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "device": "cpu",
+  "torch_version": "2.8.0+cu128",
+  "cache_index": 0,
+  "clean_shape": [
+    1,
+    48,
+    26,
+    18,
+    32
+  ],
+  "text_shape": [
+    218,
+    4096
+  ],
+  "target_shape": [
+    1,
+    4608,
+    1664
+  ],
+  "prior_width": 512,
+  "initializer_parameters": 20610880,
+  "conditions": [
+    {
+      "gt_conditioned": true,
+      "prior_loss": 1.9779497385025024,
+      "p0_shape": [
+        1,
+        4608,
+        1664
+      ],
+      "p0_dtype": "torch.float32",
+      "active_gradient_tensors": 76,
+      "inactive_gt_tensors": 0,
+      "image_grad_norm": 0.011570431292057037,
+      "text_grad_norm": 0.026605984196066856,
+      "gt_grad_norm": 0.03293502703309059,
+      "seconds": 8.146835679013748
+    },
+    {
+      "gt_conditioned": false,
+      "prior_loss": 1.9806427955627441,
+      "p0_shape": [
+        1,
+        4608,
+        1664
+      ],
+      "p0_dtype": "torch.float32",
+      "active_gradient_tensors": 71,
+      "inactive_gt_tensors": 5,
+      "image_grad_norm": 0.03551273047924042,
+      "text_grad_norm": 0.08254202455282211,
+      "gt_grad_norm": null,
+      "seconds": 6.920645384001546
+    }
+  ],
+  "limits": "Real cached inputs and default P0 only; no Wan forward, CUDA training or generation quality test.",
+  "gt_vs_no_gt_p0_rms": 0.0447925366461277,
+  "passed": true
+}

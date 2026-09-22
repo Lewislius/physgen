@@ -1,0 +1,186 @@
+{
+  "status": "PASS",
+  "verified_at": "2026-09-17T14:04:03.703295+00:00",
+  "root_cause": "Checkpoint save completed; logging destination parameter path collided with checkpoint event path keyword and aborted the training loop.",
+  "profiles_fixed": [
+    "v4.2 BS8 1x96g",
+    "v4.2 batch1 1x96g",
+    "static LoRA 1x96g",
+    "static LoRA 4x48g"
+  ],
+  "source_checkpoint": {
+    "status": "PASS",
+    "checkpoint": "/home/liuzhirui/Project/physGen/code/v4.2/checkpoints/stability_20260917T113347Z_5d0494/step0100",
+    "checkpoint_bytes": 1309180650,
+    "all_file_sha256_verified": true,
+    "current_data_assets_statistics_and_config_verified": true,
+    "actual_adapter_and_optimizer_restored": true,
+    "completed_step": 100,
+    "next_step": 101,
+    "remaining_updates": 1100,
+    "ema_updates": 100,
+    "trainable_parameters": 65045248,
+    "optimizer_parameter_states": 300,
+    "optimizer_steps_all_100": true,
+    "saved_rng_cuda_devices": 1,
+    "next_step_exposures": [
+      {
+        "index": 1290,
+        "mode": "i2v",
+        "temporal": false,
+        "repair": false,
+        "exposure": 0
+      },
+      {
+        "index": 1321,
+        "mode": "i2v",
+        "temporal": false,
+        "repair": false,
+        "exposure": 0
+      },
+      {
+        "index": 2175,
+        "mode": "i2v",
+        "temporal": true,
+        "repair": false,
+        "exposure": 0
+      },
+      {
+        "index": 26,
+        "mode": "t2v",
+        "temporal": false,
+        "repair": false,
+        "exposure": 0
+      },
+      {
+        "index": 643,
+        "mode": "i2v",
+        "temporal": false,
+        "repair": false,
+        "exposure": 0
+      },
+      {
+        "index": 1177,
+        "mode": "i2v",
+        "temporal": false,
+        "repair": false,
+        "exposure": 0
+      },
+      {
+        "index": 681,
+        "mode": "i2v",
+        "temporal": false,
+        "repair": false,
+        "exposure": 0
+      },
+      {
+        "index": 1913,
+        "mode": "t2v",
+        "temporal": false,
+        "repair": false,
+        "exposure": 0
+      }
+    ],
+    "old_code": "b21b941d761246d39078a1144712d174eea8046ec2286416fc1bf43c9fe45ddb",
+    "current_code": "884783d118728ccb38418d80c69ea7f47975fb7038073314d7d5935e9ed56fd0",
+    "device": "cpu",
+    "gpu_forward_tested": false,
+    "seconds": 8.021786584984511
+  },
+  "full_size_roundtrip": {
+    "status": "PASS",
+    "device": "cpu",
+    "full_size_checkpoint_save_log_reload": true,
+    "checkpoint_bytes": 1309163690,
+    "all_file_sha256_verified": true,
+    "bit_identical_adapter_ema_and_optimizer": true,
+    "restored_step": 100,
+    "next_step": 101,
+    "source_checkpoint_unmodified": "/home/liuzhirui/Project/physGen/code/v4.2/checkpoints/stability_20260917T113347Z_5d0494/step0100",
+    "source_cuda_rng_preserved_for_cpu_roundtrip": true,
+    "gpu_forward_tested": false,
+    "temporary_roundtrip_artifacts_cleaned": true,
+    "seconds": 18.7783190330083
+  },
+  "tests": {
+    "total": 64,
+    "passed": 63,
+    "skipped": 1,
+    "failed": 0,
+    "suites": [
+      {
+        "name": "checkpoint_training_loops",
+        "passed": 6,
+        "seconds": 55.266
+      },
+      {
+        "name": "v42_existing",
+        "passed": 24,
+        "seconds": 4.342
+      },
+      {
+        "name": "batch1_existing",
+        "passed": 10,
+        "seconds": 16.494
+      },
+      {
+        "name": "static_lora_existing",
+        "passed": 23,
+        "skipped": 1,
+        "seconds": 5.457
+      }
+    ],
+    "skip_reason": "Actual four-CUDA-device test requires an allocated GPU job; local /dev/nvidia0 and /dev/nvidiactl are absent."
+  },
+  "loop_verification": {
+    "device": "cpu",
+    "small_differentiable_models": true,
+    "production_training_loops": true,
+    "production_checkpoint_io_and_logging": true,
+    "production_optimizers_ema_queues_rng_schedule": true,
+    "profiles": [
+      "v42",
+      "batch1",
+      "lora",
+      "four_gpu"
+    ],
+    "continuous_updates": 1200,
+    "checkpoint_steps": [
+      100,
+      200,
+      300,
+      400,
+      500,
+      600,
+      700,
+      800,
+      900,
+      1000,
+      1100,
+      1200
+    ],
+    "resume_from_legacy_code_step": 100,
+    "resumed_updates": 1100,
+    "bit_identical_final_weights_and_training_states": true,
+    "wan_vae_and_cuda_reporting_substituted": true
+  },
+  "compatibility": {
+    "exact_old_to_new_digests_only": true,
+    "other_identity_fields_remain_strict": true,
+    "current_digests": {
+      "v42": "884783d118728ccb38418d80c69ea7f47975fb7038073314d7d5935e9ed56fd0",
+      "batch1": "438eb861cf92c7deaf95bed36831c0fc249c37d191e71dfdc034389ac6992b93",
+      "lora": "b8fb3d280d088bca1f3bfcc67f75b50d5f4f07a0be3d57e3e252abeb388ef17d",
+      "four_gpu": "66a842932f6831c3d23e0d70f4c4f9aee2f3857ffda2199d40c4a7959311a6ea",
+      "quick16": "b8d0779770919a20690d01e1839cc629fd5e421c60e5cf027b10c0eecd9da977"
+    }
+  },
+  "recovery": {
+    "config": "/home/liuzhirui/Project/physGen/code/v4.2/train/train_stability_resume_step0100_1x96g.yaml",
+    "yaml_and_shell_parse": "PASS",
+    "next_step": 101,
+    "end_step": 1200,
+    "submitted": false
+  },
+  "original_sources_backup": "/home/liuzhirui/Project/physGen/code/v4.2/tmp/checkpoint_fix_20260917"
+}

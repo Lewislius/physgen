@@ -1,0 +1,513 @@
+{
+  "schema_version": "trace-direct-v1",
+  "design_revision": "p0-stage-direct-json-r2",
+  "sample_id": "P13",
+  "source_files": {
+    "origin": "P13-origin.txt",
+    "frame_zero_metadata": "P13-i0.json",
+    "reference_input": "P13-i0-1280x704.jpg"
+  },
+  "initial_condition": {
+    "type": "visible_actuator",
+    "description": "A visible hand holds the pitcher so it can tilt and control the pour."
+  },
+  "global_semantic": "Fixed side view of one hand tilting one half-filled transparent pitcher toward one empty clear glass. A clear water stream enters the glass, the pitcher waterline falls while the glass waterline rises, then the hand stops pouring and both new levels remain visible.",
+  "cfg_negative": " ",
+  "entities": [
+    {
+      "id": "hand",
+      "mention": "one visible hand",
+      "role": "actor"
+    },
+    {
+      "id": "pitcher",
+      "mention": "one transparent pitcher",
+      "role": "source"
+    },
+    {
+      "id": "glass",
+      "mention": "one clear drinking glass",
+      "role": "sink"
+    },
+    {
+      "id": "water",
+      "mention": "the clear water from the pitcher",
+      "role": "carrier"
+    }
+  ],
+  "structured_guidance": {
+    "schema_version": "structured-text-guidance-v1",
+    "entities": [
+      {
+        "id": "hand",
+        "label": "visible human hand",
+        "count": 1,
+        "persistent": false,
+        "invariants": [
+          "natural hand anatomy",
+          "single identity"
+        ]
+      },
+      {
+        "id": "pitcher",
+        "label": "transparent pitcher",
+        "count": 1,
+        "persistent": true,
+        "invariants": [
+          "rigid pitcher geometry",
+          "transparent appearance",
+          "single intact identity"
+        ]
+      },
+      {
+        "id": "glass",
+        "label": "clear drinking glass",
+        "count": 1,
+        "persistent": true,
+        "invariants": [
+          "rigid glass geometry",
+          "clear appearance",
+          "single intact identity"
+        ]
+      },
+      {
+        "id": "water",
+        "label": "tracked body of clear water from the pitcher",
+        "count": 1,
+        "persistent": true,
+        "invariants": [
+          "clear appearance",
+          "conserved original water material",
+          "fixed total water amount"
+        ]
+      }
+    ],
+    "initial_condition": {
+      "type": "visible_actuator",
+      "active_stages": [
+        "setup"
+      ],
+      "facts": [
+        "The hand starts holding the half-filled pitcher upright beside the empty glass.",
+        "All tracked water starts inside the pitcher and no stream exists."
+      ]
+    },
+    "stages": [
+      {
+        "id": "setup",
+        "entity_states": [
+          {
+            "entity_id": "hand",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "holding the pitcher upright"
+            ],
+            "mutable": [
+              "pose"
+            ]
+          },
+          {
+            "entity_id": "pitcher",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "upright and half-filled"
+            ],
+            "mutable": []
+          },
+          {
+            "entity_id": "glass",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "empty and upright"
+            ],
+            "mutable": []
+          },
+          {
+            "entity_id": "water",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "entirely inside the pitcher with a still level"
+            ],
+            "mutable": []
+          }
+        ],
+        "relations": [
+          "A clear air gap separates the pitcher lip and glass; no stream is visible."
+        ]
+      },
+      {
+        "id": "onset",
+        "entity_states": [
+          {
+            "entity_id": "hand",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "tilting the pitcher toward the glass"
+            ],
+            "mutable": [
+              "pose",
+              "position"
+            ]
+          },
+          {
+            "entity_id": "pitcher",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "tilting while remaining intact"
+            ],
+            "mutable": [
+              "orientation"
+            ]
+          },
+          {
+            "entity_id": "glass",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "receiving the first water while staying upright"
+            ],
+            "mutable": [
+              "contained water level"
+            ]
+          },
+          {
+            "entity_id": "water",
+            "presence": "transitioning",
+            "count": 1,
+            "states": [
+              "forming one continuous clear stream into the glass"
+            ],
+            "mutable": [
+              "allocation between pitcher stream and glass",
+              "free-surface levels",
+              "flow shape"
+            ]
+          }
+        ],
+        "relations": [
+          "The stream connects the pitcher lip to the inside of the one receiving glass."
+        ]
+      },
+      {
+        "id": "evolution",
+        "entity_states": [
+          {
+            "entity_id": "pitcher",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "remaining tilted as its waterline falls"
+            ],
+            "mutable": [
+              "orientation",
+              "contained water level"
+            ]
+          },
+          {
+            "entity_id": "glass",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "remaining upright as its waterline rises"
+            ],
+            "mutable": [
+              "contained water level"
+            ]
+          },
+          {
+            "entity_id": "water",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "flowing continuously from pitcher to glass"
+            ],
+            "mutable": [
+              "allocation between pitcher stream and glass",
+              "free-surface levels",
+              "flow shape"
+            ]
+          }
+        ],
+        "relations": [
+          "The pitcher level decreases while the glass level increases from the same water stream."
+        ]
+      },
+      {
+        "id": "completion",
+        "entity_states": [
+          {
+            "entity_id": "hand",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "returning the pitcher upright to stop pouring"
+            ],
+            "mutable": [
+              "pose",
+              "position"
+            ]
+          },
+          {
+            "entity_id": "pitcher",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "returning upright with less water"
+            ],
+            "mutable": [
+              "orientation"
+            ]
+          },
+          {
+            "entity_id": "glass",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "holding more water while remaining upright"
+            ],
+            "mutable": []
+          },
+          {
+            "entity_id": "water",
+            "presence": "transitioning",
+            "count": 1,
+            "states": [
+              "ending the stream and settling into the two containers"
+            ],
+            "mutable": [
+              "flow shape",
+              "free-surface levels"
+            ]
+          }
+        ],
+        "relations": [
+          "The one stream disappears only after the pitcher returns upright."
+        ]
+      },
+      {
+        "id": "terminal",
+        "entity_states": [
+          {
+            "entity_id": "pitcher",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "upright with a lower still waterline"
+            ],
+            "mutable": []
+          },
+          {
+            "entity_id": "glass",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "upright with a higher still waterline"
+            ],
+            "mutable": []
+          },
+          {
+            "entity_id": "water",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "conserved between pitcher and glass with no stream"
+            ],
+            "mutable": []
+          }
+        ],
+        "relations": [
+          "Exactly one pitcher and one glass remain intact with both new levels visible."
+        ]
+      }
+    ]
+  },
+  "stages": [
+    {
+      "id": "setup",
+      "positive": "The hand holds the half-filled pitcher upright beside the empty glass, with no stream."
+    },
+    {
+      "id": "onset",
+      "positive": "The hand tilts the pitcher and one clear stream begins entering the glass."
+    },
+    {
+      "id": "evolution",
+      "positive": "The pitcher waterline falls as the receiving glass waterline rises."
+    },
+    {
+      "id": "completion",
+      "positive": "The hand returns the pitcher upright and the water stream stops."
+    },
+    {
+      "id": "terminal",
+      "positive": "The pitcher holds less water and the glass holds more, with both levels still and no stream."
+    }
+  ],
+  "warnings": [],
+  "generation_basis": {
+    "mode": "identifier_only",
+    "reference_image_usage": "identifier_only"
+  },
+  "grounding": {
+    "coordinate_frame": "reference_input",
+    "reference_image": "P13-i0-1280x704.jpg",
+    "approved": false,
+    "entity_boxes": []
+  },
+  "temporal_route": {
+    "latent_tokens": 25,
+    "crossfade_tokens": 2,
+    "interpolation": "smoothstep_c1",
+    "profile": "continuous",
+    "stage_order": [
+      "setup",
+      "onset",
+      "evolution",
+      "completion",
+      "terminal"
+    ],
+    "weights": [
+      [
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0
+      ]
+    ]
+  }
+}

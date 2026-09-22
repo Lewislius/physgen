@@ -1,0 +1,42 @@
+name: 4h-physgen-v4-wisa-A1-1x96g
+description: Full A1 with GT-conditioned P0, no-GT modality training and six independent correctors
+workspace: ALL-IN-ONE
+project: wan-animate
+max_restarts: 0
+resources:
+  resource_pool: blk-96g
+  # Change only this value to set preprocessing and training GPU counts.
+  slots_per_trial: 1
+  is_single_node: true
+  shm_size: 34359738368
+bind_mounts:
+  - host_path: /mount/HOME/liuzhirui
+    container_path: /home/liuzhirui
+  - host_path: /mount/NAS1/public
+    container_path: /run/determined/NAS1/public
+environment:
+  image: 10.130.130.5:8192/lab-dev:latest
+  environment_variables:
+    # Fixed runtimes: V-JEPA 2.1 (offline/online) in vjepa2-312; everything else in moviestory.
+    # Interpreter overrides are cleared by tools/runtime_env.sh.
+    - PHASE=A1
+    # Run the complete A1 schedule, including validation and checkpoint saves.
+    # 0 disables the optional early-stop training check.
+    - TRAIN_CHECK_STEPS=0
+    # Reuse the prepared cache; train.sample_limit selects 1000 training records.
+    - PREPARE=0
+    - WANDB_ENABLED=0
+checkpoint_storage:
+  type: shared_fs
+  host_path: /mount/HOME/liuzhirui
+  storage_path: Project/physGen/code/v4/determined_checkpoints
+  save_experiment_best: 0
+  save_trial_best: 0
+  save_trial_latest: 0
+searcher:
+  name: single
+  metric: validation_loss
+  max_length:
+    epochs: 1
+  smaller_is_better: true
+entrypoint: /home/liuzhirui/Project/physGen/code/v4/train/train_wisa_native_p_4x96g.sh

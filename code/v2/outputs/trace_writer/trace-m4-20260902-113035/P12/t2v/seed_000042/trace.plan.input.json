@@ -1,0 +1,362 @@
+{
+  "assumptions": [],
+  "constraints": [
+    {
+      "after": "drift_seeds",
+      "before": "first_detachment",
+      "id": "c1",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "precedes"
+    },
+    {
+      "effect": "detach_seeds",
+      "id": "c2",
+      "source_refs": [
+        "origin"
+      ],
+      "transition": "e1",
+      "type": "changes"
+    },
+    {
+      "effects": [
+        "detach_seeds",
+        "drift_seeds",
+        "deplete_head"
+      ],
+      "id": "c3",
+      "relation": "detachment and outward drift accompany decreasing head fullness",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "couples"
+    },
+    {
+      "facts": [
+        "attachment=detached",
+        "fullness=depleted"
+      ],
+      "id": "c4",
+      "source_refs": [
+        "origin"
+      ],
+      "state": "z1",
+      "type": "persists"
+    },
+    {
+      "facts": [
+        "attachment=attached",
+        "attachment=detached"
+      ],
+      "id": "c5",
+      "scope": "same_time",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "excludes"
+    }
+  ],
+  "design_revision": "fixed5-causal-r3",
+  "entities": [
+    {
+      "id": "dandelion",
+      "mention": "the same dry dandelion head and stem",
+      "role": "source",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "id": "seeds",
+      "mention": "the same dandelion seeds",
+      "role": "carrier",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "id": "drift_region",
+      "mention": "the surrounding air through which seeds drift",
+      "role": "sink",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "description": "first visible seed detachment and drift",
+      "id": "first_detachment",
+      "observable": "one or more seeds separate and begin moving away",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "generation_basis": {
+    "mode": "identifier_only",
+    "reference_image_usage": "identifier_only",
+    "semantic_inputs": [
+      "origin",
+      "planner_instructions"
+    ]
+  },
+  "global_semantic": "A gust detaches seeds from one dry dandelion; the seeds drift away as the head becomes depleted.",
+  "grounding": {
+    "approved": false,
+    "coordinate_frame": "reference_input",
+    "entity_boxes": [],
+    "protected_boxes": [],
+    "reference_image": "P12-i0-1280x704.png",
+    "reference_image_usage": "identifier_only"
+  },
+  "predicates": [
+    {
+      "attribute": "attachment_to:dandelion",
+      "id": "attachment",
+      "observable": "visible connection between seeds and central head",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "seeds",
+      "values": [
+        "attached",
+        "detached"
+      ]
+    },
+    {
+      "attribute": "position",
+      "id": "seed_position",
+      "observable": "seed displacement away from the head",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "seeds",
+      "values": [
+        "on_head",
+        "drifting_away"
+      ]
+    },
+    {
+      "attribute": "seed_head_fullness",
+      "id": "fullness",
+      "observable": "density of seeds remaining on the head",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "dandelion",
+      "values": [
+        "full",
+        "depleted"
+      ]
+    }
+  ],
+  "protected_predicates": [
+    "same dandelion stem and central head",
+    "same seeds through attachment and drift",
+    "camera and unrelated outdoor scene remain unchanged"
+  ],
+  "sample_id": "P12",
+  "schema_version": "trace-writer-v1",
+  "source_files": {
+    "origin": "P12-origin.txt",
+    "planner_instructions": "Project/physGen/prompt/generate_trace_writer_v1_plan.txt",
+    "reference_input": "P12-i0-1280x704.png"
+  },
+  "stages": [
+    {
+      "affected_roles": [
+        "source",
+        "carrier"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "setup",
+      "observable_check": "The seed head is dense and detached seeds are absent.",
+      "positive": "The dry dandelion begins full with its visible seeds attached to the same head.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "The dandelion head is already depleted with many seeds drifting away at the start.",
+          "type": "outcome_preset"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "onset",
+      "observable_check": "A seed-head gap appears as the first seeds move outward.",
+      "positive": "The first seeds visibly separate from the head and begin drifting through the surrounding air.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "The seed head becomes depleted before any seeds visibly detach or drift away.",
+          "type": "wrong_order"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c2",
+        "c3"
+      ],
+      "id": "evolution",
+      "observable_check": "The number of airborne seeds rises as attached seed density falls.",
+      "positive": "More seeds detach progressively, travel away, and leave the same dandelion head visibly less full.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c2",
+            "c3"
+          ],
+          "text": "Seeds drift away while the dandelion head retains its full original seed density.",
+          "type": "coupling_broken"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c2",
+        "c3",
+        "c4"
+      ],
+      "id": "completion",
+      "observable_check": "Late frames show broad seed separation and sparse head coverage.",
+      "positive": "The outward seed drift continues while the remaining attached seed population approaches a depleted head.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c2",
+            "c3",
+            "c4"
+          ],
+          "text": "Only one seed moves and the head never becomes visibly depleted.",
+          "type": "incomplete_transition"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier"
+      ],
+      "constraint_ids": [
+        "c4",
+        "c5"
+      ],
+      "id": "terminal",
+      "observable_check": "Sparse head coverage persists without seed reattachment.",
+      "positive": "The depleted dandelion head remains sparse while detached seeds stay away from it.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c4"
+          ],
+          "text": "Detached seeds return and refill the depleted head during the final frames.",
+          "type": "reversal"
+        },
+        {
+          "constraint_ids": [
+            "c5"
+          ],
+          "text": "Attached and detached copies of the same seeds coexist on the head.",
+          "type": "exclusion_broken"
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "facts": {
+        "attachment": "attached",
+        "fullness": "full",
+        "seed_position": "on_head"
+      },
+      "id": "z0",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "facts": {
+        "attachment": "detached",
+        "fullness": "depleted",
+        "seed_position": "drifting_away"
+      },
+      "id": "z1",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "cause_event": null,
+      "effects": [
+        {
+          "direction": "seed connections release progressively",
+          "from": "attached",
+          "id": "detach_seeds",
+          "predicate": "attachment",
+          "to": "detached"
+        },
+        {
+          "direction": "detached seeds move outward",
+          "from": "on_head",
+          "id": "drift_seeds",
+          "predicate": "seed_position",
+          "to": "drifting_away"
+        },
+        {
+          "direction": "remaining seed density decreases",
+          "from": "full",
+          "id": "deplete_head",
+          "predicate": "fullness",
+          "to": "depleted"
+        }
+      ],
+      "from": "z0",
+      "id": "e1",
+      "kind": "continuous",
+      "preconditions": [
+        "attachment=attached",
+        "seed_position=on_head",
+        "fullness=full"
+      ],
+      "source_refs": [
+        "origin"
+      ],
+      "support_kind": "source_stream_sink",
+      "to": "z1"
+    }
+  ],
+  "warnings": []
+}

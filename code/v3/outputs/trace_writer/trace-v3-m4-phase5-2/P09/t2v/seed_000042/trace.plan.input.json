@@ -1,0 +1,340 @@
+{
+  "assumptions": [],
+  "constraints": [
+    {
+      "after": "pool_spread",
+      "before": "first_softening",
+      "id": "c1",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "precedes"
+    },
+    {
+      "effect": "edge_soften",
+      "id": "c2",
+      "source_refs": [
+        "origin"
+      ],
+      "transition": "e1",
+      "type": "changes"
+    },
+    {
+      "effects": [
+        "edge_soften",
+        "pool_spread"
+      ],
+      "id": "c3",
+      "relation": "solid edges round and recede while liquid footprint expands",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "couples"
+    },
+    {
+      "facts": [
+        "edge_shape=rounded_receded",
+        "footprint=liquid_pool"
+      ],
+      "id": "c4",
+      "source_refs": [
+        "origin"
+      ],
+      "state": "z1",
+      "type": "persists"
+    },
+    {
+      "facts": [
+        "footprint=compact_pat",
+        "footprint=liquid_pool"
+      ],
+      "id": "c5",
+      "scope": "same_time",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "excludes"
+    }
+  ],
+  "control": {},
+  "design_revision": "fixed5-causal-r3",
+  "entities": [
+    {
+      "id": "butter",
+      "mention": "the same pat of butter",
+      "role": "source",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "id": "liquid_butter",
+      "mention": "liquid from the same butter",
+      "role": "carrier",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "id": "pan",
+      "mention": "the same warm pan",
+      "role": "sink",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "description": "first detectable butter edge softening",
+      "id": "first_softening",
+      "observable": "one sharp corner visibly rounds or lowers",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "generation_basis": {
+    "mode": "identifier_only",
+    "reference_image_usage": "identifier_only",
+    "semantic_inputs": [
+      "origin",
+      "planner_instructions"
+    ]
+  },
+  "global_semantic": "One pat of butter softens in one warm pan, loses sharp edges, and spreads into a liquid pool.",
+  "grounding": {
+    "approved": false,
+    "coordinate_frame": "reference_input",
+    "entity_boxes": [],
+    "protected_boxes": [],
+    "reference_image": "P09-i0-1280x704.png",
+    "reference_image_usage": "identifier_only"
+  },
+  "predicates": [
+    {
+      "attribute": "edge_shape",
+      "id": "edge_shape",
+      "observable": "corner radius and solid boundary",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "butter",
+      "values": [
+        "sharp",
+        "rounded_receded"
+      ]
+    },
+    {
+      "attribute": "butter_footprint",
+      "id": "footprint",
+      "observable": "area covered by butter on the pan",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "pan",
+      "values": [
+        "compact_pat",
+        "liquid_pool"
+      ]
+    }
+  ],
+  "protected_predicates": [
+    "same butter material",
+    "same warm pan",
+    "camera and unrelated scene remain unchanged"
+  ],
+  "sample_id": "P09",
+  "schema_version": "trace-writer-v1",
+  "source_files": {
+    "origin": "P09-origin.txt",
+    "planner_instructions": "Project/physGen/prompt/generate_trace_writer_v1_plan.txt",
+    "reference_input": "P09-i0-1280x704.png"
+  },
+  "stages": [
+    {
+      "affected_roles": [
+        "source",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "setup",
+      "observable_check": "The compact solid boundary and corners remain clearly readable.",
+      "positive": "The compact butter pat begins with firm sharp edges and no finished surrounding pool.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "A finished liquid pool already replaces the sharply edged butter at the start.",
+          "type": "outcome_preset"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "onset",
+      "observable_check": "Local corner rounding precedes large-area spreading.",
+      "positive": "The first butter corner visibly softens and rounds before a broad liquid footprint appears.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "A broad liquid pool appears before any butter edge visibly softens.",
+          "type": "early_effect"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c2",
+        "c3"
+      ],
+      "id": "evolution",
+      "observable_check": "Corner sharpness decreases while covered pan area increases.",
+      "positive": "The same butter loses sharp edges while its liquid footprint expands continuously across the pan.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c2",
+            "c3"
+          ],
+          "text": "The liquid footprint expands while the butter retains its original sharp solid edges.",
+          "type": "coupling_broken"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c2",
+        "c3",
+        "c4"
+      ],
+      "id": "completion",
+      "observable_check": "Late frames show rounded remnants within a broad connected pool.",
+      "positive": "The remaining softened butter recedes as the connected liquid pool approaches its final extent.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c2",
+            "c3",
+            "c4"
+          ],
+          "text": "The butter remains mostly compact and never develops a connected liquid pool.",
+          "type": "incomplete_transition"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c4",
+        "c5"
+      ],
+      "id": "terminal",
+      "observable_check": "The terminal pool extent remains stable without solid-pat restoration.",
+      "positive": "The rounded reduced butter and spread liquid pool persist in the same warm pan.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c4"
+          ],
+          "text": "The liquid pool contracts back into a sharply edged pat in final frames.",
+          "type": "reversal"
+        },
+        {
+          "constraint_ids": [
+            "c5"
+          ],
+          "text": "Compact solid and spread liquid copies of the butter coexist simultaneously.",
+          "type": "exclusion_broken"
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "facts": {
+        "edge_shape": "sharp",
+        "footprint": "compact_pat"
+      },
+      "id": "z0",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "facts": {
+        "edge_shape": "rounded_receded",
+        "footprint": "liquid_pool"
+      },
+      "id": "z1",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "cause_event": null,
+      "effects": [
+        {
+          "direction": "sharp corners round and solid boundary recedes",
+          "from": "sharp",
+          "id": "edge_soften",
+          "predicate": "edge_shape",
+          "to": "rounded_receded"
+        },
+        {
+          "direction": "butter-covered area expands outward",
+          "from": "compact_pat",
+          "id": "pool_spread",
+          "predicate": "footprint",
+          "to": "liquid_pool"
+        }
+      ],
+      "from": "z0",
+      "id": "e1",
+      "kind": "continuous",
+      "preconditions": [
+        "edge_shape=sharp",
+        "footprint=compact_pat"
+      ],
+      "source_refs": [
+        "origin"
+      ],
+      "support_kind": "source_stream_sink",
+      "to": "z1"
+    }
+  ],
+  "warnings": []
+}

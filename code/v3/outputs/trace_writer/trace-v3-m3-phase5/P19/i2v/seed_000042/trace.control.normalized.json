@@ -1,0 +1,181 @@
+{
+  "closed_world": {
+    "allowed_entity_ids": [
+      "paper"
+    ],
+    "empty_regions": [],
+    "external_source_allowed": false,
+    "forbidden_new_categories": [
+      "external source",
+      "extra copy",
+      "unlisted object"
+    ],
+    "provenance": "derived"
+  },
+  "conservation": [
+    {
+      "observable_proxy": "tracked logical entity slots remain consistent",
+      "provenance": "derived",
+      "quantity": "instance_count",
+      "relation": "constant",
+      "rule_id": "entity_slots_constant",
+      "sinks": [
+        "paper"
+      ],
+      "sources": [
+        "paper"
+      ],
+      "tolerance": 0.0
+    },
+    {
+      "observable_proxy": "centered gray slit lengthens as white sides separate",
+      "provenance": "derived",
+      "quantity": "material_proxy",
+      "relation": "coupled_monotonic",
+      "rule_id": "conservation_c3",
+      "sinks": [
+        "integrity",
+        "separation"
+      ],
+      "sources": [
+        "tear_extent"
+      ],
+      "tolerance": 0.1
+    }
+  ],
+  "issues": [],
+  "lifecycles": [
+    {
+      "entity_id": "paper",
+      "from_stage": "setup",
+      "from_state": "small_top_notch; one_wide_sheet; connected",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "small_top_notch",
+          "full_vertical_tear"
+        ],
+        [
+          "one_wide_sheet",
+          "two_white_pieces"
+        ],
+        [
+          "connected",
+          "apart"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "full_vertical_tear; two_white_pieces; apart"
+    }
+  ],
+  "slots": [
+    {
+      "aliases": [],
+      "canonical_mention": "the same wide white rectangular sheet with one centered top-edge notch",
+      "cardinality": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "paper",
+      "invariant_attributes": [
+        "same plain white paper material and rectangular outer proportions",
+        "single centered top-edge notch remains the tear origin",
+        "gray background, lighting, frontal camera, and framing remain unchanged",
+        "no pulling hands or tools are added"
+      ],
+      "mutable_attributes": [
+        "pictured tear from top notch",
+        "white sheet integrity",
+        "pictured piece gap"
+      ],
+      "persistent_identity": true,
+      "provenance": "default",
+      "role": "patient"
+    }
+  ],
+  "stage_presence": [
+    {
+      "entity_id": "paper",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [
+        "tear_extent=small_top_notch",
+        "integrity=one_wide_sheet",
+        "separation=connected"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "paper",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [
+        "tear_extent=small_top_notch",
+        "integrity=one_wide_sheet",
+        "separation=connected"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "paper",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [
+        "tear_extent=full_vertical_tear",
+        "integrity=two_white_pieces",
+        "separation=apart"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "paper",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [
+        "tear_extent=full_vertical_tear",
+        "integrity=two_white_pieces",
+        "separation=apart"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "paper",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [
+        "tear_extent=full_vertical_tear",
+        "integrity=two_white_pieces",
+        "separation=apart"
+      ],
+      "visible": "required"
+    }
+  ]
+}

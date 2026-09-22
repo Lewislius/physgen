@@ -1,0 +1,182 @@
+{
+  "actual_t5_token_lengths": {
+    "global_semantic": 258,
+    "stage.completion.negative.0": 135,
+    "stage.completion.positive": 145,
+    "stage.evolution.negative.0": 150,
+    "stage.evolution.positive": 143,
+    "stage.onset.negative.0": 138,
+    "stage.onset.positive": 137,
+    "stage.setup.negative.0": 138,
+    "stage.setup.positive": 135,
+    "stage.terminal.negative.0": 168,
+    "stage.terminal.negative.1": 169,
+    "stage.terminal.positive": 182
+  },
+  "global_anchor": "[ENTITY INVENTORY] The closed scene contains ball: exactly 1; racket: exactly 1. All declared entities are fully visible from the first frame in the stated layout. [INITIAL STATE] gap_state=approaching_separated, direction=toward_racket. [PHYSICAL EVENT] One tennis racket strikes one approaching tennis ball and sends the same ball back in the opposite direction. [INITIAL LAYOUT] tennis ball; tennis racket. [PERSISTENT PROTECTION] same single tennis ball; same tennis racket; court and camera remain unchanged. [CLOSED WORLD] No additional external source, extra copy, unlisted object enters or appears; unoccupied scene regions remain empty. [CONSERVATION] Source loss and result gain stay coupled: tracked logical entity slots remain consistent; direction reverses as the post-contact gap reopens. No result appears from an undeclared external source. [TERMINAL STATE] The same logical entity slots persist without duplicates; gap_state=departing_separated, direction=opposite_away remains visible through the final frames.",
+  "issues": [],
+  "max_t5_token_length": 258,
+  "protected_coverage": {
+    "court and camera remain unchanged": [
+      "camera_background",
+      "closed_world_or_persistence"
+    ],
+    "same single tennis ball": [
+      "identity_count"
+    ],
+    "same tennis racket": [
+      "identity_count"
+    ]
+  },
+  "stage_pairs": [
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "visible tennis ball-racket contact happens BEFORE travel reverses through the contact point.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state gap_state=approaching_separated, direction=toward_racket, required; racket: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] visible tennis ball-racket contact happens BEFORE travel reverses through the contact point.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state gap_state=approaching_separated, direction=toward_racket, required; racket: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "setup",
+      "violation_constraint_ids": [
+        [
+          "c1"
+        ]
+      ],
+      "violation_kinds": [
+        "outcome_preset"
+      ],
+      "violation_relations": [
+        "travel reverses through the contact point is already present BEFORE visible tennis ball-racket contact."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state gap_state=approaching_separated, direction=toward_racket, required; racket: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] travel reverses through the contact point is already present BEFORE visible tennis ball-racket contact."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "visible tennis ball-racket contact happens BEFORE travel reverses through the contact point.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state gap_state=approaching_separated, direction=toward_racket, transitioning; racket: exactly 1, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] visible tennis ball-racket contact happens BEFORE travel reverses through the contact point.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state gap_state=approaching_separated, direction=toward_racket, transitioning; racket: exactly 1, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "onset",
+      "violation_constraint_ids": [
+        [
+          "c1",
+          "c2"
+        ]
+      ],
+      "violation_kinds": [
+        "trigger_missing"
+      ],
+      "violation_relations": [
+        "travel reverses through the contact point occurs WITHOUT visible tennis ball-racket contact."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state gap_state=approaching_separated, direction=toward_racket, transitioning; racket: exactly 1, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] travel reverses through the contact point occurs WITHOUT visible tennis ball-racket contact."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The coupled changes occur together: gap closes to contact then reopens WHILE travel reverses through the contact point.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state gap_state=departing_separated, direction=opposite_away, required; racket: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The coupled changes occur together: gap closes to contact then reopens WHILE travel reverses through the contact point.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state gap_state=departing_separated, direction=opposite_away, required; racket: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "evolution",
+      "violation_constraint_ids": [
+        [
+          "c3"
+        ]
+      ],
+      "violation_kinds": [
+        "coupling_broken"
+      ],
+      "violation_relations": [
+        "Only one coupled change occurs while the other remains unchanged: gap closes to contact then reopens; travel reverses through the contact point."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state gap_state=departing_separated, direction=opposite_away, required; racket: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] Only one coupled change occurs while the other remains unchanged: gap closes to contact then reopens; travel reverses through the contact point."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The coupled changes occur together: gap closes to contact then reopens WHILE travel reverses through the contact point.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state gap_state=departing_separated, direction=opposite_away, transitioning; racket: exactly 1, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The coupled changes occur together: gap closes to contact then reopens WHILE travel reverses through the contact point.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state gap_state=departing_separated, direction=opposite_away, transitioning; racket: exactly 1, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "completion",
+      "violation_constraint_ids": [
+        [
+          "c3",
+          "c4"
+        ]
+      ],
+      "violation_kinds": [
+        "incomplete_transition"
+      ],
+      "violation_relations": [
+        "The declared cause occurs BUT the required target change does not become visible."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state gap_state=departing_separated, direction=opposite_away, transitioning; racket: exactly 1, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The declared cause occurs BUT the required target change does not become visible."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The terminal facts gap_state=departing_separated, direction=opposite_away REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts direction=toward_racket, direction=opposite_away do not coexist.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state gap_state=departing_separated, direction=opposite_away, required; racket: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The terminal facts gap_state=departing_separated, direction=opposite_away REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts direction=toward_racket, direction=opposite_away do not coexist.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state gap_state=departing_separated, direction=opposite_away, required; racket: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "terminal",
+      "violation_constraint_ids": [
+        [
+          "c4"
+        ],
+        [
+          "c5"
+        ]
+      ],
+      "violation_kinds": [
+        "reversal",
+        "exclusion_broken"
+      ],
+      "violation_relations": [
+        "The valid terminal state returns to its mutually exclusive earlier state.",
+        "Copies of the same logical slot appear in mutually exclusive states at the same time."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state gap_state=departing_separated, direction=opposite_away, required; racket: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The valid terminal state returns to its mutually exclusive earlier state. [AND] The same logical slot has only its valid state; mutually exclusive facts direction=toward_racket, direction=opposite_away do not coexist.",
+        "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state gap_state=departing_separated, direction=opposite_away, required; racket: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The terminal facts gap_state=departing_separated, direction=opposite_away REMAIN through the final frames. [AND] Copies of the same logical slot appear in mutually exclusive states at the same time."
+      ],
+      "violation_weights": [
+        0.5,
+        0.5
+      ]
+    }
+  ],
+  "texts": {
+    "global_semantic": "[ENTITY INVENTORY] The closed scene contains ball: exactly 1; racket: exactly 1. All declared entities are fully visible from the first frame in the stated layout. [INITIAL STATE] gap_state=approaching_separated, direction=toward_racket. [PHYSICAL EVENT] One tennis racket strikes one approaching tennis ball and sends the same ball back in the opposite direction. [INITIAL LAYOUT] tennis ball; tennis racket. [PERSISTENT PROTECTION] same single tennis ball; same tennis racket; court and camera remain unchanged. [CLOSED WORLD] No additional external source, extra copy, unlisted object enters or appears; unoccupied scene regions remain empty. [CONSERVATION] Source loss and result gain stay coupled: tracked logical entity slots remain consistent; direction reverses as the post-contact gap reopens. No result appears from an undeclared external source. [TERMINAL STATE] The same logical entity slots persist without duplicates; gap_state=departing_separated, direction=opposite_away remains visible through the final frames.",
+    "stage.completion.negative.0": "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state gap_state=departing_separated, direction=opposite_away, transitioning; racket: exactly 1, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The declared cause occurs BUT the required target change does not become visible.",
+    "stage.completion.positive": "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state gap_state=departing_separated, direction=opposite_away, transitioning; racket: exactly 1, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The coupled changes occur together: gap closes to contact then reopens WHILE travel reverses through the contact point.",
+    "stage.evolution.negative.0": "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state gap_state=departing_separated, direction=opposite_away, required; racket: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] Only one coupled change occurs while the other remains unchanged: gap closes to contact then reopens; travel reverses through the contact point.",
+    "stage.evolution.positive": "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state gap_state=departing_separated, direction=opposite_away, required; racket: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The coupled changes occur together: gap closes to contact then reopens WHILE travel reverses through the contact point.",
+    "stage.onset.negative.0": "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state gap_state=approaching_separated, direction=toward_racket, transitioning; racket: exactly 1, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] travel reverses through the contact point occurs WITHOUT visible tennis ball-racket contact.",
+    "stage.onset.positive": "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state gap_state=approaching_separated, direction=toward_racket, transitioning; racket: exactly 1, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] visible tennis ball-racket contact happens BEFORE travel reverses through the contact point.",
+    "stage.setup.negative.0": "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state gap_state=approaching_separated, direction=toward_racket, required; racket: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] travel reverses through the contact point is already present BEFORE visible tennis ball-racket contact.",
+    "stage.setup.positive": "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state gap_state=approaching_separated, direction=toward_racket, required; racket: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] visible tennis ball-racket contact happens BEFORE travel reverses through the contact point.",
+    "stage.terminal.negative.0": "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state gap_state=departing_separated, direction=opposite_away, required; racket: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The valid terminal state returns to its mutually exclusive earlier state. [AND] The same logical slot has only its valid state; mutually exclusive facts direction=toward_racket, direction=opposite_away do not coexist.",
+    "stage.terminal.negative.1": "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state gap_state=departing_separated, direction=opposite_away, required; racket: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The terminal facts gap_state=departing_separated, direction=opposite_away REMAIN through the final frames. [AND] Copies of the same logical slot appear in mutually exclusive states at the same time.",
+    "stage.terminal.positive": "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state gap_state=departing_separated, direction=opposite_away, required; racket: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The terminal facts gap_state=departing_separated, direction=opposite_away REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts direction=toward_racket, direction=opposite_away do not coexist."
+  },
+  "token_budget_priority": {
+    "causal": 2,
+    "entity_count": 0,
+    "protected": 1,
+    "style": 3
+  }
+}

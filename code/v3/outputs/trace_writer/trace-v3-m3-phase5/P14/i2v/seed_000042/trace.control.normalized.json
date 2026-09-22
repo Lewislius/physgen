@@ -1,0 +1,389 @@
+{
+  "closed_world": {
+    "allowed_entity_ids": [
+      "bottle",
+      "stream",
+      "glass"
+    ],
+    "empty_regions": [],
+    "external_source_allowed": false,
+    "forbidden_new_categories": [
+      "dropper",
+      "external liquid stream",
+      "external source",
+      "extra copy",
+      "hand",
+      "person",
+      "pipette",
+      "tool",
+      "unlisted object"
+    ],
+    "provenance": "derived"
+  },
+  "conservation": [
+    {
+      "observable_proxy": "tracked logical entity slots remain consistent",
+      "provenance": "derived",
+      "quantity": "instance_count",
+      "relation": "constant",
+      "rule_id": "entity_slots_constant",
+      "sinks": [
+        "bottle",
+        "stream",
+        "glass"
+      ],
+      "sources": [
+        "bottle",
+        "stream",
+        "glass"
+      ],
+      "tolerance": 0.0
+    },
+    {
+      "observable_proxy": "left orange level falls through bright stream while right level rises",
+      "provenance": "derived",
+      "quantity": "material_proxy",
+      "relation": "coupled_monotonic",
+      "rule_id": "conservation_c3",
+      "sinks": [
+        "stream_state",
+        "sink_level"
+      ],
+      "sources": [
+        "source_level"
+      ],
+      "tolerance": 0.1
+    }
+  ],
+  "issues": [
+    "bottle: exact visual count unresolved; retained as group",
+    "stream: exact visual count unresolved; retained as group"
+  ],
+  "lifecycles": [
+    {
+      "entity_id": "bottle",
+      "from_stage": "setup",
+      "from_state": "high",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "high",
+          "visibly_lower"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "visibly_lower"
+    },
+    {
+      "entity_id": "stream",
+      "from_stage": "setup",
+      "from_state": "absent",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "absent",
+          "continuous_orange"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "continuous_orange"
+    },
+    {
+      "entity_id": "glass",
+      "from_stage": "setup",
+      "from_state": "empty",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "empty",
+          "visibly_higher"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "visibly_higher"
+    }
+  ],
+  "slots": [
+    {
+      "aliases": [],
+      "canonical_mention": "the same tall clear uncapped bottle of bright orange juice",
+      "cardinality": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "bottle",
+      "invariant_attributes": [
+        "same tall clear bottle, tapered clear tumbler, and bright orange juice",
+        "wood tabletop, pale gray background, lighting, and static camera remain unchanged",
+        "orange juice does not spill onto the table"
+      ],
+      "mutable_attributes": [
+        "pictured orange level"
+      ],
+      "persistent_identity": true,
+      "provenance": "derived",
+      "role": "source"
+    },
+    {
+      "aliases": [],
+      "canonical_mention": "the bright orange stream from the bottle mouth",
+      "cardinality": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "stream",
+      "invariant_attributes": [
+        "same tall clear bottle, tapered clear tumbler, and bright orange juice",
+        "wood tabletop, pale gray background, lighting, and static camera remain unchanged",
+        "orange juice does not spill onto the table"
+      ],
+      "mutable_attributes": [
+        "mouth-to-glass connection"
+      ],
+      "persistent_identity": true,
+      "provenance": "derived",
+      "role": "carrier"
+    },
+    {
+      "aliases": [],
+      "canonical_mention": "the same empty clear tapered tumbler on the right",
+      "cardinality": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "glass",
+      "invariant_attributes": [
+        "same tall clear bottle, tapered clear tumbler, and bright orange juice",
+        "wood tabletop, pale gray background, lighting, and static camera remain unchanged",
+        "orange juice does not spill onto the table"
+      ],
+      "mutable_attributes": [
+        "pictured orange level"
+      ],
+      "persistent_identity": true,
+      "provenance": "default",
+      "role": "sink"
+    }
+  ],
+  "stage_presence": [
+    {
+      "entity_id": "bottle",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [
+        "source_level=high"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "stream",
+      "logical_count": {
+        "exact": 0,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [
+        "stream_state=absent"
+      ],
+      "visible": "forbidden"
+    },
+    {
+      "entity_id": "glass",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [
+        "sink_level=empty"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "bottle",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [
+        "source_level=high"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "stream",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [
+        "stream_state=absent"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "glass",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [
+        "sink_level=empty"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "bottle",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [
+        "source_level=visibly_lower"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "stream",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [
+        "stream_state=continuous_orange"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "glass",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [
+        "sink_level=visibly_higher"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "bottle",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [
+        "source_level=visibly_lower"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "stream",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [
+        "stream_state=continuous_orange"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "glass",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [
+        "sink_level=visibly_higher"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "bottle",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [
+        "source_level=visibly_lower"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "stream",
+      "logical_count": {
+        "exact": 0,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [
+        "stream_state=continuous_orange"
+      ],
+      "visible": "forbidden"
+    },
+    {
+      "entity_id": "glass",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [
+        "sink_level=visibly_higher"
+      ],
+      "visible": "required"
+    }
+  ]
+}

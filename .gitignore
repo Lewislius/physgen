@@ -1,0 +1,38 @@
+# Local training caches, model/optimizer checkpoints and temporary state.
+cache/
+cache_*/
+checkpoints/
+determined_checkpoints/
+train_log/
+tmp/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+wandb/
+*.lock
+.DS_Store
+
+# Model weights and intermediate tensor arrays stay on the training machine.
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.bin
+*.npy
+*.npz
+*.pkl
+*.pickle
+
+# This small frozen prompt embedding is a required standalone inference asset.
+!code/v4-static-lora/assets/negative.pt
+
+# Machine-local credentials must not be published.
+.env
+.env.*
+!.env.example
+!.env.sample
+*.pem
+*.key
+wandb_credentials.py
+
+# Inference videos, images and reports are intentionally retained in Git.

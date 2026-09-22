@@ -1,0 +1,55 @@
+{
+  "status": "ready",
+  "method": "TRACE-V3-BASELINE-I2V",
+  "mode": "i2v",
+  "conditioning_variant": "baseline",
+  "conditioning": {
+    "global_positive": "plan.global_semantic verbatim",
+    "stage_c_plus": "each stages[].positive verbatim",
+    "stage_c_minus": "empty; shared plan.cfg_negative whitespace context",
+    "temporal_route": "plan.temporal_route.weights verbatim",
+    "stage_fusion": "legacy fixed residual coefficient",
+    "stage_ratio_to_global_in_selected_blocks": null,
+    "structured_json_text_guidance": false,
+    "json_global_ratio_to_global": null,
+    "json_stage_ratio_to_global": null,
+    "extra_condition_cap_ratio": null,
+    "denoise_step_gate": "legacy 0.5/1.0/0.3/0.1",
+    "stage_checkpoints_used_by_model": true,
+    "json_renderer": false,
+    "legacy_writer_corrector_reader_subsystem": false,
+    "direct_parameter_free_stage_residual": true
+  },
+  "fixed_output_size": [
+    1280,
+    704
+  ],
+  "frame_num": 97,
+  "sampling_steps": 50,
+  "sample_solver": "unipc",
+  "guide_scale": 5.0,
+  "shift": 5.0,
+  "fps": 24,
+  "stage_strength": 0.05,
+  "stage_ratio_to_global": null,
+  "json_global_ratio_to_global": null,
+  "json_stage_ratio_to_global": null,
+  "condition_extra_cap_ratio": null,
+  "stage_block_interval": [
+    14,
+    24
+  ],
+  "samples": [
+    {
+      "sample_id": "P02",
+      "plan": "/home/liuzhirui/Project/physGen/code/v1/demo/P02/P02-V2-planimg.json",
+      "temporal_route": {
+        "profile": "triggered",
+        "latent_tokens": 25,
+        "crossfade_tokens": 2
+      },
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P02/P02-i0-1280x704.jpg",
+      "structured_guidance": false
+    }
+  ]
+}

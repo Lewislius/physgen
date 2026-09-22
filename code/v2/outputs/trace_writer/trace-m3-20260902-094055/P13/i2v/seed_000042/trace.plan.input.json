@@ -1,0 +1,393 @@
+{
+  "assumptions": [
+    "The pictured pitcher tilts rightward enough to align its spout with the tumbler opening."
+  ],
+  "constraints": [
+    {
+      "after": "pictured_sink_rise",
+      "before": "pictured_stream_onset",
+      "id": "c1",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "precedes"
+    },
+    {
+      "effect": "pictured_source_fall",
+      "id": "c2",
+      "source_refs": [
+        "origin"
+      ],
+      "transition": "e1",
+      "type": "changes"
+    },
+    {
+      "effects": [
+        "pictured_source_fall",
+        "clear_carrier",
+        "pictured_sink_rise"
+      ],
+      "id": "c3",
+      "relation": "left waterline falls through clear stream while right waterline rises",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "couples"
+    },
+    {
+      "facts": [
+        "source_level=visibly_lower",
+        "sink_level=visibly_higher"
+      ],
+      "id": "c4",
+      "source_refs": [
+        "origin"
+      ],
+      "state": "z1",
+      "type": "persists"
+    },
+    {
+      "facts": [
+        "sink_level=empty",
+        "sink_level=visibly_higher"
+      ],
+      "id": "c5",
+      "scope": "same_time",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "excludes"
+    }
+  ],
+  "design_revision": "fixed5-causal-r3",
+  "entities": [
+    {
+      "id": "pitcher",
+      "mention": "the same large clear handled pitcher on the left",
+      "role": "source",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    },
+    {
+      "id": "stream",
+      "mention": "the clear water stream from its right-facing spout",
+      "role": "carrier",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "id": "glass",
+      "mention": "the same empty clear tumbler on the right",
+      "role": "sink",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "description": "clear water first connects the pitcher spout to the tumbler opening",
+      "id": "pictured_stream_onset",
+      "observable": "a liquid column becomes visible across the inter-container gap",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    }
+  ],
+  "generation_basis": {
+    "mode": "visual_grounding",
+    "reference_image_usage": "visual_grounding",
+    "semantic_inputs": [
+      "origin",
+      "planner_instructions",
+      "reference_input"
+    ]
+  },
+  "global_semantic": "The large clear half-filled pitcher at left pours water into the empty clear tumbler at right.",
+  "grounding": {
+    "approved": false,
+    "coordinate_frame": "reference_input",
+    "entity_boxes": [
+      {
+        "box": [
+          0.158,
+          0.1,
+          0.551,
+          0.934
+        ],
+        "entity_id": "pitcher"
+      },
+      {
+        "box": [
+          0.607,
+          0.409,
+          0.773,
+          0.925
+        ],
+        "entity_id": "glass"
+      }
+    ],
+    "protected_boxes": [],
+    "reference_image": "P13-i0-1280x704.png",
+    "reference_image_usage": "visual_grounding"
+  },
+  "predicates": [
+    {
+      "attribute": "pictured internal waterline",
+      "id": "source_level",
+      "observable": "horizontal waterline inside the left pitcher",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "subject": "pitcher",
+      "values": [
+        "about_half_full",
+        "visibly_lower"
+      ]
+    },
+    {
+      "attribute": "spout-to-glass connection",
+      "id": "stream_state",
+      "observable": "clear liquid column across the gap",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "stream",
+      "values": [
+        "absent",
+        "continuous_clear_stream"
+      ]
+    },
+    {
+      "attribute": "pictured internal waterline",
+      "id": "sink_level",
+      "observable": "waterline within the right tumbler",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "subject": "glass",
+      "values": [
+        "empty",
+        "visibly_higher"
+      ]
+    }
+  ],
+  "protected_predicates": [
+    "same clear handled pitcher and clear straight tumbler",
+    "container transparency, gray tabletop, pale background, lighting, and static camera remain unchanged",
+    "water does not spill outside the glass"
+  ],
+  "sample_id": "P13",
+  "schema_version": "trace-writer-v1",
+  "source_files": {
+    "origin": "P13-origin.txt",
+    "planner_instructions": "Project/physGen/prompt/generate_trace_writer_v1_plan.txt",
+    "reference_input": "P13-i0-1280x704.png"
+  },
+  "stages": [
+    {
+      "affected_roles": [
+        "source",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "setup",
+      "observable_check": "Both pictured waterline states remain readable and no stream exists.",
+      "positive": "The pictured left pitcher remains about half full while the right clear tumbler remains empty.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "The right tumbler already contains water before a clear stream spans the gap.",
+          "type": "outcome_preset"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "onset",
+      "observable_check": "The carrier crosses the visible gap before sink-level growth.",
+      "positive": "A clear column first leaves the right-facing pitcher spout and enters the tumbler rim.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "The pictured tumbler waterline rises while the spout-to-rim gap remains empty.",
+          "type": "wrong_order"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c2",
+        "c3"
+      ],
+      "id": "evolution",
+      "observable_check": "Opposite waterline motions remain connected by one visible stream.",
+      "positive": "The left pitcher waterline descends while the connected clear stream raises the right tumbler waterline.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c2",
+            "c3"
+          ],
+          "text": "The right tumbler fills while the pictured half-full pitcher line does not descend.",
+          "type": "coupling_broken"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c2",
+        "c3",
+        "c4"
+      ],
+      "id": "completion",
+      "observable_check": "Late container levels visibly differ from their pictured starting levels.",
+      "positive": "The clear transfer nears completion with a lower left waterline and a higher right waterline.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c2",
+            "c3",
+            "c4"
+          ],
+          "text": "The stream appears but neither pictured container develops the required waterline change.",
+          "type": "incomplete_transition"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c4",
+        "c5"
+      ],
+      "id": "terminal",
+      "observable_check": "One pitcher and one tumbler preserve their changed levels.",
+      "positive": "The same left pitcher retains less water and the same right tumbler retains more.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c4"
+          ],
+          "text": "The right water returns left and restores both pictured starting waterlines.",
+          "type": "reversal"
+        },
+        {
+          "constraint_ids": [
+            "c5"
+          ],
+          "text": "Empty and water-filled copies of the right tumbler coexist on the tabletop.",
+          "type": "exclusion_broken"
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "facts": {
+        "sink_level": "empty",
+        "source_level": "about_half_full",
+        "stream_state": "absent"
+      },
+      "id": "z0",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    },
+    {
+      "facts": {
+        "sink_level": "visibly_higher",
+        "source_level": "visibly_lower",
+        "stream_state": "continuous_clear_stream"
+      },
+      "id": "z1",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "cause_event": null,
+      "effects": [
+        {
+          "direction": "left pitcher waterline descends",
+          "from": "about_half_full",
+          "id": "pictured_source_fall",
+          "predicate": "source_level",
+          "to": "visibly_lower"
+        },
+        {
+          "direction": "clear stream spans spout-to-rim gap",
+          "from": "absent",
+          "id": "clear_carrier",
+          "predicate": "stream_state",
+          "to": "continuous_clear_stream"
+        },
+        {
+          "direction": "right tumbler waterline rises",
+          "from": "empty",
+          "id": "pictured_sink_rise",
+          "predicate": "sink_level",
+          "to": "visibly_higher"
+        }
+      ],
+      "from": "z0",
+      "id": "e1",
+      "kind": "continuous",
+      "preconditions": [
+        "source_level=about_half_full",
+        "stream_state=absent",
+        "sink_level=empty"
+      ],
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "support_kind": "source_stream_sink",
+      "to": "z1"
+    }
+  ],
+  "warnings": [
+    "The stream is absent initially, so no carrier box is inferred; visible boxes remain unapproved."
+  ]
+}

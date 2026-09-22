@@ -1,0 +1,97 @@
+# v4 loss definitions and joint backward, plus v4.2 WRITE. Fresh run only.
+model_version: physgen_v42_f121_independent_correctors_v3
+paths:
+  wan_code: /home/liuzhirui/model/Wan2.2
+  wan_checkpoint: /home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B
+  teacher_code: /home/liuzhirui/model/vjepa2
+  teacher_checkpoint: /home/liuzhirui/model/vjepa2/checkpoint/vjepa2_1_vitG_384.pt
+  wisa_index: /run/determined/NAS1/public/Dataset/WISA/data/wisa-80k.json
+  wisa_videos: /run/determined/NAS1/public/Dataset/WISA/data/videos
+  annotations: ${V42_ROOT}/data_index2400
+  cache: ${V42_ROOT}/cache/wisa2400_nativefps_f121_a147456_fp32_jepa32
+  asset_lock: ${V42_ROOT}/assets/wan_jepa_metadata.json
+  checkpoints: ${V42_ROOT}/checkpoints
+  logs: ${V42_ROOT}/train/train_log
+  outputs: ${V42_ROOT}/inference_outputs
+  demo_root: /home/liuzhirui/Project/physGen/code/v1/demo
+  reference_image: /home/liuzhirui/model/Wan2.2/overfit_ref/overfit_ref5.jpg
+  reference_prompt: The woman smiles and waves at the camera.
+preparation:
+  asset_verification: metadata
+  reuse_sources:
+  - ${V42_ROOT}/cache/wisa4000_nativefps_f121_a147456_fp32_jepa32
+  - ${V42_ROOT}/quick16/work/cache_v4_f121
+data:
+  seed: 20260909
+  limit: 2400
+  source_limit: 4000
+  subset_manifest: ${V42_ROOT}/cache/wisa4000_nativefps_f121_a147456_fp32_jepa32/manifest.json
+  selection_file: null
+  clip_annotations: null
+  validation_stride: 20
+  frames: 121
+  max_long_side: 512
+  max_area: 147456
+  decode_chunk_frames: 8
+  teacher_frames: 32
+  teacher_size: 384
+  categories:
+  - unlabeled
+state:
+  sites:
+  - 5
+  - 15
+  parameter_sharing: per_block
+  width: 1664
+  inner: 512
+  heads: 8
+  depth: 2
+  checkpoint: true
+  write_gate: true
+  initializer: condition_trajectory_gt_v1
+  prior_video_pool: 8
+loss:
+  fm: 1.0
+  struct: 0.1
+  struct_warmup_steps: 200
+  struct_noise_width: 0.2
+  struct_initialization_gradient: true
+  temp: 0.0
+  write: 0.05
+  prior: 0.02
+train:
+  recipe: fm_multistruct_prior_write_gt75_joint_v1
+  seed: 20260916
+  steps: 1200
+  world_size: 1
+  accumulation: 8
+  save_every: 100
+  validate_every: 100
+  ema_decay: 0.995
+  grad_clip: 1.0
+  sampling: uniform_modes_v1
+  auxiliary_gradient_policy: none
+  peak_lr:
+    core5: 5.0e-05
+    core15: 5.0e-05
+    text_init: 2.0e-05
+    writer5: 1.0e-05
+    writer15: 2.0e-05
+  gt_condition_dropout: 0.25
+  text_dropout: 0.1
+repair:
+  clean_probability: 0.25
+  max_relative_strength: 0.2
+  warp_latent_pixels: 0.5
+monitoring:
+  train_every: 25
+  health_ablation_cases: 4
+inference:
+  canvas_wh:
+  - 512
+  - 288
+  steps: 50
+  shift: 5.0
+  guidance: 5.0
+  seed: 42
+  duration: 5.0

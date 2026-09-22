@@ -1,0 +1,483 @@
+{
+  "active_stage_summary": [
+    {
+      "stage_id": "setup",
+      "temporal_token_count": 5,
+      "temporal_weight_sum": 4.5
+    },
+    {
+      "stage_id": "onset",
+      "temporal_token_count": 5,
+      "temporal_weight_sum": 4.0
+    },
+    {
+      "stage_id": "evolution",
+      "temporal_token_count": 9,
+      "temporal_weight_sum": 8.0
+    },
+    {
+      "stage_id": "completion",
+      "temporal_token_count": 6,
+      "temporal_weight_sum": 5.0
+    },
+    {
+      "stage_id": "terminal",
+      "temporal_token_count": 4,
+      "temporal_weight_sum": 3.5
+    }
+  ],
+  "constraint_coverage": {
+    "c1": {
+      "stages": [
+        "setup",
+        "onset"
+      ],
+      "violations": [
+        "setup:outcome_preset",
+        "onset:wrong_order"
+      ]
+    },
+    "c2": {
+      "stages": [
+        "evolution"
+      ],
+      "violations": [
+        "evolution:wrong_direction"
+      ]
+    },
+    "c3": {
+      "stages": [
+        "setup",
+        "onset"
+      ],
+      "violations": [
+        "setup:outcome_preset",
+        "onset:wrong_order"
+      ]
+    },
+    "c4": {
+      "stages": [
+        "onset"
+      ],
+      "violations": [
+        "onset:wrong_order"
+      ]
+    },
+    "c5": {
+      "stages": [
+        "completion"
+      ],
+      "violations": [
+        "completion:incomplete_transition"
+      ]
+    },
+    "c6": {
+      "stages": [
+        "completion",
+        "terminal"
+      ],
+      "violations": [
+        "completion:incomplete_transition",
+        "terminal:reversal"
+      ]
+    },
+    "c7": {
+      "stages": [
+        "terminal"
+      ],
+      "violations": [
+        "terminal:exclusion_broken"
+      ]
+    }
+  },
+  "crossfade_tokens": 1,
+  "design_revision": "fixed5-causal-r3",
+  "fallback_selected": false,
+  "flatten_order": "f-y-x",
+  "frames": 25,
+  "input_plan": "/home/liuzhirui/Project/physGen/code/v1/demo/P10/P10-V2-planimg.json",
+  "input_plan_sha256": "9e9d02d68080ac5737030fa16f1c4e371fe9d22b58e2d5a9513e2c2449ae3da0",
+  "requested_mode": "i2v",
+  "sample_id": "P10",
+  "schema_version": "trace-writer-v1",
+  "spatial_masks": [
+    {
+      "grid_area": 880,
+      "positive_token_count": 86,
+      "soft_area": 19.183754,
+      "stage_id": "setup"
+    },
+    {
+      "grid_area": 880,
+      "positive_token_count": 86,
+      "soft_area": 19.183754,
+      "stage_id": "onset"
+    },
+    {
+      "grid_area": 880,
+      "positive_token_count": 86,
+      "soft_area": 19.183754,
+      "stage_id": "evolution"
+    },
+    {
+      "grid_area": 880,
+      "positive_token_count": 86,
+      "soft_area": 19.183754,
+      "stage_id": "completion"
+    },
+    {
+      "grid_area": 880,
+      "positive_token_count": 86,
+      "soft_area": 19.183754,
+      "stage_id": "terminal"
+    }
+  ],
+  "spatial_mode": "spacetime",
+  "stage_ids": [
+    "setup",
+    "onset",
+    "evolution",
+    "completion",
+    "terminal"
+  ],
+  "stage_spans": [
+    {
+      "core": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "outgoing_crossfade": [
+        4
+      ],
+      "stage_id": "setup"
+    },
+    {
+      "core": [
+        5,
+        6,
+        7
+      ],
+      "outgoing_crossfade": [
+        8
+      ],
+      "stage_id": "onset"
+    },
+    {
+      "core": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "outgoing_crossfade": [
+        16
+      ],
+      "stage_id": "evolution"
+    },
+    {
+      "core": [
+        17,
+        18,
+        19,
+        20
+      ],
+      "outgoing_crossfade": [
+        21
+      ],
+      "stage_id": "completion"
+    },
+    {
+      "core": [
+        22,
+        23,
+        24
+      ],
+      "outgoing_crossfade": [],
+      "stage_id": "terminal"
+    }
+  ],
+  "stages": [
+    {
+      "affected_roles": [
+        "actor"
+      ],
+      "constraint_ids": [
+        "c1",
+        "c3"
+      ],
+      "id": "setup",
+      "observable_check": "One green intact outline enlarges from the pictured central box.",
+      "positive": "The centered small green balloon begins expanding while its tied neck and continuous envelope remain visible.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1",
+            "c3"
+          ],
+          "text": "Green collapsed fragments already replace the pictured small balloon before any expansion.",
+          "type": "outcome_preset",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor"
+      ],
+      "constraint_ids": [
+        "c1",
+        "c3",
+        "c4"
+      ],
+      "id": "onset",
+      "observable_check": "The green envelope remains continuous during first expansion.",
+      "positive": "The first green silhouette increase appears without a tear, disappearance, or premature fragments.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1",
+            "c3",
+            "c4"
+          ],
+          "text": "The pictured green balloon bursts before becoming visibly larger and tauter.",
+          "type": "wrong_order",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor"
+      ],
+      "constraint_ids": [
+        "c2"
+      ],
+      "id": "evolution",
+      "observable_check": "Green silhouette area increases progressively without color or identity change.",
+      "positive": "The same green balloon grows steadily as pictured wrinkles diminish and its surface becomes taut.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c2"
+          ],
+          "text": "The intact green outline shrinks or preserves its pictured small wrinkled size.",
+          "type": "wrong_direction",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor"
+      ],
+      "constraint_ids": [
+        "c5",
+        "c6"
+      ],
+      "id": "completion",
+      "observable_check": "One continuous green boundary becomes collapsed pieces at the same location.",
+      "positive": "The large taut green envelope visibly breaks and collapses into green rubber fragments at center.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c5",
+            "c6"
+          ],
+          "text": "The green balloon reaches a large taut shape but never visibly ruptures.",
+          "type": "incomplete_transition",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor"
+      ],
+      "constraint_ids": [
+        "c6",
+        "c7"
+      ],
+      "id": "terminal",
+      "observable_check": "Only green collapsed pieces persist against the unchanged background.",
+      "positive": "The green deflated fragments remain centered without the intact tied balloon returning.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c6"
+          ],
+          "text": "The green fragments reconnect into the pictured intact balloon in final frames.",
+          "type": "reversal",
+          "weight": 0.5
+        },
+        {
+          "constraint_ids": [
+            "c7"
+          ],
+          "text": "An intact green balloon and green ruptured fragments coexist at center.",
+          "type": "exclusion_broken",
+          "weight": 0.5
+        }
+      ]
+    }
+  ],
+  "temporal_weights": [
+    [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.5,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.5,
+      1.0,
+      1.0,
+      1.0,
+      0.5,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.5,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.5,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.5,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.5,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.5,
+      1.0,
+      1.0,
+      1.0
+    ]
+  ],
+  "validation": {
+    "errors": 0,
+    "fallback_selected": false,
+    "issues": [
+      {
+        "code": "planner_warning",
+        "message": "The origin does not specify color; the reference image supplies green, which is protected only in this visual-grounded version. The box is unapproved.",
+        "path": "$.warnings[0]",
+        "severity": "warning"
+      }
+    ],
+    "warnings": 1
+  }
+}

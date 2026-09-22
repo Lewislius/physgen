@@ -1,0 +1,408 @@
+{
+  "assumptions": [],
+  "constraints": [
+    {
+      "after": "inflate",
+      "before": "first_expansion",
+      "id": "c1",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "precedes"
+    },
+    {
+      "effect": "inflate",
+      "id": "c2",
+      "source_refs": [
+        "origin"
+      ],
+      "transition": "e1",
+      "type": "changes"
+    },
+    {
+      "after": "rupture",
+      "before": "burst",
+      "id": "c3",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "precedes"
+    },
+    {
+      "cause": "burst",
+      "effect": "rupture",
+      "id": "c4",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "requires"
+    },
+    {
+      "effect": "rupture",
+      "id": "c5",
+      "source_refs": [
+        "origin"
+      ],
+      "transition": "e2",
+      "type": "changes"
+    },
+    {
+      "facts": [
+        "size=collapsed",
+        "integrity=ruptured_fragments"
+      ],
+      "id": "c6",
+      "source_refs": [
+        "origin"
+      ],
+      "state": "z2",
+      "type": "persists"
+    },
+    {
+      "facts": [
+        "integrity=intact",
+        "integrity=ruptured_fragments"
+      ],
+      "id": "c7",
+      "scope": "same_time",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "excludes"
+    }
+  ],
+  "control": {},
+  "design_revision": "fixed5-causal-r3",
+  "entities": [
+    {
+      "id": "balloon",
+      "mention": "the same rubber balloon and its resulting fragments",
+      "role": "actor",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "description": "first detectable balloon expansion",
+      "id": "first_expansion",
+      "observable": "the intact silhouette becomes visibly larger",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "description": "visible rupture of the taut balloon",
+      "id": "burst",
+      "observable": "the continuous envelope splits into collapsed pieces",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "generation_basis": {
+    "mode": "identifier_only",
+    "reference_image_usage": "identifier_only",
+    "semantic_inputs": [
+      "origin",
+      "planner_instructions"
+    ]
+  },
+  "global_semantic": "One rubber balloon inflates steadily, reaches a large taut state, bursts, and leaves deflated fragments in place.",
+  "grounding": {
+    "approved": false,
+    "coordinate_frame": "reference_input",
+    "entity_boxes": [],
+    "protected_boxes": [],
+    "reference_image": "P10-i0-1280x704.png",
+    "reference_image_usage": "identifier_only"
+  },
+  "predicates": [
+    {
+      "attribute": "visible_extent",
+      "id": "size",
+      "observable": "balloon silhouette area",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "balloon",
+      "values": [
+        "small",
+        "large",
+        "collapsed"
+      ]
+    },
+    {
+      "attribute": "surface_state",
+      "id": "surface",
+      "observable": "wrinkling and stretched contour",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "balloon",
+      "values": [
+        "loose",
+        "taut",
+        "deflated"
+      ]
+    },
+    {
+      "attribute": "integrity",
+      "id": "integrity",
+      "observable": "continuous balloon envelope versus separated collapsed pieces",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "balloon",
+      "values": [
+        "intact",
+        "ruptured_fragments"
+      ]
+    }
+  ],
+  "protected_predicates": [
+    "same rubber material through inflation and fragments",
+    "same burst location",
+    "camera and background remain unchanged"
+  ],
+  "sample_id": "P10",
+  "schema_version": "trace-writer-v1",
+  "source_files": {
+    "origin": "P10-origin.txt",
+    "planner_instructions": "Project/physGen/prompt/generate_trace_writer_v1_plan.txt",
+    "reference_input": "P10-i0-1280x704.png"
+  },
+  "stages": [
+    {
+      "affected_roles": [
+        "actor"
+      ],
+      "constraint_ids": [
+        "c1",
+        "c3"
+      ],
+      "id": "setup",
+      "observable_check": "One intact small silhouette starts increasing without rupturing.",
+      "positive": "The small intact rubber balloon begins expanding steadily while its envelope remains continuous.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1",
+            "c3"
+          ],
+          "text": "Collapsed balloon fragments are already present before any visible inflation occurs.",
+          "type": "outcome_preset"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor"
+      ],
+      "constraint_ids": [
+        "c1",
+        "c3",
+        "c4"
+      ],
+      "id": "onset",
+      "observable_check": "Expansion is detectable while the envelope remains intact.",
+      "positive": "The first visible size increase begins without any tear, collapse, or premature fragments.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1",
+            "c3",
+            "c4"
+          ],
+          "text": "The balloon ruptures into fragments before reaching a visibly expanded taut state.",
+          "type": "wrong_order"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor"
+      ],
+      "constraint_ids": [
+        "c2"
+      ],
+      "id": "evolution",
+      "observable_check": "Silhouette area increases progressively with no single-frame replacement.",
+      "positive": "The same intact balloon grows continuously as its surface becomes visibly smoother and tauter.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c2"
+          ],
+          "text": "The intact balloon shrinks or stays unchanged instead of growing steadily toward a taut state.",
+          "type": "wrong_direction"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor"
+      ],
+      "constraint_ids": [
+        "c5",
+        "c6"
+      ],
+      "id": "completion",
+      "observable_check": "A visible envelope break changes one balloon into collapsed pieces.",
+      "positive": "At maximum visible expansion, the taut balloon bursts and collapses into deflated rubber fragments.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c5",
+            "c6"
+          ],
+          "text": "The balloon reaches a large taut state but never visibly ruptures into collapsed fragments.",
+          "type": "incomplete_transition"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor"
+      ],
+      "constraint_ids": [
+        "c6",
+        "c7"
+      ],
+      "id": "terminal",
+      "observable_check": "Only collapsed fragments persist through the end.",
+      "positive": "The deflated fragments remain at the burst location without the intact balloon returning.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c6"
+          ],
+          "text": "The collapsed fragments reconnect into an intact balloon during the final frames.",
+          "type": "reversal"
+        },
+        {
+          "constraint_ids": [
+            "c7"
+          ],
+          "text": "An intact balloon and its ruptured fragments coexist at the same location.",
+          "type": "exclusion_broken"
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "facts": {
+        "integrity": "intact",
+        "size": "small",
+        "surface": "loose"
+      },
+      "id": "z0",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "facts": {
+        "integrity": "intact",
+        "size": "large",
+        "surface": "taut"
+      },
+      "id": "z1",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "facts": {
+        "integrity": "ruptured_fragments",
+        "size": "collapsed",
+        "surface": "deflated"
+      },
+      "id": "z2",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "cause_event": null,
+      "effects": [
+        {
+          "direction": "intact silhouette expands steadily",
+          "from": "small",
+          "id": "inflate",
+          "predicate": "size",
+          "to": "large"
+        },
+        {
+          "direction": "wrinkles decrease as contour stretches",
+          "from": "loose",
+          "id": "tighten",
+          "predicate": "surface",
+          "to": "taut"
+        }
+      ],
+      "from": "z0",
+      "id": "e1",
+      "kind": "continuous",
+      "preconditions": [
+        "size=small",
+        "surface=loose",
+        "integrity=intact"
+      ],
+      "source_refs": [
+        "origin"
+      ],
+      "support_kind": "role_union",
+      "to": "z1"
+    },
+    {
+      "cause_event": "burst",
+      "effects": [
+        {
+          "direction": "large envelope collapses",
+          "from": "large",
+          "id": "collapse",
+          "predicate": "size",
+          "to": "collapsed"
+        },
+        {
+          "direction": "stretched surface becomes loose pieces",
+          "from": "taut",
+          "id": "deflate",
+          "predicate": "surface",
+          "to": "deflated"
+        },
+        {
+          "direction": "continuous envelope separates into fragments",
+          "from": "intact",
+          "id": "rupture",
+          "predicate": "integrity",
+          "to": "ruptured_fragments"
+        }
+      ],
+      "from": "z1",
+      "id": "e2",
+      "kind": "triggered",
+      "preconditions": [
+        "size=large",
+        "surface=taut",
+        "integrity=intact"
+      ],
+      "source_refs": [
+        "origin"
+      ],
+      "support_kind": "role_union",
+      "to": "z2"
+    }
+  ],
+  "warnings": []
+}

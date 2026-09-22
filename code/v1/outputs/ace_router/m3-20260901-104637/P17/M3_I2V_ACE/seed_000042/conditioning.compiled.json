@@ -1,0 +1,66 @@
+{
+  "causal_pair": {
+    "counterfactual_type": [
+      "cause_effect_reversal"
+    ],
+    "origin_prompt_prefixed": false,
+    "single_changed_relation": [
+      "elastic recovery occurs before rather than after release of hand pressure"
+    ]
+  },
+  "compiler_version": "ace-conditioning-mvp-v1",
+  "mode": "compiled",
+  "prompts": {
+    "causal_counterfactual": "The sponge regains its original shape while the hand is still pressing it, and the hand lifts afterward.",
+    "causal_positive": "The hand compresses the sponge until visibly flattened, lifts away, and the same sponge then expands gradually toward its original shape.",
+    "semantic": "A hand presses a dry sponge flat, then lifts away as the same sponge gradually regains its shape. Required visible entities: one hand; one dry sponge; flat support surface. At the beginning: sponge: dry, intact, uncompressed, and at its original thickness; hand: open, hovering above the sponge, and spatially separated. Required state changes: sponge thickness: original to flattened; hand contact: hovering to pressing to lifted; sponge shape: compressed to gradually recovered. These event variables are allowed to change: hand vertical position and contact state; sponge thickness and shape; sponge recovery progress. Preserve throughout: static side three-quarter camera; sponge identity, color, and dry material appearance; flat surface and background; one hand; one dry sponge; the same sponge and support surface."
+  },
+  "sample_id": "P17",
+  "schema_version": 1,
+  "semantic_variant": "compiled_i2v",
+  "source_sections": {
+    "changed_state_variables": [
+      "sponge thickness: original to flattened",
+      "hand contact: hovering to pressing to lifted",
+      "sponge shape: compressed to gradually recovered"
+    ],
+    "counterfactual_type": [
+      "cause_effect_reversal"
+    ],
+    "event_type": [
+      "compression followed by elastic recovery"
+    ],
+    "initial_states": [
+      "sponge: dry, intact, uncompressed, and at its original thickness",
+      "hand: open, hovering above the sponge, and spatially separated"
+    ],
+    "layout_requirements": [
+      "hand center aligns with the sponge center",
+      "small visible space separates hand and sponge",
+      "full sponge thickness, contact area, and hand fit inside the frame"
+    ],
+    "preserved_context": [
+      "one hand",
+      "one dry sponge",
+      "the same sponge and support surface"
+    ],
+    "protected_scene_properties": [
+      "static side three-quarter camera",
+      "sponge identity, color, and dry material appearance",
+      "flat surface and background"
+    ],
+    "required_visible_entities": [
+      "one hand",
+      "one dry sponge",
+      "flat support surface"
+    ],
+    "single_changed_relation": [
+      "elastic recovery occurs before rather than after release of hand pressure"
+    ],
+    "transition_variables": [
+      "hand vertical position and contact state",
+      "sponge thickness and shape",
+      "sponge recovery progress"
+    ]
+  }
+}

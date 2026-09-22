@@ -1,0 +1,325 @@
+{
+  "assumptions": [],
+  "constraints": [
+    {
+      "after": "front_propagate",
+      "before": "first_contact",
+      "id": "c1",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "precedes"
+    },
+    {
+      "cause": "first_contact",
+      "effect": "front_propagate",
+      "id": "c2",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "requires"
+    },
+    {
+      "effects": [
+        "first_fall",
+        "front_propagate"
+      ],
+      "id": "c3",
+      "relation": "first fall initiates one ordered advancing fall front",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "couples"
+    },
+    {
+      "facts": [
+        "first_pose=fallen",
+        "row_progress=all_fallen"
+      ],
+      "id": "c4",
+      "source_refs": [
+        "origin"
+      ],
+      "state": "z1",
+      "type": "persists"
+    },
+    {
+      "facts": [
+        "row_progress=all_upright",
+        "row_progress=all_fallen"
+      ],
+      "id": "c5",
+      "scope": "same_time",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "excludes"
+    }
+  ],
+  "design_revision": "fixed5-causal-r3",
+  "entities": [
+    {
+      "id": "first_domino",
+      "mention": "the first wooden domino",
+      "role": "actor",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "id": "remaining_row",
+      "mention": "the remaining wooden domino row",
+      "role": "patient",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "description": "the first tipping domino reaches the second domino",
+      "id": "first_contact",
+      "observable": "the first and second domino boundaries visibly meet",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "generation_basis": {
+    "mode": "identifier_only",
+    "reference_image_usage": "identifier_only",
+    "semantic_inputs": [
+      "origin",
+      "planner_instructions"
+    ]
+  },
+  "global_semantic": "One row of upright wooden dominoes falls sequentially after the first domino is pushed.",
+  "grounding": {
+    "approved": false,
+    "coordinate_frame": "reference_input",
+    "entity_boxes": [],
+    "protected_boxes": [],
+    "reference_image": "P04-i0-1280x704.png",
+    "reference_image_usage": "identifier_only"
+  },
+  "predicates": [
+    {
+      "attribute": "pose",
+      "id": "first_pose",
+      "observable": "first-domino body-axis angle",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "first_domino",
+      "values": [
+        "upright",
+        "fallen"
+      ]
+    },
+    {
+      "attribute": "sequential_fall_progress",
+      "id": "row_progress",
+      "observable": "ordered boundary between fallen and upright dominoes",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "remaining_row",
+      "values": [
+        "all_upright",
+        "all_fallen"
+      ]
+    }
+  ],
+  "protected_predicates": [
+    "one wooden domino row",
+    "same domino order and material",
+    "support surface and camera remain unchanged"
+  ],
+  "sample_id": "P04",
+  "schema_version": "trace-writer-v1",
+  "source_files": {
+    "origin": "P04-origin.txt",
+    "planner_instructions": "Project/physGen/prompt/generate_trace_writer_v1_plan.txt",
+    "reference_input": "P04-i0-1280x704.png"
+  },
+  "stages": [
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "setup",
+      "observable_check": "No distant domino falls before motion begins at the first domino.",
+      "positive": "The wooden domino row remains upright as only the first domino begins tipping.",
+      "support_kind": "motion_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "The last domino is already down before the first domino begins the chain.",
+          "type": "outcome_preset"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c1",
+        "c2"
+      ],
+      "id": "onset",
+      "observable_check": "The first local contact precedes motion in later dominoes.",
+      "positive": "The first tipping domino visibly reaches the second before the fall travels farther.",
+      "support_kind": "contact_interface",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1",
+            "c2"
+          ],
+          "text": "Later dominoes begin falling without visible propagation from the first local contact.",
+          "type": "trigger_missing"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c3"
+      ],
+      "id": "evolution",
+      "observable_check": "Adjacent dominoes fall in order without skipping an upright middle section.",
+      "positive": "Successive contacts advance one continuous falling front along the same wooden domino row.",
+      "support_kind": "motion_contact_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c3"
+          ],
+          "text": "The first domino falls while the adjacent ordered propagation front never advances.",
+          "type": "coupling_broken"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c3",
+        "c4"
+      ],
+      "id": "completion",
+      "observable_check": "The last upright segment shrinks until the row completes falling.",
+      "positive": "The falling front reaches the final dominoes while earlier dominoes remain down behind it.",
+      "support_kind": "motion_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c3",
+            "c4"
+          ],
+          "text": "The propagation stops midway and leaves the final section of the row upright.",
+          "type": "incomplete_transition"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c4",
+        "c5"
+      ],
+      "id": "terminal",
+      "observable_check": "All dominoes stay down through the final frames without duplication.",
+      "positive": "The same wooden domino row remains fallen with no upright section reappearing.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c4"
+          ],
+          "text": "Fallen dominoes return upright during the final frames after the chain completes.",
+          "type": "reversal"
+        },
+        {
+          "constraint_ids": [
+            "c5"
+          ],
+          "text": "Duplicated row sections appear fully upright and fully fallen at the same time.",
+          "type": "exclusion_broken"
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "facts": {
+        "first_pose": "upright",
+        "row_progress": "all_upright"
+      },
+      "id": "z0",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "facts": {
+        "first_pose": "fallen",
+        "row_progress": "all_fallen"
+      },
+      "id": "z1",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "cause_event": "first_contact",
+      "effects": [
+        {
+          "direction": "first domino tilts downward",
+          "from": "upright",
+          "id": "first_fall",
+          "predicate": "first_pose",
+          "to": "fallen"
+        },
+        {
+          "direction": "falling front advances in row order",
+          "from": "all_upright",
+          "id": "front_propagate",
+          "predicate": "row_progress",
+          "to": "all_fallen"
+        }
+      ],
+      "from": "z0",
+      "id": "e1",
+      "kind": "triggered",
+      "preconditions": [
+        "first_pose=upright",
+        "row_progress=all_upright"
+      ],
+      "source_refs": [
+        "origin"
+      ],
+      "support_kind": "motion_contact_corridor",
+      "to": "z1"
+    }
+  ],
+  "warnings": []
+}

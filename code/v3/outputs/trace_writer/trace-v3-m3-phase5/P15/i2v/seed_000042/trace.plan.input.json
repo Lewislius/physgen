@@ -1,0 +1,422 @@
+{
+  "assumptions": [
+    "The existing hand maintains the pictured hold while the cup pours toward the bare table region."
+  ],
+  "constraints": [
+    {
+      "after": "pictured_cone_grow",
+      "before": "pictured_first_grains",
+      "id": "c1",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "precedes"
+    },
+    {
+      "effect": "pictured_cup_empty",
+      "id": "c2",
+      "source_refs": [
+        "origin"
+      ],
+      "transition": "e1",
+      "type": "changes"
+    },
+    {
+      "effects": [
+        "pictured_cup_empty",
+        "pictured_grain_stream",
+        "pictured_cone_grow"
+      ],
+      "id": "c3",
+      "relation": "clear-cup contents decrease through pale stream while table cone grows",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "couples"
+    },
+    {
+      "facts": [
+        "source_amount=nearly_empty",
+        "pile_size=grown_cone"
+      ],
+      "id": "c4",
+      "source_refs": [
+        "origin"
+      ],
+      "state": "z1",
+      "type": "persists"
+    },
+    {
+      "facts": [
+        "pile_size=bare_wood",
+        "pile_size=grown_cone"
+      ],
+      "id": "c5",
+      "scope": "same_time",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "excludes"
+    }
+  ],
+  "control": {},
+  "design_revision": "fixed5-causal-r3",
+  "entities": [
+    {
+      "id": "cup",
+      "mention": "the same tilted clear cup full of pale dry sand",
+      "role": "source",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    },
+    {
+      "id": "sand_stream",
+      "mention": "the pale granular stream below the cup",
+      "role": "carrier",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "id": "pile_region",
+      "mention": "the bare wooden table area below the cup",
+      "role": "sink",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    },
+    {
+      "id": "hand",
+      "mention": "the same visible left hand holding the cup",
+      "role": "environment",
+      "source_refs": [
+        "reference_input"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "description": "first pale grains leave the tilted clear cup",
+      "id": "pictured_first_grains",
+      "observable": "a granular path appears beneath the cup rim",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    }
+  ],
+  "generation_basis": {
+    "mode": "visual_grounding",
+    "reference_image_usage": "visual_grounding",
+    "semantic_inputs": [
+      "origin",
+      "planner_instructions",
+      "reference_input"
+    ]
+  },
+  "global_semantic": "The left hand holds the tilted clear cup of pale dry sand while sand pours onto the bare wooden table and forms a cone.",
+  "grounding": {
+    "approved": false,
+    "coordinate_frame": "reference_input",
+    "entity_boxes": [
+      {
+        "box": [
+          0.35,
+          0.104,
+          0.522,
+          0.471
+        ],
+        "entity_id": "cup"
+      },
+      {
+        "box": [
+          0.3,
+          0.69,
+          0.72,
+          1.0
+        ],
+        "entity_id": "pile_region"
+      },
+      {
+        "box": [
+          0.0,
+          0.039,
+          0.444,
+          0.455
+        ],
+        "entity_id": "hand"
+      }
+    ],
+    "protected_boxes": [
+      {
+        "box": [
+          0.0,
+          0.039,
+          0.385,
+          0.455
+        ],
+        "label": "visible holding hand"
+      }
+    ],
+    "reference_image": "P15-i0-1280x704.png",
+    "reference_image_usage": "visual_grounding"
+  },
+  "predicates": [
+    {
+      "attribute": "pictured pale-sand amount",
+      "id": "source_amount",
+      "observable": "pale grains visible through the clear cup",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "subject": "cup",
+      "values": [
+        "filled_to_rim",
+        "nearly_empty"
+      ]
+    },
+    {
+      "attribute": "cup-to-table connection",
+      "id": "stream_state",
+      "observable": "falling grains across the gray-background gap",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "sand_stream",
+      "values": [
+        "absent",
+        "continuous_pale_grains"
+      ]
+    },
+    {
+      "attribute": "pictured sand pile",
+      "id": "pile_size",
+      "observable": "pale pile height and base on wood grain",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "subject": "pile_region",
+      "values": [
+        "bare_wood",
+        "grown_cone"
+      ]
+    }
+  ],
+  "protected_predicates": [
+    "same transparent cup and pale dry sand",
+    "same visible left hand and its hold on the cup",
+    "wood tabletop, gray background, lighting, and static camera remain unchanged",
+    "sand stays within the cup-stream-pile corridor"
+  ],
+  "sample_id": "P15",
+  "schema_version": "trace-writer-v1",
+  "source_files": {
+    "origin": "P15-origin.txt",
+    "planner_instructions": "Project/physGen/prompt/generate_trace_writer_v1_plan.txt",
+    "reference_input": "P15-i0-1280x704.png"
+  },
+  "stages": [
+    {
+      "affected_roles": [
+        "source",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "setup",
+      "observable_check": "Cup contents stay at the rim, the table is bare, and the hand remains unchanged.",
+      "positive": "The visible hand holds the filled clear cup above bare wood while all pale sand remains inside.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "A pale conical pile already covers the pictured bare wood before grains fall.",
+          "type": "outcome_preset"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "onset",
+      "observable_check": "The granular carrier appears before readable pile height.",
+      "positive": "Pale grains first cross the gap from the clear rim toward the wooden tabletop.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "A cone rises on the pictured table while the cup-to-table gap remains empty.",
+          "type": "wrong_order"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c2",
+        "c3"
+      ],
+      "id": "evolution",
+      "observable_check": "Visible source sand decreases as the pale pile rises and widens.",
+      "positive": "The clear cup's pale contents decrease while a continuous grain stream builds a widening cone below.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c2",
+            "c3"
+          ],
+          "text": "The pictured cone grows while the transparent cup remains filled to its rim.",
+          "type": "coupling_broken"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c2",
+        "c3",
+        "c4"
+      ],
+      "id": "completion",
+      "observable_check": "Late frames show little cup sand and a broad peaked pile.",
+      "positive": "The cup approaches empty while the pale pile settles into a clear cone on wood grain.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c2",
+            "c3",
+            "c4"
+          ],
+          "text": "The grain stream persists but the pictured cup stays full or no cone forms.",
+          "type": "incomplete_transition"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c4",
+        "c5"
+      ],
+      "id": "terminal",
+      "observable_check": "Cup amount, cone shape, hand identity, and wooden surface remain stable.",
+      "positive": "The nearly empty clear cup and pale conical pile persist while the same hand remains visually stable.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c4"
+          ],
+          "text": "The pale cone vanishes and the clear cup refills during final frames.",
+          "type": "reversal"
+        },
+        {
+          "constraint_ids": [
+            "c5"
+          ],
+          "text": "Bare-wood and grown-cone copies of the pile region coexist simultaneously.",
+          "type": "exclusion_broken"
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "facts": {
+        "pile_size": "bare_wood",
+        "source_amount": "filled_to_rim",
+        "stream_state": "absent"
+      },
+      "id": "z0",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    },
+    {
+      "facts": {
+        "pile_size": "grown_cone",
+        "source_amount": "nearly_empty",
+        "stream_state": "continuous_pale_grains"
+      },
+      "id": "z1",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "cause_event": null,
+      "effects": [
+        {
+          "direction": "visible pale sand inside cup decreases",
+          "from": "filled_to_rim",
+          "id": "pictured_cup_empty",
+          "predicate": "source_amount",
+          "to": "nearly_empty"
+        },
+        {
+          "direction": "pale grains connect rim to wood",
+          "from": "absent",
+          "id": "pictured_grain_stream",
+          "predicate": "stream_state",
+          "to": "continuous_pale_grains"
+        },
+        {
+          "direction": "pale pile rises and widens on table",
+          "from": "bare_wood",
+          "id": "pictured_cone_grow",
+          "predicate": "pile_size",
+          "to": "grown_cone"
+        }
+      ],
+      "from": "z0",
+      "id": "e1",
+      "kind": "continuous",
+      "preconditions": [
+        "source_amount=filled_to_rim",
+        "stream_state=absent",
+        "pile_size=bare_wood"
+      ],
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "support_kind": "source_stream_sink",
+      "to": "z1"
+    }
+  ],
+  "warnings": [
+    "The hand is visible in the reference but absent from the origin; it is protected without adding a new independent event. The stream is initially absent and boxes are unapproved."
+  ]
+}

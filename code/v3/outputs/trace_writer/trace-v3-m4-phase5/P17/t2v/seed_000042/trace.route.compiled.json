@@ -1,0 +1,833 @@
+{
+  "compiled_schema_version": "trace-writer-v2",
+  "contexts": {
+    "global_anchor": "[ENTITY INVENTORY] The closed scene contains hand: exactly 1; sponge: exactly 1; surface: one declared collective group. All declared entities are fully visible from the first frame in the stated layout. [INITIAL STATE] hand_state=hovering, thickness=original. [PHYSICAL EVENT] One hand presses one dry sponge flat, lifts away, and the same sponge gradually regains its shape. [INITIAL LAYOUT] hand; dry sponge; support surface. [PERSISTENT PROTECTION] same hand and dry sponge; same support surface; sponge identity and dryness remain unchanged; camera and background remain unchanged. [CLOSED WORLD] No additional external source, extra copy, unlisted object enters or appears; unoccupied scene regions remain empty. [CONSERVATION] Source loss and result gain stay coupled: tracked logical entity slots remain consistent. No result appears from an undeclared external source. [TERMINAL STATE] The same logical entity slots persist without duplicates; hand_state=lifted, thickness=recovered remains visible through the final frames.",
+    "issues": [],
+    "protected_coverage": {
+      "camera and background remain unchanged": [
+        "geometry",
+        "camera_background",
+        "closed_world_or_persistence"
+      ],
+      "same hand and dry sponge": [
+        "identity_count"
+      ],
+      "same support surface": [
+        "identity_count"
+      ],
+      "sponge identity and dryness remain unchanged": [
+        "identity_count",
+        "closed_world_or_persistence"
+      ]
+    },
+    "stage_pairs": [
+      {
+        "pair_quality": "minimal_verified",
+        "positive_relation": "the hand visibly contacts and begins pressing the sponge happens BEFORE sponge thickness decreases.",
+        "positive_text": "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=hovering, required; sponge: exactly 1, state thickness=original, required; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] the hand visibly contacts and begins pressing the sponge happens BEFORE sponge thickness decreases.",
+        "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=hovering, required; sponge: exactly 1, state thickness=original, required; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+        "stage_id": "setup",
+        "violation_constraint_ids": [
+          [
+            "c1",
+            "c3"
+          ]
+        ],
+        "violation_kinds": [
+          "outcome_preset"
+        ],
+        "violation_relations": [
+          "sponge thickness decreases is already present BEFORE the hand visibly contacts and begins pressing the sponge."
+        ],
+        "violation_texts": [
+          "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=hovering, required; sponge: exactly 1, state thickness=original, required; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] sponge thickness decreases is already present BEFORE the hand visibly contacts and begins pressing the sponge."
+        ],
+        "violation_weights": [
+          1.0
+        ]
+      },
+      {
+        "pair_quality": "minimal_verified",
+        "positive_relation": "the hand visibly contacts and begins pressing the sponge happens BEFORE sponge thickness decreases.",
+        "positive_text": "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=hovering, transitioning; sponge: exactly 1, state thickness=original, transitioning; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] the hand visibly contacts and begins pressing the sponge happens BEFORE sponge thickness decreases.",
+        "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=hovering, transitioning; sponge: exactly 1, state thickness=original, transitioning; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+        "stage_id": "onset",
+        "violation_constraint_ids": [
+          [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        ],
+        "violation_kinds": [
+          "wrong_order"
+        ],
+        "violation_relations": [
+          "sponge thickness decreases happens BEFORE the hand visibly contacts and begins pressing the sponge."
+        ],
+        "violation_texts": [
+          "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=hovering, transitioning; sponge: exactly 1, state thickness=original, transitioning; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] sponge thickness decreases happens BEFORE the hand visibly contacts and begins pressing the sponge."
+        ],
+        "violation_weights": [
+          1.0
+        ]
+      },
+      {
+        "pair_quality": "minimal_verified",
+        "positive_relation": "The declared change sponge thickness decreases occurs in its stated direction.",
+        "positive_text": "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=pressing, required; sponge: exactly 1, state thickness=flat, required; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change sponge thickness decreases occurs in its stated direction.",
+        "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=pressing, required; sponge: exactly 1, state thickness=flat, required; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+        "stage_id": "evolution",
+        "violation_constraint_ids": [
+          [
+            "c5"
+          ]
+        ],
+        "violation_kinds": [
+          "effect_missing"
+        ],
+        "violation_relations": [
+          "The declared cause occurs BUT the required target change does not become visible."
+        ],
+        "violation_texts": [
+          "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=pressing, required; sponge: exactly 1, state thickness=flat, required; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The declared cause occurs BUT the required target change does not become visible."
+        ],
+        "violation_weights": [
+          1.0
+        ]
+      },
+      {
+        "pair_quality": "minimal_verified",
+        "positive_relation": "The declared change sponge thickness increases gradually occurs in its stated direction.",
+        "positive_text": "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=lifted, transitioning; sponge: exactly 1, state thickness=recovered, transitioning; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change sponge thickness increases gradually occurs in its stated direction.",
+        "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=lifted, transitioning; sponge: exactly 1, state thickness=recovered, transitioning; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+        "stage_id": "completion",
+        "violation_constraint_ids": [
+          [
+            "c6",
+            "c7"
+          ]
+        ],
+        "violation_kinds": [
+          "incomplete_transition"
+        ],
+        "violation_relations": [
+          "The declared cause occurs BUT the required target change does not become visible."
+        ],
+        "violation_texts": [
+          "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=lifted, transitioning; sponge: exactly 1, state thickness=recovered, transitioning; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The declared cause occurs BUT the required target change does not become visible."
+        ],
+        "violation_weights": [
+          1.0
+        ]
+      },
+      {
+        "pair_quality": "minimal_verified",
+        "positive_relation": "The terminal facts hand_state=lifted, thickness=recovered REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts thickness=flat, thickness=recovered do not coexist.",
+        "positive_text": "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=lifted, required; sponge: exactly 1, state thickness=recovered, required; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The terminal facts hand_state=lifted, thickness=recovered REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts thickness=flat, thickness=recovered do not coexist.",
+        "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=lifted, required; sponge: exactly 1, state thickness=recovered, required; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+        "stage_id": "terminal",
+        "violation_constraint_ids": [
+          [
+            "c7"
+          ],
+          [
+            "c8"
+          ]
+        ],
+        "violation_kinds": [
+          "reversal",
+          "exclusion_broken"
+        ],
+        "violation_relations": [
+          "The valid terminal state returns to its mutually exclusive earlier state.",
+          "Copies of the same logical slot appear in mutually exclusive states at the same time."
+        ],
+        "violation_texts": [
+          "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=lifted, required; sponge: exactly 1, state thickness=recovered, required; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The valid terminal state returns to its mutually exclusive earlier state. [AND] The same logical slot has only its valid state; mutually exclusive facts thickness=flat, thickness=recovered do not coexist.",
+          "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=lifted, required; sponge: exactly 1, state thickness=recovered, required; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The terminal facts hand_state=lifted, thickness=recovered REMAIN through the final frames. [AND] Copies of the same logical slot appear in mutually exclusive states at the same time."
+        ],
+        "violation_weights": [
+          0.5,
+          0.5
+        ]
+      }
+    ],
+    "texts": {
+      "global_semantic": "[ENTITY INVENTORY] The closed scene contains hand: exactly 1; sponge: exactly 1; surface: one declared collective group. All declared entities are fully visible from the first frame in the stated layout. [INITIAL STATE] hand_state=hovering, thickness=original. [PHYSICAL EVENT] One hand presses one dry sponge flat, lifts away, and the same sponge gradually regains its shape. [INITIAL LAYOUT] hand; dry sponge; support surface. [PERSISTENT PROTECTION] same hand and dry sponge; same support surface; sponge identity and dryness remain unchanged; camera and background remain unchanged. [CLOSED WORLD] No additional external source, extra copy, unlisted object enters or appears; unoccupied scene regions remain empty. [CONSERVATION] Source loss and result gain stay coupled: tracked logical entity slots remain consistent. No result appears from an undeclared external source. [TERMINAL STATE] The same logical entity slots persist without duplicates; hand_state=lifted, thickness=recovered remains visible through the final frames.",
+      "stage.completion.negative.0": "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=lifted, transitioning; sponge: exactly 1, state thickness=recovered, transitioning; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The declared cause occurs BUT the required target change does not become visible.",
+      "stage.completion.positive": "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=lifted, transitioning; sponge: exactly 1, state thickness=recovered, transitioning; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change sponge thickness increases gradually occurs in its stated direction.",
+      "stage.evolution.negative.0": "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=pressing, required; sponge: exactly 1, state thickness=flat, required; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The declared cause occurs BUT the required target change does not become visible.",
+      "stage.evolution.positive": "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=pressing, required; sponge: exactly 1, state thickness=flat, required; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change sponge thickness decreases occurs in its stated direction.",
+      "stage.onset.negative.0": "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=hovering, transitioning; sponge: exactly 1, state thickness=original, transitioning; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] sponge thickness decreases happens BEFORE the hand visibly contacts and begins pressing the sponge.",
+      "stage.onset.positive": "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=hovering, transitioning; sponge: exactly 1, state thickness=original, transitioning; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] the hand visibly contacts and begins pressing the sponge happens BEFORE sponge thickness decreases.",
+      "stage.setup.negative.0": "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=hovering, required; sponge: exactly 1, state thickness=original, required; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] sponge thickness decreases is already present BEFORE the hand visibly contacts and begins pressing the sponge.",
+      "stage.setup.positive": "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=hovering, required; sponge: exactly 1, state thickness=original, required; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] the hand visibly contacts and begins pressing the sponge happens BEFORE sponge thickness decreases.",
+      "stage.terminal.negative.0": "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=lifted, required; sponge: exactly 1, state thickness=recovered, required; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The valid terminal state returns to its mutually exclusive earlier state. [AND] The same logical slot has only its valid state; mutually exclusive facts thickness=flat, thickness=recovered do not coexist.",
+      "stage.terminal.negative.1": "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=lifted, required; sponge: exactly 1, state thickness=recovered, required; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The terminal facts hand_state=lifted, thickness=recovered REMAIN through the final frames. [AND] Copies of the same logical slot appear in mutually exclusive states at the same time.",
+      "stage.terminal.positive": "[STAGE ENTITY INVENTORY] Present now: hand: exactly 1, state hand_state=lifted, required; sponge: exactly 1, state thickness=recovered, required; surface: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The terminal facts hand_state=lifted, thickness=recovered REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts thickness=flat, thickness=recovered do not coexist."
+    },
+    "token_budget_priority": {
+      "causal": 2,
+      "entity_count": 0,
+      "protected": 1,
+      "style": 3
+    }
+  },
+  "design_revision": "fixed5-causal-r4",
+  "entity_ledger": {
+    "closed_world": {
+      "allowed_entity_ids": [
+        "hand",
+        "sponge",
+        "surface"
+      ],
+      "empty_regions": [],
+      "external_source_allowed": false,
+      "forbidden_new_categories": [
+        "external source",
+        "extra copy",
+        "unlisted object"
+      ],
+      "provenance": "derived"
+    },
+    "conservation": [
+      {
+        "observable_proxy": "tracked logical entity slots remain consistent",
+        "provenance": "derived",
+        "quantity": "instance_count",
+        "relation": "constant",
+        "rule_id": "entity_slots_constant",
+        "sinks": [
+          "hand",
+          "sponge",
+          "surface"
+        ],
+        "sources": [
+          "hand",
+          "sponge",
+          "surface"
+        ],
+        "tolerance": 0.0
+      }
+    ],
+    "issues": [
+      "surface: exact visual count unresolved; retained as group"
+    ],
+    "lifecycles": [
+      {
+        "entity_id": "hand",
+        "from_stage": "setup",
+        "from_state": "hovering",
+        "identity_preserved": true,
+        "mutually_exclusive_states": [
+          [
+            "hovering",
+            "pressing"
+          ]
+        ],
+        "provenance": "derived",
+        "to_stage": "terminal",
+        "to_state": "pressing"
+      },
+      {
+        "entity_id": "sponge",
+        "from_stage": "setup",
+        "from_state": "original",
+        "identity_preserved": true,
+        "mutually_exclusive_states": [
+          [
+            "original",
+            "flat"
+          ]
+        ],
+        "provenance": "derived",
+        "to_stage": "terminal",
+        "to_state": "flat"
+      },
+      {
+        "entity_id": "hand",
+        "from_stage": "setup",
+        "from_state": "pressing",
+        "identity_preserved": true,
+        "mutually_exclusive_states": [
+          [
+            "pressing",
+            "lifted"
+          ]
+        ],
+        "provenance": "derived",
+        "to_stage": "terminal",
+        "to_state": "lifted"
+      },
+      {
+        "entity_id": "sponge",
+        "from_stage": "setup",
+        "from_state": "flat",
+        "identity_preserved": true,
+        "mutually_exclusive_states": [
+          [
+            "flat",
+            "recovered"
+          ]
+        ],
+        "provenance": "derived",
+        "to_stage": "terminal",
+        "to_state": "recovered"
+      }
+    ],
+    "slots": [
+      {
+        "aliases": [],
+        "canonical_mention": "the same hand",
+        "cardinality": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "entity_id": "hand",
+        "invariant_attributes": [
+          "same hand and dry sponge",
+          "same support surface",
+          "sponge identity and dryness remain unchanged",
+          "camera and background remain unchanged"
+        ],
+        "mutable_attributes": [
+          "contact_state"
+        ],
+        "persistent_identity": true,
+        "provenance": "default",
+        "role": "actor"
+      },
+      {
+        "aliases": [],
+        "canonical_mention": "the same dry sponge",
+        "cardinality": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "entity_id": "sponge",
+        "invariant_attributes": [
+          "same hand and dry sponge",
+          "same support surface",
+          "sponge identity and dryness remain unchanged",
+          "camera and background remain unchanged"
+        ],
+        "mutable_attributes": [
+          "visible_thickness"
+        ],
+        "persistent_identity": true,
+        "provenance": "default",
+        "role": "patient"
+      },
+      {
+        "aliases": [],
+        "canonical_mention": "the same support surface",
+        "cardinality": {
+          "exact": null,
+          "kind": "group",
+          "maximum": null,
+          "minimum": null
+        },
+        "entity_id": "surface",
+        "invariant_attributes": [
+          "same hand and dry sponge",
+          "same support surface",
+          "sponge identity and dryness remain unchanged",
+          "camera and background remain unchanged"
+        ],
+        "mutable_attributes": [],
+        "persistent_identity": true,
+        "provenance": "derived",
+        "role": "environment"
+      }
+    ],
+    "stage_presence": [
+      {
+        "entity_id": "hand",
+        "logical_count": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "setup",
+        "state_facts": [
+          "hand_state=hovering"
+        ],
+        "visible": "required"
+      },
+      {
+        "entity_id": "sponge",
+        "logical_count": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "setup",
+        "state_facts": [
+          "thickness=original"
+        ],
+        "visible": "required"
+      },
+      {
+        "entity_id": "surface",
+        "logical_count": {
+          "exact": null,
+          "kind": "group",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "setup",
+        "state_facts": [],
+        "visible": "required"
+      },
+      {
+        "entity_id": "hand",
+        "logical_count": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "onset",
+        "state_facts": [
+          "hand_state=hovering"
+        ],
+        "visible": "transitioning"
+      },
+      {
+        "entity_id": "sponge",
+        "logical_count": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "onset",
+        "state_facts": [
+          "thickness=original"
+        ],
+        "visible": "transitioning"
+      },
+      {
+        "entity_id": "surface",
+        "logical_count": {
+          "exact": null,
+          "kind": "group",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "onset",
+        "state_facts": [],
+        "visible": "required"
+      },
+      {
+        "entity_id": "hand",
+        "logical_count": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "evolution",
+        "state_facts": [
+          "hand_state=pressing"
+        ],
+        "visible": "required"
+      },
+      {
+        "entity_id": "sponge",
+        "logical_count": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "evolution",
+        "state_facts": [
+          "thickness=flat"
+        ],
+        "visible": "required"
+      },
+      {
+        "entity_id": "surface",
+        "logical_count": {
+          "exact": null,
+          "kind": "group",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "evolution",
+        "state_facts": [],
+        "visible": "required"
+      },
+      {
+        "entity_id": "hand",
+        "logical_count": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "completion",
+        "state_facts": [
+          "hand_state=lifted"
+        ],
+        "visible": "transitioning"
+      },
+      {
+        "entity_id": "sponge",
+        "logical_count": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "completion",
+        "state_facts": [
+          "thickness=recovered"
+        ],
+        "visible": "transitioning"
+      },
+      {
+        "entity_id": "surface",
+        "logical_count": {
+          "exact": null,
+          "kind": "group",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "completion",
+        "state_facts": [],
+        "visible": "required"
+      },
+      {
+        "entity_id": "hand",
+        "logical_count": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "terminal",
+        "state_facts": [
+          "hand_state=lifted"
+        ],
+        "visible": "required"
+      },
+      {
+        "entity_id": "sponge",
+        "logical_count": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "terminal",
+        "state_facts": [
+          "thickness=recovered"
+        ],
+        "visible": "required"
+      },
+      {
+        "entity_id": "surface",
+        "logical_count": {
+          "exact": null,
+          "kind": "group",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "terminal",
+        "state_facts": [],
+        "visible": "required"
+      }
+    ]
+  },
+  "frames": 25,
+  "input_schema_version": "trace-writer-v1",
+  "issues": [
+    "surface: exact visual count unresolved; retained as group"
+  ],
+  "mode": "t2v",
+  "raw_plan_sha256": "3420f498eed3ef5e368fc3b4abe3ee1ff1831f9be4ba436bdebe02fdba870e54",
+  "sample_id": "P17",
+  "stage_ids": [
+    "setup",
+    "onset",
+    "evolution",
+    "completion",
+    "terminal"
+  ],
+  "temporal": {
+    "boundaries": [
+      {
+        "frames": [
+          3,
+          4
+        ],
+        "left": "setup",
+        "right": "onset",
+        "right_weights": [
+          0.25925925925925924,
+          0.7407407407407407
+        ]
+      },
+      {
+        "frames": [
+          8,
+          9
+        ],
+        "left": "onset",
+        "right": "evolution",
+        "right_weights": [
+          0.25925925925925924,
+          0.7407407407407407
+        ]
+      },
+      {
+        "frames": [
+          16,
+          17
+        ],
+        "left": "evolution",
+        "right": "completion",
+        "right_weights": [
+          0.25925925925925924,
+          0.7407407407407407
+        ]
+      },
+      {
+        "frames": [
+          21,
+          22
+        ],
+        "left": "completion",
+        "right": "terminal",
+        "right_weights": [
+          0.25925925925925924,
+          0.7407407407407407
+        ]
+      }
+    ],
+    "core_lengths": [
+      3,
+      3,
+      6,
+      3,
+      2
+    ],
+    "crossfade_tokens": 2,
+    "interpolation": "smoothstep_c1",
+    "mode": "plan_prior",
+    "profile": "multi_transition",
+    "spans": [
+      {
+        "core": [
+          0,
+          1,
+          2
+        ],
+        "outgoing": [
+          3,
+          4
+        ],
+        "stage_id": "setup"
+      },
+      {
+        "core": [
+          5,
+          6,
+          7
+        ],
+        "outgoing": [
+          8,
+          9
+        ],
+        "stage_id": "onset"
+      },
+      {
+        "core": [
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "outgoing": [
+          16,
+          17
+        ],
+        "stage_id": "evolution"
+      },
+      {
+        "core": [
+          18,
+          19,
+          20
+        ],
+        "outgoing": [
+          21,
+          22
+        ],
+        "stage_id": "completion"
+      },
+      {
+        "core": [
+          23,
+          24
+        ],
+        "outgoing": [],
+        "stage_id": "terminal"
+      }
+    ],
+    "weights": [
+      [
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0
+      ]
+    ]
+  },
+  "validation": {
+    "errors": 0,
+    "issues": [],
+    "warnings": 0
+  }
+}

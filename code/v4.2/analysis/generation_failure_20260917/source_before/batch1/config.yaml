@@ -1,0 +1,10 @@
+base_config: ${V42_ROOT}/configs/stability.yaml
+purpose: batch1_all_losses
+train:
+  accumulation: 1
+  steps: 1200
+  save_every: 100
+# All losses share one video, sigma, noise tensor and model result on every step.
+noise:
+  shared: [0.02, 0.999]
+mode_cycle: [i2v, i2v, i2v, t2v]

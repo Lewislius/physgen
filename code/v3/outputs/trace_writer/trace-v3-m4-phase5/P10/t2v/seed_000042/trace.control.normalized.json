@@ -1,0 +1,187 @@
+{
+  "closed_world": {
+    "allowed_entity_ids": [
+      "balloon"
+    ],
+    "empty_regions": [],
+    "external_source_allowed": false,
+    "forbidden_new_categories": [
+      "external source",
+      "extra copy",
+      "hand",
+      "person",
+      "tool",
+      "unlisted object"
+    ],
+    "provenance": "derived"
+  },
+  "conservation": [
+    {
+      "observable_proxy": "tracked logical entity slots remain consistent",
+      "provenance": "derived",
+      "quantity": "instance_count",
+      "relation": "constant",
+      "rule_id": "entity_slots_constant",
+      "sinks": [
+        "balloon"
+      ],
+      "sources": [
+        "balloon"
+      ],
+      "tolerance": 0.0
+    }
+  ],
+  "issues": [],
+  "lifecycles": [
+    {
+      "entity_id": "balloon",
+      "from_stage": "setup",
+      "from_state": "small; loose",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "small",
+          "large"
+        ],
+        [
+          "loose",
+          "taut"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "large; taut"
+    },
+    {
+      "entity_id": "balloon",
+      "from_stage": "setup",
+      "from_state": "large; taut; intact",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "large",
+          "collapsed"
+        ],
+        [
+          "taut",
+          "deflated"
+        ],
+        [
+          "intact",
+          "ruptured_fragments"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "collapsed; deflated; ruptured_fragments"
+    }
+  ],
+  "slots": [
+    {
+      "aliases": [],
+      "canonical_mention": "the same rubber balloon and its resulting fragments",
+      "cardinality": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "balloon",
+      "invariant_attributes": [
+        "same rubber material through inflation and fragments",
+        "same burst location",
+        "camera and background remain unchanged"
+      ],
+      "mutable_attributes": [
+        "visible_extent",
+        "surface_state",
+        "integrity"
+      ],
+      "persistent_identity": true,
+      "provenance": "derived",
+      "role": "actor"
+    }
+  ],
+  "stage_presence": [
+    {
+      "entity_id": "balloon",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [
+        "size=small",
+        "surface=loose",
+        "integrity=intact"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "balloon",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [
+        "size=small",
+        "surface=loose",
+        "integrity=intact"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "balloon",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [
+        "size=large",
+        "surface=taut",
+        "integrity=intact"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "balloon",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [
+        "size=collapsed",
+        "surface=deflated",
+        "integrity=ruptured_fragments"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "balloon",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [
+        "size=collapsed",
+        "surface=deflated",
+        "integrity=ruptured_fragments"
+      ],
+      "visible": "required"
+    }
+  ]
+}

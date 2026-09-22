@@ -1,0 +1,65 @@
+{
+  "causal_pair": {
+    "counterfactual_type": [
+      "cause_effect_reversal"
+    ],
+    "origin_prompt_prefixed": true,
+    "single_changed_relation": [
+      "the ball reverses direction before rather than after racket contact"
+    ]
+  },
+  "compiler_version": "ace-router-initial-v1-compat",
+  "mode": "initial_v1",
+  "prompts": {
+    "causal_counterfactual": "A tennis racket strikes an approaching tennis ball, sending the same ball back in the opposite direction. The approaching tennis ball reverses direction while still separated from the racket; racket contact occurs afterward.",
+    "causal_positive": "A tennis racket strikes an approaching tennis ball, sending the same ball back in the opposite direction. The approaching tennis ball visibly contacts the racket, compresses briefly, and then travels back in the opposite direction.",
+    "semantic": "A tennis racket strikes an approaching tennis ball, sending the same ball back in the opposite direction."
+  },
+  "sample_id": "P03",
+  "schema_version": 1,
+  "semantic_variant": "initial_v1",
+  "source_sections": {
+    "changed_state_variables": [
+      "ball position: approaches and contacts the racket",
+      "ball deformation: brief contact compression",
+      "ball direction: incoming to outgoing opposite direction"
+    ],
+    "counterfactual_type": [
+      "cause_effect_reversal"
+    ],
+    "event_type": [
+      "contact-triggered direction reversal"
+    ],
+    "initial_states": [
+      "racket: intact with its full face visible",
+      "tennis ball: intact and spatially separated from the racket face"
+    ],
+    "layout_requirements": [
+      "ball center aligns with the central racket-face region",
+      "clear visible space separates the ball and racket",
+      "the interaction line and return-direction space remain inside the frame"
+    ],
+    "preserved_context": [
+      "one tennis racket",
+      "one tennis ball",
+      "the same ball before and after contact"
+    ],
+    "protected_scene_properties": [
+      "static side-view camera",
+      "racket identity",
+      "tennis-ball identity and color"
+    ],
+    "required_visible_entities": [
+      "one tennis racket",
+      "one tennis ball"
+    ],
+    "single_changed_relation": [
+      "the ball reverses direction before rather than after racket contact"
+    ],
+    "transition_variables": [
+      "ball position",
+      "ball travel direction",
+      "brief ball deformation at contact"
+    ]
+  }
+}

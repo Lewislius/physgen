@@ -1,0 +1,185 @@
+{
+  "actual_t5_token_lengths": {
+    "global_semantic": 256,
+    "stage.completion.negative.0": 135,
+    "stage.completion.positive": 143,
+    "stage.evolution.negative.0": 148,
+    "stage.evolution.positive": 141,
+    "stage.onset.negative.0": 136,
+    "stage.onset.positive": 135,
+    "stage.setup.negative.0": 136,
+    "stage.setup.positive": 133,
+    "stage.terminal.negative.0": 168,
+    "stage.terminal.negative.1": 159,
+    "stage.terminal.positive": 172
+  },
+  "global_anchor": "[ENTITY INVENTORY] The closed scene contains box: exactly 1; floor: one declared collective group. All declared entities are fully visible from the first frame in the stated layout. [INITIAL STATE] corner_state=undisplaced, pose=upright. [PHYSICAL EVENT] One tall cardboard box is pulled at a lower corner, tips over, and remains lying on one side. [INITIAL LAYOUT] tall cardboard box; supporting floor. [PERSISTENT PROTECTION] same cardboard-box identity and material; same floor; camera and background remain unchanged. [CLOSED WORLD] No additional external source, extra copy, unlisted object enters or appears; unoccupied scene regions remain empty. [CONSERVATION] Source loss and result gain stay coupled: tracked logical entity slots remain consistent; sideways lower-corner shift precedes increasing box tilt. No result appears from an undeclared external source. [TERMINAL STATE] The same logical entity slots persist without duplicates; corner_state=shifted_sideways, pose=lying_on_side remains visible through the final frames.",
+  "issues": [],
+  "max_t5_token_length": 256,
+  "protected_coverage": {
+    "camera and background remain unchanged": [
+      "geometry",
+      "camera_background",
+      "closed_world_or_persistence"
+    ],
+    "same cardboard-box identity and material": [
+      "identity_count",
+      "appearance"
+    ],
+    "same floor": [
+      "identity_count",
+      "camera_background"
+    ]
+  },
+  "stage_pairs": [
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "the lower box corner visibly moves sideways happens BEFORE long axis rotates toward the floor.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: box: exactly 1, state corner_state=undisplaced, pose=upright, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] the lower box corner visibly moves sideways happens BEFORE long axis rotates toward the floor.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: box: exactly 1, state corner_state=undisplaced, pose=upright, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "setup",
+      "violation_constraint_ids": [
+        [
+          "c1"
+        ]
+      ],
+      "violation_kinds": [
+        "outcome_preset"
+      ],
+      "violation_relations": [
+        "long axis rotates toward the floor is already present BEFORE the lower box corner visibly moves sideways."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: box: exactly 1, state corner_state=undisplaced, pose=upright, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] long axis rotates toward the floor is already present BEFORE the lower box corner visibly moves sideways."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "the lower box corner visibly moves sideways happens BEFORE long axis rotates toward the floor.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: box: exactly 1, state corner_state=undisplaced, pose=upright, transitioning; floor: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] the lower box corner visibly moves sideways happens BEFORE long axis rotates toward the floor.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: box: exactly 1, state corner_state=undisplaced, pose=upright, transitioning; floor: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "onset",
+      "violation_constraint_ids": [
+        [
+          "c1",
+          "c2"
+        ]
+      ],
+      "violation_kinds": [
+        "wrong_order"
+      ],
+      "violation_relations": [
+        "long axis rotates toward the floor happens BEFORE the lower box corner visibly moves sideways."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: box: exactly 1, state corner_state=undisplaced, pose=upright, transitioning; floor: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] long axis rotates toward the floor happens BEFORE the lower box corner visibly moves sideways."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The coupled changes occur together: lower corner moves laterally WHILE long axis rotates toward the floor.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: box: exactly 1, state corner_state=shifted_sideways, pose=lying_on_side, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The coupled changes occur together: lower corner moves laterally WHILE long axis rotates toward the floor.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: box: exactly 1, state corner_state=shifted_sideways, pose=lying_on_side, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "evolution",
+      "violation_constraint_ids": [
+        [
+          "c3"
+        ]
+      ],
+      "violation_kinds": [
+        "coupling_broken"
+      ],
+      "violation_relations": [
+        "Only one coupled change occurs while the other remains unchanged: lower corner moves laterally; long axis rotates toward the floor."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: box: exactly 1, state corner_state=shifted_sideways, pose=lying_on_side, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] Only one coupled change occurs while the other remains unchanged: lower corner moves laterally; long axis rotates toward the floor."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The coupled changes occur together: lower corner moves laterally WHILE long axis rotates toward the floor.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: box: exactly 1, state corner_state=shifted_sideways, pose=lying_on_side, transitioning; floor: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The coupled changes occur together: lower corner moves laterally WHILE long axis rotates toward the floor.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: box: exactly 1, state corner_state=shifted_sideways, pose=lying_on_side, transitioning; floor: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "completion",
+      "violation_constraint_ids": [
+        [
+          "c3",
+          "c4"
+        ]
+      ],
+      "violation_kinds": [
+        "incomplete_transition"
+      ],
+      "violation_relations": [
+        "The declared cause occurs BUT the required target change does not become visible."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: box: exactly 1, state corner_state=shifted_sideways, pose=lying_on_side, transitioning; floor: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The declared cause occurs BUT the required target change does not become visible."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The terminal facts pose=lying_on_side REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts pose=upright, pose=lying_on_side do not coexist.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: box: exactly 1, state corner_state=shifted_sideways, pose=lying_on_side, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The terminal facts pose=lying_on_side REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts pose=upright, pose=lying_on_side do not coexist.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: box: exactly 1, state corner_state=shifted_sideways, pose=lying_on_side, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "terminal",
+      "violation_constraint_ids": [
+        [
+          "c4"
+        ],
+        [
+          "c5"
+        ]
+      ],
+      "violation_kinds": [
+        "reversal",
+        "exclusion_broken"
+      ],
+      "violation_relations": [
+        "The valid terminal state returns to its mutually exclusive earlier state.",
+        "Copies of the same logical slot appear in mutually exclusive states at the same time."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: box: exactly 1, state corner_state=shifted_sideways, pose=lying_on_side, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The valid terminal state returns to its mutually exclusive earlier state. [AND] The same logical slot has only its valid state; mutually exclusive facts pose=upright, pose=lying_on_side do not coexist.",
+        "[STAGE ENTITY INVENTORY] Present now: box: exactly 1, state corner_state=shifted_sideways, pose=lying_on_side, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The terminal facts pose=lying_on_side REMAIN through the final frames. [AND] Copies of the same logical slot appear in mutually exclusive states at the same time."
+      ],
+      "violation_weights": [
+        0.5,
+        0.5
+      ]
+    }
+  ],
+  "texts": {
+    "global_semantic": "[ENTITY INVENTORY] The closed scene contains box: exactly 1; floor: one declared collective group. All declared entities are fully visible from the first frame in the stated layout. [INITIAL STATE] corner_state=undisplaced, pose=upright. [PHYSICAL EVENT] One tall cardboard box is pulled at a lower corner, tips over, and remains lying on one side. [INITIAL LAYOUT] tall cardboard box; supporting floor. [PERSISTENT PROTECTION] same cardboard-box identity and material; same floor; camera and background remain unchanged. [CLOSED WORLD] No additional external source, extra copy, unlisted object enters or appears; unoccupied scene regions remain empty. [CONSERVATION] Source loss and result gain stay coupled: tracked logical entity slots remain consistent; sideways lower-corner shift precedes increasing box tilt. No result appears from an undeclared external source. [TERMINAL STATE] The same logical entity slots persist without duplicates; corner_state=shifted_sideways, pose=lying_on_side remains visible through the final frames.",
+    "stage.completion.negative.0": "[STAGE ENTITY INVENTORY] Present now: box: exactly 1, state corner_state=shifted_sideways, pose=lying_on_side, transitioning; floor: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The declared cause occurs BUT the required target change does not become visible.",
+    "stage.completion.positive": "[STAGE ENTITY INVENTORY] Present now: box: exactly 1, state corner_state=shifted_sideways, pose=lying_on_side, transitioning; floor: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The coupled changes occur together: lower corner moves laterally WHILE long axis rotates toward the floor.",
+    "stage.evolution.negative.0": "[STAGE ENTITY INVENTORY] Present now: box: exactly 1, state corner_state=shifted_sideways, pose=lying_on_side, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] Only one coupled change occurs while the other remains unchanged: lower corner moves laterally; long axis rotates toward the floor.",
+    "stage.evolution.positive": "[STAGE ENTITY INVENTORY] Present now: box: exactly 1, state corner_state=shifted_sideways, pose=lying_on_side, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The coupled changes occur together: lower corner moves laterally WHILE long axis rotates toward the floor.",
+    "stage.onset.negative.0": "[STAGE ENTITY INVENTORY] Present now: box: exactly 1, state corner_state=undisplaced, pose=upright, transitioning; floor: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] long axis rotates toward the floor happens BEFORE the lower box corner visibly moves sideways.",
+    "stage.onset.positive": "[STAGE ENTITY INVENTORY] Present now: box: exactly 1, state corner_state=undisplaced, pose=upright, transitioning; floor: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] the lower box corner visibly moves sideways happens BEFORE long axis rotates toward the floor.",
+    "stage.setup.negative.0": "[STAGE ENTITY INVENTORY] Present now: box: exactly 1, state corner_state=undisplaced, pose=upright, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] long axis rotates toward the floor is already present BEFORE the lower box corner visibly moves sideways.",
+    "stage.setup.positive": "[STAGE ENTITY INVENTORY] Present now: box: exactly 1, state corner_state=undisplaced, pose=upright, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] the lower box corner visibly moves sideways happens BEFORE long axis rotates toward the floor.",
+    "stage.terminal.negative.0": "[STAGE ENTITY INVENTORY] Present now: box: exactly 1, state corner_state=shifted_sideways, pose=lying_on_side, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The valid terminal state returns to its mutually exclusive earlier state. [AND] The same logical slot has only its valid state; mutually exclusive facts pose=upright, pose=lying_on_side do not coexist.",
+    "stage.terminal.negative.1": "[STAGE ENTITY INVENTORY] Present now: box: exactly 1, state corner_state=shifted_sideways, pose=lying_on_side, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The terminal facts pose=lying_on_side REMAIN through the final frames. [AND] Copies of the same logical slot appear in mutually exclusive states at the same time.",
+    "stage.terminal.positive": "[STAGE ENTITY INVENTORY] Present now: box: exactly 1, state corner_state=shifted_sideways, pose=lying_on_side, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The terminal facts pose=lying_on_side REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts pose=upright, pose=lying_on_side do not coexist."
+  },
+  "token_budget_priority": {
+    "causal": 2,
+    "entity_count": 0,
+    "protected": 1,
+    "style": 3
+  }
+}

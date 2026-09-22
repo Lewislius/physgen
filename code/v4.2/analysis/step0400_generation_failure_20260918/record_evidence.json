@@ -1,0 +1,2478 @@
+{
+  "sources": {
+    "v4": "/home/liuzhirui/Project/physGen/code/v4/train/train_log/wisa_native_p_A1_4x96g_20260912T151800Z-e189c27c/20260912T151800Z-e189c27c",
+    "v42": "/home/liuzhirui/Project/physGen/code/v4.2/train/train_log/v4_joint_20260918T034836Z_16183b",
+    "generation": "/home/liuzhirui/Project/physGen/code/v4.2/inference_outputs/v4_joint_20260918T034836Z_16183b_step0400_ema_demo_seed42_r3_full"
+  },
+  "primary_checkpoint_step": 400,
+  "extra_training_cutoff": 600,
+  "v4_config": {
+    "run_name": "wisa_native_p_A1_4x96g_20260912T151800Z-e189c27c",
+    "stage": "A",
+    "phase": "A1",
+    "paths": {
+      "wan_code": "/home/liuzhirui/model/Wan2.2",
+      "wan_checkpoint": "/home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B",
+      "teacher_code": "/home/liuzhirui/model/vjepa2",
+      "teacher_checkpoint": "/home/liuzhirui/model/vjepa2/checkpoint/vjepa2_1_vitG_384.pt",
+      "wisa_videos": "/run/determined/NAS1/public/Dataset/WISA/data/videos",
+      "wisa_index": "/run/determined/NAS1/public/Dataset/WISA/data/wisa-80k.json",
+      "cache_root": "/home/liuzhirui/Project/physGen/code/v4/cache/wisa4000_nativefps_f101_a147456_t16",
+      "checkpoint_root": "/home/liuzhirui/Project/physGen/code/v4/checkpoints",
+      "log_root": "/home/liuzhirui/Project/physGen/code/v4/train/train_log"
+    },
+    "data": {
+      "limit": 4000,
+      "selection_file": null,
+      "split_seed": 20260909,
+      "validation_stride": 20,
+      "max_frames": 101,
+      "max_long_side": 512,
+      "max_area": 147456,
+      "decode_chunk_frames": 8,
+      "clip_annotations": null,
+      "teacher_size": 384,
+      "teacher_frames": 16
+    },
+    "corrector": {
+      "initialization": "image_text_gt",
+      "fusion": "cross_attention",
+      "prior_width": 512,
+      "prior_heads": 8,
+      "prior_depth": 2,
+      "prior_video_pool": 8,
+      "parameter_sharing": "per_block",
+      "a_blocks": [
+        5,
+        10,
+        15,
+        20,
+        25,
+        30
+      ],
+      "a_every": 5,
+      "block_b": 18,
+      "iterations": 1,
+      "checkpoint_cell": true,
+      "state_strength": 0.2,
+      "write_strength": 0.1,
+      "early_write_width": 0.1,
+      "early_write_floor": 0.1,
+      "handoff_sigma": 0.65,
+      "handoff_width": 0.15,
+      "late_sigma": 0.15,
+      "late_floor": 0.25,
+      "seconds_scale": 1.0
+    },
+    "loss": {
+      "fm_weight": 1.0,
+      "struct_weight": 0.1,
+      "struct_warmup_steps": 200,
+      "struct_noise_width": 0.2,
+      "prior_weight": 0.02,
+      "out_weight": 0.0,
+      "out_every": 4,
+      "out_sigma_min": 0.05,
+      "out_sigma_max": 0.4
+    },
+    "train": {
+      "seed": 20260909,
+      "sample_limit": 1000,
+      "steps": 500,
+      "learning_rate": 0.0001,
+      "weight_decay": 0.01,
+      "warmup_steps": 100,
+      "minimum_lr_ratio": 0.1,
+      "global_batch_size": 8,
+      "workers": 2,
+      "pin_memory": true,
+      "loader_timeout_seconds": 120,
+      "text_dropout": 0.1,
+      "gt_condition_dropout": 0.25,
+      "sigma_min": 0.02,
+      "sigma_max": 0.999,
+      "state_warmup_every": 0,
+      "grad_clip": 1.0,
+      "save_every": 250,
+      "accumulation_steps": 8,
+      "effective_global_batch_size": 8
+    },
+    "diagnostics": {
+      "trace_steps": 1,
+      "stack_timeout_seconds": 120,
+      "trace_wan_blocks": false,
+      "check_steps": 0
+    },
+    "logging": {
+      "wandb": {
+        "enabled": false,
+        "project": "physgen-v4",
+        "entity": null
+      },
+      "session_id": "20260912T151800Z-e189c27c"
+    },
+    "validation": {
+      "every": 250,
+      "samples_per_rank": 1,
+      "sigmas": [
+        0.1,
+        0.35,
+        0.6,
+        0.85,
+        0.98
+      ],
+      "seed": 93001
+    },
+    "phases": {
+      "A1": {
+        "stage": "A",
+        "iterations": 1,
+        "out_weight": 0.0,
+        "steps": 500,
+        "learning_rate": 0.0001
+      },
+      "A2": {
+        "stage": "A",
+        "iterations": 2,
+        "out_weight": 0.0,
+        "steps": 250,
+        "learning_rate": 5e-05
+      },
+      "A3": {
+        "stage": "A",
+        "iterations": 2,
+        "out_weight": 0.1,
+        "steps": 250,
+        "learning_rate": 2e-05
+      },
+      "B1": {
+        "stage": "B",
+        "iterations": 2,
+        "out_weight": 0.1,
+        "steps": 250,
+        "learning_rate": 5e-05
+      },
+      "AB": {
+        "stage": "AB",
+        "iterations": 2,
+        "out_weight": 0.1,
+        "steps": 250,
+        "learning_rate": 1e-05
+      }
+    },
+    "hardware_name": "4x96g",
+    "run_name_base": "wisa_native_p_A1_4x96g",
+    "init_from": null,
+    "world_size": 1,
+    "resume_from": null,
+    "source_run_name": null
+  },
+  "v42_config": {
+    "model_version": "physgen_v42_f121_independent_correctors_v3",
+    "paths": {
+      "wan_code": "/home/liuzhirui/model/Wan2.2",
+      "wan_checkpoint": "/home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B",
+      "teacher_code": "/home/liuzhirui/model/vjepa2",
+      "teacher_checkpoint": "/home/liuzhirui/model/vjepa2/checkpoint/vjepa2_1_vitG_384.pt",
+      "wisa_index": "/run/determined/NAS1/public/Dataset/WISA/data/wisa-80k.json",
+      "wisa_videos": "/run/determined/NAS1/public/Dataset/WISA/data/videos",
+      "annotations": "/home/liuzhirui/Project/physGen/code/v4.2/data_index2400",
+      "cache": "/home/liuzhirui/Project/physGen/code/v4.2/cache/wisa2400_nativefps_f121_a147456_fp32_jepa32",
+      "asset_lock": "/home/liuzhirui/Project/physGen/code/v4.2/assets/wan_jepa_metadata.json",
+      "checkpoints": "/home/liuzhirui/Project/physGen/code/v4.2/checkpoints",
+      "logs": "/home/liuzhirui/Project/physGen/code/v4.2/train/train_log",
+      "outputs": "/home/liuzhirui/Project/physGen/code/v4.2/inference_outputs",
+      "demo_root": "/home/liuzhirui/Project/physGen/code/v1/demo",
+      "reference_image": "/home/liuzhirui/model/Wan2.2/overfit_ref/overfit_ref5.jpg",
+      "reference_prompt": "The woman smiles and waves at the camera."
+    },
+    "preparation": {
+      "asset_verification": "metadata",
+      "reuse_sources": [
+        "/home/liuzhirui/Project/physGen/code/v4.2/cache/wisa4000_nativefps_f121_a147456_fp32_jepa32",
+        "/home/liuzhirui/Project/physGen/code/v4.2/quick16/work/cache_v4_f121"
+      ]
+    },
+    "data": {
+      "seed": 20260909,
+      "limit": 2400,
+      "source_limit": 4000,
+      "subset_manifest": "/home/liuzhirui/Project/physGen/code/v4.2/cache/wisa4000_nativefps_f121_a147456_fp32_jepa32/manifest.json",
+      "selection_file": null,
+      "clip_annotations": null,
+      "validation_stride": 20,
+      "frames": 121,
+      "max_long_side": 512,
+      "max_area": 147456,
+      "decode_chunk_frames": 8,
+      "teacher_frames": 32,
+      "teacher_size": 384,
+      "categories": [
+        "unlabeled"
+      ]
+    },
+    "state": {
+      "sites": [
+        5,
+        15
+      ],
+      "parameter_sharing": "per_block",
+      "width": 1664,
+      "inner": 512,
+      "heads": 8,
+      "depth": 2,
+      "checkpoint": true,
+      "write_gate": true,
+      "initializer": "condition_trajectory_gt_v1",
+      "prior_video_pool": 8
+    },
+    "loss": {
+      "fm": 1.0,
+      "struct": 0.1,
+      "struct_warmup_steps": 200,
+      "struct_noise_width": 0.2,
+      "struct_initialization_gradient": true,
+      "temp": 0.0,
+      "write": 0.05,
+      "prior": 0.02
+    },
+    "train": {
+      "recipe": "fm_multistruct_prior_write_gt75_joint_v1",
+      "seed": 20260916,
+      "steps": 1200,
+      "world_size": 1,
+      "accumulation": 8,
+      "save_every": 100,
+      "validate_every": 100,
+      "ema_decay": 0.995,
+      "grad_clip": 1.0,
+      "sampling": "uniform_modes_v1",
+      "auxiliary_gradient_policy": "none",
+      "peak_lr": {
+        "core5": 5e-05,
+        "core15": 5e-05,
+        "text_init": 2e-05,
+        "writer5": 1e-05,
+        "writer15": 2e-05
+      },
+      "gt_condition_dropout": 0.25,
+      "text_dropout": 0.1
+    },
+    "repair": {
+      "clean_probability": 0.25,
+      "max_relative_strength": 0.2,
+      "warp_latent_pixels": 0.5
+    },
+    "monitoring": {
+      "train_every": 25,
+      "health_ablation_cases": 4
+    },
+    "inference": {
+      "canvas_wh": [
+        512,
+        288
+      ],
+      "steps": 50,
+      "shift": 5.0,
+      "guidance": 5.0,
+      "seed": 42,
+      "duration": 5.0
+    }
+  },
+  "v4_runtime": {
+    "event": "training_start",
+    "log_directory": "/home/liuzhirui/Project/physGen/code/v4/train/train_log/wisa_native_p_A1_4x96g_20260912T151800Z-e189c27c/20260912T151800Z-e189c27c",
+    "stage": "A",
+    "phase": "A1",
+    "run": "wisa_native_p_A1_4x96g_20260912T151800Z-e189c27c",
+    "trainable_parameters": {
+      "initialization": 20610880,
+      "A@5": 136224515,
+      "A@10": 136224515,
+      "A@15": 136224515,
+      "A@20": 136224515,
+      "A@25": 136224515,
+      "A@30": 136224515
+    },
+    "total_corrector_parameters": 974182486,
+    "train_samples": 1000,
+    "validation_samples": 200,
+    "global_batch": 8,
+    "accumulation_steps": 8,
+    "target_global_batch": 8,
+    "torch_version": "2.8.0+cu128",
+    "runtime": {
+      "role": "runtime",
+      "environment": "/home/liuzhirui/miniconda3/envs/moviestory",
+      "python": "/home/liuzhirui/miniconda3/envs/moviestory/bin/python"
+    },
+    "teacher_runtime": null,
+    "resume_from": null,
+    "start_step": 0,
+    "world_size": 1,
+    "loader": {
+      "workers": 2,
+      "start_method": "spawn",
+      "pin_memory": true,
+      "timeout_seconds": 120
+    },
+    "diagnostic_directory": "/home/liuzhirui/Project/physGen/code/v4/train/train_log/launcher_A1_4x96g_20260912T151749Z_99_diagnostics",
+    "check_steps": 0
+  },
+  "windows": [
+    {
+      "steps": [
+        1,
+        50
+      ],
+      "v4": {
+        "loss/fm": 0.2802009028196335,
+        "loss/struct": 2.5812233829498292,
+        "loss/prior": 1.7473081302642823,
+        "loss/weighted_struct": 0.026268754985649137,
+        "loss/weighted_prior": 0.004123752521700226,
+        "loss/total": 0.3105934065580368,
+        "learning_rate": 2.5500000044758054e-05,
+        "grad/global_norm_before_clip": 0.06333985015749931,
+        "data/frames": 99.17,
+        "prior/gt_conditioned": 0.66,
+        "write_ratio": {
+          "5": 0.029082890255813253,
+          "10": 0.03751944259856828,
+          "15": 0.03614459232892841,
+          "20": 0.021318465332951744,
+          "25": 0.027654061248467768,
+          "30": 0.004573520495905541
+        },
+        "state_gate": {
+          "5": 0.7922036451101303,
+          "10": 0.8127165681123734,
+          "15": 0.8659871113300324,
+          "20": 0.8615806257724762,
+          "25": 0.812590913772583,
+          "30": 0.7715022921562195
+        }
+      },
+      "v42": {
+        "loss": {
+          "fm": 0.31727567716501653,
+          "struct": 1.5021867346018554,
+          "prior": 0.4484576099179685,
+          "write": 0.275117821986496
+        },
+        "global_grad": 0.09060367800295353,
+        "modes": {
+          "i2v": {
+            "fm": 0.3123681397460725,
+            "fm_base": 0.3174597087478184,
+            "fm_delta": -0.005091569001745918
+          },
+          "t2v": {
+            "fm": 0.3214561720033763,
+            "fm_base": 0.32717411942711033,
+            "fm_delta": -0.005717947423734047
+          }
+        },
+        "interventions": {
+          "state5": {
+            "candidate_rms": 0.08909587226982695,
+            "actual_rms": 0.08879808983108887,
+            "compression": 0.9780909417569638,
+            "over_base": null,
+            "gate_mean": null
+          },
+          "state15": {
+            "candidate_rms": 0.08797409389117092,
+            "actual_rms": 0.08767550269691128,
+            "compression": 0.9781056240200996,
+            "over_base": null,
+            "gate_mean": null
+          },
+          "writer5": {
+            "candidate_rms": 0.0027941233590195224,
+            "actual_rms": 0.0025116139319493413,
+            "compression": 0.916454454138875,
+            "over_base": 0.004040982586520841,
+            "gate_mean": 0.5042410135269165
+          },
+          "writer15": {
+            "candidate_rms": 0.01103028651034947,
+            "actual_rms": 0.007696968499421928,
+            "compression": 0.8252402712404728,
+            "over_base": 0.012853379177449824,
+            "gate_mean": 0.5116025239229203
+          },
+          "velocity": {
+            "candidate_rms": 0.03240463214751799,
+            "actual_rms": 0.029617815552046522,
+            "compression": 0.9114865353703498,
+            "over_base": 0.022720316149061545,
+            "gate_mean": null
+          }
+        }
+      }
+    },
+    {
+      "steps": [
+        151,
+        200
+      ],
+      "v4": {
+        "loss/fm": 0.28336746990680695,
+        "loss/struct": 1.6144651913642882,
+        "loss/prior": 0.4870068120956421,
+        "loss/weighted_struct": 0.13094328358769416,
+        "loss/weighted_prior": 0.00854176419787109,
+        "loss/total": 0.42285251498222354,
+        "learning_rate": 9.227353395544923e-05,
+        "grad/global_norm_before_clip": 0.07001406475901603,
+        "data/frames": 101.0,
+        "prior/gt_conditioned": 0.8,
+        "write_ratio": {
+          "5": 0.17210805147886277,
+          "10": 0.18461852371692658,
+          "15": 0.11404529750347138,
+          "20": 0.06570519618690014,
+          "25": 0.08808833703398705,
+          "30": 0.0025784144038334487
+        },
+        "state_gate": {
+          "5": 0.9720851755142212,
+          "10": 0.00014270704588852822,
+          "15": 0.0004452064848737791,
+          "20": 3.644598116807174e-05,
+          "25": 4.3165805982425805e-06,
+          "30": 1.4758715394691535e-07
+        }
+      },
+      "v42": {
+        "loss": {
+          "fm": 0.31953000120818614,
+          "struct": 1.4542681758105755,
+          "prior": 0.3752211405709386,
+          "write": 0.3029472463221046
+        },
+        "global_grad": 0.058720662444829944,
+        "modes": {
+          "i2v": {
+            "fm": 0.2950797462059806,
+            "fm_base": 0.307040737165759,
+            "fm_delta": -0.011960990959778428
+          },
+          "t2v": {
+            "fm": 0.3420994673640682,
+            "fm_base": 0.35495209403765887,
+            "fm_delta": -0.012852626673590679
+          }
+        },
+        "interventions": {
+          "state5": {
+            "candidate_rms": 0.0863369070366025,
+            "actual_rms": 0.08620932755991817,
+            "compression": 0.9987254671752452,
+            "over_base": null,
+            "gate_mean": null
+          },
+          "state15": {
+            "candidate_rms": 0.05657051138579845,
+            "actual_rms": 0.056517028480302545,
+            "compression": 0.9993754805624485,
+            "over_base": null,
+            "gate_mean": null
+          },
+          "writer5": {
+            "candidate_rms": 0.014884586904663592,
+            "actual_rms": 0.009579347519902512,
+            "compression": 0.6418111698329448,
+            "over_base": 0.01547394550521858,
+            "gate_mean": 0.5302136236429215
+          },
+          "writer15": {
+            "candidate_rms": 0.016665910128504036,
+            "actual_rms": 0.0127207870723214,
+            "compression": 0.7547615639865398,
+            "over_base": 0.02121720393653959,
+            "gate_mean": 0.5161985926330089
+          },
+          "velocity": {
+            "candidate_rms": 0.07112080743536353,
+            "actual_rms": 0.06098807368427515,
+            "compression": 0.8539197043329477,
+            "over_base": 0.04701364738401025,
+            "gate_mean": null
+          }
+        }
+      }
+    },
+    {
+      "steps": [
+        351,
+        400
+      ],
+      "v4": {
+        "loss/fm": 0.2728301393985748,
+        "loss/struct": 1.5284360337257386,
+        "loss/prior": 0.42560731649398803,
+        "loss/weighted_struct": 0.13666169539093972,
+        "loss/weighted_prior": 0.008512146091088652,
+        "loss/total": 0.4180039757490158,
+        "learning_rate": 3.030579064215999e-05,
+        "grad/global_norm_before_clip": 0.0688292419910431,
+        "data/frames": 71.42,
+        "prior/gt_conditioned": 0.7,
+        "write_ratio": {
+          "5": 0.15012966185808183,
+          "10": 0.1445782119035721,
+          "15": 0.04710844516754151,
+          "20": 0.04217014156281948,
+          "25": 0.07681063435971737,
+          "30": 0.0025407026382163168
+        },
+        "state_gate": {
+          "5": 0.9918155515193939,
+          "10": 0.00015197485161479562,
+          "15": 0.0015937466290779413,
+          "20": 4.0127762040356175e-05,
+          "25": 4.672637842304539e-06,
+          "30": 1.554137605808137e-07
+        }
+      },
+      "v42": {
+        "loss": {
+          "fm": 0.30522652143612505,
+          "struct": 1.4098362302780152,
+          "prior": 0.36308982895687225,
+          "write": 0.27565160811470546
+        },
+        "global_grad": 0.054434601217508316,
+        "modes": {
+          "i2v": {
+            "fm": 0.29031618892137584,
+            "fm_base": 0.30266102773991105,
+            "fm_delta": -0.012344838818535209
+          },
+          "t2v": {
+            "fm": 0.31898990529589355,
+            "fm_base": 0.33403417681200576,
+            "fm_delta": -0.01504427151611218
+          }
+        },
+        "interventions": {
+          "state5": {
+            "candidate_rms": 0.15773354128934444,
+            "actual_rms": 0.1569657751917839,
+            "compression": 0.9957881242036819,
+            "over_base": null,
+            "gate_mean": null
+          },
+          "state15": {
+            "candidate_rms": 0.09932773409876973,
+            "actual_rms": 0.09843517706729471,
+            "compression": 0.9922088034451008,
+            "over_base": null,
+            "gate_mean": null
+          },
+          "writer5": {
+            "candidate_rms": 0.009940780046163127,
+            "actual_rms": 0.007853006662917323,
+            "compression": 0.7759316875040532,
+            "over_base": 0.01271370988804847,
+            "gate_mean": 0.5236735783517361
+          },
+          "writer15": {
+            "candidate_rms": 0.018369691689731554,
+            "actual_rms": 0.0120248583285138,
+            "compression": 0.7179245770350099,
+            "over_base": 0.020136126955039798,
+            "gate_mean": 0.5368853753805161
+          },
+          "velocity": {
+            "candidate_rms": 0.08346098693087697,
+            "actual_rms": 0.06746715218760073,
+            "compression": 0.8213638304919004,
+            "over_base": 0.05234437494771555,
+            "gate_mean": null
+          }
+        }
+      }
+    },
+    {
+      "steps": [
+        451,
+        500
+      ],
+      "v4": {
+        "loss/fm": 0.24522090330719948,
+        "loss/struct": 1.473990831375122,
+        "loss/prior": 0.39509369611740114,
+        "loss/weighted_struct": 0.13324305161833763,
+        "loss/weighted_prior": 0.007901873718947173,
+        "loss/total": 0.3863658285140991,
+        "learning_rate": 1.1182188500242773e-05,
+        "grad/global_norm_before_clip": 0.05526331923902035,
+        "data/frames": 99.77,
+        "prior/gt_conditioned": 0.66,
+        "write_ratio": {
+          "5": 0.1494045799970627,
+          "10": 0.13436368986964226,
+          "15": 0.04889962889254093,
+          "20": 0.04127874668687582,
+          "25": 0.08390596330165863,
+          "30": 0.0030020435620099306
+        },
+        "state_gate": {
+          "5": 0.9928978204727172,
+          "10": 0.00015860063169384375,
+          "15": 0.001961235236376524,
+          "20": 4.135064635192975e-05,
+          "25": 4.783783633683925e-06,
+          "30": 1.6105303103586265e-07
+        }
+      },
+      "v42": {
+        "loss": {
+          "fm": 0.30187832343392074,
+          "struct": 1.346465321779251,
+          "prior": 0.34606927043758334,
+          "write": 0.2825437647330141
+        },
+        "global_grad": 0.05878722228109837,
+        "modes": {
+          "i2v": {
+            "fm": 0.2795364906450788,
+            "fm_base": 0.2920746656080473,
+            "fm_delta": -0.012538174962968503
+          },
+          "t2v": {
+            "fm": 0.32560212526124777,
+            "fm_base": 0.34153824944778816,
+            "fm_delta": -0.015936124186540387
+          }
+        },
+        "interventions": {
+          "state5": {
+            "candidate_rms": 0.183805783521384,
+            "actual_rms": 0.182525041596964,
+            "compression": 0.9942363554239273,
+            "over_base": null,
+            "gate_mean": null
+          },
+          "state15": {
+            "candidate_rms": 0.1079326347494498,
+            "actual_rms": 0.10464723738376051,
+            "compression": 0.9739677421748638,
+            "over_base": null,
+            "gate_mean": null
+          },
+          "writer5": {
+            "candidate_rms": 0.01143131116987206,
+            "actual_rms": 0.00858906241308432,
+            "compression": 0.7394098548963666,
+            "over_base": 0.01386372081004083,
+            "gate_mean": 0.5202050749957562
+          },
+          "writer15": {
+            "candidate_rms": 0.020311534916982055,
+            "actual_rms": 0.012760940009029583,
+            "compression": 0.6799968226626515,
+            "over_base": 0.0213199304160662,
+            "gate_mean": 0.543173638805747
+          },
+          "velocity": {
+            "candidate_rms": 0.0862311859568581,
+            "actual_rms": 0.06934808766003699,
+            "compression": 0.8112977323681116,
+            "over_base": 0.053496586694382134,
+            "gate_mean": null
+          }
+        }
+      }
+    },
+    {
+      "steps": [
+        551,
+        600
+      ],
+      "v42": {
+        "loss": {
+          "fm": 0.29933353600092233,
+          "struct": 1.3447674774378537,
+          "prior": 0.34232438910752533,
+          "write": 0.28945292567290337
+        },
+        "global_grad": 0.049690640792250634,
+        "modes": {
+          "i2v": {
+            "fm": 0.2703191775903858,
+            "fm_base": 0.2843412950522069,
+            "fm_delta": -0.014022117461821046
+          },
+          "t2v": {
+            "fm": 0.32777335266075514,
+            "fm_base": 0.34545862353821793,
+            "fm_delta": -0.017685270877462803
+          }
+        },
+        "interventions": {
+          "state5": {
+            "candidate_rms": 0.20148152761161328,
+            "actual_rms": 0.1997485083527863,
+            "compression": 0.9930054780840873,
+            "over_base": null,
+            "gate_mean": null
+          },
+          "state15": {
+            "candidate_rms": 0.12178156703710556,
+            "actual_rms": 0.11526387492194771,
+            "compression": 0.9525278967618942,
+            "over_base": null,
+            "gate_mean": null
+          },
+          "writer5": {
+            "candidate_rms": 0.009114322033710778,
+            "actual_rms": 0.00731550765922293,
+            "compression": 0.7890397397428751,
+            "over_base": 0.011789395078085362,
+            "gate_mean": 0.5145973287522793
+          },
+          "writer15": {
+            "candidate_rms": 0.020797761005815117,
+            "actual_rms": 0.012454280939418822,
+            "compression": 0.676637958753854,
+            "over_base": 0.02075842680875212,
+            "gate_mean": 0.5455722779780626
+          },
+          "velocity": {
+            "candidate_rms": 0.09211015396285802,
+            "actual_rms": 0.07156571008265018,
+            "compression": 0.7956925094127655,
+            "over_base": 0.05461561918724328,
+            "gate_mean": null
+          }
+        }
+      }
+    }
+  ],
+  "validation42": [
+    {
+      "event": "validation",
+      "step": 0,
+      "validation_loss": 0.346786729991436,
+      "base_loss": 0.346786729991436,
+      "count": 16,
+      "weights": "initial",
+      "improves": 0,
+      "fm_delta": 0.0,
+      "struct": 1.3591248989105225,
+      "prior": 0.3782423250377178,
+      "gt_conditioned": false,
+      "struct_definition": "raw_mse_actual_p5_p15_mean",
+      "writer_ablation": {
+        "cases": 4,
+        "mean_fm": {
+          "full": 0.20243661478161812,
+          "half": 0.20243661478161812,
+          "writer5_only": 0.20243661478161812,
+          "writer15_only": 0.20243661478161812,
+          "base": 0.20243661478161812
+        },
+        "caveat": "Paired GT-noised interventions; positive removal_gain means removal lowers FM, not proof of video improvement"
+      },
+      "paired_repair": {
+        "cases": 4,
+        "endpoint_velocity_mse": 0.20814451202750206,
+        "base_endpoint_velocity_mse": 0.20814451202750206
+      },
+      "by_mode": {
+        "i2v": {
+          "count": 8,
+          "corrected": 0.29719710908830166,
+          "base": 0.29719710908830166
+        },
+        "t2v": {
+          "count": 8,
+          "corrected": 0.39637635089457035,
+          "base": 0.39637635089457035
+        }
+      }
+    },
+    {
+      "event": "validation",
+      "step": 100,
+      "validation_loss": 0.33086255099624395,
+      "base_loss": 0.346786729991436,
+      "count": 16,
+      "weights": "raw",
+      "improves": 15,
+      "fm_delta": -0.01592417899519205,
+      "struct": 1.290829163044691,
+      "prior": 0.3154383609071374,
+      "gt_conditioned": false,
+      "struct_definition": "raw_mse_actual_p5_p15_mean",
+      "writer_ablation": {
+        "cases": 4,
+        "mean_fm": {
+          "full": 0.1902714278548956,
+          "half": 0.1950501725077629,
+          "writer5_only": 0.19610607996582985,
+          "writer15_only": 0.19392085075378418,
+          "base": 0.20243661478161812
+        },
+        "caveat": "Paired GT-noised interventions; positive removal_gain means removal lowers FM, not proof of video improvement"
+      },
+      "paired_repair": {
+        "cases": 4,
+        "endpoint_velocity_mse": 0.1958313062787056,
+        "base_endpoint_velocity_mse": 0.20814451202750206
+      },
+      "by_mode": {
+        "i2v": {
+          "count": 8,
+          "corrected": 0.2841299083083868,
+          "base": 0.29719710908830166
+        },
+        "t2v": {
+          "count": 8,
+          "corrected": 0.3775951936841011,
+          "base": 0.39637635089457035
+        }
+      }
+    },
+    {
+      "event": "validation",
+      "step": 100,
+      "validation_loss": 0.3406776310876012,
+      "base_loss": 0.346786729991436,
+      "count": 16,
+      "weights": "ema",
+      "improves": 15,
+      "fm_delta": -0.00610909890383482,
+      "struct": 1.3294595554471016,
+      "prior": 0.3667182712815702,
+      "gt_conditioned": false,
+      "struct_definition": "raw_mse_actual_p5_p15_mean",
+      "writer_ablation": {
+        "cases": 4,
+        "mean_fm": {
+          "full": 0.19894056022167206,
+          "half": 0.20058391243219376,
+          "writer5_only": 0.20116178691387177,
+          "writer15_only": 0.200014129281044,
+          "base": 0.20243661478161812
+        },
+        "caveat": "Paired GT-noised interventions; positive removal_gain means removal lowers FM, not proof of video improvement"
+      },
+      "paired_repair": {
+        "cases": 4,
+        "endpoint_velocity_mse": 0.20469322800636292,
+        "base_endpoint_velocity_mse": 0.20814451202750206
+      },
+      "by_mode": {
+        "i2v": {
+          "count": 8,
+          "corrected": 0.29315187968313694,
+          "base": 0.29719710908830166
+        },
+        "t2v": {
+          "count": 8,
+          "corrected": 0.38820338249206543,
+          "base": 0.39637635089457035
+        }
+      }
+    },
+    {
+      "event": "validation",
+      "step": 200,
+      "validation_loss": 0.3333764113485813,
+      "base_loss": 0.346786729991436,
+      "count": 16,
+      "weights": "raw",
+      "improves": 15,
+      "fm_delta": -0.01341031864285469,
+      "struct": 1.2833398468792439,
+      "prior": 0.3061476838774979,
+      "gt_conditioned": false,
+      "struct_definition": "raw_mse_actual_p5_p15_mean",
+      "writer_ablation": {
+        "cases": 4,
+        "mean_fm": {
+          "full": 0.19263197109103203,
+          "half": 0.1964641436934471,
+          "writer5_only": 0.19665531069040298,
+          "writer15_only": 0.19623641297221184,
+          "base": 0.20243661478161812
+        },
+        "caveat": "Paired GT-noised interventions; positive removal_gain means removal lowers FM, not proof of video improvement"
+      },
+      "paired_repair": {
+        "cases": 4,
+        "endpoint_velocity_mse": 0.1981734335422516,
+        "base_endpoint_velocity_mse": 0.20814451202750206
+      },
+      "by_mode": {
+        "i2v": {
+          "count": 8,
+          "corrected": 0.2867351155728102,
+          "base": 0.29719710908830166
+        },
+        "t2v": {
+          "count": 8,
+          "corrected": 0.38001770712435246,
+          "base": 0.39637635089457035
+        }
+      }
+    },
+    {
+      "event": "validation",
+      "step": 200,
+      "validation_loss": 0.336429497692734,
+      "base_loss": 0.346786729991436,
+      "count": 16,
+      "weights": "ema",
+      "improves": 15,
+      "fm_delta": -0.010357232298702002,
+      "struct": 1.3015758469700813,
+      "prior": 0.3400705438107252,
+      "gt_conditioned": false,
+      "struct_definition": "raw_mse_actual_p5_p15_mean",
+      "writer_ablation": {
+        "cases": 4,
+        "mean_fm": {
+          "full": 0.19533571600914001,
+          "half": 0.19854502752423286,
+          "writer5_only": 0.19906335324048996,
+          "writer15_only": 0.1978183202445507,
+          "base": 0.20243661478161812
+        },
+        "caveat": "Paired GT-noised interventions; positive removal_gain means removal lowers FM, not proof of video improvement"
+      },
+      "paired_repair": {
+        "cases": 4,
+        "endpoint_velocity_mse": 0.20102064311504364,
+        "base_endpoint_velocity_mse": 0.20814451202750206
+      },
+      "by_mode": {
+        "i2v": {
+          "count": 8,
+          "corrected": 0.2896299110725522,
+          "base": 0.29719710908830166
+        },
+        "t2v": {
+          "count": 8,
+          "corrected": 0.3832290843129158,
+          "base": 0.39637635089457035
+        }
+      }
+    },
+    {
+      "event": "validation",
+      "step": 300,
+      "validation_loss": 0.331434722058475,
+      "base_loss": 0.346786729991436,
+      "count": 16,
+      "weights": "raw",
+      "improves": 15,
+      "fm_delta": -0.015352007932960987,
+      "struct": 1.2746571525931358,
+      "prior": 0.305867575109005,
+      "gt_conditioned": false,
+      "struct_definition": "raw_mse_actual_p5_p15_mean",
+      "writer_ablation": {
+        "cases": 4,
+        "mean_fm": {
+          "full": 0.1915064975619316,
+          "half": 0.19543354213237762,
+          "writer5_only": 0.1962740272283554,
+          "writer15_only": 0.1948774829506874,
+          "base": 0.20243661478161812
+        },
+        "caveat": "Paired GT-noised interventions; positive removal_gain means removal lowers FM, not proof of video improvement"
+      },
+      "paired_repair": {
+        "cases": 4,
+        "endpoint_velocity_mse": 0.1968577690422535,
+        "base_endpoint_velocity_mse": 0.20814451202750206
+      },
+      "by_mode": {
+        "i2v": {
+          "count": 8,
+          "corrected": 0.2846781127154827,
+          "base": 0.29719710908830166
+        },
+        "t2v": {
+          "count": 8,
+          "corrected": 0.3781913314014673,
+          "base": 0.39637635089457035
+        }
+      }
+    },
+    {
+      "event": "validation",
+      "step": 300,
+      "validation_loss": 0.3346682204864919,
+      "base_loss": 0.346786729991436,
+      "count": 16,
+      "weights": "ema",
+      "improves": 15,
+      "fm_delta": -0.012118509504944086,
+      "struct": 1.287193477153778,
+      "prior": 0.31945071555674076,
+      "gt_conditioned": false,
+      "struct_definition": "raw_mse_actual_p5_p15_mean",
+      "writer_ablation": {
+        "cases": 4,
+        "mean_fm": {
+          "full": 0.1937713474035263,
+          "half": 0.1973641812801361,
+          "writer5_only": 0.19781508669257164,
+          "writer15_only": 0.1968781165778637,
+          "base": 0.20243661478161812
+        },
+        "caveat": "Paired GT-noised interventions; positive removal_gain means removal lowers FM, not proof of video improvement"
+      },
+      "paired_repair": {
+        "cases": 4,
+        "endpoint_velocity_mse": 0.19940778985619545,
+        "base_endpoint_velocity_mse": 0.20814451202750206
+      },
+      "by_mode": {
+        "i2v": {
+          "count": 8,
+          "corrected": 0.28805072139948606,
+          "base": 0.29719710908830166
+        },
+        "t2v": {
+          "count": 8,
+          "corrected": 0.38128571957349777,
+          "base": 0.39637635089457035
+        }
+      }
+    },
+    {
+      "event": "validation",
+      "step": 400,
+      "validation_loss": 0.33011838467791677,
+      "base_loss": 0.346786729991436,
+      "count": 16,
+      "weights": "raw",
+      "improves": 15,
+      "fm_delta": -0.01666834531351924,
+      "struct": 1.2646572925150394,
+      "prior": 0.30346886487677693,
+      "gt_conditioned": false,
+      "struct_definition": "raw_mse_actual_p5_p15_mean",
+      "writer_ablation": {
+        "cases": 4,
+        "mean_fm": {
+          "full": 0.1902284324169159,
+          "half": 0.195095457136631,
+          "writer5_only": 0.1968519613146782,
+          "writer15_only": 0.1932819001376629,
+          "base": 0.20243661478161812
+        },
+        "caveat": "Paired GT-noised interventions; positive removal_gain means removal lowers FM, not proof of video improvement"
+      },
+      "paired_repair": {
+        "cases": 4,
+        "endpoint_velocity_mse": 0.19560914672911167,
+        "base_endpoint_velocity_mse": 0.20814451202750206
+      },
+      "by_mode": {
+        "i2v": {
+          "count": 8,
+          "corrected": 0.28349892515689135,
+          "base": 0.29719710908830166
+        },
+        "t2v": {
+          "count": 8,
+          "corrected": 0.3767378441989422,
+          "base": 0.39637635089457035
+        }
+      }
+    },
+    {
+      "event": "validation",
+      "step": 400,
+      "validation_loss": 0.3332766038365662,
+      "base_loss": 0.346786729991436,
+      "count": 16,
+      "weights": "ema",
+      "improves": 15,
+      "fm_delta": -0.013510126154869795,
+      "struct": 1.2782727926969528,
+      "prior": 0.3106729299761355,
+      "gt_conditioned": false,
+      "struct_definition": "raw_mse_actual_p5_p15_mean",
+      "writer_ablation": {
+        "cases": 4,
+        "mean_fm": {
+          "full": 0.19274558126926422,
+          "half": 0.19658250361680984,
+          "writer5_only": 0.19726251810789108,
+          "writer15_only": 0.19587503746151924,
+          "base": 0.20243661478161812
+        },
+        "caveat": "Paired GT-noised interventions; positive removal_gain means removal lowers FM, not proof of video improvement"
+      },
+      "paired_repair": {
+        "cases": 4,
+        "endpoint_velocity_mse": 0.19826840609312057,
+        "base_endpoint_velocity_mse": 0.20814451202750206
+      },
+      "by_mode": {
+        "i2v": {
+          "count": 8,
+          "corrected": 0.28672582749277353,
+          "base": 0.29719710908830166
+        },
+        "t2v": {
+          "count": 8,
+          "corrected": 0.3798273801803589,
+          "base": 0.39637635089457035
+        }
+      }
+    },
+    {
+      "event": "validation",
+      "step": 500,
+      "validation_loss": 0.3294129248242825,
+      "base_loss": 0.346786729991436,
+      "count": 16,
+      "weights": "raw",
+      "improves": 15,
+      "fm_delta": -0.017373805167153478,
+      "struct": 1.255498604848981,
+      "prior": 0.3013025471009314,
+      "gt_conditioned": false,
+      "struct_definition": "raw_mse_actual_p5_p15_mean",
+      "writer_ablation": {
+        "cases": 4,
+        "mean_fm": {
+          "full": 0.18984552845358849,
+          "half": 0.1946829855442047,
+          "writer5_only": 0.19735874608159065,
+          "writer15_only": 0.19237861037254333,
+          "base": 0.20243661478161812
+        },
+        "caveat": "Paired GT-noised interventions; positive removal_gain means removal lowers FM, not proof of video improvement"
+      },
+      "paired_repair": {
+        "cases": 4,
+        "endpoint_velocity_mse": 0.19516830518841743,
+        "base_endpoint_velocity_mse": 0.20814451202750206
+      },
+      "by_mode": {
+        "i2v": {
+          "count": 8,
+          "corrected": 0.28301630867645144,
+          "base": 0.29719710908830166
+        },
+        "t2v": {
+          "count": 8,
+          "corrected": 0.3758095409721136,
+          "base": 0.39637635089457035
+        }
+      }
+    },
+    {
+      "event": "validation",
+      "step": 500,
+      "validation_loss": 0.3321792804636061,
+      "base_loss": 0.346786729991436,
+      "count": 16,
+      "weights": "ema",
+      "improves": 15,
+      "fm_delta": -0.014607449527829885,
+      "struct": 1.2675875686109066,
+      "prior": 0.30652214912697673,
+      "gt_conditioned": false,
+      "struct_definition": "raw_mse_actual_p5_p15_mean",
+      "writer_ablation": {
+        "cases": 4,
+        "mean_fm": {
+          "full": 0.1920088231563568,
+          "half": 0.1960972212255001,
+          "writer5_only": 0.19706619530916214,
+          "writer15_only": 0.19516468793153763,
+          "base": 0.20243661478161812
+        },
+        "caveat": "Paired GT-noised interventions; positive removal_gain means removal lowers FM, not proof of video improvement"
+      },
+      "paired_repair": {
+        "cases": 4,
+        "endpoint_velocity_mse": 0.19751149788498878,
+        "base_endpoint_velocity_mse": 0.20814451202750206
+      },
+      "by_mode": {
+        "i2v": {
+          "count": 8,
+          "corrected": 0.2856167024001479,
+          "base": 0.29719710908830166
+        },
+        "t2v": {
+          "count": 8,
+          "corrected": 0.3787418585270643,
+          "base": 0.39637635089457035
+        }
+      }
+    },
+    {
+      "event": "validation",
+      "step": 600,
+      "validation_loss": 0.3288557566702366,
+      "base_loss": 0.346786729991436,
+      "count": 16,
+      "weights": "raw",
+      "improves": 15,
+      "fm_delta": -0.017930973321199417,
+      "struct": 1.2504005283117294,
+      "prior": 0.30264891823753715,
+      "gt_conditioned": false,
+      "struct_definition": "raw_mse_actual_p5_p15_mean",
+      "writer_ablation": {
+        "cases": 4,
+        "mean_fm": {
+          "full": 0.18920539133250713,
+          "half": 0.19419457390904427,
+          "writer5_only": 0.19690046831965446,
+          "writer15_only": 0.19183457270264626,
+          "base": 0.20243661478161812
+        },
+        "caveat": "Paired GT-noised interventions; positive removal_gain means removal lowers FM, not proof of video improvement"
+      },
+      "paired_repair": {
+        "cases": 4,
+        "endpoint_velocity_mse": 0.19467065669596195,
+        "base_endpoint_velocity_mse": 0.20814451202750206
+      },
+      "by_mode": {
+        "i2v": {
+          "count": 8,
+          "corrected": 0.282531775534153,
+          "base": 0.29719710908830166
+        },
+        "t2v": {
+          "count": 8,
+          "corrected": 0.3751797378063202,
+          "base": 0.39637635089457035
+        }
+      }
+    },
+    {
+      "event": "validation",
+      "step": 600,
+      "validation_loss": 0.3309618467465043,
+      "base_loss": 0.346786729991436,
+      "count": 16,
+      "weights": "ema",
+      "improves": 15,
+      "fm_delta": -0.015824883244931698,
+      "struct": 1.2570698615163565,
+      "prior": 0.3039714703336358,
+      "gt_conditioned": false,
+      "struct_definition": "raw_mse_actual_p5_p15_mean",
+      "writer_ablation": {
+        "cases": 4,
+        "mean_fm": {
+          "full": 0.1911326628178358,
+          "half": 0.19561052694916725,
+          "writer5_only": 0.19689980894327164,
+          "writer15_only": 0.19423827156424522,
+          "base": 0.20243661478161812
+        },
+        "caveat": "Paired GT-noised interventions; positive removal_gain means removal lowers FM, not proof of video improvement"
+      },
+      "paired_repair": {
+        "cases": 4,
+        "endpoint_velocity_mse": 0.19661136344075203,
+        "base_endpoint_velocity_mse": 0.20814451202750206
+      },
+      "by_mode": {
+        "i2v": {
+          "count": 8,
+          "corrected": 0.2843943778425455,
+          "base": 0.29719710908830166
+        },
+        "t2v": {
+          "count": 8,
+          "corrected": 0.3775293156504631,
+          "base": 0.39637635089457035
+        }
+      }
+    }
+  ],
+  "clipping42": {
+    "count": 400,
+    "triggered": 1,
+    "max_norm": 1.7478426694869995
+  },
+  "gradients42": {
+    "scope": "first micro only, every 25 steps, steps 101..400",
+    "count": 12,
+    "groups": {
+      "core5": {
+        "fm_norm": 0.0004750294558562018,
+        "auxiliary_norm": 0.004339576247730292,
+        "cosine": -0.09714055511479576,
+        "conflicts": 9,
+        "joint_opposes_fm": 6
+      },
+      "core15": {
+        "fm_norm": 0.000767965824707062,
+        "auxiliary_norm": 0.0014391593237329896,
+        "cosine": -0.35300073493272066,
+        "conflicts": 12,
+        "joint_opposes_fm": 6
+      },
+      "text_init": {
+        "fm_norm": 0.0008399556445510825,
+        "auxiliary_norm": 0.010395010700449347,
+        "cosine": -0.04880614939126341,
+        "conflicts": 10,
+        "joint_opposes_fm": 5
+      },
+      "writer5": {
+        "fm_norm": 0.011486042678977052,
+        "auxiliary_norm": 0.008071256374629835,
+        "cosine": -0.21499521114553014,
+        "conflicts": 11,
+        "joint_opposes_fm": 1
+      },
+      "writer15": {
+        "fm_norm": 0.006068722306129833,
+        "auxiliary_norm": 0.0047279513091780245,
+        "cosine": -0.5108567745774053,
+        "conflicts": 12,
+        "joint_opposes_fm": 2
+      }
+    }
+  },
+  "health400_by_case": [
+    {
+      "id": "source0002131",
+      "mode": "i2v",
+      "sigma": 0.9800000190734863,
+      "fm": 0.13024739921092987,
+      "base": 0.12792085111141205,
+      "delta": 0.0023265480995178223,
+      "struct": 0.6733571290969849
+    },
+    {
+      "id": "source0000693",
+      "mode": "t2v",
+      "sigma": 0.8500000238418579,
+      "fm": 0.2275904268026352,
+      "base": 0.2528618276119232,
+      "delta": -0.025271400809288025,
+      "struct": 1.7442371845245361
+    },
+    {
+      "id": "source0001925",
+      "mode": "i2v",
+      "sigma": 0.6000000238418579,
+      "fm": 0.1258748471736908,
+      "base": 0.135172039270401,
+      "delta": -0.009297192096710205,
+      "struct": 0.5037884712219238
+    },
+    {
+      "id": "source0001665",
+      "mode": "t2v",
+      "sigma": 0.3499999940395355,
+      "fm": 0.287269651889801,
+      "base": 0.2937917411327362,
+      "delta": -0.006522089242935181,
+      "struct": 1.6128287315368652
+    },
+    {
+      "id": "source0000596",
+      "mode": "i2v",
+      "sigma": 0.10000000149011612,
+      "fm": 0.5533819794654846,
+      "base": 0.5591093897819519,
+      "delta": -0.005727410316467285,
+      "struct": 1.0023670196533203
+    },
+    {
+      "id": "source0002318",
+      "mode": "t2v",
+      "sigma": 0.9800000190734863,
+      "fm": 0.8468571305274963,
+      "base": 0.8643671870231628,
+      "delta": -0.017510056495666504,
+      "struct": 1.8208258152008057
+    },
+    {
+      "id": "source0000128",
+      "mode": "i2v",
+      "sigma": 0.8500000238418579,
+      "fm": 0.07732418179512024,
+      "base": 0.1173127219080925,
+      "delta": -0.03998854011297226,
+      "struct": 0.6336240172386169
+    },
+    {
+      "id": "source0001226",
+      "mode": "t2v",
+      "sigma": 0.6000000238418579,
+      "fm": 0.16562627255916595,
+      "base": 0.17825207114219666,
+      "delta": -0.0126257985830307,
+      "struct": 1.7882773876190186
+    },
+    {
+      "id": "source0001485",
+      "mode": "i2v",
+      "sigma": 0.3499999940395355,
+      "fm": 0.304218053817749,
+      "base": 0.31045377254486084,
+      "delta": -0.006235718727111816,
+      "struct": 0.9884943962097168
+    },
+    {
+      "id": "source0001284",
+      "mode": "t2v",
+      "sigma": 0.10000000149011612,
+      "fm": 0.45824238657951355,
+      "base": 0.4626060128211975,
+      "delta": -0.00436362624168396,
+      "struct": 1.7704966068267822
+    },
+    {
+      "id": "source0002385",
+      "mode": "i2v",
+      "sigma": 0.9800000190734863,
+      "fm": 0.5705355405807495,
+      "base": 0.585407555103302,
+      "delta": -0.01487201452255249,
+      "struct": 1.4022369384765625
+    },
+    {
+      "id": "source0001927",
+      "mode": "t2v",
+      "sigma": 0.8500000238418579,
+      "fm": 0.2748320996761322,
+      "base": 0.30702510476112366,
+      "delta": -0.032193005084991455,
+      "struct": 1.5930137634277344
+    },
+    {
+      "id": "source0001544",
+      "mode": "i2v",
+      "sigma": 0.6000000238418579,
+      "fm": 0.10734357684850693,
+      "base": 0.11420369893312454,
+      "delta": -0.006860122084617615,
+      "struct": 0.7907968163490295
+    },
+    {
+      "id": "source0000012",
+      "mode": "t2v",
+      "sigma": 0.3499999940395355,
+      "fm": 0.18675360083580017,
+      "base": 0.19460584223270416,
+      "delta": -0.007852241396903992,
+      "struct": 1.6778820753097534
+    },
+    {
+      "id": "source0001917",
+      "mode": "i2v",
+      "sigma": 0.10000000149011612,
+      "fm": 0.4248810410499573,
+      "base": 0.42799684405326843,
+      "delta": -0.0031158030033111572,
+      "struct": 0.6604793071746826
+    },
+    {
+      "id": "source0002201",
+      "mode": "t2v",
+      "sigma": 0.9800000190734863,
+      "fm": 0.5914474725723267,
+      "base": 0.6175010204315186,
+      "delta": -0.026053547859191895,
+      "struct": 1.789659023284912
+    }
+  ],
+  "generation42": {
+    "P01_i2v": {
+      "writer5": {
+        "compression": 0.7436730831861496,
+        "over_base": 0.00864984853193164,
+        "gate_mean": 0.5195036244392395
+      },
+      "writer15": {
+        "compression": 0.6693434917926788,
+        "over_base": 0.01808800471946597,
+        "gate_mean": 0.543568080663681
+      },
+      "velocity": {
+        "compression": 0.801161248087883,
+        "over_base": 0.0380902755074203,
+        "gate_mean": null
+      },
+      "cfg_alignment_keys": [
+        "delta_guidance_cosine",
+        "delta_over_guidance_rms",
+        "caveat"
+      ],
+      "cfg_alignment": {
+        "delta_guidance_cosine": -0.21844942979514598,
+        "delta_over_guidance_rms": 0.756179019510746
+      }
+    },
+    "P01_t2v": {
+      "writer5": {
+        "compression": 0.7281447792053223,
+        "over_base": 0.010016445470973849,
+        "gate_mean": 0.522715448141098
+      },
+      "writer15": {
+        "compression": 0.6421837151050568,
+        "over_base": 0.020664112996309995,
+        "gate_mean": 0.5512060463428498
+      },
+      "velocity": {
+        "compression": 0.8250782960653305,
+        "over_base": 0.0433623218908906,
+        "gate_mean": null
+      },
+      "cfg_alignment_keys": [
+        "delta_guidance_cosine",
+        "delta_over_guidance_rms",
+        "caveat"
+      ],
+      "cfg_alignment": {
+        "delta_guidance_cosine": -0.19312442146241665,
+        "delta_over_guidance_rms": 0.9065257538855076
+      }
+    },
+    "P02_i2v": {
+      "writer5": {
+        "compression": 0.7617765659093857,
+        "over_base": 0.008224219158291817,
+        "gate_mean": 0.518680260181427
+      },
+      "writer15": {
+        "compression": 0.6855997878313065,
+        "over_base": 0.017431008238345383,
+        "gate_mean": 0.5425798952579498
+      },
+      "velocity": {
+        "compression": 0.814530146420002,
+        "over_base": 0.03397742122411728,
+        "gate_mean": null
+      },
+      "cfg_alignment_keys": [
+        "delta_guidance_cosine",
+        "delta_over_guidance_rms",
+        "caveat"
+      ],
+      "cfg_alignment": {
+        "delta_guidance_cosine": -0.2534244921058416,
+        "delta_over_guidance_rms": 0.7757389444112778
+      }
+    },
+    "P02_t2v": {
+      "writer5": {
+        "compression": 0.7371106386184693,
+        "over_base": 0.00986865647137165,
+        "gate_mean": 0.5227015089988708
+      },
+      "writer15": {
+        "compression": 0.6597229766845704,
+        "over_base": 0.019883920904248953,
+        "gate_mean": 0.5497456789016724
+      },
+      "velocity": {
+        "compression": 0.8489198482036591,
+        "over_base": 0.03667888857424259,
+        "gate_mean": null
+      },
+      "cfg_alignment_keys": [
+        "delta_guidance_cosine",
+        "delta_over_guidance_rms",
+        "caveat"
+      ],
+      "cfg_alignment": {
+        "delta_guidance_cosine": -0.22071130402386188,
+        "delta_over_guidance_rms": 0.8952765427529812
+      }
+    },
+    "P03_i2v": {
+      "writer5": {
+        "compression": 0.7505100333690643,
+        "over_base": 0.008501435406506061,
+        "gate_mean": 0.519455280303955
+      },
+      "writer15": {
+        "compression": 0.670561603307724,
+        "over_base": 0.01799248602241278,
+        "gate_mean": 0.5441680085659027
+      },
+      "velocity": {
+        "compression": 0.805665257871151,
+        "over_base": 0.03674035854637623,
+        "gate_mean": null
+      },
+      "cfg_alignment_keys": [
+        "delta_guidance_cosine",
+        "delta_over_guidance_rms",
+        "caveat"
+      ],
+      "cfg_alignment": {
+        "delta_guidance_cosine": -0.2490675888955593,
+        "delta_over_guidance_rms": 0.7143714049458504
+      }
+    },
+    "P03_t2v": {
+      "writer5": {
+        "compression": 0.7396193009614944,
+        "over_base": 0.009762750286608935,
+        "gate_mean": 0.5226985442638398
+      },
+      "writer15": {
+        "compression": 0.6610702538490295,
+        "over_base": 0.019798762276768685,
+        "gate_mean": 0.5497280251979828
+      },
+      "velocity": {
+        "compression": 0.8400152516365051,
+        "over_base": 0.038806319907307624,
+        "gate_mean": null
+      },
+      "cfg_alignment_keys": [
+        "delta_guidance_cosine",
+        "delta_over_guidance_rms",
+        "caveat"
+      ],
+      "cfg_alignment": {
+        "delta_guidance_cosine": -0.23448589324951172,
+        "delta_over_guidance_rms": 0.7909038665890694
+      }
+    },
+    "P04_i2v": {
+      "writer5": {
+        "compression": 0.7505337727069855,
+        "over_base": 0.008498838813975453,
+        "gate_mean": 0.519012633562088
+      },
+      "writer15": {
+        "compression": 0.6882736295461654,
+        "over_base": 0.01738162375986576,
+        "gate_mean": 0.5411440885066986
+      },
+      "velocity": {
+        "compression": 0.8171548002958298,
+        "over_base": 0.035358545854687694,
+        "gate_mean": null
+      },
+      "cfg_alignment_keys": [
+        "delta_guidance_cosine",
+        "delta_over_guidance_rms",
+        "caveat"
+      ],
+      "cfg_alignment": {
+        "delta_guidance_cosine": -0.24589689940214157,
+        "delta_over_guidance_rms": 0.702669095993042
+      }
+    },
+    "P04_t2v": {
+      "writer5": {
+        "compression": 0.733219907283783,
+        "over_base": 0.009898412451148033,
+        "gate_mean": 0.5227007234096527
+      },
+      "writer15": {
+        "compression": 0.6606457579135895,
+        "over_base": 0.0199206561781466,
+        "gate_mean": 0.5496781146526337
+      },
+      "velocity": {
+        "compression": 0.8533470261096955,
+        "over_base": 0.03655419040471315,
+        "gate_mean": null
+      },
+      "cfg_alignment_keys": [
+        "delta_guidance_cosine",
+        "delta_over_guidance_rms",
+        "caveat"
+      ],
+      "cfg_alignment": {
+        "delta_guidance_cosine": -0.15670724721625448,
+        "delta_over_guidance_rms": 0.8484285531193018
+      }
+    },
+    "P05_i2v": {
+      "writer5": {
+        "compression": 0.7342341750860214,
+        "over_base": 0.009001573082059622,
+        "gate_mean": 0.5201449251174927
+      },
+      "writer15": {
+        "compression": 0.6669522243738174,
+        "over_base": 0.01829777895472944,
+        "gate_mean": 0.5428361093997955
+      },
+      "velocity": {
+        "compression": 0.7847508120536805,
+        "over_base": 0.04109963804483414,
+        "gate_mean": null
+      },
+      "cfg_alignment_keys": [
+        "delta_guidance_cosine",
+        "delta_over_guidance_rms",
+        "caveat"
+      ],
+      "cfg_alignment": {
+        "delta_guidance_cosine": -0.2500904430449009,
+        "delta_over_guidance_rms": 0.7975928318500519
+      }
+    },
+    "P05_t2v": {
+      "writer5": {
+        "compression": 0.7175652182102203,
+        "over_base": 0.010337736671790481,
+        "gate_mean": 0.5227142179012298
+      },
+      "writer15": {
+        "compression": 0.6510725051164628,
+        "over_base": 0.02062922950834036,
+        "gate_mean": 0.5477618432044983
+      },
+      "velocity": {
+        "compression": 0.8396751958131791,
+        "over_base": 0.041983869411051276,
+        "gate_mean": null
+      },
+      "cfg_alignment_keys": [
+        "delta_guidance_cosine",
+        "delta_over_guidance_rms",
+        "caveat"
+      ],
+      "cfg_alignment": {
+        "delta_guidance_cosine": -0.0816354701295495,
+        "delta_over_guidance_rms": 1.0486832270771265
+      }
+    },
+    "P06_i2v": {
+      "writer5": {
+        "compression": 0.7489299958944321,
+        "over_base": 0.008572883522138,
+        "gate_mean": 0.5194460427761078
+      },
+      "writer15": {
+        "compression": 0.6732788866758347,
+        "over_base": 0.01793758653104305,
+        "gate_mean": 0.5431566679477692
+      },
+      "velocity": {
+        "compression": 0.8122216308116913,
+        "over_base": 0.03686829138547182,
+        "gate_mean": null
+      },
+      "cfg_alignment_keys": [
+        "delta_guidance_cosine",
+        "delta_over_guidance_rms",
+        "caveat"
+      ],
+      "cfg_alignment": {
+        "delta_guidance_cosine": -0.2680685131903738,
+        "delta_over_guidance_rms": 0.7530468866229058
+      }
+    },
+    "P06_t2v": {
+      "writer5": {
+        "compression": 0.7388539683818817,
+        "over_base": 0.009778029676526785,
+        "gate_mean": 0.5226950788497925
+      },
+      "writer15": {
+        "compression": 0.6573616099357605,
+        "over_base": 0.01996423227712512,
+        "gate_mean": 0.5503008699417115
+      },
+      "velocity": {
+        "compression": 0.8382934844493866,
+        "over_base": 0.03918684832751751,
+        "gate_mean": null
+      },
+      "cfg_alignment_keys": [
+        "delta_guidance_cosine",
+        "delta_over_guidance_rms",
+        "caveat"
+      ],
+      "cfg_alignment": {
+        "delta_guidance_cosine": -0.22766108810901642,
+        "delta_over_guidance_rms": 0.8901294420659542
+      }
+    },
+    "P07_i2v": {
+      "writer5": {
+        "compression": 0.7549719101190567,
+        "over_base": 0.008425433840602636,
+        "gate_mean": 0.5195907819271087
+      },
+      "writer15": {
+        "compression": 0.6825764846801757,
+        "over_base": 0.017533793486654757,
+        "gate_mean": 0.5432422649860382
+      },
+      "velocity": {
+        "compression": 0.811956652700901,
+        "over_base": 0.0337081016600132,
+        "gate_mean": null
+      },
+      "cfg_alignment_keys": [
+        "delta_guidance_cosine",
+        "delta_over_guidance_rms",
+        "caveat"
+      ],
+      "cfg_alignment": {
+        "delta_guidance_cosine": -0.28308880954980853,
+        "delta_over_guidance_rms": 0.7190706847608089
+      }
+    },
+    "P07_t2v": {
+      "writer5": {
+        "compression": 0.7405641263723374,
+        "over_base": 0.009748825207352638,
+        "gate_mean": 0.5226941931247712
+      },
+      "writer15": {
+        "compression": 0.6595308250188827,
+        "over_base": 0.019893990885466336,
+        "gate_mean": 0.5502535724639892
+      },
+      "velocity": {
+        "compression": 0.8455424153804779,
+        "over_base": 0.036916903108358386,
+        "gate_mean": null
+      },
+      "cfg_alignment_keys": [
+        "delta_guidance_cosine",
+        "delta_over_guidance_rms",
+        "caveat"
+      ],
+      "cfg_alignment": {
+        "delta_guidance_cosine": -0.1908918109536171,
+        "delta_over_guidance_rms": 0.9230811300873757
+      }
+    },
+    "P08_i2v": {
+      "writer5": {
+        "compression": 0.7489106404781342,
+        "over_base": 0.00852403685450554,
+        "gate_mean": 0.5185367286205291
+      },
+      "writer15": {
+        "compression": 0.687024290561676,
+        "over_base": 0.017507722098380328,
+        "gate_mean": 0.5396993505954742
+      },
+      "velocity": {
+        "compression": 0.7959803771972657,
+        "over_base": 0.03634129751473665,
+        "gate_mean": null
+      },
+      "cfg_alignment_keys": [
+        "delta_guidance_cosine",
+        "delta_over_guidance_rms",
+        "caveat"
+      ],
+      "cfg_alignment": {
+        "delta_guidance_cosine": -0.16167091581970452,
+        "delta_over_guidance_rms": 0.8600791752338409
+      }
+    },
+    "P08_t2v": {
+      "writer5": {
+        "compression": 0.7293097603321076,
+        "over_base": 0.010045701190829277,
+        "gate_mean": 0.5226907813549042
+      },
+      "writer15": {
+        "compression": 0.661391869187355,
+        "over_base": 0.019998737890273333,
+        "gate_mean": 0.5483220946788788
+      },
+      "velocity": {
+        "compression": 0.8430391442775726,
+        "over_base": 0.03728849735110998,
+        "gate_mean": null
+      },
+      "cfg_alignment_keys": [
+        "delta_guidance_cosine",
+        "delta_over_guidance_rms",
+        "caveat"
+      ],
+      "cfg_alignment": {
+        "delta_guidance_cosine": -0.12332695731893181,
+        "delta_over_guidance_rms": 1.0437399730086327
+      }
+    },
+    "P09_i2v": {
+      "writer5": {
+        "compression": 0.7563114827871322,
+        "over_base": 0.008379650609567761,
+        "gate_mean": 0.5184125709533691
+      },
+      "writer15": {
+        "compression": 0.6956871563196182,
+        "over_base": 0.01712337219156325,
+        "gate_mean": 0.5393943262100219
+      },
+      "velocity": {
+        "compression": 0.8042730462551116,
+        "over_base": 0.03657477550208568,
+        "gate_mean": null
+      },
+      "cfg_alignment_keys": [
+        "delta_guidance_cosine",
+        "delta_over_guidance_rms",
+        "caveat"
+      ],
+      "cfg_alignment": {
+        "delta_guidance_cosine": -0.16652975580655038,
+        "delta_over_guidance_rms": 0.75059664696455
+      }
+    },
+    "P09_t2v": {
+      "writer5": {
+        "compression": 0.7389193624258041,
+        "over_base": 0.009862520312890411,
+        "gate_mean": 0.5226931095123291
+      },
+      "writer15": {
+        "compression": 0.6681268721818924,
+        "over_base": 0.019787100218236445,
+        "gate_mean": 0.5483803451061249
+      },
+      "velocity": {
+        "compression": 0.8568491852283477,
+        "over_base": 0.036183517016470435,
+        "gate_mean": null
+      },
+      "cfg_alignment_keys": [
+        "delta_guidance_cosine",
+        "delta_over_guidance_rms",
+        "caveat"
+      ],
+      "cfg_alignment": {
+        "delta_guidance_cosine": -0.17272999361157418,
+        "delta_over_guidance_rms": 0.9154913274943829
+      }
+    },
+    "P10_i2v": {
+      "writer5": {
+        "compression": 0.7464906519651413,
+        "over_base": 0.008610677495598794,
+        "gate_mean": 0.5191013932228088
+      },
+      "writer15": {
+        "compression": 0.6919205981492996,
+        "over_base": 0.017321184435859324,
+        "gate_mean": 0.5400809049606323
+      },
+      "velocity": {
+        "compression": 0.8014165303111076,
+        "over_base": 0.03555510811507702,
+        "gate_mean": null
+      },
+      "cfg_alignment_keys": [
+        "delta_guidance_cosine",
+        "delta_over_guidance_rms",
+        "caveat"
+      ],
+      "cfg_alignment": {
+        "delta_guidance_cosine": -0.1609611583314836,
+        "delta_over_guidance_rms": 0.9833538839221001
+      }
+    },
+    "P10_t2v": {
+      "writer5": {
+        "compression": 0.7396126455068588,
+        "over_base": 0.009800929855555297,
+        "gate_mean": 0.5226965057849884
+      },
+      "writer15": {
+        "compression": 0.6602989262342454,
+        "over_base": 0.019909826051443816,
+        "gate_mean": 0.549953351020813
+      },
+      "velocity": {
+        "compression": 0.8575664055347443,
+        "over_base": 0.036238700039684775,
+        "gate_mean": null
+      },
+      "cfg_alignment_keys": [
+        "delta_guidance_cosine",
+        "delta_over_guidance_rms",
+        "caveat"
+      ],
+      "cfg_alignment": {
+        "delta_guidance_cosine": -0.22496251225471497,
+        "delta_over_guidance_rms": 0.868972502052784
+      }
+    },
+    "P11_i2v": {
+      "writer5": {
+        "compression": 0.7485637581348419,
+        "over_base": 0.008557273549959063,
+        "gate_mean": 0.5193659961223602
+      },
+      "writer15": {
+        "compression": 0.6684731811285018,
+        "over_base": 0.018173927906900644,
+        "gate_mean": 0.544023631811142
+      },
+      "velocity": {
+        "compression": 0.8104879128932952,
+        "over_base": 0.03571370497345924,
+        "gate_mean": null
+      },
+      "cfg_alignment_keys": [
+        "delta_guidance_cosine",
+        "delta_over_guidance_rms",
+        "caveat"
+      ],
+      "cfg_alignment": {
+        "delta_guidance_cosine": -0.26958071008324624,
+        "delta_over_guidance_rms": 0.7734062325954437
+      }
+    },
+    "P11_t2v": {
+      "writer5": {
+        "compression": 0.7261606121063232,
+        "over_base": 0.010107588665559887,
+        "gate_mean": 0.5226983177661896
+      },
+      "writer15": {
+        "compression": 0.645336240530014,
+        "over_base": 0.020578064117580654,
+        "gate_mean": 0.5499456870555878
+      },
+      "velocity": {
+        "compression": 0.8272794198989868,
+        "over_base": 0.04169695399701595,
+        "gate_mean": null
+      },
+      "cfg_alignment_keys": [
+        "delta_guidance_cosine",
+        "delta_over_guidance_rms",
+        "caveat"
+      ],
+      "cfg_alignment": {
+        "delta_guidance_cosine": -0.15807449385523797,
+        "delta_over_guidance_rms": 0.9243603943288327
+      }
+    },
+    "P12_i2v": {
+      "writer5": {
+        "compression": 0.7436817711591721,
+        "over_base": 0.008798303990624845,
+        "gate_mean": 0.5192763161659241
+      },
+      "writer15": {
+        "compression": 0.7024283450841904,
+        "over_base": 0.017175084566697477,
+        "gate_mean": 0.5384845352172851
+      },
+      "velocity": {
+        "compression": 0.8179875063896179,
+        "over_base": 0.03599541407078505,
+        "gate_mean": null
+      },
+      "cfg_alignment_keys": [
+        "delta_guidance_cosine",
+        "delta_over_guidance_rms",
+        "caveat"
+      ],
+      "cfg_alignment": {
+        "delta_guidance_cosine": -0.10127602569758892,
+        "delta_over_guidance_rms": 1.111669064760208
+      }
+    },
+    "P12_t2v": {
+      "writer5": {
+        "compression": 0.7189017069339753,
+        "over_base": 0.01038411222398281,
+        "gate_mean": 0.5227023696899414
+      },
+      "writer15": {
+        "compression": 0.6559273946285248,
+        "over_base": 0.02047391563653946,
+        "gate_mean": 0.5474774897098541
+      },
+      "velocity": {
+        "compression": 0.8404188740253449,
+        "over_base": 0.04230838771909475,
+        "gate_mean": null
+      },
+      "cfg_alignment_keys": [
+        "delta_guidance_cosine",
+        "delta_over_guidance_rms",
+        "caveat"
+      ],
+      "cfg_alignment": {
+        "delta_guidance_cosine": -0.12580547235906125,
+        "delta_over_guidance_rms": 0.8872655359655619
+      }
+    },
+    "P13_i2v": {
+      "writer5": {
+        "compression": 0.7525109893083572,
+        "over_base": 0.0084376906696707,
+        "gate_mean": 0.5193549370765687
+      },
+      "writer15": {
+        "compression": 0.6797538530826569,
+        "over_base": 0.0176046222448349,
+        "gate_mean": 0.5429632723331451
+      },
+      "velocity": {
+        "compression": 0.8006714564561844,
+        "over_base": 0.03594607930630445,
+        "gate_mean": null
+      },
+      "cfg_alignment_keys": [
+        "delta_guidance_cosine",
+        "delta_over_guidance_rms",
+        "caveat"
+      ],
+      "cfg_alignment": {
+        "delta_guidance_cosine": -0.3044885462522507,
+        "delta_over_guidance_rms": 0.7103940045833588
+      }
+    },
+    "P13_t2v": {
+      "writer5": {
+        "compression": 0.7301794588565826,
+        "over_base": 0.009984829174354672,
+        "gate_mean": 0.522701951265335
+      },
+      "writer15": {
+        "compression": 0.6555635088682175,
+        "over_base": 0.020100873503834008,
+        "gate_mean": 0.5497526407241822
+      },
+      "velocity": {
+        "compression": 0.8468487912416458,
+        "over_base": 0.03692497294396162,
+        "gate_mean": null
+      },
+      "cfg_alignment_keys": [
+        "delta_guidance_cosine",
+        "delta_over_guidance_rms",
+        "caveat"
+      ],
+      "cfg_alignment": {
+        "delta_guidance_cosine": -0.17970721708610654,
+        "delta_over_guidance_rms": 0.8683061540126801
+      }
+    },
+    "P14_i2v": {
+      "writer5": {
+        "compression": 0.75444666326046,
+        "over_base": 0.008401591647416353,
+        "gate_mean": 0.5191487002372742
+      },
+      "writer15": {
+        "compression": 0.6916754364967346,
+        "over_base": 0.017199593307450415,
+        "gate_mean": 0.5414361298084259
+      },
+      "velocity": {
+        "compression": 0.8085664081573486,
+        "over_base": 0.03512414988130331,
+        "gate_mean": null
+      },
+      "cfg_alignment_keys": [
+        "delta_guidance_cosine",
+        "delta_over_guidance_rms",
+        "caveat"
+      ],
+      "cfg_alignment": {
+        "delta_guidance_cosine": -0.26787618555128573,
+        "delta_over_guidance_rms": 0.6561442595720292
+      }
+    },
+    "P14_t2v": {
+      "writer5": {
+        "compression": 0.7355493801832199,
+        "over_base": 0.009878280330449343,
+        "gate_mean": 0.5227025306224823
+      },
+      "writer15": {
+        "compression": 0.6640968543291091,
+        "over_base": 0.019858915600925686,
+        "gate_mean": 0.5497594594955444
+      },
+      "velocity": {
+        "compression": 0.8642931866645813,
+        "over_base": 0.03493718914687634,
+        "gate_mean": null
+      },
+      "cfg_alignment_keys": [
+        "delta_guidance_cosine",
+        "delta_over_guidance_rms",
+        "caveat"
+      ],
+      "cfg_alignment": {
+        "delta_guidance_cosine": -0.12388211833313108,
+        "delta_over_guidance_rms": 0.8493474609404802
+      }
+    },
+    "P15_i2v": {
+      "writer5": {
+        "compression": 0.747347240447998,
+        "over_base": 0.00861369582824409,
+        "gate_mean": 0.5194532740116119
+      },
+      "writer15": {
+        "compression": 0.6710983663797379,
+        "over_base": 0.018112619929015635,
+        "gate_mean": 0.5435225927829742
+      },
+      "velocity": {
+        "compression": 0.8078133881092071,
+        "over_base": 0.03627402661368251,
+        "gate_mean": null
+      },
+      "cfg_alignment_keys": [
+        "delta_guidance_cosine",
+        "delta_over_guidance_rms",
+        "caveat"
+      ],
+      "cfg_alignment": {
+        "delta_guidance_cosine": -0.2440139262378216,
+        "delta_over_guidance_rms": 0.7895211932063103
+      }
+    },
+    "P15_t2v": {
+      "writer5": {
+        "compression": 0.7294664698839187,
+        "over_base": 0.010082258665934206,
+        "gate_mean": 0.5226886761188507
+      },
+      "writer15": {
+        "compression": 0.6670280784368515,
+        "over_base": 0.019918097387999295,
+        "gate_mean": 0.5481161272525787
+      },
+      "velocity": {
+        "compression": 0.8570604169368744,
+        "over_base": 0.035845779590308664,
+        "gate_mean": null
+      },
+      "cfg_alignment_keys": [
+        "delta_guidance_cosine",
+        "delta_over_guidance_rms",
+        "caveat"
+      ],
+      "cfg_alignment": {
+        "delta_guidance_cosine": -0.12270415943115949,
+        "delta_over_guidance_rms": 1.2197657122462988
+      }
+    },
+    "P16_i2v": {
+      "writer5": {
+        "compression": 0.747227982878685,
+        "over_base": 0.008620459865778685,
+        "gate_mean": 0.518778076171875
+      },
+      "writer15": {
+        "compression": 0.7068397164344787,
+        "over_base": 0.01686535437591374,
+        "gate_mean": 0.5371850407123566
+      },
+      "velocity": {
+        "compression": 0.8166156041622162,
+        "over_base": 0.035474468171596524,
+        "gate_mean": null
+      },
+      "cfg_alignment_keys": [
+        "delta_guidance_cosine",
+        "delta_over_guidance_rms",
+        "caveat"
+      ],
+      "cfg_alignment": {
+        "delta_guidance_cosine": -0.037412906205281614,
+        "delta_over_guidance_rms": 0.90820401892066
+      }
+    },
+    "P16_t2v": {
+      "writer5": {
+        "compression": 0.7353173333406449,
+        "over_base": 0.009923580894246697,
+        "gate_mean": 0.5226550924777985
+      },
+      "writer15": {
+        "compression": 0.6863906818628311,
+        "over_base": 0.019062933325767518,
+        "gate_mean": 0.5461944782733917
+      },
+      "velocity": {
+        "compression": 0.846628588438034,
+        "over_base": 0.037998662032186985,
+        "gate_mean": null
+      },
+      "cfg_alignment_keys": [
+        "delta_guidance_cosine",
+        "delta_over_guidance_rms",
+        "caveat"
+      ],
+      "cfg_alignment": {
+        "delta_guidance_cosine": -0.032489388743415476,
+        "delta_over_guidance_rms": 1.234669823423028
+      }
+    },
+    "P17_i2v": {
+      "writer5": {
+        "compression": 0.753127236366272,
+        "over_base": 0.008442257829010487,
+        "gate_mean": 0.5194343221187592
+      },
+      "writer15": {
+        "compression": 0.6801418977975845,
+        "over_base": 0.017659696619957685,
+        "gate_mean": 0.5429119622707367
+      },
+      "velocity": {
+        "compression": 0.806389628648758,
+        "over_base": 0.03627121441066265,
+        "gate_mean": null
+      },
+      "cfg_alignment_keys": [
+        "delta_guidance_cosine",
+        "delta_over_guidance_rms",
+        "caveat"
+      ],
+      "cfg_alignment": {
+        "delta_guidance_cosine": -0.29467397240921855,
+        "delta_over_guidance_rms": 0.7298820269107819
+      }
+    },
+    "P17_t2v": {
+      "writer5": {
+        "compression": 0.741886847615242,
+        "over_base": 0.009716572063043714,
+        "gate_mean": 0.5226983833312988
+      },
+      "writer15": {
+        "compression": 0.6623599702119827,
+        "over_base": 0.019918901566416024,
+        "gate_mean": 0.5504926002025604
+      },
+      "velocity": {
+        "compression": 0.8398214673995972,
+        "over_base": 0.03920134859159589,
+        "gate_mean": null
+      },
+      "cfg_alignment_keys": [
+        "delta_guidance_cosine",
+        "delta_over_guidance_rms",
+        "caveat"
+      ],
+      "cfg_alignment": {
+        "delta_guidance_cosine": -0.2494928440451622,
+        "delta_over_guidance_rms": 0.8373440338671208
+      }
+    },
+    "P18_i2v": {
+      "writer5": {
+        "compression": 0.7440645295381546,
+        "over_base": 0.008681118842214347,
+        "gate_mean": 0.5197043967247009
+      },
+      "writer15": {
+        "compression": 0.6780941957235336,
+        "over_base": 0.017789100911468268,
+        "gate_mean": 0.5424799358844757
+      },
+      "velocity": {
+        "compression": 0.792726793885231,
+        "over_base": 0.03835970669984817,
+        "gate_mean": null
+      },
+      "cfg_alignment_keys": [
+        "delta_guidance_cosine",
+        "delta_over_guidance_rms",
+        "caveat"
+      ],
+      "cfg_alignment": {
+        "delta_guidance_cosine": -0.2190374456346035,
+        "delta_over_guidance_rms": 0.7926330003142357
+      }
+    },
+    "reference_i2v": {
+      "writer5": {
+        "compression": 0.771074065566063,
+        "over_base": 0.007930053677409888,
+        "gate_mean": 0.5168781113624573
+      },
+      "writer15": {
+        "compression": 0.7104065614938736,
+        "over_base": 0.016532682431861758,
+        "gate_mean": 0.5371935737133026
+      },
+      "velocity": {
+        "compression": 0.797456288933754,
+        "over_base": 0.03944144416600466,
+        "gate_mean": null
+      },
+      "cfg_alignment_keys": [
+        "delta_guidance_cosine",
+        "delta_over_guidance_rms",
+        "caveat"
+      ],
+      "cfg_alignment": {
+        "delta_guidance_cosine": -0.1482685301452875,
+        "delta_over_guidance_rms": 0.7565414488315583
+      }
+    }
+  },
+  "generation4": {
+    "i2v": {
+      "cond": {
+        "5": 0.14870183315128088,
+        "10": 0.12140346508473158,
+        "15": 0.050744042322039606,
+        "20": 0.04050906050950289,
+        "25": 0.07678193110972643,
+        "30": 0.002349632374243811
+      },
+      "uncond": {
+        "5": 0.14949198931455612,
+        "10": 0.12187130019068718,
+        "15": 0.05082135837525129,
+        "20": 0.041403871066868304,
+        "25": 0.07759697142988443,
+        "30": 0.002344897516886704
+      }
+    },
+    "t2v": {
+      "cond": {
+        "5": 0.14805599089711904,
+        "10": 0.13400673326104878,
+        "15": 0.05333072248846293,
+        "20": 0.03584677057340741,
+        "25": 0.06677059952169656,
+        "30": 0.0024241062492365018
+      },
+      "uncond": {
+        "5": 0.14885479789227246,
+        "10": 0.1340417417511344,
+        "15": 0.04833947306498885,
+        "20": 0.035814536921679976,
+        "25": 0.06610345549881458,
+        "30": 0.002623771334765479
+      }
+    }
+  },
+  "caveats": [
+    "V4 and V4.2 losses use different samples, modes, video windows and teacher frame sampling; raw values are not paired comparisons.",
+    "Gradient diagnostics are sparse first-micro observations, not accumulated optimizer update directions.",
+    "Existing health checks are GT-noised conditional FM; they do not validate free-running CFG video quality.",
+    "No new GPU inference was performed by this script."
+  ]
+}

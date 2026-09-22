@@ -1,0 +1,35 @@
+{
+  "status": "passed",
+  "utc": "2026-09-12T12:52:02.086702+00:00",
+  "torch_version": "2.8.0+cu128",
+  "device": "cpu",
+  "tests": 19,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "seconds": 11.734,
+  "names": [
+    "evaluation.test_training_runtime.ShortRunTests",
+    "evaluation.test_launchers"
+  ],
+  "scope": "Real shell launchers and parser; CPU training-loop fixtures including 500 updates, validation/save calls and BF16 checkpoints. No GPU training.",
+  "verification_runs": [
+    {
+      "tests": 19,
+      "failures": 1,
+      "errors": 0,
+      "seconds": 11.734,
+      "output": "test_bf16_checkpointed_ordinary_steps_without_prior_supervision (evaluation.test_training_runtime.ShortRunTests) ... ok\ntest_bf16_checkpointed_warm_prior_backward_and_optimizer_updates (evaluation.test_training_runtime.ShortRunTests) ... ok\ntest_formal_a1_runs_all_500_updates_with_validation_and_final_checkpoint (evaluation.test_training_runtime.ShortRunTests) ... FAIL\ntest_legacy_resume_accepts_loader_overrides_without_changing_schedule (evaluation.test_training_runtime.ShortRunTests) ... ok\ntest_short_run_executes_backward_and_update_but_skips_validation_and_save (evaluation.test_training_runtime.ShortRunTests) ... ok\ntest_short_run_keeps_initializer_active_on_warm_steps_with_prior_supervision (evaluation.test_training_runtime.ShortRunTests) ... ok\ntest_all_phases_follow_world_size_for_every_pool (evaluation.test_launchers.AllocationTests) ... ok\ntest_changed_world_size_reseeds_without_requiring_nonexistent_rank_files (evaluation.test_launchers.AllocationTests) ... ok\ntest_cluster_allocation_does_not_import_torch_or_cluster_sdk (evaluation.test_launchers.AllocationTests) ... ok\ntest_direct_launch_follows_cuda_visibility (evaluation.test_launchers.AllocationTests) ... ok\ntest_empty_allocation_does_not_fall_back_to_host_gpus (evaluation.test_launchers.AllocationTests) ... ok\ntest_old_checkpoint_batch_target_is_preserved (evaluation.test_launchers.AllocationTests) ... ok\ntest_resume_adjusts_batch_without_overriding_optimizer_schedule (evaluation.test_launchers.AllocationTests) ... ok\ntest_same_world_size_restores_saved_rng (evaluation.test_launchers.AllocationTests) ... ok\ntest_48g_submission_launches_complete_a1 (evaluation.test_launchers.LauncherTests) ... ok\ntest_80g_submission_launches_complete_a1 (evaluation.test_launchers.LauncherTests) ... ok\ntest_96g_submission_launches_complete_single_gpu_a1 (evaluation.test_launchers.LauncherTests) ... ok\ntest_diagnostic_overrides_forwarded_without_disabling_heartbeat (evaluation.test_launchers.LauncherTests) ... ok\ntest_only_yaml_slot_change_controls_training_and_all_preparation_passes (evaluation.test_launchers.LauncherTests) ... ok\n\n======================================================================\nFAIL: test_formal_a1_runs_all_500_updates_with_validation_and_final_checkpoint (evaluation.test_training_runtime.ShortRunTests)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/home/liuzhirui/Project/physGen/code/v4/evaluation/test_training_runtime.py\", line 220, in test_formal_a1_runs_all_500_updates_with_validation_and_final_checkpoint\n    self.check_training_run(prior_weight=.02, check_steps=0)\n  File \"/home/liuzhirui/Project/physGen/code/v4/evaluation/test_training_runtime.py\", line 284, in check_training_run\n    self.assertEqual([call.args[3] for call in validate.call_args_list], [250, 500])\nAssertionError: Lists differ: [249, 499] != [250, 500]\n\nFirst differing element 0:\n249\n250\n\n- [249, 499]\n+ [250, 500]\n\n----------------------------------------------------------------------\nRan 19 tests in 11.734s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "utc": "2026-09-12T12:52:46.751388+00:00",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 3.794,
+      "output": "test_formal_a1_runs_all_500_updates_with_validation_and_final_checkpoint (evaluation.test_training_runtime.ShortRunTests) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 2.788s\n\nOK\n"
+    }
+  ],
+  "note": "19 unique checks passed. The new full-run test initially expected one-based validation arguments; it now checks the actual zero-based loss-schedule arguments and separately asserts validation logs at steps 250/500. Production code was unchanged for that assertion correction."
+}

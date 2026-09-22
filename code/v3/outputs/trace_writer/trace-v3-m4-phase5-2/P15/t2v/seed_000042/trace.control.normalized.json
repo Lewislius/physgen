@@ -1,0 +1,386 @@
+{
+  "closed_world": {
+    "allowed_entity_ids": [
+      "cup",
+      "sand_stream",
+      "pile_region"
+    ],
+    "empty_regions": [],
+    "external_source_allowed": false,
+    "forbidden_new_categories": [
+      "external source",
+      "extra copy",
+      "unlisted object"
+    ],
+    "provenance": "derived"
+  },
+  "conservation": [
+    {
+      "observable_proxy": "tracked logical entity slots remain consistent",
+      "provenance": "derived",
+      "quantity": "instance_count",
+      "relation": "constant",
+      "rule_id": "entity_slots_constant",
+      "sinks": [
+        "cup",
+        "sand_stream",
+        "pile_region"
+      ],
+      "sources": [
+        "cup",
+        "sand_stream",
+        "pile_region"
+      ],
+      "tolerance": 0.0
+    },
+    {
+      "observable_proxy": "cup sand decreases through falling grains while conical pile grows",
+      "provenance": "derived",
+      "quantity": "material_proxy",
+      "relation": "coupled_monotonic",
+      "rule_id": "conservation_c3",
+      "sinks": [
+        "stream_state",
+        "pile_size"
+      ],
+      "sources": [
+        "source_amount"
+      ],
+      "tolerance": 0.1
+    }
+  ],
+  "issues": [
+    "cup: exact visual count unresolved; retained as group",
+    "sand_stream: exact visual count unresolved; retained as group"
+  ],
+  "lifecycles": [
+    {
+      "entity_id": "cup",
+      "from_stage": "setup",
+      "from_state": "full",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "full",
+          "nearly_empty"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "nearly_empty"
+    },
+    {
+      "entity_id": "sand_stream",
+      "from_stage": "setup",
+      "from_state": "absent",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "absent",
+          "continuous"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "continuous"
+    },
+    {
+      "entity_id": "pile_region",
+      "from_stage": "setup",
+      "from_state": "absent",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "absent",
+          "grown_cone"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "grown_cone"
+    }
+  ],
+  "slots": [
+    {
+      "aliases": [],
+      "canonical_mention": "the same cup containing dry sand",
+      "cardinality": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "cup",
+      "invariant_attributes": [
+        "same cup and dry sand",
+        "same flat table",
+        "sand remains within the source-stream-pile route",
+        "camera and unrelated scene remain unchanged"
+      ],
+      "mutable_attributes": [
+        "sand_amount"
+      ],
+      "persistent_identity": true,
+      "provenance": "derived",
+      "role": "source"
+    },
+    {
+      "aliases": [],
+      "canonical_mention": "the continuous dry-sand stream",
+      "cardinality": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "sand_stream",
+      "invariant_attributes": [
+        "same cup and dry sand",
+        "same flat table",
+        "sand remains within the source-stream-pile route",
+        "camera and unrelated scene remain unchanged"
+      ],
+      "mutable_attributes": [
+        "visibility"
+      ],
+      "persistent_identity": true,
+      "provenance": "derived",
+      "role": "carrier"
+    },
+    {
+      "aliases": [],
+      "canonical_mention": "the table area directly below the cup",
+      "cardinality": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "pile_region",
+      "invariant_attributes": [
+        "same cup and dry sand",
+        "same flat table",
+        "sand remains within the source-stream-pile route",
+        "camera and unrelated scene remain unchanged"
+      ],
+      "mutable_attributes": [
+        "sand_pile"
+      ],
+      "persistent_identity": true,
+      "provenance": "default",
+      "role": "sink"
+    }
+  ],
+  "stage_presence": [
+    {
+      "entity_id": "cup",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [
+        "source_amount=full"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "sand_stream",
+      "logical_count": {
+        "exact": 0,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [
+        "stream_state=absent"
+      ],
+      "visible": "forbidden"
+    },
+    {
+      "entity_id": "pile_region",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [
+        "pile_size=absent"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "cup",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [
+        "source_amount=full"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "sand_stream",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [
+        "stream_state=absent"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "pile_region",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [
+        "pile_size=absent"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "cup",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [
+        "source_amount=nearly_empty"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "sand_stream",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [
+        "stream_state=continuous"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "pile_region",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [
+        "pile_size=grown_cone"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "cup",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [
+        "source_amount=nearly_empty"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "sand_stream",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [
+        "stream_state=continuous"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "pile_region",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [
+        "pile_size=grown_cone"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "cup",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [
+        "source_amount=nearly_empty"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "sand_stream",
+      "logical_count": {
+        "exact": 0,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [
+        "stream_state=continuous"
+      ],
+      "visible": "forbidden"
+    },
+    {
+      "entity_id": "pile_region",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [
+        "pile_size=grown_cone"
+      ],
+      "visible": "required"
+    }
+  ]
+}

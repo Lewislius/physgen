@@ -1,0 +1,38 @@
+name: physgen-v42-step0300-p03-native-solver
+description: Validate native UniPC sampling on the single failing P03 case, keeping
+  the same checkpoint and all three correctors
+workspace: ALL-IN-ONE
+project: wan-animate
+max_restarts: 0
+resources:
+  resource_pool: blk-96g
+  slots_per_trial: 1
+  is_single_node: true
+  shm_size: 34359738368
+bind_mounts:
+- host_path: /mount/HOME/liuzhirui
+  container_path: /home/liuzhirui
+- host_path: /mount/NAS1/public
+  container_path: /run/determined/NAS1/public
+environment:
+  image: 10.130.130.5:8192/lab-dev:latest
+  environment_variables:
+  - OMP_NUM_THREADS=4
+checkpoint_storage:
+  type: shared_fs
+  host_path: /mount/HOME/liuzhirui
+  storage_path: Project/physGen/code/v4.2/determined_checkpoints
+  save_experiment_best: 0
+  save_trial_best: 0
+  save_trial_latest: 0
+searcher:
+  name: single
+  metric: completed
+  max_length:
+    epochs: 1
+  smaller_is_better: false
+entrypoint: /home/liuzhirui/miniconda3/envs/moviestory/bin/python -I -B -u /home/liuzhirui/Project/physGen/code/v4.2/inference/infer_native_p.py
+  --checkpoint /home/liuzhirui/Project/physGen/code/v4.2/checkpoints/v42_v4_fullwidth3_without_prior_A1_1x96g_20260918T071253Z-9945c9d7/checkpoint-0000300
+  --suite demo --sample-ids P03 --demo-modes i2v --variant full --frames 121 --duration
+  5 --fps 24 --steps 50 --shift 5 --guidance 5 --solver unipc --seed 42 --output-dir
+  /home/liuzhirui/Project/physGen/code/v4.2/analysis/fullwidth3_step0300_flicker_20260918/p03_native_solver

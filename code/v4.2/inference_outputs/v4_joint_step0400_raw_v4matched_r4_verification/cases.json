@@ -1,0 +1,206 @@
+{
+  "version": "physgen_v42_f121_independent_correctors_v3",
+  "schema_version": 4,
+  "suite": "demo",
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v4.2/checkpoints/v4_joint_20260918T034836Z_16183b/step0400",
+  "checkpoint_step": 400,
+  "ema_updates": 400,
+  "ema_file": {
+    "bytes": 277125555,
+    "mtime_ns": 1789708819601587909
+  },
+  "encoders": {
+    "text": {
+      "path": "/home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B/models_t5_umt5-xxl-enc-bf16.pth",
+      "bytes": 11361920418,
+      "mtime_ns": 1769032794748252447
+    },
+    "vae": {
+      "path": "/home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B/Wan2.2_VAE.pth",
+      "bytes": 2818839170,
+      "mtime_ns": 1769023849137199865
+    },
+    "teacher": {
+      "path": "/home/liuzhirui/model/vjepa2/checkpoint/vjepa2_1_vitG_384.pt",
+      "bytes": 30238058912,
+      "mtime_ns": 1773652593000000000
+    }
+  },
+  "config": {
+    "model_version": "physgen_v42_f121_independent_correctors_v3",
+    "paths": {
+      "wan_code": "/home/liuzhirui/model/Wan2.2",
+      "wan_checkpoint": "/home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B",
+      "teacher_code": "/home/liuzhirui/model/vjepa2",
+      "teacher_checkpoint": "/home/liuzhirui/model/vjepa2/checkpoint/vjepa2_1_vitG_384.pt",
+      "wisa_index": "/run/determined/NAS1/public/Dataset/WISA/data/wisa-80k.json",
+      "wisa_videos": "/run/determined/NAS1/public/Dataset/WISA/data/videos",
+      "annotations": "/home/liuzhirui/Project/physGen/code/v4.2/data_index2400",
+      "cache": "/home/liuzhirui/Project/physGen/code/v4.2/cache/wisa2400_nativefps_f121_a147456_fp32_jepa32",
+      "asset_lock": "/home/liuzhirui/Project/physGen/code/v4.2/assets/wan_jepa_metadata.json",
+      "checkpoints": "/home/liuzhirui/Project/physGen/code/v4.2/checkpoints",
+      "logs": "/home/liuzhirui/Project/physGen/code/v4.2/train/train_log",
+      "outputs": "/home/liuzhirui/Project/physGen/code/v4.2/inference_outputs",
+      "demo_root": "/home/liuzhirui/Project/physGen/code/v1/demo",
+      "reference_image": "/home/liuzhirui/model/Wan2.2/overfit_ref/overfit_ref5.jpg",
+      "reference_prompt": "The woman smiles and waves at the camera."
+    },
+    "preparation": {
+      "asset_verification": "metadata",
+      "reuse_sources": [
+        "/home/liuzhirui/Project/physGen/code/v4.2/cache/wisa4000_nativefps_f121_a147456_fp32_jepa32",
+        "/home/liuzhirui/Project/physGen/code/v4.2/quick16/work/cache_v4_f121"
+      ]
+    },
+    "data": {
+      "seed": 20260909,
+      "limit": 2400,
+      "source_limit": 4000,
+      "subset_manifest": "/home/liuzhirui/Project/physGen/code/v4.2/cache/wisa4000_nativefps_f121_a147456_fp32_jepa32/manifest.json",
+      "selection_file": null,
+      "clip_annotations": null,
+      "validation_stride": 20,
+      "frames": 121,
+      "max_long_side": 512,
+      "max_area": 147456,
+      "decode_chunk_frames": 8,
+      "teacher_frames": 32,
+      "teacher_size": 384,
+      "categories": [
+        "unlabeled"
+      ]
+    },
+    "state": {
+      "sites": [
+        5,
+        15
+      ],
+      "parameter_sharing": "per_block",
+      "width": 1664,
+      "inner": 512,
+      "heads": 8,
+      "depth": 2,
+      "checkpoint": true,
+      "write_gate": true,
+      "initializer": "condition_trajectory_gt_v1",
+      "prior_video_pool": 8
+    },
+    "loss": {
+      "fm": 1.0,
+      "struct": 0.1,
+      "struct_warmup_steps": 200,
+      "struct_noise_width": 0.2,
+      "struct_initialization_gradient": true,
+      "temp": 0.0,
+      "write": 0.05,
+      "prior": 0.02
+    },
+    "train": {
+      "recipe": "fm_multistruct_prior_write_gt75_joint_v1",
+      "seed": 20260916,
+      "steps": 1200,
+      "world_size": 1,
+      "accumulation": 8,
+      "save_every": 100,
+      "validate_every": 100,
+      "ema_decay": 0.995,
+      "grad_clip": 1.0,
+      "sampling": "uniform_modes_v1",
+      "auxiliary_gradient_policy": "none",
+      "peak_lr": {
+        "core5": 5e-05,
+        "core15": 5e-05,
+        "text_init": 2e-05,
+        "writer5": 1e-05,
+        "writer15": 2e-05
+      },
+      "gt_condition_dropout": 0.25,
+      "text_dropout": 0.1
+    },
+    "repair": {
+      "clean_probability": 0.25,
+      "max_relative_strength": 0.2,
+      "warp_latent_pixels": 0.5
+    },
+    "monitoring": {
+      "train_every": 25,
+      "health_ablation_cases": 4
+    },
+    "inference": {
+      "canvas_wh": [
+        512,
+        288
+      ],
+      "steps": 50,
+      "shift": 5.0,
+      "guidance": 5.0,
+      "seed": 42,
+      "duration": 5.0
+    }
+  },
+  "cases": [
+    {
+      "key": "P01_i2v",
+      "id": "P01",
+      "group": "demo",
+      "mode": "i2v",
+      "prompt": "A black scooter rolls into a metal trash can, then tilts to one side and stops beside it.",
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P01/P01-i0-1280x704.png",
+      "duration": 4.166666666666667,
+      "image_file": {
+        "bytes": 1630769,
+        "mtime_ns": 1788526361002036999
+      },
+      "geometry": {
+        "source_h": 704,
+        "source_w": 1280,
+        "h": 288,
+        "w": 512,
+        "rh": 282,
+        "rw": 512,
+        "top": 3,
+        "left": 0,
+        "frames": 101
+      }
+    },
+    {
+      "key": "P01_t2v",
+      "id": "P01",
+      "group": "demo",
+      "mode": "t2v",
+      "prompt": "A black scooter rolls into a metal trash can, then tilts to one side and stops beside it.",
+      "image": null,
+      "duration": 4.166666666666667,
+      "geometry": {
+        "source_h": 288,
+        "source_w": 512,
+        "h": 288,
+        "w": 512,
+        "rh": 288,
+        "rw": 512,
+        "top": 0,
+        "left": 0,
+        "frames": 101
+      }
+    }
+  ],
+  "negative": "",
+  "negative_sha256": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+  "recipe": {
+    "solver": "euler",
+    "steps": 50,
+    "shift": 5,
+    "guidance": 5,
+    "seed": 42,
+    "implementation": "20260918_r4_corrected_cfg",
+    "cfg_scheme": "corrected_branches",
+    "negative_condition": "empty",
+    "frames": 101,
+    "variant": "full",
+    "writer_scales": [
+      1.0,
+      1.0
+    ]
+  },
+  "weights": "adapter.pt"
+}

@@ -1,0 +1,347 @@
+{
+  "ace": {
+    "cfg_scope": "conditional_only",
+    "diagnostics": "full",
+    "enabled": true,
+    "formula": "semantic + relative_cap(scale * (positive - counterfactual), semantic)",
+    "fp32_delta": true,
+    "lambda0": 0.1,
+    "layer_gates": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "layer_preset": "mid_b",
+    "residual_cap_eps": 1e-12,
+    "residual_cap_ratio": 0.02,
+    "residual_mode": "positive_minus_counterfactual",
+    "step_gates": [
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1
+    ],
+    "step_preset": "safe_i2v_v1"
+  },
+  "contexts": {
+    "causal_origin_prompt_prefixed": false,
+    "cfg_negative_prompt": "",
+    "compiler_version": "ace-conditioning-mvp-v1",
+    "conditioning_mode": "compiled",
+    "counterfactual_text": "The closed book opens while still resting on the shelf, then crosses the edge and falls to the floor.",
+    "positive_text": "The closed book crosses the shelf edge, loses support, falls continuously, strikes the floor, and settles open.",
+    "semantic_text": "A closed book is pushed past the edge of a shelf, falls, and lands open on the floor. Required visible entities: one closed book; one shelf with a visible edge; floor below the shelf. At the beginning: book: closed, intact, and fully supported near the shelf edge; floor: clear beneath the book. Required state changes: book support: shelf-supported to unsupported; book position: shelf to floor; book state: closed to open. These event variables are allowed to change: book position; book support state; book orientation and open-versus-closed state. Preserve throughout: static side-view camera; shelf and floor geometry; book identity and cover appearance; one closed book at the start; one shelf and the floor below; the same book through the fall.",
+    "semantic_variant": "compiled_i2v",
+    "token_lengths": {
+      "cfg_negative": 1,
+      "counterfactual": 25,
+      "positive": 28,
+      "semantic": 179
+    },
+    "used_by_model": {
+      "cfg_negative": false,
+      "cfg_unconditional_empty": true,
+      "counterfactual": true,
+      "positive": true,
+      "semantic": true
+    },
+    "utf8_sha256": {
+      "cfg_negative": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "counterfactual": "ce694276d2c9909d8ce8ab621aebbff4b7625d1debafe468b92d4a17cb25915f",
+      "positive": "38aa826f821711a8c806c5fd458b8e19923025c03e4de041dc4ef83c02ba18d2",
+      "semantic": "e406bfdc18420f549e5ed5bee93a45db0d5d2b311c7a7bea39749b32fab7c4db"
+    }
+  },
+  "diagnostics": {
+    "all_finite": true,
+    "applied_to_semantic_max": 0.02000318467617035,
+    "applied_to_semantic_min": 0.0009795607766136527,
+    "candidate_to_semantic_max": 0.029430853202939034,
+    "candidate_to_semantic_min": 0.0009795496007427573,
+    "clip_coefficient_min": 0.6795589327812195,
+    "clip_fraction": 0.12,
+    "clipped_record_count": 60,
+    "mode": "full",
+    "raw_delta_l2_max": 135.33509826660156,
+    "raw_delta_l2_min": 21.244192123413086,
+    "record_count": 500,
+    "scaled_to_semantic_max": 0.02000318467617035,
+    "scaled_to_semantic_min": 0.0009795607766136527
+  },
+  "generation": {
+    "convert_model_dtype": true,
+    "first_frame_reanchor_count": 51,
+    "fps": 24,
+    "frame_num": 97,
+    "guide_scale": 5.0,
+    "height": 704,
+    "max_area": 901120,
+    "offload_model": true,
+    "sample_solver": "unipc",
+    "sampling_steps": 50,
+    "seed": 42,
+    "shift": 5.0,
+    "t5_cpu": true,
+    "width": 1280
+  },
+  "input_hashes": {
+    "causal_json": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P06/P06-cplus-cminus.json",
+      "sha256": "15637f54671c2696b4673e9c60e1dcc58e321182223ff93cc5e3be6a6999f029",
+      "size_bytes": 935
+    },
+    "i0_image": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P06/P06-i0-1280x704.png",
+      "sha256": "7a901b71ec83d387e0b07e91b063aee8d031564fecd7f6e0e305df855c1bb52e",
+      "size_bytes": 1320397
+    },
+    "i0_metadata_json": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P06/P06-i0.json",
+      "sha256": "3bde6dc25cf66f36bb1b82ae3b893a023f70a72da7c5bb56003081de5a431ca8",
+      "size_bytes": 1517
+    },
+    "model_reference_image": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/outputs/ace_router/m3-20260901-125349/P06/M3_I2V_ACE/seed_000042/reference_input.png",
+      "sha256": "2ca093e292a3a5e5c16adae625f556c0977d35dc3292efbd2951d61f9b9ff1c4",
+      "size_bytes": 980960
+    },
+    "origin_txt": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P06/P06-origin.txt",
+      "sha256": "d67096c8ade1f536c6b19edbcba79daa2ed70fab342365086f12eff805940020",
+      "size_bytes": 86
+    },
+    "selection_manifest": null,
+    "sizing_image": null
+  },
+  "method": "M3_I2V_ACE",
+  "output_video": "/home/liuzhirui/Project/physGen/code/v1/outputs/ace_router/m3-20260901-125349/P06/M3_I2V_ACE/seed_000042/video.mp4",
+  "output_video_sha256": "fff4be41ab26ae85fd1f8845b2a1839a0062f63194e3af9765b88c256e6ada5f",
+  "reference": {
+    "crop_box": [
+      0,
+      0,
+      1280,
+      704
+    ],
+    "crop_policy": "center_crop_to_20x11_or_11x20_then_lanczos_resize",
+    "orientation": "landscape",
+    "original_size": [
+      1280,
+      704
+    ],
+    "prepared_artifact_path": "/home/liuzhirui/Project/physGen/code/v1/outputs/ace_router/m3-20260901-125349/P06/M3_I2V_ACE/seed_000042/reference_input.png",
+    "prepared_artifact_sha256": "2ca093e292a3a5e5c16adae625f556c0977d35dc3292efbd2951d61f9b9ff1c4",
+    "prepared_size": [
+      1280,
+      704
+    ],
+    "resolved_output_size": [
+      1280,
+      704
+    ],
+    "selection_manifest": null,
+    "source_path": "/home/liuzhirui/Project/physGen/code/v1/demo/P06/P06-i0-1280x704.png",
+    "source_sha256": "7a901b71ec83d387e0b07e91b063aee8d031564fecd7f6e0e305df855c1bb52e",
+    "used_as_model_condition": true,
+    "used_for_output_sizing_only": false
+  },
+  "run_id": "m3-20260901-125349",
+  "runtime": {
+    "cuda_capability": [
+      8,
+      6
+    ],
+    "cuda_memory_reserved_bytes": 34779168768,
+    "cuda_runtime": "12.8",
+    "cudnn": 91002,
+    "denoising_step_timing": {
+      "all_steps_median_seconds": 10.306999023437498,
+      "count": 50,
+      "max_seconds": 14.3574560546875,
+      "min_seconds": 9.9959951171875,
+      "per_step_seconds": [
+        9.9959951171875,
+        11.3686298828125,
+        11.1883125,
+        10.1753017578125,
+        10.2241318359375,
+        10.2470576171875,
+        10.269966796875,
+        10.693732421875,
+        14.3574560546875,
+        10.2765546875,
+        10.300673828125,
+        12.5353583984375,
+        10.2963486328125,
+        10.3051953125,
+        10.3085888671875,
+        10.3172294921875,
+        10.3162294921875,
+        10.3188076171875,
+        10.323306640625,
+        10.3232646484375,
+        10.324607421875,
+        12.1670693359375,
+        10.309251953125,
+        11.8981513671875,
+        11.1688642578125,
+        10.2977939453125,
+        10.29641796875,
+        10.2994599609375,
+        10.3025703125,
+        10.30241015625,
+        10.3144287109375,
+        10.3109423828125,
+        10.3075439453125,
+        10.3093671875,
+        12.4357138671875,
+        11.0424033203125,
+        12.2070419921875,
+        10.2721982421875,
+        10.2804267578125,
+        10.2944599609375,
+        10.2986689453125,
+        10.30326953125,
+        10.295640625,
+        10.2965,
+        10.2972333984375,
+        10.3064541015625,
+        12.7818798828125,
+        10.28856640625,
+        10.2859365234375,
+        12.1939306640625
+      ],
+      "stable_median_seconds": 10.3075439453125,
+      "warmup_first_step_seconds": 9.9959951171875
+    },
+    "diffusers": "0.36.0",
+    "elapsed_seconds": 666.1375857330859,
+    "gpu": "NVIDIA RTX A6000",
+    "peak_cuda_bytes": 24456221184,
+    "platform": "Linux-5.15.0-139-generic-x86_64-with-glibc2.35",
+    "python": "3.10.19",
+    "torch": "2.8.0+cu128"
+  },
+  "sample_id": "P06",
+  "seed": 42,
+  "status": "success",
+  "upstream": {
+    "checkpoint": "/home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B",
+    "checkpoint_hashes": {
+      "config.json": "d1fea36899d00c2501b836c13ad65af56e2f9529ba622e50886d3f5c3e6c02bc",
+      "diffusion_pytorch_model.safetensors.index.json": "bfa2337f1163e195d24151a72298daf34a620543898109be47e414c8daa5b3fe"
+    },
+    "checkpoint_model_config": {
+      "_class_name": "WanModel",
+      "dim": 3072,
+      "in_dim": 48,
+      "model_type": "ti2v",
+      "num_heads": 24,
+      "num_layers": 30,
+      "out_dim": 48,
+      "text_len": 512
+    },
+    "source_hashes": {
+      "wan/configs/wan_ti2v_5B.py": "26d9e7b9c555eb0900b13751267a596556f869e7aee2d1572afc2a0a4a76f4c7",
+      "wan/modules/attention.py": "c79158e1cc9b7a17bc934e6acb34f42e588a41adb89801146957cda2d6d4379d",
+      "wan/modules/model.py": "8b39115298ca7322806c19b3165b3f435a94fe4a58f0624aec24f8e7f4997432",
+      "wan/modules/t5.py": "8b0cebf3192c542f92a344255a06c203df3ba24160715899a055cc8de0cd930f",
+      "wan/textimage2video.py": "228f2fabf23014ed41ec6b8cd713d5be7371bb558501c71a62a0258b491a877b"
+    },
+    "wan_git_head": "08e890ff01ff8daf9161db472f362efe5d6ba656",
+    "wan_repo": "/home/liuzhirui/model/Wan2.2",
+    "weight_shards": [
+      {
+        "mtime_ns": 1769032249319825600,
+        "name": "diffusion_pytorch_model-00001-of-00003.safetensors",
+        "size_bytes": 9825014472
+      },
+      {
+        "mtime_ns": 1769032417046557795,
+        "name": "diffusion_pytorch_model-00002-of-00003.safetensors",
+        "size_bytes": 9995661736
+      },
+      {
+        "mtime_ns": 1769020338553636583,
+        "name": "diffusion_pytorch_model-00003-of-00003.safetensors",
+        "size_bytes": 178558176
+      }
+    ]
+  },
+  "warnings": [
+    "selection_manifest_missing"
+  ]
+}

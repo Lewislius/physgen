@@ -1,0 +1,284 @@
+{
+  "closed_world": {
+    "allowed_entity_ids": [
+      "dye",
+      "water"
+    ],
+    "empty_regions": [],
+    "external_source_allowed": false,
+    "forbidden_new_categories": [
+      "external source",
+      "extra copy",
+      "unlisted object"
+    ],
+    "provenance": "derived"
+  },
+  "conservation": [
+    {
+      "observable_proxy": "tracked logical entity slots remain consistent",
+      "provenance": "derived",
+      "quantity": "instance_count",
+      "relation": "constant",
+      "rule_id": "entity_slots_constant",
+      "sinks": [
+        "dye",
+        "water"
+      ],
+      "sources": [
+        "dye",
+        "water"
+      ],
+      "tolerance": 0.0
+    },
+    {
+      "observable_proxy": "center entry precedes outward blue growth within clear vessel",
+      "provenance": "derived",
+      "quantity": "material_proxy",
+      "relation": "coupled_monotonic",
+      "rule_id": "conservation_c3",
+      "sinks": [
+        "colored_area",
+        "water_state"
+      ],
+      "sources": [
+        "dye_position"
+      ],
+      "tolerance": 0.1
+    }
+  ],
+  "issues": [
+    "water: exact visual count unresolved; retained as group"
+  ],
+  "lifecycles": [
+    {
+      "entity_id": "dye",
+      "from_stage": "setup",
+      "from_state": "above_center_surface",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "above_center_surface",
+          "inside_water"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "inside_water"
+    },
+    {
+      "entity_id": "water",
+      "from_stage": "setup",
+      "from_state": "none; fully_clear",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "none",
+          "expanded"
+        ],
+        [
+          "fully_clear",
+          "locally_blue"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "expanded; locally_blue"
+    }
+  ],
+  "slots": [
+    {
+      "aliases": [],
+      "canonical_mention": "the same compact dark-blue drop above center",
+      "cardinality": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "dye",
+      "invariant_attributes": [
+        "same dark-blue dye color",
+        "same transparent rectangular glass vessel and horizontal waterline",
+        "pale background, tabletop reflection, lighting, centered framing, and static camera remain unchanged",
+        "blue color stays inside the vessel"
+      ],
+      "mutable_attributes": [
+        "position_to pictured surface"
+      ],
+      "persistent_identity": true,
+      "provenance": "default",
+      "role": "source"
+    },
+    {
+      "aliases": [],
+      "canonical_mention": "the same still clear water inside the rectangular vessel",
+      "cardinality": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "water",
+      "invariant_attributes": [
+        "same dark-blue dye color",
+        "same transparent rectangular glass vessel and horizontal waterline",
+        "pale background, tabletop reflection, lighting, centered framing, and static camera remain unchanged",
+        "blue color stays inside the vessel"
+      ],
+      "mutable_attributes": [
+        "dark-blue region area",
+        "pictured color distribution"
+      ],
+      "persistent_identity": true,
+      "provenance": "derived",
+      "role": "sink"
+    }
+  ],
+  "stage_presence": [
+    {
+      "entity_id": "dye",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [
+        "dye_position=above_center_surface"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "water",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [
+        "colored_area=none",
+        "water_state=fully_clear"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "dye",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [
+        "dye_position=above_center_surface"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "water",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [
+        "colored_area=none",
+        "water_state=fully_clear"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "dye",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [
+        "dye_position=inside_water"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "water",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [
+        "colored_area=expanded",
+        "water_state=locally_blue"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "dye",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [
+        "dye_position=inside_water"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "water",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [
+        "colored_area=expanded",
+        "water_state=locally_blue"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "dye",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [
+        "dye_position=inside_water"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "water",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [
+        "colored_area=expanded",
+        "water_state=locally_blue"
+      ],
+      "visible": "required"
+    }
+  ]
+}

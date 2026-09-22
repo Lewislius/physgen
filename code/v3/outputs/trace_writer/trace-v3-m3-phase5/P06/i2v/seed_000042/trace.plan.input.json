@@ -1,0 +1,484 @@
+{
+  "assumptions": [
+    "The book exits to the right of the pictured shelf and falls through the only unobstructed corridor to the visible floor."
+  ],
+  "constraints": [
+    {
+      "after": "wall_corridor_fall",
+      "before": "pictured_edge_crossing",
+      "id": "c1",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "precedes"
+    },
+    {
+      "cause": "pictured_edge_crossing",
+      "effect": "wall_corridor_fall",
+      "id": "c2",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "requires"
+    },
+    {
+      "after": "blue_cover_open",
+      "before": "pictured_floor_contact",
+      "id": "c3",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "precedes"
+    },
+    {
+      "cause": "pictured_floor_contact",
+      "effect": "blue_cover_open",
+      "id": "c4",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "requires"
+    },
+    {
+      "effect": "wall_corridor_fall",
+      "id": "c5",
+      "source_refs": [
+        "origin"
+      ],
+      "transition": "e1",
+      "type": "changes"
+    },
+    {
+      "effect": "blue_cover_open",
+      "id": "c6",
+      "source_refs": [
+        "origin"
+      ],
+      "transition": "e2",
+      "type": "changes"
+    },
+    {
+      "facts": [
+        "position=wood_floor",
+        "book_state=open"
+      ],
+      "id": "c7",
+      "source_refs": [
+        "origin"
+      ],
+      "state": "z2",
+      "type": "persists"
+    },
+    {
+      "facts": [
+        "book_state=closed",
+        "book_state=open"
+      ],
+      "id": "c8",
+      "scope": "same_time",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "excludes"
+    }
+  ],
+  "control": {},
+  "design_revision": "fixed5-causal-r3",
+  "entities": [
+    {
+      "id": "book",
+      "mention": "the same cream-paged book with dark blue cover edges",
+      "role": "actor",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    },
+    {
+      "id": "shelf",
+      "mention": "the left wooden shelf edge",
+      "role": "patient",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    },
+    {
+      "id": "floor",
+      "mention": "the wood-plank floor below",
+      "role": "sink",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "description": "the book passes the visible right end of the wooden shelf",
+      "id": "pictured_edge_crossing",
+      "observable": "no shelf surface remains beneath the book",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    },
+    {
+      "description": "the descending book reaches the wood-plank floor",
+      "id": "pictured_floor_contact",
+      "observable": "the book boundary meets the bottom floor region",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    }
+  ],
+  "generation_basis": {
+    "mode": "visual_grounding",
+    "reference_image_usage": "visual_grounding",
+    "semantic_inputs": [
+      "origin",
+      "planner_instructions",
+      "reference_input"
+    ]
+  },
+  "global_semantic": "The blue-edged closed book leaves the left wooden shelf, falls through the open wall space, and lands open on the wood floor.",
+  "grounding": {
+    "approved": false,
+    "coordinate_frame": "reference_input",
+    "entity_boxes": [
+      {
+        "box": [
+          0.129,
+          0.075,
+          0.35,
+          0.16
+        ],
+        "entity_id": "book"
+      },
+      {
+        "box": [
+          0.0,
+          0.118,
+          0.307,
+          0.966
+        ],
+        "entity_id": "shelf"
+      },
+      {
+        "box": [
+          0.238,
+          0.851,
+          1.0,
+          1.0
+        ],
+        "entity_id": "floor"
+      }
+    ],
+    "protected_boxes": [],
+    "reference_image": "P06-i0-1280x704.png",
+    "reference_image_usage": "visual_grounding"
+  },
+  "predicates": [
+    {
+      "attribute": "position_in pictured vertical corridor",
+      "id": "position",
+      "observable": "book location against shelf, pale wall, and floor",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "subject": "book",
+      "values": [
+        "left_shelf",
+        "airborne",
+        "wood_floor"
+      ]
+    },
+    {
+      "attribute": "visible support",
+      "id": "support",
+      "observable": "wood surface touching beneath the book",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "subject": "book",
+      "values": [
+        "wood_shelf_supported",
+        "unsupported",
+        "floor_supported"
+      ]
+    },
+    {
+      "attribute": "cover separation",
+      "id": "book_state",
+      "observable": "distance and angle between the blue-edged covers",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "subject": "book",
+      "values": [
+        "closed",
+        "open"
+      ]
+    }
+  ],
+  "protected_predicates": [
+    "same cream pages and dark blue cover edges",
+    "left wooden shelf and vertical support remain fixed",
+    "pale wall, white baseboard, wood-plank floor, lighting, and static side camera remain unchanged"
+  ],
+  "sample_id": "P06",
+  "schema_version": "trace-writer-v1",
+  "source_files": {
+    "origin": "P06-origin.txt",
+    "planner_instructions": "Project/physGen/prompt/generate_trace_writer_v1_plan.txt",
+    "reference_input": "P06-i0-1280x704.png"
+  },
+  "stages": [
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c1",
+        "c3"
+      ],
+      "id": "setup",
+      "observable_check": "The pictured book remains closed and shelf-supported while nearing the edge.",
+      "positive": "The blue-edged closed book moves toward the visible right end of the left wooden shelf.",
+      "support_kind": "motion_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1",
+            "c3"
+          ],
+          "text": "An open blue-edged book already lies on the wood floor before leaving the shelf.",
+          "type": "outcome_preset"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c1",
+        "c2",
+        "c3",
+        "c4"
+      ],
+      "id": "onset",
+      "observable_check": "The book leaves the shelf box before downward movement begins.",
+      "positive": "The book clears the shelf edge before descending through the unobstructed pale-wall corridor.",
+      "support_kind": "contact_interface",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ],
+          "text": "The pictured book falls or opens while wood remains visibly beneath it.",
+          "type": "wrong_order"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c5"
+      ],
+      "id": "evolution",
+      "observable_check": "Book height decreases without teleportation while blue-edged covers stay closed.",
+      "positive": "The same closed book descends continuously across the empty pale-wall area toward the wood floor.",
+      "support_kind": "motion_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c5"
+          ],
+          "text": "The book clears the shelf but remains suspended in the pictured wall corridor.",
+          "type": "effect_missing"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c6",
+        "c7"
+      ],
+      "id": "completion",
+      "observable_check": "Floor contact is followed by readable cover separation and zero displacement.",
+      "positive": "At wood-floor contact, the pictured blue-edged covers separate and the same book settles open.",
+      "support_kind": "motion_contact_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c6",
+            "c7"
+          ],
+          "text": "The blue-edged book reaches the wood floor but remains visibly closed or unsettled.",
+          "type": "incomplete_transition"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c7",
+        "c8"
+      ],
+      "id": "terminal",
+      "observable_check": "One open book stays fixed on the floor with stable identity.",
+      "positive": "The same cream-paged blue-edged book remains open on the unchanged wood-plank floor.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c7"
+          ],
+          "text": "The pictured open book closes or rises from the floor in final frames.",
+          "type": "reversal"
+        },
+        {
+          "constraint_ids": [
+            "c8"
+          ],
+          "text": "Closed and open blue-edged book copies coexist on the wood floor.",
+          "type": "exclusion_broken"
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "facts": {
+        "book_state": "closed",
+        "position": "left_shelf",
+        "support": "wood_shelf_supported"
+      },
+      "id": "z0",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    },
+    {
+      "facts": {
+        "book_state": "closed",
+        "position": "airborne",
+        "support": "unsupported"
+      },
+      "id": "z1",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "facts": {
+        "book_state": "open",
+        "position": "wood_floor",
+        "support": "floor_supported"
+      },
+      "id": "z2",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "cause_event": "pictured_edge_crossing",
+      "effects": [
+        {
+          "direction": "book moves right of shelf then downward",
+          "from": "left_shelf",
+          "id": "wall_corridor_fall",
+          "predicate": "position",
+          "to": "airborne"
+        },
+        {
+          "direction": "wood contact beneath book disappears",
+          "from": "wood_shelf_supported",
+          "id": "pictured_support_loss",
+          "predicate": "support",
+          "to": "unsupported"
+        }
+      ],
+      "from": "z0",
+      "id": "e1",
+      "kind": "triggered",
+      "preconditions": [
+        "position=left_shelf",
+        "support=wood_shelf_supported",
+        "book_state=closed"
+      ],
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "support_kind": "motion_contact_corridor",
+      "to": "z1"
+    },
+    {
+      "cause_event": "pictured_floor_contact",
+      "effects": [
+        {
+          "direction": "downward path ends at floor",
+          "from": "airborne",
+          "id": "arrive_wood_floor",
+          "predicate": "position",
+          "to": "wood_floor"
+        },
+        {
+          "direction": "floor contact supports book",
+          "from": "unsupported",
+          "id": "pictured_floor_support",
+          "predicate": "support",
+          "to": "floor_supported"
+        },
+        {
+          "direction": "blue-edged covers separate",
+          "from": "closed",
+          "id": "blue_cover_open",
+          "predicate": "book_state",
+          "to": "open"
+        }
+      ],
+      "from": "z1",
+      "id": "e2",
+      "kind": "triggered",
+      "preconditions": [
+        "position=airborne",
+        "support=unsupported",
+        "book_state=closed"
+      ],
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "support_kind": "motion_contact_corridor",
+      "to": "z2"
+    }
+  ],
+  "warnings": [
+    "The pushing source is absent from the reference image and is not added; entity boxes are visually estimated and unapproved."
+  ]
+}

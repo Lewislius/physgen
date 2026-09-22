@@ -1,0 +1,59 @@
+{
+  "status": "passed",
+  "tests_run": 16,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "seconds": 2.4645514230360277,
+  "torch_version": "2.8.0+cu128",
+  "native_config": {
+    "architecture": "v43_native_joint_flow_oracle_v1",
+    "sites": [
+      5,
+      15,
+      25
+    ],
+    "parameters": {
+      "initialization": 126337376,
+      "A@5": 783138048,
+      "A@15": 783138048,
+      "A@25": 783138048
+    },
+    "total_parameters": 2475751520,
+    "p_working_width": 3072,
+    "h_width": 3072,
+    "jepa_width": 1664,
+    "losses": {
+      "fm_weight": 1.0,
+      "struct_weight": 0.1,
+      "oracle_weight": 1.0,
+      "warmup_steps": 200,
+      "struct_noise_width": 0.2
+    },
+    "oracle": {
+      "inner_steps": 2,
+      "relative_step": 0.01,
+      "regularization": 0.001,
+      "max_backtracks": 4,
+      "backtrack_factor": 0.5,
+      "armijo": 0.0001,
+      "min_relative_gain": 1e-05,
+      "min_absolute_gain": 1e-08,
+      "scale_floor": 0.0001,
+      "gradient_floor": 1e-20,
+      "sites_per_micro": 0
+    },
+    "train_samples": 2279,
+    "first_sample_frames": 121,
+    "cache": "/home/liuzhirui/Project/physGen/code/v4.2/cache/wisa2400_nativefps_f121_a147456_fp32_jepa32",
+    "gt_future_input": false,
+    "global_batch": 8,
+    "fp32_parameters_grad_adam_gib": 36.89157247543335
+  },
+  "v42_source_files_checked": 35,
+  "v42_source_changes": [],
+  "gpu_test_run": false,
+  "full_training_run": false,
+  "video_quality_evaluated": false,
+  "note": "CPU fixtures use explicit small test widths. Production dimensions were independently inspected on meta tensors."
+}

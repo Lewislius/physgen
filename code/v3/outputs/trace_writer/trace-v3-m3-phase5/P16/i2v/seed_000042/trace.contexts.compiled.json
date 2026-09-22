@@ -1,0 +1,190 @@
+{
+  "actual_t5_token_lengths": {
+    "global_semantic": 290,
+    "stage.completion.negative.0": 145,
+    "stage.completion.positive": 146,
+    "stage.evolution.negative.0": 145,
+    "stage.evolution.positive": 144,
+    "stage.onset.negative.0": 156,
+    "stage.onset.positive": 155,
+    "stage.setup.negative.0": 156,
+    "stage.setup.positive": 153,
+    "stage.terminal.negative.0": 181,
+    "stage.terminal.negative.1": 187,
+    "stage.terminal.positive": 203
+  },
+  "global_anchor": "[ENTITY INVENTORY] The closed scene contains dye: exactly 1; water: one declared collective group. The reference first frame fixes these identities and initial layout. [INITIAL STATE] dye_position=above_center_surface, colored_area=none, water_state=fully_clear. [PHYSICAL EVENT] The single compact dark-blue drop above the centered water surface enters the clear rectangular glass vessel and spreads outward. [PERSISTENT PROTECTION] same dark-blue dye color; same transparent rectangular glass vessel and horizontal waterline; pale background, tabletop reflection, lighting, centered framing, and static camera remain unchanged; blue color stays inside the vessel. [CLOSED WORLD] No additional external source, extra copy, unlisted object enters or appears; unoccupied scene regions remain empty. [CONSERVATION] Source loss and result gain stay coupled: tracked logical entity slots remain consistent; center entry precedes outward blue growth within clear vessel. No result appears from an undeclared external source. [TERMINAL STATE] The same logical entity slots persist without duplicates; dye_position=inside_water, colored_area=expanded, water_state=locally_blue remains visible through the final frames.",
+  "issues": [],
+  "max_t5_token_length": 290,
+  "protected_coverage": {
+    "blue color stays inside the vessel": [
+      "appearance"
+    ],
+    "pale background, tabletop reflection, lighting, centered framing, and static camera remain unchanged": [
+      "appearance",
+      "geometry",
+      "camera_background",
+      "closed_world_or_persistence"
+    ],
+    "same dark-blue dye color": [
+      "identity_count",
+      "appearance"
+    ],
+    "same transparent rectangular glass vessel and horizontal waterline": [
+      "identity_count",
+      "geometry"
+    ]
+  },
+  "stage_pairs": [
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "the dark-blue drop crosses the centered horizontal waterline happens BEFORE blue boundary widens inside vessel.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: dye: exactly 1, state dye_position=above_center_surface, required; water: one declared collective group, state colored_area=none, water_state=fully_clear, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] the dark-blue drop crosses the centered horizontal waterline happens BEFORE blue boundary widens inside vessel.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: dye: exactly 1, state dye_position=above_center_surface, required; water: one declared collective group, state colored_area=none, water_state=fully_clear, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "setup",
+      "violation_constraint_ids": [
+        [
+          "c1"
+        ]
+      ],
+      "violation_kinds": [
+        "outcome_preset"
+      ],
+      "violation_relations": [
+        "blue boundary widens inside vessel is already present BEFORE the dark-blue drop crosses the centered horizontal waterline."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: dye: exactly 1, state dye_position=above_center_surface, required; water: one declared collective group, state colored_area=none, water_state=fully_clear, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] blue boundary widens inside vessel is already present BEFORE the dark-blue drop crosses the centered horizontal waterline."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "the dark-blue drop crosses the centered horizontal waterline happens BEFORE blue boundary widens inside vessel.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: dye: exactly 1, state dye_position=above_center_surface, transitioning; water: one declared collective group, state colored_area=none, water_state=fully_clear, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] the dark-blue drop crosses the centered horizontal waterline happens BEFORE blue boundary widens inside vessel.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: dye: exactly 1, state dye_position=above_center_surface, transitioning; water: one declared collective group, state colored_area=none, water_state=fully_clear, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "onset",
+      "violation_constraint_ids": [
+        [
+          "c1"
+        ]
+      ],
+      "violation_kinds": [
+        "wrong_order"
+      ],
+      "violation_relations": [
+        "blue boundary widens inside vessel happens BEFORE the dark-blue drop crosses the centered horizontal waterline."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: dye: exactly 1, state dye_position=above_center_surface, transitioning; water: one declared collective group, state colored_area=none, water_state=fully_clear, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] blue boundary widens inside vessel happens BEFORE the dark-blue drop crosses the centered horizontal waterline."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The declared change blue boundary widens inside vessel occurs in its stated direction.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: dye: exactly 1, state dye_position=inside_water, required; water: one declared collective group, state colored_area=expanded, water_state=locally_blue, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change blue boundary widens inside vessel occurs in its stated direction.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: dye: exactly 1, state dye_position=inside_water, required; water: one declared collective group, state colored_area=expanded, water_state=locally_blue, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "evolution",
+      "violation_constraint_ids": [
+        [
+          "c2",
+          "c3"
+        ]
+      ],
+      "violation_kinds": [
+        "coupling_broken"
+      ],
+      "violation_relations": [
+        "Only one coupled change occurs while the other remains unchanged: ."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: dye: exactly 1, state dye_position=inside_water, required; water: one declared collective group, state colored_area=expanded, water_state=locally_blue, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] Only one coupled change occurs while the other remains unchanged: ."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The declared change blue boundary widens inside vessel occurs in its stated direction.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: dye: exactly 1, state dye_position=inside_water, transitioning; water: one declared collective group, state colored_area=expanded, water_state=locally_blue, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change blue boundary widens inside vessel occurs in its stated direction.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: dye: exactly 1, state dye_position=inside_water, transitioning; water: one declared collective group, state colored_area=expanded, water_state=locally_blue, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "completion",
+      "violation_constraint_ids": [
+        [
+          "c2",
+          "c3",
+          "c4"
+        ]
+      ],
+      "violation_kinds": [
+        "incomplete_transition"
+      ],
+      "violation_relations": [
+        "The declared cause occurs BUT the required target change does not become visible."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: dye: exactly 1, state dye_position=inside_water, transitioning; water: one declared collective group, state colored_area=expanded, water_state=locally_blue, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The declared cause occurs BUT the required target change does not become visible."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The terminal facts dye_position=inside_water, colored_area=expanded, water_state=locally_blue REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts water_state=fully_clear, water_state=locally_blue do not coexist.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: dye: exactly 1, state dye_position=inside_water, required; water: one declared collective group, state colored_area=expanded, water_state=locally_blue, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The terminal facts dye_position=inside_water, colored_area=expanded, water_state=locally_blue REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts water_state=fully_clear, water_state=locally_blue do not coexist.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: dye: exactly 1, state dye_position=inside_water, required; water: one declared collective group, state colored_area=expanded, water_state=locally_blue, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "terminal",
+      "violation_constraint_ids": [
+        [
+          "c4"
+        ],
+        [
+          "c5"
+        ]
+      ],
+      "violation_kinds": [
+        "reversal",
+        "exclusion_broken"
+      ],
+      "violation_relations": [
+        "The valid terminal state returns to its mutually exclusive earlier state.",
+        "Copies of the same logical slot appear in mutually exclusive states at the same time."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: dye: exactly 1, state dye_position=inside_water, required; water: one declared collective group, state colored_area=expanded, water_state=locally_blue, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The valid terminal state returns to its mutually exclusive earlier state. [AND] The same logical slot has only its valid state; mutually exclusive facts water_state=fully_clear, water_state=locally_blue do not coexist.",
+        "[STAGE ENTITY INVENTORY] Present now: dye: exactly 1, state dye_position=inside_water, required; water: one declared collective group, state colored_area=expanded, water_state=locally_blue, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The terminal facts dye_position=inside_water, colored_area=expanded, water_state=locally_blue REMAIN through the final frames. [AND] Copies of the same logical slot appear in mutually exclusive states at the same time."
+      ],
+      "violation_weights": [
+        0.5,
+        0.5
+      ]
+    }
+  ],
+  "texts": {
+    "global_semantic": "[ENTITY INVENTORY] The closed scene contains dye: exactly 1; water: one declared collective group. The reference first frame fixes these identities and initial layout. [INITIAL STATE] dye_position=above_center_surface, colored_area=none, water_state=fully_clear. [PHYSICAL EVENT] The single compact dark-blue drop above the centered water surface enters the clear rectangular glass vessel and spreads outward. [PERSISTENT PROTECTION] same dark-blue dye color; same transparent rectangular glass vessel and horizontal waterline; pale background, tabletop reflection, lighting, centered framing, and static camera remain unchanged; blue color stays inside the vessel. [CLOSED WORLD] No additional external source, extra copy, unlisted object enters or appears; unoccupied scene regions remain empty. [CONSERVATION] Source loss and result gain stay coupled: tracked logical entity slots remain consistent; center entry precedes outward blue growth within clear vessel. No result appears from an undeclared external source. [TERMINAL STATE] The same logical entity slots persist without duplicates; dye_position=inside_water, colored_area=expanded, water_state=locally_blue remains visible through the final frames.",
+    "stage.completion.negative.0": "[STAGE ENTITY INVENTORY] Present now: dye: exactly 1, state dye_position=inside_water, transitioning; water: one declared collective group, state colored_area=expanded, water_state=locally_blue, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The declared cause occurs BUT the required target change does not become visible.",
+    "stage.completion.positive": "[STAGE ENTITY INVENTORY] Present now: dye: exactly 1, state dye_position=inside_water, transitioning; water: one declared collective group, state colored_area=expanded, water_state=locally_blue, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change blue boundary widens inside vessel occurs in its stated direction.",
+    "stage.evolution.negative.0": "[STAGE ENTITY INVENTORY] Present now: dye: exactly 1, state dye_position=inside_water, required; water: one declared collective group, state colored_area=expanded, water_state=locally_blue, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] Only one coupled change occurs while the other remains unchanged: .",
+    "stage.evolution.positive": "[STAGE ENTITY INVENTORY] Present now: dye: exactly 1, state dye_position=inside_water, required; water: one declared collective group, state colored_area=expanded, water_state=locally_blue, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change blue boundary widens inside vessel occurs in its stated direction.",
+    "stage.onset.negative.0": "[STAGE ENTITY INVENTORY] Present now: dye: exactly 1, state dye_position=above_center_surface, transitioning; water: one declared collective group, state colored_area=none, water_state=fully_clear, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] blue boundary widens inside vessel happens BEFORE the dark-blue drop crosses the centered horizontal waterline.",
+    "stage.onset.positive": "[STAGE ENTITY INVENTORY] Present now: dye: exactly 1, state dye_position=above_center_surface, transitioning; water: one declared collective group, state colored_area=none, water_state=fully_clear, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] the dark-blue drop crosses the centered horizontal waterline happens BEFORE blue boundary widens inside vessel.",
+    "stage.setup.negative.0": "[STAGE ENTITY INVENTORY] Present now: dye: exactly 1, state dye_position=above_center_surface, required; water: one declared collective group, state colored_area=none, water_state=fully_clear, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] blue boundary widens inside vessel is already present BEFORE the dark-blue drop crosses the centered horizontal waterline.",
+    "stage.setup.positive": "[STAGE ENTITY INVENTORY] Present now: dye: exactly 1, state dye_position=above_center_surface, required; water: one declared collective group, state colored_area=none, water_state=fully_clear, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] the dark-blue drop crosses the centered horizontal waterline happens BEFORE blue boundary widens inside vessel.",
+    "stage.terminal.negative.0": "[STAGE ENTITY INVENTORY] Present now: dye: exactly 1, state dye_position=inside_water, required; water: one declared collective group, state colored_area=expanded, water_state=locally_blue, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The valid terminal state returns to its mutually exclusive earlier state. [AND] The same logical slot has only its valid state; mutually exclusive facts water_state=fully_clear, water_state=locally_blue do not coexist.",
+    "stage.terminal.negative.1": "[STAGE ENTITY INVENTORY] Present now: dye: exactly 1, state dye_position=inside_water, required; water: one declared collective group, state colored_area=expanded, water_state=locally_blue, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The terminal facts dye_position=inside_water, colored_area=expanded, water_state=locally_blue REMAIN through the final frames. [AND] Copies of the same logical slot appear in mutually exclusive states at the same time.",
+    "stage.terminal.positive": "[STAGE ENTITY INVENTORY] Present now: dye: exactly 1, state dye_position=inside_water, required; water: one declared collective group, state colored_area=expanded, water_state=locally_blue, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The terminal facts dye_position=inside_water, colored_area=expanded, water_state=locally_blue REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts water_state=fully_clear, water_state=locally_blue do not coexist."
+  },
+  "token_budget_priority": {
+    "causal": 2,
+    "entity_count": 0,
+    "protected": 1,
+    "style": 3
+  }
+}

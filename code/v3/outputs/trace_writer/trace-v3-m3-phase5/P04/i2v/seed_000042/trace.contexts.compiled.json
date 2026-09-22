@@ -1,0 +1,187 @@
+{
+  "actual_t5_token_lengths": {
+    "global_semantic": 270,
+    "stage.completion.negative.0": 143,
+    "stage.completion.positive": 154,
+    "stage.evolution.negative.0": 159,
+    "stage.evolution.positive": 152,
+    "stage.onset.negative.0": 153,
+    "stage.onset.positive": 152,
+    "stage.setup.negative.0": 153,
+    "stage.setup.positive": 150,
+    "stage.terminal.negative.0": 183,
+    "stage.terminal.negative.1": 176,
+    "stage.terminal.positive": 196
+  },
+  "global_anchor": "[ENTITY INVENTORY] The closed scene contains first domino: exactly 1; remaining row: one declared collective group. The reference first frame fixes these identities and initial layout. [INITIAL STATE] first_pose=upright, row_progress=upright_regular_row. [PHYSICAL EVENT] The pale wooden domino row on the beige floor falls from its near-left first domino toward the far-right end. [PERSISTENT PROTECTION] single straight row with the pictured regular spacing; pale wooden material and rectangular piece identity remain stable; beige floor, plain wall, lighting, perspective, and static camera remain unchanged. [CLOSED WORLD] No additional external source, extra copy, hand, person, tool, unlisted object enters or appears; unoccupied scene regions remain empty. [CONSERVATION] Source loss and result gain stay coupled: tracked logical entity slots remain consistent; near-left fall launches a rightward adjacent-contact front. No result appears from an undeclared external source. [TERMINAL STATE] The same logical entity slots persist without duplicates; first_pose=fallen_rightward, row_progress=fallen_row remains visible through the final frames.",
+  "issues": [],
+  "max_t5_token_length": 270,
+  "protected_coverage": {
+    "beige floor, plain wall, lighting, perspective, and static camera remain unchanged": [
+      "appearance",
+      "camera_background",
+      "closed_world_or_persistence"
+    ],
+    "pale wooden material and rectangular piece identity remain stable": [
+      "identity_count",
+      "appearance",
+      "geometry",
+      "camera_background",
+      "closed_world_or_persistence"
+    ],
+    "single straight row with the pictured regular spacing": [
+      "generic_anchor"
+    ]
+  },
+  "stage_pairs": [
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "the near-left first domino reaches its right neighbor happens BEFORE falling boundary advances left to right.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: first domino: exactly 1, state first_pose=upright, required; remaining row: one declared collective group, state row_progress=upright_regular_row, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] the near-left first domino reaches its right neighbor happens BEFORE falling boundary advances left to right.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: first domino: exactly 1, state first_pose=upright, required; remaining row: one declared collective group, state row_progress=upright_regular_row, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "setup",
+      "violation_constraint_ids": [
+        [
+          "c1"
+        ]
+      ],
+      "violation_kinds": [
+        "outcome_preset"
+      ],
+      "violation_relations": [
+        "falling boundary advances left to right is already present BEFORE the near-left first domino reaches its right neighbor."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: first domino: exactly 1, state first_pose=upright, required; remaining row: one declared collective group, state row_progress=upright_regular_row, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] falling boundary advances left to right is already present BEFORE the near-left first domino reaches its right neighbor."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "the near-left first domino reaches its right neighbor happens BEFORE falling boundary advances left to right.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: first domino: exactly 1, state first_pose=upright, transitioning; remaining row: one declared collective group, state row_progress=upright_regular_row, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] the near-left first domino reaches its right neighbor happens BEFORE falling boundary advances left to right.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: first domino: exactly 1, state first_pose=upright, transitioning; remaining row: one declared collective group, state row_progress=upright_regular_row, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "onset",
+      "violation_constraint_ids": [
+        [
+          "c1",
+          "c2"
+        ]
+      ],
+      "violation_kinds": [
+        "wrong_order"
+      ],
+      "violation_relations": [
+        "falling boundary advances left to right happens BEFORE the near-left first domino reaches its right neighbor."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: first domino: exactly 1, state first_pose=upright, transitioning; remaining row: one declared collective group, state row_progress=upright_regular_row, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] falling boundary advances left to right happens BEFORE the near-left first domino reaches its right neighbor."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The coupled changes occur together: first piece rotates toward its right neighbor WHILE falling boundary advances left to right.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: first domino: exactly 1, state first_pose=fallen_rightward, required; remaining row: one declared collective group, state row_progress=fallen_row, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The coupled changes occur together: first piece rotates toward its right neighbor WHILE falling boundary advances left to right.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: first domino: exactly 1, state first_pose=fallen_rightward, required; remaining row: one declared collective group, state row_progress=fallen_row, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "evolution",
+      "violation_constraint_ids": [
+        [
+          "c3"
+        ]
+      ],
+      "violation_kinds": [
+        "coupling_broken"
+      ],
+      "violation_relations": [
+        "Only one coupled change occurs while the other remains unchanged: first piece rotates toward its right neighbor; falling boundary advances left to right."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: first domino: exactly 1, state first_pose=fallen_rightward, required; remaining row: one declared collective group, state row_progress=fallen_row, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] Only one coupled change occurs while the other remains unchanged: first piece rotates toward its right neighbor; falling boundary advances left to right."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The coupled changes occur together: first piece rotates toward its right neighbor WHILE falling boundary advances left to right.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: first domino: exactly 1, state first_pose=fallen_rightward, transitioning; remaining row: one declared collective group, state row_progress=fallen_row, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The coupled changes occur together: first piece rotates toward its right neighbor WHILE falling boundary advances left to right.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: first domino: exactly 1, state first_pose=fallen_rightward, transitioning; remaining row: one declared collective group, state row_progress=fallen_row, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "completion",
+      "violation_constraint_ids": [
+        [
+          "c3",
+          "c4"
+        ]
+      ],
+      "violation_kinds": [
+        "incomplete_transition"
+      ],
+      "violation_relations": [
+        "The declared cause occurs BUT the required target change does not become visible."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: first domino: exactly 1, state first_pose=fallen_rightward, transitioning; remaining row: one declared collective group, state row_progress=fallen_row, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The declared cause occurs BUT the required target change does not become visible."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The terminal facts first_pose=fallen_rightward, row_progress=fallen_row REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts row_progress=upright_regular_row, row_progress=fallen_row do not coexist.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: first domino: exactly 1, state first_pose=fallen_rightward, required; remaining row: one declared collective group, state row_progress=fallen_row, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The terminal facts first_pose=fallen_rightward, row_progress=fallen_row REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts row_progress=upright_regular_row, row_progress=fallen_row do not coexist.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: first domino: exactly 1, state first_pose=fallen_rightward, required; remaining row: one declared collective group, state row_progress=fallen_row, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "terminal",
+      "violation_constraint_ids": [
+        [
+          "c4"
+        ],
+        [
+          "c5"
+        ]
+      ],
+      "violation_kinds": [
+        "reversal",
+        "exclusion_broken"
+      ],
+      "violation_relations": [
+        "The valid terminal state returns to its mutually exclusive earlier state.",
+        "Copies of the same logical slot appear in mutually exclusive states at the same time."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: first domino: exactly 1, state first_pose=fallen_rightward, required; remaining row: one declared collective group, state row_progress=fallen_row, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The valid terminal state returns to its mutually exclusive earlier state. [AND] The same logical slot has only its valid state; mutually exclusive facts row_progress=upright_regular_row, row_progress=fallen_row do not coexist.",
+        "[STAGE ENTITY INVENTORY] Present now: first domino: exactly 1, state first_pose=fallen_rightward, required; remaining row: one declared collective group, state row_progress=fallen_row, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The terminal facts first_pose=fallen_rightward, row_progress=fallen_row REMAIN through the final frames. [AND] Copies of the same logical slot appear in mutually exclusive states at the same time."
+      ],
+      "violation_weights": [
+        0.5,
+        0.5
+      ]
+    }
+  ],
+  "texts": {
+    "global_semantic": "[ENTITY INVENTORY] The closed scene contains first domino: exactly 1; remaining row: one declared collective group. The reference first frame fixes these identities and initial layout. [INITIAL STATE] first_pose=upright, row_progress=upright_regular_row. [PHYSICAL EVENT] The pale wooden domino row on the beige floor falls from its near-left first domino toward the far-right end. [PERSISTENT PROTECTION] single straight row with the pictured regular spacing; pale wooden material and rectangular piece identity remain stable; beige floor, plain wall, lighting, perspective, and static camera remain unchanged. [CLOSED WORLD] No additional external source, extra copy, hand, person, tool, unlisted object enters or appears; unoccupied scene regions remain empty. [CONSERVATION] Source loss and result gain stay coupled: tracked logical entity slots remain consistent; near-left fall launches a rightward adjacent-contact front. No result appears from an undeclared external source. [TERMINAL STATE] The same logical entity slots persist without duplicates; first_pose=fallen_rightward, row_progress=fallen_row remains visible through the final frames.",
+    "stage.completion.negative.0": "[STAGE ENTITY INVENTORY] Present now: first domino: exactly 1, state first_pose=fallen_rightward, transitioning; remaining row: one declared collective group, state row_progress=fallen_row, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The declared cause occurs BUT the required target change does not become visible.",
+    "stage.completion.positive": "[STAGE ENTITY INVENTORY] Present now: first domino: exactly 1, state first_pose=fallen_rightward, transitioning; remaining row: one declared collective group, state row_progress=fallen_row, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The coupled changes occur together: first piece rotates toward its right neighbor WHILE falling boundary advances left to right.",
+    "stage.evolution.negative.0": "[STAGE ENTITY INVENTORY] Present now: first domino: exactly 1, state first_pose=fallen_rightward, required; remaining row: one declared collective group, state row_progress=fallen_row, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] Only one coupled change occurs while the other remains unchanged: first piece rotates toward its right neighbor; falling boundary advances left to right.",
+    "stage.evolution.positive": "[STAGE ENTITY INVENTORY] Present now: first domino: exactly 1, state first_pose=fallen_rightward, required; remaining row: one declared collective group, state row_progress=fallen_row, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The coupled changes occur together: first piece rotates toward its right neighbor WHILE falling boundary advances left to right.",
+    "stage.onset.negative.0": "[STAGE ENTITY INVENTORY] Present now: first domino: exactly 1, state first_pose=upright, transitioning; remaining row: one declared collective group, state row_progress=upright_regular_row, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] falling boundary advances left to right happens BEFORE the near-left first domino reaches its right neighbor.",
+    "stage.onset.positive": "[STAGE ENTITY INVENTORY] Present now: first domino: exactly 1, state first_pose=upright, transitioning; remaining row: one declared collective group, state row_progress=upright_regular_row, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] the near-left first domino reaches its right neighbor happens BEFORE falling boundary advances left to right.",
+    "stage.setup.negative.0": "[STAGE ENTITY INVENTORY] Present now: first domino: exactly 1, state first_pose=upright, required; remaining row: one declared collective group, state row_progress=upright_regular_row, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] falling boundary advances left to right is already present BEFORE the near-left first domino reaches its right neighbor.",
+    "stage.setup.positive": "[STAGE ENTITY INVENTORY] Present now: first domino: exactly 1, state first_pose=upright, required; remaining row: one declared collective group, state row_progress=upright_regular_row, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] the near-left first domino reaches its right neighbor happens BEFORE falling boundary advances left to right.",
+    "stage.terminal.negative.0": "[STAGE ENTITY INVENTORY] Present now: first domino: exactly 1, state first_pose=fallen_rightward, required; remaining row: one declared collective group, state row_progress=fallen_row, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The valid terminal state returns to its mutually exclusive earlier state. [AND] The same logical slot has only its valid state; mutually exclusive facts row_progress=upright_regular_row, row_progress=fallen_row do not coexist.",
+    "stage.terminal.negative.1": "[STAGE ENTITY INVENTORY] Present now: first domino: exactly 1, state first_pose=fallen_rightward, required; remaining row: one declared collective group, state row_progress=fallen_row, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The terminal facts first_pose=fallen_rightward, row_progress=fallen_row REMAIN through the final frames. [AND] Copies of the same logical slot appear in mutually exclusive states at the same time.",
+    "stage.terminal.positive": "[STAGE ENTITY INVENTORY] Present now: first domino: exactly 1, state first_pose=fallen_rightward, required; remaining row: one declared collective group, state row_progress=fallen_row, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, hand, person, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The terminal facts first_pose=fallen_rightward, row_progress=fallen_row REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts row_progress=upright_regular_row, row_progress=fallen_row do not coexist."
+  },
+  "token_budget_priority": {
+    "causal": 2,
+    "entity_count": 0,
+    "protected": 1,
+    "style": 3
+  }
+}

@@ -1,0 +1,331 @@
+{
+  "ace": {
+    "cfg_scope": "conditional_only",
+    "diagnostics": "summary",
+    "enabled": true,
+    "formula": "semantic + scale * (positive - semantic)",
+    "fp32_delta": true,
+    "lambda0": 0.5,
+    "layer_gates": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.4,
+      0.4,
+      0.4,
+      0.4,
+      0.4,
+      0.4,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "layer_preset": "mvp_mid16",
+    "residual_mode": "positive_only",
+    "step_gates": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "contexts": {
+    "cfg_negative_prompt": "色调艳丽，过曝，静态，细节模糊不清，字幕，风格，作品，画作，画面，静止，整体发灰，最差质量，低质量，JPEG压缩残留，丑陋的，残缺的，多余的手指，画得不好的手部，画得不好的脸部，畸形的，毁容的，形态畸形的肢体，手指融合，静止不动的画面，杂乱的背景，三条腿，背景人很多，倒着走",
+    "counterfactual_text": "A bottle pours orange juice through a visible stream into a glass until the bottle holds less and the glass holds more. The orange-juice stream raises the glass level while the bottle level remains unchanged throughout the transfer.",
+    "positive_text": "A bottle pours orange juice through a visible stream into a glass until the bottle holds less and the glass holds more. The orange juice forms a continuous stream into the glass as the bottle level falls and the glass level rises together.",
+    "semantic_text": "A bottle pours orange juice through a visible stream into a glass until the bottle holds less and the glass holds more.",
+    "token_lengths": {
+      "cfg_negative": 126,
+      "positive": 48,
+      "semantic": 25
+    },
+    "used_by_model": {
+      "cfg_negative": true,
+      "counterfactual": false,
+      "positive": true,
+      "semantic": true
+    },
+    "utf8_sha256": {
+      "cfg_negative": "ce96e0324e4b54ce4b6e867f669ca520952e1a34cc116543516b1897f0d3c47e",
+      "counterfactual": "324c81d99245d6c7255317144303734b80b3af315d1390745b5dbc14e756dd0d",
+      "positive": "0f3880553e599b7f9b1e1b2d5d53d2e458cf1559566cd8c3021493994a1ebdbb",
+      "semantic": "4b86002546d23d6d71b3228c904d99490abdc2d7714135da56f5130527ea6c99"
+    }
+  },
+  "diagnostics": {
+    "all_finite": true,
+    "mode": "summary",
+    "raw_delta_l2_max": 204.37403869628906,
+    "raw_delta_l2_min": 43.562049865722656,
+    "record_count": 12,
+    "scaled_to_semantic_max": 0.15869979560375214,
+    "scaled_to_semantic_min": 0.026166100054979324
+  },
+  "generation": {
+    "convert_model_dtype": true,
+    "first_frame_reanchor_count": 51,
+    "fps": 24,
+    "frame_num": 49,
+    "guide_scale": 5.0,
+    "height": 352,
+    "max_area": 225280,
+    "offload_model": true,
+    "sample_solver": "unipc",
+    "sampling_steps": 50,
+    "seed": 42,
+    "shift": 5.0,
+    "t5_cpu": true,
+    "width": 640
+  },
+  "input_hashes": {
+    "causal_json": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P14/P14-cplus-cminus.json",
+      "sha256": "baf3d10e971b3c1dd89cd50b400d01b78226a821f97a603f6e2c6f71bce06fc1",
+      "size_bytes": 963
+    },
+    "i0_image": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P14/P14-i0.png",
+      "sha256": "c1473d6b500984f0a48faabdcb4085453c3ee1cf3599952c9c1a40ed83ff5874",
+      "size_bytes": 1538468
+    },
+    "i0_metadata_json": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P14/P14-i0.json",
+      "sha256": "8d835d024d6bb96f91c031cddbbf0ddacfb94d00e1d992b31669b845c626ce48",
+      "size_bytes": 1631
+    },
+    "model_reference_image": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/outputs/ace_router/m2-20260901-052948/P14/M2_I2V_CPLUS/seed_000042/reference_input.png",
+      "sha256": "be2be97f9cf3ba5ffb3bda42949a35a8ee0a907a771f54834a4904777506e3f6",
+      "size_bytes": 857059
+    },
+    "origin_txt": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P14/P14-origin.txt",
+      "sha256": "f921b06de65ca348b9e5ffb8657d5f50deb64ff8630dfb5c227d661bf3ad11be",
+      "size_bytes": 120
+    },
+    "selection_manifest": null,
+    "sizing_image": null
+  },
+  "method": "M2_I2V_CPLUS",
+  "output_video": "/home/liuzhirui/Project/physGen/code/v1/outputs/ace_router/m2-20260901-052948/P14/M2_I2V_CPLUS/seed_000042/video.mp4",
+  "output_video_sha256": "bfdbb8fd671d8a0b86f7dfb2ea10d6c2c9f23d75fbf57626a0d15538cf6a9f75",
+  "reference": {
+    "crop_box": [
+      0,
+      175,
+      1402,
+      946
+    ],
+    "crop_policy": "center_crop_to_20x11_or_11x20_then_lanczos_resize",
+    "orientation": "landscape",
+    "original_size": [
+      1402,
+      1122
+    ],
+    "prepared_artifact_path": "/home/liuzhirui/Project/physGen/code/v1/outputs/ace_router/m2-20260901-052948/P14/M2_I2V_CPLUS/seed_000042/reference_input.png",
+    "prepared_artifact_sha256": "be2be97f9cf3ba5ffb3bda42949a35a8ee0a907a771f54834a4904777506e3f6",
+    "prepared_size": [
+      1280,
+      704
+    ],
+    "resolved_output_size": [
+      640,
+      352
+    ],
+    "selection_manifest": null,
+    "source_path": "/home/liuzhirui/Project/physGen/code/v1/demo/P14/P14-i0.png",
+    "source_sha256": "c1473d6b500984f0a48faabdcb4085453c3ee1cf3599952c9c1a40ed83ff5874",
+    "used_as_model_condition": true,
+    "used_for_output_sizing_only": false
+  },
+  "run_id": "m2-20260901-052948",
+  "runtime": {
+    "cuda_capability": [
+      8,
+      6
+    ],
+    "cuda_memory_reserved_bytes": 10877927424,
+    "cuda_runtime": "12.8",
+    "cudnn": 91002,
+    "denoising_step_timing": {
+      "all_steps_median_seconds": 1.0466549682617188,
+      "count": 50,
+      "max_seconds": 1.0586552734375,
+      "min_seconds": 1.0095892333984375,
+      "per_step_seconds": [
+        1.0407249755859376,
+        1.0461368408203124,
+        1.0401341552734376,
+        1.041616943359375,
+        1.04224462890625,
+        1.041754150390625,
+        1.0415933837890625,
+        1.0410250244140624,
+        1.0420950927734376,
+        1.0431436767578126,
+        1.0447237548828125,
+        1.0446806640625,
+        1.0449930419921876,
+        1.045064697265625,
+        1.050293212890625,
+        1.049247802734375,
+        1.0470389404296876,
+        1.04627099609375,
+        1.04732568359375,
+        1.047826416015625,
+        1.0472427978515626,
+        1.0483599853515626,
+        1.0475980224609376,
+        1.0494320068359375,
+        1.049090087890625,
+        1.04981298828125,
+        1.0515333251953125,
+        1.0498743896484375,
+        1.0504847412109375,
+        1.0559549560546875,
+        1.0553907470703126,
+        1.0528194580078125,
+        1.0535311279296875,
+        1.0552637939453124,
+        1.054023681640625,
+        1.0540001220703126,
+        1.055352783203125,
+        1.0559508056640625,
+        1.055341552734375,
+        1.0586552734375,
+        1.0098749389648438,
+        1.0112982788085938,
+        1.0141245727539063,
+        1.0095892333984375,
+        1.011373046875,
+        1.0102968139648438,
+        1.0167879638671875,
+        1.0113935546875,
+        1.0117324829101562,
+        1.0116495361328126
+      ],
+      "stable_median_seconds": 1.0470389404296876,
+      "warmup_first_step_seconds": 1.0407249755859376
+    },
+    "diffusers": "0.36.0",
+    "elapsed_seconds": 112.60894496086985,
+    "gpu": "NVIDIA RTX A6000",
+    "peak_cuda_bytes": 13715515904,
+    "platform": "Linux-5.15.0-117-generic-x86_64-with-glibc2.35",
+    "python": "3.10.19",
+    "torch": "2.8.0+cu128"
+  },
+  "sample_id": "P14",
+  "seed": 42,
+  "status": "success",
+  "upstream": {
+    "checkpoint": "/home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B",
+    "checkpoint_hashes": {
+      "config.json": "d1fea36899d00c2501b836c13ad65af56e2f9529ba622e50886d3f5c3e6c02bc",
+      "diffusion_pytorch_model.safetensors.index.json": "bfa2337f1163e195d24151a72298daf34a620543898109be47e414c8daa5b3fe"
+    },
+    "checkpoint_model_config": {
+      "_class_name": "WanModel",
+      "dim": 3072,
+      "in_dim": 48,
+      "model_type": "ti2v",
+      "num_heads": 24,
+      "num_layers": 30,
+      "out_dim": 48,
+      "text_len": 512
+    },
+    "source_hashes": {
+      "wan/configs/wan_ti2v_5B.py": "26d9e7b9c555eb0900b13751267a596556f869e7aee2d1572afc2a0a4a76f4c7",
+      "wan/modules/attention.py": "c79158e1cc9b7a17bc934e6acb34f42e588a41adb89801146957cda2d6d4379d",
+      "wan/modules/model.py": "8b39115298ca7322806c19b3165b3f435a94fe4a58f0624aec24f8e7f4997432",
+      "wan/modules/t5.py": "8b0cebf3192c542f92a344255a06c203df3ba24160715899a055cc8de0cd930f",
+      "wan/textimage2video.py": "228f2fabf23014ed41ec6b8cd713d5be7371bb558501c71a62a0258b491a877b"
+    },
+    "wan_git_head": "08e890ff01ff8daf9161db472f362efe5d6ba656",
+    "wan_repo": "/home/liuzhirui/model/Wan2.2",
+    "weight_shards": [
+      {
+        "mtime_ns": 1769032249319825600,
+        "name": "diffusion_pytorch_model-00001-of-00003.safetensors",
+        "size_bytes": 9825014472
+      },
+      {
+        "mtime_ns": 1769032417046557795,
+        "name": "diffusion_pytorch_model-00002-of-00003.safetensors",
+        "size_bytes": 9995661736
+      },
+      {
+        "mtime_ns": 1769020338553636583,
+        "name": "diffusion_pytorch_model-00003-of-00003.safetensors",
+        "size_bytes": 178558176
+      }
+    ]
+  },
+  "warnings": [
+    "selection_manifest_missing"
+  ]
+}

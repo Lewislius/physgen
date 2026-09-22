@@ -1,0 +1,366 @@
+{
+  "closed_world": {
+    "allowed_entity_ids": [
+      "dandelion",
+      "seeds",
+      "drift_region"
+    ],
+    "empty_regions": [],
+    "external_source_allowed": false,
+    "forbidden_new_categories": [
+      "external source",
+      "extra copy",
+      "unlisted object"
+    ],
+    "provenance": "derived"
+  },
+  "conservation": [
+    {
+      "observable_proxy": "tracked logical entity slots remain consistent",
+      "provenance": "derived",
+      "quantity": "instance_count",
+      "relation": "constant",
+      "rule_id": "entity_slots_constant",
+      "sinks": [
+        "dandelion",
+        "seeds",
+        "drift_region"
+      ],
+      "sources": [
+        "dandelion",
+        "seeds",
+        "drift_region"
+      ],
+      "tolerance": 0.0
+    },
+    {
+      "observable_proxy": "detachment and outward drift accompany decreasing head fullness",
+      "provenance": "derived",
+      "quantity": "material_proxy",
+      "relation": "coupled_monotonic",
+      "rule_id": "conservation_c3",
+      "sinks": [
+        "seed_position",
+        "fullness"
+      ],
+      "sources": [
+        "attachment"
+      ],
+      "tolerance": 0.1
+    }
+  ],
+  "issues": [
+    "seeds: exact visual count unresolved; retained as group",
+    "drift_region: exact visual count unresolved; retained as group"
+  ],
+  "lifecycles": [
+    {
+      "entity_id": "seeds",
+      "from_stage": "setup",
+      "from_state": "attached; on_head",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "attached",
+          "detached"
+        ],
+        [
+          "on_head",
+          "drifting_away"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "detached; drifting_away"
+    },
+    {
+      "entity_id": "dandelion",
+      "from_stage": "setup",
+      "from_state": "full",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "full",
+          "depleted"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "depleted"
+    }
+  ],
+  "slots": [
+    {
+      "aliases": [],
+      "canonical_mention": "the same dry dandelion head and stem",
+      "cardinality": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "dandelion",
+      "invariant_attributes": [
+        "same dandelion stem and central head",
+        "same seeds through attachment and drift",
+        "camera and unrelated outdoor scene remain unchanged"
+      ],
+      "mutable_attributes": [
+        "seed_head_fullness"
+      ],
+      "persistent_identity": true,
+      "provenance": "default",
+      "role": "source"
+    },
+    {
+      "aliases": [],
+      "canonical_mention": "the same dandelion seeds",
+      "cardinality": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "seeds",
+      "invariant_attributes": [
+        "same dandelion stem and central head",
+        "same seeds through attachment and drift",
+        "camera and unrelated outdoor scene remain unchanged"
+      ],
+      "mutable_attributes": [
+        "attachment_to:dandelion",
+        "position"
+      ],
+      "persistent_identity": true,
+      "provenance": "derived",
+      "role": "carrier"
+    },
+    {
+      "aliases": [],
+      "canonical_mention": "the surrounding air through which seeds drift",
+      "cardinality": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "drift_region",
+      "invariant_attributes": [
+        "same dandelion stem and central head",
+        "same seeds through attachment and drift",
+        "camera and unrelated outdoor scene remain unchanged"
+      ],
+      "mutable_attributes": [],
+      "persistent_identity": true,
+      "provenance": "derived",
+      "role": "sink"
+    }
+  ],
+  "stage_presence": [
+    {
+      "entity_id": "dandelion",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [
+        "fullness=full"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "seeds",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [
+        "attachment=attached",
+        "seed_position=on_head"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "drift_region",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [],
+      "visible": "required"
+    },
+    {
+      "entity_id": "dandelion",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [
+        "fullness=full"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "seeds",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [
+        "attachment=attached",
+        "seed_position=on_head"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "drift_region",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "dandelion",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [
+        "fullness=depleted"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "seeds",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [
+        "attachment=detached",
+        "seed_position=drifting_away"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "drift_region",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [],
+      "visible": "required"
+    },
+    {
+      "entity_id": "dandelion",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [
+        "fullness=depleted"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "seeds",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [
+        "attachment=detached",
+        "seed_position=drifting_away"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "drift_region",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "dandelion",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [
+        "fullness=depleted"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "seeds",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [
+        "attachment=detached",
+        "seed_position=drifting_away"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "drift_region",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [],
+      "visible": "required"
+    }
+  ]
+}

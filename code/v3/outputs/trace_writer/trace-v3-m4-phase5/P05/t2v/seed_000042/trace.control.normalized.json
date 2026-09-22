@@ -1,0 +1,338 @@
+{
+  "closed_world": {
+    "allowed_entity_ids": [
+      "block",
+      "ramp",
+      "rough_floor"
+    ],
+    "empty_regions": [],
+    "external_source_allowed": false,
+    "forbidden_new_categories": [
+      "external source",
+      "extra copy",
+      "unlisted object"
+    ],
+    "provenance": "derived"
+  },
+  "conservation": [
+    {
+      "observable_proxy": "tracked logical entity slots remain consistent",
+      "provenance": "derived",
+      "quantity": "instance_count",
+      "relation": "constant",
+      "rule_id": "entity_slots_constant",
+      "sinks": [
+        "block",
+        "ramp",
+        "rough_floor"
+      ],
+      "sources": [
+        "block",
+        "ramp",
+        "rough_floor"
+      ],
+      "tolerance": 0.0
+    }
+  ],
+  "issues": [
+    "rough_floor: exact visual count unresolved; retained as group"
+  ],
+  "lifecycles": [
+    {
+      "entity_id": "block",
+      "from_stage": "setup",
+      "from_state": "upper_ramp; stationary",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "upper_ramp",
+          "rough_floor"
+        ],
+        [
+          "stationary",
+          "sliding"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "rough_floor; sliding"
+    },
+    {
+      "entity_id": "block",
+      "from_stage": "setup",
+      "from_state": "sliding",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "sliding",
+          "stopped"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "stopped"
+    }
+  ],
+  "slots": [
+    {
+      "aliases": [],
+      "canonical_mention": "the same wooden block",
+      "cardinality": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "block",
+      "invariant_attributes": [
+        "same wooden block",
+        "same ramp geometry",
+        "same rough floor and camera"
+      ],
+      "mutable_attributes": [
+        "location",
+        "motion"
+      ],
+      "persistent_identity": true,
+      "provenance": "default",
+      "role": "actor"
+    },
+    {
+      "aliases": [],
+      "canonical_mention": "the same ramp",
+      "cardinality": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "ramp",
+      "invariant_attributes": [
+        "same wooden block",
+        "same ramp geometry",
+        "same rough floor and camera"
+      ],
+      "mutable_attributes": [],
+      "persistent_identity": true,
+      "provenance": "default",
+      "role": "environment"
+    },
+    {
+      "aliases": [],
+      "canonical_mention": "the same rough floor",
+      "cardinality": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "rough_floor",
+      "invariant_attributes": [
+        "same wooden block",
+        "same ramp geometry",
+        "same rough floor and camera"
+      ],
+      "mutable_attributes": [],
+      "persistent_identity": true,
+      "provenance": "derived",
+      "role": "patient"
+    }
+  ],
+  "stage_presence": [
+    {
+      "entity_id": "block",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [
+        "location=upper_ramp",
+        "motion=stationary"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "ramp",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [],
+      "visible": "required"
+    },
+    {
+      "entity_id": "rough_floor",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [],
+      "visible": "required"
+    },
+    {
+      "entity_id": "block",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [
+        "location=upper_ramp",
+        "motion=stationary"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "ramp",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [],
+      "visible": "required"
+    },
+    {
+      "entity_id": "rough_floor",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "block",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [
+        "location=rough_floor",
+        "motion=sliding"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "ramp",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [],
+      "visible": "required"
+    },
+    {
+      "entity_id": "rough_floor",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [],
+      "visible": "required"
+    },
+    {
+      "entity_id": "block",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [
+        "location=rough_floor",
+        "motion=stopped"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "ramp",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [],
+      "visible": "required"
+    },
+    {
+      "entity_id": "rough_floor",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "block",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [
+        "location=rough_floor",
+        "motion=stopped"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "ramp",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [],
+      "visible": "required"
+    },
+    {
+      "entity_id": "rough_floor",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [],
+      "visible": "required"
+    }
+  ]
+}

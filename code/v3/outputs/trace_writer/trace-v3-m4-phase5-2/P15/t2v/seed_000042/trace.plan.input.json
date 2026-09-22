@@ -1,0 +1,364 @@
+{
+  "assumptions": [],
+  "constraints": [
+    {
+      "after": "cone_grow",
+      "before": "first_grains",
+      "id": "c1",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "precedes"
+    },
+    {
+      "effect": "cup_empty",
+      "id": "c2",
+      "source_refs": [
+        "origin"
+      ],
+      "transition": "e1",
+      "type": "changes"
+    },
+    {
+      "effects": [
+        "cup_empty",
+        "grains_fall",
+        "cone_grow"
+      ],
+      "id": "c3",
+      "relation": "cup sand decreases through falling grains while conical pile grows",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "couples"
+    },
+    {
+      "facts": [
+        "source_amount=nearly_empty",
+        "pile_size=grown_cone"
+      ],
+      "id": "c4",
+      "source_refs": [
+        "origin"
+      ],
+      "state": "z1",
+      "type": "persists"
+    },
+    {
+      "facts": [
+        "pile_size=absent",
+        "pile_size=grown_cone"
+      ],
+      "id": "c5",
+      "scope": "same_time",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "excludes"
+    }
+  ],
+  "control": {},
+  "design_revision": "fixed5-causal-r3",
+  "entities": [
+    {
+      "id": "cup",
+      "mention": "the same cup containing dry sand",
+      "role": "source",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "id": "sand_stream",
+      "mention": "the continuous dry-sand stream",
+      "role": "carrier",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "id": "pile_region",
+      "mention": "the table area directly below the cup",
+      "role": "sink",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "description": "first dry grains visibly leave the cup",
+      "id": "first_grains",
+      "observable": "a falling granular path appears below the cup opening",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "generation_basis": {
+    "mode": "identifier_only",
+    "reference_image_usage": "identifier_only",
+    "semantic_inputs": [
+      "origin",
+      "planner_instructions"
+    ]
+  },
+  "global_semantic": "Dry sand pours from one cup onto one flat table, emptying the cup while a conical pile grows below.",
+  "grounding": {
+    "approved": false,
+    "coordinate_frame": "reference_input",
+    "entity_boxes": [],
+    "protected_boxes": [],
+    "reference_image": "P15-i0-1280x704.png",
+    "reference_image_usage": "identifier_only"
+  },
+  "predicates": [
+    {
+      "attribute": "sand_amount",
+      "id": "source_amount",
+      "observable": "visible dry sand remaining inside the cup",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "cup",
+      "values": [
+        "full",
+        "nearly_empty"
+      ]
+    },
+    {
+      "attribute": "visibility",
+      "id": "stream_state",
+      "observable": "connected falling grains between cup and table",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "sand_stream",
+      "values": [
+        "absent",
+        "continuous"
+      ]
+    },
+    {
+      "attribute": "sand_pile",
+      "id": "pile_size",
+      "observable": "height and base width of sand accumulated below",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "pile_region",
+      "values": [
+        "absent",
+        "grown_cone"
+      ]
+    }
+  ],
+  "protected_predicates": [
+    "same cup and dry sand",
+    "same flat table",
+    "sand remains within the source-stream-pile route",
+    "camera and unrelated scene remain unchanged"
+  ],
+  "sample_id": "P15",
+  "schema_version": "trace-writer-v1",
+  "source_files": {
+    "origin": "P15-origin.txt",
+    "planner_instructions": "Project/physGen/prompt/generate_trace_writer_v1_plan.txt",
+    "reference_input": "P15-i0-1280x704.png"
+  },
+  "stages": [
+    {
+      "affected_roles": [
+        "source",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "setup",
+      "observable_check": "The source is full, the sink region is clear, and no stream exists.",
+      "positive": "The cup begins full of dry sand while the flat table below has no pile.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "A grown conical pile already exists before any grains leave the cup.",
+          "type": "outcome_preset"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "onset",
+      "observable_check": "A granular carrier appears before measurable pile height develops.",
+      "positive": "The first dry grains leave the cup and form a visible falling stream toward the table.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "The conical pile grows while no falling grains connect it to the cup.",
+          "type": "wrong_order"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c2",
+        "c3"
+      ],
+      "id": "evolution",
+      "observable_check": "Source amount falls while pile height and base increase together.",
+      "positive": "The cup's sand decreases as the continuous stream builds a widening conical pile directly below.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c2",
+            "c3"
+          ],
+          "text": "The pile grows through falling sand while the cup remains completely full.",
+          "type": "coupling_broken"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c2",
+        "c3",
+        "c4"
+      ],
+      "id": "completion",
+      "observable_check": "Late frames show little source sand and a broad peaked pile.",
+      "positive": "The source approaches empty while the same pile reaches a clear stable conical form.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c2",
+            "c3",
+            "c4"
+          ],
+          "text": "The stream continues but the cup never empties or the pile never forms a cone.",
+          "type": "incomplete_transition"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c4",
+        "c5"
+      ],
+      "id": "terminal",
+      "observable_check": "The terminal source amount and pile shape remain stable.",
+      "positive": "The nearly empty cup and grown conical sand pile persist over the same table.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c4"
+          ],
+          "text": "The pile disappears and the nearly empty cup refills during final frames.",
+          "type": "reversal"
+        },
+        {
+          "constraint_ids": [
+            "c5"
+          ],
+          "text": "Empty and grown-pile versions of the same table region coexist simultaneously.",
+          "type": "exclusion_broken"
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "facts": {
+        "pile_size": "absent",
+        "source_amount": "full",
+        "stream_state": "absent"
+      },
+      "id": "z0",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "facts": {
+        "pile_size": "grown_cone",
+        "source_amount": "nearly_empty",
+        "stream_state": "continuous"
+      },
+      "id": "z1",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "cause_event": null,
+      "effects": [
+        {
+          "direction": "sand remaining in cup decreases",
+          "from": "full",
+          "id": "cup_empty",
+          "predicate": "source_amount",
+          "to": "nearly_empty"
+        },
+        {
+          "direction": "falling granular stream becomes visible",
+          "from": "absent",
+          "id": "grains_fall",
+          "predicate": "stream_state",
+          "to": "continuous"
+        },
+        {
+          "direction": "pile height and base expand",
+          "from": "absent",
+          "id": "cone_grow",
+          "predicate": "pile_size",
+          "to": "grown_cone"
+        }
+      ],
+      "from": "z0",
+      "id": "e1",
+      "kind": "continuous",
+      "preconditions": [
+        "source_amount=full",
+        "stream_state=absent",
+        "pile_size=absent"
+      ],
+      "source_refs": [
+        "origin"
+      ],
+      "support_kind": "source_stream_sink",
+      "to": "z1"
+    }
+  ],
+  "warnings": []
+}

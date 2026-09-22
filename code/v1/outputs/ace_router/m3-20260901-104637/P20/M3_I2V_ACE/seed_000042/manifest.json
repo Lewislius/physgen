@@ -1,0 +1,348 @@
+{
+  "ace": {
+    "cfg_scope": "conditional_only",
+    "diagnostics": "full",
+    "enabled": true,
+    "formula": "semantic + relative_cap(scale * (positive - counterfactual), semantic)",
+    "fp32_delta": true,
+    "lambda0": 0.1,
+    "layer_gates": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "layer_preset": "mid_b",
+    "residual_cap_eps": 1e-12,
+    "residual_cap_ratio": 0.02,
+    "residual_mode": "positive_minus_counterfactual",
+    "step_gates": [
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1
+    ],
+    "step_preset": "safe_i2v_v1"
+  },
+  "contexts": {
+    "causal_origin_prompt_prefixed": false,
+    "cfg_negative_prompt": "",
+    "compiler_version": "ace-conditioning-mvp-v1",
+    "conditioning_mode": "compiled",
+    "counterfactual_text": "Coffee spreads across the surrounding snow while the cup level remains unchanged and the nearby campfire continues flickering.",
+    "positive_text": "Coffee forms a continuous stream from the kettle into the cup while the nearby campfire flickers in place and the surrounding snow remains stable.",
+    "semantic_text": "On snowy ground beside a small campfire, a kettle pours coffee into a cup while the fire continues flickering. Required visible entities: snowy ground; one small lit campfire; one kettle containing coffee; one empty cup. At the beginning: kettle: upright, intact, containing coffee, and separated from the cup; cup: empty, upright, and positioned near the kettle; campfire: small, lit, and localized; snow: intact around the event areas. Required state changes: coffee configuration: kettle to stream and cup; cup coffee level: empty to higher; campfire flame shape: locally flickering. These event variables are allowed to change: kettle orientation; coffee stream and cup level; campfire flame shape. Preserve throughout: static wide camera; snowy-ground appearance outside event regions; kettle, cup, and campfire identities; one kettle and one cup; one small campfire; the same snowy ground and local scene.",
+    "semantic_variant": "compiled_i2v",
+    "token_lengths": {
+      "cfg_negative": 1,
+      "counterfactual": 25,
+      "positive": 29,
+      "semantic": 213
+    },
+    "used_by_model": {
+      "cfg_negative": false,
+      "cfg_unconditional_empty": true,
+      "counterfactual": true,
+      "positive": true,
+      "semantic": true
+    },
+    "utf8_sha256": {
+      "cfg_negative": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "counterfactual": "5947486399ed11847fb1f6fbe8fc992ecf033a574793a71a28933b9c9530979c",
+      "positive": "add0d1cb8a4694d5580ef883bf28774bb82690e32df5e5af8481acb3fd72bbe6",
+      "semantic": "7bdcc49cdf607059ed1168693d444c11a540f026b5a15f914e879f486b52bd03"
+    }
+  },
+  "diagnostics": {
+    "all_finite": true,
+    "applied_to_semantic_max": 0.020005330443382263,
+    "applied_to_semantic_min": 0.0008615154656581581,
+    "candidate_to_semantic_max": 0.02616952173411846,
+    "candidate_to_semantic_min": 0.0008615162805654109,
+    "clip_coefficient_min": 0.7642477750778198,
+    "clip_fraction": 0.084,
+    "clipped_record_count": 42,
+    "mode": "full",
+    "raw_delta_l2_max": 115.8117904663086,
+    "raw_delta_l2_min": 26.571584701538086,
+    "record_count": 500,
+    "scaled_to_semantic_max": 0.020005330443382263,
+    "scaled_to_semantic_min": 0.0008615154656581581
+  },
+  "generation": {
+    "convert_model_dtype": true,
+    "first_frame_reanchor_count": 51,
+    "fps": 24,
+    "frame_num": 97,
+    "guide_scale": 3.5,
+    "height": 704,
+    "max_area": 901120,
+    "offload_model": true,
+    "sample_solver": "unipc",
+    "sampling_steps": 50,
+    "seed": 42,
+    "shift": 5.0,
+    "t5_cpu": true,
+    "width": 1280
+  },
+  "input_hashes": {
+    "causal_json": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P20/P20-cplus-cminus.json",
+      "sha256": "0c8161dfb5f3592a28903cc088f043a5ebdb1dc7a329ad6fd7050d1a5dc2c096",
+      "size_bytes": 1159
+    },
+    "i0_image": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P20/P20-i0-1280x704.png",
+      "sha256": "69f256ddbbf40d8612ece80112875ba9a05fafa25d22cfc38de54fcc1a62d029",
+      "size_bytes": 2004596
+    },
+    "i0_metadata_json": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P20/P20-i0.json",
+      "sha256": "f0d0a7ae0916cfff8f283b34a74f601f875b6d24257c069920b700836b6253f6",
+      "size_bytes": 1852
+    },
+    "model_reference_image": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/outputs/ace_router/m3-20260901-104637/P20/M3_I2V_ACE/seed_000042/reference_input.png",
+      "sha256": "986f4c38946f467aeb0c7ff36e8ea4d7fd7e5614b733a7053ab77921cc91e89c",
+      "size_bytes": 1300466
+    },
+    "origin_txt": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P20/P20-origin.txt",
+      "sha256": "d4cb08322cee877effd8bc38103ef673be4ab5d0152ccc6c86a503056df46eef",
+      "size_bytes": 111
+    },
+    "selection_manifest": null,
+    "sizing_image": null
+  },
+  "method": "M3_I2V_ACE",
+  "output_video": "/home/liuzhirui/Project/physGen/code/v1/outputs/ace_router/m3-20260901-104637/P20/M3_I2V_ACE/seed_000042/video.mp4",
+  "output_video_sha256": "6dabd19f4578fab670e4ef2064e5235a0c655f03b7e93811d4bfa2e0c060dc16",
+  "reference": {
+    "crop_box": [
+      0,
+      0,
+      1280,
+      704
+    ],
+    "crop_policy": "center_crop_to_20x11_or_11x20_then_lanczos_resize",
+    "orientation": "landscape",
+    "original_size": [
+      1280,
+      704
+    ],
+    "prepared_artifact_path": "/home/liuzhirui/Project/physGen/code/v1/outputs/ace_router/m3-20260901-104637/P20/M3_I2V_ACE/seed_000042/reference_input.png",
+    "prepared_artifact_sha256": "986f4c38946f467aeb0c7ff36e8ea4d7fd7e5614b733a7053ab77921cc91e89c",
+    "prepared_size": [
+      1280,
+      704
+    ],
+    "resolved_output_size": [
+      1280,
+      704
+    ],
+    "selection_manifest": null,
+    "source_path": "/home/liuzhirui/Project/physGen/code/v1/demo/P20/P20-i0-1280x704.png",
+    "source_sha256": "69f256ddbbf40d8612ece80112875ba9a05fafa25d22cfc38de54fcc1a62d029",
+    "used_as_model_condition": true,
+    "used_for_output_sizing_only": false
+  },
+  "run_id": "m3-20260901-104637",
+  "runtime": {
+    "cuda_capability": [
+      8,
+      6
+    ],
+    "cuda_memory_reserved_bytes": 34779168768,
+    "cuda_runtime": "12.8",
+    "cudnn": 91002,
+    "denoising_step_timing": {
+      "all_steps_median_seconds": 10.199938476562501,
+      "count": 50,
+      "max_seconds": 10.2191357421875,
+      "min_seconds": 9.9428798828125,
+      "per_step_seconds": [
+        9.9428798828125,
+        9.993896484375,
+        10.0202783203125,
+        10.0492421875,
+        10.07686328125,
+        10.106095703125,
+        10.123,
+        10.13760546875,
+        10.1572119140625,
+        10.17034375,
+        10.1772666015625,
+        10.1831337890625,
+        10.187009765625,
+        10.19180859375,
+        10.1897509765625,
+        10.1947666015625,
+        10.19748828125,
+        10.19986328125,
+        10.206978515625,
+        10.201447265625,
+        10.2012001953125,
+        10.204248046875,
+        10.1974375,
+        10.205494140625,
+        10.2191357421875,
+        10.2057802734375,
+        10.20791796875,
+        10.2073955078125,
+        10.208298828125,
+        10.206173828125,
+        10.2108310546875,
+        10.20623046875,
+        10.2076337890625,
+        10.205341796875,
+        10.1997109375,
+        10.206693359375,
+        10.2020771484375,
+        10.206115234375,
+        10.2007353515625,
+        10.210353515625,
+        10.2003134765625,
+        10.200013671875,
+        10.197869140625,
+        10.2012666015625,
+        10.1979150390625,
+        10.1987265625,
+        10.20362109375,
+        10.200798828125,
+        10.1981064453125,
+        10.1995537109375
+      ],
+      "stable_median_seconds": 10.200013671875,
+      "warmup_first_step_seconds": 9.9428798828125
+    },
+    "diffusers": "0.36.0",
+    "elapsed_seconds": 640.9314950751141,
+    "gpu": "NVIDIA RTX A6000",
+    "peak_cuda_bytes": 24456229376,
+    "platform": "Linux-5.15.0-117-generic-x86_64-with-glibc2.35",
+    "python": "3.10.19",
+    "torch": "2.8.0+cu128"
+  },
+  "sample_id": "P20",
+  "seed": 42,
+  "status": "success",
+  "upstream": {
+    "checkpoint": "/home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B",
+    "checkpoint_hashes": {
+      "config.json": "d1fea36899d00c2501b836c13ad65af56e2f9529ba622e50886d3f5c3e6c02bc",
+      "diffusion_pytorch_model.safetensors.index.json": "bfa2337f1163e195d24151a72298daf34a620543898109be47e414c8daa5b3fe"
+    },
+    "checkpoint_model_config": {
+      "_class_name": "WanModel",
+      "dim": 3072,
+      "in_dim": 48,
+      "model_type": "ti2v",
+      "num_heads": 24,
+      "num_layers": 30,
+      "out_dim": 48,
+      "text_len": 512
+    },
+    "source_hashes": {
+      "wan/configs/wan_ti2v_5B.py": "26d9e7b9c555eb0900b13751267a596556f869e7aee2d1572afc2a0a4a76f4c7",
+      "wan/modules/attention.py": "c79158e1cc9b7a17bc934e6acb34f42e588a41adb89801146957cda2d6d4379d",
+      "wan/modules/model.py": "8b39115298ca7322806c19b3165b3f435a94fe4a58f0624aec24f8e7f4997432",
+      "wan/modules/t5.py": "8b0cebf3192c542f92a344255a06c203df3ba24160715899a055cc8de0cd930f",
+      "wan/textimage2video.py": "228f2fabf23014ed41ec6b8cd713d5be7371bb558501c71a62a0258b491a877b"
+    },
+    "wan_git_head": "08e890ff01ff8daf9161db472f362efe5d6ba656",
+    "wan_repo": "/home/liuzhirui/model/Wan2.2",
+    "weight_shards": [
+      {
+        "mtime_ns": 1769032249319825600,
+        "name": "diffusion_pytorch_model-00001-of-00003.safetensors",
+        "size_bytes": 9825014472
+      },
+      {
+        "mtime_ns": 1769032417046557795,
+        "name": "diffusion_pytorch_model-00002-of-00003.safetensors",
+        "size_bytes": 9995661736
+      },
+      {
+        "mtime_ns": 1769020338553636583,
+        "name": "diffusion_pytorch_model-00003-of-00003.safetensors",
+        "size_bytes": 178558176
+      }
+    ]
+  },
+  "warnings": [
+    "selection_manifest_missing",
+    "The prompt contains simultaneous liquid-transfer and fire behavior rather than one shared causal chain."
+  ]
+}

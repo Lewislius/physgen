@@ -1,0 +1,436 @@
+{
+  "schema_version": "trace-direct-v1",
+  "design_revision": "p0-stage-direct-json-r2",
+  "sample_id": "P03",
+  "source_files": {
+    "origin": "P03-origin.txt",
+    "frame_zero_metadata": "P03-i0.json",
+    "reference_input": "P03-i0-1280x704.jpg"
+  },
+  "initial_condition": {
+    "type": "visible_actuator",
+    "description": "A visible hand is already swinging the racket toward the approaching ball."
+  },
+  "global_semantic": "Fixed side view of one visible hand swinging one black racket toward one yellow tennis ball approaching from the right. The strings hit the ball once, and the same ball reverses direction and travels right away from the racket while the camera stays still.",
+  "cfg_negative": " ",
+  "entities": [
+    {
+      "id": "hand",
+      "mention": "one visible hand",
+      "role": "actor"
+    },
+    {
+      "id": "racket",
+      "mention": "one black tennis racket",
+      "role": "carrier"
+    },
+    {
+      "id": "tennis_ball",
+      "mention": "one yellow tennis ball",
+      "role": "patient"
+    }
+  ],
+  "structured_guidance": {
+    "schema_version": "structured-text-guidance-v1",
+    "entities": [
+      {
+        "id": "hand",
+        "label": "visible human hand",
+        "count": 1,
+        "persistent": true,
+        "invariants": [
+          "natural hand anatomy",
+          "single identity"
+        ]
+      },
+      {
+        "id": "racket",
+        "label": "black tennis racket",
+        "count": 1,
+        "persistent": true,
+        "invariants": [
+          "rigid frame geometry",
+          "black appearance",
+          "single identity"
+        ]
+      },
+      {
+        "id": "tennis_ball",
+        "label": "yellow tennis ball",
+        "count": 1,
+        "persistent": true,
+        "invariants": [
+          "yellow fuzzy appearance",
+          "single intact identity"
+        ]
+      }
+    ],
+    "initial_condition": {
+      "type": "visible_actuator",
+      "active_stages": [
+        "setup"
+      ],
+      "facts": [
+        "The hand and racket are already swinging rightward in the first video frame.",
+        "The tennis ball approaches leftward from the right with a visible gap."
+      ]
+    },
+    "stages": [
+      {
+        "id": "setup",
+        "entity_states": [
+          {
+            "entity_id": "hand",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "swinging the racket rightward"
+            ],
+            "mutable": [
+              "position",
+              "pose"
+            ]
+          },
+          {
+            "entity_id": "racket",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "moving right with its strings facing the approaching ball"
+            ],
+            "mutable": [
+              "position",
+              "orientation"
+            ]
+          },
+          {
+            "entity_id": "tennis_ball",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "moving left toward the racket"
+            ],
+            "mutable": [
+              "horizontal position"
+            ]
+          }
+        ],
+        "relations": [
+          "A visible air gap separates the racket strings and ball."
+        ]
+      },
+      {
+        "id": "onset",
+        "entity_states": [
+          {
+            "entity_id": "racket",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "meeting the ball at the center of its strings once"
+            ],
+            "mutable": [
+              "position"
+            ]
+          },
+          {
+            "entity_id": "tennis_ball",
+            "presence": "transitioning",
+            "count": 1,
+            "states": [
+              "briefly compressing at the single string contact"
+            ],
+            "mutable": [
+              "travel speed",
+              "travel direction",
+              "elastic shape"
+            ]
+          }
+        ],
+        "relations": [
+          "The hand remains connected to the same racket during impact."
+        ]
+      },
+      {
+        "id": "evolution",
+        "entity_states": [
+          {
+            "entity_id": "racket",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "finishing the rightward swing"
+            ],
+            "mutable": [
+              "position",
+              "orientation"
+            ]
+          },
+          {
+            "entity_id": "tennis_ball",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "restoring its round form and reversing to move right"
+            ],
+            "mutable": [
+              "horizontal position",
+              "travel speed",
+              "travel direction",
+              "elastic shape"
+            ]
+          }
+        ],
+        "relations": [
+          "The same ball separates from the strings after exactly one impact."
+        ]
+      },
+      {
+        "id": "completion",
+        "entity_states": [
+          {
+            "entity_id": "racket",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "remaining to the left after the swing"
+            ],
+            "mutable": []
+          },
+          {
+            "entity_id": "tennis_ball",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "moving right away from the racket"
+            ],
+            "mutable": [
+              "horizontal position"
+            ]
+          }
+        ],
+        "relations": [
+          "The air gap between racket and ball continuously grows."
+        ]
+      },
+      {
+        "id": "terminal",
+        "entity_states": [
+          {
+            "entity_id": "hand",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "still holding the original racket at the left"
+            ],
+            "mutable": []
+          },
+          {
+            "entity_id": "racket",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "intact at the left"
+            ],
+            "mutable": []
+          },
+          {
+            "entity_id": "tennis_ball",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "round, intact, and separated to the right"
+            ],
+            "mutable": []
+          }
+        ],
+        "relations": [
+          "Exactly one hand-held racket and one original tennis ball remain visible."
+        ]
+      }
+    ]
+  },
+  "stages": [
+    {
+      "id": "setup",
+      "positive": "The hand swings the racket rightward while the tennis ball approaches from the right with a gap."
+    },
+    {
+      "id": "onset",
+      "positive": "The approaching ball visibly meets the center of the racket strings once."
+    },
+    {
+      "id": "evolution",
+      "positive": "The same ball compresses briefly and reverses its travel direction."
+    },
+    {
+      "id": "completion",
+      "positive": "The ball moves right away from the racket and the separation grows."
+    },
+    {
+      "id": "terminal",
+      "positive": "The original ball remains intact to the right while the hand and racket remain at the left."
+    }
+  ],
+  "warnings": [],
+  "generation_basis": {
+    "mode": "identifier_only",
+    "reference_image_usage": "identifier_only"
+  },
+  "grounding": {
+    "coordinate_frame": "reference_input",
+    "reference_image": "P03-i0-1280x704.jpg",
+    "approved": false,
+    "entity_boxes": []
+  },
+  "temporal_route": {
+    "latent_tokens": 25,
+    "crossfade_tokens": 2,
+    "interpolation": "smoothstep_c1",
+    "profile": "triggered",
+    "stage_order": [
+      "setup",
+      "onset",
+      "evolution",
+      "completion",
+      "terminal"
+    ],
+    "weights": [
+      [
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0
+      ]
+    ]
+  }
+}

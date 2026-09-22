@@ -1,0 +1,17 @@
+{
+  "scope": "inference_only",
+  "transitions": [
+    {
+      "before": "b8fb3d280d088bca1f3bfcc67f75b50d5f4f07a0be3d57e3e252abeb388ef17d",
+      "after": "d66411065cf3e4ae5fd5b101a8f1b7923ba5ad7cd1e6ba1012ba28c7ace394c6",
+      "reason": "step0800 EMA/demo41 adaptation; original LoRA forward, native Wan loader, geometry and FP32 VAE/T5 encoders unchanged. Saved config, EMA SHA256 and base asset inventory are verified.",
+      "audit": "verification/step0800_demo41_20260918/source_audit.json"
+    },
+    {
+      "before": "b8fb3d280d088bca1f3bfcc67f75b50d5f4f07a0be3d57e3e252abeb388ef17d",
+      "after": "aa085208e06c9af742d37486fc38c7532fbbaa4a00ea2679cef9a8f88c82ad9c",
+      "reason": "Standalone local Wan/T5/VAE/geometry/runtime implementation; exact native numerical functions preserved. Demo/single inference no longer reads sibling code, shell scripts, training cache or asset inventory. Existing config/EMA and base asset checks remain active.",
+      "audit": "verification/standalone_20260918/source_audit.json"
+    }
+  ]
+}

@@ -1,0 +1,369 @@
+{
+  "assumptions": [],
+  "constraints": [
+    {
+      "after": "cup_increase",
+      "before": "coffee_stream_onset",
+      "id": "c1",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "precedes"
+    },
+    {
+      "effect": "source_decrease",
+      "id": "c2",
+      "source_refs": [
+        "origin"
+      ],
+      "transition": "e1",
+      "type": "changes"
+    },
+    {
+      "effects": [
+        "source_decrease",
+        "stream_form",
+        "cup_increase"
+      ],
+      "id": "c3",
+      "relation": "coffee leaving the kettle travels through one continuous stream and raises the cup level",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "couples"
+    },
+    {
+      "facts": [
+        "source_amount=less",
+        "cup_level=higher"
+      ],
+      "id": "c4",
+      "source_refs": [
+        "origin"
+      ],
+      "state": "z1",
+      "type": "persists"
+    },
+    {
+      "facts": [
+        "cup_level=lower",
+        "cup_level=higher"
+      ],
+      "id": "c5",
+      "scope": "same_time",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "excludes"
+    }
+  ],
+  "design_revision": "fixed5-causal-r3",
+  "entities": [
+    {
+      "id": "kettle",
+      "mention": "the same coffee-containing kettle",
+      "role": "source",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "id": "coffee_stream",
+      "mention": "coffee traveling from the kettle to the cup",
+      "role": "carrier",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "id": "cup",
+      "mention": "the same receiving cup",
+      "role": "sink",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "id": "campfire",
+      "mention": "the same nearby flickering campfire",
+      "role": "environment",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "description": "coffee first forms a continuous path from kettle to cup",
+      "id": "coffee_stream_onset",
+      "observable": "the first uninterrupted coffee stream connects the outlet to the cup opening",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "generation_basis": {
+    "mode": "identifier_only",
+    "reference_image_usage": "identifier_only",
+    "semantic_inputs": [
+      "origin",
+      "planner_instructions"
+    ]
+  },
+  "global_semantic": "A kettle releases coffee into a cup on snowy ground while the nearby campfire continues flickering independently.",
+  "grounding": {
+    "approved": false,
+    "coordinate_frame": "reference_input",
+    "entity_boxes": [],
+    "protected_boxes": [],
+    "reference_image": "P20-i0-1280x704.png",
+    "reference_image_usage": "identifier_only"
+  },
+  "predicates": [
+    {
+      "attribute": "coffee remaining at source",
+      "id": "source_amount",
+      "observable": "coffee visibly leaving the kettle over successive frames",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "kettle",
+      "values": [
+        "more",
+        "less"
+      ]
+    },
+    {
+      "attribute": "transfer continuity",
+      "id": "stream_state",
+      "observable": "continuous coffee path between kettle outlet and cup",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "coffee_stream",
+      "values": [
+        "absent",
+        "continuous"
+      ]
+    },
+    {
+      "attribute": "received coffee level",
+      "id": "cup_level",
+      "observable": "visible coffee fill level or occupied area inside the cup",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "cup",
+      "values": [
+        "lower",
+        "higher"
+      ]
+    }
+  ],
+  "protected_predicates": [
+    "same kettle, cup, campfire, and snowy setting",
+    "campfire remains lit and flickers independently throughout",
+    "camera, lighting, and background remain unchanged",
+    "no coffee spills outside the receiving cup"
+  ],
+  "sample_id": "P20",
+  "schema_version": "trace-writer-v1",
+  "source_files": {
+    "origin": "P20-origin.txt",
+    "planner_instructions": "Project/physGen/prompt/generate_trace_writer_v1_plan.txt",
+    "reference_input": "P20-i0-1280x704.png"
+  },
+  "stages": [
+    {
+      "affected_roles": [
+        "source",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "setup",
+      "observable_check": "No coffee stream yet connects the kettle outlet to the cup.",
+      "positive": "The kettle holds more coffee, the cup level is lower, and the nearby fire already flickers.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "The cup already has its higher final coffee level before pouring begins.",
+          "type": "outcome_preset"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "onset",
+      "observable_check": "The first continuous path terminates inside the same cup.",
+      "positive": "Coffee first forms a continuous stream from the kettle outlet into the cup opening.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "The cup level rises before any coffee stream reaches its opening.",
+          "type": "wrong_order"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c2",
+        "c3"
+      ],
+      "id": "evolution",
+      "observable_check": "Source outflow, continuous transport, and cup filling advance together.",
+      "positive": "Coffee continuously leaves the kettle, crosses the stream path, and accumulates inside the cup.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c2",
+            "c3"
+          ],
+          "text": "Coffee disappears from the kettle without a connecting stream or cup-level increase.",
+          "type": "coupling_broken"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c3",
+        "c4"
+      ],
+      "id": "completion",
+      "observable_check": "The receiving cup contains visibly more coffee than at setup.",
+      "positive": "The cup reaches a visibly higher coffee level after receiving the poured stream.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c3",
+            "c4"
+          ],
+          "text": "The stream enters the cup but its coffee level never becomes higher.",
+          "type": "incomplete_transition"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c4",
+        "c5"
+      ],
+      "id": "terminal",
+      "observable_check": "The transferred coffee remains in the cup and the fire remains lit.",
+      "positive": "The higher cup level persists while the same nearby campfire continues its independent flicker.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c4"
+          ],
+          "text": "The cup returns to its lower initial level in the final frames.",
+          "type": "reversal"
+        },
+        {
+          "constraint_ids": [
+            "c5"
+          ],
+          "text": "Lower and higher coffee levels appear simultaneously in the same cup.",
+          "type": "exclusion_broken"
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "facts": {
+        "cup_level": "lower",
+        "source_amount": "more",
+        "stream_state": "absent"
+      },
+      "id": "z0",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "facts": {
+        "cup_level": "higher",
+        "source_amount": "less",
+        "stream_state": "continuous"
+      },
+      "id": "z1",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "cause_event": "coffee_stream_onset",
+      "effects": [
+        {
+          "direction": "coffee leaves the kettle",
+          "from": "more",
+          "id": "source_decrease",
+          "predicate": "source_amount",
+          "to": "less"
+        },
+        {
+          "direction": "a continuous coffee path forms toward the cup",
+          "from": "absent",
+          "id": "stream_form",
+          "predicate": "stream_state",
+          "to": "continuous"
+        },
+        {
+          "direction": "received coffee accumulates in the cup",
+          "from": "lower",
+          "id": "cup_increase",
+          "predicate": "cup_level",
+          "to": "higher"
+        }
+      ],
+      "from": "z0",
+      "id": "e1",
+      "kind": "continuous",
+      "preconditions": [
+        "source_amount=more",
+        "stream_state=absent",
+        "cup_level=lower"
+      ],
+      "source_refs": [
+        "origin"
+      ],
+      "support_kind": "source_stream_sink",
+      "to": "z1"
+    }
+  ],
+  "warnings": []
+}

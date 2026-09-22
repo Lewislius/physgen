@@ -1,0 +1,428 @@
+{
+  "schema_version": "trace-direct-v1",
+  "design_revision": "p0-stage-direct-json-r2",
+  "sample_id": "P19",
+  "source_files": {
+    "origin": "P19-origin.txt",
+    "frame_zero_metadata": "P19-i0.json",
+    "reference_input": "P19-i0-1280x704.jpg"
+  },
+  "initial_condition": {
+    "type": "visible_actuator",
+    "description": "Two visible hands pull opposite edges of the notched paper to start and extend one tear."
+  },
+  "global_semantic": "Fixed front view of two hands pulling the left and right edges of one notched white paper sheet apart. A tear starts at the centered top notch, travels continuously to the opposite edge, and the same sheet becomes two pieces that remain separated.",
+  "cfg_negative": " ",
+  "entities": [
+    {
+      "id": "left_hand",
+      "mention": "one visible left hand",
+      "role": "actor"
+    },
+    {
+      "id": "right_hand",
+      "mention": "one visible right hand",
+      "role": "actor"
+    },
+    {
+      "id": "paper",
+      "mention": "one notched white paper sheet",
+      "role": "patient"
+    }
+  ],
+  "structured_guidance": {
+    "schema_version": "structured-text-guidance-v1",
+    "entities": [
+      {
+        "id": "left_hand",
+        "label": "visible left hand",
+        "count": 1,
+        "persistent": true,
+        "invariants": [
+          "natural hand anatomy",
+          "left-hand identity",
+          "single identity"
+        ]
+      },
+      {
+        "id": "right_hand",
+        "label": "visible right hand",
+        "count": 1,
+        "persistent": true,
+        "invariants": [
+          "natural hand anatomy",
+          "right-hand identity",
+          "single identity"
+        ]
+      },
+      {
+        "id": "paper",
+        "label": "tracked white paper material from one notched sheet",
+        "count": 1,
+        "persistent": true,
+        "invariants": [
+          "white paper appearance",
+          "conserved original paper material",
+          "single-sheet origin and exactly two terminal pieces"
+        ]
+      }
+    ],
+    "initial_condition": {
+      "type": "visible_actuator",
+      "active_stages": [
+        "setup"
+      ],
+      "facts": [
+        "The two hands begin pulling opposite side edges of the same sheet apart.",
+        "The paper starts as one intact sheet except for one centered top notch."
+      ]
+    },
+    "stages": [
+      {
+        "id": "setup",
+        "entity_states": [
+          {
+            "entity_id": "left_hand",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "holding and pulling the left edge leftward"
+            ],
+            "mutable": [
+              "horizontal position",
+              "pose"
+            ]
+          },
+          {
+            "entity_id": "right_hand",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "holding and pulling the right edge rightward"
+            ],
+            "mutable": [
+              "horizontal position",
+              "pose"
+            ]
+          },
+          {
+            "entity_id": "paper",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "forming one taut intact notched sheet"
+            ],
+            "mutable": [
+              "tension"
+            ]
+          }
+        ],
+        "relations": [
+          "Only the small pre-existing top notch is open; no long tear exists yet."
+        ]
+      },
+      {
+        "id": "onset",
+        "entity_states": [
+          {
+            "entity_id": "left_hand",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "continuing the leftward pull"
+            ],
+            "mutable": [
+              "horizontal position",
+              "pose"
+            ]
+          },
+          {
+            "entity_id": "right_hand",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "continuing the rightward pull"
+            ],
+            "mutable": [
+              "horizontal position",
+              "pose"
+            ]
+          },
+          {
+            "entity_id": "paper",
+            "presence": "transitioning",
+            "count": 1,
+            "states": [
+              "starting one tear downward from the existing notch"
+            ],
+            "mutable": [
+              "tear length",
+              "side separation"
+            ]
+          }
+        ],
+        "relations": [
+          "There is exactly one tear front and it begins at the notch."
+        ]
+      },
+      {
+        "id": "evolution",
+        "entity_states": [
+          {
+            "entity_id": "paper",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "lengthening the same tear continuously toward the opposite edge"
+            ],
+            "mutable": [
+              "tear length",
+              "side separation"
+            ]
+          }
+        ],
+        "relations": [
+          "The two sides move farther apart while remaining connected ahead of the one tear front."
+        ]
+      },
+      {
+        "id": "completion",
+        "entity_states": [
+          {
+            "entity_id": "paper",
+            "presence": "transitioning",
+            "count": 1,
+            "states": [
+              "reaching the opposite edge and changing from one sheet into exactly two pieces"
+            ],
+            "mutable": [
+              "paper topology",
+              "piece separation"
+            ]
+          }
+        ],
+        "relations": [
+          "The original one sheet creates exactly two main pieces and no extra scraps."
+        ]
+      },
+      {
+        "id": "terminal",
+        "entity_states": [
+          {
+            "entity_id": "left_hand",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "holding the left original paper piece"
+            ],
+            "mutable": []
+          },
+          {
+            "entity_id": "right_hand",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "holding the right original paper piece"
+            ],
+            "mutable": []
+          },
+          {
+            "entity_id": "paper",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "remaining as exactly two visibly separated pieces"
+            ],
+            "mutable": []
+          }
+        ],
+        "relations": [
+          "Both pieces together contain the conserved material of the one original sheet."
+        ]
+      }
+    ]
+  },
+  "stages": [
+    {
+      "id": "setup",
+      "positive": "Both hands hold the intact sheet taut with only the small top notch visible."
+    },
+    {
+      "id": "onset",
+      "positive": "The opposite pulls extend one tear downward from the existing notch."
+    },
+    {
+      "id": "evolution",
+      "positive": "The same tear lengthens continuously as the two sides move farther apart."
+    },
+    {
+      "id": "completion",
+      "positive": "The tear reaches the opposite edge and the original sheet becomes two pieces."
+    },
+    {
+      "id": "terminal",
+      "positive": "The two paper pieces remain visibly separated in the two hands."
+    }
+  ],
+  "warnings": [],
+  "generation_basis": {
+    "mode": "identifier_only",
+    "reference_image_usage": "identifier_only"
+  },
+  "grounding": {
+    "coordinate_frame": "reference_input",
+    "reference_image": "P19-i0-1280x704.jpg",
+    "approved": false,
+    "entity_boxes": []
+  },
+  "temporal_route": {
+    "latent_tokens": 25,
+    "crossfade_tokens": 2,
+    "interpolation": "smoothstep_c1",
+    "profile": "continuous",
+    "stage_order": [
+      "setup",
+      "onset",
+      "evolution",
+      "completion",
+      "terminal"
+    ],
+    "weights": [
+      [
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0
+      ]
+    ]
+  }
+}

@@ -1,0 +1,393 @@
+{
+  "assumptions": [
+    "The pictured bottle tilts rightward enough for its mouth to align with the tumbler rim."
+  ],
+  "constraints": [
+    {
+      "after": "pictured_glass_rise",
+      "before": "pictured_orange_onset",
+      "id": "c1",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "precedes"
+    },
+    {
+      "effect": "pictured_bottle_fall",
+      "id": "c2",
+      "source_refs": [
+        "origin"
+      ],
+      "transition": "e1",
+      "type": "changes"
+    },
+    {
+      "effects": [
+        "pictured_bottle_fall",
+        "pictured_orange_stream",
+        "pictured_glass_rise"
+      ],
+      "id": "c3",
+      "relation": "left orange level falls through bright stream while right level rises",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "couples"
+    },
+    {
+      "facts": [
+        "source_level=visibly_lower",
+        "sink_level=visibly_higher"
+      ],
+      "id": "c4",
+      "source_refs": [
+        "origin"
+      ],
+      "state": "z1",
+      "type": "persists"
+    },
+    {
+      "facts": [
+        "sink_level=empty",
+        "sink_level=visibly_higher"
+      ],
+      "id": "c5",
+      "scope": "same_time",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "excludes"
+    }
+  ],
+  "design_revision": "fixed5-causal-r3",
+  "entities": [
+    {
+      "id": "bottle",
+      "mention": "the same tall clear uncapped bottle of bright orange juice",
+      "role": "source",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    },
+    {
+      "id": "stream",
+      "mention": "the bright orange stream from the bottle mouth",
+      "role": "carrier",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "id": "glass",
+      "mention": "the same empty clear tapered tumbler on the right",
+      "role": "sink",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "description": "orange juice first connects the bottle mouth to the glass rim",
+      "id": "pictured_orange_onset",
+      "observable": "a bright orange column enters the right tumbler",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    }
+  ],
+  "generation_basis": {
+    "mode": "visual_grounding",
+    "reference_image_usage": "visual_grounding",
+    "semantic_inputs": [
+      "origin",
+      "planner_instructions",
+      "reference_input"
+    ]
+  },
+  "global_semantic": "The tall clear bottle of bright orange juice at left pours into the empty clear tumbler at right.",
+  "grounding": {
+    "approved": false,
+    "coordinate_frame": "reference_input",
+    "entity_boxes": [
+      {
+        "box": [
+          0.25,
+          0.124,
+          0.42,
+          0.922
+        ],
+        "entity_id": "bottle"
+      },
+      {
+        "box": [
+          0.527,
+          0.497,
+          0.685,
+          0.92
+        ],
+        "entity_id": "glass"
+      }
+    ],
+    "protected_boxes": [],
+    "reference_image": "P14-i0-1280x704.png",
+    "reference_image_usage": "visual_grounding"
+  },
+  "predicates": [
+    {
+      "attribute": "pictured orange level",
+      "id": "source_level",
+      "observable": "bright orange waterline inside the bottle",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "subject": "bottle",
+      "values": [
+        "high",
+        "visibly_lower"
+      ]
+    },
+    {
+      "attribute": "mouth-to-glass connection",
+      "id": "stream_state",
+      "observable": "orange liquid column across the gap",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "stream",
+      "values": [
+        "absent",
+        "continuous_orange"
+      ]
+    },
+    {
+      "attribute": "pictured orange level",
+      "id": "sink_level",
+      "observable": "orange waterline inside the right tumbler",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "subject": "glass",
+      "values": [
+        "empty",
+        "visibly_higher"
+      ]
+    }
+  ],
+  "protected_predicates": [
+    "same tall clear bottle, tapered clear tumbler, and bright orange juice",
+    "wood tabletop, pale gray background, lighting, and static camera remain unchanged",
+    "orange juice does not spill onto the table"
+  ],
+  "sample_id": "P14",
+  "schema_version": "trace-writer-v1",
+  "source_files": {
+    "origin": "P14-origin.txt",
+    "planner_instructions": "Project/physGen/prompt/generate_trace_writer_v1_plan.txt",
+    "reference_input": "P14-i0-1280x704.png"
+  },
+  "stages": [
+    {
+      "affected_roles": [
+        "source",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "setup",
+      "observable_check": "The orange source is high, the clear sink is empty, and the gap is dry.",
+      "positive": "The tall left bottle keeps its high bright-orange level while the right tapered tumbler remains empty.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "The pictured right tumbler already contains orange juice before a stream appears.",
+          "type": "outcome_preset"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "onset",
+      "observable_check": "The visible orange carrier appears before sink-level growth.",
+      "positive": "A bright orange column first leaves the uncapped bottle mouth and enters the tumbler rim.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "The right orange level rises while the pictured mouth-to-rim gap stays empty.",
+          "type": "wrong_order"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c2",
+        "c3"
+      ],
+      "id": "evolution",
+      "observable_check": "Opposite container-level changes stay joined by one orange stream.",
+      "positive": "The left bright-orange line descends while the connected stream raises the right orange line.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c2",
+            "c3"
+          ],
+          "text": "The right tumbler fills while the pictured bottle level remains high and unchanged.",
+          "type": "coupling_broken"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c2",
+        "c3",
+        "c4"
+      ],
+      "id": "completion",
+      "observable_check": "Late orange levels differ clearly from the pictured starting levels.",
+      "positive": "The orange transfer nears completion with visibly less in the tall bottle and more in the tumbler.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c2",
+            "c3",
+            "c4"
+          ],
+          "text": "The orange stream appears but neither pictured container develops the requested level change.",
+          "type": "incomplete_transition"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c4",
+        "c5"
+      ],
+      "id": "terminal",
+      "observable_check": "Bottle and tumbler preserve changed orange levels without spill.",
+      "positive": "The same tall bottle retains less orange juice and the same clear tumbler retains more.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c4"
+          ],
+          "text": "Orange juice returns left and restores the pictured high bottle and empty glass.",
+          "type": "reversal"
+        },
+        {
+          "constraint_ids": [
+            "c5"
+          ],
+          "text": "Empty and orange-filled copies of the tapered tumbler coexist on the table.",
+          "type": "exclusion_broken"
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "facts": {
+        "sink_level": "empty",
+        "source_level": "high",
+        "stream_state": "absent"
+      },
+      "id": "z0",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    },
+    {
+      "facts": {
+        "sink_level": "visibly_higher",
+        "source_level": "visibly_lower",
+        "stream_state": "continuous_orange"
+      },
+      "id": "z1",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "cause_event": null,
+      "effects": [
+        {
+          "direction": "bright orange line descends in bottle",
+          "from": "high",
+          "id": "pictured_bottle_fall",
+          "predicate": "source_level",
+          "to": "visibly_lower"
+        },
+        {
+          "direction": "orange carrier spans mouth-to-rim gap",
+          "from": "absent",
+          "id": "pictured_orange_stream",
+          "predicate": "stream_state",
+          "to": "continuous_orange"
+        },
+        {
+          "direction": "orange line rises in tumbler",
+          "from": "empty",
+          "id": "pictured_glass_rise",
+          "predicate": "sink_level",
+          "to": "visibly_higher"
+        }
+      ],
+      "from": "z0",
+      "id": "e1",
+      "kind": "continuous",
+      "preconditions": [
+        "source_level=high",
+        "stream_state=absent",
+        "sink_level=empty"
+      ],
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "support_kind": "source_stream_sink",
+      "to": "z1"
+    }
+  ],
+  "warnings": [
+    "The stream is absent initially, so no carrier box is inferred; visible boxes remain unapproved."
+  ]
+}

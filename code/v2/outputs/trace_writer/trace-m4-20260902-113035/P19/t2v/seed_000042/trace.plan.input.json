@@ -1,0 +1,338 @@
+{
+  "assumptions": [],
+  "constraints": [
+    {
+      "after": "split_sheet",
+      "before": "notch_opens",
+      "id": "c1",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "precedes"
+    },
+    {
+      "effect": "tear_propagate",
+      "id": "c2",
+      "source_refs": [
+        "origin"
+      ],
+      "transition": "e1",
+      "type": "changes"
+    },
+    {
+      "effects": [
+        "tear_propagate",
+        "split_sheet",
+        "pieces_apart"
+      ],
+      "id": "c3",
+      "relation": "tear length grows from notch as two resulting sides separate",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "couples"
+    },
+    {
+      "facts": [
+        "integrity=two_pieces",
+        "separation=apart"
+      ],
+      "id": "c4",
+      "source_refs": [
+        "origin"
+      ],
+      "state": "z1",
+      "type": "persists"
+    },
+    {
+      "facts": [
+        "integrity=one_sheet",
+        "integrity=two_pieces"
+      ],
+      "id": "c5",
+      "scope": "same_time",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "excludes"
+    }
+  ],
+  "design_revision": "fixed5-causal-r3",
+  "entities": [
+    {
+      "id": "paper",
+      "mention": "the same notched sheet of paper and its resulting pieces",
+      "role": "patient",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "description": "the small notch first visibly lengthens",
+      "id": "notch_opens",
+      "observable": "the notch edges separate into a growing tear",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "generation_basis": {
+    "mode": "identifier_only",
+    "reference_image_usage": "identifier_only",
+    "semantic_inputs": [
+      "origin",
+      "planner_instructions"
+    ]
+  },
+  "global_semantic": "One notched paper sheet tears outward under two-sided pulling and remains separated into two pieces.",
+  "grounding": {
+    "approved": false,
+    "coordinate_frame": "reference_input",
+    "entity_boxes": [],
+    "protected_boxes": [],
+    "reference_image": "P19-i0-1280x704.png",
+    "reference_image_usage": "identifier_only"
+  },
+  "predicates": [
+    {
+      "attribute": "tear_from_notch",
+      "id": "tear_extent",
+      "observable": "length of the opening extending from the notch",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "paper",
+      "values": [
+        "small_notch",
+        "full_tear"
+      ]
+    },
+    {
+      "attribute": "integrity",
+      "id": "integrity",
+      "observable": "one connected paper region versus two disconnected regions",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "paper",
+      "values": [
+        "one_sheet",
+        "two_pieces"
+      ]
+    },
+    {
+      "attribute": "piece_separation",
+      "id": "separation",
+      "observable": "visible gap between resulting paper pieces",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "paper",
+      "values": [
+        "connected",
+        "apart"
+      ]
+    }
+  ],
+  "protected_predicates": [
+    "same paper material and color",
+    "single original notch and outward tear path",
+    "camera and background remain unchanged"
+  ],
+  "sample_id": "P19",
+  "schema_version": "trace-writer-v1",
+  "source_files": {
+    "origin": "P19-origin.txt",
+    "planner_instructions": "Project/physGen/prompt/generate_trace_writer_v1_plan.txt",
+    "reference_input": "P19-i0-1280x704.png"
+  },
+  "stages": [
+    {
+      "affected_roles": [
+        "patient"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "setup",
+      "observable_check": "One sheet remains connected everywhere except the small notch.",
+      "positive": "The paper begins as one connected sheet with one small notch and aligned sides.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "Two separated paper pieces already exist before the small notch begins opening.",
+          "type": "outcome_preset"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "patient"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "onset",
+      "observable_check": "The first visible opening remains attached to the original notch.",
+      "positive": "The small notch first opens and lengthens before the sheet becomes two complete pieces.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "Two complete pieces appear before any tear propagates outward from the notch.",
+          "type": "wrong_order"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "patient"
+      ],
+      "constraint_ids": [
+        "c2",
+        "c3"
+      ],
+      "id": "evolution",
+      "observable_check": "The opening length and side-to-side gap both increase continuously.",
+      "positive": "The tear front travels outward from the notch while the two paper sides move farther apart.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c2",
+            "c3"
+          ],
+          "text": "The paper sides separate while the tear length remains fixed at the small notch.",
+          "type": "coupling_broken"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "patient"
+      ],
+      "constraint_ids": [
+        "c2",
+        "c3",
+        "c4"
+      ],
+      "id": "completion",
+      "observable_check": "No paper bridge remains between the two resulting pieces.",
+      "positive": "The propagating tear reaches the opposite boundary and produces two visibly separated paper pieces.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c2",
+            "c3",
+            "c4"
+          ],
+          "text": "The tear stops inside the sheet and never creates two disconnected pieces.",
+          "type": "incomplete_transition"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "patient"
+      ],
+      "constraint_ids": [
+        "c4",
+        "c5"
+      ],
+      "id": "terminal",
+      "observable_check": "A persistent visible gap separates exactly two pieces through the end.",
+      "positive": "The same two paper pieces remain separated without reconnecting into one sheet.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c4"
+          ],
+          "text": "The separated pieces reconnect into an intact sheet during final frames.",
+          "type": "reversal"
+        },
+        {
+          "constraint_ids": [
+            "c5"
+          ],
+          "text": "One-sheet and two-piece versions of the same paper coexist simultaneously.",
+          "type": "exclusion_broken"
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "facts": {
+        "integrity": "one_sheet",
+        "separation": "connected",
+        "tear_extent": "small_notch"
+      },
+      "id": "z0",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "facts": {
+        "integrity": "two_pieces",
+        "separation": "apart",
+        "tear_extent": "full_tear"
+      },
+      "id": "z1",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "cause_event": null,
+      "effects": [
+        {
+          "direction": "opening length grows outward from notch",
+          "from": "small_notch",
+          "id": "tear_propagate",
+          "predicate": "tear_extent",
+          "to": "full_tear"
+        },
+        {
+          "direction": "connected sheet becomes two pieces",
+          "from": "one_sheet",
+          "id": "split_sheet",
+          "predicate": "integrity",
+          "to": "two_pieces"
+        },
+        {
+          "direction": "gap between paper sides increases",
+          "from": "connected",
+          "id": "pieces_apart",
+          "predicate": "separation",
+          "to": "apart"
+        }
+      ],
+      "from": "z0",
+      "id": "e1",
+      "kind": "continuous",
+      "preconditions": [
+        "tear_extent=small_notch",
+        "integrity=one_sheet",
+        "separation=connected"
+      ],
+      "source_refs": [
+        "origin"
+      ],
+      "support_kind": "role_union",
+      "to": "z1"
+    }
+  ],
+  "warnings": []
+}

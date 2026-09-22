@@ -1,0 +1,66 @@
+{
+  "causal_pair": {
+    "counterfactual_type": [
+      "instant_replacement"
+    ],
+    "origin_prompt_prefixed": false,
+    "single_changed_relation": [
+      "continuous softening and edge loss are replaced by an immediate terminal pool"
+    ]
+  },
+  "compiler_version": "ace-conditioning-mvp-v1",
+  "mode": "compiled",
+  "prompts": {
+    "causal_counterfactual": "The sharply edged butter is suddenly replaced by a finished liquid pool covering the pan.",
+    "causal_positive": "The butter first softens and rounds at the edges, then its footprint expands continuously into a liquid pool.",
+    "semantic": "A pat of butter in a warm pan softens, loses its sharp edges, and spreads into a liquid pool. Required visible entities: one pat of butter; one warm pan; uncovered pan surface around the butter. At the beginning: butter: firm, compact, intact, and sharply edged; pan surface: exposed around the butter with minimal liquid butter. Required state changes: butter firmness: firm to soft; butter boundary: sharp to rounded and receding; butter footprint: compact pat to spreading liquid pool. These event variables are allowed to change: butter firmness; butter edge sharpness and shape; butter footprint and liquid fraction. Preserve throughout: static close camera; pan identity and position; background and lighting; one pat of butter; one warm pan; the same butter material through the change."
+  },
+  "sample_id": "P09",
+  "schema_version": 1,
+  "semantic_variant": "compiled_i2v",
+  "source_sections": {
+    "changed_state_variables": [
+      "butter firmness: firm to soft",
+      "butter boundary: sharp to rounded and receding",
+      "butter footprint: compact pat to spreading liquid pool"
+    ],
+    "counterfactual_type": [
+      "instant_replacement"
+    ],
+    "event_type": [
+      "continuous softening and melting"
+    ],
+    "initial_states": [
+      "butter: firm, compact, intact, and sharply edged",
+      "pan surface: exposed around the butter with minimal liquid butter"
+    ],
+    "layout_requirements": [
+      "butter lies near the pan center",
+      "broad visible pan area surrounds the butter",
+      "butter boundary and pan surface remain unobstructed"
+    ],
+    "preserved_context": [
+      "one pat of butter",
+      "one warm pan",
+      "the same butter material through the change"
+    ],
+    "protected_scene_properties": [
+      "static close camera",
+      "pan identity and position",
+      "background and lighting"
+    ],
+    "required_visible_entities": [
+      "one pat of butter",
+      "one warm pan",
+      "uncovered pan surface around the butter"
+    ],
+    "single_changed_relation": [
+      "continuous softening and edge loss are replaced by an immediate terminal pool"
+    ],
+    "transition_variables": [
+      "butter firmness",
+      "butter edge sharpness and shape",
+      "butter footprint and liquid fraction"
+    ]
+  }
+}

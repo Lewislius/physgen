@@ -1,0 +1,184 @@
+{
+  "actual_t5_token_lengths": {
+    "global_semantic": 295,
+    "stage.completion.negative.0": 158,
+    "stage.completion.positive": 156,
+    "stage.evolution.negative.0": 157,
+    "stage.evolution.positive": 153,
+    "stage.onset.negative.0": 164,
+    "stage.onset.positive": 163,
+    "stage.setup.negative.0": 163,
+    "stage.setup.positive": 160,
+    "stage.terminal.negative.0": 191,
+    "stage.terminal.negative.1": 190,
+    "stage.terminal.positive": 204
+  },
+  "global_anchor": "[ENTITY INVENTORY] The closed scene contains dandelion: exactly 1; seeds: one declared collective group; drift region: one declared collective group. The reference first frame fixes these identities and initial layout. [INITIAL STATE] attachment=densely_attached, seed_position=on_left_head, fullness=full_round_head. [PHYSICAL EVENT] Seeds detach from the full white dandelion at left and drift rightward across the blue-sky background as the head depletes. [PERSISTENT PROTECTION] same yellow-green stem and brown central head; white seed identity remains consistent; blue sky, blurred green field, daylight, focus, and static camera remain unchanged. [CLOSED WORLD] No additional external source, extra copy, unlisted object enters or appears; unoccupied scene regions remain empty. [CONSERVATION] Source loss and result gain stay coupled: tracked logical entity slots remain consistent; rightward white-seed drift accompanies decreasing white head coverage. No result appears from an undeclared external source. [TERMINAL STATE] The same logical entity slots persist without duplicates; attachment=detached, seed_position=rightward_airborne, fullness=sparse_depleted_head remains visible through the final frames.",
+  "issues": [],
+  "max_t5_token_length": 295,
+  "protected_coverage": {
+    "blue sky, blurred green field, daylight, focus, and static camera remain unchanged": [
+      "camera_background",
+      "closed_world_or_persistence"
+    ],
+    "same yellow-green stem and brown central head": [
+      "identity_count"
+    ],
+    "white seed identity remains consistent": [
+      "identity_count",
+      "closed_world_or_persistence"
+    ]
+  },
+  "stage_pairs": [
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "first white seeds leave the left-side head happens BEFORE white seeds travel right across blue sky.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: dandelion: exactly 1, state fullness=full_round_head, required; seeds: one declared collective group, state attachment=densely_attached, seed_position=on_left_head, required; drift region: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] first white seeds leave the left-side head happens BEFORE white seeds travel right across blue sky.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: dandelion: exactly 1, state fullness=full_round_head, required; seeds: one declared collective group, state attachment=densely_attached, seed_position=on_left_head, required; drift region: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "setup",
+      "violation_constraint_ids": [
+        [
+          "c1"
+        ]
+      ],
+      "violation_kinds": [
+        "outcome_preset"
+      ],
+      "violation_relations": [
+        "white seeds travel right across blue sky is already present BEFORE first white seeds leave the left-side head."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: dandelion: exactly 1, state fullness=full_round_head, required; seeds: one declared collective group, state attachment=densely_attached, seed_position=on_left_head, required; drift region: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] white seeds travel right across blue sky is already present BEFORE first white seeds leave the left-side head."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "first white seeds leave the left-side head happens BEFORE white seeds travel right across blue sky.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: dandelion: exactly 1, state fullness=full_round_head, transitioning; seeds: one declared collective group, state attachment=densely_attached, seed_position=on_left_head, transitioning; drift region: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] first white seeds leave the left-side head happens BEFORE white seeds travel right across blue sky.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: dandelion: exactly 1, state fullness=full_round_head, transitioning; seeds: one declared collective group, state attachment=densely_attached, seed_position=on_left_head, transitioning; drift region: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "onset",
+      "violation_constraint_ids": [
+        [
+          "c1"
+        ]
+      ],
+      "violation_kinds": [
+        "wrong_order"
+      ],
+      "violation_relations": [
+        "white seeds travel right across blue sky happens BEFORE first white seeds leave the left-side head."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: dandelion: exactly 1, state fullness=full_round_head, transitioning; seeds: one declared collective group, state attachment=densely_attached, seed_position=on_left_head, transitioning; drift region: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] white seeds travel right across blue sky happens BEFORE first white seeds leave the left-side head."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The declared change white seed connections release occurs in its stated direction.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: dandelion: exactly 1, state fullness=sparse_depleted_head, required; seeds: one declared collective group, state attachment=detached, seed_position=rightward_airborne, required; drift region: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change white seed connections release occurs in its stated direction.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: dandelion: exactly 1, state fullness=sparse_depleted_head, required; seeds: one declared collective group, state attachment=detached, seed_position=rightward_airborne, required; drift region: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "evolution",
+      "violation_constraint_ids": [
+        [
+          "c2",
+          "c3"
+        ]
+      ],
+      "violation_kinds": [
+        "coupling_broken"
+      ],
+      "violation_relations": [
+        "Only one coupled change occurs while the other remains unchanged: ."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: dandelion: exactly 1, state fullness=sparse_depleted_head, required; seeds: one declared collective group, state attachment=detached, seed_position=rightward_airborne, required; drift region: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] Only one coupled change occurs while the other remains unchanged: ."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The declared change white seed connections release occurs in its stated direction.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: dandelion: exactly 1, state fullness=sparse_depleted_head, transitioning; seeds: one declared collective group, state attachment=detached, seed_position=rightward_airborne, transitioning; drift region: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change white seed connections release occurs in its stated direction.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: dandelion: exactly 1, state fullness=sparse_depleted_head, transitioning; seeds: one declared collective group, state attachment=detached, seed_position=rightward_airborne, transitioning; drift region: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "completion",
+      "violation_constraint_ids": [
+        [
+          "c2",
+          "c3",
+          "c4"
+        ]
+      ],
+      "violation_kinds": [
+        "incomplete_transition"
+      ],
+      "violation_relations": [
+        "The declared cause occurs BUT the required target change does not become visible."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: dandelion: exactly 1, state fullness=sparse_depleted_head, transitioning; seeds: one declared collective group, state attachment=detached, seed_position=rightward_airborne, transitioning; drift region: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The declared cause occurs BUT the required target change does not become visible."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The terminal facts attachment=detached, fullness=sparse_depleted_head REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts attachment=densely_attached, attachment=detached do not coexist.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: dandelion: exactly 1, state fullness=sparse_depleted_head, required; seeds: one declared collective group, state attachment=detached, seed_position=rightward_airborne, required; drift region: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The terminal facts attachment=detached, fullness=sparse_depleted_head REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts attachment=densely_attached, attachment=detached do not coexist.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: dandelion: exactly 1, state fullness=sparse_depleted_head, required; seeds: one declared collective group, state attachment=detached, seed_position=rightward_airborne, required; drift region: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "terminal",
+      "violation_constraint_ids": [
+        [
+          "c4"
+        ],
+        [
+          "c5"
+        ]
+      ],
+      "violation_kinds": [
+        "reversal",
+        "exclusion_broken"
+      ],
+      "violation_relations": [
+        "The valid terminal state returns to its mutually exclusive earlier state.",
+        "Copies of the same logical slot appear in mutually exclusive states at the same time."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: dandelion: exactly 1, state fullness=sparse_depleted_head, required; seeds: one declared collective group, state attachment=detached, seed_position=rightward_airborne, required; drift region: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The valid terminal state returns to its mutually exclusive earlier state. [AND] The same logical slot has only its valid state; mutually exclusive facts attachment=densely_attached, attachment=detached do not coexist.",
+        "[STAGE ENTITY INVENTORY] Present now: dandelion: exactly 1, state fullness=sparse_depleted_head, required; seeds: one declared collective group, state attachment=detached, seed_position=rightward_airborne, required; drift region: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The terminal facts attachment=detached, fullness=sparse_depleted_head REMAIN through the final frames. [AND] Copies of the same logical slot appear in mutually exclusive states at the same time."
+      ],
+      "violation_weights": [
+        0.5,
+        0.5
+      ]
+    }
+  ],
+  "texts": {
+    "global_semantic": "[ENTITY INVENTORY] The closed scene contains dandelion: exactly 1; seeds: one declared collective group; drift region: one declared collective group. The reference first frame fixes these identities and initial layout. [INITIAL STATE] attachment=densely_attached, seed_position=on_left_head, fullness=full_round_head. [PHYSICAL EVENT] Seeds detach from the full white dandelion at left and drift rightward across the blue-sky background as the head depletes. [PERSISTENT PROTECTION] same yellow-green stem and brown central head; white seed identity remains consistent; blue sky, blurred green field, daylight, focus, and static camera remain unchanged. [CLOSED WORLD] No additional external source, extra copy, unlisted object enters or appears; unoccupied scene regions remain empty. [CONSERVATION] Source loss and result gain stay coupled: tracked logical entity slots remain consistent; rightward white-seed drift accompanies decreasing white head coverage. No result appears from an undeclared external source. [TERMINAL STATE] The same logical entity slots persist without duplicates; attachment=detached, seed_position=rightward_airborne, fullness=sparse_depleted_head remains visible through the final frames.",
+    "stage.completion.negative.0": "[STAGE ENTITY INVENTORY] Present now: dandelion: exactly 1, state fullness=sparse_depleted_head, transitioning; seeds: one declared collective group, state attachment=detached, seed_position=rightward_airborne, transitioning; drift region: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The declared cause occurs BUT the required target change does not become visible.",
+    "stage.completion.positive": "[STAGE ENTITY INVENTORY] Present now: dandelion: exactly 1, state fullness=sparse_depleted_head, transitioning; seeds: one declared collective group, state attachment=detached, seed_position=rightward_airborne, transitioning; drift region: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change white seed connections release occurs in its stated direction.",
+    "stage.evolution.negative.0": "[STAGE ENTITY INVENTORY] Present now: dandelion: exactly 1, state fullness=sparse_depleted_head, required; seeds: one declared collective group, state attachment=detached, seed_position=rightward_airborne, required; drift region: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] Only one coupled change occurs while the other remains unchanged: .",
+    "stage.evolution.positive": "[STAGE ENTITY INVENTORY] Present now: dandelion: exactly 1, state fullness=sparse_depleted_head, required; seeds: one declared collective group, state attachment=detached, seed_position=rightward_airborne, required; drift region: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change white seed connections release occurs in its stated direction.",
+    "stage.onset.negative.0": "[STAGE ENTITY INVENTORY] Present now: dandelion: exactly 1, state fullness=full_round_head, transitioning; seeds: one declared collective group, state attachment=densely_attached, seed_position=on_left_head, transitioning; drift region: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] white seeds travel right across blue sky happens BEFORE first white seeds leave the left-side head.",
+    "stage.onset.positive": "[STAGE ENTITY INVENTORY] Present now: dandelion: exactly 1, state fullness=full_round_head, transitioning; seeds: one declared collective group, state attachment=densely_attached, seed_position=on_left_head, transitioning; drift region: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] first white seeds leave the left-side head happens BEFORE white seeds travel right across blue sky.",
+    "stage.setup.negative.0": "[STAGE ENTITY INVENTORY] Present now: dandelion: exactly 1, state fullness=full_round_head, required; seeds: one declared collective group, state attachment=densely_attached, seed_position=on_left_head, required; drift region: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] white seeds travel right across blue sky is already present BEFORE first white seeds leave the left-side head.",
+    "stage.setup.positive": "[STAGE ENTITY INVENTORY] Present now: dandelion: exactly 1, state fullness=full_round_head, required; seeds: one declared collective group, state attachment=densely_attached, seed_position=on_left_head, required; drift region: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] first white seeds leave the left-side head happens BEFORE white seeds travel right across blue sky.",
+    "stage.terminal.negative.0": "[STAGE ENTITY INVENTORY] Present now: dandelion: exactly 1, state fullness=sparse_depleted_head, required; seeds: one declared collective group, state attachment=detached, seed_position=rightward_airborne, required; drift region: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The valid terminal state returns to its mutually exclusive earlier state. [AND] The same logical slot has only its valid state; mutually exclusive facts attachment=densely_attached, attachment=detached do not coexist.",
+    "stage.terminal.negative.1": "[STAGE ENTITY INVENTORY] Present now: dandelion: exactly 1, state fullness=sparse_depleted_head, required; seeds: one declared collective group, state attachment=detached, seed_position=rightward_airborne, required; drift region: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The terminal facts attachment=detached, fullness=sparse_depleted_head REMAIN through the final frames. [AND] Copies of the same logical slot appear in mutually exclusive states at the same time.",
+    "stage.terminal.positive": "[STAGE ENTITY INVENTORY] Present now: dandelion: exactly 1, state fullness=sparse_depleted_head, required; seeds: one declared collective group, state attachment=detached, seed_position=rightward_airborne, required; drift region: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The terminal facts attachment=detached, fullness=sparse_depleted_head REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts attachment=densely_attached, attachment=detached do not coexist."
+  },
+  "token_budget_priority": {
+    "causal": 2,
+    "entity_count": 0,
+    "protected": 1,
+    "style": 3
+  }
+}

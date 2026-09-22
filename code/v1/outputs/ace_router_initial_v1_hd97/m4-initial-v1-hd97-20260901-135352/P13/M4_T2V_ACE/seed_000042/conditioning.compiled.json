@@ -1,0 +1,67 @@
+{
+  "causal_pair": {
+    "counterfactual_type": [
+      "no_op"
+    ],
+    "origin_prompt_prefixed": true,
+    "single_changed_relation": [
+      "the source level remains static while the target level rises during transfer"
+    ]
+  },
+  "compiler_version": "ace-router-initial-v1-compat",
+  "mode": "initial_v1",
+  "prompts": {
+    "causal_counterfactual": "A transparent pitcher pours water into an empty clear glass; the pitcher level falls while the glass level rises. A continuous water stream enters the glass and raises its level while the pitcher water level remains unchanged.",
+    "causal_positive": "A transparent pitcher pours water into an empty clear glass; the pitcher level falls while the glass level rises. A continuous water stream connects the pitcher and glass while the pitcher level falls and the glass level rises together.",
+    "semantic": "A transparent pitcher pours water into an empty clear glass; the pitcher level falls while the glass level rises."
+  },
+  "sample_id": "P13",
+  "schema_version": 1,
+  "semantic_variant": "initial_v1",
+  "source_sections": {
+    "changed_state_variables": [
+      "pitcher water level: high to lower",
+      "glass water level: empty to higher",
+      "water configuration: source volume to stream and target volume"
+    ],
+    "counterfactual_type": [
+      "no_op"
+    ],
+    "event_type": [
+      "visible liquid transfer with coupled levels"
+    ],
+    "initial_states": [
+      "pitcher: intact and visibly filled with water",
+      "glass: intact, clear, empty, and spatially separated from the pitcher spout"
+    ],
+    "layout_requirements": [
+      "pitcher spout aligns with the glass opening",
+      "both complete containers and internal levels remain visible",
+      "the space between spout and glass is unobstructed"
+    ],
+    "preserved_context": [
+      "one transparent pitcher",
+      "one empty clear glass at the start",
+      "the same water and level surface"
+    ],
+    "protected_scene_properties": [
+      "static side-view camera",
+      "container identities and transparency",
+      "level surface and background"
+    ],
+    "required_visible_entities": [
+      "one transparent pitcher containing water",
+      "one empty clear glass",
+      "level support surface"
+    ],
+    "single_changed_relation": [
+      "the source level remains static while the target level rises during transfer"
+    ],
+    "transition_variables": [
+      "pitcher orientation",
+      "pitcher water level",
+      "glass water level",
+      "water-stream shape"
+    ]
+  }
+}

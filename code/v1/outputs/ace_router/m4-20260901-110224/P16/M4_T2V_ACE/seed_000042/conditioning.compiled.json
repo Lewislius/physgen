@@ -1,0 +1,67 @@
+{
+  "causal_pair": {
+    "counterfactual_type": [
+      "instant_replacement"
+    ],
+    "origin_prompt_prefixed": false,
+    "single_changed_relation": [
+      "progressive outward spreading is replaced by immediate uniform coloring"
+    ]
+  },
+  "compiler_version": "ace-conditioning-mvp-v1",
+  "mode": "compiled",
+  "prompts": {
+    "causal_counterfactual": "The still clear water becomes uniformly blue as soon as the compact dye drop enters it.",
+    "causal_positive": "The blue dye begins as a compact spot, and its colored boundary expands progressively through the still clear water.",
+    "semantic": "A drop of blue dye enters still clear water and gradually spreads outward, coloring an expanding region of the water. Initial scene: A fixed close side view of a transparent vessel filled with still clear water, with one compact blue dye drop suspended just above the water surface. The full water region, dye drop, surface boundary, and surrounding vessel are unobstructed, clearly separated, and framed at a useful inspection scale. Required visible entities: one compact blue dye drop; still clear water; transparent water vessel. At the beginning: blue dye: one compact drop separated just above the water surface; water: still, clear, and uniformly uncolored; vessel: transparent and fully visible around the water region. Required layout: dye drop aligns with a central visible water-entry location; the full water region and surface boundary fit inside the frame; broad clear water surrounds the intended entry point. Required state changes: dye position: compact drop to water interior; colored-region area: compact to expanding; color concentration: localized to spatially distributed. These event variables are allowed to change: dye-drop position; colored-region area and boundary; spatial color concentration. Preserve throughout: static close side-view camera; vessel identity and position; background and lighting; one blue dye drop; one region of still clear water; the same water container and camera view."
+  },
+  "sample_id": "P16",
+  "schema_version": 1,
+  "semantic_variant": "compiled_t2v",
+  "source_sections": {
+    "changed_state_variables": [
+      "dye position: compact drop to water interior",
+      "colored-region area: compact to expanding",
+      "color concentration: localized to spatially distributed"
+    ],
+    "counterfactual_type": [
+      "instant_replacement"
+    ],
+    "event_type": [
+      "localized dye entry and progressive diffusion"
+    ],
+    "initial_states": [
+      "blue dye: one compact drop separated just above the water surface",
+      "water: still, clear, and uniformly uncolored",
+      "vessel: transparent and fully visible around the water region"
+    ],
+    "layout_requirements": [
+      "dye drop aligns with a central visible water-entry location",
+      "the full water region and surface boundary fit inside the frame",
+      "broad clear water surrounds the intended entry point"
+    ],
+    "preserved_context": [
+      "one blue dye drop",
+      "one region of still clear water",
+      "the same water container and camera view"
+    ],
+    "protected_scene_properties": [
+      "static close side-view camera",
+      "vessel identity and position",
+      "background and lighting"
+    ],
+    "required_visible_entities": [
+      "one compact blue dye drop",
+      "still clear water",
+      "transparent water vessel"
+    ],
+    "single_changed_relation": [
+      "progressive outward spreading is replaced by immediate uniform coloring"
+    ],
+    "transition_variables": [
+      "dye-drop position",
+      "colored-region area and boundary",
+      "spatial color concentration"
+    ]
+  }
+}

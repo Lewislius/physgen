@@ -1,0 +1,347 @@
+{
+  "assumptions": [],
+  "constraints": [
+    {
+      "after": "blue_launch",
+      "before": "ball_contact",
+      "id": "c1",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "precedes"
+    },
+    {
+      "cause": "ball_contact",
+      "effect": "blue_launch",
+      "id": "c2",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "requires"
+    },
+    {
+      "effects": [
+        "red_slow",
+        "blue_launch"
+      ],
+      "id": "c3",
+      "relation": "red motion decreases while blue motion begins away",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "couples"
+    },
+    {
+      "facts": [
+        "red_motion=slower",
+        "blue_motion=moving_away"
+      ],
+      "id": "c4",
+      "source_refs": [
+        "origin"
+      ],
+      "state": "z1",
+      "type": "persists"
+    },
+    {
+      "facts": [
+        "blue_motion=stationary",
+        "blue_motion=moving_away"
+      ],
+      "id": "c5",
+      "scope": "same_time",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "excludes"
+    }
+  ],
+  "design_revision": "fixed5-causal-r3",
+  "entities": [
+    {
+      "id": "red_ball",
+      "mention": "the same red billiard ball",
+      "role": "actor",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "id": "blue_ball",
+      "mention": "the same blue billiard ball",
+      "role": "patient",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "description": "visible red-blue ball contact",
+      "id": "ball_contact",
+      "observable": "the visible ball gap reaches zero",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "generation_basis": {
+    "mode": "identifier_only",
+    "reference_image_usage": "identifier_only",
+    "semantic_inputs": [
+      "origin",
+      "planner_instructions"
+    ]
+  },
+  "global_semantic": "One red billiard ball collides with one blue billiard ball and transfers visible motion on a billiard table.",
+  "grounding": {
+    "approved": false,
+    "coordinate_frame": "reference_input",
+    "entity_boxes": [],
+    "protected_boxes": [],
+    "reference_image": "P02-i0-1280x704.png",
+    "reference_image_usage": "identifier_only"
+  },
+  "predicates": [
+    {
+      "attribute": "gap_to:blue_ball",
+      "id": "gap",
+      "observable": "visible separation between the balls",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "red_ball",
+      "values": [
+        "separated",
+        "contact"
+      ]
+    },
+    {
+      "attribute": "motion",
+      "id": "red_motion",
+      "observable": "red-ball displacement between frames",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "red_ball",
+      "values": [
+        "rolling",
+        "slower"
+      ]
+    },
+    {
+      "attribute": "motion",
+      "id": "blue_motion",
+      "observable": "blue-ball displacement away from contact",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "blue_ball",
+      "values": [
+        "stationary",
+        "moving_away"
+      ]
+    }
+  ],
+  "protected_predicates": [
+    "one red ball and one blue ball",
+    "ball colors and identities remain unchanged",
+    "billiard table and camera remain unchanged"
+  ],
+  "sample_id": "P02",
+  "schema_version": "trace-writer-v1",
+  "source_files": {
+    "origin": "P02-origin.txt",
+    "planner_instructions": "Project/physGen/prompt/generate_trace_writer_v1_plan.txt",
+    "reference_input": "P02-i0-1280x704.png"
+  },
+  "stages": [
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "setup",
+      "observable_check": "The red ball closes the gap while the blue ball stays fixed.",
+      "positive": "The red ball rolls toward the stationary blue ball while a visible gap remains.",
+      "support_kind": "motion_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "The blue ball is already moving away before the red ball approaches it.",
+          "type": "outcome_preset"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c1",
+        "c2"
+      ],
+      "id": "onset",
+      "observable_check": "The ball boundaries meet before blue-ball displacement appears.",
+      "positive": "The red ball visibly contacts the blue ball before the blue ball starts moving.",
+      "support_kind": "contact_interface",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1",
+            "c2"
+          ],
+          "text": "The blue ball starts moving while visible separation from the red ball remains.",
+          "type": "trigger_missing"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c3"
+      ],
+      "id": "evolution",
+      "observable_check": "Blue displacement begins as red displacement decreases after contact.",
+      "positive": "After contact, the blue ball moves away while the same red ball visibly slows.",
+      "support_kind": "motion_contact_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c3"
+          ],
+          "text": "The blue ball moves away after contact while the red ball keeps its original speed.",
+          "type": "coupling_broken"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c3",
+        "c4"
+      ],
+      "id": "completion",
+      "observable_check": "A growing post-contact gap accompanies the requested unequal motions.",
+      "positive": "The balls separate after collision with the blue ball moving and the red ball slower.",
+      "support_kind": "motion_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c3",
+            "c4"
+          ],
+          "text": "The collision ends without clear post-contact separation or changed motion in both balls.",
+          "type": "incomplete_transition"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c4",
+        "c5"
+      ],
+      "id": "terminal",
+      "observable_check": "Both identities and their post-contact motion states persist in final frames.",
+      "positive": "The same blue ball remains moving away while the same red ball remains slower.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c4"
+          ],
+          "text": "The blue ball returns to its stationary pre-contact state during the final frames.",
+          "type": "reversal"
+        },
+        {
+          "constraint_ids": [
+            "c5"
+          ],
+          "text": "Duplicated blue balls appear stationary and moving away at the same time.",
+          "type": "exclusion_broken"
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "facts": {
+        "blue_motion": "stationary",
+        "gap": "separated",
+        "red_motion": "rolling"
+      },
+      "id": "z0",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "facts": {
+        "blue_motion": "moving_away",
+        "gap": "contact",
+        "red_motion": "slower"
+      },
+      "id": "z1",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "cause_event": "ball_contact",
+      "effects": [
+        {
+          "direction": "gap closes to zero",
+          "from": "separated",
+          "id": "gap_close",
+          "predicate": "gap",
+          "to": "contact"
+        },
+        {
+          "direction": "red displacement decreases",
+          "from": "rolling",
+          "id": "red_slow",
+          "predicate": "red_motion",
+          "to": "slower"
+        },
+        {
+          "direction": "blue displacement begins away from contact",
+          "from": "stationary",
+          "id": "blue_launch",
+          "predicate": "blue_motion",
+          "to": "moving_away"
+        }
+      ],
+      "from": "z0",
+      "id": "e1",
+      "kind": "triggered",
+      "preconditions": [
+        "gap=separated",
+        "blue_motion=stationary"
+      ],
+      "source_refs": [
+        "origin"
+      ],
+      "support_kind": "motion_contact_corridor",
+      "to": "z1"
+    }
+  ],
+  "warnings": []
+}

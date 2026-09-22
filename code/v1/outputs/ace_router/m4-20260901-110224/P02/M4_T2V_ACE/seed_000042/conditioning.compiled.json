@@ -1,0 +1,66 @@
+{
+  "causal_pair": {
+    "counterfactual_type": [
+      "cause_effect_reversal"
+    ],
+    "origin_prompt_prefixed": false,
+    "single_changed_relation": [
+      "the blue ball begins moving before rather than after contact from the red ball"
+    ]
+  },
+  "compiler_version": "ace-conditioning-mvp-v1",
+  "mode": "compiled",
+  "prompts": {
+    "causal_counterfactual": "The stationary blue ball starts moving away before the red ball reaches it; the red ball slows and contact occurs afterward.",
+    "causal_positive": "The red ball visibly contacts the stationary blue ball; the blue ball then moves away as the red ball slows.",
+    "semantic": "A red billiard ball rolls into a stationary blue billiard ball; after contact, the blue ball moves away while the red ball slows. Initial scene: A fixed side view of one red billiard ball and one blue billiard ball on the same level billiard table. The red ball is several ball diameters from the stationary blue ball along a clear straight line, with both balls fully visible and unobstructed under neutral indoor lighting. Required visible entities: one red billiard ball; one blue billiard ball; level billiard-table surface. At the beginning: red ball: separated from the blue ball on the same table; blue ball: stationary and separated from the red ball. Required layout: both balls share a clear straight interaction line; several ball diameters of visible space lie between the balls; open table space extends beyond the blue ball. Required state changes: red ball position: approaches and contacts the blue ball; red ball speed: rolling to slower; blue ball speed: stationary to moving away. These event variables are allowed to change: red ball position and speed; blue ball position and speed; distance between the balls. Preserve throughout: static side-view camera; billiard-table appearance; red and blue ball identities; one red billiard ball; one blue billiard ball; the same billiard table and ball identities."
+  },
+  "sample_id": "P02",
+  "schema_version": 1,
+  "semantic_variant": "compiled_t2v",
+  "source_sections": {
+    "changed_state_variables": [
+      "red ball position: approaches and contacts the blue ball",
+      "red ball speed: rolling to slower",
+      "blue ball speed: stationary to moving away"
+    ],
+    "counterfactual_type": [
+      "cause_effect_reversal"
+    ],
+    "event_type": [
+      "two-body contact and motion transfer"
+    ],
+    "initial_states": [
+      "red ball: separated from the blue ball on the same table",
+      "blue ball: stationary and separated from the red ball"
+    ],
+    "layout_requirements": [
+      "both balls share a clear straight interaction line",
+      "several ball diameters of visible space lie between the balls",
+      "open table space extends beyond the blue ball"
+    ],
+    "preserved_context": [
+      "one red billiard ball",
+      "one blue billiard ball",
+      "the same billiard table and ball identities"
+    ],
+    "protected_scene_properties": [
+      "static side-view camera",
+      "billiard-table appearance",
+      "red and blue ball identities"
+    ],
+    "required_visible_entities": [
+      "one red billiard ball",
+      "one blue billiard ball",
+      "level billiard-table surface"
+    ],
+    "single_changed_relation": [
+      "the blue ball begins moving before rather than after contact from the red ball"
+    ],
+    "transition_variables": [
+      "red ball position and speed",
+      "blue ball position and speed",
+      "distance between the balls"
+    ]
+  }
+}

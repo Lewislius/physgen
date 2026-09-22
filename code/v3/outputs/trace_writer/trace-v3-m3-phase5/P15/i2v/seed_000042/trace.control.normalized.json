@@ -1,0 +1,470 @@
+{
+  "closed_world": {
+    "allowed_entity_ids": [
+      "cup",
+      "sand_stream",
+      "pile_region",
+      "hand"
+    ],
+    "empty_regions": [],
+    "external_source_allowed": false,
+    "forbidden_new_categories": [
+      "external source",
+      "extra copy",
+      "unlisted object"
+    ],
+    "provenance": "derived"
+  },
+  "conservation": [
+    {
+      "observable_proxy": "tracked logical entity slots remain consistent",
+      "provenance": "derived",
+      "quantity": "instance_count",
+      "relation": "constant",
+      "rule_id": "entity_slots_constant",
+      "sinks": [
+        "cup",
+        "sand_stream",
+        "pile_region",
+        "hand"
+      ],
+      "sources": [
+        "cup",
+        "sand_stream",
+        "pile_region",
+        "hand"
+      ],
+      "tolerance": 0.0
+    },
+    {
+      "observable_proxy": "clear-cup contents decrease through pale stream while table cone grows",
+      "provenance": "derived",
+      "quantity": "material_proxy",
+      "relation": "coupled_monotonic",
+      "rule_id": "conservation_c3",
+      "sinks": [
+        "stream_state",
+        "pile_size"
+      ],
+      "sources": [
+        "source_amount"
+      ],
+      "tolerance": 0.1
+    }
+  ],
+  "issues": [
+    "cup: exact visual count unresolved; retained as group",
+    "sand_stream: exact visual count unresolved; retained as group"
+  ],
+  "lifecycles": [
+    {
+      "entity_id": "cup",
+      "from_stage": "setup",
+      "from_state": "filled_to_rim",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "filled_to_rim",
+          "nearly_empty"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "nearly_empty"
+    },
+    {
+      "entity_id": "sand_stream",
+      "from_stage": "setup",
+      "from_state": "absent",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "absent",
+          "continuous_pale_grains"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "continuous_pale_grains"
+    },
+    {
+      "entity_id": "pile_region",
+      "from_stage": "setup",
+      "from_state": "bare_wood",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "bare_wood",
+          "grown_cone"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "grown_cone"
+    }
+  ],
+  "slots": [
+    {
+      "aliases": [],
+      "canonical_mention": "the same tilted clear cup full of pale dry sand",
+      "cardinality": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "cup",
+      "invariant_attributes": [
+        "same transparent cup and pale dry sand",
+        "same visible left hand and its hold on the cup",
+        "wood tabletop, gray background, lighting, and static camera remain unchanged",
+        "sand stays within the cup-stream-pile corridor"
+      ],
+      "mutable_attributes": [
+        "pictured pale-sand amount"
+      ],
+      "persistent_identity": true,
+      "provenance": "derived",
+      "role": "source"
+    },
+    {
+      "aliases": [],
+      "canonical_mention": "the pale granular stream below the cup",
+      "cardinality": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "sand_stream",
+      "invariant_attributes": [
+        "same transparent cup and pale dry sand",
+        "same visible left hand and its hold on the cup",
+        "wood tabletop, gray background, lighting, and static camera remain unchanged",
+        "sand stays within the cup-stream-pile corridor"
+      ],
+      "mutable_attributes": [
+        "cup-to-table connection"
+      ],
+      "persistent_identity": true,
+      "provenance": "derived",
+      "role": "carrier"
+    },
+    {
+      "aliases": [],
+      "canonical_mention": "the bare wooden table area below the cup",
+      "cardinality": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "pile_region",
+      "invariant_attributes": [
+        "same transparent cup and pale dry sand",
+        "same visible left hand and its hold on the cup",
+        "wood tabletop, gray background, lighting, and static camera remain unchanged",
+        "sand stays within the cup-stream-pile corridor"
+      ],
+      "mutable_attributes": [
+        "pictured sand pile"
+      ],
+      "persistent_identity": true,
+      "provenance": "default",
+      "role": "sink"
+    },
+    {
+      "aliases": [],
+      "canonical_mention": "the same visible left hand holding the cup",
+      "cardinality": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "hand",
+      "invariant_attributes": [
+        "same transparent cup and pale dry sand",
+        "same visible left hand and its hold on the cup",
+        "wood tabletop, gray background, lighting, and static camera remain unchanged",
+        "sand stays within the cup-stream-pile corridor"
+      ],
+      "mutable_attributes": [],
+      "persistent_identity": true,
+      "provenance": "default",
+      "role": "environment"
+    }
+  ],
+  "stage_presence": [
+    {
+      "entity_id": "cup",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [
+        "source_amount=filled_to_rim"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "sand_stream",
+      "logical_count": {
+        "exact": 0,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [
+        "stream_state=absent"
+      ],
+      "visible": "forbidden"
+    },
+    {
+      "entity_id": "pile_region",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [
+        "pile_size=bare_wood"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "hand",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [],
+      "visible": "required"
+    },
+    {
+      "entity_id": "cup",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [
+        "source_amount=filled_to_rim"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "sand_stream",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [
+        "stream_state=absent"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "pile_region",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [
+        "pile_size=bare_wood"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "hand",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [],
+      "visible": "required"
+    },
+    {
+      "entity_id": "cup",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [
+        "source_amount=nearly_empty"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "sand_stream",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [
+        "stream_state=continuous_pale_grains"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "pile_region",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [
+        "pile_size=grown_cone"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "hand",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [],
+      "visible": "required"
+    },
+    {
+      "entity_id": "cup",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [
+        "source_amount=nearly_empty"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "sand_stream",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [
+        "stream_state=continuous_pale_grains"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "pile_region",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [
+        "pile_size=grown_cone"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "hand",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [],
+      "visible": "required"
+    },
+    {
+      "entity_id": "cup",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [
+        "source_amount=nearly_empty"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "sand_stream",
+      "logical_count": {
+        "exact": 0,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [
+        "stream_state=continuous_pale_grains"
+      ],
+      "visible": "forbidden"
+    },
+    {
+      "entity_id": "pile_region",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [
+        "pile_size=grown_cone"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "hand",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [],
+      "visible": "required"
+    }
+  ]
+}

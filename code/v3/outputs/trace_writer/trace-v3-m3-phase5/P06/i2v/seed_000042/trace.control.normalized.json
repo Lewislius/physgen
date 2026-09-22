@@ -1,0 +1,355 @@
+{
+  "closed_world": {
+    "allowed_entity_ids": [
+      "book",
+      "shelf",
+      "floor"
+    ],
+    "empty_regions": [],
+    "external_source_allowed": false,
+    "forbidden_new_categories": [
+      "external source",
+      "extra copy",
+      "hand",
+      "person",
+      "tool",
+      "unlisted object"
+    ],
+    "provenance": "derived"
+  },
+  "conservation": [
+    {
+      "observable_proxy": "tracked logical entity slots remain consistent",
+      "provenance": "derived",
+      "quantity": "instance_count",
+      "relation": "constant",
+      "rule_id": "entity_slots_constant",
+      "sinks": [
+        "book",
+        "shelf",
+        "floor"
+      ],
+      "sources": [
+        "book",
+        "shelf",
+        "floor"
+      ],
+      "tolerance": 0.0
+    }
+  ],
+  "issues": [
+    "floor: exact visual count unresolved; retained as group"
+  ],
+  "lifecycles": [
+    {
+      "entity_id": "book",
+      "from_stage": "setup",
+      "from_state": "left_shelf; wood_shelf_supported",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "left_shelf",
+          "airborne"
+        ],
+        [
+          "wood_shelf_supported",
+          "unsupported"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "airborne; unsupported"
+    },
+    {
+      "entity_id": "book",
+      "from_stage": "setup",
+      "from_state": "airborne; unsupported; closed",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "airborne",
+          "wood_floor"
+        ],
+        [
+          "unsupported",
+          "floor_supported"
+        ],
+        [
+          "closed",
+          "open"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "wood_floor; floor_supported; open"
+    }
+  ],
+  "slots": [
+    {
+      "aliases": [],
+      "canonical_mention": "the same cream-paged book with dark blue cover edges",
+      "cardinality": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "book",
+      "invariant_attributes": [
+        "same cream pages and dark blue cover edges",
+        "left wooden shelf and vertical support remain fixed",
+        "pale wall, white baseboard, wood-plank floor, lighting, and static side camera remain unchanged"
+      ],
+      "mutable_attributes": [
+        "position_in pictured vertical corridor",
+        "visible support",
+        "cover separation"
+      ],
+      "persistent_identity": true,
+      "provenance": "default",
+      "role": "actor"
+    },
+    {
+      "aliases": [],
+      "canonical_mention": "the left wooden shelf edge",
+      "cardinality": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "shelf",
+      "invariant_attributes": [
+        "same cream pages and dark blue cover edges",
+        "left wooden shelf and vertical support remain fixed",
+        "pale wall, white baseboard, wood-plank floor, lighting, and static side camera remain unchanged"
+      ],
+      "mutable_attributes": [],
+      "persistent_identity": true,
+      "provenance": "default",
+      "role": "patient"
+    },
+    {
+      "aliases": [],
+      "canonical_mention": "the wood-plank floor below",
+      "cardinality": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "floor",
+      "invariant_attributes": [
+        "same cream pages and dark blue cover edges",
+        "left wooden shelf and vertical support remain fixed",
+        "pale wall, white baseboard, wood-plank floor, lighting, and static side camera remain unchanged"
+      ],
+      "mutable_attributes": [],
+      "persistent_identity": true,
+      "provenance": "derived",
+      "role": "sink"
+    }
+  ],
+  "stage_presence": [
+    {
+      "entity_id": "book",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [
+        "position=left_shelf",
+        "support=wood_shelf_supported",
+        "book_state=closed"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "shelf",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [],
+      "visible": "required"
+    },
+    {
+      "entity_id": "floor",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [],
+      "visible": "required"
+    },
+    {
+      "entity_id": "book",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [
+        "position=left_shelf",
+        "support=wood_shelf_supported",
+        "book_state=closed"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "shelf",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "floor",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [],
+      "visible": "required"
+    },
+    {
+      "entity_id": "book",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [
+        "position=airborne",
+        "support=unsupported",
+        "book_state=closed"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "shelf",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [],
+      "visible": "required"
+    },
+    {
+      "entity_id": "floor",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [],
+      "visible": "required"
+    },
+    {
+      "entity_id": "book",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [
+        "position=wood_floor",
+        "support=floor_supported",
+        "book_state=open"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "shelf",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [],
+      "visible": "required"
+    },
+    {
+      "entity_id": "floor",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "book",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [
+        "position=wood_floor",
+        "support=floor_supported",
+        "book_state=open"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "shelf",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [],
+      "visible": "required"
+    },
+    {
+      "entity_id": "floor",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [],
+      "visible": "required"
+    }
+  ]
+}

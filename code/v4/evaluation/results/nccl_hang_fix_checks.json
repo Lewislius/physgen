@@ -1,0 +1,53 @@
+{
+  "date": "2026-09-12T08:54:20.063284+00:00",
+  "status": "local_checks_passed_target_gpu_pending",
+  "local_suites": {
+    "test_training_runtime": {
+      "passed": 8,
+      "seconds": 7.156,
+      "scope": "Real CPU spawn/cache transfer, stack timer, legacy config overrides, four CPU surrogate optimizer updates"
+    },
+    "test_launchers": {
+      "passed": 10,
+      "seconds": 9.207,
+      "scope": "30 simulated GPU allocation/preparation cases; local TMPDIR inheritance; diagnostic CLI and heartbeat preservation"
+    },
+    "test_monitoring": {
+      "passed": 13,
+      "seconds": 3.203,
+      "scope": "Local logs, disabled SDKs, startup failure cleanup, checkpoint source policy"
+    }
+  },
+  "total_passed": 31,
+  "python_syntax": "passed",
+  "shell_syntax": "passed",
+  "runtime_probe_help": "passed",
+  "original_config_json_replay": "passed",
+  "sandbox_note": "The initial real-spawn test was blocked by sandbox IPC socket permissions; the final eight-test suite passed outside the sandbox. No GPU workload was executed.",
+  "local_gpu_model": "NVIDIA GeForce RTX 3090 24 GiB (different from target amp-48g)",
+  "target_gpu_training_executed": false,
+  "target_nccl_probe_executed": false,
+  "root_cause_confirmed": false,
+  "next_steps": [
+    "Target-node repeated all_gather/all_reduce",
+    "Target-node workers=0 vs spawn=2 cache reader",
+    "Four optimizer steps using original run config, then 20 steps",
+    "Production validation and checkpoint on target GPUs"
+  ],
+  "additional_bug_fixed": "Integer diagnostic metrics now convert to float32 before per-step mean()",
+  "concurrent_workspace_change_preserved": "train.sample_limit=1000 and CachedWISA limit support appeared during the work; original-run replay instructions use the saved config.json.",
+  "source_sha256": {
+    "train/train_native_p.py": "080e300416a26357a1fa878a72a9f94a106f945bf488bdb4b7a587d21d9db766",
+    "train/run_training.sh": "950a19619e250f527319cab6d540941f95dcf91be1273d88120012ce91cdd81a",
+    "physgen_v4/data.py": "8611499f363471cedec4288334c26f2c4c5396ed526667e02930707cbcb9d42b",
+    "physgen_v4/backbone.py": "70d9d99ea31ab35bbb483a66ab62a7bbfb07c7d88056a79c9479855286437f4b",
+    "physgen_v4/diagnostics.py": "dd1f168bb05973deb6269e80fa914a6bf1da1b9aa7588a51f426a93b5c4381f0",
+    "tools/runtime_env.sh": "07234fabc9d3a92f41517dc8a6f54ca9eb4202e0751666df746ca6683e05585d",
+    "tools/prepare_wisa.sh": "71a825b029dc74baa16956e9039924df88a705cd172c1bf06813ae2b1832254e",
+    "configs/wisa_native_p.yaml": "086add2df171249e8503aff75fc8493d40a8040bd7082b2567c1b5636aa5080e",
+    "evaluation/test_training_runtime.py": "4f3ec29e9d8647f82501e9fa9b58ec726b1de24b29b33c479cc458606875e910",
+    "evaluation/test_launchers.py": "dcf93886ee8379c089abbbc3272fb96370af7202ab67b76db55a1b9d5038277f",
+    "evaluation/check_training_runtime.py": "50b369406cb4bd51617896dbffebddf5d4dfbb63d3441eb465ac6b8a1bab704b",
+    "evaluation/NCCL_HANG_CHECKLIST.md": "c3a6a65983398c347f86708d07194118913ec663876349d6fd7d4ade5eb00ccb"
+  }
+}

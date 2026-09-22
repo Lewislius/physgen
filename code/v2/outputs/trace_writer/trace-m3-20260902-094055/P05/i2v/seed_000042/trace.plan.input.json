@@ -1,0 +1,439 @@
+{
+  "assumptions": [
+    "The block follows the only visible descending route from the upper-left ramp onto the right-side gray floor."
+  ],
+  "constraints": [
+    {
+      "after": "pictured_descent",
+      "before": "first_slide",
+      "id": "c1",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "precedes"
+    },
+    {
+      "effect": "pictured_descent",
+      "id": "c2",
+      "source_refs": [
+        "origin"
+      ],
+      "transition": "e1",
+      "type": "changes"
+    },
+    {
+      "after": "gray_floor_stop",
+      "before": "edge_crossing",
+      "id": "c3",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "precedes"
+    },
+    {
+      "cause": "edge_crossing",
+      "effect": "gray_floor_stop",
+      "id": "c4",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "requires"
+    },
+    {
+      "effect": "gray_floor_stop",
+      "id": "c5",
+      "source_refs": [
+        "origin"
+      ],
+      "transition": "e2",
+      "type": "changes"
+    },
+    {
+      "facts": [
+        "location=right_gray_floor",
+        "motion=stopped"
+      ],
+      "id": "c6",
+      "source_refs": [
+        "origin"
+      ],
+      "state": "z2",
+      "type": "persists"
+    },
+    {
+      "facts": [
+        "motion=sliding",
+        "motion=stopped"
+      ],
+      "id": "c7",
+      "scope": "same_time",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "excludes"
+    }
+  ],
+  "design_revision": "fixed5-causal-r3",
+  "entities": [
+    {
+      "id": "block",
+      "mention": "the same small light-wood block",
+      "role": "actor",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    },
+    {
+      "id": "ramp",
+      "mention": "the same light-wood wedge ramp",
+      "role": "environment",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    },
+    {
+      "id": "rough_floor",
+      "mention": "the rough gray floor to the ramp's right",
+      "role": "patient",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "description": "first visible block displacement down the wooden slope",
+      "id": "first_slide",
+      "observable": "the block leaves its pictured upper-left position",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    },
+    {
+      "description": "the block crosses the wooden ramp tip onto gray floor",
+      "id": "edge_crossing",
+      "observable": "the block passes the visible material boundary",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    }
+  ],
+  "generation_basis": {
+    "mode": "visual_grounding",
+    "reference_image_usage": "visual_grounding",
+    "semantic_inputs": [
+      "origin",
+      "planner_instructions",
+      "reference_input"
+    ]
+  },
+  "global_semantic": "The small light-wood block slides down the light-wood wedge ramp onto the rough gray floor and stops.",
+  "grounding": {
+    "approved": false,
+    "coordinate_frame": "reference_input",
+    "entity_boxes": [
+      {
+        "box": [
+          0.08,
+          0.228,
+          0.155,
+          0.352
+        ],
+        "entity_id": "block"
+      },
+      {
+        "box": [
+          0.026,
+          0.265,
+          0.613,
+          0.634
+        ],
+        "entity_id": "ramp"
+      },
+      {
+        "box": [
+          0.61,
+          0.39,
+          1.0,
+          1.0
+        ],
+        "entity_id": "rough_floor"
+      }
+    ],
+    "protected_boxes": [],
+    "reference_image": "P05-i0-1280x704.png",
+    "reference_image_usage": "visual_grounding"
+  },
+  "predicates": [
+    {
+      "attribute": "location_on pictured path",
+      "id": "location",
+      "observable": "block position along the descending left-to-right route",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "subject": "block",
+      "values": [
+        "upper_left_ramp",
+        "right_gray_floor"
+      ]
+    },
+    {
+      "attribute": "left_to_right motion",
+      "id": "motion",
+      "observable": "frame-to-frame displacement along ramp and floor",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "subject": "block",
+      "values": [
+        "still",
+        "sliding",
+        "stopped"
+      ]
+    }
+  ],
+  "protected_predicates": [
+    "same small rectangular light-wood block",
+    "light-wood wedge geometry and narrow ramp tip remain fixed",
+    "rough gray floor, pale wall, lighting, and static side camera remain unchanged"
+  ],
+  "sample_id": "P05",
+  "schema_version": "trace-writer-v1",
+  "source_files": {
+    "origin": "P05-origin.txt",
+    "planner_instructions": "Project/physGen/prompt/generate_trace_writer_v1_plan.txt",
+    "reference_input": "P05-i0-1280x704.png"
+  },
+  "stages": [
+    {
+      "affected_roles": [
+        "actor",
+        "environment"
+      ],
+      "constraint_ids": [
+        "c1",
+        "c3"
+      ],
+      "id": "setup",
+      "observable_check": "Motion starts inside the block-to-ramp box and follows the visible slope.",
+      "positive": "The pictured light-wood block first leaves its upper-left position and follows the wooden slope rightward.",
+      "support_kind": "motion_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1",
+            "c3"
+          ],
+          "text": "The pictured block is already stopped on gray floor before leaving the upper ramp.",
+          "type": "outcome_preset"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c1",
+        "c3",
+        "c4"
+      ],
+      "id": "onset",
+      "observable_check": "The block visibly crosses the wood-to-gray interface while still moving.",
+      "positive": "The block reaches the narrow wooden ramp tip before its displacement begins shrinking on gray floor.",
+      "support_kind": "motion_contact_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1",
+            "c3",
+            "c4"
+          ],
+          "text": "The block stops on the wooden slope before crossing the pictured material boundary.",
+          "type": "wrong_order"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c2",
+        "c5"
+      ],
+      "id": "evolution",
+      "observable_check": "Successive block positions on gray floor become more closely spaced.",
+      "positive": "Across the rough gray floor, the same light-wood block advances rightward with progressively smaller steps.",
+      "support_kind": "motion_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c2",
+            "c5"
+          ],
+          "text": "The light-wood block makes larger rightward steps after entering the rough gray floor.",
+          "type": "wrong_direction"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c5",
+        "c6"
+      ],
+      "id": "completion",
+      "observable_check": "Late displacement approaches zero without rotation or backward motion.",
+      "positive": "The pictured block's final rightward displacements contract until one stable gray-floor position is reached.",
+      "support_kind": "motion_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c5",
+            "c6"
+          ],
+          "text": "The block keeps crossing the pictured gray floor without reaching one stable position.",
+          "type": "incomplete_transition"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor"
+      ],
+      "constraint_ids": [
+        "c6",
+        "c7"
+      ],
+      "id": "terminal",
+      "observable_check": "One intact block holds one unchanged floor position through the end.",
+      "positive": "The same small light-wood block remains stationary on the rough gray floor right of the ramp.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c6"
+          ],
+          "text": "The stopped pictured block resumes sliding during the final frames.",
+          "type": "reversal"
+        },
+        {
+          "constraint_ids": [
+            "c7"
+          ],
+          "text": "Sliding and stopped copies of the light-wood block coexist on gray floor.",
+          "type": "exclusion_broken"
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "facts": {
+        "location": "upper_left_ramp",
+        "motion": "still"
+      },
+      "id": "z0",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    },
+    {
+      "facts": {
+        "location": "right_gray_floor",
+        "motion": "sliding"
+      },
+      "id": "z1",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "facts": {
+        "location": "right_gray_floor",
+        "motion": "stopped"
+      },
+      "id": "z2",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "cause_event": null,
+      "effects": [
+        {
+          "direction": "position descends rightward to gray floor",
+          "from": "upper_left_ramp",
+          "id": "pictured_descent",
+          "predicate": "location",
+          "to": "right_gray_floor"
+        },
+        {
+          "direction": "left-to-right displacement begins",
+          "from": "still",
+          "id": "pictured_slide",
+          "predicate": "motion",
+          "to": "sliding"
+        }
+      ],
+      "from": "z0",
+      "id": "e1",
+      "kind": "continuous",
+      "preconditions": [
+        "location=upper_left_ramp",
+        "motion=still"
+      ],
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "support_kind": "motion_corridor",
+      "to": "z1"
+    },
+    {
+      "cause_event": "edge_crossing",
+      "effects": [
+        {
+          "direction": "rightward displacement contracts to zero",
+          "from": "sliding",
+          "id": "gray_floor_stop",
+          "predicate": "motion",
+          "to": "stopped"
+        }
+      ],
+      "from": "z1",
+      "id": "e2",
+      "kind": "triggered",
+      "preconditions": [
+        "location=right_gray_floor",
+        "motion=sliding"
+      ],
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "support_kind": "motion_corridor",
+      "to": "z2"
+    }
+  ],
+  "warnings": [
+    "Entity boxes are visually estimated from the reference image and remain unapproved."
+  ]
+}

@@ -1,0 +1,383 @@
+{
+  "assumptions": [
+    "The bottle leaves the visible support toward the open right-side drop corridor."
+  ],
+  "constraints": [
+    {
+      "after": "clear_fracture",
+      "before": "pictured_tile_impact",
+      "id": "c1",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "precedes"
+    },
+    {
+      "cause": "pictured_tile_impact",
+      "effect": "clear_fracture",
+      "id": "c2",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "requires"
+    },
+    {
+      "effects": [
+        "pictured_descent",
+        "clear_fracture",
+        "tile_scatter"
+      ],
+      "id": "c3",
+      "relation": "beige-tile arrival produces clear fracture and local spread",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "couples"
+    },
+    {
+      "facts": [
+        "integrity=fractured_clear_glass",
+        "configuration=scattered_floor_fragments"
+      ],
+      "id": "c4",
+      "source_refs": [
+        "origin"
+      ],
+      "state": "z1",
+      "type": "persists"
+    },
+    {
+      "facts": [
+        "integrity=intact_horizontal_bottle",
+        "integrity=fractured_clear_glass"
+      ],
+      "id": "c5",
+      "scope": "same_time",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "excludes"
+    }
+  ],
+  "control": {},
+  "design_revision": "fixed5-causal-r3",
+  "entities": [
+    {
+      "id": "bottle",
+      "mention": "the same clear horizontal glass bottle and its clear fragments",
+      "role": "actor",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    },
+    {
+      "id": "tile_floor",
+      "mention": "the same beige hard tile floor",
+      "role": "patient",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "description": "the clear bottle reaches the beige tile surface",
+      "id": "pictured_tile_impact",
+      "observable": "the vertical wall-floor gap closes at the bottle boundary",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    }
+  ],
+  "generation_basis": {
+    "mode": "visual_grounding",
+    "reference_image_usage": "visual_grounding",
+    "semantic_inputs": [
+      "origin",
+      "planner_instructions",
+      "reference_input"
+    ]
+  },
+  "global_semantic": "The clear horizontal bottle leaves the upper-left beige support, falls across the pale wall, and shatters on the beige tile floor.",
+  "grounding": {
+    "approved": false,
+    "coordinate_frame": "reference_input",
+    "entity_boxes": [
+      {
+        "box": [
+          0.094,
+          0.09,
+          0.292,
+          0.181
+        ],
+        "entity_id": "bottle"
+      },
+      {
+        "box": [
+          0.17,
+          0.532,
+          1.0,
+          1.0
+        ],
+        "entity_id": "tile_floor"
+      }
+    ],
+    "protected_boxes": [],
+    "reference_image": "P11-i0-1280x704.png",
+    "reference_image_usage": "visual_grounding"
+  },
+  "predicates": [
+    {
+      "attribute": "position_in pictured drop corridor",
+      "id": "position",
+      "observable": "bottle location against pale wall and tiled floor",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "subject": "bottle",
+      "values": [
+        "upper_left_support",
+        "beige_tile"
+      ]
+    },
+    {
+      "attribute": "clear glass integrity",
+      "id": "integrity",
+      "observable": "continuous transparent outline versus separated pieces",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "subject": "bottle",
+      "values": [
+        "intact_horizontal_bottle",
+        "fractured_clear_glass"
+      ]
+    },
+    {
+      "attribute": "clear glass configuration",
+      "id": "configuration",
+      "observable": "one bottle body versus pieces over beige tiles",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "subject": "bottle",
+      "values": [
+        "single_bottle",
+        "scattered_floor_fragments"
+      ]
+    }
+  ],
+  "protected_predicates": [
+    "same clear colorless glass material",
+    "upper-left beige support and vertical leg remain fixed",
+    "beige tile grid, pale wall, baseboard, lighting, and static camera remain unchanged",
+    "no release hand or tool is added"
+  ],
+  "sample_id": "P11",
+  "schema_version": "trace-writer-v1",
+  "source_files": {
+    "origin": "P11-origin.txt",
+    "planner_instructions": "Project/physGen/prompt/generate_trace_writer_v1_plan.txt",
+    "reference_input": "P11-i0-1280x704.png"
+  },
+  "stages": [
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "setup",
+      "observable_check": "One clear bottle descends intact inside the support-to-floor corridor.",
+      "positive": "The pictured clear bottle leaves the upper-left beige ledge and descends intact through open wall space.",
+      "support_kind": "motion_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "Clear fragments already cover beige tiles before the pictured bottle leaves its ledge.",
+          "type": "outcome_preset"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c1",
+        "c2"
+      ],
+      "id": "onset",
+      "observable_check": "The tile gap reaches zero while the bottle remains one body.",
+      "positive": "The transparent bottle boundary reaches the beige tile before any visible glass separation begins.",
+      "support_kind": "contact_interface",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1",
+            "c2"
+          ],
+          "text": "The clear bottle separates into pieces while still above the pictured tile floor.",
+          "type": "wrong_order"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c3"
+      ],
+      "id": "evolution",
+      "observable_check": "Clear pieces emerge outward from the same floor contact point.",
+      "positive": "At tile contact, the clear bottle breaks and transparent pieces spread across nearby beige tiles.",
+      "support_kind": "motion_contact_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c3"
+          ],
+          "text": "The bottle reaches beige tile but keeps its pictured intact transparent outline.",
+          "type": "coupling_broken"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c3",
+        "c4"
+      ],
+      "id": "completion",
+      "observable_check": "Every visible piece approaches a fixed tile position.",
+      "positive": "The transparent pieces finish spreading and settle within the visible beige-tile impact region.",
+      "support_kind": "motion_contact_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c3",
+            "c4"
+          ],
+          "text": "The clear bottle only cracks or leaves pieces floating above beige tile.",
+          "type": "incomplete_transition"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c4",
+        "c5"
+      ],
+      "id": "terminal",
+      "observable_check": "Only settled clear pieces persist with stable floor and camera.",
+      "positive": "The same clear glass fragments remain scattered over the unchanged beige tile floor.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c4"
+          ],
+          "text": "The transparent fragments reconnect into the pictured bottle in final frames.",
+          "type": "reversal"
+        },
+        {
+          "constraint_ids": [
+            "c5"
+          ],
+          "text": "An intact clear bottle and clear floor fragments coexist simultaneously.",
+          "type": "exclusion_broken"
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "facts": {
+        "configuration": "single_bottle",
+        "integrity": "intact_horizontal_bottle",
+        "position": "upper_left_support"
+      },
+      "id": "z0",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    },
+    {
+      "facts": {
+        "configuration": "scattered_floor_fragments",
+        "integrity": "fractured_clear_glass",
+        "position": "beige_tile"
+      },
+      "id": "z1",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "cause_event": "pictured_tile_impact",
+      "effects": [
+        {
+          "direction": "clear bottle descends through open wall corridor",
+          "from": "upper_left_support",
+          "id": "pictured_descent",
+          "predicate": "position",
+          "to": "beige_tile"
+        },
+        {
+          "direction": "transparent bottle body breaks",
+          "from": "intact_horizontal_bottle",
+          "id": "clear_fracture",
+          "predicate": "integrity",
+          "to": "fractured_clear_glass"
+        },
+        {
+          "direction": "clear pieces spread over beige tile",
+          "from": "single_bottle",
+          "id": "tile_scatter",
+          "predicate": "configuration",
+          "to": "scattered_floor_fragments"
+        }
+      ],
+      "from": "z0",
+      "id": "e1",
+      "kind": "triggered",
+      "preconditions": [
+        "position=upper_left_support",
+        "integrity=intact_horizontal_bottle",
+        "configuration=single_bottle"
+      ],
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "support_kind": "motion_contact_corridor",
+      "to": "z1"
+    }
+  ],
+  "warnings": [
+    "No release mechanism is visible and none is added; boxes are visually estimated and unapproved."
+  ]
+}

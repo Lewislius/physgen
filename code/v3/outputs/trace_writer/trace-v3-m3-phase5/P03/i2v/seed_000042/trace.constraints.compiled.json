@@ -1,0 +1,69 @@
+{
+  "closed_world": {
+    "allowed_entity_ids": [
+      "ball",
+      "racket"
+    ],
+    "empty_regions": [],
+    "external_source_allowed": false,
+    "forbidden_new_categories": [
+      "external source",
+      "extra copy",
+      "unlisted object"
+    ],
+    "provenance": "derived"
+  },
+  "conservation": [
+    {
+      "observable_proxy": "tracked logical entity slots remain consistent",
+      "provenance": "derived",
+      "quantity": "instance_count",
+      "relation": "constant",
+      "rule_id": "entity_slots_constant",
+      "sinks": [
+        "ball",
+        "racket"
+      ],
+      "sources": [
+        "ball",
+        "racket"
+      ],
+      "tolerance": 0.0
+    },
+    {
+      "observable_proxy": "rightward reversal accompanies reopening separation from the string bed",
+      "provenance": "derived",
+      "quantity": "material_proxy",
+      "relation": "coupled_monotonic",
+      "rule_id": "conservation_c3",
+      "sinks": [
+        "direction"
+      ],
+      "sources": [
+        "gap_state"
+      ],
+      "tolerance": 0.1
+    }
+  ],
+  "lifecycles": [
+    {
+      "entity_id": "ball",
+      "from_stage": "setup",
+      "from_state": "right_separated; leftward_toward_racket",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "right_separated",
+          "right_departing"
+        ],
+        [
+          "leftward_toward_racket",
+          "rightward_away"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "right_departing; rightward_away"
+    }
+  ]
+}

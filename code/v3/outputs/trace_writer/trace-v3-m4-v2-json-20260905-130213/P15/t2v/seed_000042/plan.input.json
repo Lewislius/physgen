@@ -1,0 +1,451 @@
+{
+  "schema_version": "trace-direct-v1",
+  "design_revision": "p0-stage-direct-json-r2",
+  "sample_id": "P15",
+  "source_files": {
+    "origin": "P15-origin.txt",
+    "frame_zero_metadata": "P15-i0.json",
+    "reference_input": "P15-i0-1280x704.jpg"
+  },
+  "initial_condition": {
+    "type": "visible_actuator",
+    "description": "A visible hand holds the sand cup so it can tilt and control the grain flow."
+  },
+  "global_semantic": "Fixed side view of one hand tilting one clear cup of pale dry sand above a bare wooden table. A continuous grain stream leaves the cup, the cup empties while one conical pile grows directly below, then the stream stops and the pile remains settled.",
+  "cfg_negative": " ",
+  "entities": [
+    {
+      "id": "hand",
+      "mention": "one visible hand",
+      "role": "actor"
+    },
+    {
+      "id": "cup",
+      "mention": "one clear cup",
+      "role": "source"
+    },
+    {
+      "id": "sand",
+      "mention": "the pale dry sand from the cup",
+      "role": "carrier"
+    },
+    {
+      "id": "table",
+      "mention": "one bare wooden table",
+      "role": "sink"
+    }
+  ],
+  "structured_guidance": {
+    "schema_version": "structured-text-guidance-v1",
+    "entities": [
+      {
+        "id": "hand",
+        "label": "visible human hand",
+        "count": 1,
+        "persistent": false,
+        "invariants": [
+          "natural hand anatomy",
+          "single identity"
+        ]
+      },
+      {
+        "id": "cup",
+        "label": "clear sand cup",
+        "count": 1,
+        "persistent": true,
+        "invariants": [
+          "rigid cup geometry",
+          "clear appearance",
+          "single intact identity"
+        ]
+      },
+      {
+        "id": "sand",
+        "label": "tracked amount of pale dry sand from the cup",
+        "count": 1,
+        "persistent": true,
+        "invariants": [
+          "pale dry grain appearance",
+          "conserved original grains",
+          "fixed total sand amount"
+        ]
+      },
+      {
+        "id": "table",
+        "label": "bare wooden table",
+        "count": 1,
+        "persistent": true,
+        "invariants": [
+          "flat rigid geometry",
+          "wooden appearance",
+          "stationary identity"
+        ]
+      }
+    ],
+    "initial_condition": {
+      "type": "visible_actuator",
+      "active_stages": [
+        "setup"
+      ],
+      "facts": [
+        "The hand starts holding the full sand cup upright above the bare table.",
+        "All tracked sand starts inside the cup and no grain stream or pile exists."
+      ]
+    },
+    "stages": [
+      {
+        "id": "setup",
+        "entity_states": [
+          {
+            "entity_id": "hand",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "holding the full cup upright"
+            ],
+            "mutable": [
+              "pose"
+            ]
+          },
+          {
+            "entity_id": "cup",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "upright and full of sand"
+            ],
+            "mutable": []
+          },
+          {
+            "entity_id": "sand",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "entirely inside the cup with no falling grains"
+            ],
+            "mutable": []
+          }
+        ],
+        "relations": [
+          "The table directly below is bare with no pre-existing pile."
+        ]
+      },
+      {
+        "id": "onset",
+        "entity_states": [
+          {
+            "entity_id": "hand",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "tilting the cup over one fixed landing area"
+            ],
+            "mutable": [
+              "pose",
+              "position"
+            ]
+          },
+          {
+            "entity_id": "cup",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "tilting while remaining intact"
+            ],
+            "mutable": [
+              "orientation"
+            ]
+          },
+          {
+            "entity_id": "sand",
+            "presence": "transitioning",
+            "count": 1,
+            "states": [
+              "beginning one continuous downward grain stream"
+            ],
+            "mutable": [
+              "allocation between cup stream and pile",
+              "grain positions",
+              "flow shape"
+            ]
+          }
+        ],
+        "relations": [
+          "The first grains land directly below the cup and start one pile."
+        ]
+      },
+      {
+        "id": "evolution",
+        "entity_states": [
+          {
+            "entity_id": "cup",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "remaining tilted as the sand level inside falls"
+            ],
+            "mutable": [
+              "orientation",
+              "contained sand level"
+            ]
+          },
+          {
+            "entity_id": "sand",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "flowing downward while one conical pile grows below"
+            ],
+            "mutable": [
+              "allocation between cup stream and pile",
+              "grain positions",
+              "pile height and width"
+            ]
+          }
+        ],
+        "relations": [
+          "The cup loses sand at the same time the single pile gains it."
+        ]
+      },
+      {
+        "id": "completion",
+        "entity_states": [
+          {
+            "entity_id": "cup",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "becoming nearly empty while still held above the pile"
+            ],
+            "mutable": []
+          },
+          {
+            "entity_id": "sand",
+            "presence": "transitioning",
+            "count": 1,
+            "states": [
+              "sending the final grains into the pile and ending the stream"
+            ],
+            "mutable": [
+              "grain positions",
+              "pile height and width",
+              "flow shape"
+            ]
+          }
+        ],
+        "relations": [
+          "No second pile or sideways grain source appears."
+        ]
+      },
+      {
+        "id": "terminal",
+        "entity_states": [
+          {
+            "entity_id": "cup",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "empty and intact above the table"
+            ],
+            "mutable": []
+          },
+          {
+            "entity_id": "sand",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "settled as one conical pile on the table"
+            ],
+            "mutable": []
+          }
+        ],
+        "relations": [
+          "The original sand is conserved in exactly one settled pile beneath the cup."
+        ]
+      }
+    ]
+  },
+  "stages": [
+    {
+      "id": "setup",
+      "positive": "The hand holds the full sand cup upright above a bare table, with no grain stream."
+    },
+    {
+      "id": "onset",
+      "positive": "The hand tilts the cup and the first continuous grain stream begins falling."
+    },
+    {
+      "id": "evolution",
+      "positive": "The sand level inside the cup falls while one conical pile grows directly below."
+    },
+    {
+      "id": "completion",
+      "positive": "The cup becomes nearly empty and the final grains join the pile as the stream stops."
+    },
+    {
+      "id": "terminal",
+      "positive": "One settled conical sand pile remains on the table beneath the emptied cup."
+    }
+  ],
+  "warnings": [],
+  "generation_basis": {
+    "mode": "identifier_only",
+    "reference_image_usage": "identifier_only"
+  },
+  "grounding": {
+    "coordinate_frame": "reference_input",
+    "reference_image": "P15-i0-1280x704.jpg",
+    "approved": false,
+    "entity_boxes": []
+  },
+  "temporal_route": {
+    "latent_tokens": 25,
+    "crossfade_tokens": 2,
+    "interpolation": "smoothstep_c1",
+    "profile": "continuous",
+    "stage_order": [
+      "setup",
+      "onset",
+      "evolution",
+      "completion",
+      "terminal"
+    ],
+    "weights": [
+      [
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0
+      ]
+    ]
+  }
+}

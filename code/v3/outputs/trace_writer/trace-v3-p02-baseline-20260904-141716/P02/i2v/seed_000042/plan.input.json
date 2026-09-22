@@ -1,0 +1,369 @@
+{
+  "schema_version": "trace-direct-v1",
+  "design_revision": "p0-stage-direct-json-r2",
+  "sample_id": "P02",
+  "source_files": {
+    "origin": "P02-origin.txt",
+    "frame_zero_metadata": "P02-i0.json",
+    "reference_input": "P02-i0-1280x704.jpg"
+  },
+  "initial_condition": {
+    "type": "initial_momentum",
+    "description": "The red ball is already rolling toward the stationary blue ball when the clip begins."
+  },
+  "global_semantic": "Fixed side view of one glossy red billiard ball already rolling right toward one stationary glossy blue ball on green cloth. The red ball hits the blue ball once. Both balls remain visible; afterward the blue ball rolls ahead to the right while the red ball follows more slowly.",
+  "cfg_negative": " ",
+  "entities": [
+    {
+      "id": "red_ball",
+      "mention": "one glossy red billiard ball",
+      "role": "actor"
+    },
+    {
+      "id": "blue_ball",
+      "mention": "one glossy blue billiard ball",
+      "role": "patient"
+    }
+  ],
+  "structured_guidance": {
+    "schema_version": "structured-text-guidance-v1",
+    "entities": [
+      {
+        "id": "red_ball",
+        "label": "glossy red billiard ball",
+        "count": 1,
+        "persistent": true,
+        "invariants": [
+          "round rigid shape",
+          "glossy red appearance",
+          "intact identity"
+        ]
+      },
+      {
+        "id": "blue_ball",
+        "label": "glossy blue billiard ball",
+        "count": 1,
+        "persistent": true,
+        "invariants": [
+          "round rigid shape",
+          "glossy blue appearance",
+          "intact identity"
+        ]
+      }
+    ],
+    "initial_condition": {
+      "type": "initial_momentum",
+      "active_stages": [
+        "setup"
+      ],
+      "facts": [
+        "The red billiard ball already has rightward rolling momentum at the first video frame.",
+        "The blue billiard ball starts motionless."
+      ]
+    },
+    "stages": [
+      {
+        "id": "setup",
+        "entity_states": [
+          {
+            "entity_id": "red_ball",
+            "presence": "required",
+            "count": 1,
+            "states": ["rolling right toward the blue ball"],
+            "mutable": ["horizontal position"]
+          },
+          {
+            "entity_id": "blue_ball",
+            "presence": "required",
+            "count": 1,
+            "states": ["motionless to the right of the red ball"],
+            "mutable": []
+          }
+        ],
+        "relations": ["A visible green gap separates the two balls and continuously narrows."]
+      },
+      {
+        "id": "onset",
+        "entity_states": [
+          {
+            "entity_id": "red_ball",
+            "presence": "transitioning",
+            "count": 1,
+            "states": ["touching the blue ball at one edge-to-edge contact"],
+            "mutable": ["rolling speed"]
+          },
+          {
+            "entity_id": "blue_ball",
+            "presence": "transitioning",
+            "count": 1,
+            "states": ["touching the red ball at that same contact point"],
+            "mutable": ["rolling speed"]
+          }
+        ],
+        "relations": ["The single contact occurs before the blue ball begins moving."]
+      },
+      {
+        "id": "evolution",
+        "entity_states": [
+          {
+            "entity_id": "red_ball",
+            "presence": "required",
+            "count": 1,
+            "states": ["rolling right more slowly after contact"],
+            "mutable": ["horizontal position", "rolling speed"]
+          },
+          {
+            "entity_id": "blue_ball",
+            "presence": "required",
+            "count": 1,
+            "states": ["rolling right ahead after contact"],
+            "mutable": ["horizontal position", "rolling speed"]
+          }
+        ],
+        "relations": ["The blue ball leads while both original balls remain separately visible."]
+      },
+      {
+        "id": "completion",
+        "entity_states": [
+          {
+            "entity_id": "red_ball",
+            "presence": "required",
+            "count": 1,
+            "states": ["rolling right behind at the slower speed"],
+            "mutable": ["horizontal position"]
+          },
+          {
+            "entity_id": "blue_ball",
+            "presence": "required",
+            "count": 1,
+            "states": ["rolling right farther ahead"],
+            "mutable": ["horizontal position"]
+          }
+        ],
+        "relations": ["A growing green gap opens between the blue ball and the red ball."]
+      },
+      {
+        "id": "terminal",
+        "entity_states": [
+          {
+            "entity_id": "red_ball",
+            "presence": "required",
+            "count": 1,
+            "states": ["intact and behind the blue ball"],
+            "mutable": []
+          },
+          {
+            "entity_id": "blue_ball",
+            "presence": "required",
+            "count": 1,
+            "states": ["intact and farther right than the red ball"],
+            "mutable": []
+          }
+        ],
+        "relations": ["The final frames keep exactly the two original separated balls visible."]
+      }
+    ]
+  },
+  "stages": [
+    {
+      "id": "setup",
+      "positive": "The red ball rolls right while the blue ball waits motionless ahead and the gap closes."
+    },
+    {
+      "id": "onset",
+      "positive": "The red ball makes one visible edge-to-edge contact with the blue ball."
+    },
+    {
+      "id": "evolution",
+      "positive": "The blue ball begins rolling right as the same red ball continues right more slowly."
+    },
+    {
+      "id": "completion",
+      "positive": "The moving blue ball opens a growing gap ahead of the slower red ball."
+    },
+    {
+      "id": "terminal",
+      "positive": "Both original balls remain visible, with the blue ball farther right than the red ball."
+    }
+  ],
+  "warnings": [],
+  "generation_basis": {
+    "mode": "visual_grounding",
+    "reference_image_usage": "visual_grounding"
+  },
+  "grounding": {
+    "coordinate_frame": "reference_input",
+    "reference_image": "P02-i0-1280x704.jpg",
+    "approved": true,
+    "entity_boxes": [
+      {
+        "entity_id": "red_ball",
+        "box": [
+          0.02,
+          0.25,
+          0.18,
+          0.57
+        ]
+      },
+      {
+        "entity_id": "blue_ball",
+        "box": [
+          0.65,
+          0.25,
+          0.8,
+          0.57
+        ]
+      }
+    ]
+  },
+  "temporal_route": {
+    "latent_tokens": 25,
+    "crossfade_tokens": 2,
+    "interpolation": "smoothstep_c1",
+    "profile": "triggered",
+    "stage_order": [
+      "setup",
+      "onset",
+      "evolution",
+      "completion",
+      "terminal"
+    ],
+    "weights": [
+      [
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0
+      ]
+    ]
+  }
+}

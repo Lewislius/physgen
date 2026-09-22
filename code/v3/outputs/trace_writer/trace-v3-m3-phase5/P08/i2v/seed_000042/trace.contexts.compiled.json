@@ -1,0 +1,184 @@
+{
+  "actual_t5_token_lengths": {
+    "global_semantic": 299,
+    "stage.completion.negative.0": 166,
+    "stage.completion.positive": 167,
+    "stage.evolution.negative.0": 165,
+    "stage.evolution.positive": 164,
+    "stage.onset.negative.0": 176,
+    "stage.onset.positive": 173,
+    "stage.setup.negative.0": 175,
+    "stage.setup.positive": 172,
+    "stage.terminal.negative.0": 210,
+    "stage.terminal.negative.1": 203,
+    "stage.terminal.positive": 228
+  },
+  "global_anchor": "[ENTITY INVENTORY] The closed scene contains ice: exactly 1; meltwater: exactly 1; plate: exactly 1. The reference first frame fixes these identities and initial layout. [INITIAL STATE] ice_size=large_sharp_cube, water_area=absent_or_tiny. [PHYSICAL EVENT] The single clear cubic ice piece centered on the large white plate shrinks as a transparent puddle spreads around it. [PERSISTENT PROTECTION] exactly one clear ice piece; same large shallow white plate and centered placement; wood tabletop, warm lighting, three-quarter camera, and plate position remain unchanged. [CLOSED WORLD] No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object enters or appears; unoccupied scene regions remain empty. [CONSERVATION] Source loss and result gain stay coupled: tracked logical entity slots remain consistent; centered clear solid shrinks as transparent plate footprint grows. No result appears from an undeclared external source. [TERMINAL STATE] The same logical entity slots persist without duplicates; ice_size=smaller_receded_ice, water_area=wide_puddle remains visible through the final frames.",
+  "issues": [],
+  "max_t5_token_length": 299,
+  "protected_coverage": {
+    "exactly one clear ice piece": [
+      "identity_count"
+    ],
+    "same large shallow white plate and centered placement": [
+      "identity_count"
+    ],
+    "wood tabletop, warm lighting, three-quarter camera, and plate position remain unchanged": [
+      "appearance",
+      "camera_background",
+      "closed_world_or_persistence"
+    ]
+  },
+  "stage_pairs": [
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "first visible cube-edge recession and wet rim happens BEFORE transparent footprint expands over white plate.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: ice: exactly 1, state ice_size=large_sharp_cube, required; meltwater: exactly 0, forbidden; plate: exactly 1, state water_area=absent_or_tiny, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] first visible cube-edge recession and wet rim happens BEFORE transparent footprint expands over white plate.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: ice: exactly 1, state ice_size=large_sharp_cube, required; meltwater: exactly 0, forbidden; plate: exactly 1, state water_area=absent_or_tiny, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "setup",
+      "violation_constraint_ids": [
+        [
+          "c1"
+        ]
+      ],
+      "violation_kinds": [
+        "outcome_preset"
+      ],
+      "violation_relations": [
+        "transparent footprint expands over white plate is already present BEFORE first visible cube-edge recession and wet rim."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: ice: exactly 1, state ice_size=large_sharp_cube, required; meltwater: exactly 0, forbidden; plate: exactly 1, state water_area=absent_or_tiny, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] transparent footprint expands over white plate is already present BEFORE first visible cube-edge recession and wet rim."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "first visible cube-edge recession and wet rim happens BEFORE transparent footprint expands over white plate.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: ice: exactly 1, state ice_size=large_sharp_cube, transitioning; meltwater: exactly 1, transitioning; plate: exactly 1, state water_area=absent_or_tiny, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] first visible cube-edge recession and wet rim happens BEFORE transparent footprint expands over white plate.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: ice: exactly 1, state ice_size=large_sharp_cube, transitioning; meltwater: exactly 1, transitioning; plate: exactly 1, state water_area=absent_or_tiny, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "onset",
+      "violation_constraint_ids": [
+        [
+          "c1"
+        ]
+      ],
+      "violation_kinds": [
+        "early_effect"
+      ],
+      "violation_relations": [
+        "transparent footprint expands over white plate is already present BEFORE first visible cube-edge recession and wet rim."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: ice: exactly 1, state ice_size=large_sharp_cube, transitioning; meltwater: exactly 1, transitioning; plate: exactly 1, state water_area=absent_or_tiny, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] transparent footprint expands over white plate is already present BEFORE first visible cube-edge recession and wet rim."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The declared change clear solid boundary contracts inward occurs in its stated direction.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: ice: exactly 1, state ice_size=smaller_receded_ice, required; meltwater: exactly 1, required; plate: exactly 1, state water_area=wide_puddle, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change clear solid boundary contracts inward occurs in its stated direction.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: ice: exactly 1, state ice_size=smaller_receded_ice, required; meltwater: exactly 1, required; plate: exactly 1, state water_area=wide_puddle, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "evolution",
+      "violation_constraint_ids": [
+        [
+          "c2",
+          "c3"
+        ]
+      ],
+      "violation_kinds": [
+        "coupling_broken"
+      ],
+      "violation_relations": [
+        "Only one coupled change occurs while the other remains unchanged: ."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: ice: exactly 1, state ice_size=smaller_receded_ice, required; meltwater: exactly 1, required; plate: exactly 1, state water_area=wide_puddle, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] Only one coupled change occurs while the other remains unchanged: ."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The declared change clear solid boundary contracts inward occurs in its stated direction.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: ice: exactly 1, state ice_size=smaller_receded_ice, transitioning; meltwater: exactly 1, transitioning; plate: exactly 1, state water_area=wide_puddle, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change clear solid boundary contracts inward occurs in its stated direction.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: ice: exactly 1, state ice_size=smaller_receded_ice, transitioning; meltwater: exactly 1, transitioning; plate: exactly 1, state water_area=wide_puddle, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "completion",
+      "violation_constraint_ids": [
+        [
+          "c2",
+          "c3",
+          "c4"
+        ]
+      ],
+      "violation_kinds": [
+        "incomplete_transition"
+      ],
+      "violation_relations": [
+        "The declared cause occurs BUT the required target change does not become visible."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: ice: exactly 1, state ice_size=smaller_receded_ice, transitioning; meltwater: exactly 1, transitioning; plate: exactly 1, state water_area=wide_puddle, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The declared cause occurs BUT the required target change does not become visible."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The terminal facts ice_size=smaller_receded_ice, water_area=wide_puddle REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts ice_size=large_sharp_cube, ice_size=smaller_receded_ice do not coexist.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: ice: exactly 1, state ice_size=smaller_receded_ice, required; meltwater: exactly 1, required; plate: exactly 1, state water_area=wide_puddle, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The terminal facts ice_size=smaller_receded_ice, water_area=wide_puddle REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts ice_size=large_sharp_cube, ice_size=smaller_receded_ice do not coexist.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: ice: exactly 1, state ice_size=smaller_receded_ice, required; meltwater: exactly 1, required; plate: exactly 1, state water_area=wide_puddle, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "terminal",
+      "violation_constraint_ids": [
+        [
+          "c4"
+        ],
+        [
+          "c5"
+        ]
+      ],
+      "violation_kinds": [
+        "reversal",
+        "exclusion_broken"
+      ],
+      "violation_relations": [
+        "The valid terminal state returns to its mutually exclusive earlier state.",
+        "Copies of the same logical slot appear in mutually exclusive states at the same time."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: ice: exactly 1, state ice_size=smaller_receded_ice, required; meltwater: exactly 1, required; plate: exactly 1, state water_area=wide_puddle, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The valid terminal state returns to its mutually exclusive earlier state. [AND] The same logical slot has only its valid state; mutually exclusive facts ice_size=large_sharp_cube, ice_size=smaller_receded_ice do not coexist.",
+        "[STAGE ENTITY INVENTORY] Present now: ice: exactly 1, state ice_size=smaller_receded_ice, required; meltwater: exactly 1, required; plate: exactly 1, state water_area=wide_puddle, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The terminal facts ice_size=smaller_receded_ice, water_area=wide_puddle REMAIN through the final frames. [AND] Copies of the same logical slot appear in mutually exclusive states at the same time."
+      ],
+      "violation_weights": [
+        0.5,
+        0.5
+      ]
+    }
+  ],
+  "texts": {
+    "global_semantic": "[ENTITY INVENTORY] The closed scene contains ice: exactly 1; meltwater: exactly 1; plate: exactly 1. The reference first frame fixes these identities and initial layout. [INITIAL STATE] ice_size=large_sharp_cube, water_area=absent_or_tiny. [PHYSICAL EVENT] The single clear cubic ice piece centered on the large white plate shrinks as a transparent puddle spreads around it. [PERSISTENT PROTECTION] exactly one clear ice piece; same large shallow white plate and centered placement; wood tabletop, warm lighting, three-quarter camera, and plate position remain unchanged. [CLOSED WORLD] No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object enters or appears; unoccupied scene regions remain empty. [CONSERVATION] Source loss and result gain stay coupled: tracked logical entity slots remain consistent; centered clear solid shrinks as transparent plate footprint grows. No result appears from an undeclared external source. [TERMINAL STATE] The same logical entity slots persist without duplicates; ice_size=smaller_receded_ice, water_area=wide_puddle remains visible through the final frames.",
+    "stage.completion.negative.0": "[STAGE ENTITY INVENTORY] Present now: ice: exactly 1, state ice_size=smaller_receded_ice, transitioning; meltwater: exactly 1, transitioning; plate: exactly 1, state water_area=wide_puddle, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The declared cause occurs BUT the required target change does not become visible.",
+    "stage.completion.positive": "[STAGE ENTITY INVENTORY] Present now: ice: exactly 1, state ice_size=smaller_receded_ice, transitioning; meltwater: exactly 1, transitioning; plate: exactly 1, state water_area=wide_puddle, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change clear solid boundary contracts inward occurs in its stated direction.",
+    "stage.evolution.negative.0": "[STAGE ENTITY INVENTORY] Present now: ice: exactly 1, state ice_size=smaller_receded_ice, required; meltwater: exactly 1, required; plate: exactly 1, state water_area=wide_puddle, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] Only one coupled change occurs while the other remains unchanged: .",
+    "stage.evolution.positive": "[STAGE ENTITY INVENTORY] Present now: ice: exactly 1, state ice_size=smaller_receded_ice, required; meltwater: exactly 1, required; plate: exactly 1, state water_area=wide_puddle, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change clear solid boundary contracts inward occurs in its stated direction.",
+    "stage.onset.negative.0": "[STAGE ENTITY INVENTORY] Present now: ice: exactly 1, state ice_size=large_sharp_cube, transitioning; meltwater: exactly 1, transitioning; plate: exactly 1, state water_area=absent_or_tiny, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] transparent footprint expands over white plate is already present BEFORE first visible cube-edge recession and wet rim.",
+    "stage.onset.positive": "[STAGE ENTITY INVENTORY] Present now: ice: exactly 1, state ice_size=large_sharp_cube, transitioning; meltwater: exactly 1, transitioning; plate: exactly 1, state water_area=absent_or_tiny, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] first visible cube-edge recession and wet rim happens BEFORE transparent footprint expands over white plate.",
+    "stage.setup.negative.0": "[STAGE ENTITY INVENTORY] Present now: ice: exactly 1, state ice_size=large_sharp_cube, required; meltwater: exactly 0, forbidden; plate: exactly 1, state water_area=absent_or_tiny, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] transparent footprint expands over white plate is already present BEFORE first visible cube-edge recession and wet rim.",
+    "stage.setup.positive": "[STAGE ENTITY INVENTORY] Present now: ice: exactly 1, state ice_size=large_sharp_cube, required; meltwater: exactly 0, forbidden; plate: exactly 1, state water_area=absent_or_tiny, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] first visible cube-edge recession and wet rim happens BEFORE transparent footprint expands over white plate.",
+    "stage.terminal.negative.0": "[STAGE ENTITY INVENTORY] Present now: ice: exactly 1, state ice_size=smaller_receded_ice, required; meltwater: exactly 1, required; plate: exactly 1, state water_area=wide_puddle, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The valid terminal state returns to its mutually exclusive earlier state. [AND] The same logical slot has only its valid state; mutually exclusive facts ice_size=large_sharp_cube, ice_size=smaller_receded_ice do not coexist.",
+    "stage.terminal.negative.1": "[STAGE ENTITY INVENTORY] Present now: ice: exactly 1, state ice_size=smaller_receded_ice, required; meltwater: exactly 1, required; plate: exactly 1, state water_area=wide_puddle, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The terminal facts ice_size=smaller_receded_ice, water_area=wide_puddle REMAIN through the final frames. [AND] Copies of the same logical slot appear in mutually exclusive states at the same time.",
+    "stage.terminal.positive": "[STAGE ENTITY INVENTORY] Present now: ice: exactly 1, state ice_size=smaller_receded_ice, required; meltwater: exactly 1, required; plate: exactly 1, state water_area=wide_puddle, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The terminal facts ice_size=smaller_receded_ice, water_area=wide_puddle REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts ice_size=large_sharp_cube, ice_size=smaller_receded_ice do not coexist."
+  },
+  "token_budget_priority": {
+    "causal": 2,
+    "entity_count": 0,
+    "protected": 1,
+    "style": 3
+  }
+}

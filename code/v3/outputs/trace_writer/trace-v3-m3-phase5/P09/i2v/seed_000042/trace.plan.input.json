@@ -1,0 +1,369 @@
+{
+  "assumptions": [],
+  "constraints": [
+    {
+      "after": "steel_pan_spread",
+      "before": "pictured_softening",
+      "id": "c1",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "precedes"
+    },
+    {
+      "effect": "pictured_edges_round",
+      "id": "c2",
+      "source_refs": [
+        "origin"
+      ],
+      "transition": "e1",
+      "type": "changes"
+    },
+    {
+      "effects": [
+        "pictured_edges_round",
+        "steel_pan_spread"
+      ],
+      "id": "c3",
+      "relation": "pale solid rounds and lowers while yellow pan footprint expands",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "couples"
+    },
+    {
+      "facts": [
+        "edge_shape=rounded_receded",
+        "footprint=broad_liquid_pool"
+      ],
+      "id": "c4",
+      "source_refs": [
+        "origin"
+      ],
+      "state": "z1",
+      "type": "persists"
+    },
+    {
+      "facts": [
+        "footprint=small_rectangle",
+        "footprint=broad_liquid_pool"
+      ],
+      "id": "c5",
+      "scope": "same_time",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "excludes"
+    }
+  ],
+  "control": {},
+  "design_revision": "fixed5-causal-r3",
+  "entities": [
+    {
+      "id": "butter",
+      "mention": "the same pale-yellow rectangular butter pat",
+      "role": "source",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    },
+    {
+      "id": "liquid_butter",
+      "mention": "the pale-yellow liquid from that pat",
+      "role": "carrier",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "id": "pan",
+      "mention": "the same large stainless-steel pan",
+      "role": "sink",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "description": "first visible rounding of a pale-yellow butter corner",
+      "id": "pictured_softening",
+      "observable": "one rectangular corner loses sharpness or height",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    }
+  ],
+  "generation_basis": {
+    "mode": "visual_grounding",
+    "reference_image_usage": "visual_grounding",
+    "semantic_inputs": [
+      "origin",
+      "planner_instructions",
+      "reference_input"
+    ]
+  },
+  "global_semantic": "The pale-yellow rectangular butter pat near the center of the stainless pan rounds, recedes, and spreads into a yellow liquid pool.",
+  "grounding": {
+    "approved": false,
+    "coordinate_frame": "reference_input",
+    "entity_boxes": [
+      {
+        "box": [
+          0.394,
+          0.389,
+          0.616,
+          0.733
+        ],
+        "entity_id": "butter"
+      },
+      {
+        "box": [
+          0.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        "entity_id": "pan"
+      }
+    ],
+    "protected_boxes": [],
+    "reference_image": "P09-i0-1280x704.png",
+    "reference_image_usage": "visual_grounding"
+  },
+  "predicates": [
+    {
+      "attribute": "pictured rectangular edge shape",
+      "id": "edge_shape",
+      "observable": "corner radius and height of the pale-yellow solid",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "subject": "butter",
+      "values": [
+        "sharp_rectangular",
+        "rounded_receded"
+      ]
+    },
+    {
+      "attribute": "yellow butter footprint",
+      "id": "footprint",
+      "observable": "yellow area over the stainless pan base",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "subject": "pan",
+      "values": [
+        "small_rectangle",
+        "broad_liquid_pool"
+      ]
+    }
+  ],
+  "protected_predicates": [
+    "same pale-yellow butter material",
+    "same large stainless pan, rim, rivets, and handle",
+    "black stovetop, lighting, close three-quarter camera, and pan position remain unchanged"
+  ],
+  "sample_id": "P09",
+  "schema_version": "trace-writer-v1",
+  "source_files": {
+    "origin": "P09-origin.txt",
+    "planner_instructions": "Project/physGen/prompt/generate_trace_writer_v1_plan.txt",
+    "reference_input": "P09-i0-1280x704.png"
+  },
+  "stages": [
+    {
+      "affected_roles": [
+        "source",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "setup",
+      "observable_check": "The solid rectangle remains distinct against the stainless pan base.",
+      "positive": "The pictured pale-yellow pat keeps its compact rectangular footprint and sharp corners near the pan center.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "A broad yellow pool already replaces the pictured rectangular pat in the opening frames.",
+          "type": "outcome_preset"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c1"
+      ],
+      "id": "onset",
+      "observable_check": "Local rounding precedes expansion beyond the original rectangular box.",
+      "positive": "One pale-yellow corner first rounds and lowers before yellow liquid spreads broadly across the steel.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1"
+          ],
+          "text": "A broad yellow footprint appears while every pictured butter corner remains sharp.",
+          "type": "early_effect"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c2",
+        "c3"
+      ],
+      "id": "evolution",
+      "observable_check": "The solid box contracts as the yellow surface footprint widens.",
+      "positive": "The pale solid loses height and sharpness while a connected yellow footprint spreads across the stainless base.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c2",
+            "c3"
+          ],
+          "text": "Yellow liquid spreads over the pan while the pale rectangular pat stays unchanged.",
+          "type": "coupling_broken"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c2",
+        "c3",
+        "c4"
+      ],
+      "id": "completion",
+      "observable_check": "Late frames show low rounded remnants within connected liquid.",
+      "positive": "The remaining rounded butter recedes into a broad continuous pale-yellow pool near the pan center.",
+      "support_kind": "source_stream_sink",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c2",
+            "c3",
+            "c4"
+          ],
+          "text": "The pictured pat remains tall and compact without producing a broad connected pool.",
+          "type": "incomplete_transition"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "source",
+        "carrier",
+        "sink"
+      ],
+      "constraint_ids": [
+        "c4",
+        "c5"
+      ],
+      "id": "terminal",
+      "observable_check": "The final yellow footprint stays fixed without restoring sharp corners.",
+      "positive": "The broad pale-yellow pool and reduced rounded remnant persist on the same stainless pan base.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c4"
+          ],
+          "text": "The yellow pool retracts into the original sharp rectangular pat in final frames.",
+          "type": "reversal"
+        },
+        {
+          "constraint_ids": [
+            "c5"
+          ],
+          "text": "Original rectangular and melted spread versions of the butter coexist in the pan.",
+          "type": "exclusion_broken"
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "facts": {
+        "edge_shape": "sharp_rectangular",
+        "footprint": "small_rectangle"
+      },
+      "id": "z0",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    },
+    {
+      "facts": {
+        "edge_shape": "rounded_receded",
+        "footprint": "broad_liquid_pool"
+      },
+      "id": "z1",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "cause_event": null,
+      "effects": [
+        {
+          "direction": "pale-yellow corners round and solid height lowers",
+          "from": "sharp_rectangular",
+          "id": "pictured_edges_round",
+          "predicate": "edge_shape",
+          "to": "rounded_receded"
+        },
+        {
+          "direction": "yellow footprint expands over stainless base",
+          "from": "small_rectangle",
+          "id": "steel_pan_spread",
+          "predicate": "footprint",
+          "to": "broad_liquid_pool"
+        }
+      ],
+      "from": "z0",
+      "id": "e1",
+      "kind": "continuous",
+      "preconditions": [
+        "edge_shape=sharp_rectangular",
+        "footprint=small_rectangle"
+      ],
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "support_kind": "source_stream_sink",
+      "to": "z1"
+    }
+  ],
+  "warnings": [
+    "Liquid butter is absent in the first frame, so no carrier box is inferred; visible boxes remain unapproved."
+  ]
+}

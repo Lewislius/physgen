@@ -1,0 +1,431 @@
+{
+  "assumptions": [],
+  "constraints": [
+    {
+      "after": "green_inflate",
+      "before": "green_expansion_onset",
+      "id": "c1",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "precedes"
+    },
+    {
+      "effect": "green_inflate",
+      "id": "c2",
+      "source_refs": [
+        "origin"
+      ],
+      "transition": "e1",
+      "type": "changes"
+    },
+    {
+      "after": "green_rupture",
+      "before": "green_burst",
+      "id": "c3",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "precedes"
+    },
+    {
+      "cause": "green_burst",
+      "effect": "green_rupture",
+      "id": "c4",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "requires"
+    },
+    {
+      "effect": "green_rupture",
+      "id": "c5",
+      "source_refs": [
+        "origin"
+      ],
+      "transition": "e2",
+      "type": "changes"
+    },
+    {
+      "facts": [
+        "size=collapsed_green_pieces",
+        "integrity=ruptured_fragments"
+      ],
+      "id": "c6",
+      "source_refs": [
+        "origin"
+      ],
+      "state": "z2",
+      "type": "persists"
+    },
+    {
+      "facts": [
+        "integrity=intact",
+        "integrity=ruptured_fragments"
+      ],
+      "id": "c7",
+      "scope": "same_time",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "excludes"
+    }
+  ],
+  "control": {},
+  "design_revision": "fixed5-causal-r3",
+  "entities": [
+    {
+      "id": "balloon",
+      "mention": "the same tied green rubber balloon and its green fragments",
+      "role": "actor",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "description": "first visible expansion of the small green silhouette",
+      "id": "green_expansion_onset",
+      "observable": "the centered outline enlarges while staying intact",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    },
+    {
+      "description": "visible rupture of the large taut green envelope",
+      "id": "green_burst",
+      "observable": "the continuous green boundary splits into collapsed pieces",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    }
+  ],
+  "generation_basis": {
+    "mode": "visual_grounding",
+    "reference_image_usage": "visual_grounding",
+    "semantic_inputs": [
+      "origin",
+      "planner_instructions",
+      "reference_input"
+    ]
+  },
+  "global_semantic": "The single small tied green rubber balloon centered on the plain background inflates, bursts, and leaves green collapsed fragments in place.",
+  "grounding": {
+    "approved": false,
+    "coordinate_frame": "reference_input",
+    "entity_boxes": [
+      {
+        "box": [
+          0.452,
+          0.383,
+          0.548,
+          0.628
+        ],
+        "entity_id": "balloon"
+      }
+    ],
+    "protected_boxes": [],
+    "reference_image": "P10-i0-1280x704.png",
+    "reference_image_usage": "visual_grounding"
+  },
+  "predicates": [
+    {
+      "attribute": "green silhouette extent",
+      "id": "size",
+      "observable": "area of the centered green silhouette",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "subject": "balloon",
+      "values": [
+        "small_pear_shape",
+        "large_taut_shape",
+        "collapsed_green_pieces"
+      ]
+    },
+    {
+      "attribute": "green surface tension appearance",
+      "id": "surface",
+      "observable": "wrinkles and smoothness below the tied neck",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "subject": "balloon",
+      "values": [
+        "wrinkled_loose",
+        "smooth_taut",
+        "deflated"
+      ]
+    },
+    {
+      "attribute": "envelope integrity",
+      "id": "integrity",
+      "observable": "one closed green envelope versus collapsed green pieces",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "subject": "balloon",
+      "values": [
+        "intact",
+        "ruptured_fragments"
+      ]
+    }
+  ],
+  "protected_predicates": [
+    "same green rubber color through balloon and fragments",
+    "same tied-neck material identity",
+    "plain pale background, soft shadow, lighting, central location, and static camera remain unchanged",
+    "no inflation tool or person is added"
+  ],
+  "sample_id": "P10",
+  "schema_version": "trace-writer-v1",
+  "source_files": {
+    "origin": "P10-origin.txt",
+    "planner_instructions": "Project/physGen/prompt/generate_trace_writer_v1_plan.txt",
+    "reference_input": "P10-i0-1280x704.png"
+  },
+  "stages": [
+    {
+      "affected_roles": [
+        "actor"
+      ],
+      "constraint_ids": [
+        "c1",
+        "c3"
+      ],
+      "id": "setup",
+      "observable_check": "One green intact outline enlarges from the pictured central box.",
+      "positive": "The centered small green balloon begins expanding while its tied neck and continuous envelope remain visible.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1",
+            "c3"
+          ],
+          "text": "Green collapsed fragments already replace the pictured small balloon before any expansion.",
+          "type": "outcome_preset"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor"
+      ],
+      "constraint_ids": [
+        "c1",
+        "c3",
+        "c4"
+      ],
+      "id": "onset",
+      "observable_check": "The green envelope remains continuous during first expansion.",
+      "positive": "The first green silhouette increase appears without a tear, disappearance, or premature fragments.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1",
+            "c3",
+            "c4"
+          ],
+          "text": "The pictured green balloon bursts before becoming visibly larger and tauter.",
+          "type": "wrong_order"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor"
+      ],
+      "constraint_ids": [
+        "c2"
+      ],
+      "id": "evolution",
+      "observable_check": "Green silhouette area increases progressively without color or identity change.",
+      "positive": "The same green balloon grows steadily as pictured wrinkles diminish and its surface becomes taut.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c2"
+          ],
+          "text": "The intact green outline shrinks or preserves its pictured small wrinkled size.",
+          "type": "wrong_direction"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor"
+      ],
+      "constraint_ids": [
+        "c5",
+        "c6"
+      ],
+      "id": "completion",
+      "observable_check": "One continuous green boundary becomes collapsed pieces at the same location.",
+      "positive": "The large taut green envelope visibly breaks and collapses into green rubber fragments at center.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c5",
+            "c6"
+          ],
+          "text": "The green balloon reaches a large taut shape but never visibly ruptures.",
+          "type": "incomplete_transition"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor"
+      ],
+      "constraint_ids": [
+        "c6",
+        "c7"
+      ],
+      "id": "terminal",
+      "observable_check": "Only green collapsed pieces persist against the unchanged background.",
+      "positive": "The green deflated fragments remain centered without the intact tied balloon returning.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c6"
+          ],
+          "text": "The green fragments reconnect into the pictured intact balloon in final frames.",
+          "type": "reversal"
+        },
+        {
+          "constraint_ids": [
+            "c7"
+          ],
+          "text": "An intact green balloon and green ruptured fragments coexist at center.",
+          "type": "exclusion_broken"
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "facts": {
+        "integrity": "intact",
+        "size": "small_pear_shape",
+        "surface": "wrinkled_loose"
+      },
+      "id": "z0",
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ]
+    },
+    {
+      "facts": {
+        "integrity": "intact",
+        "size": "large_taut_shape",
+        "surface": "smooth_taut"
+      },
+      "id": "z1",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "facts": {
+        "integrity": "ruptured_fragments",
+        "size": "collapsed_green_pieces",
+        "surface": "deflated"
+      },
+      "id": "z2",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "cause_event": null,
+      "effects": [
+        {
+          "direction": "centered green outline expands",
+          "from": "small_pear_shape",
+          "id": "green_inflate",
+          "predicate": "size",
+          "to": "large_taut_shape"
+        },
+        {
+          "direction": "green wrinkles diminish as surface stretches",
+          "from": "wrinkled_loose",
+          "id": "green_smooth",
+          "predicate": "surface",
+          "to": "smooth_taut"
+        }
+      ],
+      "from": "z0",
+      "id": "e1",
+      "kind": "continuous",
+      "preconditions": [
+        "size=small_pear_shape",
+        "surface=wrinkled_loose",
+        "integrity=intact"
+      ],
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "support_kind": "role_union",
+      "to": "z1"
+    },
+    {
+      "cause_event": "green_burst",
+      "effects": [
+        {
+          "direction": "large green extent collapses",
+          "from": "large_taut_shape",
+          "id": "green_collapse",
+          "predicate": "size",
+          "to": "collapsed_green_pieces"
+        },
+        {
+          "direction": "smooth surface becomes loose pieces",
+          "from": "smooth_taut",
+          "id": "green_deflate",
+          "predicate": "surface",
+          "to": "deflated"
+        },
+        {
+          "direction": "green envelope separates into fragments",
+          "from": "intact",
+          "id": "green_rupture",
+          "predicate": "integrity",
+          "to": "ruptured_fragments"
+        }
+      ],
+      "from": "z1",
+      "id": "e2",
+      "kind": "triggered",
+      "preconditions": [
+        "size=large_taut_shape",
+        "surface=smooth_taut",
+        "integrity=intact"
+      ],
+      "source_refs": [
+        "origin",
+        "reference_input"
+      ],
+      "support_kind": "role_union",
+      "to": "z2"
+    }
+  ],
+  "warnings": [
+    "The origin does not specify color; the reference image supplies green, which is protected only in this visual-grounded version. The box is unapproved."
+  ]
+}

@@ -1,0 +1,809 @@
+{
+  "compiled_schema_version": "trace-writer-v2",
+  "contexts": {
+    "global_anchor": "[ENTITY INVENTORY] The closed scene contains block: exactly 1; ramp: exactly 1; rough floor: one declared collective group. The reference first frame fixes these identities and initial layout. [INITIAL STATE] location=upper_left_ramp, motion=still. [PHYSICAL EVENT] The small light-wood block slides down the light-wood wedge ramp onto the rough gray floor and stops. [PERSISTENT PROTECTION] same small rectangular light-wood block; light-wood wedge geometry and narrow ramp tip remain fixed; rough gray floor, pale wall, lighting, and static side camera remain unchanged. [CLOSED WORLD] No additional external source, extra copy, unlisted object enters or appears; unoccupied scene regions remain empty. [CONSERVATION] Source loss and result gain stay coupled: tracked logical entity slots remain consistent. No result appears from an undeclared external source. [TERMINAL STATE] The same logical entity slots persist without duplicates; location=right_gray_floor, motion=stopped remains visible through the final frames.",
+    "issues": [],
+    "protected_coverage": {
+      "light-wood wedge geometry and narrow ramp tip remain fixed": [
+        "geometry",
+        "closed_world_or_persistence"
+      ],
+      "rough gray floor, pale wall, lighting, and static side camera remain unchanged": [
+        "appearance",
+        "camera_background",
+        "closed_world_or_persistence"
+      ],
+      "same small rectangular light-wood block": [
+        "identity_count",
+        "geometry"
+      ]
+    },
+    "stage_pairs": [
+      {
+        "pair_quality": "minimal_verified",
+        "positive_relation": "first visible block displacement down the wooden slope happens BEFORE position descends rightward to gray floor.",
+        "positive_text": "[STAGE ENTITY INVENTORY] Present now: block: exactly 1, state location=upper_left_ramp, motion=still, required; ramp: exactly 1, required; rough floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] first visible block displacement down the wooden slope happens BEFORE position descends rightward to gray floor.",
+        "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: block: exactly 1, state location=upper_left_ramp, motion=still, required; ramp: exactly 1, required; rough floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+        "stage_id": "setup",
+        "violation_constraint_ids": [
+          [
+            "c1",
+            "c3"
+          ]
+        ],
+        "violation_kinds": [
+          "outcome_preset"
+        ],
+        "violation_relations": [
+          "position descends rightward to gray floor is already present BEFORE first visible block displacement down the wooden slope."
+        ],
+        "violation_texts": [
+          "[STAGE ENTITY INVENTORY] Present now: block: exactly 1, state location=upper_left_ramp, motion=still, required; ramp: exactly 1, required; rough floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] position descends rightward to gray floor is already present BEFORE first visible block displacement down the wooden slope."
+        ],
+        "violation_weights": [
+          1.0
+        ]
+      },
+      {
+        "pair_quality": "minimal_verified",
+        "positive_relation": "first visible block displacement down the wooden slope happens BEFORE position descends rightward to gray floor.",
+        "positive_text": "[STAGE ENTITY INVENTORY] Present now: block: exactly 1, state location=upper_left_ramp, motion=still, transitioning; ramp: exactly 1, required; rough floor: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] first visible block displacement down the wooden slope happens BEFORE position descends rightward to gray floor.",
+        "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: block: exactly 1, state location=upper_left_ramp, motion=still, transitioning; ramp: exactly 1, required; rough floor: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+        "stage_id": "onset",
+        "violation_constraint_ids": [
+          [
+            "c1",
+            "c3",
+            "c4"
+          ]
+        ],
+        "violation_kinds": [
+          "wrong_order"
+        ],
+        "violation_relations": [
+          "position descends rightward to gray floor happens BEFORE first visible block displacement down the wooden slope."
+        ],
+        "violation_texts": [
+          "[STAGE ENTITY INVENTORY] Present now: block: exactly 1, state location=upper_left_ramp, motion=still, transitioning; ramp: exactly 1, required; rough floor: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] position descends rightward to gray floor happens BEFORE first visible block displacement down the wooden slope."
+        ],
+        "violation_weights": [
+          1.0
+        ]
+      },
+      {
+        "pair_quality": "minimal_verified",
+        "positive_relation": "The declared change position descends rightward to gray floor occurs in its stated direction.",
+        "positive_text": "[STAGE ENTITY INVENTORY] Present now: block: exactly 1, state location=right_gray_floor, motion=sliding, required; ramp: exactly 1, required; rough floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change position descends rightward to gray floor occurs in its stated direction.",
+        "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: block: exactly 1, state location=right_gray_floor, motion=sliding, required; ramp: exactly 1, required; rough floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+        "stage_id": "evolution",
+        "violation_constraint_ids": [
+          [
+            "c2",
+            "c5"
+          ]
+        ],
+        "violation_kinds": [
+          "wrong_direction"
+        ],
+        "violation_relations": [
+          "The same declared property changes in the opposite or out-of-range direction."
+        ],
+        "violation_texts": [
+          "[STAGE ENTITY INVENTORY] Present now: block: exactly 1, state location=right_gray_floor, motion=sliding, required; ramp: exactly 1, required; rough floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The same declared property changes in the opposite or out-of-range direction."
+        ],
+        "violation_weights": [
+          1.0
+        ]
+      },
+      {
+        "pair_quality": "minimal_verified",
+        "positive_relation": "The declared change rightward displacement contracts to zero occurs in its stated direction.",
+        "positive_text": "[STAGE ENTITY INVENTORY] Present now: block: exactly 1, state location=right_gray_floor, motion=stopped, transitioning; ramp: exactly 1, required; rough floor: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change rightward displacement contracts to zero occurs in its stated direction.",
+        "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: block: exactly 1, state location=right_gray_floor, motion=stopped, transitioning; ramp: exactly 1, required; rough floor: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+        "stage_id": "completion",
+        "violation_constraint_ids": [
+          [
+            "c5",
+            "c6"
+          ]
+        ],
+        "violation_kinds": [
+          "incomplete_transition"
+        ],
+        "violation_relations": [
+          "The declared cause occurs BUT the required target change does not become visible."
+        ],
+        "violation_texts": [
+          "[STAGE ENTITY INVENTORY] Present now: block: exactly 1, state location=right_gray_floor, motion=stopped, transitioning; ramp: exactly 1, required; rough floor: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The declared cause occurs BUT the required target change does not become visible."
+        ],
+        "violation_weights": [
+          1.0
+        ]
+      },
+      {
+        "pair_quality": "minimal_verified",
+        "positive_relation": "The terminal facts location=right_gray_floor, motion=stopped REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts motion=sliding, motion=stopped do not coexist.",
+        "positive_text": "[STAGE ENTITY INVENTORY] Present now: block: exactly 1, state location=right_gray_floor, motion=stopped, required; ramp: exactly 1, required; rough floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The terminal facts location=right_gray_floor, motion=stopped REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts motion=sliding, motion=stopped do not coexist.",
+        "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: block: exactly 1, state location=right_gray_floor, motion=stopped, required; ramp: exactly 1, required; rough floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+        "stage_id": "terminal",
+        "violation_constraint_ids": [
+          [
+            "c6"
+          ],
+          [
+            "c7"
+          ]
+        ],
+        "violation_kinds": [
+          "reversal",
+          "exclusion_broken"
+        ],
+        "violation_relations": [
+          "The valid terminal state returns to its mutually exclusive earlier state.",
+          "Copies of the same logical slot appear in mutually exclusive states at the same time."
+        ],
+        "violation_texts": [
+          "[STAGE ENTITY INVENTORY] Present now: block: exactly 1, state location=right_gray_floor, motion=stopped, required; ramp: exactly 1, required; rough floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The valid terminal state returns to its mutually exclusive earlier state. [AND] The same logical slot has only its valid state; mutually exclusive facts motion=sliding, motion=stopped do not coexist.",
+          "[STAGE ENTITY INVENTORY] Present now: block: exactly 1, state location=right_gray_floor, motion=stopped, required; ramp: exactly 1, required; rough floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The terminal facts location=right_gray_floor, motion=stopped REMAIN through the final frames. [AND] Copies of the same logical slot appear in mutually exclusive states at the same time."
+        ],
+        "violation_weights": [
+          0.5,
+          0.5
+        ]
+      }
+    ],
+    "texts": {
+      "global_semantic": "[ENTITY INVENTORY] The closed scene contains block: exactly 1; ramp: exactly 1; rough floor: one declared collective group. The reference first frame fixes these identities and initial layout. [INITIAL STATE] location=upper_left_ramp, motion=still. [PHYSICAL EVENT] The small light-wood block slides down the light-wood wedge ramp onto the rough gray floor and stops. [PERSISTENT PROTECTION] same small rectangular light-wood block; light-wood wedge geometry and narrow ramp tip remain fixed; rough gray floor, pale wall, lighting, and static side camera remain unchanged. [CLOSED WORLD] No additional external source, extra copy, unlisted object enters or appears; unoccupied scene regions remain empty. [CONSERVATION] Source loss and result gain stay coupled: tracked logical entity slots remain consistent. No result appears from an undeclared external source. [TERMINAL STATE] The same logical entity slots persist without duplicates; location=right_gray_floor, motion=stopped remains visible through the final frames.",
+      "stage.completion.negative.0": "[STAGE ENTITY INVENTORY] Present now: block: exactly 1, state location=right_gray_floor, motion=stopped, transitioning; ramp: exactly 1, required; rough floor: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The declared cause occurs BUT the required target change does not become visible.",
+      "stage.completion.positive": "[STAGE ENTITY INVENTORY] Present now: block: exactly 1, state location=right_gray_floor, motion=stopped, transitioning; ramp: exactly 1, required; rough floor: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change rightward displacement contracts to zero occurs in its stated direction.",
+      "stage.evolution.negative.0": "[STAGE ENTITY INVENTORY] Present now: block: exactly 1, state location=right_gray_floor, motion=sliding, required; ramp: exactly 1, required; rough floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The same declared property changes in the opposite or out-of-range direction.",
+      "stage.evolution.positive": "[STAGE ENTITY INVENTORY] Present now: block: exactly 1, state location=right_gray_floor, motion=sliding, required; ramp: exactly 1, required; rough floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change position descends rightward to gray floor occurs in its stated direction.",
+      "stage.onset.negative.0": "[STAGE ENTITY INVENTORY] Present now: block: exactly 1, state location=upper_left_ramp, motion=still, transitioning; ramp: exactly 1, required; rough floor: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] position descends rightward to gray floor happens BEFORE first visible block displacement down the wooden slope.",
+      "stage.onset.positive": "[STAGE ENTITY INVENTORY] Present now: block: exactly 1, state location=upper_left_ramp, motion=still, transitioning; ramp: exactly 1, required; rough floor: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] first visible block displacement down the wooden slope happens BEFORE position descends rightward to gray floor.",
+      "stage.setup.negative.0": "[STAGE ENTITY INVENTORY] Present now: block: exactly 1, state location=upper_left_ramp, motion=still, required; ramp: exactly 1, required; rough floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] position descends rightward to gray floor is already present BEFORE first visible block displacement down the wooden slope.",
+      "stage.setup.positive": "[STAGE ENTITY INVENTORY] Present now: block: exactly 1, state location=upper_left_ramp, motion=still, required; ramp: exactly 1, required; rough floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] first visible block displacement down the wooden slope happens BEFORE position descends rightward to gray floor.",
+      "stage.terminal.negative.0": "[STAGE ENTITY INVENTORY] Present now: block: exactly 1, state location=right_gray_floor, motion=stopped, required; ramp: exactly 1, required; rough floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The valid terminal state returns to its mutually exclusive earlier state. [AND] The same logical slot has only its valid state; mutually exclusive facts motion=sliding, motion=stopped do not coexist.",
+      "stage.terminal.negative.1": "[STAGE ENTITY INVENTORY] Present now: block: exactly 1, state location=right_gray_floor, motion=stopped, required; ramp: exactly 1, required; rough floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The terminal facts location=right_gray_floor, motion=stopped REMAIN through the final frames. [AND] Copies of the same logical slot appear in mutually exclusive states at the same time.",
+      "stage.terminal.positive": "[STAGE ENTITY INVENTORY] Present now: block: exactly 1, state location=right_gray_floor, motion=stopped, required; ramp: exactly 1, required; rough floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The terminal facts location=right_gray_floor, motion=stopped REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts motion=sliding, motion=stopped do not coexist."
+    },
+    "token_budget_priority": {
+      "causal": 2,
+      "entity_count": 0,
+      "protected": 1,
+      "style": 3
+    }
+  },
+  "design_revision": "fixed5-causal-r4",
+  "entity_ledger": {
+    "closed_world": {
+      "allowed_entity_ids": [
+        "block",
+        "ramp",
+        "rough_floor"
+      ],
+      "empty_regions": [],
+      "external_source_allowed": false,
+      "forbidden_new_categories": [
+        "external source",
+        "extra copy",
+        "unlisted object"
+      ],
+      "provenance": "derived"
+    },
+    "conservation": [
+      {
+        "observable_proxy": "tracked logical entity slots remain consistent",
+        "provenance": "derived",
+        "quantity": "instance_count",
+        "relation": "constant",
+        "rule_id": "entity_slots_constant",
+        "sinks": [
+          "block",
+          "ramp",
+          "rough_floor"
+        ],
+        "sources": [
+          "block",
+          "ramp",
+          "rough_floor"
+        ],
+        "tolerance": 0.0
+      }
+    ],
+    "issues": [
+      "rough_floor: exact visual count unresolved; retained as group"
+    ],
+    "lifecycles": [
+      {
+        "entity_id": "block",
+        "from_stage": "setup",
+        "from_state": "upper_left_ramp; still",
+        "identity_preserved": true,
+        "mutually_exclusive_states": [
+          [
+            "upper_left_ramp",
+            "right_gray_floor"
+          ],
+          [
+            "still",
+            "sliding"
+          ]
+        ],
+        "provenance": "derived",
+        "to_stage": "terminal",
+        "to_state": "right_gray_floor; sliding"
+      },
+      {
+        "entity_id": "block",
+        "from_stage": "setup",
+        "from_state": "sliding",
+        "identity_preserved": true,
+        "mutually_exclusive_states": [
+          [
+            "sliding",
+            "stopped"
+          ]
+        ],
+        "provenance": "derived",
+        "to_stage": "terminal",
+        "to_state": "stopped"
+      }
+    ],
+    "slots": [
+      {
+        "aliases": [],
+        "canonical_mention": "the same small light-wood block",
+        "cardinality": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "entity_id": "block",
+        "invariant_attributes": [
+          "same small rectangular light-wood block",
+          "light-wood wedge geometry and narrow ramp tip remain fixed",
+          "rough gray floor, pale wall, lighting, and static side camera remain unchanged"
+        ],
+        "mutable_attributes": [
+          "location_on pictured path",
+          "left_to_right motion"
+        ],
+        "persistent_identity": true,
+        "provenance": "default",
+        "role": "actor"
+      },
+      {
+        "aliases": [],
+        "canonical_mention": "the same light-wood wedge ramp",
+        "cardinality": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "entity_id": "ramp",
+        "invariant_attributes": [
+          "same small rectangular light-wood block",
+          "light-wood wedge geometry and narrow ramp tip remain fixed",
+          "rough gray floor, pale wall, lighting, and static side camera remain unchanged"
+        ],
+        "mutable_attributes": [],
+        "persistent_identity": true,
+        "provenance": "default",
+        "role": "environment"
+      },
+      {
+        "aliases": [],
+        "canonical_mention": "the rough gray floor to the ramp's right",
+        "cardinality": {
+          "exact": null,
+          "kind": "group",
+          "maximum": null,
+          "minimum": null
+        },
+        "entity_id": "rough_floor",
+        "invariant_attributes": [
+          "same small rectangular light-wood block",
+          "light-wood wedge geometry and narrow ramp tip remain fixed",
+          "rough gray floor, pale wall, lighting, and static side camera remain unchanged"
+        ],
+        "mutable_attributes": [],
+        "persistent_identity": true,
+        "provenance": "derived",
+        "role": "patient"
+      }
+    ],
+    "stage_presence": [
+      {
+        "entity_id": "block",
+        "logical_count": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "setup",
+        "state_facts": [
+          "location=upper_left_ramp",
+          "motion=still"
+        ],
+        "visible": "required"
+      },
+      {
+        "entity_id": "ramp",
+        "logical_count": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "setup",
+        "state_facts": [],
+        "visible": "required"
+      },
+      {
+        "entity_id": "rough_floor",
+        "logical_count": {
+          "exact": null,
+          "kind": "group",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "setup",
+        "state_facts": [],
+        "visible": "required"
+      },
+      {
+        "entity_id": "block",
+        "logical_count": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "onset",
+        "state_facts": [
+          "location=upper_left_ramp",
+          "motion=still"
+        ],
+        "visible": "transitioning"
+      },
+      {
+        "entity_id": "ramp",
+        "logical_count": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "onset",
+        "state_facts": [],
+        "visible": "required"
+      },
+      {
+        "entity_id": "rough_floor",
+        "logical_count": {
+          "exact": null,
+          "kind": "group",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "onset",
+        "state_facts": [],
+        "visible": "transitioning"
+      },
+      {
+        "entity_id": "block",
+        "logical_count": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "evolution",
+        "state_facts": [
+          "location=right_gray_floor",
+          "motion=sliding"
+        ],
+        "visible": "required"
+      },
+      {
+        "entity_id": "ramp",
+        "logical_count": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "evolution",
+        "state_facts": [],
+        "visible": "required"
+      },
+      {
+        "entity_id": "rough_floor",
+        "logical_count": {
+          "exact": null,
+          "kind": "group",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "evolution",
+        "state_facts": [],
+        "visible": "required"
+      },
+      {
+        "entity_id": "block",
+        "logical_count": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "completion",
+        "state_facts": [
+          "location=right_gray_floor",
+          "motion=stopped"
+        ],
+        "visible": "transitioning"
+      },
+      {
+        "entity_id": "ramp",
+        "logical_count": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "completion",
+        "state_facts": [],
+        "visible": "required"
+      },
+      {
+        "entity_id": "rough_floor",
+        "logical_count": {
+          "exact": null,
+          "kind": "group",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "completion",
+        "state_facts": [],
+        "visible": "transitioning"
+      },
+      {
+        "entity_id": "block",
+        "logical_count": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "terminal",
+        "state_facts": [
+          "location=right_gray_floor",
+          "motion=stopped"
+        ],
+        "visible": "required"
+      },
+      {
+        "entity_id": "ramp",
+        "logical_count": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "terminal",
+        "state_facts": [],
+        "visible": "required"
+      },
+      {
+        "entity_id": "rough_floor",
+        "logical_count": {
+          "exact": null,
+          "kind": "group",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "terminal",
+        "state_facts": [],
+        "visible": "required"
+      }
+    ]
+  },
+  "frames": 25,
+  "input_schema_version": "trace-writer-v1",
+  "issues": [
+    "rough_floor: exact visual count unresolved; retained as group"
+  ],
+  "mode": "i2v",
+  "raw_plan_sha256": "486f6a37b682658e805e60f7c5727f7d32b965077b757315fac80602d9f4c7b8",
+  "sample_id": "P05",
+  "stage_ids": [
+    "setup",
+    "onset",
+    "evolution",
+    "completion",
+    "terminal"
+  ],
+  "temporal": {
+    "boundaries": [
+      {
+        "frames": [
+          3,
+          4
+        ],
+        "left": "setup",
+        "right": "onset",
+        "right_weights": [
+          0.25925925925925924,
+          0.7407407407407407
+        ]
+      },
+      {
+        "frames": [
+          8,
+          9
+        ],
+        "left": "onset",
+        "right": "evolution",
+        "right_weights": [
+          0.25925925925925924,
+          0.7407407407407407
+        ]
+      },
+      {
+        "frames": [
+          16,
+          17
+        ],
+        "left": "evolution",
+        "right": "completion",
+        "right_weights": [
+          0.25925925925925924,
+          0.7407407407407407
+        ]
+      },
+      {
+        "frames": [
+          21,
+          22
+        ],
+        "left": "completion",
+        "right": "terminal",
+        "right_weights": [
+          0.25925925925925924,
+          0.7407407407407407
+        ]
+      }
+    ],
+    "core_lengths": [
+      3,
+      3,
+      6,
+      3,
+      2
+    ],
+    "crossfade_tokens": 2,
+    "interpolation": "smoothstep_c1",
+    "mode": "plan_prior",
+    "profile": "multi_transition",
+    "spans": [
+      {
+        "core": [
+          0,
+          1,
+          2
+        ],
+        "outgoing": [
+          3,
+          4
+        ],
+        "stage_id": "setup"
+      },
+      {
+        "core": [
+          5,
+          6,
+          7
+        ],
+        "outgoing": [
+          8,
+          9
+        ],
+        "stage_id": "onset"
+      },
+      {
+        "core": [
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "outgoing": [
+          16,
+          17
+        ],
+        "stage_id": "evolution"
+      },
+      {
+        "core": [
+          18,
+          19,
+          20
+        ],
+        "outgoing": [
+          21,
+          22
+        ],
+        "stage_id": "completion"
+      },
+      {
+        "core": [
+          23,
+          24
+        ],
+        "outgoing": [],
+        "stage_id": "terminal"
+      }
+    ],
+    "weights": [
+      [
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0
+      ]
+    ]
+  },
+  "validation": {
+    "errors": 0,
+    "issues": [
+      {
+        "code": "planner_assumption",
+        "message": "The block follows the only visible descending route from the upper-left ramp onto the right-side gray floor.",
+        "path": "$.assumptions[0]",
+        "severity": "warning"
+      },
+      {
+        "code": "planner_warning",
+        "message": "Entity boxes are visually estimated from the reference image and remain unapproved.",
+        "path": "$.warnings[0]",
+        "severity": "warning"
+      }
+    ],
+    "warnings": 2
+  }
+}

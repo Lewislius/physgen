@@ -1,0 +1,1033 @@
+{
+  "status": "passed",
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v4.2/checkpoints/stability_20260917T113347Z_5d0494/step0100",
+  "checkpoint_step": 100,
+  "ema_updates": 100,
+  "weights": "ema.pt",
+  "ema_sha256": "edca3b54f033e93624f815fc9da983d5d937641d0c37a2923ff0193b9c992629",
+  "parameters": 65045248,
+  "state_tensors": 307,
+  "strict_load": true,
+  "finite_weights": true,
+  "suite": "demo",
+  "total_cases": 41,
+  "modes": {
+    "i2v": 21,
+    "t2v": 20
+  },
+  "groups": {
+    "reference": 1,
+    "demo": 40
+  },
+  "recipe": {
+    "solver": "unipc",
+    "steps": 50,
+    "shift": 5,
+    "guidance": 5,
+    "adapter_guidance": 1,
+    "seed": 42
+  },
+  "plan": {
+    "version": "physgen_v42_f121_independent_correctors_v3",
+    "suite": "demo",
+    "checkpoint": "/home/liuzhirui/Project/physGen/code/v4.2/checkpoints/stability_20260917T113347Z_5d0494/step0100",
+    "checkpoint_step": 100,
+    "ema_updates": 100,
+    "checkpoint_status_hash": "05222c86eab8503bdf08a525bf3be1ea8073dd112cee6e31672bb6895b8cc54b",
+    "inference_code": "aa02d125a1ce906c3b5a002b965b286695217ac477f7c40a46bf25a381b0467f",
+    "ema_sha256": "edca3b54f033e93624f815fc9da983d5d937641d0c37a2923ff0193b9c992629",
+    "config": {
+      "model_version": "physgen_v42_f121_independent_correctors_v3",
+      "paths": {
+        "wan_code": "/home/liuzhirui/model/Wan2.2",
+        "wan_checkpoint": "/home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B",
+        "teacher_code": "/home/liuzhirui/model/vjepa2",
+        "teacher_checkpoint": "/home/liuzhirui/model/vjepa2/checkpoint/vjepa2_1_vitG_384.pt",
+        "wisa_index": "/run/determined/NAS1/public/Dataset/WISA/data/wisa-80k.json",
+        "wisa_videos": "/run/determined/NAS1/public/Dataset/WISA/data/videos",
+        "annotations": "/home/liuzhirui/Project/physGen/code/v4.2/data_index2400",
+        "cache": "/home/liuzhirui/Project/physGen/code/v4.2/cache/wisa2400_nativefps_f121_a147456_fp32_jepa32",
+        "asset_lock": "/home/liuzhirui/Project/physGen/code/v4.2/assets/wan_jepa_metadata.json",
+        "checkpoints": "/home/liuzhirui/Project/physGen/code/v4.2/checkpoints",
+        "logs": "/home/liuzhirui/Project/physGen/code/v4.2/train/train_log",
+        "outputs": "/home/liuzhirui/Project/physGen/code/v4.2/inference_outputs",
+        "demo_root": "/home/liuzhirui/Project/physGen/code/v1/demo",
+        "reference_image": "/home/liuzhirui/model/Wan2.2/overfit_ref/overfit_ref5.jpg",
+        "reference_prompt": "The woman smiles and waves at the camera."
+      },
+      "preparation": {
+        "asset_verification": "metadata",
+        "reuse_sources": [
+          "/home/liuzhirui/Project/physGen/code/v4.2/cache/wisa4000_nativefps_f121_a147456_fp32_jepa32",
+          "/home/liuzhirui/Project/physGen/code/v4.2/quick16/work/cache_v4_f121"
+        ]
+      },
+      "data": {
+        "seed": 20260909,
+        "limit": 2400,
+        "source_limit": 4000,
+        "subset_manifest": "/home/liuzhirui/Project/physGen/code/v4.2/cache/wisa4000_nativefps_f121_a147456_fp32_jepa32/manifest.json",
+        "selection_file": null,
+        "clip_annotations": null,
+        "validation_stride": 20,
+        "frames": 121,
+        "max_long_side": 512,
+        "max_area": 147456,
+        "decode_chunk_frames": 8,
+        "teacher_frames": 32,
+        "teacher_size": 384,
+        "categories": [
+          "unlabeled"
+        ]
+      },
+      "state": {
+        "sites": [
+          5,
+          15
+        ],
+        "parameter_sharing": "per_block",
+        "width": 1664,
+        "inner": 512,
+        "heads": 8,
+        "depth": 2,
+        "checkpoint": true
+      },
+      "loss": {
+        "fm": 1.0,
+        "struct": 0.1,
+        "temp": 0.05
+      },
+      "train": {
+        "recipe": "fm_joint_independent_cores_struct_global_share20_v2",
+        "seed": 20260916,
+        "steps": 1200,
+        "world_size": 1,
+        "accumulation": 8,
+        "save_every": 100,
+        "ema_decay": 0.995,
+        "grad_clip": 1.0,
+        "aux_ratio": 0.2,
+        "aux_reference": "all_trainable_sum_of_norms",
+        "decoder_save_on_cpu": true,
+        "peak_lr": {
+          "core5": 5e-05,
+          "core15": 5e-05,
+          "text_init": 2e-05,
+          "writer5": 1e-05,
+          "writer15": 2e-05
+        }
+      },
+      "inference": {
+        "canvas_wh": [
+          512,
+          288
+        ],
+        "steps": 50,
+        "shift": 5.0,
+        "guidance": 5.0,
+        "seed": 42,
+        "duration": 5.0
+      }
+    },
+    "cases": [
+      {
+        "key": "reference_i2v",
+        "id": "reference",
+        "group": "reference",
+        "mode": "i2v",
+        "image": "/home/liuzhirui/model/Wan2.2/overfit_ref/overfit_ref5.jpg",
+        "prompt": "The woman smiles and waves at the camera.",
+        "duration": 5.0,
+        "image_sha256": "d913c8a78a9ef815f8b1c915fa3ba5857cdc38bb02dcce1353bf51761c45fdc6",
+        "geometry": {
+          "source_h": 1054,
+          "source_w": 1054,
+          "h": 384,
+          "w": 384,
+          "rh": 384,
+          "rw": 384,
+          "top": 0,
+          "left": 0,
+          "frames": 121
+        }
+      },
+      {
+        "key": "P01_i2v",
+        "id": "P01",
+        "group": "demo",
+        "mode": "i2v",
+        "prompt": "A black scooter rolls into a metal trash can, then tilts to one side and stops beside it.",
+        "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P01/P01-i0-1280x704.png",
+        "prompt_sha256": "edc4e1e81cc3a0e2af310d488f54aae887e0c3de2d9891e57ea9ade074baed11",
+        "duration": 5.0,
+        "image_sha256": "45f1e50527c43cb99985ec90cfa101fec48d2e19de49b89d4dc050b08ae35878",
+        "geometry": {
+          "source_h": 704,
+          "source_w": 1280,
+          "h": 288,
+          "w": 512,
+          "rh": 282,
+          "rw": 512,
+          "top": 3,
+          "left": 0,
+          "frames": 121
+        }
+      },
+      {
+        "key": "P01_t2v",
+        "id": "P01",
+        "group": "demo",
+        "mode": "t2v",
+        "prompt": "A black scooter rolls into a metal trash can, then tilts to one side and stops beside it.",
+        "image": null,
+        "prompt_sha256": "edc4e1e81cc3a0e2af310d488f54aae887e0c3de2d9891e57ea9ade074baed11",
+        "duration": 5.0,
+        "geometry": {
+          "source_h": 288,
+          "source_w": 512,
+          "h": 288,
+          "w": 512,
+          "rh": 288,
+          "rw": 512,
+          "top": 0,
+          "left": 0,
+          "frames": 121
+        }
+      },
+      {
+        "key": "P02_i2v",
+        "id": "P02",
+        "group": "demo",
+        "mode": "i2v",
+        "prompt": "A red billiard ball rolls into a stationary blue billiard ball; after contact, the blue ball moves away while the red ball slows.",
+        "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P02/P02-i0-1280x704.png",
+        "prompt_sha256": "8db27b44c6bba7cdf65c5fc4d1006f0bacd836c4f0e46d6008c883b33d69cf6d",
+        "duration": 5.0,
+        "image_sha256": "c975e958eb637fce0387815ec1e1fb3728f393bb71146e1383349597a4d19a23",
+        "geometry": {
+          "source_h": 704,
+          "source_w": 1280,
+          "h": 288,
+          "w": 512,
+          "rh": 282,
+          "rw": 512,
+          "top": 3,
+          "left": 0,
+          "frames": 121
+        }
+      },
+      {
+        "key": "P02_t2v",
+        "id": "P02",
+        "group": "demo",
+        "mode": "t2v",
+        "prompt": "A red billiard ball rolls into a stationary blue billiard ball; after contact, the blue ball moves away while the red ball slows.",
+        "image": null,
+        "prompt_sha256": "8db27b44c6bba7cdf65c5fc4d1006f0bacd836c4f0e46d6008c883b33d69cf6d",
+        "duration": 5.0,
+        "geometry": {
+          "source_h": 288,
+          "source_w": 512,
+          "h": 288,
+          "w": 512,
+          "rh": 288,
+          "rw": 512,
+          "top": 0,
+          "left": 0,
+          "frames": 121
+        }
+      },
+      {
+        "key": "P03_i2v",
+        "id": "P03",
+        "group": "demo",
+        "mode": "i2v",
+        "prompt": "A tennis racket strikes an approaching tennis ball, sending the same ball back in the opposite direction.",
+        "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P03/P03-i0-1280x704.png",
+        "prompt_sha256": "f29218350d905e4d50c62f1bb96bc26da17de5c342b387df174ebee2aec2e740",
+        "duration": 5.0,
+        "image_sha256": "d3d1681313c832b0a58403c6e1167f55f3796df81838caf27f4cf84bbe3926d2",
+        "geometry": {
+          "source_h": 704,
+          "source_w": 1280,
+          "h": 288,
+          "w": 512,
+          "rh": 282,
+          "rw": 512,
+          "top": 3,
+          "left": 0,
+          "frames": 121
+        }
+      },
+      {
+        "key": "P03_t2v",
+        "id": "P03",
+        "group": "demo",
+        "mode": "t2v",
+        "prompt": "A tennis racket strikes an approaching tennis ball, sending the same ball back in the opposite direction.",
+        "image": null,
+        "prompt_sha256": "f29218350d905e4d50c62f1bb96bc26da17de5c342b387df174ebee2aec2e740",
+        "duration": 5.0,
+        "geometry": {
+          "source_h": 288,
+          "source_w": 512,
+          "h": 288,
+          "w": 512,
+          "rh": 288,
+          "rw": 512,
+          "top": 0,
+          "left": 0,
+          "frames": 121
+        }
+      },
+      {
+        "key": "P04_i2v",
+        "id": "P04",
+        "group": "demo",
+        "mode": "i2v",
+        "prompt": "A row of upright wooden dominoes falls in sequence after the first domino is pushed.",
+        "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P04/P04-i0-1280x704.png",
+        "prompt_sha256": "8bf811aea63e04642a5b9f817f8d47ba0dd93b07e63106f62517bf3a9493fa4d",
+        "duration": 5.0,
+        "image_sha256": "4efe27876eba8eed4a69debc85cf0697dd61142997ab92953c4bf40df792ea55",
+        "geometry": {
+          "source_h": 704,
+          "source_w": 1280,
+          "h": 288,
+          "w": 512,
+          "rh": 282,
+          "rw": 512,
+          "top": 3,
+          "left": 0,
+          "frames": 121
+        }
+      },
+      {
+        "key": "P04_t2v",
+        "id": "P04",
+        "group": "demo",
+        "mode": "t2v",
+        "prompt": "A row of upright wooden dominoes falls in sequence after the first domino is pushed.",
+        "image": null,
+        "prompt_sha256": "8bf811aea63e04642a5b9f817f8d47ba0dd93b07e63106f62517bf3a9493fa4d",
+        "duration": 5.0,
+        "geometry": {
+          "source_h": 288,
+          "source_w": 512,
+          "h": 288,
+          "w": 512,
+          "rh": 288,
+          "rw": 512,
+          "top": 0,
+          "left": 0,
+          "frames": 121
+        }
+      },
+      {
+        "key": "P05_i2v",
+        "id": "P05",
+        "group": "demo",
+        "mode": "i2v",
+        "prompt": "A wooden block slides down a ramp onto a rough floor, slows continuously, and comes to rest.",
+        "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P05/P05-i0-1280x704.png",
+        "prompt_sha256": "12fb9be7ece1d49f30d03fd9d352d6168c80ebfb83efb84c41ecb9501cfcf85e",
+        "duration": 5.0,
+        "image_sha256": "b9761b0fc5555468223bb20a866ff0bda9ab37ff12368bba1e83f46ca5b6af4c",
+        "geometry": {
+          "source_h": 704,
+          "source_w": 1280,
+          "h": 288,
+          "w": 512,
+          "rh": 282,
+          "rw": 512,
+          "top": 3,
+          "left": 0,
+          "frames": 121
+        }
+      },
+      {
+        "key": "P05_t2v",
+        "id": "P05",
+        "group": "demo",
+        "mode": "t2v",
+        "prompt": "A wooden block slides down a ramp onto a rough floor, slows continuously, and comes to rest.",
+        "image": null,
+        "prompt_sha256": "12fb9be7ece1d49f30d03fd9d352d6168c80ebfb83efb84c41ecb9501cfcf85e",
+        "duration": 5.0,
+        "geometry": {
+          "source_h": 288,
+          "source_w": 512,
+          "h": 288,
+          "w": 512,
+          "rh": 288,
+          "rw": 512,
+          "top": 0,
+          "left": 0,
+          "frames": 121
+        }
+      },
+      {
+        "key": "P06_i2v",
+        "id": "P06",
+        "group": "demo",
+        "mode": "i2v",
+        "prompt": "A closed book is pushed past the edge of a shelf, falls, and lands open on the floor.",
+        "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P06/P06-i0-1280x704.png",
+        "prompt_sha256": "d67096c8ade1f536c6b19edbcba79daa2ed70fab342365086f12eff805940020",
+        "duration": 5.0,
+        "image_sha256": "a58b2973a0e0302decfb122ffd25f0dc68c3241882b4aea4c86bd16a4ae693e6",
+        "geometry": {
+          "source_h": 704,
+          "source_w": 1280,
+          "h": 288,
+          "w": 512,
+          "rh": 282,
+          "rw": 512,
+          "top": 3,
+          "left": 0,
+          "frames": 121
+        }
+      },
+      {
+        "key": "P06_t2v",
+        "id": "P06",
+        "group": "demo",
+        "mode": "t2v",
+        "prompt": "A closed book is pushed past the edge of a shelf, falls, and lands open on the floor.",
+        "image": null,
+        "prompt_sha256": "d67096c8ade1f536c6b19edbcba79daa2ed70fab342365086f12eff805940020",
+        "duration": 5.0,
+        "geometry": {
+          "source_h": 288,
+          "source_w": 512,
+          "h": 288,
+          "w": 512,
+          "rh": 288,
+          "rw": 512,
+          "top": 0,
+          "left": 0,
+          "frames": 121
+        }
+      },
+      {
+        "key": "P07_i2v",
+        "id": "P07",
+        "group": "demo",
+        "mode": "i2v",
+        "prompt": "A tall cardboard box is pulled sideways at its lower corner, tips over, and remains lying on one side.",
+        "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P07/P07-i0-1280x704.png",
+        "prompt_sha256": "91cf77c54522ffd31fe690837b116cbeccaa501b5befaac66d83d7b0e053cdad",
+        "duration": 5.0,
+        "image_sha256": "8fcb68792ef0262d2e013c2cdd89bd4eaa60a94b9b9ac8a0b743de53c843fa96",
+        "geometry": {
+          "source_h": 704,
+          "source_w": 1280,
+          "h": 288,
+          "w": 512,
+          "rh": 282,
+          "rw": 512,
+          "top": 3,
+          "left": 0,
+          "frames": 121
+        }
+      },
+      {
+        "key": "P07_t2v",
+        "id": "P07",
+        "group": "demo",
+        "mode": "t2v",
+        "prompt": "A tall cardboard box is pulled sideways at its lower corner, tips over, and remains lying on one side.",
+        "image": null,
+        "prompt_sha256": "91cf77c54522ffd31fe690837b116cbeccaa501b5befaac66d83d7b0e053cdad",
+        "duration": 5.0,
+        "geometry": {
+          "source_h": 288,
+          "source_w": 512,
+          "h": 288,
+          "w": 512,
+          "rh": 288,
+          "rw": 512,
+          "top": 0,
+          "left": 0,
+          "frames": 121
+        }
+      },
+      {
+        "key": "P08_i2v",
+        "id": "P08",
+        "group": "demo",
+        "mode": "i2v",
+        "prompt": "A clear ice cube on a shallow plate gradually shrinks while a puddle of water grows around it.",
+        "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P08/P08-i0-1280x704.png",
+        "prompt_sha256": "53587edb874ff6bac9aec30f10725d26c44c8ab805f32671971a84a07ad32125",
+        "duration": 5.0,
+        "image_sha256": "ad725b6c3fe9bc938206c1ad1004e71a534f31c40fc59e254a52b2ca0a7b53db",
+        "geometry": {
+          "source_h": 704,
+          "source_w": 1280,
+          "h": 288,
+          "w": 512,
+          "rh": 282,
+          "rw": 512,
+          "top": 3,
+          "left": 0,
+          "frames": 121
+        }
+      },
+      {
+        "key": "P08_t2v",
+        "id": "P08",
+        "group": "demo",
+        "mode": "t2v",
+        "prompt": "A clear ice cube on a shallow plate gradually shrinks while a puddle of water grows around it.",
+        "image": null,
+        "prompt_sha256": "53587edb874ff6bac9aec30f10725d26c44c8ab805f32671971a84a07ad32125",
+        "duration": 5.0,
+        "geometry": {
+          "source_h": 288,
+          "source_w": 512,
+          "h": 288,
+          "w": 512,
+          "rh": 288,
+          "rw": 512,
+          "top": 0,
+          "left": 0,
+          "frames": 121
+        }
+      },
+      {
+        "key": "P09_i2v",
+        "id": "P09",
+        "group": "demo",
+        "mode": "i2v",
+        "prompt": "A pat of butter in a warm pan softens, loses its sharp edges, and spreads into a liquid pool.",
+        "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P09/P09-i0-1280x704.png",
+        "prompt_sha256": "45114aac5ae2ccacf1527218160ebaeb3e2f2b7ac884d37695ef11a43e2d1149",
+        "duration": 5.0,
+        "image_sha256": "ee8dc8fb6067c702642135f398273c35d07e681990219abd168f8f891ab28f3b",
+        "geometry": {
+          "source_h": 704,
+          "source_w": 1280,
+          "h": 288,
+          "w": 512,
+          "rh": 282,
+          "rw": 512,
+          "top": 3,
+          "left": 0,
+          "frames": 121
+        }
+      },
+      {
+        "key": "P09_t2v",
+        "id": "P09",
+        "group": "demo",
+        "mode": "t2v",
+        "prompt": "A pat of butter in a warm pan softens, loses its sharp edges, and spreads into a liquid pool.",
+        "image": null,
+        "prompt_sha256": "45114aac5ae2ccacf1527218160ebaeb3e2f2b7ac884d37695ef11a43e2d1149",
+        "duration": 5.0,
+        "geometry": {
+          "source_h": 288,
+          "source_w": 512,
+          "h": 288,
+          "w": 512,
+          "rh": 288,
+          "rw": 512,
+          "top": 0,
+          "left": 0,
+          "frames": 121
+        }
+      },
+      {
+        "key": "P10_i2v",
+        "id": "P10",
+        "group": "demo",
+        "mode": "i2v",
+        "prompt": "A rubber balloon inflates steadily until it bursts, leaving deflated fragments in place.",
+        "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P10/P10-i0-1280x704.png",
+        "prompt_sha256": "e7f93d6a38bac61fa242595bd4f71fc75325f43c1362224b9991928f52c1aba3",
+        "duration": 5.0,
+        "image_sha256": "8b768a624b61a7ee659955f441f687268124543b85fb2b5a96f8f5d15ab14eba",
+        "geometry": {
+          "source_h": 704,
+          "source_w": 1280,
+          "h": 288,
+          "w": 512,
+          "rh": 282,
+          "rw": 512,
+          "top": 3,
+          "left": 0,
+          "frames": 121
+        }
+      },
+      {
+        "key": "P10_t2v",
+        "id": "P10",
+        "group": "demo",
+        "mode": "t2v",
+        "prompt": "A rubber balloon inflates steadily until it bursts, leaving deflated fragments in place.",
+        "image": null,
+        "prompt_sha256": "e7f93d6a38bac61fa242595bd4f71fc75325f43c1362224b9991928f52c1aba3",
+        "duration": 5.0,
+        "geometry": {
+          "source_h": 288,
+          "source_w": 512,
+          "h": 288,
+          "w": 512,
+          "rh": 288,
+          "rw": 512,
+          "top": 0,
+          "left": 0,
+          "frames": 121
+        }
+      },
+      {
+        "key": "P11_i2v",
+        "id": "P11",
+        "group": "demo",
+        "mode": "i2v",
+        "prompt": "A glass bottle falls onto a hard tile floor, breaks on impact, and its fragments remain scattered.",
+        "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P11/P11-i0-1280x704.png",
+        "prompt_sha256": "7a1a9cf32b93fd2a8aea6fab759900d314c77b7446f8a0dfb28af9765c525487",
+        "duration": 5.0,
+        "image_sha256": "4a62eee237beec31856cf31d83ba701bd0ead11251b170b875b32805b2de026b",
+        "geometry": {
+          "source_h": 704,
+          "source_w": 1280,
+          "h": 288,
+          "w": 512,
+          "rh": 282,
+          "rw": 512,
+          "top": 3,
+          "left": 0,
+          "frames": 121
+        }
+      },
+      {
+        "key": "P11_t2v",
+        "id": "P11",
+        "group": "demo",
+        "mode": "t2v",
+        "prompt": "A glass bottle falls onto a hard tile floor, breaks on impact, and its fragments remain scattered.",
+        "image": null,
+        "prompt_sha256": "7a1a9cf32b93fd2a8aea6fab759900d314c77b7446f8a0dfb28af9765c525487",
+        "duration": 5.0,
+        "geometry": {
+          "source_h": 288,
+          "source_w": 512,
+          "h": 288,
+          "w": 512,
+          "rh": 288,
+          "rw": 512,
+          "top": 0,
+          "left": 0,
+          "frames": 121
+        }
+      },
+      {
+        "key": "P12_i2v",
+        "id": "P12",
+        "group": "demo",
+        "mode": "i2v",
+        "prompt": "A gust blows across a dry dandelion, detaching seeds that drift away while the seed head becomes depleted.",
+        "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P12/P12-i0-1280x704.png",
+        "prompt_sha256": "6ea41cab6a05a753c09647cab90a933b7561c4260a9aeb641331a5521bb4f2cf",
+        "duration": 5.0,
+        "image_sha256": "fc215bf9ab63a7694a8912d5159b73573342a516a315b13a337722ffb1fbc48d",
+        "geometry": {
+          "source_h": 704,
+          "source_w": 1280,
+          "h": 288,
+          "w": 512,
+          "rh": 282,
+          "rw": 512,
+          "top": 3,
+          "left": 0,
+          "frames": 121
+        }
+      },
+      {
+        "key": "P12_t2v",
+        "id": "P12",
+        "group": "demo",
+        "mode": "t2v",
+        "prompt": "A gust blows across a dry dandelion, detaching seeds that drift away while the seed head becomes depleted.",
+        "image": null,
+        "prompt_sha256": "6ea41cab6a05a753c09647cab90a933b7561c4260a9aeb641331a5521bb4f2cf",
+        "duration": 5.0,
+        "geometry": {
+          "source_h": 288,
+          "source_w": 512,
+          "h": 288,
+          "w": 512,
+          "rh": 288,
+          "rw": 512,
+          "top": 0,
+          "left": 0,
+          "frames": 121
+        }
+      },
+      {
+        "key": "P13_i2v",
+        "id": "P13",
+        "group": "demo",
+        "mode": "i2v",
+        "prompt": "A transparent pitcher pours water into an empty clear glass; the pitcher level falls while the glass level rises.",
+        "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P13/P13-i0-1280x704.png",
+        "prompt_sha256": "6e614c816a9b86d4b2d71d13f6819e712dec18f54ce0b32b0639c8f4b6eba3f0",
+        "duration": 5.0,
+        "image_sha256": "1e138194907df9af2d9719278bd453acdadb71b2a437afa360a7eacee07a9eab",
+        "geometry": {
+          "source_h": 704,
+          "source_w": 1280,
+          "h": 288,
+          "w": 512,
+          "rh": 282,
+          "rw": 512,
+          "top": 3,
+          "left": 0,
+          "frames": 121
+        }
+      },
+      {
+        "key": "P13_t2v",
+        "id": "P13",
+        "group": "demo",
+        "mode": "t2v",
+        "prompt": "A transparent pitcher pours water into an empty clear glass; the pitcher level falls while the glass level rises.",
+        "image": null,
+        "prompt_sha256": "6e614c816a9b86d4b2d71d13f6819e712dec18f54ce0b32b0639c8f4b6eba3f0",
+        "duration": 5.0,
+        "geometry": {
+          "source_h": 288,
+          "source_w": 512,
+          "h": 288,
+          "w": 512,
+          "rh": 288,
+          "rw": 512,
+          "top": 0,
+          "left": 0,
+          "frames": 121
+        }
+      },
+      {
+        "key": "P14_i2v",
+        "id": "P14",
+        "group": "demo",
+        "mode": "i2v",
+        "prompt": "A bottle pours orange juice through a visible stream into a glass until the bottle holds less and the glass holds more.",
+        "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P14/P14-i0-1280x704.png",
+        "prompt_sha256": "f921b06de65ca348b9e5ffb8657d5f50deb64ff8630dfb5c227d661bf3ad11be",
+        "duration": 5.0,
+        "image_sha256": "db16630cea764ecdda12ca31f0fca4499d2e27110a3242f27e871ae2e1232ab4",
+        "geometry": {
+          "source_h": 704,
+          "source_w": 1280,
+          "h": 288,
+          "w": 512,
+          "rh": 282,
+          "rw": 512,
+          "top": 3,
+          "left": 0,
+          "frames": 121
+        }
+      },
+      {
+        "key": "P14_t2v",
+        "id": "P14",
+        "group": "demo",
+        "mode": "t2v",
+        "prompt": "A bottle pours orange juice through a visible stream into a glass until the bottle holds less and the glass holds more.",
+        "image": null,
+        "prompt_sha256": "f921b06de65ca348b9e5ffb8657d5f50deb64ff8630dfb5c227d661bf3ad11be",
+        "duration": 5.0,
+        "geometry": {
+          "source_h": 288,
+          "source_w": 512,
+          "h": 288,
+          "w": 512,
+          "rh": 288,
+          "rw": 512,
+          "top": 0,
+          "left": 0,
+          "frames": 121
+        }
+      },
+      {
+        "key": "P15_i2v",
+        "id": "P15",
+        "group": "demo",
+        "mode": "i2v",
+        "prompt": "Dry sand pours from a cup onto a flat table, emptying the cup as a conical pile grows below.",
+        "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P15/P15-i0-1280x704.png",
+        "prompt_sha256": "522be35dc56081b23c4fb9381623424be087197c1630b983d95f4f85cdeed2a0",
+        "duration": 5.0,
+        "image_sha256": "4cd6098dae04de540f142ccb32db2725beecb87466abe6baea872c87615bfe38",
+        "geometry": {
+          "source_h": 704,
+          "source_w": 1280,
+          "h": 288,
+          "w": 512,
+          "rh": 282,
+          "rw": 512,
+          "top": 3,
+          "left": 0,
+          "frames": 121
+        }
+      },
+      {
+        "key": "P15_t2v",
+        "id": "P15",
+        "group": "demo",
+        "mode": "t2v",
+        "prompt": "Dry sand pours from a cup onto a flat table, emptying the cup as a conical pile grows below.",
+        "image": null,
+        "prompt_sha256": "522be35dc56081b23c4fb9381623424be087197c1630b983d95f4f85cdeed2a0",
+        "duration": 5.0,
+        "geometry": {
+          "source_h": 288,
+          "source_w": 512,
+          "h": 288,
+          "w": 512,
+          "rh": 288,
+          "rw": 512,
+          "top": 0,
+          "left": 0,
+          "frames": 121
+        }
+      },
+      {
+        "key": "P16_i2v",
+        "id": "P16",
+        "group": "demo",
+        "mode": "i2v",
+        "prompt": "A drop of blue dye enters still clear water and gradually spreads outward, coloring an expanding region of the water.",
+        "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P16/P16-i0-1280x704.png",
+        "prompt_sha256": "4bba0492331a881ea7ef523d9502718e283d18561ddce93ad9fb9792451d3707",
+        "duration": 5.0,
+        "image_sha256": "e68ac5311cc91e381b74e85a023cf741323906dfb72b15a0ae7fa6f64cb62468",
+        "geometry": {
+          "source_h": 704,
+          "source_w": 1280,
+          "h": 288,
+          "w": 512,
+          "rh": 282,
+          "rw": 512,
+          "top": 3,
+          "left": 0,
+          "frames": 121
+        }
+      },
+      {
+        "key": "P16_t2v",
+        "id": "P16",
+        "group": "demo",
+        "mode": "t2v",
+        "prompt": "A drop of blue dye enters still clear water and gradually spreads outward, coloring an expanding region of the water.",
+        "image": null,
+        "prompt_sha256": "4bba0492331a881ea7ef523d9502718e283d18561ddce93ad9fb9792451d3707",
+        "duration": 5.0,
+        "geometry": {
+          "source_h": 288,
+          "source_w": 512,
+          "h": 288,
+          "w": 512,
+          "rh": 288,
+          "rw": 512,
+          "top": 0,
+          "left": 0,
+          "frames": 121
+        }
+      },
+      {
+        "key": "P17_i2v",
+        "id": "P17",
+        "group": "demo",
+        "mode": "i2v",
+        "prompt": "A hand presses a dry sponge flat, then lifts away as the same sponge gradually regains its shape.",
+        "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P17/P17-i0-1280x704.png",
+        "prompt_sha256": "04c44fc59fad4814fb3823d66fe5a5c113bee3f5f6393c99ea9780e43defefd1",
+        "duration": 5.0,
+        "image_sha256": "ad20aacac54e93a8f09853c21a9e392e381de06bbf16eb7f9066520599e4bb96",
+        "geometry": {
+          "source_h": 704,
+          "source_w": 1280,
+          "h": 288,
+          "w": 512,
+          "rh": 282,
+          "rw": 512,
+          "top": 3,
+          "left": 0,
+          "frames": 121
+        }
+      },
+      {
+        "key": "P17_t2v",
+        "id": "P17",
+        "group": "demo",
+        "mode": "t2v",
+        "prompt": "A hand presses a dry sponge flat, then lifts away as the same sponge gradually regains its shape.",
+        "image": null,
+        "prompt_sha256": "04c44fc59fad4814fb3823d66fe5a5c113bee3f5f6393c99ea9780e43defefd1",
+        "duration": 5.0,
+        "geometry": {
+          "source_h": 288,
+          "source_w": 512,
+          "h": 288,
+          "w": 512,
+          "rh": 288,
+          "rw": 512,
+          "top": 0,
+          "left": 0,
+          "frames": 121
+        }
+      },
+      {
+        "key": "P18_i2v",
+        "id": "P18",
+        "group": "demo",
+        "mode": "i2v",
+        "prompt": "A rubber ball drops onto a hard floor and bounces several times to progressively lower heights before resting.",
+        "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P18/P18-i0-1280x704.png",
+        "prompt_sha256": "f0e57637a62a37a79a54eb6014760b63fe986cce05bae536dbcee4b0060e2faa",
+        "duration": 5.0,
+        "image_sha256": "80f05e4b372f5f65ba9d676a7f919d0690ef8a0019df9e6dd42c0d7b481475ed",
+        "geometry": {
+          "source_h": 704,
+          "source_w": 1280,
+          "h": 288,
+          "w": 512,
+          "rh": 282,
+          "rw": 512,
+          "top": 3,
+          "left": 0,
+          "frames": 121
+        }
+      },
+      {
+        "key": "P18_t2v",
+        "id": "P18",
+        "group": "demo",
+        "mode": "t2v",
+        "prompt": "A rubber ball drops onto a hard floor and bounces several times to progressively lower heights before resting.",
+        "image": null,
+        "prompt_sha256": "f0e57637a62a37a79a54eb6014760b63fe986cce05bae536dbcee4b0060e2faa",
+        "duration": 5.0,
+        "geometry": {
+          "source_h": 288,
+          "source_w": 512,
+          "h": 288,
+          "w": 512,
+          "rh": 288,
+          "rw": 512,
+          "top": 0,
+          "left": 0,
+          "frames": 121
+        }
+      },
+      {
+        "key": "P19_i2v",
+        "id": "P19",
+        "group": "demo",
+        "mode": "i2v",
+        "prompt": "A sheet of paper pulled from both sides tears outward from a small notch and remains separated into two pieces.",
+        "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P19/P19-i0-1280x704.png",
+        "prompt_sha256": "6e42301a364af10097838cac0ffa1b1a1c8f81628072aa50207c3999344f6912",
+        "duration": 5.0,
+        "image_sha256": "abd1d6b93274706943a64ffccec8c34a46b1f3d6979be18b748962e50e5dd7fa",
+        "geometry": {
+          "source_h": 704,
+          "source_w": 1280,
+          "h": 288,
+          "w": 512,
+          "rh": 282,
+          "rw": 512,
+          "top": 3,
+          "left": 0,
+          "frames": 121
+        }
+      },
+      {
+        "key": "P19_t2v",
+        "id": "P19",
+        "group": "demo",
+        "mode": "t2v",
+        "prompt": "A sheet of paper pulled from both sides tears outward from a small notch and remains separated into two pieces.",
+        "image": null,
+        "prompt_sha256": "6e42301a364af10097838cac0ffa1b1a1c8f81628072aa50207c3999344f6912",
+        "duration": 5.0,
+        "geometry": {
+          "source_h": 288,
+          "source_w": 512,
+          "h": 288,
+          "w": 512,
+          "rh": 288,
+          "rw": 512,
+          "top": 0,
+          "left": 0,
+          "frames": 121
+        }
+      },
+      {
+        "key": "P20_i2v",
+        "id": "P20",
+        "group": "demo",
+        "mode": "i2v",
+        "prompt": "On snowy ground beside a small campfire, a kettle pours coffee into a cup while the fire continues flickering.",
+        "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P20/P20-i0-1280x704.png",
+        "prompt_sha256": "d4cb08322cee877effd8bc38103ef673be4ab5d0152ccc6c86a503056df46eef",
+        "duration": 5.0,
+        "image_sha256": "115ff646cca3f84b7490a97fa8c9346c842b9ed9bbd23c09af47b2b0f91d1b29",
+        "geometry": {
+          "source_h": 704,
+          "source_w": 1280,
+          "h": 288,
+          "w": 512,
+          "rh": 282,
+          "rw": 512,
+          "top": 3,
+          "left": 0,
+          "frames": 121
+        }
+      },
+      {
+        "key": "P20_t2v",
+        "id": "P20",
+        "group": "demo",
+        "mode": "t2v",
+        "prompt": "On snowy ground beside a small campfire, a kettle pours coffee into a cup while the fire continues flickering.",
+        "image": null,
+        "prompt_sha256": "d4cb08322cee877effd8bc38103ef673be4ab5d0152ccc6c86a503056df46eef",
+        "duration": 5.0,
+        "geometry": {
+          "source_h": 288,
+          "source_w": 512,
+          "h": 288,
+          "w": 512,
+          "rh": 288,
+          "rw": 512,
+          "top": 0,
+          "left": 0,
+          "frames": 121
+        }
+      }
+    ],
+    "negative": "色调艳丽，过曝，静态，细节模糊不清，字幕，风格，作品，画作，画面，静止，整体发灰，最差质量，低质量，JPEG压缩残留，丑陋的，残缺的，多余的手指，画得不好的手部，画得不好的脸部，畸形的，毁容的，形态畸形的肢体，手指融合，静止不动的画面，杂乱的背景，三条腿，背景人很多，倒着走",
+    "negative_sha256": "aaf43b562e043b3f02bd4302b2c65a0b7b5cb685cc0ef5406b1f8b804dcc4981",
+    "identity": {
+      "manifest": "d2dd70f6bd8347571139900927e7764b2602140dfe87525be494c5c0e541fa28",
+      "statistics": "d7c9fefd809192ec34686f9799db56098bad5c0453496f31ab49fd2bd9143f34",
+      "assets": "fa258b270fc12ebce71e23d6c33faa97789177ed8b476f21dc445422844143ff",
+      "code": "b21b941d761246d39078a1144712d174eea8046ec2286416fc1bf43c9fe45ddb"
+    },
+    "recipe": {
+      "solver": "unipc",
+      "steps": 50,
+      "shift": 5,
+      "guidance": 5,
+      "adapter_guidance": 1,
+      "seed": 42
+    }
+  },
+  "gpu_generation_tested": false
+}

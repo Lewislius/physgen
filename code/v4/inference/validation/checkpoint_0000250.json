@@ -1,0 +1,102 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v4/checkpoints/wisa_native_p_A1_4x96g/checkpoint-0000250",
+  "phase": "A1",
+  "stage": "A",
+  "initialization": "image_text",
+  "fusion": "cross_attention",
+  "parameter_sharing": "per_block",
+  "a_blocks": [
+    5,
+    10,
+    15,
+    20,
+    25,
+    30
+  ],
+  "block_b": 18,
+  "iterations": 1,
+  "enable_b": false,
+  "strict_load": true,
+  "state_dict_tensors": 786,
+  "parameters": 974156790,
+  "weight_bytes": 3896627160,
+  "weight_dtypes": {
+    "torch.float32": 786
+  },
+  "optimizer_loaded": false,
+  "teacher_loaded": false,
+  "assets": {
+    "wan_checkpoint": "/home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B",
+    "wan_config": {
+      "_class_name": "WanModel",
+      "_diffusers_version": "0.33.0",
+      "dim": 3072,
+      "eps": 1e-06,
+      "ffn_dim": 14336,
+      "freq_dim": 256,
+      "in_dim": 48,
+      "model_type": "ti2v",
+      "num_heads": 24,
+      "num_layers": 30,
+      "out_dim": 48,
+      "text_len": 512
+    },
+    "wan_shards": 3
+  },
+  "correction_sites": [
+    [
+      5,
+      "A",
+      "A@5"
+    ],
+    [
+      10,
+      "A",
+      "A@10"
+    ],
+    [
+      15,
+      "A",
+      "A@15"
+    ],
+    [
+      20,
+      "A",
+      "A@20"
+    ],
+    [
+      25,
+      "A",
+      "A@25"
+    ],
+    [
+      30,
+      "A",
+      "A@30"
+    ]
+  ],
+  "video": {
+    "requested_frames": 101,
+    "frames": 101,
+    "duration": 4.166666666666667,
+    "output_fps": 24.0
+  },
+  "all_weights_finite": true,
+  "writer_norms": {
+    "A@5": 2.0359485149383545,
+    "A@10": 2.3257946968078613,
+    "A@15": 1.8222695589065552,
+    "A@20": 1.3673555850982666,
+    "A@25": 1.5070133209228516,
+    "A@30": 0.7031679749488831,
+    "B": 0.0
+  },
+  "b_state_scale_parameter": 0.0,
+  "runtime": {
+    "role": "runtime",
+    "environment": "/home/liuzhirui/miniconda3/envs/moviestory",
+    "python": "/home/liuzhirui/miniconda3/envs/moviestory/bin/python"
+  },
+  "torch_version": "2.8.0+cu128",
+  "status": "checkpoint_compatible"
+}

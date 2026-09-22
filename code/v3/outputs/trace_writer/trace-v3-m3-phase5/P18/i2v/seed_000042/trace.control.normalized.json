@@ -1,0 +1,263 @@
+{
+  "closed_world": {
+    "allowed_entity_ids": [
+      "ball",
+      "floor"
+    ],
+    "empty_regions": [],
+    "external_source_allowed": false,
+    "forbidden_new_categories": [
+      "external source",
+      "extra copy",
+      "unlisted object"
+    ],
+    "provenance": "derived"
+  },
+  "conservation": [
+    {
+      "observable_proxy": "tracked logical entity slots remain consistent",
+      "provenance": "derived",
+      "quantity": "instance_count",
+      "relation": "constant",
+      "rule_id": "entity_slots_constant",
+      "sinks": [
+        "ball",
+        "floor"
+      ],
+      "sources": [
+        "ball",
+        "floor"
+      ],
+      "tolerance": 0.0
+    },
+    {
+      "observable_proxy": "gray-floor contacts yield successively lower red-ball peaks until rest",
+      "provenance": "derived",
+      "quantity": "material_proxy",
+      "relation": "coupled_monotonic",
+      "rule_id": "conservation_c3",
+      "sinks": [
+        "motion_state",
+        "peak_envelope"
+      ],
+      "sources": [
+        "height_state"
+      ],
+      "tolerance": 0.1
+    }
+  ],
+  "issues": [
+    "floor: exact visual count unresolved; retained as group"
+  ],
+  "lifecycles": [
+    {
+      "entity_id": "ball",
+      "from_stage": "setup",
+      "from_state": "upper_center; falling; initial_gap",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "upper_center",
+          "resting_at_floor"
+        ],
+        [
+          "falling",
+          "resting"
+        ],
+        [
+          "initial_gap",
+          "decreasing_to_zero"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "resting_at_floor; resting; decreasing_to_zero"
+    }
+  ],
+  "slots": [
+    {
+      "aliases": [],
+      "canonical_mention": "the same single red rubber ball near the upper center",
+      "cardinality": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "ball",
+      "invariant_attributes": [
+        "same single red rubber sphere",
+        "smooth gray floor, pale wall, white baseboard, lighting, centered corridor, and static side camera remain unchanged"
+      ],
+      "mutable_attributes": [
+        "pictured height above gray floor",
+        "vertical motion",
+        "pictured rebound peaks"
+      ],
+      "persistent_identity": true,
+      "provenance": "default",
+      "role": "actor"
+    },
+    {
+      "aliases": [],
+      "canonical_mention": "the same smooth gray floor below",
+      "cardinality": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "floor",
+      "invariant_attributes": [
+        "same single red rubber sphere",
+        "smooth gray floor, pale wall, white baseboard, lighting, centered corridor, and static side camera remain unchanged"
+      ],
+      "mutable_attributes": [],
+      "persistent_identity": true,
+      "provenance": "derived",
+      "role": "patient"
+    }
+  ],
+  "stage_presence": [
+    {
+      "entity_id": "ball",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [
+        "height_state=upper_center",
+        "motion_state=falling",
+        "peak_envelope=initial_gap"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "floor",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [],
+      "visible": "required"
+    },
+    {
+      "entity_id": "ball",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [
+        "height_state=upper_center",
+        "motion_state=falling",
+        "peak_envelope=initial_gap"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "floor",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "ball",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [
+        "height_state=resting_at_floor",
+        "motion_state=resting",
+        "peak_envelope=decreasing_to_zero"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "floor",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [],
+      "visible": "required"
+    },
+    {
+      "entity_id": "ball",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [
+        "height_state=resting_at_floor",
+        "motion_state=resting",
+        "peak_envelope=decreasing_to_zero"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "floor",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "ball",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [
+        "height_state=resting_at_floor",
+        "motion_state=resting",
+        "peak_envelope=decreasing_to_zero"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "floor",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [],
+      "visible": "required"
+    }
+  ]
+}

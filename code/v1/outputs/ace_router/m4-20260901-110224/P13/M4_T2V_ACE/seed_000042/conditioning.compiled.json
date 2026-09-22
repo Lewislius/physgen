@@ -1,0 +1,67 @@
+{
+  "causal_pair": {
+    "counterfactual_type": [
+      "no_op"
+    ],
+    "origin_prompt_prefixed": false,
+    "single_changed_relation": [
+      "the source level remains static while the target level rises during transfer"
+    ]
+  },
+  "compiler_version": "ace-conditioning-mvp-v1",
+  "mode": "compiled",
+  "prompts": {
+    "causal_counterfactual": "A continuous water stream enters the glass and raises its level while the pitcher water level remains unchanged.",
+    "causal_positive": "A continuous water stream connects the pitcher and glass while the pitcher level falls and the glass level rises together.",
+    "semantic": "A transparent pitcher pours water into an empty clear glass; the pitcher level falls while the glass level rises. Initial scene: A fixed side view of one transparent pitcher filled with water beside one empty clear glass on a level surface. The pitcher spout is aligned above and slightly beside the glass opening, with both liquid levels, complete containers, and the clear space between them fully visible under neutral lighting. Required visible entities: one transparent pitcher containing water; one empty clear glass; level support surface. At the beginning: pitcher: intact and visibly filled with water; glass: intact, clear, empty, and spatially separated from the pitcher spout. Required layout: pitcher spout aligns with the glass opening; both complete containers and internal levels remain visible; the space between spout and glass is unobstructed. Required state changes: pitcher water level: high to lower; glass water level: empty to higher; water configuration: source volume to stream and target volume. These event variables are allowed to change: pitcher orientation; pitcher water level; glass water level; water-stream shape. Preserve throughout: static side-view camera; container identities and transparency; level surface and background; one transparent pitcher; one empty clear glass at the start; the same water and level surface."
+  },
+  "sample_id": "P13",
+  "schema_version": 1,
+  "semantic_variant": "compiled_t2v",
+  "source_sections": {
+    "changed_state_variables": [
+      "pitcher water level: high to lower",
+      "glass water level: empty to higher",
+      "water configuration: source volume to stream and target volume"
+    ],
+    "counterfactual_type": [
+      "no_op"
+    ],
+    "event_type": [
+      "visible liquid transfer with coupled levels"
+    ],
+    "initial_states": [
+      "pitcher: intact and visibly filled with water",
+      "glass: intact, clear, empty, and spatially separated from the pitcher spout"
+    ],
+    "layout_requirements": [
+      "pitcher spout aligns with the glass opening",
+      "both complete containers and internal levels remain visible",
+      "the space between spout and glass is unobstructed"
+    ],
+    "preserved_context": [
+      "one transparent pitcher",
+      "one empty clear glass at the start",
+      "the same water and level surface"
+    ],
+    "protected_scene_properties": [
+      "static side-view camera",
+      "container identities and transparency",
+      "level surface and background"
+    ],
+    "required_visible_entities": [
+      "one transparent pitcher containing water",
+      "one empty clear glass",
+      "level support surface"
+    ],
+    "single_changed_relation": [
+      "the source level remains static while the target level rises during transfer"
+    ],
+    "transition_variables": [
+      "pitcher orientation",
+      "pitcher water level",
+      "glass water level",
+      "water-stream shape"
+    ]
+  }
+}

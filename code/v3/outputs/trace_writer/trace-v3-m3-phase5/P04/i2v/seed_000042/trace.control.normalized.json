@@ -1,0 +1,274 @@
+{
+  "closed_world": {
+    "allowed_entity_ids": [
+      "first_domino",
+      "remaining_row"
+    ],
+    "empty_regions": [],
+    "external_source_allowed": false,
+    "forbidden_new_categories": [
+      "external source",
+      "extra copy",
+      "hand",
+      "person",
+      "tool",
+      "unlisted object"
+    ],
+    "provenance": "derived"
+  },
+  "conservation": [
+    {
+      "observable_proxy": "tracked logical entity slots remain consistent",
+      "provenance": "derived",
+      "quantity": "instance_count",
+      "relation": "constant",
+      "rule_id": "entity_slots_constant",
+      "sinks": [
+        "first_domino",
+        "remaining_row"
+      ],
+      "sources": [
+        "first_domino",
+        "remaining_row"
+      ],
+      "tolerance": 0.0
+    },
+    {
+      "observable_proxy": "near-left fall launches a rightward adjacent-contact front",
+      "provenance": "derived",
+      "quantity": "material_proxy",
+      "relation": "coupled_monotonic",
+      "rule_id": "conservation_c3",
+      "sinks": [
+        "row_progress"
+      ],
+      "sources": [
+        "first_pose"
+      ],
+      "tolerance": 0.1
+    }
+  ],
+  "issues": [
+    "remaining_row: exact visual count unresolved; retained as group"
+  ],
+  "lifecycles": [
+    {
+      "entity_id": "first_domino",
+      "from_stage": "setup",
+      "from_state": "upright",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "upright",
+          "fallen_rightward"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "fallen_rightward"
+    },
+    {
+      "entity_id": "remaining_row",
+      "from_stage": "setup",
+      "from_state": "upright_regular_row",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "upright_regular_row",
+          "fallen_row"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "fallen_row"
+    }
+  ],
+  "slots": [
+    {
+      "aliases": [],
+      "canonical_mention": "the near-left pale wooden first domino",
+      "cardinality": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "first_domino",
+      "invariant_attributes": [
+        "single straight row with the pictured regular spacing",
+        "pale wooden material and rectangular piece identity remain stable",
+        "beige floor, plain wall, lighting, perspective, and static camera remain unchanged"
+      ],
+      "mutable_attributes": [
+        "pose_on:beige_floor"
+      ],
+      "persistent_identity": true,
+      "provenance": "default",
+      "role": "actor"
+    },
+    {
+      "aliases": [],
+      "canonical_mention": "the same receding pale wooden domino row",
+      "cardinality": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "entity_id": "remaining_row",
+      "invariant_attributes": [
+        "single straight row with the pictured regular spacing",
+        "pale wooden material and rectangular piece identity remain stable",
+        "beige floor, plain wall, lighting, perspective, and static camera remain unchanged"
+      ],
+      "mutable_attributes": [
+        "left_to_right_fall_progress"
+      ],
+      "persistent_identity": true,
+      "provenance": "derived",
+      "role": "patient"
+    }
+  ],
+  "stage_presence": [
+    {
+      "entity_id": "first_domino",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [
+        "first_pose=upright"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "remaining_row",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "setup",
+      "state_facts": [
+        "row_progress=upright_regular_row"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "first_domino",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [
+        "first_pose=upright"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "remaining_row",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "onset",
+      "state_facts": [
+        "row_progress=upright_regular_row"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "first_domino",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [
+        "first_pose=fallen_rightward"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "remaining_row",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "evolution",
+      "state_facts": [
+        "row_progress=fallen_row"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "first_domino",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [
+        "first_pose=fallen_rightward"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "remaining_row",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "completion",
+      "state_facts": [
+        "row_progress=fallen_row"
+      ],
+      "visible": "transitioning"
+    },
+    {
+      "entity_id": "first_domino",
+      "logical_count": {
+        "exact": 1,
+        "kind": "exact",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [
+        "first_pose=fallen_rightward"
+      ],
+      "visible": "required"
+    },
+    {
+      "entity_id": "remaining_row",
+      "logical_count": {
+        "exact": null,
+        "kind": "group",
+        "maximum": null,
+        "minimum": null
+      },
+      "stage_id": "terminal",
+      "state_facts": [
+        "row_progress=fallen_row"
+      ],
+      "visible": "required"
+    }
+  ]
+}

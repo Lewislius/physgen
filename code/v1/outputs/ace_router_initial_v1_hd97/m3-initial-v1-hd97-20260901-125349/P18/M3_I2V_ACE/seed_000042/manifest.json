@@ -1,0 +1,347 @@
+{
+  "ace": {
+    "cfg_scope": "conditional_only",
+    "diagnostics": "summary",
+    "enabled": true,
+    "formula": "semantic + scale * (positive - counterfactual)",
+    "fp32_delta": true,
+    "lambda0": 0.5,
+    "layer_gates": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.4,
+      0.4,
+      0.4,
+      0.4,
+      0.4,
+      0.4,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "layer_preset": "mvp_mid16",
+    "residual_cap_eps": 1e-12,
+    "residual_cap_ratio": null,
+    "residual_mode": "positive_minus_counterfactual",
+    "step_gates": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "step_preset": "legacy"
+  },
+  "contexts": {
+    "causal_origin_prompt_prefixed": true,
+    "cfg_negative_prompt": "色调艳丽，过曝，静态，细节模糊不清，字幕，风格，作品，画作，画面，静止，整体发灰，最差质量，低质量，JPEG压缩残留，丑陋的，残缺的，多余的手指，画得不好的手部，画得不好的脸部，畸形的，毁容的，形态畸形的肢体，手指融合，静止不动的画面，杂乱的背景，三条腿，背景人很多，倒着走",
+    "compiler_version": "ace-router-initial-v1-compat",
+    "conditioning_mode": "initial_v1",
+    "counterfactual_text": "A rubber ball drops onto a hard floor and bounces several times to progressively lower heights before resting. Each floor contact sends the same ball to a higher rebound peak, so successive bounces grow instead of decay.",
+    "positive_text": "A rubber ball drops onto a hard floor and bounces several times to progressively lower heights before resting. Each floor contact sends the same ball upward, and every successive rebound reaches a visibly lower peak before the ball rests.",
+    "semantic_text": "A rubber ball drops onto a hard floor and bounces several times to progressively lower heights before resting.",
+    "semantic_variant": "initial_v1",
+    "token_lengths": {
+      "cfg_negative": 126,
+      "counterfactual": 50,
+      "positive": 53,
+      "semantic": 25
+    },
+    "used_by_model": {
+      "cfg_negative": true,
+      "cfg_unconditional_empty": false,
+      "counterfactual": true,
+      "positive": true,
+      "semantic": true
+    },
+    "utf8_sha256": {
+      "cfg_negative": "ce96e0324e4b54ce4b6e867f669ca520952e1a34cc116543516b1897f0d3c47e",
+      "counterfactual": "977ec3ef92e474a1fceaabcd33e0d940bcb5767a999c314f06d4d0740180602b",
+      "positive": "793266b3c0c29f1eb0e65155a52c8852cd69417827f2f7abbd76abf2805d90fe",
+      "semantic": "0fbb1e26517832e38859f3e14cc99bb9a0b021e5750ff9e25106ff1c9c0c0f82"
+    }
+  },
+  "diagnostics": {
+    "all_finite": true,
+    "applied_to_semantic_max": 0.12888027727603912,
+    "applied_to_semantic_min": 0.010044909082353115,
+    "candidate_to_semantic_max": 0.12888044118881226,
+    "candidate_to_semantic_min": 0.010044890455901623,
+    "clip_coefficient_min": 1.0,
+    "clip_fraction": 0.0,
+    "clipped_record_count": 0,
+    "mode": "summary",
+    "raw_delta_l2_max": 483.5292053222656,
+    "raw_delta_l2_min": 34.82791519165039,
+    "record_count": 12,
+    "scaled_to_semantic_max": 0.12888027727603912,
+    "scaled_to_semantic_min": 0.010044909082353115
+  },
+  "generation": {
+    "convert_model_dtype": true,
+    "first_frame_reanchor_count": 51,
+    "fps": 24,
+    "frame_num": 97,
+    "guide_scale": 5.0,
+    "height": 704,
+    "max_area": 901120,
+    "offload_model": true,
+    "sample_solver": "unipc",
+    "sampling_steps": 50,
+    "seed": 42,
+    "shift": 5.0,
+    "t5_cpu": true,
+    "width": 1280
+  },
+  "input_hashes": {
+    "causal_json": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P18/P18-cplus-cminus.json",
+      "sha256": "f699e7d0943363ace36808bf32b4e01579365a356aac1abe2fb4781c8530991b",
+      "size_bytes": 973
+    },
+    "i0_image": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P18/P18-i0-1280x704.png",
+      "sha256": "a8ab82c90eff508fe731941932b8067c8c4bdaee1c47c3009c8dc4042ad8e318",
+      "size_bytes": 1180389
+    },
+    "i0_metadata_json": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P18/P18-i0.json",
+      "sha256": "39463b661446a87ad8990e6e2a34d5d60aa21b699126641de91b9ca947a11e97",
+      "size_bytes": 1653
+    },
+    "model_reference_image": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/outputs/ace_router_initial_v1_hd97/m3-initial-v1-hd97-20260901-125349/P18/M3_I2V_ACE/seed_000042/reference_input.png",
+      "sha256": "b788fe8274975ca2292e62546d9093842d27f9af85c1d65689873fe550140277",
+      "size_bytes": 870988
+    },
+    "origin_txt": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P18/P18-origin.txt",
+      "sha256": "f0e57637a62a37a79a54eb6014760b63fe986cce05bae536dbcee4b0060e2faa",
+      "size_bytes": 111
+    },
+    "selection_manifest": null,
+    "sizing_image": null
+  },
+  "method": "M3_I2V_ACE",
+  "output_video": "/home/liuzhirui/Project/physGen/code/v1/outputs/ace_router_initial_v1_hd97/m3-initial-v1-hd97-20260901-125349/P18/M3_I2V_ACE/seed_000042/video.mp4",
+  "output_video_sha256": "dc63eed75095774e6b98115f207a9951b777c98a361b84ed96f21d7fa12dccd3",
+  "reference": {
+    "crop_box": [
+      0,
+      0,
+      1280,
+      704
+    ],
+    "crop_policy": "center_crop_to_20x11_or_11x20_then_lanczos_resize",
+    "orientation": "landscape",
+    "original_size": [
+      1280,
+      704
+    ],
+    "prepared_artifact_path": "/home/liuzhirui/Project/physGen/code/v1/outputs/ace_router_initial_v1_hd97/m3-initial-v1-hd97-20260901-125349/P18/M3_I2V_ACE/seed_000042/reference_input.png",
+    "prepared_artifact_sha256": "b788fe8274975ca2292e62546d9093842d27f9af85c1d65689873fe550140277",
+    "prepared_size": [
+      1280,
+      704
+    ],
+    "resolved_output_size": [
+      1280,
+      704
+    ],
+    "selection_manifest": null,
+    "source_path": "/home/liuzhirui/Project/physGen/code/v1/demo/P18/P18-i0-1280x704.png",
+    "source_sha256": "a8ab82c90eff508fe731941932b8067c8c4bdaee1c47c3009c8dc4042ad8e318",
+    "used_as_model_condition": true,
+    "used_for_output_sizing_only": false
+  },
+  "run_id": "m3-initial-v1-hd97-20260901-125349",
+  "runtime": {
+    "cuda_capability": [
+      8,
+      6
+    ],
+    "cuda_memory_reserved_bytes": 34781265920,
+    "cuda_runtime": "12.8",
+    "cudnn": 91002,
+    "denoising_step_timing": {
+      "all_steps_median_seconds": 10.385997070312499,
+      "count": 50,
+      "max_seconds": 13.969705078125,
+      "min_seconds": 9.8601513671875,
+      "per_step_seconds": [
+        10.4968310546875,
+        11.6009052734375,
+        10.1547001953125,
+        11.5644287109375,
+        10.2539453125,
+        10.2977294921875,
+        10.3232158203125,
+        10.36434765625,
+        10.3782890625,
+        10.387333984375,
+        10.3935673828125,
+        10.3927373046875,
+        10.3988271484375,
+        13.969705078125,
+        10.415443359375,
+        10.4181376953125,
+        12.4768564453125,
+        10.382615234375,
+        10.3812216796875,
+        12.5801015625,
+        10.376953125,
+        10.382056640625,
+        12.5701728515625,
+        10.3801162109375,
+        12.1774091796875,
+        10.798521484375,
+        10.37959375,
+        10.3834287109375,
+        12.58708984375,
+        10.409701171875,
+        10.421662109375,
+        12.4929697265625,
+        10.3749287109375,
+        10.38466015625,
+        12.593017578125,
+        11.673263671875,
+        10.378224609375,
+        11.2902705078125,
+        10.375986328125,
+        10.42146875,
+        9.8788486328125,
+        9.878404296875,
+        9.8813720703125,
+        11.2498310546875,
+        9.8782578125,
+        9.8792431640625,
+        9.873583984375,
+        11.6016484375,
+        9.86441015625,
+        9.8601513671875
+      ],
+      "stable_median_seconds": 10.38466015625,
+      "warmup_first_step_seconds": 10.4968310546875
+    },
+    "diffusers": "0.36.0",
+    "elapsed_seconds": 697.5592454164289,
+    "gpu": "NVIDIA RTX A6000",
+    "peak_cuda_bytes": 24455959040,
+    "platform": "Linux-5.15.0-139-generic-x86_64-with-glibc2.35",
+    "python": "3.10.19",
+    "torch": "2.8.0+cu128"
+  },
+  "sample_id": "P18",
+  "seed": 42,
+  "status": "success",
+  "upstream": {
+    "checkpoint": "/home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B",
+    "checkpoint_hashes": {
+      "config.json": "d1fea36899d00c2501b836c13ad65af56e2f9529ba622e50886d3f5c3e6c02bc",
+      "diffusion_pytorch_model.safetensors.index.json": "bfa2337f1163e195d24151a72298daf34a620543898109be47e414c8daa5b3fe"
+    },
+    "checkpoint_model_config": {
+      "_class_name": "WanModel",
+      "dim": 3072,
+      "in_dim": 48,
+      "model_type": "ti2v",
+      "num_heads": 24,
+      "num_layers": 30,
+      "out_dim": 48,
+      "text_len": 512
+    },
+    "source_hashes": {
+      "wan/configs/wan_ti2v_5B.py": "26d9e7b9c555eb0900b13751267a596556f869e7aee2d1572afc2a0a4a76f4c7",
+      "wan/modules/attention.py": "c79158e1cc9b7a17bc934e6acb34f42e588a41adb89801146957cda2d6d4379d",
+      "wan/modules/model.py": "8b39115298ca7322806c19b3165b3f435a94fe4a58f0624aec24f8e7f4997432",
+      "wan/modules/t5.py": "8b0cebf3192c542f92a344255a06c203df3ba24160715899a055cc8de0cd930f",
+      "wan/textimage2video.py": "228f2fabf23014ed41ec6b8cd713d5be7371bb558501c71a62a0258b491a877b"
+    },
+    "wan_git_head": "08e890ff01ff8daf9161db472f362efe5d6ba656",
+    "wan_repo": "/home/liuzhirui/model/Wan2.2",
+    "weight_shards": [
+      {
+        "mtime_ns": 1769032249319825600,
+        "name": "diffusion_pytorch_model-00001-of-00003.safetensors",
+        "size_bytes": 9825014472
+      },
+      {
+        "mtime_ns": 1769032417046557795,
+        "name": "diffusion_pytorch_model-00002-of-00003.safetensors",
+        "size_bytes": 9995661736
+      },
+      {
+        "mtime_ns": 1769020338553636583,
+        "name": "diffusion_pytorch_model-00003-of-00003.safetensors",
+        "size_bytes": 178558176
+      }
+    ]
+  },
+  "warnings": [
+    "selection_manifest_missing"
+  ]
+}

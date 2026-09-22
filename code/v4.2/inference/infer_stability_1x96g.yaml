@@ -1,0 +1,37 @@
+name: physgen-v42-fullwidth3-with-prior-step0200-i2v-infer-1x96g
+description: With-PRIOR step200 V4-native three-corrector checkpoint; P01-P20 I2V, 121 frames, JEPA32 coordinates, Euler50 shift5 CFG5 seed42, no GT or online JEPA
+workspace: ALL-IN-ONE
+project: wan-animate
+max_restarts: 0
+resources:
+  resource_pool: blk-96g
+  slots_per_trial: 1
+  is_single_node: true
+  shm_size: 34359738368
+bind_mounts:
+  - host_path: /mount/HOME/liuzhirui
+    container_path: /home/liuzhirui
+  - host_path: /mount/NAS1/public
+    container_path: /run/determined/NAS1/public
+environment:
+  image: 10.130.130.5:8192/lab-dev:latest
+  environment_variables:
+    - CHECKPOINT=/home/liuzhirui/Project/physGen/code/v4.2/checkpoints/v42_v4_fullwidth3_with_prior_A1_1x96g_20260918T071246Z-9b14ea9f/checkpoint-0000200
+    - SUITE=demo
+    - DEMO_MODES=i2v
+    - VARIANT=full
+    - OMP_NUM_THREADS=4
+    # Direct checkpoint loading; same OUTPUT resumes completed videos.
+checkpoint_storage:
+  type: shared_fs
+  host_path: /mount/HOME/liuzhirui
+  storage_path: Project/physGen/code/v4.2/determined_checkpoints
+  save_experiment_best: 0
+  save_trial_best: 0
+  save_trial_latest: 0
+searcher:
+  name: single
+  metric: completed_cases
+  max_length: {epochs: 1}
+  smaller_is_better: false
+entrypoint: bash /home/liuzhirui/Project/physGen/code/v4.2/inference/infer_stability_1x96g.sh

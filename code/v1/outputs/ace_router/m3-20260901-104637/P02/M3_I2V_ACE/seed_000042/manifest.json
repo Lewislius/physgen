@@ -1,0 +1,347 @@
+{
+  "ace": {
+    "cfg_scope": "conditional_only",
+    "diagnostics": "full",
+    "enabled": true,
+    "formula": "semantic + relative_cap(scale * (positive - counterfactual), semantic)",
+    "fp32_delta": true,
+    "lambda0": 0.1,
+    "layer_gates": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "layer_preset": "mid_b",
+    "residual_cap_eps": 1e-12,
+    "residual_cap_ratio": 0.02,
+    "residual_mode": "positive_minus_counterfactual",
+    "step_gates": [
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1
+    ],
+    "step_preset": "safe_i2v_v1"
+  },
+  "contexts": {
+    "causal_origin_prompt_prefixed": false,
+    "cfg_negative_prompt": "",
+    "compiler_version": "ace-conditioning-mvp-v1",
+    "conditioning_mode": "compiled",
+    "counterfactual_text": "The stationary blue ball starts moving away before the red ball reaches it; the red ball slows and contact occurs afterward.",
+    "positive_text": "The red ball visibly contacts the stationary blue ball; the blue ball then moves away as the red ball slows.",
+    "semantic_text": "A red billiard ball rolls into a stationary blue billiard ball; after contact, the blue ball moves away while the red ball slows. Required visible entities: one red billiard ball; one blue billiard ball; level billiard-table surface. At the beginning: red ball: separated from the blue ball on the same table; blue ball: stationary and separated from the red ball. Required state changes: red ball position: approaches and contacts the blue ball; red ball speed: rolling to slower; blue ball speed: stationary to moving away. These event variables are allowed to change: red ball position and speed; blue ball position and speed; distance between the balls. Preserve throughout: static side-view camera; billiard-table appearance; red and blue ball identities; one red billiard ball; one blue billiard ball; the same billiard table and ball identities.",
+    "semantic_variant": "compiled_i2v",
+    "token_lengths": {
+      "cfg_negative": 1,
+      "counterfactual": 28,
+      "positive": 26,
+      "semantic": 192
+    },
+    "used_by_model": {
+      "cfg_negative": false,
+      "cfg_unconditional_empty": true,
+      "counterfactual": true,
+      "positive": true,
+      "semantic": true
+    },
+    "utf8_sha256": {
+      "cfg_negative": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "counterfactual": "8a4ee0ac56706e07c32e975255df973b5b6bd9e8a27d8024bfc5d3b3ea2983c2",
+      "positive": "b4930d2683476968197c96b615fa96d40ddcea34344f3e013082f4a2a22106d1",
+      "semantic": "5b87b51c039d95bedf19f35d51efd51fee46475269c13f1e22b34fe0f48dc9fc"
+    }
+  },
+  "diagnostics": {
+    "all_finite": true,
+    "applied_to_semantic_max": 0.020002620294690132,
+    "applied_to_semantic_min": 0.0010339560685679317,
+    "candidate_to_semantic_max": 0.030214395374059677,
+    "candidate_to_semantic_min": 0.00103394512552768,
+    "clip_coefficient_min": 0.6619361042976379,
+    "clip_fraction": 0.16,
+    "clipped_record_count": 80,
+    "mode": "full",
+    "raw_delta_l2_max": 114.10232543945312,
+    "raw_delta_l2_min": 27.032032012939453,
+    "record_count": 500,
+    "scaled_to_semantic_max": 0.020002620294690132,
+    "scaled_to_semantic_min": 0.0010339560685679317
+  },
+  "generation": {
+    "convert_model_dtype": true,
+    "first_frame_reanchor_count": 51,
+    "fps": 24,
+    "frame_num": 97,
+    "guide_scale": 3.5,
+    "height": 704,
+    "max_area": 901120,
+    "offload_model": true,
+    "sample_solver": "unipc",
+    "sampling_steps": 50,
+    "seed": 42,
+    "shift": 5.0,
+    "t5_cpu": true,
+    "width": 1280
+  },
+  "input_hashes": {
+    "causal_json": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P02/P02-cplus-cminus.json",
+      "sha256": "2f6428b59285bb26525d5a2069eef5a917460bf77036e6f436b9c73919573f3d",
+      "size_bytes": 1031
+    },
+    "i0_image": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P02/P02-i0-1280x704.png",
+      "sha256": "226cc2e52576c4ddae8ecf70cd931b76f0ec2c42e1a005606e430bffcf4adda1",
+      "size_bytes": 1275972
+    },
+    "i0_metadata_json": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P02/P02-i0.json",
+      "sha256": "e52077494a9fb6ea1468c54c8e70bba81f14c0c934853f338c938187b4b4621d",
+      "size_bytes": 1551
+    },
+    "model_reference_image": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/outputs/ace_router/m3-20260901-104637/P02/M3_I2V_ACE/seed_000042/reference_input.png",
+      "sha256": "4c9fb410206c24832ecc739e9ad67667439c17751f4ccde43ad6a256153cfc62",
+      "size_bytes": 958873
+    },
+    "origin_txt": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P02/P02-origin.txt",
+      "sha256": "8db27b44c6bba7cdf65c5fc4d1006f0bacd836c4f0e46d6008c883b33d69cf6d",
+      "size_bytes": 130
+    },
+    "selection_manifest": null,
+    "sizing_image": null
+  },
+  "method": "M3_I2V_ACE",
+  "output_video": "/home/liuzhirui/Project/physGen/code/v1/outputs/ace_router/m3-20260901-104637/P02/M3_I2V_ACE/seed_000042/video.mp4",
+  "output_video_sha256": "18b8f7dd3ebdd1f3cabf981dea248df3493a46785453239ff95510fcfc6714b0",
+  "reference": {
+    "crop_box": [
+      0,
+      0,
+      1280,
+      704
+    ],
+    "crop_policy": "center_crop_to_20x11_or_11x20_then_lanczos_resize",
+    "orientation": "landscape",
+    "original_size": [
+      1280,
+      704
+    ],
+    "prepared_artifact_path": "/home/liuzhirui/Project/physGen/code/v1/outputs/ace_router/m3-20260901-104637/P02/M3_I2V_ACE/seed_000042/reference_input.png",
+    "prepared_artifact_sha256": "4c9fb410206c24832ecc739e9ad67667439c17751f4ccde43ad6a256153cfc62",
+    "prepared_size": [
+      1280,
+      704
+    ],
+    "resolved_output_size": [
+      1280,
+      704
+    ],
+    "selection_manifest": null,
+    "source_path": "/home/liuzhirui/Project/physGen/code/v1/demo/P02/P02-i0-1280x704.png",
+    "source_sha256": "226cc2e52576c4ddae8ecf70cd931b76f0ec2c42e1a005606e430bffcf4adda1",
+    "used_as_model_condition": true,
+    "used_for_output_sizing_only": false
+  },
+  "run_id": "m3-20260901-104637",
+  "runtime": {
+    "cuda_capability": [
+      8,
+      6
+    ],
+    "cuda_memory_reserved_bytes": 34779168768,
+    "cuda_runtime": "12.8",
+    "cudnn": 91002,
+    "denoising_step_timing": {
+      "all_steps_median_seconds": 10.2203134765625,
+      "count": 50,
+      "max_seconds": 10.2399736328125,
+      "min_seconds": 9.9496337890625,
+      "per_step_seconds": [
+        9.9496337890625,
+        9.996052734375,
+        10.0201748046875,
+        10.070212890625,
+        10.1002177734375,
+        10.121171875,
+        10.1503662109375,
+        10.16551171875,
+        10.1770625,
+        10.185275390625,
+        10.192048828125,
+        10.2017060546875,
+        10.203345703125,
+        10.2176787109375,
+        10.218833984375,
+        10.2227333984375,
+        10.2182822265625,
+        10.22608203125,
+        10.219724609375,
+        10.2242568359375,
+        10.2247021484375,
+        10.228791015625,
+        10.231716796875,
+        10.2244248046875,
+        10.2399736328125,
+        10.2218662109375,
+        10.2192490234375,
+        10.2298095703125,
+        10.22691015625,
+        10.22534375,
+        10.2208369140625,
+        10.223169921875,
+        10.224849609375,
+        10.2205830078125,
+        10.222373046875,
+        10.2224814453125,
+        10.221236328125,
+        10.2209638671875,
+        10.2160185546875,
+        10.2237802734375,
+        10.2192109375,
+        10.22085546875,
+        10.2205751953125,
+        10.2184501953125,
+        10.2200517578125,
+        10.2124658203125,
+        10.2133115234375,
+        10.226423828125,
+        10.217953125,
+        10.223876953125
+      ],
+      "stable_median_seconds": 10.2205751953125,
+      "warmup_first_step_seconds": 9.9496337890625
+    },
+    "diffusers": "0.36.0",
+    "elapsed_seconds": 646.2688279179856,
+    "gpu": "NVIDIA RTX A6000",
+    "peak_cuda_bytes": 24456229376,
+    "platform": "Linux-5.15.0-117-generic-x86_64-with-glibc2.35",
+    "python": "3.10.19",
+    "torch": "2.8.0+cu128"
+  },
+  "sample_id": "P02",
+  "seed": 42,
+  "status": "success",
+  "upstream": {
+    "checkpoint": "/home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B",
+    "checkpoint_hashes": {
+      "config.json": "d1fea36899d00c2501b836c13ad65af56e2f9529ba622e50886d3f5c3e6c02bc",
+      "diffusion_pytorch_model.safetensors.index.json": "bfa2337f1163e195d24151a72298daf34a620543898109be47e414c8daa5b3fe"
+    },
+    "checkpoint_model_config": {
+      "_class_name": "WanModel",
+      "dim": 3072,
+      "in_dim": 48,
+      "model_type": "ti2v",
+      "num_heads": 24,
+      "num_layers": 30,
+      "out_dim": 48,
+      "text_len": 512
+    },
+    "source_hashes": {
+      "wan/configs/wan_ti2v_5B.py": "26d9e7b9c555eb0900b13751267a596556f869e7aee2d1572afc2a0a4a76f4c7",
+      "wan/modules/attention.py": "c79158e1cc9b7a17bc934e6acb34f42e588a41adb89801146957cda2d6d4379d",
+      "wan/modules/model.py": "8b39115298ca7322806c19b3165b3f435a94fe4a58f0624aec24f8e7f4997432",
+      "wan/modules/t5.py": "8b0cebf3192c542f92a344255a06c203df3ba24160715899a055cc8de0cd930f",
+      "wan/textimage2video.py": "228f2fabf23014ed41ec6b8cd713d5be7371bb558501c71a62a0258b491a877b"
+    },
+    "wan_git_head": "08e890ff01ff8daf9161db472f362efe5d6ba656",
+    "wan_repo": "/home/liuzhirui/model/Wan2.2",
+    "weight_shards": [
+      {
+        "mtime_ns": 1769032249319825600,
+        "name": "diffusion_pytorch_model-00001-of-00003.safetensors",
+        "size_bytes": 9825014472
+      },
+      {
+        "mtime_ns": 1769032417046557795,
+        "name": "diffusion_pytorch_model-00002-of-00003.safetensors",
+        "size_bytes": 9995661736
+      },
+      {
+        "mtime_ns": 1769020338553636583,
+        "name": "diffusion_pytorch_model-00003-of-00003.safetensors",
+        "size_bytes": 178558176
+      }
+    ]
+  },
+  "warnings": [
+    "selection_manifest_missing"
+  ]
+}

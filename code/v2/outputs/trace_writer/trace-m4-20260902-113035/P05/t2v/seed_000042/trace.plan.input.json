@@ -1,0 +1,396 @@
+{
+  "assumptions": [],
+  "constraints": [
+    {
+      "after": "descend",
+      "before": "motion_onset",
+      "id": "c1",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "precedes"
+    },
+    {
+      "effect": "descend",
+      "id": "c2",
+      "source_refs": [
+        "origin"
+      ],
+      "transition": "e1",
+      "type": "changes"
+    },
+    {
+      "after": "floor_slow",
+      "before": "floor_entry",
+      "id": "c3",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "precedes"
+    },
+    {
+      "cause": "floor_entry",
+      "effect": "floor_slow",
+      "id": "c4",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "requires"
+    },
+    {
+      "effect": "floor_slow",
+      "id": "c5",
+      "source_refs": [
+        "origin"
+      ],
+      "transition": "e2",
+      "type": "changes"
+    },
+    {
+      "facts": [
+        "location=rough_floor",
+        "motion=stopped"
+      ],
+      "id": "c6",
+      "source_refs": [
+        "origin"
+      ],
+      "state": "z2",
+      "type": "persists"
+    },
+    {
+      "facts": [
+        "motion=sliding",
+        "motion=stopped"
+      ],
+      "id": "c7",
+      "scope": "same_time",
+      "source_refs": [
+        "origin"
+      ],
+      "type": "excludes"
+    }
+  ],
+  "design_revision": "fixed5-causal-r3",
+  "entities": [
+    {
+      "id": "block",
+      "mention": "the same wooden block",
+      "role": "actor",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "id": "ramp",
+      "mention": "the same ramp",
+      "role": "environment",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "id": "rough_floor",
+      "mention": "the same rough floor",
+      "role": "patient",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "description": "first detectable block motion down the ramp",
+      "id": "motion_onset",
+      "observable": "the block first changes position along the slope",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "description": "the block crosses from ramp onto rough floor",
+      "id": "floor_entry",
+      "observable": "the block passes the visible ramp-floor boundary",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "generation_basis": {
+    "mode": "identifier_only",
+    "reference_image_usage": "identifier_only",
+    "semantic_inputs": [
+      "origin",
+      "planner_instructions"
+    ]
+  },
+  "global_semantic": "One wooden block slides down a ramp onto a rough floor, slows continuously, and stops.",
+  "grounding": {
+    "approved": false,
+    "coordinate_frame": "reference_input",
+    "entity_boxes": [],
+    "protected_boxes": [],
+    "reference_image": "P05-i0-1280x704.png",
+    "reference_image_usage": "identifier_only"
+  },
+  "predicates": [
+    {
+      "attribute": "location",
+      "id": "location",
+      "observable": "block position relative to ramp and floor",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "block",
+      "values": [
+        "upper_ramp",
+        "rough_floor"
+      ]
+    },
+    {
+      "attribute": "motion",
+      "id": "motion",
+      "observable": "frame-to-frame block displacement",
+      "source_refs": [
+        "origin"
+      ],
+      "subject": "block",
+      "values": [
+        "stationary",
+        "sliding",
+        "stopped"
+      ]
+    }
+  ],
+  "protected_predicates": [
+    "same wooden block",
+    "same ramp geometry",
+    "same rough floor and camera"
+  ],
+  "sample_id": "P05",
+  "schema_version": "trace-writer-v1",
+  "source_files": {
+    "origin": "P05-origin.txt",
+    "planner_instructions": "Project/physGen/prompt/generate_trace_writer_v1_plan.txt",
+    "reference_input": "P05-i0-1280x704.png"
+  },
+  "stages": [
+    {
+      "affected_roles": [
+        "actor",
+        "environment"
+      ],
+      "constraint_ids": [
+        "c1",
+        "c3"
+      ],
+      "id": "setup",
+      "observable_check": "Initial block displacement appears along the ramp rather than on the floor.",
+      "positive": "The wooden block starts near the upper ramp and first moves down the slope.",
+      "support_kind": "motion_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1",
+            "c3"
+          ],
+          "text": "The block is already stopped on the rough floor before descending the ramp.",
+          "type": "outcome_preset"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c1",
+        "c3",
+        "c4"
+      ],
+      "id": "onset",
+      "observable_check": "The block follows the connected ramp path before floor slowing begins.",
+      "positive": "The block descends continuously and reaches the boundary between ramp and rough floor.",
+      "support_kind": "motion_contact_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c1",
+            "c3",
+            "c4"
+          ],
+          "text": "The block begins slowing to rest before visibly entering the rough floor.",
+          "type": "wrong_order"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c2",
+        "c5"
+      ],
+      "id": "evolution",
+      "observable_check": "Successive floor positions remain forward but grow closer together.",
+      "positive": "On the rough floor, the same block continues forward with progressively smaller displacements.",
+      "support_kind": "motion_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c2",
+            "c5"
+          ],
+          "text": "The block accelerates across the rough floor instead of showing progressively smaller displacements.",
+          "type": "wrong_direction"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor",
+        "patient"
+      ],
+      "constraint_ids": [
+        "c5",
+        "c6"
+      ],
+      "id": "completion",
+      "observable_check": "Late frame-to-frame displacement approaches zero without reversing direction.",
+      "positive": "The block's remaining motion decreases continuously until one fixed floor position is reached.",
+      "support_kind": "motion_corridor",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c5",
+            "c6"
+          ],
+          "text": "The block continues crossing the floor and never reaches a fixed final position.",
+          "type": "incomplete_transition"
+        }
+      ]
+    },
+    {
+      "affected_roles": [
+        "actor"
+      ],
+      "constraint_ids": [
+        "c6",
+        "c7"
+      ],
+      "id": "terminal",
+      "observable_check": "The block occupies one unchanged floor position through the final frames.",
+      "positive": "The same wooden block remains stopped on the same rough floor beyond the ramp.",
+      "support_kind": "role_union",
+      "violations": [
+        {
+          "constraint_ids": [
+            "c6"
+          ],
+          "text": "The stopped block starts sliding again during the final frames.",
+          "type": "reversal"
+        },
+        {
+          "constraint_ids": [
+            "c7"
+          ],
+          "text": "Duplicated blocks appear sliding and stopped on the rough floor simultaneously.",
+          "type": "exclusion_broken"
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "facts": {
+        "location": "upper_ramp",
+        "motion": "stationary"
+      },
+      "id": "z0",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "facts": {
+        "location": "rough_floor",
+        "motion": "sliding"
+      },
+      "id": "z1",
+      "source_refs": [
+        "origin"
+      ]
+    },
+    {
+      "facts": {
+        "location": "rough_floor",
+        "motion": "stopped"
+      },
+      "id": "z2",
+      "source_refs": [
+        "origin"
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "cause_event": null,
+      "effects": [
+        {
+          "direction": "position advances down the ramp to the floor",
+          "from": "upper_ramp",
+          "id": "descend",
+          "predicate": "location",
+          "to": "rough_floor"
+        },
+        {
+          "direction": "visible displacement begins",
+          "from": "stationary",
+          "id": "start_slide",
+          "predicate": "motion",
+          "to": "sliding"
+        }
+      ],
+      "from": "z0",
+      "id": "e1",
+      "kind": "continuous",
+      "preconditions": [
+        "location=upper_ramp",
+        "motion=stationary"
+      ],
+      "source_refs": [
+        "origin"
+      ],
+      "support_kind": "motion_corridor",
+      "to": "z1"
+    },
+    {
+      "cause_event": "floor_entry",
+      "effects": [
+        {
+          "direction": "displacement decreases continuously to zero",
+          "from": "sliding",
+          "id": "floor_slow",
+          "predicate": "motion",
+          "to": "stopped"
+        }
+      ],
+      "from": "z1",
+      "id": "e2",
+      "kind": "triggered",
+      "preconditions": [
+        "location=rough_floor",
+        "motion=sliding"
+      ],
+      "source_refs": [
+        "origin"
+      ],
+      "support_kind": "motion_corridor",
+      "to": "z2"
+    }
+  ],
+  "warnings": []
+}

@@ -1,0 +1,347 @@
+{
+  "ace": {
+    "cfg_scope": "conditional_only",
+    "diagnostics": "full",
+    "enabled": true,
+    "formula": "semantic + relative_cap(scale * (positive - counterfactual), semantic)",
+    "fp32_delta": true,
+    "lambda0": 0.1,
+    "layer_gates": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "layer_preset": "mid_b",
+    "residual_cap_eps": 1e-12,
+    "residual_cap_ratio": 0.02,
+    "residual_mode": "positive_minus_counterfactual",
+    "step_gates": [
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1
+    ],
+    "step_preset": "safe_i2v_v1"
+  },
+  "contexts": {
+    "causal_origin_prompt_prefixed": false,
+    "cfg_negative_prompt": "",
+    "compiler_version": "ace-conditioning-mvp-v1",
+    "conditioning_mode": "compiled",
+    "counterfactual_text": "The sharply edged butter is suddenly replaced by a finished liquid pool covering the pan.",
+    "positive_text": "The butter first softens and rounds at the edges, then its footprint expands continuously into a liquid pool.",
+    "semantic_text": "A pat of butter in a warm pan softens, loses its sharp edges, and spreads into a liquid pool. Required visible entities: one pat of butter; one warm pan; uncovered pan surface around the butter. At the beginning: butter: firm, compact, intact, and sharply edged; pan surface: exposed around the butter with minimal liquid butter. Required state changes: butter firmness: firm to soft; butter boundary: sharp to rounded and receding; butter footprint: compact pat to spreading liquid pool. These event variables are allowed to change: butter firmness; butter edge sharpness and shape; butter footprint and liquid fraction. Preserve throughout: static close camera; pan identity and position; background and lighting; one pat of butter; one warm pan; the same butter material through the change.",
+    "semantic_variant": "compiled_i2v",
+    "token_lengths": {
+      "cfg_negative": 1,
+      "counterfactual": 19,
+      "positive": 26,
+      "semantic": 177
+    },
+    "used_by_model": {
+      "cfg_negative": false,
+      "cfg_unconditional_empty": true,
+      "counterfactual": true,
+      "positive": true,
+      "semantic": true
+    },
+    "utf8_sha256": {
+      "cfg_negative": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "counterfactual": "97f335eff83b016dd9e0215adc4fc9ae4389a7f879f7a816d310acc9b9e98d87",
+      "positive": "0312ba7cdd33db6d798bb69004dffc04074f0415c97b9521a991819bb530b314",
+      "semantic": "4fd5e0c765607799943dff7c59f5907608c62ce3332c1ab88b9429c9c2d7c8f8"
+    }
+  },
+  "diagnostics": {
+    "all_finite": true,
+    "applied_to_semantic_max": 0.02001269720494747,
+    "applied_to_semantic_min": 0.0012336322106420994,
+    "candidate_to_semantic_max": 0.03665713965892792,
+    "candidate_to_semantic_min": 0.0012336045037955046,
+    "clip_coefficient_min": 0.5455962419509888,
+    "clip_fraction": 0.244,
+    "clipped_record_count": 122,
+    "mode": "full",
+    "raw_delta_l2_max": 214.271728515625,
+    "raw_delta_l2_min": 33.882225036621094,
+    "record_count": 500,
+    "scaled_to_semantic_max": 0.02001269720494747,
+    "scaled_to_semantic_min": 0.0012336322106420994
+  },
+  "generation": {
+    "convert_model_dtype": true,
+    "first_frame_reanchor_count": 51,
+    "fps": 24,
+    "frame_num": 97,
+    "guide_scale": 5.0,
+    "height": 704,
+    "max_area": 901120,
+    "offload_model": true,
+    "sample_solver": "unipc",
+    "sampling_steps": 50,
+    "seed": 42,
+    "shift": 5.0,
+    "t5_cpu": true,
+    "width": 1280
+  },
+  "input_hashes": {
+    "causal_json": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P09/P09-cplus-cminus.json",
+      "sha256": "3a33e882eb65364e45a6e59bf0baba993e981da07fb84e10a083f3e9a29f8736",
+      "size_bytes": 938
+    },
+    "i0_image": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P09/P09-i0-1280x704.png",
+      "sha256": "0e0ca15eddae5f83b6e00641ce5c0ebbf8046fc14119b79e50cde7c2ead28432",
+      "size_bytes": 1666839
+    },
+    "i0_metadata_json": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P09/P09-i0.json",
+      "sha256": "2f6b908baf02ea27c5b330a9ac3bc9809ef9cc0957fa9e4500724483b863bcf9",
+      "size_bytes": 1536
+    },
+    "model_reference_image": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/outputs/ace_router/m3-20260901-125349/P09/M3_I2V_ACE/seed_000042/reference_input.png",
+      "sha256": "5fa161cae5a952511fc36ca8883df1dab9a6d97224aa0619d22a39b55e66af68",
+      "size_bytes": 1034379
+    },
+    "origin_txt": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P09/P09-origin.txt",
+      "sha256": "45114aac5ae2ccacf1527218160ebaeb3e2f2b7ac884d37695ef11a43e2d1149",
+      "size_bytes": 94
+    },
+    "selection_manifest": null,
+    "sizing_image": null
+  },
+  "method": "M3_I2V_ACE",
+  "output_video": "/home/liuzhirui/Project/physGen/code/v1/outputs/ace_router/m3-20260901-125349/P09/M3_I2V_ACE/seed_000042/video.mp4",
+  "output_video_sha256": "a371c71528e64d939f333371818eb4300f57c7cc961a3a80ff05de9c50b40526",
+  "reference": {
+    "crop_box": [
+      0,
+      0,
+      1280,
+      704
+    ],
+    "crop_policy": "center_crop_to_20x11_or_11x20_then_lanczos_resize",
+    "orientation": "landscape",
+    "original_size": [
+      1280,
+      704
+    ],
+    "prepared_artifact_path": "/home/liuzhirui/Project/physGen/code/v1/outputs/ace_router/m3-20260901-125349/P09/M3_I2V_ACE/seed_000042/reference_input.png",
+    "prepared_artifact_sha256": "5fa161cae5a952511fc36ca8883df1dab9a6d97224aa0619d22a39b55e66af68",
+    "prepared_size": [
+      1280,
+      704
+    ],
+    "resolved_output_size": [
+      1280,
+      704
+    ],
+    "selection_manifest": null,
+    "source_path": "/home/liuzhirui/Project/physGen/code/v1/demo/P09/P09-i0-1280x704.png",
+    "source_sha256": "0e0ca15eddae5f83b6e00641ce5c0ebbf8046fc14119b79e50cde7c2ead28432",
+    "used_as_model_condition": true,
+    "used_for_output_sizing_only": false
+  },
+  "run_id": "m3-20260901-125349",
+  "runtime": {
+    "cuda_capability": [
+      8,
+      6
+    ],
+    "cuda_memory_reserved_bytes": 34779168768,
+    "cuda_runtime": "12.8",
+    "cudnn": 91002,
+    "denoising_step_timing": {
+      "all_steps_median_seconds": 10.29539404296875,
+      "count": 50,
+      "max_seconds": 12.59867578125,
+      "min_seconds": 9.9911279296875,
+      "per_step_seconds": [
+        9.9911279296875,
+        10.066375,
+        10.127369140625,
+        10.171623046875,
+        12.5293994140625,
+        10.23578125,
+        10.2619443359375,
+        10.279802734375,
+        10.2900751953125,
+        10.31268359375,
+        10.4580361328125,
+        10.3342626953125,
+        10.3310947265625,
+        10.3282646484375,
+        12.59867578125,
+        10.30007421875,
+        10.3053271484375,
+        10.309748046875,
+        10.3177060546875,
+        10.3185390625,
+        10.321572265625,
+        10.3144296875,
+        11.9256259765625,
+        10.6285126953125,
+        10.2946962890625,
+        10.29580859375,
+        10.2924580078125,
+        10.296150390625,
+        10.292232421875,
+        10.3146884765625,
+        10.2910048828125,
+        10.296103515625,
+        10.295087890625,
+        11.5168369140625,
+        10.2957001953125,
+        10.2894052734375,
+        11.390013671875,
+        10.29123828125,
+        10.2896318359375,
+        10.440353515625,
+        10.29111328125,
+        10.28983203125,
+        10.2903037109375,
+        10.2942900390625,
+        10.2903583984375,
+        10.37489453125,
+        10.29444921875,
+        10.2942255859375,
+        10.290306640625,
+        10.28968359375
+      ],
+      "stable_median_seconds": 10.2957001953125,
+      "warmup_first_step_seconds": 9.9911279296875
+    },
+    "diffusers": "0.36.0",
+    "elapsed_seconds": 655.3125166571699,
+    "gpu": "NVIDIA RTX A6000",
+    "peak_cuda_bytes": 24456155648,
+    "platform": "Linux-5.15.0-139-generic-x86_64-with-glibc2.35",
+    "python": "3.10.19",
+    "torch": "2.8.0+cu128"
+  },
+  "sample_id": "P09",
+  "seed": 42,
+  "status": "success",
+  "upstream": {
+    "checkpoint": "/home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B",
+    "checkpoint_hashes": {
+      "config.json": "d1fea36899d00c2501b836c13ad65af56e2f9529ba622e50886d3f5c3e6c02bc",
+      "diffusion_pytorch_model.safetensors.index.json": "bfa2337f1163e195d24151a72298daf34a620543898109be47e414c8daa5b3fe"
+    },
+    "checkpoint_model_config": {
+      "_class_name": "WanModel",
+      "dim": 3072,
+      "in_dim": 48,
+      "model_type": "ti2v",
+      "num_heads": 24,
+      "num_layers": 30,
+      "out_dim": 48,
+      "text_len": 512
+    },
+    "source_hashes": {
+      "wan/configs/wan_ti2v_5B.py": "26d9e7b9c555eb0900b13751267a596556f869e7aee2d1572afc2a0a4a76f4c7",
+      "wan/modules/attention.py": "c79158e1cc9b7a17bc934e6acb34f42e588a41adb89801146957cda2d6d4379d",
+      "wan/modules/model.py": "8b39115298ca7322806c19b3165b3f435a94fe4a58f0624aec24f8e7f4997432",
+      "wan/modules/t5.py": "8b0cebf3192c542f92a344255a06c203df3ba24160715899a055cc8de0cd930f",
+      "wan/textimage2video.py": "228f2fabf23014ed41ec6b8cd713d5be7371bb558501c71a62a0258b491a877b"
+    },
+    "wan_git_head": "08e890ff01ff8daf9161db472f362efe5d6ba656",
+    "wan_repo": "/home/liuzhirui/model/Wan2.2",
+    "weight_shards": [
+      {
+        "mtime_ns": 1769032249319825600,
+        "name": "diffusion_pytorch_model-00001-of-00003.safetensors",
+        "size_bytes": 9825014472
+      },
+      {
+        "mtime_ns": 1769032417046557795,
+        "name": "diffusion_pytorch_model-00002-of-00003.safetensors",
+        "size_bytes": 9995661736
+      },
+      {
+        "mtime_ns": 1769020338553636583,
+        "name": "diffusion_pytorch_model-00003-of-00003.safetensors",
+        "size_bytes": 178558176
+      }
+    ]
+  },
+  "warnings": [
+    "selection_manifest_missing"
+  ]
+}

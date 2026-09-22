@@ -1,0 +1,269 @@
+{
+  "generated_utc": "2026-09-12T14:39:36.621042+00:00",
+  "evidence_scope": "Supplied console log only (steps 1--306); matching detailed records from the same session. No new training or inference.",
+  "console_log": "/home/liuzhirui/Project/physGen/code/v4/logs/experiment_61002_trial_61841_logs.txt",
+  "console_log_sha256": "06a08b391bcaabdcb51b47d42d40d66ac5b7c29125b051b3c936e3766c777b26",
+  "session": "/home/liuzhirui/Project/physGen/code/v4/train/train_log/wisa_native_p_A1_4x96g/20260912T125641Z-a822428d",
+  "train_steps": 306,
+  "microbatches": 2448,
+  "unique_training_records": 1000,
+  "console_jsonl_max_absolute_difference": 4.979858392317738e-07,
+  "selected_console_lines": {
+    "1": 297,
+    "100": 398,
+    "200": 498,
+    "250": 548,
+    "300": 603,
+    "306": 609
+  },
+  "nonfinite_training_scalars": 0,
+  "max_global_gradient_norm": 0.21949303150177002,
+  "clipped_steps": 0,
+  "sigma_fm_step_correlation": -0.6388922077476381,
+  "fm_step_standard_deviation": 0.07416800243000202,
+  "all_six_mean_state_gates_permanently_below_0_001_from_step": 100,
+  "max_abs_initial_vs_struct_mse_after_step_100": 1.6689300537109375e-06,
+  "gate_audit": [
+    {
+      "site": "A@5",
+      "permanently_below_0_001_from_step": 96,
+      "state_gate_mean": 8.59090407345775e-08,
+      "state_gate_low_fraction": 1.0,
+      "candidate_rms": 0.7537281739711762,
+      "effective_update_rms": 1.0892609214607773e-08,
+      "struct_gain": -2.682209014892578e-09,
+      "write_relative_rms": 0.20757469147443772,
+      "write_gate_mean": 1.0,
+      "read_gate_mean": 0.3601303207874298
+    },
+    {
+      "site": "A@10",
+      "permanently_below_0_001_from_step": 88,
+      "state_gate_mean": 4.1760566773518805e-08,
+      "state_gate_low_fraction": 1.0,
+      "candidate_rms": 0.6831304025650025,
+      "effective_update_rms": 3.5878420634460894e-09,
+      "struct_gain": 2.9802322387695313e-10,
+      "write_relative_rms": 0.21885021537542343,
+      "write_gate_mean": 1.0,
+      "read_gate_mean": 0.19118266850709914
+    },
+    {
+      "site": "A@15",
+      "permanently_below_0_001_from_step": 76,
+      "state_gate_mean": 1.1924391770889997e-07,
+      "state_gate_low_fraction": 1.0,
+      "candidate_rms": 0.6753518378734589,
+      "effective_update_rms": 1.3997756553862928e-08,
+      "struct_gain": -1.1920928955078125e-09,
+      "write_relative_rms": 0.14759721726179123,
+      "write_gate_mean": 1.0,
+      "read_gate_mean": 0.1585261991620064
+    },
+    {
+      "site": "A@20",
+      "permanently_below_0_001_from_step": 91,
+      "state_gate_mean": 9.678926990090985e-06,
+      "state_gate_low_fraction": 1.0,
+      "candidate_rms": 0.6795467829704285,
+      "effective_update_rms": 1.3179221616610448e-06,
+      "struct_gain": 3.069639205932617e-08,
+      "write_relative_rms": 0.08454240843653679,
+      "write_gate_mean": 1.0,
+      "read_gate_mean": 0.18457459419965744
+    },
+    {
+      "site": "A@25",
+      "permanently_below_0_001_from_step": 100,
+      "state_gate_mean": 6.221259923222533e-07,
+      "state_gate_low_fraction": 1.0,
+      "candidate_rms": 0.7089081835746766,
+      "effective_update_rms": 8.633034127569772e-08,
+      "struct_gain": 0.0,
+      "write_relative_rms": 0.11668271735310555,
+      "write_gate_mean": 1.0,
+      "read_gate_mean": 0.1612648519873619
+    },
+    {
+      "site": "A@30",
+      "permanently_below_0_001_from_step": 76,
+      "state_gate_mean": 4.065262314725259e-06,
+      "state_gate_low_fraction": 1.0,
+      "candidate_rms": 0.652090631723404,
+      "effective_update_rms": 5.203612016657644e-07,
+      "struct_gain": 2.3245811462402345e-08,
+      "write_relative_rms": 0.0031177573511376976,
+      "write_gate_mean": 0.09763921290636063,
+      "read_gate_mean": 0.12414643600583077
+    }
+  ],
+  "training_config": {
+    "run_name": "wisa_native_p_A1_4x96g",
+    "stage": "A",
+    "phase": "A1",
+    "paths": {
+      "wan_code": "/home/liuzhirui/model/Wan2.2",
+      "wan_checkpoint": "/home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B",
+      "teacher_code": "/home/liuzhirui/model/vjepa2",
+      "teacher_checkpoint": "/home/liuzhirui/model/vjepa2/checkpoint/vjepa2_1_vitG_384.pt",
+      "wisa_videos": "/run/determined/NAS1/public/Dataset/WISA/data/videos",
+      "wisa_index": "/run/determined/NAS1/public/Dataset/WISA/data/wisa-80k.json",
+      "cache_root": "/home/liuzhirui/Project/physGen/code/v4/cache/wisa4000_nativefps_f101_a147456_t16",
+      "checkpoint_root": "/home/liuzhirui/Project/physGen/code/v4/checkpoints",
+      "log_root": "/home/liuzhirui/Project/physGen/code/v4/train/train_log"
+    },
+    "data": {
+      "limit": 4000,
+      "selection_file": null,
+      "split_seed": 20260909,
+      "validation_stride": 20,
+      "max_frames": 101,
+      "max_long_side": 512,
+      "max_area": 147456,
+      "decode_chunk_frames": 8,
+      "clip_annotations": null,
+      "teacher_size": 384,
+      "teacher_frames": 16
+    },
+    "corrector": {
+      "initialization": "image_text",
+      "fusion": "cross_attention",
+      "prior_width": 512,
+      "prior_heads": 8,
+      "prior_depth": 2,
+      "parameter_sharing": "per_block",
+      "a_blocks": [
+        5,
+        10,
+        15,
+        20,
+        25,
+        30
+      ],
+      "a_every": 5,
+      "block_b": 18,
+      "iterations": 1,
+      "checkpoint_cell": true,
+      "state_strength": 0.2,
+      "write_strength": 0.1,
+      "early_write_width": 0.1,
+      "early_write_floor": 0.1,
+      "handoff_sigma": 0.65,
+      "handoff_width": 0.15,
+      "late_sigma": 0.15,
+      "late_floor": 0.25,
+      "seconds_scale": 1.0
+    },
+    "loss": {
+      "fm_weight": 1.0,
+      "struct_weight": 0.1,
+      "struct_warmup_steps": 200,
+      "struct_noise_width": 0.2,
+      "prior_weight": 0.02,
+      "out_weight": 0.0,
+      "out_every": 4,
+      "out_sigma_min": 0.05,
+      "out_sigma_max": 0.4
+    },
+    "train": {
+      "seed": 20260909,
+      "sample_limit": 1000,
+      "steps": 500,
+      "learning_rate": 0.0001,
+      "weight_decay": 0.01,
+      "warmup_steps": 100,
+      "minimum_lr_ratio": 0.1,
+      "global_batch_size": 8,
+      "workers": 2,
+      "pin_memory": true,
+      "loader_timeout_seconds": 120,
+      "text_dropout": 0.1,
+      "sigma_min": 0.02,
+      "sigma_max": 0.999,
+      "state_warmup_every": 3,
+      "grad_clip": 1.0,
+      "save_every": 250,
+      "accumulation_steps": 8,
+      "effective_global_batch_size": 8
+    },
+    "diagnostics": {
+      "trace_steps": 1,
+      "stack_timeout_seconds": 120,
+      "trace_wan_blocks": false,
+      "check_steps": 0
+    },
+    "logging": {
+      "wandb": {
+        "enabled": false,
+        "project": "physgen-v4",
+        "entity": null
+      },
+      "session_id": "20260912T125641Z-a822428d"
+    },
+    "validation": {
+      "every": 250,
+      "samples_per_rank": 1,
+      "sigmas": [
+        0.1,
+        0.35,
+        0.6,
+        0.85,
+        0.98
+      ],
+      "seed": 93001
+    },
+    "phases": {
+      "A1": {
+        "stage": "A",
+        "iterations": 1,
+        "out_weight": 0.0,
+        "steps": 500,
+        "learning_rate": 0.0001
+      },
+      "A2": {
+        "stage": "A",
+        "iterations": 2,
+        "out_weight": 0.0,
+        "steps": 250,
+        "learning_rate": 5e-05
+      },
+      "A3": {
+        "stage": "A",
+        "iterations": 2,
+        "out_weight": 0.1,
+        "steps": 250,
+        "learning_rate": 2e-05
+      },
+      "B1": {
+        "stage": "B",
+        "iterations": 2,
+        "out_weight": 0.1,
+        "steps": 250,
+        "learning_rate": 5e-05
+      },
+      "AB": {
+        "stage": "AB",
+        "iterations": 2,
+        "out_weight": 0.1,
+        "steps": 250,
+        "learning_rate": 1e-05
+      }
+    },
+    "hardware_name": "4x96g",
+    "init_from": null,
+    "world_size": 1
+  },
+  "validation_summary": [
+    {
+      "step": 250,
+      "validation_loss": 0.19020675718784333
+    }
+  ],
+  "limits": [
+    "Gradient norms are for parameter groups and cannot attribute gradients to individual losses.",
+    "Validation covers one video at five sigmas, without a vanilla-Wan baseline or step-zero measurement.",
+    "Training windows and noise bins have different sample/noise realizations; they are descriptive, not paired quality estimates.",
+    "constant_target_mse uses each ground-truth video's own mean feature; it is an oracle diagnostic, not an available inference baseline.",
+    "Current on-disk default configuration differs from this job's loaded configuration."
+  ]
+}

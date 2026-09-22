@@ -1,0 +1,70 @@
+{
+  "causal_pair": {
+    "counterfactual_type": [
+      "no_op"
+    ],
+    "origin_prompt_prefixed": false,
+    "single_changed_relation": [
+      "the intended cup remains unchanged while transferred coffee appears on the surrounding snow"
+    ]
+  },
+  "compiler_version": "ace-conditioning-mvp-v1",
+  "mode": "compiled",
+  "prompts": {
+    "causal_counterfactual": "Coffee spreads across the surrounding snow while the cup level remains unchanged and the nearby campfire continues flickering.",
+    "causal_positive": "Coffee forms a continuous stream from the kettle into the cup while the nearby campfire flickers in place and the surrounding snow remains stable.",
+    "semantic": "On snowy ground beside a small campfire, a kettle pours coffee into a cup while the fire continues flickering. Required visible entities: snowy ground; one small lit campfire; one kettle containing coffee; one empty cup. At the beginning: kettle: upright, intact, containing coffee, and separated from the cup; cup: empty, upright, and positioned near the kettle; campfire: small, lit, and localized; snow: intact around the event areas. Required state changes: coffee configuration: kettle to stream and cup; cup coffee level: empty to higher; campfire flame shape: locally flickering. These event variables are allowed to change: kettle orientation; coffee stream and cup level; campfire flame shape. Preserve throughout: static wide camera; snowy-ground appearance outside event regions; kettle, cup, and campfire identities; one kettle and one cup; one small campfire; the same snowy ground and local scene."
+  },
+  "sample_id": "P20",
+  "schema_version": 1,
+  "semantic_variant": "compiled_i2v",
+  "source_sections": {
+    "changed_state_variables": [
+      "coffee configuration: kettle to stream and cup",
+      "cup coffee level: empty to higher",
+      "campfire flame shape: locally flickering"
+    ],
+    "counterfactual_type": [
+      "no_op"
+    ],
+    "event_type": [
+      "localized liquid transfer with simultaneous combustion"
+    ],
+    "initial_states": [
+      "kettle: upright, intact, containing coffee, and separated from the cup",
+      "cup: empty, upright, and positioned near the kettle",
+      "campfire: small, lit, and localized",
+      "snow: intact around the event areas"
+    ],
+    "layout_requirements": [
+      "kettle spout aligns with the visible cup opening",
+      "clear space separates the spout and cup",
+      "campfire remains nearby but spatially separate from the transfer region",
+      "broad surrounding snow remains visible"
+    ],
+    "preserved_context": [
+      "one kettle and one cup",
+      "one small campfire",
+      "the same snowy ground and local scene"
+    ],
+    "protected_scene_properties": [
+      "static wide camera",
+      "snowy-ground appearance outside event regions",
+      "kettle, cup, and campfire identities"
+    ],
+    "required_visible_entities": [
+      "snowy ground",
+      "one small lit campfire",
+      "one kettle containing coffee",
+      "one empty cup"
+    ],
+    "single_changed_relation": [
+      "the intended cup remains unchanged while transferred coffee appears on the surrounding snow"
+    ],
+    "transition_variables": [
+      "kettle orientation",
+      "coffee stream and cup level",
+      "campfire flame shape"
+    ]
+  }
+}

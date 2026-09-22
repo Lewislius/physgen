@@ -1,0 +1,85 @@
+name: physgen-trace-writer-v3-m3-i2v
+description: TRACE-Writer v3 M3 I2V over P01-P20 with compiled anchors, entity ledger, dynamic planned support, boundary trust region, and strict CFG SafeCap
+workspace: ALL-IN-ONE
+project: wan-animate
+
+max_restarts: 0
+resources:
+  resource_pool: amp-48g
+  slots_per_trial: 1
+  is_single_node: true
+  shm_size: 34359738368
+
+bind_mounts:
+  - host_path: /mount/HOME/liuzhirui
+    container_path: /home/liuzhirui
+  - host_path: /mount/NAS1/public
+    container_path: /run/determined/NAS1/public
+
+environment:
+  image: 10.130.130.5:8192/lab-dev:latest
+  environment_variables:
+    - PYTHONDONTWRITEBYTECODE=1
+    - PYTHONUNBUFFERED=1
+    - TOKENIZERS_PARALLELISM=false
+    - WAN_REPO=/home/liuzhirui/model/Wan2.2
+    - CHECKPOINT_DIR=/home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B
+    - DEMO_ROOT=/home/liuzhirui/Project/physGen/code/v1/demo
+    - PLAN_ROOT=/home/liuzhirui/Project/physGen/code/v1/demo
+    - CONTROL_OVERLAY_ROOT=/home/liuzhirui/Project/physGen/code/v3/control_overlays
+    - OUTPUT_ROOT=/home/liuzhirui/Project/physGen/code/v3/outputs/trace_writer
+    - SAMPLE_IDS=all
+    - SEEDS=42
+    - MINIMAL_PAIR_MODE=strict
+    - CROSSFADE_TOKENS=2
+    - EVENT_CLOCK_MODE=plan_prior
+    - BOUNDARY_MORPH=cosine_trust
+    - DYNAMIC_SUPPORT_MODE=planned
+    - CAP_MODE=aggregate_strict
+    - READER_MODE=audit
+    - VERIFY_MODE=audit
+    - WIDTH=1280
+    - HEIGHT=704
+    - MAX_AREA=901120
+    - FRAME_NUM=97
+    - SAMPLING_STEPS=50
+    - SAMPLE_SOLVER=unipc
+    - GUIDE_SCALE=5
+    - SHIFT=5.0
+    - FPS=24
+    - LAMBDA0=0.05
+    - TOKEN_CAP_RATIO=0.05
+    - LAYER_CAP_RATIO=0.01
+    - GROUP_CAP_RATIO=0.01
+    - CFG_CAP_RATIO=0.01
+    - CFG_OUTSIDE_CAP_RATIO=0.0025
+    - TEMPORAL_DERIVATIVE_RATIO=0.05
+    - INFERENCE_DEVICE=0
+    - OFFLOAD_MODEL=1
+    - T5_CPU=1
+    - CONVERT_MODEL_DTYPE=1
+    - SHOW_PROGRESS=1
+    - CONTINUE_ON_ERROR=1
+    - ALLOW_UPSTREAM_DRIFT=0
+    - WAN_FLASH_ATTN_FORCE_VERSION=2
+    - WAN_FLASH_ATTN_FORCE_CONTIGUOUS=1
+
+checkpoint_storage:
+  type: shared_fs
+  host_path: /mount/HOME/liuzhirui
+  storage_path: /mount/HOME/liuzhirui/Project/physGen/code/v3/determined_checkpoints
+  save_experiment_best: 0
+  save_trial_best: 0
+  save_trial_latest: 0
+
+searcher:
+  name: single
+  metric: validation_loss
+  max_length:
+    epochs: 1
+  smaller_is_better: true
+
+profiling:
+  enabled: true
+
+entrypoint: /home/liuzhirui/Project/physGen/code/v3/inference/infer_trace_writer_m3.sh

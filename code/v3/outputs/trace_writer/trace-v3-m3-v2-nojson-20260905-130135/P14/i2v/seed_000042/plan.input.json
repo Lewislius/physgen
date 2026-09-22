@@ -1,0 +1,541 @@
+{
+  "schema_version": "trace-direct-v1",
+  "design_revision": "p0-stage-direct-json-r2",
+  "sample_id": "P14",
+  "source_files": {
+    "origin": "P14-origin.txt",
+    "frame_zero_metadata": "P14-i0.json",
+    "reference_input": "P14-i0-1280x704.jpg"
+  },
+  "initial_condition": {
+    "type": "visible_actuator",
+    "description": "A visible hand holds the juice bottle so it can tilt and control the pour."
+  },
+  "global_semantic": "Fixed side view of one hand tilting one tall clear bottle of bright orange juice toward one empty clear tumbler. One orange stream enters the tumbler, the bottle level falls while the tumbler level rises, then pouring stops and both new levels remain visible.",
+  "cfg_negative": " ",
+  "entities": [
+    {
+      "id": "hand",
+      "mention": "one visible hand",
+      "role": "actor"
+    },
+    {
+      "id": "bottle",
+      "mention": "one tall clear juice bottle",
+      "role": "source"
+    },
+    {
+      "id": "glass",
+      "mention": "one clear tumbler",
+      "role": "sink"
+    },
+    {
+      "id": "juice",
+      "mention": "the orange juice from the bottle",
+      "role": "carrier"
+    }
+  ],
+  "structured_guidance": {
+    "schema_version": "structured-text-guidance-v1",
+    "entities": [
+      {
+        "id": "hand",
+        "label": "visible human hand",
+        "count": 1,
+        "persistent": false,
+        "invariants": [
+          "natural hand anatomy",
+          "single identity"
+        ]
+      },
+      {
+        "id": "bottle",
+        "label": "tall clear juice bottle",
+        "count": 1,
+        "persistent": true,
+        "invariants": [
+          "rigid bottle geometry",
+          "clear container appearance",
+          "single intact identity"
+        ]
+      },
+      {
+        "id": "glass",
+        "label": "clear tumbler",
+        "count": 1,
+        "persistent": true,
+        "invariants": [
+          "rigid tumbler geometry",
+          "clear appearance",
+          "single intact identity"
+        ]
+      },
+      {
+        "id": "juice",
+        "label": "tracked body of bright orange juice from the bottle",
+        "count": 1,
+        "persistent": true,
+        "invariants": [
+          "bright orange appearance",
+          "conserved original juice material",
+          "fixed total juice amount"
+        ]
+      }
+    ],
+    "initial_condition": {
+      "type": "visible_actuator",
+      "active_stages": [
+        "setup"
+      ],
+      "facts": [
+        "The hand starts holding the partly filled bottle upright beside the empty tumbler.",
+        "All tracked orange juice starts inside the bottle and no stream exists."
+      ]
+    },
+    "stages": [
+      {
+        "id": "setup",
+        "entity_states": [
+          {
+            "entity_id": "hand",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "holding the bottle upright"
+            ],
+            "mutable": [
+              "pose"
+            ]
+          },
+          {
+            "entity_id": "bottle",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "upright and partly filled"
+            ],
+            "mutable": []
+          },
+          {
+            "entity_id": "glass",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "empty and upright"
+            ],
+            "mutable": []
+          },
+          {
+            "entity_id": "juice",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "entirely inside the bottle with a still orange level"
+            ],
+            "mutable": []
+          }
+        ],
+        "relations": [
+          "A clear air gap separates the bottle lip and tumbler; no stream is visible."
+        ]
+      },
+      {
+        "id": "onset",
+        "entity_states": [
+          {
+            "entity_id": "hand",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "tilting the bottle toward the tumbler"
+            ],
+            "mutable": [
+              "pose",
+              "position"
+            ]
+          },
+          {
+            "entity_id": "bottle",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "tilting while remaining intact"
+            ],
+            "mutable": [
+              "orientation"
+            ]
+          },
+          {
+            "entity_id": "glass",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "receiving the first juice while staying upright"
+            ],
+            "mutable": [
+              "contained juice level"
+            ]
+          },
+          {
+            "entity_id": "juice",
+            "presence": "transitioning",
+            "count": 1,
+            "states": [
+              "forming one continuous orange stream into the tumbler"
+            ],
+            "mutable": [
+              "allocation between bottle stream and tumbler",
+              "free-surface levels",
+              "flow shape"
+            ]
+          }
+        ],
+        "relations": [
+          "The stream connects the bottle lip to the inside of the one receiving tumbler."
+        ]
+      },
+      {
+        "id": "evolution",
+        "entity_states": [
+          {
+            "entity_id": "bottle",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "remaining tilted as its orange level falls"
+            ],
+            "mutable": [
+              "orientation",
+              "contained juice level"
+            ]
+          },
+          {
+            "entity_id": "glass",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "remaining upright as its orange level rises"
+            ],
+            "mutable": [
+              "contained juice level"
+            ]
+          },
+          {
+            "entity_id": "juice",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "flowing continuously from bottle to tumbler"
+            ],
+            "mutable": [
+              "allocation between bottle stream and tumbler",
+              "free-surface levels",
+              "flow shape"
+            ]
+          }
+        ],
+        "relations": [
+          "The bottle level decreases while the tumbler level increases from the same orange stream."
+        ]
+      },
+      {
+        "id": "completion",
+        "entity_states": [
+          {
+            "entity_id": "hand",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "returning the bottle upright to stop pouring"
+            ],
+            "mutable": [
+              "pose",
+              "position"
+            ]
+          },
+          {
+            "entity_id": "bottle",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "returning upright with less juice"
+            ],
+            "mutable": [
+              "orientation"
+            ]
+          },
+          {
+            "entity_id": "glass",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "holding more juice while remaining upright"
+            ],
+            "mutable": []
+          },
+          {
+            "entity_id": "juice",
+            "presence": "transitioning",
+            "count": 1,
+            "states": [
+              "ending the stream and settling into the two containers"
+            ],
+            "mutable": [
+              "flow shape",
+              "free-surface levels"
+            ]
+          }
+        ],
+        "relations": [
+          "The one orange stream disappears only after the bottle returns upright."
+        ]
+      },
+      {
+        "id": "terminal",
+        "entity_states": [
+          {
+            "entity_id": "bottle",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "upright with a lower still orange level"
+            ],
+            "mutable": []
+          },
+          {
+            "entity_id": "glass",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "upright with a higher still orange level"
+            ],
+            "mutable": []
+          },
+          {
+            "entity_id": "juice",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "conserved between bottle and tumbler with no stream"
+            ],
+            "mutable": []
+          }
+        ],
+        "relations": [
+          "Exactly one bottle and one tumbler remain intact with both new levels visible."
+        ]
+      }
+    ]
+  },
+  "stages": [
+    {
+      "id": "setup",
+      "positive": "The hand holds the partly filled juice bottle upright beside the empty tumbler, with no stream."
+    },
+    {
+      "id": "onset",
+      "positive": "The hand tilts the bottle and one orange stream begins entering the tumbler."
+    },
+    {
+      "id": "evolution",
+      "positive": "The bottle's orange level falls as the receiving tumbler's level rises."
+    },
+    {
+      "id": "completion",
+      "positive": "The hand stops the pour and the orange stream disappears."
+    },
+    {
+      "id": "terminal",
+      "positive": "The bottle holds less juice and the tumbler holds more, with both levels still and no stream."
+    }
+  ],
+  "warnings": [],
+  "generation_basis": {
+    "mode": "visual_grounding",
+    "reference_image_usage": "visual_grounding"
+  },
+  "grounding": {
+    "coordinate_frame": "reference_input",
+    "reference_image": "P14-i0-1280x704.jpg",
+    "approved": true,
+    "entity_boxes": [
+      {
+        "entity_id": "hand",
+        "box": [
+          0.16,
+          0.23,
+          0.35,
+          0.66
+        ]
+      },
+      {
+        "entity_id": "bottle",
+        "box": [
+          0.31,
+          0.1,
+          0.49,
+          0.91
+        ]
+      },
+      {
+        "entity_id": "glass",
+        "box": [
+          0.56,
+          0.41,
+          0.72,
+          0.9
+        ]
+      }
+    ]
+  },
+  "temporal_route": {
+    "latent_tokens": 25,
+    "crossfade_tokens": 2,
+    "interpolation": "smoothstep_c1",
+    "profile": "continuous",
+    "stage_order": [
+      "setup",
+      "onset",
+      "evolution",
+      "completion",
+      "terminal"
+    ],
+    "weights": [
+      [
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0
+      ]
+    ]
+  }
+}

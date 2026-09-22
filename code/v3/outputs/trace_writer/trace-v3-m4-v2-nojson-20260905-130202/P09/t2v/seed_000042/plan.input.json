@@ -1,0 +1,416 @@
+{
+  "schema_version": "trace-direct-v1",
+  "design_revision": "p0-stage-direct-json-r2",
+  "sample_id": "P09",
+  "source_files": {
+    "origin": "P09-origin.txt",
+    "frame_zero_metadata": "P09-i0.json",
+    "reference_input": "P09-i0-1280x704.jpg"
+  },
+  "initial_condition": {
+    "type": "environmental_field",
+    "description": "The visibly heated pan supplies the heat that softens and melts the butter."
+  },
+  "global_semantic": "Fixed close view of one firm rectangular pat of pale-yellow butter in one heated stainless-steel pan. Heat softens the same butter, rounds and lowers its edges, and steadily spreads its material into one connected yellow liquid pool that remains near the pan center.",
+  "cfg_negative": " ",
+  "entities": [
+    {
+      "id": "butter",
+      "mention": "one pale-yellow pat of butter",
+      "role": "source"
+    },
+    {
+      "id": "liquid_butter",
+      "mention": "one connected yellow liquid pool",
+      "role": "sink"
+    },
+    {
+      "id": "pan",
+      "mention": "one heated stainless-steel pan",
+      "role": "environment"
+    }
+  ],
+  "structured_guidance": {
+    "schema_version": "structured-text-guidance-v1",
+    "entities": [
+      {
+        "id": "butter",
+        "label": "pale-yellow solid butter portion from the original pat",
+        "count": 1,
+        "persistent": false,
+        "invariants": [
+          "conserved original butter material",
+          "pale-yellow appearance",
+          "single material origin"
+        ]
+      },
+      {
+        "id": "liquid_butter",
+        "label": "connected yellow liquid butter pool from that pat",
+        "count": 1,
+        "persistent": false,
+        "invariants": [
+          "conserved original butter material",
+          "yellow glossy appearance",
+          "one connected region"
+        ]
+      },
+      {
+        "id": "pan",
+        "label": "heated stainless-steel pan",
+        "count": 1,
+        "persistent": true,
+        "invariants": [
+          "rigid pan geometry",
+          "stainless-steel appearance",
+          "stationary identity"
+        ]
+      }
+    ],
+    "initial_condition": {
+      "type": "environmental_field",
+      "active_stages": [
+        "setup"
+      ],
+      "facts": [
+        "The visibly heated pan supplies heat from the first video frame onward.",
+        "One firm rectangular butter pat starts near the pan center with no liquid pool."
+      ]
+    },
+    "stages": [
+      {
+        "id": "setup",
+        "entity_states": [
+          {
+            "entity_id": "butter",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "firm, rectangular, and sharp-edged in the pan"
+            ],
+            "mutable": []
+          },
+          {
+            "entity_id": "liquid_butter",
+            "presence": "absent",
+            "count": 0,
+            "states": [
+              "not yet visible as a separate pool"
+            ],
+            "mutable": []
+          }
+        ],
+        "relations": [
+          "The original butter material is entirely solid."
+        ]
+      },
+      {
+        "id": "onset",
+        "entity_states": [
+          {
+            "entity_id": "butter",
+            "presence": "transitioning",
+            "count": 1,
+            "states": [
+              "softening first at its lower corners"
+            ],
+            "mutable": [
+              "solid shape",
+              "solid height",
+              "phase allocation"
+            ]
+          },
+          {
+            "entity_id": "liquid_butter",
+            "presence": "transitioning",
+            "count": 1,
+            "states": [
+              "appearing as one glossy connected yellow rim"
+            ],
+            "mutable": [
+              "pool extent",
+              "liquid volume"
+            ]
+          }
+        ],
+        "relations": [
+          "The first liquid remains attached to the same butter pat."
+        ]
+      },
+      {
+        "id": "evolution",
+        "entity_states": [
+          {
+            "entity_id": "butter",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "lowering and shrinking as the solid portion melts"
+            ],
+            "mutable": [
+              "solid shape",
+              "solid volume",
+              "phase allocation"
+            ]
+          },
+          {
+            "entity_id": "liquid_butter",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "spreading outward as one connected yellow pool"
+            ],
+            "mutable": [
+              "pool extent",
+              "liquid volume"
+            ]
+          }
+        ],
+        "relations": [
+          "The shrinking solid and growing liquid are the same conserved butter material."
+        ]
+      },
+      {
+        "id": "completion",
+        "entity_states": [
+          {
+            "entity_id": "butter",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "settling as one small soft center"
+            ],
+            "mutable": [
+              "solid shape",
+              "solid volume"
+            ]
+          },
+          {
+            "entity_id": "liquid_butter",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "forming a wider connected pool around the soft center"
+            ],
+            "mutable": [
+              "pool extent",
+              "liquid volume"
+            ]
+          }
+        ],
+        "relations": [
+          "No second pat or separate pool appears."
+        ]
+      },
+      {
+        "id": "terminal",
+        "entity_states": [
+          {
+            "entity_id": "butter",
+            "presence": "absent",
+            "count": 0,
+            "states": [
+              "fully incorporated into the melted material"
+            ],
+            "mutable": []
+          },
+          {
+            "entity_id": "liquid_butter",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "remaining as one connected yellow pool near the pan center"
+            ],
+            "mutable": []
+          }
+        ],
+        "relations": [
+          "The original pat becomes one settled pool inside the same pan."
+        ]
+      }
+    ]
+  },
+  "stages": [
+    {
+      "id": "setup",
+      "positive": "One firm rectangular butter pat with sharp edges rests in the heated pan."
+    },
+    {
+      "id": "onset",
+      "positive": "The same pat softens first at its lower corners and a glossy liquid rim appears."
+    },
+    {
+      "id": "evolution",
+      "positive": "The solid butter lowers and shrinks while one connected yellow pool spreads outward."
+    },
+    {
+      "id": "completion",
+      "positive": "The remaining soft center settles into the wider liquid butter pool."
+    },
+    {
+      "id": "terminal",
+      "positive": "The melted butter remains as one connected pool near the pan center."
+    }
+  ],
+  "warnings": [],
+  "generation_basis": {
+    "mode": "identifier_only",
+    "reference_image_usage": "identifier_only"
+  },
+  "grounding": {
+    "coordinate_frame": "reference_input",
+    "reference_image": "P09-i0-1280x704.jpg",
+    "approved": false,
+    "entity_boxes": []
+  },
+  "temporal_route": {
+    "latent_tokens": 25,
+    "crossfade_tokens": 2,
+    "interpolation": "smoothstep_c1",
+    "profile": "continuous",
+    "stage_order": [
+      "setup",
+      "onset",
+      "evolution",
+      "completion",
+      "terminal"
+    ],
+    "weights": [
+      [
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0
+      ]
+    ]
+  }
+}

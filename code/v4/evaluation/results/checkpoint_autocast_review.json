@@ -1,0 +1,49 @@
+{
+  "status": "passed",
+  "utc": "2026-09-12T12:56:41.354880+00:00",
+  "torch_version": "2.8.0+cu128",
+  "device": "cpu",
+  "dtype": "bfloat16",
+  "tests": 8,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "scope": "Observed CPU BF16 regression results; no GPU/Wan/teacher training.",
+  "verification_runs": [
+    {
+      "names": [
+        "evaluation.test_checkpoint_autocast.CheckpointAutocastTests.test_default_512_width_prior_bf16_warm_recompute_matches_all_gradients",
+        "evaluation.test_checkpoint_autocast.CheckpointAutocastTests.test_repeated_cell_bf16_warm_recompute_matches_all_gradients",
+        "evaluation.test_training_runtime.ShortRunTests.test_bf16_checkpointed_ordinary_steps_without_prior_supervision",
+        "evaluation.test_training_runtime.ShortRunTests.test_bf16_checkpointed_warm_prior_backward_and_optimizer_updates",
+        "evaluation.test_training_runtime.ShortRunTests.test_legacy_resume_accepts_loader_overrides_without_changing_schedule",
+        "evaluation.test_training_runtime.ShortRunTests.test_short_run_executes_backward_and_update_but_skips_validation_and_save",
+        "evaluation.test_training_runtime.ShortRunTests.test_short_run_keeps_initializer_active_on_warm_steps_with_prior_supervision"
+      ],
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "seconds": 1.09,
+      "exit_code": 0
+    },
+    {
+      "names": [
+        "evaluation.test_condition_prior.PriorIntegrationTests.test_bf16_warm_checkpoint_trains_prior_and_all_six_independent_a_blocks"
+      ],
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "seconds": 17.788,
+      "exit_code": 0
+    }
+  ],
+  "note": "Recorded from completed unittest command outputs. Five training-loop checks were also rerun in formal_a1_launchers_review.json after adding the full-run assertions.",
+  "prior_width_test": 512,
+  "prior_depth_test": 2,
+  "integration_widths": {
+    "process": 1664,
+    "hidden": 3072,
+    "prior": 64
+  },
+  "before_reproduction": "checkpoint_autocast_before.json"
+}

@@ -1,0 +1,99 @@
+{
+  "closed_world": {
+    "allowed_entity_ids": [
+      "hand",
+      "sponge",
+      "surface"
+    ],
+    "empty_regions": [],
+    "external_source_allowed": false,
+    "forbidden_new_categories": [
+      "external source",
+      "extra copy",
+      "unlisted object"
+    ],
+    "provenance": "derived"
+  },
+  "conservation": [
+    {
+      "observable_proxy": "tracked logical entity slots remain consistent",
+      "provenance": "derived",
+      "quantity": "instance_count",
+      "relation": "constant",
+      "rule_id": "entity_slots_constant",
+      "sinks": [
+        "hand",
+        "sponge",
+        "surface"
+      ],
+      "sources": [
+        "hand",
+        "sponge",
+        "surface"
+      ],
+      "tolerance": 0.0
+    }
+  ],
+  "lifecycles": [
+    {
+      "entity_id": "hand",
+      "from_stage": "setup",
+      "from_state": "hovering",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "hovering",
+          "pressing"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "pressing"
+    },
+    {
+      "entity_id": "sponge",
+      "from_stage": "setup",
+      "from_state": "original",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "original",
+          "flat"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "flat"
+    },
+    {
+      "entity_id": "hand",
+      "from_stage": "setup",
+      "from_state": "pressing",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "pressing",
+          "lifted"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "lifted"
+    },
+    {
+      "entity_id": "sponge",
+      "from_stage": "setup",
+      "from_state": "flat",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "flat",
+          "recovered"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "recovered"
+    }
+  ]
+}

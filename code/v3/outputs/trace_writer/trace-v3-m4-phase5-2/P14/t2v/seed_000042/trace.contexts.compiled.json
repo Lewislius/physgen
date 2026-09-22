@@ -1,0 +1,183 @@
+{
+  "actual_t5_token_lengths": {
+    "global_semantic": 307,
+    "stage.completion.negative.0": 165,
+    "stage.completion.positive": 164,
+    "stage.evolution.negative.0": 164,
+    "stage.evolution.positive": 161,
+    "stage.onset.negative.0": 173,
+    "stage.onset.positive": 172,
+    "stage.setup.negative.0": 173,
+    "stage.setup.positive": 170,
+    "stage.terminal.negative.0": 201,
+    "stage.terminal.negative.1": 194,
+    "stage.terminal.positive": 210
+  },
+  "global_anchor": "[ENTITY INVENTORY] The closed scene contains bottle: one declared collective group; stream: one declared collective group; glass: exactly 1. All declared entities are fully visible from the first frame in the stated layout. [INITIAL STATE] source_level=higher, stream_state=absent, sink_level=empty_or_low. [PHYSICAL EVENT] One bottle pours orange juice through a visible stream into one glass as source decreases and sink increases. [INITIAL LAYOUT] bottle containing orange juice; visible orange-juice stream; receiving glass. [PERSISTENT PROTECTION] same bottle, glass, and orange juice; juice stays within the source-stream-sink route; camera and unrelated scene remain unchanged. [CLOSED WORLD] No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object enters or appears; unoccupied scene regions remain empty. [CONSERVATION] Source loss and result gain stay coupled: tracked logical entity slots remain consistent; bottle level falls through visible orange stream while glass level rises. No result appears from an undeclared external source. [TERMINAL STATE] The same logical entity slots persist without duplicates; source_level=lower, stream_state=continuous, sink_level=higher remains visible through the final frames.",
+  "issues": [],
+  "max_t5_token_length": 307,
+  "protected_coverage": {
+    "camera and unrelated scene remain unchanged": [
+      "camera_background",
+      "closed_world_or_persistence"
+    ],
+    "juice stays within the source-stream-sink route": [
+      "generic_anchor"
+    ],
+    "same bottle, glass, and orange juice": [
+      "identity_count"
+    ]
+  },
+  "stage_pairs": [
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "orange juice first visibly connects bottle to glass happens BEFORE glass juice line rises.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: bottle: one declared collective group, state source_level=higher, required; stream: exactly 0, state stream_state=absent, forbidden; glass: exactly 1, state sink_level=empty_or_low, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] orange juice first visibly connects bottle to glass happens BEFORE glass juice line rises.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: bottle: one declared collective group, state source_level=higher, required; stream: exactly 0, state stream_state=absent, forbidden; glass: exactly 1, state sink_level=empty_or_low, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "setup",
+      "violation_constraint_ids": [
+        [
+          "c1"
+        ]
+      ],
+      "violation_kinds": [
+        "outcome_preset"
+      ],
+      "violation_relations": [
+        "glass juice line rises is already present BEFORE orange juice first visibly connects bottle to glass."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: bottle: one declared collective group, state source_level=higher, required; stream: exactly 0, state stream_state=absent, forbidden; glass: exactly 1, state sink_level=empty_or_low, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] glass juice line rises is already present BEFORE orange juice first visibly connects bottle to glass."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "orange juice first visibly connects bottle to glass happens BEFORE glass juice line rises.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: bottle: one declared collective group, state source_level=higher, transitioning; stream: one declared collective group, state stream_state=absent, transitioning; glass: exactly 1, state sink_level=empty_or_low, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] orange juice first visibly connects bottle to glass happens BEFORE glass juice line rises.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: bottle: one declared collective group, state source_level=higher, transitioning; stream: one declared collective group, state stream_state=absent, transitioning; glass: exactly 1, state sink_level=empty_or_low, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "onset",
+      "violation_constraint_ids": [
+        [
+          "c1"
+        ]
+      ],
+      "violation_kinds": [
+        "wrong_order"
+      ],
+      "violation_relations": [
+        "glass juice line rises happens BEFORE orange juice first visibly connects bottle to glass."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: bottle: one declared collective group, state source_level=higher, transitioning; stream: one declared collective group, state stream_state=absent, transitioning; glass: exactly 1, state sink_level=empty_or_low, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] glass juice line rises happens BEFORE orange juice first visibly connects bottle to glass."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The declared change bottle juice line descends occurs in its stated direction.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: bottle: one declared collective group, state source_level=lower, required; stream: one declared collective group, state stream_state=continuous, required; glass: exactly 1, state sink_level=higher, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change bottle juice line descends occurs in its stated direction.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: bottle: one declared collective group, state source_level=lower, required; stream: one declared collective group, state stream_state=continuous, required; glass: exactly 1, state sink_level=higher, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "evolution",
+      "violation_constraint_ids": [
+        [
+          "c2",
+          "c3"
+        ]
+      ],
+      "violation_kinds": [
+        "coupling_broken"
+      ],
+      "violation_relations": [
+        "Only one coupled change occurs while the other remains unchanged: ."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: bottle: one declared collective group, state source_level=lower, required; stream: one declared collective group, state stream_state=continuous, required; glass: exactly 1, state sink_level=higher, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] Only one coupled change occurs while the other remains unchanged: ."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The declared change bottle juice line descends occurs in its stated direction.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: bottle: one declared collective group, state source_level=lower, transitioning; stream: one declared collective group, state stream_state=continuous, transitioning; glass: exactly 1, state sink_level=higher, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change bottle juice line descends occurs in its stated direction.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: bottle: one declared collective group, state source_level=lower, transitioning; stream: one declared collective group, state stream_state=continuous, transitioning; glass: exactly 1, state sink_level=higher, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "completion",
+      "violation_constraint_ids": [
+        [
+          "c2",
+          "c3",
+          "c4"
+        ]
+      ],
+      "violation_kinds": [
+        "incomplete_transition"
+      ],
+      "violation_relations": [
+        "The declared cause occurs BUT the required target change does not become visible."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: bottle: one declared collective group, state source_level=lower, transitioning; stream: one declared collective group, state stream_state=continuous, transitioning; glass: exactly 1, state sink_level=higher, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The declared cause occurs BUT the required target change does not become visible."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The terminal facts source_level=lower, sink_level=higher REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts sink_level=empty_or_low, sink_level=higher do not coexist.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: bottle: one declared collective group, state source_level=lower, required; stream: exactly 0, state stream_state=continuous, forbidden; glass: exactly 1, state sink_level=higher, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The terminal facts source_level=lower, sink_level=higher REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts sink_level=empty_or_low, sink_level=higher do not coexist.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: bottle: one declared collective group, state source_level=lower, required; stream: exactly 0, state stream_state=continuous, forbidden; glass: exactly 1, state sink_level=higher, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "terminal",
+      "violation_constraint_ids": [
+        [
+          "c4"
+        ],
+        [
+          "c5"
+        ]
+      ],
+      "violation_kinds": [
+        "reversal",
+        "exclusion_broken"
+      ],
+      "violation_relations": [
+        "The valid terminal state returns to its mutually exclusive earlier state.",
+        "Copies of the same logical slot appear in mutually exclusive states at the same time."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: bottle: one declared collective group, state source_level=lower, required; stream: exactly 0, state stream_state=continuous, forbidden; glass: exactly 1, state sink_level=higher, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The valid terminal state returns to its mutually exclusive earlier state. [AND] The same logical slot has only its valid state; mutually exclusive facts sink_level=empty_or_low, sink_level=higher do not coexist.",
+        "[STAGE ENTITY INVENTORY] Present now: bottle: one declared collective group, state source_level=lower, required; stream: exactly 0, state stream_state=continuous, forbidden; glass: exactly 1, state sink_level=higher, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The terminal facts source_level=lower, sink_level=higher REMAIN through the final frames. [AND] Copies of the same logical slot appear in mutually exclusive states at the same time."
+      ],
+      "violation_weights": [
+        0.5,
+        0.5
+      ]
+    }
+  ],
+  "texts": {
+    "global_semantic": "[ENTITY INVENTORY] The closed scene contains bottle: one declared collective group; stream: one declared collective group; glass: exactly 1. All declared entities are fully visible from the first frame in the stated layout. [INITIAL STATE] source_level=higher, stream_state=absent, sink_level=empty_or_low. [PHYSICAL EVENT] One bottle pours orange juice through a visible stream into one glass as source decreases and sink increases. [INITIAL LAYOUT] bottle containing orange juice; visible orange-juice stream; receiving glass. [PERSISTENT PROTECTION] same bottle, glass, and orange juice; juice stays within the source-stream-sink route; camera and unrelated scene remain unchanged. [CLOSED WORLD] No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object enters or appears; unoccupied scene regions remain empty. [CONSERVATION] Source loss and result gain stay coupled: tracked logical entity slots remain consistent; bottle level falls through visible orange stream while glass level rises. No result appears from an undeclared external source. [TERMINAL STATE] The same logical entity slots persist without duplicates; source_level=lower, stream_state=continuous, sink_level=higher remains visible through the final frames.",
+    "stage.completion.negative.0": "[STAGE ENTITY INVENTORY] Present now: bottle: one declared collective group, state source_level=lower, transitioning; stream: one declared collective group, state stream_state=continuous, transitioning; glass: exactly 1, state sink_level=higher, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The declared cause occurs BUT the required target change does not become visible.",
+    "stage.completion.positive": "[STAGE ENTITY INVENTORY] Present now: bottle: one declared collective group, state source_level=lower, transitioning; stream: one declared collective group, state stream_state=continuous, transitioning; glass: exactly 1, state sink_level=higher, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change bottle juice line descends occurs in its stated direction.",
+    "stage.evolution.negative.0": "[STAGE ENTITY INVENTORY] Present now: bottle: one declared collective group, state source_level=lower, required; stream: one declared collective group, state stream_state=continuous, required; glass: exactly 1, state sink_level=higher, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] Only one coupled change occurs while the other remains unchanged: .",
+    "stage.evolution.positive": "[STAGE ENTITY INVENTORY] Present now: bottle: one declared collective group, state source_level=lower, required; stream: one declared collective group, state stream_state=continuous, required; glass: exactly 1, state sink_level=higher, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change bottle juice line descends occurs in its stated direction.",
+    "stage.onset.negative.0": "[STAGE ENTITY INVENTORY] Present now: bottle: one declared collective group, state source_level=higher, transitioning; stream: one declared collective group, state stream_state=absent, transitioning; glass: exactly 1, state sink_level=empty_or_low, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] glass juice line rises happens BEFORE orange juice first visibly connects bottle to glass.",
+    "stage.onset.positive": "[STAGE ENTITY INVENTORY] Present now: bottle: one declared collective group, state source_level=higher, transitioning; stream: one declared collective group, state stream_state=absent, transitioning; glass: exactly 1, state sink_level=empty_or_low, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] orange juice first visibly connects bottle to glass happens BEFORE glass juice line rises.",
+    "stage.setup.negative.0": "[STAGE ENTITY INVENTORY] Present now: bottle: one declared collective group, state source_level=higher, required; stream: exactly 0, state stream_state=absent, forbidden; glass: exactly 1, state sink_level=empty_or_low, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] glass juice line rises is already present BEFORE orange juice first visibly connects bottle to glass.",
+    "stage.setup.positive": "[STAGE ENTITY INVENTORY] Present now: bottle: one declared collective group, state source_level=higher, required; stream: exactly 0, state stream_state=absent, forbidden; glass: exactly 1, state sink_level=empty_or_low, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] orange juice first visibly connects bottle to glass happens BEFORE glass juice line rises.",
+    "stage.terminal.negative.0": "[STAGE ENTITY INVENTORY] Present now: bottle: one declared collective group, state source_level=lower, required; stream: exactly 0, state stream_state=continuous, forbidden; glass: exactly 1, state sink_level=higher, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The valid terminal state returns to its mutually exclusive earlier state. [AND] The same logical slot has only its valid state; mutually exclusive facts sink_level=empty_or_low, sink_level=higher do not coexist.",
+    "stage.terminal.negative.1": "[STAGE ENTITY INVENTORY] Present now: bottle: one declared collective group, state source_level=lower, required; stream: exactly 0, state stream_state=continuous, forbidden; glass: exactly 1, state sink_level=higher, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The terminal facts source_level=lower, sink_level=higher REMAIN through the final frames. [AND] Copies of the same logical slot appear in mutually exclusive states at the same time.",
+    "stage.terminal.positive": "[STAGE ENTITY INVENTORY] Present now: bottle: one declared collective group, state source_level=lower, required; stream: exactly 0, state stream_state=continuous, forbidden; glass: exactly 1, state sink_level=higher, required. Counts and identities stay fixed; no duplicate state copy is created. No additional dropper, external liquid stream, external source, extra copy, hand, person, pipette, tool, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The terminal facts source_level=lower, sink_level=higher REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts sink_level=empty_or_low, sink_level=higher do not coexist."
+  },
+  "token_budget_priority": {
+    "causal": 2,
+    "entity_count": 0,
+    "protected": 1,
+    "style": 3
+  }
+}

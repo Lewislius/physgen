@@ -1,0 +1,347 @@
+{
+  "ace": {
+    "cfg_scope": "conditional_only",
+    "diagnostics": "summary",
+    "enabled": true,
+    "formula": "semantic + scale * (positive - counterfactual)",
+    "fp32_delta": true,
+    "lambda0": 0.5,
+    "layer_gates": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.4,
+      0.4,
+      0.4,
+      0.4,
+      0.4,
+      0.4,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "layer_preset": "mvp_mid16",
+    "residual_cap_eps": 1e-12,
+    "residual_cap_ratio": null,
+    "residual_mode": "positive_minus_counterfactual",
+    "step_gates": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "step_preset": "legacy"
+  },
+  "contexts": {
+    "causal_origin_prompt_prefixed": true,
+    "cfg_negative_prompt": "色调艳丽，过曝，静态，细节模糊不清，字幕，风格，作品，画作，画面，静止，整体发灰，最差质量，低质量，JPEG压缩残留，丑陋的，残缺的，多余的手指，画得不好的手部，画得不好的脸部，畸形的，毁容的，形态畸形的肢体，手指融合，静止不动的画面，杂乱的背景，三条腿，背景人很多，倒着走",
+    "compiler_version": "ace-router-initial-v1-compat",
+    "conditioning_mode": "initial_v1",
+    "counterfactual_text": "A closed book is pushed past the edge of a shelf, falls, and lands open on the floor. The closed book opens while still resting on the shelf, then crosses the edge and falls to the floor.",
+    "positive_text": "A closed book is pushed past the edge of a shelf, falls, and lands open on the floor. The closed book crosses the shelf edge, loses support, falls continuously, strikes the floor, and settles open.",
+    "semantic_text": "A closed book is pushed past the edge of a shelf, falls, and lands open on the floor.",
+    "semantic_variant": "initial_v1",
+    "token_lengths": {
+      "cfg_negative": 126,
+      "counterfactual": 48,
+      "positive": 51,
+      "semantic": 24
+    },
+    "used_by_model": {
+      "cfg_negative": true,
+      "cfg_unconditional_empty": false,
+      "counterfactual": true,
+      "positive": true,
+      "semantic": true
+    },
+    "utf8_sha256": {
+      "cfg_negative": "ce96e0324e4b54ce4b6e867f669ca520952e1a34cc116543516b1897f0d3c47e",
+      "counterfactual": "75786936e144dc9a01a85a8cd535f2e39ca7fb507bbb74a788de542880435d77",
+      "positive": "25cf42d2b9c1fe8ae88ae8a8de3625c1a25f2afb2b0c482e8cfac3c0049d3833",
+      "semantic": "f2cb0d6a286e9a5208e0f758aa9eba8424770d5ac811f5694651e9eaf6fcab9c"
+    }
+  },
+  "diagnostics": {
+    "all_finite": true,
+    "applied_to_semantic_max": 0.11152814328670502,
+    "applied_to_semantic_min": 0.011809099465608597,
+    "candidate_to_semantic_max": 0.11152788251638412,
+    "candidate_to_semantic_min": 0.011809153482317924,
+    "clip_coefficient_min": 1.0,
+    "clip_fraction": 0.0,
+    "clipped_record_count": 0,
+    "mode": "summary",
+    "raw_delta_l2_max": 507.3492431640625,
+    "raw_delta_l2_min": 46.64994812011719,
+    "record_count": 12,
+    "scaled_to_semantic_max": 0.11152814328670502,
+    "scaled_to_semantic_min": 0.011809099465608597
+  },
+  "generation": {
+    "convert_model_dtype": true,
+    "first_frame_reanchor_count": 51,
+    "fps": 24,
+    "frame_num": 97,
+    "guide_scale": 5.0,
+    "height": 704,
+    "max_area": 901120,
+    "offload_model": true,
+    "sample_solver": "unipc",
+    "sampling_steps": 50,
+    "seed": 42,
+    "shift": 5.0,
+    "t5_cpu": true,
+    "width": 1280
+  },
+  "input_hashes": {
+    "causal_json": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P06/P06-cplus-cminus.json",
+      "sha256": "15637f54671c2696b4673e9c60e1dcc58e321182223ff93cc5e3be6a6999f029",
+      "size_bytes": 935
+    },
+    "i0_image": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P06/P06-i0-1280x704.png",
+      "sha256": "7a901b71ec83d387e0b07e91b063aee8d031564fecd7f6e0e305df855c1bb52e",
+      "size_bytes": 1320397
+    },
+    "i0_metadata_json": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P06/P06-i0.json",
+      "sha256": "3bde6dc25cf66f36bb1b82ae3b893a023f70a72da7c5bb56003081de5a431ca8",
+      "size_bytes": 1517
+    },
+    "model_reference_image": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/outputs/ace_router_initial_v1_hd97/m3-initial-v1-hd97-20260901-125349/P06/M3_I2V_ACE/seed_000042/reference_input.png",
+      "sha256": "2ca093e292a3a5e5c16adae625f556c0977d35dc3292efbd2951d61f9b9ff1c4",
+      "size_bytes": 980960
+    },
+    "origin_txt": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P06/P06-origin.txt",
+      "sha256": "d67096c8ade1f536c6b19edbcba79daa2ed70fab342365086f12eff805940020",
+      "size_bytes": 86
+    },
+    "selection_manifest": null,
+    "sizing_image": null
+  },
+  "method": "M3_I2V_ACE",
+  "output_video": "/home/liuzhirui/Project/physGen/code/v1/outputs/ace_router_initial_v1_hd97/m3-initial-v1-hd97-20260901-125349/P06/M3_I2V_ACE/seed_000042/video.mp4",
+  "output_video_sha256": "15dc8bb7e4c48a10aa2a892c248e5ab29172072fb12f1fc4fd1174caaa3b2ca5",
+  "reference": {
+    "crop_box": [
+      0,
+      0,
+      1280,
+      704
+    ],
+    "crop_policy": "center_crop_to_20x11_or_11x20_then_lanczos_resize",
+    "orientation": "landscape",
+    "original_size": [
+      1280,
+      704
+    ],
+    "prepared_artifact_path": "/home/liuzhirui/Project/physGen/code/v1/outputs/ace_router_initial_v1_hd97/m3-initial-v1-hd97-20260901-125349/P06/M3_I2V_ACE/seed_000042/reference_input.png",
+    "prepared_artifact_sha256": "2ca093e292a3a5e5c16adae625f556c0977d35dc3292efbd2951d61f9b9ff1c4",
+    "prepared_size": [
+      1280,
+      704
+    ],
+    "resolved_output_size": [
+      1280,
+      704
+    ],
+    "selection_manifest": null,
+    "source_path": "/home/liuzhirui/Project/physGen/code/v1/demo/P06/P06-i0-1280x704.png",
+    "source_sha256": "7a901b71ec83d387e0b07e91b063aee8d031564fecd7f6e0e305df855c1bb52e",
+    "used_as_model_condition": true,
+    "used_for_output_sizing_only": false
+  },
+  "run_id": "m3-initial-v1-hd97-20260901-125349",
+  "runtime": {
+    "cuda_capability": [
+      8,
+      6
+    ],
+    "cuda_memory_reserved_bytes": 34781265920,
+    "cuda_runtime": "12.8",
+    "cudnn": 91002,
+    "denoising_step_timing": {
+      "all_steps_median_seconds": 10.378079101562498,
+      "count": 50,
+      "max_seconds": 12.693876953125,
+      "min_seconds": 9.8679677734375,
+      "per_step_seconds": [
+        10.1022763671875,
+        10.144681640625,
+        10.2108330078125,
+        10.2547138671875,
+        10.2860830078125,
+        10.894181640625,
+        10.3474404296875,
+        10.36452734375,
+        12.693876953125,
+        10.3620712890625,
+        10.36800390625,
+        12.64346875,
+        10.363904296875,
+        10.379505859375,
+        12.6408232421875,
+        10.405326171875,
+        10.37665234375,
+        12.565388671875,
+        10.361365234375,
+        10.37604296875,
+        12.5606015625,
+        10.3749296875,
+        10.384908203125,
+        12.5975869140625,
+        10.3747685546875,
+        10.7783212890625,
+        12.1519541015625,
+        10.380607421875,
+        10.387458984375,
+        12.544251953125,
+        10.4117080078125,
+        10.386369140625,
+        12.51272265625,
+        10.376470703125,
+        10.3860966796875,
+        12.5709853515625,
+        10.404423828125,
+        10.384998046875,
+        12.5706396484375,
+        10.40801953125,
+        9.8766845703125,
+        9.8776494140625,
+        9.8808916015625,
+        9.884544921875,
+        9.8852529296875,
+        11.745041015625,
+        9.8679677734375,
+        9.8710234375,
+        9.87111328125,
+        9.876806640625
+      ],
+      "stable_median_seconds": 10.379505859375,
+      "warmup_first_step_seconds": 10.1022763671875
+    },
+    "diffusers": "0.36.0",
+    "elapsed_seconds": 676.7388638779521,
+    "gpu": "NVIDIA RTX A6000",
+    "peak_cuda_bytes": 24455918080,
+    "platform": "Linux-5.15.0-139-generic-x86_64-with-glibc2.35",
+    "python": "3.10.19",
+    "torch": "2.8.0+cu128"
+  },
+  "sample_id": "P06",
+  "seed": 42,
+  "status": "success",
+  "upstream": {
+    "checkpoint": "/home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B",
+    "checkpoint_hashes": {
+      "config.json": "d1fea36899d00c2501b836c13ad65af56e2f9529ba622e50886d3f5c3e6c02bc",
+      "diffusion_pytorch_model.safetensors.index.json": "bfa2337f1163e195d24151a72298daf34a620543898109be47e414c8daa5b3fe"
+    },
+    "checkpoint_model_config": {
+      "_class_name": "WanModel",
+      "dim": 3072,
+      "in_dim": 48,
+      "model_type": "ti2v",
+      "num_heads": 24,
+      "num_layers": 30,
+      "out_dim": 48,
+      "text_len": 512
+    },
+    "source_hashes": {
+      "wan/configs/wan_ti2v_5B.py": "26d9e7b9c555eb0900b13751267a596556f869e7aee2d1572afc2a0a4a76f4c7",
+      "wan/modules/attention.py": "c79158e1cc9b7a17bc934e6acb34f42e588a41adb89801146957cda2d6d4379d",
+      "wan/modules/model.py": "8b39115298ca7322806c19b3165b3f435a94fe4a58f0624aec24f8e7f4997432",
+      "wan/modules/t5.py": "8b0cebf3192c542f92a344255a06c203df3ba24160715899a055cc8de0cd930f",
+      "wan/textimage2video.py": "228f2fabf23014ed41ec6b8cd713d5be7371bb558501c71a62a0258b491a877b"
+    },
+    "wan_git_head": "08e890ff01ff8daf9161db472f362efe5d6ba656",
+    "wan_repo": "/home/liuzhirui/model/Wan2.2",
+    "weight_shards": [
+      {
+        "mtime_ns": 1769032249319825600,
+        "name": "diffusion_pytorch_model-00001-of-00003.safetensors",
+        "size_bytes": 9825014472
+      },
+      {
+        "mtime_ns": 1769032417046557795,
+        "name": "diffusion_pytorch_model-00002-of-00003.safetensors",
+        "size_bytes": 9995661736
+      },
+      {
+        "mtime_ns": 1769020338553636583,
+        "name": "diffusion_pytorch_model-00003-of-00003.safetensors",
+        "size_bytes": 178558176
+      }
+    ]
+  },
+  "warnings": [
+    "selection_manifest_missing"
+  ]
+}

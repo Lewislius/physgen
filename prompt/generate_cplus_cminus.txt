@@ -1,0 +1,9 @@
+DIRECT STAGE PAIRS IN P0-STAGE-DIRECT-JSON-R2
+
+Each stages[].positive sentence in plan/planimg JSON is the stage c+ and is encoded
+verbatim. There is no authored stage c-. The single-space cfg_negative is reused as
+the empty comparison so Wan does not activate its built-in negative prompt.
+
+No separate c+/c- file is consumed. Existing PXX-cplus-cminus.json files remain a
+short pointer to stages[].positive and are marked used_for_generation=false. Never
+append a template, violation sentence, forbidden noun list, or inferred text.

@@ -1,0 +1,90 @@
+{
+  "closed_world": {
+    "allowed_entity_ids": [
+      "red_ball",
+      "blue_ball"
+    ],
+    "empty_regions": [],
+    "external_source_allowed": false,
+    "forbidden_new_categories": [
+      "cue",
+      "cue stick",
+      "external source",
+      "extra ball",
+      "extra copy",
+      "hand",
+      "person",
+      "tool",
+      "unlisted object"
+    ],
+    "provenance": "derived"
+  },
+  "conservation": [
+    {
+      "observable_proxy": "tracked logical entity slots remain consistent",
+      "provenance": "derived",
+      "quantity": "instance_count",
+      "relation": "constant",
+      "rule_id": "entity_slots_constant",
+      "sinks": [
+        "red_ball",
+        "blue_ball"
+      ],
+      "sources": [
+        "red_ball",
+        "blue_ball"
+      ],
+      "tolerance": 0.0
+    },
+    {
+      "observable_proxy": "red motion decreases while blue motion begins away",
+      "provenance": "derived",
+      "quantity": "motion_transfer",
+      "relation": "coupled_monotonic",
+      "rule_id": "conservation_c3",
+      "sinks": [
+        "blue_motion"
+      ],
+      "sources": [
+        "red_motion"
+      ],
+      "tolerance": 0.1
+    }
+  ],
+  "lifecycles": [
+    {
+      "entity_id": "red_ball",
+      "from_stage": "setup",
+      "from_state": "separated; rolling",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "separated",
+          "contact"
+        ],
+        [
+          "rolling",
+          "slower"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "contact; slower"
+    },
+    {
+      "entity_id": "blue_ball",
+      "from_stage": "setup",
+      "from_state": "stationary",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "stationary",
+          "moving_away"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "moving_away"
+    }
+  ]
+}

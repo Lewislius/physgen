@@ -1,0 +1,88 @@
+{
+  "closed_world": {
+    "allowed_entity_ids": [
+      "dandelion",
+      "seeds",
+      "drift_region"
+    ],
+    "empty_regions": [],
+    "external_source_allowed": false,
+    "forbidden_new_categories": [
+      "external source",
+      "extra copy",
+      "unlisted object"
+    ],
+    "provenance": "derived"
+  },
+  "conservation": [
+    {
+      "observable_proxy": "tracked logical entity slots remain consistent",
+      "provenance": "derived",
+      "quantity": "instance_count",
+      "relation": "constant",
+      "rule_id": "entity_slots_constant",
+      "sinks": [
+        "dandelion",
+        "seeds",
+        "drift_region"
+      ],
+      "sources": [
+        "dandelion",
+        "seeds",
+        "drift_region"
+      ],
+      "tolerance": 0.0
+    },
+    {
+      "observable_proxy": "detachment and outward drift accompany decreasing head fullness",
+      "provenance": "derived",
+      "quantity": "material_proxy",
+      "relation": "coupled_monotonic",
+      "rule_id": "conservation_c3",
+      "sinks": [
+        "seed_position",
+        "fullness"
+      ],
+      "sources": [
+        "attachment"
+      ],
+      "tolerance": 0.1
+    }
+  ],
+  "lifecycles": [
+    {
+      "entity_id": "seeds",
+      "from_stage": "setup",
+      "from_state": "attached; on_head",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "attached",
+          "detached"
+        ],
+        [
+          "on_head",
+          "drifting_away"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "detached; drifting_away"
+    },
+    {
+      "entity_id": "dandelion",
+      "from_stage": "setup",
+      "from_state": "full",
+      "identity_preserved": true,
+      "mutually_exclusive_states": [
+        [
+          "full",
+          "depleted"
+        ]
+      ],
+      "provenance": "derived",
+      "to_stage": "terminal",
+      "to_state": "depleted"
+    }
+  ]
+}

@@ -1,0 +1,188 @@
+{
+  "actual_t5_token_lengths": {
+    "global_semantic": 280,
+    "stage.completion.negative.0": 149,
+    "stage.completion.positive": 165,
+    "stage.evolution.negative.0": 169,
+    "stage.evolution.positive": 163,
+    "stage.onset.negative.0": 149,
+    "stage.onset.positive": 148,
+    "stage.setup.negative.0": 149,
+    "stage.setup.positive": 146,
+    "stage.terminal.negative.0": 180,
+    "stage.terminal.negative.1": 193,
+    "stage.terminal.positive": 206
+  },
+  "global_anchor": "[ENTITY INVENTORY] The closed scene contains ball: exactly 1; floor: one declared collective group. All declared entities are fully visible from the first frame in the stated layout. [INITIAL STATE] height_state=elevated, motion_state=falling, peak_envelope=initial_height. [PHYSICAL EVENT] One rubber ball drops onto a hard floor, bounces to progressively lower heights, and comes to rest. [INITIAL LAYOUT] rubber ball; hard floor. [PERSISTENT PROTECTION] same rubber ball identity and material; same hard floor; same impact corridor; camera and background remain unchanged. [CLOSED WORLD] No additional external source, extra copy, unlisted object enters or appears; unoccupied scene regions remain empty. [CONSERVATION] Source loss and result gain stay coupled: tracked logical entity slots remain consistent; repeated floor contacts produce successively lower peaks until rest. No result appears from an undeclared external source. [TERMINAL STATE] The same logical entity slots persist without duplicates; height_state=resting_on_floor, motion_state=resting, peak_envelope=decreasing_to_zero remains visible through the final frames.",
+  "issues": [],
+  "max_t5_token_length": 280,
+  "protected_coverage": {
+    "camera and background remain unchanged": [
+      "geometry",
+      "camera_background",
+      "closed_world_or_persistence"
+    ],
+    "same hard floor": [
+      "identity_count",
+      "camera_background"
+    ],
+    "same impact corridor": [
+      "identity_count"
+    ],
+    "same rubber ball identity and material": [
+      "identity_count",
+      "appearance"
+    ]
+  },
+  "stage_pairs": [
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "the falling ball first visibly contacts the hard floor happens BEFORE repeated rebounds decay to zero motion.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state height_state=elevated, motion_state=falling, peak_envelope=initial_height, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] the falling ball first visibly contacts the hard floor happens BEFORE repeated rebounds decay to zero motion.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state height_state=elevated, motion_state=falling, peak_envelope=initial_height, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "setup",
+      "violation_constraint_ids": [
+        [
+          "c1"
+        ]
+      ],
+      "violation_kinds": [
+        "outcome_preset"
+      ],
+      "violation_relations": [
+        "repeated rebounds decay to zero motion is already present BEFORE the falling ball first visibly contacts the hard floor."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state height_state=elevated, motion_state=falling, peak_envelope=initial_height, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] repeated rebounds decay to zero motion is already present BEFORE the falling ball first visibly contacts the hard floor."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "the falling ball first visibly contacts the hard floor happens BEFORE repeated rebounds decay to zero motion.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state height_state=elevated, motion_state=falling, peak_envelope=initial_height, transitioning; floor: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] the falling ball first visibly contacts the hard floor happens BEFORE repeated rebounds decay to zero motion.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state height_state=elevated, motion_state=falling, peak_envelope=initial_height, transitioning; floor: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "onset",
+      "violation_constraint_ids": [
+        [
+          "c1",
+          "c2"
+        ]
+      ],
+      "violation_kinds": [
+        "trigger_missing"
+      ],
+      "violation_relations": [
+        "repeated rebounds decay to zero motion occurs WITHOUT the falling ball first visibly contacts the hard floor."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state height_state=elevated, motion_state=falling, peak_envelope=initial_height, transitioning; floor: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] repeated rebounds decay to zero motion occurs WITHOUT the falling ball first visibly contacts the hard floor."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The coupled changes occur together: vertical motion converges to floor WHILE repeated rebounds decay to zero motion WHILE each successive rebound peak is lower.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state height_state=resting_on_floor, motion_state=resting, peak_envelope=decreasing_to_zero, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The coupled changes occur together: vertical motion converges to floor WHILE repeated rebounds decay to zero motion WHILE each successive rebound peak is lower.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state height_state=resting_on_floor, motion_state=resting, peak_envelope=decreasing_to_zero, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "evolution",
+      "violation_constraint_ids": [
+        [
+          "c3"
+        ]
+      ],
+      "violation_kinds": [
+        "coupling_broken"
+      ],
+      "violation_relations": [
+        "Only one coupled change occurs while the other remains unchanged: vertical motion converges to floor; repeated rebounds decay to zero motion; each successive rebound peak is lower."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state height_state=resting_on_floor, motion_state=resting, peak_envelope=decreasing_to_zero, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] Only one coupled change occurs while the other remains unchanged: vertical motion converges to floor; repeated rebounds decay to zero motion; each successive rebound peak is lower."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The coupled changes occur together: vertical motion converges to floor WHILE repeated rebounds decay to zero motion WHILE each successive rebound peak is lower.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state height_state=resting_on_floor, motion_state=resting, peak_envelope=decreasing_to_zero, transitioning; floor: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The coupled changes occur together: vertical motion converges to floor WHILE repeated rebounds decay to zero motion WHILE each successive rebound peak is lower.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state height_state=resting_on_floor, motion_state=resting, peak_envelope=decreasing_to_zero, transitioning; floor: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "completion",
+      "violation_constraint_ids": [
+        [
+          "c3",
+          "c4"
+        ]
+      ],
+      "violation_kinds": [
+        "envelope_broken"
+      ],
+      "violation_relations": [
+        "The same declared property changes in the opposite or out-of-range direction."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state height_state=resting_on_floor, motion_state=resting, peak_envelope=decreasing_to_zero, transitioning; floor: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The same declared property changes in the opposite or out-of-range direction."
+      ],
+      "violation_weights": [
+        1.0
+      ]
+    },
+    {
+      "pair_quality": "minimal_verified",
+      "positive_relation": "The terminal facts height_state=resting_on_floor, motion_state=resting, peak_envelope=decreasing_to_zero REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts motion_state=bouncing, motion_state=resting do not coexist.",
+      "positive_text": "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state height_state=resting_on_floor, motion_state=resting, peak_envelope=decreasing_to_zero, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The terminal facts height_state=resting_on_floor, motion_state=resting, peak_envelope=decreasing_to_zero REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts motion_state=bouncing, motion_state=resting do not coexist.",
+      "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state height_state=resting_on_floor, motion_state=resting, peak_envelope=decreasing_to_zero, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+      "stage_id": "terminal",
+      "violation_constraint_ids": [
+        [
+          "c4"
+        ],
+        [
+          "c5"
+        ]
+      ],
+      "violation_kinds": [
+        "reversal",
+        "exclusion_broken"
+      ],
+      "violation_relations": [
+        "The valid terminal state returns to its mutually exclusive earlier state.",
+        "Copies of the same logical slot appear in mutually exclusive states at the same time."
+      ],
+      "violation_texts": [
+        "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state height_state=resting_on_floor, motion_state=resting, peak_envelope=decreasing_to_zero, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The valid terminal state returns to its mutually exclusive earlier state. [AND] The same logical slot has only its valid state; mutually exclusive facts motion_state=bouncing, motion_state=resting do not coexist.",
+        "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state height_state=resting_on_floor, motion_state=resting, peak_envelope=decreasing_to_zero, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The terminal facts height_state=resting_on_floor, motion_state=resting, peak_envelope=decreasing_to_zero REMAIN through the final frames. [AND] Copies of the same logical slot appear in mutually exclusive states at the same time."
+      ],
+      "violation_weights": [
+        0.5,
+        0.5
+      ]
+    }
+  ],
+  "texts": {
+    "global_semantic": "[ENTITY INVENTORY] The closed scene contains ball: exactly 1; floor: one declared collective group. All declared entities are fully visible from the first frame in the stated layout. [INITIAL STATE] height_state=elevated, motion_state=falling, peak_envelope=initial_height. [PHYSICAL EVENT] One rubber ball drops onto a hard floor, bounces to progressively lower heights, and comes to rest. [INITIAL LAYOUT] rubber ball; hard floor. [PERSISTENT PROTECTION] same rubber ball identity and material; same hard floor; same impact corridor; camera and background remain unchanged. [CLOSED WORLD] No additional external source, extra copy, unlisted object enters or appears; unoccupied scene regions remain empty. [CONSERVATION] Source loss and result gain stay coupled: tracked logical entity slots remain consistent; repeated floor contacts produce successively lower peaks until rest. No result appears from an undeclared external source. [TERMINAL STATE] The same logical entity slots persist without duplicates; height_state=resting_on_floor, motion_state=resting, peak_envelope=decreasing_to_zero remains visible through the final frames.",
+    "stage.completion.negative.0": "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state height_state=resting_on_floor, motion_state=resting, peak_envelope=decreasing_to_zero, transitioning; floor: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The same declared property changes in the opposite or out-of-range direction.",
+    "stage.completion.positive": "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state height_state=resting_on_floor, motion_state=resting, peak_envelope=decreasing_to_zero, transitioning; floor: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The coupled changes occur together: vertical motion converges to floor WHILE repeated rebounds decay to zero motion WHILE each successive rebound peak is lower.",
+    "stage.evolution.negative.0": "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state height_state=resting_on_floor, motion_state=resting, peak_envelope=decreasing_to_zero, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] Only one coupled change occurs while the other remains unchanged: vertical motion converges to floor; repeated rebounds decay to zero motion; each successive rebound peak is lower.",
+    "stage.evolution.positive": "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state height_state=resting_on_floor, motion_state=resting, peak_envelope=decreasing_to_zero, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The coupled changes occur together: vertical motion converges to floor WHILE repeated rebounds decay to zero motion WHILE each successive rebound peak is lower.",
+    "stage.onset.negative.0": "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state height_state=elevated, motion_state=falling, peak_envelope=initial_height, transitioning; floor: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] repeated rebounds decay to zero motion occurs WITHOUT the falling ball first visibly contacts the hard floor.",
+    "stage.onset.positive": "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state height_state=elevated, motion_state=falling, peak_envelope=initial_height, transitioning; floor: one declared collective group, transitioning. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] the falling ball first visibly contacts the hard floor happens BEFORE repeated rebounds decay to zero motion.",
+    "stage.setup.negative.0": "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state height_state=elevated, motion_state=falling, peak_envelope=initial_height, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] repeated rebounds decay to zero motion is already present BEFORE the falling ball first visibly contacts the hard floor.",
+    "stage.setup.positive": "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state height_state=elevated, motion_state=falling, peak_envelope=initial_height, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] the falling ball first visibly contacts the hard floor happens BEFORE repeated rebounds decay to zero motion.",
+    "stage.terminal.negative.0": "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state height_state=resting_on_floor, motion_state=resting, peak_envelope=decreasing_to_zero, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The valid terminal state returns to its mutually exclusive earlier state. [AND] The same logical slot has only its valid state; mutually exclusive facts motion_state=bouncing, motion_state=resting do not coexist.",
+    "stage.terminal.negative.1": "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state height_state=resting_on_floor, motion_state=resting, peak_envelope=decreasing_to_zero, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The terminal facts height_state=resting_on_floor, motion_state=resting, peak_envelope=decreasing_to_zero REMAIN through the final frames. [AND] Copies of the same logical slot appear in mutually exclusive states at the same time.",
+    "stage.terminal.positive": "[STAGE ENTITY INVENTORY] Present now: ball: exactly 1, state height_state=resting_on_floor, motion_state=resting, peak_envelope=decreasing_to_zero, required; floor: one declared collective group, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The terminal facts height_state=resting_on_floor, motion_state=resting, peak_envelope=decreasing_to_zero REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts motion_state=bouncing, motion_state=resting do not coexist."
+  },
+  "token_budget_priority": {
+    "causal": 2,
+    "entity_count": 0,
+    "protected": 1,
+    "style": 3
+  }
+}

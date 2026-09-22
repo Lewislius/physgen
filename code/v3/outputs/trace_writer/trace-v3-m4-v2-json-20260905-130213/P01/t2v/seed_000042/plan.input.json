@@ -1,0 +1,391 @@
+{
+  "schema_version": "trace-direct-v1",
+  "design_revision": "p0-stage-direct-json-r2",
+  "sample_id": "P01",
+  "source_files": {
+    "origin": "P01-origin.txt",
+    "frame_zero_metadata": "P01-i0.json",
+    "reference_input": "P01-i0-1280x704.jpg"
+  },
+  "initial_condition": {
+    "type": "initial_momentum",
+    "description": "The scooter is already rolling toward the trash can when the clip begins."
+  },
+  "global_semantic": "Static side view of one black stand-up electric kick scooter already rolling right toward one upright black slatted trash can on a gray street. Its front wheel hits the can once, the same scooter tips onto its side and stops beside it, and the can stays upright.",
+  "cfg_negative": " ",
+  "entities": [
+    {
+      "id": "scooter",
+      "mention": "one black stand-up electric kick scooter",
+      "role": "actor"
+    },
+    {
+      "id": "trash_can",
+      "mention": "one upright black slatted trash can",
+      "role": "patient"
+    }
+  ],
+  "structured_guidance": {
+    "schema_version": "structured-text-guidance-v1",
+    "entities": [
+      {
+        "id": "scooter",
+        "label": "black stand-up electric kick scooter",
+        "count": 1,
+        "persistent": true,
+        "invariants": [
+          "rigid frame and wheel geometry",
+          "black appearance",
+          "single intact identity"
+        ]
+      },
+      {
+        "id": "trash_can",
+        "label": "upright black slatted metal trash can",
+        "count": 1,
+        "persistent": true,
+        "invariants": [
+          "rigid cylindrical geometry",
+          "black slatted appearance",
+          "single intact identity"
+        ]
+      }
+    ],
+    "initial_condition": {
+      "type": "initial_momentum",
+      "active_stages": [
+        "setup"
+      ],
+      "facts": [
+        "The scooter already has rightward rolling momentum in the first video frame.",
+        "The trash can starts motionless and upright."
+      ]
+    },
+    "stages": [
+      {
+        "id": "setup",
+        "entity_states": [
+          {
+            "entity_id": "scooter",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "upright and rolling right"
+            ],
+            "mutable": [
+              "horizontal position"
+            ]
+          },
+          {
+            "entity_id": "trash_can",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "motionless and upright"
+            ],
+            "mutable": []
+          }
+        ],
+        "relations": [
+          "The clear gap between scooter and trash can continuously narrows."
+        ]
+      },
+      {
+        "id": "onset",
+        "entity_states": [
+          {
+            "entity_id": "scooter",
+            "presence": "transitioning",
+            "count": 1,
+            "states": [
+              "making one front-wheel contact with the trash can"
+            ],
+            "mutable": [
+              "rolling speed",
+              "orientation"
+            ]
+          },
+          {
+            "entity_id": "trash_can",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "remaining upright at the same location"
+            ],
+            "mutable": []
+          }
+        ],
+        "relations": [
+          "This is the first and only impact between the two original objects."
+        ]
+      },
+      {
+        "id": "evolution",
+        "entity_states": [
+          {
+            "entity_id": "scooter",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "slowing and rotating down onto its right side"
+            ],
+            "mutable": [
+              "horizontal position",
+              "rolling speed",
+              "orientation"
+            ]
+          },
+          {
+            "entity_id": "trash_can",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "remaining upright and intact"
+            ],
+            "mutable": []
+          }
+        ],
+        "relations": [
+          "The scooter tips beside the can without passing through or deforming it."
+        ]
+      },
+      {
+        "id": "completion",
+        "entity_states": [
+          {
+            "entity_id": "scooter",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "finishing its fall on its right side and stopping"
+            ],
+            "mutable": [
+              "orientation"
+            ]
+          },
+          {
+            "entity_id": "trash_can",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "still upright and motionless"
+            ],
+            "mutable": []
+          }
+        ],
+        "relations": [
+          "The two original objects remain separately visible beside each other."
+        ]
+      },
+      {
+        "id": "terminal",
+        "entity_states": [
+          {
+            "entity_id": "scooter",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "lying motionless on its right side"
+            ],
+            "mutable": []
+          },
+          {
+            "entity_id": "trash_can",
+            "presence": "required",
+            "count": 1,
+            "states": [
+              "standing upright and motionless"
+            ],
+            "mutable": []
+          }
+        ],
+        "relations": [
+          "Exactly one intact scooter and one intact trash can remain visible."
+        ]
+      }
+    ]
+  },
+  "stages": [
+    {
+      "id": "setup",
+      "positive": "The upright scooter is already rolling right and the clear gap to the trash can narrows."
+    },
+    {
+      "id": "onset",
+      "positive": "The scooter's front wheel touches the trash can for the first and only impact."
+    },
+    {
+      "id": "evolution",
+      "positive": "The same scooter slows and rotates down onto its right side beside the can."
+    },
+    {
+      "id": "completion",
+      "positive": "The scooter finishes falling and stops while the trash can remains upright."
+    },
+    {
+      "id": "terminal",
+      "positive": "One scooter lies still beside one upright trash can through the final frames."
+    }
+  ],
+  "warnings": [],
+  "generation_basis": {
+    "mode": "identifier_only",
+    "reference_image_usage": "identifier_only"
+  },
+  "grounding": {
+    "coordinate_frame": "reference_input",
+    "reference_image": "P01-i0-1280x704.jpg",
+    "approved": false,
+    "entity_boxes": []
+  },
+  "temporal_route": {
+    "latent_tokens": 25,
+    "crossfade_tokens": 2,
+    "interpolation": "smoothstep_c1",
+    "profile": "triggered",
+    "stage_order": [
+      "setup",
+      "onset",
+      "evolution",
+      "completion",
+      "terminal"
+    ],
+    "weights": [
+      [
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0
+      ]
+    ]
+  }
+}

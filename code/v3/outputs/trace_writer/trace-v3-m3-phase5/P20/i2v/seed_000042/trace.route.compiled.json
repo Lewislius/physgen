@@ -1,0 +1,965 @@
+{
+  "compiled_schema_version": "trace-writer-v2",
+  "contexts": {
+    "global_anchor": "[ENTITY INVENTORY] The closed scene contains kettle: exactly 1; coffee stream: one declared collective group; cup: exactly 1; campfire: exactly 1. The reference first frame fixes these identities and initial layout. [INITIAL STATE] source_amount=more, stream_state=absent, cup_level=lower. [PHYSICAL EVENT] The stainless kettle at right tilts its left-pointing spout toward the gray cup and pours coffee into it while the campfire at left keeps flickering. [PERSISTENT PROTECTION] same stainless kettle, black handle, lid, and left-pointing spout; same small gray cup below-left of the kettle; campfire, logs, stones, and flames remain in their left-side region; campfire keeps flickering without reacting to the coffee transfer; snowy ground, framing, and daylight remain unchanged; no coffee spills onto the snow or campfire. [CLOSED WORLD] No additional external source, extra copy, unlisted object enters or appears; unoccupied scene regions remain empty. [CONSERVATION] Source loss and result gain stay coupled: tracked logical entity slots remain consistent; visible spout outflow crosses one stream path and raises the dark surface inside the gray cup. No result appears from an undeclared external source. [TERMINAL STATE] The same logical entity slots persist without duplicates; source_amount=less, stream_state=continuous, cup_level=higher remains visible through the final frames.",
+    "issues": [],
+    "protected_coverage": {
+      "campfire keeps flickering without reacting to the coffee transfer": [
+        "generic_anchor"
+      ],
+      "campfire, logs, stones, and flames remain in their left-side region": [
+        "identity_count",
+        "closed_world_or_persistence"
+      ],
+      "no coffee spills onto the snow or campfire": [
+        "closed_world_or_persistence"
+      ],
+      "same small gray cup below-left of the kettle": [
+        "identity_count"
+      ],
+      "same stainless kettle, black handle, lid, and left-pointing spout": [
+        "identity_count"
+      ],
+      "snowy ground, framing, and daylight remain unchanged": [
+        "geometry",
+        "camera_background",
+        "closed_world_or_persistence"
+      ]
+    },
+    "stage_pairs": [
+      {
+        "pair_quality": "minimal_verified",
+        "positive_relation": "coffee first leaves the left-pointing spout and reaches the gray cup happens BEFORE dark coffee surface rises inside gray rim.",
+        "positive_text": "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=more, required; coffee stream: exactly 0, state stream_state=absent, forbidden; cup: exactly 1, state cup_level=lower, required; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] coffee first leaves the left-pointing spout and reaches the gray cup happens BEFORE dark coffee surface rises inside gray rim.",
+        "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=more, required; coffee stream: exactly 0, state stream_state=absent, forbidden; cup: exactly 1, state cup_level=lower, required; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+        "stage_id": "setup",
+        "violation_constraint_ids": [
+          [
+            "c1"
+          ]
+        ],
+        "violation_kinds": [
+          "outcome_preset"
+        ],
+        "violation_relations": [
+          "dark coffee surface rises inside gray rim is already present BEFORE coffee first leaves the left-pointing spout and reaches the gray cup."
+        ],
+        "violation_texts": [
+          "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=more, required; coffee stream: exactly 0, state stream_state=absent, forbidden; cup: exactly 1, state cup_level=lower, required; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] dark coffee surface rises inside gray rim is already present BEFORE coffee first leaves the left-pointing spout and reaches the gray cup."
+        ],
+        "violation_weights": [
+          1.0
+        ]
+      },
+      {
+        "pair_quality": "minimal_verified",
+        "positive_relation": "coffee first leaves the left-pointing spout and reaches the gray cup happens BEFORE dark coffee surface rises inside gray rim.",
+        "positive_text": "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=more, transitioning; coffee stream: one declared collective group, state stream_state=absent, transitioning; cup: exactly 1, state cup_level=lower, transitioning; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] coffee first leaves the left-pointing spout and reaches the gray cup happens BEFORE dark coffee surface rises inside gray rim.",
+        "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=more, transitioning; coffee stream: one declared collective group, state stream_state=absent, transitioning; cup: exactly 1, state cup_level=lower, transitioning; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+        "stage_id": "onset",
+        "violation_constraint_ids": [
+          [
+            "c1"
+          ]
+        ],
+        "violation_kinds": [
+          "wrong_order"
+        ],
+        "violation_relations": [
+          "dark coffee surface rises inside gray rim happens BEFORE coffee first leaves the left-pointing spout and reaches the gray cup."
+        ],
+        "violation_texts": [
+          "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=more, transitioning; coffee stream: one declared collective group, state stream_state=absent, transitioning; cup: exactly 1, state cup_level=lower, transitioning; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] dark coffee surface rises inside gray rim happens BEFORE coffee first leaves the left-pointing spout and reaches the gray cup."
+        ],
+        "violation_weights": [
+          1.0
+        ]
+      },
+      {
+        "pair_quality": "minimal_verified",
+        "positive_relation": "The declared change coffee visibly exits the metal spout occurs in its stated direction.",
+        "positive_text": "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=less, required; coffee stream: one declared collective group, state stream_state=continuous, required; cup: exactly 1, state cup_level=higher, required; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change coffee visibly exits the metal spout occurs in its stated direction.",
+        "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=less, required; coffee stream: one declared collective group, state stream_state=continuous, required; cup: exactly 1, state cup_level=higher, required; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+        "stage_id": "evolution",
+        "violation_constraint_ids": [
+          [
+            "c2",
+            "c3"
+          ]
+        ],
+        "violation_kinds": [
+          "coupling_broken"
+        ],
+        "violation_relations": [
+          "Only one coupled change occurs while the other remains unchanged: ."
+        ],
+        "violation_texts": [
+          "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=less, required; coffee stream: one declared collective group, state stream_state=continuous, required; cup: exactly 1, state cup_level=higher, required; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] Only one coupled change occurs while the other remains unchanged: ."
+        ],
+        "violation_weights": [
+          1.0
+        ]
+      },
+      {
+        "pair_quality": "minimal_verified",
+        "positive_relation": "The coupled changes occur together: coffee visibly exits the metal spout WHILE coffee bridges the gap from spout to cup WHILE dark coffee surface rises inside gray rim.",
+        "positive_text": "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=less, transitioning; coffee stream: one declared collective group, state stream_state=continuous, transitioning; cup: exactly 1, state cup_level=higher, transitioning; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The coupled changes occur together: coffee visibly exits the metal spout WHILE coffee bridges the gap from spout to cup WHILE dark coffee surface rises inside gray rim.",
+        "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=less, transitioning; coffee stream: one declared collective group, state stream_state=continuous, transitioning; cup: exactly 1, state cup_level=higher, transitioning; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+        "stage_id": "completion",
+        "violation_constraint_ids": [
+          [
+            "c3",
+            "c4"
+          ]
+        ],
+        "violation_kinds": [
+          "incomplete_transition"
+        ],
+        "violation_relations": [
+          "The declared cause occurs BUT the required target change does not become visible."
+        ],
+        "violation_texts": [
+          "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=less, transitioning; coffee stream: one declared collective group, state stream_state=continuous, transitioning; cup: exactly 1, state cup_level=higher, transitioning; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The declared cause occurs BUT the required target change does not become visible."
+        ],
+        "violation_weights": [
+          1.0
+        ]
+      },
+      {
+        "pair_quality": "minimal_verified",
+        "positive_relation": "The terminal facts source_amount=less, cup_level=higher REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts cup_level=lower, cup_level=higher do not coexist.",
+        "positive_text": "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=less, required; coffee stream: exactly 0, state stream_state=continuous, forbidden; cup: exactly 1, state cup_level=higher, required; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The terminal facts source_amount=less, cup_level=higher REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts cup_level=lower, cup_level=higher do not coexist.",
+        "shared_anchor": "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=less, required; coffee stream: exactly 0, state stream_state=continuous, forbidden; cup: exactly 1, state cup_level=higher, required; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled.",
+        "stage_id": "terminal",
+        "violation_constraint_ids": [
+          [
+            "c4"
+          ],
+          [
+            "c5"
+          ]
+        ],
+        "violation_kinds": [
+          "reversal",
+          "exclusion_broken"
+        ],
+        "violation_relations": [
+          "The valid terminal state returns to its mutually exclusive earlier state.",
+          "Copies of the same logical slot appear in mutually exclusive states at the same time."
+        ],
+        "violation_texts": [
+          "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=less, required; coffee stream: exactly 0, state stream_state=continuous, forbidden; cup: exactly 1, state cup_level=higher, required; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The valid terminal state returns to its mutually exclusive earlier state. [AND] The same logical slot has only its valid state; mutually exclusive facts cup_level=lower, cup_level=higher do not coexist.",
+          "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=less, required; coffee stream: exactly 0, state stream_state=continuous, forbidden; cup: exactly 1, state cup_level=higher, required; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The terminal facts source_amount=less, cup_level=higher REMAIN through the final frames. [AND] Copies of the same logical slot appear in mutually exclusive states at the same time."
+        ],
+        "violation_weights": [
+          0.5,
+          0.5
+        ]
+      }
+    ],
+    "texts": {
+      "global_semantic": "[ENTITY INVENTORY] The closed scene contains kettle: exactly 1; coffee stream: one declared collective group; cup: exactly 1; campfire: exactly 1. The reference first frame fixes these identities and initial layout. [INITIAL STATE] source_amount=more, stream_state=absent, cup_level=lower. [PHYSICAL EVENT] The stainless kettle at right tilts its left-pointing spout toward the gray cup and pours coffee into it while the campfire at left keeps flickering. [PERSISTENT PROTECTION] same stainless kettle, black handle, lid, and left-pointing spout; same small gray cup below-left of the kettle; campfire, logs, stones, and flames remain in their left-side region; campfire keeps flickering without reacting to the coffee transfer; snowy ground, framing, and daylight remain unchanged; no coffee spills onto the snow or campfire. [CLOSED WORLD] No additional external source, extra copy, unlisted object enters or appears; unoccupied scene regions remain empty. [CONSERVATION] Source loss and result gain stay coupled: tracked logical entity slots remain consistent; visible spout outflow crosses one stream path and raises the dark surface inside the gray cup. No result appears from an undeclared external source. [TERMINAL STATE] The same logical entity slots persist without duplicates; source_amount=less, stream_state=continuous, cup_level=higher remains visible through the final frames.",
+      "stage.completion.negative.0": "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=less, transitioning; coffee stream: one declared collective group, state stream_state=continuous, transitioning; cup: exactly 1, state cup_level=higher, transitioning; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The declared cause occurs BUT the required target change does not become visible.",
+      "stage.completion.positive": "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=less, transitioning; coffee stream: one declared collective group, state stream_state=continuous, transitioning; cup: exactly 1, state cup_level=higher, transitioning; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The coupled changes occur together: coffee visibly exits the metal spout WHILE coffee bridges the gap from spout to cup WHILE dark coffee surface rises inside gray rim.",
+      "stage.evolution.negative.0": "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=less, required; coffee stream: one declared collective group, state stream_state=continuous, required; cup: exactly 1, state cup_level=higher, required; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] Only one coupled change occurs while the other remains unchanged: .",
+      "stage.evolution.positive": "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=less, required; coffee stream: one declared collective group, state stream_state=continuous, required; cup: exactly 1, state cup_level=higher, required; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The declared change coffee visibly exits the metal spout occurs in its stated direction.",
+      "stage.onset.negative.0": "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=more, transitioning; coffee stream: one declared collective group, state stream_state=absent, transitioning; cup: exactly 1, state cup_level=lower, transitioning; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] dark coffee surface rises inside gray rim happens BEFORE coffee first leaves the left-pointing spout and reaches the gray cup.",
+      "stage.onset.positive": "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=more, transitioning; coffee stream: one declared collective group, state stream_state=absent, transitioning; cup: exactly 1, state cup_level=lower, transitioning; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] coffee first leaves the left-pointing spout and reaches the gray cup happens BEFORE dark coffee surface rises inside gray rim.",
+      "stage.setup.negative.0": "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=more, required; coffee stream: exactly 0, state stream_state=absent, forbidden; cup: exactly 1, state cup_level=lower, required; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] dark coffee surface rises inside gray rim is already present BEFORE coffee first leaves the left-pointing spout and reaches the gray cup.",
+      "stage.setup.positive": "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=more, required; coffee stream: exactly 0, state stream_state=absent, forbidden; cup: exactly 1, state cup_level=lower, required; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] coffee first leaves the left-pointing spout and reaches the gray cup happens BEFORE dark coffee surface rises inside gray rim.",
+      "stage.terminal.negative.0": "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=less, required; coffee stream: exactly 0, state stream_state=continuous, forbidden; cup: exactly 1, state cup_level=higher, required; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The valid terminal state returns to its mutually exclusive earlier state. [AND] The same logical slot has only its valid state; mutually exclusive facts cup_level=lower, cup_level=higher do not coexist.",
+      "stage.terminal.negative.1": "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=less, required; coffee stream: exactly 0, state stream_state=continuous, forbidden; cup: exactly 1, state cup_level=higher, required; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VIOLATED RELATION] The terminal facts source_amount=less, cup_level=higher REMAIN through the final frames. [AND] Copies of the same logical slot appear in mutually exclusive states at the same time.",
+      "stage.terminal.positive": "[STAGE ENTITY INVENTORY] Present now: kettle: exactly 1, state source_amount=less, required; coffee stream: exactly 0, state stream_state=continuous, forbidden; cup: exactly 1, state cup_level=higher, required; campfire: exactly 1, required. Counts and identities stay fixed; no duplicate state copy is created. No additional external source, extra copy, unlisted object exists. All globally protected identity, shape, material, scene, and camera attributes stay unchanged. Declared source loss and result gain remain coupled. [VALID RELATION] The terminal facts source_amount=less, cup_level=higher REMAIN through the final frames. [AND] The same logical slot has only its valid state; mutually exclusive facts cup_level=lower, cup_level=higher do not coexist."
+    },
+    "token_budget_priority": {
+      "causal": 2,
+      "entity_count": 0,
+      "protected": 1,
+      "style": 3
+    }
+  },
+  "design_revision": "fixed5-causal-r4",
+  "entity_ledger": {
+    "closed_world": {
+      "allowed_entity_ids": [
+        "kettle",
+        "coffee_stream",
+        "cup",
+        "campfire"
+      ],
+      "empty_regions": [],
+      "external_source_allowed": false,
+      "forbidden_new_categories": [
+        "external source",
+        "extra copy",
+        "unlisted object"
+      ],
+      "provenance": "derived"
+    },
+    "conservation": [
+      {
+        "observable_proxy": "tracked logical entity slots remain consistent",
+        "provenance": "derived",
+        "quantity": "instance_count",
+        "relation": "constant",
+        "rule_id": "entity_slots_constant",
+        "sinks": [
+          "kettle",
+          "coffee_stream",
+          "cup",
+          "campfire"
+        ],
+        "sources": [
+          "kettle",
+          "coffee_stream",
+          "cup",
+          "campfire"
+        ],
+        "tolerance": 0.0
+      },
+      {
+        "observable_proxy": "visible spout outflow crosses one stream path and raises the dark surface inside the gray cup",
+        "provenance": "derived",
+        "quantity": "material_proxy",
+        "relation": "coupled_monotonic",
+        "rule_id": "conservation_c3",
+        "sinks": [
+          "stream_state",
+          "cup_level"
+        ],
+        "sources": [
+          "source_amount"
+        ],
+        "tolerance": 0.1
+      }
+    ],
+    "issues": [
+      "coffee_stream: exact visual count unresolved; retained as group"
+    ],
+    "lifecycles": [
+      {
+        "entity_id": "kettle",
+        "from_stage": "setup",
+        "from_state": "more",
+        "identity_preserved": true,
+        "mutually_exclusive_states": [
+          [
+            "more",
+            "less"
+          ]
+        ],
+        "provenance": "derived",
+        "to_stage": "terminal",
+        "to_state": "less"
+      },
+      {
+        "entity_id": "coffee_stream",
+        "from_stage": "setup",
+        "from_state": "absent",
+        "identity_preserved": true,
+        "mutually_exclusive_states": [
+          [
+            "absent",
+            "continuous"
+          ]
+        ],
+        "provenance": "derived",
+        "to_stage": "terminal",
+        "to_state": "continuous"
+      },
+      {
+        "entity_id": "cup",
+        "from_stage": "setup",
+        "from_state": "lower",
+        "identity_preserved": true,
+        "mutually_exclusive_states": [
+          [
+            "lower",
+            "higher"
+          ]
+        ],
+        "provenance": "derived",
+        "to_stage": "terminal",
+        "to_state": "higher"
+      }
+    ],
+    "slots": [
+      {
+        "aliases": [],
+        "canonical_mention": "the same stainless kettle with black handle and left-pointing spout at mid-right",
+        "cardinality": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "entity_id": "kettle",
+        "invariant_attributes": [
+          "same stainless kettle, black handle, lid, and left-pointing spout",
+          "same small gray cup below-left of the kettle",
+          "campfire, logs, stones, and flames remain in their left-side region",
+          "campfire keeps flickering without reacting to the coffee transfer",
+          "snowy ground, framing, and daylight remain unchanged",
+          "no coffee spills onto the snow or campfire"
+        ],
+        "mutable_attributes": [
+          "coffee remaining at pictured source"
+        ],
+        "persistent_identity": true,
+        "provenance": "default",
+        "role": "source"
+      },
+      {
+        "aliases": [],
+        "canonical_mention": "coffee traveling from the pictured kettle spout to the cup",
+        "cardinality": {
+          "exact": null,
+          "kind": "group",
+          "maximum": null,
+          "minimum": null
+        },
+        "entity_id": "coffee_stream",
+        "invariant_attributes": [
+          "same stainless kettle, black handle, lid, and left-pointing spout",
+          "same small gray cup below-left of the kettle",
+          "campfire, logs, stones, and flames remain in their left-side region",
+          "campfire keeps flickering without reacting to the coffee transfer",
+          "snowy ground, framing, and daylight remain unchanged",
+          "no coffee spills onto the snow or campfire"
+        ],
+        "mutable_attributes": [
+          "pictured transfer continuity"
+        ],
+        "persistent_identity": true,
+        "provenance": "derived",
+        "role": "carrier"
+      },
+      {
+        "aliases": [],
+        "canonical_mention": "the same small gray ceramic cup below and left of the kettle",
+        "cardinality": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "entity_id": "cup",
+        "invariant_attributes": [
+          "same stainless kettle, black handle, lid, and left-pointing spout",
+          "same small gray cup below-left of the kettle",
+          "campfire, logs, stones, and flames remain in their left-side region",
+          "campfire keeps flickering without reacting to the coffee transfer",
+          "snowy ground, framing, and daylight remain unchanged",
+          "no coffee spills onto the snow or campfire"
+        ],
+        "mutable_attributes": [
+          "coffee level in gray cup"
+        ],
+        "persistent_identity": true,
+        "provenance": "default",
+        "role": "sink"
+      },
+      {
+        "aliases": [],
+        "canonical_mention": "the same small log campfire on the snowy ground at left",
+        "cardinality": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "entity_id": "campfire",
+        "invariant_attributes": [
+          "same stainless kettle, black handle, lid, and left-pointing spout",
+          "same small gray cup below-left of the kettle",
+          "campfire, logs, stones, and flames remain in their left-side region",
+          "campfire keeps flickering without reacting to the coffee transfer",
+          "snowy ground, framing, and daylight remain unchanged",
+          "no coffee spills onto the snow or campfire"
+        ],
+        "mutable_attributes": [],
+        "persistent_identity": true,
+        "provenance": "default",
+        "role": "environment"
+      }
+    ],
+    "stage_presence": [
+      {
+        "entity_id": "kettle",
+        "logical_count": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "setup",
+        "state_facts": [
+          "source_amount=more"
+        ],
+        "visible": "required"
+      },
+      {
+        "entity_id": "coffee_stream",
+        "logical_count": {
+          "exact": 0,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "setup",
+        "state_facts": [
+          "stream_state=absent"
+        ],
+        "visible": "forbidden"
+      },
+      {
+        "entity_id": "cup",
+        "logical_count": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "setup",
+        "state_facts": [
+          "cup_level=lower"
+        ],
+        "visible": "required"
+      },
+      {
+        "entity_id": "campfire",
+        "logical_count": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "setup",
+        "state_facts": [],
+        "visible": "required"
+      },
+      {
+        "entity_id": "kettle",
+        "logical_count": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "onset",
+        "state_facts": [
+          "source_amount=more"
+        ],
+        "visible": "transitioning"
+      },
+      {
+        "entity_id": "coffee_stream",
+        "logical_count": {
+          "exact": null,
+          "kind": "group",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "onset",
+        "state_facts": [
+          "stream_state=absent"
+        ],
+        "visible": "transitioning"
+      },
+      {
+        "entity_id": "cup",
+        "logical_count": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "onset",
+        "state_facts": [
+          "cup_level=lower"
+        ],
+        "visible": "transitioning"
+      },
+      {
+        "entity_id": "campfire",
+        "logical_count": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "onset",
+        "state_facts": [],
+        "visible": "required"
+      },
+      {
+        "entity_id": "kettle",
+        "logical_count": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "evolution",
+        "state_facts": [
+          "source_amount=less"
+        ],
+        "visible": "required"
+      },
+      {
+        "entity_id": "coffee_stream",
+        "logical_count": {
+          "exact": null,
+          "kind": "group",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "evolution",
+        "state_facts": [
+          "stream_state=continuous"
+        ],
+        "visible": "required"
+      },
+      {
+        "entity_id": "cup",
+        "logical_count": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "evolution",
+        "state_facts": [
+          "cup_level=higher"
+        ],
+        "visible": "required"
+      },
+      {
+        "entity_id": "campfire",
+        "logical_count": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "evolution",
+        "state_facts": [],
+        "visible": "required"
+      },
+      {
+        "entity_id": "kettle",
+        "logical_count": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "completion",
+        "state_facts": [
+          "source_amount=less"
+        ],
+        "visible": "transitioning"
+      },
+      {
+        "entity_id": "coffee_stream",
+        "logical_count": {
+          "exact": null,
+          "kind": "group",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "completion",
+        "state_facts": [
+          "stream_state=continuous"
+        ],
+        "visible": "transitioning"
+      },
+      {
+        "entity_id": "cup",
+        "logical_count": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "completion",
+        "state_facts": [
+          "cup_level=higher"
+        ],
+        "visible": "transitioning"
+      },
+      {
+        "entity_id": "campfire",
+        "logical_count": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "completion",
+        "state_facts": [],
+        "visible": "required"
+      },
+      {
+        "entity_id": "kettle",
+        "logical_count": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "terminal",
+        "state_facts": [
+          "source_amount=less"
+        ],
+        "visible": "required"
+      },
+      {
+        "entity_id": "coffee_stream",
+        "logical_count": {
+          "exact": 0,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "terminal",
+        "state_facts": [
+          "stream_state=continuous"
+        ],
+        "visible": "forbidden"
+      },
+      {
+        "entity_id": "cup",
+        "logical_count": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "terminal",
+        "state_facts": [
+          "cup_level=higher"
+        ],
+        "visible": "required"
+      },
+      {
+        "entity_id": "campfire",
+        "logical_count": {
+          "exact": 1,
+          "kind": "exact",
+          "maximum": null,
+          "minimum": null
+        },
+        "stage_id": "terminal",
+        "state_facts": [],
+        "visible": "required"
+      }
+    ]
+  },
+  "frames": 25,
+  "input_schema_version": "trace-writer-v1",
+  "issues": [
+    "coffee_stream: exact visual count unresolved; retained as group"
+  ],
+  "mode": "i2v",
+  "raw_plan_sha256": "3862e9b2568e5b77559e3fdf004e2c920974d8eb8268bc7654f721ccadf56cad",
+  "sample_id": "P20",
+  "stage_ids": [
+    "setup",
+    "onset",
+    "evolution",
+    "completion",
+    "terminal"
+  ],
+  "temporal": {
+    "boundaries": [
+      {
+        "frames": [
+          2,
+          3
+        ],
+        "left": "setup",
+        "right": "onset",
+        "right_weights": [
+          0.25925925925925924,
+          0.7407407407407407
+        ]
+      },
+      {
+        "frames": [
+          6,
+          7
+        ],
+        "left": "onset",
+        "right": "evolution",
+        "right_weights": [
+          0.25925925925925924,
+          0.7407407407407407
+        ]
+      },
+      {
+        "frames": [
+          16,
+          17
+        ],
+        "left": "evolution",
+        "right": "completion",
+        "right_weights": [
+          0.25925925925925924,
+          0.7407407407407407
+        ]
+      },
+      {
+        "frames": [
+          20,
+          21
+        ],
+        "left": "completion",
+        "right": "terminal",
+        "right_weights": [
+          0.25925925925925924,
+          0.7407407407407407
+        ]
+      }
+    ],
+    "core_lengths": [
+      2,
+      2,
+      8,
+      2,
+      3
+    ],
+    "crossfade_tokens": 2,
+    "interpolation": "smoothstep_c1",
+    "mode": "plan_prior",
+    "profile": "continuous",
+    "spans": [
+      {
+        "core": [
+          0,
+          1
+        ],
+        "outgoing": [
+          2,
+          3
+        ],
+        "stage_id": "setup"
+      },
+      {
+        "core": [
+          4,
+          5
+        ],
+        "outgoing": [
+          6,
+          7
+        ],
+        "stage_id": "onset"
+      },
+      {
+        "core": [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "outgoing": [
+          16,
+          17
+        ],
+        "stage_id": "evolution"
+      },
+      {
+        "core": [
+          18,
+          19
+        ],
+        "outgoing": [
+          20,
+          21
+        ],
+        "stage_id": "completion"
+      },
+      {
+        "core": [
+          22,
+          23,
+          24
+        ],
+        "outgoing": [],
+        "stage_id": "terminal"
+      }
+    ],
+    "weights": [
+      [
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        0.740741,
+        0.259259,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.259259,
+        0.740741,
+        1.0,
+        1.0,
+        1.0
+      ]
+    ]
+  },
+  "validation": {
+    "errors": 0,
+    "issues": [
+      {
+        "code": "planner_assumption",
+        "message": "The kettle tilts leftward and slightly downward so its pictured spout directs coffee into the cup below-left.",
+        "path": "$.assumptions[0]",
+        "severity": "warning"
+      },
+      {
+        "code": "planner_warning",
+        "message": "The coffee carrier is absent initially and therefore has no reference-frame box.",
+        "path": "$.warnings[0]",
+        "severity": "warning"
+      },
+      {
+        "code": "planner_warning",
+        "message": "The opaque kettle hides its internal level; source decrease is grounded to cumulative visible spout outflow rather than invented interior detail.",
+        "path": "$.warnings[1]",
+        "severity": "warning"
+      },
+      {
+        "code": "planner_warning",
+        "message": "All boxes are visually estimated from the reference and remain unapproved.",
+        "path": "$.warnings[2]",
+        "severity": "warning"
+      }
+    ],
+    "warnings": 4
+  }
+}

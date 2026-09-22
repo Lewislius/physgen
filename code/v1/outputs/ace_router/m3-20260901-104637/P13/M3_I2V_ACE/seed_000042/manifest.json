@@ -1,0 +1,347 @@
+{
+  "ace": {
+    "cfg_scope": "conditional_only",
+    "diagnostics": "full",
+    "enabled": true,
+    "formula": "semantic + relative_cap(scale * (positive - counterfactual), semantic)",
+    "fp32_delta": true,
+    "lambda0": 0.1,
+    "layer_gates": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "layer_preset": "mid_b",
+    "residual_cap_eps": 1e-12,
+    "residual_cap_ratio": 0.02,
+    "residual_mode": "positive_minus_counterfactual",
+    "step_gates": [
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1
+    ],
+    "step_preset": "safe_i2v_v1"
+  },
+  "contexts": {
+    "causal_origin_prompt_prefixed": false,
+    "cfg_negative_prompt": "",
+    "compiler_version": "ace-conditioning-mvp-v1",
+    "conditioning_mode": "compiled",
+    "counterfactual_text": "A continuous water stream enters the glass and raises its level while the pitcher water level remains unchanged.",
+    "positive_text": "A continuous water stream connects the pitcher and glass while the pitcher level falls and the glass level rises together.",
+    "semantic_text": "A transparent pitcher pours water into an empty clear glass; the pitcher level falls while the glass level rises. Required visible entities: one transparent pitcher containing water; one empty clear glass; level support surface. At the beginning: pitcher: intact and visibly filled with water; glass: intact, clear, empty, and spatially separated from the pitcher spout. Required state changes: pitcher water level: high to lower; glass water level: empty to higher; water configuration: source volume to stream and target volume. These event variables are allowed to change: pitcher orientation; pitcher water level; glass water level; water-stream shape. Preserve throughout: static side-view camera; container identities and transparency; level surface and background; one transparent pitcher; one empty clear glass at the start; the same water and level surface.",
+    "semantic_variant": "compiled_i2v",
+    "token_lengths": {
+      "cfg_negative": 1,
+      "counterfactual": 25,
+      "positive": 26,
+      "semantic": 184
+    },
+    "used_by_model": {
+      "cfg_negative": false,
+      "cfg_unconditional_empty": true,
+      "counterfactual": true,
+      "positive": true,
+      "semantic": true
+    },
+    "utf8_sha256": {
+      "cfg_negative": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "counterfactual": "f77ba90a943a0d2474f4f4e4a57bc990e2fe4e646d04ec438736fddc90568ea2",
+      "positive": "bb792d44b0ef511ac33745cb31065d0c8331b59b5cd3a83c4a7c09cded4b250a",
+      "semantic": "245de41a411aae23e4246e095bfa1b41c234ebe111f9f32d0f697ab0acb334ad"
+    }
+  },
+  "diagnostics": {
+    "all_finite": true,
+    "applied_to_semantic_max": 0.020016467198729515,
+    "applied_to_semantic_min": 0.0014964570291340351,
+    "candidate_to_semantic_max": 0.04653476923704147,
+    "candidate_to_semantic_min": 0.0014964211732149124,
+    "clip_coefficient_min": 0.42978614568710327,
+    "clip_fraction": 0.418,
+    "clipped_record_count": 209,
+    "mode": "full",
+    "raw_delta_l2_max": 268.3316955566406,
+    "raw_delta_l2_min": 35.365013122558594,
+    "record_count": 500,
+    "scaled_to_semantic_max": 0.020016467198729515,
+    "scaled_to_semantic_min": 0.0014964570291340351
+  },
+  "generation": {
+    "convert_model_dtype": true,
+    "first_frame_reanchor_count": 51,
+    "fps": 24,
+    "frame_num": 97,
+    "guide_scale": 3.5,
+    "height": 704,
+    "max_area": 901120,
+    "offload_model": true,
+    "sample_solver": "unipc",
+    "sampling_steps": 50,
+    "seed": 42,
+    "shift": 5.0,
+    "t5_cpu": true,
+    "width": 1280
+  },
+  "input_hashes": {
+    "causal_json": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P13/P13-cplus-cminus.json",
+      "sha256": "a081e89793cbfeed084361504278685ae83c390a43a12c560a16eac1afd80aca",
+      "size_bytes": 1008
+    },
+    "i0_image": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P13/P13-i0-1280x704.png",
+      "sha256": "73d5e54f3c674d1b7649bc138ed0354e8642fd94e73be4bb511ac7f8c14912df",
+      "size_bytes": 1170213
+    },
+    "i0_metadata_json": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P13/P13-i0.json",
+      "sha256": "855ca902f61b931181c50d9f0dd85c27cbc4e2c4f89d6555cc8183e01b0a9bb4",
+      "size_bytes": 1619
+    },
+    "model_reference_image": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/outputs/ace_router/m3-20260901-104637/P13/M3_I2V_ACE/seed_000042/reference_input.png",
+      "sha256": "1c937bb9e3385b09adbdfff4b2ad79f355115dbfa3212c9f136b58d60ec0613f",
+      "size_bytes": 882302
+    },
+    "origin_txt": {
+      "path": "/home/liuzhirui/Project/physGen/code/v1/demo/P13/P13-origin.txt",
+      "sha256": "6e614c816a9b86d4b2d71d13f6819e712dec18f54ce0b32b0639c8f4b6eba3f0",
+      "size_bytes": 114
+    },
+    "selection_manifest": null,
+    "sizing_image": null
+  },
+  "method": "M3_I2V_ACE",
+  "output_video": "/home/liuzhirui/Project/physGen/code/v1/outputs/ace_router/m3-20260901-104637/P13/M3_I2V_ACE/seed_000042/video.mp4",
+  "output_video_sha256": "cc2ad48c8c9985a33dd931879708c3e94bf84109c2e22e2cfedf3f727756b95a",
+  "reference": {
+    "crop_box": [
+      0,
+      0,
+      1280,
+      704
+    ],
+    "crop_policy": "center_crop_to_20x11_or_11x20_then_lanczos_resize",
+    "orientation": "landscape",
+    "original_size": [
+      1280,
+      704
+    ],
+    "prepared_artifact_path": "/home/liuzhirui/Project/physGen/code/v1/outputs/ace_router/m3-20260901-104637/P13/M3_I2V_ACE/seed_000042/reference_input.png",
+    "prepared_artifact_sha256": "1c937bb9e3385b09adbdfff4b2ad79f355115dbfa3212c9f136b58d60ec0613f",
+    "prepared_size": [
+      1280,
+      704
+    ],
+    "resolved_output_size": [
+      1280,
+      704
+    ],
+    "selection_manifest": null,
+    "source_path": "/home/liuzhirui/Project/physGen/code/v1/demo/P13/P13-i0-1280x704.png",
+    "source_sha256": "73d5e54f3c674d1b7649bc138ed0354e8642fd94e73be4bb511ac7f8c14912df",
+    "used_as_model_condition": true,
+    "used_for_output_sizing_only": false
+  },
+  "run_id": "m3-20260901-104637",
+  "runtime": {
+    "cuda_capability": [
+      8,
+      6
+    ],
+    "cuda_memory_reserved_bytes": 34779168768,
+    "cuda_runtime": "12.8",
+    "cudnn": 91002,
+    "denoising_step_timing": {
+      "all_steps_median_seconds": 10.210296386718749,
+      "count": 50,
+      "max_seconds": 10.22743359375,
+      "min_seconds": 9.9680244140625,
+      "per_step_seconds": [
+        9.9680244140625,
+        10.0093779296875,
+        10.0466630859375,
+        10.0623076171875,
+        10.087671875,
+        10.11553515625,
+        10.1383515625,
+        10.151802734375,
+        10.16170703125,
+        10.175900390625,
+        10.1777001953125,
+        10.18572265625,
+        10.189271484375,
+        10.1937001953125,
+        10.2188359375,
+        10.2063759765625,
+        10.206865234375,
+        10.208416015625,
+        10.208220703125,
+        10.205041015625,
+        10.2053994140625,
+        10.2126884765625,
+        10.2062109375,
+        10.2070947265625,
+        10.2110400390625,
+        10.211595703125,
+        10.2109990234375,
+        10.2138564453125,
+        10.2120498046875,
+        10.2211396484375,
+        10.212720703125,
+        10.2185419921875,
+        10.22308984375,
+        10.2185283203125,
+        10.2189814453125,
+        10.218017578125,
+        10.2194599609375,
+        10.2270048828125,
+        10.210671875,
+        10.2140771484375,
+        10.21555859375,
+        10.2171142578125,
+        10.2131318359375,
+        10.214765625,
+        10.22743359375,
+        10.2099208984375,
+        10.2088896484375,
+        10.2134814453125,
+        10.213541015625,
+        10.207732421875
+      ],
+      "stable_median_seconds": 10.210671875,
+      "warmup_first_step_seconds": 9.9680244140625
+    },
+    "diffusers": "0.36.0",
+    "elapsed_seconds": 642.0731500419788,
+    "gpu": "NVIDIA RTX A6000",
+    "peak_cuda_bytes": 24456204800,
+    "platform": "Linux-5.15.0-117-generic-x86_64-with-glibc2.35",
+    "python": "3.10.19",
+    "torch": "2.8.0+cu128"
+  },
+  "sample_id": "P13",
+  "seed": 42,
+  "status": "success",
+  "upstream": {
+    "checkpoint": "/home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B",
+    "checkpoint_hashes": {
+      "config.json": "d1fea36899d00c2501b836c13ad65af56e2f9529ba622e50886d3f5c3e6c02bc",
+      "diffusion_pytorch_model.safetensors.index.json": "bfa2337f1163e195d24151a72298daf34a620543898109be47e414c8daa5b3fe"
+    },
+    "checkpoint_model_config": {
+      "_class_name": "WanModel",
+      "dim": 3072,
+      "in_dim": 48,
+      "model_type": "ti2v",
+      "num_heads": 24,
+      "num_layers": 30,
+      "out_dim": 48,
+      "text_len": 512
+    },
+    "source_hashes": {
+      "wan/configs/wan_ti2v_5B.py": "26d9e7b9c555eb0900b13751267a596556f869e7aee2d1572afc2a0a4a76f4c7",
+      "wan/modules/attention.py": "c79158e1cc9b7a17bc934e6acb34f42e588a41adb89801146957cda2d6d4379d",
+      "wan/modules/model.py": "8b39115298ca7322806c19b3165b3f435a94fe4a58f0624aec24f8e7f4997432",
+      "wan/modules/t5.py": "8b0cebf3192c542f92a344255a06c203df3ba24160715899a055cc8de0cd930f",
+      "wan/textimage2video.py": "228f2fabf23014ed41ec6b8cd713d5be7371bb558501c71a62a0258b491a877b"
+    },
+    "wan_git_head": "08e890ff01ff8daf9161db472f362efe5d6ba656",
+    "wan_repo": "/home/liuzhirui/model/Wan2.2",
+    "weight_shards": [
+      {
+        "mtime_ns": 1769032249319825600,
+        "name": "diffusion_pytorch_model-00001-of-00003.safetensors",
+        "size_bytes": 9825014472
+      },
+      {
+        "mtime_ns": 1769032417046557795,
+        "name": "diffusion_pytorch_model-00002-of-00003.safetensors",
+        "size_bytes": 9995661736
+      },
+      {
+        "mtime_ns": 1769020338553636583,
+        "name": "diffusion_pytorch_model-00003-of-00003.safetensors",
+        "size_bytes": 178558176
+      }
+    ]
+  },
+  "warnings": [
+    "selection_manifest_missing"
+  ]
+}

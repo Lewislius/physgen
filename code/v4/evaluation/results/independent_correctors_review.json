@@ -1,0 +1,67 @@
+{
+  "tests": 116,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "scope": "CPU native-width independent correctors and existing regression tests; no GPU/Wan/teacher generation test",
+  "modules": [
+    "evaluation.contract_checks",
+    "evaluation.test_condition_prior",
+    "evaluation.test_cross_attention",
+    "evaluation.test_environments",
+    "evaluation.test_independent_correctors",
+    "evaluation.test_launchers",
+    "evaluation.test_monitoring",
+    "evaluation.test_preparation",
+    "evaluation.test_training_runtime"
+  ],
+  "failed_tests": [],
+  "verification_runs": [
+    {
+      "tests": 116,
+      "passed": 114,
+      "errors": 2,
+      "seconds": 96.019,
+      "note": "Two DataLoader spawn checks could not use the stdin test harness; all model and architecture checks passed."
+    },
+    {
+      "tests": 2,
+      "passed": 1,
+      "errors": 1,
+      "seconds": 34.595,
+      "note": "Module-entry retry: successful-read test blocked by sandbox IPC socket permission; worker-error propagation passed."
+    },
+    {
+      "tests": 2,
+      "passed": 2,
+      "errors": 0,
+      "seconds": 7.1,
+      "note": "Both DataLoader checks passed outside the sandbox after approval, using the same module-entry command and unchanged tests."
+    },
+    {
+      "tests": 3,
+      "passed": 3,
+      "errors": 0,
+      "seconds": 15.097,
+      "note": "Final targeted regressions passed after covering the independent latent-only prior to image_text migration, whose new prior.text must also be allowed."
+    }
+  ],
+  "passed": 116,
+  "status": "passed",
+  "independent_model_tests": 27,
+  "parameter_counts": {
+    "initialization": 20585184,
+    "each_A": 136224515,
+    "all_six_A": 817347090,
+    "A_stage_trainable": 837932274,
+    "B_stage_trainable": 136224516,
+    "total_AB": 974156790
+  },
+  "static_corrector_gib_per_rank": {
+    "A": 12.993639752268791,
+    "B": 5.1514444425702095,
+    "AB": 14.5160673558712
+  },
+  "memory_formula": "total_params * 4 + active_params * 12 bytes; excludes Wan, activations, communication, VAE/teacher, allocator",
+  "legacy_checkpoint_policy": "Missing parameter_sharing remains shared for RESUME/inference; current A/AB INIT_FROM splits copies and recreates optimizer."
+}

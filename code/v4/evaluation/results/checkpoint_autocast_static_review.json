@@ -1,0 +1,56 @@
+{
+  "status": "passed",
+  "utc": "2026-09-12T12:56:41.510661+00:00",
+  "python_files": 35,
+  "shell_files": 7,
+  "yaml_files": 5,
+  "changed_markdown": 5,
+  "local_links_checked": 36,
+  "unique_related_cpu_tests": 22,
+  "gpu_training_executed": false,
+  "validation_records": [
+    "checkpoint_autocast_before.json",
+    "checkpoint_autocast_review.json",
+    "formal_a1_launchers_review.json"
+  ],
+  "training_amp_cache_enabled": false,
+  "submissions": [
+    {
+      "file": "train/train_wisa_native_p_4x48g.yaml",
+      "resource_pool": "ada-24g",
+      "gpus": 2,
+      "phase": "A1",
+      "check_steps": 0,
+      "optimizer_steps": 500,
+      "sample_limit": 1000,
+      "accumulation": 4,
+      "validation_every": 250,
+      "save_every": 250
+    },
+    {
+      "file": "train/train_wisa_native_p_4x80g.yaml",
+      "resource_pool": "amp-80g",
+      "gpus": 4,
+      "phase": "A1",
+      "check_steps": 0,
+      "optimizer_steps": 500,
+      "sample_limit": 1000,
+      "accumulation": 2,
+      "validation_every": 250,
+      "save_every": 250
+    },
+    {
+      "file": "train/train_wisa_native_p_4x96g.yaml",
+      "resource_pool": "blk-96g",
+      "gpus": 1,
+      "phase": "A1",
+      "check_steps": 0,
+      "optimizer_steps": 500,
+      "sample_limit": 1000,
+      "accumulation": 8,
+      "validation_every": 250,
+      "save_every": 250
+    }
+  ],
+  "training_source_sha256": "62e91522a438beb2f5c2aa3041f6914c1d0258b6677d10463c5b36320ca55ae5"
+}
