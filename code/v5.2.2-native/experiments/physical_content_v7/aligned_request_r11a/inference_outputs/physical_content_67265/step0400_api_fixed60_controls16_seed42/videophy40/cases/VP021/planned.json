@@ -1,0 +1,35 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/aligned_request_r11a/runs/physical_content_67265/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP021",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/aligned_request_r11a/snapshots/20261103T143415Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/data_revision_qwen38/benchmark_inputs/videophy60_first_image_request_v1",
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "A skateboarder rolls along a smooth concrete path, maintaining a steady pace.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP021/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "Orange wheels maintain continuous contact with the concrete, enabling forward rolling without slipping.\nRider weight presses the board down, keeping trucks loaded as the wheels rotate.\nSmooth concrete offers low resistance, allowing a steady pace to persist over time.\nFeet planted on the deck stabilize the board as it travels along the path.",
+  "positive_relations": [
+    "Orange wheels maintain continuous contact with the concrete, enabling forward rolling without slipping.",
+    "Rider weight presses the board down, keeping trucks loaded as the wheels rotate.",
+    "Smooth concrete offers low resistance, allowing a steady pace to persist over time.",
+    "Feet planted on the deck stabilize the board as it travels along the path."
+  ],
+  "negative_analysis": "The rider's weight presses down on the skateboard deck, keeping the wheels grounded on the pavement.\nIf the skateboard rolls, the wheels rotate against the ground, prompting the rider to shift their feet.\nThe person's legs make small adjustments to maintain balance as the skateboard tilts or moves.",
+  "donor": null,
+  "scope": "Own first image, original request and API reasoning",
+  "seconds": 83.3293055742979
+}

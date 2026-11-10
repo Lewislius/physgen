@@ -1,0 +1,78 @@
+{
+  "revision": "physical_variants_20261029_r1",
+  "paths": {
+    "wan_code": "/home/liuzhirui/model/Wan2.2",
+    "wan_checkpoint": "/home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B",
+    "qwen_checkpoint": "/home/liuzhirui/model/Qwen3-VL/Qwen3-VL-8B-Instruct",
+    "cache": "/home/liuzhirui/Project/physGen/data_cache/wisa_4000",
+    "annotations": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/q_workspace_regression_20261028/wisa_supervision_sources/matched_annotation_sources.jsonl",
+    "supervision_cache": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_variants/supervision_cache",
+    "runs": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_variants/runs"
+  },
+  "model": {
+    "width": 3072,
+    "qwen_width": 4096,
+    "q_tokens": 128,
+    "q_heads": 32,
+    "rounds": 2,
+    "condition_every": 3,
+    "lora_rank": 32
+  },
+  "knowledge": {
+    "image_size": [
+      480,
+      832
+    ],
+    "video_size": [
+      480,
+      832
+    ],
+    "max_text_tokens": 4096,
+    "gradient_checkpointing": true,
+    "reasoning_mode": "q_seed128_message",
+    "latent_reasoning_steps": 2,
+    "reasoning_tokens": 128,
+    "reasoning_max_tokens": 128,
+    "reasoning_cache": 16,
+    "freeze_backbone": true
+  },
+  "verifier": {
+    "kind": "none"
+  },
+  "geometry": {
+    "mode": "native",
+    "rgb_size": [
+      480,
+      832
+    ]
+  },
+  "stages": {
+    "interface": 64,
+    "joint": 160
+  },
+  "train": {
+    "seed": 42,
+    "accumulation": 4,
+    "new_lr": 0.0001,
+    "joint_lr": 5e-05,
+    "wan_lora_lr": 1e-05,
+    "minimum_lr_ratio": 0.2,
+    "warmup": 8,
+    "wan_warmup": 16,
+    "grad_clip": 1.0,
+    "text_dropout": 0.1,
+    "save_every": 16,
+    "gradient_checkpointing": true
+  },
+  "inference": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "variant": "v5_ce",
+  "loss": {
+    "aux_weight": 0.05,
+    "temperature": 1.0
+  }
+}

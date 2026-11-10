@@ -1,0 +1,37 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_joint_read_r16a/runs/physical_content_68429/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP057",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_joint_read_r16a/snapshots/20261109T040426Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs",
+  "guidance": {
+    "kind": "joint_two_branch_cfg",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+    "physical_residual_scale": null,
+    "native_definition": "Same trained Wan LoRA with all physical additions disabled"
+  },
+  "caption": "A player kicks a soccer ball which hits a lamp post, the ball rebounding at an angle.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP057/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler",
+    "guidance_composition": "joint_two_branch_cfg"
+  },
+  "positive_analysis": "1. Player’s foot contacts ball, initiating motion toward unseen lamp post.  \n2. Ball’s trajectory curves upward, approaching vertical post.  \n3. Ball’s surface reflects light as it travels through air.  \n4. Post’s position remains fixed, awaiting ball’s impact.",
+  "positive_relations": [
+    "Player’s foot contacts ball, initiating motion toward unseen lamp post.",
+    "Ball’s trajectory curves upward, approaching vertical post.",
+    "Ball’s surface reflects light as it travels through air.",
+    "Post’s position remains fixed, awaiting ball’s impact."
+  ],
+  "negative_analysis": "1. Player’s foot contacts ball, sending it upward with force, altering its trajectory.\n2. Ball’s motion causes air displacement, creating visible wake as it ascends.\n3. Player’s body leans back, counterbalancing momentum from kicking motion.\n4. Shadows lengthen across field as sunlight angle shifts during play.",
+  "donor": null,
+  "scope": "Own first image, original request and original Qwen reasoning",
+  "seconds": 122.557030372991
+}

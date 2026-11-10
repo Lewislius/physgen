@@ -1,0 +1,33 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_execution_r10b/runs/physical_content_67008/step0400.pt",
+  "step": 400,
+  "mode": "reasoning_swapped",
+  "case": "VP026",
+  "seed": 42,
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "Two people stretch a bungee cord, extending it to its maximum length.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP026/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "1. Worker holds suction cup against glass; adhesive bond persists despite applied force.\n2. Picture remains affixed to glass as suction cup lifts panel; no detachment observed.\n3. Worker’s posture shifts slightly; suction cup maintains contact with glass surface.\n4. No visible fluid movement; suction process relies on air displacement, not liquid flow.",
+  "positive_relations": [
+    "Worker holds suction cup against glass; adhesive bond persists despite applied force.",
+    "Picture remains affixed to glass as suction cup lifts panel; no detachment observed.",
+    "Worker’s posture shifts slightly; suction cup maintains contact with glass surface.",
+    "No visible fluid movement; suction process relies on air displacement, not liquid flow."
+  ],
+  "negative_analysis": "1. Ocean surface ripples continuously due to wind and wave action.\n2. Black cylindrical object suspended by ropes remains stable unless force alters its position.\n3. Ropes transmit tension from the orange device to the cylinder, maintaining suspension.\n4. Sea water may gradually erode or corrode metal components if exposed over time.",
+  "donor": "VP009",
+  "scope": "Only positive reasoning text replaced; own image/request, native T5 and own negative C retained",
+  "seconds": 90.1471174377948
+}

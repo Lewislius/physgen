@@ -1,0 +1,37 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_response_fusion_r16/runs/physical_content_68699/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP056",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_response_fusion_r16/snapshots/20261110T034127Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs",
+  "guidance": {
+    "kind": "joint_two_branch_cfg",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+    "physical_residual_scale": null,
+    "native_definition": "Same trained Wan LoRA with all physical additions disabled"
+  },
+  "caption": "Arrows are shot at a moving target, with some arrows hitting and some missing visibly.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP056/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler",
+    "guidance_composition": "joint_two_branch_cfg"
+  },
+  "positive_analysis": "1. Arrows fly toward targets as archers release them from bows.\n2. Some arrows land in bullseyes while others miss, visible on targets.\n3. Wind may shift arrow paths during flight, altering impact points.\n4. Archers’ stance and focus persist as they prepare for next shots.",
+  "positive_relations": [
+    "Arrows fly toward targets as archers release them from bows.",
+    "Some arrows land in bullseyes while others miss, visible on targets.",
+    "Wind may shift arrow paths during flight, altering impact points.",
+    "Archers’ stance and focus persist as they prepare for next shots."
+  ],
+  "negative_analysis": "1. Archer’s stance positions bow, ready to release arrow toward target.\n2. Wind may shift arrow’s flight path mid-air toward or away from bullseye.\n3. Grass beneath archers’ feet remains static unless disturbed by movement.\n4. Sunlight continues illuminating scene, casting consistent shadows on ground.",
+  "donor": null,
+  "scope": "Own first image, original request and original Qwen reasoning; the declared direct/request-bound/joint global execution writes and the R15C local video-state operator are all active",
+  "seconds": 104.7323526442051
+}

@@ -1,0 +1,37 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_response_fusion_r16/runs/physical_content_68698/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP044",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_response_fusion_r16/snapshots/20261110T040241Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs",
+  "guidance": {
+    "kind": "joint_two_branch_cfg",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+    "physical_residual_scale": null,
+    "native_definition": "Same trained Wan LoRA with all physical additions disabled"
+  },
+  "caption": "Multiple paragliders launch sequentially from a cliff edge, showcasing the staggered takeoffs and individual flight paths.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP044/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler",
+    "guidance_composition": "joint_two_branch_cfg"
+  },
+  "positive_analysis": "1. Paragliders above cliff show staggered launch positions, each canopy inflated by rising air currents.\n2. Wind pushes canopies upward, altering flight paths as pilots adjust body weight distribution.\n3. Air flows continuously over wings, sustaining lift as paragliders ascend from cliff edge.\n4. Paragliders maintain separation, avoiding collision as individual flight paths diverge in sky.",
+  "positive_relations": [
+    "Paragliders above cliff show staggered launch positions, each canopy inflated by rising air currents.",
+    "Wind pushes canopies upward, altering flight paths as pilots adjust body weight distribution.",
+    "Air flows continuously over wings, sustaining lift as paragliders ascend from cliff edge.",
+    "Paragliders maintain separation, avoiding collision as individual flight paths diverge in sky."
+  ],
+  "negative_analysis": "1. Parachutes generate lift from air currents, sustaining flight against gravity’s pull.\n\n2. Wind direction shifts may alter paraglider paths relative to the cliff edge.\n\n3. Continuous air movement sustains canopy inflation, enabling controlled descent or ascent.\n\n4. Paragliders’ body positions adjust to maintain balance and respond to wind changes.",
+  "donor": null,
+  "scope": "Own first image, original request and original Qwen reasoning; the declared direct/request-bound/joint global execution writes and the R15C local video-state operator are all active",
+  "seconds": 101.08750301413238
+}

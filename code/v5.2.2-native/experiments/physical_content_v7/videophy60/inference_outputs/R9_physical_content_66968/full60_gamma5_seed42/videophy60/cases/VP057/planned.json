@@ -1,0 +1,33 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r1_content_reader_r9/runs/physical_content_66968/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP057",
+  "seed": 42,
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "A player kicks a soccer ball which hits a lamp post, the ball rebounding at an angle.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP057/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "1. Player’s foot contacts ball, initiating motion toward unseen lamp post.  \n2. Ball’s trajectory curves upward, approaching vertical post.  \n3. Ball’s surface reflects light as it travels through air.  \n4. Post’s position remains fixed, awaiting ball’s impact.",
+  "positive_relations": [
+    "Player’s foot contacts ball, initiating motion toward unseen lamp post.",
+    "Ball’s trajectory curves upward, approaching vertical post.",
+    "Ball’s surface reflects light as it travels through air.",
+    "Post’s position remains fixed, awaiting ball’s impact."
+  ],
+  "negative_analysis": "1. Player’s foot contacts ball, sending it upward with force, altering its trajectory.\n2. Ball’s motion causes air displacement, creating visible wake as it ascends.\n3. Player’s body leans back, counterbalancing momentum from kicking motion.\n4. Shadows lengthen across field as sunlight angle shifts during play.",
+  "donor": null,
+  "scope": "Own image/request/reasoning in positive C; own image-only negative C; native T5 retained",
+  "seconds": 82.51378326583654
+}

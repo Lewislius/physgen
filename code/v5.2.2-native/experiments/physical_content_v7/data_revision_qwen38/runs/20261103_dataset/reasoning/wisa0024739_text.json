@@ -1,0 +1,41 @@
+{
+  "relations": [
+    "Fixed fire base on V-shaped logs -> flame flickers, shifting height, outline and brightness above it.",
+    "Varying flame brightness -> persistent red glow on surrounding sand remains largely steady.",
+    "Flame growing taller and thinner -> small bright particles emerge above it and drift upward.",
+    "Fixed logs, sea and sunset sky -> foreground fire dynamics unfold independently."
+  ],
+  "caption": "The video captures a small bonfire burning on a sandy beach beneath a sunset sky. Two dark logs form a V at the fire, one angled up-left and one lying to the right, while a calm sea and flat horizon stretch behind them. The sky grades from teal-blue upper left to orange-red along the horizon, and the firelight casts a persistent red glow on the foreground sand. The flame continuously flickers and deforms, its height, brightness and outline shifting frame by frame while its base stays fixed on the logs. Near the middle, the upper flame forms a distinct pale curling loop above the brighter orange base, which then shifts and thins. The red illumination on the sand remains largely steady while the flame's brightness varies with the flickering. In the later portion the flame grows taller and thinner. Small bright particles then appear above it and drift upward. The logs, horizon and cloud shapes remain fixed.",
+  "scope": "first_image_and_request_only",
+  "producer": "qwen3.8-flash",
+  "trace": {
+    "model": "qwen3.8-flash",
+    "request_id": "chatcmpl-09703ba5-c3a5-97b6-97d1-5235c00bf32f",
+    "usage": {
+      "prompt_tokens": 901,
+      "total_tokens": 1472,
+      "completion_tokens": 571,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "image_tokens": 392,
+        "text_tokens": 509
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 495,
+        "text_tokens": 75
+      }
+    },
+    "finish_reason": "stop",
+    "raw": "{\"relations\":[\"Fixed fire base on V-shaped logs -> flame flickers, shifting height, outline and brightness above it.\",\"Varying flame brightness -> persistent red glow on surrounding sand remains largely steady.\",\"Flame growing taller and thinner -> small bright particles emerge above it and drift upward.\",\"Fixed logs, sea and sunset sky -> foreground fire dynamics unfold independently.\"]\n}",
+    "seconds": 9.249009318999015,
+    "image_count": 1,
+    "video_sequence": false,
+    "thinking": true,
+    "explicit_times": null,
+    "prompt": "You receive ONLY the initial image and the requested video description, not the future video.\nGive 1-4 concise physical relation sentences useful for generating the requested visible process.\nEach sentence at most 20 words, in English; prerequisite/source -> conditional response or persistence.\nUse concrete relations tied to this scene and request, not a list of named laws or a caption rewrite.\nThe request describes desired development; it is not proof that the initial image already contains\nthat development. Distinguish visible facts from conditional future effects. Do not fabricate\nforces, measurements, directions, event times, hidden actions or deterministic trajectories.\nAvoid false explanations such as momentum keeping a ball suspended, or inertia preventing change.\nDo not freeze a requested process by demanding that its position/shape remain unchanged. Preserve\nthe appropriate identities, material continuity and interactions while permitting the requested\nmotion, diffusion, deformation, emergence or other visible change. If the request is empty, use\nonly plausible conditional relations supported by the initial image; do not infer a unique future.\nReturn JSON {\"relations\":[\"...\", \"...\"]}; no commentary, no extra features or embeddings.\n\n{\"request\": \"The video captures a small bonfire burning on a sandy beach beneath a sunset sky. Two dark logs form a V at the fire, one angled up-left and one lying to the right, while a calm sea and flat horizon stretch behind them. The sky grades from teal-blue upper left to orange-red along the horizon, and the firelight casts a persistent red glow on the foreground sand. The flame continuously flickers and deforms, its height, brightness and outline shifting frame by frame while its base stays fixed on the logs. Near the middle, the upper flame forms a distinct pale curling loop above the brighter orange base, which then shifts and thins. The red illumination on the sand remains largely steady while the flame's brightness varies with the flickering. In the later portion the flame grows taller and thinner. Small bright particles then appear above it and drift upward. The logs, horizon and cloud shapes remain fixed.\", \"presentation_seconds\": 1.600000023841858}"
+  },
+  "sample": "wisa0024739",
+  "revision": "qwen38_wisa_reviewed_v1",
+  "arm": "text",
+  "first_image": "/home/liuzhirui/Project/physGen/data_cache/wisa_4000/base/first/wisa0024739.png"
+}

@@ -1,0 +1,35 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/runs/physical_content_68038/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP033",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/snapshots/20261106T202709Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs",
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "A player jumps high to block a spike, their hands impacting the ball forcefully, sending it back across the net.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP033/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "1. Player in blue holds ball above net, poised to strike.  \n2. Opponent in red crouches near net, ready to react.  \n3. Ball is airborne, approaching net for potential block.  \n4. Net remains taut, dividing court as players prepare.",
+  "positive_relations": [
+    "Player in blue holds ball above net, poised to strike.",
+    "Opponent in red crouches near net, ready to react.",
+    "Ball is airborne, approaching net for potential block.",
+    "Net remains taut, dividing court as players prepare."
+  ],
+  "negative_analysis": "1. Player in blue holds ball above net, poised to strike, initiating play.\n2. Player in red near net prepares to react, anticipating ball’s trajectory.\n3. Ball’s motion will alter players’ positions as they respond to its flight.\n4. Net remains stationary, dividing court and defining boundaries for play.",
+  "donor": null,
+  "scope": "Own first image, original request and original Qwen reasoning",
+  "seconds": 84.41873216349632
+}

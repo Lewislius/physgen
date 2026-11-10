@@ -1,0 +1,36 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_memory_r11b/runs/physical_content_67308/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP001",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_memory_r11b/snapshots/20261104T044513Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/data_revision_qwen38/benchmark_inputs/videophy60_first_image_request_v1",
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "A long jumper demonstrates a flawed technique, resulting in a short distance and an unbalanced landing.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP001/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "The athlete's tucked trailing leg during flight limits forward reach before touchdown.\nTorso tilt off the vertical axis in mid-air produces an unbalanced landing.\nMisalignment between takeoff impulse and horizontal velocity yields a short jump distance.\nShift of the center of mass during the hang phase reduces measured distance.",
+  "positive_relations": [
+    "The athlete's tucked trailing leg during flight limits forward reach before touchdown.",
+    "Torso tilt off the vertical axis in mid-air produces an unbalanced landing.",
+    "Misalignment between takeoff impulse and horizontal velocity yields a short jump distance.",
+    "Shift of the center of mass during the hang phase reduces measured distance."
+  ],
+  "negative_analysis": "Gravity pulls the airborne player downward toward the court surface.\nIf the player contacts the net, the mesh deforms and sways.\nLanding on the court surface generates a vertical reaction force.\nThe player's forward momentum carries them across the net's plane.",
+  "donor": null,
+  "scope": "Own first image, original request and API reasoning",
+  "request_memory_donor": null,
+  "seconds": 82.37670217361301
+}

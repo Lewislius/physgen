@@ -1,0 +1,41 @@
+{
+  "relations": [
+    "Dense cloud churns and deforms -> boundary between sunlit and shadowed regions shifts across the frame.",
+    "Sunlit right cloud mass moves toward center -> darker left region reshapes and drifts nearby.",
+    "Cloud drifts across center-bottom -> thin near-vertical bright streak grows intermittently clearer or hazier.",
+    "Rolling mist advances over lower-left ridge -> snow-dusted mountainside stays fixed but becomes more or less obscured."
+  ],
+  "caption": "The video captures a steep, snow- and rock-dusted mountainside in the lower-left corner, while dense billowing white-gray cloud fills the rest. The right side of the cloud mass is brightly sunlit, contrasting with the darker, shadowed region on the left and center. Throughout, the cloud continuously churns and deforms, its internal texture and edges shifting as the boundary between dark and bright masses moves. The sunlit cloud shifts toward the center while the darker region reshapes and drifts nearby. A thin, near-vertical bright streak remains near a fixed horizontal position at center-bottom, growing intermittently clearer or hazier as cloud drifts across it. The snow-dusted ridge stays in roughly the same screen position, sometimes more or less obscured by the rolling mist. The framing appears largely steady, so the dominant motion is the cloud's own rolling and translation.",
+  "scope": "first_image_and_request_only",
+  "producer": "qwen3.8-flash",
+  "trace": {
+    "model": "qwen3.8-flash",
+    "request_id": "chatcmpl-50ed89da-cf42-97c0-b5e8-36ab35b12a53",
+    "usage": {
+      "prompt_tokens": 892,
+      "total_tokens": 1435,
+      "completion_tokens": 543,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "image_tokens": 392,
+        "text_tokens": 500
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 450,
+        "text_tokens": 92
+      }
+    },
+    "finish_reason": "stop",
+    "raw": "{\"relations\":[\"Dense cloud churns and deforms -> boundary between sunlit and shadowed regions shifts across the frame.\",\"Sunlit right cloud mass moves toward center -> darker left region reshapes and drifts nearby.\",\"Cloud drifts across center-bottom -> thin near-vertical bright streak grows intermittently clearer or hazier.\",\"Rolling mist advances over lower-left ridge -> snow-dusted mountainside stays fixed but becomes more or less obscured.\"]\n}",
+    "seconds": 8.155718759997399,
+    "image_count": 1,
+    "video_sequence": false,
+    "thinking": true,
+    "explicit_times": null,
+    "prompt": "You receive ONLY the initial image and the requested video description, not the future video.\nGive 1-4 concise physical relation sentences useful for generating the requested visible process.\nEach sentence at most 20 words, in English; prerequisite/source -> conditional response or persistence.\nUse concrete relations tied to this scene and request, not a list of named laws or a caption rewrite.\nThe request describes desired development; it is not proof that the initial image already contains\nthat development. Distinguish visible facts from conditional future effects. Do not fabricate\nforces, measurements, directions, event times, hidden actions or deterministic trajectories.\nAvoid false explanations such as momentum keeping a ball suspended, or inertia preventing change.\nDo not freeze a requested process by demanding that its position/shape remain unchanged. Preserve\nthe appropriate identities, material continuity and interactions while permitting the requested\nmotion, diffusion, deformation, emergence or other visible change. If the request is empty, use\nonly plausible conditional relations supported by the initial image; do not infer a unique future.\nReturn JSON {\"relations\":[\"...\", \"...\"]}; no commentary, no extra features or embeddings.\n\n{\"request\": \"The video captures a steep, snow- and rock-dusted mountainside in the lower-left corner, while dense billowing white-gray cloud fills the rest. The right side of the cloud mass is brightly sunlit, contrasting with the darker, shadowed region on the left and center. Throughout, the cloud continuously churns and deforms, its internal texture and edges shifting as the boundary between dark and bright masses moves. The sunlit cloud shifts toward the center while the darker region reshapes and drifts nearby. A thin, near-vertical bright streak remains near a fixed horizontal position at center-bottom, growing intermittently clearer or hazier as cloud drifts across it. The snow-dusted ridge stays in roughly the same screen position, sometimes more or less obscured by the rolling mist. The framing appears largely steady, so the dominant motion is the cloud's own rolling and translation.\", \"presentation_seconds\": 3.199999935925007}"
+  },
+  "sample": "source0002387",
+  "revision": "qwen38_wisa_reviewed_v1",
+  "arm": "text",
+  "first_image": "/home/liuzhirui/Project/physGen/data_cache/wisa_4000/base/first/source0002387.png"
+}

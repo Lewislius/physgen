@@ -1,0 +1,37 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/source_residual_fusion_r15g/runs/physical_content_68103/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP041",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/source_residual_fusion_r15g/snapshots/20261107T040316Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs",
+  "guidance": {
+    "kind": "joint_two_branch_cfg",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+    "physical_residual_scale": null,
+    "native_definition": "Same trained Wan self-attention/FFN LoRA; physical branch bypassed"
+  },
+  "caption": "Two swimmers race side-by-side, their hands entering the water simultaneously, creating small trails of bubbles.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP041/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler",
+    "guidance_composition": "joint_two_branch_cfg"
+  },
+  "positive_analysis": "1. Swimmers’ arms extend forward, displacing water as they prepare to enter.\n2. Water splashes upward from their shoulders as they push through the surface.\n3. Bubbles trail behind their hands as they submerge into the pool.\n4. Their synchronized entry may alter water flow patterns around them.",
+  "positive_relations": [
+    "Swimmers’ arms extend forward, displacing water as they prepare to enter.",
+    "Water splashes upward from their shoulders as they push through the surface.",
+    "Bubbles trail behind their hands as they submerge into the pool.",
+    "Their synchronized entry may alter water flow patterns around them."
+  ],
+  "negative_analysis": "1. Water splashes upward as swimmers move, indicating active motion through liquid medium.\n2. Swimmers’ mouths open, suggesting exertion and need for air exchange during aquatic activity.\n3. Water displacement creates visible ripples and turbulence around their bodies.\n4. Continuous motion may cause further splashing and water movement around their limbs.",
+  "donor": null,
+  "scope": "Own first image, original request and original Qwen reasoning",
+  "seconds": 83.68496687710285
+}

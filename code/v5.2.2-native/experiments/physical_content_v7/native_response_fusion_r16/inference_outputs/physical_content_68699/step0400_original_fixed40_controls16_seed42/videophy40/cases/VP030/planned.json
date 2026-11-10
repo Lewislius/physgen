@@ -1,0 +1,37 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_response_fusion_r16/runs/physical_content_68699/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP030",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_response_fusion_r16/snapshots/20261110T034127Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs",
+  "guidance": {
+    "kind": "joint_two_branch_cfg",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+    "physical_residual_scale": null,
+    "native_definition": "Same trained Wan LoRA with all physical additions disabled"
+  },
+  "caption": "Someone throws a snowball into the air, it breaks apart during flight.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP030/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler",
+    "guidance_composition": "joint_two_branch_cfg"
+  },
+  "positive_analysis": "1. Snowball in air shows initial trajectory from thrower’s hand.\n2. Snowball’s fragmentation begins as it ascends, altering its shape.\n3. Snow particles drift apart under air resistance during flight.\n4. Snowball’s mass decreases as fragments disperse through atmosphere.",
+  "positive_relations": [
+    "Snowball in air shows initial trajectory from thrower’s hand.",
+    "Snowball’s fragmentation begins as it ascends, altering its shape.",
+    "Snow particles drift apart under air resistance during flight.",
+    "Snowball’s mass decreases as fragments disperse through atmosphere."
+  ],
+  "negative_analysis": "1. Snowboarder’s motion displaces snow, creating visible tracks behind them.\n2. Wind may lift small snow particles, forming drifting patterns ahead.\n3. Sunlight reflects off snow surface, increasing brightness as snowboarder moves.\n4. Snowboarder’s body heat may slightly melt snow under boots, altering contact point.",
+  "donor": null,
+  "scope": "Own first image, original request and original Qwen reasoning; the declared direct/request-bound/joint global execution writes and the R15C local video-state operator are all active",
+  "seconds": 104.50551399588585
+}

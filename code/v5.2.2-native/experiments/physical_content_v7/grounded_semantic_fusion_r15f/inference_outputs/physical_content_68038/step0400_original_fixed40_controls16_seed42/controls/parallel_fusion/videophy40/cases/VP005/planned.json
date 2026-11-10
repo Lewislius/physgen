@@ -1,0 +1,35 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/runs/physical_content_68038/step0400.pt",
+  "step": 400,
+  "mode": "parallel_fusion",
+  "case": "VP005",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/snapshots/20261106T202709Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs",
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "A close-up shot of a paddle making contact with the ping pong ball, showing the impact.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP005/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "1. Paddle edge near net, ball resting on table—contact imminent, motion pending.  \n2. Ball stationary, paddle poised—impact will alter ball’s trajectory and spin.  \n3. Net’s mesh and table lines remain fixed—impact may cause slight vibration.  \n4. Air around ball and paddle will compress and disperse with contact.",
+  "positive_relations": [
+    "Paddle edge near net, ball resting on table—contact imminent, motion pending.",
+    "Ball stationary, paddle poised—impact will alter ball’s trajectory and spin.",
+    "Net’s mesh and table lines remain fixed—impact may cause slight vibration.",
+    "Air around ball and paddle will compress and disperse with contact."
+  ],
+  "negative_analysis": "1. Table tennis paddle poised above net suggests imminent strike on ball.\n2. Ball rests near net, ready to be hit or roll toward opponent’s side.\n3. Net divides table, maintaining boundary for play and ball trajectory.\n4. Surface remains static unless disturbed by paddle contact or ball movement.",
+  "donor": null,
+  "scope": "Read native text from the pre-physical state, retaining the identical physical write and trained weights",
+  "seconds": 83.56289436109364
+}

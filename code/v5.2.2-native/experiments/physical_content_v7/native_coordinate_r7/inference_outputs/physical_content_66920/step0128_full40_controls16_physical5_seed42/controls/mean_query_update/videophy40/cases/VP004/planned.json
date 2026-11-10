@@ -1,0 +1,34 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_coordinate_r7/runs/physical_content_66920/step0128.pt",
+  "step": 128,
+  "mode": "mean_query_update",
+  "case": "VP004",
+  "seed": 42,
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "mean_query_update": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_coordinate_r7/controls/physical_content_66920/step0128_mean_raw_query_update.pt",
+  "caption": "A plastic ruler is bent until it cracks, displaying a visible stress fracture that propagates.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP004/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "1. Man and child hold ruler horizontally, hands gripping ends firmly.\n2. Ruler visibly cracks mid-span, fracture line propagating under applied stress.\n3. Crack path appears jagged, indicating material failure under bending load.\n4. Fluids or continuous processes not visibly involved in this static fracture event.",
+  "positive_relations": [
+    "Man and child hold ruler horizontally, hands gripping ends firmly.",
+    "Ruler visibly cracks mid-span, fracture line propagating under applied stress.",
+    "Crack path appears jagged, indicating material failure under bending load.",
+    "Fluids or continuous processes not visibly involved in this static fracture event."
+  ],
+  "negative_analysis": "1. Child holds glass tube with both hands, supporting its weight as man holds opposite end.\n2. Man’s grip on tube stabilizes it, preventing movement as child lifts.\n3. Tube’s transparency allows light to pass, revealing hands and fluid inside.\n4. If tube leaks, fluid may drip; if sealed, fluid remains contained under pressure.",
+  "donor": null,
+  "scope": "Both raw Q updates fixed to their separate training means; retain own positive/negative physical-word anchors, native T5, first image and full-width content modulation",
+  "seconds": 199.6023104870692
+}

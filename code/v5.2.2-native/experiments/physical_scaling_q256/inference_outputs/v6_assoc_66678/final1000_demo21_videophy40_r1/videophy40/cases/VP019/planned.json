@@ -1,0 +1,31 @@
+{
+  "id": "VP019",
+  "variant": "v6_assoc",
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_scaling_q256/runs/v6_assoc_66678/step1000.pt",
+  "optimizer_step": 1000,
+  "seed": 42,
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "initial_noise": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP019/noise.pt",
+  "enhancement_passes": 2,
+  "caption": "Javelin with a damaged tip is thrown; it wobbles in flight and lands off-target.",
+  "source_canvas": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP019/first.png",
+  "condition_scope": "first image and request only; native T5 retained; no historical clauses",
+  "analysis": "1. Javelin’s damaged tip causes imbalance, altering its flight path unpredictably.  \n2. Air resistance acts unevenly, increasing wobble during flight.  \n3. Gravity pulls javelin downward, affecting its trajectory and landing point.  \n4. Wind may shift javelin’s course, changing where it lands relative to target.",
+  "relations": [
+    "Javelin’s damaged tip causes imbalance, altering its flight path unpredictably.",
+    "Air resistance acts unevenly, increasing wobble during flight.",
+    "Gravity pulls javelin downward, affecting its trajectory and landing point.",
+    "Wind may shift javelin’s course, changing where it lands relative to target."
+  ],
+  "null_analysis": "1. Arrow’s flight path depends on initial launch force and air resistance acting upon it.\n2. Wind may alter arrow’s trajectory mid-flight, affecting its landing position.\n3. Grass field surface will absorb arrow’s kinetic energy upon impact, causing deceleration.\n4. Arrow’s feathers maintain stability during flight, counteracting rotational forces.",
+  "revision": "physical_scaling_q256_s1000_20261029_r1",
+  "inference_experiment_id": "66720",
+  "frames": 81,
+  "fps": 24.0,
+  "condition_tokens": 256
+}

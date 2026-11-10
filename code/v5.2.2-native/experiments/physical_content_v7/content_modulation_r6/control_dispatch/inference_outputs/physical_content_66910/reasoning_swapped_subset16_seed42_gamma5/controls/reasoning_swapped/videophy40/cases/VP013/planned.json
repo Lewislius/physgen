@@ -1,0 +1,33 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/content_modulation_r6/runs/physical_content_66910/step0128.pt",
+  "step": 128,
+  "mode": "reasoning_swapped",
+  "case": "VP013",
+  "seed": 42,
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "A person uses a pair of pliers to open a stubborn metal bottle, bending the cap slightly in the process.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP013/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "1. Orange egg rests on surface beneath transparent curved slide.\n2. Slide’s curvature suggests potential for rolling motion.\n3. Egg’s smooth surface may interact with slide’s texture during motion.\n4. Fluid-like slide implies possible frictional or aerodynamic effects during roll.",
+  "positive_relations": [
+    "Orange egg rests on surface beneath transparent curved slide.",
+    "Slide’s curvature suggests potential for rolling motion.",
+    "Egg’s smooth surface may interact with slide’s texture during motion.",
+    "Fluid-like slide implies possible frictional or aerodynamic effects during roll."
+  ],
+  "negative_analysis": "1. Hand holds pliers gripping bottle neck, applying pressure to deform metal cap.\n2. Pliers’ jaws press into cap, likely causing it to compress or crack under force.\n3. Bottle remains stationary as external force alters cap’s shape or integrity.\n4. If cap breaks, fragments may dislodge, potentially releasing contents or debris.",
+  "donor": "VP025",
+  "scope": "Only positive reasoning text replaced; own image/request, native T5 and own negative C retained",
+  "seconds": 88.78993882145733
+}

@@ -1,0 +1,36 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_memory_r11b/runs/physical_content_67308/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP007",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_memory_r11b/snapshots/20261104T044513Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/data_revision_qwen38/benchmark_inputs/videophy60_first_image_request_v1",
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "Multiple ping pong balls are shown, illustrating different stages of a rally.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP007/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "As the rally progresses, each white ball moves across the blue surface, leaving a trailing shadow.\nStruck balls bounce and roll, showing sequential stages from serve to return.\nThe balls remain ribbed white spheres, maintaining material continuity while shifting positions.\nLater-stage balls appear further along the path, illustrating the rally's development over time.",
+  "positive_relations": [
+    "As the rally progresses, each white ball moves across the blue surface, leaving a trailing shadow.",
+    "Struck balls bounce and roll, showing sequential stages from serve to return.",
+    "The balls remain ribbed white spheres, maintaining material continuity while shifting positions.",
+    "Later-stage balls appear further along the path, illustrating the rally's development over time."
+  ],
+  "negative_analysis": "Six white ribbed spheres rest on a flat blue surface, spaced apart without touching.\nSoft shadows cast to the right indicate directional lighting from the upper left.\nAny applied force could cause the spheres to roll or slide across the smooth surface.\nThe spheres maintain their textured shape and spatial separation unless disturbed by an external interaction.",
+  "donor": null,
+  "scope": "Own first image, original request and API reasoning",
+  "request_memory_donor": null,
+  "seconds": 83.2200913252309
+}

@@ -1,0 +1,31 @@
+{
+  "id": "VP040",
+  "variant": "v5_ce",
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_v5_scaling_q256/runs/v5_ce_66706/step1000.pt",
+  "optimizer_step": 1000,
+  "seed": 42,
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "initial_noise": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP040/noise.pt",
+  "enhancement_passes": 2,
+  "caption": "Poi are swung against a soft surface, making a thudding sound (NOTE: This prompt includes sound, but it's included to illustrate the effect of the action, not to describe it in detail.  The focus is still on the visible impact).",
+  "source_canvas": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP040/first.png",
+  "condition_scope": "first image and request only; native T5 retained; no historical clauses",
+  "analysis": "1. Gray object’s shadow lengthens as it impacts the surface, altering its visible position slightly.\n\n2. Yellow object’s surface texture may compress momentarily upon contact with the soft surface.\n\n3. If green objects strike the surface, their shadows will darken and elongate slightly from the impact.\n\n4. No fluid movement occurs; all objects remain dry and stationary after impact unless displaced.",
+  "relations": [
+    "Gray object’s shadow lengthens as it impacts the surface, altering its visible position slightly.",
+    "Yellow object’s surface texture may compress momentarily upon contact with the soft surface.",
+    "If green objects strike the surface, their shadows will darken and elongate slightly from the impact.",
+    "No fluid movement occurs; all objects remain dry and stationary after impact unless displaced."
+  ],
+  "null_analysis": "1. Gray object’s shadow extends leftward due to light source position.\n2. Yellow object’s rounded shape casts a softer shadow than flat objects.\n3. Green objects’ proximity causes slight shadow overlap on surface.\n4. Surface remains static unless external force disturbs object placement.",
+  "revision": "physical_v5_scaling_q256_s1000_20261029_r1",
+  "inference_experiment_id": "66761",
+  "frames": 81,
+  "fps": 24.0,
+  "condition_tokens": 256
+}

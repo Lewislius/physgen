@@ -1,0 +1,33 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r1_content_reader_r9/runs/physical_content_66968/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP052",
+  "seed": 42,
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "A soccer ball is kicked and hits a person's leg, deflecting at a different angle.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP052/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "1. Soccer ball contacts player’s leg, altering its trajectory mid-air.\n2. Player’s kicking leg extends fully, maintaining balance during impact.\n3. Ball’s motion changes direction due to leg’s surface contact.\n4. Player’s body shifts slightly, adjusting to ball’s deflection force.",
+  "positive_relations": [
+    "Soccer ball contacts player’s leg, altering its trajectory mid-air.",
+    "Player’s kicking leg extends fully, maintaining balance during impact.",
+    "Ball’s motion changes direction due to leg’s surface contact.",
+    "Player’s body shifts slightly, adjusting to ball’s deflection force."
+  ],
+  "negative_analysis": "1. Player’s foot contacts ball, causing it to move through air.\n2. Leg extension generates force, altering ball’s trajectory.\n3. Body leans forward, maintaining balance during kick.\n4. Muscles contract continuously to sustain motion and posture.",
+  "donor": null,
+  "scope": "Own image/request/reasoning in positive C; own image-only negative C; native T5 retained",
+  "seconds": 84.13758495077491
+}

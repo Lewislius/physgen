@@ -1,0 +1,35 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r10a_api400/runs/physical_content_67271/step0400.pt",
+  "step": 400,
+  "mode": "reasoning_swapped",
+  "case": "VP010",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r10a_api400/snapshots/20261103T140613Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/data_revision_qwen38/benchmark_inputs/videophy60_first_image_request_v1",
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "A person mops up a puddle of water on a concrete floor, the water disappearing as the mop passes.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP010/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "The wheel contacting the curb edge rotates forward to climb over the raised stone.\nThe rider's leg drives the pedal so the wheel rolls up and over the curb.\nAs the wheel rises, the rider shifts their torso to keep the seat balanced.\nThe bracing foot lifts once the wheel clears the top of the curb.",
+  "positive_relations": [
+    "The wheel contacting the curb edge rotates forward to climb over the raised stone.",
+    "The rider's leg drives the pedal so the wheel rolls up and over the curb.",
+    "As the wheel rises, the rider shifts their torso to keep the seat balanced.",
+    "The bracing foot lifts once the wheel clears the top of the curb."
+  ],
+  "negative_analysis": "The broom's upright posture depends on its bristles resting flat against the wet floor.\nA slight lateral force would cause the broom to tip over onto the slick surface.\nThe soapy water on the floor may slowly spread outward or evaporate.",
+  "donor": "videophy40_VP017",
+  "scope": "Same-count unrelated reasoning with own image/request; own negative condition",
+  "seconds": 89.65618623234332
+}

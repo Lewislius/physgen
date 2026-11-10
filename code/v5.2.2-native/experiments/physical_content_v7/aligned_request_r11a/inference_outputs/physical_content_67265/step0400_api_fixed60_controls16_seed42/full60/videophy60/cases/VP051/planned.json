@@ -1,0 +1,34 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/aligned_request_r11a/runs/physical_content_67265/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP051",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/aligned_request_r11a/snapshots/20261103T143415Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/data_revision_qwen38/benchmark_inputs/videophy60_first_image_request_v1",
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "A billiard ball is struck and rolls across a felt-covered pool table, hitting another ball.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP051/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "Striking the orange ball initiates a rolling motion across the teal felt surface.\nThe rolling ball's collision with a stationary ball transfers momentum, causing it to move.\nFriction with the felt surface gradually decelerates the balls after the collision.",
+  "positive_relations": [
+    "Striking the orange ball initiates a rolling motion across the teal felt surface.",
+    "The rolling ball's collision with a stationary ball transfers momentum, causing it to move.",
+    "Friction with the felt surface gradually decelerates the balls after the collision."
+  ],
+  "negative_analysis": "The orange ball rests centrally in the foreground, while green and red balls sit in the background left and right.\nIf the orange ball is struck, it rolls across the teal felt towards the camera or other balls.\nA collision between balls transfers momentum, causing the struck ball to move and the target to react.\nThe balls remain at rest on the flat surface unless an external force acts upon them.",
+  "donor": null,
+  "scope": "Own first image, original request and API reasoning",
+  "seconds": 83.20320122875273
+}

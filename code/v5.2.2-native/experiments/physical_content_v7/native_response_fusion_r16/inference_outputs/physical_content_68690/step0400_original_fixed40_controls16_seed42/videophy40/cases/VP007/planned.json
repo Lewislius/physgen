@@ -1,0 +1,37 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_response_fusion_r16/runs/physical_content_68690/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP007",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_response_fusion_r16/snapshots/20261110T034127Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs",
+  "guidance": {
+    "kind": "joint_two_branch_cfg",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+    "physical_residual_scale": null,
+    "native_definition": "Same trained Wan LoRA with all physical additions disabled"
+  },
+  "caption": "Multiple ping pong balls are shown, illustrating different stages of a rally.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP007/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler",
+    "guidance_composition": "joint_two_branch_cfg"
+  },
+  "positive_analysis": "1. White balls rest on blue surface, shadows cast beneath each one.  \n2. Balls are stationary, no motion or contact with each other.  \n3. Surface appears dry, no visible fluids or continuous processes.  \n4. If balls were struck, they might roll or bounce, altering positions.",
+  "positive_relations": [
+    "White balls rest on blue surface, shadows cast beneath each one.",
+    "Balls are stationary, no motion or contact with each other.",
+    "Surface appears dry, no visible fluids or continuous processes.",
+    "If balls were struck, they might roll or bounce, altering positions."
+  ],
+  "negative_analysis": "1. White shells rest on blue surface, shadows indicate light direction and contact points.\n\n2. Shells’ positions may shift if external force disturbs their current equilibrium.\n\n3. If shells roll, their orientation and shadow shapes will change dynamically.\n\n4. No fluid motion present; shells remain static unless acted upon by an external agent.",
+  "donor": null,
+  "scope": "Own first image, original request and original Qwen reasoning; the declared direct/request-bound/joint global execution writes and the R15C local video-state operator are all active",
+  "seconds": 197.05299441888928
+}

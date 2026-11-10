@@ -1,0 +1,33 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/execution_value_r10/runs/physical_content_67003/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP060",
+  "seed": 42,
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "A potter applies a thin layer of slip to a clay bowl, using a brush to create an even coat.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP060/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "1. Hand holds brush, applying slip to bowl’s inner surface.\n2. Brush bristles contact clay, transferring liquid slip evenly.\n3. Slip flows smoothly over bowl’s curved interior.\n4. Bowl remains centered on wheel as slip is applied.",
+  "positive_relations": [
+    "Hand holds brush, applying slip to bowl’s inner surface.",
+    "Brush bristles contact clay, transferring liquid slip evenly.",
+    "Slip flows smoothly over bowl’s curved interior.",
+    "Bowl remains centered on wheel as slip is applied."
+  ],
+  "negative_analysis": "1. Hand holds brush, applying slip to bowl’s interior surface.\n2. Bowl rotates steadily on wheel, maintaining consistent orientation.\n3. Brush bristles contact clay, transferring liquid to inner wall.\n4. Clay surface remains smooth as slip spreads under brush motion.",
+  "donor": null,
+  "scope": "Own image/request/reasoning in positive C; own image-only negative C; native T5 retained",
+  "seconds": 82.32456558104604
+}

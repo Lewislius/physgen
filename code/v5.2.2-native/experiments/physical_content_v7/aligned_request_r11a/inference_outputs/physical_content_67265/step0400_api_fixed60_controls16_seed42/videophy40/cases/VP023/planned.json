@@ -1,0 +1,35 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/aligned_request_r11a/runs/physical_content_67265/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP023",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/aligned_request_r11a/snapshots/20261103T143415Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/data_revision_qwen38/benchmark_inputs/videophy60_first_image_request_v1",
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "A surfer falls off their board, colliding briefly with another surfer, before swimming away.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP023/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "If the bright-topped surfer loses balance, their body separates from the board and drops into the breaking water.\nA falling surfer's trajectory may briefly intersect the nearby dark-topped surfer, causing a momentary contact.\nAfter the brief collision, the fallen surfer pushes away and swims clear of both boards and the other rider.\nThe remaining surfer continues riding the white wave crest while the fallen one drifts toward calmer water.",
+  "positive_relations": [
+    "If the bright-topped surfer loses balance, their body separates from the board and drops into the breaking water.",
+    "A falling surfer's trajectory may briefly intersect the nearby dark-topped surfer, causing a momentary contact.",
+    "After the brief collision, the fallen surfer pushes away and swims clear of both boards and the other rider.",
+    "The remaining surfer continues riding the white wave crest while the fallen one drifts toward calmer water."
+  ],
+  "negative_analysis": "Surfers crouch on boards, maintaining balance while gliding along the breaking wave's face.\nThe wave crest collapses into white foam behind the surfers as they ride forward.\nBoards plane across the water surface, propelled by the wave's forward momentum.\nSurfers adjust their weight distribution to stay aligned with the moving wave section.",
+  "donor": null,
+  "scope": "Own first image, original request and API reasoning",
+  "seconds": 83.4951141225174
+}

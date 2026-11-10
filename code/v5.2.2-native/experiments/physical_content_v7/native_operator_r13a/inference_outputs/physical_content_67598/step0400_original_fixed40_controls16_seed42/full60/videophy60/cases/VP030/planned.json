@@ -1,0 +1,35 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_operator_r13a/runs/physical_content_67598/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP030",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_operator_r13a/snapshots/20261104T181117Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_operator_r13a/prepared_inputs",
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "Someone throws a snowball into the air, it breaks apart during flight.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP030/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "1. Snowball in air shows initial trajectory from thrower’s hand.\n2. Snowball’s fragmentation begins as it ascends, altering its shape.\n3. Snow particles drift apart under air resistance during flight.\n4. Snowball’s mass decreases as fragments disperse through atmosphere.",
+  "positive_relations": [
+    "Snowball in air shows initial trajectory from thrower’s hand.",
+    "Snowball’s fragmentation begins as it ascends, altering its shape.",
+    "Snow particles drift apart under air resistance during flight.",
+    "Snowball’s mass decreases as fragments disperse through atmosphere."
+  ],
+  "negative_analysis": "1. Snowboarder’s motion displaces snow, creating visible tracks behind them.\n2. Wind may lift small snow particles, forming drifting patterns ahead.\n3. Sunlight reflects off snow surface, increasing brightness as snowboarder moves.\n4. Snowboarder’s body heat may slightly melt snow under boots, altering contact point.",
+  "donor": null,
+  "scope": "Own first image, original request and original Qwen reasoning",
+  "seconds": 82.98089117277414
+}

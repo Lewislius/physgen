@@ -1,0 +1,35 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/runs/physical_content_67456/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP025",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/snapshots/20261104T142411Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/prepared_inputs",
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "A large, orange plastic egg is rolled up a plastic slide, then rolls down, ending at the bottom.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP025/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "1. Orange egg rests on surface beneath transparent curved slide.\n2. Slide’s curvature suggests potential for rolling motion.\n3. Egg’s smooth surface may interact with slide’s texture during motion.\n4. Fluid-like slide implies possible frictional or aerodynamic effects during roll.",
+  "positive_relations": [
+    "Orange egg rests on surface beneath transparent curved slide.",
+    "Slide’s curvature suggests potential for rolling motion.",
+    "Egg’s smooth surface may interact with slide’s texture during motion.",
+    "Fluid-like slide implies possible frictional or aerodynamic effects during roll."
+  ],
+  "negative_analysis": "1. Orange sphere rests on surface; its position remains unchanged unless displaced.\n2. Transparent wave curves above sphere; it may alter if sphere moves or fluid shifts.\n3. Sphere’s shadow forms beneath; it persists as long as lighting and position are stable.\n4. Wave’s curvature suggests fluid motion; it may change if sphere interacts or fluid flows.",
+  "donor": null,
+  "scope": "Own first image, original request and original Qwen reasoning",
+  "seconds": 83.87564080953598
+}

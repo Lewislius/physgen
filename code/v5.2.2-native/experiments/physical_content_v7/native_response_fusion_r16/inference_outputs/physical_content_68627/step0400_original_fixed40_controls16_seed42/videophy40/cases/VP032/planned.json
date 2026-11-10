@@ -1,0 +1,37 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_response_fusion_r16/runs/physical_content_68627/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP032",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_response_fusion_r16/snapshots/20261109T193637Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs",
+  "guidance": {
+    "kind": "joint_two_branch_cfg",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+    "physical_residual_scale": null,
+    "native_definition": "Same trained Wan LoRA with all physical additions disabled"
+  },
+  "caption": "A player uses a quick set to spike the ball, driving it downward at a steep angle.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP032/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler",
+    "guidance_composition": "joint_two_branch_cfg"
+  },
+  "positive_analysis": "1. Player holds ball near net, poised to strike with racquet.  \n2. Racquet face angled downward, ready to drive ball steeply.  \n3. Legs bent low, body weight forward for explosive downward motion.  \n4. Sweat may bead on skin as muscles prepare for rapid force application.",
+  "positive_relations": [
+    "Player holds ball near net, poised to strike with racquet.",
+    "Racquet face angled downward, ready to drive ball steeply.",
+    "Legs bent low, body weight forward for explosive downward motion.",
+    "Sweat may bead on skin as muscles prepare for rapid force application."
+  ],
+  "negative_analysis": "1. Player holds stick near net, ready to deflect incoming ball.\n2. Net stretches taut behind player, absorbing potential impact.\n3. Player’s stance lowers center of gravity, preparing for quick lateral movement.\n4. Sweat may bead on player’s skin as physical exertion continues.",
+  "donor": null,
+  "scope": "Own first image, original request and original Qwen reasoning; the declared direct/request-bound/joint global execution writes and the R15C local video-state operator are all active",
+  "seconds": 165.01089267106727
+}

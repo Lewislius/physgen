@@ -1,0 +1,35 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r10a_api400/runs/physical_content_67271/step0400.pt",
+  "step": 400,
+  "mode": "api_checkpoint_old_reasoning",
+  "case": "VP019",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/r10a_data_crossover20/snapshots/20261104T045535Z",
+  "inference_evidence": "old",
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "Javelin with a damaged tip is thrown; it wobbles in flight and lands off-target.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP019/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "1. Javelin’s damaged tip causes imbalance, altering its flight path unpredictably.  \n2. Air resistance acts unevenly, increasing wobble during flight.  \n3. Gravity pulls javelin downward, affecting its trajectory and landing point.  \n4. Wind may shift javelin’s course, changing where it lands relative to target.",
+  "positive_relations": [
+    "Javelin’s damaged tip causes imbalance, altering its flight path unpredictably.",
+    "Air resistance acts unevenly, increasing wobble during flight.",
+    "Gravity pulls javelin downward, affecting its trajectory and landing point.",
+    "Wind may shift javelin’s course, changing where it lands relative to target."
+  ],
+  "negative_analysis": "1. Arrow’s flight path depends on initial launch force and air resistance acting upon it.\n2. Wind may alter arrow’s trajectory mid-flight, affecting its landing position.\n3. Grass field surface will absorb arrow’s kinetic energy upon impact, causing deceleration.\n4. Arrow’s feathers maintain stability during flight, counteracting rotational forces.",
+  "positive_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_variants/inference_cache/physical_r1_first_image_request/input/videophy40_VP019_text.pt",
+  "negative_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_variants/inference_cache/physical_r1_first_image_request/input/videophy40_VP019_null.pt",
+  "seconds": 82.64638660103083
+}

@@ -1,0 +1,34 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/aligned_request_r11a/runs/physical_content_67265/step0400.pt",
+  "step": 400,
+  "mode": "anchor_routing",
+  "case": "VP015",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/aligned_request_r11a/snapshots/20261103T143415Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/data_revision_qwen38/benchmark_inputs/videophy60_first_image_request_v1",
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "A rower pulls an oar from the water, the blade dripping water back into the lake. .",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP015/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "As the rower lifts the paddle blade from the water, droplets detach and fall downward.\nGravity pulls the water clinging to the blade back into the lake surface.\nThe paddle's upward motion separates the blade from the water, exposing dripping edges.",
+  "positive_relations": [
+    "As the rower lifts the paddle blade from the water, droplets detach and fall downward.",
+    "Gravity pulls the water clinging to the blade back into the lake surface.",
+    "The paddle's upward motion separates the blade from the water, exposing dripping edges."
+  ],
+  "negative_analysis": "Paddler strokes -> kayak glides forward across the calm lake surface.\nPaddle blades lift from water -> droplets fall back into the lake.\nKayak hull displaces water -> ripples spread outward behind the boat.\nPaddler shifts weight -> kayak rocks gently on the water surface.",
+  "donor": null,
+  "scope": "Frozen fitted anchor for K; retain complete learned Q execution for V",
+  "seconds": 83.41393867135048
+}

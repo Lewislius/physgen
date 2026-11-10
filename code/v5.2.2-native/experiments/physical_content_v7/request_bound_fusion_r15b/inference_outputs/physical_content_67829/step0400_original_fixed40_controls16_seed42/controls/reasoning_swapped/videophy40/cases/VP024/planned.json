@@ -1,0 +1,35 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_bound_fusion_r15b/runs/physical_content_67829/step0400.pt",
+  "step": 400,
+  "mode": "reasoning_swapped",
+  "case": "VP024",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_bound_fusion_r15b/snapshots/20261105T152223Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_bound_fusion_r15b/prepared_inputs",
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "A speeding car crashes into a brick wall, crumpling the front end and stopping abruptly.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP024/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "1. Men grasp wood ends; their hands apply force to bend it into bow shape.\n2. Wood flexes under tension, maintaining continuous curve as men hold positions.\n3. If force persists, wood may deform further or return to original shape.\n4. Sweat may appear on men’s skin as they exert physical effort.",
+  "positive_relations": [
+    "Men grasp wood ends; their hands apply force to bend it into bow shape.",
+    "Wood flexes under tension, maintaining continuous curve as men hold positions.",
+    "If force persists, wood may deform further or return to original shape.",
+    "Sweat may appear on men’s skin as they exert physical effort."
+  ],
+  "negative_analysis": "1. Car’s front end impacts wall, causing bricks to break and debris to scatter.\n2. Wall’s structural integrity weakens as car pushes into it, possibly leading to further collapse.\n3. Soil and dust cloud erupts from wall breach due to car’s forceful penetration.\n4. Water may seep into damaged wall area, accelerating decay if left unattended.",
+  "donor": "VP002",
+  "scope": "Same-count unrelated reasoning with own image/request; own negative condition",
+  "seconds": 88.42505013756454
+}

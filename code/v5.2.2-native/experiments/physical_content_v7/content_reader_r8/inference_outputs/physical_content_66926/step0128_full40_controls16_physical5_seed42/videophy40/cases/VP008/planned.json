@@ -1,0 +1,33 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/content_reader_r8/runs/physical_content_66926/step0128.pt",
+  "step": 128,
+  "mode": "real",
+  "case": "VP008",
+  "seed": 42,
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "A person bounces to a specific rhythm on a trampoline, their body movement clearly timed to a beat.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP008/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "1. Person’s arms extend outward as they rise, preparing for rhythmic bounce.  \n2. Legs bend at knees during descent, absorbing impact before rebound.  \n3. Trampoline surface deforms under weight, returning to flat as person ascends.  \n4. Hair moves with motion, trailing behind as body rotates mid-air.",
+  "positive_relations": [
+    "Person’s arms extend outward as they rise, preparing for rhythmic bounce.",
+    "Legs bend at knees during descent, absorbing impact before rebound.",
+    "Trampoline surface deforms under weight, returning to flat as person ascends.",
+    "Hair moves with motion, trailing behind as body rotates mid-air."
+  ],
+  "negative_analysis": "1. Person’s arms extended outward as they jump, likely to maintain balance mid-air.\n2. Person’s legs bent at knees, suggesting preparation for landing or ongoing motion.\n3. Person’s bare feet show no visible footwear, indicating possible trampoline safety or personal preference.\n4. Person’s body position may shift as they continue bouncing or prepare for a new move.",
+  "donor": null,
+  "scope": "Own image/request/reasoning in positive C; own image-only negative C; native T5 retained",
+  "seconds": 90.40259938687086
+}

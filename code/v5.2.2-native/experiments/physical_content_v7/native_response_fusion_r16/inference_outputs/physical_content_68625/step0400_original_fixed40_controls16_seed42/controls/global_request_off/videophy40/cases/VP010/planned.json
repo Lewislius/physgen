@@ -1,0 +1,37 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_response_fusion_r16/runs/physical_content_68625/step0400.pt",
+  "step": 400,
+  "mode": "global_request_off",
+  "case": "VP010",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_response_fusion_r16/snapshots/20261109T185125Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs",
+  "guidance": {
+    "kind": "joint_two_branch_cfg",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+    "physical_residual_scale": null,
+    "native_definition": "Same trained Wan LoRA with all physical additions disabled"
+  },
+  "caption": "A person mops up a puddle of water on a concrete floor, the water disappearing as the mop passes.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP010/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler",
+    "guidance_composition": "joint_two_branch_cfg"
+  },
+  "positive_analysis": "1. Mop bristles contact water, initiating displacement and spreading across floor surface.  \n2. Water flows outward from mop path, thinning as it moves away from center.  \n3. Floor reflects light where water pools, diminishing as absorption or evaporation begins.  \n4. Mop handle remains upright, suggesting continued motion through liquid zone.",
+  "positive_relations": [
+    "Mop bristles contact water, initiating displacement and spreading across floor surface.",
+    "Water flows outward from mop path, thinning as it moves away from center.",
+    "Floor reflects light where water pools, diminishing as absorption or evaporation begins.",
+    "Mop handle remains upright, suggesting continued motion through liquid zone."
+  ],
+  "negative_analysis": "1. Water pools where broom rests, reflecting light as it remains still.\n2. Broom bristles press into wet floor, displacing water outward.\n3. If broom moves, water will splash and spread further across floor.\n4. Water’s surface tension may cause droplets to form and roll along floor.",
+  "donor": null,
+  "scope": "Remove only the request-bound-C global execution write",
+  "seconds": 104.22930561657995
+}

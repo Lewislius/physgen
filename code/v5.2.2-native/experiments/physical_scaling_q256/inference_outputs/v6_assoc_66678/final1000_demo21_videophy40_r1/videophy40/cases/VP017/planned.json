@@ -1,0 +1,31 @@
+{
+  "id": "VP017",
+  "variant": "v6_assoc",
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_scaling_q256/runs/v6_assoc_66678/step1000.pt",
+  "optimizer_step": 1000,
+  "seed": 42,
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "initial_noise": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP017/noise.pt",
+  "enhancement_passes": 2,
+  "caption": "A unicycle wheel rolls over a small curb; the rider adjusts their position to keep upright.",
+  "source_canvas": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP017/first.png",
+  "condition_scope": "first image and request only; native T5 retained; no historical clauses",
+  "analysis": "1. Rider’s foot presses pedal as wheel contacts curb, shifting body weight forward.\n2. Wheel’s spokes rotate continuously as it rolls over the curb’s edge.\n3. Rider’s knee bends to maintain balance as center of mass adjusts.\n4. Grass beside curb remains static while wheel disturbs its edge.",
+  "relations": [
+    "Rider’s foot presses pedal as wheel contacts curb, shifting body weight forward.",
+    "Wheel’s spokes rotate continuously as it rolls over the curb’s edge.",
+    "Rider’s knee bends to maintain balance as center of mass adjusts.",
+    "Grass beside curb remains static while wheel disturbs its edge."
+  ],
+  "null_analysis": "1. Rider’s foot presses pedal, causing wheel to rotate and bike to move forward.\n2. Wheel contacts curb, potentially altering bike’s trajectory or balance.\n3. Grass beside curb remains static, unaffected by bike’s motion.\n4. Rider’s body leans forward, maintaining momentum as bike ascends curb.",
+  "revision": "physical_scaling_q256_s1000_20261029_r1",
+  "inference_experiment_id": "66720",
+  "frames": 81,
+  "fps": 24.0,
+  "condition_tokens": 256
+}

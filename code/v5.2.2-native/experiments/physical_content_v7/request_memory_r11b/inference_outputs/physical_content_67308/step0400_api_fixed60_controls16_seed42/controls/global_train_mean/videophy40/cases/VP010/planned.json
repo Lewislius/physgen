@@ -1,0 +1,37 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_memory_r11b/runs/physical_content_67308/step0400.pt",
+  "step": 400,
+  "mode": "global_train_mean",
+  "case": "VP010",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_memory_r11b/snapshots/20261104T044513Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/data_revision_qwen38/benchmark_inputs/videophy60_first_image_request_v1",
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "global_condition": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_memory_r11b/controls/physical_content_67308/step0400_mean_content.pt",
+  "caption": "A person mops up a puddle of water on a concrete floor, the water disappearing as the mop passes.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP010/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "As the mop head sweeps across the puddle, displaced water is absorbed into the bristles, reducing the visible wet area.\nThe concrete floor beneath the mop's path transitions from reflective wetness to matte dryness as the bristles pass.\nRemaining puddle edges recede inward as the mop removes water from the center outward.\nThe mop handle tilts and translates with the sweeping motion, maintaining bristle contact with the floor surface.",
+  "positive_relations": [
+    "As the mop head sweeps across the puddle, displaced water is absorbed into the bristles, reducing the visible wet area.",
+    "The concrete floor beneath the mop's path transitions from reflective wetness to matte dryness as the bristles pass.",
+    "Remaining puddle edges recede inward as the mop removes water from the center outward.",
+    "The mop handle tilts and translates with the sweeping motion, maintaining bristle contact with the floor surface."
+  ],
+  "negative_analysis": "The broom's upright posture depends on its bristles resting flat against the wet floor.\nA slight lateral force would cause the broom to tip over onto the slick surface.\nThe soapy water on the floor may slowly spread outward or evaporate.",
+  "donor": null,
+  "scope": "Fixed train-mean physical routing/execution C; own request memory, relation-count priors, image and original T5 retained",
+  "request_memory_donor": null,
+  "seconds": 83.25275954790413
+}

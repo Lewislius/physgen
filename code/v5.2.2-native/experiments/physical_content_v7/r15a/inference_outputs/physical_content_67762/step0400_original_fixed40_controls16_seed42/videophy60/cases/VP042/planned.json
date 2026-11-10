@@ -1,0 +1,35 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_fusion_r15a/runs/physical_content_67762/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP042",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_fusion_r15a/snapshots/20261105T085307Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_fusion_r15a/prepared_inputs",
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "A player throws a sidearm pass; the football travels on a sideways trajectory before being caught.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP042/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "1. Player’s arm extends forward as ball leaves hand, initiating sideways motion through air.  \n2. Ball’s trajectory curves slightly due to spin and air resistance during flight.  \n3. Player’s body rotates mid-air to align with incoming ball’s path for catching.  \n4. Muscles in arms and core contract continuously to stabilize grip and adjust posture.",
+  "positive_relations": [
+    "Player’s arm extends forward as ball leaves hand, initiating sideways motion through air.",
+    "Ball’s trajectory curves slightly due to spin and air resistance during flight.",
+    "Player’s body rotates mid-air to align with incoming ball’s path for catching.",
+    "Muscles in arms and core contract continuously to stabilize grip and adjust posture."
+  ],
+  "negative_analysis": "1. Player’s extended arms reach for ball, altering trajectory as it nears his hands.\n2. Football’s motion continues unaffected by player’s leap, governed by gravity and air resistance.\n3. Player’s legs propel him upward, changing his center of mass mid-air.\n4. Sweat visibly glistens on player’s skin, indicating physical exertion during the leap.",
+  "donor": null,
+  "scope": "Own first image, original request and original Qwen reasoning",
+  "seconds": 189.9343056427315
+}

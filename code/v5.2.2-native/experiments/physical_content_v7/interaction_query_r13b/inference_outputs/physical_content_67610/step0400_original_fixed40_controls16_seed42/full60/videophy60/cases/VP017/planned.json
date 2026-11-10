@@ -1,0 +1,35 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/runs/physical_content_67610/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP017",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/snapshots/20261104T214359Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/prepared_inputs",
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "A unicycle wheel rolls over a small curb; the rider adjusts their position to keep upright.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP017/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "1. Rider’s foot presses pedal as wheel contacts curb, shifting body weight forward.\n2. Wheel’s spokes rotate continuously as it rolls over the curb’s edge.\n3. Rider’s knee bends to maintain balance as center of mass adjusts.\n4. Grass beside curb remains static while wheel disturbs its edge.",
+  "positive_relations": [
+    "Rider’s foot presses pedal as wheel contacts curb, shifting body weight forward.",
+    "Wheel’s spokes rotate continuously as it rolls over the curb’s edge.",
+    "Rider’s knee bends to maintain balance as center of mass adjusts.",
+    "Grass beside curb remains static while wheel disturbs its edge."
+  ],
+  "negative_analysis": "1. Rider’s foot presses pedal, causing wheel to rotate and bike to move forward.\n2. Wheel contacts curb, potentially altering bike’s trajectory or balance.\n3. Grass beside curb remains static, unaffected by bike’s motion.\n4. Rider’s body leans forward, maintaining momentum as bike ascends curb.",
+  "donor": null,
+  "scope": "Own first image, original request and original Qwen reasoning",
+  "seconds": 207.33422069903463
+}

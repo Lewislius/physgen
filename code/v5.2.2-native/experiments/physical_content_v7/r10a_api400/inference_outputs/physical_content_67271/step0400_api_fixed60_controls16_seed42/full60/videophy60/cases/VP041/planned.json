@@ -1,0 +1,34 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r10a_api400/runs/physical_content_67271/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP041",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r10a_api400/snapshots/20261103T140613Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/data_revision_qwen38/benchmark_inputs/videophy60_first_image_request_v1",
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "Two swimmers race side-by-side, their hands entering the water simultaneously, creating small trails of bubbles.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP041/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "When their hands enter the water simultaneously, small trails of bubbles form.\nAs they race side-by-side, the splashing water persists around their bodies.\nTheir continuous swimming motion causes their hands to repeatedly strike the water surface.",
+  "positive_relations": [
+    "When their hands enter the water simultaneously, small trails of bubbles form.",
+    "As they race side-by-side, the splashing water persists around their bodies.",
+    "Their continuous swimming motion causes their hands to repeatedly strike the water surface."
+  ],
+  "negative_analysis": "The swimmers' upward emergence displaces water, creating splashes around their heads and shoulders.\nAs they continue rising, the water level recedes relative to their bodies.\nThe scattered water droplets fall back into the pool due to gravity.\nThe two swimmers maintain synchronized relative positioning while moving through the water.",
+  "donor": null,
+  "scope": "Own first image, original request and API reasoning",
+  "seconds": 82.85299942921847
+}

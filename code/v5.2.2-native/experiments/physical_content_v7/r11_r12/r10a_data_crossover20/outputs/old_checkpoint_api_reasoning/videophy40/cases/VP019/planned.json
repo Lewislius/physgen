@@ -1,0 +1,33 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/execution_value_r10/runs/physical_content_67003/step0400.pt",
+  "step": 400,
+  "mode": "old_checkpoint_api_reasoning",
+  "case": "VP019",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/r10a_data_crossover20/snapshots/20261104T045535Z",
+  "inference_evidence": "api",
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "Javelin with a damaged tip is thrown; it wobbles in flight and lands off-target.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP019/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "A damaged tip disrupts aerodynamic stability, causing the javelin to wobble during its flight.\nThe wobbling motion alters the trajectory, leading the javelin to land off-target on the field.",
+  "positive_relations": [
+    "A damaged tip disrupts aerodynamic stability, causing the javelin to wobble during its flight.",
+    "The wobbling motion alters the trajectory, leading the javelin to land off-target on the field."
+  ],
+  "negative_analysis": "The javelin is angled upward with its tip pointing right -> if unsupported, it will rotate and fall toward the grassy field.\nThe blue rectangular mat lies flat on the ground -> it may serve as a landing zone for the falling javelin.\nThe yellow grip and white fletching are attached to the shaft -> they remain fixed to the shaft during any motion.",
+  "positive_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/data_revision_qwen38/benchmark_inputs/videophy60_first_image_request_v1/videophy40_VP019/positive.pt",
+  "negative_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/data_revision_qwen38/benchmark_inputs/videophy60_first_image_request_v1/videophy40_VP019/negative.pt",
+  "seconds": 82.13195784389973
+}

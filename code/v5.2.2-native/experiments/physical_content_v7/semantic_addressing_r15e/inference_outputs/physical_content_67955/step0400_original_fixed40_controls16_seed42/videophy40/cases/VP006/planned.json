@@ -1,0 +1,35 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_addressing_r15e/runs/physical_content_67955/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP006",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_addressing_r15e/snapshots/20261106T101625Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/denoising_matched_fusion_r15d/prepared_inputs",
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "A large, wet canvas is twisted to remove excess paint, leaving drips down the side.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP006/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "1. Canvas stands upright, supported by metal frame, showing no visible wetness or drips.\n2. Two individuals sit near canvas, one holding equipment, neither interacting with canvas surface.\n3. Studio lighting equipment remains stationary, casting no motion or fluid effects on canvas.\n4. Floor shows no wet marks or fluid trails, indicating canvas is dry or not actively being manipulated.",
+  "positive_relations": [
+    "Canvas stands upright, supported by metal frame, showing no visible wetness or drips.",
+    "Two individuals sit near canvas, one holding equipment, neither interacting with canvas surface.",
+    "Studio lighting equipment remains stationary, casting no motion or fluid effects on canvas.",
+    "Floor shows no wet marks or fluid trails, indicating canvas is dry or not actively being manipulated."
+  ],
+  "negative_analysis": "1. Man seated triggers camera shutter, altering light exposure on backdrop.\n2. Child beside equipment adjusts settings, potentially changing scene illumination.\n3. Backdrop remains taut, resisting sagging from continuous studio airflow.\n4. Fluids in cables remain static, unaffected by human movement in frame.",
+  "donor": null,
+  "scope": "Own first image, original request and original Qwen reasoning",
+  "seconds": 84.6335036708042
+}

@@ -1,0 +1,37 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/source_residual_fusion_r15g/runs/physical_content_68103/step0400.pt",
+  "step": 400,
+  "mode": "reasoning_swapped",
+  "case": "VP013",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/source_residual_fusion_r15g/snapshots/20261107T040316Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs",
+  "guidance": {
+    "kind": "joint_two_branch_cfg",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+    "physical_residual_scale": null,
+    "native_definition": "Same trained Wan self-attention/FFN LoRA; physical branch bypassed"
+  },
+  "caption": "A person uses a pair of pliers to open a stubborn metal bottle, bending the cap slightly in the process.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP013/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler",
+    "guidance_composition": "joint_two_branch_cfg"
+  },
+  "positive_analysis": "1. Orange egg rests on surface beneath transparent curved slide.\n2. Slide’s curvature suggests potential for rolling motion.\n3. Egg’s smooth surface may interact with slide’s texture during motion.\n4. Fluid-like slide implies possible frictional or aerodynamic effects during roll.",
+  "positive_relations": [
+    "Orange egg rests on surface beneath transparent curved slide.",
+    "Slide’s curvature suggests potential for rolling motion.",
+    "Egg’s smooth surface may interact with slide’s texture during motion.",
+    "Fluid-like slide implies possible frictional or aerodynamic effects during roll."
+  ],
+  "negative_analysis": "1. Hand holds pliers gripping bottle neck, applying pressure to deform metal cap.\n2. Pliers’ jaws press into cap, likely causing it to compress or crack under force.\n3. Bottle remains stationary as external force alters cap’s shape or integrity.\n4. If cap breaks, fragments may dislodge, potentially releasing contents or debris.",
+  "donor": "VP025",
+  "scope": "Same-count unrelated reasoning with own image/request; own negative condition",
+  "seconds": 82.95461770147085
+}

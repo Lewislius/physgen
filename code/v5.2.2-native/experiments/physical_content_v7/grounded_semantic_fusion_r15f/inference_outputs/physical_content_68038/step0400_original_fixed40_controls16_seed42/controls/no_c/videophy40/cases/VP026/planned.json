@@ -1,0 +1,35 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/runs/physical_content_68038/step0400.pt",
+  "step": 400,
+  "mode": "no_c",
+  "case": "VP026",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/snapshots/20261106T202709Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs",
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "Two people stretch a bungee cord, extending it to its maximum length.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP026/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "1. Bungee cord stretches taut between two anchor points above ocean surface.\n2. Black cylindrical weight hangs suspended, swaying slightly with cord tension.\n3. Orange harnesses attached to cord indicate human operators managing tension.\n4. Ocean water remains calm, undisturbed by cord’s motion or weight.",
+  "positive_relations": [
+    "Bungee cord stretches taut between two anchor points above ocean surface.",
+    "Black cylindrical weight hangs suspended, swaying slightly with cord tension.",
+    "Orange harnesses attached to cord indicate human operators managing tension.",
+    "Ocean water remains calm, undisturbed by cord’s motion or weight."
+  ],
+  "negative_analysis": "1. Ocean surface ripples continuously due to wind and wave action.\n2. Black cylindrical object suspended by ropes remains stable unless force alters its position.\n3. Ropes transmit tension from the orange device to the cylinder, maintaining suspension.\n4. Sea water may gradually erode or corrode metal components if exposed over time.",
+  "donor": null,
+  "scope": "Native generation branch: physical fusion bypassed in both CFG arms",
+  "seconds": 79.75565070379525
+}

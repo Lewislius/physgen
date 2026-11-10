@@ -1,0 +1,190 @@
+{
+  "source_checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_joint_read_r16a/runs/physical_content_68429/step0400.pt",
+  "checkpoint_step": 400,
+  "revision": "physical_content_v7_native_joint_read_r16a",
+  "mode": "no_c",
+  "suite": "videophy40",
+  "training_experiment_id": "68429",
+  "prepared_root": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42",
+  "input_keys": [
+    "first",
+    "text",
+    "null_text",
+    "times",
+    "valid"
+  ],
+  "verifier": {
+    "kind": "none"
+  },
+  "training_reasoning_rounds": [
+    2
+  ],
+  "inference_reasoning_round": 2,
+  "message_block_calls_per_condition": 2,
+  "frames": 81,
+  "fps": 24.0,
+  "sampling": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "condition_strength": 1.0
+  },
+  "seed": 42,
+  "training_seed": 42,
+  "cases": [
+    {
+      "caption": "A plastic ruler is bent until it cracks, displaying a visible stress fracture that propagates.",
+      "category": "Object Interactions",
+      "action": "bending something until it breaks",
+      "id": "VP004",
+      "seed": 42,
+      "image_seed": 20261012,
+      "first_prompt": "A single realistic photograph of the initial scene immediately BEFORE the following action begins: A plastic ruler is bent until it cracks, displaying a visible stress fracture that propagates. Show the participants and objects in their starting positions, with enough room for the action. Show one moment only, not a montage, not the completed outcome. No text or diagrams.",
+      "image": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP004/first.png",
+      "prepared_inputs": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP004",
+      "geometry": {
+        "h": 480,
+        "w": 832,
+        "rh": 480,
+        "rw": 832,
+        "top": 0,
+        "left": 0,
+        "frames": 81
+      },
+      "initial_noise": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP004/noise.pt",
+      "canvas": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP004/first.png",
+      "output": "cases/VP004/planned.mp4",
+      "clauses": [
+        {
+          "text": "The plastic ruler must be held horizontally and subjected to bending force until it visibly cracks.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The crack must propagate visibly along the ruler's length as the bending continues.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The ruler's material must exhibit a clear stress fracture pattern during the bending process.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The bending action must be performed in a controlled manner to ensure the fracture is clearly observable.",
+          "basis": "both",
+          "phase": "evolution"
+        }
+      ],
+      "generation_seed": 42
+    }
+  ],
+  "noise_policy": "saved per-case FP32 noise",
+  "settings": {
+    "width": 832,
+    "height": 480,
+    "frames": 81,
+    "fps": 24.0,
+    "seed": 42,
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "solver": "existing Occam Euler",
+    "condition_strength": 1.0,
+    "image_seed": 20261009,
+    "image_generator": "native Wan2.2-TI2V-5B, one frame, no trained LoRA, no Planner",
+    "image_solver": "unipc",
+    "image_steps": 50,
+    "image_shift": 5.0,
+    "image_guidance": 5.0,
+    "image_negative": "native Wan default",
+    "image_prompt_template": "A single realistic photograph of the initial scene immediately BEFORE the following action begins: {caption} Show the participants and objects in their starting positions, with enough room for the action. Show one moment only, not a montage, not the completed outcome. No text or diagrams.",
+    "qwen_template": "Given this initial image and the requested video, describe up to four short process requirements. Describe prerequisites, visible changes and continuation of existing results. Do not assign object IDs, boxes, masks, numerical forces or future timestamps. Do not invent unseen facts. Uncertain requirements may be omitted. Return JSON only: {\"requirements\": [\"...\"]}. Requested video: ",
+    "qwen_do_sample": false,
+    "qwen_max_new_tokens": 384,
+    "initial_noise": "one FP32 CUDA noise tensor per case, persisted and cloned for both arms",
+    "video_encoding": "shared write_video: RGB lossless archive; baseline H264 yuv420p CRF18 for scoring"
+  },
+  "evaluation": {
+    "code": "/home/liuzhirui/benchmark/videophy/VIDEOPHY2",
+    "checkpoint": "/home/liuzhirui/benchmark/videophy/videophy_2_auto",
+    "num_frames": 32,
+    "seed": 20261009,
+    "tasks": [
+      "sa",
+      "pc"
+    ],
+    "generation": {
+      "do_sample": false,
+      "top_k": 1,
+      "temperature": 0.001,
+      "max_length": 256
+    },
+    "joint_threshold": 4,
+    "average_definition": "mean of (SA + PC) / 2; custom summary, not official Joint Score",
+    "missing_policy": "no final comparison unless every selected case has both valid SA and PC scores"
+  },
+  "case_ids_file": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/videophy40_20261026/case_ids.json",
+  "scope": "Fixed60 historical VideoPhy2 captions adapted to common first-image I2V; seed42. Not the official590-caption T2V benchmark.",
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_joint_read_r16a/runs/physical_content_68429/step0400.pt",
+  "variant": "physical_content",
+  "training_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_joint_read_r16a/snapshots/20261109T040426Z",
+  "conditioning": "Original frozen-Qwen contextual physical and literal-request words; original native T5 request",
+  "original_clauses_used": false,
+  "physical_input_image": "prepared raw first-frame canvas",
+  "architecture": {
+    "c_tokens": 256,
+    "enhancement_width": 4096,
+    "wan_width": 3072,
+    "fusion_layers": [
+      3,
+      6,
+      9,
+      12,
+      15,
+      18,
+      21,
+      24,
+      27,
+      30
+    ]
+  },
+  "generation_seed": 42,
+  "intervention_scope": "Native generation branch: physical fusion bypassed in both CFG arms",
+  "selection": "Keep the original40 unchanged and append the original historicalVP041-VP060, selected before R9/R10 outcomes.",
+  "source_manifest": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/manifest.json",
+  "reference40": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/inference_outputs/physical_content_66778/step0400_seed42_r1/videophy40/manifest.json",
+  "extra_ids": [
+    "VP041",
+    "VP042",
+    "VP043",
+    "VP044",
+    "VP045",
+    "VP046",
+    "VP047",
+    "VP048",
+    "VP049",
+    "VP050",
+    "VP051",
+    "VP052",
+    "VP053",
+    "VP054",
+    "VP055",
+    "VP056",
+    "VP057",
+    "VP058",
+    "VP059",
+    "VP060"
+  ],
+  "guidance": {
+    "kind": "joint_two_branch_cfg",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+    "physical_residual_scale": null,
+    "native_definition": "Same trained Wan LoRA with all physical additions disabled"
+  },
+  "data_revision": "original_wisa4000_and_original_reasoning",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs",
+  "fusion_order": "parallel_native_text_and_request_prior_direct_C"
+}

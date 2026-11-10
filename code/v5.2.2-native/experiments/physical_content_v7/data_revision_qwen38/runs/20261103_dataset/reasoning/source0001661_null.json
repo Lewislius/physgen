@@ -1,0 +1,40 @@
+{
+  "relations": [
+    "Bubbles continuously form on the lemon surface and detach upward.",
+    "The lemon slices remain submerged in the carbonated liquid.",
+    "Small bubbles coalesce into larger ones before rising through the liquid."
+  ],
+  "caption": "",
+  "scope": "first_image_and_request_only",
+  "producer": "qwen3.8-flash",
+  "trace": {
+    "model": "qwen3.8-flash",
+    "request_id": "chatcmpl-ea0356b5-a10b-90bb-a0ca-9ce2c3a1a322",
+    "usage": {
+      "prompt_tokens": 720,
+      "total_tokens": 1010,
+      "completion_tokens": 290,
+      "prompt_tokens_details": {
+        "cached_tokens": 512,
+        "image_tokens": 392,
+        "text_tokens": 328
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 246,
+        "text_tokens": 43
+      }
+    },
+    "finish_reason": "stop",
+    "raw": "{\"relations\":[\"Bubbles continuously form on the lemon surface and detach upward.\",\"The lemon slices remain submerged in the carbonated liquid.\",\"Small bubbles coalesce into larger ones before rising through the liquid.\"] }",
+    "seconds": 4.231844480993459,
+    "image_count": 1,
+    "video_sequence": false,
+    "thinking": true,
+    "explicit_times": null,
+    "prompt": "You receive ONLY the initial image and the requested video description, not the future video.\nGive 1-4 concise physical relation sentences useful for generating the requested visible process.\nEach sentence at most 20 words, in English; prerequisite/source -> conditional response or persistence.\nUse concrete relations tied to this scene and request, not a list of named laws or a caption rewrite.\nThe request describes desired development; it is not proof that the initial image already contains\nthat development. Distinguish visible facts from conditional future effects. Do not fabricate\nforces, measurements, directions, event times, hidden actions or deterministic trajectories.\nAvoid false explanations such as momentum keeping a ball suspended, or inertia preventing change.\nDo not freeze a requested process by demanding that its position/shape remain unchanged. Preserve\nthe appropriate identities, material continuity and interactions while permitting the requested\nmotion, diffusion, deformation, emergence or other visible change. If the request is empty, use\nonly plausible conditional relations supported by the initial image; do not infer a unique future.\nReturn JSON {\"relations\":[\"...\", \"...\"]}; no commentary, no extra features or embeddings.\n\n{\"request\": \"No text request.\", \"presentation_seconds\": 3.200000286102295}"
+  },
+  "sample": "source0001661",
+  "revision": "qwen38_wisa_reviewed_v1",
+  "arm": "null",
+  "first_image": "/home/liuzhirui/Project/physGen/data_cache/wisa_4000/base/first/source0001661.png"
+}

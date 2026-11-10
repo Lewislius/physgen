@@ -1,0 +1,37 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_response_fusion_r16/runs/physical_content_68621/step0400.pt",
+  "step": 400,
+  "mode": "global_joint_off",
+  "case": "VP024",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_response_fusion_r16/snapshots/20261109T185125Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs",
+  "guidance": {
+    "kind": "joint_two_branch_cfg",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+    "physical_residual_scale": null,
+    "native_definition": "Same trained Wan LoRA with all physical additions disabled"
+  },
+  "caption": "A speeding car crashes into a brick wall, crumpling the front end and stopping abruptly.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP024/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler",
+    "guidance_composition": "joint_two_branch_cfg"
+  },
+  "positive_analysis": "1. Car’s front end impacts wall, causing visible deformation and brick displacement.  \n2. Dirt and debris spray outward from point of collision due to sudden force.  \n3. Vehicle’s rear remains intact, suggesting impact concentrated at front.  \n4. Tire contact with pavement persists, indicating braking or skidding prior to impact.",
+  "positive_relations": [
+    "Car’s front end impacts wall, causing visible deformation and brick displacement.",
+    "Dirt and debris spray outward from point of collision due to sudden force.",
+    "Vehicle’s rear remains intact, suggesting impact concentrated at front.",
+    "Tire contact with pavement persists, indicating braking or skidding prior to impact."
+  ],
+  "negative_analysis": "1. Car’s front end impacts wall, causing bricks to break and debris to scatter.\n2. Wall’s structural integrity weakens as car pushes into it, possibly leading to further collapse.\n3. Soil and dust cloud erupts from wall breach due to car’s forceful penetration.\n4. Water may seep into damaged wall area, accelerating decay if left unattended.",
+  "donor": null,
+  "scope": "Remove only the joint direct+request-C global execution write",
+  "seconds": 95.70909768808633
+}

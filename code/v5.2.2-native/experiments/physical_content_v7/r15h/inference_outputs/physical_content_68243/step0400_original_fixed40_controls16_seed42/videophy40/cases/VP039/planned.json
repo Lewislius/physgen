@@ -1,0 +1,37 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_feedback_fusion_r15h/runs/physical_content_68243/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP039",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_feedback_fusion_r15h/snapshots/20261108T061417Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs",
+  "guidance": {
+    "kind": "joint_two_branch_cfg",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+    "physical_residual_scale": null,
+    "native_definition": "Same trained Wan LoRA with all physical additions disabled"
+  },
+  "caption": "A wedge is driven into a log using a sledgehammer, splitting the log cleanly apart.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP039/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler",
+    "guidance_composition": "joint_two_branch_cfg"
+  },
+  "positive_analysis": "1. Axe blade embedded in log’s end, splitting wood fibers apart.\n2. Person’s boot near axe, stabilizing stance during impact.\n3. Log’s cut surface exposed, revealing fresh wood grain.\n4. Grass beneath log remains undisturbed, no visible fluid movement.",
+  "positive_relations": [
+    "Axe blade embedded in log’s end, splitting wood fibers apart.",
+    "Person’s boot near axe, stabilizing stance during impact.",
+    "Log’s cut surface exposed, revealing fresh wood grain.",
+    "Grass beneath log remains undisturbed, no visible fluid movement."
+  ],
+  "negative_analysis": "1. Axe blade embedded in log causes wood fibers to split and separate under force.\n2. Person’s boot near axe suggests stance for stability during chopping motion.\n3. Grass beneath log and boots shows slight compression from weight and impact.\n4. Moisture may seep from cut wood surface if ambient humidity is high.",
+  "donor": null,
+  "scope": "Own first image, original request and original Qwen reasoning",
+  "seconds": 86.1739068524912
+}

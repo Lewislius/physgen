@@ -1,0 +1,38 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_feedback_fusion_r15h/runs/physical_content_68243/step0400.pt",
+  "step": 400,
+  "mode": "global_train_mean",
+  "case": "VP016",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_feedback_fusion_r15h/snapshots/20261108T061417Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs",
+  "guidance": {
+    "kind": "joint_two_branch_cfg",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+    "physical_residual_scale": null,
+    "native_definition": "Same trained Wan LoRA with all physical additions disabled"
+  },
+  "global_condition": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_feedback_fusion_r15h/controls/physical_content_68243/step0400_mean_content.pt",
+  "caption": "A scientist uses a probe to nudge a small, delicate insect on a leaf, causing it to twitch minimally.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP016/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler",
+    "guidance_composition": "joint_two_branch_cfg"
+  },
+  "positive_analysis": "1. Blue-gloved hand holds probe near insect on leaf surface.  \n2. Probe tip contacts insect’s body, causing slight twitch.  \n3. Insect remains on leaf, possibly shifting position slightly.  \n4. Fluids may transfer between probe and insect during contact.",
+  "positive_relations": [
+    "Blue-gloved hand holds probe near insect on leaf surface.",
+    "Probe tip contacts insect’s body, causing slight twitch.",
+    "Insect remains on leaf, possibly shifting position slightly.",
+    "Fluids may transfer between probe and insect during contact."
+  ],
+  "negative_analysis": "1. Gloved hand holds pipette near insect on leaf.\n2. Pipette tip contacts insect’s body, possibly transferring fluid.\n3. Insect remains stationary on leaf surface during contact.\n4. Leaf surface may retain moisture or residue from pipette fluid.",
+  "donor": null,
+  "scope": "Fixed train-mean routing/execution C; own relation priors and video states remain input-specific",
+  "seconds": 84.67857371550053
+}

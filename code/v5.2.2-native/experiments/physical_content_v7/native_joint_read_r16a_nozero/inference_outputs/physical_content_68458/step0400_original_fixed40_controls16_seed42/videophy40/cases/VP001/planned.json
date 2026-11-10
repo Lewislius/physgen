@@ -1,0 +1,37 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_joint_read_r16a_nozero/runs/physical_content_68458/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP001",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_joint_read_r16a_nozero/snapshots/20261109T055740Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs",
+  "guidance": {
+    "kind": "joint_two_branch_cfg",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+    "physical_residual_scale": null,
+    "native_definition": "Same trained Wan LoRA with all physical additions disabled"
+  },
+  "caption": "A long jumper demonstrates a flawed technique, resulting in a short distance and an unbalanced landing.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP001/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler",
+    "guidance_composition": "joint_two_branch_cfg"
+  },
+  "positive_analysis": "1. Athlete’s arms extended outward, indicating imbalance during flight phase.\n2. Body positioned asymmetrically, suggesting poor center of mass control.\n3. Legs bent unevenly, implying compromised landing stability.\n4. Airflow around limbs suggests motion, but no visible fluid dynamics altering trajectory.",
+  "positive_relations": [
+    "Athlete’s arms extended outward, indicating imbalance during flight phase.",
+    "Body positioned asymmetrically, suggesting poor center of mass control.",
+    "Legs bent unevenly, implying compromised landing stability.",
+    "Airflow around limbs suggests motion, but no visible fluid dynamics altering trajectory."
+  ],
+  "negative_analysis": "1. Person’s arms extended upward causes body to arch mid-air, altering center of mass.\n2. Jumping motion suspends person above court, temporarily defying gravity’s pull.\n3. Air resistance acts on person’s body, slowing descent toward the court surface.\n4. Person’s legs bent at knees during leap, preparing for landing impact on court.",
+  "donor": null,
+  "scope": "Own first image, original request and original Qwen reasoning",
+  "seconds": 222.45252732299923
+}

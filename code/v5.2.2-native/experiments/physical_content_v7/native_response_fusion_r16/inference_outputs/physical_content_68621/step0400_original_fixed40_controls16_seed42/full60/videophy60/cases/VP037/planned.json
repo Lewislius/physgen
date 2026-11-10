@@ -1,0 +1,37 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_response_fusion_r16/runs/physical_content_68621/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP037",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_response_fusion_r16/snapshots/20261109T185125Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs",
+  "guidance": {
+    "kind": "joint_two_branch_cfg",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+    "physical_residual_scale": null,
+    "native_definition": "Same trained Wan LoRA with all physical additions disabled"
+  },
+  "caption": "A competitor approaches the runway, accelerates, jumps, and lands with their legs spread wide.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP037/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler",
+    "guidance_composition": "joint_two_branch_cfg"
+  },
+  "positive_analysis": "1. Aircraft hovers above runway, engines producing thrust to maintain altitude.\n2. Runway surface remains stationary, textured grid visible beneath aircraft’s path.\n3. Air flows around aircraft, creating lift as it hovers above the ground.\n4. Aircraft descends toward runway, preparing for landing with legs spread wide.",
+  "positive_relations": [
+    "Aircraft hovers above runway, engines producing thrust to maintain altitude.",
+    "Runway surface remains stationary, textured grid visible beneath aircraft’s path.",
+    "Air flows around aircraft, creating lift as it hovers above the ground.",
+    "Aircraft descends toward runway, preparing for landing with legs spread wide."
+  ],
+  "negative_analysis": "1. Aircraft lifts off runway, gaining altitude as it ascends into clear sky.\n2. Runway’s textured surface remains static, supporting no motion or deformation.\n3. Green fields flank runway, unchanged by aircraft’s departure.\n4. Air flows continuously around aircraft, altering its trajectory and lift.",
+  "donor": null,
+  "scope": "Own first image, original request and original Qwen reasoning; the declared direct/request-bound/joint global execution writes and the R15C local video-state operator are all active",
+  "seconds": 97.19481175206602
+}

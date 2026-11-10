@@ -1,0 +1,33 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/execution_value_r10/runs/physical_content_67003/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP051",
+  "seed": 42,
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "A billiard ball is struck and rolls across a felt-covered pool table, hitting another ball.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP051/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "1. Orange ball rests centered, casting soft shadow on green felt surface.  \n2. Green and red balls remain stationary, slightly out of focus in background.  \n3. If struck, orange ball will roll, altering its position relative to others.  \n4. Felt surface may show slight compression or deformation under ball’s motion.",
+  "positive_relations": [
+    "Orange ball rests centered, casting soft shadow on green felt surface.",
+    "Green and red balls remain stationary, slightly out of focus in background.",
+    "If struck, orange ball will roll, altering its position relative to others.",
+    "Felt surface may show slight compression or deformation under ball’s motion."
+  ],
+  "negative_analysis": "1. Orange ball’s position may shift if struck, altering its relation to other balls.\n2. Green ball remains stationary unless disturbed by external force.\n3. Red ball’s shadow lengthens if lighting changes, altering visual perception.\n4. Pool table’s surface stays static, supporting ball positions without movement.",
+  "donor": null,
+  "scope": "Own image/request/reasoning in positive C; own image-only negative C; native T5 retained",
+  "seconds": 82.6624614438042
+}

@@ -1,0 +1,37 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_response_fusion_r16/runs/physical_content_68625/step0400.pt",
+  "step": 400,
+  "mode": "global_direct_off",
+  "case": "VP018",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_response_fusion_r16/snapshots/20261109T185125Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs",
+  "guidance": {
+    "kind": "joint_two_branch_cfg",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+    "physical_residual_scale": null,
+    "native_definition": "Same trained Wan LoRA with all physical additions disabled"
+  },
+  "caption": "A bulldozer pulls a heavy load attached with a chain, moving it across the ground.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP018/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler",
+    "guidance_composition": "joint_two_branch_cfg"
+  },
+  "positive_analysis": "1. Chain links connect load to bulldozer, transferring force as machine moves.\n2. Soil load shifts slightly under chain tension as bulldozer advances.\n3. Ground surface deforms beneath tires, creating displaced soil trails.\n4. Engine fluids circulate continuously to support mechanical operation.",
+  "positive_relations": [
+    "Chain links connect load to bulldozer, transferring force as machine moves.",
+    "Soil load shifts slightly under chain tension as bulldozer advances.",
+    "Ground surface deforms beneath tires, creating displaced soil trails.",
+    "Engine fluids circulate continuously to support mechanical operation."
+  ],
+  "negative_analysis": "1. Heavy loader’s bucket holds soil, chain secures load as machine moves forward.  \n2. Tires press into muddy ground, displacing earth and creating ruts beneath.  \n3. Engine exhaust emits fumes, visible as faint plume near radiator grille.  \n4. Soil in bucket may shift or spill if loader tilts further or accelerates.",
+  "donor": null,
+  "scope": "Remove only the direct-C global execution write",
+  "seconds": 103.81811507139355
+}

@@ -1,0 +1,31 @@
+{
+  "id": "VP037",
+  "variant": "v6_write",
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_scaling_q256/runs/v6_write_resume860_s20_66710/step1000.pt",
+  "optimizer_step": 1000,
+  "seed": 42,
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "initial_noise": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP037/noise.pt",
+  "enhancement_passes": 2,
+  "caption": "A competitor approaches the runway, accelerates, jumps, and lands with their legs spread wide.",
+  "source_canvas": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP037/first.png",
+  "condition_scope": "first image and request only; native T5 retained; no historical clauses",
+  "analysis": "1. Aircraft hovers above runway, engines producing thrust to maintain altitude.\n2. Runway surface remains stationary, textured grid visible beneath aircraft’s path.\n3. Air flows around aircraft, creating lift as it hovers above the ground.\n4. Aircraft descends toward runway, preparing for landing with legs spread wide.",
+  "relations": [
+    "Aircraft hovers above runway, engines producing thrust to maintain altitude.",
+    "Runway surface remains stationary, textured grid visible beneath aircraft’s path.",
+    "Air flows around aircraft, creating lift as it hovers above the ground.",
+    "Aircraft descends toward runway, preparing for landing with legs spread wide."
+  ],
+  "null_analysis": "1. Aircraft lifts off runway, gaining altitude as it ascends into clear sky.\n2. Runway’s textured surface remains static, supporting no motion or deformation.\n3. Green fields flank runway, unchanged by aircraft’s departure.\n4. Air flows continuously around aircraft, altering its trajectory and lift.",
+  "revision": "physical_scaling_q256_s1000_20261029_r1",
+  "inference_experiment_id": "66760",
+  "frames": 81,
+  "fps": 24.0,
+  "condition_tokens": 256
+}

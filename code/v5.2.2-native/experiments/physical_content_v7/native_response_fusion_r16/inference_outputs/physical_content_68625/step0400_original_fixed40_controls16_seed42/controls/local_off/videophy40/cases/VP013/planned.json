@@ -1,0 +1,37 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_response_fusion_r16/runs/physical_content_68625/step0400.pt",
+  "step": 400,
+  "mode": "local_off",
+  "case": "VP013",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_response_fusion_r16/snapshots/20261109T185125Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs",
+  "guidance": {
+    "kind": "joint_two_branch_cfg",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+    "physical_residual_scale": null,
+    "native_definition": "Same trained Wan LoRA with all physical additions disabled"
+  },
+  "caption": "A person uses a pair of pliers to open a stubborn metal bottle, bending the cap slightly in the process.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP013/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler",
+    "guidance_composition": "joint_two_branch_cfg"
+  },
+  "positive_analysis": "1. Pliers grip metal cap, applying force to deform it slightly.\n2. Hand holds pliers steady, maintaining pressure on cap’s edge.\n3. Cap begins to bend under applied mechanical stress.\n4. Bottle remains stationary, fluids inside unchanged during manipulation.",
+  "positive_relations": [
+    "Pliers grip metal cap, applying force to deform it slightly.",
+    "Hand holds pliers steady, maintaining pressure on cap’s edge.",
+    "Cap begins to bend under applied mechanical stress.",
+    "Bottle remains stationary, fluids inside unchanged during manipulation."
+  ],
+  "negative_analysis": "1. Hand holds pliers gripping bottle neck, applying pressure to deform metal cap.\n2. Pliers’ jaws press into cap, likely causing it to compress or crack under force.\n3. Bottle remains stationary as external force alters cap’s shape or integrity.\n4. If cap breaks, fragments may dislodge, potentially releasing contents or debris.",
+  "donor": null,
+  "scope": "Retain every declared state-gated global execution write; remove only the local video-state operator output",
+  "seconds": 102.28316761273891
+}

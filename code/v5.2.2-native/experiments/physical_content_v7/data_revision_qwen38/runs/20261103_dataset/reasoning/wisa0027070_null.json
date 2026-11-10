@@ -1,0 +1,40 @@
+{
+  "relations": [
+    "Dense cloud layer over the valley -> slow drift or thinning reveals more of the lake and slopes.",
+    "Diffuse haze across the scene -> gradual brightening or color shift as light penetrates the fog.",
+    "Blurry foreground vegetation -> subtle sway or focus change if wind or camera adjusts."
+  ],
+  "caption": "",
+  "scope": "first_image_and_request_only",
+  "producer": "qwen3.8-flash",
+  "trace": {
+    "model": "qwen3.8-flash",
+    "request_id": "chatcmpl-287d7f97-1ef7-9732-8880-f04b073465c8",
+    "usage": {
+      "prompt_tokens": 721,
+      "total_tokens": 1378,
+      "completion_tokens": 657,
+      "prompt_tokens_details": {
+        "cached_tokens": 512,
+        "image_tokens": 392,
+        "text_tokens": 329
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 591,
+        "text_tokens": 65
+      }
+    },
+    "finish_reason": "stop",
+    "raw": "{\"relations\":[\"Dense cloud layer over the valley -> slow drift or thinning reveals more of the lake and slopes.\",\"Diffuse haze across the scene -> gradual brightening or color shift as light penetrates the fog.\",\"Blurry foreground vegetation -> subtle sway or focus change if wind or camera adjusts.\"]\n}",
+    "seconds": 14.469492618998629,
+    "image_count": 1,
+    "video_sequence": false,
+    "thinking": true,
+    "explicit_times": null,
+    "prompt": "You receive ONLY the initial image and the requested video description, not the future video.\nGive 1-4 concise physical relation sentences useful for generating the requested visible process.\nEach sentence at most 20 words, in English; prerequisite/source -> conditional response or persistence.\nUse concrete relations tied to this scene and request, not a list of named laws or a caption rewrite.\nThe request describes desired development; it is not proof that the initial image already contains\nthat development. Distinguish visible facts from conditional future effects. Do not fabricate\nforces, measurements, directions, event times, hidden actions or deterministic trajectories.\nAvoid false explanations such as momentum keeping a ball suspended, or inertia preventing change.\nDo not freeze a requested process by demanding that its position/shape remain unchanged. Preserve\nthe appropriate identities, material continuity and interactions while permitting the requested\nmotion, diffusion, deformation, emergence or other visible change. If the request is empty, use\nonly plausible conditional relations supported by the initial image; do not infer a unique future.\nReturn JSON {\"relations\":[\"...\", \"...\"]}; no commentary, no extra features or embeddings.\n\n{\"request\": \"No text request.\", \"presentation_seconds\": 2.6693332195281982}"
+  },
+  "sample": "wisa0027070",
+  "revision": "qwen38_wisa_reviewed_v1",
+  "arm": "null",
+  "first_image": "/home/liuzhirui/Project/physGen/data_cache/wisa_4000/base/first/wisa0027070.png"
+}

@@ -1,0 +1,35 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_memory_r11b/runs/physical_content_67308/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP009",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_memory_r11b/snapshots/20261104T044513Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/data_revision_qwen38/benchmark_inputs/videophy60_first_image_request_v1",
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "A construction worker uses a suction cup to lift a heavy glass panel with a small picture adhered to it; the picture remains affixed.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP009/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "The suction cup adheres to the glass, creating a grip that supports the panel's weight.\nThe worker pulls the handle upward, transferring force to lift the heavy glass panel.\nAs the panel lifts, the small picture remains affixed to the glass surface.",
+  "positive_relations": [
+    "The suction cup adheres to the glass, creating a grip that supports the panel's weight.",
+    "The worker pulls the handle upward, transferring force to lift the heavy glass panel.",
+    "As the panel lifts, the small picture remains affixed to the glass surface."
+  ],
+  "negative_analysis": "The crouching man's grip on the handle maintains contact between the plunger cup and the glass surface.\nIf the man pulls the handle backward, the plunger cup may detach from the vertical glass.\nPushing the handle forward causes the plunger cup to compress against the glass surface.\nThe framed picture remains fixed to the glass panel above the plunger's contact area.",
+  "donor": null,
+  "scope": "Own first image, original request and API reasoning",
+  "request_memory_donor": null,
+  "seconds": 82.76476687006652
+}

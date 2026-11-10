@@ -1,0 +1,37 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_joint_read_r16a/runs/physical_content_68429/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP045",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_joint_read_r16a/snapshots/20261109T040426Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs",
+  "guidance": {
+    "kind": "joint_two_branch_cfg",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+    "physical_residual_scale": null,
+    "native_definition": "Same trained Wan LoRA with all physical additions disabled"
+  },
+  "caption": "A sailor uses a winch to tighten the halyard raising a heavy mainsail high up the mast.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP045/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler",
+    "guidance_composition": "joint_two_branch_cfg"
+  },
+  "positive_analysis": "1. Sailors stand near the mast, holding lines as sail rises.\n2. Halyard pulls taut as sail ascends, tension increasing.\n3. Wind flows over sail surface, causing fabric to billow.\n4. Sea water moves continuously beneath the vessel’s hull.",
+  "positive_relations": [
+    "Sailors stand near the mast, holding lines as sail rises.",
+    "Halyard pulls taut as sail ascends, tension increasing.",
+    "Wind flows over sail surface, causing fabric to billow.",
+    "Sea water moves continuously beneath the vessel’s hull."
+  ],
+  "negative_analysis": "1. Sail unfurled catches wind, propelling boat forward through water.\n2. Crew stands near rail, facing sea, possibly adjusting sail or observing horizon.\n3. Sea moves continuously, waves ripple under vessel’s motion.\n4. Fog may thicken, reducing visibility ahead of ship.",
+  "donor": null,
+  "scope": "Own first image, original request and original Qwen reasoning",
+  "seconds": 122.8158541660232
+}

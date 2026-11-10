@@ -1,0 +1,31 @@
+{
+  "id": "VP014",
+  "variant": "v5_ce",
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_v5_scaling_q256/runs/v5_ce_66706/step1000.pt",
+  "optimizer_step": 1000,
+  "seed": 42,
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "initial_noise": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP014/noise.pt",
+  "enhancement_passes": 2,
+  "caption": "Multiple water balloons are tossed upwards, simultaneously bursting in the air in a small arc.",
+  "source_canvas": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP014/first.png",
+  "condition_scope": "first image and request only; native T5 retained; no historical clauses",
+  "analysis": "1. Water balloons ascend due to initial force, visibly separating as they rise.\n2. Balloons burst upon reaching peak, releasing fluid droplets downward.\n3. Droplets scatter in arcs, influenced by gravity and air resistance.\n4. Splash forms at impact point, indicating fluid continuity and momentum transfer.",
+  "relations": [
+    "Water balloons ascend due to initial force, visibly separating as they rise.",
+    "Balloons burst upon reaching peak, releasing fluid droplets downward.",
+    "Droplets scatter in arcs, influenced by gravity and air resistance.",
+    "Splash forms at impact point, indicating fluid continuity and momentum transfer."
+  ],
+  "null_analysis": "1. Droplets fall from above, creating visible splash upon impact below.\n2. Gravity pulls droplets downward, altering their positions over time.\n3. Air resistance slightly slows droplets, affecting their descent speed.\n4. Droplets may coalesce before hitting surface, changing splash pattern.",
+  "revision": "physical_v5_scaling_q256_s1000_20261029_r1",
+  "inference_experiment_id": "66761",
+  "frames": 81,
+  "fps": 24.0,
+  "condition_tokens": 256
+}

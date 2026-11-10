@@ -1,0 +1,37 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_response_fusion_r16/runs/physical_content_68698/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP051",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_response_fusion_r16/snapshots/20261110T040241Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs",
+  "guidance": {
+    "kind": "joint_two_branch_cfg",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+    "physical_residual_scale": null,
+    "native_definition": "Same trained Wan LoRA with all physical additions disabled"
+  },
+  "caption": "A billiard ball is struck and rolls across a felt-covered pool table, hitting another ball.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP051/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler",
+    "guidance_composition": "joint_two_branch_cfg"
+  },
+  "positive_analysis": "1. Orange ball rests centered, casting soft shadow on green felt surface.  \n2. Green and red balls remain stationary, slightly out of focus in background.  \n3. If struck, orange ball will roll, altering its position relative to others.  \n4. Felt surface may show slight compression or deformation under ball’s motion.",
+  "positive_relations": [
+    "Orange ball rests centered, casting soft shadow on green felt surface.",
+    "Green and red balls remain stationary, slightly out of focus in background.",
+    "If struck, orange ball will roll, altering its position relative to others.",
+    "Felt surface may show slight compression or deformation under ball’s motion."
+  ],
+  "negative_analysis": "1. Orange ball’s position may shift if struck, altering its relation to other balls.\n2. Green ball remains stationary unless disturbed by external force.\n3. Red ball’s shadow lengthens if lighting changes, altering visual perception.\n4. Pool table’s surface stays static, supporting ball positions without movement.",
+  "donor": null,
+  "scope": "Own first image, original request and original Qwen reasoning; the declared direct/request-bound/joint global execution writes and the R15C local video-state operator are all active",
+  "seconds": 101.51520804222673
+}

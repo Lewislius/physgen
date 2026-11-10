@@ -1,0 +1,37 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_response_fusion_r16/runs/physical_content_68699/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP014",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_response_fusion_r16/snapshots/20261110T034127Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs",
+  "guidance": {
+    "kind": "joint_two_branch_cfg",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+    "physical_residual_scale": null,
+    "native_definition": "Same trained Wan LoRA with all physical additions disabled"
+  },
+  "caption": "Multiple water balloons are tossed upwards, simultaneously bursting in the air in a small arc.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP014/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler",
+    "guidance_composition": "joint_two_branch_cfg"
+  },
+  "positive_analysis": "1. Water balloons ascend due to initial force, visibly separating as they rise.\n2. Balloons burst upon reaching peak, releasing fluid droplets downward.\n3. Droplets scatter in arcs, influenced by gravity and air resistance.\n4. Splash forms at impact point, indicating fluid continuity and momentum transfer.",
+  "positive_relations": [
+    "Water balloons ascend due to initial force, visibly separating as they rise.",
+    "Balloons burst upon reaching peak, releasing fluid droplets downward.",
+    "Droplets scatter in arcs, influenced by gravity and air resistance.",
+    "Splash forms at impact point, indicating fluid continuity and momentum transfer."
+  ],
+  "negative_analysis": "1. Droplets fall from above, creating visible splash upon impact below.\n2. Gravity pulls droplets downward, altering their positions over time.\n3. Air resistance slightly slows droplets, affecting their descent speed.\n4. Droplets may coalesce before hitting surface, changing splash pattern.",
+  "donor": null,
+  "scope": "Own first image, original request and original Qwen reasoning; the declared direct/request-bound/joint global execution writes and the R15C local video-state operator are all active",
+  "seconds": 102.92346152756363
+}

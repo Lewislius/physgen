@@ -1,0 +1,35 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_operator_r13a/runs/physical_content_67598/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP046",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_operator_r13a/snapshots/20261104T181117Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_operator_r13a/prepared_inputs",
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "A construction worker uses a socket wrench to turn a large bolt on a metal beam, the wrench exerting significant force.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP046/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "1. Hand grips wrench handle, applying torque to bolt via socket engagement.  \n2. Wrench head fits bolt threads, transferring rotational force to fastener.  \n3. Bolt remains stationary until sufficient torque overcomes friction or resistance.  \n4. Metal beam surface shows static contact, no visible fluid movement or deformation.",
+  "positive_relations": [
+    "Hand grips wrench handle, applying torque to bolt via socket engagement.",
+    "Wrench head fits bolt threads, transferring rotational force to fastener.",
+    "Bolt remains stationary until sufficient torque overcomes friction or resistance.",
+    "Metal beam surface shows static contact, no visible fluid movement or deformation."
+  ],
+  "negative_analysis": "1. Hand grips wrench handle, applying torque to threaded rod.\n2. Wrench jaw engages rod threads, resisting rotation until loosened or tightened.\n3. Rod remains stationary unless sufficient force overcomes friction or resistance.\n4. Light reflects off metal surfaces, changing with angle or motion.",
+  "donor": null,
+  "scope": "Own first image, original request and original Qwen reasoning",
+  "seconds": 89.622125742957
+}

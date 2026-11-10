@@ -1,0 +1,37 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_joint_read_r16a/runs/physical_content_68429/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP060",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_joint_read_r16a/snapshots/20261109T040426Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs",
+  "guidance": {
+    "kind": "joint_two_branch_cfg",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+    "physical_residual_scale": null,
+    "native_definition": "Same trained Wan LoRA with all physical additions disabled"
+  },
+  "caption": "A potter applies a thin layer of slip to a clay bowl, using a brush to create an even coat.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP060/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler",
+    "guidance_composition": "joint_two_branch_cfg"
+  },
+  "positive_analysis": "1. Hand holds brush, applying slip to bowl’s inner surface.\n2. Brush bristles contact clay, transferring liquid slip evenly.\n3. Slip flows smoothly over bowl’s curved interior.\n4. Bowl remains centered on wheel as slip is applied.",
+  "positive_relations": [
+    "Hand holds brush, applying slip to bowl’s inner surface.",
+    "Brush bristles contact clay, transferring liquid slip evenly.",
+    "Slip flows smoothly over bowl’s curved interior.",
+    "Bowl remains centered on wheel as slip is applied."
+  ],
+  "negative_analysis": "1. Hand holds brush, applying slip to bowl’s interior surface.\n2. Bowl rotates steadily on wheel, maintaining consistent orientation.\n3. Brush bristles contact clay, transferring liquid to inner wall.\n4. Clay surface remains smooth as slip spreads under brush motion.",
+  "donor": null,
+  "scope": "Own first image, original request and original Qwen reasoning",
+  "seconds": 121.4526383469929
+}

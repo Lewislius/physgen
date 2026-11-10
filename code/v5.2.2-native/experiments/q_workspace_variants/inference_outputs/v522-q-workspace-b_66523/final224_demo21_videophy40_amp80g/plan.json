@@ -1,0 +1,77 @@
+{
+  "status": "checked",
+  "variant": "b",
+  "training_experiment_id": 66523,
+  "training_trial_id": 67903,
+  "revision": "v522_native_q_content_pool_b_v31",
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/q_workspace_variants/checkpoints/v522-q-workspace-b_66523/latest.pt",
+  "output": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/q_workspace_variants/inference_outputs/v522-q-workspace-b_66523/final224_demo21_videophy40_amp80g",
+  "sh": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/q_workspace_variants/inference/run_b_amp80g.sh",
+  "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/q_workspace_variants/inference/b_amp80g.yaml",
+  "estimated_hours": 3,
+  "estimated_range_hours": [
+    2.5,
+    3.5
+  ],
+  "checkpoint_step": 224,
+  "training_seed": 42,
+  "inference_round": 2,
+  "condition_slots": 128,
+  "demo_cases": 21,
+  "videophy_cases": 40,
+  "settings": {
+    "width": 832,
+    "height": 480,
+    "frames": 81,
+    "fps": 24.0,
+    "seed": 42,
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "solver": "existing Occam Euler",
+    "condition_strength": 1.0,
+    "image_seed": 20261009,
+    "image_generator": "native Wan2.2-TI2V-5B, one frame, no trained LoRA, no Planner",
+    "image_solver": "unipc",
+    "image_steps": 50,
+    "image_shift": 5.0,
+    "image_guidance": 5.0,
+    "image_negative": "native Wan default",
+    "image_prompt_template": "A single realistic photograph of the initial scene immediately BEFORE the following action begins: {caption} Show the participants and objects in their starting positions, with enough room for the action. Show one moment only, not a montage, not the completed outcome. No text or diagrams.",
+    "qwen_template": "Given this initial image and the requested video, describe up to four short process requirements. Describe prerequisites, visible changes and continuation of existing results. Do not assign object IDs, boxes, masks, numerical forces or future timestamps. Do not invent unseen facts. Uncertain requirements may be omitted. Return JSON only: {\"requirements\": [\"...\"]}. Requested video: ",
+    "qwen_do_sample": false,
+    "qwen_max_new_tokens": 384,
+    "initial_noise": "one FP32 CUDA noise tensor per case, persisted and cloned for both arms",
+    "video_encoding": "shared write_video: RGB lossless archive; baseline H264 yuv420p CRF18 for scoring"
+  },
+  "evaluation": {
+    "code": "/home/liuzhirui/benchmark/videophy/VIDEOPHY2",
+    "checkpoint": "/home/liuzhirui/benchmark/videophy/videophy_2_auto",
+    "num_frames": 32,
+    "seed": 20261009,
+    "tasks": [
+      "sa",
+      "pc"
+    ],
+    "generation": {
+      "do_sample": false,
+      "top_k": 1,
+      "temperature": 0.001,
+      "max_length": 256
+    },
+    "joint_threshold": 4,
+    "average_definition": "mean of (SA + PC) / 2; custom summary, not official Joint Score",
+    "missing_policy": "no final comparison unless every selected case has both valid SA and PC scores"
+  },
+  "identical_Q_initial_conditions": true,
+  "loader": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/q_workspace_variants/physgen_native/message_conditioning.py",
+  "conditioner_parameters": 214476800,
+  "pinned_checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/q_workspace_variants/inference_outputs/v522-q-workspace-b_66523/final224_demo21_videophy40_amp80g/checkpoint.pt",
+  "device": {
+    "name": "NVIDIA A800-SXM4-80GB",
+    "memory_gib": 79.250732421875,
+    "uuid": "c2ee8bf1-1d4a-a9e5-423c-a34d50ce7303"
+  },
+  "inference_experiment_id": "66538",
+  "inference_trial_id": "67918"
+}

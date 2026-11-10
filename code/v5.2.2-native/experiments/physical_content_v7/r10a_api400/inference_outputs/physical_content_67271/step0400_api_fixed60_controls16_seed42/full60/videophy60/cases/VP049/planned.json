@@ -1,0 +1,35 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r10a_api400/runs/physical_content_67271/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP049",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r10a_api400/snapshots/20261103T140613Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/data_revision_qwen38/benchmark_inputs/videophy60_first_image_request_v1",
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "A crane's claw gently nudges a large container, causing it to shift a few centimeters.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP049/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "A crane claw extends toward the large container's exterior surface.\nThe claw gently contacts the container, applying a small lateral force.\nThe container shifts a few centimeters horizontally in response to the nudge.\nSurrounding workers and equipment remain stationary during the container's slight movement.",
+  "positive_relations": [
+    "A crane claw extends toward the large container's exterior surface.",
+    "The claw gently contacts the container, applying a small lateral force.",
+    "The container shifts a few centimeters horizontally in response to the nudge.",
+    "Surrounding workers and equipment remain stationary during the container's slight movement."
+  ],
+  "negative_analysis": "Workers near the conveyor belt handle sacks, preparing them for transport along the inclined mechanism.\nThe inclined conveyor belt extends from the ground level towards the large container in the background.\nStacks of sacks on the left serve as a source for the workers' ongoing handling activity.\nThe large container acts as a destination or source for the sacks being moved by the workers.",
+  "donor": null,
+  "scope": "Own first image, original request and API reasoning",
+  "seconds": 89.15497050900012
+}

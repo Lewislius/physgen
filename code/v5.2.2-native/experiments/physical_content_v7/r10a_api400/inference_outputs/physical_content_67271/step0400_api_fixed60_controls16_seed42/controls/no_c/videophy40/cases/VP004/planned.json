@@ -1,0 +1,34 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r10a_api400/runs/physical_content_67271/step0400.pt",
+  "step": 400,
+  "mode": "no_c",
+  "case": "VP004",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r10a_api400/snapshots/20261103T140613Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/data_revision_qwen38/benchmark_inputs/videophy60_first_image_request_v1",
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "A plastic ruler is bent until it cracks, displaying a visible stress fracture that propagates.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP004/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "Hands gripping the strip's ends apply opposing forces that bend it toward its center.\nIncreasing bend strain concentrates stress at the strip's midsection, initiating a crack.\nThe stress fracture propagates along the transparent strip, splitting it into two pieces.",
+  "positive_relations": [
+    "Hands gripping the strip's ends apply opposing forces that bend it toward its center.",
+    "Increasing bend strain concentrates stress at the strip's midsection, initiating a crack.",
+    "The stress fracture propagates along the transparent strip, splitting it into two pieces."
+  ],
+  "negative_analysis": "The man and girl grip the glass tube horizontally, supporting its weight.\nLiquid inside the tube shifts toward the lower end when tilted.\nThe white substance within the liquid may settle or mix upon rotation.\nFingers wrap around the tube ends to maintain a secure hold.",
+  "donor": null,
+  "scope": "Native generation branch: physical fusion bypassed in both CFG arms",
+  "seconds": 84.82307688239962
+}

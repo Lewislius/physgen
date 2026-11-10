@@ -1,0 +1,33 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_read_r4/runs/physical_content_66871/step0064.pt",
+  "step": 64,
+  "mode": "reasoning_swapped",
+  "case": "VP015",
+  "seed": 42,
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "A rower pulls an oar from the water, the blade dripping water back into the lake. .",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP015/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "1. Man and child hold ruler horizontally, hands gripping ends firmly.\n2. Ruler visibly cracks mid-span, fracture line propagating under applied stress.\n3. Crack path appears jagged, indicating material failure under bending load.\n4. Fluids or continuous processes not visibly involved in this static fracture event.",
+  "positive_relations": [
+    "Man and child hold ruler horizontally, hands gripping ends firmly.",
+    "Ruler visibly cracks mid-span, fracture line propagating under applied stress.",
+    "Crack path appears jagged, indicating material failure under bending load.",
+    "Fluids or continuous processes not visibly involved in this static fracture event."
+  ],
+  "negative_analysis": "1. Paddler’s motion pushes water backward, causing kayak to move forward through fluid resistance.\n\n2. Water droplets trail from paddle blades, indicating recent immersion and continuous motion.\n\n3. Kayak’s hull displaces water, creating ripples that spread outward from the vessel.\n\n4. If paddler stops, kayak will gradually slow due to water resistance and fluid drag.",
+  "donor": "VP004",
+  "scope": "Only positive reasoning text replaced; own image/request, native T5 and own negative C retained",
+  "seconds": 167.9137705201283
+}

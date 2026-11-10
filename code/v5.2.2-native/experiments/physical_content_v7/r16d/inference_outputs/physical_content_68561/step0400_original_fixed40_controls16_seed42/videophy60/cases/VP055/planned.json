@@ -1,0 +1,37 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_request_local_r16d/runs/physical_content_68561/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP055",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_request_local_r16d/snapshots/20261109T161515Z_recovery_eval",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs",
+  "guidance": {
+    "kind": "joint_two_branch_cfg",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+    "physical_residual_scale": null,
+    "native_definition": "Same trained Wan LoRA with all physical additions disabled"
+  },
+  "caption": "A bubble gum bubble is blown and then punctured using a finger.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP055/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler",
+    "guidance_composition": "joint_two_branch_cfg"
+  },
+  "positive_analysis": "1. Finger tip contacts bubble surface, initiating potential rupture.\n2. Bubble film remains intact until finger pressure exceeds surface tension.\n3. Thin liquid film may stretch or deform under fingertip pressure.\n4. Bubble may pop, releasing air and fluid contents into surrounding air.",
+  "positive_relations": [
+    "Finger tip contacts bubble surface, initiating potential rupture.",
+    "Bubble film remains intact until finger pressure exceeds surface tension.",
+    "Thin liquid film may stretch or deform under fingertip pressure.",
+    "Bubble may pop, releasing air and fluid contents into surrounding air."
+  ],
+  "negative_analysis": "1. Finger touches bubble—surface tension may rupture it.\n2. Bubble floats above finger—gravity pulls it downward.\n3. Bubble reflects light—its shape alters reflections as it deforms.\n4. Air inside bubble remains enclosed—unless punctured by contact.",
+  "donor": null,
+  "scope": "Own first image, original request and original Qwen reasoning; both C conditions, QK modulation and rank16 C-read residual active",
+  "seconds": 93.29684444703162
+}

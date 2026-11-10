@@ -1,0 +1,36 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/runs/physical_content_68038/step0400.pt",
+  "step": 400,
+  "mode": "global_train_mean",
+  "case": "VP002",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/snapshots/20261106T202709Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs",
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "global_condition": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/controls/physical_content_68038/step0400_mean_content.pt",
+  "caption": "A thin piece of wood is bent into a bow shape, exhibiting its flexibility.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP002/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "1. Men grasp wood ends; their hands apply force to bend it into bow shape.\n\n2. Wood flexes under tension, maintaining continuous curve as men hold positions.\n\n3. If force persists, wood may deform further or return to original shape.\n\n4. Sweat may appear on men’s skin as they exert physical effort.",
+  "positive_relations": [
+    "Men grasp wood ends; their hands apply force to bend it into bow shape.",
+    "Wood flexes under tension, maintaining continuous curve as men hold positions.",
+    "If force persists, wood may deform further or return to original shape.",
+    "Sweat may appear on men’s skin as they exert physical effort."
+  ],
+  "negative_analysis": "1. Men grasp curved wooden frame ends; their hands apply opposing force to stretch the frame.\n\n2. Tension in the white rope increases as men pull, elongating the frame’s arc.\n\n3. If men continue pulling, frame may bend further or rope may snap under strain.\n\n4. Sweat may appear on men’s skin as physical exertion persists during sustained pulling.",
+  "donor": null,
+  "scope": "Fixed train-mean routing/execution C; own relation priors and video states remain input-specific",
+  "seconds": 83.66522419266403
+}

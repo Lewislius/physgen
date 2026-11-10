@@ -1,0 +1,37 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_response_fusion_r16/runs/physical_content_68699/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP050",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_response_fusion_r16/snapshots/20261110T034127Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs",
+  "guidance": {
+    "kind": "joint_two_branch_cfg",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+    "physical_residual_scale": null,
+    "native_definition": "Same trained Wan LoRA with all physical additions disabled"
+  },
+  "caption": "A sledgehammer is swung at a pile of rocks, scattering and breaking some of them.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP050/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler",
+    "guidance_composition": "joint_two_branch_cfg"
+  },
+  "positive_analysis": "1. Man holds sledgehammer poised above rocks, ready to strike.\n2. Rocks form dense, irregular pile, some loose at base.\n3. Hammer motion will displace rocks, creating airborne fragments.\n4. Dust and debris may rise from impact site as rocks break apart.",
+  "positive_relations": [
+    "Man holds sledgehammer poised above rocks, ready to strike.",
+    "Rocks form dense, irregular pile, some loose at base.",
+    "Hammer motion will displace rocks, creating airborne fragments.",
+    "Dust and debris may rise from impact site as rocks break apart."
+  ],
+  "negative_analysis": "1. Man pushes stone with pole, causing rock displacement and possible pile reshaping.\n2. Stone pile’s surface may shift as man manipulates rocks with pole.\n3. Man’s posture changes as he applies force to move stones with pole.\n4. Dust or debris may scatter from pile’s base during stone movement.",
+  "donor": null,
+  "scope": "Own first image, original request and original Qwen reasoning; the declared direct/request-bound/joint global execution writes and the R15C local video-state operator are all active",
+  "seconds": 102.97176792938262
+}

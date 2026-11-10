@@ -1,0 +1,33 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/runs/physical_content_66778/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "wisa0032118",
+  "seed": 42,
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 1.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "The video captures a close-up view of water in motion, showcasing the dynamic interplay between light and fluid dynamics. The water is a vibrant blue, reflecting the light source above, which creates a shimmering effect on its surface. The surface of the water is not smooth but rather filled with ripples and waves, indicating movement or disturbance beneath the surface. Small bubbles are visible near the top, suggesting the presence of air or the release of gas from below. The background is a plain white, which contrasts sharply with the blue of the water, making the details of the ripples and bubbles stand out more prominently. The camera remains stationary throughout the sequence, focusing on the water's surface to capture the intricate patterns and textures created by the movement. The overall scene is one of serene yet active fluid motion, highlighting the beauty and complexity of water in motion.",
+  "canvas": "/home/liuzhirui/Project/physGen/data_cache/wisa_4000/base/first/wisa0032118.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "1. Light above reflects off water’s surface, creating shimmering patterns visible in motion.  \n2. Ripples distort the water’s surface, altering how light reflects and bubbles appear.  \n3. Bubbles near the surface may rise or dissolve as water continues moving.  \n4. White background enhances contrast, making ripples and bubbles more visually distinct.",
+  "positive_relations": [
+    "Light above reflects off water’s surface, creating shimmering patterns visible in motion.",
+    "Ripples distort the water’s surface, altering how light reflects and bubbles appear.",
+    "Bubbles near the surface may rise or dissolve as water continues moving.",
+    "White background enhances contrast, making ripples and bubbles more visually distinct."
+  ],
+  "negative_analysis": "1. Surface tension holds droplets above water, resisting immediate merging or sinking.\n2. Ripples distort light, altering perceived color and texture across the water’s surface.\n3. Water flows continuously, maintaining its shape only under external forces or containers.\n4. Air bubbles rise due to buoyancy, potentially changing water’s clarity or surface tension.",
+  "donor": null,
+  "scope": "first image/request only; native request unchanged; negative C unchanged except complete branch ablations",
+  "seconds": 280.18820527009666
+}

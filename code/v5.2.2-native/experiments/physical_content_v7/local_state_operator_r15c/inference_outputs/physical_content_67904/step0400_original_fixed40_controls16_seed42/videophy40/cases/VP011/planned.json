@@ -1,0 +1,35 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/local_state_operator_r15c/runs/physical_content_67904/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP011",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/local_state_operator_r15c/snapshots/20261105T210320Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/local_state_operator_r15c/prepared_inputs",
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "A person on a unicycle stops abruptly, putting a foot down to maintain balance before continuing.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP011/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "1. Rider’s foot is elevated, balancing on single pedal, body leaning forward slightly.  \n2. Unicycle’s wheels remain in contact with asphalt, maintaining forward momentum.  \n3. Sock pattern visible, suggesting motion continues despite abrupt stop attempt.  \n4. If rider places foot down, weight transfer will shift, altering balance point.",
+  "positive_relations": [
+    "Rider’s foot is elevated, balancing on single pedal, body leaning forward slightly.",
+    "Unicycle’s wheels remain in contact with asphalt, maintaining forward momentum.",
+    "Sock pattern visible, suggesting motion continues despite abrupt stop attempt.",
+    "If rider places foot down, weight transfer will shift, altering balance point."
+  ],
+  "negative_analysis": "1. Rider’s foot on pedal drives crank, turning wheel to propel bike forward.\n2. Bike’s tires grip asphalt, preventing skidding as rider shifts weight.\n3. Rider’s leg position adjusts balance, altering pressure on seat and pedals.\n4. Air flows past rider and bike, creating drag that may slow forward motion.",
+  "donor": null,
+  "scope": "Own first image, original request and original Qwen reasoning",
+  "seconds": 99.35633220244199
+}

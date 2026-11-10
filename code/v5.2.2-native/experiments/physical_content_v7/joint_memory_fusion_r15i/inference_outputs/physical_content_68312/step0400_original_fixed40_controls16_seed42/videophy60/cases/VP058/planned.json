@@ -1,0 +1,37 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/runs/physical_content_68312/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP058",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/snapshots/20261108T123450Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs",
+  "guidance": {
+    "kind": "joint_two_branch_cfg",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+    "physical_residual_scale": null,
+    "native_definition": "Same trained Wan LoRA with all physical additions disabled"
+  },
+  "caption": "Nunchucks are swung, striking a punching bag, creating a visible ripple effect.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP058/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler",
+    "guidance_composition": "joint_two_branch_cfg"
+  },
+  "positive_analysis": "1. Punching bag hangs suspended by chains from ceiling, motionless before impact.\n2. Nunchucks strike bag, causing visible ripple effect through its leather surface.\n3. Bag’s suspension chains may strain slightly from force of impact.\n4. Air around bag may show brief disturbance from sudden motion.",
+  "positive_relations": [
+    "Punching bag hangs suspended by chains from ceiling, motionless before impact.",
+    "Nunchucks strike bag, causing visible ripple effect through its leather surface.",
+    "Bag’s suspension chains may strain slightly from force of impact.",
+    "Air around bag may show brief disturbance from sudden motion."
+  ],
+  "negative_analysis": "1. Punching bag hangs from chain, swinging slightly with air movement or impact.  \n2. Light filters through window panes, casting patterns on floor and wall.  \n3. Matting lies flat, absorbing potential impact from falling or striking objects.  \n4. Wall banner remains stationary, unaffected by surrounding motion or airflow.",
+  "donor": null,
+  "scope": "Own first image, original request and original Qwen reasoning",
+  "seconds": 83.47164602205157
+}

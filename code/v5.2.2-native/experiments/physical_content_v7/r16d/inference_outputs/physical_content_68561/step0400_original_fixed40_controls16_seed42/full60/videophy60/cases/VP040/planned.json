@@ -1,0 +1,37 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_request_local_r16d/runs/physical_content_68561/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP040",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_request_local_r16d/snapshots/20261109T161515Z_recovery_eval",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs",
+  "guidance": {
+    "kind": "joint_two_branch_cfg",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+    "physical_residual_scale": null,
+    "native_definition": "Same trained Wan LoRA with all physical additions disabled"
+  },
+  "caption": "Poi are swung against a soft surface, making a thudding sound (NOTE: This prompt includes sound, but it's included to illustrate the effect of the action, not to describe it in detail.  The focus is still on the visible impact).",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP040/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler",
+    "guidance_composition": "joint_two_branch_cfg"
+  },
+  "positive_analysis": "1. Gray object’s shadow lengthens as it impacts the surface, altering its visible position slightly.\n\n2. Yellow object’s surface texture may compress momentarily upon contact with the soft surface.\n\n3. If green objects strike the surface, their shadows will darken and elongate slightly from the impact.\n\n4. No fluid movement occurs; all objects remain dry and stationary after impact unless displaced.",
+  "positive_relations": [
+    "Gray object’s shadow lengthens as it impacts the surface, altering its visible position slightly.",
+    "Yellow object’s surface texture may compress momentarily upon contact with the soft surface.",
+    "If green objects strike the surface, their shadows will darken and elongate slightly from the impact.",
+    "No fluid movement occurs; all objects remain dry and stationary after impact unless displaced."
+  ],
+  "negative_analysis": "1. Gray object’s shadow extends leftward due to light source position.\n2. Yellow object’s rounded shape casts a softer shadow than flat objects.\n3. Green objects’ proximity causes slight shadow overlap on surface.\n4. Surface remains static unless external force disturbs object placement.",
+  "donor": null,
+  "scope": "Own first image, original request and original Qwen reasoning; both C conditions, QK modulation and rank16 C-read residual active",
+  "seconds": 93.53383441828191
+}

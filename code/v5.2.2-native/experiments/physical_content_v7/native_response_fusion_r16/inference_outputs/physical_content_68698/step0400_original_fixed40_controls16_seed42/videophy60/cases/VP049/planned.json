@@ -1,0 +1,37 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_response_fusion_r16/runs/physical_content_68698/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP049",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_response_fusion_r16/snapshots/20261110T040241Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs",
+  "guidance": {
+    "kind": "joint_two_branch_cfg",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+    "physical_residual_scale": null,
+    "native_definition": "Same trained Wan LoRA with all physical additions disabled"
+  },
+  "caption": "A crane's claw gently nudges a large container, causing it to shift a few centimeters.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP049/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler",
+    "guidance_composition": "joint_two_branch_cfg"
+  },
+  "positive_analysis": "1. Crane claw contacts container surface, applying force to initiate movement.\n2. Workers observe as container shifts slightly under applied pressure.\n3. Container remains upright despite nudging, supported by its structure.\n4. Continuous material flow from chute persists unaffected by container shift.",
+  "positive_relations": [
+    "Crane claw contacts container surface, applying force to initiate movement.",
+    "Workers observe as container shifts slightly under applied pressure.",
+    "Container remains upright despite nudging, supported by its structure.",
+    "Continuous material flow from chute persists unaffected by container shift."
+  ],
+  "negative_analysis": "1. Workers near conveyor stand ready as material flows from train car into chute.  \n2. Sacks stacked left await filling as conveyor discharges contents.  \n3. People observe process; some hold containers under discharge stream.  \n4. Train car remains stationary while loading continues via mechanical arm.",
+  "donor": null,
+  "scope": "Own first image, original request and original Qwen reasoning; the declared direct/request-bound/joint global execution writes and the R15C local video-state operator are all active",
+  "seconds": 102.35151760559529
+}

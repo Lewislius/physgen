@@ -1,0 +1,37 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/runs/physical_content_68312/step0400.pt",
+  "step": 400,
+  "mode": "direct_read_only",
+  "case": "VP004",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/snapshots/20261108T123450Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs",
+  "guidance": {
+    "kind": "joint_two_branch_cfg",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+    "physical_residual_scale": null,
+    "native_definition": "Same trained Wan LoRA with all physical additions disabled"
+  },
+  "caption": "A plastic ruler is bent until it cracks, displaying a visible stress fracture that propagates.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP004/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler",
+    "guidance_composition": "joint_two_branch_cfg"
+  },
+  "positive_analysis": "1. Man and child hold ruler horizontally, hands gripping ends firmly.\n2. Ruler visibly cracks mid-span, fracture line propagating under applied stress.\n3. Crack path appears jagged, indicating material failure under bending load.\n4. Fluids or continuous processes not visibly involved in this static fracture event.",
+  "positive_relations": [
+    "Man and child hold ruler horizontally, hands gripping ends firmly.",
+    "Ruler visibly cracks mid-span, fracture line propagating under applied stress.",
+    "Crack path appears jagged, indicating material failure under bending load.",
+    "Fluids or continuous processes not visibly involved in this static fracture event."
+  ],
+  "negative_analysis": "1. Child holds glass tube with both hands, supporting its weight as man holds opposite end.\n2. Man’s grip on tube stabilizes it, preventing movement as child lifts.\n3. Tube’s transparency allows light to pass, revealing hands and fluid inside.\n4. If tube leaks, fluid may drip; if sealed, fluid remains contained under pressure.",
+  "donor": null,
+  "scope": "Read only direct C with the same trained physical Q/K/V/O and state interaction",
+  "seconds": 82.57413648907095
+}

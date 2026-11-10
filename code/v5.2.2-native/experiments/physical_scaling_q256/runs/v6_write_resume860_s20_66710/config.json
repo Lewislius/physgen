@@ -1,0 +1,102 @@
+{
+  "revision": "physical_scaling_q256_s1000_20261029_r1",
+  "paths": {
+    "wan_code": "/home/liuzhirui/model/Wan2.2",
+    "wan_checkpoint": "/home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B",
+    "qwen_checkpoint": "/home/liuzhirui/model/Qwen3-VL/Qwen3-VL-8B-Instruct",
+    "cache": "/home/liuzhirui/Project/physGen/data_cache/wisa_4000",
+    "supervision_cache": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_scaling_q256/supervision_cache",
+    "runs": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_scaling_q256/runs",
+    "supervision_cache_readonly": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_variants/supervision_cache"
+  },
+  "model": {
+    "width": 3072,
+    "qwen_width": 4096,
+    "q_tokens": 256,
+    "q_heads": 32,
+    "rounds": 2,
+    "condition_every": 3,
+    "lora_rank": 32
+  },
+  "knowledge": {
+    "image_size": [
+      480,
+      832
+    ],
+    "video_size": [
+      480,
+      832
+    ],
+    "max_text_tokens": 4096,
+    "gradient_checkpointing": true,
+    "reasoning_mode": "q_seed128_message",
+    "latent_reasoning_steps": 2,
+    "reasoning_tokens": 256,
+    "reasoning_max_tokens": 128,
+    "reasoning_cache": 16,
+    "freeze_backbone": true
+  },
+  "verifier": {
+    "kind": "none"
+  },
+  "geometry": {
+    "mode": "native",
+    "rgb_size": [
+      480,
+      832
+    ]
+  },
+  "stages": {
+    "interface": 128,
+    "joint": 872
+  },
+  "train": {
+    "seed": 42,
+    "accumulation": 4,
+    "peak_lrs": {
+      "enhancement": 5e-05,
+      "fusion_read": 2e-05,
+      "fusion_write": 1e-05,
+      "wan_lora": 2e-05
+    },
+    "minimum_lr_ratio": 0.2,
+    "warmup": 32,
+    "wan_warmup": 128,
+    "decay_start": 600,
+    "grad_clip": {
+      "enhancement": 1.0,
+      "fusion_read": 1.0,
+      "fusion_write": 1.0,
+      "wan_lora": 1.0
+    },
+    "text_dropout": 0.1,
+    "save_every": 50,
+    "keep_steps": [
+      128,
+      250,
+      500,
+      750,
+      1000
+    ],
+    "validation_steps": [
+      128,
+      500,
+      1000
+    ],
+    "gradient_checkpointing": true
+  },
+  "inference": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "variant": "v6_write",
+  "loss": {
+    "peak_weight": 0.005,
+    "final_weight": 0.002,
+    "warmup": 32,
+    "decay_start": 600,
+    "temperature": 1.0
+  }
+}

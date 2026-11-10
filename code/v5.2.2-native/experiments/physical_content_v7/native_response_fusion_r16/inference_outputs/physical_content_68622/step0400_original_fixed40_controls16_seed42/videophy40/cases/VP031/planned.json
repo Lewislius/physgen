@@ -1,0 +1,37 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_response_fusion_r16/runs/physical_content_68622/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP031",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_response_fusion_r16/snapshots/20261109T185125Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs",
+  "guidance": {
+    "kind": "joint_two_branch_cfg",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+    "physical_residual_scale": null,
+    "native_definition": "Same trained Wan LoRA with all physical additions disabled"
+  },
+  "caption": "A tightly folded parachute is unfolded, revealing its vibrant colors and intricate design.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP031/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler",
+    "guidance_composition": "joint_two_branch_cfg"
+  },
+  "positive_analysis": "1. Parachute lies flat on ground, surrounded by equipment and textured surfaces.  \n2. Small yellow object stands upright near parachute’s edge.  \n3. Green box-like device rests nearby, with yellow tether attached.  \n4. Parachute’s fabric remains static, no motion or unfolding visible.",
+  "positive_relations": [
+    "Parachute lies flat on ground, surrounded by equipment and textured surfaces.",
+    "Small yellow object stands upright near parachute’s edge.",
+    "Green box-like device rests nearby, with yellow tether attached.",
+    "Parachute’s fabric remains static, no motion or unfolding visible."
+  ],
+  "negative_analysis": "1. Parachute’s deployment causes visible ground indentation from its weight and impact.\n2. Small object’s tethered position suggests it remains anchored unless force displaces it.\n3. Nearby equipment’s placement implies readiness for interaction or movement.\n4. Surface texture and shadows indicate consistent lighting and static environmental conditions.",
+  "donor": null,
+  "scope": "Own first image, original request and original Qwen reasoning; the declared direct/request-bound/joint global execution writes and the R15C local video-state operator are all active",
+  "seconds": 203.7139659812674
+}

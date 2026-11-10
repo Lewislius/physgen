@@ -1,0 +1,31 @@
+{
+  "id": "VP001",
+  "variant": "v5_ce",
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_variants/runs/v5_ce_20261029T064043Z-retry1/step0224.pt",
+  "optimizer_step": 224,
+  "seed": 42,
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "initial_noise": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP001/noise.pt",
+  "enhancement_passes": 2,
+  "caption": "A long jumper demonstrates a flawed technique, resulting in a short distance and an unbalanced landing.",
+  "source_canvas": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP001/first.png",
+  "condition_scope": "first image and request only; native T5 retained; no historical clauses",
+  "analysis": "1. Athlete’s arms extended outward, indicating imbalance during flight phase.\n2. Body positioned asymmetrically, suggesting poor center of mass control.\n3. Legs bent unevenly, implying compromised landing stability.\n4. Airflow around limbs suggests motion, but no visible fluid dynamics altering trajectory.",
+  "relations": [
+    "Athlete’s arms extended outward, indicating imbalance during flight phase.",
+    "Body positioned asymmetrically, suggesting poor center of mass control.",
+    "Legs bent unevenly, implying compromised landing stability.",
+    "Airflow around limbs suggests motion, but no visible fluid dynamics altering trajectory."
+  ],
+  "null_analysis": "1. Person’s arms extended upward causes body to arch mid-air, altering center of mass.\n2. Jumping motion suspends person above court, temporarily defying gravity’s pull.\n3. Air resistance acts on person’s body, slowing descent toward the court surface.\n4. Person’s legs bent at knees during leap, preparing for landing impact on court.",
+  "revision": "physical_variants_20261029_r1",
+  "inference_experiment_id": "66661",
+  "frames": 81,
+  "fps": 24.0,
+  "condition_tokens": 128
+}

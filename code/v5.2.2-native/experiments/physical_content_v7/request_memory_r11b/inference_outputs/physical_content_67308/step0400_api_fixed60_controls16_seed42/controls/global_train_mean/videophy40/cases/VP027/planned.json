@@ -1,0 +1,37 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_memory_r11b/runs/physical_content_67308/step0400.pt",
+  "step": 400,
+  "mode": "global_train_mean",
+  "case": "VP027",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_memory_r11b/snapshots/20261104T044513Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/data_revision_qwen38/benchmark_inputs/videophy60_first_image_request_v1",
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "global_condition": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_memory_r11b/controls/physical_content_67308/step0400_mean_content.pt",
+  "caption": "Hands shape a lump of clay-like bread dough into a smooth, round boule on a wooden table.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP027/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "As hands press and rotate the dough against the table, its surface smooths toward a round boule.\nFingers folding the dough edge inward cause the lump to gather into a tighter spherical shape.\nContact between palms and dough transfers gentle pressure, deforming the mass while it rests on the wood.\nScattered flour on the table persists as the dough surface becomes taut and even.",
+  "positive_relations": [
+    "As hands press and rotate the dough against the table, its surface smooths toward a round boule.",
+    "Fingers folding the dough edge inward cause the lump to gather into a tighter spherical shape.",
+    "Contact between palms and dough transfers gentle pressure, deforming the mass while it rests on the wood.",
+    "Scattered flour on the table persists as the dough surface becomes taut and even."
+  ],
+  "negative_analysis": "Hands pressing on the dough -> dough deforms and yields under applied pressure.\nFlour dust on the wooden surface -> flour remains stationary unless disturbed by moving hands.\nContinuous kneading motion -> dough shifts position and changes shape over time.\nSmooth surface of the dough -> reflects soft lighting as hands move across it.",
+  "donor": null,
+  "scope": "Fixed train-mean physical routing/execution C; own request memory, relation-count priors, image and original T5 retained",
+  "request_memory_donor": null,
+  "seconds": 82.82289836741984
+}

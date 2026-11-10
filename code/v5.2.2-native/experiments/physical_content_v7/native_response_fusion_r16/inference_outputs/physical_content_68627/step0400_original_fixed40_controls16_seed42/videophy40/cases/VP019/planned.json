@@ -1,0 +1,37 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_response_fusion_r16/runs/physical_content_68627/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP019",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_response_fusion_r16/snapshots/20261109T193637Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs",
+  "guidance": {
+    "kind": "joint_two_branch_cfg",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+    "physical_residual_scale": null,
+    "native_definition": "Same trained Wan LoRA with all physical additions disabled"
+  },
+  "caption": "Javelin with a damaged tip is thrown; it wobbles in flight and lands off-target.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP019/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler",
+    "guidance_composition": "joint_two_branch_cfg"
+  },
+  "positive_analysis": "1. Javelin’s damaged tip causes imbalance, altering its flight path unpredictably.  \n2. Air resistance acts unevenly, increasing wobble during flight.  \n3. Gravity pulls javelin downward, affecting its trajectory and landing point.  \n4. Wind may shift javelin’s course, changing where it lands relative to target.",
+  "positive_relations": [
+    "Javelin’s damaged tip causes imbalance, altering its flight path unpredictably.",
+    "Air resistance acts unevenly, increasing wobble during flight.",
+    "Gravity pulls javelin downward, affecting its trajectory and landing point.",
+    "Wind may shift javelin’s course, changing where it lands relative to target."
+  ],
+  "negative_analysis": "1. Arrow’s flight path depends on initial launch force and air resistance acting upon it.\n2. Wind may alter arrow’s trajectory mid-flight, affecting its landing position.\n3. Grass field surface will absorb arrow’s kinetic energy upon impact, causing deceleration.\n4. Arrow’s feathers maintain stability during flight, counteracting rotational forces.",
+  "donor": null,
+  "scope": "Own first image, original request and original Qwen reasoning; the declared direct/request-bound/joint global execution writes and the R15C local video-state operator are all active",
+  "seconds": 164.76401746901684
+}

@@ -1,0 +1,35 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_memory_r11b/runs/physical_content_67308/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP047",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_memory_r11b/snapshots/20261104T044513Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/data_revision_qwen38/benchmark_inputs/videophy60_first_image_request_v1",
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "A small piece of wood is broken along the grain creating a small splintered tear.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP047/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "A small wood piece aligned with the grain splits when force separates its fibers.\nThe tearing action creates jagged splinters and a rough, torn edge along the natural grain.\nThe newly broken fragment rests near the existing wood pieces and holes on the surface.",
+  "positive_relations": [
+    "A small wood piece aligned with the grain splits when force separates its fibers.",
+    "The tearing action creates jagged splinters and a rough, torn edge along the natural grain.",
+    "The newly broken fragment rests near the existing wood pieces and holes on the surface."
+  ],
+  "negative_analysis": "Cylindrical wooden blocks resting on the plank may roll or shift if the surface tilts.\nThe broken handle fragment could align with the dark gaps to reconstruct a snapped tool.\nSmall wood chips and fragments may scatter further if subjected to impact or gravity.",
+  "donor": null,
+  "scope": "Own first image, original request and API reasoning",
+  "request_memory_donor": null,
+  "seconds": 82.61713738366961
+}

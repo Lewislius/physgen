@@ -1,0 +1,37 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_request_local_r16c/runs/physical_content_68550/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP029",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_request_local_r16c/snapshots/20261109T161515Z_recovery_eval",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs",
+  "guidance": {
+    "kind": "joint_two_branch_cfg",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+    "physical_residual_scale": null,
+    "native_definition": "Same trained Wan LoRA with all physical additions disabled"
+  },
+  "caption": "A player hits a forehand drive, the ball spinning rapidly as it crosses the net.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP029/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler",
+    "guidance_composition": "joint_two_branch_cfg"
+  },
+  "positive_analysis": "1. Ball rests on court surface, untouched by player or racquet.  \n2. Net divides court, remains stationary as ball approaches.  \n3. Player’s racquet not visible, so no immediate motion or contact.  \n4. Air remains still, no visible fluid motion or disturbance yet.",
+  "positive_relations": [
+    "Ball rests on court surface, untouched by player or racquet.",
+    "Net divides court, remains stationary as ball approaches.",
+    "Player’s racquet not visible, so no immediate motion or contact.",
+    "Air remains still, no visible fluid motion or disturbance yet."
+  ],
+  "negative_analysis": "1. Ball rests on court surface; it may roll or be struck by a player.\n2. Net divides court; it remains stationary unless disturbed.\n3. Court lines mark boundaries; they persist unless worn or altered.\n4. Shadows cast by net posts; they shift with light direction or time.",
+  "donor": null,
+  "scope": "Own first image, original request and original Qwen reasoning; both C conditions and local operator active",
+  "seconds": 192.2532645976171
+}

@@ -1,0 +1,35 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r10a_api400/runs/physical_content_67271/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP028",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r10a_api400/snapshots/20261103T140613Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/data_revision_qwen38/benchmark_inputs/videophy60_first_image_request_v1",
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "A person skillfully tosses several coins in the air, catching them one by one.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP028/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "The tossing hand releases each coin upward, initiating its parabolic ascent.\nThe catching hand positions below the falling coins, ready to intercept each descent.\nAs a coin falls into the waiting hand, the fingers close to secure it.\nThis tossing and catching sequence repeats for multiple coins in continuous motion.",
+  "positive_relations": [
+    "The tossing hand releases each coin upward, initiating its parabolic ascent.",
+    "The catching hand positions below the falling coins, ready to intercept each descent.",
+    "As a coin falls into the waiting hand, the fingers close to secure it.",
+    "This tossing and catching sequence repeats for multiple coins in continuous motion."
+  ],
+  "negative_analysis": "The hand holds the silver coin, poised to release it.\nThe two gold coins are falling freely through the air.\nThe falling coins may interact with the red structure below.",
+  "donor": null,
+  "scope": "Own first image, original request and API reasoning",
+  "seconds": 90.97466641664505
+}

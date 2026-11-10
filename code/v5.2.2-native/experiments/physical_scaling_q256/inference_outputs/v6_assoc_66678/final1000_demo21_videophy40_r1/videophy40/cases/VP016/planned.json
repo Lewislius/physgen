@@ -1,0 +1,31 @@
+{
+  "id": "VP016",
+  "variant": "v6_assoc",
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_scaling_q256/runs/v6_assoc_66678/step1000.pt",
+  "optimizer_step": 1000,
+  "seed": 42,
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "initial_noise": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP016/noise.pt",
+  "enhancement_passes": 2,
+  "caption": "A scientist uses a probe to nudge a small, delicate insect on a leaf, causing it to twitch minimally.",
+  "source_canvas": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP016/first.png",
+  "condition_scope": "first image and request only; native T5 retained; no historical clauses",
+  "analysis": "1. Blue-gloved hand holds probe near insect on leaf surface.  \n2. Probe tip contacts insect’s body, causing slight twitch.  \n3. Insect remains on leaf, possibly shifting position slightly.  \n4. Fluids may transfer between probe and insect during contact.",
+  "relations": [
+    "Blue-gloved hand holds probe near insect on leaf surface.",
+    "Probe tip contacts insect’s body, causing slight twitch.",
+    "Insect remains on leaf, possibly shifting position slightly.",
+    "Fluids may transfer between probe and insect during contact."
+  ],
+  "null_analysis": "1. Gloved hand holds pipette near insect on leaf.\n2. Pipette tip contacts insect’s body, possibly transferring fluid.\n3. Insect remains stationary on leaf surface during contact.\n4. Leaf surface may retain moisture or residue from pipette fluid.",
+  "revision": "physical_scaling_q256_s1000_20261029_r1",
+  "inference_experiment_id": "66720",
+  "frames": 81,
+  "fps": 24.0,
+  "condition_tokens": 256
+}

@@ -1,0 +1,33 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_read_r4/runs/physical_content_66871/step0064.pt",
+  "step": 64,
+  "mode": "real",
+  "case": "VP021",
+  "seed": 42,
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "A skateboarder rolls along a smooth concrete path, maintaining a steady pace.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP021/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "1. Feet planted on board—skateboarder’s stance enables controlled motion on concrete.\n2. Wheels roll smoothly—friction between tires and pavement sustains forward momentum.\n3. Legs slightly bent—body posture adjusts for balance as speed increases.\n4. Concrete surface remains unchanged—skateboarder’s movement disturbs only minor dust or debris.",
+  "positive_relations": [
+    "Feet planted on board—skateboarder’s stance enables controlled motion on concrete.",
+    "Wheels roll smoothly—friction between tires and pavement sustains forward momentum.",
+    "Legs slightly bent—body posture adjusts for balance as speed increases.",
+    "Concrete surface remains unchanged—skateboarder’s movement disturbs only minor dust or debris."
+  ],
+  "negative_analysis": "1. Person’s feet on board imply balance control to maintain stance on moving surface.\n2. Board’s wheels rolling suggest continuous motion across asphalt surface.\n3. Pressure from feet on deck may alter board’s tilt angle during maneuvering.\n4. Friction between wheels and pavement causes gradual heat buildup in wheel bearings.",
+  "donor": null,
+  "scope": "Own image/request/reasoning in positive C; own image-only negative C; native T5 retained",
+  "seconds": 90.89709284622222
+}

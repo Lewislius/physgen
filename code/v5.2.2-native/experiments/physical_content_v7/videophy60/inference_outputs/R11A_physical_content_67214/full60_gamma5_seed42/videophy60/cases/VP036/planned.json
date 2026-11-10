@@ -1,0 +1,34 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_adapt_r11a/runs/physical_content_67214/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP036",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_adapt_r11a/snapshots/20261103T054429Z",
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "A slow-motion view of the jump showing leg extension and body position.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP036/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "1. Person’s arms extended backward, pulling torso forward as legs stretch outward mid-air.  \n2. Gravity pulls downward while muscles maintain leg separation against momentum.  \n3. Air flows past body, resisting motion as limbs remain extended.  \n4. Center of mass shifts slightly forward as jump apex is reached.",
+  "positive_relations": [
+    "Person’s arms extended backward, pulling torso forward as legs stretch outward mid-air.",
+    "Gravity pulls downward while muscles maintain leg separation against momentum.",
+    "Air flows past body, resisting motion as limbs remain extended.",
+    "Center of mass shifts slightly forward as jump apex is reached."
+  ],
+  "negative_analysis": "1. Person’s arms extended forward, pulling red resistance band taut as they leap.\n2. Legs spread wide apart mid-air, maintaining balance during jump.\n3. Feet off ground, body suspended, gravity pulling downward continuously.\n4. Hair flows backward due to motion, indicating dynamic movement through air.",
+  "donor": null,
+  "scope": "Own image/request/reasoning in positive C; own image-only negative C; native T5 retained",
+  "seconds": 180.67165030073375
+}

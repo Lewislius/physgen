@@ -1,0 +1,40 @@
+{
+  "relations": [
+    "The camera advancing along the path causes the white house to exit the frame while the pink house becomes more prominent.",
+    "As the viewpoint moves forward, the row of blossoming trees shifts in perspective and passes toward the right edge.",
+    "The cyclist continues forward without stopping, and the distance between the viewpoint and the rider gradually decreases."
+  ],
+  "caption": "The video captures a paved cycle path between a stone wall and fence and houses on the left and a grassy bank of pink trees on the right. A cyclist in a bright pink top rides ahead on a bicycle with a rear basket holding a light-colored bag. The viewpoint moves forward along the path behind the rider, keeping her near the center. As the camera advances, the white house at the upper left slides out of view and the pink house becomes more prominent. The row of blossoming trees shifts in perspective and passes toward the right edge. The cyclist continues forward in a riding posture, without stopping or turning. The distance between the viewpoint and the rider gradually decreases while the path and scenery keep sliding past.",
+  "scope": "first_image_and_request_only",
+  "producer": "qwen3.8-flash",
+  "trace": {
+    "model": "qwen3.8-flash",
+    "request_id": "chatcmpl-5d3f8890-b2c4-9f8f-ad49-385487e5e31f",
+    "usage": {
+      "prompt_tokens": 859,
+      "total_tokens": 1250,
+      "completion_tokens": 391,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "image_tokens": 392,
+        "text_tokens": 467
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 319,
+        "text_tokens": 71
+      }
+    },
+    "finish_reason": "stop",
+    "raw": "{\"relations\":[\"The camera advancing along the path causes the white house to exit the frame while the pink house becomes more prominent.\",\"As the viewpoint moves forward, the row of blossoming trees shifts in perspective and passes toward the right edge.\",\"The cyclist continues forward without stopping, and the distance between the viewpoint and the rider gradually decreases.\"]\n}",
+    "seconds": 6.665286718998686,
+    "image_count": 1,
+    "video_sequence": false,
+    "thinking": true,
+    "explicit_times": null,
+    "prompt": "You receive ONLY the initial image and the requested video description, not the future video.\nGive 1-4 concise physical relation sentences useful for generating the requested visible process.\nEach sentence at most 20 words, in English; prerequisite/source -> conditional response or persistence.\nUse concrete relations tied to this scene and request, not a list of named laws or a caption rewrite.\nThe request describes desired development; it is not proof that the initial image already contains\nthat development. Distinguish visible facts from conditional future effects. Do not fabricate\nforces, measurements, directions, event times, hidden actions or deterministic trajectories.\nAvoid false explanations such as momentum keeping a ball suspended, or inertia preventing change.\nDo not freeze a requested process by demanding that its position/shape remain unchanged. Preserve\nthe appropriate identities, material continuity and interactions while permitting the requested\nmotion, diffusion, deformation, emergence or other visible change. If the request is empty, use\nonly plausible conditional relations supported by the initial image; do not infer a unique future.\nReturn JSON {\"relations\":[\"...\", \"...\"]}; no commentary, no extra features or embeddings.\n\n{\"request\": \"The video captures a paved cycle path between a stone wall and fence and houses on the left and a grassy bank of pink trees on the right. A cyclist in a bright pink top rides ahead on a bicycle with a rear basket holding a light-colored bag. The viewpoint moves forward along the path behind the rider, keeping her near the center. As the camera advances, the white house at the upper left slides out of view and the pink house becomes more prominent. The row of blossoming trees shifts in perspective and passes toward the right edge. The cyclist continues forward in a riding posture, without stopping or turning. The distance between the viewpoint and the rider gradually decreases while the path and scenery keep sliding past.\", \"presentation_seconds\": 2.6693334579467773}"
+  },
+  "sample": "wisa0025514",
+  "revision": "qwen38_wisa_reviewed_v1",
+  "arm": "text",
+  "first_image": "/home/liuzhirui/Project/physGen/data_cache/wisa_4000/base/first/wisa0025514.png"
+}

@@ -1,0 +1,33 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/runs/physical_content_66778/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "wisa0028628",
+  "seed": 42,
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 1.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "The video depicts a simple scientific demonstration involving a clear plastic bottle and a bowl filled with blue liquid. A person's hand is seen holding the bottle, which has a yellow cap at its base. The bottle contains a small amount of blue liquid at the start, and this liquid level gradually rises as more liquid is drawn up from the bowl below it. The hand holds the bottle steady, maintaining its position above the bowl. The background is a plain dark surface, likely a wall or backdrop, which helps focus attention on the action taking place. The lighting is bright, ensuring all details are clearly visible. There are no other objects or characters present in the scene, keeping the focus solely on the interaction between the bottle and the liquid. The video captures the process of drawing the liquid up from the bowl into the bottle, emphasizing the movement and the gradual filling of the bottle.",
+  "canvas": "/home/liuzhirui/Project/physGen/data_cache/wisa_4000/base/first/wisa0028628.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "1. Bottle’s yellow cap seals the base, preventing liquid from escaping downward.  \n2. Blue liquid in bowl rises slightly as it is drawn upward into the bottle.  \n3. Hand holds bottle steady, maintaining its vertical position over the bowl.  \n4. Continuous fluid flow occurs from bowl to bottle as the liquid level rises.",
+  "positive_relations": [
+    "Bottle’s yellow cap seals the base, preventing liquid from escaping downward.",
+    "Blue liquid in bowl rises slightly as it is drawn upward into the bottle.",
+    "Hand holds bottle steady, maintaining its vertical position over the bowl.",
+    "Continuous fluid flow occurs from bowl to bottle as the liquid level rises."
+  ],
+  "negative_analysis": "1. Hand holds bottle above bowl, restricting fluid flow from bottle to bowl.\n2. Bottle’s narrow neck directs blue liquid into bowl below.\n3. Bowl contains blue liquid, level rising as liquid enters from bottle.\n4. Bottle’s position may change if hand adjusts, altering liquid flow rate.",
+  "donor": null,
+  "scope": "first image/request only; native request unchanged; negative C unchanged except complete branch ablations",
+  "seconds": 263.22035768348724
+}

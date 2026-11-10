@@ -1,0 +1,34 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/aligned_request_r11a/runs/physical_content_67265/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP036",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/aligned_request_r11a/snapshots/20261103T143415Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/data_revision_qwen38/benchmark_inputs/videophy60_first_image_request_v1",
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "A slow-motion view of the jump showing leg extension and body position.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP036/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "The legs stay fully extended in a split position as the jump continues.\nThe body maintains its horizontal alignment relative to the ground throughout the sequence.\nThe vertical position remains constant while the person is suspended in mid-air.",
+  "positive_relations": [
+    "The legs stay fully extended in a split position as the jump continues.",
+    "The body maintains its horizontal alignment relative to the ground throughout the sequence.",
+    "The vertical position remains constant while the person is suspended in mid-air."
+  ],
+  "negative_analysis": "The person is mid-air in a split; gravity will pull them down toward the grass below.\nThe extended legs will bend upon landing to absorb the impact with the ground.\nThe small object on the grass remains stationary unless the landing person strikes it.",
+  "donor": null,
+  "scope": "Own first image, original request and API reasoning",
+  "seconds": 83.94003939535469
+}

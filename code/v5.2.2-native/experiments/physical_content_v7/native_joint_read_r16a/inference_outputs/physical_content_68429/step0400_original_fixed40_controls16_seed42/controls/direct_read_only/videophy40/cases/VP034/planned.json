@@ -1,0 +1,37 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_joint_read_r16a/runs/physical_content_68429/step0400.pt",
+  "step": 400,
+  "mode": "direct_read_only",
+  "case": "VP034",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_joint_read_r16a/snapshots/20261109T040426Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs",
+  "guidance": {
+    "kind": "joint_two_branch_cfg",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+    "physical_residual_scale": null,
+    "native_definition": "Same trained Wan LoRA with all physical additions disabled"
+  },
+  "caption": "A large, clear balloon is inflated with air, showing the internal pressure causing the balloon to stretch.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP034/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler",
+    "guidance_composition": "joint_two_branch_cfg"
+  },
+  "positive_analysis": "1. Air inside balloon exerts pressure, stretching the elastic material outward visibly.\n\n2. Internal pressure remains balanced with external atmospheric pressure as balloon floats.\n\n3. Continuous air molecules collide with balloon walls, maintaining its inflated shape.\n\n4. If air escapes, balloon will shrink; if sealed, shape persists under current pressure.",
+  "positive_relations": [
+    "Air inside balloon exerts pressure, stretching the elastic material outward visibly.",
+    "Internal pressure remains balanced with external atmospheric pressure as balloon floats.",
+    "Continuous air molecules collide with balloon walls, maintaining its inflated shape.",
+    "If air escapes, balloon will shrink; if sealed, shape persists under current pressure."
+  ],
+  "negative_analysis": "1. Balloon’s surface reflects ambient light, creating visible highlights and shadows.\n2. Air inside balloon exerts pressure, maintaining its spherical shape against external forces.\n3. If balloon loses gas, it may shrink, altering its visual appearance and buoyancy.\n4. Ambient temperature changes may affect balloon’s internal pressure and volume.",
+  "donor": null,
+  "scope": "Read only direct C with the same trained physical Q/K/V/O and state interaction",
+  "seconds": 120.17409831000259
+}

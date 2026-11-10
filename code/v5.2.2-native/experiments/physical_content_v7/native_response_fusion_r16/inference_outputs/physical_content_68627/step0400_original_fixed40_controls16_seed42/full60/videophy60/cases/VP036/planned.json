@@ -1,0 +1,37 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_response_fusion_r16/runs/physical_content_68627/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP036",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_response_fusion_r16/snapshots/20261109T193637Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs",
+  "guidance": {
+    "kind": "joint_two_branch_cfg",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+    "physical_residual_scale": null,
+    "native_definition": "Same trained Wan LoRA with all physical additions disabled"
+  },
+  "caption": "A slow-motion view of the jump showing leg extension and body position.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP036/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler",
+    "guidance_composition": "joint_two_branch_cfg"
+  },
+  "positive_analysis": "1. Person’s arms extended backward, pulling torso forward as legs stretch outward mid-air.  \n2. Gravity pulls downward while muscles maintain leg separation against momentum.  \n3. Air flows past body, resisting motion as limbs remain extended.  \n4. Center of mass shifts slightly forward as jump apex is reached.",
+  "positive_relations": [
+    "Person’s arms extended backward, pulling torso forward as legs stretch outward mid-air.",
+    "Gravity pulls downward while muscles maintain leg separation against momentum.",
+    "Air flows past body, resisting motion as limbs remain extended.",
+    "Center of mass shifts slightly forward as jump apex is reached."
+  ],
+  "negative_analysis": "1. Person’s arms extended forward, pulling red resistance band taut as they leap.\n2. Legs spread wide apart mid-air, maintaining balance during jump.\n3. Feet off ground, body suspended, gravity pulling downward continuously.\n4. Hair flows backward due to motion, indicating dynamic movement through air.",
+  "donor": null,
+  "scope": "Own first image, original request and original Qwen reasoning; the declared direct/request-bound/joint global execution writes and the R15C local video-state operator are all active",
+  "seconds": 164.9205148811452
+}

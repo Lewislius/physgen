@@ -1,0 +1,37 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_joint_read_r16a/runs/physical_content_68429/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP035",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_joint_read_r16a/snapshots/20261109T040426Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs",
+  "guidance": {
+    "kind": "joint_two_branch_cfg",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+    "physical_residual_scale": null,
+    "native_definition": "Same trained Wan LoRA with all physical additions disabled"
+  },
+  "caption": "A woodcutter with a long handled axe chops down a thick tree in a forest.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP035/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler",
+    "guidance_composition": "joint_two_branch_cfg"
+  },
+  "positive_analysis": "1. Axe blade contacts tree bark, initiating wood fracture and splintering.\n2. Woodcutter’s grip shifts as force transfers through handle to axe head.\n3. Tree trunk leans slightly as internal fibers begin to separate under impact.\n4. Moss-covered ground absorbs falling debris and scattered wood fragments.",
+  "positive_relations": [
+    "Axe blade contacts tree bark, initiating wood fracture and splintering.",
+    "Woodcutter’s grip shifts as force transfers through handle to axe head.",
+    "Tree trunk leans slightly as internal fibers begin to separate under impact.",
+    "Moss-covered ground absorbs falling debris and scattered wood fragments."
+  ],
+  "negative_analysis": "1. Man holds axe handle; blade contacts tree bark, causing wood fibers to fracture and separate.\n2. Tree trunk shows fresh cut; sap may seep slowly from exposed inner wood as cut deepens.\n3. Moss on ground remains undisturbed; forest floor debris stays scattered around tree base.\n4. Man’s stance shifts slightly; axe motion may alter his balance as he applies force to the tree.",
+  "donor": null,
+  "scope": "Own first image, original request and original Qwen reasoning",
+  "seconds": 123.57199385899003
+}

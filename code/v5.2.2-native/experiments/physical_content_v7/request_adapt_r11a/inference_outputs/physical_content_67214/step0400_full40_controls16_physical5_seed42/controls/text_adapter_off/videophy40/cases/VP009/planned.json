@@ -1,0 +1,34 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_adapt_r11a/runs/physical_content_67214/step0400.pt",
+  "step": 400,
+  "mode": "text_adapter_off",
+  "case": "VP009",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_adapt_r11a/snapshots/20261103T054429Z",
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "A construction worker uses a suction cup to lift a heavy glass panel with a small picture adhered to it; the picture remains affixed.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP009/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "1. Worker holds suction cup against glass; adhesive bond persists despite applied force.  \n2. Picture remains affixed to glass as suction cup lifts panel; no detachment observed.  \n3. Worker’s posture shifts slightly; suction cup maintains contact with glass surface.  \n4. No visible fluid movement; suction process relies on air displacement, not liquid flow.",
+  "positive_relations": [
+    "Worker holds suction cup against glass; adhesive bond persists despite applied force.",
+    "Picture remains affixed to glass as suction cup lifts panel; no detachment observed.",
+    "Worker’s posture shifts slightly; suction cup maintains contact with glass surface.",
+    "No visible fluid movement; suction process relies on air displacement, not liquid flow."
+  ],
+  "negative_analysis": "1. Worker holds mop handle, applying pressure to clean glass surface.\n2. Water flows from mop head, spreading across glass as cleaning progresses.\n3. Reflections shift subtly as glass surface becomes clearer with cleaning.\n4. Worker’s posture adjusts slightly to maintain optimal cleaning angle.",
+  "donor": null,
+  "scope": "Disable ONLY native cross-attention Q/K/V/O LoRA in both CFG arms; keep C and physical parameters. The post-text physical state changes as a consequence. Not an independently retrained R10A.",
+  "seconds": 202.5860083810985
+}

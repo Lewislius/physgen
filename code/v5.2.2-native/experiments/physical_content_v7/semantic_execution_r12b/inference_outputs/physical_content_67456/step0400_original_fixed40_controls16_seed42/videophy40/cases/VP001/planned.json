@@ -1,0 +1,35 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/runs/physical_content_67456/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP001",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/snapshots/20261104T142411Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/prepared_inputs",
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "A long jumper demonstrates a flawed technique, resulting in a short distance and an unbalanced landing.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP001/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "1. Athlete’s arms extended outward, indicating imbalance during flight phase.\n2. Body positioned asymmetrically, suggesting poor center of mass control.\n3. Legs bent unevenly, implying compromised landing stability.\n4. Airflow around limbs suggests motion, but no visible fluid dynamics altering trajectory.",
+  "positive_relations": [
+    "Athlete’s arms extended outward, indicating imbalance during flight phase.",
+    "Body positioned asymmetrically, suggesting poor center of mass control.",
+    "Legs bent unevenly, implying compromised landing stability.",
+    "Airflow around limbs suggests motion, but no visible fluid dynamics altering trajectory."
+  ],
+  "negative_analysis": "1. Person’s arms extended upward causes body to arch mid-air, altering center of mass.\n2. Jumping motion suspends person above court, temporarily defying gravity’s pull.\n3. Air resistance acts on person’s body, slowing descent toward the court surface.\n4. Person’s legs bent at knees during leap, preparing for landing impact on court.",
+  "donor": null,
+  "scope": "Own first image, original request and original Qwen reasoning",
+  "seconds": 84.30554420966655
+}

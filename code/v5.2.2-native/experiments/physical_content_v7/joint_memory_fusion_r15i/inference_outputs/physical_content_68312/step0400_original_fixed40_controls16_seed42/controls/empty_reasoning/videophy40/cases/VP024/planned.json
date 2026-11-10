@@ -1,0 +1,37 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/runs/physical_content_68312/step0400.pt",
+  "step": 400,
+  "mode": "empty_reasoning",
+  "case": "VP024",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/snapshots/20261108T123450Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs",
+  "guidance": {
+    "kind": "joint_two_branch_cfg",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+    "physical_residual_scale": null,
+    "native_definition": "Same trained Wan LoRA with all physical additions disabled"
+  },
+  "caption": "A speeding car crashes into a brick wall, crumpling the front end and stopping abruptly.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP024/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler",
+    "guidance_composition": "joint_two_branch_cfg"
+  },
+  "positive_analysis": "",
+  "positive_relations": [
+    "",
+    "",
+    "",
+    ""
+  ],
+  "negative_analysis": "1. Car’s front end impacts wall, causing bricks to break and debris to scatter.\n2. Wall’s structural integrity weakens as car pushes into it, possibly leading to further collapse.\n3. Soil and dust cloud erupts from wall breach due to car’s forceful penetration.\n4. Water may seep into damaged wall area, accelerating decay if left unattended.",
+  "donor": null,
+  "scope": "Empty reasoning delimiters with own image/request and own relation count",
+  "seconds": 83.7661881763488
+}

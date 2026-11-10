@@ -1,0 +1,37 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_response_fusion_r16/runs/physical_content_68621/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP059",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_response_fusion_r16/snapshots/20261109T185125Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs",
+  "guidance": {
+    "kind": "joint_two_branch_cfg",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+    "physical_residual_scale": null,
+    "native_definition": "Same trained Wan LoRA with all physical additions disabled"
+  },
+  "caption": "Two javelin throwers launch their javelins simultaneously, showing the trajectory of each.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP059/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler",
+    "guidance_composition": "joint_two_branch_cfg"
+  },
+  "positive_analysis": "1. Javelin’s initial angle and velocity determine its arc against the sky.  \n2. Air resistance gradually slows each javelin’s forward motion.  \n3. Grass field remains static as javelins descend toward impact.  \n4. Javelins’ tips may rotate slightly during flight due to aerodynamic forces.",
+  "positive_relations": [
+    "Javelin’s initial angle and velocity determine its arc against the sky.",
+    "Air resistance gradually slows each javelin’s forward motion.",
+    "Grass field remains static as javelins descend toward impact.",
+    "Javelins’ tips may rotate slightly during flight due to aerodynamic forces."
+  ],
+  "negative_analysis": "1. Javelin’s curved path indicates release from athlete’s hand, now in free flight.\n2. Grass field beneath javelin remains static, unaffected by airborne javelin’s motion.\n3. Javelin’s tip points downward, suggesting gravity’s continuous pull toward earth.\n4. Air resistance acts on javelin’s surface, gradually slowing its forward momentum.",
+  "donor": null,
+  "scope": "Own first image, original request and original Qwen reasoning; the declared direct/request-bound/joint global execution writes and the R15C local video-state operator are all active",
+  "seconds": 96.88145285658538
+}

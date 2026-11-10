@@ -1,0 +1,37 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_response_fusion_r16/runs/physical_content_68621/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP012",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_response_fusion_r16/snapshots/20261109T185125Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs",
+  "guidance": {
+    "kind": "joint_two_branch_cfg",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+    "physical_residual_scale": null,
+    "native_definition": "Same trained Wan LoRA with all physical additions disabled"
+  },
+  "caption": "A player hits the ball off the side of the mallet, resulting in an unexpected trajectory.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP012/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler",
+    "guidance_composition": "joint_two_branch_cfg"
+  },
+  "positive_analysis": "1. Hand grips racket handle, poised to strike yellow ball on green court surface.  \n2. Racket strings face downward, positioned near ball, ready for contact.  \n3. Ball rests stationary beside racket, awaiting player’s motion to initiate action.  \n4. If struck, ball may rebound unpredictably off racket’s edge or frame.",
+  "positive_relations": [
+    "Hand grips racket handle, poised to strike yellow ball on green court surface.",
+    "Racket strings face downward, positioned near ball, ready for contact.",
+    "Ball rests stationary beside racket, awaiting player’s motion to initiate action.",
+    "If struck, ball may rebound unpredictably off racket’s edge or frame."
+  ],
+  "negative_analysis": "1. Hand grips racket handle, poised to swing, altering racket’s orientation relative to ball.\n2. Racket lies near ball on court, suggesting imminent contact or potential movement.\n3. Ball rests stationary beside racket, ready for impact or displacement by motion.\n4. White lines define court boundaries, remaining fixed as background reference.",
+  "donor": null,
+  "scope": "Own first image, original request and original Qwen reasoning; the declared direct/request-bound/joint global execution writes and the R15C local video-state operator are all active",
+  "seconds": 96.63981135655195
+}

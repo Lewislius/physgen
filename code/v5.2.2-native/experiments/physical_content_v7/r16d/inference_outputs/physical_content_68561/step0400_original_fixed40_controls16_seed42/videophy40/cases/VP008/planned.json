@@ -1,0 +1,37 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_request_local_r16d/runs/physical_content_68561/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP008",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_request_local_r16d/snapshots/20261109T161515Z_recovery_eval",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs",
+  "guidance": {
+    "kind": "joint_two_branch_cfg",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+    "physical_residual_scale": null,
+    "native_definition": "Same trained Wan LoRA with all physical additions disabled"
+  },
+  "caption": "A person bounces to a specific rhythm on a trampoline, their body movement clearly timed to a beat.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP008/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler",
+    "guidance_composition": "joint_two_branch_cfg"
+  },
+  "positive_analysis": "1. Person’s arms extend outward as they rise, preparing for rhythmic bounce.  \n2. Legs bend at knees during descent, absorbing impact before rebound.  \n3. Trampoline surface deforms under weight, returning to flat as person ascends.  \n4. Hair moves with motion, trailing behind as body rotates mid-air.",
+  "positive_relations": [
+    "Person’s arms extend outward as they rise, preparing for rhythmic bounce.",
+    "Legs bend at knees during descent, absorbing impact before rebound.",
+    "Trampoline surface deforms under weight, returning to flat as person ascends.",
+    "Hair moves with motion, trailing behind as body rotates mid-air."
+  ],
+  "negative_analysis": "1. Person’s arms extended outward as they jump, likely to maintain balance mid-air.\n2. Person’s legs bent at knees, suggesting preparation for landing or ongoing motion.\n3. Person’s bare feet show no visible footwear, indicating possible trampoline safety or personal preference.\n4. Person’s body position may shift as they continue bouncing or prepare for a new move.",
+  "donor": null,
+  "scope": "Own first image, original request and original Qwen reasoning; both C conditions, QK modulation and rank16 C-read residual active",
+  "seconds": 93.05321299191564
+}

@@ -1,0 +1,35 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_fusion_r15a/runs/physical_content_67762/step0400.pt",
+  "step": 400,
+  "mode": "reasoning_swapped",
+  "case": "VP038",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_fusion_r15a/snapshots/20261105T085307Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_fusion_r15a/prepared_inputs",
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "A paint roller, dipped in green paint, is used to cover a section of a metal fence, creating a uniform green coat.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP038/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "1. Blue-gloved hand holds probe near insect on leaf surface.\n2. Probe tip contacts insect’s body, causing slight twitch.\n3. Insect remains on leaf, possibly shifting position slightly.\n4. Fluids may transfer between probe and insect during contact.",
+  "positive_relations": [
+    "Blue-gloved hand holds probe near insect on leaf surface.",
+    "Probe tip contacts insect’s body, causing slight twitch.",
+    "Insect remains on leaf, possibly shifting position slightly.",
+    "Fluids may transfer between probe and insect during contact."
+  ],
+  "negative_analysis": "1. Roller’s textured surface contacts panel, transferring paint as it rolls.\n2. Paint flows continuously from roller to panel surface during motion.\n3. Panel’s grid structure remains fixed while roller moves across it.\n4. Roller’s rotation persists as long as applied force maintains motion.",
+  "donor": "VP016",
+  "scope": "Same-count unrelated reasoning with own image/request; own negative condition",
+  "seconds": 83.39778343960643
+}

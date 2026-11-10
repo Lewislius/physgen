@@ -1,0 +1,30 @@
+{
+  "utc": "2026-11-10T05:29:35.499560+00:00",
+  "removed": true,
+  "authority": "User explicitly requested storage cleanup and removal of weak models; R10A/R1/R9/R15B and recent variants must be retained.",
+  "reason": "Existing completed fixed40 evaluation is weaker than retained references; user authorized removal of poor older weights. Preserve source, logs, videos and scores.",
+  "deleted_weight_files": [
+    "experiments/physical_content_v7/content_reader_r8/runs/physical_content_66926/latest.pt",
+    "experiments/physical_content_v7/content_reader_r8/runs/physical_content_66926/step0016.pt",
+    "experiments/physical_content_v7/content_reader_r8/runs/physical_content_66926/step0032.pt",
+    "experiments/physical_content_v7/content_reader_r8/runs/physical_content_66926/step0064.pt",
+    "experiments/physical_content_v7/content_reader_r8/runs/physical_content_66926/step0128.pt"
+  ],
+  "completed_fixed40_evidence": [
+    {
+      "path": "experiments/physical_content_v7/content_reader_r8/inference_outputs/physical_content_66926/step0128_full40_controls16_physical5_seed42/videophy40/scores.json",
+      "summary": {
+        "count": 40,
+        "sa_mean": 3.0,
+        "pc_mean": 3.475,
+        "sa_pass_rate": 0.25,
+        "pc_pass_rate": 0.425,
+        "joint_pass_rate": 0.225,
+        "scope": "Fixed 40 VideoPhy2 captions adapted to shared-first-image I2V; not official T2V leaderboard",
+        "training_verifier_is_independent": true
+      }
+    }
+  ],
+  "manifest": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/storage_cleanup_20261110T052857Z/manifest.json",
+  "preserved": "Code, configurations, training logs, generated videos and evaluation scores remain. Historical status.json is unchanged; its checkpoint path is now historical."
+}

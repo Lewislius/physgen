@@ -1,0 +1,33 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/execution_value_r10/runs/physical_content_67003/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP049",
+  "seed": 42,
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "A crane's claw gently nudges a large container, causing it to shift a few centimeters.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP049/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "1. Crane claw contacts container surface, applying force to initiate movement.\n2. Workers observe as container shifts slightly under applied pressure.\n3. Container remains upright despite nudging, supported by its structure.\n4. Continuous material flow from chute persists unaffected by container shift.",
+  "positive_relations": [
+    "Crane claw contacts container surface, applying force to initiate movement.",
+    "Workers observe as container shifts slightly under applied pressure.",
+    "Container remains upright despite nudging, supported by its structure.",
+    "Continuous material flow from chute persists unaffected by container shift."
+  ],
+  "negative_analysis": "1. Workers near conveyor stand ready as material flows from train car into chute.  \n2. Sacks stacked left await filling as conveyor discharges contents.  \n3. People observe process; some hold containers under discharge stream.  \n4. Train car remains stationary while loading continues via mechanical arm.",
+  "donor": null,
+  "scope": "Own image/request/reasoning in positive C; own image-only negative C; native T5 retained",
+  "seconds": 83.28858958929777
+}

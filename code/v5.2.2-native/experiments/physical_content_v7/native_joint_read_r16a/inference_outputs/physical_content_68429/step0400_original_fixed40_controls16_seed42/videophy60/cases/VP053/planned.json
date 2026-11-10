@@ -1,0 +1,37 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_joint_read_r16a/runs/physical_content_68429/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP053",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_joint_read_r16a/snapshots/20261109T040426Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs",
+  "guidance": {
+    "kind": "joint_two_branch_cfg",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+    "physical_residual_scale": null,
+    "native_definition": "Same trained Wan LoRA with all physical additions disabled"
+  },
+  "caption": "An object shaped like a globe is poked, causing it to spin on its axis, revealing different countries.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP053/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler",
+    "guidance_composition": "joint_two_branch_cfg"
+  },
+  "positive_analysis": "1. Hands grasp globe handles; fingers apply pressure to initiate rotation.  \n2. Globe spins on axis; continents shift into view as rotation continues.  \n3. Earth’s surface colors remain fixed relative to globe’s frame during spin.  \n4. No visible fluids or continuous processes alter globe’s motion or appearance.",
+  "positive_relations": [
+    "Hands grasp globe handles; fingers apply pressure to initiate rotation.",
+    "Globe spins on axis; continents shift into view as rotation continues.",
+    "Earth’s surface colors remain fixed relative to globe’s frame during spin.",
+    "No visible fluids or continuous processes alter globe’s motion or appearance."
+  ],
+  "negative_analysis": "1. Hands grasp globe handles; rotation may shift continents' visible orientation.\n2. Fingers apply torque; globe spins, altering which landmasses face viewer.\n3. Globe’s surface remains intact; continents stay colored despite motion.\n4. Person’s arms support globe; posture adjusts to maintain balance during rotation.",
+  "donor": null,
+  "scope": "Own first image, original request and original Qwen reasoning",
+  "seconds": 126.88471559001482
+}

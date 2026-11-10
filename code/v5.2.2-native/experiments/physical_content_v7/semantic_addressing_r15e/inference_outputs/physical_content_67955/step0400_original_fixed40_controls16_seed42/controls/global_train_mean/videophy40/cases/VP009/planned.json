@@ -1,0 +1,36 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_addressing_r15e/runs/physical_content_67955/step0400.pt",
+  "step": 400,
+  "mode": "global_train_mean",
+  "case": "VP009",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_addressing_r15e/snapshots/20261106T101625Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/denoising_matched_fusion_r15d/prepared_inputs",
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "global_condition": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_addressing_r15e/controls/physical_content_67955/step0400_mean_content.pt",
+  "caption": "A construction worker uses a suction cup to lift a heavy glass panel with a small picture adhered to it; the picture remains affixed.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP009/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "1. Worker holds suction cup against glass; adhesive bond persists despite applied force.  \n2. Picture remains affixed to glass as suction cup lifts panel; no detachment observed.  \n3. Worker’s posture shifts slightly; suction cup maintains contact with glass surface.  \n4. No visible fluid movement; suction process relies on air displacement, not liquid flow.",
+  "positive_relations": [
+    "Worker holds suction cup against glass; adhesive bond persists despite applied force.",
+    "Picture remains affixed to glass as suction cup lifts panel; no detachment observed.",
+    "Worker’s posture shifts slightly; suction cup maintains contact with glass surface.",
+    "No visible fluid movement; suction process relies on air displacement, not liquid flow."
+  ],
+  "negative_analysis": "1. Worker holds mop handle, applying pressure to clean glass surface.\n2. Water flows from mop head, spreading across glass as cleaning progresses.\n3. Reflections shift subtly as glass surface becomes clearer with cleaning.\n4. Worker’s posture adjusts slightly to maintain optimal cleaning angle.",
+  "donor": null,
+  "scope": "Fixed train-mean routing/execution C; own relation priors and video states remain input-specific",
+  "seconds": 85.50226776208729
+}

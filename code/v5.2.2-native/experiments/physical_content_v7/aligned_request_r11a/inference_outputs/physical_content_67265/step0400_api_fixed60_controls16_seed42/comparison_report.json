@@ -1,0 +1,533 @@
+{
+  "candidate": "R11A-request-execution",
+  "original_failed_R11A_preserved": true,
+  "comparison_scope": "Updated data/API reasoning and added request-execution branch versus old-data references; separate same-data R10A reference isolates the branch addition at matched128+272.",
+  "main": {
+    "original40": {
+      "count": 40,
+      "sa_mean": 2.925,
+      "pc_mean": 3.6,
+      "sa_pass_rate": 0.275,
+      "pc_pass_rate": 0.475,
+      "joint_pass_rate": 0.25,
+      "scope": "Fixed60 historical VideoPhy2 captions adapted to common first-image I2V; seed42. Not the official590-caption T2V benchmark.",
+      "training_verifier_is_independent": true
+    },
+    "full60": {
+      "count": 60,
+      "sa_mean": 2.85,
+      "pc_mean": 3.6,
+      "sa_pass_rate": 0.21666666666666667,
+      "pc_pass_rate": 0.48333333333333334,
+      "joint_pass_rate": 0.2,
+      "scope": "Fixed60 historical VideoPhy2 captions adapted to common first-image I2V; seed42. Not the official590-caption T2V benchmark.",
+      "training_verifier_is_independent": true
+    }
+  },
+  "controls": {
+    "anchor_routing": {
+      "summary": {
+        "count": 16,
+        "sa_mean": 3.125,
+        "pc_mean": 3.75,
+        "sa_pass_rate": 0.3125,
+        "pc_pass_rate": 0.5625,
+        "joint_pass_rate": 0.3125,
+        "scope": "Fixed60 historical VideoPhy2 captions adapted to common first-image I2V; seed42. Not the official590-caption T2V benchmark.",
+        "training_verifier_is_independent": true
+      },
+      "normal_minus_control": {
+        "sa": {
+          "mean_change": 0.0625,
+          "wins": 2,
+          "ties": 13,
+          "losses": 1
+        },
+        "pc": {
+          "mean_change": 0.0625,
+          "wins": 3,
+          "ties": 11,
+          "losses": 2
+        },
+        "joint": {
+          "gains": [
+            "VP038"
+          ],
+          "losses": []
+        }
+      }
+    },
+    "empty_reasoning": {
+      "summary": {
+        "count": 16,
+        "sa_mean": 3.25,
+        "pc_mean": 3.5,
+        "sa_pass_rate": 0.375,
+        "pc_pass_rate": 0.4375,
+        "joint_pass_rate": 0.375,
+        "scope": "Fixed60 historical VideoPhy2 captions adapted to common first-image I2V; seed42. Not the official590-caption T2V benchmark.",
+        "training_verifier_is_independent": true
+      },
+      "normal_minus_control": {
+        "sa": {
+          "mean_change": -0.0625,
+          "wins": 1,
+          "ties": 13,
+          "losses": 2
+        },
+        "pc": {
+          "mean_change": 0.3125,
+          "wins": 4,
+          "ties": 12,
+          "losses": 0
+        },
+        "joint": {
+          "gains": [
+            "VP034"
+          ],
+          "losses": [
+            "VP015"
+          ]
+        }
+      }
+    },
+    "global_train_mean": {
+      "summary": {
+        "count": 16,
+        "sa_mean": 3.0625,
+        "pc_mean": 3.5625,
+        "sa_pass_rate": 0.3125,
+        "pc_pass_rate": 0.4375,
+        "joint_pass_rate": 0.3125,
+        "scope": "Fixed60 historical VideoPhy2 captions adapted to common first-image I2V; seed42. Not the official590-caption T2V benchmark.",
+        "training_verifier_is_independent": true
+      },
+      "normal_minus_control": {
+        "sa": {
+          "mean_change": 0.125,
+          "wins": 3,
+          "ties": 12,
+          "losses": 1
+        },
+        "pc": {
+          "mean_change": 0.25,
+          "wins": 3,
+          "ties": 13,
+          "losses": 0
+        },
+        "joint": {
+          "gains": [
+            "VP034"
+          ],
+          "losses": []
+        }
+      }
+    },
+    "no_c": {
+      "summary": {
+        "count": 16,
+        "sa_mean": 3.25,
+        "pc_mean": 3.625,
+        "sa_pass_rate": 0.375,
+        "pc_pass_rate": 0.4375,
+        "joint_pass_rate": 0.375,
+        "scope": "Fixed60 historical VideoPhy2 captions adapted to common first-image I2V; seed42. Not the official590-caption T2V benchmark.",
+        "training_verifier_is_independent": true
+      },
+      "normal_minus_control": {
+        "sa": {
+          "mean_change": -0.0625,
+          "wins": 1,
+          "ties": 13,
+          "losses": 2
+        },
+        "pc": {
+          "mean_change": 0.1875,
+          "wins": 3,
+          "ties": 12,
+          "losses": 1
+        },
+        "joint": {
+          "gains": [],
+          "losses": []
+        }
+      }
+    },
+    "reasoning_swapped": {
+      "summary": {
+        "count": 16,
+        "sa_mean": 3.0625,
+        "pc_mean": 3.75,
+        "sa_pass_rate": 0.25,
+        "pc_pass_rate": 0.5625,
+        "joint_pass_rate": 0.25,
+        "scope": "Fixed60 historical VideoPhy2 captions adapted to common first-image I2V; seed42. Not the official590-caption T2V benchmark.",
+        "training_verifier_is_independent": true
+      },
+      "normal_minus_control": {
+        "sa": {
+          "mean_change": 0.125,
+          "wins": 2,
+          "ties": 14,
+          "losses": 0
+        },
+        "pc": {
+          "mean_change": 0.0625,
+          "wins": 2,
+          "ties": 13,
+          "losses": 1
+        },
+        "joint": {
+          "gains": [
+            "VP010",
+            "VP034"
+          ],
+          "losses": []
+        }
+      }
+    },
+    "request_execution_off": {
+      "summary": {
+        "count": 16,
+        "sa_mean": 3.125,
+        "pc_mean": 3.9375,
+        "sa_pass_rate": 0.3125,
+        "pc_pass_rate": 0.625,
+        "joint_pass_rate": 0.3125,
+        "scope": "Fixed60 historical VideoPhy2 captions adapted to common first-image I2V; seed42. Not the official590-caption T2V benchmark.",
+        "training_verifier_is_independent": true
+      },
+      "normal_minus_control": {
+        "sa": {
+          "mean_change": 0.0625,
+          "wins": 1,
+          "ties": 15,
+          "losses": 0
+        },
+        "pc": {
+          "mean_change": -0.125,
+          "wins": 0,
+          "ties": 14,
+          "losses": 2
+        },
+        "joint": {
+          "gains": [
+            "VP038"
+          ],
+          "losses": []
+        }
+      }
+    },
+    "request_execution_text_only": {
+      "summary": {
+        "count": 16,
+        "sa_mean": 3.125,
+        "pc_mean": 3.8125,
+        "sa_pass_rate": 0.375,
+        "pc_pass_rate": 0.5625,
+        "joint_pass_rate": 0.375,
+        "scope": "Fixed60 historical VideoPhy2 captions adapted to common first-image I2V; seed42. Not the official590-caption T2V benchmark.",
+        "training_verifier_is_independent": true
+      },
+      "normal_minus_control": {
+        "sa": {
+          "mean_change": 0.0625,
+          "wins": 1,
+          "ties": 15,
+          "losses": 0
+        },
+        "pc": {
+          "mean_change": 0,
+          "wins": 0,
+          "ties": 16,
+          "losses": 0
+        },
+        "joint": {
+          "gains": [],
+          "losses": []
+        }
+      }
+    }
+  },
+  "paired": {
+    "original40/R10-A": {
+      "sa": {
+        "mean_change": 0.1,
+        "wins": 5,
+        "ties": 34,
+        "losses": 1
+      },
+      "pc": {
+        "mean_change": -0.15,
+        "wins": 5,
+        "ties": 25,
+        "losses": 10
+      },
+      "joint": {
+        "gains": [
+          "VP008",
+          "VP010",
+          "VP038"
+        ],
+        "losses": []
+      }
+    },
+    "original40/R1": {
+      "sa": {
+        "mean_change": -0.025,
+        "wins": 0,
+        "ties": 39,
+        "losses": 1
+      },
+      "pc": {
+        "mean_change": -0.025,
+        "wins": 4,
+        "ties": 31,
+        "losses": 5
+      },
+      "joint": {
+        "gains": [],
+        "losses": []
+      }
+    },
+    "original40/native400": {
+      "sa": {
+        "mean_change": -0.15,
+        "wins": 0,
+        "ties": 34,
+        "losses": 6
+      },
+      "pc": {
+        "mean_change": 0.15,
+        "wins": 9,
+        "ties": 28,
+        "losses": 3
+      },
+      "joint": {
+        "gains": [],
+        "losses": []
+      }
+    },
+    "original40/R10A-API400": {
+      "sa": {
+        "mean_change": 0,
+        "wins": 3,
+        "ties": 34,
+        "losses": 3
+      },
+      "pc": {
+        "mean_change": 0.1,
+        "wins": 9,
+        "ties": 26,
+        "losses": 5
+      },
+      "joint": {
+        "gains": [
+          "VP034",
+          "VP038"
+        ],
+        "losses": []
+      }
+    },
+    "full60/R10-A": {
+      "sa": {
+        "mean_change": 0.1,
+        "wins": 8,
+        "ties": 50,
+        "losses": 2
+      },
+      "pc": {
+        "mean_change": -0.23333333333333334,
+        "wins": 5,
+        "ties": 37,
+        "losses": 18
+      },
+      "joint": {
+        "gains": [
+          "VP008",
+          "VP010",
+          "VP038",
+          "VP041"
+        ],
+        "losses": [
+          "VP048"
+        ]
+      }
+    },
+    "full60/R1": {
+      "sa": {
+        "mean_change": -0.03333333333333333,
+        "wins": 1,
+        "ties": 56,
+        "losses": 3
+      },
+      "pc": {
+        "mean_change": -0.06666666666666667,
+        "wins": 5,
+        "ties": 46,
+        "losses": 9
+      },
+      "joint": {
+        "gains": [],
+        "losses": [
+          "VP048"
+        ]
+      }
+    },
+    "full60/native400": {
+      "sa": {
+        "mean_change": -0.13333333333333333,
+        "wins": 1,
+        "ties": 50,
+        "losses": 9
+      },
+      "pc": {
+        "mean_change": 0.08333333333333333,
+        "wins": 11,
+        "ties": 43,
+        "losses": 6
+      },
+      "joint": {
+        "gains": [],
+        "losses": [
+          "VP048"
+        ]
+      }
+    },
+    "full60/R10A-API400": {
+      "sa": {
+        "mean_change": -0.016666666666666666,
+        "wins": 5,
+        "ties": 49,
+        "losses": 6
+      },
+      "pc": {
+        "mean_change": -0.016666666666666666,
+        "wins": 10,
+        "ties": 40,
+        "losses": 10
+      },
+      "joint": {
+        "gains": [
+          "VP034",
+          "VP038",
+          "VP041"
+        ],
+        "losses": [
+          "VP048"
+        ]
+      }
+    }
+  },
+  "pending_main": [],
+  "same_data_reference": {
+    "output": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r10a_api400/inference_outputs/physical_content_67271/step0400_api_fixed60_controls16_seed42",
+    "available_suites": [
+      "original40",
+      "full60"
+    ],
+    "scope": "Same revised training cache, shared benchmark inputs, initialization draws for original modules,400 real-video updates and128+272 recipe. New request-execution branch differs; no per-case selection."
+  },
+  "target_checks": {
+    "original40_pc_above3_8": false,
+    "original40_sa_above3_3": false,
+    "original40_joint_above_R1": false,
+    "full60_pc_retains_R10A": false,
+    "full60_sa_above3_3": false,
+    "full60_joint_above_R1": false
+  },
+  "numeric_targets_met": false,
+  "numeric_targets_status": "not_met",
+  "preferred_original40_pc_at_least3_85": false,
+  "preferred_original40_sa_at_least3_35": false,
+  "actual_video_review": {
+    "utc": "2026-11-03T16:27:15.721231+00:00",
+    "candidate": "R11A-request-execution",
+    "experiment_id": 67265,
+    "checkpoint_step": 400,
+    "selection_file": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/aligned_request_r11a/reports/physical_content_67265/visual_predeclared/selection.json",
+    "selection": "VP004/008/010 declared in DESIGN.zh.txt before candidate scores or videos; reviewed before completed main40 scoring.",
+    "scope": "Eight evenly sampled frames from each existing81-frame video, three predeclared cases; no generated-video evaluator call or full-suite quality estimate.",
+    "comparison_scope": "Same original40 requests/first frames, seed42, gamma5, sampler and400 update budget. New R11A changes revised training data/API inputs plus architecture versus historical R10A/native400. The pending same-data R10A and inference controls are needed to isolate branch contribution.",
+    "scores": null,
+    "cases": [
+      {
+        "case": "VP004",
+        "native400": "尺状物很快不再保持形状，人物肩部、躯干也出现大面积破损。",
+        "R10A": "人物与尺状物大体稳定，但变化很弱，未清楚展示弯曲后的裂纹传播。",
+        "new_R11A": "人物比native400更完整，但尺状物出现宽大的波动片状拉伸与重叠，仍没有清楚、合理的局部开裂传播。",
+        "interpretation": "新增变化没有解决材料形变/断裂准确性；相对静态R10A不能将动作幅度视为物理改善。",
+        "observed_change": "mixed_with_unresolved_material_failure"
+      },
+      {
+        "case": "VP008",
+        "native400": "有连续姿态与位置变化，但后段脚部出现明显蓝色拖尾式形状和比例变化。",
+        "R10A": "人物长期维持近似初始腾空姿态，跳跃过程响应弱。",
+        "new_R11A": "人物的下落、收腿及再次改变姿态清楚出现，场景整体保持稳定；身体/脚部细节仍有变化。",
+        "interpretation": "相对R10A恢复了请求所需的跳跃过程，未见native400该处的大幅脚部拖尾。接触/弹性过程的精确正确性尚未建立。",
+        "observed_change": "request_execution_improved_with_remaining_detail_issues"
+      },
+      {
+        "case": "VP010",
+        "native400": "拖把和水区有变化，但中后段出现多把/悬浮拖把样重影及水区形态异常。",
+        "R10A": "拖把与水区大体停留在初始状态，去水过程不明显。",
+        "new_R11A": "拖把移动更明确，水区发生重新分布；拖把头逐渐拉宽变形，未清楚显示水随经过而逐次消失。",
+        "interpretation": "请求相关动作比R10A明确，也避免了native400部分悬浮多拖把现象；动作—水状态的正确耦合仍未解决。",
+        "observed_change": "request_response_recovered_but_state_change_incomplete"
+      }
+    ],
+    "decision": "当前有请求响应改善的可见迹象，同时保留材料形变和动作—状态耦合失败。完整40/60得分与同数据配对尚待完成，不据三例采用模型或宣布目标达成。",
+    "next_design_question": "若完整结果复现这些失败，应定位物理C是否提供正确变化内容、融合是否正确执行对象关系；不只增加语义动作或追求任意差异。",
+    "goal_complete": false,
+    "input_relation_review": {
+      "utc": "2026-11-03T16:56:29.685758+00:00",
+      "scope": "Only the three prespecified already-viewed cases; read completed shared API text, no new API/model call or cache changes.",
+      "cases": [
+        {
+          "case": "VP004",
+          "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/data_revision_qwen38/benchmark_inputs/videophy60_first_image_request_v1/videophy40_VP004/positive.json",
+          "caption": "A plastic ruler is bent until it cracks, displaying a visible stress fracture that propagates.",
+          "relations": [
+            "Hands gripping the strip's ends apply opposing forces that bend it toward its center.",
+            "Increasing bend strain concentrates stress at the strip's midsection, initiating a crack.",
+            "The stress fracture propagates along the transparent strip, splitting it into two pieces."
+          ],
+          "provided": "关系句已明确弯曲应变、裂纹产生和传播；关键请求内容在输入文字中存在。",
+          "extra_assumptions": "首帧/请求未要求必然从正中裂开并最终断成两片；这是额外的具体展开。",
+          "output_gap": "实际视频呈现大范围片状拉伸而非清楚的裂纹传播，不能只用缺少文字解释。"
+        },
+        {
+          "case": "VP008",
+          "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/data_revision_qwen38/benchmark_inputs/videophy60_first_image_request_v1/videophy40_VP008/positive.json",
+          "caption": "A person bounces to a specific rhythm on a trampoline, their body movement clearly timed to a beat.",
+          "relations": [
+            "The trampoline mat depresses under the person then recoils upward, propelling them back into the air.",
+            "The person's limbs extend during the upward phase and tuck during the downward phase, synced to a steady beat.",
+            "Each bounce height and timing repeats consistently, matching the rhythm without drifting off-beat."
+          ],
+          "provided": "关系句包含床面下压/回弹以及节奏性跳跃，视频有动作恢复。",
+          "extra_assumptions": "上升时伸肢、下降时收腿和每次等高并非由原请求必然规定的动作模式。",
+          "output_gap": "本例反而有可见改善，尚无证据这些额外细节造成失败；不要把可能的未来选择一律判为物理错误。"
+        },
+        {
+          "case": "VP010",
+          "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/data_revision_qwen38/benchmark_inputs/videophy60_first_image_request_v1/videophy40_VP010/positive.json",
+          "caption": "A person mops up a puddle of water on a concrete floor, the water disappearing as the mop passes.",
+          "relations": [
+            "As the mop head sweeps across the puddle, displaced water is absorbed into the bristles, reducing the visible wet area.",
+            "The concrete floor beneath the mop's path transitions from reflective wetness to matte dryness as the bristles pass.",
+            "Remaining puddle edges recede inward as the mop removes water from the center outward.",
+            "The mop handle tilts and translates with the sweeping motion, maintaining bristle contact with the floor surface."
+          ],
+          "provided": "关系句包含拖把经过时吸水、可见湿区缩小、保持地面接触。",
+          "extra_assumptions": "从中心向外去水和立即由反光湿润变为哑光干燥，是超出原请求的确定性细节。",
+          "output_gap": "视频只明确出现拖把运动及水的重新分布，未清楚体现逐次去水，关键条件尚未充分执行。"
+        }
+      ],
+      "conclusion": "关键请求/物理变化信息已有部分正确表述，输出仍会失败。现有证据只能将问题定位到生成条件的利用/执行链仍有缺口，不能在Q提取、C表示、融合或Wan能力之间确定唯一根因。同数据R10A与branch-off/text-only/正常空无关等配对将继续区分。额外确定性细节属于后续输入质量改进候选，不据三例认定它是主要因果。"
+    }
+  },
+  "quality_goal_achieved": false,
+  "control_interpretation": "Branch-off and text-only inference interventions measure reliance, not independent retraining. Same-data R10A400 supplies the separately trained no-new-branch reference. Mean C also changes amplitude. Read paired videos with the scores.",
+  "remaining_judgment": "Actual generated processes/visual artifacts and module evidence require review even if numeric targets are met."
+}

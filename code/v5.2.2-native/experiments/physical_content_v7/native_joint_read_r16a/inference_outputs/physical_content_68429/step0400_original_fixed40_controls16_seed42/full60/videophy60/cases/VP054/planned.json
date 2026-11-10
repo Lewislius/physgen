@@ -1,0 +1,37 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_joint_read_r16a/runs/physical_content_68429/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP054",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_joint_read_r16a/snapshots/20261109T040426Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs",
+  "guidance": {
+    "kind": "joint_two_branch_cfg",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+    "physical_residual_scale": null,
+    "native_definition": "Same trained Wan LoRA with all physical additions disabled"
+  },
+  "caption": "An athlete throws a hammer, the rotation of the hammer head clearly visible against the sky.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP054/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler",
+    "guidance_composition": "joint_two_branch_cfg"
+  },
+  "positive_analysis": "1. Athlete’s arm motion initiates hammer’s spin, visible against clear sky.\n2. Hammer head rotates rapidly as athlete releases it mid-swing.\n3. Muscles contract to generate force, causing arm blur from motion.\n4. Air flows around hammer, creating slight drag as it spins.",
+  "positive_relations": [
+    "Athlete’s arm motion initiates hammer’s spin, visible against clear sky.",
+    "Hammer head rotates rapidly as athlete releases it mid-swing.",
+    "Muscles contract to generate force, causing arm blur from motion.",
+    "Air flows around hammer, creating slight drag as it spins."
+  ],
+  "negative_analysis": "1. Man holds pole overhead, arm extended, preparing for throw.\n2. Arm muscles tense as he rotates body to generate momentum.\n3. Sweat visibly glistens on skin from physical exertion.\n4. Pole’s motion will continue after release, propelled by his throw.",
+  "donor": null,
+  "scope": "Own first image, original request and original Qwen reasoning",
+  "seconds": 122.70307634701021
+}

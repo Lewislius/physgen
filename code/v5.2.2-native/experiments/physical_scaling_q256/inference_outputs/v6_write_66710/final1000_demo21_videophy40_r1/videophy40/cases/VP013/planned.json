@@ -1,0 +1,31 @@
+{
+  "id": "VP013",
+  "variant": "v6_write",
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_scaling_q256/runs/v6_write_resume860_s20_66710/step1000.pt",
+  "optimizer_step": 1000,
+  "seed": 42,
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "initial_noise": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP013/noise.pt",
+  "enhancement_passes": 2,
+  "caption": "A person uses a pair of pliers to open a stubborn metal bottle, bending the cap slightly in the process.",
+  "source_canvas": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP013/first.png",
+  "condition_scope": "first image and request only; native T5 retained; no historical clauses",
+  "analysis": "1. Pliers grip metal cap, applying force to deform it slightly.\n2. Hand holds pliers steady, maintaining pressure on cap’s edge.\n3. Cap begins to bend under applied mechanical stress.\n4. Bottle remains stationary, fluids inside unchanged during manipulation.",
+  "relations": [
+    "Pliers grip metal cap, applying force to deform it slightly.",
+    "Hand holds pliers steady, maintaining pressure on cap’s edge.",
+    "Cap begins to bend under applied mechanical stress.",
+    "Bottle remains stationary, fluids inside unchanged during manipulation."
+  ],
+  "null_analysis": "1. Hand holds pliers gripping bottle neck, applying pressure to deform metal cap.\n2. Pliers’ jaws press into cap, likely causing it to compress or crack under force.\n3. Bottle remains stationary as external force alters cap’s shape or integrity.\n4. If cap breaks, fragments may dislodge, potentially releasing contents or debris.",
+  "revision": "physical_scaling_q256_s1000_20261029_r1",
+  "inference_experiment_id": "66760",
+  "frames": 81,
+  "fps": 24.0,
+  "condition_tokens": 256
+}

@@ -1,0 +1,35 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/aligned_request_r11a/runs/physical_content_67265/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP060",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/aligned_request_r11a/snapshots/20261103T143415Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/data_revision_qwen38/benchmark_inputs/videophy60_first_image_request_v1",
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "A potter applies a thin layer of slip to a clay bowl, using a brush to create an even coat.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP060/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "Brush bristles contacting the clay bowl rim transfer slip onto the surface.\nSweeping the brush across the interior spreads a thin, wet slip layer.\nRotating the bowl under the moving brush produces an even coat.\nPersistent light pressure keeps the slip film continuous without drips.",
+  "positive_relations": [
+    "Brush bristles contacting the clay bowl rim transfer slip onto the surface.",
+    "Sweeping the brush across the interior spreads a thin, wet slip layer.",
+    "Rotating the bowl under the moving brush produces an even coat.",
+    "Persistent light pressure keeps the slip film continuous without drips."
+  ],
+  "negative_analysis": "The hand guides the brush along the inner rim of the clay bowl.\nBrush bristles deposit moisture or slip onto the clay surface.\nThe bowl remains centered on the wheel during the smoothing process.\nThe hand adjusts the brush angle to follow the curve of the bowl.",
+  "donor": null,
+  "scope": "Own first image, original request and API reasoning",
+  "seconds": 83.71200871933252
+}

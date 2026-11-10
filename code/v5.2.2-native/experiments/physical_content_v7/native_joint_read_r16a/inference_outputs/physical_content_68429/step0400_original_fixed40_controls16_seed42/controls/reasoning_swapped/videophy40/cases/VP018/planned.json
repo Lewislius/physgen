@@ -1,0 +1,37 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_joint_read_r16a/runs/physical_content_68429/step0400.pt",
+  "step": 400,
+  "mode": "reasoning_swapped",
+  "case": "VP018",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_joint_read_r16a/snapshots/20261109T040426Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs",
+  "guidance": {
+    "kind": "joint_two_branch_cfg",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+    "physical_residual_scale": null,
+    "native_definition": "Same trained Wan LoRA with all physical additions disabled"
+  },
+  "caption": "A bulldozer pulls a heavy load attached with a chain, moving it across the ground.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP018/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler",
+    "guidance_composition": "joint_two_branch_cfg"
+  },
+  "positive_analysis": "1. Roller’s textured surface contacts metal fence, transferring green paint via physical adhesion.\n2. Paint flows continuously from roller to fence as it rolls, covering surface uniformly.\n3. Fence’s metal grid remains structurally intact while paint layer builds on its surface.\n4. If roller continues rolling, more fence area will become coated with green paint.",
+  "positive_relations": [
+    "Roller’s textured surface contacts metal fence, transferring green paint via physical adhesion.",
+    "Paint flows continuously from roller to fence as it rolls, covering surface uniformly.",
+    "Fence’s metal grid remains structurally intact while paint layer builds on its surface.",
+    "If roller continues rolling, more fence area will become coated with green paint."
+  ],
+  "negative_analysis": "1. Heavy loader’s bucket holds soil, chain secures load as machine moves forward.  \n2. Tires press into muddy ground, displacing earth and creating ruts beneath.  \n3. Engine exhaust emits fumes, visible as faint plume near radiator grille.  \n4. Soil in bucket may shift or spill if loader tilts further or accelerates.",
+  "donor": "VP038",
+  "scope": "Same-count unrelated reasoning with own image/request; own negative condition",
+  "seconds": 121.47572716599097
+}

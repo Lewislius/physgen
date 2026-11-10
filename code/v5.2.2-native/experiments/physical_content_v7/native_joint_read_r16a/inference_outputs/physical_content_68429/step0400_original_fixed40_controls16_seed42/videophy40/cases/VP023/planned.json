@@ -1,0 +1,37 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_joint_read_r16a/runs/physical_content_68429/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP023",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_joint_read_r16a/snapshots/20261109T040426Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs",
+  "guidance": {
+    "kind": "joint_two_branch_cfg",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+    "physical_residual_scale": null,
+    "native_definition": "Same trained Wan LoRA with all physical additions disabled"
+  },
+  "caption": "A surfer falls off their board, colliding briefly with another surfer, before swimming away.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP023/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler",
+    "guidance_composition": "joint_two_branch_cfg"
+  },
+  "positive_analysis": "1. Surfer in neon vest rides wave ahead of second surfer, both on water surface.  \n2. White foam sprays from board edges as surfers carve through breaking wave.  \n3. Surfers maintain close proximity, bodies angled toward wave’s face.  \n4. Water continuously flows around surfers, carrying spray and momentum.",
+  "positive_relations": [
+    "Surfer in neon vest rides wave ahead of second surfer, both on water surface.",
+    "White foam sprays from board edges as surfers carve through breaking wave.",
+    "Surfers maintain close proximity, bodies angled toward wave’s face.",
+    "Water continuously flows around surfers, carrying spray and momentum."
+  ],
+  "negative_analysis": "1. Surfer in neon vest leans into wave, causing water to spray upward and outward.\n2. Wave’s crest breaks, pushing water forward and creating foam around surfers.\n3. Surfer in black suit crouches low, adjusting stance as wave’s force shifts beneath board.\n4. Ocean’s surface ripples continuously, influenced by wave motion and surfer’s movement.",
+  "donor": null,
+  "scope": "Own first image, original request and original Qwen reasoning",
+  "seconds": 128.35295311399386
+}

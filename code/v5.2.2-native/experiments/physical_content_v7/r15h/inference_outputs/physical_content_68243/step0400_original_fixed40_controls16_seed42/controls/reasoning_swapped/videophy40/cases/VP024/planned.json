@@ -1,0 +1,37 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_feedback_fusion_r15h/runs/physical_content_68243/step0400.pt",
+  "step": 400,
+  "mode": "reasoning_swapped",
+  "case": "VP024",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_feedback_fusion_r15h/snapshots/20261108T061417Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs",
+  "guidance": {
+    "kind": "joint_two_branch_cfg",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+    "physical_residual_scale": null,
+    "native_definition": "Same trained Wan LoRA with all physical additions disabled"
+  },
+  "caption": "A speeding car crashes into a brick wall, crumpling the front end and stopping abruptly.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP024/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler",
+    "guidance_composition": "joint_two_branch_cfg"
+  },
+  "positive_analysis": "1. Men grasp wood ends; their hands apply force to bend it into bow shape.\n2. Wood flexes under tension, maintaining continuous curve as men hold positions.\n3. If force persists, wood may deform further or return to original shape.\n4. Sweat may appear on men’s skin as they exert physical effort.",
+  "positive_relations": [
+    "Men grasp wood ends; their hands apply force to bend it into bow shape.",
+    "Wood flexes under tension, maintaining continuous curve as men hold positions.",
+    "If force persists, wood may deform further or return to original shape.",
+    "Sweat may appear on men’s skin as they exert physical effort."
+  ],
+  "negative_analysis": "1. Car’s front end impacts wall, causing bricks to break and debris to scatter.\n2. Wall’s structural integrity weakens as car pushes into it, possibly leading to further collapse.\n3. Soil and dust cloud erupts from wall breach due to car’s forceful penetration.\n4. Water may seep into damaged wall area, accelerating decay if left unattended.",
+  "donor": "VP002",
+  "scope": "Same-count unrelated reasoning with own image/request; own negative condition",
+  "seconds": 86.2936038132757
+}

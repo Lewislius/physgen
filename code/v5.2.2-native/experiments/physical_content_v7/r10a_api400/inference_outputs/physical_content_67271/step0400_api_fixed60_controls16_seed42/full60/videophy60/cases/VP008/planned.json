@@ -1,0 +1,34 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r10a_api400/runs/physical_content_67271/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP008",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r10a_api400/snapshots/20261103T140613Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/data_revision_qwen38/benchmark_inputs/videophy60_first_image_request_v1",
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "A person bounces to a specific rhythm on a trampoline, their body movement clearly timed to a beat.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP008/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "The trampoline mat depresses under the person then recoils upward, propelling them back into the air.\nThe person's limbs extend during the upward phase and tuck during the downward phase, synced to a steady beat.\nEach bounce height and timing repeats consistently, matching the rhythm without drifting off-beat.",
+  "positive_relations": [
+    "The trampoline mat depresses under the person then recoils upward, propelling them back into the air.",
+    "The person's limbs extend during the upward phase and tuck during the downward phase, synced to a steady beat.",
+    "Each bounce height and timing repeats consistently, matching the rhythm without drifting off-beat."
+  ],
+  "negative_analysis": "The person suspended in mid-air will descend toward the black mat surface.\nThe mat's padding will absorb the impact when the person lands.\nThe person's extended limbs maintain a controlled posture during the aerial phase.",
+  "donor": null,
+  "scope": "Own first image, original request and API reasoning",
+  "seconds": 89.77704415190965
+}

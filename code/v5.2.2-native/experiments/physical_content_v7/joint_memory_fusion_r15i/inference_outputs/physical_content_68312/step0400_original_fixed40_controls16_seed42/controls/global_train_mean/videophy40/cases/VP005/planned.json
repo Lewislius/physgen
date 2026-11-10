@@ -1,0 +1,38 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/runs/physical_content_68312/step0400.pt",
+  "step": 400,
+  "mode": "global_train_mean",
+  "case": "VP005",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/snapshots/20261108T123450Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs",
+  "guidance": {
+    "kind": "joint_two_branch_cfg",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+    "physical_residual_scale": null,
+    "native_definition": "Same trained Wan LoRA with all physical additions disabled"
+  },
+  "global_condition": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/controls/physical_content_68312/step0400_mean_content.pt",
+  "caption": "A close-up shot of a paddle making contact with the ping pong ball, showing the impact.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP005/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler",
+    "guidance_composition": "joint_two_branch_cfg"
+  },
+  "positive_analysis": "1. Paddle edge near net, ball resting on table—contact imminent, motion pending.  \n2. Ball stationary, paddle poised—impact will alter ball’s trajectory and spin.  \n3. Net’s mesh and table lines remain fixed—impact may cause slight vibration.  \n4. Air around ball and paddle will compress and disperse with contact.",
+  "positive_relations": [
+    "Paddle edge near net, ball resting on table—contact imminent, motion pending.",
+    "Ball stationary, paddle poised—impact will alter ball’s trajectory and spin.",
+    "Net’s mesh and table lines remain fixed—impact may cause slight vibration.",
+    "Air around ball and paddle will compress and disperse with contact."
+  ],
+  "negative_analysis": "1. Table tennis paddle poised above net suggests imminent strike on ball.\n2. Ball rests near net, ready to be hit or roll toward opponent’s side.\n3. Net divides table, maintaining boundary for play and ball trajectory.\n4. Surface remains static unless disturbed by paddle contact or ball movement.",
+  "donor": null,
+  "scope": "Fixed train-mean routing/execution C; own relation priors and video states remain input-specific",
+  "seconds": 83.55402030143887
+}

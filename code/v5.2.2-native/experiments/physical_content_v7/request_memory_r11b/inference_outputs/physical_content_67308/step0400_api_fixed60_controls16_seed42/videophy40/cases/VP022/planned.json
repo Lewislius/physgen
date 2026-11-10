@@ -1,0 +1,36 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_memory_r11b/runs/physical_content_67308/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP022",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_memory_r11b/snapshots/20261104T044513Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/data_revision_qwen38/benchmark_inputs/videophy60_first_image_request_v1",
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "A luger's sled impacts a small snowbank at the edge of the track, causing a slight spray of snow.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP022/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "If the sled's runners graze the snowbank edge, displaced snow lifts into a brief spray.\nThe rider's forward motion compresses loose snow, ejecting particles upward and backward.\nContact with the bank briefly slows the sled while throwing a plume of snow.\nThe spray disperses as the sled passes the bank and continues along the track.",
+  "positive_relations": [
+    "If the sled's runners graze the snowbank edge, displaced snow lifts into a brief spray.",
+    "The rider's forward motion compresses loose snow, ejecting particles upward and backward.",
+    "Contact with the bank briefly slows the sled while throwing a plume of snow.",
+    "The spray disperses as the sled passes the bank and continues along the track."
+  ],
+  "negative_analysis": "The sled moving forward across the groomed track displaces snow into a trailing airborne plume.\nContinuous travel down the slope maintains a dynamic spray of kicked-up snow behind the runners.\nThe rider's progression along the track causes the sled to interact with the snow, generating visible wake.",
+  "donor": null,
+  "scope": "Own first image, original request and API reasoning",
+  "request_memory_donor": null,
+  "seconds": 83.90528440475464
+}

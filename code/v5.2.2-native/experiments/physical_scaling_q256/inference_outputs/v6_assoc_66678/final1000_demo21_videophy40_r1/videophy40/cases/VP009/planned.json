@@ -1,0 +1,31 @@
+{
+  "id": "VP009",
+  "variant": "v6_assoc",
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_scaling_q256/runs/v6_assoc_66678/step1000.pt",
+  "optimizer_step": 1000,
+  "seed": 42,
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "initial_noise": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP009/noise.pt",
+  "enhancement_passes": 2,
+  "caption": "A construction worker uses a suction cup to lift a heavy glass panel with a small picture adhered to it; the picture remains affixed.",
+  "source_canvas": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP009/first.png",
+  "condition_scope": "first image and request only; native T5 retained; no historical clauses",
+  "analysis": "1. Worker holds suction cup against glass; adhesive bond persists despite applied force.  \n2. Picture remains affixed to glass as suction cup lifts panel; no detachment observed.  \n3. Worker’s posture shifts slightly; suction cup maintains contact with glass surface.  \n4. No visible fluid movement; suction process relies on air displacement, not liquid flow.",
+  "relations": [
+    "Worker holds suction cup against glass; adhesive bond persists despite applied force.",
+    "Picture remains affixed to glass as suction cup lifts panel; no detachment observed.",
+    "Worker’s posture shifts slightly; suction cup maintains contact with glass surface.",
+    "No visible fluid movement; suction process relies on air displacement, not liquid flow."
+  ],
+  "null_analysis": "1. Worker holds mop handle, applying pressure to clean glass surface.\n2. Water flows from mop head, spreading across glass as cleaning progresses.\n3. Reflections shift subtly as glass surface becomes clearer with cleaning.\n4. Worker’s posture adjusts slightly to maintain optimal cleaning angle.",
+  "revision": "physical_scaling_q256_s1000_20261029_r1",
+  "inference_experiment_id": "66720",
+  "frames": 81,
+  "fps": 24.0,
+  "condition_tokens": 256
+}

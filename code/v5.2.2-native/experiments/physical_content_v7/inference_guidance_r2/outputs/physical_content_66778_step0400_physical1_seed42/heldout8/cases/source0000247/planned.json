@@ -1,0 +1,33 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/runs/physical_content_66778/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "source0000247",
+  "seed": 42,
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 1.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "The video captures a close-up view of a wooden table adorned with various food items and a wine glass being filled with red wine. The scene shows the glass already containing wine, positioned near a loaf of bread, a block of cheese, a bowl containing herbs and chili peppers, and a garlic bulb. A bottle of red wine is tilted, and the camera focuses on the pouring action, showing the wine flowing into the glass and creating ripples and bubbles. The camera remains steady throughout, emphasizing the smooth pour and the interaction between the wine and the glass. The background elements remain static, providing a consistent setting for the pouring action.",
+  "canvas": "/home/liuzhirui/Project/physGen/data_cache/wisa_4000/base/first/source0000247.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "1. Wine flows from bottle into glass, creating ripples and bubbles in the liquid.  \n2. Pouring wine alters the glass’s liquid level and surface tension.  \n3. Bread and cheese remain static beside the glass during pouring.  \n4. Herbs and garlic stay undisturbed in bowl as wine is poured.",
+  "positive_relations": [
+    "Wine flows from bottle into glass, creating ripples and bubbles in the liquid.",
+    "Pouring wine alters the glass’s liquid level and surface tension.",
+    "Bread and cheese remain static beside the glass during pouring.",
+    "Herbs and garlic stay undisturbed in bowl as wine is poured."
+  ],
+  "negative_analysis": "1. Wine flows from bottle into glass, altering liquid level and color concentration.\n2. Glass rests on wooden surface, remaining stable as wine is poured.\n3. Cheese and bread sit nearby, unaffected by pouring action.\n4. Garlic and chili remain stationary, not interacting with wine flow.",
+  "donor": null,
+  "scope": "first image/request only; native request unchanged; negative C unchanged except complete branch ablations",
+  "seconds": 268.3498546089977
+}

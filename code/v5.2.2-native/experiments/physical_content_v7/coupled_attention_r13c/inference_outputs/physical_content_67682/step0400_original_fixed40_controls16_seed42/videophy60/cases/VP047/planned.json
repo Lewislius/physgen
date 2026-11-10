@@ -1,0 +1,35 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/coupled_attention_r13c/runs/physical_content_67682/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP047",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/coupled_attention_r13c/snapshots/20261105T032330Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/coupled_attention_r13c/prepared_inputs",
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "A small piece of wood is broken along the grain creating a small splintered tear.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP047/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "1. Wood tool contacts surface, causing visible splintering at point of impact.  \n2. Splinters remain embedded, altering surface texture locally.  \n3. Fragments scatter, increasing spatial separation from tool.  \n4. No fluids involved; wood particles stay dry and static.",
+  "positive_relations": [
+    "Wood tool contacts surface, causing visible splintering at point of impact.",
+    "Splinters remain embedded, altering surface texture locally.",
+    "Fragments scatter, increasing spatial separation from tool.",
+    "No fluids involved; wood particles stay dry and static."
+  ],
+  "negative_analysis": "1. The chisel’s edge contacts wood, creating small chips that scatter away.\n2. Wood fragments remain near the chisel, indicating recent cutting action.\n3. If pressure continues, more wood may break apart or shift position.\n4. The chisel’s angle may adjust as force is applied, altering chip direction.",
+  "donor": null,
+  "scope": "Own first image, original request and original Qwen reasoning",
+  "seconds": 190.31770834699273
+}

@@ -1,0 +1,37 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/source_residual_fusion_r15g/runs/physical_content_68103/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP020",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/source_residual_fusion_r15g/snapshots/20261107T040316Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs",
+  "guidance": {
+    "kind": "joint_two_branch_cfg",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+    "physical_residual_scale": null,
+    "native_definition": "Same trained Wan self-attention/FFN LoRA; physical branch bypassed"
+  },
+  "caption": "A time-lapse showing the process of someone tying a bow tie, quickly showing the steps in sequence.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP020/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler",
+    "guidance_composition": "joint_two_branch_cfg"
+  },
+  "positive_analysis": "1. Hands grasp bow tie ends; fingers adjust fabric against shirt collar.\n2. Bow tie rests centered on collar; knot remains untied and loose.\n3. Fingers pull loops apart; fabric stretches slightly under tension.\n4. Hands position bow tie symmetrically; collar stays aligned beneath.",
+  "positive_relations": [
+    "Hands grasp bow tie ends; fingers adjust fabric against shirt collar.",
+    "Bow tie rests centered on collar; knot remains untied and loose.",
+    "Fingers pull loops apart; fabric stretches slightly under tension.",
+    "Hands position bow tie symmetrically; collar stays aligned beneath."
+  ],
+  "negative_analysis": "1. Hands adjust bow tie, altering its knot position relative to collar.\n2. Bow tie rests on shirt collar, maintaining contact as hands manipulate it.\n3. Fingers grip fabric, applying pressure that may shift bow tie shape.\n4. Bow tie remains attached to shirt via clip, persisting unless detached.",
+  "donor": null,
+  "scope": "Own first image, original request and original Qwen reasoning",
+  "seconds": 86.43920913431793
+}
