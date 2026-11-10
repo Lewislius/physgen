@@ -1,0 +1,64 @@
+{
+  "cases": [
+    {
+      "caption": "A long jumper demonstrates a flawed technique, resulting in a short distance and an unbalanced landing.",
+      "category": "Sports and Physical Activities",
+      "action": "longjump",
+      "id": "VP001",
+      "seed": 42,
+      "image_seed": null,
+      "first_prompt": "Use case: photorealistic-natural. Asset type: initial conditioning frame for a controlled image-to-video physics experiment, landscape 832:480 aspect ratio. Create one documentary photograph, no panels or text.\nScene: an ordinary outdoor athletics long-jump runway ending at a rectangular sand landing pit in daylight.\nSubject: a single adult athlete in plain sports clothing, full body visible, standing with both feet on the runway just before the white takeoff board, facing toward the nearby sand pit. Natural poised stance before beginning a jump. View from the side with a slightly raised camera so the runway, takeoff board and entire near part of the sand pit are plainly visible. Leave enough space in front of the athlete for a short jump and landing.\nThis is only the starting state. The athlete has not left the ground. The future requested video is “A long jumper demonstrates a flawed technique, resulting in a short distance and an unbalanced landing.” Do not draw that future action or outcome in this still. No airborne body, no landing, no stunt, no extra people, no text, no watermark. Realistic anatomy, natural textures, neutral photographic light.",
+      "image_source": "built-in image_gen; reviewed initial state; independent diagnostic"
+    },
+    {
+      "caption": "A large, wet canvas is twisted to remove excess paint, leaving drips down the side.",
+      "category": "Object Interactions",
+      "action": "twisting (wringing) something wet until water comes out",
+      "id": "VP006",
+      "seed": 42,
+      "image_seed": null,
+      "first_prompt": "Use case: photorealistic-natural. Asset type: initial conditioning frame for a controlled image-to-video physics experiment, landscape 832:480 aspect ratio. Create one documentary photograph, no panels or text.\nScene: a simple painting work area in natural light. Close medium view of one person's two hands and forearms holding opposite ends of a large loose sheet of thick woven canvas above a broad shallow paint tray. The two hands and the whole working section of canvas are in view.\nSubject: flexible unstretched canvas fabric, about the width of the person's outstretched arms, visibly soaked with wet blue paint, with heavy folds and a wet sheen. It hangs slack between the hands, ready to be wrung. It is clearly pliable loose fabric, with no rigid frame, no wooden backing and no stage backdrop. The paint tray below provides space for paint to drip.\nThis is the starting state before twisting begins: the hands have not yet rotated, the canvas is not yet wrung tight, and there are no large falling streams or final drips. The future requested video is “A large, wet canvas is twisted to remove excess paint, leaving drips down the side.” Do not depict that completed outcome in the still. Realistic hands, fabric and paint. No extra people, no text, no watermark.",
+      "image_source": "built-in image_gen; reviewed initial state; independent diagnostic"
+    }
+  ],
+  "settings": {
+    "width": 832,
+    "height": 480,
+    "frames": 81,
+    "fps": 24.0,
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0
+  },
+  "evaluation": {
+    "code": "/home/liuzhirui/benchmark/videophy/VIDEOPHY2",
+    "checkpoint": "/home/liuzhirui/benchmark/videophy/videophy_2_auto",
+    "num_frames": 32,
+    "seed": 20261009,
+    "tasks": [
+      "sa",
+      "pc"
+    ],
+    "generation": {
+      "do_sample": false,
+      "max_new_tokens": 16
+    },
+    "joint_threshold": 4,
+    "average_definition": "mean of (SA + PC) / 2; custom summary, not official Joint Score",
+    "missing_policy": "no final comparison unless every selected case has both valid SA and PC scores"
+  },
+  "scope": "Fixed development subset: VideoPhy2 captions adapted to shared-first-image I2V; not official T2V leaderboard",
+  "arm": "physics_text",
+  "selection": "Two input-mismatch examples selected after inspecting first images, before scoring videos; not a random benchmark subset",
+  "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/inference_outputs/generated_first_frame_diagnostic_seed42_20261027_inputs",
+  "seed": 42,
+  "base_model": "/home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B",
+  "trained_adapter": null,
+  "conditioning": "Native T5 text only; latent C disabled",
+  "generation_caption": "original caption plus frozen-Qwen visible process detail",
+  "evaluation_caption": "original caption, unchanged",
+  "rewrite_instruction": "Write a GENERATION INSTRUCTION for a FUTURE video, not a description of a still image. Add only one or two short sentences that clarify the VISIBLE development of the requested action. Keep the original action and outcome exactly, including requested mistakes or failures. Give concrete visible detail that is already implied by that action, including deformation, liquid, gas or wave changes when applicable. Do not add a second event or an unrequested cause, release, fall, jump, collision, injury, new actor, object, color, camera movement or material change. Do not invent numerical forces, trajectories, timestamps or mechanically implausible deformations. Do not say the action is absent, stationary or already complete. Keep the event unfolding. For example, if a cord is being stretched, clarify its progressive extension while both ends remain held; do not add a release, recoil or attached weight. If cloth is being twisted, clarify folds tightening and excess liquid dripping; do not describe unchanged cloth. If a person steadily rides a skateboard, describe continued rolling; do not add a trick or wheel lift. Use at most 55 English words. Return ONLY the added generation description, without headings or explanation. Omit uncertain details.",
+  "rewrite_tokens": 256,
+  "rewrite_input": "caption_only",
+  "text_consistency_check": "Frozen Qwen; reject changed actions/outcomes and fall back to the original caption; no video scores used"
+}

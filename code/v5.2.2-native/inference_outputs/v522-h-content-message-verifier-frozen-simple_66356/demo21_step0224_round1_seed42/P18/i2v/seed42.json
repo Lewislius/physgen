@@ -1,0 +1,52 @@
+{
+  "id": "P18",
+  "caption": "A rubber ball drops onto a hard floor and bounces several times to progressively lower heights before resting.",
+  "revision": "v522_native_h_content_verifier_frozen_simple_v25",
+  "optimizer_step": 224,
+  "seed": 42,
+  "fps": 23.999999284744284,
+  "conditions": "first frame, caption, existing requirements; no future target",
+  "physical_dependency_analysis": "OBSERVED: Red ball suspended above gray floor in empty room.\nRESPONSE: Ball drops, impacts floor, rebounds with energy loss per bounce.\nPERSISTENCE: Gravity and floor resistance sustain diminishing bounces until rest.\nCHANGE: Higher initial drop increases bounce count; softer floor reduces height decay.",
+  "latent_reasoning_steps": 1,
+  "configured_reasoning_steps": 2,
+  "condition_tokens": 265,
+  "geometry": {
+    "mode": "native",
+    "rgb_size": [
+      480,
+      832
+    ]
+  },
+  "output_size_hw": [
+    480,
+    832
+  ],
+  "latent_feedback": null,
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "condition_strength": 1.0,
+    "latent_feedback": {
+      "enabled": false,
+      "metric": "relative_rms",
+      "sigmas": [
+        0.85,
+        0.65
+      ],
+      "step_size": 0.1
+    }
+  },
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/inference_outputs/v522-h-content-message-verifier-frozen-simple_66356/demo21_step0224_round1_seed42/checkpoint.pt",
+  "source_checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/checkpoints/v522-h-content-message-verifier-frozen-simple_66356/latest.pt",
+  "mode": "h_content_message",
+  "cpu_offload": true,
+  "training_seed": 42,
+  "seed_matches_training": true,
+  "training_reasoning_rounds": [
+    1
+  ],
+  "message_block_calls_per_condition": 1,
+  "prepared_inputs": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/1d-v52-lora-demo21_20261010/P18/i2v/seed42.inputs",
+  "frames": 81
+}

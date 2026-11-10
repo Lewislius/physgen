@@ -1,0 +1,34 @@
+{
+  "case": "wmb_BOCW066kiE4_000000_000010",
+  "caption": "The man in red shorts jumps forward on the beach.",
+  "model": "r15g",
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/source_residual_fusion_r15g/runs/physical_content_68103/step0400.pt",
+  "seed": 42,
+  "noise_seed": 63,
+  "first_image": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/shared/wmb_BOCW066kiE4_000000_000010/first.png",
+  "original_image": "/home/liuzhirui/benchmark/WorldModelBench/images/BOCW066kiE4_000000_000010.jpg",
+  "output_frames": 81,
+  "sampling": {
+    "width": 832,
+    "height": 480,
+    "latent_frames": 21,
+    "generated_frames": 81,
+    "fps": 16,
+    "steps": 50,
+    "shift": 5.0,
+    "text_guidance": 5.0,
+    "physical_guidance": 5.0,
+    "negative_prompt": "",
+    "guidance_composition": "joint_two_branch_cfg",
+    "physical_residual_scale": null
+  },
+  "guidance": {
+    "kind": "joint_two_branch_cfg",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+    "physical_residual_scale": null,
+    "native_definition": "Same trained Wan self-attention/FFN LoRA; physical branch bypassed"
+  },
+  "seconds": 156.29953082400607
+}

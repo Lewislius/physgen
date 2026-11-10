@@ -8,14 +8,16 @@ It is intentionally **not** a runnable copy of every local artifact.
 - Python source, model/fusion/training/inference code
 - YAML configs and Determined submission files
 - design notes (`DESIGN.zh.txt`, `GITHUB_EXPORT.md`, README files)
-- evaluation/audit JSON, CSV and small text reports
+- evaluation/audit JSON, CSV and small text reports, including selected
+  `inference_outputs/**/scores.json`, manifests and benchmark summaries
 - snapshots of source/configs used by named experiments
 
 ## Excluded
 
 - `*.pt`, `*.pth`, `*.ckpt`, `*.safetensors`, tensor arrays
-- `runs/`, `inference_outputs/`, `outputs/`, `determined_checkpoints/`
-- generated videos and images (`*.mp4`, `*.jpg`, `*.png`, ...)
+- `runs/`, `determined_checkpoints/`
+- generated videos and images (`*.mp4`, `*.jpg`, `*.png`, ...), including
+  media under `inference_outputs/` and benchmark `outputs/`
 - large `.log` and `.jsonl` traces, temporary and cache files
 
 The exclusions are defined in `.gitignore` in this directory.

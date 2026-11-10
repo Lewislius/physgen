@@ -1,0 +1,1347 @@
+{
+  "model": "r15b_joint_i",
+  "subset": "fixed70_10_per_domain",
+  "judge": "/home/liuzhirui/benchmark/WorldModelBench/vila-ewm-qwen2-1.5b",
+  "official_source": "/home/liuzhirui/benchmark/WorldModelBench/evaluation.py",
+  "cot": false,
+  "scoring": "Official default prompts/parsing; instruction0..3 + physical0..5 + commonsense0..2 = total0..10",
+  "overall": {
+    "count": 70,
+    "instruction_mean": 2.0428571428571427,
+    "physical_sum": 4.771428571428571,
+    "common_sense_sum": 1.7857142857142856,
+    "total_score": 8.6,
+    "physical": {
+      "newton": 1.0,
+      "mass": 0.8428571428571429,
+      "fluid": 1.0,
+      "penetration": 0.9285714285714286,
+      "gravity": 1.0
+    },
+    "common_sense": {
+      "framewise_quality": 0.8571428571428571,
+      "temporal_consistency": 0.9285714285714286
+    }
+  },
+  "domains": {
+    "animation": {
+      "count": 10,
+      "instruction_mean": 1.9,
+      "physical_sum": 4.9,
+      "common_sense_sum": 1.8,
+      "total_score": 8.600000000000001,
+      "physical": {
+        "newton": 1.0,
+        "mass": 0.9,
+        "fluid": 1.0,
+        "penetration": 1.0,
+        "gravity": 1.0
+      },
+      "common_sense": {
+        "framewise_quality": 0.9,
+        "temporal_consistency": 0.9
+      }
+    },
+    "autonomous vehicle": {
+      "count": 10,
+      "instruction_mean": 1.6,
+      "physical_sum": 4.8,
+      "common_sense_sum": 1.9,
+      "total_score": 8.3,
+      "physical": {
+        "newton": 1.0,
+        "mass": 0.9,
+        "fluid": 1.0,
+        "penetration": 0.9,
+        "gravity": 1.0
+      },
+      "common_sense": {
+        "framewise_quality": 1.0,
+        "temporal_consistency": 0.9
+      }
+    },
+    "human": {
+      "count": 10,
+      "instruction_mean": 2.4,
+      "physical_sum": 4.3,
+      "common_sense_sum": 1.5,
+      "total_score": 8.2,
+      "physical": {
+        "newton": 1.0,
+        "mass": 0.5,
+        "fluid": 1.0,
+        "penetration": 0.8,
+        "gravity": 1.0
+      },
+      "common_sense": {
+        "framewise_quality": 0.6,
+        "temporal_consistency": 0.9
+      }
+    },
+    "industrial": {
+      "count": 10,
+      "instruction_mean": 1.8,
+      "physical_sum": 4.9,
+      "common_sense_sum": 2.0,
+      "total_score": 8.7,
+      "physical": {
+        "newton": 1.0,
+        "mass": 1.0,
+        "fluid": 1.0,
+        "penetration": 0.9,
+        "gravity": 1.0
+      },
+      "common_sense": {
+        "framewise_quality": 1.0,
+        "temporal_consistency": 1.0
+      }
+    },
+    "natural": {
+      "count": 10,
+      "instruction_mean": 3.0,
+      "physical_sum": 5.0,
+      "common_sense_sum": 1.9,
+      "total_score": 9.9,
+      "physical": {
+        "newton": 1.0,
+        "mass": 1.0,
+        "fluid": 1.0,
+        "penetration": 1.0,
+        "gravity": 1.0
+      },
+      "common_sense": {
+        "framewise_quality": 0.9,
+        "temporal_consistency": 1.0
+      }
+    },
+    "robotics": {
+      "count": 10,
+      "instruction_mean": 1.4,
+      "physical_sum": 4.6,
+      "common_sense_sum": 1.9,
+      "total_score": 7.9,
+      "physical": {
+        "newton": 1.0,
+        "mass": 0.7,
+        "fluid": 1.0,
+        "penetration": 0.9,
+        "gravity": 1.0
+      },
+      "common_sense": {
+        "framewise_quality": 0.9,
+        "temporal_consistency": 1.0
+      }
+    },
+    "video games": {
+      "count": 10,
+      "instruction_mean": 2.2,
+      "physical_sum": 4.9,
+      "common_sense_sum": 1.5,
+      "total_score": 8.600000000000001,
+      "physical": {
+        "newton": 1.0,
+        "mass": 0.9,
+        "fluid": 1.0,
+        "penetration": 1.0,
+        "gravity": 1.0
+      },
+      "common_sense": {
+        "framewise_quality": 0.7,
+        "temporal_consistency": 0.8
+      }
+    }
+  },
+  "cases": [
+    {
+      "id": "055680b1-e4e9-4195-b12c-1c4fdb365302",
+      "domain": "animation",
+      "subdomain": "Drama",
+      "instruction": 3.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "16928746-fabb-4511-96b6-3cecbf300b85",
+      "domain": "animation",
+      "subdomain": "Action",
+      "instruction": 3.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "270b31cc-2ebf-4aea-9c1b-d2051ec9c196",
+      "domain": "animation",
+      "subdomain": "Fantasy",
+      "instruction": 2.0,
+      "physical_laws": [
+        true,
+        false,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        false,
+        false
+      ]
+    },
+    {
+      "id": "50f7177b-5ae1-434d-8ba2-4f50fc599222",
+      "domain": "animation",
+      "subdomain": "Mystery",
+      "instruction": 0.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "92ec5d48-97a1-426a-b4e3-818e4d4ac5cf",
+      "domain": "animation",
+      "subdomain": "Comedy",
+      "instruction": 3.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "96f247d4-891f-48ab-812c-93f290188f33",
+      "domain": "animation",
+      "subdomain": "Award Winning",
+      "instruction": 0.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "ac12950b-ce3b-45eb-8605-278ed6610afa",
+      "domain": "animation",
+      "subdomain": "Sci-Fi",
+      "instruction": 3.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "b19d9eb0-8585-4952-a4b5-44711f0fa410",
+      "domain": "animation",
+      "subdomain": "Slice of Life",
+      "instruction": 3.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "b24c19b4-5709-449c-bea8-461f08ccd6a9",
+      "domain": "animation",
+      "subdomain": "Adventure",
+      "instruction": 1.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c5f6539e-b26a-4263-b13f-d93ca587744d",
+      "domain": "animation",
+      "subdomain": "Boys Love",
+      "instruction": 1.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "015a6df7ed1846f9983d0a40005f2d8b",
+      "domain": "autonomous vehicle",
+      "subdomain": "Yielding (Waiting for Obstruction)",
+      "instruction": 1.0,
+      "physical_laws": [
+        true,
+        false,
+        true,
+        false,
+        true
+      ],
+      "common_sense": [
+        true,
+        false
+      ]
+    },
+    {
+      "id": "030776ed4d694895bd15f3858e1a758c",
+      "domain": "autonomous vehicle",
+      "subdomain": "Deceleration (Slowing Down)",
+      "instruction": 1.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "2c05a4aef2224d9682b19ba1eca54f33",
+      "domain": "autonomous vehicle",
+      "subdomain": "Overtaking (Lane Straddling)",
+      "instruction": 1.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "70438944c75d41318138ef82d7d7a2dc",
+      "domain": "autonomous vehicle",
+      "subdomain": "Keeping Safe Distance (Obstacle Avoidance)",
+      "instruction": 1.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "71abe16f2ea9458da5cd5600a8dec5a8",
+      "domain": "autonomous vehicle",
+      "subdomain": "Stopping",
+      "instruction": 1.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "812d8dac3c0043e4989b2fd7e021279d",
+      "domain": "autonomous vehicle",
+      "subdomain": "Lane Changing (Maneuvering)",
+      "instruction": 1.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "a4495affb584425cafc8d14b47993527",
+      "domain": "autonomous vehicle",
+      "subdomain": "Turning (Slight Turns or Significant Turns)",
+      "instruction": 1.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "b3e01aa169d04c9f894907c36a594654",
+      "domain": "autonomous vehicle",
+      "subdomain": "Acceleration",
+      "instruction": 3.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "d7678ced96574121a57ce7b698d8c340",
+      "domain": "autonomous vehicle",
+      "subdomain": "Navigating Around Pedestrians or Stationary Objects (e.g., cones)",
+      "instruction": 3.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "e0fc2fed943c4edf94810f4e97231bdd",
+      "domain": "autonomous vehicle",
+      "subdomain": "Maintaining Speed (Steady)",
+      "instruction": 3.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "ACbDeFvAcp4_000007_000017",
+      "domain": "human",
+      "subdomain": "body motions",
+      "instruction": 3.0,
+      "physical_laws": [
+        true,
+        false,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "BOCW066kiE4_000000_000010",
+      "domain": "human",
+      "subdomain": "athletics – jumping",
+      "instruction": 1.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        false,
+        true
+      ]
+    },
+    {
+      "id": "QyKbhRXblY0_000030_000040",
+      "domain": "human",
+      "subdomain": "hands",
+      "instruction": 3.0,
+      "physical_laws": [
+        true,
+        false,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        false,
+        true
+      ]
+    },
+    {
+      "id": "SPCQCjpDrB0_000007_000017",
+      "domain": "human",
+      "subdomain": "touching person",
+      "instruction": 3.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        false,
+        true
+      ]
+    },
+    {
+      "id": "YjZs28OHmXg_000000_000010",
+      "domain": "human",
+      "subdomain": "athletics – throwing + launching",
+      "instruction": 1.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "auAcbpwDCCg_000144_000154",
+      "domain": "human",
+      "subdomain": "dancing",
+      "instruction": 3.0,
+      "physical_laws": [
+        true,
+        false,
+        true,
+        false,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "da_MDcqAV7M_000004_000014",
+      "domain": "human",
+      "subdomain": "interacting with animals",
+      "instruction": 3.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "hZCas7kYm58_000031_000041",
+      "domain": "human",
+      "subdomain": "eating + drinking",
+      "instruction": 3.0,
+      "physical_laws": [
+        true,
+        false,
+        true,
+        false,
+        true
+      ],
+      "common_sense": [
+        false,
+        false
+      ]
+    },
+    {
+      "id": "ozHyEwawtZA_000479_000489",
+      "domain": "human",
+      "subdomain": "cooking",
+      "instruction": 3.0,
+      "physical_laws": [
+        true,
+        false,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "zFI6Jh0LN5Y_000100_000110",
+      "domain": "human",
+      "subdomain": "using tools",
+      "instruction": 1.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "1m6h59wI_yI_33_35to192",
+      "domain": "industrial",
+      "subdomain": "Food and beverage industrial processes",
+      "instruction": 1.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "7T4LhXxaDyI_42_0to107",
+      "domain": "industrial",
+      "subdomain": "Automotive and engine assembly",
+      "instruction": 3.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "AFbzUOnKyBU_34_0to141",
+      "domain": "industrial",
+      "subdomain": "Food and beverage industrial processes",
+      "instruction": 3.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "EITEQLn8SUE_13_128to249",
+      "domain": "industrial",
+      "subdomain": "Metalworking and manufacturing processes",
+      "instruction": 1.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "F3FUH9fVC_M_18_0to114",
+      "domain": "industrial",
+      "subdomain": "Metalworking and manufacturing processes",
+      "instruction": 1.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "KqNI1VDbRhw_2_299to533",
+      "domain": "industrial",
+      "subdomain": "Machinery and equipment operation",
+      "instruction": 1.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "NZz5C9Tqs2Y_93_83to186",
+      "domain": "industrial",
+      "subdomain": "Aerospace and large industrial systems",
+      "instruction": 3.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "hWD7FzqrZ2g_28_0to177",
+      "domain": "industrial",
+      "subdomain": "Machinery and equipment operation",
+      "instruction": 1.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "pixabay_rural_landscapes_videos_86618_007",
+      "domain": "industrial",
+      "subdomain": "Aerospace and large industrial systems",
+      "instruction": 3.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "pus075nqczo_17_0to196",
+      "domain": "industrial",
+      "subdomain": "Automotive and engine assembly",
+      "instruction": 1.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        false,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "033zYstULZI_259_64to178",
+      "domain": "natural",
+      "subdomain": "Plant Life and Vegetation",
+      "instruction": 3.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "1O89VdL2oaA_54_65to287",
+      "domain": "natural",
+      "subdomain": "Animal Behavior",
+      "instruction": 3.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "3dgoTjaeC8w_102_0to209",
+      "domain": "natural",
+      "subdomain": "Landscape and Scenery",
+      "instruction": 3.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "7X2Z64IvM4o_48_287to535",
+      "domain": "natural",
+      "subdomain": "Weather and Natural Phenomena",
+      "instruction": 3.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "8Nnd3iksYtc_58_200to368",
+      "domain": "natural",
+      "subdomain": "Water Bodies",
+      "instruction": 3.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "QWB2cemZhyI_54_0to111",
+      "domain": "natural",
+      "subdomain": "Water Bodies",
+      "instruction": 3.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "R1BjPRI5ddA_226_62to171",
+      "domain": "natural",
+      "subdomain": "Animal Behavior",
+      "instruction": 3.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "SN_JuHgEGwU_19_116to222",
+      "domain": "natural",
+      "subdomain": "Plant Life and Vegetation",
+      "instruction": 3.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        false,
+        true
+      ]
+    },
+    {
+      "id": "SddeZhPf7us_19_0to128",
+      "domain": "natural",
+      "subdomain": "Landscape and Scenery",
+      "instruction": 3.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "SwIB-QlxNCo_65_0to103",
+      "domain": "natural",
+      "subdomain": "Landscape and Scenery",
+      "instruction": 3.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "bridge_1578",
+      "domain": "robotics",
+      "subdomain": "move",
+      "instruction": 1.0,
+      "physical_laws": [
+        true,
+        false,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        false,
+        true
+      ]
+    },
+    {
+      "id": "bridge_2246",
+      "domain": "robotics",
+      "subdomain": "take",
+      "instruction": 1.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "bridge_3091",
+      "domain": "robotics",
+      "subdomain": "close",
+      "instruction": 0.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "bridge_3357",
+      "domain": "robotics",
+      "subdomain": "open",
+      "instruction": 3.0,
+      "physical_laws": [
+        true,
+        false,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "bridge_601",
+      "domain": "robotics",
+      "subdomain": "turn",
+      "instruction": 1.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "jaco_play_24",
+      "domain": "robotics",
+      "subdomain": "pick",
+      "instruction": 1.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "robot_vqa_2491",
+      "domain": "robotics",
+      "subdomain": "place",
+      "instruction": 2.0,
+      "physical_laws": [
+        true,
+        false,
+        true,
+        false,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "robot_vqa_715",
+      "domain": "robotics",
+      "subdomain": "put",
+      "instruction": 1.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "taco_play_255",
+      "domain": "robotics",
+      "subdomain": "sweep",
+      "instruction": 1.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "taco_play_261",
+      "domain": "robotics",
+      "subdomain": "slide",
+      "instruction": 3.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "000000000073.6",
+      "domain": "video games",
+      "subdomain": "Adventure.",
+      "instruction": 3.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "000000000236.5",
+      "domain": "video games",
+      "subdomain": "Adventure.",
+      "instruction": 1.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "000000001730.20",
+      "domain": "video games",
+      "subdomain": "RPG (Role-Playing).",
+      "instruction": 3.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "000000002249.12",
+      "domain": "video games",
+      "subdomain": "Action.",
+      "instruction": 3.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "000000006154.36",
+      "domain": "video games",
+      "subdomain": "Action.",
+      "instruction": 2.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        false,
+        false
+      ]
+    },
+    {
+      "id": "000000006197.16",
+      "domain": "video games",
+      "subdomain": "Strategy.",
+      "instruction": 1.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "000000561272.0",
+      "domain": "video games",
+      "subdomain": "RPG (Role-Playing).",
+      "instruction": 3.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "000000772155.8",
+      "domain": "video games",
+      "subdomain": "Simulation.",
+      "instruction": 3.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "000001685215.6",
+      "domain": "video games",
+      "subdomain": "Strategy.",
+      "instruction": 1.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        false,
+        true
+      ]
+    },
+    {
+      "id": "000001947515.13",
+      "domain": "video games",
+      "subdomain": "RPG.",
+      "instruction": 2.0,
+      "physical_laws": [
+        true,
+        false,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        false,
+        false
+      ]
+    }
+  ],
+  "full_benchmark_score": false
+}

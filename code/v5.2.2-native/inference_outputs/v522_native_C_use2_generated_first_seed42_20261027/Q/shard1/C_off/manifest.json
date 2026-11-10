@@ -1,0 +1,87 @@
+{
+  "cases": [
+    {
+      "caption": "A large, wet canvas is twisted to remove excess paint, leaving drips down the side.",
+      "category": "Object Interactions",
+      "action": "twisting (wringing) something wet until water comes out",
+      "id": "VP006",
+      "seed": 42,
+      "image_seed": 20261014,
+      "first_prompt": "A single realistic photograph of the initial scene immediately BEFORE the following action begins: A large, wet canvas is twisted to remove excess paint, leaving drips down the side. Show the participants and objects in their starting positions, with enough room for the action. Show one moment only, not a montage, not the completed outcome. No text or diagrams.",
+      "image": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/fast_baseline_no_rl_20261027/generated_first_frames/VP006.png",
+      "prepared_inputs": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/inference_outputs/generated_first_frame_diagnostic_seed42_20261027_inputs/cases/VP006",
+      "geometry": {
+        "h": 480,
+        "w": 832,
+        "rh": 480,
+        "rw": 832,
+        "top": 0,
+        "left": 0,
+        "frames": 81
+      },
+      "initial_noise": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/inference_outputs/generated_first_frame_diagnostic_seed42_20261027_inputs/cases/VP006/noise.pt",
+      "canvas": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/inference_outputs/generated_first_frame_diagnostic_seed42_20261027_inputs/cases/VP006/first.png",
+      "output": "cases/VP006/planned.mp4",
+      "clauses": [
+        {
+          "text": "Ensure the canvas is sufficiently wet to allow for smooth twisting without tearing.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "Position the canvas vertically to facilitate gravity-assisted drips during the twisting motion.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "Apply consistent pressure to twist the canvas evenly along its length to remove paint.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "Allow the drips to fall freely without obstruction to achieve desired paint distribution.",
+          "basis": "both",
+          "phase": "evolution"
+        }
+      ],
+      "image_source": "Existing built-in image-generation asset; previous first-image diagnostic",
+      "clauses_policy": "Retain original process requirements; regenerate Qwen analysis with the changed first image"
+    }
+  ],
+  "evaluation": {
+    "code": "/home/liuzhirui/benchmark/videophy/VIDEOPHY2",
+    "checkpoint": "/home/liuzhirui/benchmark/videophy/videophy_2_auto",
+    "num_frames": 32,
+    "seed": 20261009,
+    "tasks": [
+      "sa",
+      "pc"
+    ],
+    "generation": {
+      "do_sample": false,
+      "top_k": 1,
+      "temperature": 0.001,
+      "max_length": 256
+    },
+    "joint_threshold": 4,
+    "average_definition": "mean of (SA + PC) / 2; custom summary, not official Joint Score",
+    "missing_policy": "no final comparison unless every selected case has both valid SA and PC scores"
+  },
+  "scope": "Two targeted first-image follow-up cases; not representative benchmark results",
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/checkpoints/v522-q-seed128-message-no-verifier-simple_66443/latest.pt",
+  "checkpoint_step": 224,
+  "seed": 42,
+  "training_seed": 42,
+  "arm": "C_off",
+  "condition_strength": 0.0,
+  "inference_round": 2,
+  "sampling": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "condition_strength": 0.0
+  },
+  "input_scope": "First image, caption and original first/caption requirements only",
+  "paired_control": "Same checkpoint including trained Wan LoRA; only C strength changes in both CFG arms",
+  "selection": "Previously inspected VP001 and VP006 with existing generated first images"
+}

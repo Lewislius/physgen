@@ -1,0 +1,34 @@
+{
+  "case": "wmb_8Nnd3iksYtc_58_200to368",
+  "caption": "The waves crash against the rocky cliffs on the shoreline.",
+  "model": "r15g",
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/source_residual_fusion_r15g/runs/physical_content_68103/step0400.pt",
+  "seed": 42,
+  "noise_seed": 86,
+  "first_image": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/shared/wmb_8Nnd3iksYtc_58_200to368/first.png",
+  "original_image": "/home/liuzhirui/benchmark/WorldModelBench/images/8Nnd3iksYtc_58_200to368.jpg",
+  "output_frames": 81,
+  "sampling": {
+    "width": 832,
+    "height": 480,
+    "latent_frames": 21,
+    "generated_frames": 81,
+    "fps": 16,
+    "steps": 50,
+    "shift": 5.0,
+    "text_guidance": 5.0,
+    "physical_guidance": 5.0,
+    "negative_prompt": "",
+    "guidance_composition": "joint_two_branch_cfg",
+    "physical_residual_scale": null
+  },
+  "guidance": {
+    "kind": "joint_two_branch_cfg",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+    "physical_residual_scale": null,
+    "native_definition": "Same trained Wan self-attention/FFN LoRA; physical branch bypassed"
+  },
+  "seconds": 156.8356179580005
+}

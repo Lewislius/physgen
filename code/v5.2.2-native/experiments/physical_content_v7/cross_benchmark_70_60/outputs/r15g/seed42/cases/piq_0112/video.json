@@ -1,0 +1,34 @@
+{
+  "case": "piq_0112",
+  "caption": "Static locked-off single-shot with fixed frame throughout filmed with constant framerate in real-time. The scene shows a realistic scientific demonstration. The scene only contains the described setup and actions. The black balloon was placed on a wooden table next to the black platform. The lit match is attached to the black platform. The lit match rotates clockwise on the black platform and touches the black balloon.",
+  "model": "r15g",
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/source_residual_fusion_r15g/runs/physical_content_68103/step0400.pt",
+  "seed": 42,
+  "noise_seed": 160,
+  "first_image": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/shared/piq_0112/first.png",
+  "original_image": "/home/liuzhirui/benchmark/physics-IQ-benchmark-verified/switch-frames/0112_switch-frames_anyFPS_perspective-left_trimmed-match-blows-balloon.jpg",
+  "output_frames": 80,
+  "sampling": {
+    "width": 832,
+    "height": 480,
+    "latent_frames": 21,
+    "generated_frames": 81,
+    "fps": 16,
+    "steps": 50,
+    "shift": 5.0,
+    "text_guidance": 5.0,
+    "physical_guidance": 5.0,
+    "negative_prompt": "",
+    "guidance_composition": "joint_two_branch_cfg",
+    "physical_residual_scale": null
+  },
+  "guidance": {
+    "kind": "joint_two_branch_cfg",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+    "physical_residual_scale": null,
+    "native_definition": "Same trained Wan self-attention/FFN LoRA; physical branch bypassed"
+  },
+  "seconds": 156.24666523199994
+}
