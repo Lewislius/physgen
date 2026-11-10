@@ -1,0 +1,2364 @@
+{
+  "utc": "2026-11-03T13:36:08.670549+00:00",
+  "protocol": "same400/original40/I2V/seed42/gamma5",
+  "source_paths": {
+    "Wan+LoRA400": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/inference_outputs/native_lora_66781/step0400_seed42_r1/videophy40/scores.json",
+    "R1": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/inference_outputs/physical_content_66778/step0400_seed42_r1/videophy40/scores.json",
+    "R10A": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/execution_value_r10/inference_outputs/physical_content_67003/step0400_full40_controls16_physical5_seed42/videophy40/scores.json",
+    "R11A": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_adapt_r11a/inference_outputs/physical_content_67214/step0400_full40_controls16_physical5_seed42/videophy40/scores.json"
+  },
+  "summary": {
+    "Wan+LoRA400": {
+      "count": 40,
+      "sa_mean": 3.075,
+      "pc_mean": 3.45,
+      "joint_pass_rate": 0.25,
+      "scope": "Fixed 40 VideoPhy2 captions adapted to shared-first-image I2V; not official T2V leaderboard",
+      "training_verifier_is_independent": true
+    },
+    "R1": {
+      "count": 40,
+      "sa_mean": 2.95,
+      "pc_mean": 3.625,
+      "joint_pass_rate": 0.25,
+      "scope": "Fixed 40 VideoPhy2 captions adapted to shared-first-image I2V; not official T2V leaderboard",
+      "training_verifier_is_independent": true
+    },
+    "R10A": {
+      "count": 40,
+      "sa_mean": 2.825,
+      "pc_mean": 3.75,
+      "sa_pass_rate": 0.225,
+      "pc_pass_rate": 0.55,
+      "joint_pass_rate": 0.175,
+      "scope": "Fixed 40 VideoPhy2 captions adapted to shared-first-image I2V; not official T2V leaderboard",
+      "training_verifier_is_independent": true
+    },
+    "R11A": {
+      "count": 40,
+      "sa_mean": 2.9,
+      "pc_mean": 3.45,
+      "sa_pass_rate": 0.175,
+      "pc_pass_rate": 0.4,
+      "joint_pass_rate": 0.15,
+      "scope": "Fixed 40 VideoPhy2 captions adapted to shared-first-image I2V; not official T2V leaderboard",
+      "training_verifier_is_independent": true
+    }
+  },
+  "paired": {
+    "Wan+LoRA400": {
+      "sa": {
+        "mean_change": -0.175,
+        "wins": 1,
+        "ties": 32,
+        "losses": 7,
+        "transitions": {
+          "2->2": 7,
+          "3->2": 3,
+          "3->3": 18,
+          "4->3": 3,
+          "4->4": 7,
+          "2->3": 1,
+          "4->2": 1
+        },
+        "pass_gains": [],
+        "pass_losses": [
+          "VP008",
+          "VP022",
+          "VP034",
+          "VP038"
+        ],
+        "changed_cases": [
+          {
+            "id": "VP002",
+            "caption": "A thin piece of wood is bent into a bow shape, exhibiting its flexibility.",
+            "before": 3,
+            "after": 2
+          },
+          {
+            "id": "VP006",
+            "caption": "A large, wet canvas is twisted to remove excess paint, leaving drips down the side.",
+            "before": 3,
+            "after": 2
+          },
+          {
+            "id": "VP007",
+            "caption": "Multiple ping pong balls are shown, illustrating different stages of a rally.",
+            "before": 3,
+            "after": 2
+          },
+          {
+            "id": "VP008",
+            "caption": "A person bounces to a specific rhythm on a trampoline, their body movement clearly timed to a beat.",
+            "before": 4,
+            "after": 3
+          },
+          {
+            "id": "VP011",
+            "caption": "A person on a unicycle stops abruptly, putting a foot down to maintain balance before continuing.",
+            "before": 2,
+            "after": 3
+          },
+          {
+            "id": "VP022",
+            "caption": "A luger's sled impacts a small snowbank at the edge of the track, causing a slight spray of snow.",
+            "before": 4,
+            "after": 2
+          },
+          {
+            "id": "VP034",
+            "caption": "A large, clear balloon is inflated with air, showing the internal pressure causing the balloon to stretch.",
+            "before": 4,
+            "after": 3
+          },
+          {
+            "id": "VP038",
+            "caption": "A paint roller, dipped in green paint, is used to cover a section of a metal fence, creating a uniform green coat.",
+            "before": 4,
+            "after": 3
+          }
+        ]
+      },
+      "pc": {
+        "mean_change": 0,
+        "wins": 6,
+        "ties": 30,
+        "losses": 4,
+        "transitions": {
+          "3->3": 19,
+          "2->2": 1,
+          "5->5": 2,
+          "4->4": 8,
+          "4->2": 1,
+          "4->5": 3,
+          "3->4": 2,
+          "5->4": 1,
+          "2->3": 1,
+          "5->3": 1,
+          "3->2": 1
+        },
+        "pass_gains": [
+          "VP017",
+          "VP030"
+        ],
+        "pass_losses": [
+          "VP011",
+          "VP034"
+        ],
+        "changed_cases": [
+          {
+            "id": "VP011",
+            "caption": "A person on a unicycle stops abruptly, putting a foot down to maintain balance before continuing.",
+            "before": 4,
+            "after": 2
+          },
+          {
+            "id": "VP015",
+            "caption": "A rower pulls an oar from the water, the blade dripping water back into the lake. .",
+            "before": 4,
+            "after": 5
+          },
+          {
+            "id": "VP017",
+            "caption": "A unicycle wheel rolls over a small curb; the rider adjusts their position to keep upright.",
+            "before": 3,
+            "after": 4
+          },
+          {
+            "id": "VP022",
+            "caption": "A luger's sled impacts a small snowbank at the edge of the track, causing a slight spray of snow.",
+            "before": 4,
+            "after": 5
+          },
+          {
+            "id": "VP027",
+            "caption": "Hands shape a lump of clay-like bread dough into a smooth, round boule on a wooden table.",
+            "before": 5,
+            "after": 4
+          },
+          {
+            "id": "VP030",
+            "caption": "Someone throws a snowball into the air, it breaks apart during flight.",
+            "before": 3,
+            "after": 4
+          },
+          {
+            "id": "VP033",
+            "caption": "A player jumps high to block a spike, their hands impacting the ball forcefully, sending it back across the net.",
+            "before": 2,
+            "after": 3
+          },
+          {
+            "id": "VP034",
+            "caption": "A large, clear balloon is inflated with air, showing the internal pressure causing the balloon to stretch.",
+            "before": 5,
+            "after": 3
+          },
+          {
+            "id": "VP037",
+            "caption": "A competitor approaches the runway, accelerates, jumps, and lands with their legs spread wide.",
+            "before": 3,
+            "after": 2
+          },
+          {
+            "id": "VP040",
+            "caption": "Poi are swung against a soft surface, making a thudding sound (NOTE: This prompt includes sound, but it's included to illustrate the effect of the action, not to describe it in detail.  The focus is still on the visible impact).",
+            "before": 4,
+            "after": 5
+          }
+        ]
+      },
+      "joint": {
+        "gains": [],
+        "losses": [
+          "VP008",
+          "VP022",
+          "VP034",
+          "VP038"
+        ]
+      }
+    },
+    "R1": {
+      "sa": {
+        "mean_change": -0.05,
+        "wins": 5,
+        "ties": 29,
+        "losses": 6,
+        "transitions": {
+          "2->2": 8,
+          "3->2": 2,
+          "3->3": 14,
+          "4->3": 3,
+          "4->4": 7,
+          "2->3": 5,
+          "4->2": 1
+        },
+        "pass_gains": [],
+        "pass_losses": [
+          "VP008",
+          "VP022",
+          "VP034",
+          "VP038"
+        ],
+        "changed_cases": [
+          {
+            "id": "VP002",
+            "caption": "A thin piece of wood is bent into a bow shape, exhibiting its flexibility.",
+            "before": 3,
+            "after": 2
+          },
+          {
+            "id": "VP008",
+            "caption": "A person bounces to a specific rhythm on a trampoline, their body movement clearly timed to a beat.",
+            "before": 4,
+            "after": 3
+          },
+          {
+            "id": "VP011",
+            "caption": "A person on a unicycle stops abruptly, putting a foot down to maintain balance before continuing.",
+            "before": 2,
+            "after": 3
+          },
+          {
+            "id": "VP019",
+            "caption": "Javelin with a damaged tip is thrown; it wobbles in flight and lands off-target.",
+            "before": 2,
+            "after": 3
+          },
+          {
+            "id": "VP022",
+            "caption": "A luger's sled impacts a small snowbank at the edge of the track, causing a slight spray of snow.",
+            "before": 4,
+            "after": 2
+          },
+          {
+            "id": "VP025",
+            "caption": "A large, orange plastic egg is rolled up a plastic slide, then rolls down, ending at the bottom.",
+            "before": 2,
+            "after": 3
+          },
+          {
+            "id": "VP026",
+            "caption": "Two people stretch a bungee cord, extending it to its maximum length.",
+            "before": 3,
+            "after": 2
+          },
+          {
+            "id": "VP033",
+            "caption": "A player jumps high to block a spike, their hands impacting the ball forcefully, sending it back across the net.",
+            "before": 2,
+            "after": 3
+          },
+          {
+            "id": "VP034",
+            "caption": "A large, clear balloon is inflated with air, showing the internal pressure causing the balloon to stretch.",
+            "before": 4,
+            "after": 3
+          },
+          {
+            "id": "VP038",
+            "caption": "A paint roller, dipped in green paint, is used to cover a section of a metal fence, creating a uniform green coat.",
+            "before": 4,
+            "after": 3
+          },
+          {
+            "id": "VP039",
+            "caption": "A wedge is driven into a log using a sledgehammer, splitting the log cleanly apart.",
+            "before": 2,
+            "after": 3
+          }
+        ]
+      },
+      "pc": {
+        "mean_change": -0.175,
+        "wins": 4,
+        "ties": 27,
+        "losses": 9,
+        "transitions": {
+          "3->3": 17,
+          "3->2": 2,
+          "4->3": 2,
+          "5->5": 4,
+          "4->4": 6,
+          "4->2": 1,
+          "5->4": 3,
+          "3->4": 2,
+          "4->5": 1,
+          "2->3": 1,
+          "5->3": 1
+        },
+        "pass_gains": [
+          "VP017",
+          "VP030"
+        ],
+        "pass_losses": [
+          "VP006",
+          "VP011",
+          "VP025",
+          "VP034"
+        ],
+        "changed_cases": [
+          {
+            "id": "VP003",
+            "caption": "A gymnast performs a back handspring, landing cleanly on their feet on a padded floor.",
+            "before": 3,
+            "after": 2
+          },
+          {
+            "id": "VP006",
+            "caption": "A large, wet canvas is twisted to remove excess paint, leaving drips down the side.",
+            "before": 4,
+            "after": 3
+          },
+          {
+            "id": "VP011",
+            "caption": "A person on a unicycle stops abruptly, putting a foot down to maintain balance before continuing.",
+            "before": 4,
+            "after": 2
+          },
+          {
+            "id": "VP014",
+            "caption": "Multiple water balloons are tossed upwards, simultaneously bursting in the air in a small arc.",
+            "before": 5,
+            "after": 4
+          },
+          {
+            "id": "VP017",
+            "caption": "A unicycle wheel rolls over a small curb; the rider adjusts their position to keep upright.",
+            "before": 3,
+            "after": 4
+          },
+          {
+            "id": "VP021",
+            "caption": "A skateboarder rolls along a smooth concrete path, maintaining a steady pace.",
+            "before": 5,
+            "after": 4
+          },
+          {
+            "id": "VP022",
+            "caption": "A luger's sled impacts a small snowbank at the edge of the track, causing a slight spray of snow.",
+            "before": 4,
+            "after": 5
+          },
+          {
+            "id": "VP025",
+            "caption": "A large, orange plastic egg is rolled up a plastic slide, then rolls down, ending at the bottom.",
+            "before": 4,
+            "after": 3
+          },
+          {
+            "id": "VP027",
+            "caption": "Hands shape a lump of clay-like bread dough into a smooth, round boule on a wooden table.",
+            "before": 5,
+            "after": 4
+          },
+          {
+            "id": "VP030",
+            "caption": "Someone throws a snowball into the air, it breaks apart during flight.",
+            "before": 3,
+            "after": 4
+          },
+          {
+            "id": "VP032",
+            "caption": "A player uses a quick set to spike the ball, driving it downward at a steep angle.",
+            "before": 2,
+            "after": 3
+          },
+          {
+            "id": "VP034",
+            "caption": "A large, clear balloon is inflated with air, showing the internal pressure causing the balloon to stretch.",
+            "before": 5,
+            "after": 3
+          },
+          {
+            "id": "VP037",
+            "caption": "A competitor approaches the runway, accelerates, jumps, and lands with their legs spread wide.",
+            "before": 3,
+            "after": 2
+          }
+        ]
+      },
+      "joint": {
+        "gains": [],
+        "losses": [
+          "VP008",
+          "VP022",
+          "VP034",
+          "VP038"
+        ]
+      }
+    },
+    "R10A": {
+      "sa": {
+        "mean_change": 0.075,
+        "wins": 9,
+        "ties": 26,
+        "losses": 5,
+        "transitions": {
+          "2->2": 8,
+          "3->2": 2,
+          "3->3": 12,
+          "3->4": 1,
+          "2->3": 8,
+          "4->4": 6,
+          "4->2": 1,
+          "4->3": 2
+        },
+        "pass_gains": [
+          "VP010"
+        ],
+        "pass_losses": [
+          "VP022",
+          "VP034",
+          "VP038"
+        ],
+        "changed_cases": [
+          {
+            "id": "VP002",
+            "caption": "A thin piece of wood is bent into a bow shape, exhibiting its flexibility.",
+            "before": 3,
+            "after": 2
+          },
+          {
+            "id": "VP006",
+            "caption": "A large, wet canvas is twisted to remove excess paint, leaving drips down the side.",
+            "before": 3,
+            "after": 2
+          },
+          {
+            "id": "VP010",
+            "caption": "A person mops up a puddle of water on a concrete floor, the water disappearing as the mop passes.",
+            "before": 3,
+            "after": 4
+          },
+          {
+            "id": "VP011",
+            "caption": "A person on a unicycle stops abruptly, putting a foot down to maintain balance before continuing.",
+            "before": 2,
+            "after": 3
+          },
+          {
+            "id": "VP017",
+            "caption": "A unicycle wheel rolls over a small curb; the rider adjusts their position to keep upright.",
+            "before": 2,
+            "after": 3
+          },
+          {
+            "id": "VP019",
+            "caption": "Javelin with a damaged tip is thrown; it wobbles in flight and lands off-target.",
+            "before": 2,
+            "after": 3
+          },
+          {
+            "id": "VP022",
+            "caption": "A luger's sled impacts a small snowbank at the edge of the track, causing a slight spray of snow.",
+            "before": 4,
+            "after": 2
+          },
+          {
+            "id": "VP025",
+            "caption": "A large, orange plastic egg is rolled up a plastic slide, then rolls down, ending at the bottom.",
+            "before": 2,
+            "after": 3
+          },
+          {
+            "id": "VP028",
+            "caption": "A person skillfully tosses several coins in the air, catching them one by one.",
+            "before": 2,
+            "after": 3
+          },
+          {
+            "id": "VP029",
+            "caption": "A player hits a forehand drive, the ball spinning rapidly as it crosses the net.",
+            "before": 2,
+            "after": 3
+          },
+          {
+            "id": "VP033",
+            "caption": "A player jumps high to block a spike, their hands impacting the ball forcefully, sending it back across the net.",
+            "before": 2,
+            "after": 3
+          },
+          {
+            "id": "VP034",
+            "caption": "A large, clear balloon is inflated with air, showing the internal pressure causing the balloon to stretch.",
+            "before": 4,
+            "after": 3
+          },
+          {
+            "id": "VP038",
+            "caption": "A paint roller, dipped in green paint, is used to cover a section of a metal fence, creating a uniform green coat.",
+            "before": 4,
+            "after": 3
+          },
+          {
+            "id": "VP039",
+            "caption": "A wedge is driven into a log using a sledgehammer, splitting the log cleanly apart.",
+            "before": 2,
+            "after": 3
+          }
+        ]
+      },
+      "pc": {
+        "mean_change": -0.3,
+        "wins": 4,
+        "ties": 23,
+        "losses": 13,
+        "transitions": {
+          "3->3": 14,
+          "2->2": 1,
+          "4->3": 5,
+          "5->5": 3,
+          "5->4": 4,
+          "4->4": 5,
+          "4->2": 1,
+          "4->5": 2,
+          "5->3": 2,
+          "3->4": 2,
+          "3->2": 1
+        },
+        "pass_gains": [
+          "VP030",
+          "VP038"
+        ],
+        "pass_losses": [
+          "VP004",
+          "VP006",
+          "VP011",
+          "VP019",
+          "VP023",
+          "VP025",
+          "VP034",
+          "VP039"
+        ],
+        "changed_cases": [
+          {
+            "id": "VP004",
+            "caption": "A plastic ruler is bent until it cracks, displaying a visible stress fracture that propagates.",
+            "before": 4,
+            "after": 3
+          },
+          {
+            "id": "VP006",
+            "caption": "A large, wet canvas is twisted to remove excess paint, leaving drips down the side.",
+            "before": 4,
+            "after": 3
+          },
+          {
+            "id": "VP008",
+            "caption": "A person bounces to a specific rhythm on a trampoline, their body movement clearly timed to a beat.",
+            "before": 5,
+            "after": 4
+          },
+          {
+            "id": "VP011",
+            "caption": "A person on a unicycle stops abruptly, putting a foot down to maintain balance before continuing.",
+            "before": 4,
+            "after": 2
+          },
+          {
+            "id": "VP014",
+            "caption": "Multiple water balloons are tossed upwards, simultaneously bursting in the air in a small arc.",
+            "before": 5,
+            "after": 4
+          },
+          {
+            "id": "VP016",
+            "caption": "A scientist uses a probe to nudge a small, delicate insect on a leaf, causing it to twitch minimally.",
+            "before": 4,
+            "after": 5
+          },
+          {
+            "id": "VP019",
+            "caption": "Javelin with a damaged tip is thrown; it wobbles in flight and lands off-target.",
+            "before": 4,
+            "after": 3
+          },
+          {
+            "id": "VP020",
+            "caption": "A time-lapse showing the process of someone tying a bow tie, quickly showing the steps in sequence.",
+            "before": 5,
+            "after": 4
+          },
+          {
+            "id": "VP022",
+            "caption": "A luger's sled impacts a small snowbank at the edge of the track, causing a slight spray of snow.",
+            "before": 4,
+            "after": 5
+          },
+          {
+            "id": "VP023",
+            "caption": "A surfer falls off their board, colliding briefly with another surfer, before swimming away.",
+            "before": 4,
+            "after": 3
+          },
+          {
+            "id": "VP025",
+            "caption": "A large, orange plastic egg is rolled up a plastic slide, then rolls down, ending at the bottom.",
+            "before": 5,
+            "after": 3
+          },
+          {
+            "id": "VP026",
+            "caption": "Two people stretch a bungee cord, extending it to its maximum length.",
+            "before": 5,
+            "after": 4
+          },
+          {
+            "id": "VP030",
+            "caption": "Someone throws a snowball into the air, it breaks apart during flight.",
+            "before": 3,
+            "after": 4
+          },
+          {
+            "id": "VP034",
+            "caption": "A large, clear balloon is inflated with air, showing the internal pressure causing the balloon to stretch.",
+            "before": 5,
+            "after": 3
+          },
+          {
+            "id": "VP037",
+            "caption": "A competitor approaches the runway, accelerates, jumps, and lands with their legs spread wide.",
+            "before": 3,
+            "after": 2
+          },
+          {
+            "id": "VP038",
+            "caption": "A paint roller, dipped in green paint, is used to cover a section of a metal fence, creating a uniform green coat.",
+            "before": 3,
+            "after": 4
+          },
+          {
+            "id": "VP039",
+            "caption": "A wedge is driven into a log using a sledgehammer, splitting the log cleanly apart.",
+            "before": 4,
+            "after": 3
+          }
+        ]
+      },
+      "joint": {
+        "gains": [
+          "VP010"
+        ],
+        "losses": [
+          "VP022",
+          "VP034"
+        ]
+      }
+    }
+  },
+  "training": {
+    "R1": {
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/runs/physical_content_66778/train.jsonl",
+      "steps": 400,
+      "microbatches": 1600,
+      "windows": {
+        "first128": {
+          "fm": 0.2897954819527513,
+          "generation": 0.30143137212871807,
+          "tail": 0.3479749040561728,
+          "aux": 0.4950479349354282,
+          "c_pair_cosine": 0.39766889993916266,
+          "c_centered_energy": 0.6182855413062498
+        },
+        "129to250": {
+          "fm": 0.28439001546081033,
+          "generation": 0.29551224727336256,
+          "tail": 0.340001144286123,
+          "aux": 0.3764843148957999,
+          "c_pair_cosine": 0.30416474054704923,
+          "c_centered_energy": 0.7115971521764505
+        },
+        "251to400": {
+          "fm": 0.27405714345475035,
+          "generation": 0.285915895877406,
+          "tail": 0.33335087734585006,
+          "aux": 0.38017337371905646,
+          "c_pair_cosine": 0.31284346578021843,
+          "c_centered_energy": 0.7035343688726425
+        },
+        "last50": {
+          "fm": 0.25191022679209707,
+          "generation": 0.26406935587525365,
+          "tail": 0.3127058468200266,
+          "aux": 0.36197467140853407,
+          "c_pair_cosine": 0.2822790063172579,
+          "c_centered_energy": 0.7320723897218704
+        }
+      },
+      "optimizer_groups": {
+        "enhancement": {
+          "updates": 400,
+          "nonzero_gradient_updates": 400,
+          "clipped_updates": 10
+        },
+        "fusion_read": {
+          "updates": 400,
+          "nonzero_gradient_updates": 399,
+          "clipped_updates": 0
+        },
+        "fusion_write": {
+          "updates": 400,
+          "nonzero_gradient_updates": 400,
+          "clipped_updates": 0
+        },
+        "wan_lora": {
+          "updates": 272,
+          "nonzero_gradient_updates": 272,
+          "clipped_updates": 0
+        }
+      },
+      "stage_training": {
+        "steps1_128": {
+          "updates": 128,
+          "phase_counts": {
+            "interface": 128
+          },
+          "groups": {
+            "enhancement": {
+              "positive_lr_updates": 128,
+              "nonzero_gradient_updates": 128,
+              "median_preclip_gradient": 0.24345161765813828,
+              "clipped_updates": 9,
+              "learning_rate_sum": 0.005625000000000001,
+              "peak_normalized_learning_rate_sum": 112.50000000000001
+            },
+            "fusion_read": {
+              "positive_lr_updates": 128,
+              "nonzero_gradient_updates": 127,
+              "median_preclip_gradient": 0.0022502709180116653,
+              "clipped_updates": 0,
+              "learning_rate_sum": 0.0022500000000000003,
+              "peak_normalized_learning_rate_sum": 112.5
+            },
+            "fusion_write": {
+              "positive_lr_updates": 128,
+              "nonzero_gradient_updates": 128,
+              "median_preclip_gradient": 0.04755071923136711,
+              "clipped_updates": 0,
+              "learning_rate_sum": 0.003375,
+              "peak_normalized_learning_rate_sum": 112.5
+            },
+            "wan_lora": {
+              "positive_lr_updates": 0,
+              "nonzero_gradient_updates": 0,
+              "median_preclip_gradient": 0.0,
+              "clipped_updates": 0,
+              "learning_rate_sum": 0.0,
+              "peak_normalized_learning_rate_sum": 0.0
+            }
+          }
+        },
+        "steps129_256": {
+          "updates": 128,
+          "phase_counts": {
+            "joint": 128
+          },
+          "groups": {
+            "enhancement": {
+              "positive_lr_updates": 128,
+              "nonzero_gradient_updates": 128,
+              "median_preclip_gradient": 0.14852352440357208,
+              "clipped_updates": 0,
+              "learning_rate_sum": 0.0064,
+              "peak_normalized_learning_rate_sum": 128.0
+            },
+            "fusion_read": {
+              "positive_lr_updates": 128,
+              "nonzero_gradient_updates": 128,
+              "median_preclip_gradient": 0.0014931035111658275,
+              "clipped_updates": 0,
+              "learning_rate_sum": 0.00256,
+              "peak_normalized_learning_rate_sum": 128.0
+            },
+            "fusion_write": {
+              "positive_lr_updates": 128,
+              "nonzero_gradient_updates": 128,
+              "median_preclip_gradient": 0.02250549476593733,
+              "clipped_updates": 0,
+              "learning_rate_sum": 0.00384,
+              "peak_normalized_learning_rate_sum": 128.0
+            },
+            "wan_lora": {
+              "positive_lr_updates": 128,
+              "nonzero_gradient_updates": 128,
+              "median_preclip_gradient": 0.005090777296572924,
+              "clipped_updates": 0,
+              "learning_rate_sum": 0.0012900000000000001,
+              "peak_normalized_learning_rate_sum": 64.5
+            }
+          }
+        },
+        "steps257_400": {
+          "updates": 144,
+          "phase_counts": {
+            "joint": 144
+          },
+          "groups": {
+            "enhancement": {
+              "positive_lr_updates": 144,
+              "nonzero_gradient_updates": 144,
+              "median_preclip_gradient": 0.14781273901462555,
+              "clipped_updates": 1,
+              "learning_rate_sum": 0.007200000000000001,
+              "peak_normalized_learning_rate_sum": 144.0
+            },
+            "fusion_read": {
+              "positive_lr_updates": 144,
+              "nonzero_gradient_updates": 144,
+              "median_preclip_gradient": 0.0017381549114361405,
+              "clipped_updates": 0,
+              "learning_rate_sum": 0.00288,
+              "peak_normalized_learning_rate_sum": 144.0
+            },
+            "fusion_write": {
+              "positive_lr_updates": 144,
+              "nonzero_gradient_updates": 144,
+              "median_preclip_gradient": 0.021720956079661846,
+              "clipped_updates": 0,
+              "learning_rate_sum": 0.00432,
+              "peak_normalized_learning_rate_sum": 144.0
+            },
+            "wan_lora": {
+              "positive_lr_updates": 144,
+              "nonzero_gradient_updates": 144,
+              "median_preclip_gradient": 0.006948109716176987,
+              "clipped_updates": 0,
+              "learning_rate_sum": 0.00288,
+              "peak_normalized_learning_rate_sum": 144.0
+            }
+          }
+        }
+      },
+      "stage_scope": "These are actual logged gradient norms and learning-rate sums. Fusion has no direct word-alignment loss, so its nonzero gradients establish generation-loss backpropagation while Wan LoRA is frozen. Enhancement gradients combine generation and word losses and do not isolate their contributions. Learning-rate sums are schedule exposure, not equivalent Adam updates, compute or quality. This does not establish that128 interface steps are optimal or that the stage schedule causes SA loss.",
+      "scope": "Training diagnostics, not SA/PC proxies; only matched input windows are compared."
+    },
+    "R10A": {
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/execution_value_r10/runs/physical_content_67003/train.jsonl",
+      "steps": 400,
+      "microbatches": 1600,
+      "windows": {
+        "first128": {
+          "fm": 0.2940941312299401,
+          "generation": 0.3057827096854453,
+          "tail": 0.3525369944036356,
+          "aux": 0.5976586196338758,
+          "c_pair_cosine": 0.6649178244406357,
+          "c_centered_energy": 0.3429434664576547
+        },
+        "129to250": {
+          "fm": 0.2857131264592353,
+          "generation": 0.29686860619380034,
+          "tail": 0.34149049478964727,
+          "aux": 0.4423059463256695,
+          "c_pair_cosine": 0.8733404858923349,
+          "c_centered_energy": 0.12963218987751446
+        },
+        "251to400": {
+          "fm": 0.2742151228773097,
+          "generation": 0.2860885733583321,
+          "tail": 0.3335823468180994,
+          "aux": 0.385005751127998,
+          "c_pair_cosine": 0.8168191625674566,
+          "c_centered_energy": 0.18564762592315673
+        },
+        "last50": {
+          "fm": 0.25184939373284576,
+          "generation": 0.2640074043534696,
+          "tail": 0.312639423944056,
+          "aux": 0.37496870867908,
+          "c_pair_cosine": 0.7656850528717041,
+          "c_centered_energy": 0.23689818628132342
+        }
+      },
+      "optimizer_groups": {
+        "enhancement": {
+          "updates": 400,
+          "nonzero_gradient_updates": 400,
+          "clipped_updates": 13
+        },
+        "fusion_read": {
+          "updates": 400,
+          "nonzero_gradient_updates": 399,
+          "clipped_updates": 0
+        },
+        "fusion_write": {
+          "updates": 400,
+          "nonzero_gradient_updates": 400,
+          "clipped_updates": 7
+        },
+        "wan_lora": {
+          "updates": 272,
+          "nonzero_gradient_updates": 272,
+          "clipped_updates": 0
+        }
+      },
+      "stage_training": {
+        "steps1_128": {
+          "updates": 128,
+          "phase_counts": {
+            "interface": 128
+          },
+          "groups": {
+            "enhancement": {
+              "positive_lr_updates": 128,
+              "nonzero_gradient_updates": 128,
+              "median_preclip_gradient": 0.14868438243865967,
+              "clipped_updates": 13,
+              "learning_rate_sum": 0.005625000000000001,
+              "peak_normalized_learning_rate_sum": 112.50000000000001
+            },
+            "fusion_read": {
+              "positive_lr_updates": 128,
+              "nonzero_gradient_updates": 127,
+              "median_preclip_gradient": 0.006243629846721888,
+              "clipped_updates": 0,
+              "learning_rate_sum": 0.0022500000000000003,
+              "peak_normalized_learning_rate_sum": 112.5
+            },
+            "fusion_write": {
+              "positive_lr_updates": 128,
+              "nonzero_gradient_updates": 128,
+              "median_preclip_gradient": 0.10399897024035454,
+              "clipped_updates": 7,
+              "learning_rate_sum": 0.003375,
+              "peak_normalized_learning_rate_sum": 112.5
+            },
+            "wan_lora": {
+              "positive_lr_updates": 0,
+              "nonzero_gradient_updates": 0,
+              "median_preclip_gradient": 0.0,
+              "clipped_updates": 0,
+              "learning_rate_sum": 0.0,
+              "peak_normalized_learning_rate_sum": 0.0
+            }
+          }
+        },
+        "steps129_256": {
+          "updates": 128,
+          "phase_counts": {
+            "joint": 128
+          },
+          "groups": {
+            "enhancement": {
+              "positive_lr_updates": 128,
+              "nonzero_gradient_updates": 128,
+              "median_preclip_gradient": 0.05946620739996433,
+              "clipped_updates": 0,
+              "learning_rate_sum": 0.0064,
+              "peak_normalized_learning_rate_sum": 128.0
+            },
+            "fusion_read": {
+              "positive_lr_updates": 128,
+              "nonzero_gradient_updates": 128,
+              "median_preclip_gradient": 0.004690987290814519,
+              "clipped_updates": 0,
+              "learning_rate_sum": 0.00256,
+              "peak_normalized_learning_rate_sum": 128.0
+            },
+            "fusion_write": {
+              "positive_lr_updates": 128,
+              "nonzero_gradient_updates": 128,
+              "median_preclip_gradient": 0.04913342371582985,
+              "clipped_updates": 0,
+              "learning_rate_sum": 0.00384,
+              "peak_normalized_learning_rate_sum": 128.0
+            },
+            "wan_lora": {
+              "positive_lr_updates": 128,
+              "nonzero_gradient_updates": 128,
+              "median_preclip_gradient": 0.005537517135962844,
+              "clipped_updates": 0,
+              "learning_rate_sum": 0.0012900000000000001,
+              "peak_normalized_learning_rate_sum": 64.5
+            }
+          }
+        },
+        "steps257_400": {
+          "updates": 144,
+          "phase_counts": {
+            "joint": 144
+          },
+          "groups": {
+            "enhancement": {
+              "positive_lr_updates": 144,
+              "nonzero_gradient_updates": 144,
+              "median_preclip_gradient": 0.028036760166287422,
+              "clipped_updates": 0,
+              "learning_rate_sum": 0.007200000000000001,
+              "peak_normalized_learning_rate_sum": 144.0
+            },
+            "fusion_read": {
+              "positive_lr_updates": 144,
+              "nonzero_gradient_updates": 144,
+              "median_preclip_gradient": 0.003606185084208846,
+              "clipped_updates": 0,
+              "learning_rate_sum": 0.00288,
+              "peak_normalized_learning_rate_sum": 144.0
+            },
+            "fusion_write": {
+              "positive_lr_updates": 144,
+              "nonzero_gradient_updates": 144,
+              "median_preclip_gradient": 0.030832401476800442,
+              "clipped_updates": 0,
+              "learning_rate_sum": 0.00432,
+              "peak_normalized_learning_rate_sum": 144.0
+            },
+            "wan_lora": {
+              "positive_lr_updates": 144,
+              "nonzero_gradient_updates": 144,
+              "median_preclip_gradient": 0.007997588254511356,
+              "clipped_updates": 0,
+              "learning_rate_sum": 0.00288,
+              "peak_normalized_learning_rate_sum": 144.0
+            }
+          }
+        }
+      },
+      "stage_scope": "These are actual logged gradient norms and learning-rate sums. Fusion has no direct word-alignment loss, so its nonzero gradients establish generation-loss backpropagation while Wan LoRA is frozen. Enhancement gradients combine generation and word losses and do not isolate their contributions. Learning-rate sums are schedule exposure, not equivalent Adam updates, compute or quality. This does not establish that128 interface steps are optimal or that the stage schedule causes SA loss.",
+      "scope": "Training diagnostics, not SA/PC proxies; only matched input windows are compared."
+    },
+    "R11A": {
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_adapt_r11a/runs/physical_content_67214/train.jsonl",
+      "steps": 400,
+      "microbatches": 1600,
+      "windows": {
+        "first128": {
+          "fm": 0.2989960638296907,
+          "generation": 0.3106962320889579,
+          "tail": 0.3574968777538743,
+          "aux": 0.6306853614223655,
+          "c_pair_cosine": 0.6183052962587681,
+          "c_centered_energy": 0.38452964677708223
+        },
+        "129to250": {
+          "fm": 0.29202800453067984,
+          "generation": 0.30322519762701067,
+          "tail": 0.3480139401184059,
+          "aux": 0.5559610835597163,
+          "c_pair_cosine": 0.8795847544660333,
+          "c_centered_energy": 0.1275111813037122
+        },
+        "251to400": {
+          "fm": 0.27569296591294307,
+          "generation": 0.2875917557068169,
+          "tail": 0.335186887451758,
+          "aux": 0.470323144843181,
+          "c_pair_cosine": 0.8631643011172613,
+          "c_centered_energy": 0.13976257165273032
+        },
+        "last50": {
+          "fm": 0.2548495479114354,
+          "generation": 0.2670664300955832,
+          "tail": 0.31593392880633475,
+          "aux": 0.5144681926071644,
+          "c_pair_cosine": 0.7965944972634316,
+          "c_centered_energy": 0.20908067181706427
+        }
+      },
+      "optimizer_groups": {
+        "enhancement": {
+          "updates": 400,
+          "nonzero_gradient_updates": 400,
+          "clipped_updates": 30
+        },
+        "fusion_read": {
+          "updates": 400,
+          "nonzero_gradient_updates": 399,
+          "clipped_updates": 1
+        },
+        "fusion_write": {
+          "updates": 400,
+          "nonzero_gradient_updates": 400,
+          "clipped_updates": 10
+        },
+        "native_text": {
+          "updates": 400,
+          "nonzero_gradient_updates": 400,
+          "clipped_updates": 0
+        },
+        "wan_lora": {
+          "updates": 272,
+          "nonzero_gradient_updates": 272,
+          "clipped_updates": 0
+        }
+      },
+      "stage_training": {
+        "steps1_128": {
+          "updates": 128,
+          "phase_counts": {
+            "interface": 128
+          },
+          "groups": {
+            "enhancement": {
+              "positive_lr_updates": 128,
+              "nonzero_gradient_updates": 128,
+              "median_preclip_gradient": 0.14832334965467453,
+              "clipped_updates": 16,
+              "learning_rate_sum": 0.005625000000000001,
+              "peak_normalized_learning_rate_sum": 112.50000000000001
+            },
+            "fusion_read": {
+              "positive_lr_updates": 128,
+              "nonzero_gradient_updates": 127,
+              "median_preclip_gradient": 0.005608704872429371,
+              "clipped_updates": 0,
+              "learning_rate_sum": 0.0022500000000000003,
+              "peak_normalized_learning_rate_sum": 112.5
+            },
+            "fusion_write": {
+              "positive_lr_updates": 128,
+              "nonzero_gradient_updates": 128,
+              "median_preclip_gradient": 0.08849457651376724,
+              "clipped_updates": 9,
+              "learning_rate_sum": 0.003375,
+              "peak_normalized_learning_rate_sum": 112.5
+            },
+            "native_text": {
+              "positive_lr_updates": 128,
+              "nonzero_gradient_updates": 128,
+              "median_preclip_gradient": 0.001965074276085943,
+              "clipped_updates": 0,
+              "learning_rate_sum": 0.0022500000000000003,
+              "peak_normalized_learning_rate_sum": 112.5
+            },
+            "wan_lora": {
+              "positive_lr_updates": 0,
+              "nonzero_gradient_updates": 0,
+              "median_preclip_gradient": 0.0,
+              "clipped_updates": 0,
+              "learning_rate_sum": 0.0,
+              "peak_normalized_learning_rate_sum": 0.0
+            }
+          }
+        },
+        "steps129_256": {
+          "updates": 128,
+          "phase_counts": {
+            "joint": 128
+          },
+          "groups": {
+            "enhancement": {
+              "positive_lr_updates": 128,
+              "nonzero_gradient_updates": 128,
+              "median_preclip_gradient": 0.09929388388991356,
+              "clipped_updates": 8,
+              "learning_rate_sum": 0.0064,
+              "peak_normalized_learning_rate_sum": 128.0
+            },
+            "fusion_read": {
+              "positive_lr_updates": 128,
+              "nonzero_gradient_updates": 128,
+              "median_preclip_gradient": 0.006484544835984707,
+              "clipped_updates": 1,
+              "learning_rate_sum": 0.00256,
+              "peak_normalized_learning_rate_sum": 128.0
+            },
+            "fusion_write": {
+              "positive_lr_updates": 128,
+              "nonzero_gradient_updates": 128,
+              "median_preclip_gradient": 0.05673684924840927,
+              "clipped_updates": 1,
+              "learning_rate_sum": 0.00384,
+              "peak_normalized_learning_rate_sum": 128.0
+            },
+            "native_text": {
+              "positive_lr_updates": 128,
+              "nonzero_gradient_updates": 128,
+              "median_preclip_gradient": 0.002166675985790789,
+              "clipped_updates": 0,
+              "learning_rate_sum": 0.00256,
+              "peak_normalized_learning_rate_sum": 128.0
+            },
+            "wan_lora": {
+              "positive_lr_updates": 128,
+              "nonzero_gradient_updates": 128,
+              "median_preclip_gradient": 0.006718267919495702,
+              "clipped_updates": 0,
+              "learning_rate_sum": 0.0012900000000000001,
+              "peak_normalized_learning_rate_sum": 64.5
+            }
+          }
+        },
+        "steps257_400": {
+          "updates": 144,
+          "phase_counts": {
+            "joint": 144
+          },
+          "groups": {
+            "enhancement": {
+              "positive_lr_updates": 144,
+              "nonzero_gradient_updates": 144,
+              "median_preclip_gradient": 0.0680103525519371,
+              "clipped_updates": 6,
+              "learning_rate_sum": 0.007200000000000001,
+              "peak_normalized_learning_rate_sum": 144.0
+            },
+            "fusion_read": {
+              "positive_lr_updates": 144,
+              "nonzero_gradient_updates": 144,
+              "median_preclip_gradient": 0.0037974072620272636,
+              "clipped_updates": 0,
+              "learning_rate_sum": 0.00288,
+              "peak_normalized_learning_rate_sum": 144.0
+            },
+            "fusion_write": {
+              "positive_lr_updates": 144,
+              "nonzero_gradient_updates": 144,
+              "median_preclip_gradient": 0.02902194671332836,
+              "clipped_updates": 0,
+              "learning_rate_sum": 0.00432,
+              "peak_normalized_learning_rate_sum": 144.0
+            },
+            "native_text": {
+              "positive_lr_updates": 144,
+              "nonzero_gradient_updates": 144,
+              "median_preclip_gradient": 0.002118095988407731,
+              "clipped_updates": 0,
+              "learning_rate_sum": 0.00288,
+              "peak_normalized_learning_rate_sum": 144.0
+            },
+            "wan_lora": {
+              "positive_lr_updates": 144,
+              "nonzero_gradient_updates": 144,
+              "median_preclip_gradient": 0.008825310505926609,
+              "clipped_updates": 0,
+              "learning_rate_sum": 0.00288,
+              "peak_normalized_learning_rate_sum": 144.0
+            }
+          }
+        }
+      },
+      "stage_scope": "These are actual logged gradient norms and learning-rate sums. Fusion has no direct word-alignment loss, so its nonzero gradients establish generation-loss backpropagation while Wan LoRA is frozen. Enhancement gradients combine generation and word losses and do not isolate their contributions. Learning-rate sums are schedule exposure, not equivalent Adam updates, compute or quality. This does not establish that128 interface steps are optimal or that the stage schedule causes SA loss.",
+      "scope": "Training diagnostics, not SA/PC proxies; only matched input windows are compared."
+    },
+    "native400": {
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/runs/native_lora_66781/train.jsonl",
+      "steps": 400,
+      "microbatches": 1600,
+      "windows": {
+        "first128": {
+          "fm": 0.2885770977663924,
+          "generation": 0.30025079932966037,
+          "tail": 0.34694557564216666,
+          "aux": 0.0
+        },
+        "129to250": {
+          "fm": 0.2838194699038095,
+          "generation": 0.29493919329252094,
+          "tail": 0.3394180569629811,
+          "aux": 0.0
+        },
+        "251to400": {
+          "fm": 0.27346589653442305,
+          "generation": 0.2853391888209929,
+          "tail": 0.33283232907454174,
+          "aux": 0.0
+        },
+        "last50": {
+          "fm": 0.2514365974068642,
+          "generation": 0.26359024256467817,
+          "tail": 0.3122048009559512,
+          "aux": 0.0
+        }
+      },
+      "optimizer_groups": {
+        "enhancement": {
+          "updates": 400,
+          "nonzero_gradient_updates": 0,
+          "clipped_updates": 0
+        },
+        "fusion_read": {
+          "updates": 400,
+          "nonzero_gradient_updates": 0,
+          "clipped_updates": 0
+        },
+        "fusion_write": {
+          "updates": 400,
+          "nonzero_gradient_updates": 0,
+          "clipped_updates": 0
+        },
+        "wan_lora": {
+          "updates": 400,
+          "nonzero_gradient_updates": 400,
+          "clipped_updates": 0
+        }
+      },
+      "stage_training": {
+        "steps1_128": {
+          "updates": 128,
+          "phase_counts": {
+            "joint": 128
+          },
+          "groups": {
+            "enhancement": {
+              "positive_lr_updates": 128,
+              "nonzero_gradient_updates": 0,
+              "median_preclip_gradient": 0.0,
+              "clipped_updates": 0,
+              "learning_rate_sum": 0.005625000000000001,
+              "peak_normalized_learning_rate_sum": 112.50000000000001
+            },
+            "fusion_read": {
+              "positive_lr_updates": 128,
+              "nonzero_gradient_updates": 0,
+              "median_preclip_gradient": 0.0,
+              "clipped_updates": 0,
+              "learning_rate_sum": 0.0022500000000000003,
+              "peak_normalized_learning_rate_sum": 112.5
+            },
+            "fusion_write": {
+              "positive_lr_updates": 128,
+              "nonzero_gradient_updates": 0,
+              "median_preclip_gradient": 0.0,
+              "clipped_updates": 0,
+              "learning_rate_sum": 0.003375,
+              "peak_normalized_learning_rate_sum": 112.5
+            },
+            "wan_lora": {
+              "positive_lr_updates": 128,
+              "nonzero_gradient_updates": 128,
+              "median_preclip_gradient": 0.008787295781075954,
+              "clipped_updates": 0,
+              "learning_rate_sum": 0.0012900000000000001,
+              "peak_normalized_learning_rate_sum": 64.5
+            }
+          }
+        },
+        "steps129_256": {
+          "updates": 128,
+          "phase_counts": {
+            "joint": 128
+          },
+          "groups": {
+            "enhancement": {
+              "positive_lr_updates": 128,
+              "nonzero_gradient_updates": 0,
+              "median_preclip_gradient": 0.0,
+              "clipped_updates": 0,
+              "learning_rate_sum": 0.0064,
+              "peak_normalized_learning_rate_sum": 128.0
+            },
+            "fusion_read": {
+              "positive_lr_updates": 128,
+              "nonzero_gradient_updates": 0,
+              "median_preclip_gradient": 0.0,
+              "clipped_updates": 0,
+              "learning_rate_sum": 0.00256,
+              "peak_normalized_learning_rate_sum": 128.0
+            },
+            "fusion_write": {
+              "positive_lr_updates": 128,
+              "nonzero_gradient_updates": 0,
+              "median_preclip_gradient": 0.0,
+              "clipped_updates": 0,
+              "learning_rate_sum": 0.00384,
+              "peak_normalized_learning_rate_sum": 128.0
+            },
+            "wan_lora": {
+              "positive_lr_updates": 128,
+              "nonzero_gradient_updates": 128,
+              "median_preclip_gradient": 0.009595855139195919,
+              "clipped_updates": 0,
+              "learning_rate_sum": 0.00256,
+              "peak_normalized_learning_rate_sum": 128.0
+            }
+          }
+        },
+        "steps257_400": {
+          "updates": 144,
+          "phase_counts": {
+            "joint": 144
+          },
+          "groups": {
+            "enhancement": {
+              "positive_lr_updates": 144,
+              "nonzero_gradient_updates": 0,
+              "median_preclip_gradient": 0.0,
+              "clipped_updates": 0,
+              "learning_rate_sum": 0.007200000000000001,
+              "peak_normalized_learning_rate_sum": 144.0
+            },
+            "fusion_read": {
+              "positive_lr_updates": 144,
+              "nonzero_gradient_updates": 0,
+              "median_preclip_gradient": 0.0,
+              "clipped_updates": 0,
+              "learning_rate_sum": 0.00288,
+              "peak_normalized_learning_rate_sum": 144.0
+            },
+            "fusion_write": {
+              "positive_lr_updates": 144,
+              "nonzero_gradient_updates": 0,
+              "median_preclip_gradient": 0.0,
+              "clipped_updates": 0,
+              "learning_rate_sum": 0.00432,
+              "peak_normalized_learning_rate_sum": 144.0
+            },
+            "wan_lora": {
+              "positive_lr_updates": 144,
+              "nonzero_gradient_updates": 144,
+              "median_preclip_gradient": 0.010504620615392923,
+              "clipped_updates": 0,
+              "learning_rate_sum": 0.00288,
+              "peak_normalized_learning_rate_sum": 144.0
+            }
+          }
+        }
+      },
+      "stage_scope": "These are actual logged gradient norms and learning-rate sums. Fusion has no direct word-alignment loss, so its nonzero gradients establish generation-loss backpropagation while Wan LoRA is frozen. Enhancement gradients combine generation and word losses and do not isolate their contributions. Learning-rate sums are schedule exposure, not equivalent Adam updates, compute or quality. This does not establish that128 interface steps are optimal or that the stage schedule causes SA loss.",
+      "scope": "Training diagnostics, not SA/PC proxies; only matched input windows are compared."
+    }
+  },
+  "interpretation": {
+    "reject_failed_combination": true,
+    "isolated_QKVO_causality_established": false,
+    "failures_not_explained_by_fm_convergence": true,
+    "no_new_training_or_inference_performed": true
+  },
+  "full60": {
+    "source_paths": {
+      "Wan+LoRA400": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/videophy60/inference_outputs/native400/full60_gamma5_seed42/videophy60/scores.json",
+      "R1": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/videophy60/inference_outputs/R1_400/full60_gamma5_seed42/videophy60/scores.json",
+      "R10A": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/videophy60/inference_outputs/R10_physical_content_67003/full60_gamma5_seed42/videophy60/scores.json",
+      "R11A": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/videophy60/inference_outputs/R11A_physical_content_67214/full60_gamma5_seed42/videophy60/scores.json"
+    },
+    "summary": {
+      "Wan+LoRA400": {
+        "count": 60,
+        "sa_mean": 2.9833333333333334,
+        "pc_mean": 3.5166666666666666,
+        "sa_pass_rate": 0.23333333333333334,
+        "pc_pass_rate": 0.4166666666666667,
+        "joint_pass_rate": 0.21666666666666667,
+        "scope": "Fixed60 historical VideoPhy2 captions adapted to common first-image I2V; seed42. Not the official590-caption T2V benchmark.",
+        "training_verifier_is_independent": true
+      },
+      "R1": {
+        "count": 60,
+        "sa_mean": 2.8833333333333333,
+        "pc_mean": 3.6666666666666665,
+        "sa_pass_rate": 0.23333333333333334,
+        "pc_pass_rate": 0.4666666666666667,
+        "joint_pass_rate": 0.21666666666666667,
+        "scope": "Fixed60 historical VideoPhy2 captions adapted to common first-image I2V; seed42. Not the official590-caption T2V benchmark.",
+        "training_verifier_is_independent": true
+      },
+      "R10A": {
+        "count": 60,
+        "sa_mean": 2.75,
+        "pc_mean": 3.8333333333333335,
+        "sa_pass_rate": 0.18333333333333332,
+        "pc_pass_rate": 0.6,
+        "joint_pass_rate": 0.15,
+        "scope": "Fixed60 historical VideoPhy2 captions adapted to common first-image I2V; seed42. Not the official590-caption T2V benchmark.",
+        "training_verifier_is_independent": true
+      },
+      "R11A": {
+        "count": 60,
+        "sa_mean": 2.8666666666666667,
+        "pc_mean": 3.5166666666666666,
+        "sa_pass_rate": 0.18333333333333332,
+        "pc_pass_rate": 0.43333333333333335,
+        "joint_pass_rate": 0.16666666666666666,
+        "scope": "Fixed60 historical VideoPhy2 captions adapted to common first-image I2V; seed42. Not the official590-caption T2V benchmark.",
+        "training_verifier_is_independent": true
+      }
+    },
+    "paired": {
+      "Wan+LoRA400": {
+        "sa": {
+          "mean_change": -0.11666666666666667,
+          "wins": 3,
+          "ties": 48,
+          "losses": 9,
+          "transitions": {
+            "2->2": 13,
+            "3->2": 5,
+            "3->3": 25,
+            "4->3": 3,
+            "4->4": 10,
+            "2->3": 2,
+            "4->2": 1,
+            "3->4": 1
+          },
+          "pass_gains": [
+            "VP044"
+          ],
+          "pass_losses": [
+            "VP008",
+            "VP022",
+            "VP034",
+            "VP038"
+          ],
+          "changed_cases": [
+            {
+              "id": "VP002",
+              "caption": "A thin piece of wood is bent into a bow shape, exhibiting its flexibility.",
+              "before": 3,
+              "after": 2
+            },
+            {
+              "id": "VP006",
+              "caption": "A large, wet canvas is twisted to remove excess paint, leaving drips down the side.",
+              "before": 3,
+              "after": 2
+            },
+            {
+              "id": "VP007",
+              "caption": "Multiple ping pong balls are shown, illustrating different stages of a rally.",
+              "before": 3,
+              "after": 2
+            },
+            {
+              "id": "VP008",
+              "caption": "A person bounces to a specific rhythm on a trampoline, their body movement clearly timed to a beat.",
+              "before": 4,
+              "after": 3
+            },
+            {
+              "id": "VP011",
+              "caption": "A person on a unicycle stops abruptly, putting a foot down to maintain balance before continuing.",
+              "before": 2,
+              "after": 3
+            },
+            {
+              "id": "VP022",
+              "caption": "A luger's sled impacts a small snowbank at the edge of the track, causing a slight spray of snow.",
+              "before": 4,
+              "after": 2
+            },
+            {
+              "id": "VP034",
+              "caption": "A large, clear balloon is inflated with air, showing the internal pressure causing the balloon to stretch.",
+              "before": 4,
+              "after": 3
+            },
+            {
+              "id": "VP038",
+              "caption": "A paint roller, dipped in green paint, is used to cover a section of a metal fence, creating a uniform green coat.",
+              "before": 4,
+              "after": 3
+            },
+            {
+              "id": "VP044",
+              "caption": "Multiple paragliders launch sequentially from a cliff edge, showcasing the staggered takeoffs and individual flight paths.",
+              "before": 3,
+              "after": 4
+            },
+            {
+              "id": "VP050",
+              "caption": "A sledgehammer is swung at a pile of rocks, scattering and breaking some of them.",
+              "before": 3,
+              "after": 2
+            },
+            {
+              "id": "VP051",
+              "caption": "A billiard ball is struck and rolls across a felt-covered pool table, hitting another ball.",
+              "before": 3,
+              "after": 2
+            },
+            {
+              "id": "VP052",
+              "caption": "A soccer ball is kicked and hits a person's leg, deflecting at a different angle.",
+              "before": 2,
+              "after": 3
+            }
+          ]
+        },
+        "pc": {
+          "mean_change": 0,
+          "wins": 8,
+          "ties": 45,
+          "losses": 7,
+          "transitions": {
+            "3->3": 26,
+            "2->2": 1,
+            "5->5": 6,
+            "4->4": 12,
+            "4->2": 1,
+            "4->5": 3,
+            "3->4": 3,
+            "5->4": 1,
+            "2->3": 1,
+            "5->3": 1,
+            "3->2": 3,
+            "4->3": 1,
+            "3->5": 1
+          },
+          "pass_gains": [
+            "VP017",
+            "VP030",
+            "VP050",
+            "VP051"
+          ],
+          "pass_losses": [
+            "VP011",
+            "VP034",
+            "VP049"
+          ],
+          "changed_cases": [
+            {
+              "id": "VP011",
+              "caption": "A person on a unicycle stops abruptly, putting a foot down to maintain balance before continuing.",
+              "before": 4,
+              "after": 2
+            },
+            {
+              "id": "VP015",
+              "caption": "A rower pulls an oar from the water, the blade dripping water back into the lake. .",
+              "before": 4,
+              "after": 5
+            },
+            {
+              "id": "VP017",
+              "caption": "A unicycle wheel rolls over a small curb; the rider adjusts their position to keep upright.",
+              "before": 3,
+              "after": 4
+            },
+            {
+              "id": "VP022",
+              "caption": "A luger's sled impacts a small snowbank at the edge of the track, causing a slight spray of snow.",
+              "before": 4,
+              "after": 5
+            },
+            {
+              "id": "VP027",
+              "caption": "Hands shape a lump of clay-like bread dough into a smooth, round boule on a wooden table.",
+              "before": 5,
+              "after": 4
+            },
+            {
+              "id": "VP030",
+              "caption": "Someone throws a snowball into the air, it breaks apart during flight.",
+              "before": 3,
+              "after": 4
+            },
+            {
+              "id": "VP033",
+              "caption": "A player jumps high to block a spike, their hands impacting the ball forcefully, sending it back across the net.",
+              "before": 2,
+              "after": 3
+            },
+            {
+              "id": "VP034",
+              "caption": "A large, clear balloon is inflated with air, showing the internal pressure causing the balloon to stretch.",
+              "before": 5,
+              "after": 3
+            },
+            {
+              "id": "VP037",
+              "caption": "A competitor approaches the runway, accelerates, jumps, and lands with their legs spread wide.",
+              "before": 3,
+              "after": 2
+            },
+            {
+              "id": "VP040",
+              "caption": "Poi are swung against a soft surface, making a thudding sound (NOTE: This prompt includes sound, but it's included to illustrate the effect of the action, not to describe it in detail.  The focus is still on the visible impact).",
+              "before": 4,
+              "after": 5
+            },
+            {
+              "id": "VP049",
+              "caption": "A crane's claw gently nudges a large container, causing it to shift a few centimeters.",
+              "before": 4,
+              "after": 3
+            },
+            {
+              "id": "VP050",
+              "caption": "A sledgehammer is swung at a pile of rocks, scattering and breaking some of them.",
+              "before": 3,
+              "after": 4
+            },
+            {
+              "id": "VP051",
+              "caption": "A billiard ball is struck and rolls across a felt-covered pool table, hitting another ball.",
+              "before": 3,
+              "after": 5
+            },
+            {
+              "id": "VP054",
+              "caption": "An athlete throws a hammer, the rotation of the hammer head clearly visible against the sky.",
+              "before": 3,
+              "after": 2
+            },
+            {
+              "id": "VP057",
+              "caption": "A player kicks a soccer ball which hits a lamp post, the ball rebounding at an angle.",
+              "before": 3,
+              "after": 2
+            }
+          ]
+        },
+        "joint": {
+          "gains": [
+            "VP044"
+          ],
+          "losses": [
+            "VP008",
+            "VP022",
+            "VP034",
+            "VP038"
+          ]
+        }
+      },
+      "R1": {
+        "sa": {
+          "mean_change": -0.016666666666666666,
+          "wins": 7,
+          "ties": 46,
+          "losses": 7,
+          "transitions": {
+            "2->2": 15,
+            "3->2": 3,
+            "3->3": 21,
+            "4->3": 3,
+            "4->4": 10,
+            "2->3": 6,
+            "4->2": 1,
+            "3->4": 1
+          },
+          "pass_gains": [
+            "VP044"
+          ],
+          "pass_losses": [
+            "VP008",
+            "VP022",
+            "VP034",
+            "VP038"
+          ],
+          "changed_cases": [
+            {
+              "id": "VP002",
+              "caption": "A thin piece of wood is bent into a bow shape, exhibiting its flexibility.",
+              "before": 3,
+              "after": 2
+            },
+            {
+              "id": "VP008",
+              "caption": "A person bounces to a specific rhythm on a trampoline, their body movement clearly timed to a beat.",
+              "before": 4,
+              "after": 3
+            },
+            {
+              "id": "VP011",
+              "caption": "A person on a unicycle stops abruptly, putting a foot down to maintain balance before continuing.",
+              "before": 2,
+              "after": 3
+            },
+            {
+              "id": "VP019",
+              "caption": "Javelin with a damaged tip is thrown; it wobbles in flight and lands off-target.",
+              "before": 2,
+              "after": 3
+            },
+            {
+              "id": "VP022",
+              "caption": "A luger's sled impacts a small snowbank at the edge of the track, causing a slight spray of snow.",
+              "before": 4,
+              "after": 2
+            },
+            {
+              "id": "VP025",
+              "caption": "A large, orange plastic egg is rolled up a plastic slide, then rolls down, ending at the bottom.",
+              "before": 2,
+              "after": 3
+            },
+            {
+              "id": "VP026",
+              "caption": "Two people stretch a bungee cord, extending it to its maximum length.",
+              "before": 3,
+              "after": 2
+            },
+            {
+              "id": "VP033",
+              "caption": "A player jumps high to block a spike, their hands impacting the ball forcefully, sending it back across the net.",
+              "before": 2,
+              "after": 3
+            },
+            {
+              "id": "VP034",
+              "caption": "A large, clear balloon is inflated with air, showing the internal pressure causing the balloon to stretch.",
+              "before": 4,
+              "after": 3
+            },
+            {
+              "id": "VP038",
+              "caption": "A paint roller, dipped in green paint, is used to cover a section of a metal fence, creating a uniform green coat.",
+              "before": 4,
+              "after": 3
+            },
+            {
+              "id": "VP039",
+              "caption": "A wedge is driven into a log using a sledgehammer, splitting the log cleanly apart.",
+              "before": 2,
+              "after": 3
+            },
+            {
+              "id": "VP044",
+              "caption": "Multiple paragliders launch sequentially from a cliff edge, showcasing the staggered takeoffs and individual flight paths.",
+              "before": 3,
+              "after": 4
+            },
+            {
+              "id": "VP051",
+              "caption": "A billiard ball is struck and rolls across a felt-covered pool table, hitting another ball.",
+              "before": 3,
+              "after": 2
+            },
+            {
+              "id": "VP052",
+              "caption": "A soccer ball is kicked and hits a person's leg, deflecting at a different angle.",
+              "before": 2,
+              "after": 3
+            }
+          ]
+        },
+        "pc": {
+          "mean_change": -0.15,
+          "wins": 6,
+          "ties": 40,
+          "losses": 14,
+          "transitions": {
+            "3->3": 24,
+            "3->2": 4,
+            "4->3": 3,
+            "5->5": 7,
+            "4->4": 9,
+            "4->2": 1,
+            "5->4": 5,
+            "3->4": 2,
+            "4->5": 2,
+            "2->3": 1,
+            "5->3": 1,
+            "3->5": 1
+          },
+          "pass_gains": [
+            "VP017",
+            "VP030",
+            "VP051"
+          ],
+          "pass_losses": [
+            "VP006",
+            "VP011",
+            "VP025",
+            "VP034",
+            "VP049"
+          ],
+          "changed_cases": [
+            {
+              "id": "VP003",
+              "caption": "A gymnast performs a back handspring, landing cleanly on their feet on a padded floor.",
+              "before": 3,
+              "after": 2
+            },
+            {
+              "id": "VP006",
+              "caption": "A large, wet canvas is twisted to remove excess paint, leaving drips down the side.",
+              "before": 4,
+              "after": 3
+            },
+            {
+              "id": "VP011",
+              "caption": "A person on a unicycle stops abruptly, putting a foot down to maintain balance before continuing.",
+              "before": 4,
+              "after": 2
+            },
+            {
+              "id": "VP014",
+              "caption": "Multiple water balloons are tossed upwards, simultaneously bursting in the air in a small arc.",
+              "before": 5,
+              "after": 4
+            },
+            {
+              "id": "VP017",
+              "caption": "A unicycle wheel rolls over a small curb; the rider adjusts their position to keep upright.",
+              "before": 3,
+              "after": 4
+            },
+            {
+              "id": "VP021",
+              "caption": "A skateboarder rolls along a smooth concrete path, maintaining a steady pace.",
+              "before": 5,
+              "after": 4
+            },
+            {
+              "id": "VP022",
+              "caption": "A luger's sled impacts a small snowbank at the edge of the track, causing a slight spray of snow.",
+              "before": 4,
+              "after": 5
+            },
+            {
+              "id": "VP025",
+              "caption": "A large, orange plastic egg is rolled up a plastic slide, then rolls down, ending at the bottom.",
+              "before": 4,
+              "after": 3
+            },
+            {
+              "id": "VP027",
+              "caption": "Hands shape a lump of clay-like bread dough into a smooth, round boule on a wooden table.",
+              "before": 5,
+              "after": 4
+            },
+            {
+              "id": "VP030",
+              "caption": "Someone throws a snowball into the air, it breaks apart during flight.",
+              "before": 3,
+              "after": 4
+            },
+            {
+              "id": "VP032",
+              "caption": "A player uses a quick set to spike the ball, driving it downward at a steep angle.",
+              "before": 2,
+              "after": 3
+            },
+            {
+              "id": "VP034",
+              "caption": "A large, clear balloon is inflated with air, showing the internal pressure causing the balloon to stretch.",
+              "before": 5,
+              "after": 3
+            },
+            {
+              "id": "VP037",
+              "caption": "A competitor approaches the runway, accelerates, jumps, and lands with their legs spread wide.",
+              "before": 3,
+              "after": 2
+            },
+            {
+              "id": "VP043",
+              "caption": "A spinnaker is deployed on a racing yacht, expanding like a parachute and creating a large amount of thrust.",
+              "before": 5,
+              "after": 4
+            },
+            {
+              "id": "VP044",
+              "caption": "Multiple paragliders launch sequentially from a cliff edge, showcasing the staggered takeoffs and individual flight paths.",
+              "before": 4,
+              "after": 5
+            },
+            {
+              "id": "VP045",
+              "caption": "A sailor uses a winch to tighten the halyard raising a heavy mainsail high up the mast.",
+              "before": 5,
+              "after": 4
+            },
+            {
+              "id": "VP049",
+              "caption": "A crane's claw gently nudges a large container, causing it to shift a few centimeters.",
+              "before": 4,
+              "after": 3
+            },
+            {
+              "id": "VP051",
+              "caption": "A billiard ball is struck and rolls across a felt-covered pool table, hitting another ball.",
+              "before": 3,
+              "after": 5
+            },
+            {
+              "id": "VP054",
+              "caption": "An athlete throws a hammer, the rotation of the hammer head clearly visible against the sky.",
+              "before": 3,
+              "after": 2
+            },
+            {
+              "id": "VP057",
+              "caption": "A player kicks a soccer ball which hits a lamp post, the ball rebounding at an angle.",
+              "before": 3,
+              "after": 2
+            }
+          ]
+        },
+        "joint": {
+          "gains": [
+            "VP044"
+          ],
+          "losses": [
+            "VP008",
+            "VP022",
+            "VP034",
+            "VP038"
+          ]
+        }
+      },
+      "R10A": {
+        "sa": {
+          "mean_change": 0.11666666666666667,
+          "wins": 13,
+          "ties": 42,
+          "losses": 5,
+          "transitions": {
+            "2->2": 16,
+            "3->2": 2,
+            "3->3": 18,
+            "3->4": 3,
+            "2->3": 10,
+            "4->4": 8,
+            "4->2": 1,
+            "4->3": 2
+          },
+          "pass_gains": [
+            "VP010",
+            "VP041",
+            "VP044"
+          ],
+          "pass_losses": [
+            "VP022",
+            "VP034",
+            "VP038"
+          ],
+          "changed_cases": [
+            {
+              "id": "VP002",
+              "caption": "A thin piece of wood is bent into a bow shape, exhibiting its flexibility.",
+              "before": 3,
+              "after": 2
+            },
+            {
+              "id": "VP006",
+              "caption": "A large, wet canvas is twisted to remove excess paint, leaving drips down the side.",
+              "before": 3,
+              "after": 2
+            },
+            {
+              "id": "VP010",
+              "caption": "A person mops up a puddle of water on a concrete floor, the water disappearing as the mop passes.",
+              "before": 3,
+              "after": 4
+            },
+            {
+              "id": "VP011",
+              "caption": "A person on a unicycle stops abruptly, putting a foot down to maintain balance before continuing.",
+              "before": 2,
+              "after": 3
+            },
+            {
+              "id": "VP017",
+              "caption": "A unicycle wheel rolls over a small curb; the rider adjusts their position to keep upright.",
+              "before": 2,
+              "after": 3
+            },
+            {
+              "id": "VP019",
+              "caption": "Javelin with a damaged tip is thrown; it wobbles in flight and lands off-target.",
+              "before": 2,
+              "after": 3
+            },
+            {
+              "id": "VP022",
+              "caption": "A luger's sled impacts a small snowbank at the edge of the track, causing a slight spray of snow.",
+              "before": 4,
+              "after": 2
+            },
+            {
+              "id": "VP025",
+              "caption": "A large, orange plastic egg is rolled up a plastic slide, then rolls down, ending at the bottom.",
+              "before": 2,
+              "after": 3
+            },
+            {
+              "id": "VP028",
+              "caption": "A person skillfully tosses several coins in the air, catching them one by one.",
+              "before": 2,
+              "after": 3
+            },
+            {
+              "id": "VP029",
+              "caption": "A player hits a forehand drive, the ball spinning rapidly as it crosses the net.",
+              "before": 2,
+              "after": 3
+            },
+            {
+              "id": "VP033",
+              "caption": "A player jumps high to block a spike, their hands impacting the ball forcefully, sending it back across the net.",
+              "before": 2,
+              "after": 3
+            },
+            {
+              "id": "VP034",
+              "caption": "A large, clear balloon is inflated with air, showing the internal pressure causing the balloon to stretch.",
+              "before": 4,
+              "after": 3
+            },
+            {
+              "id": "VP038",
+              "caption": "A paint roller, dipped in green paint, is used to cover a section of a metal fence, creating a uniform green coat.",
+              "before": 4,
+              "after": 3
+            },
+            {
+              "id": "VP039",
+              "caption": "A wedge is driven into a log using a sledgehammer, splitting the log cleanly apart.",
+              "before": 2,
+              "after": 3
+            },
+            {
+              "id": "VP041",
+              "caption": "Two swimmers race side-by-side, their hands entering the water simultaneously, creating small trails of bubbles.",
+              "before": 3,
+              "after": 4
+            },
+            {
+              "id": "VP044",
+              "caption": "Multiple paragliders launch sequentially from a cliff edge, showcasing the staggered takeoffs and individual flight paths.",
+              "before": 3,
+              "after": 4
+            },
+            {
+              "id": "VP052",
+              "caption": "A soccer ball is kicked and hits a person's leg, deflecting at a different angle.",
+              "before": 2,
+              "after": 3
+            },
+            {
+              "id": "VP054",
+              "caption": "An athlete throws a hammer, the rotation of the hammer head clearly visible against the sky.",
+              "before": 2,
+              "after": 3
+            }
+          ]
+        },
+        "pc": {
+          "mean_change": -0.31666666666666665,
+          "wins": 5,
+          "ties": 35,
+          "losses": 20,
+          "transitions": {
+            "3->3": 19,
+            "2->2": 1,
+            "4->3": 8,
+            "5->5": 7,
+            "5->4": 6,
+            "4->4": 8,
+            "4->2": 2,
+            "4->5": 3,
+            "5->3": 2,
+            "3->4": 2,
+            "3->2": 2
+          },
+          "pass_gains": [
+            "VP030",
+            "VP038"
+          ],
+          "pass_losses": [
+            "VP004",
+            "VP006",
+            "VP011",
+            "VP019",
+            "VP023",
+            "VP025",
+            "VP034",
+            "VP039",
+            "VP042",
+            "VP049",
+            "VP054",
+            "VP056"
+          ],
+          "changed_cases": [
+            {
+              "id": "VP004",
+              "caption": "A plastic ruler is bent until it cracks, displaying a visible stress fracture that propagates.",
+              "before": 4,
+              "after": 3
+            },
+            {
+              "id": "VP006",
+              "caption": "A large, wet canvas is twisted to remove excess paint, leaving drips down the side.",
+              "before": 4,
+              "after": 3
+            },
+            {
+              "id": "VP008",
+              "caption": "A person bounces to a specific rhythm on a trampoline, their body movement clearly timed to a beat.",
+              "before": 5,
+              "after": 4
+            },
+            {
+              "id": "VP011",
+              "caption": "A person on a unicycle stops abruptly, putting a foot down to maintain balance before continuing.",
+              "before": 4,
+              "after": 2
+            },
+            {
+              "id": "VP014",
+              "caption": "Multiple water balloons are tossed upwards, simultaneously bursting in the air in a small arc.",
+              "before": 5,
+              "after": 4
+            },
+            {
+              "id": "VP016",
+              "caption": "A scientist uses a probe to nudge a small, delicate insect on a leaf, causing it to twitch minimally.",
+              "before": 4,
+              "after": 5
+            },
+            {
+              "id": "VP019",
+              "caption": "Javelin with a damaged tip is thrown; it wobbles in flight and lands off-target.",
+              "before": 4,
+              "after": 3
+            },
+            {
+              "id": "VP020",
+              "caption": "A time-lapse showing the process of someone tying a bow tie, quickly showing the steps in sequence.",
+              "before": 5,
+              "after": 4
+            },
+            {
+              "id": "VP022",
+              "caption": "A luger's sled impacts a small snowbank at the edge of the track, causing a slight spray of snow.",
+              "before": 4,
+              "after": 5
+            },
+            {
+              "id": "VP023",
+              "caption": "A surfer falls off their board, colliding briefly with another surfer, before swimming away.",
+              "before": 4,
+              "after": 3
+            },
+            {
+              "id": "VP025",
+              "caption": "A large, orange plastic egg is rolled up a plastic slide, then rolls down, ending at the bottom.",
+              "before": 5,
+              "after": 3
+            },
+            {
+              "id": "VP026",
+              "caption": "Two people stretch a bungee cord, extending it to its maximum length.",
+              "before": 5,
+              "after": 4
+            },
+            {
+              "id": "VP030",
+              "caption": "Someone throws a snowball into the air, it breaks apart during flight.",
+              "before": 3,
+              "after": 4
+            },
+            {
+              "id": "VP034",
+              "caption": "A large, clear balloon is inflated with air, showing the internal pressure causing the balloon to stretch.",
+              "before": 5,
+              "after": 3
+            },
+            {
+              "id": "VP037",
+              "caption": "A competitor approaches the runway, accelerates, jumps, and lands with their legs spread wide.",
+              "before": 3,
+              "after": 2
+            },
+            {
+              "id": "VP038",
+              "caption": "A paint roller, dipped in green paint, is used to cover a section of a metal fence, creating a uniform green coat.",
+              "before": 3,
+              "after": 4
+            },
+            {
+              "id": "VP039",
+              "caption": "A wedge is driven into a log using a sledgehammer, splitting the log cleanly apart.",
+              "before": 4,
+              "after": 3
+            },
+            {
+              "id": "VP042",
+              "caption": "A player throws a sidearm pass; the football travels on a sideways trajectory before being caught.",
+              "before": 4,
+              "after": 3
+            },
+            {
+              "id": "VP043",
+              "caption": "A spinnaker is deployed on a racing yacht, expanding like a parachute and creating a large amount of thrust.",
+              "before": 5,
+              "after": 4
+            },
+            {
+              "id": "VP045",
+              "caption": "A sailor uses a winch to tighten the halyard raising a heavy mainsail high up the mast.",
+              "before": 5,
+              "after": 4
+            },
+            {
+              "id": "VP049",
+              "caption": "A crane's claw gently nudges a large container, causing it to shift a few centimeters.",
+              "before": 4,
+              "after": 3
+            },
+            {
+              "id": "VP051",
+              "caption": "A billiard ball is struck and rolls across a felt-covered pool table, hitting another ball.",
+              "before": 4,
+              "after": 5
+            },
+            {
+              "id": "VP054",
+              "caption": "An athlete throws a hammer, the rotation of the hammer head clearly visible against the sky.",
+              "before": 4,
+              "after": 2
+            },
+            {
+              "id": "VP056",
+              "caption": "Arrows are shot at a moving target, with some arrows hitting and some missing visibly.",
+              "before": 4,
+              "after": 3
+            },
+            {
+              "id": "VP057",
+              "caption": "A player kicks a soccer ball which hits a lamp post, the ball rebounding at an angle.",
+              "before": 3,
+              "after": 2
+            }
+          ]
+        },
+        "joint": {
+          "gains": [
+            "VP010",
+            "VP041",
+            "VP044"
+          ],
+          "losses": [
+            "VP022",
+            "VP034"
+          ]
+        }
+      }
+    },
+    "scope": "Original40 plus fixed extra20, not 60 independent additional cases; same I2V seed42 protocol."
+  }
+}

@@ -1,0 +1,12 @@
+# Physical content revision, 2026-10-30
+
+- The user explicitly requested continued architecture/training improvement until useful, physically meaningful C differentiation and actual generation benefit have adequate evidence. Preserve the Qwen -> learnable Q enhancement -> full-width C -> state-dependent physical fusion design and native Wan text/execution paths.
+- This directory is a new revision. Never alter earlier variants, snapshots, caches or checkpoints. Official Qwen/Wan foundations and the existing WISA training data are the only initializers/data sources; project checkpoints are analysis references only.
+- New modules, cache overlays, preparation, training, inference, matched baselines and results belong here. Shared old input caches may be read. Future video cannot enter generation-side C.
+- The first candidate retains Q256, two shared Q updates, frozen Qwen, full-width C and independent physical K/V/O. Native-text semantic calibration of physical word features is an interface initializer trained on the existing training split, not an extra inference text branch or future-video condition.
+- Retain self-attention with within-relation tokens and cross-relation summaries, preserve a grounded content path through Q/C, and learn state-dependent physical values. Do not seek arbitrary orthogonality or token diversity.
+- The execution objective keeps the real-video FM target. Any tail-sensitive aggregation is explicitly a generic reduction of averaging dilution, not a physical verifier or a complete physical correctness loss. Matched baselines use the same objective/data/order/noise/sampler and total update budget. The native baseline trains its LoRA on every update; it does not skip the candidate's interface period. Disclose candidate128interface+872joint versus baseline1000LoRA; this baseline has more Wan-LoRA updates.
+- No verifier/judge/reward, JEPA, optical flow, tracking/trajectory targets, manual dense labels, new source/scope/phase branches or independent future-state predictor.
+- Do not investigate precision, aggregate RGB changes, or default VAE/patch settings as repair targets. The user explicitly rejected these directions.
+- Use the existing environments and det 0.32.1. Single blk-96g slot, actual RTX PRO 6000 / RTX6000 Blackwell only; exit86 before model loading on other devices. Preserve all other running jobs.
+- Inspect actual paired generated processes and correct/unrelated/mean/off C controls. Representation separation and reduced losses alone do not satisfy the goal.

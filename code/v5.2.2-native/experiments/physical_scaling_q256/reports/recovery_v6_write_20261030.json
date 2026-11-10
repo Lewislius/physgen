@@ -1,0 +1,256 @@
+{
+  "updated_at_utc": "2026-10-30T03:27:49.021349+00:00",
+  "source_experiment": 66674,
+  "source_trial": 68061,
+  "source_run": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_scaling_q256/runs/v6_write_66674",
+  "last_completed_step": 887,
+  "failure_step": 888,
+  "failure_micro": 3,
+  "failure_sample": "wisa0023119",
+  "exit_code": 137,
+  "failure": "SIGKILL without Python traceback",
+  "root_cause_status": "unconfirmed; no kernel/cgroup telemetry survived in original run",
+  "evidence": {
+    "last_completed_gradients_finite": true,
+    "last_completed_peak_gpu_gib": 51.9773,
+    "frame_decode_succeeded": true,
+    "decoded_frames": 28,
+    "decoded_size": [
+      832,
+      480
+    ],
+    "decode_peak_process_rss_kib": 641500,
+    "decode_seconds": 1.2498
+  },
+  "resume": {
+    "experiment_id": 66710,
+    "trial_id": 68097,
+    "step": 860,
+    "cursor": 3440,
+    "target_step": 1000,
+    "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_scaling_q256/recovery/20261030_v6_write_resume860_s20",
+    "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_scaling_q256/recovery/20261030_v6_write_resume860_s20/resume_blk96g.yaml",
+    "run": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_scaling_q256/runs/v6_write_resume860_s20_66710",
+    "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+    "checkpoint_every": 20
+  },
+  "changes": [
+    "mmap checkpoint CPU storage during restore",
+    "validate exact optimizer groups and complete-step cursor",
+    "record full-state restore event",
+    "save latest every20 updates (runtime override only)",
+    "record process/host/cgroup/GPU memory and termination",
+    "log teacher decode and reasoning completion"
+  ],
+  "unchanged": [
+    "model parameters and architecture",
+    "teacher targets and samples",
+    "learning rates and schedules",
+    "loss definitions and weights",
+    "random seeds and data order"
+  ],
+  "checks": [
+    "config/data audit passed",
+    "exact next AdamW update matches uninterrupted CPU update after restoration",
+    "Python/RNG/cursor restoration checked",
+    "architecture/data/supervision/schedule/config byte-identical to original submitted snapshot"
+  ],
+  "v5": {
+    "experiment_id": 66706,
+    "trial_id": 68093,
+    "gpu_verified": true,
+    "first_updates_finite": true,
+    "joint_training_check": {
+      "last_step": 131,
+      "first_joint_update": {
+        "kind": "train",
+        "time": 1793330831.638072,
+        "step": 129,
+        "phase": "joint",
+        "cursor": 516,
+        "seconds": 11.158584761433303,
+        "fm": 0.4372454732656479,
+        "aux": 1.2806314527988434,
+        "weighted_aux": 0.038418943583965304,
+        "aux_samples": 3,
+        "gradients": {
+          "enhancement": 0.10393773019313812,
+          "fusion_read": 0.009200815111398697,
+          "fusion_write": 0.3203933537006378,
+          "semantic_bridge": 0.06414466351270676,
+          "wan_lora": 0.004729143343865871
+        },
+        "clip_scales": {
+          "enhancement": 1.0,
+          "fusion_read": 1.0,
+          "fusion_write": 1.0,
+          "semantic_bridge": 1.0,
+          "wan_lora": 1.0
+        },
+        "aux_coefficient": 0.03,
+        "learning_rates": {
+          "enhancement": 5e-05,
+          "fusion_read": 2e-05,
+          "fusion_write": 1e-05,
+          "semantic_bridge": 5e-05,
+          "wan_lora": 1.5625e-07
+        },
+        "peak_gib": 43.41799592971802
+      },
+      "validation": {
+        "kind": "validation",
+        "time": 1793330820.4576714,
+        "step": 128,
+        "fm": 0.18567884899675846,
+        "video": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_v5_scaling_q256/runs/v5_ce_66706/videos/val_source0000042_step0128_seed42.mp4",
+        "sample": "source0000042"
+      },
+      "wan_gradient_nonzero": true,
+      "wan_warmup_correct": true,
+      "stage_checkpoint": "experiments/physical_v5_scaling_q256/runs/v5_ce_66706/step0128.pt"
+    }
+  },
+  "recovery_attempts": [
+    {
+      "experiment_id": 66707,
+      "trial_id": 68094,
+      "gpu": "RTX PRO6000",
+      "restored_step": 850,
+      "saved_step": 860,
+      "status": "stopped_after_checkpoint_to_apply_user_20_step_interval"
+    },
+    {
+      "experiment_id": 66708,
+      "trial_id": 68095,
+      "gpu": "H100",
+      "status": "rejected_before_model_load_then_killed"
+    },
+    {
+      "experiment_id": 66709,
+      "status": "rejected_before_model_load_then_killed",
+      "gpu": "H100"
+    },
+    {
+      "experiment_id": 66710,
+      "status": "training_verified",
+      "gpu": "RTX PRO6000",
+      "trial_id": 68097
+    }
+  ],
+  "replayed_steps_comparison": {
+    "count": 11,
+    "maximum_absolute_fm_difference": 1.463480293750763e-05,
+    "same_cursor": true,
+    "same_learning_rates": true
+  },
+  "current_training_checks": {
+    "v5": {
+      "step": 82,
+      "finite_updates": 82,
+      "max_peak_gpu_gib": 40.2046217918396,
+      "last_learning_rates": {
+        "enhancement": 5e-05,
+        "fusion_read": 2e-05,
+        "fusion_write": 1e-05,
+        "semantic_bridge": 5e-05,
+        "wan_lora": 0.0
+      },
+      "last_gradient_norms": {
+        "enhancement": 0.1477799266576767,
+        "fusion_read": 0.015080932527780533,
+        "fusion_write": 0.9496063590049744,
+        "semantic_bridge": 0.053536441177129745,
+        "wan_lora": 0.0
+      },
+      "gpu": {
+        "kind": "gpu_policy",
+        "actual": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "visible_count": 1,
+        "accepted": true,
+        "resource_pool": "blk-96g",
+        "experiment_id": "66706",
+        "time": 1793328644.2524428
+      },
+      "last_event": "train"
+    },
+    "v6_write": {
+      "step": 869,
+      "finite_updates": 9,
+      "max_peak_gpu_gib": 38.77487087249756,
+      "last_learning_rates": {
+        "enhancement": 1.972849935516587e-05,
+        "fusion_read": 7.891399742066349e-06,
+        "fusion_write": 3.945699871033174e-06,
+        "wan_lora": 7.891399742066349e-06
+      },
+      "last_gradient_norms": {
+        "enhancement": 0.048868678510189056,
+        "fusion_read": 0.014346196316182613,
+        "fusion_write": 0.06308241188526154,
+        "wan_lora": 0.04560587927699089
+      },
+      "gpu": {
+        "kind": "gpu_policy",
+        "actual": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "visible_count": 1,
+        "accepted": true,
+        "resource_pool": "blk-96g",
+        "experiment_id": "66710",
+        "time": 1793329862.5120142
+      },
+      "last_event": "micro"
+    }
+  },
+  "passed_original_failure_point": {
+    "step888": {
+      "kind": "train",
+      "time": 1793330444.6335995,
+      "step": 888,
+      "phase": "joint",
+      "cursor": 3552,
+      "seconds": 146.40008139796555,
+      "fm": 0.24564974009990692,
+      "aux": 0.1633491888642311,
+      "weighted_aux": 0.00020703812856628993,
+      "aux_samples": 3,
+      "gradients": {
+        "enhancement": 0.007774488069117069,
+        "fusion_read": 0.00279389601200819,
+        "fusion_write": 0.022861583158373833,
+        "wan_lora": 0.010198673233389854
+      },
+      "clip_scales": {
+        "enhancement": 1.0,
+        "fusion_read": 1.0,
+        "fusion_write": 1.0,
+        "wan_lora": 1.0
+      },
+      "aux_coefficient": 0.0025464143776850485,
+      "learning_rates": {
+        "enhancement": 1.7285525035800645e-05,
+        "fusion_read": 6.914210014320258e-06,
+        "fusion_write": 3.457105007160129e-06,
+        "wan_lora": 6.914210014320258e-06
+      },
+      "peak_gib": 55.16380739212036
+    },
+    "sample": {
+      "kind": "micro",
+      "time": 1793330437.1002653,
+      "step": 888,
+      "phase": "joint",
+      "micro": 3,
+      "sample": "wisa0023119",
+      "fm": 0.06895299255847931,
+      "aux": 0.15870706737041473,
+      "weighted_aux": 3.197502238582177e-05,
+      "sigma": 0.920880138874054,
+      "text_dropped": false,
+      "aux_active": true,
+      "aux_coefficient": 0.0025464143776850485,
+      "peak_gib": 55.16380739212036
+    },
+    "target_prepared": true,
+    "skipped_sample": false
+  }
+}

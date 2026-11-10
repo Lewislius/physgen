@@ -1,0 +1,72 @@
+{
+  "successful_real_pretrained_vae_check": {
+    "kind": "decoder_backward_complete",
+    "sample": "source0000527",
+    "frames": 81,
+    "latent_shape": [
+      1,
+      48,
+      21,
+      30,
+      52
+    ],
+    "seconds": 100.96042243298143,
+    "loss": 0.07410894334316254,
+    "peak_gib": 34.965529918670654,
+    "reserved_gib": 36.80859375,
+    "gradient_rms": [
+      2.131229848600924e-06,
+      1.784708842933469e-06
+    ],
+    "scope": "actual pretrained decoder backward and memory; not generation quality or full-model fit"
+  },
+  "completed_full_model_microbatches": 1,
+  "completed_optimizer_updates": 0,
+  "first_full_model_microbatch": {
+    "kind": "micro",
+    "step": 1,
+    "phase": "interface",
+    "sample": "source0000527",
+    "micro": 1,
+    "peak_gib": 68.96228218078613,
+    "sequence_level": 0.0009509464725852013,
+    "sequence_change": 0.046096742153167725,
+    "condition/process_margin": -7.484108209609985e-06,
+    "condition/output_rms": 0.0014809479471296072,
+    "sigma": 0.5,
+    "sequence_active": 1,
+    "verifier_active": 0,
+    "condition_use_active": 1,
+    "wan_forward_count": 2,
+    "loss/fm": 0.2384483367204666,
+    "loss/process": 0.046096742153167725,
+    "loss/use": 0.6931846141815186,
+    "loss/intensity": 0.06760378926992416,
+    "weighted/fm": 0.2384483367204666,
+    "weighted/process": 0.0046096742153167725,
+    "weighted/use": 0.06931846588850021,
+    "weighted/intensity": 0.006760378833860159,
+    "loss": 0.3191368579864502
+  },
+  "following_failure": {
+    "signal": 9,
+    "first_complete_micro_peak_gib": 68.96228218078613,
+    "first_complete_micro_forward_seconds": 38.089833088219166,
+    "first_complete_micro_backward_seconds": 92.3884400408715,
+    "last_driver_used_mib": 73253,
+    "last_driver_seconds_before_child_exit": 0.9702224731445312,
+    "cgroup_oom_kill": 0,
+    "kernel_access": "Operation not permitted",
+    "sender": "unconfirmed",
+    "next_sample_cache_cpu_read": "passed; wisa0013657, same [1,48,21,30,52] geometry"
+  },
+  "next_required_evidence": {
+    "node": "node9-rtx6000-pro",
+    "utc_interval": [
+      "2026-10-25 13:50:20 UTC",
+      "2026-10-25 13:50:55 UTC"
+    ],
+    "read_only_command": "sudo journalctl -k --since '2026-10-25 13:50:20 UTC' --until '2026-10-25 13:50:55 UTC' --no-pager"
+  },
+  "quality_goals_proven": false
+}

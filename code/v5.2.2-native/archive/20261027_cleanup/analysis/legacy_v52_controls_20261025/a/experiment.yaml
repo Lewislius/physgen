@@ -1,0 +1,53 @@
+name: v52-original-single-gpu-control-a
+description: Unmodified original v5.2 inference entrypoint; same checkpoint/seed and
+  reference,P01. Device comparison only, no new model code or runtime wrapper.
+workspace: ALL-IN-ONE
+project: wan-animate
+max_restarts: 0
+resources:
+  resource_pool: blk-96g
+  slots_per_trial: 1
+  is_single_node: true
+  shm_size: 34359738368
+bind_mounts:
+- host_path: /mount/HOME/liuzhirui
+  container_path: /home/liuzhirui
+- host_path: /mount/NAS1/public
+  container_path: /run/determined/NAS1/public
+environment:
+  image: 10.130.130.5:8192/lab-dev:latest
+  environment_variables:
+  - CHECKPOINT=/home/liuzhirui/Project/physGen/code/v5.2/checkpoints/1d-v52-joint-state-no-lora-96g-832x480-f81_65316/joint/latest.pt
+  - DEMO_ROOT=/home/liuzhirui/Project/physGen/code/v1/demo
+  - WIDTH=832
+  - HEIGHT=480
+  - FRAMES=81
+  - FPS=24
+  - SAMPLING_STEPS=50
+  - SHIFT=5
+  - GUIDANCE=5
+  - SEED=20261006
+  - A_MODE=predicted
+  - CONDITION_STRENGTH=1
+  - BRANCH_MODE=full
+  - TASK_MODE=original
+  - WITHOUT_QWEN=0
+  - CPU_OFFLOAD=0
+  - OMP_NUM_THREADS=4
+  - PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+  - SAMPLE_IDS=reference,P01
+  - OUTPUT=/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/legacy_v52_controls_20261025/a/videos
+checkpoint_storage:
+  type: shared_fs
+  host_path: /mount/HOME/liuzhirui
+  storage_path: Project/physGen/code/v5.2/determined_checkpoints
+  save_experiment_best: 0
+  save_trial_best: 0
+  save_trial_latest: 0
+searcher:
+  name: single
+  metric: completed_cases
+  max_length:
+    epochs: 1
+  smaller_is_better: false
+entrypoint: bash /home/liuzhirui/Project/physGen/code/v5.2/inference/infer_joint_state_no_lora_demo21_1x96g.sh

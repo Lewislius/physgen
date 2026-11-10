@@ -1,0 +1,72 @@
+{
+  "created_utc": "2026-10-25T15:16:18.155882+00:00",
+  "revision": "v522_native_reasoning_operator_v7",
+  "resource_pool": "amp-80g",
+  "slots_per_trial": 1,
+  "software_environment_changed": false,
+  "base_experiment": 66161,
+  "reason_for_resource_change": "Unchanged old v5.2 also SIGKILLed on node9 H100 after 50 successful denoising steps; identical old code completed both videos on RTX. Newly available node6 has 5 free 80GB devices.",
+  "known_peak_full_model_gib": 68.96228218,
+  "memory_limit_claim": "First interface micro fit at 68.96GiB; joint peak remains to be measured on this card.",
+  "code_changes": [
+    "Relative-RMS metric for optional verifier-to-C inference update; explicit opt-in policy, legacy saved policy preserved",
+    "Record every engineering microbatch stage; ordinary training tracing remains off"
+  ],
+  "training_equations_changed": false,
+  "validation_initial": false,
+  "validation_reason": "Skip repeated untrained paired validation; final same-checkpoint C=0 comparison supplies the frozen-Wan baseline.",
+  "tests_passed": 56,
+  "code_files_hashed": 146,
+  "phases": {
+    "interface": 400,
+    "calibration": 460,
+    "joint": 400
+  },
+  "loss_counts": {
+    "interface": 4,
+    "calibration": 2,
+    "joint": 4
+  },
+  "steps": [
+    "Actual VAE paired backward",
+    "Three stage updates, eight accumulated microbatches per stage",
+    "One complete single-trajectory optional C-feedback sample, execution check only",
+    "128 normal interface updates then fixed C comparisons"
+  ],
+  "quality_goals_proven": false,
+  "observed_20261025": {
+    "checked_at_utc": "2026-10-25T16:11:54.020747+00:00",
+    "engineering_stage_peaks_gib": {
+      "interface": 69.45168590545654,
+      "calibration": 44.073615074157715,
+      "joint": 70.0394058227539
+    },
+    "verifier_to_C_gradient_rms": 1.3073815807729261e-08,
+    "normal_updates_completed": 2,
+    "online_feedback": {
+      "kind": "within_one_trajectory",
+      "sampling_steps": 50,
+      "complete_trajectories": 1,
+      "future_reference_used": false,
+      "metric": "euclidean",
+      "latent_elements": 393216,
+      "updates": [
+        {
+          "step": 24,
+          "sigma": 0.8441558480262756,
+          "loss": 0.12109375,
+          "gradient_rms": 1.584630922479846e-06,
+          "relative_C_update_rms": 9.629405184341522e-08
+        },
+        {
+          "step": 37,
+          "sigma": 0.6372548937797546,
+          "loss": 0.1474609375,
+          "gradient_rms": 1.330390205112053e-06,
+          "relative_C_update_rms": 8.084447244982584e-08
+        }
+      ]
+    },
+    "interpretation": "Execution and gradient ownership only. Engineering video used Euclidean feedback because immutable v7 CLI overrides the saved metric; fixed in working v8, snapshot preserved."
+  }
+}

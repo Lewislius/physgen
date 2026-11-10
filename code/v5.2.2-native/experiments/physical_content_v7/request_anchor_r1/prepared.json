@@ -1,0 +1,203 @@
+{
+  "prepared_utc": "2026-10-31T08:20:36.248964+00:00",
+  "status": "full40_completed",
+  "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_anchor_r1/snapshots/20261031T082036Z",
+  "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_anchor_r1/submissions/full40_20261031T082036Z.yaml",
+  "case_count": 40,
+  "gamma": 5,
+  "seed": 42,
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/runs/physical_content_66778/step0400.pt",
+  "model_download": false,
+  "training": false,
+  "original_condition_groups_checked": {
+    "VP001": 4,
+    "VP002": 4,
+    "VP003": 4,
+    "VP004": 4,
+    "VP005": 4,
+    "VP006": 4,
+    "VP007": 4,
+    "VP008": 4,
+    "VP009": 4,
+    "VP010": 4,
+    "VP011": 4,
+    "VP012": 4,
+    "VP013": 4,
+    "VP014": 4,
+    "VP015": 4,
+    "VP016": 4,
+    "VP017": 4,
+    "VP018": 4,
+    "VP019": 4,
+    "VP020": 4,
+    "VP021": 4,
+    "VP022": 4,
+    "VP023": 4,
+    "VP024": 4,
+    "VP025": 4,
+    "VP026": 4,
+    "VP027": 4,
+    "VP028": 4,
+    "VP029": 4,
+    "VP030": 4,
+    "VP031": 4,
+    "VP032": 4,
+    "VP033": 4,
+    "VP034": 4,
+    "VP035": 4,
+    "VP036": 4,
+    "VP037": 4,
+    "VP038": 4,
+    "VP039": 4,
+    "VP040": 4
+  },
+  "syntax_checked": true,
+  "quality_evidence": {
+    "path": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_anchor_r1/inference_outputs/r1_step0400_full40_gamma5_seed42/controls/request_anchored/videophy40",
+    "generated": 40,
+    "status": "completed",
+    "count": 40,
+    "sa_mean": 3.0,
+    "pc_mean": 3.625,
+    "sa_pass_rate": 0.275,
+    "pc_pass_rate": 0.5,
+    "joint_pass_rate": 0.25
+  },
+  "automatic_adoption": false,
+  "experiment_id": 66891,
+  "trial_id": 68278,
+  "updated_utc": "2026-10-31T12:13:35.186193+00:00",
+  "prior_h100_rejections": [
+    66889
+  ],
+  "interpretation": "PC mean preserved at3.625; SA2.95->3.00; PC passes18->20, same10 joint passes. Paired PC6 wins/28 ties/6 losses; a small confirmation candidate, not established across seeds or proof of learned-Q benefit.",
+  "seed43_confirmation": {
+    "status": "completed",
+    "prepared_utc": "2026-10-31T09:44:11.233837+00:00",
+    "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_anchor_r1/snapshots/20261031T094411Z",
+    "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_anchor_r1/submissions/seed43_fixed16_20261031T094411Z.yaml",
+    "cases": [
+      "VP002",
+      "VP004",
+      "VP005",
+      "VP009",
+      "VP010",
+      "VP013",
+      "VP015",
+      "VP016",
+      "VP017",
+      "VP018",
+      "VP024",
+      "VP025",
+      "VP026",
+      "VP027",
+      "VP034",
+      "VP038"
+    ],
+    "seed": 43,
+    "gamma": 5,
+    "modes": [
+      "real",
+      "request_anchored"
+    ],
+    "video_count": 32,
+    "purpose": "One second-seed repeatability check of the inference change",
+    "subset_scope": "Previously fixed16; its seed42 SA change is negative, unlike full40. Do not extrapolate subset confirmation to full40 semantic gains.",
+    "extra_teacher_encoding": false,
+    "training": false,
+    "experiment_id": 66916,
+    "trial_id": 68303,
+    "updated_utc": "2026-10-31T09:46:13.509990+00:00",
+    "queue_priority_note": "Resume on the next released RTX after the already-declared R6 unrelated/off16 control dispatch; current main-line evidence takes priority.",
+    "attempts": [
+      {
+        "experiment_id": 66912,
+        "status": "H100_rejected_before_models_waiting_next_RTX",
+        "trial_id": 68299
+      },
+      {
+        "experiment_id": 66916,
+        "submitted_utc": "2026-10-31T11:21:31.046117+00:00",
+        "status": "running_on_RTX",
+        "trial_id": 68303
+      }
+    ],
+    "result": "experiments/physical_content_v7/request_anchor_r1/reports/seed43_request_vs_original16.json",
+    "metrics": {
+      "sa": {
+        "baseline": 3.0,
+        "candidate": 3.0625,
+        "difference": 0.0625,
+        "paired_bootstrap_95_interval": [
+          -0.125,
+          0.25
+        ],
+        "wins": 2,
+        "ties": 13,
+        "losses": 1
+      },
+      "pc": {
+        "baseline": 3.8125,
+        "candidate": 3.75,
+        "difference": -0.0625,
+        "paired_bootstrap_95_interval": [
+          -0.1875,
+          0.0
+        ],
+        "wins": 0,
+        "ties": 15,
+        "losses": 1
+      },
+      "mean": {
+        "baseline": 3.40625,
+        "candidate": 3.40625,
+        "difference": 0.0,
+        "paired_bootstrap_95_interval": [
+          -0.15625,
+          0.125
+        ],
+        "wins": 2,
+        "ties": 13,
+        "losses": 1
+      },
+      "joint": {
+        "baseline": 0.25,
+        "candidate": 0.25,
+        "difference": 0.0,
+        "paired_bootstrap_95_interval": [
+          -0.1875,
+          0.1875
+        ],
+        "wins": 1,
+        "ties": 14,
+        "losses": 1
+      },
+      "sa_pass_rate": {
+        "baseline": 0.25,
+        "candidate": 0.25,
+        "difference": 0.0,
+        "paired_bootstrap_95_interval": [
+          -0.1875,
+          0.1875
+        ],
+        "wins": 1,
+        "ties": 14,
+        "losses": 1
+      },
+      "pc_pass_rate": {
+        "baseline": 0.625,
+        "candidate": 0.625,
+        "difference": 0.0,
+        "paired_bootstrap_95_interval": [
+          0.0,
+          0.0
+        ],
+        "wins": 0,
+        "ties": 16,
+        "losses": 0
+      }
+    },
+    "cross_seed_report": "experiments/physical_content_v7/request_anchor_r1/reports/cross_seed_confirmation16.json"
+  },
+  "adoption_status": "Not adopted as a stable replacement: seed43 does not reproduce the PC gain; preserved original R1 remains reference"
+}

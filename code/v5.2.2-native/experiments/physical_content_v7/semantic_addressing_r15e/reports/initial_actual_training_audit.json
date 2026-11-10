@@ -1,0 +1,35 @@
+{
+  "utc": "2026-11-06T12:06:14.123737+00:00",
+  "experiment": 67955,
+  "trial": 69342,
+  "full_size_preflight": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_addressing_r15e/reports/jobs/67955/gpu_preflight/result.json",
+  "preflight_passed": true,
+  "parameters": 764443648,
+  "independent_physical_Q_has_generation_gradient": true,
+  "native_text_frozen_checked": true,
+  "phase_policy_checked": "Interface excludes Wan gradients; joint includes original self-attention/FFN LoRA; native text projections stay frozen",
+  "temporary_preflight_weights_used_for_training": false,
+  "latest_verified_train": {
+    "step": 47,
+    "phase": "interface",
+    "cursor": 188,
+    "peak_gib": 28.00077199935913
+  },
+  "recent_step_seconds": 12.084343142621218,
+  "remaining_compute_hours_at_interface_speed": 1.1849369803736916,
+  "eta_limit": "Joint-phase speed and checkpoint I/O are additional uncertainty; this is not a finish-time guarantee",
+  "quality_gain_proven": false,
+  "actual_joint_phase_check": {
+    "time": 1793968535.6016037,
+    "step": 148,
+    "phase": "joint",
+    "cursor": 592,
+    "gradients": {
+      "enhancement": 0.09532114863395691,
+      "fusion_read": 0.0066996607929468155,
+      "fusion_write": 0.03769258037209511,
+      "wan_lora": 0.00981911551207304
+    },
+    "result": "Physical groups and original Wan self-attention/FFN LoRA all have nonzero generation gradients after phase transition; native text QKVO remains frozen by preflight-verified parameter ownership."
+  }
+}

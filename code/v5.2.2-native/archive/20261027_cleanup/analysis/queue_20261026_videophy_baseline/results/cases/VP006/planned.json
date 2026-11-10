@@ -1,0 +1,27 @@
+{
+  "id": "VP006",
+  "caption": "A large, wet canvas is twisted to remove excess paint, leaving drips down the side.",
+  "revision": "v522_native_generation_baseline_v11",
+  "optimizer_step": 32,
+  "seed": 42,
+  "fps": 23.999999284744284,
+  "conditions": "first frame, caption, existing requirements; no future target",
+  "physical_dependency_analysis": "OBSERVED: Two figures seated before a large vertical white backdrop; no canvas, paint, or twisting motion visible. Unknown: whether the backdrop is canvas, whether it’s wet, or if any twisting will occur.\n\nINTERACTION: If canvas were present and wet, twisting would initiate paint removal via friction and gravity; drips would form only if paint is viscous and gravity acts unimpeded.\n\nPERSISTENCE: Drips would persist only if paint remains on the canvas and gravity continues to act; cessation occurs if canvas is dry, paint is removed, or motion stops.\n\nINTERVENTION: Absence of wet canvas or paint → no drips or twisting. Presence of obstruction → drips cease or deform. Pressure inconsistency → uneven paint removal.",
+  "latent_reasoning_steps": 2,
+  "latent_feedback": null,
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "condition_strength": 1.0,
+    "latent_feedback": {
+      "enabled": false,
+      "metric": "relative_rms",
+      "sigmas": [
+        0.85,
+        0.65
+      ],
+      "step_size": 0.1
+    }
+  }
+}

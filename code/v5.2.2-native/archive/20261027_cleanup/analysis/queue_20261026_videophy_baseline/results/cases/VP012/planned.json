@@ -1,0 +1,27 @@
+{
+  "id": "VP012",
+  "caption": "A player hits the ball off the side of the mallet, resulting in an unexpected trajectory.",
+  "revision": "v522_native_generation_baseline_v11",
+  "optimizer_step": 32,
+  "seed": 42,
+  "fps": 23.999999284744284,
+  "conditions": "first frame, caption, existing requirements; no future target",
+  "physical_dependency_analysis": "OBSERVED: Hand grips racket; ball rests motionless; no motion or contact initiated. Unknown: Ball’s state at t=0+; racket’s motion vector; contact timing.\n\nINTERACTION: Racket’s side impact → ball’s sudden deflection via impulse; contact duration < 0.1s → trajectory change initiated.\n\nPERSISTENCE: Ball’s new velocity vector persists until air resistance/rotation alters path; racket’s motion decays within 0.3s.\n\nINTERVENTION: If contact misses ball → no deflection; if racket strikes strings → normal trajectory; if ball is stationary → no deflection occurs.",
+  "latent_reasoning_steps": 2,
+  "latent_feedback": null,
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "condition_strength": 1.0,
+    "latent_feedback": {
+      "enabled": false,
+      "metric": "relative_rms",
+      "sigmas": [
+        0.85,
+        0.65
+      ],
+      "step_size": 0.1
+    }
+  }
+}

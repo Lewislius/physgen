@@ -1,0 +1,136 @@
+{
+  "candidate": "R15H",
+  "status": "finalized_CPU_validated_ready_for_gpu_preflight",
+  "quality_proven": false,
+  "priority_references": [
+    "R15B",
+    "R10A",
+    "R9",
+    "R1"
+  ],
+  "evidence": [
+    {
+      "finding": "R15B full40 keeps PC3.700 with SA2.925/Joint10; compared with R10A2.825/3.750/7 it recovers3 joint cases. This is whole-model evidence, not attribution of every module.",
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_bound_fusion_r15b/reports/mechanism_review_completed.json"
+    },
+    {
+      "finding": "B direct-read paired16 SA3.125/PC4.000/Joint5 versus normal request-bound3.0625/3.8125/6. Preserve a direct physical value route; avoid forcing all physical execution through serial request binding. State interaction also supports two Joint cases despite a PC mean cost.",
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_bound_fusion_r15b/reports/mechanism_review_completed.json"
+    },
+    {
+      "finding": "B normal beats empty reasoning by PC0.250 with4 wins/no losses and one Joint gain; train mean loses2 Joint cases. Its unchanged enhancement is a measured useful basis, without assuming arbitrary C diversity is success.",
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_bound_fusion_r15b/reports/mechanism_review_completed.json"
+    },
+    {
+      "finding": "F physical-then-text composition changes native query by only .006-.063 and gives no paired SA/Joint benefit over parallel. Merely reordering the residual does not establish semantic correction.",
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/reports/execution_probe_review.json"
+    },
+    {
+      "finding": "R1 and R9 preserve stronger comprehensive or joint behavior; useful common corrections are allowed. G reduced workspace cosine but had net-negative16 physics contribution and failed full metrics; do not substitute source values/diversity as the end goal.",
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/source_residual_fusion_r15g/reports/final_report.zh.md"
+    }
+  ],
+  "design": [
+    {
+      "change": "Keep exact R10A/R15B Enhancement and ContentBlock",
+      "mechanism": "Native-anchored routing and execution C, original contextual request/physical words, two shared Q updates and routing-only alignment. Execution C again includes the native anchor; no G source-only residual replacement.",
+      "validation": "AST comparison confirms these two classes unchanged from B."
+    },
+    {
+      "change": "Restore direct physical read and state-dependent write with independent physical Q/K/V/O",
+      "mechanism": "Do not discard the direct value mechanism with measured PC benefit. Independent Q is initialized from official native Q; original text projections remain frozen.",
+      "limitation": "Does not guarantee superior whole-model PC; native-Q16 isolates its inference contribution."
+    },
+    {
+      "change": "Add native-request response conditioned by the local physical read",
+      "mechanism": "A full-width learned map sends the locally read physical message into native text-query coordinates. Add O_text*(Attention(q_text+shift,K_text,V_text)-Attention(q_text,K_text,V_text)). The keys/values/O are the SAME frozen native request maps; native O bias cancels. Direct physical writing remains active and unattenuated.",
+      "purpose": "Give generation training a direct way to couple physics to the requested entity/role/process using original prompt semantics, without serially replacing the direct physical read or adding a freely learned text-value bank.",
+      "limitation": "This is a new mechanism hypothesis. It can still learn harmful changes and must improve complete40 and actual videos. Functional tests establish wiring/gradients, not success."
+    }
+  ],
+  "not_adopted": [
+    "No cosine/diversity objective",
+    "No source-only execution C",
+    "No native O initialization replacing zero physical O",
+    "No semantic posterior prior/mass product",
+    "No replacement of direct physics by local video attention",
+    "No gamma search, new verifier, RGB or temporal-loss surrogate, API call or model download"
+  ],
+  "training": {
+    "steps": 400,
+    "stages": {
+      "interface": 128,
+      "joint": 272
+    },
+    "initialization": "fresh official foundations; no trained project weights",
+    "data": "original WISA and reasoning; same1600 sample/noise/dropout draws",
+    "losses": [
+      "0.8 mean FM +0.2 multiscale high-error tail",
+      "routing C native-word alignment ramp32 to0.03"
+    ],
+    "phase1": "Enhancement, independent physical fusion and semantic-query map; frozen Wan including LoRA",
+    "phase2": "Same modules plus native self-attention/FFN LoRA; native text QKVO remains frozen"
+  },
+  "controls16": [
+    "no_c",
+    "semantic_response_off",
+    "direct_write_off",
+    "native_physical_query",
+    "reasoning_swapped",
+    "empty_reasoning",
+    "global_train_mean"
+  ],
+  "evaluation": {
+    "main40": true,
+    "same60_extension": true,
+    "same_seeds_images_scores": true,
+    "actual_video_review": true,
+    "cross_benchmarks": "deferred; no automatic WMB/PIQ jobs",
+    "next_candidate": "R15I only after H results and review"
+  },
+  "acceptance": {
+    "PC40_min": 3.8,
+    "PC_preferred": 3.85,
+    "SA40_min": 3.125,
+    "SA_aspiration": [
+      3.3,
+      3.35
+    ],
+    "Joint40_min": 12,
+    "real_visual_quality_required": true,
+    "cross_quality_targets_unchanged_but_deferred": true
+  },
+  "research_context": [
+    {
+      "url": "https://arxiv.org/abs/2308.06721",
+      "use": "Decoupled conditioning while retaining pretrained text parameters is an established mechanism; its image-adapter results do not prove this video design."
+    },
+    {
+      "url": "https://arxiv.org/abs/2410.05258",
+      "use": "Difference of attention responses can separate a change from a common response. H subtracts a fixed native-request read, not the two learned maps of Diff Transformer; no imported performance claim."
+    }
+  ],
+  "before_submission": [
+    "Freeze source and submit RTX6000-only wrapper; GPU preflight must pass before formal400"
+  ],
+  "maximum_version": "R15I",
+  "new_api_calls": 0,
+  "new_downloads": 0,
+  "utc": "2026-11-08T06:13:07.954553+00:00",
+  "validation": {
+    "cpu_actual_small_wan": {
+      "passed": 9,
+      "seconds": 3.892
+    },
+    "input_and_evaluation_pipeline": {
+      "passed": 6,
+      "seconds": 19.369
+    },
+    "original_enhancement_AST_equal_to_R15B": true,
+    "input_contexts_validated": 152,
+    "quality_proof": false,
+    "new_api_calls": 0,
+    "new_downloads": 0,
+    "full_GPU_preflight": "required before formal training"
+  }
+}

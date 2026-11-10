@@ -1,0 +1,186 @@
+{
+  "utc": "2026-11-06T07:03:31.473426+00:00",
+  "candidate": "R15D",
+  "review_status": "Complete main40, six declared16, time-mean16, outside16 diagnostic8x2 and historical execution replay reviewed",
+  "full40": {
+    "count": 40,
+    "sa_mean": 3,
+    "pc_mean": 3.575,
+    "sa_pass_rate": 0.275,
+    "pc_pass_rate": 0.475,
+    "joint_pass_count": 10,
+    "joint_pass_rate": 0.25
+  },
+  "numeric_targets": {
+    "pc": false,
+    "sa": false,
+    "joint": false
+  },
+  "overall_accepted": false,
+  "findings": [
+    {
+      "finding": "Complete40 fails all latest numerical targets; no60 or cross-benchmark extension for this candidate.",
+      "evidence": {
+        "count": 40,
+        "sa_mean": 3,
+        "pc_mean": 3.575,
+        "sa_pass_rate": 0.275,
+        "pc_pass_rate": 0.475,
+        "joint_pass_count": 10,
+        "joint_pass_rate": 0.25
+      }
+    },
+    {
+      "finding": "Paired16 physics is useful: normal beats noC PC+.375, SA+.0625, one Joint gain with no losses. Do not discard the physics branch merely because the complete version fails.",
+      "evidence": {
+        "sa": {
+          "mean_change": 0.0625,
+          "wins": 1,
+          "ties": 15,
+          "losses": 0
+        },
+        "pc": {
+          "mean_change": 0.375,
+          "wins": 5,
+          "ties": 11,
+          "losses": 0
+        },
+        "joint": {
+          "gains": [
+            "VP010"
+          ],
+          "losses": []
+        }
+      }
+    },
+    {
+      "finding": "Own reasoning is useful against empty and train mean; differences are not purely cosmetic.",
+      "empty": {
+        "sa": {
+          "mean_change": 0.0625,
+          "wins": 2,
+          "ties": 13,
+          "losses": 1
+        },
+        "pc": {
+          "mean_change": 0.5625,
+          "wins": 7,
+          "ties": 9,
+          "losses": 0
+        },
+        "joint": {
+          "gains": [
+            "VP018",
+            "VP034",
+            "VP038"
+          ],
+          "losses": []
+        }
+      },
+      "mean": {
+        "sa": {
+          "mean_change": 0,
+          "wins": 1,
+          "ties": 14,
+          "losses": 1
+        },
+        "pc": {
+          "mean_change": 0.25,
+          "wins": 4,
+          "ties": 12,
+          "losses": 0
+        },
+        "joint": {
+          "gains": [
+            "VP010"
+          ],
+          "losses": []
+        }
+      }
+    },
+    {
+      "finding": "Each of the two new D mechanisms gives only one extra PC point on16, same caseVP016, with no SA/Joint change. This is weak isolated evidence, not evidence of a general fix.",
+      "denoising_off": {
+        "sa": {
+          "mean_change": 0,
+          "wins": 0,
+          "ties": 16,
+          "losses": 0
+        },
+        "pc": {
+          "mean_change": 0.0625,
+          "wins": 1,
+          "ties": 15,
+          "losses": 0
+        },
+        "joint": {
+          "gains": [],
+          "losses": []
+        }
+      },
+      "pretext": {
+        "sa": {
+          "mean_change": 0,
+          "wins": 0,
+          "ties": 16,
+          "losses": 0
+        },
+        "pc": {
+          "mean_change": 0.0625,
+          "wins": 1,
+          "ties": 15,
+          "losses": 0
+        },
+        "joint": {
+          "gains": [],
+          "losses": []
+        }
+      }
+    },
+    {
+      "finding": "Matched16 overstates the complete result. Outside24 PC3.375 vs B3.625; SA unchanged2.8333. Existing fixed16 alone cannot explain these regressions.",
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/denoising_matched_fusion_r15d/reports/fixed16_vs_remaining24.json"
+    },
+    {
+      "finding": "No new Joint success versus R1 or native400. SA is a principal current Joint bottleneck:11 SA passes,19 PC passes,10 joint.",
+      "pc_pass_sa_fail": [
+        "VP004",
+        "VP007",
+        "VP011",
+        "VP014",
+        "VP015",
+        "VP026",
+        "VP030",
+        "VP039",
+        "VP040"
+      ],
+      "sa_pass_pc_fail": [
+        "VP036"
+      ]
+    },
+    {
+      "finding": "Real sampled-frame inspection finds severe roller-head loss/distortion despiteSA4PC4, and missing fracture/weak process in other cases. Coarse scores do not certify picture quality.",
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/denoising_matched_fusion_r15d/reports/physical_content_67920/visual_predeclared"
+    },
+    {
+      "finding": "Actual four-case replay shows highly common early writes, often larger than native text updates, and substantial changes to conditional guidance. Compare useful historical versions before attributing harm to commonality itself.",
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/denoising_matched_fusion_r15d/reports/execution_diagnostic_summary.json"
+    },
+    {
+      "finding": "Completed diagnostic followups do not support preserving D noise adaptation or post-text reader as a broad improvement; high commonality is also present in useful historical models.",
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/denoising_matched_fusion_r15d/reports/completed_followup_review.json"
+    }
+  ],
+  "pending": [],
+  "next_version": "R15E implementation and validation; R15F only after E complete review; pause after F",
+  "design_candidates_not_committed": [
+    "Physical updates consumed immediately by the unchanged native text attention (GLIGEN-style ordering principle, not its full architecture), preserving direct C value execution/state product.",
+    "Training objective that explicitly compares target temporal residual relationships, if evidence supports it; not RGB-change rewards, no forced motion, and not falsely called fullTFM."
+  ],
+  "constraints": [
+    "Maintain PC while raising SA/Joint and actual video quality; no arbitrary diversity or anti-alignment penalties.",
+    "Do not reuse R5-R8 native-O initialization as if new; preserve useful early mechanisms and examine their actual execution.",
+    "No new model/API download; current original data and frozen native textQKVO retained unless evidence justifies changing the preference."
+  ],
+  "additional_followup_review": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/denoising_matched_fusion_r15d/reports/completed_followup_review.json"
+}

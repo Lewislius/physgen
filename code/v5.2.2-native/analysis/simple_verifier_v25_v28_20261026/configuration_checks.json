@@ -1,0 +1,154 @@
+[
+  {
+    "revision": "v522_native_h_content_verifier_frozen_simple_v25",
+    "config": "configs/native_h_content_message_verifier_frozen_simple_wisa3857.yaml",
+    "job": "train/native_h_content_message_verifier_frozen_simple_1x96g.yaml",
+    "stages": {
+      "interface": 64,
+      "joint": 160
+    },
+    "accumulation": 4,
+    "loss": {
+      "interface": {
+        "fm": 1.0,
+        "flow_temporal": 0.1
+      },
+      "joint": {
+        "fm": 1.0,
+        "flow_temporal": 0.1,
+        "verifier": 0.05
+      }
+    },
+    "observation_frames": 28,
+    "frame_stride": 3,
+    "geometry": {
+      "mode": "native",
+      "rgb_size": [
+        480,
+        832
+      ]
+    },
+    "message_parameters": 146835456,
+    "message_width": 4096,
+    "wan_width": 3072,
+    "ready": true,
+    "resource_pool": "blk-96g",
+    "slots": 1
+  },
+  {
+    "revision": "v522_native_h_content_verifier_lora_simple_v26",
+    "config": "configs/native_h_content_message_verifier_lora_simple_wisa3857.yaml",
+    "job": "train/native_h_content_message_verifier_lora_simple_1x96g.yaml",
+    "stages": {
+      "interface": 64,
+      "calibration": 32,
+      "joint": 160
+    },
+    "accumulation": 4,
+    "loss": {
+      "interface": {
+        "fm": 1.0,
+        "flow_temporal": 0.1
+      },
+      "calibration": {
+        "judge": 1.0
+      },
+      "joint": {
+        "fm": 1.0,
+        "flow_temporal": 0.1,
+        "verifier": 0.05
+      }
+    },
+    "observation_frames": 28,
+    "frame_stride": 3,
+    "geometry": {
+      "mode": "native",
+      "rgb_size": [
+        480,
+        832
+      ]
+    },
+    "message_parameters": 146835456,
+    "message_width": 4096,
+    "wan_width": 3072,
+    "ready": true,
+    "resource_pool": "blk-96g",
+    "slots": 1
+  },
+  {
+    "revision": "v522_native_q_seed128_verifier_frozen_simple_v27",
+    "config": "configs/native_q_seed128_message_verifier_frozen_simple_wisa3857.yaml",
+    "job": "train/native_q_seed128_message_verifier_frozen_simple_1x96g.yaml",
+    "stages": {
+      "interface": 64,
+      "joint": 160
+    },
+    "accumulation": 4,
+    "loss": {
+      "interface": {
+        "fm": 1.0,
+        "flow_temporal": 0.1
+      },
+      "joint": {
+        "fm": 1.0,
+        "flow_temporal": 0.1,
+        "verifier": 0.05
+      }
+    },
+    "observation_frames": 28,
+    "frame_stride": 3,
+    "geometry": {
+      "mode": "native",
+      "rgb_size": [
+        480,
+        832
+      ]
+    },
+    "message_parameters": 214476800,
+    "message_width": 4096,
+    "wan_width": 3072,
+    "ready": true,
+    "resource_pool": "blk-96g",
+    "slots": 1
+  },
+  {
+    "revision": "v522_native_q_seed128_verifier_lora_simple_v28",
+    "config": "configs/native_q_seed128_message_verifier_lora_simple_wisa3857.yaml",
+    "job": "train/native_q_seed128_message_verifier_lora_simple_1x96g.yaml",
+    "stages": {
+      "interface": 64,
+      "calibration": 32,
+      "joint": 160
+    },
+    "accumulation": 4,
+    "loss": {
+      "interface": {
+        "fm": 1.0,
+        "flow_temporal": 0.1
+      },
+      "calibration": {
+        "judge": 1.0
+      },
+      "joint": {
+        "fm": 1.0,
+        "flow_temporal": 0.1,
+        "verifier": 0.05
+      }
+    },
+    "observation_frames": 28,
+    "frame_stride": 3,
+    "geometry": {
+      "mode": "native",
+      "rgb_size": [
+        480,
+        832
+      ]
+    },
+    "message_parameters": 214476800,
+    "message_width": 4096,
+    "wan_width": 3072,
+    "ready": true,
+    "resource_pool": "blk-96g",
+    "slots": 1
+  }
+]

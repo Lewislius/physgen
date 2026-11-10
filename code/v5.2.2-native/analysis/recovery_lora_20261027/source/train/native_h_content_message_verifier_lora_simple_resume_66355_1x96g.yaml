@@ -1,0 +1,40 @@
+name: v522-h-content-message-verifier-lora-simple-resume64-rtx-20261027
+description: Resume Search 66385 from saved state; blk-96g single slot. Exclude the
+  recorded failing GPU UUID, save every optimizer update, and trace microbatches.
+  Original v26/v28 model and 256-step budget.
+workspace: ALL-IN-ONE
+project: wan-animate
+max_restarts: 2
+resources:
+  resource_pool: blk-96g
+  slots_per_trial: 1
+  is_single_node: true
+  shm_size: 34359738368
+bind_mounts:
+- host_path: /mount/HOME/liuzhirui
+  container_path: /home/liuzhirui
+- host_path: /mount/NAS1/public
+  container_path: /run/determined/NAS1/public
+environment:
+  image: 10.130.130.5:8192/lab-dev:latest
+  environment_variables:
+  - OMP_NUM_THREADS=4
+  - PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+checkpoint_storage:
+  type: shared_fs
+  host_path: /mount/HOME/liuzhirui
+  storage_path: Project/physGen/code/v5.2.2-native/determined_checkpoints
+  save_experiment_best: 0
+  save_trial_best: 0
+  save_trial_latest: 0
+searcher:
+  name: single
+  metric: completed_cases
+  max_length:
+    epochs: 1
+  smaller_is_better: false
+entrypoint: bash /home/liuzhirui/Project/physGen/code/v5.2.2-native/tools/runtime_python.sh
+  /home/liuzhirui/Project/physGen/code/v5.2.2-native/tools/run_resumable_training.py
+  --config /home/liuzhirui/Project/physGen/code/v5.2.2-native/configs/native_h_content_message_verifier_lora_simple_wisa3857.yaml
+  --resume /home/liuzhirui/Project/physGen/code/v5.2.2-native/checkpoints/v522-h-content-message-verifier-lora-simple_66355
+  --checkpoint-every 1 --trace --exclude-gpu-uuid GPU-30085d8b-9408-7a7f-e544-be0280858108

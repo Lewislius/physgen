@@ -1,0 +1,208 @@
+{
+  "scope": "VideoPhy2 AutoEval applied to held-out WISA videos; not official VideoPhy2 benchmark performance.",
+  "experiment_id": 66423,
+  "new_videos_scored": 56,
+  "new_score_calls": 112,
+  "shared_final_comparison": [
+    {
+      "run": "direct_fm",
+      "step": 32,
+      "count": 4,
+      "sa_mean": 4,
+      "pc_mean": 4,
+      "joint_pass_rate": 0.5
+    },
+    {
+      "run": "reasoned_fm",
+      "step": 32,
+      "count": 4,
+      "sa_mean": 4,
+      "pc_mean": 4,
+      "joint_pass_rate": 0.5
+    },
+    {
+      "run": "reasoned_process",
+      "step": 32,
+      "count": 4,
+      "sa_mean": 4,
+      "pc_mean": 4,
+      "joint_pass_rate": 0.5
+    },
+    {
+      "run": "H",
+      "step": 224,
+      "count": 4,
+      "sa_mean": 4,
+      "pc_mean": 4,
+      "joint_pass_rate": 0.5
+    },
+    {
+      "run": "Q",
+      "step": 224,
+      "count": 4,
+      "sa_mean": 4,
+      "pc_mean": 4,
+      "joint_pass_rate": 0.5
+    }
+  ],
+  "hq_checkpoint_comparison": [
+    {
+      "run": "H",
+      "step": 32,
+      "count": 4,
+      "sa_mean": 4,
+      "pc_mean": 4,
+      "joint_pass_rate": 0.5
+    },
+    {
+      "run": "Q",
+      "step": 32,
+      "count": 4,
+      "sa_mean": 4,
+      "pc_mean": 4,
+      "joint_pass_rate": 0.5
+    },
+    {
+      "run": "H",
+      "step": 64,
+      "count": 4,
+      "sa_mean": 4,
+      "pc_mean": 4,
+      "joint_pass_rate": 0.5
+    },
+    {
+      "run": "Q",
+      "step": 64,
+      "count": 4,
+      "sa_mean": 4,
+      "pc_mean": 4,
+      "joint_pass_rate": 0.5
+    },
+    {
+      "run": "H",
+      "step": 96,
+      "count": 4,
+      "sa_mean": 4,
+      "pc_mean": 4,
+      "joint_pass_rate": 0.5
+    },
+    {
+      "run": "Q",
+      "step": 96,
+      "count": 4,
+      "sa_mean": 4,
+      "pc_mean": 4,
+      "joint_pass_rate": 0.5
+    },
+    {
+      "run": "H",
+      "step": 128,
+      "count": 4,
+      "sa_mean": 4,
+      "pc_mean": 3.5,
+      "joint_pass_rate": 0.5
+    },
+    {
+      "run": "Q",
+      "step": 128,
+      "count": 4,
+      "sa_mean": 4,
+      "pc_mean": 4,
+      "joint_pass_rate": 0.5
+    },
+    {
+      "run": "H",
+      "step": 160,
+      "count": 4,
+      "sa_mean": 4,
+      "pc_mean": 4,
+      "joint_pass_rate": 0.5
+    },
+    {
+      "run": "Q",
+      "step": 160,
+      "count": 4,
+      "sa_mean": 4,
+      "pc_mean": 4,
+      "joint_pass_rate": 0.5
+    },
+    {
+      "run": "H",
+      "step": 192,
+      "count": 4,
+      "sa_mean": 4,
+      "pc_mean": 4,
+      "joint_pass_rate": 0.5
+    },
+    {
+      "run": "Q",
+      "step": 192,
+      "count": 4,
+      "sa_mean": 4,
+      "pc_mean": 4,
+      "joint_pass_rate": 0.5
+    },
+    {
+      "run": "H",
+      "step": 224,
+      "count": 4,
+      "sa_mean": 4,
+      "pc_mean": 4,
+      "joint_pass_rate": 0.5
+    },
+    {
+      "run": "Q",
+      "step": 224,
+      "count": 4,
+      "sa_mean": 4,
+      "pc_mean": 4,
+      "joint_pass_rate": 0.5
+    }
+  ],
+  "old_final_four_case_results": [
+    {
+      "run": "direct_fm",
+      "count": 8,
+      "sa_mean": 4.25,
+      "pc_mean": 4.125,
+      "joint_pass_rate": 0.625
+    },
+    {
+      "run": "reasoned_fm",
+      "count": 8,
+      "sa_mean": 4.25,
+      "pc_mean": 4.125,
+      "joint_pass_rate": 0.625
+    },
+    {
+      "run": "reasoned_process",
+      "count": 8,
+      "sa_mean": 4.25,
+      "pc_mean": 4.125,
+      "joint_pass_rate": 0.625
+    }
+  ],
+  "protocol": {
+    "code": "/home/liuzhirui/benchmark/videophy/VIDEOPHY2",
+    "checkpoint": "/home/liuzhirui/benchmark/videophy/videophy_2_auto",
+    "num_frames": 32,
+    "seed": 20261009,
+    "tasks": [
+      "sa",
+      "pc"
+    ],
+    "generation": {
+      "do_sample": false,
+      "max_new_tokens": 16
+    },
+    "joint_threshold": 4,
+    "average_definition": "mean of (SA + PC) / 2; custom summary, not official Joint Score",
+    "missing_policy": "no final comparison unless every selected case has both valid SA and PC scores",
+    "output_budget_definition": "16 newly generated score tokens, identical for every arm"
+  },
+  "limits": [
+    "Only two shared scenes with two paired seeds; no general superiority or equivalence claim.",
+    "Integer AutoEval scores do not capture all visible distortion.",
+    "Training verifier is a different model from the independent VideoPhy2 evaluator."
+  ]
+}

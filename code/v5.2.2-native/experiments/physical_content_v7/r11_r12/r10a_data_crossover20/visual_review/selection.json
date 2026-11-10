@@ -1,0 +1,84 @@
+{
+  "case": "VP034",
+  "selection": "Only fixed16 Joint loss when changing old to API inference under either checkpoint. Score-selected single diagnostic case; not a suite-level estimate.",
+  "matched_input": [
+    "A large, clear balloon is inflated with air, showing the internal pressure causing the balloon to stretch.",
+    "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP034/first.png",
+    42
+  ],
+  "rows": {
+    "old weights + old reasoning": {
+      "video": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/execution_value_r10/inference_outputs/physical_content_67003/step0400_full40_controls16_physical5_seed42/videophy40/cases/VP034/planned.mp4",
+      "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/execution_value_r10/runs/physical_content_67003/step0400.pt",
+      "frames": [
+        0,
+        11,
+        22,
+        34,
+        45,
+        57,
+        68,
+        80
+      ],
+      "sa": 4,
+      "pc": 5,
+      "positive_analysis": "1. Air inside balloon exerts pressure, stretching the elastic material outward visibly.\n\n2. Internal pressure remains balanced with external atmospheric pressure as balloon floats.\n\n3. Continuous air molecules collide with balloon walls, maintaining its inflated shape.\n\n4. If air escapes, balloon will shrink; if sealed, shape persists under current pressure.",
+      "negative_analysis": "1. Balloon’s surface reflects ambient light, creating visible highlights and shadows.\n2. Air inside balloon exerts pressure, maintaining its spherical shape against external forces.\n3. If balloon loses gas, it may shrink, altering its visual appearance and buoyancy.\n4. Ambient temperature changes may affect balloon’s internal pressure and volume."
+    },
+    "old weights + API reasoning": {
+      "video": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/r10a_data_crossover20/outputs/old_checkpoint_api_reasoning/videophy40/cases/VP034/planned.mp4",
+      "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/execution_value_r10/runs/physical_content_67003/step0400.pt",
+      "frames": [
+        0,
+        11,
+        22,
+        34,
+        45,
+        57,
+        68,
+        80
+      ],
+      "sa": 3,
+      "pc": 5,
+      "positive_analysis": "Air entering through the bottom valve raises internal pressure against the transparent membrane.\nHigher internal pressure pushes outward, stretching the clear balloon surface.\nAs more air flows in, the balloon expands and its skin grows taut.\nThe membrane's elasticity resists the pressure, balancing expansion with tension.",
+      "negative_analysis": "A translucent balloon suspended against a light blue background -> specular highlights persist on its curved surface.\nA small dark knot at the base -> the balloon's opening remains sealed.\nAn unseen environmental breeze -> the balloon may gently drift or sway in the frame."
+    },
+    "API weights + old reasoning": {
+      "video": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/r10a_data_crossover20/outputs/api_checkpoint_old_reasoning/videophy40/cases/VP034/planned.mp4",
+      "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r10a_api400/runs/physical_content_67271/step0400.pt",
+      "frames": [
+        0,
+        11,
+        22,
+        34,
+        45,
+        57,
+        68,
+        80
+      ],
+      "sa": 4,
+      "pc": 5,
+      "positive_analysis": "1. Air inside balloon exerts pressure, stretching the elastic material outward visibly.\n\n2. Internal pressure remains balanced with external atmospheric pressure as balloon floats.\n\n3. Continuous air molecules collide with balloon walls, maintaining its inflated shape.\n\n4. If air escapes, balloon will shrink; if sealed, shape persists under current pressure.",
+      "negative_analysis": "1. Balloon’s surface reflects ambient light, creating visible highlights and shadows.\n2. Air inside balloon exerts pressure, maintaining its spherical shape against external forces.\n3. If balloon loses gas, it may shrink, altering its visual appearance and buoyancy.\n4. Ambient temperature changes may affect balloon’s internal pressure and volume."
+    },
+    "API weights + API reasoning": {
+      "video": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r10a_api400/inference_outputs/physical_content_67271/step0400_api_fixed60_controls16_seed42/videophy40/cases/VP034/planned.mp4",
+      "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r10a_api400/runs/physical_content_67271/step0400.pt",
+      "frames": [
+        0,
+        11,
+        22,
+        34,
+        45,
+        57,
+        68,
+        80
+      ],
+      "sa": 3,
+      "pc": 5,
+      "positive_analysis": "Air entering through the bottom valve raises internal pressure against the transparent membrane.\nHigher internal pressure pushes outward, stretching the clear balloon surface.\nAs more air flows in, the balloon expands and its skin grows taut.\nThe membrane's elasticity resists the pressure, balancing expansion with tension.",
+      "negative_analysis": "A translucent balloon suspended against a light blue background -> specular highlights persist on its curved surface.\nA small dark knot at the base -> the balloon's opening remains sealed.\nAn unseen environmental breeze -> the balloon may gently drift or sway in the frame."
+    }
+  },
+  "panel": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/r10a_data_crossover20/visual_review/VP034.png"
+}

@@ -1,0 +1,113 @@
+{
+  "utc": "2026-11-04T14:36:02.494073+00:00",
+  "candidate": "R12B",
+  "submitted": true,
+  "status": "STATE_COMPLETED",
+  "quality_status": "unmeasured",
+  "maximum_version": "R13C",
+  "scope": "Restore R10A pointwise physical-value/current-state interaction, add native text-update-conditioned physical execution and retain tested post-text addressing. Original dataset/interface; fresh official foundations;400 updates.",
+  "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/snapshots/20261104T142411Z",
+  "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/submissions/r12b_semantic_execution_20261104T142411Z.yaml",
+  "validation": {
+    "utc": "2026-11-04T14:24:11.662826+00:00",
+    "functional_tests": 7,
+    "input_report_tests": 3,
+    "passed": 10,
+    "original_prepared_contexts": 152,
+    "new_api_calls": 0,
+    "new_model_downloads": 0,
+    "quality_evidence": false,
+    "scope": "Actual installed Wan at tiny CPU sizes: gradients, initializer preservation, frozen native text parameters, paired controls and checkpoint restore; original input/request and score reporting contracts."
+  },
+  "primary_cases": 40,
+  "control_cases": 16,
+  "control_modes": [
+    "no_c",
+    "native_text_value_off",
+    "pretext_read",
+    "reasoning_swapped",
+    "empty_reasoning",
+    "global_train_mean"
+  ],
+  "extended60": "deferred_until40_and_video_review",
+  "routine_check_seconds": 600,
+  "training_data": "original_wisa4000_and_original_reasoning",
+  "experiment": 67456,
+  "submitted_utc": "2026-11-04T14:24:45.218528+00:00",
+  "next_routine_check_utc": "2026-11-04T17:08:09.065885+00:00",
+  "actual_gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+  "trial": 68843,
+  "allocation_attempts": [
+    {
+      "experiment": 67450,
+      "trial": 68837,
+      "state": "STATE_ERROR",
+      "actual_gpu": "NVIDIA H100",
+      "accepted": false,
+      "model_loaded": false,
+      "end_utc": "2026-11-04T14:24:38.509542Z"
+    },
+    {
+      "experiment": 67451,
+      "state": "STATE_ERROR",
+      "trial": 68838,
+      "actual_gpu": "NVIDIA H100",
+      "accepted": false,
+      "model_loaded": false,
+      "end_utc": "2026-11-04T14:25:40.531342Z"
+    },
+    {
+      "experiment": 67456,
+      "trial": 68843,
+      "state": "STATE_RUNNING",
+      "actual_gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "accepted": true
+    }
+  ],
+  "verified_step": 400,
+  "training_started": true,
+  "verified_phase": "joint",
+  "verified_cursor": 1600,
+  "last_verified_utc": "2026-11-04T18:07:01+00:00",
+  "core_controls_helper_prepared": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/core_controls_helper_prepared.json",
+  "training_complete": true,
+  "stage": "original40_generation",
+  "main40_generated_at_last_check": 39,
+  "training_budget_report": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/reports/physical_content_67456/training_budget_vs_r10a400.json",
+  "active_control_helpers": [
+    67589,
+    67593
+  ],
+  "visual_review": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/reports/physical_content_67456/visual_predeclared/review.json",
+  "completed_controls": {
+    "native_text_value_off": {
+      "count": 16,
+      "sa": 3.125,
+      "pc": 3.75,
+      "joint": 6,
+      "score_file": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/inference_outputs/physical_content_67456/step0400_original_fixed40_controls16_seed42/controls/native_text_value_off/videophy40/scores.json"
+    }
+  },
+  "main40_result": {
+    "count": 40,
+    "sa_mean": 2.95,
+    "pc_mean": 3.5,
+    "sa_pass_rate": 0.225,
+    "pc_pass_rate": 0.45,
+    "joint_pass_count": 8,
+    "joint_pass_rate": 0.2
+  },
+  "primary_quality_decision": "reject; allnumericgoalsfailed and visual process/shape defects",
+  "controls_complete": [
+    "empty_reasoning",
+    "global_train_mean",
+    "native_text_value_off",
+    "no_c",
+    "pretext_read",
+    "reasoning_swapped"
+  ],
+  "sixty_case_extension": "not_started_failed_candidate",
+  "completed_utc": "2026-11-04T17:59:35.769380Z",
+  "quality_goal_achieved": false,
+  "decision": "rejected_after_full40_six_controls_and_visual_review"
+}

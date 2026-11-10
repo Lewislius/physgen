@@ -1,0 +1,42 @@
+[
+  {
+    "name": "paired_k50_shard1",
+    "device": {
+      "uuid": "GPU-a34a658e-5e10-97af-2575-51414e596bbb",
+      "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition"
+    },
+    "started_unix": 1792904807.1798177,
+    "command": [
+      "/home/liuzhirui/miniconda3/envs/moviestory/bin/python",
+      "-I",
+      "-B",
+      "-u",
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_device_recovery/code/tools/check_temporal_feedback_split.py",
+      "--checkpoint",
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/checkpoints/v522-diagnostic-reasoned_process-8cases32updates-seed42_65836/latest.pt",
+      "--output",
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_device_recovery/paired_k50",
+      "--cases",
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "--seeds",
+      "42",
+      "314159",
+      "--gradient-steps",
+      "50",
+      "--shards",
+      "2",
+      "--shard",
+      "1",
+      "--discrete-adjoint",
+      "--single-device",
+      "--condition-controls",
+      "--verifier",
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261024_verifier_recovery/results/calibration/verifier_paired_seed42.pt"
+    ],
+    "state": "running"
+  }
+]

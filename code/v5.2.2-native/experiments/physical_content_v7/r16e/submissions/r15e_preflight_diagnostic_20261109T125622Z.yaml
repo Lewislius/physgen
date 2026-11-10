@@ -1,0 +1,41 @@
+name: physical-r16e-fullgpu-preflight-diagnostic-20261109T125622Z
+description: 'R16E disposable full-size preflight on an idle A100/A800 evaluation GPU. No formal training, no saved weights, no optimizer checkpoint. Validates the full-width Q/K/V physical corrections, exact native start, zero-init opening order, gradient ownership, memory and condition dependency before any formal 400-step submission.'
+workspace: ALL-IN-ONE
+project: wan-animate
+max_restarts: 0
+resources:
+  resource_pool: amp-80g
+  slots_per_trial: 1
+  is_single_node: true
+  shm_size: 34359738368
+bind_mounts:
+- host_path: /mount/HOME/liuzhirui
+  container_path: /home/liuzhirui
+- host_path: /mount/NAS1/public
+  container_path: /run/determined/NAS1/public
+environment:
+  image: 10.130.130.5:8192/lab-dev:latest
+  environment_variables:
+  - OMP_NUM_THREADS=4
+  - PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+  - HF_HUB_OFFLINE=1
+  - TRANSFORMERS_OFFLINE=1
+  - HF_DATASETS_OFFLINE=1
+checkpoint_storage:
+  type: shared_fs
+  host_path: /mount/HOME/liuzhirui
+  storage_path: Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/determined_checkpoints
+  save_experiment_best: 0
+  save_trial_best: 0
+  save_trial_latest: 0
+searcher:
+  name: single
+  metric: completed
+  max_length:
+    epochs: 1
+  smaller_is_better: false
+entrypoint: bash /home/liuzhirui/Project/physGen/code/v5.2.2-native/tools/runtime_python.sh
+  /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_request_local_r16e/snapshots/20261109T125622Z/gpu_preflight.py
+  --config /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_request_local_r16e/snapshots/20261109T125622Z/configs/physical_content.yaml
+  --output /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_request_local_r16e/reports/preflight_diagnostic_20261109T125622Z
+  --diagnostic-gpu

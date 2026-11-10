@@ -1,0 +1,139 @@
+revision: v522_native_paired_verifier_v5
+run_name: v522-paired-verifier-real4steps-20261024
+paths:
+  wan_code: /home/liuzhirui/model/Wan2.2
+  wan_checkpoint: /home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B
+  qwen_checkpoint: /home/liuzhirui/model/Qwen3-VL/Qwen3-VL-8B-Instruct
+  cache: /home/liuzhirui/Project/physGen/data_cache/wisa_4000
+  runs: /home/liuzhirui/Project/physGen/code/v5.2.2-native/checkpoints
+  outputs: /home/liuzhirui/Project/physGen/code/v5.2.2-native/outputs
+  video_evidence_code: /home/liuzhirui/model/vjepa2
+  video_evidence_checkpoint: /home/liuzhirui/model/vjepa2/checkpoint/vjepa2_1_vitG_384.pt
+data:
+  count: 3857
+  frames: 81
+  latent_shape:
+  - 48
+  - 21
+  - 30
+  - 52
+  workers: 0
+model:
+  width: 3072
+  qwen_width: 4096
+  attention_width: 768
+  attention_heads: 12
+  condition_every: 3
+  interface_rank: 64
+  critic_width: 256
+knowledge:
+  lora_rank: 16
+  lora_alpha: 16
+  lora_last_layers: 12
+  image_size:
+  - 288
+  - 512
+  video_size:
+  - 192
+  - 320
+  max_text_tokens: 2048
+  gradient_checkpointing: true
+  evidence_pairs: 7
+  reasoning_tokens: 192
+  comparison_tokens: 128
+  reasoning_cache: 256
+  dependency_queries: true
+  condition_readout: content
+  max_condition_tokens: 128
+wan_lora:
+  rank: 32
+  alpha: 32
+stages:
+  interface: 2
+  joint: 2
+loss:
+  fm: 1.0
+  sequence: 0.0
+  intensity: 0.1
+  critic: 1.0
+  physical: 0.0
+  rollout: 1.0
+sequence:
+  size:
+  - 120
+  - 208
+  scales:
+  - 1
+  - 2
+  - 4
+  lags:
+  - 1
+  - 2
+  - 4
+  - 8
+  - 16
+  - 32
+  - 64
+  scale_floor: 0.03
+  state_weight: 0.25
+  max_sigma: 0.85
+  perceptual_fraction: 0.5
+verifier:
+  kind: calibrated_process
+  size:
+  - 192
+  - 320
+  lags:
+  - 1
+  - 2
+  - 4
+  - 8
+  - 16
+  - 20
+  scale_floor: 0.03
+  warmup: 0
+  feature_width: 1664
+  width: 128
+  calibration: paired
+  initialization_required: true
+rollout:
+  every: 2
+  start: 0
+  steps: 50
+  gradient_steps: 50
+  guidance: 5.0
+  shift: 5.0
+  step_checkpointing: true
+  discrete_adjoint: true
+train:
+  seed: 42
+  accumulation: 1
+  optimizer: adamw
+  new_lr: 0.0001
+  critic_lr: 0.0001
+  qwen_lr: 5.0e-06
+  wan_lora_lr: 5.0e-05
+  minimum_lr_ratio: 0.1
+  warmup: 1
+  weight_decay: 0.01
+  grad_clip: 1.0
+  text_dropout: 0.1
+  requirements_dropout: 0.1
+  sigma_min: 0.02
+  sigma_max: 1.0
+  gradient_checkpointing: true
+  save_every: 1
+  native_text_only_dropout: 0.0
+validation:
+  every: 999999
+  samples: 1
+  sigmas:
+  - 0.65
+  sample_every: 100
+  sample_cases: 0
+  initial: false
+inference:
+  steps: 50
+  shift: 5.0
+  guidance: 5.0
+  condition_strength: 1.0

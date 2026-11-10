@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+V522_ROOT=/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261026_videophy_baseline/code
+V522_CHECKPOINT="$V522_ROOT/checkpoints/v522-native-videophy-baseline_${DET_EXPERIMENT_ID}/latest.pt"
+bash "$V522_ROOT/tools/runtime_python.sh" "$V522_ROOT/train/train.py" --config "$V522_ROOT/configs/native_generation_baseline_wisa3857.yaml" --initialize-generator /home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261026_videophy_baseline/initialization/condition_generator.pt --initialize-wan-lora /home/liuzhirui/Project/physGen/code/v5.2-occam/checkpoints/wan_lora_v5_no_intensity_20261008T155650Z_38/no_intensity/joint/joint_000400.pt --stop-after 32
+exec bash "$V522_ROOT/tools/runtime_python.sh" "$V522_ROOT/inference/infer_shared_videophy2.py" --checkpoint "$V522_CHECKPOINT" --source /home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42 --case-ids-file /home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/videophy40_20261026/case_ids.json --output /home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261026_videophy_baseline/results --score-at-end --paired-protocol /home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/videophy40_20261026/protocol.json

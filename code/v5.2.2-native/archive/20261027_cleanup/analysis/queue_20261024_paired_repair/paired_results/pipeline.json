@@ -1,0 +1,58 @@
+[
+  {
+    "stage": "real_training_check",
+    "command": [
+      "/home/liuzhirui/miniconda3/envs/moviestory/bin/python",
+      "-I",
+      "-B",
+      "-u",
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261024_paired_repair/code/train/train.py",
+      "--config",
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261024_paired_repair/real_training_check.yaml",
+      "--initialize-generator",
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/checkpoints/v522-diagnostic-reasoned_process-8cases32updates-seed42_65836/latest.pt",
+      "--initialize-critic",
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261024_verifier_recovery/results/calibration/verifier_paired_seed42.pt",
+      "--stop-after",
+      "4"
+    ],
+    "state": "failed",
+    "started_unix": 1792862781.936278,
+    "returncode": -9,
+    "seconds": 114.61707401275635
+  },
+  {
+    "stage": "learned_verifier_c_feedback",
+    "command": [
+      "/home/liuzhirui/miniconda3/envs/moviestory/bin/python",
+      "-I",
+      "-B",
+      "-u",
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261024_paired_repair/code/tools/check_temporal_feedback_split.py",
+      "--checkpoint",
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/checkpoints/v522-diagnostic-reasoned_process-8cases32updates-seed42_65836/latest.pt",
+      "--verifier",
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261024_verifier_recovery/results/calibration/verifier_paired_seed42.pt",
+      "--output",
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261024_paired_repair/paired_results/learned_verifier_c_feedback",
+      "--cases",
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "--seeds",
+      "42",
+      "314159",
+      "--gradient-steps",
+      "50",
+      "--discrete-adjoint",
+      "--single-device",
+      "--condition-controls"
+    ],
+    "state": "failed",
+    "started_unix": 1792862896.556834,
+    "returncode": -9,
+    "seconds": 241.39421129226685
+  }
+]

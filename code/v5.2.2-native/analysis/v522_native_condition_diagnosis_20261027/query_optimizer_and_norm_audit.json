@@ -1,0 +1,142 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/checkpoints/v522-q-seed128-message-no-verifier-simple_66443/latest.pt",
+  "step": 224,
+  "cursor": 896,
+  "method": "Read only CPU audit of saved parameter and Adam moments. No forward, backward, optimizer step or checkpoint mutation.",
+  "optimizer_interpretation": "Adam first moment is an exponential average of accumulated/clipped training gradients, not a per-sample gradient trace. Reported update direction includes bias correction and adaptive second moment but excludes the learning-rate scalar. It describes the final saved optimizer state only.",
+  "query_optimizer": {
+    "step": 224,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "epsilon": 1e-08,
+    "weight_decay": 0.0,
+    "E": {
+      "rms": 0.020018724724650383,
+      "slot_mean_rms": 0.0017455749912187457,
+      "slot_centered_rms": 0.019942473620176315,
+      "slot_centered_fraction": 0.9961910108899108,
+      "mean_distinct_slot_cosine": -0.0002082318824250251
+    },
+    "gradient_momentum": {
+      "rms": 1.5792249730139929e-09,
+      "slot_mean_rms": 1.5704975098174145e-09,
+      "slot_centered_rms": 1.6579787542880808e-10,
+      "slot_centered_fraction": 0.10498686270923036,
+      "mean_distinct_slot_cosine": 0.9891957640647888
+    },
+    "adam_update_direction": {
+      "rms": 0.003678360488265753,
+      "slot_mean_rms": 0.0036476613022387028,
+      "slot_centered_rms": 0.0004742407181765884,
+      "slot_centered_fraction": 0.12892719995483098,
+      "mean_distinct_slot_cosine": 0.9836220741271973
+    }
+  },
+  "normalization_parameters": {
+    "conditioner.block.query_norm.weight": {
+      "mean": 0.9999117851257324,
+      "rms": 0.9999118447303772,
+      "minimum": 0.9986649751663208,
+      "maximum": 1.001108169555664
+    },
+    "conditioner.block.memory_norm.weight": {
+      "mean": 0.9999938011169434,
+      "rms": 0.9999938607215881,
+      "minimum": 0.9987991452217102,
+      "maximum": 1.0011649131774902
+    },
+    "conditioner.block.exchange_norm.weight": {
+      "mean": 0.9999513626098633,
+      "rms": 0.9999514222145081,
+      "minimum": 0.9984244704246521,
+      "maximum": 1.0014023780822754
+    },
+    "conditioner.block.ffn_norm.weight": {
+      "mean": 0.9998968839645386,
+      "rms": 0.9998968839645386,
+      "minimum": 0.9985332489013672,
+      "maximum": 1.001477599143982
+    },
+    "conditioner.alignment.gain": {
+      "mean": 0.08861235529184341,
+      "rms": 0.08897952735424042,
+      "minimum": 0.06654935330152512,
+      "maximum": 0.2650298476219177
+    },
+    "conditioner.alignment.bias": {
+      "mean": -6.548076635226607e-05,
+      "rms": 0.008140499703586102,
+      "minimum": -0.06997927278280258,
+      "maximum": 0.0662812814116478
+    }
+  },
+  "forward_branch_case_count": 4,
+  "forward_branch_updates": [
+    {
+      "round": 0,
+      "branch": "cross",
+      "rms": 0.678182527422905,
+      "mean_rms": 0.6769817918539047,
+      "token_centered_rms": 0.04026051331311464
+    },
+    {
+      "round": 0,
+      "branch": "self_attention",
+      "rms": 2.309596538543701,
+      "mean_rms": 2.3095959424972534,
+      "token_centered_rms": 0.001734272256726399
+    },
+    {
+      "round": 0,
+      "branch": "ffn",
+      "rms": 1.5090524554252625,
+      "mean_rms": 1.5090466439723969,
+      "token_centered_rms": 0.004179508774541318
+    },
+    {
+      "round": 1,
+      "branch": "cross",
+      "rms": 0.8145697861909866,
+      "mean_rms": 0.8145692944526672,
+      "token_centered_rms": 0.0008913473866414279
+    },
+    {
+      "round": 1,
+      "branch": "self_attention",
+      "rms": 1.8996466100215912,
+      "mean_rms": 1.899646371603012,
+      "token_centered_rms": 0.0009747860312927514
+    },
+    {
+      "round": 1,
+      "branch": "ffn",
+      "rms": 1.4229042530059814,
+      "mean_rms": 1.4229018986225128,
+      "token_centered_rms": 0.002598817052785307
+    },
+    {
+      "round": 2,
+      "branch": "cross",
+      "rms": 0.8137810677289963,
+      "mean_rms": 0.813780665397644,
+      "token_centered_rms": 0.0008084401779342443
+    },
+    {
+      "round": 2,
+      "branch": "self_attention",
+      "rms": 1.8287268280982971,
+      "mean_rms": 1.8287266790866852,
+      "token_centered_rms": 0.0007725992618361488
+    },
+    {
+      "round": 2,
+      "branch": "ffn",
+      "rms": 1.394504576921463,
+      "mean_rms": 1.3945028185844421,
+      "token_centered_rms": 0.0022236970835365355
+    }
+  ],
+  "normalization_scope": "Existing RMSNorm/LayerNorm normalize feature channels per token, not token diversity. Message blocks use pre-normalization; residual outputs are not post-normalized. Native Wan Q/K have their original normalization."
+}

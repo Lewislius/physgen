@@ -1,0 +1,47 @@
+[
+  {
+    "variant": "b",
+    "revision": "v522_native_q_content_pool_b_v31",
+    "design": "B: ordered valid-content pooling + E; Cross + Self + FFN",
+    "config": "configs/b.yaml",
+    "launcher": "train/train_b.sh",
+    "job": "train/b_1x80g.yaml",
+    "resource_pool": "amp-80g"
+  },
+  {
+    "variant": "c",
+    "revision": "v522_native_q_content_pool_no_self_c_v32",
+    "design": "C: ordered valid-content pooling + E; Cross + FFN",
+    "config": "configs/c.yaml",
+    "launcher": "train/train_c.sh",
+    "job": "train/c_1x96g.yaml",
+    "resource_pool": "blk-96g"
+  },
+  {
+    "variant": "d-n",
+    "revision": "v522_native_q_identity_no_self_dn_v33",
+    "design": "D-N: learned E; persistent identity Cross + FFN",
+    "config": "configs/d_n.yaml",
+    "launcher": "train/train_d_n.sh",
+    "job": "train/d_n_1x96g.yaml",
+    "resource_pool": "blk-96g"
+  },
+  {
+    "variant": "d-s",
+    "revision": "v522_native_q_identity_self_ds_v34",
+    "design": "D-S: learned E; persistent identity Cross + original Self + FFN",
+    "config": "configs/d_s.yaml",
+    "launcher": "train/train_d_s.sh",
+    "job": "train/d_s_1x96g.yaml",
+    "resource_pool": "blk-96g"
+  },
+  {
+    "variant": "d-i",
+    "revision": "v522_native_q_identity_qk_self_di_v35",
+    "design": "D-I: learned E; persistent identity Cross + identity Q/K Self (content-only V) + FFN",
+    "config": "configs/d_i.yaml",
+    "launcher": "train/train_d_i.sh",
+    "job": "train/d_i_1x96g.yaml",
+    "resource_pool": "blk-96g"
+  }
+]

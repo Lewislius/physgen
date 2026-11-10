@@ -1,0 +1,44 @@
+{
+  "status": "candidate_mechanism_review_only_not_final_R15I_design",
+  "basis": [
+    {
+      "evidence": "H main40 SA2.925 PC3.525 Joint8; inspected periodic artifacts track direct write, not removal of semantic response or swapping physicalQ.",
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_feedback_fusion_r15h/review/actual_video_review.json"
+    },
+    {
+      "evidence": "B same-checkpoint direct physical read16 SA3.125 PC4.000 Joint5; request-bound normal16 SA3.0625 PC3.8125 Joint6. Binding has real tradeoffs, not a proven overall advantage.",
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_bound_fusion_r15b/reports/mechanism_review_completed.json"
+    },
+    {
+      "evidence": "H/B consumed conditioning tensors match. H C geometry changes but wrong-input visual improvements are not explained simply by lower C magnitude or lower cosine.",
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_feedback_fusion_r15h/review/condition_content_interpretation.json"
+    }
+  ],
+  "working_question": "Can the physical read preserve direct access to unaveraged C values while also using request-associated physical values, instead of forcing every physical read through the serial request bottleneck?",
+  "candidate_operator": "A single physical attention may read both direct C keys/values and request keys with C-bound values. Native text attention stays a separate unchanged computation. Preserve one zero-value null and the original total relation/null prior; do not double physical mass merely by adding the second memory.",
+  "why_it_is_not_yet_accepted": [
+    "The combined operator has not generated or scored any video. Neither historical endpoint guarantees its mixture succeeds.",
+    "B direct PC4.000 belongs to an easier fixed16 subset, not full40. Actual roller/balloon process and shape defects remain in the direct endpoint.",
+    "H complete seven16 controls remain pending; their findings can change this proposal.",
+    "Independent physicalQ is a possible trainable part, not a proven fix. NativeQ substitution failed to repair H artifacts.",
+    "No additional loss, stage, counterfactual labels or new encoder is justified by this hypothesis."
+  ],
+  "literature_context": [
+    {
+      "title": "IP-Adapter",
+      "url": "https://arxiv.org/html/2308.06721",
+      "support": "Separating native text attention from an added condition attention is an established way to retain text compatibility.",
+      "limit": "Image-generation evidence does not establish our video targets or validate the proposed two-memory physical read."
+    },
+    {
+      "title": "PhysVid",
+      "url": "https://arxiv.org/html/2603.26285",
+      "support": "Keeps global conditioning while adding a local physics pathway; its local positional conditioning relies on temporally aligned chunk annotations.",
+      "limit": "Our relation slots do not provide reliable chunk timestamps. Do not assign temporal RoPE to arbitrary query indices or claim its annotation-dependent method is already present."
+    }
+  ],
+  "existing_B_state_probe": "reports/control_helpers/67903 contains only gpu.json, no measurements. Historical pending-probe text must not be treated as completed execution evidence.",
+  "next_decision": "Complete H scores/visual review first. If this remains the best-supported hypothesis, evaluate one declared same-checkpoint fixed16 operator before committing the final fresh400 training. Do not enumerate variants or launch I automatically.",
+  "new_training_submitted": false,
+  "quality_claim": false
+}

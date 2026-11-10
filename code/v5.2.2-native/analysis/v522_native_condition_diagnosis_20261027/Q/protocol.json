@@ -1,0 +1,38 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/checkpoints/v522-q-seed128-message-no-verifier-simple_66443/latest.pt",
+  "revision": "v522_native_q_seed128_no_verifier_simple_v30",
+  "step": 224,
+  "training_seed": 42,
+  "diagnostic_noise_seed": 42,
+  "same_saved_noise_for_all_variants": true,
+  "diagnostic_noise_device": "CPU, for matching H/Q and different allocated GPU families",
+  "inference_round": 2,
+  "cases": [
+    "source0000042",
+    "source0001596",
+    "wisa0013758",
+    "wisa0032606"
+  ],
+  "sigmas": [
+    0.65,
+    0.95,
+    0.98
+  ],
+  "native_text_modes": [
+    "present",
+    "absent"
+  ],
+  "variants": [
+    "correct",
+    "wrong_caption_same_first",
+    "mean_slots",
+    "C_off",
+    "round0",
+    "gain025"
+  ],
+  "scope": "Paired one-step denoising and condition sensitivity only; not generation-quality evidence",
+  "wrong_caption_policy": "Keep the same first image and image-derived requirements; replace caption and prompt-derived requirements",
+  "existing_design_modified": false,
+  "optimizer_constructed": false,
+  "gpu": "NVIDIA GeForce RTX 4090"
+}

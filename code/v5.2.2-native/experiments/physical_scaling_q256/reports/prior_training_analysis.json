@@ -1,0 +1,174 @@
+{
+  "created_at": "2026-10-29T13:46:07.217092+00:00",
+  "source": "Existing 224-step training logs; no new GPU training or benchmark tuning",
+  "variants": {
+    "v6_write": {
+      "log": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_variants/runs/v6_write_20261029T064043Z/train.jsonl",
+      "windows": [
+        {
+          "start": 1,
+          "end": 32,
+          "fm": 0.6414321737247519,
+          "aux": 24.441339770128252,
+          "weighted_aux": 0.2227225486850606,
+          "weighted_aux_to_fm": 0.3472269677271196,
+          "physical_clipped_steps": 31,
+          "physical_mean_preclip_norm": 14.96678888425231
+        },
+        {
+          "start": 33,
+          "end": 64,
+          "fm": 0.39217389267287217,
+          "aux": 8.464644708205014,
+          "weighted_aux": 0.08997843036890765,
+          "weighted_aux_to_fm": 0.2294350339224703,
+          "physical_clipped_steps": 32,
+          "physical_mean_preclip_norm": 4.918926112353802
+        },
+        {
+          "start": 65,
+          "end": 112,
+          "fm": 0.29135929014106904,
+          "aux": 3.429022147785872,
+          "weighted_aux": 0.03258291445955712,
+          "weighted_aux_to_fm": 0.11183070374650238,
+          "physical_clipped_steps": 46,
+          "physical_mean_preclip_norm": 2.199299400051435
+        },
+        {
+          "start": 113,
+          "end": 160,
+          "fm": 0.27879839528759476,
+          "aux": 1.2704174616374075,
+          "weighted_aux": 0.012653309689199348,
+          "weighted_aux_to_fm": 0.04538515968195159,
+          "physical_clipped_steps": 25,
+          "physical_mean_preclip_norm": 1.2205007625743747
+        },
+        {
+          "start": 161,
+          "end": 224,
+          "fm": 0.2742363156139618,
+          "aux": 0.5496369388420135,
+          "weighted_aux": 0.005513307318281288,
+          "weighted_aux_to_fm": 0.020104220354397868,
+          "physical_clipped_steps": 29,
+          "physical_mean_preclip_norm": 0.9608458740403876
+        }
+      ],
+      "maximum_preclip_physical_norm": 75.79653930664062,
+      "validation": [
+        {
+          "kind": "validation",
+          "time": 1793258844.4157856,
+          "step": 64,
+          "fm": 0.1963042914867401,
+          "video": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_variants/runs/v6_write_20261029T064043Z/videos/val_source0000042_step0064_seed42.mp4",
+          "sample": "source0000042"
+        },
+        {
+          "kind": "validation",
+          "time": 1793265227.5113292,
+          "step": 224,
+          "fm": 0.18572846613824368,
+          "video": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_variants/runs/v6_write_20261029T064043Z/videos/val_source0000042_step0224_seed42.mp4",
+          "sample": "source0000042"
+        }
+      ],
+      "old_aux_coefficient": "0.02 * (1-sigma)",
+      "old_peak_lrs": {
+        "physical": 0.0001,
+        "wan_lora": 1e-05
+      },
+      "new_q_tokens": 256,
+      "new_total_steps": 1000
+    },
+    "v6_assoc": {
+      "log": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_variants/runs/v6_assoc_20261029T064043Z/train.jsonl",
+      "windows": [
+        {
+          "start": 1,
+          "end": 32,
+          "fm": 0.26973795681260526,
+          "aux": 1.781284995493479,
+          "weighted_aux": 0.017019196660446444,
+          "weighted_aux_to_fm": 0.0630952976049647,
+          "physical_clipped_steps": 3,
+          "physical_mean_preclip_norm": 0.39728912175633013
+        },
+        {
+          "start": 33,
+          "end": 64,
+          "fm": 0.33427445517736487,
+          "aux": 1.5360883390530944,
+          "weighted_aux": 0.016863370573872206,
+          "weighted_aux_to_fm": 0.05044767948219244,
+          "physical_clipped_steps": 0,
+          "physical_mean_preclip_norm": 0.1948635254520923
+        },
+        {
+          "start": 65,
+          "end": 112,
+          "fm": 0.2826400933651409,
+          "aux": 1.3472303651894133,
+          "weighted_aux": 0.013716667714038592,
+          "weighted_aux_to_fm": 0.04853050942181129,
+          "physical_clipped_steps": 0,
+          "physical_mean_preclip_norm": 0.1700472330364088
+        },
+        {
+          "start": 113,
+          "end": 160,
+          "fm": 0.278202961019512,
+          "aux": 0.7846796500186125,
+          "weighted_aux": 0.007861835797458092,
+          "weighted_aux_to_fm": 0.028259353418264646,
+          "physical_clipped_steps": 0,
+          "physical_mean_preclip_norm": 0.19315673286716142
+        },
+        {
+          "start": 161,
+          "end": 224,
+          "fm": 0.27481157271540724,
+          "aux": 0.47464309295173734,
+          "weighted_aux": 0.004814984892854541,
+          "weighted_aux_to_fm": 0.01752104121845299,
+          "physical_clipped_steps": 0,
+          "physical_mean_preclip_norm": 0.22155710711376742
+        }
+      ],
+      "maximum_preclip_physical_norm": 2.5171408653259277,
+      "validation": [
+        {
+          "kind": "validation",
+          "time": 1793258844.4437616,
+          "step": 64,
+          "fm": 0.19047664292156696,
+          "video": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_variants/runs/v6_assoc_20261029T064043Z/videos/val_source0000042_step0064_seed42.mp4",
+          "sample": "source0000042"
+        },
+        {
+          "kind": "validation",
+          "time": 1793265224.6958013,
+          "step": 224,
+          "fm": 0.18674886785447598,
+          "video": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_variants/runs/v6_assoc_20261029T064043Z/videos/val_source0000042_step0224_seed42.mp4",
+          "sample": "source0000042"
+        }
+      ],
+      "old_aux_coefficient": "0.02 * (1-sigma)",
+      "old_peak_lrs": {
+        "physical": 0.0001,
+        "wan_lora": 1e-05
+      },
+      "new_q_tokens": 256,
+      "new_total_steps": 1000
+    }
+  },
+  "interpretation": [
+    "Frequent clipping and large early residual objective motivate lower write LR and residual weight, but existing logs do not separate FM and auxiliary gradient norms.",
+    "KL has no clipping in joint training and is still falling late; extend the useful learning-rate period rather than scale LR with token count.",
+    "Training FM averages across different clips/sigma are not fixed-sample quality measurements. Four-case held-out FM is also not a physical correctness metric.",
+    "Synthetic V6 residual remains a weak target; coefficient tuning does not establish target validity."
+  ]
+}

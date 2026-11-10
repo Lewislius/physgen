@@ -1,0 +1,23 @@
+补充评测：WorldModelBench70 与 Physics-IQ Verified60
+
+范围
+先补测保存的400步Wan+LoRA66781、R1 66778、R10A67003。新候选使用同一套清单和输入；不为每个模型重新抽样，不根据任何分数删选案例。优先用ada-48g，其次amp-80g；不占主线blk-96g训练，拒绝H100，不下载模型、不调用付费API。
+
+固定子集
+WorldModelBench官方350例，每个领域50例。seed42对各领域的子领域顺序和内部样本打乱，轮流选取到10例，共70例，尽量覆盖子领域。领域为animation、autonomous vehicle、human、industrial、natural、robotics、video games。选择完成时没有任何本次生成评分。
+Physics-IQ Verified原66场景，按用户要求随机固定：Solid Mechanics8/38，Fluid Dynamics4/15，Optics3/8，Thermodynamics3/3，Magnetism2/2。每场景保留left/center/right三视角，只生成take1条件的一轮，共60例。官方两次真实拍摄只供评分中的物理方差归一化，绝不作为生成条件。
+逐例清单、官方ID、场景名、视角、源图、原始提示词和准备分工全部保存在protocol.json。Physics-IQ保留原始ID，不为了凑连续编号改名。
+
+生成设置
+使用官方I2V首帧；WMB提示词仅为text_instruction，遵循本地官方README。Physics-IQ采用已下载的Verified best-practice base提示词。二者均不经过API重写。共享首帧全画面resize至832x480，不裁剪、不重新生成场景。
+官方首帧、T5上下文、Qwen3-VL的首帧/请求条件以及确定性噪声种子跨模型复用。保留每个版本自己已训练的模块、接口和400步权重。seed42加固定清单索引得到每例噪声种子，与作业顺序/分片无关。50采样步、shift5、原生CFG5、物理gamma5，负文本为空，与本轮各模型完全一致。
+Wan生成81帧、16fps；WMB保留81帧，Physics-IQ固定导出前80帧，恰为5秒，不插帧、不变速。原始输出保留在各case目录，官方名称目录用符号链接。第一条真实请求作为完整路径/显存校验，随后复用，不增加诊断视频。
+本次130条官方描述的最长原始T5长度112，低于512；实际编码时再次检查是否会截断。Qwen输入仅有首帧与请求，不含测试真视频、mask或评价结果。
+
+评分
+WMB：在独立工作目录放固定70条官方清单，调用本地未修改evaluation.py和已存在VILA裁判，官方默认cot=False。保持问题与解析规则。报告Instruction0..3、Physical0..5、CommonSense0..2、总分0..10，以及各物理子项、视觉质量、时间一致性和各领域结果。先校验70个视频齐全，不能依赖官方脚本跳过缺失视频后仍报完整分。
+Physics-IQ：官方run_physics_iq入口硬编码198条且改名输入，因此本地子集适配器只替换清单/数量校验与路径装配，直接调用未修改generate_mask、process_videos、IQTable、calculate_iq_score。评分使用所选20场景的全部3视角和2次真实拍摄。已有16fps真视频及mask只读链接到专用评测目录；生成mask写到各模型独立目录。报告官方Verified final_score_view（同时给0..1和百分制）、Original及分项、五分类结果、原始逐场景CSV。
+这两项均明确为固定子集的一轮研究结果，不标成350/198全量结果，也不等同于官方多轮SOTA报告。Physics-IQ类别比例是用户指定的覆盖方案，不按全66场景类别分布重新加权。模型比较始终使用同一批样本和同一口径。
+
+资源与主线关系
+历史模型生成/评测采用独立单卡ada-48g；主线R12B的训练和VideoPhy2评测优先。若补充任务需要blk-96g而主线在排队，则先等待或停补充任务，不占用主线卡位。准备/输出/评分与旧实验目录隔离，支持保留结果后恢复。不会因任何一项新分数自动提交下一版；结合消融、实际视频和历代有效/有害设计审查后再决定，最多R13C。

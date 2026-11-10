@@ -1,0 +1,64 @@
+{
+  "utc": "2026-11-03T14:54:46.180933+00:00",
+  "scope": "Post-score targeted review of two fixed16 interventions, with eight native-resolution frames and all32 actual AutoEval sampling frames; not a random sample or a full-suite visual verdict.",
+  "selection_file": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/reports/R11A_physical_content_67214/visual_controls16/selection.json",
+  "decoder_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/reports/R11A_physical_content_67214/visual_controls16/decoder_evidence.json",
+  "scores_unchanged": true,
+  "evaluator_rerun": false,
+  "cases": [
+    {
+      "case": "VP002",
+      "normal_scores": {
+        "sa": 2,
+        "pc": 3
+      },
+      "wrong_scores": {
+        "sa": 2,
+        "pc": 5
+      },
+      "normal": "The wood-like material becomes broad loose/ribbon-like shapes and overlaps or deforms the people; the requested coherent bending is not established.",
+      "wrong": "Every one of the32 frames selected by the existing AutoEval loader (indices1..79) is dominated by repeated texture/noise; the intended people/wood scene is not coherently represented. The fixed frame0 remains recognizable.",
+      "interpretation": "PC5 is a clear score/visual-quality conflict here. It cannot be treated as improved physical execution under wrong reasoning, and the normal video is also visibly defective."
+    },
+    {
+      "case": "VP038",
+      "normal_scores": {
+        "sa": 3,
+        "pc": 4
+      },
+      "wrong_scores": {
+        "sa": 4,
+        "pc": 4
+      },
+      "normal": "The sampled normal sequence develops a periodic surface texture; the roller later narrows and disappears without establishing a clean paint-transfer process.",
+      "wrong": "From roughly frame11 the cylindrical roller becomes a broad sheet-like object, later appearing disconnected or discontinuous relative to its handle.",
+      "interpretation": "This sole new Joint pass under wrong reasoning does not establish visibly correct rolling/paint-transfer mechanics. Both arms retain notable defects."
+    }
+  ],
+  "quantitative_decomposition": {
+    "raw_fixed16_normal": {
+      "sa": 3.0625,
+      "pc": 3.625,
+      "joint": 4
+    },
+    "raw_fixed16_wrong": {
+      "sa": 3.125,
+      "pc": 3.6875,
+      "joint": 5
+    },
+    "wrong_minus_normal_pc_total": 1,
+    "VP002_wrong_minus_normal_pc": 2,
+    "remaining15_wrong_minus_normal_pc_total": -1,
+    "only_joint_gain": "VP038",
+    "scope": "Describe contributions without deleting cases, replacing scores or reporting a modified benchmark."
+  },
+  "decision": "Retain all original benchmark outputs. Correct-reasoning benefit remains unproven, and wrong-reasoning mean gain is not evidence of better generation. New candidate selection must consider visual failures alongside matched scores; no blanket claim that all AutoEval results are invalid.",
+  "next_architecture_implication": "Potential conditioning/write instability deserves attention if reproduced in normal revised-data outputs; wrong-condition failure alone does not identify its source or justify an untested numerical patch. Keep submitted new R11A unchanged until its own results.",
+  "official_protocol_check": {
+    "code": "/home/liuzhirui/benchmark/videophy/VIDEOPHY2/inference.py",
+    "official_default_num_frames": 32,
+    "configured_num_frames": 32,
+    "generate_kwargs_match": true,
+    "result": "No evidence of a first-frame-only read, wrong frame-count setting, or score parsing error for these two outputs. This does not audit all evaluator internals."
+  }
+}

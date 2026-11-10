@@ -1,0 +1,1506 @@
+{
+  "utc": "2026-11-08T18:29:39.472798+00:00",
+  "candidate": "R15I fresh400",
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/runs/physical_content_68312/step0400.pt",
+  "frozen_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/snapshots/20261108T123450Z",
+  "output": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/inference_outputs/physical_content_68312/step0400_original_fixed40_controls16_seed42",
+  "main40": {
+    "count": 40,
+    "SA": 3.025,
+    "PC": 3.475,
+    "SA_rate": 0.275,
+    "PC_rate": 0.425,
+    "Joint": 10,
+    "Joint_rate": 0.25
+  },
+  "extra20": {
+    "count": 20,
+    "SA": 2.8,
+    "PC": 3.45,
+    "SA_rate": 0.1,
+    "PC_rate": 0.45,
+    "Joint": 2,
+    "Joint_rate": 0.1
+  },
+  "full60": {
+    "count": 60,
+    "SA": 2.95,
+    "PC": 3.466666666666667,
+    "SA_rate": 0.21666666666666667,
+    "PC_rate": 0.43333333333333335,
+    "Joint": 12,
+    "Joint_rate": 0.2
+  },
+  "normal16": {
+    "count": 16,
+    "SA": 3.1875,
+    "PC": 3.6875,
+    "SA_rate": 0.375,
+    "PC_rate": 0.5625,
+    "Joint": 6,
+    "Joint_rate": 0.375
+  },
+  "remaining24": {
+    "count": 24,
+    "SA": 2.9166666666666665,
+    "PC": 3.3333333333333335,
+    "SA_rate": 0.20833333333333334,
+    "PC_rate": 0.3333333333333333,
+    "Joint": 4,
+    "Joint_rate": 0.16666666666666666
+  },
+  "controls": {
+    "no_c": {
+      "summary": {
+        "count": 16,
+        "SA": 3.25,
+        "PC": 3.625,
+        "SA_rate": 0.375,
+        "PC_rate": 0.4375,
+        "Joint": 6,
+        "Joint_rate": 0.375
+      },
+      "paired": {
+        "sa": {
+          "normal_minus_control": -0.0625,
+          "wins": 0,
+          "ties": 15,
+          "losses": 1
+        },
+        "pc": {
+          "normal_minus_control": 0.0625,
+          "wins": 2,
+          "ties": 13,
+          "losses": 1
+        },
+        "joint": {
+          "gains": [],
+          "losses": []
+        }
+      }
+    },
+    "direct_read_only": {
+      "summary": {
+        "count": 16,
+        "SA": 3.25,
+        "PC": 3.75,
+        "SA_rate": 0.375,
+        "PC_rate": 0.5,
+        "Joint": 5,
+        "Joint_rate": 0.3125
+      },
+      "paired": {
+        "sa": {
+          "normal_minus_control": -0.0625,
+          "wins": 0,
+          "ties": 15,
+          "losses": 1
+        },
+        "pc": {
+          "normal_minus_control": -0.0625,
+          "wins": 1,
+          "ties": 13,
+          "losses": 2
+        },
+        "joint": {
+          "gains": [
+            "VP010"
+          ],
+          "losses": []
+        }
+      }
+    },
+    "request_bound_only": {
+      "summary": {
+        "count": 16,
+        "SA": 3.1875,
+        "PC": 3.6875,
+        "SA_rate": 0.375,
+        "PC_rate": 0.5625,
+        "Joint": 6,
+        "Joint_rate": 0.375
+      },
+      "paired": {
+        "sa": {
+          "normal_minus_control": 0,
+          "wins": 1,
+          "ties": 14,
+          "losses": 1
+        },
+        "pc": {
+          "normal_minus_control": 0,
+          "wins": 0,
+          "ties": 16,
+          "losses": 0
+        },
+        "joint": {
+          "gains": [],
+          "losses": []
+        }
+      }
+    },
+    "native_physical_query": {
+      "summary": {
+        "count": 16,
+        "SA": 3.125,
+        "PC": 3.625,
+        "SA_rate": 0.3125,
+        "PC_rate": 0.5,
+        "Joint": 4,
+        "Joint_rate": 0.25
+      },
+      "paired": {
+        "sa": {
+          "normal_minus_control": 0.0625,
+          "wins": 1,
+          "ties": 15,
+          "losses": 0
+        },
+        "pc": {
+          "normal_minus_control": 0.0625,
+          "wins": 1,
+          "ties": 15,
+          "losses": 0
+        },
+        "joint": {
+          "gains": [
+            "VP010",
+            "VP034"
+          ],
+          "losses": []
+        }
+      }
+    },
+    "reasoning_swapped": {
+      "summary": {
+        "count": 16,
+        "SA": 3.0625,
+        "PC": 3.875,
+        "SA_rate": 0.3125,
+        "PC_rate": 0.5625,
+        "Joint": 4,
+        "Joint_rate": 0.25
+      },
+      "paired": {
+        "sa": {
+          "normal_minus_control": 0.125,
+          "wins": 2,
+          "ties": 13,
+          "losses": 1
+        },
+        "pc": {
+          "normal_minus_control": -0.1875,
+          "wins": 2,
+          "ties": 10,
+          "losses": 4
+        },
+        "joint": {
+          "gains": [
+            "VP010",
+            "VP038"
+          ],
+          "losses": []
+        }
+      }
+    },
+    "empty_reasoning": {
+      "summary": {
+        "count": 16,
+        "SA": 3.125,
+        "PC": 4.0625,
+        "SA_rate": 0.3125,
+        "PC_rate": 0.6875,
+        "Joint": 5,
+        "Joint_rate": 0.3125
+      },
+      "paired": {
+        "sa": {
+          "normal_minus_control": 0.0625,
+          "wins": 3,
+          "ties": 11,
+          "losses": 2
+        },
+        "pc": {
+          "normal_minus_control": -0.375,
+          "wins": 0,
+          "ties": 11,
+          "losses": 5
+        },
+        "joint": {
+          "gains": [
+            "VP018",
+            "VP038"
+          ],
+          "losses": [
+            "VP015"
+          ]
+        }
+      }
+    },
+    "global_train_mean": {
+      "summary": {
+        "count": 16,
+        "SA": 3.25,
+        "PC": 3.5,
+        "SA_rate": 0.3125,
+        "PC_rate": 0.375,
+        "Joint": 5,
+        "Joint_rate": 0.3125
+      },
+      "paired": {
+        "sa": {
+          "normal_minus_control": -0.0625,
+          "wins": 1,
+          "ties": 13,
+          "losses": 2
+        },
+        "pc": {
+          "normal_minus_control": 0.1875,
+          "wins": 3,
+          "ties": 13,
+          "losses": 0
+        },
+        "joint": {
+          "gains": [
+            "VP010"
+          ],
+          "losses": []
+        }
+      }
+    }
+  },
+  "training": {
+    "run": "physical_content_68312",
+    "reference": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_bound_fusion_r15b/runs/physical_content_67829/train.jsonl",
+    "optimizer_updates": 400,
+    "microbatches": 1600,
+    "unique_samples": 1600,
+    "interface_updates": 128,
+    "joint_updates": 272,
+    "native_lora_frozen_during_interface": true,
+    "native_lora_active_during_joint": true,
+    "data_noise_dropout_and_schedule_match": true,
+    "mismatches": [],
+    "quality_proof": false,
+    "scope": "Training execution/protocol audit; not generation effectiveness"
+  },
+  "actual_video_review": {
+    "utc": "2026-11-08T14:29:42.014218+00:00",
+    "scope": "Early real-video sampled frames from predeclared cases, before40scores; not an aggregate visual score.",
+    "frames": [
+      0,
+      11,
+      22,
+      34,
+      45,
+      57,
+      68,
+      80
+    ],
+    "candidate": "R15I own400/68312",
+    "cases": {
+      "VP004": {
+        "observation": "近乎静止，未呈现明确尺子弯曲/断裂；相比H后段尺子消失，该物体在本次全部采样帧仍可见。横贯衣服的白色区域在首帧已经存在，不算I新增伪影。",
+        "generation_gain": "Object persistence relative to H on this case, but intended process still missing.",
+        "evidence": {
+          "case": "VP004",
+          "predeclared_cases": [
+            "VP004",
+            "VP010",
+            "VP027",
+            "VP034",
+            "VP038"
+          ],
+          "selected_before_R15I_scores": true,
+          "reason": "Ruler bending/cracking: material persistence, person and background artifacts.",
+          "frame_indices": [
+            0,
+            11,
+            22,
+            34,
+            45,
+            57,
+            68,
+            80
+          ],
+          "videos": {
+            "R1": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/inference_outputs/physical_content_66778/step0400_seed42_r1/videophy40/cases/VP004/planned.mp4",
+            "R10-A": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/execution_value_r10/inference_outputs/physical_content_67003/step0400_full40_controls16_physical5_seed42/videophy40/cases/VP004/planned.mp4",
+            "R13C": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/coupled_attention_r13c/inference_outputs/physical_content_67682/step0400_original_fixed40_controls16_seed42/videophy40/cases/VP004/planned.mp4",
+            "R15A": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_fusion_r15a/inference_outputs/physical_content_67762/step0400_original_fixed40_controls16_seed42/videophy40/cases/VP004/planned.mp4",
+            "R15B": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_bound_fusion_r15b/inference_outputs/physical_content_67829/step0400_original_fixed40_controls16_seed42/videophy40/cases/VP004/planned.mp4",
+            "R15I": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/inference_outputs/physical_content_68312/step0400_original_fixed40_controls16_seed42/videophy40/cases/VP004/planned.mp4",
+            "R15D": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/denoising_matched_fusion_r15d/inference_outputs/physical_content_67920/step0400_original_fixed40_controls16_seed42/videophy40/cases/VP004/planned.mp4"
+          },
+          "panels": {
+            "R1": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/coupled_attention_r13c/reports/physical_content_67682/visual_predeclared/VP004_R1.png",
+            "R10-A": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/coupled_attention_r13c/reports/physical_content_67682/visual_predeclared/VP004_R10-A.png",
+            "R13C": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/coupled_attention_r13c/reports/physical_content_67682/visual_predeclared/VP004_R13C.png",
+            "R15A": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_fusion_r15a/reports/physical_content_67762/visual_predeclared/VP004_R15A.png",
+            "R15B": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_bound_fusion_r15b/reports/physical_content_67829/visual_predeclared/VP004_R15B.png",
+            "R15I": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/reports/physical_content_68312/visual_predeclared/VP004_R15I.png",
+            "R15D": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/reports/physical_content_68312/visual_predeclared/VP004_R15D.png"
+          },
+          "metadata": {
+            "R1": {
+              "caption": "A plastic ruler is bent until it cracks, displaying a visible stress fracture that propagates.",
+              "canvas": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP004/first.png",
+              "seed": 42,
+              "sampler": {
+                "steps": 50,
+                "shift": 5.0,
+                "guidance": 5.0,
+                "sampler": "shifted_euler"
+              },
+              "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/runs/physical_content_66778/step0400.pt",
+              "step": 400,
+              "mode": "real"
+            },
+            "R10-A": {
+              "caption": "A plastic ruler is bent until it cracks, displaying a visible stress fracture that propagates.",
+              "canvas": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP004/first.png",
+              "seed": 42,
+              "sampler": {
+                "steps": 50,
+                "shift": 5.0,
+                "guidance": 5.0,
+                "sampler": "shifted_euler"
+              },
+              "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/execution_value_r10/runs/physical_content_67003/step0400.pt",
+              "step": 400,
+              "mode": "real"
+            },
+            "R13C": {
+              "caption": "A plastic ruler is bent until it cracks, displaying a visible stress fracture that propagates.",
+              "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP004/first.png",
+              "seed": 42,
+              "sampler": {
+                "steps": 50,
+                "shift": 5.0,
+                "guidance": 5.0,
+                "sampler": "shifted_euler"
+              },
+              "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/coupled_attention_r13c/runs/physical_content_67682/step0400.pt",
+              "step": 400,
+              "mode": "real"
+            },
+            "R15A": {
+              "caption": "A plastic ruler is bent until it cracks, displaying a visible stress fracture that propagates.",
+              "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP004/first.png",
+              "seed": 42,
+              "sampler": {
+                "steps": 50,
+                "shift": 5.0,
+                "guidance": 5.0,
+                "sampler": "shifted_euler"
+              },
+              "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_fusion_r15a/runs/physical_content_67762/step0400.pt",
+              "step": 400,
+              "mode": "real"
+            },
+            "R15B": {
+              "caption": "A plastic ruler is bent until it cracks, displaying a visible stress fracture that propagates.",
+              "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP004/first.png",
+              "seed": 42,
+              "sampler": {
+                "steps": 50,
+                "shift": 5.0,
+                "guidance": 5.0,
+                "sampler": "shifted_euler"
+              },
+              "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_bound_fusion_r15b/runs/physical_content_67829/step0400.pt",
+              "step": 400,
+              "mode": "real"
+            },
+            "R15I": {
+              "caption": "A plastic ruler is bent until it cracks, displaying a visible stress fracture that propagates.",
+              "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP004/first.png",
+              "seed": 42,
+              "sampler": {
+                "steps": 50,
+                "shift": 5.0,
+                "guidance": 5.0,
+                "sampler": "shifted_euler",
+                "guidance_composition": "joint_two_branch_cfg"
+              },
+              "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/runs/physical_content_68312/step0400.pt",
+              "step": 400,
+              "mode": "real",
+              "guidance_composition": {
+                "kind": "joint_two_branch_cfg",
+                "text_scale": 5.0,
+                "physical_scale": 5.0,
+                "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+                "physical_residual_scale": null,
+                "native_definition": "Same trained Wan LoRA with all physical additions disabled"
+              }
+            },
+            "R15D": {
+              "caption": "A plastic ruler is bent until it cracks, displaying a visible stress fracture that propagates.",
+              "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP004/first.png",
+              "seed": 42,
+              "sampler": {
+                "steps": 50,
+                "shift": 5.0,
+                "guidance": 5.0,
+                "sampler": "shifted_euler"
+              },
+              "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/denoising_matched_fusion_r15d/runs/physical_content_67920/step0400.pt",
+              "step": 400,
+              "mode": "real",
+              "guidance_composition": {
+                "kind": "separate_native_text_and_reasoning",
+                "text_scale": 5.0,
+                "physical_scale": 5.0,
+                "neutral": "Same positive native T5 request, own image-only negative C",
+                "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+              }
+            }
+          },
+          "scope": "Sampled-frame diagnostic; not a complete video assessment or aggregate metric."
+        }
+      },
+      "VP010": {
+        "observation": "水面明显波动、扩散和高亮喷溅，拖把头在后段发生扁平化/变形；未清楚呈现吸水后积水减小。该例有动态变化，但目前不是符合提示词的物理过程改善。",
+        "generation_gain": false,
+        "evidence": {
+          "case": "VP010",
+          "predeclared_cases": [
+            "VP004",
+            "VP010",
+            "VP027",
+            "VP034",
+            "VP038"
+          ],
+          "selected_before_R15I_scores": true,
+          "reason": "Mop/water absorption: requested process versus bright water-like artifacts.",
+          "frame_indices": [
+            0,
+            11,
+            22,
+            34,
+            45,
+            57,
+            68,
+            80
+          ],
+          "videos": {
+            "R1": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/inference_outputs/physical_content_66778/step0400_seed42_r1/videophy40/cases/VP010/planned.mp4",
+            "R10-A": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/execution_value_r10/inference_outputs/physical_content_67003/step0400_full40_controls16_physical5_seed42/videophy40/cases/VP010/planned.mp4",
+            "R13C": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/coupled_attention_r13c/inference_outputs/physical_content_67682/step0400_original_fixed40_controls16_seed42/videophy40/cases/VP010/planned.mp4",
+            "R15A": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_fusion_r15a/inference_outputs/physical_content_67762/step0400_original_fixed40_controls16_seed42/videophy40/cases/VP010/planned.mp4",
+            "R15B": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_bound_fusion_r15b/inference_outputs/physical_content_67829/step0400_original_fixed40_controls16_seed42/videophy40/cases/VP010/planned.mp4",
+            "R15I": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/inference_outputs/physical_content_68312/step0400_original_fixed40_controls16_seed42/videophy40/cases/VP010/planned.mp4",
+            "R15D": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/denoising_matched_fusion_r15d/inference_outputs/physical_content_67920/step0400_original_fixed40_controls16_seed42/videophy40/cases/VP010/planned.mp4"
+          },
+          "panels": {
+            "R1": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/coupled_attention_r13c/reports/physical_content_67682/visual_predeclared/VP010_R1.png",
+            "R10-A": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/coupled_attention_r13c/reports/physical_content_67682/visual_predeclared/VP010_R10-A.png",
+            "R13C": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/coupled_attention_r13c/reports/physical_content_67682/visual_predeclared/VP010_R13C.png",
+            "R15A": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_fusion_r15a/reports/physical_content_67762/visual_predeclared/VP010_R15A.png",
+            "R15B": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_bound_fusion_r15b/reports/physical_content_67829/visual_predeclared/VP010_R15B.png",
+            "R15I": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/reports/physical_content_68312/visual_predeclared/VP010_R15I.png",
+            "R15D": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/reports/physical_content_68312/visual_predeclared/VP010_R15D.png"
+          },
+          "metadata": {
+            "R1": {
+              "caption": "A person mops up a puddle of water on a concrete floor, the water disappearing as the mop passes.",
+              "canvas": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP010/first.png",
+              "seed": 42,
+              "sampler": {
+                "steps": 50,
+                "shift": 5.0,
+                "guidance": 5.0,
+                "sampler": "shifted_euler"
+              },
+              "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/runs/physical_content_66778/step0400.pt",
+              "step": 400,
+              "mode": "real"
+            },
+            "R10-A": {
+              "caption": "A person mops up a puddle of water on a concrete floor, the water disappearing as the mop passes.",
+              "canvas": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP010/first.png",
+              "seed": 42,
+              "sampler": {
+                "steps": 50,
+                "shift": 5.0,
+                "guidance": 5.0,
+                "sampler": "shifted_euler"
+              },
+              "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/execution_value_r10/runs/physical_content_67003/step0400.pt",
+              "step": 400,
+              "mode": "real"
+            },
+            "R13C": {
+              "caption": "A person mops up a puddle of water on a concrete floor, the water disappearing as the mop passes.",
+              "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP010/first.png",
+              "seed": 42,
+              "sampler": {
+                "steps": 50,
+                "shift": 5.0,
+                "guidance": 5.0,
+                "sampler": "shifted_euler"
+              },
+              "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/coupled_attention_r13c/runs/physical_content_67682/step0400.pt",
+              "step": 400,
+              "mode": "real"
+            },
+            "R15A": {
+              "caption": "A person mops up a puddle of water on a concrete floor, the water disappearing as the mop passes.",
+              "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP010/first.png",
+              "seed": 42,
+              "sampler": {
+                "steps": 50,
+                "shift": 5.0,
+                "guidance": 5.0,
+                "sampler": "shifted_euler"
+              },
+              "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_fusion_r15a/runs/physical_content_67762/step0400.pt",
+              "step": 400,
+              "mode": "real"
+            },
+            "R15B": {
+              "caption": "A person mops up a puddle of water on a concrete floor, the water disappearing as the mop passes.",
+              "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP010/first.png",
+              "seed": 42,
+              "sampler": {
+                "steps": 50,
+                "shift": 5.0,
+                "guidance": 5.0,
+                "sampler": "shifted_euler"
+              },
+              "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_bound_fusion_r15b/runs/physical_content_67829/step0400.pt",
+              "step": 400,
+              "mode": "real"
+            },
+            "R15I": {
+              "caption": "A person mops up a puddle of water on a concrete floor, the water disappearing as the mop passes.",
+              "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP010/first.png",
+              "seed": 42,
+              "sampler": {
+                "steps": 50,
+                "shift": 5.0,
+                "guidance": 5.0,
+                "sampler": "shifted_euler",
+                "guidance_composition": "joint_two_branch_cfg"
+              },
+              "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/runs/physical_content_68312/step0400.pt",
+              "step": 400,
+              "mode": "real",
+              "guidance_composition": {
+                "kind": "joint_two_branch_cfg",
+                "text_scale": 5.0,
+                "physical_scale": 5.0,
+                "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+                "physical_residual_scale": null,
+                "native_definition": "Same trained Wan LoRA with all physical additions disabled"
+              }
+            },
+            "R15D": {
+              "caption": "A person mops up a puddle of water on a concrete floor, the water disappearing as the mop passes.",
+              "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP010/first.png",
+              "seed": 42,
+              "sampler": {
+                "steps": 50,
+                "shift": 5.0,
+                "guidance": 5.0,
+                "sampler": "shifted_euler"
+              },
+              "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/denoising_matched_fusion_r15d/runs/physical_content_67920/step0400.pt",
+              "step": 400,
+              "mode": "real",
+              "guidance_composition": {
+                "kind": "separate_native_text_and_reasoning",
+                "text_scale": 5.0,
+                "physical_scale": 5.0,
+                "neutral": "Same positive native T5 request, own image-only negative C",
+                "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+              }
+            }
+          },
+          "scope": "Sampled-frame diagnostic; not a complete video assessment or aggregate metric."
+        }
+      },
+      "VP027": {
+        "observation": "未出现H的大片周期网格；手、面团和桌面保持清晰，存在小幅手指/手掌按压与面团形变。相比H是明确的可视退化修复，但完整整形成圆面包的任务完成度仍需结合评分及连续视频判断。",
+        "generation_gain": "Clear removal of H grid on sampled frames; limited but plausible contact changes.",
+        "evidence": {
+          "case": "VP027",
+          "predeclared_cases": [
+            "VP004",
+            "VP010",
+            "VP027",
+            "VP034",
+            "VP038"
+          ],
+          "selected_before_R15I_scores": true,
+          "reason": "Bread boule shaping: useful content effects and hand/dough consistency.",
+          "frame_indices": [
+            0,
+            11,
+            22,
+            34,
+            45,
+            57,
+            68,
+            80
+          ],
+          "videos": {
+            "R1": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/inference_outputs/physical_content_66778/step0400_seed42_r1/videophy40/cases/VP027/planned.mp4",
+            "R10-A": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/execution_value_r10/inference_outputs/physical_content_67003/step0400_full40_controls16_physical5_seed42/videophy40/cases/VP027/planned.mp4",
+            "R13C": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/coupled_attention_r13c/inference_outputs/physical_content_67682/step0400_original_fixed40_controls16_seed42/videophy40/cases/VP027/planned.mp4",
+            "R15A": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_fusion_r15a/inference_outputs/physical_content_67762/step0400_original_fixed40_controls16_seed42/videophy40/cases/VP027/planned.mp4",
+            "R15B": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_bound_fusion_r15b/inference_outputs/physical_content_67829/step0400_original_fixed40_controls16_seed42/videophy40/cases/VP027/planned.mp4",
+            "R15I": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/inference_outputs/physical_content_68312/step0400_original_fixed40_controls16_seed42/videophy40/cases/VP027/planned.mp4",
+            "R15D": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/denoising_matched_fusion_r15d/inference_outputs/physical_content_67920/step0400_original_fixed40_controls16_seed42/videophy40/cases/VP027/planned.mp4"
+          },
+          "panels": {
+            "R1": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/coupled_attention_r13c/reports/physical_content_67682/visual_predeclared/VP027_R1.png",
+            "R10-A": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/coupled_attention_r13c/reports/physical_content_67682/visual_predeclared/VP027_R10-A.png",
+            "R13C": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/coupled_attention_r13c/reports/physical_content_67682/visual_predeclared/VP027_R13C.png",
+            "R15A": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_fusion_r15a/reports/physical_content_67762/visual_predeclared/VP027_R15A.png",
+            "R15B": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_bound_fusion_r15b/reports/physical_content_67829/visual_predeclared/VP027_R15B.png",
+            "R15I": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/reports/physical_content_68312/visual_predeclared/VP027_R15I.png",
+            "R15D": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/reports/physical_content_68312/visual_predeclared/VP027_R15D.png"
+          },
+          "metadata": {
+            "R1": {
+              "caption": "Hands shape a lump of clay-like bread dough into a smooth, round boule on a wooden table.",
+              "canvas": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP027/first.png",
+              "seed": 42,
+              "sampler": {
+                "steps": 50,
+                "shift": 5.0,
+                "guidance": 5.0,
+                "sampler": "shifted_euler"
+              },
+              "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/runs/physical_content_66778/step0400.pt",
+              "step": 400,
+              "mode": "real"
+            },
+            "R10-A": {
+              "caption": "Hands shape a lump of clay-like bread dough into a smooth, round boule on a wooden table.",
+              "canvas": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP027/first.png",
+              "seed": 42,
+              "sampler": {
+                "steps": 50,
+                "shift": 5.0,
+                "guidance": 5.0,
+                "sampler": "shifted_euler"
+              },
+              "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/execution_value_r10/runs/physical_content_67003/step0400.pt",
+              "step": 400,
+              "mode": "real"
+            },
+            "R13C": {
+              "caption": "Hands shape a lump of clay-like bread dough into a smooth, round boule on a wooden table.",
+              "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP027/first.png",
+              "seed": 42,
+              "sampler": {
+                "steps": 50,
+                "shift": 5.0,
+                "guidance": 5.0,
+                "sampler": "shifted_euler"
+              },
+              "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/coupled_attention_r13c/runs/physical_content_67682/step0400.pt",
+              "step": 400,
+              "mode": "real"
+            },
+            "R15A": {
+              "caption": "Hands shape a lump of clay-like bread dough into a smooth, round boule on a wooden table.",
+              "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP027/first.png",
+              "seed": 42,
+              "sampler": {
+                "steps": 50,
+                "shift": 5.0,
+                "guidance": 5.0,
+                "sampler": "shifted_euler"
+              },
+              "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_fusion_r15a/runs/physical_content_67762/step0400.pt",
+              "step": 400,
+              "mode": "real"
+            },
+            "R15B": {
+              "caption": "Hands shape a lump of clay-like bread dough into a smooth, round boule on a wooden table.",
+              "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP027/first.png",
+              "seed": 42,
+              "sampler": {
+                "steps": 50,
+                "shift": 5.0,
+                "guidance": 5.0,
+                "sampler": "shifted_euler"
+              },
+              "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_bound_fusion_r15b/runs/physical_content_67829/step0400.pt",
+              "step": 400,
+              "mode": "real"
+            },
+            "R15I": {
+              "caption": "Hands shape a lump of clay-like bread dough into a smooth, round boule on a wooden table.",
+              "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP027/first.png",
+              "seed": 42,
+              "sampler": {
+                "steps": 50,
+                "shift": 5.0,
+                "guidance": 5.0,
+                "sampler": "shifted_euler",
+                "guidance_composition": "joint_two_branch_cfg"
+              },
+              "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/runs/physical_content_68312/step0400.pt",
+              "step": 400,
+              "mode": "real",
+              "guidance_composition": {
+                "kind": "joint_two_branch_cfg",
+                "text_scale": 5.0,
+                "physical_scale": 5.0,
+                "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+                "physical_residual_scale": null,
+                "native_definition": "Same trained Wan LoRA with all physical additions disabled"
+              }
+            },
+            "R15D": {
+              "caption": "Hands shape a lump of clay-like bread dough into a smooth, round boule on a wooden table.",
+              "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP027/first.png",
+              "seed": 42,
+              "sampler": {
+                "steps": 50,
+                "shift": 5.0,
+                "guidance": 5.0,
+                "sampler": "shifted_euler"
+              },
+              "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/denoising_matched_fusion_r15d/runs/physical_content_67920/step0400.pt",
+              "step": 400,
+              "mode": "real",
+              "guidance_composition": {
+                "kind": "separate_native_text_and_reasoning",
+                "text_scale": 5.0,
+                "physical_scale": 5.0,
+                "neutral": "Same positive native T5 request, own image-only negative C",
+                "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+              }
+            }
+          },
+          "scope": "Sampled-frame diagnostic; not a complete video assessment or aggregate metric."
+        }
+      },
+      "VP034": {
+        "observation": "气球及背景保持清楚，未出现H的强网格和气球难以辨认问题；主要是上下浮动，未看出持续膨胀。形体与画面保持较H改善，语义过程仍有缺失。",
+        "generation_gain": "Clearer persistent balloon relative to H, inflation not demonstrated.",
+        "evidence": {
+          "case": "VP034",
+          "predeclared_cases": [
+            "VP004",
+            "VP010",
+            "VP027",
+            "VP034",
+            "VP038"
+          ],
+          "selected_before_R15I_scores": true,
+          "reason": "Balloon inflation: actual expansion versus a stable drifting balloon.",
+          "frame_indices": [
+            0,
+            11,
+            22,
+            34,
+            45,
+            57,
+            68,
+            80
+          ],
+          "videos": {
+            "R1": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/inference_outputs/physical_content_66778/step0400_seed42_r1/videophy40/cases/VP034/planned.mp4",
+            "R10-A": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/execution_value_r10/inference_outputs/physical_content_67003/step0400_full40_controls16_physical5_seed42/videophy40/cases/VP034/planned.mp4",
+            "R13C": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/coupled_attention_r13c/inference_outputs/physical_content_67682/step0400_original_fixed40_controls16_seed42/videophy40/cases/VP034/planned.mp4",
+            "R15A": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_fusion_r15a/inference_outputs/physical_content_67762/step0400_original_fixed40_controls16_seed42/videophy40/cases/VP034/planned.mp4",
+            "R15B": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_bound_fusion_r15b/inference_outputs/physical_content_67829/step0400_original_fixed40_controls16_seed42/videophy40/cases/VP034/planned.mp4",
+            "R15I": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/inference_outputs/physical_content_68312/step0400_original_fixed40_controls16_seed42/videophy40/cases/VP034/planned.mp4",
+            "R15D": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/denoising_matched_fusion_r15d/inference_outputs/physical_content_67920/step0400_original_fixed40_controls16_seed42/videophy40/cases/VP034/planned.mp4"
+          },
+          "panels": {
+            "R1": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/coupled_attention_r13c/reports/physical_content_67682/visual_predeclared/VP034_R1.png",
+            "R10-A": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/coupled_attention_r13c/reports/physical_content_67682/visual_predeclared/VP034_R10-A.png",
+            "R13C": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/coupled_attention_r13c/reports/physical_content_67682/visual_predeclared/VP034_R13C.png",
+            "R15A": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_fusion_r15a/reports/physical_content_67762/visual_predeclared/VP034_R15A.png",
+            "R15B": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_bound_fusion_r15b/reports/physical_content_67829/visual_predeclared/VP034_R15B.png",
+            "R15I": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/reports/physical_content_68312/visual_predeclared/VP034_R15I.png",
+            "R15D": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/reports/physical_content_68312/visual_predeclared/VP034_R15D.png"
+          },
+          "metadata": {
+            "R1": {
+              "caption": "A large, clear balloon is inflated with air, showing the internal pressure causing the balloon to stretch.",
+              "canvas": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP034/first.png",
+              "seed": 42,
+              "sampler": {
+                "steps": 50,
+                "shift": 5.0,
+                "guidance": 5.0,
+                "sampler": "shifted_euler"
+              },
+              "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/runs/physical_content_66778/step0400.pt",
+              "step": 400,
+              "mode": "real"
+            },
+            "R10-A": {
+              "caption": "A large, clear balloon is inflated with air, showing the internal pressure causing the balloon to stretch.",
+              "canvas": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP034/first.png",
+              "seed": 42,
+              "sampler": {
+                "steps": 50,
+                "shift": 5.0,
+                "guidance": 5.0,
+                "sampler": "shifted_euler"
+              },
+              "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/execution_value_r10/runs/physical_content_67003/step0400.pt",
+              "step": 400,
+              "mode": "real"
+            },
+            "R13C": {
+              "caption": "A large, clear balloon is inflated with air, showing the internal pressure causing the balloon to stretch.",
+              "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP034/first.png",
+              "seed": 42,
+              "sampler": {
+                "steps": 50,
+                "shift": 5.0,
+                "guidance": 5.0,
+                "sampler": "shifted_euler"
+              },
+              "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/coupled_attention_r13c/runs/physical_content_67682/step0400.pt",
+              "step": 400,
+              "mode": "real"
+            },
+            "R15A": {
+              "caption": "A large, clear balloon is inflated with air, showing the internal pressure causing the balloon to stretch.",
+              "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP034/first.png",
+              "seed": 42,
+              "sampler": {
+                "steps": 50,
+                "shift": 5.0,
+                "guidance": 5.0,
+                "sampler": "shifted_euler"
+              },
+              "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_fusion_r15a/runs/physical_content_67762/step0400.pt",
+              "step": 400,
+              "mode": "real"
+            },
+            "R15B": {
+              "caption": "A large, clear balloon is inflated with air, showing the internal pressure causing the balloon to stretch.",
+              "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP034/first.png",
+              "seed": 42,
+              "sampler": {
+                "steps": 50,
+                "shift": 5.0,
+                "guidance": 5.0,
+                "sampler": "shifted_euler"
+              },
+              "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_bound_fusion_r15b/runs/physical_content_67829/step0400.pt",
+              "step": 400,
+              "mode": "real"
+            },
+            "R15I": {
+              "caption": "A large, clear balloon is inflated with air, showing the internal pressure causing the balloon to stretch.",
+              "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP034/first.png",
+              "seed": 42,
+              "sampler": {
+                "steps": 50,
+                "shift": 5.0,
+                "guidance": 5.0,
+                "sampler": "shifted_euler",
+                "guidance_composition": "joint_two_branch_cfg"
+              },
+              "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/runs/physical_content_68312/step0400.pt",
+              "step": 400,
+              "mode": "real",
+              "guidance_composition": {
+                "kind": "joint_two_branch_cfg",
+                "text_scale": 5.0,
+                "physical_scale": 5.0,
+                "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+                "physical_residual_scale": null,
+                "native_definition": "Same trained Wan LoRA with all physical additions disabled"
+              }
+            },
+            "R15D": {
+              "caption": "A large, clear balloon is inflated with air, showing the internal pressure causing the balloon to stretch.",
+              "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP034/first.png",
+              "seed": 42,
+              "sampler": {
+                "steps": 50,
+                "shift": 5.0,
+                "guidance": 5.0,
+                "sampler": "shifted_euler"
+              },
+              "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/denoising_matched_fusion_r15d/runs/physical_content_67920/step0400.pt",
+              "step": 400,
+              "mode": "real",
+              "guidance_composition": {
+                "kind": "separate_native_text_and_reasoning",
+                "text_scale": 5.0,
+                "physical_scale": 5.0,
+                "neutral": "Same positive native T5 request, own image-only negative C",
+                "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+              }
+            }
+          },
+          "scope": "Sampled-frame diagnostic; not a complete video assessment or aggregate metric."
+        }
+      },
+      "VP038": {
+        "observation": "H的强网格未出现，但滚筒主体约在第22帧开始淡化，第34/45帧几乎消失，仅余弯杆，后段重新出现。真实物体连续性仍有明确失败，即使该例评分达Joint阈值也不能据此认定画面正确。",
+        "scores": {
+          "sa": 4,
+          "pc": 4
+        },
+        "evidence": {
+          "case": "VP038",
+          "predeclared_cases": [
+            "VP004",
+            "VP010",
+            "VP027",
+            "VP034",
+            "VP038"
+          ],
+          "selected_before_R15I_scores": true,
+          "reason": "Paint roller: paint deposition, roller persistence and prior Joint loss.",
+          "frame_indices": [
+            0,
+            11,
+            22,
+            34,
+            45,
+            57,
+            68,
+            80
+          ],
+          "videos": {
+            "R1": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/inference_outputs/physical_content_66778/step0400_seed42_r1/videophy40/cases/VP038/planned.mp4",
+            "R10-A": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/execution_value_r10/inference_outputs/physical_content_67003/step0400_full40_controls16_physical5_seed42/videophy40/cases/VP038/planned.mp4",
+            "R13C": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/coupled_attention_r13c/inference_outputs/physical_content_67682/step0400_original_fixed40_controls16_seed42/videophy40/cases/VP038/planned.mp4",
+            "R15A": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_fusion_r15a/inference_outputs/physical_content_67762/step0400_original_fixed40_controls16_seed42/videophy40/cases/VP038/planned.mp4",
+            "R15B": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_bound_fusion_r15b/inference_outputs/physical_content_67829/step0400_original_fixed40_controls16_seed42/videophy40/cases/VP038/planned.mp4",
+            "R15I": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/inference_outputs/physical_content_68312/step0400_original_fixed40_controls16_seed42/videophy40/cases/VP038/planned.mp4",
+            "R15D": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/denoising_matched_fusion_r15d/inference_outputs/physical_content_67920/step0400_original_fixed40_controls16_seed42/videophy40/cases/VP038/planned.mp4"
+          },
+          "panels": {
+            "R1": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/coupled_attention_r13c/reports/physical_content_67682/visual_predeclared/VP038_R1.png",
+            "R10-A": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/coupled_attention_r13c/reports/physical_content_67682/visual_predeclared/VP038_R10-A.png",
+            "R13C": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/coupled_attention_r13c/reports/physical_content_67682/visual_predeclared/VP038_R13C.png",
+            "R15A": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_fusion_r15a/reports/physical_content_67762/visual_predeclared/VP038_R15A.png",
+            "R15B": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_bound_fusion_r15b/reports/physical_content_67829/visual_predeclared/VP038_R15B.png",
+            "R15I": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/reports/physical_content_68312/visual_predeclared/VP038_R15I.png",
+            "R15D": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/reports/physical_content_68312/visual_predeclared/VP038_R15D.png"
+          },
+          "metadata": {
+            "R1": {
+              "caption": "A paint roller, dipped in green paint, is used to cover a section of a metal fence, creating a uniform green coat.",
+              "canvas": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP038/first.png",
+              "seed": 42,
+              "sampler": {
+                "steps": 50,
+                "shift": 5.0,
+                "guidance": 5.0,
+                "sampler": "shifted_euler"
+              },
+              "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/runs/physical_content_66778/step0400.pt",
+              "step": 400,
+              "mode": "real"
+            },
+            "R10-A": {
+              "caption": "A paint roller, dipped in green paint, is used to cover a section of a metal fence, creating a uniform green coat.",
+              "canvas": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP038/first.png",
+              "seed": 42,
+              "sampler": {
+                "steps": 50,
+                "shift": 5.0,
+                "guidance": 5.0,
+                "sampler": "shifted_euler"
+              },
+              "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/execution_value_r10/runs/physical_content_67003/step0400.pt",
+              "step": 400,
+              "mode": "real"
+            },
+            "R13C": {
+              "caption": "A paint roller, dipped in green paint, is used to cover a section of a metal fence, creating a uniform green coat.",
+              "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP038/first.png",
+              "seed": 42,
+              "sampler": {
+                "steps": 50,
+                "shift": 5.0,
+                "guidance": 5.0,
+                "sampler": "shifted_euler"
+              },
+              "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/coupled_attention_r13c/runs/physical_content_67682/step0400.pt",
+              "step": 400,
+              "mode": "real"
+            },
+            "R15A": {
+              "caption": "A paint roller, dipped in green paint, is used to cover a section of a metal fence, creating a uniform green coat.",
+              "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP038/first.png",
+              "seed": 42,
+              "sampler": {
+                "steps": 50,
+                "shift": 5.0,
+                "guidance": 5.0,
+                "sampler": "shifted_euler"
+              },
+              "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_fusion_r15a/runs/physical_content_67762/step0400.pt",
+              "step": 400,
+              "mode": "real"
+            },
+            "R15B": {
+              "caption": "A paint roller, dipped in green paint, is used to cover a section of a metal fence, creating a uniform green coat.",
+              "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP038/first.png",
+              "seed": 42,
+              "sampler": {
+                "steps": 50,
+                "shift": 5.0,
+                "guidance": 5.0,
+                "sampler": "shifted_euler"
+              },
+              "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_bound_fusion_r15b/runs/physical_content_67829/step0400.pt",
+              "step": 400,
+              "mode": "real"
+            },
+            "R15I": {
+              "caption": "A paint roller, dipped in green paint, is used to cover a section of a metal fence, creating a uniform green coat.",
+              "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP038/first.png",
+              "seed": 42,
+              "sampler": {
+                "steps": 50,
+                "shift": 5.0,
+                "guidance": 5.0,
+                "sampler": "shifted_euler",
+                "guidance_composition": "joint_two_branch_cfg"
+              },
+              "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/runs/physical_content_68312/step0400.pt",
+              "step": 400,
+              "mode": "real",
+              "guidance_composition": {
+                "kind": "joint_two_branch_cfg",
+                "text_scale": 5.0,
+                "physical_scale": 5.0,
+                "formula": "v_full_neg + gamma*(v_full_pos-v_full_neg)",
+                "physical_residual_scale": null,
+                "native_definition": "Same trained Wan LoRA with all physical additions disabled"
+              }
+            },
+            "R15D": {
+              "caption": "A paint roller, dipped in green paint, is used to cover a section of a metal fence, creating a uniform green coat.",
+              "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP038/first.png",
+              "seed": 42,
+              "sampler": {
+                "steps": 50,
+                "shift": 5.0,
+                "guidance": 5.0,
+                "sampler": "shifted_euler"
+              },
+              "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/denoising_matched_fusion_r15d/runs/physical_content_67920/step0400.pt",
+              "step": 400,
+              "mode": "real",
+              "guidance_composition": {
+                "kind": "separate_native_text_and_reasoning",
+                "text_scale": 5.0,
+                "physical_scale": 5.0,
+                "neutral": "Same positive native T5 request, own image-only negative C",
+                "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+              }
+            }
+          },
+          "scope": "Sampled-frame diagnostic; not a complete video assessment or aggregate metric."
+        }
+      }
+    },
+    "overall": "全部5个预先选定样例已查看。I修复了H在027/034/038的大片网格，但004近静止、010拖把与水面异常、034没有明确持续膨胀、038滚筒中途消失再出现。实际画面仍不满足综合目标，不能以局部伪影修复或Joint通过替代完整过程质量。",
+    "scores_not_yet_available": false,
+    "main40_scores": {
+      "count": 40,
+      "sa_mean": 3.025,
+      "pc_mean": 3.475,
+      "sa_pass_rate": 0.275,
+      "pc_pass_rate": 0.425,
+      "joint_pass_count": 10,
+      "joint_pass_rate": 0.25
+    }
+  },
+  "module_conclusions": {
+    "scope": "Formal I400, fixed16 paired inference interventions, original input/seed42; distinguish from frozen B400 joint-read evaluation.",
+    "findings": [
+      "物理分支整体收益很弱：正常对关闭C仅PC+0.0625（2胜13平1负），SA−0.0625，Joint仍同6例。它没有达到预期的显著PC和联合收益，且010存在夸张水面副作用。",
+      "双读取尚未形成稳定互补：请求关联单路与联合版的16例PC逐例完全相同，Joint同6例；仅SA两例互换、均值不变。直接单路SA和PC均高0.0625，但Joint少010一例。联合版没有同时胜过两条单路；010/038的实际失败与请求关联侧相近。",
+      "已训练物理Q在此模型有可测作用：正常比原生Q替换的SA/PC各高0.0625、Joint多2例，且没有任何SA或PC降低样例。保留独立Q有本模型的配对依据，但不足以弥补I对B全40的退化。",
+      "样本相关C有部分PC价值：正常比固定训练均值PC高0.1875（3胜13平0负）、Joint多1例；同时SA低0.0625。不是所有有效性都来自公共C，但这点收益尚不充分；038均值C反而保持主体更好。",
+      "正确reasoning的利用不均衡：对无关reasoning，正常SA+0.125、Joint+2，但PC−0.1875；对空reasoning，正常SA+0.0625、Joint净+1，PC−0.375（0胜11平5负）。这不是reasoning完全没被使用，而是当前执行没有把正确条件稳定转化为物理及画面收益。",
+      "PC自动评分会漏掉严重错误：无关reasoning的010严重绿黄纹理破坏仍PC5；空reasoning的038主体消失仍PC5。因此不能用空内容PC4.0625直接选作达标方案。视频证据必须与分数共同保留。"
+    ],
+    "decision": "正式I不是合格改进。保留本轮完整证据，完成60例和另行授权的B400跨基准评测后按用户约定暂停，不新增训练版本。",
+    "sources": [
+      "controls16_completed.json",
+      "control_visual_review.json",
+      "main40_review.json",
+      "joint_bottleneck40.json"
+    ]
+  },
+  "control_visual_review": {
+    "scope": "Same I400 weights/input/seed42. Seven complete16 scores are in controls16_completed.json; sampled-frame review complements those metrics. These are inference interventions, not separately trained architecture comparisons.",
+    "normal_vs_no_c": {
+      "VP010": {
+        "normal": "更多显著水面翻涌/扩散/高亮喷溅及拖把头异常。",
+        "no_c": "主要是拖地运动与较局部的水面变化，仍有拖把变形，未证实完整吸水。",
+        "inference": "开启当前物理分支增加了这例的夸张水面变化；不能将所有动态变化视为物理收益。",
+        "panels": {
+          "normal": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/reports/physical_content_68312/visual_predeclared/VP010_R15I.png",
+          "no_c": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/reports/physical_content_68312/visual_predeclared/VP010_R15I_no_c.png"
+        }
+      },
+      "VP038": {
+        "normal": "滚筒主体中段消失后再出现。",
+        "no_c": "中段同样消失，并有支架/滚筒形体变化。",
+        "inference": "该物体连续性失败在关闭物理分支后依然存在，不能全部归因新增C读取；当前物理模块也未可靠修复它。",
+        "panels": {
+          "normal": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/reports/physical_content_68312/visual_predeclared/VP038_R15I.png",
+          "no_c": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/reports/physical_content_68312/visual_predeclared/VP038_R15I_no_c.png"
+        }
+      }
+    },
+    "direct_vs_request_memory": {
+      "VP010": {
+        "direct_read_only": "前半段水面变化较局部，后段仍有拖把头扁平化和水面异常。",
+        "request_bound_only": "出现更明显的大范围波纹、高亮喷溅及水面扩张；正常联合读取的异常更接近这一侧。",
+        "conclusion": "在这一固定输入上，请求关联读取增加了不符合吸水过程的变化；简单与直接读取并用未消除它。",
+        "panels": {
+          "direct_read_only": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/reports/physical_content_68312/visual_predeclared/VP010_R15I_direct_read_only.png",
+          "request_bound_only": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/reports/physical_content_68312/visual_predeclared/VP010_R15I_request_bound_only.png"
+        }
+      },
+      "VP038": {
+        "direct_read_only": "滚筒主体在更多采样帧保持或恢复，但仍有短暂缺失/形变，不能视为完全正确。",
+        "request_bound_only": "后六个采样帧主要仅剩弯杆和深色矩形痕迹，滚筒主体持续难以辨认。",
+        "conclusion": "本例直接C读取在物体保持上优于请求关联读取，联合读取仍发生中段丢失。请求关联通路的副作用有具体可视证据。",
+        "panels": {
+          "direct_read_only": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/reports/physical_content_68312/visual_predeclared/VP038_R15I_direct_read_only.png",
+          "request_bound_only": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/reports/physical_content_68312/visual_predeclared/VP038_R15I_request_bound_only.png"
+        }
+      }
+    },
+    "native_physical_query": {
+      "VP010": {
+        "observation": "换回冻结原生Q后，夸张水面扩张、喷溅与拖把头变形依然存在，后段墙面/背景还有较明显块状或彩色纹理。该替换没有修复当前样例。",
+        "panel": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/reports/physical_content_68312/visual_predeclared/VP010_R15I_native_physical_query.png"
+      },
+      "VP038": {
+        "observation": "换回原生Q后滚筒仍在中段消失，墙面留下更明显深色矩形块，后段滚筒重新出现。独立Q正常版也有主体缺失，但替换原生Q并未修复且增添了背景痕迹。",
+        "panel": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/reports/physical_content_68312/visual_predeclared/VP038_R15I_native_physical_query.png"
+      }
+    },
+    "native_query_interpretation": "完整16例中，正常独立Q相比换回原生Q：SA/PC各+0.0625，Joint6对4；该I权重下保留已训练的Q更好。010/038的连续性与水面异常仍未解决。不能据此将整个I相对B的PC退化归因于是否独立Q。",
+    "reasoning_and_mean": {
+      "VP010": {
+        "reasoning_swapped": "第11帧起场景出现严重绿黄高亮、纹理与形体破坏；自动PC仍给5，SA2。明显说明该PC分不能代替视频质量。",
+        "empty_reasoning": "地面水在中后段明显减少，画面更稳定，比正常版夸张涌水更接近吸水过程；拖把头仍明显形变。自动SA4/PC4，与正常相同，但视觉有差别。",
+        "global_train_mean": "水面仍扩大/波动，拖把头变成较大黑色不规则形体；SA3/PC3，比正常数字低，过程仍失败。",
+        "panels": {
+          "reasoning_swapped": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/reports/physical_content_68312/visual_predeclared/VP010_R15I_reasoning_swapped.png",
+          "empty_reasoning": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/reports/physical_content_68312/visual_predeclared/VP010_R15I_empty_reasoning.png",
+          "global_train_mean": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/reports/physical_content_68312/visual_predeclared/VP010_R15I_global_train_mean.png"
+        }
+      },
+      "VP038": {
+        "reasoning_swapped": "滚筒主体在采样帧保持，但表面出现褶皱/熔化状纹理与形变。自动SA4/PC3，仍不能视为正确过程。",
+        "empty_reasoning": "滚筒在第22帧起的六个采样帧持续消失，只剩横向管线；自动PC5、SA3。空reasoning的更高PC包含明显视觉失败，不能用此直接宣布删除reasoning最优。",
+        "global_train_mean": "滚筒在采样帧中保持并移动/转向，仍有支架变形，主体连续性优于正常版中段消失。SA4/PC4与正常相同，说明评分未刻画这一差异。",
+        "panels": {
+          "reasoning_swapped": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/reports/physical_content_68312/visual_predeclared/VP038_R15I_reasoning_swapped.png",
+          "empty_reasoning": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/reports/physical_content_68312/visual_predeclared/VP038_R15I_empty_reasoning.png",
+          "global_train_mean": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/reports/physical_content_68312/visual_predeclared/VP038_R15I_global_train_mean.png"
+        }
+      }
+    },
+    "utc": "2026-11-08T17:58:48.523052+00:00"
+  },
+  "paired_reference_review": {
+    "candidate": "R15I fresh400/68312",
+    "complete40": {
+      "count": 40,
+      "sa_mean": 3.025,
+      "pc_mean": 3.475,
+      "sa_pass_rate": 0.275,
+      "pc_pass_rate": 0.425,
+      "joint_pass_count": 10,
+      "joint_pass_rate": 0.25
+    },
+    "normal16": {
+      "count": 16,
+      "sa_mean": 3.1875,
+      "pc_mean": 3.6875,
+      "sa_pass_rate": 0.375,
+      "pc_pass_rate": 0.5625,
+      "joint_pass_count": 6,
+      "joint_pass_rate": 0.375
+    },
+    "remaining24": {
+      "count": 24,
+      "SA": 2.9166666666666665,
+      "PC": 3.3333333333333335,
+      "Joint": 4
+    },
+    "paired_references": {
+      "original40/R10-A": {
+        "sa": {
+          "mean_change": 0.2,
+          "wins": 8,
+          "ties": 32,
+          "losses": 0
+        },
+        "pc": {
+          "mean_change": -0.275,
+          "wins": 2,
+          "ties": 26,
+          "losses": 12
+        },
+        "joint": {
+          "gains": [
+            "VP008",
+            "VP010",
+            "VP038"
+          ],
+          "losses": []
+        }
+      },
+      "original40/R1": {
+        "sa": {
+          "mean_change": 0.075,
+          "wins": 5,
+          "ties": 33,
+          "losses": 2
+        },
+        "pc": {
+          "mean_change": -0.15,
+          "wins": 1,
+          "ties": 32,
+          "losses": 7
+        },
+        "joint": {
+          "gains": [],
+          "losses": []
+        }
+      },
+      "original40/native400": {
+        "sa": {
+          "mean_change": -0.05,
+          "wins": 2,
+          "ties": 34,
+          "losses": 4
+        },
+        "pc": {
+          "mean_change": 0.025,
+          "wins": 3,
+          "ties": 35,
+          "losses": 2
+        },
+        "joint": {
+          "gains": [],
+          "losses": []
+        }
+      },
+      "original40/R15B": {
+        "sa": {
+          "mean_change": 0.1,
+          "wins": 6,
+          "ties": 32,
+          "losses": 2
+        },
+        "pc": {
+          "mean_change": -0.225,
+          "wins": 0,
+          "ties": 31,
+          "losses": 9
+        },
+        "joint": {
+          "gains": [],
+          "losses": []
+        }
+      },
+      "original40/R15H": {
+        "sa": {
+          "mean_change": 0.1,
+          "wins": 9,
+          "ties": 26,
+          "losses": 5
+        },
+        "pc": {
+          "mean_change": -0.05,
+          "wins": 3,
+          "ties": 33,
+          "losses": 4
+        },
+        "joint": {
+          "gains": [
+            "VP034",
+            "VP038"
+          ],
+          "losses": []
+        }
+      },
+      "original40/R9": {
+        "sa": {
+          "mean_change": 0.05,
+          "wins": 5,
+          "ties": 32,
+          "losses": 3
+        },
+        "pc": {
+          "mean_change": -0.125,
+          "wins": 2,
+          "ties": 31,
+          "losses": 7
+        },
+        "joint": {
+          "gains": [
+            "VP008"
+          ],
+          "losses": []
+        }
+      }
+    },
+    "versus_B400_joint_inference": {
+      "sa": {
+        "mean_change": 0.125,
+        "wins": 6,
+        "ties": 33,
+        "losses": 1
+      },
+      "pc": {
+        "mean_change": -0.3,
+        "wins": 0,
+        "ties": 28,
+        "losses": 12
+      }
+    },
+    "hard_target_deficit": {
+      "SA_total_score_points": 4,
+      "PC_total_score_points": 13,
+      "Joint_cases": 2
+    },
+    "accepted": false,
+    "interpretation": [
+      "Compared with B original40, PC declines on9cases and improves on none, while SA improves on6 and declines on2.",
+      "The positive fixed-weight read-only16 did not transfer to a successful freshly trained model; independent physical Q and learned enhancement/fusion/LoRA changes require the declared paired controls before specific attribution.",
+      "Training execution/data/noise/phase matched B, no evidence here of a schedule/input mismatch.",
+      "Matched joint-phase executionC token cosine is I0.25436 vsB0.27543, so this measured token collapse is not an established explanation of the PC regression. This is within-sample training C, not cross-sample inference C.",
+      "Single-step FM/tail and objective magnitudes cannot establish rollout quality or isolate a loss cause."
+    ]
+  },
+  "joint_threshold_analysis": {
+    "R15I": {
+      "SA_pass": 11,
+      "PC_pass": 17,
+      "both": 10,
+      "SA_only": 1,
+      "PC_only": 7,
+      "neither": 22,
+      "SA_pass_ids": [
+        "VP008",
+        "VP010",
+        "VP016",
+        "VP018",
+        "VP020",
+        "VP021",
+        "VP022",
+        "VP027",
+        "VP034",
+        "VP036",
+        "VP038"
+      ],
+      "Joint_ids": [
+        "VP008",
+        "VP010",
+        "VP016",
+        "VP018",
+        "VP020",
+        "VP021",
+        "VP022",
+        "VP027",
+        "VP034",
+        "VP038"
+      ]
+    },
+    "R15B": {
+      "SA_pass": 11,
+      "PC_pass": 23,
+      "both": 10,
+      "SA_only": 1,
+      "PC_only": 13,
+      "neither": 16,
+      "SA_pass_ids": [
+        "VP008",
+        "VP010",
+        "VP016",
+        "VP018",
+        "VP020",
+        "VP021",
+        "VP022",
+        "VP027",
+        "VP034",
+        "VP036",
+        "VP038"
+      ],
+      "Joint_ids": [
+        "VP008",
+        "VP010",
+        "VP016",
+        "VP018",
+        "VP020",
+        "VP021",
+        "VP022",
+        "VP027",
+        "VP034",
+        "VP038"
+      ]
+    },
+    "B400_joint_read": {
+      "SA_pass": 11,
+      "PC_pass": 24,
+      "both": 10,
+      "SA_only": 1,
+      "PC_only": 14,
+      "neither": 15,
+      "SA_pass_ids": [
+        "VP008",
+        "VP010",
+        "VP016",
+        "VP018",
+        "VP020",
+        "VP021",
+        "VP022",
+        "VP027",
+        "VP034",
+        "VP036",
+        "VP038"
+      ],
+      "Joint_ids": [
+        "VP008",
+        "VP010",
+        "VP016",
+        "VP018",
+        "VP020",
+        "VP021",
+        "VP022",
+        "VP027",
+        "VP034",
+        "VP038"
+      ]
+    },
+    "I_vs_B_SA_threshold_crossings": {
+      "gains": [],
+      "losses": []
+    }
+  },
+  "formal_I_cross_benchmarks": "Deferred by user; not counted as passed",
+  "distinct_generated_videos": 172,
+  "distinct_raw_metric_records": 344,
+  "all_required_videophy_outputs_verified": true,
+  "quality_goal_achieved": false,
+  "hard_targets": {
+    "PC": false,
+    "SA": false,
+    "Joint": false
+  }
+}

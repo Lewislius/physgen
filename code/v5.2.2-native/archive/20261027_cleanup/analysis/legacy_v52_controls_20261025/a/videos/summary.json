@@ -1,0 +1,107 @@
+{
+  "status": "completed",
+  "source_checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2/checkpoints/1d-v52-joint-state-no-lora-96g-832x480-f81_65316/joint/latest.pt",
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/legacy_v52_controls_20261025/a/videos/checkpoint.pt",
+  "checkpoint_step": 400,
+  "revision": "pair2_stride2_fullwidth_sparse3_visible_change_v5_joint_state",
+  "sampling": {
+    "condition_strength": 1.0,
+    "branch_mode": "full",
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "seed": 20261006,
+    "training_seed": 20261006,
+    "seed_matches_training": true,
+    "frames": 81,
+    "fps": 24.0,
+    "task_mode": "original",
+    "a_mode": "predicted",
+    "fixed_a": 0.5,
+    "without_qwen": false
+  },
+  "geometry": {
+    "mode": "explicit_canvas",
+    "width": 832,
+    "height": 480,
+    "frames": 81
+  },
+  "lora": false,
+  "lora_config": {
+    "enabled": false,
+    "rank": 32,
+    "alpha": 32,
+    "targets": [
+      "self_attn.q",
+      "self_attn.k",
+      "self_attn.v",
+      "self_attn.o",
+      "cross_attn.q",
+      "cross_attn.k",
+      "cross_attn.v",
+      "cross_attn.o"
+    ]
+  },
+  "runtime": {
+    "cpu_offload": false,
+    "flash_attn_force_version": null
+  },
+  "total_cases": 2,
+  "completed_cases": 2,
+  "cases": [
+    {
+      "case_id": "reference",
+      "output": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/legacy_v52_controls_20261025/a/videos/reference/i2v/seed20261006.mp4",
+      "status": "completed",
+      "generation_verified": true,
+      "encoded_video": {
+        "status": "passed",
+        "decoded_frames": 81,
+        "height": 480,
+        "width": 832,
+        "adjacent_rgb_l1": 3.3250655069947244,
+        "bytes": 449762
+      },
+      "geometry": {
+        "h": 480,
+        "w": 832,
+        "rh": 480,
+        "rw": 480,
+        "top": 0,
+        "left": 176,
+        "frames": 81
+      }
+    },
+    {
+      "case_id": "P01",
+      "output": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/legacy_v52_controls_20261025/a/videos/P01/i2v/seed20261006.mp4",
+      "status": "completed",
+      "generation_verified": true,
+      "encoded_video": {
+        "status": "passed",
+        "decoded_frames": 81,
+        "height": 480,
+        "width": 832,
+        "adjacent_rgb_l1": 2.9158825665712356,
+        "bytes": 1622462
+      },
+      "geometry": {
+        "h": 480,
+        "w": 832,
+        "rh": 458,
+        "rw": 832,
+        "top": 11,
+        "left": 0,
+        "frames": 81
+      }
+    }
+  ],
+  "joint_state_variant": "no_lora",
+  "checkpoint_pinned": true,
+  "generation_verified": true,
+  "experiment": {
+    "search": 65316,
+    "variant": "no_lora",
+    "architecture": "visible_change_v5_joint_state"
+  }
+}

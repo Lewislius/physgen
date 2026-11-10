@@ -1,0 +1,84 @@
+{
+  "utc": "2026-11-08T09:05:49.130743+00:00",
+  "version": "R15H",
+  "checkpoint_step": 400,
+  "raw_scores": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_feedback_fusion_r15h/inference_outputs/physical_content_68243/step0400_original_fixed40_controls16_seed42/videophy40/scores.json",
+  "normal40": {
+    "n": 40,
+    "SA": 2.925,
+    "PC": 3.525,
+    "Joint": 8
+  },
+  "fixed16": {
+    "n": 16,
+    "SA": 3.125,
+    "PC": 3.75,
+    "Joint": 4
+  },
+  "remaining24": {
+    "n": 24,
+    "SA": 2.7916666666666665,
+    "PC": 3.375,
+    "Joint": 4
+  },
+  "R15B_comparison": {
+    "sa": {
+      "mean_change": 0,
+      "wins": 7,
+      "ties": 26,
+      "losses": 7
+    },
+    "pc": {
+      "mean_change": -0.175,
+      "wins": 3,
+      "ties": 27,
+      "losses": 10
+    },
+    "joint": {
+      "gains": [],
+      "losses": [
+        "VP034",
+        "VP038"
+      ]
+    }
+  },
+  "raw_score_deficit_to_minimum": {
+    "SA_sum_points": 8,
+    "PC_sum_points": 11,
+    "Joint_net_cases": 4
+  },
+  "visual_score_mismatch": {
+    "VP027": {
+      "scores": [
+        4,
+        4
+      ],
+      "finding": "SA4/PC4仍有原始帧确认的大范围纹理伪影，自动Joint通过不代表画质合格。"
+    },
+    "VP034": {
+      "scores": [
+        3,
+        5
+      ],
+      "finding": "PC5但强烈全画面纹理影响气球可见性，无清楚充气拉伸过程。"
+    },
+    "VP038": {
+      "scores": [
+        3,
+        4
+      ],
+      "finding": "PC4但滚筒主体后段消失、仅剩变形杆，栅栏新增周期纹理。"
+    }
+  },
+  "decision": "H未达标，不能作为综合改善版本；正常40和实际画面均不支持接受。先完成已在运行的七种16例配对控制，定位后设计I。",
+  "extra20_decision": "H不追加20例；原版40已明确失败，保留资源完成关键配对控制。I仍必须同协议40/60及16对照。",
+  "mechanism_to_test": {
+    "code_fact": "H的native_text+(changed_native_text-native_text)+physical_write，在融合位置等价于changed_native_text+physical_write。冻结原生Q/K/V/O参数并不意味着原生文本读取行为保持原样。",
+    "semantic_response_off": "若关语义响应后同例伪影消失且整体指标回升，则新响应路径应判为有害，I不保留该机制。",
+    "direct_write_off": "检验直接物理写入和新响应之间的相互作用，以及哪个路径仍产生纹理/物体损失。",
+    "no_c": "同时关闭两条增量后的画面可区分当前条件通路与训练后主干输出；不将一次推理关闭当作重新训练架构的最终结论。"
+  },
+  "loss_stage_policy": "保持简洁。相同损失/阶段下架构已经改变表现，不能见到失败就自动追加损失或阶段。",
+  "I_not_launched": true,
+  "quality_goal_achieved": false
+}

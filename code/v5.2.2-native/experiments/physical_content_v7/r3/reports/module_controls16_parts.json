@@ -1,0 +1,83 @@
+{
+  "prepared_utc": "20261031T060750Z",
+  "reference": "physical_content_66778/step0400",
+  "gamma": 5,
+  "parts": [
+    {
+      "label": "content",
+      "modes": [
+        "no_c",
+        "reasoning_swapped",
+        "empty_reasoning"
+      ],
+      "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/early_execution_r3/submissions/r1_controls16_content_20261031T060750Z.yaml",
+      "state": "completed",
+      "new_videos": 36,
+      "experiment_id": 66874
+    },
+    {
+      "label": "representation",
+      "modes": [
+        "anchor_only",
+        "mean",
+        "global_train_mean"
+      ],
+      "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/early_execution_r3/submissions/r1_controls16_representation_20261031T060750Z.yaml",
+      "state": "superseded_by_disjoint_anchor_and_means_parts",
+      "new_videos": 40,
+      "experiment_id": 66873
+    }
+  ],
+  "total_new_videos": 76,
+  "selection": "Same fixed16 cases; disjoint modes and outputs, original20 completed videos reused. Preserve single-slot actual-RTX restriction.",
+  "submission": "All six fixed16 R1 module controls completed. No remaining module-control generation.",
+  "updated_utc": "2026-10-31T08:35:27.928893+00:00",
+  "representation_subparts": [
+    {
+      "label": "anchor",
+      "modes": [
+        "anchor_only"
+      ],
+      "new_videos": 12,
+      "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/early_execution_r3/submissions/r1_controls16_anchor_20261031T072600Z.yaml",
+      "experiment_id": 66877,
+      "state": "completed"
+    },
+    {
+      "label": "means",
+      "modes": [
+        "mean",
+        "global_train_mean"
+      ],
+      "new_videos": 28,
+      "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/early_execution_r3/submissions/r1_controls16_means_20261031T072600Z.yaml",
+      "experiment_id": 66878,
+      "state": "superseded_by_single_mean_modes"
+    }
+  ],
+  "representation_superseded_group": "Prior all-three representation attempts rejected H100 before models. Use these disjoint parts; do not launch the all-three group concurrently.",
+  "mean_single_parts": [
+    {
+      "label": "global_mean",
+      "modes": [
+        "global_train_mean"
+      ],
+      "new_videos": 16,
+      "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/early_execution_r3/submissions/r1_controls16_global_mean_single.yaml",
+      "experiment_id": 66887,
+      "state": "completed",
+      "trial_id": 68274
+    },
+    {
+      "label": "token_mean",
+      "modes": [
+        "mean"
+      ],
+      "new_videos": 12,
+      "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/early_execution_r3/submissions/r1_controls16_token_mean_single.yaml",
+      "experiment_id": 66882,
+      "state": "completed"
+    }
+  ],
+  "mean_group_superseded": "After66879/66880 H100 exits, remaining mean modes are independently submitted. Never submit old means or whole representation groups concurrently."
+}

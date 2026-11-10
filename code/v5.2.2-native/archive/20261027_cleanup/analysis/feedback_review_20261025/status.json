@@ -1,0 +1,827 @@
+{
+  "checked_at_utc": "2026-10-25T17:20:54.819439+00:00",
+  "tasks": {
+    "66128": {
+      "id": 66128,
+      "name": "v522-allocated-rtx-physical-feedback-recovery-20261025",
+      "state": "STATE_CANCELED",
+      "startTime": "2026-10-25T05:06:42.180485Z",
+      "endTime": "2026-10-25T05:30:04.973610Z"
+    },
+    "66129": {
+      "id": 66129,
+      "name": "v522-C-credit-and-matched-update-scope-20261025",
+      "state": "STATE_CANCELED",
+      "startTime": "2026-10-25T05:16:15.751552Z",
+      "endTime": "2026-10-25T05:29:58.080848Z"
+    },
+    "66133": {
+      "id": 66133,
+      "state": "STATE_CANCELED",
+      "end_utc": "2026-10-25T07:37:30.264640Z",
+      "replaced_by": 66135,
+      "reason": "Replaced while still queued by the complete v7 integration/training pipeline, including native latent reasoning, C-only feedback ownership and corrected GPU UUID selection. No model computation completed in this task."
+    },
+    "66135": {
+      "id": 66135,
+      "name": "v522-reasoning-latent-operator-training",
+      "state": "STATE_ERROR",
+      "submitted_utc": "2026-10-25T07:37:20.598703Z",
+      "checked_at_utc": "2026-10-25T07:39:47.747312+00:00",
+      "resource_pool": "blk-96g",
+      "allocated_slots": 2,
+      "resident_training_models": 1,
+      "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_reasoning_operator/code",
+      "plan": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_reasoning_operator/plan.json",
+      "results": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_reasoning_operator/results",
+      "scope": [
+        "three full-model updates with eight accumulated microbatches each",
+        "one complete single-trajectory online C check",
+        "128 normal training updates from the final three-stage recipe",
+        "fixed heldout C comparisons and eight complete videos"
+      ],
+      "configured_stages": {
+        "interface": 400,
+        "calibration": 460,
+        "joint": 400
+      },
+      "quality_claim": "No new trained-video quality result exists yet; main objectives remain unproven",
+      "endTime": "2026-10-25T08:14:27.881393Z",
+      "failure": "container bootstrap; no model code ran"
+    },
+    "66140": {
+      "id": 66140,
+      "state": "STATE_ERROR",
+      "start_utc": "2026-10-25T11:41:49.594287Z",
+      "end_utc": "2026-10-25T11:53:37.077302Z",
+      "container_bootstrap_succeeded": true,
+      "initial_validation_cases": 4,
+      "initial_validation_evaluations": 8,
+      "optimizer_updates_completed": 0,
+      "failure": "CUDA OOM in first microbatch VAE backward",
+      "allocated_slots_released": true,
+      "replaced_by": 66143
+    },
+    "66143": {
+      "id": 66143,
+      "state": "STATE_ERROR",
+      "submitted_utc": "2026-10-25T12:04:45.933519Z",
+      "checked_at_utc": "2026-10-25T12:36:54.713334+00:00",
+      "resource_pool": "blk-96g",
+      "slots_per_trial": 1,
+      "training_devices": 1,
+      "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_reasoning_single/code",
+      "results": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_reasoning_single/results",
+      "submission_tool": "det 0.32.1",
+      "software_environment_changed": false,
+      "progress_source": "results/pipeline.json and live Determined logs",
+      "replaces": [
+        66135,
+        66140
+      ],
+      "training_prefix_updates": 128,
+      "quality_goals_proven": false,
+      "endTime": "2026-10-25T12:14:36.797425Z",
+      "optimizer_updates_completed": 0,
+      "completed_microbatches": 0,
+      "allocated_slots_released": true,
+      "failure": {
+        "child_returncode": -9,
+        "signal": "SIGKILL",
+        "container_status": 247,
+        "diagnosed_cause": null,
+        "cgroup_oom_kill": 0,
+        "controller_requested_kill_recorded": false,
+        "allocated_gpu": "GPU-30085d8b-9408-7a7f-e544-be0280858108"
+      }
+    },
+    "66148": {
+      "id": 66148,
+      "state": "STATE_ERROR",
+      "submitted_utc": "2026-10-25T12:39:21.419850+00:00",
+      "resource_pool": "blk-96g",
+      "slots_per_trial": 1,
+      "training_devices": 1,
+      "submission_tool": "det 0.32.1",
+      "software_environment_changed": false,
+      "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_runtime_aligned/code",
+      "results": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_runtime_aligned/results",
+      "quality_goals_proven": false,
+      "replaces": 66143,
+      "checked_at_utc": "2026-10-25T13:28:40.125881+00:00",
+      "startTime": "2026-10-25T12:39:21.246470Z",
+      "endTime": "2026-10-25T12:48:40.461651Z",
+      "completed_microbatches": 0,
+      "optimizer_updates_completed": 0,
+      "failure": {
+        "signal": 9,
+        "child_returncode": -9,
+        "container_exit": 137,
+        "location": "first training backward; both complete forward branches succeeded",
+        "forward_peak_gib": 45.04474639892578,
+        "last_driver_used_mib": 82803,
+        "cgroup_oom_kill": 0,
+        "kernel_log_access": "not permitted",
+        "signal_sender": "unconfirmed"
+      }
+    },
+    "66161": {
+      "id": 66161,
+      "state": "STATE_ERROR",
+      "submitted_utc": "2026-10-25T13:37:04.954248+00:00",
+      "resource_pool": "blk-96g",
+      "slots_per_trial": 1,
+      "training_devices": 1,
+      "submission_tool": "det 0.32.1",
+      "software_environment_changed": false,
+      "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_decoder_blocks/code",
+      "results": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_decoder_blocks/results",
+      "quality_goals_proven": false,
+      "replaces": 66148,
+      "completed_updates": 0,
+      "process_checked_at_utc": "2026-10-25T13:50:43.652340+00:00",
+      "process_state": "failed",
+      "process_pid": 43,
+      "process_returncode": 137,
+      "endTime": "2026-10-25T13:50:47.738479Z",
+      "checked_at_utc": "2026-10-25T13:55:09.069386+00:00",
+      "completed_microbatches": 1,
+      "failure": {
+        "signal": 9,
+        "first_complete_micro_peak_gib": 68.96228218078613,
+        "first_complete_micro_forward_seconds": 38.089833088219166,
+        "first_complete_micro_backward_seconds": 92.3884400408715,
+        "last_driver_used_mib": 73253,
+        "last_driver_seconds_before_child_exit": 0.9702224731445312,
+        "cgroup_oom_kill": 0,
+        "kernel_access": "Operation not permitted",
+        "sender": "unconfirmed",
+        "next_sample_cache_cpu_read": "passed; wisa0013657, same [1,48,21,30,52] geometry"
+      }
+    },
+    "66162": {
+      "id": 66162,
+      "arm": "a",
+      "state": "STATE_COMPLETED",
+      "submitted_utc": "2026-10-25T14:01:54.422345+00:00",
+      "slots_per_trial": 1,
+      "original_code": "v5.2",
+      "entrypoint_unchanged": true,
+      "source_code_changed": false,
+      "output": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/legacy_v52_controls_20261025/a/videos",
+      "startTime": "2026-10-25T14:01:54.325034Z",
+      "endTime": "2026-10-25T14:25:07.581486Z",
+      "checked_at_utc": "2026-10-25T15:08:10.021900+00:00",
+      "allocations": [
+        {
+          "allocationId": "66162.507e58bd-0a7e-4c81-99ef-a2755fd7c775.1",
+          "name": "Trial 67542 (Experiment 66162)",
+          "priority": null,
+          "proxyPorts": [],
+          "registeredTime": "2026-10-25T14:01:54.344978740Z",
+          "resourcePool": "blk-96g",
+          "resources": [
+            {
+              "agentDevices": {
+                "node9-rtx6000-pro": {
+                  "devices": [
+                    {
+                      "brand": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+                      "id": 2,
+                      "type": "TYPE_CUDA",
+                      "uuid": "GPU-d46ac459-b58f-cd15-f6b1-e0b8b5156d4b"
+                    }
+                  ]
+                }
+              },
+              "allocationId": "66162.507e58bd-0a7e-4c81-99ef-a2755fd7c775.1",
+              "containerId": "c293129e-ced4-46d9-979a-d020ac2b153d",
+              "exited": null,
+              "resourcesId": "c293129e-ced4-46d9-979a-d020ac2b153d",
+              "resourcesType": "docker-container",
+              "started": null
+            }
+          ],
+          "schedulerType": "fair_share",
+          "slotsNeeded": 1,
+          "taskId": "66162.507e58bd-0a7e-4c81-99ef-a2755fd7c775"
+        }
+      ],
+      "legacy_inference": {
+        "status": "completed",
+        "completed_cases": 2,
+        "total_cases": 2,
+        "generation_verified": true
+      },
+      "latest_model_log": [
+        "[inference] cpu_offload=False, device=NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "[sample] 1/50",
+        "[sample] 2/50",
+        "[sample] 3/50",
+        "[sample] 4/50"
+      ]
+    },
+    "66163": {
+      "id": 66163,
+      "arm": "b",
+      "state": "STATE_ERROR",
+      "submitted_utc": "2026-10-25T14:01:55.846967+00:00",
+      "slots_per_trial": 1,
+      "original_code": "v5.2",
+      "entrypoint_unchanged": true,
+      "source_code_changed": false,
+      "output": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/legacy_v52_controls_20261025/b/videos",
+      "startTime": "2026-10-25T14:01:54.876430Z",
+      "endTime": "2026-10-25T14:26:54.418122Z",
+      "checked_at_utc": "2026-10-25T15:08:10.984802+00:00",
+      "allocations": [
+        {
+          "allocationId": "66163.507e58bd-0a7e-4c81-99ef-a2755fd7c775.1",
+          "name": "Trial 67543 (Experiment 66163)",
+          "priority": null,
+          "proxyPorts": [],
+          "registeredTime": "2026-10-25T14:01:55.751502963Z",
+          "resourcePool": "blk-96g",
+          "resources": [
+            {
+              "agentDevices": {
+                "node9-rtx6000-pro": {
+                  "devices": [
+                    {
+                      "brand": "NVIDIA H100",
+                      "id": 0,
+                      "type": "TYPE_CUDA",
+                      "uuid": "GPU-30085d8b-9408-7a7f-e544-be0280858108"
+                    }
+                  ]
+                }
+              },
+              "allocationId": "66163.507e58bd-0a7e-4c81-99ef-a2755fd7c775.1",
+              "containerId": "1a5bb817-31b0-4ba6-90af-83040e914eab",
+              "exited": null,
+              "resourcesId": "1a5bb817-31b0-4ba6-90af-83040e914eab",
+              "resourcesType": "docker-container",
+              "started": null
+            }
+          ],
+          "schedulerType": "fair_share",
+          "slotsNeeded": 1,
+          "taskId": "66163.507e58bd-0a7e-4c81-99ef-a2755fd7c775"
+        }
+      ],
+      "legacy_inference": {
+        "status": "failed",
+        "completed_cases": 0,
+        "total_cases": 2,
+        "generation_verified": false
+      },
+      "latest_model_log": [
+        "Loading checkpoint shards: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 3/3 [02:53<00:00, 57.72s/it]",
+        "[inference] cpu_offload=False, device=NVIDIA H100",
+        "[sample] 1/50",
+        "[sample] 2/50",
+        "[sample] 3/50"
+      ]
+    },
+    "66176": {
+      "state": "STATE_RUNNING",
+      "resource_pool": "amp-80g",
+      "slots_per_trial": 1,
+      "submission_tool": "det 0.32.1",
+      "software_environment_changed": false,
+      "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_amp80_recovery/code",
+      "results": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_amp80_recovery/results",
+      "quality_goals_proven": false,
+      "id": 66176,
+      "submitted_utc": "2026-10-25T15:17:08.984584+00:00",
+      "process_checked_at_utc": "2026-10-25T15:17:13.901509+00:00",
+      "process_state": "running",
+      "process_pid": 43,
+      "startTime": "2026-10-25T15:17:08.823679Z",
+      "endTime": null,
+      "checked_at_utc": "2026-10-25T17:20:54.819439+00:00",
+      "allocations": [
+        {
+          "allocationId": "66176.c0aaa85a-ef67-43c3-881c-b78a09178854.1",
+          "name": "Trial 67556 (Experiment 66176)",
+          "priority": null,
+          "proxyPorts": [],
+          "registeredTime": "2026-10-25T15:17:08.879827657Z",
+          "resourcePool": "amp-80g",
+          "resources": [
+            {
+              "agentDevices": {
+                "node6-a100": {
+                  "devices": [
+                    {
+                      "brand": "NVIDIA A800-SXM4-80GB",
+                      "id": 0,
+                      "type": "TYPE_CUDA",
+                      "uuid": "GPU-c2ee8bf1-1d4a-a9e5-423c-a34d50ce7303"
+                    }
+                  ]
+                }
+              },
+              "allocationId": "66176.c0aaa85a-ef67-43c3-881c-b78a09178854.1",
+              "containerId": "1d56994b-8652-4105-a421-10f0e7dd1d20",
+              "exited": null,
+              "resourcesId": "1d56994b-8652-4105-a421-10f0e7dd1d20",
+              "resourcesType": "docker-container",
+              "started": null
+            }
+          ],
+          "schedulerType": "fair_share",
+          "slotsNeeded": 1,
+          "taskId": "66176.c0aaa85a-ef67-43c3-881c-b78a09178854"
+        }
+      ],
+      "engineering_updates_completed": 3,
+      "engineering_microbatches_completed": 24,
+      "normal_updates_completed": 2,
+      "last_normal_update": {
+        "step": 2,
+        "phase": "interface",
+        "seconds": 611.92204184,
+        "peak_gib": 69.72208595275879
+      },
+      "active_revision": "v522_native_reasoning_operator_v7",
+      "current_pipeline_phase": "train_prefix",
+      "snapshot_unchanged": true,
+      "engineering_video_actual_feedback_metric": "euclidean",
+      "scheduling_state": "STATE_SCHEDULED"
+    },
+    "66180": {
+      "state": "STATE_RUNNING",
+      "revision": "v522_native_causal_response_v8",
+      "resource_pool": "amp-80g",
+      "slots_per_trial": 1,
+      "submission_tool": "det 0.32.1",
+      "software_environment_changed": false,
+      "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_causal_response/code",
+      "created_at_utc": "2026-10-25T16:13:44.308424+00:00",
+      "code_files": 149,
+      "mode": "normal_training_without_separate_test_pipeline",
+      "stages": {
+        "interface": 400,
+        "calibration": 460,
+        "joint": 400
+      },
+      "loss_counts": {
+        "interface": 3,
+        "calibration": 2,
+        "joint": 3
+      },
+      "validation_every": 16,
+      "save_every": 16,
+      "existing_run_66176": "preserved",
+      "quality_goals_proven": false,
+      "id": 66180,
+      "submitted_utc": "2026-10-25T16:13:53.318651+00:00",
+      "startTime": "2026-10-25T16:13:53.186Z",
+      "endTime": null,
+      "checked_at_utc": "2026-10-25T17:20:54.819439+00:00",
+      "normal_training_started_utc": "2026-10-25T16:14:30.640553Z",
+      "gpu": "NVIDIA A100-SXM4-80GB",
+      "agent": "node6-a100",
+      "slot": 1,
+      "normal_updates_completed": 2,
+      "first_update": {
+        "kind": "train",
+        "step": 1,
+        "phase": "interface",
+        "cursor": 8,
+        "seconds": 323.9743278010001,
+        "update_kind": "conditional_operator",
+        "main_grad_norm": 0.08394338935613632,
+        "critic_grad_norm": 0.0,
+        "gradients": {
+          "condition": 0.0020942334720463053,
+          "interface": 0.08391725658253449,
+          "critic": 0.0,
+          "knowledge": 5.1410372133196814e-05,
+          "wan_lora": 0.0
+        },
+        "learning_rates": {
+          "condition": 3.3333333333333333e-06,
+          "interface": 3.3333333333333333e-06,
+          "critic": 0.0,
+          "knowledge": 1.6666666666666668e-07,
+          "wan_lora": 0.0
+        },
+        "peak_gib": 68.59813737869263,
+        "reserved_gib": 71.43359375,
+        "sequence_level": 0.0002295716919888946,
+        "sequence_change": 0.022150644042994827,
+        "sigma": 0.35877281334251165,
+        "sequence_active": 1.0,
+        "verifier_active": 0.0,
+        "native_text_dropped": 0.5,
+        "C_text_dropped": 0.25,
+        "condition_use_active": 0.0,
+        "wan_forward_count": 1.0,
+        "loss/fm": 0.3050044635310769,
+        "loss/process": 0.022150644042994827,
+        "loss/intensity": 0.09267316106706858,
+        "weighted/fm": 0.3050044635310769,
+        "weighted/process": 0.0022150644836074207,
+        "weighted/intensity": 0.009267316199839115,
+        "loss": 0.3164868475869298
+      },
+      "latest_update": {
+        "step": 2,
+        "phase": "interface",
+        "seconds": 326.2224646049999,
+        "peak_gib": 68.83835887908936
+      },
+      "first_checkpoint_verification": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_causal_response/first_checkpoint_verification/job.json",
+      "scheduling_state": "STATE_SCHEDULED",
+      "completed_updates": 12,
+      "startup_status": "normal_accumulated_updates_passed",
+      "metrics": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_causal_response/code/checkpoints/v522-native-causal-response-wisa3857_66180/metrics.jsonl",
+      "latest_peak_gib": 68.85325908660889,
+      "latest_update_seconds": 327.1417922969995,
+      "latest_gradient_norms": {
+        "condition": 0.0013995396755044894,
+        "interface": 0.06771705785227898,
+        "critic": 0.0,
+        "knowledge": 3.719435075810457e-05,
+        "wan_lora": 0.0
+      }
+    },
+    "66200": {
+      "state": "STATE_COMPLETED",
+      "kind": "verifier_gradient",
+      "description": "Three real updates, one microbatch per stage: verify new response verifier calibration and C-directed joint gradient. Execution evidence, not learned quality.",
+      "resource_pool": "blk-96g",
+      "slots_per_trial": 1,
+      "software_environment_changed": false,
+      "submission_tool": "det 0.32.1",
+      "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_blk_validation/code",
+      "tests_passed": 67,
+      "quality_goals_proven": false,
+      "created_at_utc": "2026-10-25T16:50:25.746036+00:00",
+      "id": 66200,
+      "submitted_utc": "2026-10-25T16:51:02.635213+00:00",
+      "startTime": "2026-10-25T16:51:02.475910Z",
+      "endTime": "2026-10-25T17:02:34.669837Z",
+      "checked_at_utc": "2026-10-25T17:20:54.819439+00:00",
+      "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "agent": "node9-rtx6000-pro",
+      "slot": 1,
+      "log_checked_at_utc": "2026-10-25T16:56:52.039321+00:00",
+      "startup_status": "full_short_run_passed",
+      "completed_updates": 3,
+      "verifier_to_C_gradient_rms": 4.811084863831638e-09,
+      "max_peak_gib": 68.4061164855957,
+      "scheduling_state": null
+    },
+    "66201": {
+      "state": "STATE_RUNNING",
+      "kind": "naive_condition",
+      "description": "Same data/order/losses/reader as v8; cached T5 directly maps to C, with no Qwen generation-side encoder. First 16 normal updates and matching heldout outputs; resumable, not convergence proof.",
+      "resource_pool": "blk-96g",
+      "slots_per_trial": 1,
+      "software_environment_changed": false,
+      "submission_tool": "det 0.32.1",
+      "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_blk_validation/code",
+      "tests_passed": 67,
+      "quality_goals_proven": false,
+      "created_at_utc": "2026-10-25T16:50:25.749876+00:00",
+      "id": 66201,
+      "submitted_utc": "2026-10-25T16:51:03.190588+00:00",
+      "startTime": "2026-10-25T16:51:03.061736Z",
+      "endTime": null,
+      "checked_at_utc": "2026-10-25T17:20:54.819439+00:00",
+      "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "agent": "node9-rtx6000-pro",
+      "slot": 3,
+      "log_checked_at_utc": "2026-10-25T16:56:52.548195+00:00",
+      "startup_status": "normal_accumulated_updates_passed",
+      "scheduling_state": "STATE_SCHEDULED",
+      "completed_updates": 2,
+      "metrics": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_blk_validation/code/checkpoints/v522-native-causal-response-naive-text-wisa3857_66201/metrics.jsonl",
+      "latest_peak_gib": 68.18831491470337,
+      "latest_update_seconds": 405.2279445352033,
+      "latest_gradient_norms": {
+        "condition": 0.0014436625616342305,
+        "interface": 0.05649755847151372,
+        "critic": 0.0,
+        "knowledge": 0.0,
+        "wan_lora": 0.0
+      },
+      "qwen_condition_active": 0.0,
+      "wan_forward_count": 1.0
+    },
+    "66207": {
+      "state": "STATE_ERROR",
+      "kind": "qwen_no_latent_reasoning",
+      "resource_pool": "blk-96g",
+      "slots_per_trial": 1,
+      "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_blk_validation/code",
+      "software_environment_changed": false,
+      "submission_tool": "det 0.32.1",
+      "tests_passed": 67,
+      "quality_goals_proven": false,
+      "condition_source": "Qwen with explicit dependency analysis; no continuous refinement",
+      "created_at_utc": "2026-10-25T17:05:44.714498+00:00",
+      "id": 66207,
+      "submitted_utc": "2026-10-25T17:06:12.597539+00:00",
+      "gpu": "NVIDIA H100",
+      "agent": "node9-rtx6000-pro",
+      "slot": 0,
+      "allocation_note": "This path had earlier SIGKILLs; current task has not yet established execution success.",
+      "startup_status": "failed_before_first_optimizer_update",
+      "checked_at_utc": "2026-10-25T17:20:54.819439+00:00",
+      "endTime": "2026-10-25T17:09:11.168663Z",
+      "completed_updates": 0,
+      "exit_code": 137,
+      "failure": "137 on the previously failure-associated H100 allocation; signal sender not determined",
+      "replaced_by": 66209,
+      "recovered_by": 66211,
+      "startTime": "2026-10-25T17:06:12.451078Z",
+      "scheduling_state": null
+    },
+    "66209": {
+      "kind": "qwen_no_latent_reasoning",
+      "state": "STATE_ERROR",
+      "retry_of": 66207,
+      "resource_pool": "blk-96g",
+      "slots_per_trial": 1,
+      "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_blk_validation/code",
+      "config": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_blk_validation/qwen_no_latent_reasoning/config.yaml",
+      "software_environment_changed": false,
+      "submission_tool": "det 0.32.1",
+      "quality_goals_proven": false,
+      "id": 66209,
+      "submitted_utc": "2026-10-25T17:12:02.022667+00:00",
+      "endTime": "2026-10-25T17:15:11.717456Z",
+      "exit_code": 137,
+      "completed_updates": 0,
+      "gpu": "NVIDIA H100",
+      "agent": "node9-rtx6000-pro",
+      "slot": 0,
+      "checked_at_utc": "2026-10-25T17:20:54.819439+00:00",
+      "failure": "Same H100 allocation; container exit 137 before first optimizer update; signal sender is not established.",
+      "recovered_by": 66211,
+      "startTime": "2026-10-25T17:12:01.899298Z",
+      "scheduling_state": null
+    },
+    "66211": {
+      "kind": "qwen_no_latent_reasoning",
+      "state": "STATE_QUEUED",
+      "retry_of": [
+        66207,
+        66209
+      ],
+      "resource_pool": "amp-80g",
+      "slots_per_trial": 1,
+      "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_blk_validation/code",
+      "config": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_blk_validation/qwen_no_latent_reasoning/config.yaml",
+      "software_environment_changed": false,
+      "submission_tool": "det 0.32.1",
+      "quality_goals_proven": false,
+      "created_utc": "2026-10-25T17:19:51.899676+00:00",
+      "id": 66211,
+      "submitted_utc": "2026-10-25T17:20:00.735856+00:00",
+      "startTime": "2026-10-25T17:20:00.639854Z",
+      "endTime": null,
+      "checked_at_utc": "2026-10-25T17:20:54.819439+00:00",
+      "scheduling_state": "STATE_QUEUED",
+      "startup_status": "queued_not_executed",
+      "completed_updates": 0
+    }
+  },
+  "tests_passed": 67,
+  "protected_files_unchanged": 20,
+  "completed": {
+    "oracle_k12": "5 scenes x 2 seeds, seven controls complete",
+    "oracle_k50": "2 scenes x 2 seeds complete",
+    "real_training": "All four old-v5 updates complete; checkpoint saved; no quality claim"
+  },
+  "failures": {
+    "66118": "SIGKILL without cgroup OOM, on same GPU UUID as other failed tasks",
+    "66120": "Both real training check and learned verifier-C probe terminated by SIGKILL"
+  },
+  "changes": [
+    "Fixed-prefix original C plus refined-C suffix added for exact C-only update scope",
+    "Optional reverse-step C credit recording",
+    "Case-level paired statistics, random-direction and symmetric-direction controls",
+    "Specific failure-associated allocation excluded within owned Determined slots",
+    "Native late-Qwen recurrent dependency latent, two rounds / four layers with no new reasoning parameters",
+    "State-conditional C operator; full signed temporal process supervision; same-image condition-use training",
+    "Condition-process difference-in-differences verifier calibration",
+    "Verifier parameter credit restricted to C conditioner and knowledge/reasoning LoRA; FM/process/use train the reader",
+    "Optional within-single-trajectory C refinement; no candidate generation or restart",
+    "Normalized PyTorch UUIDs to NVIDIA GPU- form; verified against driver inventory and exclusions",
+    "Restored the previously successful submission environment without changing software installations",
+    "Single-slot jobs only per user instruction",
+    "Whole contrastive-branch recomputation preserves loss and parameter gradients",
+    "Smoke checks skip redundant initial validation; compact progress is mirrored into Determined logs"
+  ],
+  "evidence": {
+    "k12_gain_percent": 0.5155692249121323,
+    "random_gain_percent": 0.5960010966947915,
+    "gradient_beats_random": "4/10",
+    "k50_partial_gain_percent": -30.02435653265344
+  },
+  "pending": [
+    "Keep existing 66176 v7 and 66180 v8 normal training running",
+    "CPU watcher will submit two-scene C/reasoning comparison at first v8 checkpoint without reserving a GPU beforehand",
+    "Physical verifier direction, long-term consistency and generalization remain unproven"
+  ],
+  "real_training_updates": [
+    {
+      "kind": "train",
+      "step": 1,
+      "phase": "interface",
+      "cursor": 1,
+      "seconds": 343.17371135763824,
+      "update_kind": "full_process",
+      "main_grad_norm": 5810.751953125,
+      "critic_grad_norm": 0.10676455497741699,
+      "gradients": {
+        "condition": 0.3128249553352409,
+        "interface": 0.9498023252305534,
+        "critic": 0.10676454445261015,
+        "knowledge": 0.0040200567916956744,
+        "wan_lora": 0.0
+      },
+      "learning_rates": {
+        "condition": 0.0001,
+        "interface": 0.0001,
+        "critic": 0.0001,
+        "knowledge": 5e-06,
+        "wan_lora": 0.0
+      },
+      "peak_gib": 75.56533765792847,
+      "reserved_gib": 76.29296875,
+      "loss": 2.6090686321258545,
+      "verifier_calibration": 0.5730068683624268,
+      "verifier_feedback": 2.0360617637634277,
+      "verifier_paired_calibration": 1.0,
+      "sampling_steps": 50.0,
+      "gradient_steps": 50.0,
+      "sampled_from_noise": 1.0,
+      "calibration_uses_reference_future": 1.0,
+      "verifier_scoring_uses_reference_future": 0.0,
+      "condition_uses_reference_future": 0.0,
+      "observed_generated_process_error": 0.0363507941365242,
+      "observed_freeze_process_error": 0.04916594550013542
+    },
+    {
+      "kind": "train",
+      "step": 2,
+      "phase": "interface",
+      "cursor": 2,
+      "seconds": 4.861669062636793,
+      "update_kind": "paired_fm",
+      "main_grad_norm": 0.07101669907569885,
+      "critic_grad_norm": 0.0,
+      "gradients": {
+        "condition": 0.01929683630550308,
+        "interface": 0.0683402689505398,
+        "critic": 0.0,
+        "knowledge": 0.0007822699887196135,
+        "wan_lora": 0.0
+      },
+      "learning_rates": {
+        "condition": 0.0001,
+        "interface": 0.0001,
+        "critic": 0.0001,
+        "knowledge": 5e-06,
+        "wan_lora": 0.0
+      },
+      "peak_gib": 38.767876625061035,
+      "reserved_gib": 76.29296875,
+      "sigma": 0.08558642864227295,
+      "verifier_active": 0.0,
+      "sequence_active": 0.0,
+      "wan_forward_count": 1.0,
+      "native_text_dropped": 0.0,
+      "knowledge_text_dropped": 0.0,
+      "loss/fm": 0.4569898545742035,
+      "loss/sequence": 0.0,
+      "loss/intensity": 0.00991569459438324,
+      "loss/critic": 0.0,
+      "loss/physical": 0.0,
+      "weighted/fm": 0.4569898545742035,
+      "weighted/sequence": 0.0,
+      "weighted/intensity": 0.0009915694827213883,
+      "weighted/critic": 0.0,
+      "weighted/physical": 0.0,
+      "loss": 0.4579814374446869
+    },
+    {
+      "kind": "train",
+      "step": 3,
+      "phase": "joint",
+      "cursor": 3,
+      "seconds": 352.6213988168165,
+      "update_kind": "full_process",
+      "main_grad_norm": 20066.32421875,
+      "critic_grad_norm": 0.4749313294887543,
+      "gradients": {
+        "condition": 0.22728462961621032,
+        "interface": 0.782278541088436,
+        "critic": 0.4749313365954698,
+        "knowledge": 0.004133223040577466,
+        "wan_lora": 0.5799697299094008
+      },
+      "learning_rates": {
+        "condition": 7.75e-05,
+        "interface": 7.75e-05,
+        "critic": 7.75e-05,
+        "knowledge": 3.875e-06,
+        "wan_lora": 5e-05
+      },
+      "peak_gib": 75.82516050338745,
+      "reserved_gib": 76.982421875,
+      "loss": 3.702408790588379,
+      "verifier_calibration": 0.5413025617599487,
+      "verifier_feedback": 3.1611061096191406,
+      "verifier_paired_calibration": 1.0,
+      "sampling_steps": 50.0,
+      "gradient_steps": 50.0,
+      "sampled_from_noise": 1.0,
+      "calibration_uses_reference_future": 1.0,
+      "verifier_scoring_uses_reference_future": 0.0,
+      "condition_uses_reference_future": 0.0,
+      "observed_generated_process_error": 0.0419246181845665,
+      "observed_freeze_process_error": 0.06422369927167892
+    },
+    {
+      "kind": "train",
+      "step": 4,
+      "phase": "joint",
+      "cursor": 4,
+      "seconds": 7.087751662358642,
+      "update_kind": "paired_fm",
+      "main_grad_norm": 0.1560501605272293,
+      "critic_grad_norm": 0.0,
+      "gradients": {
+        "condition": 0.029016169945375505,
+        "interface": 0.13755667272467237,
+        "critic": 0.0,
+        "knowledge": 0.0009909114739020653,
+        "wan_lora": 0.06772664350573707
+      },
+      "learning_rates": {
+        "condition": 3.250000000000001e-05,
+        "interface": 3.250000000000001e-05,
+        "critic": 3.250000000000001e-05,
+        "knowledge": 1.6250000000000007e-06,
+        "wan_lora": 5e-05
+      },
+      "peak_gib": 39.55493211746216,
+      "reserved_gib": 77.0,
+      "sigma": 0.9520462155342102,
+      "verifier_active": 0.0,
+      "sequence_active": 0.0,
+      "wan_forward_count": 1.0,
+      "native_text_dropped": 0.0,
+      "knowledge_text_dropped": 0.0,
+      "loss/fm": 0.3375898599624634,
+      "loss/sequence": 0.0,
+      "loss/intensity": 0.11666524410247803,
+      "loss/critic": 0.0,
+      "loss/physical": 0.0,
+      "weighted/fm": 0.3375898599624634,
+      "weighted/sequence": 0.0,
+      "weighted/intensity": 0.011666524223983288,
+      "weighted/critic": 0.0,
+      "weighted/physical": 0.0,
+      "loss": 0.34925639629364014
+    }
+  ],
+  "cancelled_scope": "Remaining long K12/K50 matrices and queued credit probes stopped; existing data preserved.",
+  "current_revision": "v522_native_causal_response_v8",
+  "submitted_normal_training_prefix": 128,
+  "legacy_execution_controls": {
+    "path": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/legacy_v52_controls_20261025",
+    "active": [],
+    "conclusion": "Same SIGKILL reproduced without v5.2.2-native or its wrapper; allocation-specific execution is implicated. Hardware defect, driver/runtime fault, host policy, and transient memory event cannot be distinguished from these logs alone.",
+    "training_control": "Not submitted: old inference already reproduced SIGKILL independently of native code.",
+    "sudo_available": false,
+    "kernel_sender_confirmed": false
+  },
+  "active_recovery": 66176,
+  "online_C_metric_correction": {
+    "metric": "relative_rms",
+    "inverse_metric": "numel(C) * mean(C_initial**2)",
+    "changes_training_objectives": false,
+    "extra_sampling_trajectories": 0,
+    "verification": "Equivalent latent replication leaves correction invariant; exact zero gradient stays zero; existing saved Euclidean policy preserved.",
+    "physical_quality_evidence": false,
+    "working_entrypoint_preserves_metric": true,
+    "active_v7_engineering_video_metric": "euclidean"
+  },
+  "active_revision": "v522_native_causal_response_v8",
+  "working_revision_record": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/causal_response_20261025/implementation.json",
+  "active_experiments": [
+    66201,
+    66211,
+    66180,
+    66176
+  ],
+  "pending_submission_inventory": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_blk_validation/inventory.json"
+}

@@ -1,0 +1,186 @@
+{
+  "R10A": {
+    "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/execution_value_r10/runs/physical_content_67003/train.jsonl",
+    "model_ready": [
+      {
+        "kind": "model_ready",
+        "time": 1793505354.0855024,
+        "variant": "physical_content",
+        "parameters": 670010368,
+        "groups": {
+          "enhancement": 227580928,
+          "fusion_read": 291041280,
+          "fusion_write": 94371840,
+          "wan_lora": 57016320
+        },
+        "stages": {
+          "interface": 128,
+          "joint": 272
+        },
+        "initialization": "official foundations only",
+        "verifier": false
+      },
+      {
+        "kind": "model_ready",
+        "time": 1793510232.3755636,
+        "variant": "physical_content",
+        "parameters": 670010368,
+        "groups": {
+          "enhancement": 227580928,
+          "fusion_read": 291041280,
+          "fusion_write": 94371840,
+          "wan_lora": 57016320
+        },
+        "stages": {
+          "interface": 128,
+          "joint": 272
+        },
+        "initialization": "official foundations only",
+        "verifier": false
+      }
+    ],
+    "phases": {
+      "interface": {
+        "steps": 128,
+        "gradients": {
+          "enhancement": {
+            "median_norm": 0.14868438243865967,
+            "max_norm": 8.918487548828125,
+            "clip_steps": 13,
+            "mean_scale": 0.9458370123355051
+          },
+          "fusion_read": {
+            "median_norm": 0.006243629846721888,
+            "max_norm": 0.2734195291996002,
+            "clip_steps": 0,
+            "mean_scale": 1.0
+          },
+          "fusion_write": {
+            "median_norm": 0.10399897024035454,
+            "max_norm": 2.8960790634155273,
+            "clip_steps": 7,
+            "mean_scale": 0.9814804681593783
+          },
+          "wan_lora": {
+            "median_norm": 0.0,
+            "max_norm": 0.0,
+            "clip_steps": 0,
+            "mean_scale": 1.0
+          }
+        }
+      },
+      "joint": {
+        "steps": 272,
+        "gradients": {
+          "enhancement": {
+            "median_norm": 0.04121537320315838,
+            "max_norm": 0.8311524987220764,
+            "clip_steps": 0,
+            "mean_scale": 1.0
+          },
+          "fusion_read": {
+            "median_norm": 0.0041260921861976385,
+            "max_norm": 0.06953439116477966,
+            "clip_steps": 0,
+            "mean_scale": 1.0
+          },
+          "fusion_write": {
+            "median_norm": 0.03858885541558266,
+            "max_norm": 0.5313506722450256,
+            "clip_steps": 0,
+            "mean_scale": 1.0
+          },
+          "wan_lora": {
+            "median_norm": 0.007207994116470218,
+            "max_norm": 0.07946103811264038,
+            "clip_steps": 0,
+            "mean_scale": 1.0
+          }
+        }
+      }
+    }
+  },
+  "R12B": {
+    "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/runs/physical_content_67456/train.jsonl",
+    "model_ready": [
+      {
+        "kind": "model_ready",
+        "time": 1793802715.288791,
+        "variant": "physical_content",
+        "parameters": 764382208,
+        "groups": {
+          "enhancement": 227580928,
+          "fusion_read": 385413120,
+          "fusion_write": 94371840,
+          "wan_lora": 57016320
+        },
+        "stages": {
+          "interface": 128,
+          "joint": 272
+        },
+        "initialization": "official foundations only",
+        "verifier": false
+      }
+    ],
+    "phases": {
+      "interface": {
+        "steps": 128,
+        "gradients": {
+          "enhancement": {
+            "median_norm": 0.11443426832556725,
+            "max_norm": 3.8151695728302,
+            "clip_steps": 10,
+            "mean_scale": 0.9735136929725686
+          },
+          "fusion_read": {
+            "median_norm": 0.01108927233144641,
+            "max_norm": 0.6965935826301575,
+            "clip_steps": 0,
+            "mean_scale": 1.0
+          },
+          "fusion_write": {
+            "median_norm": 0.09374810010194778,
+            "max_norm": 3.372166395187378,
+            "clip_steps": 3,
+            "mean_scale": 0.989720095231121
+          },
+          "wan_lora": {
+            "median_norm": 0.0,
+            "max_norm": 0.0,
+            "clip_steps": 0,
+            "mean_scale": 1.0
+          }
+        }
+      },
+      "joint": {
+        "steps": 272,
+        "gradients": {
+          "enhancement": {
+            "median_norm": 0.027511171996593475,
+            "max_norm": 0.4972915053367615,
+            "clip_steps": 0,
+            "mean_scale": 1.0
+          },
+          "fusion_read": {
+            "median_norm": 0.005903684766963124,
+            "max_norm": 0.08480340242385864,
+            "clip_steps": 0,
+            "mean_scale": 1.0
+          },
+          "fusion_write": {
+            "median_norm": 0.03915502689778805,
+            "max_norm": 0.9397785067558289,
+            "clip_steps": 0,
+            "mean_scale": 1.0
+          },
+          "wan_lora": {
+            "median_norm": 0.0068521208595484495,
+            "max_norm": 0.07463748753070831,
+            "clip_steps": 0,
+            "mean_scale": 1.0
+          }
+        }
+      }
+    }
+  }
+}

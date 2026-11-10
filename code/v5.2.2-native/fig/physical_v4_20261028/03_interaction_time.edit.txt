@@ -1,0 +1,6 @@
+Edit the supplied diagram. Preserve style, all dimensions, title and panels (a),(d). Correct these connections in panels (b),(c) only:
+1. In (b), BOTH u_cond and u_scope [B,128,21,3072] must visibly feed F_mix. Currently u_scope is disconnected. Draw a separate arrow for u_scope joining the state-input branch.
+2. In (b), beneath the sigma [B] box write “编码至3072，再沿 R,T 广播” before the resulting [B,128,21,3072]. Broadcasting alone cannot turn a scalar into 3072 semantic channels; make the encoding explicit. Do not confuse sigma with clock.
+3. In (c), q_t and k_t are both inputs to q_t @ k_t^T / sqrt(128); show an explicit connector from k_t too.
+4. In (c), A_time [B,128,24,21,21] MUST feed the multiplication node whose OTHER input is v_t [B,128,24,21,128]. Their product is [B,128,24,21,128], which then feeds merge heads + 3072→3072 + residual. Currently A_time incorrectly points directly to merge heads, bypassing the product. Route A_time down then left into the top of the multiplication circle. Keep v_t's horizontal arrow into its left side and product's arrow out its right side. Remove the old A_time-to-merge arrow. Do not change the q/k score, time bias, mask, normalization or result shapes.
+Keep all other information exactly. Output only the corrected figure.

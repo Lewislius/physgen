@@ -1,0 +1,27 @@
+{
+  "id": "VP030",
+  "caption": "Someone throws a snowball into the air, it breaks apart during flight.",
+  "revision": "v522_native_generation_baseline_v11",
+  "optimizer_step": 32,
+  "seed": 42,
+  "fps": 23.999999284744284,
+  "conditions": "first frame, caption, existing requirements; no future target",
+  "physical_dependency_analysis": "OBSERVED: Person crouched on snow, snowball airborne in arc, partially fragmented, fragments suspended. Unknown: Fragmentation timing, fragment trajectories, fall timing.\n\nINTERACTION: Throw force → snowball arc → aerodynamic stress → structural failure → fragmentation → gravity → fragment descent.\n\nPERSISTENCE: Airborne fragments suspended by gravity + initial velocity; snowball arc sustained by initial momentum until air resistance dominates.\n\nINTERVENTION: If throw force insufficient → no arc or no fragmentation. If no air resistance → fragments remain suspended longer. If person moves → scene context breaks.",
+  "latent_reasoning_steps": 2,
+  "latent_feedback": null,
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "condition_strength": 1.0,
+    "latent_feedback": {
+      "enabled": false,
+      "metric": "relative_rms",
+      "sigmas": [
+        0.85,
+        0.65
+      ],
+      "step_size": 0.1
+    }
+  }
+}

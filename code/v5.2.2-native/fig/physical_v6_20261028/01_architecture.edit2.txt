@@ -1,0 +1,26 @@
+Final technical cleanup. Preserve the whole page style, top overview, panel (a), title and stage strip. COMPLETELY REPLACE panel (b) contents with a simpler, correct two-row computational schema. Current wires erroneously feed Q_C into the C key/value projections and put a text attention before its key/value input. Eliminate that ambiguity by putting query/key/value formulas INSIDE grouped boxes instead of drawing tangled individual wires.
+
+Panel (b) heading: "Physical fusion at one Wan block". Two clean horizontal rows, no crossing arrows.
+UPPER ROW:
+Input grouped box: "X = norm3(Hs) [B,8190,3072]" AND "T [B,512,3072]".
+-> large blue box "Frozen native text Q/K/V" containing three exact lines:
+"Q_T = norm_q(Wq^0 X)  [B,24,8190,128]"
+"K_T = norm_k(Wk^0 T)  [B,24,512,128]"
+"V_T = Wv^0 T  [B,24,512,128]"
+-> "Native text attention" -> "Frozen W_O^0: 3072->3072" -> "Y_T [B,8190,3072]".
+The grouped Q/K/V box precedes attention, never follows it.
+
+LOWER ROW:
+Input grouped box with THREE lines: "X_future [B,7800,3072]", "Cw [B,128,3072]", "PTS tau, delta_tau [B,21,2]".
+-> large red/pastel box "C query / independent K,V" with these separate internal formulas:
+"Q_C = norm_q(Wq^0 X_future + E_l) [B,24,7800,128]"
+"K_C = norm_kC((Wk^0 + LoRA) Cw) [B,24,128,128]"
+"V_C = (Wv^0 + LoRA) Cw [B,24,128,128]"
+small line inside: "K/V: 3072->3072 frozen copies + own LoRA r32"
+-> "C attention; own softmax over 128" -> "merge heads [B,7800,3072]" -> "O_C 3072->3072; zero init" (trainable flame) -> "delta H_future [B,7800,3072]" -> "pad first 390 zeros" -> "delta H [B,8190,3072]".
+No separate query wire may enter K_C or V_C. Their dependencies are explicitly the formulas, all three tensors jointly feed C attention.
+
+RIGHT END: a sum box or plus-circle explicitly labelled "U = Hs + Y_T + delta H [B,8190,3072]". Three inputs come from original Hs skip, Y_T and delta H. Output -> "Native FFN + residual; 3072->14336->3072; stage-B LoRA" -> "H_out [B,8190,3072]".
+Small bottom note inside panel: "E_l: sin/cos(tau,delta_tau) 256 -> Linear 3072; broadcast to future positions. Wq^0 shared with native text."
+Dashed purple loss tap ONLY from delta H_future: "L_write, page 2".
+Make this formula-based schema spacious and legible; a clean grouped box is much better than additional tiny projection boxes. Keep all digits verbatim. Preserve the external style reference and other page parts.

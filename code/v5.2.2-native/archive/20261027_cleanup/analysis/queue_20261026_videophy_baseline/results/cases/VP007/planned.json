@@ -1,0 +1,27 @@
+{
+  "id": "VP007",
+  "caption": "Multiple ping pong balls are shown, illustrating different stages of a rally.",
+  "revision": "v522_native_generation_baseline_v11",
+  "optimizer_step": 32,
+  "seed": 42,
+  "fps": 23.999999284744284,
+  "conditions": "first frame, caption, existing requirements; no future target",
+  "physical_dependency_analysis": "OBSERVED: Six static white balls on blue background; no motion blur or dynamic cues; lighting and angle consistent; no ball implies active rally.\n\nINTERACTION: Ball positions → implied motion sequence; static image → no real-time interaction; no active force → no motion initiation.\n\nPERSISTENCE: Static composition sustains visual continuity; absence of motion → no propagation of rally state; camera and lighting fixed → no change in perception.\n\nINTERVENTION: If any ball were blurred or displaced → motion implied → rally in progress; if all balls remain static → no rally → scene remains inert; lighting/camera change → visual inconsistency.",
+  "latent_reasoning_steps": 2,
+  "latent_feedback": null,
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "condition_strength": 1.0,
+    "latent_feedback": {
+      "enabled": false,
+      "metric": "relative_rms",
+      "sigmas": [
+        0.85,
+        0.65
+      ],
+      "step_size": 0.1
+    }
+  }
+}

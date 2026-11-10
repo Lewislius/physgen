@@ -1,0 +1,43 @@
+{
+  "id": "P02",
+  "caption": "A red billiard ball rolls into a stationary blue billiard ball; after contact, the blue ball moves away while the red ball slows.",
+  "revision": "v522_native_h_content_verifier_frozen_simple_v25",
+  "optimizer_step": 224,
+  "seed": 42,
+  "fps": 23.999999284744284,
+  "conditions": "first frame, caption, existing requirements; no future target",
+  "physical_dependency_analysis": "OBSERVED: Two billiard balls rest on green felt, red left, blue right, both stationary.\n\nRESPONSE: Red ball must be struck to initiate motion toward blue ball.\n\nPERSISTENCE: Contact transfers momentum, causing blue ball to move and red to decelerate.\n\nCHANGE: If red ball not moving, no collision occurs; blue remains still, red unchanged.",
+  "latent_reasoning_steps": null,
+  "configured_reasoning_steps": 2,
+  "condition_tokens": 300,
+  "geometry": {
+    "mode": "native",
+    "rgb_size": [
+      480,
+      832
+    ]
+  },
+  "output_size_hw": [
+    480,
+    832
+  ],
+  "latent_feedback": null,
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "condition_strength": 0.0,
+    "latent_feedback": {
+      "enabled": false,
+      "metric": "relative_rms",
+      "sigmas": [
+        0.85,
+        0.65
+      ],
+      "step_size": 0.1
+    }
+  },
+  "intervention": "C_off",
+  "source_checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/checkpoints/v522-h-content-message-verifier-frozen-simple_66356/latest.pt",
+  "controlled_diagnostic": true
+}

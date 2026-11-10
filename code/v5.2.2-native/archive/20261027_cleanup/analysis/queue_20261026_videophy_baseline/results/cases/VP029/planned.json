@@ -1,0 +1,27 @@
+{
+  "id": "VP029",
+  "caption": "A player hits a forehand drive, the ball spinning rapidly as it crosses the net.",
+  "revision": "v522_native_generation_baseline_v11",
+  "optimizer_step": 32,
+  "seed": 42,
+  "fps": 23.999999284744284,
+  "conditions": "first frame, caption, existing requirements; no future target",
+  "physical_dependency_analysis": "OBSERVED: Ball at baseline, net visible, no player or racket. Unknown: player’s position, racket motion, spin initiation, ball trajectory.\n\nINTERACTION: Player’s swing (Clause 1) → ball contact → spin (Clause 3) and propulsion (Clause 2) initiated.\n\nPERSISTENCE: Spin and low trajectory (Clauses 2–3) propagate ball’s motion across net; gravity and air resistance sustain deceleration and arc.\n\nINTERVENTION: Absent player/racket → no contact → no spin or propulsion → ball remains stationary; if spin absent → trajectory less controlled; if force insufficient → ball fails to clear net.",
+  "latent_reasoning_steps": 2,
+  "latent_feedback": null,
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "condition_strength": 1.0,
+    "latent_feedback": {
+      "enabled": false,
+      "metric": "relative_rms",
+      "sigmas": [
+        0.85,
+        0.65
+      ],
+      "step_size": 0.1
+    }
+  }
+}

@@ -1,0 +1,29 @@
+Use case: infographic-diagram.
+Asset type: publication-quality scientific training pipeline diagram, page 2 of 2.
+Create a NEW large landscape academic figure in the exact supplied reference's ProPhy-paper style: white background, strong black serif titles, blue frozen native modules, teal matrices, orange native text, red physical computation, purple dashed training-only connectors, thin orthogonal arrows, olive dashed panel boundaries, readable tensor labels. Maximum readable resolution, ideally 3840x2160. The supplied V4 image is a STYLE REFERENCE ONLY. Replace its old training architecture with this exact current V6 design. Do not retain old language CE or old source/scope branches.
+
+Title: "Physical Write Distillation V6 — Training"
+Subtitle: "Real-video weak targets -> actual physical write | Two objectives"
+
+TOP WIDE PANEL, about 50% height: "(a) Offline target construction — training data only". Two lanes sharing up to R=4 physical relation sentences from actual cached training clip. An illustrative dye-in-water video strip is permitted, labelled "Real training clip: 81 RGB frames" and "28 observed frames [B,28,3,480,832]".
+LEFT LANE, teal/purple: actual real clip + caption / candidate WISA phys_law -> "Frozen Qwen" (snowflake) -> "Relation sentences: R <= 4" and "Relation-to-video attention". Teacher video grid label "N_v = T_q H_q W_q (actual Qwen grid)". "a_relation [B,R,N_v]" and "a_background [B,1,N_v]" -> "Positive difference + normalization" -> "Soft evidence g [B,R,N_v]" -> "Crop/resize + PTS resampling (no learned router)" -> "g_grid [B,R,21,15,26]" -> "Future g [B,7800,R]". Teacher labels must be "weak targets", not ground-truth event timestamps. No generated video enters this lane.
+RIGHT LANE, orange/teal: same relation sentences -> "Frozen native T5" -> "T_r [B,R,L_r,4096]" -> "Native Wan text embedding 4096->3072->3072" -> "[B,R,L_r,3072]" -> "Mean over valid text tokens" -> "t_r [B,R,3072]" -> "Frozen layer-l native W_V^0 and W_O^0 (weights only)" -> "e_l [B,R,3072]". All these modules show frozen snowflakes, never flames.
+MERGE the two lanes at a matrix multiplication: "D*_l = g @ e_l" with both dimensions visible "[B,7800,R] x [B,R,3072]" -> "D*_l [B,7800,3072]". Highlight this output in purple/teal with "Cached target; stop gradient". A short nearby label: "g: where/when; e_l: physical conditional semantics". No direct arrow from this target to the generator forward input.
+
+BOTTOM LEFT PANEL, about 40% of lower area: "(b) Full-video flow matching".
+"Real latent z [B,48,21,30,52]" plus "epsilon, sigma" -> "z_sigma=(1-sigma)z + sigma epsilon; first frame fixed" -> "Wan + physical C" (same model as page 1) -> "Predicted v_theta [B,48,21,30,52]".
+Separate branch from z and epsilon -> "Target epsilon-z [B,48,21,30,52]". Both enter red "L_FM = mean_valid_future ||v_theta-(epsilon-z)||^2". Valid future count label "20 x 15 x 26 = 7800 patch tokens". Keep distinction: FM velocity is denoising, not physical motion speed; a single small note is sufficient.
+
+BOTTOM RIGHT PANEL, about 58% of lower area: "(c) Direct supervision of the ACTUAL write".
+"C -> physical fusion -> O_C" -> "Actual delta H_l [B,7800,3072]" (red), with an explicit solid red continuation arrow labelled "added to Wan residual before native FFN". It is essential the loss taps the very same output as the real residual addition, not an auxiliary decoder head.
+"Cached D*_l [B,7800,3072]" (purple/teal) -> "stopgrad" -> target input of the loss.
+Between the actual output and teacher target write exact formula in a clear box:
+"s_l = max(RMS(D*_l), 10^-3)"
+"L_write = mean SmoothL1((delta H_l - stopgrad(D*_l))/s_l)"
+Small annotation: "Target-only scale; all valid future positions; average over 10 injection layers".
+Loss has dashed purple backprop arrows to C enhancement, P, C K/V LoRA, O_C, and (stage B) Wan self-attention/FFN LoRA. Teacher target has NO gradient arrow.
+Prominent total loss box: "L = L_FM + lambda_write (1-sigma) L_write" and small "Initial lambda_write = 0.02". Do NOT use a cosine loss, CE, a language decoder, or a verifier. Do not draw (1-sigma) as an inference output gate; it is only the training loss weight.
+
+BOTTOM STRIP, readable stage schedule: "A: train C enhancement, P, C K/V LoRA, O_C, time projection; Wan frozen" -> "B: continue A + Wan self-attention / FFN LoRA (r=32)". Small note "Official pretrained foundations; fresh project modules and LoRA".
+Legend and variable strip: "B=batch; R<=4 relation sentences; L_r=text length; N_v=teacher video tokens; l=injection layer; D*=training target; delta H=actual residual write". "Teacher branch is offline training-only; inference uses first frame + original request." "Proposed architecture; teacher maps are weak annotations."
+Prioritize exact numbers, accurate arrows, complete teacher/student separation and legibility. Retain the ProPhy visual style but absolutely no old C-language CE branch, Qwen LoRA, temporal response network, object identity table or generated-video scoring.

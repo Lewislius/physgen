@@ -1,0 +1,25 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/checkpoints/v522-q-seed128-message-no-verifier-simple_66443/latest.pt",
+  "training_seed": 42,
+  "noise": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/v522_native_condition_diagnosis_20261027/Q/noise_seed42.pt",
+  "native_text": "present",
+  "sigma": 0.95,
+  "cases": [
+    "source0000042",
+    "source0001596",
+    "wisa0013758",
+    "wisa0032606"
+  ],
+  "interventions": [
+    "original",
+    "rms0p2",
+    "rms1p0"
+  ],
+  "rounds": "R0 grounding + R1 + R2",
+  "checkpoint_updated": false,
+  "original_source_modified": false,
+  "only_intervention": "Per-query residual RMS before R0; all message/projector/Wan weights fixed",
+  "purpose": "Test whether small initial query residuals cause loss of slot identity",
+  "limitations": "This is an out-of-training-distribution intervention, not a trained candidate or quality claim",
+  "gpu": "NVIDIA GeForce RTX 4090"
+}

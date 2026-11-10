@@ -1,0 +1,68 @@
+{
+  "status": "failed",
+  "source_checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2/checkpoints/1d-v52-joint-state-no-lora-96g-832x480-f81_65316/joint/latest.pt",
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/legacy_v52_controls_20261025/b/videos/checkpoint.pt",
+  "checkpoint_step": 400,
+  "revision": "pair2_stride2_fullwidth_sparse3_visible_change_v5_joint_state",
+  "sampling": {
+    "condition_strength": 1.0,
+    "branch_mode": "full",
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "seed": 20261006,
+    "training_seed": 20261006,
+    "seed_matches_training": true,
+    "frames": 81,
+    "fps": 24.0,
+    "task_mode": "original",
+    "a_mode": "predicted",
+    "fixed_a": 0.5,
+    "without_qwen": false
+  },
+  "geometry": {
+    "mode": "explicit_canvas",
+    "width": 832,
+    "height": 480,
+    "frames": 81
+  },
+  "lora": false,
+  "lora_config": {
+    "enabled": false,
+    "rank": 32,
+    "alpha": 32,
+    "targets": [
+      "self_attn.q",
+      "self_attn.k",
+      "self_attn.v",
+      "self_attn.o",
+      "cross_attn.q",
+      "cross_attn.k",
+      "cross_attn.v",
+      "cross_attn.o"
+    ]
+  },
+  "runtime": {
+    "cpu_offload": false,
+    "flash_attn_force_version": null
+  },
+  "total_cases": 2,
+  "completed_cases": 0,
+  "cases": [
+    {
+      "case_id": "reference",
+      "output": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/legacy_v52_controls_20261025/b/videos/reference/i2v/seed20261006.mp4",
+      "status": "failed",
+      "error": "Command '['/home/liuzhirui/miniconda3/envs/moviestory/bin/python', '-I', '-B', '-u', '/home/liuzhirui/Project/physGen/code/v5.2/inference/pipeline.py', '--checkpoint', '/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/legacy_v52_controls_20261025/b/videos/checkpoint.pt', '--image', '/home/liuzhirui/model/Wan2.2/overfit_ref/overfit_ref5.jpg', '--prompt', 'The woman smiles and waves at the camera.', '--output', '/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/legacy_v52_controls_20261025/b/videos/reference/i2v/seed20261006.mp4', '--frames', '81', '--fps', '24.0', '--seed', '20261006', '--steps', '50', '--shift', '5.0', '--guidance', '5.0', '--a-mode', 'predicted', '--fixed-a', '0.5', '--branch-mode', 'full', '--task-mode', 'original', '--condition-strength', '1.0', '--width', '832', '--height', '480', '--save-analysis', '--joint-state-variant', 'no_lora']' returned non-zero exit status 1."
+    }
+  ],
+  "joint_state_variant": "no_lora",
+  "checkpoint_pinned": true,
+  "generation_verified": false,
+  "experiment": {
+    "search": 65316,
+    "variant": "no_lora",
+    "architecture": "visible_change_v5_joint_state"
+  },
+  "error": "Command '['/home/liuzhirui/miniconda3/envs/moviestory/bin/python', '-I', '-B', '-u', '/home/liuzhirui/Project/physGen/code/v5.2/inference/pipeline.py', '--checkpoint', '/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/legacy_v52_controls_20261025/b/videos/checkpoint.pt', '--image', '/home/liuzhirui/model/Wan2.2/overfit_ref/overfit_ref5.jpg', '--prompt', 'The woman smiles and waves at the camera.', '--output', '/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/legacy_v52_controls_20261025/b/videos/reference/i2v/seed20261006.mp4', '--frames', '81', '--fps', '24.0', '--seed', '20261006', '--steps', '50', '--shift', '5.0', '--guidance', '5.0', '--a-mode', 'predicted', '--fixed-a', '0.5', '--branch-mode', 'full', '--task-mode', 'original', '--condition-strength', '1.0', '--width', '832', '--height', '480', '--save-analysis', '--joint-state-variant', 'no_lora']' returned non-zero exit status 1."
+}

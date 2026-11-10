@@ -1,0 +1,150 @@
+{
+  "utc": "2026-11-04T10:03:36.944738+00:00",
+  "review_method": "Actual inspection of three paired8-frame panels generated from existing videos, frames0/11/22/34/45/57/68/80. No generated or edited content used as evidence.",
+  "selection_policy": "VP010 is a prior process-failure case; VP015 and VP016 are the opposite Joint flips selected from the new empty-reasoning results. These three are diagnostic, not a full-suite quality estimate.",
+  "evidence": [
+    {
+      "case": "VP010",
+      "caption": "A person mops up a puddle of water on a concrete floor, the water disappearing as the mop passes.",
+      "selection": "VP010 is a prior process-failure case; VP015 and VP016 are the opposite Joint flips selected from the new empty-reasoning results. These three are diagnostic, not a full-suite quality estimate.",
+      "videos": {
+        "normal": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_memory_r11b/inference_outputs/physical_content_67308/step0400_api_fixed60_controls16_seed42/videophy40/cases/VP010/planned.mp4",
+        "empty_reasoning": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_memory_r11b/inference_outputs/physical_content_67308/step0400_api_fixed60_controls16_seed42/controls/empty_reasoning/videophy40/cases/VP010/planned.mp4"
+      },
+      "frames": {
+        "normal": [
+          0,
+          11,
+          22,
+          34,
+          45,
+          57,
+          68,
+          80
+        ],
+        "empty_reasoning": [
+          0,
+          11,
+          22,
+          34,
+          45,
+          57,
+          68,
+          80
+        ]
+      },
+      "scores": {
+        "normal": {
+          "sa": 2,
+          "pc": 4
+        },
+        "empty_reasoning": {
+          "sa": 2,
+          "pc": 5
+        }
+      },
+      "panel": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/reports/r11b_empty_reasoning_review/VP010.png",
+      "observations": {
+        "normal": "Mop visible in the known first frame disappears by sampled frame11. Strong repeated coloured texture covers the later scene; no visible mopping process.",
+        "empty_reasoning": "Mop also disappears by sampled frame11; scene becomes darker and smoother but retains repeated texture and little temporal action. PC rises4to5 while SA stays2. This does not restore the requested process.",
+        "decision": "Do not count the higher PC as process/visual recovery."
+      }
+    },
+    {
+      "case": "VP015",
+      "caption": "A rower pulls an oar from the water, the blade dripping water back into the lake. .",
+      "selection": "VP010 is a prior process-failure case; VP015 and VP016 are the opposite Joint flips selected from the new empty-reasoning results. These three are diagnostic, not a full-suite quality estimate.",
+      "videos": {
+        "normal": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_memory_r11b/inference_outputs/physical_content_67308/step0400_api_fixed60_controls16_seed42/videophy40/cases/VP015/planned.mp4",
+        "empty_reasoning": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_memory_r11b/inference_outputs/physical_content_67308/step0400_api_fixed60_controls16_seed42/controls/empty_reasoning/videophy40/cases/VP015/planned.mp4"
+      },
+      "frames": {
+        "normal": [
+          0,
+          11,
+          22,
+          34,
+          45,
+          57,
+          68,
+          80
+        ],
+        "empty_reasoning": [
+          0,
+          11,
+          22,
+          34,
+          45,
+          57,
+          68,
+          80
+        ]
+      },
+      "scores": {
+        "normal": {
+          "sa": 3,
+          "pc": 4
+        },
+        "empty_reasoning": {
+          "sa": 4,
+          "pc": 5
+        }
+      },
+      "panel": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/reports/r11b_empty_reasoning_review/VP015.png",
+      "observations": {
+        "normal": "Strong periodic background/water texture. Rower and approximately horizontal oar persist with limited pose change in sampled frames. Clear oar withdrawal followed by dripping is not visible in these samples.",
+        "empty_reasoning": "Strong periodic background/water texture remains. Some apparent boat translation, but no clear oar withdrawal/dripping sequence in sampled frames. SA3to4 andPC4to5 produce a Joint gain without obvious artifact repair.",
+        "decision": "Retain raw Joint gain; observed visual quality remains unacceptable. Sparse frames do not rule out every brief drip between samples."
+      }
+    },
+    {
+      "case": "VP016",
+      "caption": "A scientist uses a probe to nudge a small, delicate insect on a leaf, causing it to twitch minimally.",
+      "selection": "VP010 is a prior process-failure case; VP015 and VP016 are the opposite Joint flips selected from the new empty-reasoning results. These three are diagnostic, not a full-suite quality estimate.",
+      "videos": {
+        "normal": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_memory_r11b/inference_outputs/physical_content_67308/step0400_api_fixed60_controls16_seed42/videophy40/cases/VP016/planned.mp4",
+        "empty_reasoning": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_memory_r11b/inference_outputs/physical_content_67308/step0400_api_fixed60_controls16_seed42/controls/empty_reasoning/videophy40/cases/VP016/planned.mp4"
+      },
+      "frames": {
+        "normal": [
+          0,
+          11,
+          22,
+          34,
+          45,
+          57,
+          68,
+          80
+        ],
+        "empty_reasoning": [
+          0,
+          11,
+          22,
+          34,
+          45,
+          57,
+          68,
+          80
+        ]
+      },
+      "scores": {
+        "normal": {
+          "sa": 4,
+          "pc": 4
+        },
+        "empty_reasoning": {
+          "sa": 3,
+          "pc": 5
+        }
+      },
+      "panel": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/reports/r11b_empty_reasoning_review/VP016.png",
+      "observations": {
+        "normal": "Probe/gloved hand remain near the insect early and withdraw later; insect stays on the leaf. Repetitive textures are visible. Minimal twitch cannot be judged confidently from eight sampled frames.",
+        "empty_reasoning": "Image becomes markedly darker after the first frame, with repeated texture. Hand/probe remain near the initial position through the sampled sequence. PC4to5 while SA4to3 loses Joint.",
+        "decision": "Preserve the PC score but reject this as a complete improvement in semantic/process/visual quality."
+      }
+    }
+  ],
+  "decision": "Empty reasoning is not adopted as an improved recipe. Full fixed16 PC rises0.5625 butSA falls0.0625 andJoint stays3/16; actual selected videos retain severe artifacts, missing actions and/or static states. This supports continuing the fusion redesign rather than choosing PC alone.",
+  "scope": "Diagnostic cases, not a prevalence estimate over40/60. Empty reasoning retains first image, literal request, nativeT5 and an active independent request branch; it also changes physical word representations/amplitude."
+}

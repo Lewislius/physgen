@@ -1,0 +1,35 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/runs/physical_content_67610/step0400.pt",
+  "step": 400,
+  "mode": "reasoning_swapped",
+  "case": "VP004",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/snapshots/20261104T214359Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/prepared_inputs",
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "A plastic ruler is bent until it cracks, displaying a visible stress fracture that propagates.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP004/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "1. Mop bristles contact water, initiating displacement and spreading across floor surface.\n2. Water flows outward from mop path, thinning as it moves away from center.\n3. Floor reflects light where water pools, diminishing as absorption or evaporation begins.\n4. Mop handle remains upright, suggesting continued motion through liquid zone.",
+  "positive_relations": [
+    "Mop bristles contact water, initiating displacement and spreading across floor surface.",
+    "Water flows outward from mop path, thinning as it moves away from center.",
+    "Floor reflects light where water pools, diminishing as absorption or evaporation begins.",
+    "Mop handle remains upright, suggesting continued motion through liquid zone."
+  ],
+  "negative_analysis": "1. Child holds glass tube with both hands, supporting its weight as man holds opposite end.\n2. Man’s grip on tube stabilizes it, preventing movement as child lifts.\n3. Tube’s transparency allows light to pass, revealing hands and fluid inside.\n4. If tube leaks, fluid may drip; if sealed, fluid remains contained under pressure.",
+  "donor": "VP010",
+  "scope": "Same-count unrelated reasoning with own image/request; own negative condition",
+  "seconds": 88.87490974739194
+}

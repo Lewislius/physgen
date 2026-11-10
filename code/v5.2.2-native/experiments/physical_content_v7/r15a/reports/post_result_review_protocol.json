@@ -1,0 +1,39 @@
+{
+  "candidate": "R15A",
+  "experiment_id": 67762,
+  "next_candidate": "R15B",
+  "user_steering": "R15A出结果后，结合局部表达能力、条件信息利用和融合执行是否匹配进行复盘；不要过于防御性设计。",
+  "decision_timing": "先审查R15A评分、已声明的配对消融和真实视频，再确定R15B最终设计；不修改正在运行的R15A冻结源码。",
+  "review_axes": [
+    {
+      "axis": "局部表达能力",
+      "question": "是否遗漏当前物理过程必要的对象、关系、状态和变化条件；表示、组织或读取能力是否构成实际瓶颈？",
+      "evidence": "结合正常与execution_residual_off、均值C的配对生成及输入信息审计；表示统计用于解释，不单独证明生成收益。"
+    },
+    {
+      "axis": "条件信息利用",
+      "question": "正确请求和reasoning是否改善当前条件下的生成，而非只产生通用修正？",
+      "evidence": "固定16例正常、无关reasoning、空reasoning、训练均值C的逐例SA/PC/Joint及真实过程比较。公共先验和有效条件差异均可保留，取舍以实际贡献为准。"
+    },
+    {
+      "axis": "融合执行匹配",
+      "question": "读入的物理信息是否在合适位置和时机作用，是否损害请求语义、必要过程或画面质量？",
+      "evidence": "结合no_c、native_query、execution_residual_off对照，检查获益与损失案例，并与R1/R9/R10A及近期版本比较；不把推理关闭模块等同于独立重训的因果结论。"
+    }
+  ],
+  "capacity_policy": "不预设总参数量不足或足够；允许证据支持的局部扩容、功能完善及实质性架构/训练/推理调整。参数量、FM或C余弦均不能代替效果验收。",
+  "acceptance": "保持现有完整Goal：VideoPhy2-40高PC/SA/Joint同时达标，真实视频质量改善，同协议WMB70及Physics-IQ严格超过R1并审查分项。",
+  "additional_jobs_requested_by_this_record": 0,
+  "maximum_iteration": "R15E",
+  "expert_problem_solving_review": {
+    "user_request": "后续设计参考该领域高水平研究者解决同类问题的思路，详细分析失败与目标之间的差距。",
+    "method": [
+      "先用评分、配对消融和真实视频区分信息缺失、表示或训练瓶颈、条件利用不足、融合执行不当及能力间冲突；明确已证实与待验证部分。",
+      "结合现有强项和失效机制，查阅相关一手论文或官方实现，比较其问题假设、适用条件和代价；引用事实时核对原文。",
+      "形成具有明确作用机制的架构、训练或推理候选，解释为何能同时改善PC、SA、Joint与画面/跨基准效果；允许实质性修改及有效新分支，不做过于防御性的设计。",
+      "用最能区分竞争解释的对照验证新增机制，记录何种结果将支持或否定设计；不借研究者声望代替本项目实测。"
+    ],
+    "timing": "先完成R15A自身及参照证据复盘，再确定和提交R15B；之后逐版复盘，最多R15E。"
+  },
+  "R15A_supplemental20": "Stopped by explicit user request after failed full40; preserve partial videos, do not resume."
+}

@@ -1,0 +1,74 @@
+{
+  "cases": [
+    {
+      "id": "source0000042",
+      "caption": "The video depicts a small, makeshift structure constructed from matches and a piece of paper, placed on a rough, textured surface that appears to be concrete or stone. The structure is designed to resemble a small house or shelter, with matches forming the walls and roof. A hand enters the frame from the right side, positioned near a separate, already lit matchstick lying on the ground. The hand moves to feed the fire by touching the burning matchstick, causing the flames to spread. Smoke is being emitted as the fire burns.",
+      "generation_seed": 42,
+      "source_video": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/inference_outputs/v522-diagnostic-reasoned_process-8cases32updates-seed42_65836/step0000_source0000042_seed42.mp4",
+      "sampler": {
+        "steps": 50,
+        "shift": 5.0,
+        "guidance": 5.0,
+        "condition_strength": 1.0
+      }
+    },
+    {
+      "id": "source0000086",
+      "caption": "The video captures a serene sunset scene at a coastal location. The sun is positioned low on the horizon, casting a warm golden glow across the sky and reflecting off the calm waters of the sea. The sky is partially cloudy, with streaks of light breaking through, adding depth to the scene. The beach is visible in the foreground, with gentle waves lapping against the shore. On the right side of the frame, there is a cliff with a house perched on its edge, partially silhouetted by the setting sun. The overall atmosphere is tranquil and picturesque, emphasizing the natural beauty of the coastal landscape during the golden hour. There are no animals or characters present in the video; it focuses solely on the natural elements and the peaceful ambiance of the sunset. The camera remains stationary throughout the sequence, allowing viewers to fully absorb the tranquil beauty of the scene.",
+      "generation_seed": 43,
+      "source_video": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/inference_outputs/v522-diagnostic-reasoned_process-8cases32updates-seed42_65836/step0000_source0000086_seed43.mp4",
+      "sampler": {
+        "steps": 50,
+        "shift": 5.0,
+        "guidance": 5.0,
+        "condition_strength": 1.0
+      }
+    },
+    {
+      "id": "source0000104",
+      "caption": "The video captures a close-up view of a fire burning brightly against a dark background. The flames dance and flicker, casting dynamic shadows on the surrounding area. The fire appears to be contained within a circular metal bowl, which is partially visible in the frame. The flames vary in intensity, with some areas showing bright, intense orange and yellow hues, while others are more subdued, appearing as soft, glowing embers. The wood or other material being burned is partially consumed, with charred remnants visible at the base of the flames. The overall atmosphere is one of warmth and intensity, with the fire providing a stark contrast to the darkness of the background. The camera remains stationary throughout the video, focusing solely on the fire and its immediate surroundings, allowing viewers to fully appreciate the intricate details of the flames and the texture of the burning material.",
+      "generation_seed": 44,
+      "source_video": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/inference_outputs/v522-diagnostic-reasoned_process-8cases32updates-seed42_65836/step0000_source0000104_seed44.mp4",
+      "sampler": {
+        "steps": 50,
+        "shift": 5.0,
+        "guidance": 5.0,
+        "condition_strength": 1.0
+      }
+    },
+    {
+      "id": "source0000107",
+      "caption": "The video captures a serene suburban scene featuring a single-story house surrounded by lush greenery. The house is a light beige color with white trim around the windows and front door. A large tree stands prominently in front of the house, providing shade to the area. The lawn is a mix of green and brown patches, indicating some dryness or seasonal change. A small hedge runs along the front yard, adding to the neat appearance of the property.\n\nAs the video progresses, the focus shifts from the static elements of the house and landscape to the dynamic addition of colorful soap bubbles. Initially, two bubbles appear in the air, floating near the tree. One bubble is elongated and wavy, the other is more rounded. Both bubbles drift slowly, changing shape and displaying vibrant, shifting iridescent colors. The elongated bubble stretches and undulates, while the rounded bubble pulses and shifts hues. The bubbles continue to drift away, maintaining their distinct forms against the backdrop of the house and trees.",
+      "generation_seed": 45,
+      "source_video": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/inference_outputs/v522-diagnostic-reasoned_process-8cases32updates-seed42_65836/step0000_source0000107_seed45.mp4",
+      "sampler": {
+        "steps": 50,
+        "shift": 5.0,
+        "guidance": 5.0,
+        "condition_strength": 1.0
+      }
+    }
+  ],
+  "evaluation": {
+    "code": "/home/liuzhirui/benchmark/videophy/VIDEOPHY2",
+    "checkpoint": "/home/liuzhirui/benchmark/videophy/videophy_2_auto",
+    "num_frames": 32,
+    "seed": 20261009,
+    "tasks": [
+      "sa",
+      "pc"
+    ],
+    "generation": {
+      "do_sample": false,
+      "max_new_tokens": 16
+    },
+    "joint_threshold": 4,
+    "average_definition": "mean of (SA + PC) / 2; custom summary, not official Joint Score",
+    "missing_policy": "no final comparison unless every selected case has both valid SA and PC scores",
+    "output_budget_definition": "16 newly generated score tokens, identical for every arm"
+  },
+  "optimizer_step": 0,
+  "scope": "Four held-out WISA cases, two paired generation seeds; not an official VideoPhy2 benchmark score",
+  "source_run": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/inference_outputs/v522-diagnostic-reasoned_process-8cases32updates-seed42_65836",
+  "training_seed": 42
+}

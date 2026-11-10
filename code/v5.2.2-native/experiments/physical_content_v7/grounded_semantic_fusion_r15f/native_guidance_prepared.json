@@ -1,0 +1,81 @@
+{
+  "status": "STATE_COMPLETED",
+  "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/guidance_snapshots/20261107T030626Z",
+  "model_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/snapshots/20261106T202709Z",
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/runs/physical_content_68038/step0400.pt",
+  "output": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/inference_outputs/physical_content_68038/native_guidance16_seed42",
+  "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/submissions/native_guidance16_20261107T030626Z.yaml",
+  "empty_context": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/empty_context",
+  "training_updates": 0,
+  "cases": [
+    "VP002",
+    "VP004",
+    "VP005",
+    "VP009",
+    "VP010",
+    "VP013",
+    "VP015",
+    "VP016",
+    "VP017",
+    "VP018",
+    "VP024",
+    "VP025",
+    "VP026",
+    "VP027",
+    "VP034",
+    "VP038"
+  ],
+  "gamma": 5,
+  "formula": "v_full_pos + 4*(v_native_pos-v_native_neg)",
+  "reason": "Measured physical CFG difference opposes native conditional direction in frozen F; preserve the native guidance while retaining conditional physical correction.",
+  "sha256": {
+    "run.py": "61896cf4bb5535c11bd099ea906bfddff65d8d1b681a8183fb6835c1f2ddaff0",
+    "infer.py": "6fab57cad12067aeae155f57c626500864a93e7e96026bb69c89ca2c13b3cdfe"
+  },
+  "submitted_utc": "2026-11-07T03:07:24.044559+00:00",
+  "next_check_utc": null,
+  "last_observation": {
+    "utc": "2026-11-07T03:58:01.749461+00:00",
+    "experiment": 68085,
+    "state": "STATE_COMPLETED",
+    "trial_ids": [
+      69472
+    ],
+    "gpu": {
+      "actual": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "accepted": true,
+      "visible_count": 1
+    },
+    "status": {
+      "status": "completed",
+      "training_updates": 0,
+      "cases": 16,
+      "output": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/inference_outputs/physical_content_68038/native_guidance16_seed42"
+    },
+    "generated": 16,
+    "next_check_utc": null,
+    "last_event": {
+      "kind": "video_complete",
+      "time": 1794023305.935756,
+      "case": "VP038",
+      "mode": "native_guidance",
+      "seconds": 119.00044023152441
+    },
+    "scores": {
+      "count": 16,
+      "sa": 3.1875,
+      "pc": 3.6875,
+      "joint": 6
+    }
+  },
+  "previous_submissions": [
+    {
+      "experiment": 68084,
+      "trial": 69471,
+      "state": "STATE_ERROR",
+      "reason": "Probe wrapper omitted pinned pipeline import; 0 videos, 0 training updates",
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/guidance_snapshots/20261107T030201Z"
+    }
+  ],
+  "experiment": 68085
+}

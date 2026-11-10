@@ -1,0 +1,69 @@
+{
+  "cases": [
+    {
+      "id": "source0000042",
+      "caption": "The video depicts a small, makeshift structure constructed from matches and a piece of paper, placed on a rough, textured surface that appears to be concrete or stone. The structure is designed to resemble a small house or shelter, with matches forming the walls and roof. A hand enters the frame from the right side, positioned near a separate, already lit matchstick lying on the ground. The hand moves to feed the fire by touching the burning matchstick, causing the flames to spread. Smoke is being emitted as the fire burns.",
+      "generation_seed": 42,
+      "source_video": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/inference_outputs/v522-h-content-message-verifier-frozen-simple_66356/step0128_source0000042_seed42.mp4",
+      "sampler": {
+        "steps": 50,
+        "shift": 5.0,
+        "guidance": 5.0,
+        "condition_strength": 1.0,
+        "latent_feedback": {
+          "enabled": false,
+          "metric": "relative_rms",
+          "sigmas": [
+            0.85,
+            0.65
+          ],
+          "step_size": 0.1
+        }
+      }
+    },
+    {
+      "id": "source0000086",
+      "caption": "The video captures a serene sunset scene at a coastal location. The sun is positioned low on the horizon, casting a warm golden glow across the sky and reflecting off the calm waters of the sea. The sky is partially cloudy, with streaks of light breaking through, adding depth to the scene. The beach is visible in the foreground, with gentle waves lapping against the shore. On the right side of the frame, there is a cliff with a house perched on its edge, partially silhouetted by the setting sun. The overall atmosphere is tranquil and picturesque, emphasizing the natural beauty of the coastal landscape during the golden hour. There are no animals or characters present in the video; it focuses solely on the natural elements and the peaceful ambiance of the sunset. The camera remains stationary throughout the sequence, allowing viewers to fully absorb the tranquil beauty of the scene.",
+      "generation_seed": 43,
+      "source_video": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/inference_outputs/v522-h-content-message-verifier-frozen-simple_66356/step0128_source0000086_seed43.mp4",
+      "sampler": {
+        "steps": 50,
+        "shift": 5.0,
+        "guidance": 5.0,
+        "condition_strength": 1.0,
+        "latent_feedback": {
+          "enabled": false,
+          "metric": "relative_rms",
+          "sigmas": [
+            0.85,
+            0.65
+          ],
+          "step_size": 0.1
+        }
+      }
+    }
+  ],
+  "evaluation": {
+    "code": "/home/liuzhirui/benchmark/videophy/VIDEOPHY2",
+    "checkpoint": "/home/liuzhirui/benchmark/videophy/videophy_2_auto",
+    "num_frames": 32,
+    "seed": 20261009,
+    "tasks": [
+      "sa",
+      "pc"
+    ],
+    "generation": {
+      "do_sample": false,
+      "max_new_tokens": 16
+    },
+    "joint_threshold": 4,
+    "average_definition": "mean of (SA + PC) / 2; custom summary, not official Joint Score",
+    "missing_policy": "no final comparison unless every selected case has both valid SA and PC scores",
+    "output_budget_definition": "16 newly generated score tokens, identical for every arm"
+  },
+  "optimizer_step": 128,
+  "scope": "Two held-out WISA cases, two paired generation seeds, all seven saved training checkpoints; not an official VideoPhy2 benchmark score",
+  "source_run": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/inference_outputs/v522-h-content-message-verifier-frozen-simple_66356",
+  "training_seed": 42,
+  "evaluation_protocol_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/archive/20261027_cleanup/analysis/independent_video_evaluation_v2/v522-diagnostic-direct_fm-8cases32updates-seed42_65835/step0032_repeat0/manifest.json"
+}

@@ -1,0 +1,221 @@
+{
+  "updated_utc": "2026-10-24T16:26:39.036708+00:00",
+  "status": "Problems remain unresolved; active controlled experiments",
+  "protected_version": "v5.2.1-mechanism",
+  "training_sources_added": 0,
+  "protected_source_check": {
+    "count": 20,
+    "changed": []
+  },
+  "content_readout_reliance": [
+    {
+      "source": "analysis/reliance_fixed_content_seed42_recovered_65999/metrics.jsonl",
+      "device": "NVIDIA RTX A6000",
+      "cases": 4,
+      "paired_observations_per_variant": 16,
+      "fm": {
+        "correct": 0.14090405125170946,
+        "off": 0.14603876369073987,
+        "other_case": 0.14090850576758385,
+        "mean_slots": 0.14103600243106484,
+        "no_analysis": 0.1410732320509851
+      },
+      "other_condition_relative_error_percent": 0.0031613823980425337,
+      "no_analysis_relative_error_percent": 0.12006808730673502
+    },
+    {
+      "source": "analysis/reliance_fixed_content_seed42_recovered_66002/metrics.jsonl",
+      "device": "NVIDIA H100",
+      "cases": 4,
+      "paired_observations_per_variant": 16,
+      "fm": {
+        "correct": 0.14090152783319354,
+        "off": 0.14604619797319174,
+        "other_case": 0.1409214069135487,
+        "mean_slots": 0.14103422919288278,
+        "no_analysis": 0.1410797336138785
+      },
+      "other_condition_relative_error_percent": 0.01410849169691808,
+      "no_analysis_relative_error_percent": 0.12647540692101167
+    },
+    {
+      "source": "analysis/reliance_fixed_content_seed314159_20261024/metrics.jsonl",
+      "device": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "cases": 4,
+      "paired_observations_per_variant": 16,
+      "fm": {
+        "correct": 0.14038190571591258,
+        "off": 0.14601874072104692,
+        "other_case": 0.1403824514709413,
+        "mean_slots": 0.1404544203542173,
+        "no_analysis": 0.14048645412549376
+      },
+      "other_condition_relative_error_percent": 0.0003887645106059878,
+      "no_analysis_relative_error_percent": 0.07447427718552113
+    }
+  ],
+  "source_label_verifier_rgb_control": [
+    {
+      "context": "full",
+      "seed": 42,
+      "cases": 8,
+      "original_preferred_to_freeze": 0,
+      "original_preferred_to_late_freeze": 3
+    },
+    {
+      "context": "full",
+      "seed": 271828,
+      "cases": 8,
+      "original_preferred_to_freeze": 0,
+      "original_preferred_to_late_freeze": 3
+    },
+    {
+      "context": "full",
+      "seed": 314159,
+      "cases": 8,
+      "original_preferred_to_freeze": 0,
+      "original_preferred_to_late_freeze": 3
+    },
+    {
+      "context": "pairs",
+      "seed": 42,
+      "cases": 8,
+      "original_preferred_to_freeze": 6,
+      "original_preferred_to_late_freeze": 8
+    },
+    {
+      "context": "pairs",
+      "seed": 271828,
+      "cases": 8,
+      "original_preferred_to_freeze": 3,
+      "original_preferred_to_late_freeze": 4
+    },
+    {
+      "context": "pairs",
+      "seed": 314159,
+      "cases": 8,
+      "original_preferred_to_freeze": 5,
+      "original_preferred_to_late_freeze": 6
+    }
+  ],
+  "independent_videophy2_sensitivity": {
+    "original": {
+      "count": 8,
+      "sa_mean": 4.125,
+      "pc_mean": 4.5,
+      "joint_pass_rate": 0.625,
+      "scope": "Temporal evidence sensitivity on existing WISA validation videos; not a benchmark score",
+      "training_verifier_is_independent": true
+    },
+    "freeze": {
+      "count": 8,
+      "sa_mean": 4.25,
+      "pc_mean": 4.5,
+      "joint_pass_rate": 0.625,
+      "scope": "Temporal evidence sensitivity on existing WISA validation videos; not a benchmark score",
+      "training_verifier_is_independent": true
+    },
+    "late_freeze": {
+      "count": 8,
+      "sa_mean": 4.25,
+      "pc_mean": 4.375,
+      "joint_pass_rate": 0.625,
+      "scope": "Temporal evidence sensitivity on existing WISA validation videos; not a benchmark score",
+      "training_verifier_is_independent": true
+    }
+  },
+  "generation_comparison_32_updates": {
+    "training_cases": 8,
+    "training_seeds": 1,
+    "held_out_cases": 4,
+    "generation_seeds": 2,
+    "results": [
+      {
+        "run": "v522-diagnostic-direct_fm-8cases32updates-seed42_65835",
+        "sources": [
+          "analysis/independent_video_evaluation_v2/v522-diagnostic-direct_fm-8cases32updates-seed42_65835/step0032_repeat0/scores.json",
+          "analysis/independent_video_evaluation_v2/v522-diagnostic-direct_fm-8cases32updates-seed42_65835/step0032_repeat1/scores.json"
+        ],
+        "videos": 8,
+        "sa_mean": 4.25,
+        "pc_mean": 4.125,
+        "joint_pass_rate": 0.625
+      },
+      {
+        "run": "v522-diagnostic-reasoned_fm-8cases32updates-seed42_65838",
+        "sources": [
+          "analysis/independent_video_evaluation_v2/v522-diagnostic-reasoned_fm-8cases32updates-seed42_65838/step0032_repeat0/scores.json",
+          "analysis/independent_video_evaluation_v2/v522-diagnostic-reasoned_fm-8cases32updates-seed42_65838/step0032_repeat1/scores.json"
+        ],
+        "videos": 8,
+        "sa_mean": 4.25,
+        "pc_mean": 4.125,
+        "joint_pass_rate": 0.625
+      },
+      {
+        "run": "v522-diagnostic-reasoned_process-8cases32updates-seed42_65836",
+        "sources": [
+          "analysis/independent_video_evaluation_v2/v522-diagnostic-reasoned_process-8cases32updates-seed42_65836/step0032_repeat0/scores.json",
+          "analysis/independent_video_evaluation_v2/v522-diagnostic-reasoned_process-8cases32updates-seed42_65836/step0032_repeat1/scores.json"
+        ],
+        "videos": 8,
+        "sa_mean": 4.25,
+        "pc_mean": 4.125,
+        "joint_pass_rate": 0.625
+      }
+    ],
+    "interpretation": "Small development study; discrete-score ties do not establish population equivalence"
+  },
+  "recovery_jobs": [
+    {
+      "config": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261024_recovery/c_feedback_k12_shard0.yaml",
+      "output": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261024_recovery/c_feedback_k12",
+      "k": 12,
+      "shard": 0,
+      "state": "submitted",
+      "id": 66111
+    },
+    {
+      "config": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261024_recovery/c_feedback_k12_shard1.yaml",
+      "output": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261024_recovery/c_feedback_k12",
+      "k": 12,
+      "shard": 1,
+      "state": "submitted",
+      "id": 66112
+    },
+    {
+      "config": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261024_recovery/c_feedback_k50_shard0.yaml",
+      "output": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261024_recovery/c_feedback_k50",
+      "k": 50,
+      "shard": 0,
+      "state": "submitted",
+      "id": 66113
+    },
+    {
+      "config": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261024_recovery/c_feedback_k50_shard1.yaml",
+      "output": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261024_recovery/c_feedback_k50",
+      "k": 50,
+      "shard": 1,
+      "state": "submitted",
+      "id": 66114
+    }
+  ],
+  "verifier_recovery_job": {
+    "id": 66115,
+    "config": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261024_verifier_recovery/pipeline.yaml",
+    "state": "submitted",
+    "stages": [
+      "calibration",
+      "real_training_check",
+      "learned_verifier_c_feedback"
+    ]
+  },
+  "interpretation": [
+    "Tiny C-swap effects do not establish meaningful physical condition use.",
+    "The source-label verifier learned a static/appearance shortcut. Repair its calibration, retain the verifier.",
+    "VideoPhy2 alone does not detect the temporal failures in these controls.",
+    "Oracle C updates using reference futures test gradient capacity, not ordinary inference or generalization.",
+    "Full-chain differentiation and learned-verifier feedback are pending real generation tests.",
+    "The existing development cases cannot also support an untouched final evaluation claim."
+  ]
+}

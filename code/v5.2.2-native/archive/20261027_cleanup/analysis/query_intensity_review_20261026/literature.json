@@ -1,0 +1,50 @@
+{
+  "checked_utc": "2026-10-26T08:22:59.664647+00:00",
+  "sources": [
+    {
+      "work": "Wan 2.2 TI2V-5B",
+      "source": "https://github.com/Wan-Video/Wan2.2/blob/main/wan/modules/model.py",
+      "finding": "Native cross-attention queries norm3 of post-self-attention state; 3072-dimensional Q/K/V/O and 24 heads of width 128 for this checkpoint."
+    },
+    {
+      "work": "IP-Adapter",
+      "source": "https://arxiv.org/html/2308.06721v1#S3.SS2.SSS2",
+      "finding": "Text and image attention share Q; new image-side K/V are initialized from text projections and trained separately. Sharing Q is not evidence for bypassing modality adaptation."
+    },
+    {
+      "work": "GLIGEN",
+      "source": "https://raw.githubusercontent.com/gligen/GLIGEN/master/ldm/modules/attention.py",
+      "finding": "BasicTransformerBlock order is self attention residual, grounding fuser, text cross attention residual, FFN residual."
+    },
+    {
+      "work": "CogVideoX",
+      "source": "https://arxiv.org/html/2408.06072v1",
+      "finding": "Joint text/video attention uses modality-specific adaptive normalization because semantics and numerical scales differ."
+    },
+    {
+      "work": "DiT",
+      "source": "https://arxiv.org/html/2212.09748v2",
+      "finding": "Diffusion timestep conditioning can generate high-dimensional modulation; scalar conditioning is not intrinsically invalid, but this does not establish usefulness of the local intensity-to-query rank-one bias."
+    },
+    {
+      "work": "PhysCtrl",
+      "source": "https://arxiv.org/html/2509.20358v1",
+      "finding": "Physical condition tokens are concatenated with point tokens and normalized separately. This is a simulation-trained point-trajectory model, not direct evidence for swapping the pretrained Wan query source."
+    },
+    {
+      "work": "PhysVid",
+      "source": "https://arxiv.org/html/2603.26285v1",
+      "finding": "Video-state queries attend to local physical text keys/values; temporal chunk RoPE alignment is explicit. Our C has no equivalent grounded chunk index."
+    },
+    {
+      "work": "Phantom",
+      "source": "https://arxiv.org/html/2604.08503v1",
+      "finding": "Video-state queries attend to physical-state K/V in dual cross-attention. Uses a separate evolving physical branch and V-JEPA2, unlike the current project constraints; supports relevance of latent physical conditioning but not a novelty claim for the broad idea."
+    },
+    {
+      "work": "PhysRAG",
+      "source": "https://arxiv.org/html/2606.26916v1",
+      "finding": "Learned queries compress retrieved VideoMAE physical features before DiT fusion. Extraction queries are distinct from the video-state queries being discussed here."
+    }
+  ]
+}

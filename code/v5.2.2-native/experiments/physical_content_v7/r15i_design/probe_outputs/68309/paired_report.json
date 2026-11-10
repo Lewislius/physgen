@@ -1,0 +1,101 @@
+{
+  "kind": "R15B400_readonly_joint_physical_memory_probe",
+  "training_updates": 0,
+  "probe": {
+    "count": 16,
+    "SA": 3.125,
+    "PC": 3.9375,
+    "Joint": 6
+  },
+  "references": {
+    "B_request_bound": {
+      "summary": {
+        "count": 16,
+        "SA": 3.0625,
+        "PC": 3.8125,
+        "Joint": 6
+      },
+      "probe_minus_reference": {
+        "sa": {
+          "mean_change": 0.0625,
+          "wins": 1,
+          "ties": 15,
+          "losses": 0
+        },
+        "pc": {
+          "mean_change": 0.125,
+          "wins": 2,
+          "ties": 14,
+          "losses": 0
+        },
+        "joint": {
+          "gains": [],
+          "losses": []
+        }
+      },
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_bound_fusion_r15b/inference_outputs/physical_content_67829/step0400_original_fixed40_controls16_seed42/videophy40/scores.json"
+    },
+    "B_direct": {
+      "summary": {
+        "count": 16,
+        "SA": 3.125,
+        "PC": 4,
+        "Joint": 5
+      },
+      "probe_minus_reference": {
+        "sa": {
+          "mean_change": 0,
+          "wins": 2,
+          "ties": 12,
+          "losses": 2
+        },
+        "pc": {
+          "mean_change": -0.0625,
+          "wins": 0,
+          "ties": 15,
+          "losses": 1
+        },
+        "joint": {
+          "gains": [
+            "VP018",
+            "VP034"
+          ],
+          "losses": [
+            "VP015"
+          ]
+        }
+      },
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_bound_fusion_r15b/inference_outputs/physical_content_67829/step0400_original_fixed40_controls16_seed42/controls/direct_physical_read/videophy40/scores.json"
+    },
+    "B_no_c": {
+      "summary": {
+        "count": 16,
+        "SA": 3.3125,
+        "PC": 3.6875,
+        "Joint": 6
+      },
+      "probe_minus_reference": {
+        "sa": {
+          "mean_change": -0.1875,
+          "wins": 0,
+          "ties": 13,
+          "losses": 3
+        },
+        "pc": {
+          "mean_change": 0.25,
+          "wins": 3,
+          "ties": 13,
+          "losses": 0
+        },
+        "joint": {
+          "gains": [],
+          "losses": []
+        }
+      },
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_bound_fusion_r15b/inference_outputs/physical_content_67829/step0400_original_fixed40_controls16_seed42/controls/no_c/videophy40/scores.json"
+    }
+  },
+  "quality_proven": false,
+  "automatic_training": false,
+  "interpretation": "Fixed16 is a diagnostic sample, not full40 acceptance. Review quantitative and actual-video evidence before final I design; no per-case combination."
+}

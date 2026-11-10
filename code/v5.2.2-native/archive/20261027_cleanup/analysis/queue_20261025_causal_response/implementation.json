@@ -1,0 +1,183 @@
+{
+  "checked_at_utc": "2026-10-25T16:16:07.066366+00:00",
+  "revision": "v522_native_causal_response_v8",
+  "state": "normal_training_running",
+  "findings": [
+    {
+      "problem": "Earlier C working tokens cannot read later refined working tokens under the old triangular mask.",
+      "change": "Joint attention inside the recurrent C workspace; grounded prefix keeps native causal attention.",
+      "evidence": "Tiny native Qwen derivative and unchanged-prefix behavior check."
+    },
+    {
+      "problem": "The old generator-use preference can improve by increasing wrong-condition error alone.",
+      "change": "Train one correct-condition generator branch with FM/process; independent native-T5 dropout preserves the complete request in C.",
+      "algebraic_counterexample": {
+        "temperature": 0.1,
+        "correct_error": 0.1,
+        "wrong_error_before": 0.1,
+        "wrong_error_after": 0.2,
+        "loss_before": 0.6931471805599453,
+        "loss_after": 0.31326168751822286
+      },
+      "evidence": "Objective independent of arbitrary wrong condition; C keeps caption during T5-only dropout; one Wan forward."
+    },
+    {
+      "problem": "Conditional verifier interactions can still read static video feature offsets despite additive-bias cancellation.",
+      "change": "Read observed feature changes relative to the first endpoint and subtract the zero-response value at matching times.",
+      "scope": "Invariant only to temporally constant additive feature offsets, not all appearance transformations; static RGB can still have temporally varying context features."
+    },
+    {
+      "problem": "Inference entry point discarded saved relative-RMS metric when enabling feedback.",
+      "change": "Merge explicit CLI options into saved policy; legacy no-metric policies retain Euclidean updates.",
+      "evidence": "Actual 66176 engineering video metadata reports euclidean, relative_C_update_rms=[9.629405184341522e-08,8.084447244982584e-08]."
+    }
+  ],
+  "preservation": {
+    "concentrated_C": true,
+    "reasoning": true,
+    "state_conditioned_injection": true,
+    "verifier_feedback_to_C": true,
+    "existing_cache_records": 3857,
+    "new_training_data": 0,
+    "inference_trajectories": 1,
+    "stage_budgets": {
+      "interface": 400,
+      "calibration": 460,
+      "joint": 400
+    },
+    "loss_counts": {
+      "interface": 3,
+      "calibration": 2,
+      "joint": 3
+    },
+    "RGB_process_frames": 81,
+    "verifier_observation_endpoint_pairs": 21
+  },
+  "verification": {
+    "behavior_tests": 63,
+    "seconds": 24.135,
+    "test_log": "behavior_tests.log",
+    "cache_audit": "cache_audit.json",
+    "hash_checks": [
+      {
+        "manifest": "analysis/protected_source_hashes.json",
+        "count": 20,
+        "changed": []
+      },
+      {
+        "manifest": "analysis/queue_20261025_amp80_recovery/code_hashes.json",
+        "count": 146,
+        "changed": []
+      },
+      {
+        "manifest": "analysis/legacy_v52_controls_20261025/legacy_source_hashes.json",
+        "count": 103,
+        "changed": []
+      }
+    ],
+    "real_v8_training": {
+      "first_update": {
+        "kind": "train",
+        "step": 1,
+        "phase": "interface",
+        "cursor": 8,
+        "seconds": 323.9743278010001,
+        "update_kind": "conditional_operator",
+        "main_grad_norm": 0.08394338935613632,
+        "critic_grad_norm": 0.0,
+        "gradients": {
+          "condition": 0.0020942334720463053,
+          "interface": 0.08391725658253449,
+          "critic": 0.0,
+          "knowledge": 5.1410372133196814e-05,
+          "wan_lora": 0.0
+        },
+        "learning_rates": {
+          "condition": 3.3333333333333333e-06,
+          "interface": 3.3333333333333333e-06,
+          "critic": 0.0,
+          "knowledge": 1.6666666666666668e-07,
+          "wan_lora": 0.0
+        },
+        "peak_gib": 68.59813737869263,
+        "reserved_gib": 71.43359375,
+        "sequence_level": 0.0002295716919888946,
+        "sequence_change": 0.022150644042994827,
+        "sigma": 0.35877281334251165,
+        "sequence_active": 1.0,
+        "verifier_active": 0.0,
+        "native_text_dropped": 0.5,
+        "C_text_dropped": 0.25,
+        "condition_use_active": 0.0,
+        "wan_forward_count": 1.0,
+        "loss/fm": 0.3050044635310769,
+        "loss/process": 0.022150644042994827,
+        "loss/intensity": 0.09267316106706858,
+        "weighted/fm": 0.3050044635310769,
+        "weighted/process": 0.0022150644836074207,
+        "weighted/intensity": 0.009267316199839115,
+        "loss": 0.3164868475869298
+      },
+      "completed_optimizer_updates": 2,
+      "meaning": "Real execution and intended gradient groups, not physical/visual improvement"
+    }
+  },
+  "remaining": [
+    "Continue normal v8 training; first full update completed, 8 microbatches, peak 68.60GiB",
+    "trained same-seed correct/no-C/reasoning-ablation effects on complete videos",
+    "late-process and visual improvements across existing heldout phenomena and seeds",
+    "learned verifier error sensitivity and useful C update directions",
+    "transfer from four-step conditional completions to full pure-noise sampling"
+  ],
+  "gpu_experiments_submitted_for_v8": 1,
+  "physical_quality_goals_proven": false,
+  "sources": {
+    "physgen_native/config.py": "644b80a52de2b0b17984c59efd8d5dc78fa51febccc6972f34aff6e561723144",
+    "physgen_native/latent_reasoning.py": "a7cfef263999f8f690b44b7100254d468f04c132773772ed07797aa1f10a4501",
+    "physgen_native/knowledge.py": "72a7827f50b9b3ad5b15adde05dff5a6de7269f8f6199482ecb998c166cd3be0",
+    "physgen_native/conditional_verifier.py": "08bdb6a8c4ae1ceae201a70cedc7191676f91e4c64824334a679cd8729a7502e",
+    "physgen_native/operator_training.py": "0277abebc7c9932c5bc97b923758d48214b0dc349b1a5fa940836079e410e595",
+    "physgen_native/system.py": "f506e584c89fc743ab18c3c5465c41e0b8b814b7b50665ef47e6cae611e93c98",
+    "physgen_native/feedback_sampling.py": "acf11048b3ca44c286aa6eb3d8dd2e709646b81b0b5096b7df9723e40bf1f71c",
+    "inference/infer_heldout.py": "5df13322c9fd37f061207ee7ec774190e91ad50c1cf232514766c23034e67325",
+    "train/train.py": "5a3460bc96815bf37395e715dbda99fd1427b57f1f0bee4aedbc875028466fc2",
+    "configs/native_causal_response_wisa3857.yaml": "46f6f140d342d69f67e81f712b000bfb1582cd5d42b10c1c4c14e75682c8d946",
+    "train/native_causal_response_1x80g.yaml": "da0b2b95315bd7773057fa167b95601f17038a71fe28cf5b903e2dc6bf199ec2",
+    "tests/test_causal_response.py": "3d502f23742d04c18cf0191c71ad5f0372997d38a47916bca693f46e587136a0",
+    "tests/test_reasoning_feedback.py": "25c617645d8e73afc0a474db12a5fe25fbc07c6e52f8713e3da645ee21a72f78"
+  },
+  "experiment": 66180,
+  "job_record": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_causal_response/job.json",
+  "existing_experiment": {
+    "id": 66176,
+    "revision": "v522_native_reasoning_operator_v7",
+    "snapshot_unchanged": true,
+    "action": "keep_running_per_user_instruction"
+  },
+  "ruled_out_without_patch": [
+    {
+      "hypothesis": "C residual is necessarily rounded away by a bf16 Wan residual addition",
+      "finding": "Native Wan modulation and residual states are float32, including the state passed to the injection site. No new precision branch added.",
+      "source": "/home/liuzhirui/model/Wan2.2/wan/modules/model.py:247"
+    }
+  ],
+  "related_work": [
+    {
+      "title": "PhysMaster",
+      "url": "https://arxiv.org/abs/2510.13809",
+      "relevance": "Physical representations as extra generation conditions and feedback-trained physical encoders already exist."
+    },
+    {
+      "title": "WMReward",
+      "url": "https://arxiv.org/abs/2601.10553",
+      "relevance": "Latent-world-model rewards already guide generation. Our target preserves one trajectory and concentrates feedback in C."
+    },
+    {
+      "title": "Coconut",
+      "url": "https://arxiv.org/abs/2412.06769",
+      "relevance": "Continuous latent reasoning already exists; recurrence alone is not the contribution."
+    }
+  ],
+  "research_claim": "Candidate contribution is jointly revised physical-dependency C acting as state-dependent generation operators, trained by condition-sensitive process feedback whose optimization credit is assigned to C. Novelty and efficacy are not established by the implementation.",
+  "first_checkpoint_verification": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_causal_response/first_checkpoint_verification/job.json"
+}

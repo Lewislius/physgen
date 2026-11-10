@@ -1,0 +1,52 @@
+{
+  "checked_at_utc": "2026-10-25T13:42:54.954951+00:00",
+  "reference_yaml": "/home/liuzhirui/Project/physGen/code/v5.2/inference/infer_joint_state_no_lora_demo21_1x96g.yaml",
+  "same_fields_for_66143": [
+    "resources including single slot and 32 GiB shm",
+    "image",
+    "bind_mounts",
+    "max_restarts"
+  ],
+  "cli": "0.32.1",
+  "software_environment_changed": false,
+  "reference_66141": {
+    "state": "STATE_CANCELED",
+    "bootstrap_succeeded": true,
+    "cancel_reason_in_log": "user requested kill",
+    "note": "Read-only comparison; not treated as our failed run or completed video."
+  },
+  "failures": {
+    "66135": {
+      "cause": "Experiment-wide PYTHONNOUSERSITE interfered with container bootstrap",
+      "status": "Removed from later submissions"
+    },
+    "66140": {
+      "cause": "CUDA OOM in first training VAE backward",
+      "process_gib": 94.76,
+      "capacity_gib": 94.97,
+      "status": "Whole-branch recomputation implemented, loss/gradient equivalence tested; GPU fit not established"
+    },
+    "66143": {
+      "child_returncode": -9,
+      "signal": "SIGKILL",
+      "container_status": 247,
+      "diagnosed_cause": null,
+      "cgroup_oom_kill": 0,
+      "controller_requested_kill_recorded": false,
+      "allocated_gpu": "GPU-30085d8b-9408-7a7f-e544-be0280858108"
+    },
+    "66148": {
+      "signal": 9,
+      "child_returncode": -9,
+      "container_exit": 137,
+      "location": "first training backward; both complete forward branches succeeded",
+      "forward_peak_gib": 45.04474639892578,
+      "last_driver_used_mib": 82803,
+      "cgroup_oom_kill": 0,
+      "kernel_log_access": "not permitted",
+      "signal_sender": "unconfirmed"
+    }
+  },
+  "runtime_difference": "66143 directly called Python, bypassing the process-local PATH/LD_LIBRARY_PATH setup in the reference wrapper; not established as the SIGKILL cause. New entry uses the reference behavior.",
+  "next_execution": "Run66161: native residual-block decoder recomputation passed actual paired 81-frame backward; full-model fit pending"
+}

@@ -1,0 +1,115 @@
+{
+  "checked_at_utc": "2026-10-26T04:06:25.683319+00:00",
+  "scope": "Documentation of the current workspace v8 recipe. Checkpoint inference uses its own saved configuration. No training or inference launched.",
+  "revision": "v522_native_causal_response_v8",
+  "configuration": {
+    "data": {
+      "count": 3857,
+      "frames": 81,
+      "latent_shape": [
+        48,
+        21,
+        30,
+        52
+      ],
+      "workers": 2
+    },
+    "model": {
+      "width": 3072,
+      "qwen_width": 4096,
+      "attention_width": 768,
+      "attention_heads": 12,
+      "condition_every": 3,
+      "interface_rank": 64,
+      "injection": "conditional_operator"
+    },
+    "stages": {
+      "interface": 400,
+      "calibration": 460,
+      "joint": 400
+    },
+    "loss": {
+      "interface": {
+        "fm": 1.0,
+        "process": 0.1,
+        "intensity": 0.1
+      },
+      "calibration": {
+        "rank": 1.0,
+        "matching": 1.0
+      },
+      "joint": {
+        "fm": 1.0,
+        "process": 0.1,
+        "verifier": 0.05
+      }
+    },
+    "completion": {
+      "feedback_to": "latent",
+      "every": 4,
+      "steps": 4,
+      "sigma_min": 0.55,
+      "sigma_max": 0.9
+    },
+    "inference": {
+      "steps": 50,
+      "shift": 5.0,
+      "guidance": 5.0,
+      "condition_strength": 1.0,
+      "latent_feedback": {
+        "enabled": false,
+        "metric": "relative_rms",
+        "sigmas": [
+          0.85,
+          0.65
+        ],
+        "step_size": 0.1
+      }
+    }
+  },
+  "condition": {
+    "condition_readout": "content",
+    "max_condition_tokens": 128,
+    "latent_reasoning_steps": 2,
+    "latent_reasoning_layers": 4,
+    "latent_reasoning_attention": "joint",
+    "lora_rank": 16,
+    "lora_last_layers": 12
+  },
+  "cache": {
+    "records": 3857,
+    "splits": {
+      "train": 3666,
+      "validation": 191
+    }
+  },
+  "sources_sha256": {
+    "AGENTS.md": "8f5993c2c49e3f9b174ea88a7aa80f164ba5c45d0c5cc9734e91a3e428a8470b",
+    "configs/native_causal_response_wisa3857.yaml": "46f6f140d342d69f67e81f712b000bfb1582cd5d42b10c1c4c14e75682c8d946",
+    "train/native_causal_response_1x80g.yaml": "da0b2b95315bd7773057fa167b95601f17038a71fe28cf5b903e2dc6bf199ec2",
+    "train/train.py": "68046f518c495d4d0421601c8436968b112443109a098cc5686aaa3248a5938f",
+    "physgen_native/config.py": "6cf5c43b20c9bc67014c94b95a533e3a2a89f0c729a36a8c1f032f5ca6e5e465",
+    "physgen_native/data.py": "7faa40595c4aadac34ac1bcc9143eb1159bdfec683b6a885814bf0b74caac504",
+    "physgen_native/knowledge.py": "2555cee8f5078328fcb84c8674c8b476358651d6b3acc1afa96791071262b3b7",
+    "physgen_native/latent_reasoning.py": "a7cfef263999f8f690b44b7100254d468f04c132773772ed07797aa1f10a4501",
+    "physgen_native/conditioning.py": "124e5d3d386a18e09c1b24096bac2a187f5ac504741fae93bdbee5e7becaa662",
+    "physgen_native/generator.py": "7a48134f9bd4e89ce09ce8fa81d48ca6323a466261b257c9de1cbf3304f013a8",
+    "physgen_native/system.py": "d191de369b3541e1bdc3cb64d782a2fc6334147ff4878953513f82464f4eaba9",
+    "physgen_native/lora.py": "5b3180e5481a86e9914e343a501958f2d61380f88db9c926e4428b3b908b0062",
+    "physgen_native/operator_training.py": "3fc7bec3b565e04e7c149b1dda6cde0b4b751d47f9c06aa45a8455e08ebe54c7",
+    "physgen_native/sequence.py": "ebbefa61cbd2be863910a7010c0a2d2a984c0bae40cce28223a6e78a8d5fde6e",
+    "physgen_native/process_encoder.py": "2353e092bf6e5fb4b0052fbf126427a777a4244edb83db8b6a5f1d921e7100db",
+    "physgen_native/conditional_verifier.py": "08bdb6a8c4ae1ceae201a70cedc7191676f91e4c64824334a679cd8729a7502e",
+    "physgen_native/adjoint.py": "f7e99a699edced437659406b03903ad49da52dddabb3a638022656459b407db2",
+    "physgen_native/feedback_sampling.py": "547649d0df3e44aab560f1d49b90c416afa3629d438eab42e459b4962e5d9e65",
+    "inference/infer_heldout.py": "5df13322c9fd37f061207ee7ec774190e91ad50c1cf232514766c23034e67325",
+    "analysis/causal_response_20261025/implementation.json": "79c1a99c20dca17b32ef1cd6dd93dc51c459fd233bb16a195c60cdf92d75fc97",
+    "analysis/queue_20261025_blk_validation/verifier_gradient/result.json": "89b1893af111332f8598695c567af6462a93029a18df7af219e10962aba4e681",
+    "analysis/冻结Qwen与直接优化C_设计分析_20261026.md": "2ff3a9565d320a053c6ad1df5a29ae07a058f8c955c8a03283cdad539037162f"
+  },
+  "artifact_sha256": {
+    "native-pipeline-guide.md": "8a85d35c1d44f483e67148b9f65b7696e46ef6d51a7e0c389d7ecc06ea8578f1",
+    "native-pipeline-explainer.html": "5ec2b0f9749efd183d2eef09a28aa56dbab96789d790316ac37a60d7d98ae896"
+  },
+  "evidence_boundary": "Engineering execution and gradient ownership are recorded; no new claim of improved physical video quality."
+}

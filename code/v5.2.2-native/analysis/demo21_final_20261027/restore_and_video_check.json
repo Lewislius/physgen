@@ -1,0 +1,38 @@
+{
+  "condition_restore": [
+    {
+      "mode": "h_content_message",
+      "checkpoint_step": 224,
+      "condition_tensors": 16,
+      "actual_round": 1,
+      "synthetic_C_shape": [
+        1,
+        4,
+        3072
+      ],
+      "finite": true
+    },
+    {
+      "mode": "q_seed128_message",
+      "checkpoint_step": 224,
+      "condition_tensors": 23,
+      "actual_round": 2,
+      "synthetic_C_shape": [
+        1,
+        128,
+        3072
+      ],
+      "finite": true
+    }
+  ],
+  "video_verifier_check": {
+    "source": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/1d-v52-lora-demo21_20261010/reference/i2v/seed42.mp4",
+    "encoded_video": {
+      "width": 832,
+      "height": 480,
+      "avg_frame_rate": "24/1",
+      "nb_read_frames": "81"
+    }
+  },
+  "note": "CPU restore and synthetic message input; old video only checks the MP4 verifier, not new model generation quality."
+}

@@ -1,0 +1,37 @@
+name: physical-v7-r6-existing-no_c-16-20261031T105822Z
+description: Complete one already-declared R6 step128 control on the original fixed16, seed42/gamma5.
+  Original immutable inference and evaluator; publish complete results for main-job reuse. No training/download/additional
+  cases.
+workspace: ALL-IN-ONE
+project: wan-animate
+max_restarts: 0
+resources:
+  resource_pool: blk-96g
+  slots_per_trial: 1
+  is_single_node: true
+  shm_size: 34359738368
+bind_mounts:
+- host_path: /mount/HOME/liuzhirui
+  container_path: /home/liuzhirui
+- host_path: /mount/NAS1/public
+  container_path: /run/determined/NAS1/public
+environment:
+  image: 10.130.130.5:8192/lab-dev:latest
+  environment_variables:
+  - OMP_NUM_THREADS=4
+  - PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+checkpoint_storage:
+  type: shared_fs
+  host_path: /mount/HOME/liuzhirui
+  storage_path: Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/determined_checkpoints
+  save_experiment_best: 0
+  save_trial_best: 0
+  save_trial_latest: 0
+searcher:
+  name: single
+  metric: completed
+  max_length:
+    epochs: 1
+  smaller_is_better: false
+entrypoint: bash /home/liuzhirui/Project/physGen/code/v5.2.2-native/tools/runtime_python.sh /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/content_modulation_r6/control_dispatch/snapshots/20261031T105822Z/run_control.py
+  --mode no_c

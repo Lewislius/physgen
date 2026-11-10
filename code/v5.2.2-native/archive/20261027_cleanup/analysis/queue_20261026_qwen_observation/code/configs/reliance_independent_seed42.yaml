@@ -1,0 +1,147 @@
+revision: v522_native_physical_dependency_v1
+run_name: v522-reliance-independent-8cases128updates-seed42
+paths:
+  wan_code: /home/liuzhirui/model/Wan2.2
+  wan_checkpoint: /home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B
+  qwen_checkpoint: /home/liuzhirui/model/Qwen3-VL/Qwen3-VL-8B-Instruct
+  cache: /home/liuzhirui/Project/physGen/data_cache/wisa_4000
+  runs: ${ROOT}/checkpoints
+  outputs: ${ROOT}/inference_outputs
+data:
+  count: 3857
+  frames: 81
+  latent_shape:
+  - 48
+  - 21
+  - 30
+  - 52
+  workers: 2
+  train_ids:
+  - wisa0018783
+  - source0001870
+  - wisa0011512
+  - source0001499
+  - wisa0030300
+  - source0000907
+  - source0000259
+  - wisa0028268
+model:
+  width: 3072
+  qwen_width: 4096
+  attention_width: 768
+  attention_heads: 12
+  condition_every: 3
+  interface_rank: 64
+  critic_width: 256
+knowledge:
+  lora_rank: 16
+  lora_alpha: 16
+  lora_last_layers: 12
+  image_size:
+  - 288
+  - 512
+  video_size:
+  - 192
+  - 320
+  max_text_tokens: 2048
+  gradient_checkpointing: true
+  evidence_pairs: 7
+  reasoning_tokens: 192
+  comparison_tokens: 128
+  reasoning_cache: 256
+  dependency_queries: true
+wan_lora:
+  rank: 32
+  alpha: 32
+stages:
+  interface: 128
+  joint: 1
+loss:
+  fm: 1.0
+  sequence: 0.0
+  intensity: 0.1
+  critic: 0.0
+  physical: 0.0
+  rollout: 0.0
+sequence:
+  size:
+  - 120
+  - 208
+  scales:
+  - 1
+  - 2
+  - 4
+  lags:
+  - 1
+  - 2
+  - 4
+  - 8
+  - 16
+  - 32
+  - 64
+  scale_floor: 0.03
+  state_weight: 0.25
+  max_sigma: 0.85
+  perceptual_fraction: 0.5
+verifier:
+  warmup: 50
+  every: 2
+  perturb_lengths:
+  - 4
+  - 8
+  - 12
+rollout:
+  every: 8
+  start: 50
+  steps: 50
+  gradient_steps: 4
+  guidance: 5.0
+  shift: 5.0
+train:
+  seed: 42
+  accumulation: 1
+  optimizer: adamw
+  new_lr: 0.0001
+  critic_lr: 0.0001
+  qwen_lr: 5.0e-06
+  wan_lora_lr: 5.0e-05
+  minimum_lr_ratio: 0.1
+  warmup: 8
+  weight_decay: 0.01
+  grad_clip: 1.0
+  text_dropout: 0.1
+  requirements_dropout: 0.1
+  sigma_min: 0.02
+  sigma_max: 1.0
+  gradient_checkpointing: true
+  save_every: 32
+  native_text_only_dropout: 0.25
+validation:
+  every: 128
+  samples: 6
+  sigmas:
+  - 0.65
+  - 0.95
+  sample_every: 128
+  sample_cases: 0
+  initial: false
+  sample_seeds:
+  - 42
+  - 314159
+inference:
+  steps: 50
+  shift: 5.0
+  guidance: 5.0
+  condition_strength: 1.0
+study:
+  purpose: 'Paired C-reliance learnability: Wan LoRA stays frozen for all 128 declared
+    updates'
+  training_cases: 8
+  training_seeds:
+  - 42
+  - 314159
+  predeclared_generation_seeds:
+  - 42
+  - 314159
+  no_new_training_data: true
+  native_text_only_dropout: 0.25

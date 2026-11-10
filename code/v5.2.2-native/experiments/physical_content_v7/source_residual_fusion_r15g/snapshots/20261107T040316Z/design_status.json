@@ -1,0 +1,91 @@
+{
+  "status": "final_source_frozen_not_submitted",
+  "final_version": "R15G",
+  "inference_pending": null,
+  "no_quality_claim": true,
+  "training_updates": 0,
+  "proposed_guidance": "joint_two_branch_cfg",
+  "architecture_small_Wan_checks": "8 passed; initialization identity, actual generation gradients, ownership, input use, post-text normalization, controls, resume",
+  "finalized_utc": "2026-11-07T03:59:50.083007+00:00",
+  "frozen_F_guidance16": {
+    "experiment": 68085,
+    "trial": 69472,
+    "state": "STATE_COMPLETED",
+    "training_updates": 0,
+    "cases": 16,
+    "normal": {
+      "sa": 3.0625,
+      "pc": 3.8125,
+      "joint": 5
+    },
+    "native_guidance": {
+      "sa": 3.1875,
+      "pc": 3.6875,
+      "joint": 6
+    },
+    "paired": {
+      "SA_wins_ties_losses": [
+        2,
+        14,
+        0
+      ],
+      "PC_wins_ties_losses": [
+        1,
+        13,
+        2
+      ],
+      "joint_gain": [
+        "VP034"
+      ],
+      "joint_loss": []
+    },
+    "changes": {
+      "VP025": {
+        "old": [
+          2,
+          4
+        ],
+        "new": [
+          3,
+          3
+        ]
+      },
+      "VP026": {
+        "old": [
+          2,
+          5
+        ],
+        "new": [
+          2,
+          3
+        ]
+      },
+      "VP027": {
+        "old": [
+          4,
+          4
+        ],
+        "new": [
+          4,
+          5
+        ]
+      },
+      "VP034": {
+        "old": [
+          3,
+          5
+        ],
+        "new": [
+          4,
+          5
+        ]
+      }
+    },
+    "score_file": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/inference_outputs/physical_content_68038/native_guidance16_seed42/controls/native_guidance/videophy40/scores.json",
+    "visual_review": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/reports/native_guidance16/visual_review.json",
+    "decision": "Do not adopt as R15G default: PC decreases and visual defects persist. Keep as one predefined G16 inference control because changed architecture may alter effects.",
+    "limits": "Frozen F, fixed16 only; not a trained version, not a new40 score, not a causal proof that conditioning decomposition is always harmful."
+  },
+  "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/source_residual_fusion_r15g/snapshots/20261107T040316Z",
+  "unique_CPU_checks_passed": 16
+}

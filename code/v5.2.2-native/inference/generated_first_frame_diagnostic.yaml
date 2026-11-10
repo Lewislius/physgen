@@ -1,0 +1,30 @@
+name: native_wan_generated_first_frame_diagnostic
+source: /home/liuzhirui/Project/physGen/code/v5.2.2-native/inference_outputs/generated_first_frame_diagnostic_seed42_20261027_inputs
+output: /home/liuzhirui/Project/physGen/code/v5.2.2-native/inference_outputs/generated_first_frame_diagnostic_seed42_20261027
+model_config: /home/liuzhirui/Project/physGen/code/v5.2.2-native/configs/native_h_content_message_no_verifier_simple_wisa3857.yaml
+case_ids:
+- VP001
+- VP006
+selection: Two input-mismatch examples selected after inspecting first images, before
+  scoring videos; not a random benchmark subset
+seed: 42
+rewrite_tokens: 256
+rewrite_input: caption_only
+rewrite_instruction: Write a GENERATION INSTRUCTION for a FUTURE video, not a description
+  of a still image. Add only one or two short sentences that clarify the VISIBLE development
+  of the requested action. Keep the original action and outcome exactly, including
+  requested mistakes or failures. Give concrete visible detail that is already implied
+  by that action, including deformation, liquid, gas or wave changes when applicable.
+  Do not add a second event or an unrequested cause, release, fall, jump, collision,
+  injury, new actor, object, color, camera movement or material change. Do not invent
+  numerical forces, trajectories, timestamps or mechanically implausible deformations.
+  Do not say the action is absent, stationary or already complete. Keep the event
+  unfolding. For example, if a cord is being stretched, clarify its progressive extension
+  while both ends remain held; do not add a release, recoil or attached weight. If
+  cloth is being twisted, clarify folds tightening and excess liquid dripping; do
+  not describe unchanged cloth. If a person steadily rides a skateboard, describe
+  continued rolling; do not add a trick or wheel lift. Use at most 55 English words.
+  Return ONLY the added generation description, without headings or explanation. Omit
+  uncertain details.
+reference_config: /home/liuzhirui/Project/physGen/code/v5.2.2-native/inference/native_physics_prompt_baseline.yaml
+generated_image_directory: /home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/fast_baseline_no_rl_20261027/generated_first_frames

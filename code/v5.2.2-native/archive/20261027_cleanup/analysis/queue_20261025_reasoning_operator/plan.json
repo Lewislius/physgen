@@ -1,0 +1,28 @@
+{
+  "output": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_reasoning_operator/workers",
+  "allocated_slots": 2,
+  "exclude_gpu_uuids": [
+    "GPU-30085d8b-9408-7a7f-e544-be0280858108"
+  ],
+  "exclusion_reason": "Specific device associated with repeated observed SIGKILL; two assigned slots ensure one other allocated GPU. UUID prefix normalized.",
+  "workers": [
+    [
+      {
+        "name": "reasoning_training",
+        "command": [
+          "/home/liuzhirui/miniconda3/envs/moviestory/bin/python",
+          "-I",
+          "-B",
+          "-u",
+          "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_reasoning_operator/code/tools/run_reasoning_training.py",
+          "--config",
+          "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_reasoning_operator/code/configs/native_reasoning_operator_wisa3857.yaml",
+          "--output",
+          "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_reasoning_operator/results",
+          "--train-steps",
+          "128"
+        ]
+      }
+    ]
+  ]
+}

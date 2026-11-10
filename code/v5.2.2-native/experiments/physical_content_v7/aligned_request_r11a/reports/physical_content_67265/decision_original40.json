@@ -1,0 +1,88 @@
+{
+  "utc": "2026-11-03T17:26:26.251692+00:00",
+  "experiment_id": 67265,
+  "trial_id": 68652,
+  "checkpoint_step": 400,
+  "scope": "Original fixed40, matched I2V inputs/seed42/gamma5/sampler; same-data R10A reference still queued.",
+  "summary": {
+    "count": 40,
+    "sa_mean": 2.925,
+    "pc_mean": 3.6,
+    "sa_pass_rate": 0.275,
+    "pc_pass_rate": 0.475,
+    "joint_pass_rate": 0.25,
+    "scope": "Fixed60 historical VideoPhy2 captions adapted to common first-image I2V; seed42. Not the official590-caption T2V benchmark.",
+    "training_verifier_is_independent": true
+  },
+  "target": {
+    "preferred_pc": 3.85,
+    "preferred_sa": 3.35,
+    "joint_strictly_above": 10
+  },
+  "paired": {
+    "original40/R10-A": {
+      "sa": {
+        "mean_change": 0.1,
+        "wins": 5,
+        "ties": 34,
+        "losses": 1
+      },
+      "pc": {
+        "mean_change": -0.15,
+        "wins": 5,
+        "ties": 25,
+        "losses": 10
+      },
+      "joint": {
+        "gains": [
+          "VP008",
+          "VP010",
+          "VP038"
+        ],
+        "losses": []
+      }
+    },
+    "original40/R1": {
+      "sa": {
+        "mean_change": -0.025,
+        "wins": 0,
+        "ties": 39,
+        "losses": 1
+      },
+      "pc": {
+        "mean_change": -0.025,
+        "wins": 4,
+        "ties": 31,
+        "losses": 5
+      },
+      "joint": {
+        "gains": [],
+        "losses": []
+      }
+    },
+    "original40/native400": {
+      "sa": {
+        "mean_change": -0.15,
+        "wins": 0,
+        "ties": 34,
+        "losses": 6
+      },
+      "pc": {
+        "mean_change": 0.15,
+        "wins": 9,
+        "ties": 28,
+        "losses": 3
+      },
+      "joint": {
+        "gains": [],
+        "losses": []
+      }
+    }
+  },
+  "status": "rejected_for_adoption_on_original40",
+  "reason": "PC below R10A, bothSA/PC belowR1 means, no newJoint cases versusR1/native400; requested numeric goals not met.",
+  "keep_running": "Complete declared extra20/full60 and seven16 interventions; no continuation beyond400 and no source changes during evaluation.",
+  "causal_scope": "Updated training/API inputs and request-execution branch changed together relative to historicalR10A. Same-data reference and own branch controls still needed to locate the cause.",
+  "visual_review": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/aligned_request_r11a/reports/physical_content_67265/visual_predeclared/review.json",
+  "goal_complete": false
+}

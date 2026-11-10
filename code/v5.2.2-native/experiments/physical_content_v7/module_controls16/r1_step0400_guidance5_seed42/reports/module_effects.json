@@ -1,0 +1,2557 @@
+{
+  "recorded_utc": "2026-10-31T08:40:24.307836+00:00",
+  "gamma": 5,
+  "seed": 42,
+  "preserved_reference": "R1-400 full40 PC3.625; this same16 normal reference PC3.8125.",
+  "scopes": {
+    "no_c": "Both physical outputs disabled in the same jointly trained checkpoint; LoRA retained.",
+    "reasoning_swapped": "Unrelated reasoning re-encoded with the own image/request; own native T5 and negative condition retained.",
+    "empty_reasoning": "No generated reasoning text; own image/request, native T5 and negative condition retained.",
+    "mean": "Positive C replaced by its own token mean; sample-specific information remains.",
+    "global_train_mean": "Both positive and negative C fixed to their training-derived means; no sample-specific Qwen condition, while native T5/first image remain.",
+    "anchor_only": "Learned C projection disabled in both CFG branches; each input-derived semantic anchor remains."
+  },
+  "suites": {
+    "real": {
+      "path": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/module_controls16/r1_step0400_guidance5_seed42/references/real",
+      "generated": 16,
+      "status": "completed",
+      "count": 16,
+      "sa_mean": 3.25,
+      "pc_mean": 3.8125,
+      "sa_pass_rate": 0.375,
+      "pc_pass_rate": 0.5625,
+      "joint_pass_rate": 0.375
+    },
+    "native400": {
+      "path": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/module_controls16/r1_step0400_guidance5_seed42/references/native400",
+      "generated": 16,
+      "status": "completed",
+      "count": 16,
+      "sa_mean": 3.25,
+      "pc_mean": 3.6875,
+      "sa_pass_rate": 0.375,
+      "pc_pass_rate": 0.5,
+      "joint_pass_rate": 0.375
+    },
+    "no_c": {
+      "path": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/module_controls16/r1_step0400_guidance5_seed42/controls/no_c/videophy40",
+      "generated": 16,
+      "status": "completed",
+      "count": 16,
+      "sa_mean": 3.25,
+      "pc_mean": 3.6875,
+      "sa_pass_rate": 0.375,
+      "pc_pass_rate": 0.5,
+      "joint_pass_rate": 0.375
+    },
+    "reasoning_swapped": {
+      "path": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/module_controls16/r1_step0400_guidance5_seed42/controls/reasoning_swapped/videophy40",
+      "generated": 16,
+      "status": "completed",
+      "count": 16,
+      "sa_mean": 3.0625,
+      "pc_mean": 3.75,
+      "sa_pass_rate": 0.3125,
+      "pc_pass_rate": 0.5,
+      "joint_pass_rate": 0.3125
+    },
+    "empty_reasoning": {
+      "path": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/module_controls16/r1_step0400_guidance5_seed42/controls/empty_reasoning/videophy40",
+      "generated": 16,
+      "status": "completed",
+      "count": 16,
+      "sa_mean": 3.0625,
+      "pc_mean": 4.0625,
+      "sa_pass_rate": 0.25,
+      "pc_pass_rate": 0.75,
+      "joint_pass_rate": 0.25
+    },
+    "mean": {
+      "path": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/module_controls16/r1_step0400_guidance5_seed42/controls/mean/videophy40",
+      "generated": 16,
+      "status": "completed",
+      "count": 16,
+      "sa_mean": 3.125,
+      "pc_mean": 3.6875,
+      "sa_pass_rate": 0.25,
+      "pc_pass_rate": 0.5625,
+      "joint_pass_rate": 0.25
+    },
+    "global_train_mean": {
+      "path": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/module_controls16/r1_step0400_guidance5_seed42/controls/global_train_mean/videophy40",
+      "generated": 16,
+      "status": "completed",
+      "count": 16,
+      "sa_mean": 3.1875,
+      "pc_mean": 3.8125,
+      "sa_pass_rate": 0.375,
+      "pc_pass_rate": 0.5,
+      "joint_pass_rate": 0.375
+    },
+    "anchor_only": {
+      "path": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/module_controls16/r1_step0400_guidance5_seed42/controls/anchor_only/videophy40",
+      "generated": 16,
+      "status": "completed",
+      "count": 16,
+      "sa_mean": 3.1875,
+      "pc_mean": 3.75,
+      "sa_pass_rate": 0.375,
+      "pc_pass_rate": 0.5625,
+      "joint_pass_rate": 0.375
+    }
+  },
+  "effects": {
+    "no_c": {
+      "status": "completed",
+      "intervention": "Both physical outputs disabled in the same jointly trained checkpoint; LoRA retained.",
+      "pc": {
+        "baseline": 3.6875,
+        "candidate": 3.8125,
+        "difference": 0.125,
+        "paired_bootstrap_95_interval": [
+          0.0,
+          0.3125
+        ],
+        "wins": 2,
+        "ties": 14,
+        "losses": 0
+      },
+      "sa": {
+        "baseline": 3.25,
+        "candidate": 3.25,
+        "difference": 0.0,
+        "paired_bootstrap_95_interval": [
+          -0.1875,
+          0.1875
+        ],
+        "wins": 1,
+        "ties": 14,
+        "losses": 1
+      },
+      "pc_pass_difference": 0.0625,
+      "joint_difference": 0.0
+    },
+    "reasoning_swapped": {
+      "status": "completed",
+      "intervention": "Unrelated reasoning re-encoded with the own image/request; own native T5 and negative condition retained.",
+      "pc": {
+        "baseline": 3.75,
+        "candidate": 3.8125,
+        "difference": 0.0625,
+        "paired_bootstrap_95_interval": [
+          0.0,
+          0.1875
+        ],
+        "wins": 1,
+        "ties": 15,
+        "losses": 0
+      },
+      "sa": {
+        "baseline": 3.0625,
+        "candidate": 3.25,
+        "difference": 0.1875,
+        "paired_bootstrap_95_interval": [
+          0.0,
+          0.375
+        ],
+        "wins": 3,
+        "ties": 13,
+        "losses": 0
+      },
+      "pc_pass_difference": 0.0625,
+      "joint_difference": 0.0625
+    },
+    "empty_reasoning": {
+      "status": "completed",
+      "intervention": "No generated reasoning text; own image/request, native T5 and negative condition retained.",
+      "pc": {
+        "baseline": 4.0625,
+        "candidate": 3.8125,
+        "difference": -0.25,
+        "paired_bootstrap_95_interval": [
+          -0.5,
+          -0.0625
+        ],
+        "wins": 0,
+        "ties": 12,
+        "losses": 4
+      },
+      "sa": {
+        "baseline": 3.0625,
+        "candidate": 3.25,
+        "difference": 0.1875,
+        "paired_bootstrap_95_interval": [
+          0.0,
+          0.375
+        ],
+        "wins": 3,
+        "ties": 13,
+        "losses": 0
+      },
+      "pc_pass_difference": -0.1875,
+      "joint_difference": 0.125
+    },
+    "mean": {
+      "status": "completed",
+      "intervention": "Positive C replaced by its own token mean; sample-specific information remains.",
+      "pc": {
+        "baseline": 3.6875,
+        "candidate": 3.8125,
+        "difference": 0.125,
+        "paired_bootstrap_95_interval": [
+          -0.125,
+          0.375
+        ],
+        "wins": 3,
+        "ties": 12,
+        "losses": 1
+      },
+      "sa": {
+        "baseline": 3.125,
+        "candidate": 3.25,
+        "difference": 0.125,
+        "paired_bootstrap_95_interval": [
+          -0.125,
+          0.375
+        ],
+        "wins": 3,
+        "ties": 12,
+        "losses": 1
+      },
+      "pc_pass_difference": 0.0,
+      "joint_difference": 0.125
+    },
+    "global_train_mean": {
+      "status": "completed",
+      "intervention": "Both positive and negative C fixed to their training-derived means; no sample-specific Qwen condition, while native T5/first image remain.",
+      "pc": {
+        "baseline": 3.8125,
+        "candidate": 3.8125,
+        "difference": 0.0,
+        "paired_bootstrap_95_interval": [
+          -0.1875,
+          0.1875
+        ],
+        "wins": 1,
+        "ties": 14,
+        "losses": 1
+      },
+      "sa": {
+        "baseline": 3.1875,
+        "candidate": 3.25,
+        "difference": 0.0625,
+        "paired_bootstrap_95_interval": [
+          0.0,
+          0.1875
+        ],
+        "wins": 1,
+        "ties": 15,
+        "losses": 0
+      },
+      "pc_pass_difference": 0.0625,
+      "joint_difference": 0.0
+    },
+    "anchor_only": {
+      "status": "completed",
+      "intervention": "Learned C projection disabled in both CFG branches; each input-derived semantic anchor remains.",
+      "pc": {
+        "baseline": 3.75,
+        "candidate": 3.8125,
+        "difference": 0.0625,
+        "paired_bootstrap_95_interval": [
+          -0.125,
+          0.25
+        ],
+        "wins": 2,
+        "ties": 13,
+        "losses": 1
+      },
+      "sa": {
+        "baseline": 3.1875,
+        "candidate": 3.25,
+        "difference": 0.0625,
+        "paired_bootstrap_95_interval": [
+          0.0,
+          0.1875
+        ],
+        "wins": 1,
+        "ties": 15,
+        "losses": 0
+      },
+      "pc_pass_difference": 0.0,
+      "joint_difference": 0.0
+    }
+  },
+  "paired_comparisons": {
+    "correct_vs_native400": {
+      "baseline": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/module_controls16/r1_step0400_guidance5_seed42/references/native400",
+      "candidate": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/module_controls16/r1_step0400_guidance5_seed42/references/real",
+      "count": 16,
+      "metrics": {
+        "sa": {
+          "baseline": 3.25,
+          "candidate": 3.25,
+          "difference": 0.0,
+          "paired_bootstrap_95_interval": [
+            -0.1875,
+            0.1875
+          ],
+          "wins": 1,
+          "ties": 14,
+          "losses": 1
+        },
+        "pc": {
+          "baseline": 3.6875,
+          "candidate": 3.8125,
+          "difference": 0.125,
+          "paired_bootstrap_95_interval": [
+            0.0,
+            0.3125
+          ],
+          "wins": 2,
+          "ties": 14,
+          "losses": 0
+        },
+        "mean": {
+          "baseline": 3.46875,
+          "candidate": 3.53125,
+          "difference": 0.0625,
+          "paired_bootstrap_95_interval": [
+            0.0,
+            0.15625
+          ],
+          "wins": 2,
+          "ties": 14,
+          "losses": 0
+        },
+        "joint": {
+          "baseline": 0.375,
+          "candidate": 0.375,
+          "difference": 0.0,
+          "paired_bootstrap_95_interval": [
+            0.0,
+            0.0
+          ],
+          "wins": 0,
+          "ties": 16,
+          "losses": 0
+        },
+        "sa_pass_rate": {
+          "baseline": 0.375,
+          "candidate": 0.375,
+          "difference": 0.0,
+          "paired_bootstrap_95_interval": [
+            0.0,
+            0.0
+          ],
+          "wins": 0,
+          "ties": 16,
+          "losses": 0
+        },
+        "pc_pass_rate": {
+          "baseline": 0.5,
+          "candidate": 0.5625,
+          "difference": 0.0625,
+          "paired_bootstrap_95_interval": [
+            0.0,
+            0.1875
+          ],
+          "wins": 1,
+          "ties": 15,
+          "losses": 0
+        }
+      },
+      "cases": [
+        {
+          "id": "VP002",
+          "caption": "A thin piece of wood is bent into a bow shape, exhibiting its flexibility.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP004",
+          "caption": "A plastic ruler is bent until it cracks, displaying a visible stress fracture that propagates.",
+          "baseline": {
+            "sa": 2,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 2,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP005",
+          "caption": "A close-up shot of a paddle making contact with the ping pong ball, showing the impact.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP009",
+          "caption": "A construction worker uses a suction cup to lift a heavy glass panel with a small picture adhered to it; the picture remains affixed.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP010",
+          "caption": "A person mops up a puddle of water on a concrete floor, the water disappearing as the mop passes.",
+          "baseline": {
+            "sa": 4,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 4
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 1
+        },
+        {
+          "id": "VP013",
+          "caption": "A person uses a pair of pliers to open a stubborn metal bottle, bending the cap slightly in the process.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP015",
+          "caption": "A rower pulls an oar from the water, the blade dripping water back into the lake. .",
+          "baseline": {
+            "sa": 3,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 5
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP016",
+          "caption": "A scientist uses a probe to nudge a small, delicate insect on a leaf, causing it to twitch minimally.",
+          "baseline": {
+            "sa": 4,
+            "pc": 5
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 5
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 1
+        },
+        {
+          "id": "VP017",
+          "caption": "A unicycle wheel rolls over a small curb; the rider adjusts their position to keep upright.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP018",
+          "caption": "A bulldozer pulls a heavy load attached with a chain, moving it across the ground.",
+          "baseline": {
+            "sa": 4,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 4
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 1
+        },
+        {
+          "id": "VP024",
+          "caption": "A speeding car crashes into a brick wall, crumpling the front end and stopping abruptly.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP025",
+          "caption": "A large, orange plastic egg is rolled up a plastic slide, then rolls down, ending at the bottom.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 2,
+            "pc": 4
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP026",
+          "caption": "Two people stretch a bungee cord, extending it to its maximum length.",
+          "baseline": {
+            "sa": 2,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 4
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP027",
+          "caption": "Hands shape a lump of clay-like bread dough into a smooth, round boule on a wooden table.",
+          "baseline": {
+            "sa": 4,
+            "pc": 5
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 5
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 1
+        },
+        {
+          "id": "VP034",
+          "caption": "A large, clear balloon is inflated with air, showing the internal pressure causing the balloon to stretch.",
+          "baseline": {
+            "sa": 4,
+            "pc": 5
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 5
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 1
+        },
+        {
+          "id": "VP038",
+          "caption": "A paint roller, dipped in green paint, is used to cover a section of a metal fence, creating a uniform green coat.",
+          "baseline": {
+            "sa": 4,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 4
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 1
+        }
+      ],
+      "inference_protocol_matched": true,
+      "scope": "Fixed16 diagnostic subset of the existing VideoPhy2-40 shared-first-image I2V protocol",
+      "guidance": {
+        "baseline": {
+          "text_scale": 5.0,
+          "physical_scale": null,
+          "requested_physical_scale": 5.0,
+          "physical_branch_active": false
+        },
+        "candidate": {
+          "text_scale": 5.0,
+          "physical_scale": 5.0,
+          "requested_physical_scale": 5.0,
+          "physical_branch_active": true
+        },
+        "intentionally_varied": false,
+        "inactive_scale_note": "Physical-scale arguments have no effect in native-only or no_c branches"
+      },
+      "interpretation": "Case-paired descriptive comparison at one seed; no claim that feature separation or a loss reduction proves physical improvement"
+    },
+    "correct_vs_no_c": {
+      "baseline": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/module_controls16/r1_step0400_guidance5_seed42/controls/no_c/videophy40",
+      "candidate": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/module_controls16/r1_step0400_guidance5_seed42/references/real",
+      "count": 16,
+      "metrics": {
+        "sa": {
+          "baseline": 3.25,
+          "candidate": 3.25,
+          "difference": 0.0,
+          "paired_bootstrap_95_interval": [
+            -0.1875,
+            0.1875
+          ],
+          "wins": 1,
+          "ties": 14,
+          "losses": 1
+        },
+        "pc": {
+          "baseline": 3.6875,
+          "candidate": 3.8125,
+          "difference": 0.125,
+          "paired_bootstrap_95_interval": [
+            0.0,
+            0.3125
+          ],
+          "wins": 2,
+          "ties": 14,
+          "losses": 0
+        },
+        "mean": {
+          "baseline": 3.46875,
+          "candidate": 3.53125,
+          "difference": 0.0625,
+          "paired_bootstrap_95_interval": [
+            0.0,
+            0.15625
+          ],
+          "wins": 2,
+          "ties": 14,
+          "losses": 0
+        },
+        "joint": {
+          "baseline": 0.375,
+          "candidate": 0.375,
+          "difference": 0.0,
+          "paired_bootstrap_95_interval": [
+            0.0,
+            0.0
+          ],
+          "wins": 0,
+          "ties": 16,
+          "losses": 0
+        },
+        "sa_pass_rate": {
+          "baseline": 0.375,
+          "candidate": 0.375,
+          "difference": 0.0,
+          "paired_bootstrap_95_interval": [
+            0.0,
+            0.0
+          ],
+          "wins": 0,
+          "ties": 16,
+          "losses": 0
+        },
+        "pc_pass_rate": {
+          "baseline": 0.5,
+          "candidate": 0.5625,
+          "difference": 0.0625,
+          "paired_bootstrap_95_interval": [
+            0.0,
+            0.1875
+          ],
+          "wins": 1,
+          "ties": 15,
+          "losses": 0
+        }
+      },
+      "cases": [
+        {
+          "id": "VP002",
+          "caption": "A thin piece of wood is bent into a bow shape, exhibiting its flexibility.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP004",
+          "caption": "A plastic ruler is bent until it cracks, displaying a visible stress fracture that propagates.",
+          "baseline": {
+            "sa": 2,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 2,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP005",
+          "caption": "A close-up shot of a paddle making contact with the ping pong ball, showing the impact.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP009",
+          "caption": "A construction worker uses a suction cup to lift a heavy glass panel with a small picture adhered to it; the picture remains affixed.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP010",
+          "caption": "A person mops up a puddle of water on a concrete floor, the water disappearing as the mop passes.",
+          "baseline": {
+            "sa": 4,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 4
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 1
+        },
+        {
+          "id": "VP013",
+          "caption": "A person uses a pair of pliers to open a stubborn metal bottle, bending the cap slightly in the process.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP015",
+          "caption": "A rower pulls an oar from the water, the blade dripping water back into the lake. .",
+          "baseline": {
+            "sa": 3,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 5
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP016",
+          "caption": "A scientist uses a probe to nudge a small, delicate insect on a leaf, causing it to twitch minimally.",
+          "baseline": {
+            "sa": 4,
+            "pc": 5
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 5
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 1
+        },
+        {
+          "id": "VP017",
+          "caption": "A unicycle wheel rolls over a small curb; the rider adjusts their position to keep upright.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP018",
+          "caption": "A bulldozer pulls a heavy load attached with a chain, moving it across the ground.",
+          "baseline": {
+            "sa": 4,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 4
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 1
+        },
+        {
+          "id": "VP024",
+          "caption": "A speeding car crashes into a brick wall, crumpling the front end and stopping abruptly.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP025",
+          "caption": "A large, orange plastic egg is rolled up a plastic slide, then rolls down, ending at the bottom.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 2,
+            "pc": 4
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP026",
+          "caption": "Two people stretch a bungee cord, extending it to its maximum length.",
+          "baseline": {
+            "sa": 2,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 4
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP027",
+          "caption": "Hands shape a lump of clay-like bread dough into a smooth, round boule on a wooden table.",
+          "baseline": {
+            "sa": 4,
+            "pc": 5
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 5
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 1
+        },
+        {
+          "id": "VP034",
+          "caption": "A large, clear balloon is inflated with air, showing the internal pressure causing the balloon to stretch.",
+          "baseline": {
+            "sa": 4,
+            "pc": 5
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 5
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 1
+        },
+        {
+          "id": "VP038",
+          "caption": "A paint roller, dipped in green paint, is used to cover a section of a metal fence, creating a uniform green coat.",
+          "baseline": {
+            "sa": 4,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 4
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 1
+        }
+      ],
+      "inference_protocol_matched": true,
+      "scope": "Fixed16 diagnostic subset of the existing VideoPhy2-40 shared-first-image I2V protocol",
+      "guidance": {
+        "baseline": {
+          "text_scale": 5.0,
+          "physical_scale": null,
+          "requested_physical_scale": 5.0,
+          "physical_branch_active": false
+        },
+        "candidate": {
+          "text_scale": 5.0,
+          "physical_scale": 5.0,
+          "requested_physical_scale": 5.0,
+          "physical_branch_active": true
+        },
+        "intentionally_varied": false,
+        "inactive_scale_note": "Physical-scale arguments have no effect in native-only or no_c branches"
+      },
+      "interpretation": "Case-paired descriptive comparison at one seed; no claim that feature separation or a loss reduction proves physical improvement"
+    },
+    "correct_vs_reasoning_swapped": {
+      "baseline": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/module_controls16/r1_step0400_guidance5_seed42/controls/reasoning_swapped/videophy40",
+      "candidate": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/module_controls16/r1_step0400_guidance5_seed42/references/real",
+      "count": 16,
+      "metrics": {
+        "sa": {
+          "baseline": 3.0625,
+          "candidate": 3.25,
+          "difference": 0.1875,
+          "paired_bootstrap_95_interval": [
+            0.0,
+            0.375
+          ],
+          "wins": 3,
+          "ties": 13,
+          "losses": 0
+        },
+        "pc": {
+          "baseline": 3.75,
+          "candidate": 3.8125,
+          "difference": 0.0625,
+          "paired_bootstrap_95_interval": [
+            0.0,
+            0.1875
+          ],
+          "wins": 1,
+          "ties": 15,
+          "losses": 0
+        },
+        "mean": {
+          "baseline": 3.40625,
+          "candidate": 3.53125,
+          "difference": 0.125,
+          "paired_bootstrap_95_interval": [
+            0.03125,
+            0.25
+          ],
+          "wins": 4,
+          "ties": 12,
+          "losses": 0
+        },
+        "joint": {
+          "baseline": 0.3125,
+          "candidate": 0.375,
+          "difference": 0.0625,
+          "paired_bootstrap_95_interval": [
+            0.0,
+            0.1875
+          ],
+          "wins": 1,
+          "ties": 15,
+          "losses": 0
+        },
+        "sa_pass_rate": {
+          "baseline": 0.3125,
+          "candidate": 0.375,
+          "difference": 0.0625,
+          "paired_bootstrap_95_interval": [
+            0.0,
+            0.1875
+          ],
+          "wins": 1,
+          "ties": 15,
+          "losses": 0
+        },
+        "pc_pass_rate": {
+          "baseline": 0.5,
+          "candidate": 0.5625,
+          "difference": 0.0625,
+          "paired_bootstrap_95_interval": [
+            0.0,
+            0.1875
+          ],
+          "wins": 1,
+          "ties": 15,
+          "losses": 0
+        }
+      },
+      "cases": [
+        {
+          "id": "VP002",
+          "caption": "A thin piece of wood is bent into a bow shape, exhibiting its flexibility.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP004",
+          "caption": "A plastic ruler is bent until it cracks, displaying a visible stress fracture that propagates.",
+          "baseline": {
+            "sa": 2,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 2,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP005",
+          "caption": "A close-up shot of a paddle making contact with the ping pong ball, showing the impact.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP009",
+          "caption": "A construction worker uses a suction cup to lift a heavy glass panel with a small picture adhered to it; the picture remains affixed.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP010",
+          "caption": "A person mops up a puddle of water on a concrete floor, the water disappearing as the mop passes.",
+          "baseline": {
+            "sa": 4,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 4
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 1
+        },
+        {
+          "id": "VP013",
+          "caption": "A person uses a pair of pliers to open a stubborn metal bottle, bending the cap slightly in the process.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP015",
+          "caption": "A rower pulls an oar from the water, the blade dripping water back into the lake. .",
+          "baseline": {
+            "sa": 3,
+            "pc": 5
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 5
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP016",
+          "caption": "A scientist uses a probe to nudge a small, delicate insect on a leaf, causing it to twitch minimally.",
+          "baseline": {
+            "sa": 4,
+            "pc": 5
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 5
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 1
+        },
+        {
+          "id": "VP017",
+          "caption": "A unicycle wheel rolls over a small curb; the rider adjusts their position to keep upright.",
+          "baseline": {
+            "sa": 2,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP018",
+          "caption": "A bulldozer pulls a heavy load attached with a chain, moving it across the ground.",
+          "baseline": {
+            "sa": 4,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 4
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 1
+        },
+        {
+          "id": "VP024",
+          "caption": "A speeding car crashes into a brick wall, crumpling the front end and stopping abruptly.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP025",
+          "caption": "A large, orange plastic egg is rolled up a plastic slide, then rolls down, ending at the bottom.",
+          "baseline": {
+            "sa": 2,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 2,
+            "pc": 4
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP026",
+          "caption": "Two people stretch a bungee cord, extending it to its maximum length.",
+          "baseline": {
+            "sa": 2,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 4
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP027",
+          "caption": "Hands shape a lump of clay-like bread dough into a smooth, round boule on a wooden table.",
+          "baseline": {
+            "sa": 4,
+            "pc": 5
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 5
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 1
+        },
+        {
+          "id": "VP034",
+          "caption": "A large, clear balloon is inflated with air, showing the internal pressure causing the balloon to stretch.",
+          "baseline": {
+            "sa": 3,
+            "pc": 5
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 5
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 1
+        },
+        {
+          "id": "VP038",
+          "caption": "A paint roller, dipped in green paint, is used to cover a section of a metal fence, creating a uniform green coat.",
+          "baseline": {
+            "sa": 4,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 4
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 1
+        }
+      ],
+      "inference_protocol_matched": true,
+      "scope": "Fixed16 diagnostic subset of the existing VideoPhy2-40 shared-first-image I2V protocol",
+      "guidance": {
+        "baseline": {
+          "text_scale": 5.0,
+          "physical_scale": 5.0,
+          "requested_physical_scale": 5.0,
+          "physical_branch_active": true
+        },
+        "candidate": {
+          "text_scale": 5.0,
+          "physical_scale": 5.0,
+          "requested_physical_scale": 5.0,
+          "physical_branch_active": true
+        },
+        "intentionally_varied": false,
+        "inactive_scale_note": "Physical-scale arguments have no effect in native-only or no_c branches"
+      },
+      "interpretation": "Case-paired descriptive comparison at one seed; no claim that feature separation or a loss reduction proves physical improvement"
+    },
+    "correct_vs_empty_reasoning": {
+      "baseline": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/module_controls16/r1_step0400_guidance5_seed42/controls/empty_reasoning/videophy40",
+      "candidate": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/module_controls16/r1_step0400_guidance5_seed42/references/real",
+      "count": 16,
+      "metrics": {
+        "sa": {
+          "baseline": 3.0625,
+          "candidate": 3.25,
+          "difference": 0.1875,
+          "paired_bootstrap_95_interval": [
+            0.0,
+            0.375
+          ],
+          "wins": 3,
+          "ties": 13,
+          "losses": 0
+        },
+        "pc": {
+          "baseline": 4.0625,
+          "candidate": 3.8125,
+          "difference": -0.25,
+          "paired_bootstrap_95_interval": [
+            -0.5,
+            -0.0625
+          ],
+          "wins": 0,
+          "ties": 12,
+          "losses": 4
+        },
+        "mean": {
+          "baseline": 3.5625,
+          "candidate": 3.53125,
+          "difference": -0.03125,
+          "paired_bootstrap_95_interval": [
+            -0.15625,
+            0.09375
+          ],
+          "wins": 2,
+          "ties": 11,
+          "losses": 3
+        },
+        "joint": {
+          "baseline": 0.25,
+          "candidate": 0.375,
+          "difference": 0.125,
+          "paired_bootstrap_95_interval": [
+            0.0,
+            0.3125
+          ],
+          "wins": 2,
+          "ties": 14,
+          "losses": 0
+        },
+        "sa_pass_rate": {
+          "baseline": 0.25,
+          "candidate": 0.375,
+          "difference": 0.125,
+          "paired_bootstrap_95_interval": [
+            0.0,
+            0.3125
+          ],
+          "wins": 2,
+          "ties": 14,
+          "losses": 0
+        },
+        "pc_pass_rate": {
+          "baseline": 0.75,
+          "candidate": 0.5625,
+          "difference": -0.1875,
+          "paired_bootstrap_95_interval": [
+            -0.375,
+            0.0
+          ],
+          "wins": 0,
+          "ties": 13,
+          "losses": 3
+        }
+      },
+      "cases": [
+        {
+          "id": "VP002",
+          "caption": "A thin piece of wood is bent into a bow shape, exhibiting its flexibility.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP004",
+          "caption": "A plastic ruler is bent until it cracks, displaying a visible stress fracture that propagates.",
+          "baseline": {
+            "sa": 2,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 2,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP005",
+          "caption": "A close-up shot of a paddle making contact with the ping pong ball, showing the impact.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP009",
+          "caption": "A construction worker uses a suction cup to lift a heavy glass panel with a small picture adhered to it; the picture remains affixed.",
+          "baseline": {
+            "sa": 3,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP010",
+          "caption": "A person mops up a puddle of water on a concrete floor, the water disappearing as the mop passes.",
+          "baseline": {
+            "sa": 3,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 4
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 1
+        },
+        {
+          "id": "VP013",
+          "caption": "A person uses a pair of pliers to open a stubborn metal bottle, bending the cap slightly in the process.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP015",
+          "caption": "A rower pulls an oar from the water, the blade dripping water back into the lake. .",
+          "baseline": {
+            "sa": 3,
+            "pc": 5
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 5
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP016",
+          "caption": "A scientist uses a probe to nudge a small, delicate insect on a leaf, causing it to twitch minimally.",
+          "baseline": {
+            "sa": 4,
+            "pc": 5
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 5
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 1
+        },
+        {
+          "id": "VP017",
+          "caption": "A unicycle wheel rolls over a small curb; the rider adjusts their position to keep upright.",
+          "baseline": {
+            "sa": 3,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP018",
+          "caption": "A bulldozer pulls a heavy load attached with a chain, moving it across the ground.",
+          "baseline": {
+            "sa": 4,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 4
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 1
+        },
+        {
+          "id": "VP024",
+          "caption": "A speeding car crashes into a brick wall, crumpling the front end and stopping abruptly.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP025",
+          "caption": "A large, orange plastic egg is rolled up a plastic slide, then rolls down, ending at the bottom.",
+          "baseline": {
+            "sa": 2,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 2,
+            "pc": 4
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP026",
+          "caption": "Two people stretch a bungee cord, extending it to its maximum length.",
+          "baseline": {
+            "sa": 2,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 4
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP027",
+          "caption": "Hands shape a lump of clay-like bread dough into a smooth, round boule on a wooden table.",
+          "baseline": {
+            "sa": 4,
+            "pc": 5
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 5
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 1
+        },
+        {
+          "id": "VP034",
+          "caption": "A large, clear balloon is inflated with air, showing the internal pressure causing the balloon to stretch.",
+          "baseline": {
+            "sa": 4,
+            "pc": 5
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 5
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 1
+        },
+        {
+          "id": "VP038",
+          "caption": "A paint roller, dipped in green paint, is used to cover a section of a metal fence, creating a uniform green coat.",
+          "baseline": {
+            "sa": 3,
+            "pc": 5
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 4
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 1
+        }
+      ],
+      "inference_protocol_matched": true,
+      "scope": "Fixed16 diagnostic subset of the existing VideoPhy2-40 shared-first-image I2V protocol",
+      "guidance": {
+        "baseline": {
+          "text_scale": 5.0,
+          "physical_scale": 5.0,
+          "requested_physical_scale": 5.0,
+          "physical_branch_active": true
+        },
+        "candidate": {
+          "text_scale": 5.0,
+          "physical_scale": 5.0,
+          "requested_physical_scale": 5.0,
+          "physical_branch_active": true
+        },
+        "intentionally_varied": false,
+        "inactive_scale_note": "Physical-scale arguments have no effect in native-only or no_c branches"
+      },
+      "interpretation": "Case-paired descriptive comparison at one seed; no claim that feature separation or a loss reduction proves physical improvement"
+    },
+    "correct_vs_mean": {
+      "baseline": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/module_controls16/r1_step0400_guidance5_seed42/controls/mean/videophy40",
+      "candidate": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/module_controls16/r1_step0400_guidance5_seed42/references/real",
+      "count": 16,
+      "metrics": {
+        "sa": {
+          "baseline": 3.125,
+          "candidate": 3.25,
+          "difference": 0.125,
+          "paired_bootstrap_95_interval": [
+            -0.125,
+            0.375
+          ],
+          "wins": 3,
+          "ties": 12,
+          "losses": 1
+        },
+        "pc": {
+          "baseline": 3.6875,
+          "candidate": 3.8125,
+          "difference": 0.125,
+          "paired_bootstrap_95_interval": [
+            -0.125,
+            0.375
+          ],
+          "wins": 3,
+          "ties": 12,
+          "losses": 1
+        },
+        "mean": {
+          "baseline": 3.40625,
+          "candidate": 3.53125,
+          "difference": 0.125,
+          "paired_bootstrap_95_interval": [
+            0.0,
+            0.25
+          ],
+          "wins": 5,
+          "ties": 10,
+          "losses": 1
+        },
+        "joint": {
+          "baseline": 0.25,
+          "candidate": 0.375,
+          "difference": 0.125,
+          "paired_bootstrap_95_interval": [
+            0.0,
+            0.3125
+          ],
+          "wins": 2,
+          "ties": 14,
+          "losses": 0
+        },
+        "sa_pass_rate": {
+          "baseline": 0.25,
+          "candidate": 0.375,
+          "difference": 0.125,
+          "paired_bootstrap_95_interval": [
+            0.0,
+            0.3125
+          ],
+          "wins": 2,
+          "ties": 14,
+          "losses": 0
+        },
+        "pc_pass_rate": {
+          "baseline": 0.5625,
+          "candidate": 0.5625,
+          "difference": 0.0,
+          "paired_bootstrap_95_interval": [
+            -0.1875,
+            0.1875
+          ],
+          "wins": 1,
+          "ties": 14,
+          "losses": 1
+        }
+      },
+      "cases": [
+        {
+          "id": "VP002",
+          "caption": "A thin piece of wood is bent into a bow shape, exhibiting its flexibility.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP004",
+          "caption": "A plastic ruler is bent until it cracks, displaying a visible stress fracture that propagates.",
+          "baseline": {
+            "sa": 2,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 2,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP005",
+          "caption": "A close-up shot of a paddle making contact with the ping pong ball, showing the impact.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP009",
+          "caption": "A construction worker uses a suction cup to lift a heavy glass panel with a small picture adhered to it; the picture remains affixed.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP010",
+          "caption": "A person mops up a puddle of water on a concrete floor, the water disappearing as the mop passes.",
+          "baseline": {
+            "sa": 3,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 4
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 1
+        },
+        {
+          "id": "VP013",
+          "caption": "A person uses a pair of pliers to open a stubborn metal bottle, bending the cap slightly in the process.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP015",
+          "caption": "A rower pulls an oar from the water, the blade dripping water back into the lake. .",
+          "baseline": {
+            "sa": 3,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 5
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP016",
+          "caption": "A scientist uses a probe to nudge a small, delicate insect on a leaf, causing it to twitch minimally.",
+          "baseline": {
+            "sa": 4,
+            "pc": 5
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 5
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 1
+        },
+        {
+          "id": "VP017",
+          "caption": "A unicycle wheel rolls over a small curb; the rider adjusts their position to keep upright.",
+          "baseline": {
+            "sa": 3,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP018",
+          "caption": "A bulldozer pulls a heavy load attached with a chain, moving it across the ground.",
+          "baseline": {
+            "sa": 4,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 4
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 1
+        },
+        {
+          "id": "VP024",
+          "caption": "A speeding car crashes into a brick wall, crumpling the front end and stopping abruptly.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP025",
+          "caption": "A large, orange plastic egg is rolled up a plastic slide, then rolls down, ending at the bottom.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 2,
+            "pc": 4
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP026",
+          "caption": "Two people stretch a bungee cord, extending it to its maximum length.",
+          "baseline": {
+            "sa": 2,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 4
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP027",
+          "caption": "Hands shape a lump of clay-like bread dough into a smooth, round boule on a wooden table.",
+          "baseline": {
+            "sa": 4,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 5
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 1
+        },
+        {
+          "id": "VP034",
+          "caption": "A large, clear balloon is inflated with air, showing the internal pressure causing the balloon to stretch.",
+          "baseline": {
+            "sa": 3,
+            "pc": 5
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 5
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 1
+        },
+        {
+          "id": "VP038",
+          "caption": "A paint roller, dipped in green paint, is used to cover a section of a metal fence, creating a uniform green coat.",
+          "baseline": {
+            "sa": 4,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 4
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 1
+        }
+      ],
+      "inference_protocol_matched": true,
+      "scope": "Fixed16 diagnostic subset of the existing VideoPhy2-40 shared-first-image I2V protocol",
+      "guidance": {
+        "baseline": {
+          "text_scale": 5.0,
+          "physical_scale": 5.0,
+          "requested_physical_scale": 5.0,
+          "physical_branch_active": true
+        },
+        "candidate": {
+          "text_scale": 5.0,
+          "physical_scale": 5.0,
+          "requested_physical_scale": 5.0,
+          "physical_branch_active": true
+        },
+        "intentionally_varied": false,
+        "inactive_scale_note": "Physical-scale arguments have no effect in native-only or no_c branches"
+      },
+      "interpretation": "Case-paired descriptive comparison at one seed; no claim that feature separation or a loss reduction proves physical improvement"
+    },
+    "correct_vs_global_train_mean": {
+      "baseline": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/module_controls16/r1_step0400_guidance5_seed42/controls/global_train_mean/videophy40",
+      "candidate": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/module_controls16/r1_step0400_guidance5_seed42/references/real",
+      "count": 16,
+      "metrics": {
+        "sa": {
+          "baseline": 3.1875,
+          "candidate": 3.25,
+          "difference": 0.0625,
+          "paired_bootstrap_95_interval": [
+            0.0,
+            0.1875
+          ],
+          "wins": 1,
+          "ties": 15,
+          "losses": 0
+        },
+        "pc": {
+          "baseline": 3.8125,
+          "candidate": 3.8125,
+          "difference": 0.0,
+          "paired_bootstrap_95_interval": [
+            -0.1875,
+            0.1875
+          ],
+          "wins": 1,
+          "ties": 14,
+          "losses": 1
+        },
+        "mean": {
+          "baseline": 3.5,
+          "candidate": 3.53125,
+          "difference": 0.03125,
+          "paired_bootstrap_95_interval": [
+            0.0,
+            0.09375
+          ],
+          "wins": 1,
+          "ties": 15,
+          "losses": 0
+        },
+        "joint": {
+          "baseline": 0.375,
+          "candidate": 0.375,
+          "difference": 0.0,
+          "paired_bootstrap_95_interval": [
+            0.0,
+            0.0
+          ],
+          "wins": 0,
+          "ties": 16,
+          "losses": 0
+        },
+        "sa_pass_rate": {
+          "baseline": 0.375,
+          "candidate": 0.375,
+          "difference": 0.0,
+          "paired_bootstrap_95_interval": [
+            0.0,
+            0.0
+          ],
+          "wins": 0,
+          "ties": 16,
+          "losses": 0
+        },
+        "pc_pass_rate": {
+          "baseline": 0.5,
+          "candidate": 0.5625,
+          "difference": 0.0625,
+          "paired_bootstrap_95_interval": [
+            0.0,
+            0.1875
+          ],
+          "wins": 1,
+          "ties": 15,
+          "losses": 0
+        }
+      },
+      "cases": [
+        {
+          "id": "VP002",
+          "caption": "A thin piece of wood is bent into a bow shape, exhibiting its flexibility.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP004",
+          "caption": "A plastic ruler is bent until it cracks, displaying a visible stress fracture that propagates.",
+          "baseline": {
+            "sa": 2,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 2,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP005",
+          "caption": "A close-up shot of a paddle making contact with the ping pong ball, showing the impact.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP009",
+          "caption": "A construction worker uses a suction cup to lift a heavy glass panel with a small picture adhered to it; the picture remains affixed.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP010",
+          "caption": "A person mops up a puddle of water on a concrete floor, the water disappearing as the mop passes.",
+          "baseline": {
+            "sa": 4,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 4
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 1
+        },
+        {
+          "id": "VP013",
+          "caption": "A person uses a pair of pliers to open a stubborn metal bottle, bending the cap slightly in the process.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP015",
+          "caption": "A rower pulls an oar from the water, the blade dripping water back into the lake. .",
+          "baseline": {
+            "sa": 3,
+            "pc": 5
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 5
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP016",
+          "caption": "A scientist uses a probe to nudge a small, delicate insect on a leaf, causing it to twitch minimally.",
+          "baseline": {
+            "sa": 4,
+            "pc": 5
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 5
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 1
+        },
+        {
+          "id": "VP017",
+          "caption": "A unicycle wheel rolls over a small curb; the rider adjusts their position to keep upright.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP018",
+          "caption": "A bulldozer pulls a heavy load attached with a chain, moving it across the ground.",
+          "baseline": {
+            "sa": 4,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 4
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 1
+        },
+        {
+          "id": "VP024",
+          "caption": "A speeding car crashes into a brick wall, crumpling the front end and stopping abruptly.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP025",
+          "caption": "A large, orange plastic egg is rolled up a plastic slide, then rolls down, ending at the bottom.",
+          "baseline": {
+            "sa": 2,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 2,
+            "pc": 4
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP026",
+          "caption": "Two people stretch a bungee cord, extending it to its maximum length.",
+          "baseline": {
+            "sa": 2,
+            "pc": 5
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 4
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP027",
+          "caption": "Hands shape a lump of clay-like bread dough into a smooth, round boule on a wooden table.",
+          "baseline": {
+            "sa": 4,
+            "pc": 5
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 5
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 1
+        },
+        {
+          "id": "VP034",
+          "caption": "A large, clear balloon is inflated with air, showing the internal pressure causing the balloon to stretch.",
+          "baseline": {
+            "sa": 4,
+            "pc": 5
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 5
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 1
+        },
+        {
+          "id": "VP038",
+          "caption": "A paint roller, dipped in green paint, is used to cover a section of a metal fence, creating a uniform green coat.",
+          "baseline": {
+            "sa": 4,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 4
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 1
+        }
+      ],
+      "inference_protocol_matched": true,
+      "scope": "Fixed16 diagnostic subset of the existing VideoPhy2-40 shared-first-image I2V protocol",
+      "guidance": {
+        "baseline": {
+          "text_scale": 5.0,
+          "physical_scale": 5.0,
+          "requested_physical_scale": 5.0,
+          "physical_branch_active": true
+        },
+        "candidate": {
+          "text_scale": 5.0,
+          "physical_scale": 5.0,
+          "requested_physical_scale": 5.0,
+          "physical_branch_active": true
+        },
+        "intentionally_varied": false,
+        "inactive_scale_note": "Physical-scale arguments have no effect in native-only or no_c branches"
+      },
+      "interpretation": "Case-paired descriptive comparison at one seed; no claim that feature separation or a loss reduction proves physical improvement"
+    },
+    "correct_vs_anchor_only": {
+      "baseline": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/module_controls16/r1_step0400_guidance5_seed42/controls/anchor_only/videophy40",
+      "candidate": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/module_controls16/r1_step0400_guidance5_seed42/references/real",
+      "count": 16,
+      "metrics": {
+        "sa": {
+          "baseline": 3.1875,
+          "candidate": 3.25,
+          "difference": 0.0625,
+          "paired_bootstrap_95_interval": [
+            0.0,
+            0.1875
+          ],
+          "wins": 1,
+          "ties": 15,
+          "losses": 0
+        },
+        "pc": {
+          "baseline": 3.75,
+          "candidate": 3.8125,
+          "difference": 0.0625,
+          "paired_bootstrap_95_interval": [
+            -0.125,
+            0.25
+          ],
+          "wins": 2,
+          "ties": 13,
+          "losses": 1
+        },
+        "mean": {
+          "baseline": 3.46875,
+          "candidate": 3.53125,
+          "difference": 0.0625,
+          "paired_bootstrap_95_interval": [
+            -0.0625,
+            0.1875
+          ],
+          "wins": 3,
+          "ties": 12,
+          "losses": 1
+        },
+        "joint": {
+          "baseline": 0.375,
+          "candidate": 0.375,
+          "difference": 0.0,
+          "paired_bootstrap_95_interval": [
+            0.0,
+            0.0
+          ],
+          "wins": 0,
+          "ties": 16,
+          "losses": 0
+        },
+        "sa_pass_rate": {
+          "baseline": 0.375,
+          "candidate": 0.375,
+          "difference": 0.0,
+          "paired_bootstrap_95_interval": [
+            0.0,
+            0.0
+          ],
+          "wins": 0,
+          "ties": 16,
+          "losses": 0
+        },
+        "pc_pass_rate": {
+          "baseline": 0.5625,
+          "candidate": 0.5625,
+          "difference": 0.0,
+          "paired_bootstrap_95_interval": [
+            -0.1875,
+            0.1875
+          ],
+          "wins": 1,
+          "ties": 14,
+          "losses": 1
+        }
+      },
+      "cases": [
+        {
+          "id": "VP002",
+          "caption": "A thin piece of wood is bent into a bow shape, exhibiting its flexibility.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP004",
+          "caption": "A plastic ruler is bent until it cracks, displaying a visible stress fracture that propagates.",
+          "baseline": {
+            "sa": 2,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 2,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP005",
+          "caption": "A close-up shot of a paddle making contact with the ping pong ball, showing the impact.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP009",
+          "caption": "A construction worker uses a suction cup to lift a heavy glass panel with a small picture adhered to it; the picture remains affixed.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP010",
+          "caption": "A person mops up a puddle of water on a concrete floor, the water disappearing as the mop passes.",
+          "baseline": {
+            "sa": 4,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 4
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 1
+        },
+        {
+          "id": "VP013",
+          "caption": "A person uses a pair of pliers to open a stubborn metal bottle, bending the cap slightly in the process.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP015",
+          "caption": "A rower pulls an oar from the water, the blade dripping water back into the lake. .",
+          "baseline": {
+            "sa": 3,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 5
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP016",
+          "caption": "A scientist uses a probe to nudge a small, delicate insect on a leaf, causing it to twitch minimally.",
+          "baseline": {
+            "sa": 4,
+            "pc": 5
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 5
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 1
+        },
+        {
+          "id": "VP017",
+          "caption": "A unicycle wheel rolls over a small curb; the rider adjusts their position to keep upright.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP018",
+          "caption": "A bulldozer pulls a heavy load attached with a chain, moving it across the ground.",
+          "baseline": {
+            "sa": 4,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 4
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 1
+        },
+        {
+          "id": "VP024",
+          "caption": "A speeding car crashes into a brick wall, crumpling the front end and stopping abruptly.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP025",
+          "caption": "A large, orange plastic egg is rolled up a plastic slide, then rolls down, ending at the bottom.",
+          "baseline": {
+            "sa": 2,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 2,
+            "pc": 4
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP026",
+          "caption": "Two people stretch a bungee cord, extending it to its maximum length.",
+          "baseline": {
+            "sa": 2,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 4
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP027",
+          "caption": "Hands shape a lump of clay-like bread dough into a smooth, round boule on a wooden table.",
+          "baseline": {
+            "sa": 4,
+            "pc": 5
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 5
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 1
+        },
+        {
+          "id": "VP034",
+          "caption": "A large, clear balloon is inflated with air, showing the internal pressure causing the balloon to stretch.",
+          "baseline": {
+            "sa": 4,
+            "pc": 5
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 5
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 1
+        },
+        {
+          "id": "VP038",
+          "caption": "A paint roller, dipped in green paint, is used to cover a section of a metal fence, creating a uniform green coat.",
+          "baseline": {
+            "sa": 4,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 4
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 1
+        }
+      ],
+      "inference_protocol_matched": true,
+      "scope": "Fixed16 diagnostic subset of the existing VideoPhy2-40 shared-first-image I2V protocol",
+      "guidance": {
+        "baseline": {
+          "text_scale": 5.0,
+          "physical_scale": 5.0,
+          "requested_physical_scale": 5.0,
+          "physical_branch_active": true
+        },
+        "candidate": {
+          "text_scale": 5.0,
+          "physical_scale": 5.0,
+          "requested_physical_scale": 5.0,
+          "physical_branch_active": true
+        },
+        "intentionally_varied": false,
+        "inactive_scale_note": "Physical-scale arguments have no effect in native-only or no_c branches"
+      },
+      "interpretation": "Case-paired descriptive comparison at one seed; no claim that feature separation or a loss reduction proves physical improvement"
+    }
+  },
+  "interpretation": "Inference interventions in the same jointly trained checkpoint. Differences establish dependence, not automatically useful physics or the value of training a module. Judge correct C against the matched native baseline and actual generated processes. Four reused cases are part of these sixteen, not additional independent evidence."
+}

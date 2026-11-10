@@ -1,0 +1,1195 @@
+{
+  "recorded_utc": "2026-10-31T12:52:16.746846+00:00",
+  "source_review": "experiments/physical_content_v7/content_modulation_r6/reports/physical_content_66910/generation_review.json",
+  "source_recorded_utc": "2026-10-31T12:46:55.410824+00:00",
+  "count": 16,
+  "seed": 42,
+  "gamma": 5,
+  "summaries": {
+    "normal": {
+      "sa": 3.25,
+      "pc": 3.6875,
+      "sa_pass": 0.375,
+      "pc_pass": 0.5,
+      "joint": 0.375
+    },
+    "mean_query_update": {
+      "sa": 3.125,
+      "pc": 3.625,
+      "sa_pass": 0.3125,
+      "pc_pass": 0.4375,
+      "joint": 0.3125
+    },
+    "global_train_mean": {
+      "sa": 3.1875,
+      "pc": 3.6875,
+      "sa_pass": 0.3125,
+      "pc_pass": 0.5,
+      "joint": 0.3125
+    },
+    "anchor_only": {
+      "sa": 3.125,
+      "pc": 3.625,
+      "sa_pass": 0.3125,
+      "pc_pass": 0.4375,
+      "joint": 0.3125
+    },
+    "reasoning_swapped": {
+      "sa": 3.25,
+      "pc": 3.6875,
+      "sa_pass": 0.375,
+      "pc_pass": 0.5625,
+      "joint": 0.375
+    },
+    "no_c": {
+      "sa": 3.25,
+      "pc": 3.6875,
+      "sa_pass": 0.375,
+      "pc_pass": 0.5,
+      "joint": 0.375
+    },
+    "native128": {
+      "sa": 3.25,
+      "pc": 3.6875,
+      "sa_pass": 0.375,
+      "pc_pass": 0.5,
+      "joint": 0.375
+    }
+  },
+  "comparisons": {
+    "anchor_only_vs_no_c": {
+      "candidate": "anchor_only",
+      "baseline": "no_c",
+      "metrics": {
+        "sa": {
+          "candidate": 3.125,
+          "baseline": 3.25,
+          "difference": -0.125,
+          "wins": 0,
+          "ties": 14,
+          "losses": 2,
+          "improved": [],
+          "worsened": [
+            "VP010",
+            "VP025"
+          ]
+        },
+        "pc": {
+          "candidate": 3.625,
+          "baseline": 3.6875,
+          "difference": -0.0625,
+          "wins": 1,
+          "ties": 14,
+          "losses": 1,
+          "improved": [
+            "VP027"
+          ],
+          "worsened": [
+            "VP015"
+          ]
+        },
+        "sa_pass": {
+          "candidate": 0.3125,
+          "baseline": 0.375,
+          "difference": -0.0625,
+          "wins": 0,
+          "ties": 15,
+          "losses": 1,
+          "improved": [],
+          "worsened": [
+            "VP010"
+          ]
+        },
+        "pc_pass": {
+          "candidate": 0.4375,
+          "baseline": 0.5,
+          "difference": -0.0625,
+          "wins": 0,
+          "ties": 15,
+          "losses": 1,
+          "improved": [],
+          "worsened": [
+            "VP015"
+          ]
+        },
+        "joint": {
+          "candidate": 0.3125,
+          "baseline": 0.375,
+          "difference": -0.0625,
+          "wins": 0,
+          "ties": 15,
+          "losses": 1,
+          "improved": [],
+          "worsened": [
+            "VP010"
+          ]
+        }
+      }
+    },
+    "normal_vs_anchor_only": {
+      "candidate": "normal",
+      "baseline": "anchor_only",
+      "metrics": {
+        "sa": {
+          "candidate": 3.25,
+          "baseline": 3.125,
+          "difference": 0.125,
+          "wins": 2,
+          "ties": 14,
+          "losses": 0,
+          "improved": [
+            "VP015",
+            "VP025"
+          ],
+          "worsened": []
+        },
+        "pc": {
+          "candidate": 3.6875,
+          "baseline": 3.625,
+          "difference": 0.0625,
+          "wins": 1,
+          "ties": 15,
+          "losses": 0,
+          "improved": [
+            "VP015"
+          ],
+          "worsened": []
+        },
+        "sa_pass": {
+          "candidate": 0.375,
+          "baseline": 0.3125,
+          "difference": 0.0625,
+          "wins": 1,
+          "ties": 15,
+          "losses": 0,
+          "improved": [
+            "VP015"
+          ],
+          "worsened": []
+        },
+        "pc_pass": {
+          "candidate": 0.5,
+          "baseline": 0.4375,
+          "difference": 0.0625,
+          "wins": 1,
+          "ties": 15,
+          "losses": 0,
+          "improved": [
+            "VP015"
+          ],
+          "worsened": []
+        },
+        "joint": {
+          "candidate": 0.375,
+          "baseline": 0.3125,
+          "difference": 0.0625,
+          "wins": 1,
+          "ties": 15,
+          "losses": 0,
+          "improved": [
+            "VP015"
+          ],
+          "worsened": []
+        }
+      }
+    },
+    "normal_vs_mean_query_update": {
+      "candidate": "normal",
+      "baseline": "mean_query_update",
+      "metrics": {
+        "sa": {
+          "candidate": 3.25,
+          "baseline": 3.125,
+          "difference": 0.125,
+          "wins": 2,
+          "ties": 14,
+          "losses": 0,
+          "improved": [
+            "VP015",
+            "VP025"
+          ],
+          "worsened": []
+        },
+        "pc": {
+          "candidate": 3.6875,
+          "baseline": 3.625,
+          "difference": 0.0625,
+          "wins": 1,
+          "ties": 15,
+          "losses": 0,
+          "improved": [
+            "VP015"
+          ],
+          "worsened": []
+        },
+        "sa_pass": {
+          "candidate": 0.375,
+          "baseline": 0.3125,
+          "difference": 0.0625,
+          "wins": 1,
+          "ties": 15,
+          "losses": 0,
+          "improved": [
+            "VP015"
+          ],
+          "worsened": []
+        },
+        "pc_pass": {
+          "candidate": 0.5,
+          "baseline": 0.4375,
+          "difference": 0.0625,
+          "wins": 1,
+          "ties": 15,
+          "losses": 0,
+          "improved": [
+            "VP015"
+          ],
+          "worsened": []
+        },
+        "joint": {
+          "candidate": 0.375,
+          "baseline": 0.3125,
+          "difference": 0.0625,
+          "wins": 1,
+          "ties": 15,
+          "losses": 0,
+          "improved": [
+            "VP015"
+          ],
+          "worsened": []
+        }
+      }
+    },
+    "mean_query_update_vs_anchor_only": {
+      "candidate": "mean_query_update",
+      "baseline": "anchor_only",
+      "metrics": {
+        "sa": {
+          "candidate": 3.125,
+          "baseline": 3.125,
+          "difference": 0.0,
+          "wins": 0,
+          "ties": 16,
+          "losses": 0,
+          "improved": [],
+          "worsened": []
+        },
+        "pc": {
+          "candidate": 3.625,
+          "baseline": 3.625,
+          "difference": 0.0,
+          "wins": 0,
+          "ties": 16,
+          "losses": 0,
+          "improved": [],
+          "worsened": []
+        },
+        "sa_pass": {
+          "candidate": 0.3125,
+          "baseline": 0.3125,
+          "difference": 0.0,
+          "wins": 0,
+          "ties": 16,
+          "losses": 0,
+          "improved": [],
+          "worsened": []
+        },
+        "pc_pass": {
+          "candidate": 0.4375,
+          "baseline": 0.4375,
+          "difference": 0.0,
+          "wins": 0,
+          "ties": 16,
+          "losses": 0,
+          "improved": [],
+          "worsened": []
+        },
+        "joint": {
+          "candidate": 0.3125,
+          "baseline": 0.3125,
+          "difference": 0.0,
+          "wins": 0,
+          "ties": 16,
+          "losses": 0,
+          "improved": [],
+          "worsened": []
+        }
+      }
+    },
+    "normal_vs_global_train_mean": {
+      "candidate": "normal",
+      "baseline": "global_train_mean",
+      "metrics": {
+        "sa": {
+          "candidate": 3.25,
+          "baseline": 3.1875,
+          "difference": 0.0625,
+          "wins": 1,
+          "ties": 15,
+          "losses": 0,
+          "improved": [
+            "VP034"
+          ],
+          "worsened": []
+        },
+        "pc": {
+          "candidate": 3.6875,
+          "baseline": 3.6875,
+          "difference": 0.0,
+          "wins": 1,
+          "ties": 14,
+          "losses": 1,
+          "improved": [
+            "VP010"
+          ],
+          "worsened": [
+            "VP004"
+          ]
+        },
+        "sa_pass": {
+          "candidate": 0.375,
+          "baseline": 0.3125,
+          "difference": 0.0625,
+          "wins": 1,
+          "ties": 15,
+          "losses": 0,
+          "improved": [
+            "VP034"
+          ],
+          "worsened": []
+        },
+        "pc_pass": {
+          "candidate": 0.5,
+          "baseline": 0.5,
+          "difference": 0.0,
+          "wins": 1,
+          "ties": 14,
+          "losses": 1,
+          "improved": [
+            "VP010"
+          ],
+          "worsened": [
+            "VP004"
+          ]
+        },
+        "joint": {
+          "candidate": 0.375,
+          "baseline": 0.3125,
+          "difference": 0.0625,
+          "wins": 1,
+          "ties": 15,
+          "losses": 0,
+          "improved": [
+            "VP034"
+          ],
+          "worsened": []
+        }
+      }
+    },
+    "normal_vs_reasoning_swapped": {
+      "candidate": "normal",
+      "baseline": "reasoning_swapped",
+      "metrics": {
+        "sa": {
+          "candidate": 3.25,
+          "baseline": 3.25,
+          "difference": 0.0,
+          "wins": 1,
+          "ties": 14,
+          "losses": 1,
+          "improved": [
+            "VP015"
+          ],
+          "worsened": [
+            "VP010"
+          ]
+        },
+        "pc": {
+          "candidate": 3.6875,
+          "baseline": 3.6875,
+          "difference": 0.0,
+          "wins": 2,
+          "ties": 12,
+          "losses": 2,
+          "improved": [
+            "VP016",
+            "VP027"
+          ],
+          "worsened": [
+            "VP004",
+            "VP015"
+          ]
+        },
+        "sa_pass": {
+          "candidate": 0.375,
+          "baseline": 0.375,
+          "difference": 0.0,
+          "wins": 1,
+          "ties": 14,
+          "losses": 1,
+          "improved": [
+            "VP015"
+          ],
+          "worsened": [
+            "VP010"
+          ]
+        },
+        "pc_pass": {
+          "candidate": 0.5,
+          "baseline": 0.5625,
+          "difference": -0.0625,
+          "wins": 0,
+          "ties": 15,
+          "losses": 1,
+          "improved": [],
+          "worsened": [
+            "VP004"
+          ]
+        },
+        "joint": {
+          "candidate": 0.375,
+          "baseline": 0.375,
+          "difference": 0.0,
+          "wins": 1,
+          "ties": 14,
+          "losses": 1,
+          "improved": [
+            "VP015"
+          ],
+          "worsened": [
+            "VP010"
+          ]
+        }
+      }
+    },
+    "normal_vs_no_c": {
+      "candidate": "normal",
+      "baseline": "no_c",
+      "metrics": {
+        "sa": {
+          "candidate": 3.25,
+          "baseline": 3.25,
+          "difference": 0.0,
+          "wins": 1,
+          "ties": 14,
+          "losses": 1,
+          "improved": [
+            "VP015"
+          ],
+          "worsened": [
+            "VP010"
+          ]
+        },
+        "pc": {
+          "candidate": 3.6875,
+          "baseline": 3.6875,
+          "difference": 0.0,
+          "wins": 1,
+          "ties": 14,
+          "losses": 1,
+          "improved": [
+            "VP027"
+          ],
+          "worsened": [
+            "VP015"
+          ]
+        },
+        "sa_pass": {
+          "candidate": 0.375,
+          "baseline": 0.375,
+          "difference": 0.0,
+          "wins": 1,
+          "ties": 14,
+          "losses": 1,
+          "improved": [
+            "VP015"
+          ],
+          "worsened": [
+            "VP010"
+          ]
+        },
+        "pc_pass": {
+          "candidate": 0.5,
+          "baseline": 0.5,
+          "difference": 0.0,
+          "wins": 0,
+          "ties": 16,
+          "losses": 0,
+          "improved": [],
+          "worsened": []
+        },
+        "joint": {
+          "candidate": 0.375,
+          "baseline": 0.375,
+          "difference": 0.0,
+          "wins": 1,
+          "ties": 14,
+          "losses": 1,
+          "improved": [
+            "VP015"
+          ],
+          "worsened": [
+            "VP010"
+          ]
+        }
+      }
+    },
+    "no_c_vs_native128": {
+      "candidate": "no_c",
+      "baseline": "native128",
+      "metrics": {
+        "sa": {
+          "candidate": 3.25,
+          "baseline": 3.25,
+          "difference": 0.0,
+          "wins": 0,
+          "ties": 16,
+          "losses": 0,
+          "improved": [],
+          "worsened": []
+        },
+        "pc": {
+          "candidate": 3.6875,
+          "baseline": 3.6875,
+          "difference": 0.0,
+          "wins": 2,
+          "ties": 12,
+          "losses": 2,
+          "improved": [
+            "VP015",
+            "VP026"
+          ],
+          "worsened": [
+            "VP017",
+            "VP027"
+          ]
+        },
+        "sa_pass": {
+          "candidate": 0.375,
+          "baseline": 0.375,
+          "difference": 0.0,
+          "wins": 0,
+          "ties": 16,
+          "losses": 0,
+          "improved": [],
+          "worsened": []
+        },
+        "pc_pass": {
+          "candidate": 0.5,
+          "baseline": 0.5,
+          "difference": 0.0,
+          "wins": 1,
+          "ties": 14,
+          "losses": 1,
+          "improved": [
+            "VP026"
+          ],
+          "worsened": [
+            "VP017"
+          ]
+        },
+        "joint": {
+          "candidate": 0.375,
+          "baseline": 0.375,
+          "difference": 0.0,
+          "wins": 0,
+          "ties": 16,
+          "losses": 0,
+          "improved": [],
+          "worsened": []
+        }
+      }
+    },
+    "normal_vs_native128": {
+      "candidate": "normal",
+      "baseline": "native128",
+      "metrics": {
+        "sa": {
+          "candidate": 3.25,
+          "baseline": 3.25,
+          "difference": 0.0,
+          "wins": 1,
+          "ties": 14,
+          "losses": 1,
+          "improved": [
+            "VP015"
+          ],
+          "worsened": [
+            "VP010"
+          ]
+        },
+        "pc": {
+          "candidate": 3.6875,
+          "baseline": 3.6875,
+          "difference": 0.0,
+          "wins": 1,
+          "ties": 14,
+          "losses": 1,
+          "improved": [
+            "VP026"
+          ],
+          "worsened": [
+            "VP017"
+          ]
+        },
+        "sa_pass": {
+          "candidate": 0.375,
+          "baseline": 0.375,
+          "difference": 0.0,
+          "wins": 1,
+          "ties": 14,
+          "losses": 1,
+          "improved": [
+            "VP015"
+          ],
+          "worsened": [
+            "VP010"
+          ]
+        },
+        "pc_pass": {
+          "candidate": 0.5,
+          "baseline": 0.5,
+          "difference": 0.0,
+          "wins": 1,
+          "ties": 14,
+          "losses": 1,
+          "improved": [
+            "VP026"
+          ],
+          "worsened": [
+            "VP017"
+          ]
+        },
+        "joint": {
+          "candidate": 0.375,
+          "baseline": 0.375,
+          "difference": 0.0,
+          "wins": 1,
+          "ties": 14,
+          "losses": 1,
+          "improved": [
+            "VP015"
+          ],
+          "worsened": [
+            "VP010"
+          ]
+        }
+      }
+    }
+  },
+  "rows": [
+    {
+      "id": "VP002",
+      "caption": "A thin piece of wood is bent into a bow shape, exhibiting its flexibility.",
+      "normal": {
+        "sa": 3,
+        "pc": 3
+      },
+      "mean_query_update": {
+        "sa": 3,
+        "pc": 3
+      },
+      "global_train_mean": {
+        "sa": 3,
+        "pc": 3
+      },
+      "anchor_only": {
+        "sa": 3,
+        "pc": 3
+      },
+      "reasoning_swapped": {
+        "sa": 3,
+        "pc": 3
+      },
+      "no_c": {
+        "sa": 3,
+        "pc": 3
+      },
+      "native128": {
+        "sa": 3,
+        "pc": 3
+      }
+    },
+    {
+      "id": "VP004",
+      "caption": "A plastic ruler is bent until it cracks, displaying a visible stress fracture that propagates.",
+      "normal": {
+        "sa": 2,
+        "pc": 3
+      },
+      "mean_query_update": {
+        "sa": 2,
+        "pc": 3
+      },
+      "global_train_mean": {
+        "sa": 2,
+        "pc": 4
+      },
+      "anchor_only": {
+        "sa": 2,
+        "pc": 3
+      },
+      "reasoning_swapped": {
+        "sa": 2,
+        "pc": 4
+      },
+      "no_c": {
+        "sa": 2,
+        "pc": 3
+      },
+      "native128": {
+        "sa": 2,
+        "pc": 3
+      }
+    },
+    {
+      "id": "VP005",
+      "caption": "A close-up shot of a paddle making contact with the ping pong ball, showing the impact.",
+      "normal": {
+        "sa": 3,
+        "pc": 3
+      },
+      "mean_query_update": {
+        "sa": 3,
+        "pc": 3
+      },
+      "global_train_mean": {
+        "sa": 3,
+        "pc": 3
+      },
+      "anchor_only": {
+        "sa": 3,
+        "pc": 3
+      },
+      "reasoning_swapped": {
+        "sa": 3,
+        "pc": 3
+      },
+      "no_c": {
+        "sa": 3,
+        "pc": 3
+      },
+      "native128": {
+        "sa": 3,
+        "pc": 3
+      }
+    },
+    {
+      "id": "VP009",
+      "caption": "A construction worker uses a suction cup to lift a heavy glass panel with a small picture adhered to it; the picture remains affixed.",
+      "normal": {
+        "sa": 3,
+        "pc": 3
+      },
+      "mean_query_update": {
+        "sa": 3,
+        "pc": 3
+      },
+      "global_train_mean": {
+        "sa": 3,
+        "pc": 3
+      },
+      "anchor_only": {
+        "sa": 3,
+        "pc": 3
+      },
+      "reasoning_swapped": {
+        "sa": 3,
+        "pc": 3
+      },
+      "no_c": {
+        "sa": 3,
+        "pc": 3
+      },
+      "native128": {
+        "sa": 3,
+        "pc": 3
+      }
+    },
+    {
+      "id": "VP010",
+      "caption": "A person mops up a puddle of water on a concrete floor, the water disappearing as the mop passes.",
+      "normal": {
+        "sa": 3,
+        "pc": 4
+      },
+      "mean_query_update": {
+        "sa": 3,
+        "pc": 4
+      },
+      "global_train_mean": {
+        "sa": 3,
+        "pc": 3
+      },
+      "anchor_only": {
+        "sa": 3,
+        "pc": 4
+      },
+      "reasoning_swapped": {
+        "sa": 4,
+        "pc": 4
+      },
+      "no_c": {
+        "sa": 4,
+        "pc": 4
+      },
+      "native128": {
+        "sa": 4,
+        "pc": 4
+      }
+    },
+    {
+      "id": "VP013",
+      "caption": "A person uses a pair of pliers to open a stubborn metal bottle, bending the cap slightly in the process.",
+      "normal": {
+        "sa": 3,
+        "pc": 3
+      },
+      "mean_query_update": {
+        "sa": 3,
+        "pc": 3
+      },
+      "global_train_mean": {
+        "sa": 3,
+        "pc": 3
+      },
+      "anchor_only": {
+        "sa": 3,
+        "pc": 3
+      },
+      "reasoning_swapped": {
+        "sa": 3,
+        "pc": 3
+      },
+      "no_c": {
+        "sa": 3,
+        "pc": 3
+      },
+      "native128": {
+        "sa": 3,
+        "pc": 3
+      }
+    },
+    {
+      "id": "VP015",
+      "caption": "A rower pulls an oar from the water, the blade dripping water back into the lake. .",
+      "normal": {
+        "sa": 4,
+        "pc": 4
+      },
+      "mean_query_update": {
+        "sa": 3,
+        "pc": 3
+      },
+      "global_train_mean": {
+        "sa": 4,
+        "pc": 4
+      },
+      "anchor_only": {
+        "sa": 3,
+        "pc": 3
+      },
+      "reasoning_swapped": {
+        "sa": 3,
+        "pc": 5
+      },
+      "no_c": {
+        "sa": 3,
+        "pc": 5
+      },
+      "native128": {
+        "sa": 3,
+        "pc": 4
+      }
+    },
+    {
+      "id": "VP016",
+      "caption": "A scientist uses a probe to nudge a small, delicate insect on a leaf, causing it to twitch minimally.",
+      "normal": {
+        "sa": 4,
+        "pc": 5
+      },
+      "mean_query_update": {
+        "sa": 4,
+        "pc": 5
+      },
+      "global_train_mean": {
+        "sa": 4,
+        "pc": 5
+      },
+      "anchor_only": {
+        "sa": 4,
+        "pc": 5
+      },
+      "reasoning_swapped": {
+        "sa": 4,
+        "pc": 4
+      },
+      "no_c": {
+        "sa": 4,
+        "pc": 5
+      },
+      "native128": {
+        "sa": 4,
+        "pc": 5
+      }
+    },
+    {
+      "id": "VP017",
+      "caption": "A unicycle wheel rolls over a small curb; the rider adjusts their position to keep upright.",
+      "normal": {
+        "sa": 3,
+        "pc": 3
+      },
+      "mean_query_update": {
+        "sa": 3,
+        "pc": 3
+      },
+      "global_train_mean": {
+        "sa": 3,
+        "pc": 3
+      },
+      "anchor_only": {
+        "sa": 3,
+        "pc": 3
+      },
+      "reasoning_swapped": {
+        "sa": 3,
+        "pc": 3
+      },
+      "no_c": {
+        "sa": 3,
+        "pc": 3
+      },
+      "native128": {
+        "sa": 3,
+        "pc": 4
+      }
+    },
+    {
+      "id": "VP018",
+      "caption": "A bulldozer pulls a heavy load attached with a chain, moving it across the ground.",
+      "normal": {
+        "sa": 4,
+        "pc": 4
+      },
+      "mean_query_update": {
+        "sa": 4,
+        "pc": 4
+      },
+      "global_train_mean": {
+        "sa": 4,
+        "pc": 4
+      },
+      "anchor_only": {
+        "sa": 4,
+        "pc": 4
+      },
+      "reasoning_swapped": {
+        "sa": 4,
+        "pc": 4
+      },
+      "no_c": {
+        "sa": 4,
+        "pc": 4
+      },
+      "native128": {
+        "sa": 4,
+        "pc": 4
+      }
+    },
+    {
+      "id": "VP024",
+      "caption": "A speeding car crashes into a brick wall, crumpling the front end and stopping abruptly.",
+      "normal": {
+        "sa": 3,
+        "pc": 3
+      },
+      "mean_query_update": {
+        "sa": 3,
+        "pc": 3
+      },
+      "global_train_mean": {
+        "sa": 3,
+        "pc": 3
+      },
+      "anchor_only": {
+        "sa": 3,
+        "pc": 3
+      },
+      "reasoning_swapped": {
+        "sa": 3,
+        "pc": 3
+      },
+      "no_c": {
+        "sa": 3,
+        "pc": 3
+      },
+      "native128": {
+        "sa": 3,
+        "pc": 3
+      }
+    },
+    {
+      "id": "VP025",
+      "caption": "A large, orange plastic egg is rolled up a plastic slide, then rolls down, ending at the bottom.",
+      "normal": {
+        "sa": 3,
+        "pc": 3
+      },
+      "mean_query_update": {
+        "sa": 2,
+        "pc": 3
+      },
+      "global_train_mean": {
+        "sa": 3,
+        "pc": 3
+      },
+      "anchor_only": {
+        "sa": 2,
+        "pc": 3
+      },
+      "reasoning_swapped": {
+        "sa": 3,
+        "pc": 3
+      },
+      "no_c": {
+        "sa": 3,
+        "pc": 3
+      },
+      "native128": {
+        "sa": 3,
+        "pc": 3
+      }
+    },
+    {
+      "id": "VP026",
+      "caption": "Two people stretch a bungee cord, extending it to its maximum length.",
+      "normal": {
+        "sa": 2,
+        "pc": 4
+      },
+      "mean_query_update": {
+        "sa": 2,
+        "pc": 4
+      },
+      "global_train_mean": {
+        "sa": 2,
+        "pc": 4
+      },
+      "anchor_only": {
+        "sa": 2,
+        "pc": 4
+      },
+      "reasoning_swapped": {
+        "sa": 2,
+        "pc": 4
+      },
+      "no_c": {
+        "sa": 2,
+        "pc": 4
+      },
+      "native128": {
+        "sa": 2,
+        "pc": 3
+      }
+    },
+    {
+      "id": "VP027",
+      "caption": "Hands shape a lump of clay-like bread dough into a smooth, round boule on a wooden table.",
+      "normal": {
+        "sa": 4,
+        "pc": 5
+      },
+      "mean_query_update": {
+        "sa": 4,
+        "pc": 5
+      },
+      "global_train_mean": {
+        "sa": 4,
+        "pc": 5
+      },
+      "anchor_only": {
+        "sa": 4,
+        "pc": 5
+      },
+      "reasoning_swapped": {
+        "sa": 4,
+        "pc": 4
+      },
+      "no_c": {
+        "sa": 4,
+        "pc": 4
+      },
+      "native128": {
+        "sa": 4,
+        "pc": 5
+      }
+    },
+    {
+      "id": "VP034",
+      "caption": "A large, clear balloon is inflated with air, showing the internal pressure causing the balloon to stretch.",
+      "normal": {
+        "sa": 4,
+        "pc": 5
+      },
+      "mean_query_update": {
+        "sa": 4,
+        "pc": 5
+      },
+      "global_train_mean": {
+        "sa": 3,
+        "pc": 5
+      },
+      "anchor_only": {
+        "sa": 4,
+        "pc": 5
+      },
+      "reasoning_swapped": {
+        "sa": 4,
+        "pc": 5
+      },
+      "no_c": {
+        "sa": 4,
+        "pc": 5
+      },
+      "native128": {
+        "sa": 4,
+        "pc": 5
+      }
+    },
+    {
+      "id": "VP038",
+      "caption": "A paint roller, dipped in green paint, is used to cover a section of a metal fence, creating a uniform green coat.",
+      "normal": {
+        "sa": 4,
+        "pc": 4
+      },
+      "mean_query_update": {
+        "sa": 4,
+        "pc": 4
+      },
+      "global_train_mean": {
+        "sa": 4,
+        "pc": 4
+      },
+      "anchor_only": {
+        "sa": 4,
+        "pc": 4
+      },
+      "reasoning_swapped": {
+        "sa": 4,
+        "pc": 4
+      },
+      "no_c": {
+        "sa": 4,
+        "pc": 4
+      },
+      "native128": {
+        "sa": 4,
+        "pc": 4
+      }
+    }
+  ],
+  "scope": "Derived only from completed, preselected paired16 ratings. No new generation, model scoring, representation scan, bootstrap or additional cases. Same-checkpoint inference interventions do not replace matched-training ablations."
+}

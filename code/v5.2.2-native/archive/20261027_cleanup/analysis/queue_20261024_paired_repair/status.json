@@ -1,0 +1,179 @@
+{
+  "checked_at_utc": "2026-10-24T17:23:07.851887+00:00",
+  "experiments": [
+    {
+      "id": 66111,
+      "name": "v522-C-process-feedback-k12-shard0-recovery-20261024",
+      "state": "STATE_RUNNING",
+      "startTime": "2026-10-24T16:08:06.567547Z",
+      "endTime": null
+    },
+    {
+      "id": 66112,
+      "name": "v522-C-process-feedback-k12-shard1-recovery-20261024",
+      "state": "STATE_COMPLETED",
+      "startTime": "2026-10-24T16:08:07.246947Z",
+      "endTime": "2026-10-24T17:10:28.038853Z"
+    },
+    {
+      "id": 66113,
+      "name": "v522-C-process-feedback-k50-shard0-recovery-20261024",
+      "state": "STATE_ERROR",
+      "startTime": "2026-10-24T16:08:07.966038Z",
+      "endTime": "2026-10-24T16:50:14.056687Z"
+    },
+    {
+      "id": 66114,
+      "name": "v522-C-process-feedback-k50-shard1-recovery-20261024",
+      "state": "STATE_ERROR",
+      "startTime": "2026-10-24T16:08:08.549631Z",
+      "endTime": "2026-10-24T16:54:13.678997Z"
+    },
+    {
+      "id": 66115,
+      "name": "v522-verifier-calibration-training-feedback-recovery-20261024",
+      "state": "STATE_CANCELED",
+      "startTime": "2026-10-24T16:20:27.147776Z",
+      "endTime": "2026-10-24T17:14:44.787037Z"
+    },
+    {
+      "id": 66118,
+      "name": "v522-C-full50-recovery-recorded-shard0-20261024",
+      "state": "STATE_RUNNING",
+      "startTime": "2026-10-24T17:21:39.115572Z",
+      "endTime": null
+    },
+    {
+      "id": 66119,
+      "name": "v522-C-full50-recovery-recorded-shard1-20261024",
+      "state": "STATE_RUNNING",
+      "startTime": "2026-10-24T17:21:39.764482Z",
+      "endTime": null
+    },
+    {
+      "id": 66120,
+      "name": "v522-paired-verifier-training-feedback-recorded-20261024",
+      "state": "STATE_QUEUED",
+      "startTime": "2026-10-24T17:21:40.380265Z",
+      "endTime": null
+    }
+  ],
+  "resources": [
+    {
+      "file": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261024_paired_repair/k50_shard0_resources.jsonl",
+      "records": 8,
+      "last": {
+        "kind": "running",
+        "unix": 1792862579.161856,
+        "seconds": 75.0637372508645,
+        "memory.current": "9383981056",
+        "memory.max": "max",
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0",
+        "memory.swap.current": "0",
+        "host_memory": {
+          "MemFree": "1872028424 kB",
+          "MemAvailable": "2051793764 kB",
+          "SwapFree": "8385532 kB"
+        },
+        "processes": [
+          {
+            "pid": 42,
+            "Name": "python",
+            "VmHWM": "29360120 kB",
+            "VmRSS": "9758396 kB"
+          }
+        ],
+        "tree_rss_kib": 9758396
+      }
+    },
+    {
+      "file": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261024_paired_repair/k50_shard1_resources.jsonl",
+      "records": 8,
+      "last": {
+        "kind": "running",
+        "unix": 1792862579.402602,
+        "seconds": 75.07318084221333,
+        "memory.current": "8659791872",
+        "memory.max": "max",
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0",
+        "memory.swap.current": "0",
+        "host_memory": {
+          "MemFree": "1872028424 kB",
+          "MemAvailable": "2051793764 kB",
+          "SwapFree": "8385532 kB"
+        },
+        "processes": [
+          {
+            "pid": 42,
+            "Name": "python",
+            "VmHWM": "29361736 kB",
+            "VmRSS": "9050480 kB"
+          }
+        ],
+        "tree_rss_kib": 9050480
+      }
+    }
+  ],
+  "failed_tasks": {
+    "66113": {
+      "exit_code": 137,
+      "peak_gpu_gib_before_failure": 58.79481506347656
+    },
+    "66114": {
+      "exit_code": 137
+    }
+  },
+  "failure_findings": "Both failed with SIGKILL / exit 137, no Python/CUDA traceback. Current worker has unlimited cgroup memory and ample node memory; historical kernel OOM records inaccessible. Root trigger remains unconfirmed. New runs preserve child memory/OOM-event/signal evidence and release unused Qwen after legal C encoding; sampling equivalence tested.",
+  "verifier_change": "Stop 66115 regression-head pipeline after calibration; replace with paired calibration backed by 3 seeds x same 8 development scenes. Do not count repeated seeds as 24 independent scenes. Scoring success on freeze edits is not video-quality or physics success.",
+  "replacement_jobs": [
+    {
+      "config": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261024_paired_repair/c_feedback_k50_shard0.yaml",
+      "name": "v522-C-full50-recovery-recorded-shard0-20261024",
+      "role": "oracle_C_full50",
+      "shard": 0,
+      "output": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261024_paired_repair/c_feedback_k50",
+      "resource_log": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261024_paired_repair/k50_shard0_resources.jsonl",
+      "id": 66118,
+      "state": "submitted"
+    },
+    {
+      "config": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261024_paired_repair/c_feedback_k50_shard1.yaml",
+      "name": "v522-C-full50-recovery-recorded-shard1-20261024",
+      "role": "oracle_C_full50",
+      "shard": 1,
+      "output": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261024_paired_repair/c_feedback_k50",
+      "resource_log": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261024_paired_repair/k50_shard1_resources.jsonl",
+      "id": 66119,
+      "state": "submitted"
+    },
+    {
+      "config": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261024_paired_repair/paired_pipeline.yaml",
+      "name": "v522-paired-verifier-training-feedback-recorded-20261024",
+      "role": "paired_verifier_training_and_C_full50",
+      "output": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261024_paired_repair/paired_results",
+      "resource_log": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261024_paired_repair/paired_pipeline_resources.jsonl",
+      "id": 66120,
+      "state": "submitted"
+    }
+  ],
+  "validation": {
+    "cpu_tests_passed": 33,
+    "cache_records": 3857,
+    "protected_source_files_unchanged": 20
+  },
+  "estimate_from_start_hours": {
+    "66118": [
+      2,
+      4
+    ],
+    "66119": [
+      1.5,
+      3
+    ],
+    "66120": [
+      4,
+      7
+    ]
+  },
+  "pending": "Real-model finite updates, complete C feedback and controlled resampling results; determine exit-137 root trigger if reproduced; analyze paired scene-level outcomes and generation quality before asserting efficacy."
+}

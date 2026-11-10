@@ -1,0 +1,81 @@
+{
+  "user_scope": "Improve current v5.2.2-native H/Q; preserve existing design source files; no reinforcement learning; no external model replacement",
+  "rejected_direction": "PhysRAG; already tried and rejected by user. Do not download or pursue it.",
+  "external_download_completed": false,
+  "training_runs": {
+    "H": 66438,
+    "Q": 66443
+  },
+  "checkpoint_step": 224,
+  "diagnostic_jobs": {
+    "H": 66487,
+    "Q": 66488
+  },
+  "seed": 42,
+  "code_changes": "New read-only diagnostic script/configs only. No optimizer or training run.",
+  "quality_claim": "None. C sensitivity and paired reconstruction are diagnostics, not proof of generation gain.",
+  "query_scale_probe": {
+    "experiment": 66491,
+    "trial": 67871,
+    "status": "completed",
+    "outcome": "RMS1 increases slot spread but does not materially strengthen caption or cross-case denoising response. Not promoted as quality improvement."
+  },
+  "generation_ablation": {
+    "case_ids": [
+      "VP001",
+      "VP006",
+      "VP026",
+      "VP031"
+    ],
+    "arms": [
+      "full",
+      "C_off"
+    ],
+    "checkpoint_steps": 224,
+    "seed": 42,
+    "saved_noise_replayed": true,
+    "LoRA_retained_in_both_arms": true,
+    "jobs": {
+      "H_shard0": 66492,
+      "H_shard1": 66493,
+      "Q_shard0": 66494,
+      "Q_shard1": 66495
+    },
+    "evaluation": "Existing independent VideoPhy2 AutoEval",
+    "scope": "Four-case I2V diagnostic, not benchmark-wide improvement",
+    "status": "completed_16_videos_and_scores"
+  },
+  "native_response_diagnostic": {
+    "experiment": 66496,
+    "reference": "Same current Wan native T5 caption response",
+    "extra_model": false,
+    "status": "completed"
+  },
+  "connector_candidate": {
+    "implementation": "connector_response_candidate.py",
+    "configuration": "connector_candidate.yaml",
+    "status": "prototype_only_not_wired_or_trained",
+    "validation": "3 CPU gradient-boundary/mask tests passed",
+    "quality_claim": false,
+    "original_design_modified": false
+  },
+  "generated_first_followup": {
+    "cases": [
+      "VP001",
+      "VP006"
+    ],
+    "jobs": {
+      "H_shard0": 66497,
+      "H_shard1": 66498,
+      "Q_shard0": 66499,
+      "Q_shard1": 66500
+    },
+    "status": "completed_8_videos_and_scores",
+    "existing_generated_assets_reused": true,
+    "training_or_new_model": false,
+    "non_image_tensor_and_noise_equality": "checked",
+    "scope": "Targeted input diagnostic, not representative benchmark results",
+    "outcome": "All eight videos scored SA3/PC3; no joint passes."
+  },
+  "completed_generation_videos_this_continuation": 24
+}

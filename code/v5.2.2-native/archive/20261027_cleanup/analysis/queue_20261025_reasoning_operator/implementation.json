@@ -1,0 +1,76 @@
+{
+  "revision": "v522_native_reasoning_operator_v7",
+  "created_utc": "2026-10-25T07:36:02.252733+00:00",
+  "tests_passed": 53,
+  "protected_files_unchanged": 20,
+  "existing_cache_records": 3857,
+  "loss_names": {
+    "interface": [
+      "fm",
+      "process",
+      "use",
+      "intensity"
+    ],
+    "calibration": [
+      "rank",
+      "matching"
+    ],
+    "joint": [
+      "fm",
+      "process",
+      "use",
+      "verifier"
+    ]
+  },
+  "stage_budgets": {
+    "interface": 400,
+    "calibration": 460,
+    "joint": 400
+  },
+  "submitted_training_prefix_updates": 128,
+  "latent_reasoning": {
+    "native_last_layers": 4,
+    "rounds": 2,
+    "new_reasoning_parameters": 0
+  },
+  "verifier_feedback_updates": [
+    "conditioner",
+    "knowledge_lora"
+  ],
+  "reader_updates": [
+    "fm",
+    "process",
+    "use"
+  ],
+  "offline_feedback": {
+    "steps": 4,
+    "objective": "conditional denoising completion; not pure-noise 50-step reward"
+  },
+  "online_feedback": {
+    "complete_trajectories": 1,
+    "product_default": false,
+    "reference_future": false
+  },
+  "evaluation": {
+    "ids": [
+      "source0000042",
+      "source0000086",
+      "source0000107",
+      "source0000128"
+    ],
+    "paired_seeds": [
+      42,
+      314159
+    ],
+    "sampled_seeds": [
+      42
+    ],
+    "sampled_variants": [
+      "correct",
+      "off"
+    ],
+    "sampled_video_count": 8
+  },
+  "excluded_gpu_rule_verified_against_driver": true,
+  "quality_goals_proven": false
+}

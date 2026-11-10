@@ -1,0 +1,27 @@
+{
+  "utc": "2026-11-05T08:08:48.671096+00:00",
+  "case": "VP038",
+  "selection": "predeclared before R13C generation/scores",
+  "frames": [
+    0,
+    11,
+    22,
+    34,
+    45,
+    57,
+    68,
+    80
+  ],
+  "metadata_and_video_paths": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/coupled_attention_r13c/reports/physical_content_67682/visual_predeclared/VP038_selection.json",
+  "caption": "A paint roller, dipped in green paint, is used to cover a section of a metal fence, creating a uniform green coat.",
+  "observations": {
+    "R13C": "Roller and fence are nearly static through frame68, with part of a hand/handle appearing at80; stable object appearance without a clear painting process.",
+    "R13C_no_c": "Roller moves and lays a darker strip, but its head collapses/vanishes in middle frames and fence bars disappear locally.",
+    "R13C_key_modulation_off": "Q-only restores roller motion, but head shape changes and fence structure is not consistently preserved.",
+    "R1": "Previously inspected panel showed roller motion with semi-transparent/changed roller shape and disappearing fence bars.",
+    "score_limitation": "Normal, no_c and Q-only all receive SA4/PC4. The intervention exposes an action-versus-object-integrity tradeoff not captured by the identical scores."
+  },
+  "inference_intervention_scope": "Same own400 checkpoint and verified common first-image pixels, caption, seed/noise, gamma and sampler. Historical-reference weights differ.",
+  "limitations": "Sampled-frame diagnostic, not an aggregate quality score. No measured attention-to-first-frame attribution. More motion alone is not physical correctness. Numerical paired controls cover16 cases.",
+  "goal_achieved": false
+}

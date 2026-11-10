@@ -1,0 +1,437 @@
+{
+  "recorded_utc": "2026-10-31T05:44:00.240585+00:00",
+  "jobs": {
+    "candidate64_guidance5": {
+      "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/early_execution_r3/submissions/candidate64_guidance5_20261031T053400Z.yaml",
+      "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/module_controls16/snapshots/20261031T053400Z",
+      "state": "completed_normal_no_c_unrelated16",
+      "priority": 1,
+      "experiment_id": 66870,
+      "trial_id": 68257,
+      "attempts": [
+        {
+          "experiment_id": 66868,
+          "result": "H100_rejected_before_models"
+        },
+        {
+          "experiment_id": 66870,
+          "result": "RTX_accepted_training_active"
+        }
+      ]
+    },
+    "r1_module_controls16": {
+      "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/early_execution_r3/submissions/r1_module_controls16_20261031T053400Z.yaml",
+      "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/module_controls16/snapshots/20261031T053400Z",
+      "state": "content_and_token_mean_RTX_running_global_mean_pending",
+      "priority": 2,
+      "experiment_id": 66869,
+      "attempts": [
+        {
+          "experiment_id": 66869,
+          "result": "H100_rejected_before_models"
+        },
+        {
+          "experiment_id": 66872,
+          "trial_id": 68258,
+          "mode_group": "representation",
+          "result": "H100_rejected_before_models"
+        },
+        {
+          "experiment_id": 66873,
+          "mode_group": "representation",
+          "result": "H100_rejected_before_models"
+        },
+        {
+          "experiment_id": 66874,
+          "mode_group": "content",
+          "result": "RTX_accepted_generating_no_c16"
+        },
+        {
+          "experiment_id": 66875,
+          "mode_group": "representation",
+          "result": "H100_rejected_before_models",
+          "trial_id": 68262
+        },
+        {
+          "experiment_id": 66876,
+          "mode_group": "representation",
+          "result": "H100_rejected_before_models"
+        },
+        {
+          "experiment_id": 66877,
+          "mode_group": "anchor",
+          "result": "RTX_accepted_generating_anchor_only16"
+        },
+        {
+          "experiment_id": 66878,
+          "mode_group": "means",
+          "result": "H100_rejected_before_models"
+        },
+        {
+          "experiment_id": 66879,
+          "mode_group": "means",
+          "result": "H100_rejected_before_models"
+        },
+        {
+          "experiment_id": 66880,
+          "mode_group": "means",
+          "result": "H100_rejected_before_models"
+        },
+        {
+          "experiment_id": 66881,
+          "mode_group": "global_mean",
+          "result": "H100_rejected_before_models"
+        },
+        {
+          "experiment_id": 66882,
+          "mode_group": "token_mean",
+          "result": "RTX_accepted_generating_mean16"
+        }
+      ],
+      "split_plan": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/early_execution_r3/reports/module_controls16_parts.json",
+      "active_groups": {
+        "content": 66874,
+        "token_mean": 66882
+      },
+      "pending_groups": [
+        "global_mean"
+      ],
+      "superseded_group": "All-six, representation and means groups superseded by disjoint single-mode work; do not overlap."
+    },
+    "r4_candidate64": {
+      "experiment_id": 66871,
+      "trial_id": 68259,
+      "state": "training64_complete_normal16_generation_started",
+      "prepared": "experiments/physical_content_v7/grounded_read_r4/prepared.json"
+    }
+  },
+  "already_running": {
+    "r1_content_controls16": 66874,
+    "r1_token_mean16": 66882
+  },
+  "global_train_mean": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cache/global_conditions/r1_step0400_train64.pt",
+  "current400_subset16": {
+    "baseline": {
+      "sa": 3.25,
+      "pc": 3.6875,
+      "sa_pass": 0.375,
+      "pc_pass": 0.5,
+      "joint": 0.375
+    },
+    "candidate": {
+      "sa": 3.25,
+      "pc": 3.8125,
+      "sa_pass": 0.375,
+      "pc_pass": 0.5625,
+      "joint": 0.375
+    }
+  },
+  "training_configuration_changes": false,
+  "candidate_evaluation_choice": "User explicitly fixed gamma5; pursue C, fusion and training improvements.",
+  "reused_control_videos": 20,
+  "new_control_videos_planned": 76,
+  "completed": {
+    "guidance400_subset16": 66864,
+    "reasoning_controls16_inputs": "32/32 cached",
+    "global_C_control": "64 positive and64 negative train inputs; no test-specific Qwen evidence",
+    "r1_1000_heldout8": {
+      "sa": 4.25,
+      "pc": 4.375,
+      "joint": 0.625
+    },
+    "r3_normal16": {
+      "sa": 3.25,
+      "pc": 3.625,
+      "sa_pass_rate": 0.375,
+      "pc_pass_rate": 0.4375,
+      "joint": 0.3125
+    },
+    "r3_normal16_vs_R1": {
+      "pc_difference": -0.1875,
+      "sa_difference": 0,
+      "pc_lost_passes": [
+        "VP010",
+        "VP025"
+      ],
+      "pc_decreases": [
+        "VP010",
+        "VP015",
+        "VP025"
+      ],
+      "replacement": false
+    },
+    "r1_1000_full40": {
+      "sa": 3.0,
+      "pc": 3.45,
+      "sa_pass_rate": 0.275,
+      "pc_pass_rate": 0.375,
+      "joint": 0.25,
+      "paired_PC_wins": 1,
+      "paired_PC_losses": 7,
+      "vs400_PC_difference": -0.175,
+      "reference_retained": "R1 step400"
+    },
+    "baseline64": {
+      "experiment_id": 66866,
+      "sa": 3.3125,
+      "pc": 3.5625,
+      "sa_pass": 0.375,
+      "pc_pass": 0.375,
+      "joint": 0.3125
+    },
+    "r3_no_c16": {
+      "sa": 3.25,
+      "pc": 3.625,
+      "sa_pass": 0.375,
+      "pc_pass": 0.5,
+      "joint": 0.375
+    },
+    "first_wave": {
+      "experiment_id": 66856,
+      "all_suites": 18,
+      "state": "completed",
+      "report": "experiments/physical_content_v7/reports/first_wave_evidence.json"
+    },
+    "r3_unrelated16": {
+      "sa": 3.25,
+      "pc": 3.5625,
+      "sa_pass": 0.375,
+      "pc_pass": 0.4375,
+      "joint": 0.3125,
+      "correct_PC_difference": 0.0625,
+      "correct_wins": 2,
+      "correct_losses": 1,
+      "correct_PC_changed": [
+        "VP004",
+        "VP016",
+        "VP026"
+      ]
+    },
+    "r1_no_c16": {
+      "sa": 3.25,
+      "pc": 3.6875,
+      "sa_pass": 0.375,
+      "pc_pass": 0.5,
+      "joint": 0.375,
+      "correct_pc_difference": 0.125,
+      "correct_pc_wins": 2,
+      "correct_pc_losses": 0
+    },
+    "r1_anchor_only16": {
+      "sa": 3.1875,
+      "pc": 3.75,
+      "sa_pass": 0.375,
+      "pc_pass": 0.5625,
+      "joint": 0.375,
+      "correct_pc_difference": 0.0625,
+      "correct_pc_wins": 2,
+      "correct_pc_losses": 1,
+      "correct_sa_difference": 0.0625
+    },
+    "r1_reasoning_swapped16": {
+      "sa": 3.0625,
+      "pc": 3.75,
+      "sa_pass": 0.3125,
+      "pc_pass": 0.5,
+      "joint": 0.3125
+    }
+  },
+  "updated_utc": "2026-10-31T07:56:32.480492+00:00",
+  "user_fixed_guidance": 5,
+  "further_gamma_ablations": false,
+  "r1_backup": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/reports/pc3625_reference_backup.json",
+  "r1_code_index": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/reports/pc3625_code_index.json",
+  "short_generation_review": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/early_execution_r3/review_results.py",
+  "supplementary_evaluation": {
+    "criteria": "evaluation/process_criteria16.json",
+    "pilot": "reports/auxiliary_process_pilot400",
+    "execution": "CPU, existing local frozen Qwen, four existing paired cases",
+    "use": "External diagnostic observations with visual crosscheck; no training feedback",
+    "pilot_status": "one completed, visual contradiction, not adopted as quantitative metric",
+    "decision": "experiments/physical_content_v7/reports/auxiliary_process_pilot400/decision.json"
+  },
+  "representation_finding": {
+    "r1_400_total_C_cosine": 0.37700254656374454,
+    "r1_400_latent_update_cosine": 0.9949801936745644,
+    "r1_400_learned_residual_cosine": 0.9948582388460636,
+    "r1_400_cross_sample_residual_means_cosine": 0.9967861175537109,
+    "r3_16_learned_residual_cosine": 0.8490102961659431,
+    "r3_64_latent_update_cosine": 0.9811305366456509,
+    "r3_64_learned_residual_cosine": 0.9909576289355755,
+    "priority": "Preserve anchor-only generation attribution and R1 PC gain; direct grounding revision prepared independently. Low cosine is not a success criterion."
+  },
+  "next_architecture": "experiments/physical_content_v7/grounded_read_r4/prepared.json",
+  "prepared_next_architecture": "experiments/physical_content_v7/fixed_interface_r5/prepared.json",
+  "module_visual_review": "experiments/physical_content_v7/module_controls16/r1_step0400_guidance5_seed42/reports/visual_controls16.json",
+  "latest_execution_update": {
+    "recorded_utc": "2026-10-31T08:44:43.617998+00:00",
+    "r1_controls": "All six modes completed16; see module_effects.json and module_summary16.csv",
+    "r4": "64 training and normal16 scores complete SA3.1875/PC3.6875. Three16-case controls continue66871; remaining24 normal generation66888 live on RTX. Complete40 explicitly requested.",
+    "native64_full40": "Attempt66892 rejectedH100. Remaining24 pending next RTX; no new training.",
+    "request_anchor": "66891 actualRTX; forty conditions complete, full40 inference follows. First attempt66889 rejectedH100.",
+    "r5": "Implemented/tested, unsubmitted. Working runner updated normal40/control16; refresh snapshot if launch is selected."
+  },
+  "latest_runtime_20261031_0906": {
+    "recorded_utc": "2026-10-31T09:06:31.570312+00:00",
+    "r4_full40": {
+      "status": "completed",
+      "sa": 3.0,
+      "pc": 3.475,
+      "sa_pass": 10,
+      "pc_pass": 15,
+      "joint_pass": 9,
+      "adopted": false,
+      "report": "experiments/physical_content_v7/grounded_read_r4/reports/generation_review.json"
+    },
+    "native64_remaining24": {
+      "experiment_id": 66904,
+      "trial_id": 68291,
+      "status": "running_on_RTX"
+    },
+    "request_anchor40": {
+      "experiment_id": 66891,
+      "trial_id": 68278,
+      "status": "generating_on_RTX"
+    },
+    "r6": {
+      "experiment_id": 66905,
+      "status": "H100_rejected_waiting_RTX",
+      "first_stop": 128,
+      "code_test_count": 9,
+      "snapshot": "20261031T090211Z",
+      "trained": false
+    },
+    "native128": {
+      "status": "prepared_not_submitted",
+      "own64_resume_to_new_run": true,
+      "additional_updates": 64
+    },
+    "constraint": "No automatic extension, reference replacement, downloads, VBench, gamma changes or native400-to1000"
+  },
+  "latest_runtime_20261031_0923": {
+    "recorded_utc": "2026-10-31T09:23:00.633818+00:00",
+    "verified_running_experiments": [
+      66871,
+      66891,
+      66904
+    ],
+    "request_anchor_videos": 32,
+    "request_anchor_total": 40,
+    "native64_additional_videos": 13,
+    "native64_additional_total": 24,
+    "r4_anchor_videos": 13,
+    "r4_anchor_total": 16,
+    "r6_status": "H100_rejected_waiting_next_RTX",
+    "r6_experiment_id": 66905,
+    "r6_trial_id": 68292,
+    "new_evidence": [
+      "reports/reasoning_request_coverage40.json",
+      "reports/training_reasoning_text_inventory.json",
+      "reports/completed_full40_summary.csv"
+    ],
+    "no_new_models_downloaded": true
+  },
+  "runtime_20261031_0936": {
+    "recorded_utc": "2026-10-31T09:36:47.029834+00:00",
+    "request_anchor": "full40 complete SA3.0 PC3.625; PC20/40, joint10/40",
+    "r4_anchor": "16 complete SA3.25 PC3.6875; learned correction has no mean PC gain, loses one SA/joint pass",
+    "native128": {
+      "experiment": 66908,
+      "trial": 68295,
+      "device": "RTX PRO6000 Blackwell",
+      "status": "running",
+      "resume_own_step64": true,
+      "total_stop128": true
+    },
+    "r6": {
+      "experiment": 66907,
+      "trial": 68294,
+      "status": "H100_rejected_before_models; await next RTX",
+      "snapshot": "20261031T092555Z"
+    },
+    "monitoring": "Latest user asks to omit unnecessary checks. Check at phase completion or actionable error; no repeated diagnostics."
+  },
+  "runtime_20261031_0940": {
+    "recorded_utc": "2026-10-31T09:41:23.790211+00:00",
+    "native64_full40": "completed SA3.100 PC3.375, passes11/14/9",
+    "r4_vs_native64": "PC+0.100,6 wins/32 ties/2 losses; SA-0.100,0 wins/36 ties/4 losses; Joint unchanged9/40",
+    "r6": {
+      "experiment": 66910,
+      "trial": 68297,
+      "status": "actually_training_on_RTX",
+      "run": "physical_content_66910",
+      "stop": 128
+    },
+    "native128": {
+      "experiment": 66911,
+      "status": "resubmitted corrected YAML serialization",
+      "prior_failed": 66908,
+      "prior_updates": 0,
+      "original_sources_preserved": true
+    }
+  },
+  "runtime_latest": {
+    "recorded_utc": "2026-10-31T09:46:13.509990+00:00",
+    "r6": {
+      "experiment": 66910,
+      "trial": 68297,
+      "status": "running_training128",
+      "run": "physical_content_66910"
+    },
+    "native128": {
+      "experiment": 66913,
+      "trial": 68300,
+      "status": "restored_own64_and_running_training",
+      "run": "native_lora128_66913"
+    },
+    "r4_controls": {
+      "experiment": 66871,
+      "trial": 68259,
+      "status": "remaining_unrelated16_then_no_c16"
+    },
+    "request_seed43": {
+      "experiment": 66912,
+      "trial": 68299,
+      "status": "H100_rejected_waiting_RTX",
+      "cases": 16,
+      "modes": 2
+    },
+    "next_action": "Review declared training checkpoints/stage completion; do not repeatedly poll or add diagnostic suites"
+  },
+  "manuscript_artifacts": {
+    "recorded_utc": "2026-10-31T10:03:20.716444+00:00",
+    "brief": "analysis/physical_scaling_audit_20261030/EVIDENCE_FOR_MANUSCRIPT.zh.txt",
+    "figures": [
+      "reports/figures/paired_generation_effects40.pdf",
+      "reports/figures/paired_module_effects16.pdf"
+    ],
+    "source_data": "Existing completed results only; no new evaluator calls or bootstrap",
+    "runtime_observation": "This turn det describe confirmed66910/68297,66913/68300 and66871/68259 RUNNING",
+    "next_action": "Await128-step training/generation stages or actual job errors; no additional32/64 representation sweeps"
+  },
+  "runtime_20261031_1011": {
+    "recorded_utc": "2026-10-31T10:12:32.605616+00:00",
+    "turn_classification": "verified_wait_plus_reference_design_analysis",
+    "r6": {
+      "experiment": 66910,
+      "trial": 68297,
+      "last_completed_step": 69,
+      "status": "training"
+    },
+    "native128": {
+      "experiment": 66913,
+      "trial": 68300,
+      "last_completed_step": 117,
+      "status": "STATE_RUNNING confirmed via det describe; training"
+    },
+    "r4_unrelated": {
+      "experiment": 66871,
+      "trial": 68259,
+      "generated": 12,
+      "total": 16,
+      "scores_ready": false
+    },
+    "reference_analysis": "PhysVid original paper checked; video-query/chunk-key RoPE is not arbitrary learned-Q indexing. Notes added to manuscript brief; no current architecture or gamma change.",
+    "next_action": "Native128 training completion should lead directly into its declared full40 generation; retain existing live jobs"
+  }
+}

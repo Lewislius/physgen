@@ -1,0 +1,148 @@
+{
+  "experiment_id": 66467,
+  "config": "analysis/fast_baseline_no_rl_20261027/shard0.yaml",
+  "no_reinforcement_learning": true,
+  "no_training": true,
+  "seed": 42,
+  "cases": 12,
+  "arms": [
+    "original native Wan",
+    "original native Wan + frozen-Qwen visible process text through T5"
+  ],
+  "status": "completed: no measured benefit from this prompt-expansion candidate",
+  "source": "../v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42",
+  "output": "inference_outputs/native_physics_prompt_baseline12_seed42_20261027_v2",
+  "scoring_caption": "original unchanged",
+  "sampling": "same saved FP32 noise and first latent; Euler50 shift5 CFG5",
+  "scope": "development I2V subset, not official full T2V benchmark",
+  "sources": [
+    {
+      "url": "https://github.com/Wan-Video/Wan2.2",
+      "support": "Official prompt expansion support; does not establish physics gains on this setup"
+    },
+    {
+      "url": "https://arxiv.org/abs/2412.00596",
+      "support": "Physics-oriented prompt refinement; published experiments use other generators/protocols; not a transferred performance guarantee"
+    }
+  ],
+  "attempts": [
+    {
+      "id": 66463,
+      "trial": 67843,
+      "state": "rejected_before_loading",
+      "reason": "scheduler allocated H100; requested RTX-only guard rejected it"
+    },
+    {
+      "id": 66465,
+      "trial": 67845,
+      "state": "canceled_own_pilot",
+      "reason": "Input expansion contradicted original caption; stopped before interpreting generation results"
+    },
+    {
+      "id": 66466,
+      "trial": 67846,
+      "state": "stopped_for_disjoint_parallel_resume",
+      "reason": "Preserved all complete pairs; partitioned cases across single-slot jobs to reduce wall time"
+    }
+  ],
+  "resource_pool": "amp-80g",
+  "rewrite_input": "original caption only",
+  "consistency_check": "frozen text-only check; fallback to original on rejection; no video rewards or model updates",
+  "experiment_ids": [
+    66467,
+    66468,
+    66469
+  ],
+  "trial_ids": [
+    67847,
+    67848,
+    67849
+  ],
+  "no_existing_v522_design_files_modified": true,
+  "results": {
+    "count": 12,
+    "original": {
+      "count": 12,
+      "sa_mean": 3.1666666666666665,
+      "pc_mean": 3.5833333333333335,
+      "joint_pass_rate": 0.25,
+      "scope": "Fixed development subset: VideoPhy2 captions adapted to shared-first-image I2V; not official T2V leaderboard",
+      "training_verifier_is_independent": true
+    },
+    "physics_text": {
+      "count": 12,
+      "sa_mean": 3.0833333333333335,
+      "pc_mean": 3.5,
+      "joint_pass_rate": 0.25,
+      "scope": "Fixed development subset: VideoPhy2 captions adapted to shared-first-image I2V; not official T2V leaderboard",
+      "training_verifier_is_independent": true
+    },
+    "joint_wins": 0,
+    "joint_losses": 0,
+    "conclusion": "Do not promote this expansion recipe as an improved baseline."
+  },
+  "first_frame_diagnostic": {
+    "experiment_ids": [
+      66476,
+      66477
+    ],
+    "trial_ids": [
+      67856,
+      67857
+    ],
+    "cases": [
+      "VP001",
+      "VP006"
+    ],
+    "status": "completed; no joint-pass improvement on the two targeted examples",
+    "new_videos": 4,
+    "scope": "targeted first-input diagnostic, not aggregate benchmark improvement",
+    "config": "inference/generated_first_frame_diagnostic.yaml",
+    "launcher": "inference/generated_first_frame_diagnostic.sh",
+    "image_generation_mode": "built-in image_gen",
+    "video_seed": 42,
+    "image_seed": null,
+    "original_files_preserved": true,
+    "comparison": "analysis/fast_baseline_no_rl_20261027/first_frame_comparison.json"
+  },
+  "native_recipe_control": {
+    "experiment_ids": [
+      66483,
+      66484,
+      66485
+    ],
+    "status": "completed; joint 3/12 unchanged, no demonstrated joint benefit",
+    "primary_cases": 12,
+    "additional_input_diagnostics": 2,
+    "config": "inference/native_wan_official_recipe.yaml",
+    "launcher": "inference/native_wan_official_recipe.sh",
+    "comparison_scope": "Official WanTI2V.i2v sampling and native VAE, existing mixed precision checkpoint loader, exact saved-noise replay in a module-local wrapper; no existing source file modified",
+    "no_learning": true,
+    "no_existing_design_modified": true,
+    "initial_attempts": [
+      {
+        "experiment": 66480,
+        "status": "rejected_before_sampling",
+        "reason": "fresh native seed42 draw differed from saved input noise"
+      },
+      {
+        "experiment": 66481,
+        "status": "rejected_before_sampling",
+        "reason": "fresh native seed42 draw differed from saved input noise"
+      },
+      {
+        "experiment": 66482,
+        "status": "rejected_before_sampling",
+        "reason": "fresh native seed42 draw differed from saved input noise"
+      }
+    ],
+    "noise_policy": "replay persisted FP32 initial noise via an isolated module-local wrapper; official sampler remains unchanged",
+    "trial_ids": [
+      67863,
+      67864,
+      67865
+    ]
+  },
+  "scope_correction": "User requires improvements to current v5.2.2-native; external model replacement rejected. Do not pursue PhysRAG.",
+  "external_download_completed": false
+}

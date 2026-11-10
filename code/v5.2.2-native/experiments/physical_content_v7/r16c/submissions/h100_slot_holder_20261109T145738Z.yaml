@@ -1,0 +1,29 @@
+name: h100-slot-holder-20261109T145738Z
+description: 'Temporary slot holder: keeps an H100 allocation busy so the R16C recovery can be scheduled on an RTX PRO 6000. No training, no GPU compute, no weights. Cancel after R16C receives RTX.'
+workspace: ALL-IN-ONE
+project: wan-animate
+max_restarts: 0
+resources:
+  resource_pool: blk-96g
+  slots_per_trial: 1
+  is_single_node: true
+  shm_size: 1073741824
+environment:
+  image: 10.130.130.5:8192/lab-dev:latest
+  environment_variables:
+  - OMP_NUM_THREADS=1
+checkpoint_storage:
+  type: shared_fs
+  host_path: /mount/HOME/liuzhirui
+  storage_path: Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/determined_checkpoints
+  save_experiment_best: 0
+  save_trial_best: 0
+  save_trial_latest: 0
+searcher:
+  name: single
+  metric: completed
+  max_length:
+    epochs: 1
+  smaller_is_better: false
+entrypoint: >-
+  bash -c 'name=$(nvidia-smi --query-gpu=name --format=csv,noheader | head -1); echo "holder gpu: $name"; if echo "$name" | grep -q H100; then echo holding_h100; sleep 1800; else echo not_h100_exiting; fi'

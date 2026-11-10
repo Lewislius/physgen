@@ -1,0 +1,81 @@
+{
+  "tests": [
+    {
+      "command": "bash tools/runtime_python.sh tests/test_simple_verifier.py",
+      "passed": 6,
+      "seconds": 23.316
+    },
+    {
+      "command": "bash tools/runtime_python.sh -m unittest discover -s tests -p 'test_*.py'",
+      "passed": 143,
+      "seconds": 154.848
+    },
+    {
+      "command": "bash tools/runtime_python.sh tests/test_simple_verifier.py SimpleVerifierTests.test_legacy_initialization_keeps_projection_and_reinitializes_workspace",
+      "passed": 1,
+      "seconds": 6.808
+    }
+  ],
+  "test_counts_overlap": true,
+  "configuration_preflight": "All four new recipes ready; 3857 existing records; no preprocessing",
+  "shell_syntax": "Five launcher scripts passed bash -n",
+  "full_gpu_training_submitted": false,
+  "limitation": "CPU integration and resource checks; full-size GPU memory and generated video quality not measured in this change.",
+  "changes": [
+    {
+      "path": "AGENTS.md",
+      "added": 3,
+      "removed": 0
+    },
+    {
+      "path": "README.md",
+      "added": 14,
+      "removed": 1
+    },
+    {
+      "path": "docs/message_reasoning.md",
+      "added": 61,
+      "removed": 0
+    },
+    {
+      "path": "physgen_native/config.py",
+      "added": 58,
+      "removed": 7
+    },
+    {
+      "path": "physgen_native/criterion_training.py",
+      "added": 3,
+      "removed": 2
+    },
+    {
+      "path": "physgen_native/criterion_verifier.py",
+      "added": 41,
+      "removed": 6
+    },
+    {
+      "path": "physgen_native/message_conditioning.py",
+      "added": 10,
+      "removed": 5
+    },
+    {
+      "path": "physgen_native/operator_training.py",
+      "added": 62,
+      "removed": 25
+    },
+    {
+      "path": "physgen_native/runtime.py",
+      "added": 100,
+      "removed": 1
+    },
+    {
+      "path": "physgen_native/system.py",
+      "added": 15,
+      "removed": 4
+    },
+    {
+      "path": "train/train.py",
+      "added": 11,
+      "removed": 10
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "parent_experiment": 67920,
+  "experiment_id": 67938,
+  "status": "running_actual_accepted_gpu",
+  "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/denoising_matched_fusion_r15d/submissions/r15d_outside16_20261106T061307Z.yaml",
+  "bundle": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/denoising_matched_fusion_r15d/submissions/outside16_diagnostic/20261106T061307Z",
+  "modes": [
+    "pretext_read",
+    "denoising_off"
+  ],
+  "cases": [
+    "VP006",
+    "VP014",
+    "VP019",
+    "VP020",
+    "VP023",
+    "VP032",
+    "VP033",
+    "VP040"
+  ],
+  "training_updates": 0,
+  "selection": "All cases outside fixed16 where candidate loses SA or PC against R15B; explicit posthoc failure selection, not an unbiased benchmark.",
+  "baseline_scores": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/denoising_matched_fusion_r15d/inference_outputs/physical_content_67920/step0400_original_fixed40_controls16_seed42/videophy40/scores.json",
+  "do_not_transfer_into_fixed16": true,
+  "no_cherry_picked_primary40": true,
+  "attempts": [
+    {
+      "experiment_id": 67935,
+      "submitted_utc": "2026-11-06T06:13:08.795200+00:00",
+      "accepted": false,
+      "actual_gpu": "NVIDIA H100",
+      "state": "STATE_ERROR",
+      "trial_ids": [
+        69322
+      ],
+      "reason": "Actual GPU guard rejected H100 before foundation loading"
+    },
+    {
+      "experiment_id": 67938,
+      "submitted_utc": "2026-11-06T06:26:15.860616+00:00",
+      "accepted": true,
+      "actual_gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "state": "STATE_RUNNING",
+      "trial_ids": [
+        69325
+      ]
+    }
+  ],
+  "retry_policy": "Retry only when usable RTX allocation is possible",
+  "actual_gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+  "trial_ids": [
+    69325
+  ],
+  "verified_utc": "2026-11-06T06:26:27.157136+00:00"
+}

@@ -1,0 +1,22 @@
+{
+  "utc": "2026-11-04T11:50:44.067873+00:00",
+  "viewed_panel": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/r10a_data_crossover20/visual_review/VP034.png",
+  "scope": "Only VP034, score-selected because API inference loses the Joint pass under both checkpoints. Eight actual temporal frames per arm; no suite-level quality estimate.",
+  "observations": {
+    "old_weights_old_reasoning": "Clear balloon/background; limited displacement, rotation and minor shape variation. Sampled frames do not show convincing sustained inflation despite SA4 PC5.",
+    "old_weights_api_reasoning": "Clear scene; more balloon tilt/lateral drift but no convincing inflation. SA3 PC5.",
+    "api_weights_old_reasoning": "Strong repeating background/balloon texture appears by frame11 and persists; inflation remains unclear. SA4 PC5 despite visible visual degradation.",
+    "api_weights_api_reasoning": "Clear balloon/background again, with drift/tilt and some shape variation, but no convincing requested inflation in sampled frames. SA3 PC5."
+  },
+  "reasoning_observations": {
+    "old_positive": "Mentions outward stretching but mostly equilibrium/persistence and hypothetical gas escape.",
+    "api_positive": "More directly describes air inflow, membrane stretching and expansion, but asserts a bottom valve not established by the shared first image.",
+    "api_negative": "Describes a sealed knot and possible unseen breeze. Positive and negative changed together, so their individual effects are not isolated."
+  },
+  "decisions": [
+    "Do not adopt API-trained weights plus original reasoning from the fixed16 SA/Joint gain alone: this actual case shows severe repetitive texture that its SA4/PC5 ratings miss.",
+    "More explicit correct-sounding process text has not been reliably executed by the generator. This is evidence for improving enhancement/fusion execution and condition compatibility, not simply making descriptions longer.",
+    "No arm demonstrates a convincing successful inflation process in these sampled frames; do not label old-reasoning higherSA as physical/process success.",
+    "Retain original data/inference R12A comparison. Do not schedule a new full40/60 crossover extension purely to chase the fixed16 higherJoint before resolving observed visual degradation."
+  ]
+}

@@ -1,0 +1,147 @@
+{
+  "recorded_utc": "2026-10-31T05:38:02.347584+00:00",
+  "scope": "R1-400 full40; descriptive inspection of the8 PC-pass/SA-fail cases, not a random error-rate estimate",
+  "pc_pass": 18,
+  "sa_pass": 11,
+  "joint": 10,
+  "pc_pass_sa_fail": 8,
+  "sa_pass_pc_fail": [
+    "VP036"
+  ],
+  "cases": [
+    {
+      "id": "VP006",
+      "caption": "A large, wet canvas is twisted to remove excess paint, leaving drips down the side.",
+      "generation_seed": 42,
+      "sa": 2,
+      "pc": 4,
+      "relations": [
+        "Canvas stands upright, supported by metal frame, showing no visible wetness or drips.",
+        "Two individuals sit near canvas, one holding equipment, neither interacting with canvas surface.",
+        "Studio lighting equipment remains stationary, casting no motion or fluid effects on canvas.",
+        "Floor shows no wet marks or fluid trails, indicating canvas is dry or not actively being manipulated."
+      ],
+      "analysis": "四句都在描述未湿、未接触和静止环境，没有覆盖请求的扭转挤漆；当前首图与请求存在已记录的不一致，不能只归因于执行模块。",
+      "source": "experiments/physical_content_v7/inference_outputs/physical_content_66778/step0400_seed42_r1/videophy40/cases/VP006/planned.json"
+    },
+    {
+      "id": "VP007",
+      "caption": "Multiple ping pong balls are shown, illustrating different stages of a rally.",
+      "generation_seed": 42,
+      "sa": 2,
+      "pc": 5,
+      "relations": [
+        "White balls rest on blue surface, shadows cast beneath each one.",
+        "Balls are stationary, no motion or contact with each other.",
+        "Surface appears dry, no visible fluids or continuous processes.",
+        "If balls were struck, they might roll or bounce, altering positions."
+      ],
+      "analysis": "强调球静止与无接触，末句只是如果被击打可能运动；没有解释请求所说的不同回合阶段。caption本身不是明确连续动作序列，不把这一例简单计作需要更大运动。",
+      "source": "experiments/physical_content_v7/inference_outputs/physical_content_66778/step0400_seed42_r1/videophy40/cases/VP007/planned.json"
+    },
+    {
+      "id": "VP011",
+      "caption": "A person on a unicycle stops abruptly, putting a foot down to maintain balance before continuing.",
+      "generation_seed": 42,
+      "sa": 2,
+      "pc": 4,
+      "relations": [
+        "Rider’s foot is elevated, balancing on single pedal, body leaning forward slightly.",
+        "Unicycle’s wheels remain in contact with asphalt, maintaining forward momentum.",
+        "Sock pattern visible, suggesting motion continues despite abrupt stop attempt.",
+        "If rider places foot down, weight transfer will shift, altering balance point."
+      ],
+      "analysis": "用袜子图案推断持续运动没有可靠依据，且遗漏停稳后继续的完整过程；对单轮车使用复数wheels也暴露关系描述不可靠。",
+      "source": "experiments/physical_content_v7/inference_outputs/physical_content_66778/step0400_seed42_r1/videophy40/cases/VP011/planned.json"
+    },
+    {
+      "id": "VP014",
+      "caption": "Multiple water balloons are tossed upwards, simultaneously bursting in the air in a small arc.",
+      "generation_seed": 42,
+      "sa": 2,
+      "pc": 5,
+      "relations": [
+        "Water balloons ascend due to initial force, visibly separating as they rise.",
+        "Balloons burst upon reaching peak, releasing fluid droplets downward.",
+        "Droplets scatter in arcs, influenced by gravity and air resistance.",
+        "Splash forms at impact point, indicating fluid continuity and momentum transfer."
+      ],
+      "analysis": "把到达最高点直接当作爆裂原因没有依据；首图气球与水滴的适配问题另有记录，不能仅由该错误句子解释生成失败。",
+      "source": "experiments/physical_content_v7/inference_outputs/physical_content_66778/step0400_seed42_r1/videophy40/cases/VP014/planned.json"
+    },
+    {
+      "id": "VP015",
+      "caption": "A rower pulls an oar from the water, the blade dripping water back into the lake. .",
+      "generation_seed": 42,
+      "sa": 3,
+      "pc": 5,
+      "relations": [
+        "Oar blade submerged in water causes droplets to form and fall back into the lake.",
+        "Rower’s motion lifts oar blade, initiating water dripping from its edge.",
+        "Water continues dripping from blade as it clears the water surface.",
+        "Rower’s posture shifts slightly as oar is pulled from water."
+      ],
+      "analysis": "第2/3句明确包含抬桨离水及滴水，但生成仍缺少该过程；这是输入中有事件仍未正确执行的例子，单改reasoning不能覆盖所有失败。",
+      "source": "experiments/physical_content_v7/inference_outputs/physical_content_66778/step0400_seed42_r1/videophy40/cases/VP015/planned.json"
+    },
+    {
+      "id": "VP025",
+      "caption": "A large, orange plastic egg is rolled up a plastic slide, then rolls down, ending at the bottom.",
+      "generation_seed": 42,
+      "sa": 2,
+      "pc": 4,
+      "relations": [
+        "Orange egg rests on surface beneath transparent curved slide.",
+        "Slide’s curvature suggests potential for rolling motion.",
+        "Egg’s smooth surface may interact with slide’s texture during motion.",
+        "Fluid-like slide implies possible frictional or aerodynamic effects during roll."
+      ],
+      "analysis": "缺少上滚、再下滚、回到底部的顺序，并出现fluid-like slide和空气动力学等不可靠描述，C词锚点未直接保留请求的关键过程。",
+      "source": "experiments/physical_content_v7/inference_outputs/physical_content_66778/step0400_seed42_r1/videophy40/cases/VP025/planned.json"
+    },
+    {
+      "id": "VP026",
+      "caption": "Two people stretch a bungee cord, extending it to its maximum length.",
+      "generation_seed": 42,
+      "sa": 3,
+      "pc": 4,
+      "relations": [
+        "Bungee cord stretches taut between two anchor points above ocean surface.",
+        "Black cylindrical weight hangs suspended, swaying slightly with cord tension.",
+        "Orange harnesses attached to cord indicate human operators managing tension.",
+        "Ocean water remains calm, undisturbed by cord’s motion or weight."
+      ],
+      "analysis": "描述悬挂重物/安全带/海水的蹦极场景，而请求是两人拉伸绳；提示与首图适配和reasoning主体关系均需分开看。",
+      "source": "experiments/physical_content_v7/inference_outputs/physical_content_66778/step0400_seed42_r1/videophy40/cases/VP026/planned.json"
+    },
+    {
+      "id": "VP040",
+      "caption": "Poi are swung against a soft surface, making a thudding sound (NOTE: This prompt includes sound, but it's included to illustrate the effect of the action, not to describe it in detail.  The focus is still on the visible impact).",
+      "generation_seed": 42,
+      "sa": 3,
+      "pc": 5,
+      "relations": [
+        "Gray object’s shadow lengthens as it impacts the surface, altering its visible position slightly.",
+        "Yellow object’s surface texture may compress momentarily upon contact with the soft surface.",
+        "If green objects strike the surface, their shadows will darken and elongate slightly from the impact.",
+        "No fluid movement occurs; all objects remain dry and stationary after impact unless displaced."
+      ],
+      "analysis": "多句主要描述影子而非摆动接触响应；没有把可见冲击过程作为主要关系。",
+      "source": "experiments/physical_content_v7/inference_outputs/physical_content_66778/step0400_seed42_r1/videophy40/cases/VP040/planned.json"
+    }
+  ],
+  "annotation_author": "assistant qualitative reading of stored input text; not human gold-standard labels",
+  "training_inference_support": {
+    "trained_positive": "native T5 request + own request-conditioned C",
+    "trained_negative": "null T5 + own image-only C",
+    "guidance_neutral": "native T5 request + own image-only C",
+    "neutral_trained_as_separate_combination": false,
+    "evidence": "physical_content/train.py uses the same drop flag for teacher.input and native T5 selection",
+    "interpretation": "The heldout8 gamma1 regression makes this previously documented hybrid-condition issue relevant; it does not prove that this is the only cause."
+  },
+  "next_action": {
+    "active": "Complete16 guidance comparison and64-step execution revision; retain original guidance5 unless paired evidence supports replacing it.",
+    "input_architecture_candidate": "Evaluate whether request-context word anchors should join reasoning word anchors within the same Q/C path. This would directly preserve requested events without relying only on global Qwen-memory retrieval; not yet implemented or adopted.",
+    "training_candidate": "If separate guidance remains useful, explicitly train its intermediate condition rather than assuming the coupled-dropout model learned it; not yet adopted."
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "checked_at_utc": "2026-10-25T15:16:53.161578+00:00",
+  "controls_equal_except_output_names": true,
+  "legacy_sources_changed": [],
+  "66162": {
+    "state": "STATE_COMPLETED",
+    "gpu": "RTX PRO 6000 Blackwell slot 2",
+    "uuid": "GPU-d46ac459-b58f-cd15-f6b1-e0b8b5156d4b",
+    "completed_videos": 2,
+    "video_geometry": [
+      81,
+      480,
+      832
+    ],
+    "steps_per_video": 50,
+    "sampling": [
+      {
+        "observed_steps": 50,
+        "first": "2026-10-25T14:13:19.187621+00:00",
+        "last": "2026-10-25T14:18:21.819431+00:00",
+        "median_step_seconds": 6.101139
+      },
+      {
+        "observed_steps": 50,
+        "first": "2026-10-25T14:19:52.843490+00:00",
+        "last": "2026-10-25T14:24:54.639868+00:00",
+        "median_step_seconds": 6.104179
+      }
+    ],
+    "sampling_peak_gib": 25.495535850524902,
+    "decoding_peak_gib": 11.423072814941406
+  },
+  "66163": {
+    "state": "STATE_ERROR",
+    "gpu": "H100 slot 0",
+    "uuid": "GPU-30085d8b-9408-7a7f-e544-be0280858108",
+    "completed_videos": 0,
+    "sampling": [
+      {
+        "observed_steps": 50,
+        "first": "2026-10-25T14:13:22.133783+00:00",
+        "last": "2026-10-25T14:26:38.776346+00:00",
+        "median_step_seconds": 16.986414
+      }
+    ],
+    "sampling_completed": 50,
+    "failure_location": "After all 50 denoising steps, during VAE decode / postdecode conversion; no completed video metadata",
+    "child_termination": "SIGKILL 9",
+    "traceback_is_parent_reporting_child_death": true,
+    "last_sampler_log_utc": "2026-10-25T14:26:38.776346Z",
+    "vae_decode_log_utc": "2026-10-25T14:26:40.481474Z",
+    "child_death_report_utc": "2026-10-25T14:26:48.581247Z",
+    "cuda_oom_trace": false,
+    "kernel_signal_sender": null
+  },
+  "conclusion": "Same SIGKILL reproduced without v5.2.2-native or its wrapper; allocation-specific execution is implicated. Hardware defect, driver/runtime fault, host policy, and transient memory event cannot be distinguished from these logs alone.",
+  "new_model_implication": "Do not remove C/verifier or change physics objectives to address this termination. Recover the real training on another single GPU.",
+  "legacy_training_control": "Not submitted: old inference already reproduces failure independently of new backward; repeating an old training matrix is not the next useful action."
+}

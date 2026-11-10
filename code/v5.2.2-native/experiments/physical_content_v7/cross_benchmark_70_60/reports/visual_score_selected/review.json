@@ -1,0 +1,224 @@
+{
+  "reviewed_utc": "2026-11-04T18:25:39.657028+00:00",
+  "selection_policy": "Three diagnostic cases selected after WanLoRA/R1 official scores, before reading R10A official scores; choices cover an instruction/physics tradeoff, interaction improvement with residual defects, and R1 regression. Not a representative sample or a new numeric benchmark.",
+  "frames_per_video": [
+    0,
+    11,
+    22,
+    34,
+    45,
+    57,
+    68,
+    80
+  ],
+  "models": [
+    "wan_lora",
+    "r1",
+    "r10a"
+  ],
+  "same_caption_first_image_noise_and_sampling": true,
+  "scope": "Inspection of existing generated video frames; no new generation, model download, API call or scorer changes. Fast/transient defects between sampled times may be missed.",
+  "observations": {
+    "ozHyEwawtZA_000479_000489": {
+      "request": "The woman places a baking tray into the oven.",
+      "wan_lora": "A new foreground woman brings a tray toward the viewer; the requested placement into an oven is not visible in the eight sampled frames.",
+      "r1": "A foreground woman likewise brings a paper-lined tray toward the camera. This differs from the requested placement into the oven; a local visual-quality score gain does not establish action compliance.",
+      "r10a": "The two original women and kitchen remain very similar across the sequence. No clear tray-into-oven process appears in the sampled frames.",
+      "finding": "The instruction failure is visible despite different amounts of scene/action change; low artifact opportunity alone is not successful physical execution.",
+      "selection": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/reports/visual_score_selected/ozHyEwawtZA_000479_000489_selection.json",
+      "panel": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/reports/visual_score_selected/ozHyEwawtZA_000479_000489.png",
+      "available_scores_at_selection": {
+        "wan_lora": {
+          "id": "ozHyEwawtZA_000479_000489",
+          "domain": "human",
+          "subdomain": "cooking",
+          "instruction": 2.0,
+          "physical_laws": [
+            true,
+            false,
+            true,
+            false,
+            true
+          ],
+          "common_sense": [
+            false,
+            false
+          ]
+        },
+        "r1": {
+          "id": "ozHyEwawtZA_000479_000489",
+          "domain": "human",
+          "subdomain": "cooking",
+          "instruction": 1.0,
+          "physical_laws": [
+            true,
+            false,
+            true,
+            true,
+            true
+          ],
+          "common_sense": [
+            true,
+            false
+          ]
+        }
+      }
+    },
+    "bridge_3357": {
+      "request": "The robotic arm opens the cardboard box.",
+      "wan_lora": "The box becomes open around the middle-to-late frames; an oversized white articulated hand/arm appears, with abrupt geometry/occlusion changes. Opening occurs but the interaction is not clean.",
+      "r1": "A dark gripper contacts the top before the box becomes open, giving a clearer local relation to the action. The large gripper/arm geometry changes sharply around frame57 and a different thin tool remains later. The physical/temporal passes do not mean artifact-free execution.",
+      "r10a": "The taped cardboard box remains closed at all eight sampled times; a small gripper appears near the lower edge later. The central requested state change is absent.",
+      "finding": "Useful local R1 interaction and its remaining geometry defects coexist. Static preservation in R10A must not count as fulfilling the opening request.",
+      "selection": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/reports/visual_score_selected/bridge_3357_selection.json",
+      "panel": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/reports/visual_score_selected/bridge_3357.png",
+      "available_scores_at_selection": {
+        "wan_lora": {
+          "id": "bridge_3357",
+          "domain": "robotics",
+          "subdomain": "open",
+          "instruction": 1.0,
+          "physical_laws": [
+            true,
+            false,
+            true,
+            true,
+            true
+          ],
+          "common_sense": [
+            false,
+            false
+          ]
+        },
+        "r1": {
+          "id": "bridge_3357",
+          "domain": "robotics",
+          "subdomain": "open",
+          "instruction": 1.0,
+          "physical_laws": [
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "common_sense": [
+            true,
+            true
+          ]
+        }
+      }
+    },
+    "92ec5d48-97a1-426a-b4e3-818e4d4ac5cf": {
+      "request": "The character reveals a surprised face reflecting on the metallic surface.",
+      "wan_lora": "A surprised face appears, but the metal becomes a frame-like opening around the mouth and the head extends beyond it. This is not a clean reflection on an intact metallic surface.",
+      "r1": "A disconnected mouth first appears on the metal; later the face overlaps/extends beyond the held surface. The reflection and face geometry are defective.",
+      "r10a": "The metallic sheet and hands remain almost unchanged in these frames; no surprised reflected face is visible.",
+      "finding": "All three miss part of the intended process for different reasons. More change alone is insufficient; unchanged structure without the requested reflection also fails.",
+      "selection": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/reports/visual_score_selected/92ec5d48-97a1-426a-b4e3-818e4d4ac5cf_selection.json",
+      "panel": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/reports/visual_score_selected/92ec5d48-97a1-426a-b4e3-818e4d4ac5cf.png",
+      "available_scores_at_selection": {
+        "wan_lora": {
+          "id": "92ec5d48-97a1-426a-b4e3-818e4d4ac5cf",
+          "domain": "animation",
+          "subdomain": "Comedy",
+          "instruction": 3.0,
+          "physical_laws": [
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "common_sense": [
+            true,
+            true
+          ]
+        },
+        "r1": {
+          "id": "92ec5d48-97a1-426a-b4e3-818e4d4ac5cf",
+          "domain": "animation",
+          "subdomain": "Comedy",
+          "instruction": 3.0,
+          "physical_laws": [
+            true,
+            false,
+            true,
+            true,
+            true
+          ],
+          "common_sense": [
+            false,
+            false
+          ]
+        }
+      }
+    }
+  },
+  "implications": [
+    "Keep instruction, physical plausibility and appearance/temporal consistency separate in reporting.",
+    "These examples provide concrete evidence that requested state changes can be absent while shape/background are stable, and that visible action can coexist with geometry artifacts.",
+    "Do not infer every R10A clip is static or every R1 physics gain is valid from these selected cases.",
+    "Use the complete R13A40/controls and actual-video review before selecting R13B; these supplementary findings do not authorize skipping the sequential decision."
+  ],
+  "official_evaluator_context": {
+    "source": "/home/liuzhirui/benchmark/WorldModelBench/evaluation.py",
+    "prompt_lines": 29,
+    "physical_question_lines": 57,
+    "interpretation": "Official instruction evaluates the requested goal separately. The five physics and two commonsense questions ask about visible violations/defects; no detected violation is not a positive test that the requested state transition occurred. Preserve official scores, read them jointly with instruction and actual video evidence.",
+    "observed_ceiling": "In both completed WanLoRA and R1 fixed70 results, newton/fluid/gravity each average1.0; discrimination of their physical sum currently comes from mass/deformation and penetration. This does not invalidate the benchmark or establish perfect physics."
+  },
+  "subsequently_completed_R10A_scores": {
+    "ozHyEwawtZA_000479_000489": {
+      "id": "ozHyEwawtZA_000479_000489",
+      "domain": "human",
+      "subdomain": "cooking",
+      "instruction": 1.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    "bridge_3357": {
+      "id": "bridge_3357",
+      "domain": "robotics",
+      "subdomain": "open",
+      "instruction": 1.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    },
+    "92ec5d48-97a1-426a-b4e3-818e4d4ac5cf": {
+      "id": "92ec5d48-97a1-426a-b4e3-818e4d4ac5cf",
+      "domain": "animation",
+      "subdomain": "Comedy",
+      "instruction": 1.0,
+      "physical_laws": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "common_sense": [
+        true,
+        true
+      ]
+    }
+  }
+}

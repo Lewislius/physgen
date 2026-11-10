@@ -1,0 +1,209 @@
+{
+  "name": "Q66443_final224_stability_reference",
+  "status": "Existing baseline definition; no new model trained",
+  "objective": "Improve physical process correctness and visual/temporal stability together, including fluids, gases, waves and transformations",
+  "revision": "v522_native_q_seed128_no_verifier_simple_v30",
+  "step": 224,
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/inference_outputs/v522-q-seed128-message-no-verifier-simple_66443/demo21_final224_round2_seed42/checkpoint.pt",
+  "training_checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/checkpoints/v522-q-seed128-message-no-verifier-simple_66443/latest.pt",
+  "configuration": {
+    "revision": "v522_native_q_seed128_no_verifier_simple_v30",
+    "run_name": "v522-q-seed128-message-no-verifier-simple",
+    "paths": {
+      "wan_code": "/home/liuzhirui/model/Wan2.2",
+      "wan_checkpoint": "/home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B",
+      "qwen_checkpoint": "/home/liuzhirui/model/Qwen3-VL/Qwen3-VL-8B-Instruct",
+      "cache": "/home/liuzhirui/Project/physGen/data_cache/wisa_4000",
+      "runs": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/checkpoints",
+      "outputs": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/inference_outputs"
+    },
+    "data": {
+      "count": 3857,
+      "frames": 81,
+      "latent_shape": [
+        48,
+        21,
+        30,
+        52
+      ],
+      "workers": 0
+    },
+    "model": {
+      "width": 3072,
+      "qwen_width": 4096,
+      "attention_width": 3072,
+      "attention_heads": 24,
+      "condition_every": 3,
+      "injection": "aligned_native_cross_attention"
+    },
+    "knowledge": {
+      "image_size": [
+        480,
+        832
+      ],
+      "video_size": [
+        480,
+        832
+      ],
+      "max_text_tokens": 4096,
+      "gradient_checkpointing": true,
+      "reasoning_tokens": 512,
+      "reasoning_cache": 256,
+      "dependency_queries": true,
+      "condition_readout": "content",
+      "latent_reasoning_steps": 2,
+      "latent_reasoning_attention": "bidirectional",
+      "include_prompt_span": true,
+      "reasoning_mode": "q_seed128_message",
+      "reasoning_max_tokens": 1024,
+      "train_reasoning_rounds": [
+        2
+      ],
+      "inference_reasoning_round": 2,
+      "freeze_backbone": true,
+      "relation_tokens": 128,
+      "analysis_format": "compact_four_lines",
+      "analysis_on_token_limit": "use_partial"
+    },
+    "wan_lora": {
+      "rank": 32,
+      "alpha": 32
+    },
+    "stages": {
+      "interface": 64,
+      "joint": 160
+    },
+    "loss": {
+      "interface": {
+        "fm": 1.0,
+        "flow_temporal": 0.1
+      },
+      "joint": {
+        "fm": 1.0,
+        "flow_temporal": 0.1
+      }
+    },
+    "condition_use": {
+      "temperature": 0.1,
+      "mode": "positive_only"
+    },
+    "sequence": {
+      "size": [
+        480,
+        832
+      ],
+      "scales": [
+        1
+      ]
+    },
+    "verifier": {
+      "kind": "none"
+    },
+    "train": {
+      "seed": 42,
+      "accumulation": 4,
+      "optimizer": "adamw",
+      "new_lr": 0.0001,
+      "qwen_lr": 0.0,
+      "wan_lora_lr": 1e-05,
+      "minimum_lr_ratio": 0.2,
+      "warmup": 8,
+      "weight_decay": 0.01,
+      "grad_clip": 1.0,
+      "text_dropout": 0.1,
+      "requirements_dropout": 0.0,
+      "sigma_min": 0.02,
+      "sigma_max": 0.95,
+      "gradient_checkpointing": true,
+      "save_every": 16,
+      "native_text_only_dropout": 0.15,
+      "branch_checkpointing": true,
+      "wan_lora_in_interface": false,
+      "joint_lr": 5e-05,
+      "alignment_lr": 1e-05,
+      "joint_alignment_lr": 5e-06,
+      "optimizer_policy": "simple_message",
+      "clip_by_owner": true,
+      "dropout_policy": "exclusive"
+    },
+    "validation": {
+      "initial": false,
+      "every": 32,
+      "samples": 4,
+      "sigmas": [
+        0.25,
+        0.65,
+        0.95
+      ],
+      "sample_every": 32,
+      "sample_cases": 2,
+      "sample_seeds": [
+        42,
+        314159
+      ]
+    },
+    "inference": {
+      "steps": 50,
+      "shift": 5.0,
+      "guidance": 5.0,
+      "condition_strength": 1.0
+    },
+    "flow_temporal": {
+      "lags": [
+        1,
+        2,
+        4,
+        8,
+        16
+      ]
+    },
+    "alignment": {
+      "initialization": "native_text_context",
+      "samples": 32,
+      "eps": 1e-06
+    },
+    "message": {
+      "heads": 32,
+      "ffn_multiplier": 2,
+      "init_std": 0.02,
+      "workspace_width": 4096,
+      "projection": "output"
+    },
+    "geometry": {
+      "mode": "native",
+      "rgb_size": [
+        480,
+        832
+      ]
+    },
+    "hardware": {
+      "gpu_family": "rtx_pro_6000"
+    }
+  },
+  "generation": {
+    "seed": 42,
+    "frames": 81,
+    "fps": 24,
+    "sampler": {
+      "steps": 50,
+      "shift": 5.0,
+      "guidance": 5.0,
+      "condition_strength": 1.0
+    },
+    "source_inputs": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/1d-v52-lora-demo21_20261010/P01/i2v/seed42.inputs",
+    "output_directory": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/inference_outputs/v522-q-seed128-message-no-verifier-simple_66443/demo21_final224_round2_seed42"
+  },
+  "known_limitations": [
+    "P01 does not correctly complete contact and tilt",
+    "P02 already contains unphysical ball motion",
+    "P04 does not complete the domino chain",
+    "P05 does not reliably separate block and ramp effects"
+  ],
+  "transfer_required": [
+    "Complete conditioner including query seed and message weights",
+    "4096-to-3072 projection and learned alignment",
+    "All inherited Wan LoRA",
+    "Native model and inference recipe"
+  ],
+  "proposed_continuation": "A separate revision initialized from this complete function, with direct C semantic and generated-process supervision; not resume of a completed 224-step run"
+}

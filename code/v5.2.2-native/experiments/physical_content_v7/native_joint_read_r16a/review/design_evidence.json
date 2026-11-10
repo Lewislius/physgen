@@ -1,0 +1,35 @@
+{
+  "candidate": "R16A",
+  "training_submitted": false,
+  "quality_proven": false,
+  "core": "Native request prior for direct original physical C values",
+  "design_document": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_joint_read_r16a/review/final_design.zh.md",
+  "evidence": {
+    "matched_scores": "review/B_I_comparison.json",
+    "frozen_bank_and_gradient_probe": "review/completed_read_diagnostic.json"
+  },
+  "new_parameters_vs_I": 0,
+  "expected_total_trainable_parameters": 764443648,
+  "physical_capacity": {
+    "C_tokens": 256,
+    "enhancement_width": 4096,
+    "injection_width": 3072,
+    "independent_trainable_projections": [
+      "Q",
+      "K",
+      "V",
+      "O"
+    ],
+    "state_interaction_retained": true
+  },
+  "native_text_QKVO_frozen": true,
+  "extra_losses": 0,
+  "training_inference_same_operator": true,
+  "evaluation": [
+    "VideoPhy2_40",
+    "VideoPhy2_disjoint20_full60",
+    "paired16_controls"
+  ],
+  "routine_observation_seconds": 900,
+  "maximum_version": "R16A"
+}

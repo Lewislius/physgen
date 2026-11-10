@@ -1,0 +1,27 @@
+{
+  "id": "VP023",
+  "caption": "A surfer falls off their board, colliding briefly with another surfer, before swimming away.",
+  "revision": "v522_native_generation_baseline_v11",
+  "optimizer_step": 32,
+  "seed": 42,
+  "fps": 23.999999284744284,
+  "conditions": "first frame, caption, existing requirements; no future target",
+  "physical_dependency_analysis": "OBSERVED: Two surfers on separate boards on a wave; no fall, no contact, no swimming. Unknown: whether fall, contact, or swim will occur within 3.333s.\n\nINTERACTION: Fall requires loss of balance → contact requires proximity and timing → reaction requires sensory input → swim requires propulsion and intent.\n\nPERSISTENCE: Wave motion sustains surfers’ trajectory; water resistance propagates motion; absence of collision or fall halts evolution of interaction.\n\nINTERVENTION: If no fall → no contact → no reaction → no swim. If fall occurs without proximity → no contact → no reaction → swim may still occur. If contact without fall → reaction may occur, but swim remains conditional on intent.",
+  "latent_reasoning_steps": 2,
+  "latent_feedback": null,
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "condition_strength": 1.0,
+    "latent_feedback": {
+      "enabled": false,
+      "metric": "relative_rms",
+      "sigmas": [
+        0.85,
+        0.65
+      ],
+      "step_size": 0.1
+    }
+  }
+}

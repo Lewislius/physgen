@@ -1,0 +1,27 @@
+{
+  "id": "VP039",
+  "caption": "A wedge is driven into a log using a sledgehammer, splitting the log cleanly apart.",
+  "revision": "v522_native_generation_baseline_v11",
+  "optimizer_step": 32,
+  "seed": 42,
+  "fps": 23.999999284744284,
+  "conditions": "first frame, caption, existing requirements; no future target",
+  "physical_dependency_analysis": "OBSERVED: Log horizontal, wedge partially inserted, sledgehammer absent. Unknown: Whether wedge will be driven, split depth, or log separation.\n\nINTERACTION: Sledgehammer strike → wedge driven deeper → log split widens. Prerequisite: wedge must be angled and log stable.\n\nPERSISTENCE: Log’s stability and wedge’s angle sustain split propagation; force decay or log movement terminates progression.\n\nINTERVENTION: If sledgehammer absent → no deeper split; if wedge misaligned → split may deviate or stall; log stability lost → wedge slips or log rolls.",
+  "latent_reasoning_steps": 2,
+  "latent_feedback": null,
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "condition_strength": 1.0,
+    "latent_feedback": {
+      "enabled": false,
+      "metric": "relative_rms",
+      "sigmas": [
+        0.85,
+        0.65
+      ],
+      "step_size": 0.1
+    }
+  }
+}

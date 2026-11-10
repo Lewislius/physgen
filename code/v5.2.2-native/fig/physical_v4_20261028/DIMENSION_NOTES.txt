@@ -1,0 +1,17 @@
+2026-10-28，V4 流程图的维度核对与图示细化。
+
+官方配置：Wan2.2-TI2V-5B dim=3072, heads=24, layers=30, ffn_dim=14336, text_len=512, latent channels=48；Qwen3-VL-8B hidden=4096, LM heads=32, KV heads=8, head_dim=128, vocab=151936, vision hidden=1152, patch=16, merge=2。
+视频：81×480×832 -> VAE latent 48×21×30×52 -> patch (1,2,2) -> 21×15×26×3072；P=390，L=8190。
+
+本次以图示将 V4 中尚未展开的接口具体化；并不声称新模型代码已实现：
+- 物理 query 独立线性投影 3072->3072，空间/时间条件属于 C 分支。
+- F_mix 显示五路 3072 宽内容输入的融合，另接时间/噪声条件；交互 FFN 中间宽度 D_int 未定，不编造数值。F_out 显示两路 3072 状态融合至 3072。
+- C 调制以 4096->2×3072 表示 gamma/beta 两个全宽向量；它是最终执行接口的一部分，不提前压缩 Qwen 推理。
+- clock 输入宽度 2F+2，F 是单组 Fourier 编码宽度，尚未固定；输出 3072。
+- C-only 语义读出每批轮换一个注入层，将其实际三组 K/V 展平为三组 3072、concat 到 9216，再经全宽 bridge 到 4096。此处显式采用轮换层读出，避免同时拼接十层导致不必要的宽度膨胀。
+- Q 推理轮数 K 未定；图中不沿用旧实现的随机 MessageBlock，不把旧 2 轮配置画成新模型已验证超参数。
+- 首帧几何映射 G=[B,P0,P]，本例 P0=P=390，但对应必须来自预处理几何，不因为 token 数相同就假设索引相同。
+
+图中 all-head attention 的两种 128 轴：R=128 个关系槽，d=128 个 head 通道；轴含义不同。A_scope [B,24,21,R,P] 转置为 [B,24,21,P,R]，乘 D_head [B,24,21,R,d] 得 [B,24,21,P,d]。
+
+主方案：../../analysis/q_workspace_regression_20261028/PHYSICAL_BLOCK_NO_DENSE_LABELS_V4.txt。

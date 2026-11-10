@@ -1,0 +1,183 @@
+{
+  "utc": "2026-11-08T12:10:19.691105+00:00",
+  "probe_experiment": 68309,
+  "score_seen": false,
+  "cases": {
+    "VP004": {
+      "caption": "A plastic ruler is bent until it cracks, displaying a visible stress fracture that propagates.",
+      "frames": [
+        0,
+        11,
+        22,
+        34,
+        45,
+        57,
+        68,
+        80
+      ],
+      "finding": "请求绑定、直接读取和联合读取三者均近乎静止；尺子保持横向，没有清楚弯折或裂纹传播。输入首帧已有白色异常区域，不能把它归为新方案产生。",
+      "verdict": "未观察到联合读取改善本例任务执行。"
+    },
+    "VP010": {
+      "caption": "mopping water from a floor",
+      "frames": [
+        0,
+        11,
+        22,
+        34,
+        45,
+        57,
+        68,
+        80
+      ],
+      "finding": "联合读取的移动开始较晚，末段拖把头明显变扁/变形；与直接读取接近，未见明确的新网格伪影。水/反光大区域仍明显，不能据亮度变化认定吸水成功。",
+      "verdict": "没有看到相对B明确的过程/形状质量优势。"
+    },
+    "VP027": {
+      "frames": [
+        0,
+        11,
+        22,
+        34,
+        45,
+        57,
+        68,
+        80
+      ],
+      "finding": "联合读取下手、面团、桌面干净，没有H强网格；与B一样近乎静止，未证明塑形过程改善。"
+    },
+    "VP034": {
+      "frames": [
+        0,
+        11,
+        22,
+        34,
+        45,
+        57,
+        68,
+        80
+      ],
+      "finding": "气球清楚、无强网格，主要上下运动；未证明连续充气拉伸。"
+    },
+    "VP038": {
+      "frames": [
+        0,
+        11,
+        22,
+        34,
+        45,
+        57,
+        68,
+        80
+      ],
+      "finding": "相较B直接读取后半段滚筒持续消失，联合读取大多保留主体；第57帧仍有明显局部破碎/形变，接触和涂抹连续性仍不合格。B请求绑定也有形变/重复。"
+    }
+  },
+  "scope": "两个预先选定案例的配对抽帧；不是整个16例的质量分，也不据两例提前否定或接受正式I。",
+  "next": "等待余下三个预定案例与统一16评分；不追加额外变体。",
+  "completed_utc": "2026-11-08T12:33:43.064039+00:00",
+  "score_seen_at_completion": true,
+  "all_predeclared_cases_reviewed": true,
+  "paired_scores": {
+    "kind": "R15B400_readonly_joint_physical_memory_probe",
+    "training_updates": 0,
+    "probe": {
+      "count": 16,
+      "SA": 3.125,
+      "PC": 3.9375,
+      "Joint": 6
+    },
+    "references": {
+      "B_request_bound": {
+        "summary": {
+          "count": 16,
+          "SA": 3.0625,
+          "PC": 3.8125,
+          "Joint": 6
+        },
+        "probe_minus_reference": {
+          "sa": {
+            "mean_change": 0.0625,
+            "wins": 1,
+            "ties": 15,
+            "losses": 0
+          },
+          "pc": {
+            "mean_change": 0.125,
+            "wins": 2,
+            "ties": 14,
+            "losses": 0
+          },
+          "joint": {
+            "gains": [],
+            "losses": []
+          }
+        },
+        "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_bound_fusion_r15b/inference_outputs/physical_content_67829/step0400_original_fixed40_controls16_seed42/videophy40/scores.json"
+      },
+      "B_direct": {
+        "summary": {
+          "count": 16,
+          "SA": 3.125,
+          "PC": 4,
+          "Joint": 5
+        },
+        "probe_minus_reference": {
+          "sa": {
+            "mean_change": 0,
+            "wins": 2,
+            "ties": 12,
+            "losses": 2
+          },
+          "pc": {
+            "mean_change": -0.0625,
+            "wins": 0,
+            "ties": 15,
+            "losses": 1
+          },
+          "joint": {
+            "gains": [
+              "VP018",
+              "VP034"
+            ],
+            "losses": [
+              "VP015"
+            ]
+          }
+        },
+        "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_bound_fusion_r15b/inference_outputs/physical_content_67829/step0400_original_fixed40_controls16_seed42/controls/direct_physical_read/videophy40/scores.json"
+      },
+      "B_no_c": {
+        "summary": {
+          "count": 16,
+          "SA": 3.3125,
+          "PC": 3.6875,
+          "Joint": 6
+        },
+        "probe_minus_reference": {
+          "sa": {
+            "mean_change": -0.1875,
+            "wins": 0,
+            "ties": 13,
+            "losses": 3
+          },
+          "pc": {
+            "mean_change": 0.25,
+            "wins": 3,
+            "ties": 13,
+            "losses": 0
+          },
+          "joint": {
+            "gains": [],
+            "losses": []
+          }
+        },
+        "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_bound_fusion_r15b/inference_outputs/physical_content_67829/step0400_original_fixed40_controls16_seed42/controls/no_c/videophy40/scores.json"
+      }
+    },
+    "quality_proven": false,
+    "automatic_training": false,
+    "interpretation": "Fixed16 is a diagnostic sample, not full40 acceptance. Review quantitative and actual-video evidence before final I design; no per-case combination."
+  },
+  "decision": "One tested operator improves B paired SA by1 summed point and PC by2 without any scored per-case regression, retaining the same6 Joint successes. It is a supported foundation for final fresh training, not a target-achieving model or a complete solution to process/visual defects."
+}

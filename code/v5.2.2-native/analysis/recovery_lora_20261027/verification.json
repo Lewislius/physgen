@@ -1,0 +1,132 @@
+{
+  "verified_at_utc": "2026-10-27T02:39:23.310141+00:00",
+  "jobs": [
+    {
+      "mode": "Q128",
+      "search": 66418,
+      "run": 67798,
+      "restored_from_step": 64,
+      "checkpoint_step": 66,
+      "cursor": 264,
+      "revision": "v522_native_q_seed128_verifier_lora_simple_v28",
+      "verifier_state": {
+        "accepted": 30,
+        "seen": 32
+      },
+      "changed_adapter_tensors": 96,
+      "adapter_tensors": 96,
+      "verifier_optimizer_steps": [
+        2
+      ],
+      "completed_updates": [
+        {
+          "step": 65,
+          "phase": "calibration",
+          "loss": 0.029922095593065023,
+          "peak_gib": 42.31320285797119,
+          "seconds": 154.7166987080127,
+          "gradients": {
+            "condition_no_decay": 0.0,
+            "alignment": 0.0,
+            "condition": 0.0,
+            "wan_lora": 0.0,
+            "verifier": 0.01948564199070202
+          }
+        },
+        {
+          "step": 66,
+          "phase": "calibration",
+          "loss": 0.15414500562474132,
+          "peak_gib": 42.3508620262146,
+          "seconds": 157.4460772788152,
+          "gradients": {
+            "condition_no_decay": 0.0,
+            "alignment": 0.0,
+            "condition": 0.0,
+            "wan_lora": 0.0,
+            "verifier": 0.06885562665010933
+          }
+        },
+        {
+          "step": 67,
+          "phase": "calibration",
+          "loss": 0.012222782708704472,
+          "peak_gib": 42.350770473480225,
+          "seconds": 153.4809765908867,
+          "gradients": {
+            "condition_no_decay": 0.0,
+            "alignment": 0.0,
+            "condition": 0.0,
+            "wan_lora": 0.0,
+            "verifier": 0.011567024858500089
+          }
+        }
+      ],
+      "last_gpu": {
+        "returncode": 0,
+        "output": "0, GPU-d46ac459-b58f-cd15-f6b1-e0b8b5156d4b, NVIDIA RTX PRO 6000 Blackwell Server Edition, 97887, 46207, 99",
+        "stderr": ""
+      },
+      "oom_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0",
+      "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/checkpoints/v522-q-seed128-message-verifier-lora-simple_66384/latest.pt",
+      "metrics": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/checkpoints/v522-q-seed128-message-verifier-lora-simple_66384/metrics.jsonl"
+    },
+    {
+      "mode": "H",
+      "search": 66419,
+      "run": 67799,
+      "restored_from_step": 64,
+      "checkpoint_step": 66,
+      "cursor": 264,
+      "revision": "v522_native_h_content_verifier_lora_simple_v26",
+      "verifier_state": {
+        "accepted": 30,
+        "seen": 32
+      },
+      "changed_adapter_tensors": 96,
+      "adapter_tensors": 96,
+      "verifier_optimizer_steps": [
+        2
+      ],
+      "completed_updates": [
+        {
+          "step": 65,
+          "phase": "calibration",
+          "loss": 0.02962376642972231,
+          "peak_gib": 41.559020042419434,
+          "seconds": 181.68318032845855,
+          "gradients": {
+            "alignment": 0.0,
+            "condition": 0.0,
+            "condition_no_decay": 0.0,
+            "wan_lora": 0.0,
+            "verifier": 0.020447791344016034
+          }
+        },
+        {
+          "step": 66,
+          "phase": "calibration",
+          "loss": 0.19005971681326628,
+          "peak_gib": 41.5964789390564,
+          "seconds": 221.44483875017613,
+          "gradients": {
+            "alignment": 0.0,
+            "condition": 0.0,
+            "condition_no_decay": 0.0,
+            "wan_lora": 0.0,
+            "verifier": 0.0863942904379854
+          }
+        }
+      ],
+      "last_gpu": {
+        "returncode": 0,
+        "output": "0, GPU-a34a658e-5e10-97af-2575-51414e596bbb, NVIDIA RTX PRO 6000 Blackwell Server Edition, 97887, 45507, 100",
+        "stderr": ""
+      },
+      "oom_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0",
+      "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/checkpoints/v522-h-content-message-verifier-lora-simple_66355/latest.pt",
+      "metrics": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/checkpoints/v522-h-content-message-verifier-lora-simple_66355/metrics.jsonl"
+    }
+  ],
+  "conclusion": "Both original LoRA recipes resumed from step 64 on separately allocated RTX GPUs. At least two real optimizer updates and atomic checkpoints completed. Only verifier-owned gradients were nonzero and adapter tensors/Adam state advanced. Training remains active; full 256-step completion is not claimed."
+}

@@ -1,0 +1,57 @@
+{
+  "updated_at_utc": "2026-10-29T14:02:40.310894+00:00",
+  "changed_variants": [
+    "v6_write",
+    "v6_assoc"
+  ],
+  "previous_q256": {
+    "peak_lr": 1e-05,
+    "warmup": 64
+  },
+  "revised_q256": {
+    "peak_lr": 2e-05,
+    "warmup": 128,
+    "unfreeze_step": 129,
+    "peak_reached_step": 256,
+    "hold_through_step": 600,
+    "final_lr": 4e-06
+  },
+  "milestones": {
+    "128": 0.0,
+    "129": 1.5625e-07,
+    "192": 1e-05,
+    "256": 2e-05,
+    "600": 2e-05,
+    "1000": 4.000000000000001e-06
+  },
+  "previous_q128": {
+    "peak_lr": 1e-05,
+    "warmup": 16,
+    "joint_steps": 160
+  },
+  "first_64_joint_lrs_match_previous_q256": true,
+  "lr_ramp_slope_relative_to_q128": 0.25,
+  "evidence": {
+    "v6_write": {
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_variants/runs/v6_write_20261029T064043Z/train.jsonl",
+      "joint_steps": 160,
+      "clipped_steps": 0,
+      "mean_preclip_norm": 0.011115279063233174,
+      "max_preclip_norm": 0.05418530851602554
+    },
+    "v6_assoc": {
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_variants/runs/v6_assoc_20261029T064043Z/train.jsonl",
+      "joint_steps": 160,
+      "clipped_steps": 0,
+      "mean_preclip_norm": 0.007236978180299047,
+      "max_preclip_norm": 0.06956169754266739
+    }
+  },
+  "interpretation": [
+    "The old Wan gradient records do not show clipping, but neither prove sufficient learning nor establish that 16-step warmup caused visual instability.",
+    "The proposed larger peak gives more execution adaptation capacity while retaining the previous Q256 initial LR ramp. The exact peak is a design choice, not a measured optimum.",
+    "Small AdamW gradient norms do not imply small effective parameter updates. No effectiveness claim follows from the schedule checks."
+  ],
+  "new_training_submitted": false,
+  "gpu_integration_run": false
+}

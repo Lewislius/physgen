@@ -1,0 +1,76 @@
+{
+  "utc": "2026-11-05T09:59:36.592914+00:00",
+  "experiment": 67762,
+  "step": 137,
+  "matched_micro_records": 548,
+  "stages": {
+    "interface": 128,
+    "joint": 272
+  },
+  "interface_wan_lora_gradients_zero": true,
+  "joint_wan_lora_gradients_positive": true,
+  "execution_alignment_schedule_correct": true,
+  "weighted_alignment_accounting_correct": true,
+  "finite_logged_objectives": true,
+  "actual_parameter_groups": {
+    "enhancement": 227577856,
+    "fusion_read": 291072000,
+    "fusion_write": 94371840,
+    "wan_lora": 57016320
+  },
+  "stage_boundary": [
+    {
+      "step": 128,
+      "phase": "interface",
+      "execution_alignment_weight": 1.0,
+      "learning_rates": {
+        "enhancement": 5e-05,
+        "fusion_read": 2e-05,
+        "fusion_write": 3e-05,
+        "wan_lora": 0.0
+      },
+      "gradients": {
+        "enhancement": 0.12712331116199493,
+        "fusion_read": 0.0012916328851133585,
+        "fusion_write": 0.023225683718919754,
+        "wan_lora": 0.0
+      }
+    },
+    {
+      "step": 129,
+      "phase": "joint",
+      "execution_alignment_weight": 1.0,
+      "learning_rates": {
+        "enhancement": 5e-05,
+        "fusion_read": 2e-05,
+        "fusion_write": 3e-05,
+        "wan_lora": 1.5625e-07
+      },
+      "gradients": {
+        "enhancement": 0.33442527055740356,
+        "fusion_read": 0.001870707143098116,
+        "fusion_write": 0.03059489093720913,
+        "wan_lora": 0.004027205985039473
+      }
+    },
+    {
+      "step": 137,
+      "phase": "joint",
+      "execution_alignment_weight": 0.9978513293627067,
+      "learning_rates": {
+        "enhancement": 5e-05,
+        "fusion_read": 2e-05,
+        "fusion_write": 3e-05,
+        "wan_lora": 1.40625e-06
+      },
+      "gradients": {
+        "enhancement": 0.23266339302062988,
+        "fusion_read": 0.0036104547325521708,
+        "fusion_write": 0.08464790135622025,
+        "wan_lora": 0.017400430515408516
+      }
+    }
+  ],
+  "reference": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/execution_value_r10/runs/physical_content_67003/train.jsonl",
+  "scope": "Execution and schedule audit only; no generation-quality conclusion."
+}

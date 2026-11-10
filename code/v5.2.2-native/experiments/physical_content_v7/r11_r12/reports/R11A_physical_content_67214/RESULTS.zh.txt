@@ -1,0 +1,48 @@
+R11A / physical_content_67214：400步匹配评测
+单位：SA/PC为五分均值；通过率为分数>=4，Joint要求两项同时>=4。
+
+candidate/original40: SA 2.9000, PC 3.4500, SA率 0.1750, PC率 0.4000, Joint 6/40 (0.1500)
+candidate/extra20: SA 2.8000, PC 3.6500, SA率 0.2000, PC率 0.5000, Joint 4/20 (0.2000)
+candidate/full60: SA 2.8667, PC 3.5167, SA率 0.1833, PC率 0.4333, Joint 10/60 (0.1667)
+R10-A/original40: SA 2.8250, PC 3.7500, SA率 0.2250, PC率 0.5500, Joint 7/40 (0.1750)
+R10-A/extra20: SA 2.6000, PC 4.0000, SA率 0.1000, PC率 0.7000, Joint 2/20 (0.1000)
+R10-A/full60: SA 2.7500, PC 3.8333, SA率 0.1833, PC率 0.6000, Joint 9/60 (0.1500)
+R1/original40: SA 2.9500, PC 3.6250, SA率 0.2750, PC率 0.4500, Joint 10/40 (0.2500)
+R1/extra20: SA 2.7500, PC 3.7500, SA率 0.1500, PC率 0.5000, Joint 3/20 (0.1500)
+R1/full60: SA 2.8833, PC 3.6667, SA率 0.2333, PC率 0.4667, Joint 13/60 (0.2167)
+native400/original40: SA 3.0750, PC 3.4500, SA率 0.2750, PC率 0.4000, Joint 10/40 (0.2500)
+native400/extra20: SA 2.8000, PC 3.6500, SA率 0.1500, PC率 0.4500, Joint 3/20 (0.1500)
+native400/full60: SA 2.9833, PC 3.5167, SA率 0.2333, PC率 0.4167, Joint 13/60 (0.2167)
+
+固定16：正常结果从原40抽取；对照尚未完成时不估算得分。
+text_adapter_off: SA 3.1250, PC 3.5000, Joint 3/16
+parallel_fusion: SA 3.0625, PC 3.6250, Joint 4/16
+reasoning_swapped: SA 3.1250, PC 3.6875, Joint 5/16
+empty_reasoning: SA 3.0000, PC 3.8750, Joint 3/16
+global_train_mean: SA 3.1875, PC 3.6875, Joint 6/16
+anchor_only: SA 3.1875, PC 3.6875, Joint 6/16
+no_c: SA 3.2500, PC 3.7500, Joint 6/16
+
+评分前预定案例的实际视频观察：
+VP004：手臂、手持杆状物出现明显下移/弯曲；尚未看到足以确认沿实体连续传播的单一清晰裂纹，杆状结构与手/衣领的混连仍可见。 动作幅度增加不能单独证明裂纹物理过程正确。首帧本身已有不清晰结构，各模型使用同一首帧。
+VP008：人物姿态和上下位置发生明显变化，但从早期采样位置起，地板和蹦床出现大范围周期性重复纹理，肢体结构也变差。 这是明显视觉退化；增加动态不等于整体生成改善。无音频证据，不评价是否对齐指定节拍。
+VP010：拖把有一定移动，地面/水区域显著变化，但形成不自然的白色大条带/块状结构；不能把这种变化认作可信吸水清除。 需要同时判别正确动作、材料变化及画面结构，不能把更大变化当SA/物理成功。
+
+控制组画面复看（评分后按变化选择案例，原始分数不改）：
+VP002：Every one of the32 frames selected by the existing AutoEval loader (indices1..79) is dominated by repeated texture/noise; the intended people/wood scene is not coherently represented. The fixed frame0 remains recognizable. PC5 is a clear score/visual-quality conflict here. It cannot be treated as improved physical execution under wrong reasoning, and the normal video is also visibly defective.
+VP038：From roughly frame11 the cylindrical roller becomes a broad sheet-like object, later appearing disconnected or discontinuous relative to its handle. This sole new Joint pass under wrong reasoning does not establish visibly correct rolling/paint-transfer mechanics. Both arms retain notable defects.
+Retain all original benchmark outputs. Correct-reasoning benefit remains unproven, and wrong-reasoning mean gain is not evidence of better generation. New candidate selection must consider visual failures alongside matched scores; no blanket claim that all AutoEval results are invalid.
+
+空reasoning配对画面复看（按最大PC变化及唯一Joint变化选择）：
+VP034：正常条件的气球向上离开画面，后半段出现占据画面的巨大透明曲面，没有清楚展示连续充气过程。 空reasoning时气球保持近似大小，只见轻微飘动，画面较稳定，但没有清楚展示请求中的持续充气扩张。 PC从3到5包含明显的稳定性改善，却不能直接解释为完成充气物理过程；SA仍为3。该例贡献空条件PC净增加4分中的2分。
+VP010：正常条件下拖把位置与湿润区域变化较明显，但拖把头仍有形变，采样帧不足以证明准确的去水过程。 空reasoning时前半段变化较弱，后段拖把头逐渐拉宽并出现重影式多片形态；未建立清楚完整的拖地去水过程。 正常reasoning在此保留了更强的请求响应，也是16例中唯一额外Joint通过。不能据空条件较高PC均分判断应全面删除reasoning。
+保留正常与所有控制组的原始分数。旧失败版reasoning的PC净收益不成立，但个别请求执行受益；下一版要同时保留稳定性与过程执行，不能把接近静止的高PC当作完整成功。当前已提交新版保持冻结，待其同数据40/60/16结果再定位。
+
+均值C配对画面复看（两个新增Joint案例）：
+VP034：正常条件的气球上移离开画面，后半段出现巨大透明曲面，充气过程不清楚。 均值C视频保持稳定、气球大小变化很弱；与空reasoning相似，采样帧没有清楚展示充气扩张。 这个新Joint通过不能直接视为完整执行了请求。该例PC增加2分，超过16例净增加的1分，其余15例PC总分反而少1；仍保留全部原始分数。
+VP038：正常条件出现明显周期纹理，滚筒逐渐收窄消失，未形成清楚的涂刷过程。 均值C条件显著减少周期纹理，滚筒移动并留下可见的深绿色涂刷带，语义响应有实际改善；但中段滚筒与左侧杆的连接中断，后段出现不同朝向的支架，仍有接触/连接问题。 这例确有画面和请求响应改善，不应把均值C优势全部解释为静止或评分失真；但还不能称为无缺陷的物理执行。
+旧版逐样本C的净贡献仍未成立。均值替换同时改变内容、幅度及正负条件差，不能把差异全部归因于语义信息；也不能据两例把所有均值收益否定为静止。下一版需让原请求绑定的物理作用在保留画面稳定性的同时改善动作/关系，当前新架构仍等待自身配对结果。
+
+数值目标：{"original40": {"status": "not_met", "checks": {"pc_mean_retains_r10a": false, "pc_pass_rate_retains_r10a": false, "sa_improves_r10a": true, "sa_improves_r1": false, "sa_above_3_25": false, "joint_exceeds_r1": false}, "automatic_adoption": false, "actual_video_quality": "Requires review of matched generated processes and visible artifacts"}, "full60": {"status": "not_met", "checks": {"pc_mean_retains_r10a": false, "pc_pass_rate_retains_r10a": false, "sa_improves_r10a": true, "sa_improves_r1": false, "sa_above_3_25": false, "joint_exceeds_r1": false}, "automatic_adoption": false, "actual_video_quality": "Requires review of matched generated processes and visible artifacts"}}
+少数视频复看与数值评分分别保留；脚本不宣布架构有效或目标完成。
+同协议比较和逐例得失见generation_review.json。未混入599结果。

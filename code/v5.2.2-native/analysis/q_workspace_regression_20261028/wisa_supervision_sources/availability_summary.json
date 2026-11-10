@@ -1,0 +1,275 @@
+{
+  "source_catalog": "/run/determined/NAS1/public/Dataset/WISA/data/wisa-80k.json",
+  "cache_manifest": "/home/liuzhirui/Project/physGen/data_cache/wisa_4000/base/manifest.json",
+  "source_records": 79480,
+  "cached_records": 3857,
+  "matched_unique": 3857,
+  "unmatched": [],
+  "ambiguous": [],
+  "matched_splits": {
+    "train": 3666,
+    "validation": 191
+  },
+  "source_keys": {
+    "width": 75856,
+    "height": 75856,
+    "fps": 75856,
+    "duration": 75856,
+    "motion_score": 75856,
+    "motion_score_v2": 75856,
+    "visual_quality_score": 75856,
+    "text_bbox_num": 75856,
+    "text_bbox_ratio": 75856,
+    "label": 79480,
+    "physical_annotation": 79480,
+    "captions": 79480,
+    "video_name": 79480
+  },
+  "physical_annotation_keys": {
+    "phys_law": 79480,
+    "n0": 79480,
+    "n1": 79480,
+    "n2": 79480,
+    "q0": 79480,
+    "q1": 79480,
+    "q2": 79480,
+    "q3": 79480,
+    "q4": 79480,
+    "quantify_n0": 79480,
+    "quantify_n1": 79480,
+    "quantify_n2": 79480
+  },
+  "source_label_distribution": {
+    "collision": 4813,
+    "reflection": 15952,
+    "solidification": 2270,
+    "deformation": 3302,
+    "liquefaction": 1627,
+    "combustion": 5641,
+    "scattering": 4850,
+    "interference and diffraction": 3997,
+    "rigid body motion": 7480,
+    "vaporization": 3040,
+    "elastic motion": 2654,
+    "gas motion": 2788,
+    "melting": 3657,
+    "refraction": 3977,
+    "liquid motion": 7603,
+    "unnatural light source": 3813,
+    "explosion": 2016
+  },
+  "selected_label_distribution": {
+    "collision": 221,
+    "reflection": 894,
+    "solidification": 117,
+    "scattering": 206,
+    "interference and diffraction": 187,
+    "vaporization": 148,
+    "combustion": 258,
+    "rigid body motion": 312,
+    "elastic motion": 126,
+    "melting": 208,
+    "deformation": 145,
+    "refraction": 187,
+    "gas motion": 141,
+    "liquid motion": 335,
+    "unnatural light source": 191,
+    "explosion": 98,
+    "liquefaction": 83
+  },
+  "selected_nonempty_physical_fields": {
+    "phys_law": 3857,
+    "n0": 3857,
+    "n1": 3857,
+    "n2": 3857,
+    "q0": 3857,
+    "q1": 3857,
+    "q2": 3857,
+    "q3": 3857,
+    "q4": 3857,
+    "quantify_n0": 3529,
+    "quantify_n1": 3857,
+    "quantify_n2": 3857
+  },
+  "selected_counts": {
+    "all_pts_strictly_increasing": 3857,
+    "source_label_present_in_cache": 0,
+    "cache_has_nonempty_interactions": 0,
+    "cache_has_nonempty_objects": 0,
+    "cached_caption_differs_from_source": 1893,
+    "cached_caption_mentions_playback_time_manipulation": 15,
+    "parseable_n1": 3857,
+    "n1_end_exceeds_source_duration": 3311,
+    "n1_has_no_overlap_with_cached_pts_if_misread_as_source_event": 685
+  },
+  "cached_clip_interval_seconds_min": 1.3333330154418945,
+  "cached_clip_interval_seconds_max": 5.333333432674408,
+  "examples": [
+    {
+      "sample_id": "source0000000",
+      "video_name": "49fb8801b94439ce89ea3e8e866fdaebb3637afdb65f49fec24a53fd7e381367.mp4",
+      "source_duration_seconds": 10.0,
+      "source_pts_seconds": [
+        2.559999942779541,
+        5.760000228881836
+      ],
+      "source_label": "collision",
+      "original_physical_annotation": {
+        "phys_law": "when generating a video of a hamburger patty sizzling on a hot surface, it is crucial to consider the principles of heat transfer and phase changes. the cooking process involves conduction as heat from the hot surface transfers to the patty, causing the moisture within it to evaporate and form droplets of oil or juices around the edges, which should be depicted accurately to reflect the sizzling sound and visual effects of cooking. additionally, the shimmering effect of the droplets should represent the phenomenon of light reflection and refraction, which can enhance the realism of the scene.",
+        "n0": "hamburger patty: 0.9 to 1.1 g/cm³",
+        "n1": "0 to 10 seconds",
+        "n2": "150 to 200 degrees celsius",
+        "q0": "liquid motion, deformation",
+        "q1": "combustion, vaporization",
+        "q2": "reflection, scattering",
+        "q3": "no",
+        "q4": "1. liquids objects appearance\n2. no change",
+        "quantify_n0": [
+          [
+            0.9,
+            1.1
+          ]
+        ],
+        "quantify_n1": [
+          0.0,
+          10.0
+        ],
+        "quantify_n2": [
+          150.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "sample_id": "source0000001",
+      "video_name": "8810444677f17196492ef52c8b1cb786dca17782573243e54625ac50d00a51c5.mp4",
+      "source_duration_seconds": 8.34,
+      "source_pts_seconds": [
+        3.1531498432159424,
+        4.487816333770752
+      ],
+      "source_label": "collision",
+      "original_physical_annotation": {
+        "phys_law": "when generating a video based on this description, it is crucial to consider the principle of conservation of energy and the dynamics of motion. specifically, when the toy car is pushed, it should exhibit realistic acceleration and deceleration based on the forces applied to it, and the dominoes should fall in a chain reaction, demonstrating the transfer of kinetic energy from one domino to the next. additionally, ensure that the interactions between the car and the dominoes follow newton's laws of motion, maintaining consistency with how objects behave in the real world.",
+        "n0": "domino: 1.5 to 2.5 g/cm³  \ntoy car: 0.5 to 1.5 g/cm³  \ntoy airplane: 0.5 to 1.5 g/cm³  ",
+        "n1": "0 to 5 seconds",
+        "n2": "0 to 30 degrees celsius",
+        "q0": "collision, rigid body motion",
+        "q1": "no obvious thermodynamic phenomenon.",
+        "q2": "no obvious optical phenomenon",
+        "q3": "yes",
+        "q4": "1. no change\n2. object disappearance (if the dominos are knocked over)\n3. object decomposition and splitting (if the domino setup is disturbed)",
+        "quantify_n0": [
+          [
+            1.5,
+            2.5
+          ],
+          [
+            0.5,
+            1.5
+          ],
+          [
+            0.5,
+            1.5
+          ]
+        ],
+        "quantify_n1": [
+          0.0,
+          5.0
+        ],
+        "quantify_n2": [
+          0.0,
+          30.0
+        ]
+      }
+    },
+    {
+      "sample_id": "source0000002",
+      "video_name": "f381a87f9deb85ef849b384dace6f17f0e08171f6f24d0bca2782ea8b6f25343.mp4",
+      "source_duration_seconds": 10.42,
+      "source_pts_seconds": [
+        2.6666667461395264,
+        6.0
+      ],
+      "source_label": "reflection",
+      "original_physical_annotation": {
+        "phys_law": "the most important physical principle to consider when generating this video is the behavior of light, particularly reflection and refraction, as they affect how the lake's surface interacts with the surrounding landscape and sky. additionally, the phenomenon of atmospheric scattering should be acknowledged, as it influences the soft gradient of colors in the sky, creating the serene ambiance typical of early morning or late afternoon light.",
+        "n0": "mountain: 2.5 to 3.0 g/cm³  \nlake water: 1.0 g/cm³  \nconiferous trees: 0.4 to 0.9 g/cm³  ",
+        "n1": "0 to 30 seconds",
+        "n2": "-5 to 5 degrees celsius",
+        "q0": "no obvious dynamic phenomenon",
+        "q1": "no obvious thermodynamic phenomenon.",
+        "q2": "reflection, refraction",
+        "q3": "no",
+        "q4": "1. no change",
+        "quantify_n0": [
+          [
+            2.5,
+            3.0
+          ],
+          [
+            1.0,
+            1.0
+          ],
+          [
+            0.4,
+            0.9
+          ]
+        ],
+        "quantify_n1": [
+          0.0,
+          30.0
+        ],
+        "quantify_n2": [
+          -5.0,
+          5.0
+        ]
+      }
+    },
+    {
+      "sample_id": "source0000003",
+      "video_name": "6cd603d147a10a523e51216cdbd1a1da3954b8670840313325c29da7a49ba917.mp4",
+      "source_duration_seconds": 8.34,
+      "source_pts_seconds": [
+        2.1354665756225586,
+        4.804800033569336
+      ],
+      "source_label": "reflection",
+      "original_physical_annotation": {
+        "phys_law": "when generating a video based on this description, it's important to consider the principles of motion and reflection. the dancer's movements should adhere to the laws of kinematics, ensuring that her ballet poses exhibit realistic fluidity and control, while the reflection in the mirror must accurately represent her position and orientation, following the law of reflection where the angle of incidence equals the angle of reflection.",
+        "n0": "dancer: 0.9 to 1.1 g/cm³  \nchair: 0.5 to 1.0 g/cm³  \ntelevision: 2.5 to 3.0 g/cm³  ",
+        "n1": "0 to 30 seconds",
+        "n2": "20 to 25 degrees celsius",
+        "q0": "rigid body motion, elastic motion",
+        "q1": "no obvious thermodynamic phenomenon.",
+        "q2": "reflection",
+        "q3": "no",
+        "q4": "- no change",
+        "quantify_n0": [
+          [
+            0.9,
+            1.1
+          ],
+          [
+            0.5,
+            1.0
+          ],
+          [
+            2.5,
+            3.0
+          ]
+        ],
+        "quantify_n1": [
+          0.0,
+          30.0
+        ],
+        "quantify_n2": [
+          20.0,
+          25.0
+        ]
+      }
+    }
+  ],
+  "playback_time_note": "PTS measures presentation time; caption matches are indicators, not calibrated capture-time scaling.",
+  "note": "Counts establish data availability/provenance, not correctness of physical labels."
+}

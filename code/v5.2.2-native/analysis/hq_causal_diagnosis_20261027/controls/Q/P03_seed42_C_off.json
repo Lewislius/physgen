@@ -1,0 +1,43 @@
+{
+  "id": "P03",
+  "caption": "A tennis racket strikes an approaching tennis ball, sending the same ball back in the opposite direction.",
+  "revision": "v522_native_q_seed128_verifier_frozen_simple_v27",
+  "optimizer_step": 224,
+  "seed": 42,
+  "fps": 23.999999284744284,
+  "conditions": "first frame, caption, existing requirements; no future target",
+  "physical_dependency_analysis": "OBSERVED: Racket and ball in mid-air, racket held ready, ball approaching.\nRESPONSE: Racket must strike ball to reverse its motion via elastic deformation and momentum transfer.\nPERSISTENCE: Contact duration and string tension sustain force until ball rebounds.\nCHANGE: Earlier strike timing alters rebound angle and speed due to altered momentum exchange.",
+  "latent_reasoning_steps": null,
+  "configured_reasoning_steps": 2,
+  "condition_tokens": 128,
+  "geometry": {
+    "mode": "native",
+    "rgb_size": [
+      480,
+      832
+    ]
+  },
+  "output_size_hw": [
+    480,
+    832
+  ],
+  "latent_feedback": null,
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "condition_strength": 0.0,
+    "latent_feedback": {
+      "enabled": false,
+      "metric": "relative_rms",
+      "sigmas": [
+        0.85,
+        0.65
+      ],
+      "step_size": 0.1
+    }
+  },
+  "intervention": "C_off",
+  "source_checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/checkpoints/v522-q-seed128-message-verifier-frozen-simple_66353/latest.pt",
+  "controlled_diagnostic": true
+}

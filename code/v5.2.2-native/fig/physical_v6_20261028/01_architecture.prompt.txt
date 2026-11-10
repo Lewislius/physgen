@@ -1,0 +1,27 @@
+Use case: infographic-diagram.
+Asset type: publication-quality scientific architecture diagram, page 1 of 2.
+Primary request: Draw the CURRENT Physical Write Distillation V6 generation pipeline, using the supplied old V4 illustration ONLY as a STYLE reference. Replace its entire architecture with the exact V6 specification below. Create a NEW very wide landscape academic figure at maximum readable resolution, ideally 3840 by 2160. English technical labels, crisp serif headings, white background, thin orthogonal arrows, rounded boxes, pastel fills, restrained red/blue/teal/orange/purple palette, dashed olive panel borders, tiny teal and blue token matrices, plus-circle residual nodes, and one small illustrative dye-in-water input/output thumbnail. Match the reference's ProPhy-paper visual grammar, without copying its old computations. Keep generous whitespace and readable dimension labels.
+
+Title: "Physical Write Distillation V6"
+Subtitle: "Physical enhancement + physical fusion | Proposed architecture"
+
+TOP THIRD: full end-to-end overview, three aligned left-to-right lanes.
+Physical lane: "First frame + request" -> "Frozen Qwen" (snowflake, absolutely NO trainable flame) -> "Evidence H [B,M,4096]" -> "Physical enhancement" (flame, "Q: 128 x 4096", "shared block x2") -> "C [B,128,4096]" -> "P: 4096 -> 3072" (flame) -> "Cw [B,128,3072]". Connect Cw down into a red "Physical fusion: blocks 3,6,...,30" branch.
+Text lane: "Original request" -> "Frozen native T5" -> "[B,512,4096]" -> "Native text embedding: 4096 -> 3072 -> 3072" -> "T [B,512,3072]". Route to original text attention inside Wan.
+Video lane: "I0 + noisy latent z_sigma [B,48,21,30,52]" -> "Native patch Conv3D: 48 -> 3072; patch=(1,2,2)" -> "X [B,8190,3072]" -> "Wan blocks" -> a plus node receiving "delta H" from Physical fusion -> "... Wan blocks ..." -> "Denoising + frozen VAE" -> "Video [B,3,81,480,832]". A blue arrow from CURRENT Wan state X to physical fusion is indispensable. Show Wan backbone foundation frozen plus "self-attention / FFN LoRA in stage B"; never label the entire Wan as trainable. Label geometry under the video path "8190 = 21 x 15 x 26; first frame: 390; future: 7800".
+
+LOWER LEFT PANEL, approximately 30% width: "(a) Physical enhancement".
+Draw H [B,M,4096] feeding memory to a single shared trainable block, with learnable Q [B,128,4096] feeding its state. Inside block three readable stacked rows: "Cross-attention to H + residual", "Q self-attention + residual", "FFN 4096 -> 8192 -> 4096 + residual". Label "32 heads x 128" and loop "2 passes, shared weights". Block -> C [B,128,4096] -> "RMSNorm -> P 4096->3072 -> RMSNorm" -> Cw [B,128,3072]. No third R0, no trainable Qwen, no object/phase slots, no added language decoder.
+
+LOWER RIGHT PANEL, approximately 68% width: "(b) Physical fusion at one Wan block".
+Use two clearly separated horizontal attention lanes that merge ONLY after their output projections.
+Input Hs [B,8190,3072] -> "native norm3" -> X. X -> "frozen native Wq: 3072->3072" -> q_raw; split this q_raw to both lanes.
+Upper original text lane: q_raw -> "native q norm" -> "Q_T [B,24,8190,128]". T [B,512,3072] -> "Native text K/V" -> "K_T,V_T [B,24,512,128]". Native text attention -> "native W_O" -> "Y_T [B,8190,3072]".
+Lower red C lane: take q_raw FUTURE 7800 positions, add E_l(tau,delta_tau), apply q norm -> "Q_C [B,24,7800,128]". Cw -> two independent C projections: "K_C: copied frozen base + LoRA r=32", "V_C: copied frozen base + LoRA r=32". Both are 3072->3072, K additionally uses its own norm. -> "K_C,V_C [B,24,128,128]" -> "C attention: separate softmax" -> "[B,24,7800,128]" -> "merge heads [B,7800,3072]" -> "O_C: 3072->3072; zero init" (flame) -> "delta H_future [B,7800,3072]" -> "prepend 390 zero tokens" -> "delta H [B,8190,3072]".
+Show a small time input below C lane: "PTS: tau, delta_tau [B,21,2]" -> "sin/cos 256 -> Linear 3072" -> "E_l [B,7800,3072] (spatial broadcast)" into the q_raw future addition. sigma remains native diffusion conditioning, do not call sigma physical time.
+Final right sum must have THREE inputs: Hs + Y_T + delta H -> "U [B,8190,3072]" -> "Native FFN + residual; 3072->14336->3072; stage-B LoRA" -> "H_out [B,8190,3072]". Label native modulation retained. C output is injected before native FFN. Do not add a duplicate residual.
+Provide a small dashed purple connector from delta H_future reading "Actual write supervised by L_write (page 2)".
+
+BOTTOM thin strip: "Stage A: train enhancement + P + C K/V LoRA + O_C + time; freeze Wan" -> "Stage B: continue A + warm up Wan self-attention and FFN LoRA".
+Legend: snowflake=frozen foundation; flame=trainable new parameters; blue=native Wan; teal=evidence/C; orange=native text; red=physical branch; purple dashed=training only. Tiny footnote: "B: batch; M: Qwen context tokens; tau: video presentation time; sigma: diffusion noise. Proposed design, not a trained result."
+STRICT EXCLUSIONS: no old source/scope maps, no K_cond/K_scope, no G geometry branch in the generation path, no shared read-write A_scope, no gamma/beta modulation, no separate F_interact or temporal attention, no C language CE, no verifier. The only train-only details on this page are the supervision connector and phase strip. Every arrow must terminate on the correct box. Prioritize accurate topology, exact tensor digits, readable labels and whitespace over decorative complexity.

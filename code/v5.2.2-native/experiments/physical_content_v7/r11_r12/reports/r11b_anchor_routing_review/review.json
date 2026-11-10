@@ -1,0 +1,54 @@
+{
+  "utc": "2026-11-04T10:31:50.870291+00:00",
+  "selection": [
+    {
+      "case": "VP027",
+      "caption": "Hands shape a lump of clay-like bread dough into a smooth, round boule on a wooden table.",
+      "selection": "VP027 is one of two Joint losses with fixed-anchor routing, selected from completed paired scores to inspect the PC-versus-SA tradeoff. One diagnostic case, not a prevalence estimate.",
+      "videos": {
+        "normal": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_memory_r11b/inference_outputs/physical_content_67308/step0400_api_fixed60_controls16_seed42/videophy40/cases/VP027/planned.mp4",
+        "anchor_routing": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_memory_r11b/inference_outputs/physical_content_67308/step0400_api_fixed60_controls16_seed42/controls/anchor_routing/videophy40/cases/VP027/planned.mp4"
+      },
+      "frames": {
+        "normal": [
+          0,
+          11,
+          22,
+          34,
+          45,
+          57,
+          68,
+          80
+        ],
+        "anchor_routing": [
+          0,
+          11,
+          22,
+          34,
+          45,
+          57,
+          68,
+          80
+        ]
+      },
+      "scores": {
+        "normal": {
+          "sa": 4,
+          "pc": 4
+        },
+        "anchor_routing": {
+          "sa": 2,
+          "pc": 5
+        }
+      },
+      "panel": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/reports/r11b_anchor_routing_review/VP027.png"
+    }
+  ],
+  "review_method": "Actual inspection of the paired8-frame panel. No synthetic imagery.",
+  "observations": {
+    "normal": "Known first frame has hands and dough. They persist at sampled frame11 but are absent by frame22; later video is dominated by repeated brown/grey texture. Raw scoresSA4/PC4 do not capture this prolonged content failure.",
+    "anchor_routing": "From sampled frame11 onward the image is almost black/dark brown, with a horizontal seam and faint repeating texture. Hands/dough are absent. RawPC5 is not evidence of successful kneading physics. SA2 correctly signals weak request fulfillment."
+  },
+  "decision": "Do not adopt anchor routing for itsPC4.5625 mean. The full16 SA/Joint regression and this actual failure support keeping the learned route while revising fusion. Normal R11B also remains rejected despite its per-caseSA4/PC4.",
+  "next": "Inspect evaluator frame loading/path provenance to distinguish an evaluation-pipeline defect from model-scoring limitations. Preserve original ratings and videos."
+}

@@ -1,0 +1,63 @@
+{
+  "status": "all_three_completed_from_preserved_csv",
+  "created_utc": "2026-11-04T20:00:12.547683+00:00",
+  "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/physics_iq_scoring_recovery/snapshots/20261104T200012Z",
+  "script": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/physics_iq_scoring_recovery/snapshots/20261104T200012Z/evaluate_physics_iq.py",
+  "interpreter": "/home/liuzhirui/benchmark/.venv-physicsiq/bin/python",
+  "command_extra": [
+    "--summarize-only"
+  ],
+  "fix": "Replace direct IQTable(pd.read_csv(...)) with official IQTable.from_csv; unchanged official metric functions, existing videos/masks/raw CSV reused. Add official per-scene/per-view decomposition.",
+  "validation": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/reports/physics_iq_csv_roundtrip_fixture/validation.json",
+  "original_fixture_limit": "Earlier fixture exercised official metric functions without testing the adapter CSV deserialization; the new actual CSV roundtrip covers the bug.",
+  "new_generation": 0,
+  "new_model_downloads": 0,
+  "new_api_calls": 0,
+  "run_on_cpu_after_writer_terminal": true,
+  "models": {
+    "wan_lora": {
+      "experiment": 67462,
+      "status": "completed_from_preserved_csv",
+      "raw_metrics_csv": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/outputs/wan_lora/seed42/physics_iq_metrics/wan_lora.csv",
+      "original_experiment_state": "STATE_ERROR",
+      "original_experiment_end_utc": "2026-11-04T20:18:00.876250Z",
+      "original_failure": "Confirmed unparsed CSV arrays: IQTable AxisError",
+      "completed_utc": "2026-11-04T20:26:54.484843+00:00",
+      "result": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/outputs/wan_lora/seed42/physics_iq_summary.json",
+      "final_score_view": 0.26003635878678355,
+      "scene_count": 20,
+      "video_count": 60,
+      "new_generation": 0
+    },
+    "r1": {
+      "experiment": 67463,
+      "status": "completed_from_preserved_csv",
+      "raw_metrics_csv": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/outputs/r1/seed42/physics_iq_metrics/r1.csv",
+      "original_experiment_state": "STATE_ERROR",
+      "original_experiment_end_utc": "2026-11-04T20:12:28.348404Z",
+      "original_failure": "Confirmed unparsed CSV arrays: IQTable AxisError",
+      "completed_utc": "2026-11-04T20:16:24.309159+00:00",
+      "result": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/outputs/r1/seed42/physics_iq_summary.json",
+      "final_score_view": 0.2651032257782627,
+      "scene_count": 20,
+      "video_count": 60,
+      "new_generation": 0
+    },
+    "r10a": {
+      "experiment": 67465,
+      "status": "completed_from_preserved_csv",
+      "raw_metrics_csv": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/outputs/r10a/seed42/physics_iq_metrics/r10a.csv",
+      "original_experiment_state": "STATE_ERROR",
+      "original_experiment_end_utc": "2026-11-04T20:46:28.960608Z",
+      "original_failure": "Confirmed unparsed CSV arrays: IQTable AxisError",
+      "completed_utc": "2026-11-04T20:52:51.601284+00:00",
+      "result": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/outputs/r10a/seed42/physics_iq_summary.json",
+      "final_score_view": 0.23669164754462252,
+      "scene_count": 20,
+      "video_count": 60,
+      "new_generation": 0
+    }
+  },
+  "original_snapshots_preserved": true,
+  "completed_utc": "2026-11-04T20:52:51.601284+00:00"
+}

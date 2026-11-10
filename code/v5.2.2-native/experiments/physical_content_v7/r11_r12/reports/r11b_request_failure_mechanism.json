@@ -1,0 +1,51 @@
+{
+  "utc": "2026-11-04T11:18:24.510534+00:00",
+  "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_memory_r11b/snapshots/20261104T044513Z",
+  "observed_effects": {
+    "fixed16_normal": {
+      "sa": 2.8125,
+      "pc": 3.875,
+      "joint": 3
+    },
+    "fixed16_request_off": {
+      "sa": 3.1875,
+      "pc": 3.8125,
+      "joint": 6
+    },
+    "sa_normal_minus_off_wins_ties_losses": [
+      0,
+      11,
+      5
+    ],
+    "vp027": "Normal degenerates into repeating texture by frame22, request-off restores clear hands/dough and shaping; both scoreSA4/PC4. Samecheckpoint/input/seed intervention."
+  },
+  "verified_code_facts": [
+    {
+      "path": "physical_content/model.py:92",
+      "fact": "The request branch projects image-contextualized Qwen literal request words directly into native width using a full trainable interface initialized from the physical-word fitted map."
+    },
+    {
+      "path": "physical_content/model.py:177",
+      "fact": "Nonempty request memory is independently normalized by attention over request keys only. Unlike physical fusion, this request attention has no zero-value reference slot. Each query attention distribution sums to1; this does not by itself prove a nonzero or harmful output, because values/output can cancel or learn suppression."
+    },
+    {
+      "path": "physical_content/model.py:215",
+      "fact": "The request result is separately added at each future video position to the physical delta, using10 full-width output projections. It does not compete for attention mass with original native T5 text or the physical reference slot."
+    },
+    {
+      "path": "physical_content/model.py:182",
+      "fact": "Request values come from Qwen request memory through frozen Wan V, not from current video values. Video state influences addressing through the native query. Thus it is not valid to call the branch entirely state-independent."
+    },
+    {
+      "path": "physical_content/model.py:180",
+      "fact": "An empty request has a zero-length memory and returns a zero branch write."
+    },
+    {
+      "path": "infer.py:110",
+      "fact": "Inference uses fixed standard guidance5 on positive and negative predictions; a direct request branch exists only for nonempty requests. This is consistent with the approved protocol, not evidence of a coding error or authorization for gamma ablation."
+    }
+  ],
+  "causal_interpretation": "The inference intervention establishes harm from this fitted request branch for SA/Joint and the viewedVP027 quality. It does not isolate which implementation property caused that harm. Separate attention normalization, direct context-value writes and limited400-step calibration are mechanism hypotheses, not measured root causes.",
+  "design_consequence": "Do not retain this implementation or enlarge it simply to increase semantic capacity. Current R12A instead couples physical fusion with the native-text-conditioned current video state and reads current video values. Its normal/video_read_off/pretext_read controls will test those mechanisms. Removal alone is not counted as achieving the whole goal.",
+  "limits": "No new GPU/model/API work. Code audit and existing matched generation evidence only. Native Qwen encoder validity and every possible semantic branch are not disproved. Keep gamma5 and raw scoring unchanged."
+}

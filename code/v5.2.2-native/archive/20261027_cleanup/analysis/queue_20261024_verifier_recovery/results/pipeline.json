@@ -1,0 +1,44 @@
+[
+  {
+    "stage": "calibration",
+    "command": [
+      "/home/liuzhirui/miniconda3/envs/moviestory/bin/python",
+      "-I",
+      "-B",
+      "-u",
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261024_verifier_recovery/code/tools/calibrate_process_verifier.py",
+      "--source",
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/pretrained_video_evidence",
+      "--generated-root",
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/temporal_distribution/videos",
+      "--output",
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261024_verifier_recovery/results/calibration",
+      "--steps",
+      "512"
+    ],
+    "state": "complete",
+    "started_unix": 1792860858.749406,
+    "returncode": 0,
+    "seconds": 649.7628426551819
+  },
+  {
+    "stage": "real_training_check",
+    "command": [
+      "/home/liuzhirui/miniconda3/envs/moviestory/bin/python",
+      "-I",
+      "-B",
+      "-u",
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261024_verifier_recovery/code/train/train.py",
+      "--config",
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261024_verifier_recovery/real_training_check.yaml",
+      "--initialize-generator",
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/checkpoints/v522-diagnostic-reasoned_process-8cases32updates-seed42_65836/latest.pt",
+      "--initialize-critic",
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261024_verifier_recovery/results/calibration/verifier_regression_seed42.pt",
+      "--stop-after",
+      "4"
+    ],
+    "state": "running",
+    "started_unix": 1792861508.5150433
+  }
+]

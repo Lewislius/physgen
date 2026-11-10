@@ -1,0 +1,75 @@
+{
+  "prepared_utc": "2026-10-31T05:04:03.350755+00:00",
+  "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/early_execution_r3/snapshots/20261031T050403Z",
+  "jobs": [
+    {
+      "kind": "baseline64",
+      "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/early_execution_r3/submissions/baseline64_20261031T050403Z.yaml",
+      "status": "running_on_RTX",
+      "experiment_id": 66866,
+      "attempts": [
+        {
+          "experiment_id": 66863,
+          "status": "H100_rejected_before_loading"
+        },
+        {
+          "experiment_id": 66866,
+          "status": "RTX_accepted"
+        }
+      ]
+    },
+    {
+      "kind": "guidance400_subset16",
+      "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/early_execution_r3/submissions/guidance400_subset16_20261031T050403Z.yaml",
+      "status": "completed",
+      "experiment_id": 66864
+    },
+    {
+      "kind": "candidate64",
+      "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/early_execution_r3/submissions/candidate64_20261031T050403Z.yaml",
+      "status": "running_on_RTX",
+      "experiment_id": 66870,
+      "attempts": [
+        {
+          "experiment_id": 66865,
+          "status": "H100_rejected_before_loading"
+        },
+        {
+          "experiment_id": 66867,
+          "status": "H100_rejected_before_loading"
+        }
+      ],
+      "evaluation_physical_guidance": 5,
+      "reviewed_launcher": "experiments/physical_content_v7/early_execution_r3/submissions/candidate64_guidance5_20261031T053400Z.yaml"
+    }
+  ],
+  "first_stop": 64,
+  "cases": 16,
+  "r1_reference": {
+    "native400": {
+      "sa": 3.075,
+      "pc": 3.45,
+      "joint": 0.25
+    },
+    "candidate400": {
+      "sa": 2.95,
+      "pc": 3.625,
+      "joint": 0.25
+    }
+  },
+  "automatic_training_extension": false,
+  "previous_long_r2_job": 66857,
+  "previous_long_r2_state": "killed_after_cancel_did_not_release_running_allocation",
+  "updated_utc": "2026-10-31T05:45:39.049990+00:00",
+  "note": "66857 remained executing inference despite PAUSED. Cancel then kill prevents its automatic R2 training. Completed heldout8 guidance1 artifacts remain available.",
+  "pc_preservation_reference": {
+    "r1_400_full40_pc_mean": 3.625,
+    "r1_400_full40_pc_pass_rate": 0.45,
+    "native400_pc_mean": 3.45,
+    "native400_pc_pass_rate": 0.4,
+    "selection": "Improve SA while preserving or improving PC; small subsets compared against same subset, then full40 confirmation."
+  },
+  "authoritative_followups": "experiments/physical_content_v7/early_execution_r3/reports/reviewed_followups.json",
+  "user_fixed_guidance": 5,
+  "further_gamma_ablations": false
+}

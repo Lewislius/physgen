@@ -1,0 +1,49 @@
+R11A 修订版：原生语义适配与顺序物理执行
+2026-11-03；替代用户取消的 Search67212/Run68599。不是R11B。
+
+目标与证据
+以同协议R10A400的PC40=3.750、PC60=3.833333为必须保住的参照，提升SA/Joint与真实视频质量；追求SA>3.25，Joint超过R1的10/40、13/60。不能用SA提高抵偿PC下降，不能预先承诺分数。
+完整599同条件比较：R10A相对R1 PC+.18197，SA-.09182；413例PC通过中293例SA未通过。仅修物理稳定性不足以完成请求过程。
+既有16例normal相对关闭物理：PC3.875对3.625、SA3.0625对3.25。执行分支有PC贡献，但语义损失真实存在。
+最新R10A400固定16：Q更新token cosine .72073，投影执行修正 .86136，跨样本执行修正均值 .92568。不能套用R1的.995结论，也不把任意增加差异作为优化目标。
+原实现原生文本cross-attention全部冻结；物理K/V/O和额外状态映射可学习，原Wan LoRA只覆盖self-attention Q/K/V/O与FFN。这是确定的适配不对称；尚不能独立证明它是SA下降的唯一根因。
+原融合在同一pre-text状态上并行计算文本与物理后相加；物理读取不能在本层直接使用刚读到的文本结果。但前面层已含文本信息，所以不是“物理完全看不到请求”。
+
+本次连贯修改
+1. 让30层已有原生文本cross-attention的Q/K/V/O均有rank32、alpha32 LoRA。
+Q适配当前视频状态对请求词的选择，K适配词与查询的匹配，V/O适配语义信息的表达和写入。不新增语义token库、不重复运行T5或Qwen、不添加语义预测器。
+相比R10A增加23,592,960参数；旧未训练R11A仅K/V/O为17,694,720参数。所有新增LoRA-B零初始化，隔离新增随机数；原有物理及backbone参数和初始模型输出与R10A一致。
+2. 融合按“原生文本残差 → 物理执行残差 → FFN”运行。
+在每三个block一次的原物理位置，先计算原生文本attention并写回真实residual；再用原block的norm3处理这个更新后的状态，读取原C并执行物理修正。
+等价结构为 h_text=h+TextAttention(norm3(h),T5)，h_out=h_text+Physical(norm3(h_text),C)。物理输出仍只写未来latent位置；之后执行原FFN。
+绝不把norm3(h)+text当作h_text，避免混淆归一化状态与真实residual的尺度。此次增加的顺序协调没有新参数、门或损失。
+物理query复用cross-attention Q的官方冻结base，不使用文本Q的LoRA增量；不复制额外的物理Q矩阵。文本Q仍能经h_text影响物理读取，这是有意的条件协作，不是梯度隔断。
+原物理K/V/O、状态值映射、video-time、参考key、group prior都保留；状态查询和额外状态值映射一起读取post-text状态。R10A两项旧权重对照67213仍用于后续决定是否简化这些结构；不据尚未完成的对照盲删。
+3. 原生文本LoRA从第1步就参与条件适配。
+前128步：物理enhancement/fusion与新文本Q/K/V/O LoRA共同训练；原self-attention/FFN LoRA冻结。后272步：上述模块与原backbone LoRA共同训练。总400步、accum4、1600样本。
+新文本参数单独native_text优化器组，峰值2e-5，warmup32，clip1。物理和原backbone所有学习率/预热/梯度阈值维持R10A；原backbone仍272步。
+因此比较是“相同400总步与数据”，不是“所有参数更新次数完全相同”。文本新增参数训练400步，不再等物理先训练128步后才启用。
+
+保留的训练与输入
+Qwen物理reasoning→Q256两轮共享读取/交互→全宽C_route/C_execute→状态相关物理fusion主干不变；保留原生T5语义通路。
+从官方Wan与既有训练输入拟合接口新初始化，不继承R10A/R1项目权重或优化器。只允许恢复本次run自己的checkpoint。
+真实训练视频的FM+原多尺度tail聚合，routing-only原生词MSE辅助保留；不把execution C拉回词向量，不引入评分器/reward/新语义损失。
+与R1/R10A的1600样本顺序、noise/sigma/dropout及损失日程相同。gamma5、50步Euler、shift5、nativeCFG5、seed42不变。
+用户确认暂无API，本轮先提交架构修订，数据更新后置。当前训练标签/Qwen缓存均未改写，也没有下载或调用外部模型。
+实际输入工程审计未发现T5/Qwen截断或缓存描述错配；但球离开球拍被写成悬停、未完句被审核通过等事实缺陷已证实。架构适配不能自动修复错误监督；下一版结合结果和可用API安排文本视频对齐，而非声称本轮已解决。
+API适合视频重标注与首帧/请求reasoning；当前标准对话API不提供本地逐词4096维隐藏状态接口。可采用API生成文本、本地冻结Qwen编码的组合。离线训练视频描述可看完整真实训练片段；生成侧reasoning仍只用首帧与请求。
+
+评测和归因
+连续400，保留128/250/400权重，但不额外中断生成250测试。
+先原40，再固定新增20并汇总60；报告SA/PC五分均值、>=4的SA/PC/Joint通过率及同样本得失，复看实际过程、伪影和后程稳定性。不新铺开599。
+固定16七项：text_adapter_off、parallel_fusion、无关reasoning、空reasoning、训练均值C、anchor_only、no_c。
+text_adapter_off在两CFG臂关闭新增Q/K/V/O LoRA，保持C及物理参数；post-text状态随文本变化是自然结果。不是重训的R10A。
+parallel_fusion在两臂让物理读取和状态映射恢复pre-text，保持所有已训练参数及基础physicalQ；定位顺序协调的作用。
+原正常16复用40结果。上述推理干预检验该checkpoint是否使用机制，不能分离从第1步训练语义通路的历史贡献；不为凑因果结论铺开重训矩阵。
+no_c仍保留文本适配；training-mean仅由训练输入形成，保留本图与T5；错误/空reasoning保持本图、本请求与自己的negative C。
+功能测试只证明正确实现、梯度到达、恢复与对照开关，不是质量改善证据。达到目标必须等完整400/40/60和实际视频；不达则明确报告并据证据选R11B。
+
+提交与范围
+新版revision physical_content_v7_semantic_execution_r11a_v2；独立冻结snapshot/YAML保存于本目录，旧051504源不变。
+single-slot blk-96g，仅RTX6000 Blackwell，H100在加载模型前退出86。现有R10A控制67213不重复提交；用户取消的R9不恢复。
+本轮提交R11A修订版，后续按实际结果迭代R11B→R12A→R12B，到R12B完成既定报告后暂停。排队每30min检查，不密集轮询。

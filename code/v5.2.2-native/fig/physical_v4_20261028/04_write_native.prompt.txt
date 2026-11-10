@@ -1,0 +1,29 @@
+PAGE_NUMBER=4
+Title: “Physical Block V4 · ④ 共享关联写回与原生 Wan 合流”
+Subtitle: “A_scope 同时用于读与写｜文本与物理各自投影后相加｜3072=24×128”
+
+(a) 使用图②的同一 A_scope 写回；不重新计算位置路由
+“A_scope [B,24,21,128,390] / 从图②原样复用” -> “transpose 最后两轴” -> “A_scopeᵀ [B,24,21,390,128]”.
+Second input: “D_head [B,24,21,128,128] / 来自图③的响应”.
+Both feed “A_scopeᵀ @ D_head / 沿关系轴 R 求和” -> “M_phys [B,24,21,390,128]” -> “merge heads” -> “[B,21,390,3072]”.
+Below, one clear equation: “ΔX[t,p] = O_phys( concat_heads Σ_r A_scope[r,t,p] · D_head[r,t] )”.
+
+(b) 独立物理输出投影
+“[B,21,390,3072]” -> “O_phys,ℓ / 3072→3072；零初始化” -> “ΔX [B,21,390,3072]” -> “首帧 t=0 的新增写入置零” -> “flatten T×P” -> “ΔH_phys [B,8190,3072]”.
+Short note: “无独立 K_exec 二次路由；原生时空交互仍可利用首帧”.
+
+(c) 原生文本 attention 独立保留
+Upper row: “H_s [B,8190,3072]” -> “原生 norm3” -> “X [B,8190,3072]” -> “原生 Wq＋norm＋split” -> “q_text [B,24,8190,128]”.
+Lower row: “E · 原生文本 context [B,512,3072]” -> “原生 Wk / Wv；K norm” -> “k_text / v_text [B,24,512,128]”.
+Both -> “原生文本 attention” -> “[B,24,8190,128]” -> “merge heads＋原生 Wo / 3072→3072” -> “Y_text [B,8190,3072]”.
+Clearly label “此处不与 C 共用 K/V/O”.
+
+(d) 合流后继续原生残差与 FFN
+Three inputs “H_s [B,8190,3072]”, “Y_text [B,8190,3072]”, “ΔH_phys [B,8190,3072]” -> one plus node -> “H1=H_s+Y_text+ΔH_phys [B,8190,3072]”.
+-> “原生 FFN 子层＋残差 / 3072→14336→3072 / 保留扩散调制” -> “H_out [B,8190,3072]” -> “下一个 Wan block”.
+Do not add an extra outer residual around an operator already labelled with residual.
+
+(e) 原生生成输出
+“最后一层 [B,8190,3072]” -> “原生输出头 / 3072→192；192=48×1×2×2” -> “[B,8190,192]” -> “unpatchify” -> “v̂ [B,48,21,30,52]”.
+-> “多步去噪，得到 z0 [B,48,21,30,52]” -> “原生 VAE decode” -> “视频 [B,3,81,480,832]”.
+Footer: “ΔH_phys：新增物理残差；Y_text：原生文本输出；v̂：扩散流场，非物理运动速度。两路输出分别投影，之后相加；首帧保持 I2V 约定。”

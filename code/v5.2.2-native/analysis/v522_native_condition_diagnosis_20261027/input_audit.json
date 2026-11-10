@@ -1,0 +1,17 @@
+{
+  "scope": "Manual inspection of existing first images and generated frame grids; not a complete audit of VideoPhy2 inputs",
+  "cases": [
+    {
+      "id": "VP026",
+      "issue": "Prompt asks for two people stretching a bungee cord, while the saved first image shows a suspended apparatus above the sea. The required actors/action setup is not presented.",
+      "source_image": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP026/first.png"
+    },
+    {
+      "id": "VP006",
+      "issue": "The old first image shows a large framed white sheet and people away from it; a hand-held wet cloth ready to be twisted is not clearly established.",
+      "source_image": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP006/first.png"
+    }
+  ],
+  "interpretation": "Within-checkpoint C-on/off comparison remains paired, but low semantic scores on these inputs cannot be attributed solely to the connector.",
+  "followup": "Reuse previously generated first images for VP001/VP006, preserve all non-image tensors, original process clauses and exact noise; regenerate Qwen conditioning from the new first image."
+}

@@ -1,0 +1,249 @@
+2026-10-28：从官方基础模型开始、完全无 verifier 的 Physical Block 设计 V3
+
+后续修订：用户要求移除依赖补标的来源/作用区域/过程阶段三项损失。当前主方案为 PHYSICAL_BLOCK_NO_DENSE_LABELS_V4.txt；本文件保留为设计历史，下面的 L_binding 与补标要求不再是当前训练方案。
+
+状态：可落实到接口、计算图和监督数据的设计修订；未实现新模型或启动训练。替代 V2 的旧 checkpoint 继承与视频评分反馈方案。WISA_SUPERVISION_FEASIBILITY.txt 及已生成的监督来源文件是本方案的数据依据。
+
+一、训练起点与明确边界
+
+“从头训练”在当前项目范围内定义为：只加载官方预训练 Qwen3-VL-8B、Wan2.2-TI2V-5B 及其原生 T5/VAE；所有项目新增模块、Q seed、循环反馈适配、C 投影、Physical Block、Qwen/Wan LoRA、训练读出头与 optimizer 都新初始化。没有 66443、v11 generator.pt、旧 alignment、旧 LoRA、旧 Q 分支或旧训练状态迁移。
+
+基础模型已有能力是训练出发点，不承诺初始新模型已经具备 66443 的生成稳定性。旧运行只作为历史参考。物理写入的最后输出投影零初始化，其他模块按各自正常尺度初始化，从原生 Wan 函数开始学习；零初始连接不等于读取项目 checkpoint，也不是训练后稳定性的保证。
+
+完全无 verifier：没有 judge/critic、视频评分器、评分校准、奖励、排序或评分反传。训练专用事实读出头只用标准标签做监督，不能读取生成视频并给生成器一个质量分数；推理时删除这些训练头。
+
+二、完整路径及 H/Q 选择
+
+原生文本路径：原始 caption → 原生 T5 / text embedding → 原生文本 cross-attention K/V/O → Wan。
+物理路径：首帧＋原始 caption → Qwen 原生多模态证据 H → 原生 latent reasoning → C → 独立 K/V 与 Physical Block → Wan。
+
+H 保留视觉网格、文本跨度、来源与有效 mask，宽度 4096。
+Q 路线使用新的 128×4096 推理工作空间，持续读取 H，复用 Qwen 原生层/prefix KV 与匹配层级的循环反馈。Qwen 生成侧 LoRA 有梯度，不能继续沿用 message 路径的 no_grad/detach。
+H 路线则在原生 hidden 层级上对内容表示进行 refinement，保持可寻址内容，不另建匿名 128 槽。后续 Physical Block 接受可变数量的关系状态 R，因此两种路线均有具体接口。
+
+主线推荐 H 证据记忆＋Q 关系推理；H 用于来源定位，Q 用于综合物理依赖。不是拼接两路后让 H 绕过 Q 输出物理消息。训练不要求 Q 槽正交、不规定槽是对象或物理类别，也不以差异大小作为物理质量目标。
+
+新主路径不生成必须执行的四行分析或复杂事件图。latent reasoning 必须保留并训练；自由文字读出仅为训练中的解释/关系目标，不是额外推理输入。
+
+三、为什么在 4096 处理后再映射，以及哪些工作必须在 3072 做
+
+Qwen 内的证据结合、条件推理和信息提炼保持 4096，使用预训练算子。C 跨入 Wan 时，各层 C 专属投影直接映射 4096→3072。Wan 当前视频状态中的条件判断、时间关系处理与响应写入保持 3072。
+
+对第 l 个注入层：
+  K_cond[l]  = W_cond[l] Norm(R)       # 4096→3072
+  K_scope[l] = W_scope[l] Norm(R)      # 4096→3072
+  V_rule[l]  = W_value[l] Norm(R)      # 4096→3072
+
+这些投影及其 key norm 与原生文本 K/V 分开学习。条件读取和作用位置需要不同的查询语义，因此有两种 K；这不是要求 Qwen 在文字中输出两个复杂字段。输出 O_phys 也独立。
+
+原生文本 Q/K/V/O 及 text embedding 保持官方基础权重；Wan self-attention 的新 LoRA 在 joint 阶段学习时空执行。C 可使用原生查询作为基础，新增时间/空间适配只属于 C 分支。hidden 改变仍会影响后续文本读取，不能声称两路结果完全互不影响。
+
+四、第四点的实现：从证据到当前作用位置
+
+4.1 具体输入
+  R:            [B, Rn, 4096]，Q 路线 Rn=128
+  H_visual:     [B, P0, 4096]，当前 P0=15×26=390
+  H_text:       [B, Nt, 4096]
+  source_xy:    原始视觉 token 的空间坐标与几何变换
+  source_valid: 有效来源 mask，文本/不可见来源不强行绑定像素
+  X_l:          当前 Wan 注入位置的 [B,T,P,3072] hidden，当前 T=21，P=390
+  tau:          [B,T]，来自真实视频 PTS 的代表时刻
+
+这里 X_l 来自本次 denoising step 的原生 Wan 状态，不是独立预测器，也不在推理时读取真实未来。
+
+4.2 初始来源桥接
+  从 R 对 H 作两种可学习来源读取：条件依据 A_cond 和受影响内容依据 A_scope。两者均为软关联，允许分布在多个区域，允许只有文本依据或未知可见来源。
+  对视觉部分利用同一首帧的几何对应：
+    g_cond[r,l]  = sum_i A_cond_visual[r,i]  X_l[0,i]
+    g_scope[r,l] = sum_i A_scope_visual[r,i] X_l[0,i]
+  文本来源仍由 R 表达，不编造对应的首帧位置。Qwen 与 Wan 当前名义网格相同，只允许按实际图像预处理几何建立对应，不假设两个特征空间的数值含义相同。
+
+4.3 在当前帧重新定位
+  用当前 Wan 查询及 C 分支空间编码形成 q_phys[t,p]。
+  条件读取：a_cond[r,t,p] = softmax_p(<K_cond[r]+U_cond g_cond[r], q_phys[t,p]> / sqrt(d))。
+  作用范围读取：a_scope[r,t,p] = softmax_p(<K_scope[r]+U_scope g_scope[r], q_phys[t,p]> / sqrt(d))。
+  两个多头读取分别形成全宽 u_cond[r,t]、u_scope[r,t]。各头保留不同局部证据；不是把整张图先平均成一个全局向量。
+
+这一步解决“初始哪里提供依据”和“当前哪里受到影响”混为一谈的问题。移动后可在新位置响应；液体/气体可以扩大、分裂或合并作用区域。不将初始坐标用于硬空间距离门限，不做对象 ID 跟踪或运动轨迹传播。
+
+4.4 差异化消息写回
+  Physical Block 根据 R、当前两个读取、来源参考与时间产生动态 K_exec[r,t] 和 V_exec[r,t]。
+  当前每个位置的 q_phys[t,p] 读取这些动态 K/V：
+    m[t,p] = Attention(q_phys[t,p], K_exec[:,t], V_exec[:,t])
+    delta_x[t,p] = O_phys(m[t,p])
+  更新进入原生 block 的 cross-attention 残差位置，再由原生 FFN 和后续时空 attention 处理。保持首帧无直接新增 C 写入的 I2V 约定。
+
+空间对应的学习信号来自真实配对视频 FM 和带位置标注片段的直接监督。首帧网格对应可自动获得，语义作用区域则不能由网格相同自动推出。
+
+五、Physical Block 的核心与 MLLM 的实际作用
+
+5.1 MLLM 调节计算，不仅提供静态描述
+  R 由 Qwen 原生 latent reasoning 产生。除形成条件 K、作用 K、规则 V 外，R 还产生 3072 维的特征调制 gamma_R、beta_R，调节状态交互算子：
+    u[r,t] = F_interact(u_cond[r,t], u_scope[r,t], g_cond[r], g_scope[r], sigma;
+                        gamma_R[r], beta_R[r])
+  调制是全宽通道计算，不是运动强度标量，不替代视频状态，不决定画面动多大。F_interact 融合条件侧与受影响侧的内容及其交互，并保留完整有符号表示。
+  可将关系调制与交互核心跨注入层共享，层接口 K/V/O 保持各层可学习；不复制另一套 8B 模型。
+
+5.2 按实际时间关联条件与响应
+  对每个关系表示的 u[r,0:T] 做一次全宽时间处理。attention 的相对位置项使用秒数差，而非仅用 latent 帧编号：
+    score[t,j] = <Q_u u[r,t], K_u u[r,j]> / sqrt(d) + b_theta(tau[t]-tau[j], delta_tau[j])。
+  物理关系分支的历史读取使用 j<=t，允许此前条件对当前响应产生影响；原生 Wan 的联合时空 attention 不改成自回归，也不替换其 RoPE。该分支从已有整段 hidden 计算消息，没有新增未来状态 rollout。
+  由于 X_l 已含原生双向时空上下文，这个历史读取只是时间顺序的结构偏置，不是严格因果识别的数学保证。
+
+5.3 形成依赖当前证据的响应
+  K_exec/V_exec 由上述关系状态与当前 u 共同产生。缺少某种作用的条件时，可以学习不新增该作用；原生 Wan 继续生成已有运动。没有硬接触开关，没有统一减运动和所有材料刚性不变的限制。
+  碰撞、扩散、波传播、燃烧和形变用相同全宽接口表达，但由不同条件内容与训练事实决定响应。Physical Block 的专用性在于物理角色的分开读取、MLLM 隐规则调制、时间关系计算和对应监督，不是模块名字。
+
+5.4 审慎比较 MLLM 放置位置
+  采用：MLLM 在 4096 空间进行有监督的 latent reasoning，并直接调节 Wan 内物理执行算子。它在推理时实际参与生成，不承担判分。
+  不作为主方案：把 Wan 的带噪 3072 hidden 简单投到 4096，再逐层逐采样步送进 Qwen。相同宽度不等于原生视觉语言语义；此做法需要额外的状态语义桥接训练，且大幅增加计算。当前 WISA 不能为这一步自动提供精确时空物理状态真值。未来若引入，必须单独说明其可训练对应，不能只靠接口维度吻合。
+
+六、第七点的实现：真实时间接入与保留原有时序
+
+6.1 数据链
+  data.py 保留完整 rgb_times = pts - pts[0]，长度 81；latent_times = rgb_times[::4]，长度 21。当前数据已经具备 PTS，不使用 WISA 的 n1/quantify_n1 作为时钟。
+  latent t>=1 代表一个覆盖数个 RGB 帧的时间块，记录它的起止边界与真实跨度，不能把一个块内的不同物理阶段硬标成同一瞬间。监督保留 RGB 的实际时间/区间。VFR 时使用原始 PTS，不用帧率或线性插值冒充全帧时间。
+  推理若请求 81 帧、24 FPS，输入 rgb_times[n]=n/24，再作相同映射。首帧到末帧的时间跨度是 80/24 秒，与容器播放持续时间的定义分开。
+
+6.2 模块链
+  sample.times/rgb_times → generator.forward → 新 PhysicsContext → 每个 Physical Block。
+  context 增加 latent_times、delta_times、duration、frame/grid geometry 与来源关联。
+  clock[t] = MLP(concat(Fourier(tau[t]), Fourier(delta_tau[t]), tau[t]/T_seconds, log1p(T_seconds)))。
+  clock 进入 C 分支 q_phys、F_interact 和时间 attention；diffusion sigma 通过单独的噪声条件输入，不与物理/视频时间混为同一位置变量。
+  原生 Wan self-attention 的时空 RoPE、time_embedding(sigma) 和 modulation 保留原公式。
+
+6.3 时间语义边界
+  PTS 确定视频呈现时间。WISA 含慢动作/延时，缺少普遍可靠的现实时间缩放标定；这类样本不能声称有实测现实秒数。原生 caption 中明确的播放方式继续作为要求保留，未知拍摄尺度不伪造。
+  接入秒数用于学习时间尺度与过程节奏，不把 hidden 消息乘 delta_t 就声称进行了牛顿力学积分；FM 的 velocity 也不是视频内物体速度。
+
+七、无 verifier 的监督：实际有什么，怎样训练
+
+总生成训练目标为：
+  L = L_FM + lambda_C L_C_semantic + lambda_bind L_binding。
+
+L_FM：使用真实完整视频 latent 的流匹配，训练跨时空条件生成场。原生 Wan 时空网络与 Physical Block 在同一视频目标下联合学习外观与过程。独立 temporal FM 已从本轮新主方案移除，原因见第十二节；历史实现与旧实验不改动。
+
+L_C_semantic：从最终物理关系及其实际投影表示中，教师强制读出场景相关物理事实、条件依赖、允许变化和未知项。输入只有 C 与中性问题，没有原图/原 caption/H 旁路；标签是训练目标，不进入生成条件。监督梯度经过 C 投影、Qwen 原生 latent reasoner 和生成侧 LoRA。
+  已恢复的 WISA phys_law 提供机制候选，但不能全量不加整理地当真值；q/n 字段的局限见 WISA_SUPERVISION_FEASIBILITY.txt。优先制作条件性、与合法输入一致的简短语义目标，而非要求逐字复述冗长分析。文本 dropout 时目标要与实际可见条件一致，不能逼 C 猜测被删除的请求。
+
+L_binding：只在具有实际来源/位置/阶段标注的训练片段上使用。它监督两件不同的对应：
+  (a) 首帧中给定物理角色/关系的证据区域。训练查询从 R 软读出关系，再组合实际 A_cond/A_scope 得到来源分布；与已标注的粗区域对齐，不固定某个 Q 槽的身份。
+  (b) 实际写入 Wan 的 delta_x[t,p] 中，与该物理关系对应的作用范围和过程阶段。训练专用读出从写入字段及问题预测标注的位置/区间事实，监督必须经过真正的写入路径，不放一个可以独自回答的旁路。
+  读出只预测真实样本的事实标签，不判断生成视频好坏，不产生 reward；推理时移除。未知/不可见事实不是负标签。
+
+训练以 z_sigma=(1-sigma) z_real + sigma epsilon 的真实配对输入展开；阶段标签是去噪过程的监督，不是送给 C 的未来事件表。在高噪声下事实读出学习条件分布，不宣称已经确定唯一真实未来。标准 FM 梯度始终穿过同一 Physical Block，约束其消息落实为真实视频生成。
+
+不能省略的实际边界：WISA 原始发布没有 (a)(b) 所需的精确标注，当前已完成的是恢复来源材料。未补标的样本不计算伪造的 L_binding；仍贡献视频目标及适用的语义监督。需要在现有 WISA 视频上补充少量关键帧粗区域和实际时间区间，不要求完整轨迹/逐帧实例分割。这个标注工作是实现强时空监督的必要部分，不能由一个新 loss 名称代替。
+
+八、稳定性如何进入设计与训练
+
+1. 起点：原生 Wan 的图像生成与时序能力保留；全新 O_phys 零初始化，新的 LoRA B 零初始化。此时仍是原生基础模型，不是旧 Q 的函数。
+2. 作用位置：来源桥接和双角色状态读取减少把支撑面、来源、受影响部分混在一起的自由度；有位置标签时直接训练这些对应。
+3. 过程连续性：同一关系在全部视频时刻共享执行算子，历史关系处理使用真实时间；不为每帧生成互不相关的固定消息，不通过 TV 平滑强行压掉真实碰撞/破裂。
+4. 内容学习：真实完整片段的 FM 学习外观与连续变化；C 物理监督与 binding 监督学习变化的依据、范围与顺序。合法形变和自然延续是正目标；没有普遍身份/刚性不变约束。
+5. 联合执行：Wan self-attention LoRA 参与学习，使生成器本身适应物理消息。不能把全部执行器冻结后只训练 C，并宣称已训练 Wan 执行物理。
+
+上述机制提供可训练的稳定性与物理性路径，不能在尚无新结果时宣称绝对保证，也不能靠静止输出完成目标。
+
+九、训练阶段与梯度所有权
+
+interface：新 Q/H 生成侧适配、来源读取、独立 C 投影、Physical Block、训练读出头学习；官方 Wan 及其新 LoRA 暂时冻结。完整视频 FM 始终参与，先侧重 C 语义与来源，逐渐提高作用范围/过程阶段监督的权重。
+joint：继续上述训练，将 Wan self-attention 新 LoRA 的学习率从零平滑增加到联合训练目标值，学习原生时空执行。各物理监督继续保留。原生文本分支保持官方参数，C 自己的 K/V/O 始终可训练。具体渐进日程见第十三节。
+没有 calibration 阶段、verifier optimizer 或生成评分周期。原有 64+160 是既有预算参考，不当作新架构一定充分训练的证明；具体训练量不能靠虚构步数解决。
+
+不为逼迫模型使用 C 而额外删除原生文本；CFG 所需条件/无条件训练保持语义一致。物理监督不向无条件输入泄漏请求或未来真值。
+
+十、实现落点与单个 block 的计算草案
+
+def physical_cross_attention(x_norm, native_text, C, sigma, latent_times, geometry):
+    # x_norm 是原生 self-attention 之后、cross-attention 所见的状态。
+    text_message = native_text_attention(x_norm, native_text)
+    x_grid = reshape_to_time_space(x_norm, geometry)
+    g_cond, g_scope = bridge_initial_sources(C.source_links, x_grid[:, 0])
+    k_cond, k_scope, v_rule = compile_C_4096_to_3072(C.relation)
+    clock = encode_actual_times(latent_times)
+    u_cond, u_scope = read_current_roles(x_grid, k_cond, k_scope,
+                                        g_cond, g_scope, clock)
+    state = interaction_modulated_by_MLLM(u_cond, u_scope, C.relation,
+                                         g_cond, g_scope, sigma)
+    history = physical_time_attention(state, latent_times, history_only=True)
+    k_exec, v_exec = form_response(history, k_scope, v_rule, clock, sigma)
+    delta = physical_output(read_response_at_current_positions(x_grid, k_exec, v_exec, clock))
+    delta[:, 0] = 0  # 仅保持已观测首帧不受直接条件写入。
+    return text_message + flatten(delta)
+
+原生 Wan block 本身继续执行 residual 与 FFN，避免重复加残差/输出 bias。实现不能生成 [B,R,T,P,3072] 的巨大中间特征；用标准分块/multihead attention，关系时间状态为 [B,R,T,3072]。每三个原生 block 注入一次作为现有位置起点，不额外复制完整 Qwen 或另建未来 rollout。
+
+需要改动：
+  data.py：保留全 RGB PTS、latent 区间与独立物理监督 sidecar；原缓存只读。
+  knowledge / recurrent_reasoning：原生可微 Qwen 推理、合法输入、来源元数据、新 LoRA；不加载旧 message checkpoint。
+  新 PhysicsCondition 与 PhysicalBlock：上述输入、来源桥接、全宽交互/时间/写入。
+  generator / native_attention：新的 context 传递、独立文本/物理输出、真实时间接入。
+  operator_training：新参数所有权和直接监督目标；没有 verifier 路径。
+  train/runtime：新 revision、新 optimizer，禁用旧 generator/adapter 初始化和 resume 输入。
+
+完整文档不等于模型实现完成。当前实际产物是原始 WISA 与现有片段的完整关联、监督可行性说明和本设计；位置/事件补标、新模块实现和新训练尚未完成。
+
+十一、阶段与损失的计算定义（答复训练清单时的具体化）
+
+阶段数：2，interface 与 joint。主目标修订为 3 组：FM、C 语义、binding；binding 展开成来源、作用区域、过程阶段 3 个子项，总共是 5 类基本计算项。interface 内对执行监督渐进加权，joint 内渐进引入 Wan 的参数更新。不存在 verifier 或校准阶段；数据整理与补标属于数据准备。
+
+统一记号：z0 为真实视频 latent，epsilon 为标准高斯噪声，s 为扩散噪声时间，k 为视频 latent 时刻，p 为空间位置。首帧固定为观察输入，其余帧 z_s=(1-s)z0+s*epsilon。模型输出 v_theta，FM target 为 epsilon-z0。有效视频/空间位置及已标注位置均按各自有效数归一化。
+
+1. L_FM = mean_valid_future ||v_theta-(epsilon-z0)||^2。
+   从真实视频学习生成/去噪场，梯度经过实际 Physical Block 与 C。不是物体速度监督。
+
+2. L_C_semantic = -mean_target_tokens log p_psi(answer_token | actual_C_KV, question, previous_answer_tokens)。
+   教师强制只对标准答案 token 计算 CE，question/padding 不计算。实际投影后的 C 表示经训练专用读出进入解码器；原图、caption、H 不再作为解码旁路。生成侧 Qwen/C 的梯度保留。答案只描述合法输入可知的事实或条件性机制，未确定的未来状态不能作为静态 C 的确定答案。
+
+3. 来源子项 L_source。
+   对带来源区域标注的关系问题 i，训练查询从 R 读出软权重 w[i,r]；与前向使用的实际来源关联组合：a_hat[i,p]=sum_r w[i,r] A_role[r,p]。role 是条件依据或作用依据。
+   将标注粗区域转换为有效源网格上的归一化分布 a_star，再计算 L_source=-mean_i sum_p a_star[i,p] log a_hat[i,p]。
+   缺少可见来源的样本使用相应文本/不可见来源标签或保留未知，不能强配像素。此项只监督初始依据，不拿它代表未来位置。
+
+4. 作用区域子项 L_scope。
+   训练专用、问题条件化的读出头输入真正写入的 delta_x[k,p]，输出该位置是否属于所问作用范围的概率 m_hat[i,k,p]。标签 m_star 来自对应时刻的粗区域/已标注支持位置。
+   L_scope = masked_mean BCE(m_hat, m_star)。
+   只在已标明正/负的区域计算，未标注或不可见位置不自动当负例；每个问题/片段归一化后取均值。监督的是实际写入字段的空间含义，不是任意 native attention 热图。
+
+5. 过程阶段子项 L_phase。
+   从同一实际写入字段的时空读出，预测所问条件/响应事实在时刻 k 是否成立的概率 b_hat[i,k]。事实由场景描述确定，例如接触已发生、液流仍与来源连接、当前响应已结束；不定义固定对象/运动类别瓶颈。
+   用真实 RGB PTS 区间形成 b_star[i,k]，计算 L_phase=masked_mean BCE(b_hat,b_star)。持续状态跨多个 RGB 帧时可按时间块内占比形成软标签；瞬时事件使用“该事件是否发生在本时间块”的标签。不能将一个四帧 latent 时间块里的混合阶段硬当作同一瞬间。
+   此项训练条件—响应—持续/终止的时间对应，不回归一个由单帧决定的唯一未来接触秒数。
+
+L_binding = alpha_source*L_source + alpha_scope*L_scope + alpha_phase*L_phase。
+完整目标是 L_FM + lambda_C*L_C_semantic + lambda_bind*L_binding，共 3 组/5 类基本计算项；执行子项的权重按第十三节递进。
+
+interface：Qwen 生成侧 LoRA、latent workspace/反馈、C 投影/来源读取、Physical Block、训练读出头可训练；Wan 基础参数及其新 LoRA 冻结。FM/scope/phase 经过冻结 Wan 的可微计算，不可用 no_grad 切断 C 路径。
+joint：上述参数继续训练，增加 Wan self-attention LoRA。FM/scope/phase 可更新该执行路径；C-only semantic/source 不应被描述为直接训练 Wan。原生文本投影保持官方参数。
+
+数据可用性：FM 已有配对数据与原实现。L_C 的原始机制说明已关联，监督答案尚需整理。L_source/L_scope/L_phase 仅在具备相应补标的样本上有定义；当前 WISA 发布字段不能提供全部这些标签。因此“设计有 3 组/5 类基本项”不等于“目前已经能训练全部 5 项”，没有标签的项不靠填零伪装成有效监督。
+
+权重与步数状态：FM 权重为 1；新增项的最终相对权重与新架构训练步数尚未形成已运行配置。64+160 只是旧预算参考，不能在介绍新方案时当作已验证的充分训练日程。
+
+十二、为什么移除独立 temporal FM
+
+历史项令 e=predicted_FM-target_FM，对不同视频时刻的误差差分 D_d e 做平方惩罚。省略归一化常数，FM 加该项等价于 e^T (I + lambda*sum_d a_d D_d^T D_d) e。
+
+它是对同一真实视频去噪误差的二次度量重加权，没有新增物理位置、接触条件、合法形变或因果顺序标签。固定条件与固定正定权重、具有充分表达能力时，最优预测仍是同一个条件均值；在有限模型和实际优化中，梯度和误差分配会不同，因此不能说它与 FM 完全相同或绝对无用。
+
+它可以增加对跨帧交替误差的惩罚，但不是直接的视频运动平滑项。正确预测即使含有快速碰撞/破裂，e 仍为零；不能反过来声称该损失必然压制真实运动。
+
+现有新旧运行都使用过此项，现有证据不足以认定旧 Q 稳定性依赖它。本轮新设计的关键缺口在 C 的物理语义、作用位置与阶段执行，因此不将这一可选误差度量列为主目标。保留完整视频 FM、原生时空能力、Physical Block 的时间计算和实际物理监督；不增加一个近似等价的帧差损失来替代它。
+
+十三、两阶段内的渐进训练
+
+保留 2 个正式阶段，并将学习职责和监督重心连续衔接。
+
+阶段 A / interface：所有新物理模块和原生时间输入从开始就参与完整视频前向；Wan 参数冻结。设阶段进度 u 属于 [0,1]，使用 r(u)=3u^2-2u^3 作为可实现的初始平滑日程：
+  L_A(u) = L_FM + lambda_C L_C + lambda_source L_source
+           + r(u)*(lambda_scope L_scope + lambda_phase L_phase)。
+  前期主要建立物理语义和来源对应，完整视频 FM 同时训练真实写入；作用范围与过程阶段的辅助监督随后连续增强。中后期逐步形成完整的 5 类目标，避免 C 只学会解释而没有在冻结 Wan 上学习执行。
+  这里 r 是训练损失权重的日程，不是注入强度、运动强度或推理门控。所有标签仍只在有真实标注的样本上计算。
+
+阶段 B / joint：保留阶段 A 末尾的全部目标及 C/source 监督，逐步加入 Wan 的学习责任。新增 self-attention LoRA 的学习率从 0 平滑增长到 joint 目标值；可使用 eta_Wan(v)=eta_target*r(clip(v/rho,0,1))，其中 v 为 joint 阶段进度，rho 为 warmup 占比。
+  C/Physical Block 的参数与 optimizer 状态连续保留，接口学习率平滑过渡；不重置已学 C，也不在联合阶段关闭语义与来源监督。此时学习从“C 适应原生 Wan”过渡到“C 与 Wan 共同正确执行物理关系”。
+
+smoothstep 是具体的日程参数化，不声称它比所有其他 warmup 曲线更优。阶段总步数、warmup 占比与损失最终比例仍需结合实际标注量和训练预算设定，不能用旧 64+160 直接宣称已充分训练。
+
+全过程对完整视频计算 FM，并保持覆盖推理的噪声范围；真实时间和完整 Physical Block 自始至终参与前向。渐进不依赖生成视频评分、通过检测才能解冻的门槛或新增校准阶段。

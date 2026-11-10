@@ -1,0 +1,39 @@
+name: v522-q-seed128-message-no-verifier-simple-rtx-pro6000-blk96g
+description: Two message refinement rounds; training seed 42. q_seed128_message; no
+  verifier, no score loss, no completion feedback. FM + 0.1 temporal FM; 64 interface
+  + 160 joint steps; accumulation 4. Original initialization. RTX PRO 6000 / RTX 6000
+  Blackwell only; reject H100 before model loading.
+workspace: ALL-IN-ONE
+project: wan-animate
+max_restarts: 0
+resources:
+  resource_pool: blk-96g
+  slots_per_trial: 1
+  is_single_node: true
+  shm_size: 34359738368
+bind_mounts:
+- host_path: /mount/HOME/liuzhirui
+  container_path: /home/liuzhirui
+- host_path: /mount/NAS1/public
+  container_path: /run/determined/NAS1/public
+environment:
+  image: 10.130.130.5:8192/lab-dev:latest
+  environment_variables:
+  - OMP_NUM_THREADS=4
+  - PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+checkpoint_storage:
+  type: shared_fs
+  host_path: /mount/HOME/liuzhirui
+  storage_path: Project/physGen/code/v5.2.2-native/determined_checkpoints
+  save_experiment_best: 0
+  save_trial_best: 0
+  save_trial_latest: 0
+searcher:
+  name: single
+  metric: completed_cases
+  max_length:
+    epochs: 1
+  smaller_is_better: false
+entrypoint: bash /home/liuzhirui/Project/physGen/code/v5.2.2-native/tools/runtime_python.sh
+  /home/liuzhirui/Project/physGen/code/v5.2.2-native/train/train.py --config /home/liuzhirui/Project/physGen/code/v5.2.2-native/configs/native_q_seed128_message_no_verifier_simple_wisa3857.yaml
+  --initialize-generator /home/liuzhirui/Project/physGen/code/v5.2.2-native/checkpoints/initialization/generator.pt

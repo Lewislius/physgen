@@ -1,0 +1,111 @@
+{
+  "utc": "2026-11-04T16:55:33.960198+00:00",
+  "viewed_cases": [
+    "VP004",
+    "VP010",
+    "VP027",
+    "VP034"
+  ],
+  "scope": "Four predeclared own400 cases, eight equally spaced existing frames per arm; complete normal40 and four16 controls now available. Not a full-suite visual quality estimate.",
+  "scores_available": true,
+  "observations": {
+    "VP004": {
+      "R10A": "People and held thin material largely persist with limited motion. No convincing requested bend-and-propagating-fracture sequence visible in the sampled frames.",
+      "R12A": "People and material largely persist, with local white/black shape changes around the held material. No convincing completed requested fracture in sampled frames.",
+      "R12B": "Marked changes in figure placement/scale and hand motion. Held thin material is largely absent by frame22; subsequent hand/face interaction does not form a credible ruler-bending/crack sequence. A bright horizontal band corrupts the face in late frames57/68/80. Not successful request execution despite increased motion.",
+      "R12B_native_text_value_off": "Similar unrelated figure/hand motion and failure of requested process. Regular background grid appears from sampled frame11, with substantially more material/hand/face corruption late. Disabling the new term does not restore the originalR10A appearance or correct process.",
+      "R12B_pretext_read": "The thin held material is visible somewhat longer but the same unrelated figure/hand sequence and severe late white face corruption remain. Merely returning the physical query to the pre-text state does not restore the older stableR10A scene or the required fracture process in this case.",
+      "R12B_no_c": "NoC also fails ruler fracture and has severe late tearing of held material, hands and background. Removing inference-time physics does not restore the R10A stable scene or prove the learned Wan path is healthy."
+    },
+    "VP010": {
+      "caption": "A person mops up a puddle of water on a concrete floor, the water disappearing as the mop passes.",
+      "R10A": "Mostly static mop and water, without clear mopping progression in the sampled frames.",
+      "R12A": "Mop moves toward the foreground, with conspicuous bright raised splash/foam behind it aroundframe57 and broad smooth patches on the water.",
+      "R12B": "Mop motion is present and head/shaft remain recognizable. The scene broadly retains its initial appearance, but bright white water/splash-like areas and broad smooth patches remain; clear contact-dependent absorption/drying is not established. Similar main motion pattern toR12A.",
+      "R12B_native_text_value_off": "Mop motion remains, but floor/wall brightness changes much more strongly from early frames and circular/ring-like patterns appear around the mop later. These differences do not show a reliably cleaner physical absorption process.",
+      "R12B_pretext_read": "Main mop motion and bright water/splash-like regions remain close to normalR12B in the sampled frames; moving the query before native text does not visibly resolve the absorption/process issue.",
+      "R12B_no_c": "Mop movement and contact-shaped floor changes remain without C; appearance is broadly stable, though white surface/paint-like traces do not establish correct water absorption. Do not attribute the existence of motion to the new text/physics term."
+    },
+    "VP027": {
+      "caption": "Hands shape a lump of clay-like bread dough into a smooth, round boule on a wooden table.",
+      "R10A": "Hands and rounded dough remain clear but largely static in the sampled frames.",
+      "R12B": "Hands perform visible repositioning/patting/shaping after the initial hold; the single dough mass remains recognizable and broadly rounded. No severe global grid or object disappearance seen in the earlierR11B case. This is a local positive process/visual observation relative to the mostlystaticR10A example, not proof of fullgoal success.",
+      "R12B_native_text_value_off": "Hands press and deform the dough more strongly, while hands/dough remain recognizable and no global grid appears. The prompt specifically asks for a smooth round boule, so greater pressing or flattening is not by itself better compliance. The sampled views do not establish an unambiguous overall winner for this pair.",
+      "R12B_no_c": "Hands and single dough mass remain recognizable; shaping occurs without C. A pronounced ghosted hand is visible around sampled frame45, whereas normal maintains clearer hands in those samples. This is a local possible consistency benefit, not full-suite evidence."
+    },
+    "VP034": {
+      "caption": "A large, clear balloon is inflated with air, showing the internal pressure causing the balloon to stretch.",
+      "R10A": "A clear rounded balloon persists, mostlystatic with slight position changes; sustained inflation/stretch is not convincing in the sampled frames.",
+      "R12B": "Balloon remains recognizable and mostlyround while drifting up/down; a sustained increase in size consistent with the requested inflation is not clear. No severe global texture damage, but displacement is not evidence of inflation.",
+      "R12B_native_text_value_off": "Similar upward/drifting balloon and progressively brighter/whiter appearance. Stable object plus drift does not by itself complete the requested pressure-driven stretching, even though AutoEval givesSA4/PC5.",
+      "R12B_no_c": "Balloon remains round and drifts with minor apparent size changes, without convincing sustained requested inflation. The missing process persists without physics."
+    }
+  },
+  "paired_interpretation": "OnVP004/010 the new text interaction mitigates some corruption/appearance drift, yet these physicalprocesses remain weak. OnVP027 normal retains a rounded dough mass while showing shaping action; off gives larger pressing/deformation, which is not automatically better for the round-boule request. These case-specific observations must be combined with complete16/40 scores, pretext_read andno_c. Do not select an architecture or claim complete improvement from motion or a single control mean.",
+  "input_comparability": "Same caption, seed, checkpoint for normal/off; same first-image pixels acrossR10A/R12A/R12B. Complete40 native input/noise sources and images also match originalR10A (matched_generation_inputs40.json).",
+  "panels": {
+    "R10A": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/reports/physical_content_67456/visual_predeclared/VP004_R10A.png",
+    "R12A": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/reports/physical_content_67456/visual_predeclared/VP004_R12A.png",
+    "R12B": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/reports/physical_content_67456/visual_predeclared/VP004_R12B.png",
+    "R12B_native_text_value_off": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/reports/physical_content_67456/visual_predeclared/VP004_R12B_native_text_value_off.png"
+  },
+  "next_predeclared_cases": [],
+  "next_architecture_decided": false,
+  "case_panels": {
+    "VP004": {
+      "R10A": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/reports/physical_content_67456/visual_predeclared/VP004_R10A.png",
+      "R12A": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/reports/physical_content_67456/visual_predeclared/VP004_R12A.png",
+      "R12B": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/reports/physical_content_67456/visual_predeclared/VP004_R12B.png",
+      "R12B_native_text_value_off": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/reports/physical_content_67456/visual_predeclared/VP004_R12B_native_text_value_off.png",
+      "R12B_pretext_read": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/reports/physical_content_67456/visual_predeclared/VP004_R12B_pretext_read.png",
+      "R12B_no_c": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/reports/physical_content_67456/visual_predeclared/VP004_R12B_no_c.png"
+    },
+    "VP010": {
+      "R10A": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/reports/physical_content_67456/visual_predeclared/VP010_R10A.png",
+      "R12A": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/reports/physical_content_67456/visual_predeclared/VP010_R12A.png",
+      "R12B": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/reports/physical_content_67456/visual_predeclared/VP010_R12B.png",
+      "R12B_native_text_value_off": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/reports/physical_content_67456/visual_predeclared/VP010_R12B_native_text_value_off.png",
+      "R12B_pretext_read": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/reports/physical_content_67456/visual_predeclared/VP010_R12B_pretext_read.png",
+      "R12B_no_c": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/reports/physical_content_67456/visual_predeclared/VP010_R12B_no_c.png"
+    },
+    "VP027": {
+      "R10A": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/reports/physical_content_67456/visual_predeclared/VP027_R10A.png",
+      "R12A": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/reports/physical_content_67456/visual_predeclared/VP027_R12A.png",
+      "R12B": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/reports/physical_content_67456/visual_predeclared/VP027_R12B.png",
+      "R12B_native_text_value_off": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/reports/physical_content_67456/visual_predeclared/VP027_R12B_native_text_value_off.png",
+      "R12B_no_c": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/reports/physical_content_67456/visual_predeclared/VP027_R12B_no_c.png"
+    },
+    "VP034": {
+      "R10A": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/reports/physical_content_67456/visual_predeclared/VP034_R10A.png",
+      "R12A": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/reports/physical_content_67456/visual_predeclared/VP034_R12A.png",
+      "R12B": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/reports/physical_content_67456/visual_predeclared/VP034_R12B.png",
+      "R12B_native_text_value_off": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/reports/physical_content_67456/visual_predeclared/VP034_R12B_native_text_value_off.png",
+      "R12B_no_c": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/reports/physical_content_67456/visual_predeclared/VP034_R12B_no_c.png"
+    }
+  },
+  "complete_paired_scores_available": true,
+  "control16_result": {
+    "mode": "native_text_value_off",
+    "count": 16,
+    "sa": 3.125,
+    "pc": 3.75,
+    "joint": 6,
+    "normal_fixed16_pending": false,
+    "normal": {
+      "sa": 3.0625,
+      "pc": 3.75,
+      "joint": 5,
+      "count": 16
+    }
+  },
+  "pretext_visual_interpretation": "On these two predeclared cases the changed query order alone does not remove the main failures. This does not determine the complete16 score effect or the benefit of retraining with pre-text queries; the completed control andno_c remain required.",
+  "predeclared_review_complete": true,
+  "updated_utc": "2026-11-04T17:32:51.702692+00:00",
+  "normal40_result": {
+    "sa": 2.95,
+    "pc": 3.5,
+    "joint": 8,
+    "count": 40
+  },
+  "no_c_interpretation": "Normal16 versus noC improves PC+.125 (3wins/12ties/1loss), harms SA-.1875 (0wins/13ties/3losses), Joint5 versus6. Actual videos show native generation already supplies main motion; C may improve local hand consistency but does not repair missing process and can interfere with requested execution."
+}

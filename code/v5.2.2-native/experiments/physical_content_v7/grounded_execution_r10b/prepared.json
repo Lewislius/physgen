@@ -1,0 +1,151 @@
+{
+  "prepared_utc": "2026-11-01T05:42:48.665372+00:00",
+  "status": "training400_completed_main40_generation",
+  "revision": "R10-B",
+  "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_execution_r10b/snapshots/20261101T054248Z",
+  "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_execution_r10b/submissions/candidate400_full60_20261101T054248Z.yaml",
+  "config": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_execution_r10b/snapshots/20261101T054248Z/configs/physical_content.yaml",
+  "empty_context": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_execution_r10b/submission_context",
+  "final_stop": 400,
+  "intermediate_step": 250,
+  "primary_cases": 40,
+  "extended_primary_cases": 60,
+  "additional_cases": 20,
+  "intermediate_cases": 16,
+  "control_cases": 16,
+  "control_modes": [
+    "reasoning_swapped",
+    "empty_reasoning",
+    "global_train_mean",
+    "core_only",
+    "anchor_only",
+    "no_c"
+  ],
+  "gamma": 5,
+  "seed": 42,
+  "automatic_extension": false,
+  "automatic_adoption": false,
+  "maximum_authorized_revision": 10,
+  "maximum_r10_candidates": 2,
+  "new_trainable_parameters_vs_r1": 12582912,
+  "new_trainable_parameters_vs_r10_a": 0,
+  "architecture": "C_core=A+P_execute U; execution C=C_core, routing C=C_core+b+P_route Z. Q heads:16 relation-word,8 direct first-image visual,8 request/reasoning; two shared refinement rounds and existing group exchange/fusion.",
+  "initialization": "Official foundations and train-input fitted interface only; project modules fresh. New execution projection zero; existing parameter/RNG initialization retained.",
+  "staging": "128interface+272joint=400; same data/noise/dropout/LRs, own250resume only.",
+  "loss": "Same R1 real-video global/tail FM and native-word MSE weight/schedule. Semantic MSE targets the shared execution core; extra content routing learns through generation.",
+  "tests": {
+    "passed": 8,
+    "exit_code": 0,
+    "command": "bash tools/runtime_python.sh experiments/physical_content_v7/grounded_execution_r10b/test_execution_value.py",
+    "log": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_execution_r10b/reports/functional_checks.log",
+    "configuration_audit": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_execution_r10b/reports/configuration_audit.json",
+    "quality_claim": false,
+    "frozen_configuration_audit_ready": true
+  },
+  "targets": {
+    "steps": 400,
+    "gamma": 5,
+    "seed": 42,
+    "original40": {
+      "pc_strictly_above": 3.7,
+      "pc_preferred": 3.8,
+      "sa_strictly_above": 3.25,
+      "minimum_joint_passes": 11
+    },
+    "combined60": {
+      "pc_strictly_above": 3.7,
+      "pc_preferred": 3.8,
+      "sa_strictly_above": 3.25,
+      "minimum_joint_passes": 14
+    },
+    "actual_video_quality": "Physical process, request completion and visible stability must support score improvements",
+    "C_diversity": "Diagnostic only; useful shared priors are allowed",
+    "maximum_revision": 10,
+    "after_R10": "Report all declared results, then stop and await user steering"
+  },
+  "evidence": {
+    "a250": {
+      "sa": 3.25,
+      "pc": 3.5,
+      "joint_passes": 5,
+      "count": 16
+    },
+    "r1_250": {
+      "sa": 3.1875,
+      "pc": 3.6875,
+      "joint_passes": 5,
+      "count": 16
+    },
+    "training_comparison": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/execution_value_r10/reports/training_comparison_through0250.json",
+    "execution_interface": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/execution_value_r10/reports/interface250_r10a_selected4.json",
+    "r1_interface": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/execution_value_r10/reports/interface250_r1_selected4.json",
+    "selected_videos": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/execution_value_r10/reports/selected_video_comparison250/observations.json",
+    "interpretation": "Matched early PC regression, unsupported execution-value drift and lost direct visual reads justify the second candidate; no unmeasured gain claimed."
+  },
+  "input_preparation": "Only existing local first-image input caches and common20; no downloads, future-video conditions or new labels.",
+  "source_files": [
+    "guidance.py",
+    "train.py",
+    "targets.json",
+    "test_execution_value.py",
+    "DESIGN.zh.txt",
+    "infer.py",
+    "infer_pipeline.py",
+    "review_results.py",
+    "prepare_mean_condition.py",
+    "subset16.json",
+    "run_candidate.py",
+    "bootstrap.py",
+    "configs/physical_content.yaml",
+    "physical_content/train.py",
+    "physical_content/model.py",
+    "physical_content/evidence.py",
+    "physical_content/__init__.py",
+    "physical_content/teacher.py",
+    "physical_content/common.py",
+    "physical_content/supervision.py"
+  ],
+  "allocation_attempts": [
+    {
+      "experiment_id": 67007,
+      "trial_id": 68394,
+      "status": "STATE_ERROR",
+      "accepted": false,
+      "actual_gpu": "NVIDIA H100",
+      "models_loaded": false
+    },
+    {
+      "experiment_id": 67008,
+      "trial_id": 68395,
+      "status": "STATE_RUNNING",
+      "actual_gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "accepted": true
+    }
+  ],
+  "r10_candidate_policy": {
+    "maximum_r10_candidates": 2,
+    "other_candidate": "R10-A Search67003/Run68390 unchanged",
+    "primary_selection_evidence": "Both candidates must complete own400 original40 and combined60, with extra20 separate. Compare PC/SA/Joint and actual videos against matching R1; no per-case mixing.",
+    "intermediate250_role": "Early diagnostic only; cannot replace either400 full evaluation.",
+    "stop": "Complete declared tests/report, then await user; no R11 or third R10."
+  },
+  "experiment_id": 67008,
+  "trial_id": 68395,
+  "updated_utc": "2026-11-01T07:44:26.927290+00:00",
+  "successful_candidate_run": "physical_content_67008",
+  "first_real_update_verified": true,
+  "completed_updates_at_least_at_phase_check": 8,
+  "intermediate250": {
+    "path": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_execution_r10b/inference_outputs/physical_content_67008/step0250_subset16_physical5_seed42/videophy40",
+    "generated": 16,
+    "status": "completed",
+    "count": 16,
+    "sa_mean": 3.25,
+    "pc_mean": 3.625,
+    "sa_pass_rate": 0.375,
+    "pc_pass_rate": 0.5,
+    "joint_pass_rate": 0.375
+  },
+  "training_completed_steps": 400,
+  "final_training_log_audit": "experiments/physical_content_v7/grounded_execution_r10b/reports/training_comparison_through0400.json"
+}

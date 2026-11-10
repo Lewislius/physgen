@@ -1,0 +1,212 @@
+{
+  "verified_utc": "2026-11-04T19:22:40.153098+00:00",
+  "experiment": 67599,
+  "trial": 68986,
+  "normal": {
+    "count": 16,
+    "SA": 3.0625,
+    "PC": 3.875,
+    "SA_pass": 5,
+    "PC_pass": 10,
+    "Joint": 4
+  },
+  "no_state_value": {
+    "count": 16,
+    "SA": 3.0625,
+    "PC": 3.9375,
+    "SA_pass": 5,
+    "PC_pass": 11,
+    "Joint": 5
+  },
+  "no_state_value_minus_normal": {
+    "sa": {
+      "mean_change": 0,
+      "wins": 0,
+      "ties": 16,
+      "losses": 0,
+      "changed": {}
+    },
+    "pc": {
+      "mean_change": 0.0625,
+      "wins": 2,
+      "ties": 13,
+      "losses": 1,
+      "changed": {
+        "VP016": 1,
+        "VP025": -1,
+        "VP038": 1
+      }
+    },
+    "Joint": {
+      "gains": [
+        "VP038"
+      ],
+      "losses": []
+    }
+  },
+  "changes": [
+    {
+      "case": "VP016",
+      "caption": "A scientist uses a probe to nudge a small, delicate insect on a leaf, causing it to twitch minimally.",
+      "normal": {
+        "sa": 4,
+        "pc": 4,
+        "joint": true
+      },
+      "no_state_value": {
+        "sa": 4,
+        "pc": 5,
+        "joint": true
+      }
+    },
+    {
+      "case": "VP025",
+      "caption": "A large, orange plastic egg is rolled up a plastic slide, then rolls down, ending at the bottom.",
+      "normal": {
+        "sa": 2,
+        "pc": 5,
+        "joint": false
+      },
+      "no_state_value": {
+        "sa": 2,
+        "pc": 4,
+        "joint": false
+      }
+    },
+    {
+      "case": "VP038",
+      "caption": "A paint roller, dipped in green paint, is used to cover a section of a metal fence, creating a uniform green coat.",
+      "normal": {
+        "sa": 4,
+        "pc": 3,
+        "joint": false
+      },
+      "no_state_value": {
+        "sa": 4,
+        "pc": 4,
+        "joint": true
+      }
+    }
+  ],
+  "source_scores": {
+    "normal40_subset16": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/execution_value_r10/inference_outputs/physical_content_67003/step0400_full40_controls16_physical5_seed42/videophy40/scores.json",
+    "no_state_value16": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/r13_support/r10a_no_state_value16/inference_outputs/own400_seed42_gamma5/controls/no_state_value/videophy40/scores.json",
+    "no_c16": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/execution_value_r10/inference_outputs/physical_content_67003/step0400_full40_controls16_physical5_seed42/controls/no_c/videophy40/scores.json"
+  },
+  "input_comparison": [
+    {
+      "case": "VP002",
+      "mismatches": []
+    },
+    {
+      "case": "VP004",
+      "mismatches": []
+    },
+    {
+      "case": "VP005",
+      "mismatches": []
+    },
+    {
+      "case": "VP009",
+      "mismatches": []
+    },
+    {
+      "case": "VP010",
+      "mismatches": []
+    },
+    {
+      "case": "VP013",
+      "mismatches": []
+    },
+    {
+      "case": "VP015",
+      "mismatches": []
+    },
+    {
+      "case": "VP016",
+      "mismatches": []
+    },
+    {
+      "case": "VP017",
+      "mismatches": []
+    },
+    {
+      "case": "VP018",
+      "mismatches": []
+    },
+    {
+      "case": "VP024",
+      "mismatches": []
+    },
+    {
+      "case": "VP025",
+      "mismatches": []
+    },
+    {
+      "case": "VP026",
+      "mismatches": []
+    },
+    {
+      "case": "VP027",
+      "mismatches": []
+    },
+    {
+      "case": "VP034",
+      "mismatches": []
+    },
+    {
+      "case": "VP038",
+      "mismatches": []
+    }
+  ],
+  "scope": "Single paired inference intervention on originalR10A own400; remove only the bias-free state_value multiplicative map in bothCFG arms. State-dependent attention/time, full routing/execution C andnative text remain.",
+  "conclusions": [
+    "This fixed16 does not establish a net score benefit from the extra state-value multiplication: disabling it preserves everySA rating and givesPC2wins/1loss, with oneadditionalJoint.",
+    "Removing it does not resolve the lowSA/process-execution problem; do not declare overall success or extrapolate a40-case improvement.",
+    "Do not identify all state-conditioned physical reading/writing with this extra multiplication: the state-dependent attention is retained.",
+    "This is not a retraining ablation; assess R13A complete40/controls/video evidence before choosing R13B."
+  ],
+  "same_checkpoint_no_c": {
+    "count": 16,
+    "SA": 3.25,
+    "PC": 3.625,
+    "SA_pass": 6,
+    "PC_pass": 8,
+    "Joint": 6
+  },
+  "visual_review": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/r13_support/r10a_no_state_value16/reports/visual_predeclared/review.json",
+  "score_selected_visual_review": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/r13_support/r10a_no_state_value16/reports/visual_score_selected/review.json",
+  "adoption_decision": "Do not adopt no_state_value as the final repair: no SA improvement and remaining actual process/artifact failures. This closes the missing component audit; R13A remains the active candidate.",
+  "no_state_value_minus_no_c": {
+    "sa": {
+      "mean_change": -0.1875,
+      "wins": 0,
+      "ties": 13,
+      "losses": 3,
+      "changed": {
+        "VP010": -1,
+        "VP017": -1,
+        "VP025": -1
+      }
+    },
+    "pc": {
+      "mean_change": 0.3125,
+      "wins": 5,
+      "ties": 11,
+      "losses": 0,
+      "changed": {
+        "VP004": 1,
+        "VP015": 1,
+        "VP017": 1,
+        "VP025": 1,
+        "VP026": 1
+      }
+    },
+    "Joint": {
+      "gains": [],
+      "losses": [
+        "VP010"
+      ]
+    }
+  }
+}

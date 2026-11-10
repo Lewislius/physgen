@@ -1,0 +1,126 @@
+[
+  {
+    "id": 66162,
+    "arm": "a",
+    "state": "STATE_COMPLETED",
+    "submitted_utc": "2026-10-25T14:01:54.422345+00:00",
+    "slots_per_trial": 1,
+    "original_code": "v5.2",
+    "entrypoint_unchanged": true,
+    "source_code_changed": false,
+    "output": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/legacy_v52_controls_20261025/a/videos",
+    "startTime": "2026-10-25T14:01:54.325034Z",
+    "endTime": "2026-10-25T14:25:07.581486Z",
+    "checked_at_utc": "2026-10-25T15:08:10.021900+00:00",
+    "allocations": [
+      {
+        "allocationId": "66162.507e58bd-0a7e-4c81-99ef-a2755fd7c775.1",
+        "name": "Trial 67542 (Experiment 66162)",
+        "priority": null,
+        "proxyPorts": [],
+        "registeredTime": "2026-10-25T14:01:54.344978740Z",
+        "resourcePool": "blk-96g",
+        "resources": [
+          {
+            "agentDevices": {
+              "node9-rtx6000-pro": {
+                "devices": [
+                  {
+                    "brand": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+                    "id": 2,
+                    "type": "TYPE_CUDA",
+                    "uuid": "GPU-d46ac459-b58f-cd15-f6b1-e0b8b5156d4b"
+                  }
+                ]
+              }
+            },
+            "allocationId": "66162.507e58bd-0a7e-4c81-99ef-a2755fd7c775.1",
+            "containerId": "c293129e-ced4-46d9-979a-d020ac2b153d",
+            "exited": null,
+            "resourcesId": "c293129e-ced4-46d9-979a-d020ac2b153d",
+            "resourcesType": "docker-container",
+            "started": null
+          }
+        ],
+        "schedulerType": "fair_share",
+        "slotsNeeded": 1,
+        "taskId": "66162.507e58bd-0a7e-4c81-99ef-a2755fd7c775"
+      }
+    ],
+    "legacy_inference": {
+      "status": "completed",
+      "completed_cases": 2,
+      "total_cases": 2,
+      "generation_verified": true
+    },
+    "latest_model_log": [
+      "[inference] cpu_offload=False, device=NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "[sample] 1/50",
+      "[sample] 2/50",
+      "[sample] 3/50",
+      "[sample] 4/50"
+    ]
+  },
+  {
+    "id": 66163,
+    "arm": "b",
+    "state": "STATE_ERROR",
+    "submitted_utc": "2026-10-25T14:01:55.846967+00:00",
+    "slots_per_trial": 1,
+    "original_code": "v5.2",
+    "entrypoint_unchanged": true,
+    "source_code_changed": false,
+    "output": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/legacy_v52_controls_20261025/b/videos",
+    "startTime": "2026-10-25T14:01:54.876430Z",
+    "endTime": "2026-10-25T14:26:54.418122Z",
+    "checked_at_utc": "2026-10-25T15:08:10.984802+00:00",
+    "allocations": [
+      {
+        "allocationId": "66163.507e58bd-0a7e-4c81-99ef-a2755fd7c775.1",
+        "name": "Trial 67543 (Experiment 66163)",
+        "priority": null,
+        "proxyPorts": [],
+        "registeredTime": "2026-10-25T14:01:55.751502963Z",
+        "resourcePool": "blk-96g",
+        "resources": [
+          {
+            "agentDevices": {
+              "node9-rtx6000-pro": {
+                "devices": [
+                  {
+                    "brand": "NVIDIA H100",
+                    "id": 0,
+                    "type": "TYPE_CUDA",
+                    "uuid": "GPU-30085d8b-9408-7a7f-e544-be0280858108"
+                  }
+                ]
+              }
+            },
+            "allocationId": "66163.507e58bd-0a7e-4c81-99ef-a2755fd7c775.1",
+            "containerId": "1a5bb817-31b0-4ba6-90af-83040e914eab",
+            "exited": null,
+            "resourcesId": "1a5bb817-31b0-4ba6-90af-83040e914eab",
+            "resourcesType": "docker-container",
+            "started": null
+          }
+        ],
+        "schedulerType": "fair_share",
+        "slotsNeeded": 1,
+        "taskId": "66163.507e58bd-0a7e-4c81-99ef-a2755fd7c775"
+      }
+    ],
+    "legacy_inference": {
+      "status": "failed",
+      "completed_cases": 0,
+      "total_cases": 2,
+      "generation_verified": false
+    },
+    "latest_model_log": [
+      "Loading checkpoint shards: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 3/3 [02:53<00:00, 57.72s/it]",
+      "[inference] cpu_offload=False, device=NVIDIA H100",
+      "[sample] 1/50",
+      "[sample] 2/50",
+      "[sample] 3/50"
+    ]
+  }
+]

@@ -1,0 +1,24 @@
+{
+  "utc": "2026-11-04T11:11:26.680022+00:00",
+  "viewed_panels": [
+    "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/reports/vp027_cross_version_visual/VP027.png",
+    "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/reports/vp027_cross_version_visual/request_off/VP027.png",
+    "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/reports/vp027_cross_version_visual/no_c/VP027.png"
+  ],
+  "scope": "One previously identified failure case VP027; eight evenly spaced actual video frames per arm. Existing completed outputs only. Not a suite-level frequency estimate or retrained ablation.",
+  "matched_inputs": "Caption, seed42 and resolved first-frame path are identical across versions. The two literal canvas paths are symlinks to the same file, with exactly equal RGB pixels.",
+  "observations": {
+    "Wan_LoRA400": "Hands and dough remain clear; visible changes in hand placement and dough shaping over sampled frames. SA4 PC5.",
+    "R1_400": "Hands/dough remain clear; sampled hand and dough changes are much smaller than native LoRA400. SA4 PC5.",
+    "R10A_original400": "Hands/dough stay clear but pose and dough are nearly unchanged across sampled frames. SA4 PC4.",
+    "R11B400_normal": "Strong repeating texture appears by frame11; hands/dough no longer recognizable by frame22 and remaining sampled frames. SA4 PC4.",
+    "R11B400_request_memory_off": "Same checkpoint and inputs, only request branch disabled. Clear hands/dough retained with substantial contact and reshaping; some finger/motion blur and uneven dough surface remain. SA4 PC4.",
+    "R11B400_no_c": "All physical/request injection disabled on same checkpoint; clear hands/dough with visible finger/hand movement. SA4 PC4."
+  },
+  "decisions": [
+    "The R11B independent request write is causally implicated in this case's catastrophic visual degradation: switching it off restores recognizable generation while retaining physical fusion. This supports removing this specific branch, not rejecting every possible semantic architecture.",
+    "Identical SA4/PC4 ratings for normal, request-off and no-C miss large real visual differences; keep raw benchmark scores but require paired visual review before adoption.",
+    "Original R10A has a process-execution weakness in this example even without API data or the R11B request branch. R12A current-state read/write addresses a distinct physical-fusion mechanism; benefit remains unmeasured.",
+    "Do not blame global VAE geometry, precision, missing caption, or all native generation for this case: matched native/R1 outputs retain a clear scene."
+  ]
+}

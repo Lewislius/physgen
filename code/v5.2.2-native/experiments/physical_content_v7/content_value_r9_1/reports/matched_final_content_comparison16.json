@@ -1,0 +1,131 @@
+{
+  "recorded_utc": "2026-10-31T20:56:33.466968+00:00",
+  "sources": {
+    "R1": "experiments/physical_content_v7/early_execution_r3/reports/content_r1_step0400_subset16_decomposition.json",
+    "R9.1": "experiments/physical_content_v7/content_value_r9_1/reports/final_content_decomposition16.json"
+  },
+  "cases": [
+    "VP002",
+    "VP004",
+    "VP005",
+    "VP009",
+    "VP010",
+    "VP013",
+    "VP015",
+    "VP016",
+    "VP017",
+    "VP018",
+    "VP024",
+    "VP025",
+    "VP026",
+    "VP027",
+    "VP034",
+    "VP038"
+  ],
+  "rows": [
+    {
+      "model": "R1",
+      "component": "input_anchor",
+      "source_component": "anchor",
+      "mean_token_cosine": 0.30243982188403606,
+      "cross_sample_mean_cosine": 0.6880150437355042,
+      "mean_rms": 0.07242434471845627,
+      "mean_centered_energy_fraction": 0.7088490128517151
+    },
+    {
+      "model": "R9.1",
+      "component": "input_anchor",
+      "source_component": "anchor",
+      "mean_token_cosine": 0.30250043235719204,
+      "cross_sample_mean_cosine": 0.688122570514679,
+      "mean_rms": 0.07242702087387443,
+      "mean_centered_energy_fraction": 0.708790484815836
+    },
+    {
+      "model": "R1",
+      "component": "Q_workspace_update",
+      "source_component": "latent_update",
+      "mean_token_cosine": 0.9949801936745644,
+      "cross_sample_mean_cosine": 0.997082531452179,
+      "mean_rms": 0.9953184686601162,
+      "mean_centered_energy_fraction": 0.005000261298846453
+    },
+    {
+      "model": "R9.1",
+      "component": "Q_workspace_update",
+      "source_component": "workspace_delta",
+      "mean_token_cosine": 0.5164938662201166,
+      "cross_sample_mean_cosine": 0.45948880910873413,
+      "mean_rms": 0.9998186677694321,
+      "mean_centered_energy_fraction": 0.48161808028817177
+    },
+    {
+      "model": "R9.1",
+      "component": "Q_selected_input_values",
+      "source_component": "readout_values",
+      "mean_token_cosine": 0.6105310879647732,
+      "cross_sample_mean_cosine": 0.23920249938964844,
+      "mean_rms": 0.2526582842692733,
+      "mean_centered_energy_fraction": 0.3880120422691107
+    },
+    {
+      "model": "R1",
+      "component": "projected_term",
+      "source_component": "learned_residual",
+      "mean_token_cosine": 0.9948582388460636,
+      "cross_sample_mean_cosine": 0.9967861175537109,
+      "mean_rms": 0.026425854419358075,
+      "mean_centered_energy_fraction": 0.005384929041611031
+    },
+    {
+      "model": "R9.1",
+      "component": "projected_term",
+      "source_component": "projected_values",
+      "mean_token_cosine": 0.6109586507081985,
+      "cross_sample_mean_cosine": 0.5912322402000427,
+      "mean_rms": 0.02518788876477629,
+      "mean_centered_energy_fraction": 0.39474522788077593
+    },
+    {
+      "model": "R1",
+      "component": "total_learned_correction",
+      "source_component": "learned_residual",
+      "mean_token_cosine": 0.9948582388460636,
+      "cross_sample_mean_cosine": 0.9967861175537109,
+      "mean_rms": 0.026425854419358075,
+      "mean_centered_energy_fraction": 0.005384929041611031
+    },
+    {
+      "model": "R9.1",
+      "component": "total_learned_correction",
+      "source_component": "learned_correction",
+      "mean_token_cosine": 0.6174221225082874,
+      "cross_sample_mean_cosine": 0.6052494645118713,
+      "mean_rms": 0.025441370089538395,
+      "mean_centered_energy_fraction": 0.3876749314367771
+    },
+    {
+      "model": "R1",
+      "component": "final_C",
+      "source_component": "C",
+      "mean_token_cosine": 0.37700254656374454,
+      "cross_sample_mean_cosine": 0.7719470262527466,
+      "mean_rms": 0.07618109043687582,
+      "mean_centered_energy_fraction": 0.6378824785351753
+    },
+    {
+      "model": "R9.1",
+      "component": "final_C",
+      "source_component": "C",
+      "mean_token_cosine": 0.32794895209372044,
+      "cross_sample_mean_cosine": 0.6431793570518494,
+      "mean_rms": 0.0763512784615159,
+      "mean_centered_energy_fraction": 0.6809455566108227
+    }
+  ],
+  "correction_to_C_rms": {
+    "R1": 0.34751806780695915,
+    "R9.1": 0.3315723892301321
+  },
+  "interpretation": "Existing R1 report versus one new finalR9.1 normal16 pass. Identical IDs. R1 projects its workspace update directly; R9.1 projects actual input values selected by refined Q. Do not conflate workspace U with readout Z. Low cosine is representation differentiation, not physical utility. No old model rerun or new generation."
+}

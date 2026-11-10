@@ -1,0 +1,31 @@
+PAGE_NUMBER=2
+Title: “Physical Block V4 · ② 首帧桥接与当前状态读取”
+Subtitle: “R=128，T=21，P=390｜h=24，d=128｜每个注入层 ℓ 执行”
+
+(a) 软来源关联：从首帧证据桥接到 Wan
+“C [B,128,4096]” and “H [B,NH,4096]” -> “两组来源读取 / softmax over NH” -> “A0_cond / A0_scope [B,128,NH]”.
+-> “取视觉权重 [B,128,P0]” -> “按图像几何映射 G [B,P0,390]” -> “Ã0_cond / Ã0_scope [B,128,390]”.
+Parallel input: “X0 · 当前层首帧状态 [B,390,3072]”.
+The mapped weights and X0 feed “g_role = Ã0_role @ X0” -> “g_cond / g_scope [B,128,3072]”.
+One short note: “P0=390 为本例 Qwen 网格；G 来自裁剪／缩放几何；不等于物理区域标签”.
+
+(b) 当前 Wan 状态与物理分支 query / value
+“H_s [B,8190,3072]” -> “原生 norm3＋reshape” -> “X [B,21,390,3072]”.
+X branches to:
+1. “物理 query 投影＋空间／时间条件 / 3072→3072；split heads” -> “q_phys [B,24,21,390,128]”. Incoming small boxes “xy [390,2]” and “clock [B,21,3072]；见图③”, with sigma [B] as separate noise conditioning. Label this operator “新增 C 分支；原生文本 query 另算”.
+2. Two independent value operators “W_state_cond / W_state_scope / 各 3072→3072；split heads” -> “V_state_cond / V_state_scope [B,24,21,390,128]”.
+
+(c) 条件侧与作用侧分别形成当前空间关联
+Green inputs: “K_cond / K_scope [B,128,3072]” and “U_cond g_cond / U_scope g_scope [B,128,3072]”.
+-> “对应相加＋key norm＋split heads” -> “K̃_cond / K̃_scope [B,24,128,128]”.
+Broadcast over T, combine with q_phys from (b):
+“score_role = K̃_role @ q_physᵀ / √128” -> “scores [B,24,21,128,390]” -> “softmax over P=390” -> “A_cond / A_scope [B,24,21,128,390]”.
+Make final A_scope box prominently green and place a connector tag “同一张 A_scope 送图④写回”.
+Short note: “cond：条件证据；scope：受影响状态；每个时刻重新读取，允许区域重叠与变化”.
+
+(d) 读成全宽关系状态
+Two clearly parallel equations/flows:
+“A_cond [B,24,21,128,390]” × “V_state_cond [B,24,21,390,128]” -> “U_cond [B,24,21,128,128]” -> “merge heads＋permute” -> “u_cond [B,128,21,3072]”.
+“A_scope [B,24,21,128,390]” × “V_state_scope [B,24,21,390,128]” -> “U_scope [B,24,21,128,128]” -> “merge heads＋permute” -> “u_scope [B,128,21,3072]”.
+Right connector “u_cond / u_scope → 图③”.
+Footer: “g：首帧依据在当前 Wan 层的表示；u：当前视频时刻读取的状态；A：空间软关联，不是监督标签。两个 128 轴分别是关系数 R 与 head_dim d。”

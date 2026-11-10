@@ -1,0 +1,104 @@
+{
+  "experiment": 66215,
+  "checkpoint_step": 16,
+  "paired_metrics": {
+    "off": {
+      "fm": {
+        "mean_error_increase_pct": 1.5785864215281469,
+        "median_error_increase_pct": 1.2491219239420441,
+        "correct_better": 8,
+        "paired_cases": 8
+      },
+      "process": {
+        "mean_error_increase_pct": 0.8631698159804159,
+        "median_error_increase_pct": 0.7225346479093949,
+        "correct_better": 7,
+        "paired_cases": 8
+      }
+    },
+    "no_latent_reasoning": {
+      "fm": {
+        "mean_error_increase_pct": 0.5433880299801573,
+        "median_error_increase_pct": 0.3755418168914544,
+        "correct_better": 8,
+        "paired_cases": 8
+      },
+      "process": {
+        "mean_error_increase_pct": 0.13488412359370403,
+        "median_error_increase_pct": -0.02544145087837248,
+        "correct_better": 4,
+        "paired_cases": 8
+      }
+    },
+    "alternate_text": {
+      "fm": {
+        "mean_error_increase_pct": 0.03700453632347202,
+        "median_error_increase_pct": 0.005130629820468469,
+        "correct_better": 4,
+        "paired_cases": 8
+      },
+      "process": {
+        "mean_error_increase_pct": 0.011984970584681023,
+        "median_error_increase_pct": 0.014920132512688162,
+        "correct_better": 5,
+        "paired_cases": 8
+      }
+    }
+  },
+  "video_pixel_change": [
+    {
+      "case": "source0000042",
+      "variant": "correct",
+      "frames": 81,
+      "mean_adjacent_rgb_l1": 0.013314035721123219,
+      "last_quarter_adjacent_rgb_l1": 0.015571561641991138,
+      "scope": "pixel change, not physical motion or quality"
+    },
+    {
+      "case": "source0000042",
+      "variant": "off",
+      "frames": 81,
+      "mean_adjacent_rgb_l1": 0.019915815442800522,
+      "last_quarter_adjacent_rgb_l1": 0.02152705006301403,
+      "scope": "pixel change, not physical motion or quality"
+    },
+    {
+      "case": "source0000042",
+      "variant": "no_latent_reasoning",
+      "frames": 81,
+      "mean_adjacent_rgb_l1": 0.016145238652825356,
+      "last_quarter_adjacent_rgb_l1": 0.016506437212228775,
+      "scope": "pixel change, not physical motion or quality"
+    },
+    {
+      "case": "source0000086",
+      "variant": "correct",
+      "frames": 81,
+      "mean_adjacent_rgb_l1": 0.00635954225435853,
+      "last_quarter_adjacent_rgb_l1": 0.005922297947108746,
+      "scope": "pixel change, not physical motion or quality"
+    },
+    {
+      "case": "source0000086",
+      "variant": "off",
+      "frames": 81,
+      "mean_adjacent_rgb_l1": 0.00825242418795824,
+      "last_quarter_adjacent_rgb_l1": 0.007930486463010311,
+      "scope": "pixel change, not physical motion or quality"
+    },
+    {
+      "case": "source0000086",
+      "variant": "no_latent_reasoning",
+      "frames": 81,
+      "mean_adjacent_rgb_l1": 0.006954054348170757,
+      "last_quarter_adjacent_rgb_l1": 0.0066530839540064335,
+      "scope": "pixel change, not physical motion or quality"
+    }
+  ],
+  "limits": [
+    "two scenes, two paired-noise seeds and two sigmas; paired groups are not independent scenes",
+    "one full-generation seed per scene",
+    "interface stage only; verifier not calibrated",
+    "no reference-free physical-quality score"
+  ]
+}

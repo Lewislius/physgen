@@ -1,0 +1,141 @@
+{
+  "revision": "physical_content_v7_r1",
+  "source_snapshot": "experiments/physical_content_v7/snapshots/20261030T141432Z",
+  "candidate": {
+    "experiment_id": 66778,
+    "run": "physical_content_66778",
+    "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+    "budget": {
+      "interface": 128,
+      "joint": 872
+    },
+    "first_review_step": 400
+  },
+  "baseline": {
+    "experiment_id": 66781,
+    "run": "native_lora_66781",
+    "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+    "budget": {
+      "interface": 0,
+      "joint": 1000
+    },
+    "first_review_step": 400
+  },
+  "rejected_gpu_allocations": [
+    66779,
+    66780
+  ],
+  "semantic_preparation_experiment": 66775,
+  "training_data": "existing WISA train split only; calibration uses first-image/request physical reasoning",
+  "baseline_comparison": "same global data/noise order, generation objective, total updates, LoRA initialization seed and sampling; native baseline has128 more Wan-LoRA updates",
+  "goal_achieved": false,
+  "reasoning_control_preparation": {
+    "experiment_id": 66787,
+    "rejected_allocations": [
+      66785,
+      66786
+    ],
+    "same_image_request_reencodings": 4,
+    "relative_memory_difference": 0.0,
+    "prepared_interventions": 8
+  },
+  "heldout_preparation": {
+    "experiment_id": 66809,
+    "rejected_allocations": [
+      66791
+    ],
+    "preselected_cases": 8
+  },
+  "baseline_step400_videophy40": {
+    "experiment_id": 66821,
+    "output": "experiments/physical_content_v7/inference_outputs/native_lora_66781/step0400_seed42_r1"
+  },
+  "baseline_step400_heldout_rejected": [
+    66822
+  ],
+  "thinking_rejected": [
+    66810,
+    66819,
+    66820
+  ],
+  "baseline_resume400_attempts": [
+    66823,
+    66825,
+    66831,
+    66832,
+    66834,
+    66836
+  ],
+  "baseline_resume400_rejected_gpu": [
+    66823,
+    66825,
+    66831,
+    66832,
+    66834,
+    66836
+  ],
+  "input_and_baseline_heldout_review": {
+    "accepted_experiment_id": 66826,
+    "rejected_allocations": [
+      66824
+    ],
+    "stages": [
+      "Qwen2BThinking input comparison",
+      "native_lora400 real heldout8 generation/evaluation"
+    ]
+  },
+  "candidate_step400_review": {
+    "accepted_experiment_id": 66830,
+    "rejected_allocations": [
+      66827,
+      66828,
+      66829
+    ],
+    "stages": [
+      "training-only execution feature gradient diagnostic",
+      "candidate400 real heldout8 generation/evaluation",
+      "candidate400 fixed VideoPhy40 and 20 content controls/evaluation"
+    ],
+    "paused_after": {
+      "eight_heldout_videos_complete": true,
+      "candidate_heldout_scores_complete": true,
+      "purpose": "Batch baseline and candidate heldout evaluation; bring preselected content controls ahead of the full40 completion",
+      "continuation_snapshot": "review_snapshots/20261030T161800Z"
+    }
+  },
+  "candidate_resume400": {
+    "accepted_experiment_id": 66833,
+    "parent_checkpoint": "runs/physical_content_66778/step0400.pt",
+    "run": "physical_content_66833",
+    "resume_is_same_config_and_optimizer": true
+  },
+  "heldout_evaluation_budget_repair": {
+    "reason": "Long WISA captions exceeded legacy max_length=256; first SA score failed before any complete results",
+    "scope": "separately reported heldout8 only",
+    "generation_max_new_tokens": 8,
+    "original_manifests_preserved": true,
+    "fixed_videophy40_unchanged": true
+  },
+  "candidate_step400_review_v2_rejected": [
+    66835
+  ],
+  "candidate_step400_review_v2": {
+    "accepted_experiment_id": 66837,
+    "rejected_allocations": [
+      66835
+    ],
+    "previous_inference_experiment": 66830,
+    "previous_stopped_after_complete_heldout8": true,
+    "snapshot": "review_snapshots/20261030T161800Z",
+    "controls_first": true
+  },
+  "server_recovery_20261031": {
+    "baseline400_complete_experiment": 66821,
+    "candidate400_finish": 66855,
+    "candidate750_to1000_and_review": 66856,
+    "guidance_and_r2_candidate": 66857,
+    "r2_baseline400_rejected": 66854,
+    "baseline1000": "deferred_by_user",
+    "vbench": "deferred_by_user"
+  }
+}

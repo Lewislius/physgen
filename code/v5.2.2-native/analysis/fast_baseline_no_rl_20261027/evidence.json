@@ -1,0 +1,63 @@
+{
+  "current_run_claim_correction": "A 0.002-0.003 change in paired FM does not establish meaningful generation improvement or effective semantic C use.",
+  "historical_only_C_controls": {
+    "scope": "v25/v27 final224; not v29/v30",
+    "source": "analysis/hq_causal_diagnosis_20261027/training_results/findings.json",
+    "H_validation_FM_C_off": 0.2074508306880792,
+    "H_validation_FM_full": 0.20878680422902107,
+    "H_validation_FM_swapped": 0.20881453963617483,
+    "Q_validation_FM_C_off": 0.2074203807860613,
+    "Q_validation_FM_full": 0.20898576204975447,
+    "Q_validation_FM_swapped": 0.20898092103501162,
+    "attention_amplitude_ratio_median_before_output_projection": {
+      "H": 6.053789583551907,
+      "Q": 9.022979298653262
+    }
+  },
+  "noise_schedule": {
+    "training_sigma_min": 0.02,
+    "training_sigma_max": 0.95,
+    "uniform_training_sigma_mean": 0.485,
+    "sampling_euler50_shift5_steps_above_training_sigma_max": 11,
+    "interpretation": "Coverage mismatch in adaptation; not proof that this causes observed failures or that the pretrained base never learned high noise."
+  },
+  "historical_shared60": {
+    "source": "../v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/comparison.json",
+    "wan_lora_only_joint_count": 13,
+    "planned_joint_count": 12,
+    "wan_lora_only_sa_fail": 45,
+    "wan_lora_only_pc_fail": 37,
+    "planned_sa_fail": 46,
+    "planned_pc_fail": 32,
+    "scope": "development shared-first-frame I2V; not current H/Q nor official full T2V results"
+  },
+  "decision": "First verify native-text physical process conditioning with frozen existing models. Only then consider ordinary supervised distillation into latent C. No RL, DPO, GRPO, reward optimization, or increase in reasoning depth.",
+  "current_no_verifier_final224": {
+    "H_run": 66438,
+    "Q_run": 66443,
+    "both_completed_224": true,
+    "scope": "paired one-step reconstruction at sigma .95, 4 validation clips; not free generation",
+    "late_change_RMS_ratio": {
+      "H": 0.3723363672,
+      "Q": 0.3580657915
+    },
+    "late_change_skill": {
+      "H": 0.1094532209,
+      "Q": 0.105167633
+    },
+    "per_case_note": "Three of four clips have negative late change skill against a no-change reference; pooled true change energy is dominated by one gel clip. Low-energy ratios require caution."
+  },
+  "frozen_Qwen_expansion_pilot": {
+    "cases": 12,
+    "seed": 42,
+    "original_SA": 3.1666666666666665,
+    "expanded_SA": 3.0833333333333335,
+    "original_PC": 3.5833333333333335,
+    "expanded_PC": 3.5,
+    "joint_pass_count_original": 3,
+    "joint_pass_count_expanded": 3,
+    "paired_joint_wins": 0,
+    "paired_joint_losses": 0,
+    "conclusion": "No measured benefit. Reject this specific recipe as an improved baseline. Does not disprove every text-conditioning approach."
+  }
+}

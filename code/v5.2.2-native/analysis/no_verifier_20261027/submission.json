@@ -1,0 +1,84 @@
+{
+  "H": {
+    "experiment_id": 66438,
+    "config": "configs/native_h_content_message_no_verifier_simple_wisa3857.yaml",
+    "job": "train/native_h_content_message_no_verifier_simple_1x96g.yaml",
+    "actual_gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition"
+  },
+  "Q": {
+    "experiment_id": 66443,
+    "config": "configs/native_q_seed128_message_no_verifier_simple_wisa3857.yaml",
+    "job": "train/native_q_seed128_message_no_verifier_simple_1x96g.yaml",
+    "status": "Running; first optimizer update verified.",
+    "trial_id": 67823,
+    "actual_gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition"
+  },
+  "training": {
+    "verifier": "absent",
+    "loss": {
+      "fm": 1.0,
+      "flow_temporal": 0.1
+    },
+    "interface_steps": 64,
+    "joint_steps": 160,
+    "accumulation": 4,
+    "initialization": "checkpoints/initialization/generator.pt",
+    "resume": false,
+    "message_refinement_rounds": 2,
+    "seed": 42,
+    "Q_initial_grounding_read": "One R0 read followed by two refinement rounds, preserving the existing query architecture."
+  },
+  "hardware": {
+    "resource_pool": "blk-96g",
+    "slots_per_trial": 1,
+    "accepted": "RTX PRO 6000 or RTX 6000 Blackwell",
+    "all_other_gpus": "raise before data audit or model loading",
+    "max_restarts": 0
+  },
+  "verification": {
+    "behavioral_tests_passed": 4,
+    "legacy_simple_tests_passed": 11,
+    "inference_tests_passed": 5,
+    "cached_data_ready": true,
+    "records": 3857,
+    "train": 3666,
+    "validation": 191,
+    "full_repository_tests_passed": 163,
+    "regression_log": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/no_verifier_20261027/regression.log",
+    "elapsed_seconds": 198.501
+  },
+  "legacy": {
+    "H": "v522-h-content-message-verifier-frozen-simple_66356",
+    "Q": "v522-q-seed128-message-verifier-frozen-simple_66353",
+    "actual_objective": "fixed judge with 40 verifier feedback backwards; not a no-verifier control"
+  },
+  "superseded_experiments": {
+    "H": 66436,
+    "Q": 66437
+  },
+  "status": "Q retry 66443 started on confirmed RTX PRO 6000 without changing shared scheduling. H unchanged.",
+  "rejected_gpu_experiments": [
+    {
+      "experiment_id": 66439,
+      "trial_id": 67819,
+      "gpu": "NVIDIA H100",
+      "exited_before_data_or_model_loading": true,
+      "run_directory_created": false
+    },
+    {
+      "experiment_id": 66440,
+      "trial_id": 67820,
+      "gpu": "NVIDIA H100",
+      "exited_before_data_or_model_loading": true,
+      "run_directory_created": false
+    },
+    {
+      "experiment_id": 66441,
+      "trial_id": 67821,
+      "gpu": "NVIDIA H100",
+      "exited_before_data_or_model_loading": true,
+      "run_directory_created": false
+    }
+  ],
+  "shared_scheduling": "Unchanged; no H100 slot disabled or modified."
+}

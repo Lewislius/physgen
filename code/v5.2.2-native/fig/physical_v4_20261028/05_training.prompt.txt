@@ -1,0 +1,38 @@
+PAGE_NUMBER=5
+Title: “Physical Block V4 · ⑤ 两项损失与渐进训练”
+Subtitle: “仅 L_FM＋λ_phys L_C_phys｜无区域／事件补标｜从官方基础模型开始”
+
+(a) 真实视频直接监督实际生成路径
+“真实视频 [B,3,81,480,832]” -> “原生 VAE encode” -> “z_real [B,48,21,30,52]”.
+Together with “ε ∼ N(0,I)；同形状” and “σ [B]” -> “zσ=(1−σ)z_real+σε / 首帧固定” -> “Wan＋C＋Physical Block” -> “v̂ [B,48,21,30,52]”.
+Parallel target path from z_real and epsilon: “v*=ε−z_real；同形状”.
+vhat and target -> purple loss box “L_FM = mean_valid_future ‖v̂−v*‖² / 仅未来 20 个 latent 时刻”.
+Below, short gradient route: “FM → 实际写回 → 共享 A_scope → 交互／时间 → C K/V → Qwen”.
+
+(b) C 的物理语义监督：读实际注入表示
+“选一个注入层 ℓ 的实际 K_cond / K_scope / V_rule / 各 [B,128,3072]” -> “沿通道 concat” -> “[B,128,9216]” -> “训练专用全宽 bridge / 9216→4096” -> “C prefix [B,128,4096]”.
+Second input to decoder: “中性问题＋右移答案 embedding [B,Nq+Na,4096]”.
+Both -> “冻结的原生 Qwen 语言解码器 / 总长度 128+Nq+Na；宽度4096” -> “答案位置 logits [B,Na,151936]” -> purple box “L_C_phys = −mean_answer log p(a_n | C_KV,q,a_<n)”.
+Above target arrow into CE: “已有 phys_law＋当前输入 → 自动整理简短条件性机制 → 答案 tokens [B,Na]”.
+Small exact notes: “原图／caption／H 不进入解码旁路；答案仅作训练目标” and “读出层 ℓ 按批轮换；该读出头推理时移除”.
+No verifier, no generated-video grader and no extra future-video input to C.
+
+(c) 总目标与数据职责
+Large formula “L_total = L_FM + λ_phys L_C_phys”.
+Two adjacent concise cards:
+“FM：真实视频／已有 PTS；学习实际生成与时空执行”
+“C_phys：已有物理文字的弱监督；学习条件性物理语义”.
+Bottom short line: “不使用 temporal FM、source／scope／phase 损失；λ_phys 尚待配置”.
+
+(d) 两个正式阶段，连续衔接
+Use a readable table with columns “参数／目标”, “阶段 A · interface”, “阶段 B · joint”.
+Rows:
+“Qwen 生成侧 LoRA＋Q/C” | “训练” | “继续训练”
+“Physical Block＋独立 C K/V/O” | “训练” | “继续训练”
+“C 语义 bridge” | “训练” | “继续训练”
+“Wan self-attention 新 LoRA” | “冻结” | “学习率 0 → 目标值”
+“官方基础权重／原生文本投影” | “冻结” | “冻结”
+“L_FM＋L_C_phys” | “始终参与” | “始终参与”.
+Under table a short arrow strip “接口 warmup → 连续保留 C／Physical Block 状态 → Wan LoRA 平滑加入”.
+
+Footer: “Na：答案长度；Nq：问题长度；151936：Qwen 词表大小。冻结 Wan 参数不切断输入梯度。项目模块与 LoRA 新初始化；不加载旧实验 CKPT；无 verifier。”

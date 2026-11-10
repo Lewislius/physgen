@@ -1,0 +1,656 @@
+{
+  "version": "R15H",
+  "cases": {
+    "VP004": {
+      "utc": "2026-11-08T08:11:39.124157+00:00",
+      "score_seen_before_review": false,
+      "case": "VP004",
+      "caption": "A plastic ruler is bent until it cracks, displaying a visible stress fracture that propagates.",
+      "reviewed_frames": [
+        0,
+        11,
+        22,
+        34,
+        45,
+        57,
+        68,
+        80
+      ],
+      "matched_metadata": [
+        "caption",
+        "canvas",
+        "seed",
+        "training_step400",
+        "sampler50_shift5_guidance5"
+      ],
+      "panels": {
+        "R1": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/coupled_attention_r13c/reports/physical_content_67682/visual_predeclared/VP004_R1.png",
+        "R10-A": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/coupled_attention_r13c/reports/physical_content_67682/visual_predeclared/VP004_R10-A.png",
+        "R15B": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_bound_fusion_r15b/reports/physical_content_67829/visual_predeclared/VP004_R15B.png",
+        "R15H": "experiments/physical_content_v7/semantic_feedback_fusion_r15h/reports/physical_content_68243/visual_predeclared/VP004_R15H.png"
+      },
+      "observations": {
+        "R15H": "早期尺子仍大致水平，人物/手部下移；采样帧57起尺子不再可见，后段人物继续下移。八个采样帧未显示清楚的先弯曲、再应力开裂及裂纹传播过程。背景和人物轮廓总体可辨。",
+        "R15B_R1_R10A": "同输入采样帧总体保持初始人物与尺子布局，变化很小；未看到清楚的目标弯曲/开裂过程。",
+        "shared_input": "首帧本身的透明尺子轮廓及白色区域含混；本次比较保留相同首帧，不把输入瑕疵单独归因于H。"
+      },
+      "conclusion": "本例H的额外运动没有构成所要求物理过程的成功，且尺子持续性存在可见问题；也不能把历史版本的静止输出当作该例成功。",
+      "next_comparisons": [
+        "semantic_response_off",
+        "direct_write_off",
+        "no_c",
+        "reasoning_swapped",
+        "empty_reasoning",
+        "global_train_mean"
+      ],
+      "scope": "一个预先选定案例的8帧可视诊断；不是整批质量评分，不据此提前决定I或判定H总体成败。",
+      "control_visual_reviews": {
+        "no_c": {
+          "utc": "2026-11-08T09:21:50.018000+00:00",
+          "same_checkpoint": true,
+          "panel": "experiments/physical_content_v7/semantic_feedback_fusion_r15h/reports/physical_content_68243/visual_predeclared/VP004_R15H_no_c.png",
+          "reviewed_frames": [
+            0,
+            11,
+            22,
+            34,
+            45,
+            57,
+            68,
+            80
+          ],
+          "observation": "关闭注入后尺子/手部出现明显拉伸重复和白色碎片伪影，后段波及人物与背景；正常H也有尺子消失问题，但不能据关闭注入使其他案例变清楚就认定该例也改善。",
+          "control_score_available": true
+        },
+        "semantic_response_off": {
+          "utc": "2026-11-08T09:54:18.372841+00:00",
+          "same_checkpoint": true,
+          "panel": "experiments/physical_content_v7/semantic_feedback_fusion_r15h/reports/physical_content_68243/visual_predeclared/VP004_R15H_semantic_response_off.png",
+          "reviewed_frames": [
+            0,
+            11,
+            22,
+            34,
+            45,
+            57,
+            68,
+            80
+          ],
+          "observation": "关闭语义响应后仍是人物/手部下移、后段尺子消失；主要失败模式与正常H接近。",
+          "control_score_available": true
+        },
+        "direct_write_off": {
+          "utc": "2026-11-08T10:11:18.825360+00:00",
+          "same_checkpoint": true,
+          "panel": "experiments/physical_content_v7/semantic_feedback_fusion_r15h/reports/physical_content_68243/visual_predeclared/VP004_R15H_direct_write_off.png",
+          "reviewed_frames": [
+            0,
+            11,
+            22,
+            34,
+            45,
+            57,
+            68,
+            80
+          ],
+          "observation": "关闭直接写入后尺子及手部拉伸、白色碎片和背景破碎仍很明显，与no_c相近；语义响应没有修复此类缺陷。",
+          "control_score_available": true
+        }
+      }
+    },
+    "VP010": {
+      "utc": "2026-11-08T08:16:12.711378+00:00",
+      "score_seen_before_review": false,
+      "case": "VP010",
+      "caption": "A person mops up a puddle of water on a concrete floor, the water disappearing as the mop passes.",
+      "reviewed_frames": [
+        0,
+        11,
+        22,
+        34,
+        45,
+        57,
+        68,
+        80
+      ],
+      "panels": {
+        "R15B": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_bound_fusion_r15b/reports/physical_content_67829/visual_predeclared/VP010_R15B.png",
+        "R15H": "experiments/physical_content_v7/semantic_feedback_fusion_r15h/reports/physical_content_68243/visual_predeclared/VP010_R15H.png"
+      },
+      "observations": {
+        "R15H": "拖把头左右及向前移动，后段头部轮廓明显变扁/变形；背景大体稳定。拖把经过后仍有较大明亮积水/湿渍区域，采样帧未显示清楚、持续的吸水清除过程。",
+        "R15B": "也有拖把移动和头部变形，积水/反光区域有所变化；同样不能仅凭这些变化认定完成了水随拖把经过消失的过程。"
+      },
+      "conclusion": "本例尚未看到H相对B有明确的物理过程或画面质量优势；移动本身不是任务成功。",
+      "next_comparisons": [
+        "semantic_response_off",
+        "direct_write_off",
+        "no_c",
+        "reasoning_swapped",
+        "empty_reasoning",
+        "global_train_mean"
+      ],
+      "scope": "同输入8帧人工可视诊断；未做水量估计，不把反光变化直接当作吸水量，也不据两例推断整批均分。"
+    },
+    "VP027": {
+      "utc": "2026-11-08T08:47:30.460445+00:00",
+      "score_seen_before_review": false,
+      "case": "VP027",
+      "caption": "Hands shape a lump of clay-like bread dough into a smooth, round boule on a wooden table.",
+      "reviewed_frames": [
+        0,
+        11,
+        22,
+        34,
+        45,
+        57,
+        68,
+        80
+      ],
+      "panels": {
+        "R1": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/coupled_attention_r13c/reports/physical_content_67682/visual_predeclared/VP027_R1.png",
+        "R15B": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_bound_fusion_r15b/reports/physical_content_67829/visual_predeclared/VP027_R15B.png",
+        "R15H": "experiments/physical_content_v7/semantic_feedback_fusion_r15h/reports/physical_content_68243/visual_predeclared/VP027_R15H.png"
+      },
+      "native_resolution_check": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_feedback_fusion_r15h/reports/physical_content_68243/visual_predeclared/VP027_R15H_native_frame34.png",
+      "observations": {
+        "R15H": "手与面团有较大形变/塑形变化，但从采样帧11起桌面、手臂和背景出现强烈重复网格/鳞片状纹理；面团表面及手指也受影响。原始832x480第34帧已确认同样伪影，非拼图缩放造成。",
+        "R15B": "手和圆面团基本保持初始布局，木桌、皮肤纹理较清楚，没有H这种大范围周期纹理。",
+        "R1": "后段手略向下压面团，场景和物体材质较连续，没有H这种大范围周期纹理。"
+      },
+      "literal_request_rule": "要求塑成光滑圆面团，不额外要求剧烈揉捏；不按运动幅度评优劣。",
+      "conclusion": "H在本例有明确且严重的画质退步，不能以增加手部/面团变化或某个PC分数抵消。",
+      "next_comparisons": [
+        "no_c",
+        "semantic_response_off",
+        "direct_write_off"
+      ],
+      "attribution_limit": "先用同权重关闭分支对照区分物理直写、新语义响应及训练后主干的作用；目前不将伪影归为精度、损失数值、编码器或某单一模块。",
+      "scope": "预先选定案例的8帧及1张原尺寸帧；未据此计算整体画质均分。",
+      "control_visual_reviews": {
+        "no_c": {
+          "utc": "2026-11-08T09:21:50.017278+00:00",
+          "same_checkpoint": true,
+          "panel": "experiments/physical_content_v7/semantic_feedback_fusion_r15h/reports/physical_content_68243/visual_predeclared/VP027_R15H_no_c.png",
+          "reviewed_frames": [
+            0,
+            11,
+            22,
+            34,
+            45,
+            57,
+            68,
+            80
+          ],
+          "observation": "关闭注入后桌面/手臂/背景的周期网格消失；有手部围绕面团按压/塑形变化，面团主体保留，表面及皮肤纹理明显比正常H清楚。",
+          "control_score_available": true
+        },
+        "semantic_response_off": {
+          "utc": "2026-11-08T09:54:18.372487+00:00",
+          "same_checkpoint": true,
+          "panel": "experiments/physical_content_v7/semantic_feedback_fusion_r15h/reports/physical_content_68243/visual_predeclared/VP027_R15H_semantic_response_off.png",
+          "reviewed_frames": [
+            0,
+            11,
+            22,
+            34,
+            45,
+            57,
+            68,
+            80
+          ],
+          "observation": "关闭语义响应后桌面、手臂、背景的周期网格仍明显存在，面团表面粗糙/形变；没有像no_c一样恢复清楚材质。",
+          "control_score_available": true
+        },
+        "direct_write_off": {
+          "utc": "2026-11-08T10:11:18.824596+00:00",
+          "same_checkpoint": true,
+          "panel": "experiments/physical_content_v7/semantic_feedback_fusion_r15h/reports/physical_content_68243/visual_predeclared/VP027_R15H_direct_write_off.png",
+          "reviewed_frames": [
+            0,
+            11,
+            22,
+            34,
+            45,
+            57,
+            68,
+            80
+          ],
+          "observation": "关闭直接写入、保留语义响应后，桌面/手臂/背景的周期纹理消失。面团主体保留，有手部塑形变化；表现接近no_c，不能据此声称完整语义分支已带来量化收益。",
+          "control_score_available": true
+        },
+        "native_physical_query": {
+          "utc": "2026-11-08T10:44:42.111500+00:00",
+          "same_checkpoint": true,
+          "panel": "experiments/physical_content_v7/semantic_feedback_fusion_r15h/reports/physical_content_68243/visual_predeclared/VP027_R15H_native_physical_query.png",
+          "reviewed_frames": [
+            0,
+            11,
+            22,
+            34,
+            45,
+            57,
+            68,
+            80
+          ],
+          "observation": "换回冻结原生Q/norm后，桌面、手臂和面团仍有与正常H相近的周期纹理，未修复画质问题。",
+          "control_score_available": true
+        },
+        "reasoning_swapped": {
+          "utc": "2026-11-08T10:58:17.793444+00:00",
+          "same_checkpoint": true,
+          "panel": "experiments/physical_content_v7/semantic_feedback_fusion_r15h/reports/physical_content_68243/visual_predeclared/VP027_R15H_reasoning_swapped.png",
+          "reviewed_frames": [
+            0,
+            11,
+            22,
+            34,
+            45,
+            57,
+            68,
+            80
+          ],
+          "observation": "换成无关reasoning后，原有桌面/手臂/面团网格纹理消失；手与面团仍有塑形变化，材质比正常H清楚。",
+          "control_score_available": true
+        },
+        "empty_reasoning": {
+          "utc": "2026-11-08T11:26:56.687410+00:00",
+          "same_checkpoint": true,
+          "panel": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_feedback_fusion_r15h/reports/physical_content_68243/visual_predeclared/VP027_R15H_empty_reasoning.png",
+          "reviewed_frames": [
+            0,
+            11,
+            22,
+            34,
+            45,
+            57,
+            68,
+            80
+          ],
+          "observation": "空reasoning后，正常H中覆盖手臂、背景和面团的强网格大幅减弱；桌面仍有较弱重复纹理，手腕/手部仍有形变。面团和手有塑形变化。不能表述为所有伪影完全消失。",
+          "control_score_available": true
+        },
+        "global_train_mean": {
+          "utc": "2026-11-08T11:43:20.461168+00:00",
+          "same_checkpoint": true,
+          "panel": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_feedback_fusion_r15h/reports/physical_content_68243/visual_predeclared/VP027_R15H_global_train_mean.png",
+          "reviewed_frames": [
+            0,
+            11,
+            22,
+            34,
+            45,
+            57,
+            68,
+            80
+          ],
+          "observation": "均值C下桌面、皮肤和背景清楚，无正常H的强周期网格；手围绕面团塑形，面团主体稳定。比正常H明显干净，仍不据8帧评定完整物理过程成功。",
+          "control_score_available": true
+        }
+      }
+    },
+    "VP034": {
+      "utc": "2026-11-08T09:05:49.131365+00:00",
+      "case": "VP034",
+      "caption": "A large, clear balloon is inflated with air, showing the internal pressure causing the balloon to stretch.",
+      "reviewed_frames": [
+        0,
+        11,
+        22,
+        34,
+        45,
+        57,
+        68,
+        80
+      ],
+      "panels": {
+        "R15B": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_bound_fusion_r15b/reports/physical_content_67829/visual_predeclared/VP034_R15B.png",
+        "R15H": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_feedback_fusion_r15h/reports/physical_content_68243/visual_predeclared/VP034_R15H.png"
+      },
+      "observations": {
+        "R15H": "从采样帧11起背景出现强烈周期网格纹理，气球与背景的对比大幅降低，气球轮廓难辨；后续位置上下变化，没有清楚可见的持续充气和拉伸。",
+        "R15B": "气球与背景清楚、无H的大范围纹理；主要上下浮动，没有清楚的持续膨胀。"
+      },
+      "conclusion": "H相比B有明确画质退步；PC5不能说明充气过程正确。",
+      "scores_H": [
+        3,
+        5
+      ],
+      "scores_B": [
+        4,
+        5
+      ],
+      "next_comparisons": [
+        "no_c",
+        "semantic_response_off",
+        "direct_write_off"
+      ],
+      "scope": "预先选定的8帧诊断，不作额外自动质量均分。",
+      "control_visual_reviews": {
+        "no_c": {
+          "utc": "2026-11-08T09:21:50.017547+00:00",
+          "same_checkpoint": true,
+          "panel": "experiments/physical_content_v7/semantic_feedback_fusion_r15h/reports/physical_content_68243/visual_predeclared/VP034_R15H_no_c.png",
+          "reviewed_frames": [
+            0,
+            11,
+            22,
+            34,
+            45,
+            57,
+            68,
+            80
+          ],
+          "observation": "关闭注入后气球和背景恢复清楚，无正常H的大范围周期纹理；仍主要上下/左右位置变化，未据此认定完整充气拉伸成功。",
+          "control_score_available": true
+        },
+        "semantic_response_off": {
+          "utc": "2026-11-08T09:54:18.372621+00:00",
+          "same_checkpoint": true,
+          "panel": "experiments/physical_content_v7/semantic_feedback_fusion_r15h/reports/physical_content_68243/visual_predeclared/VP034_R15H_semantic_response_off.png",
+          "reviewed_frames": [
+            0,
+            11,
+            22,
+            34,
+            45,
+            57,
+            68,
+            80
+          ],
+          "observation": "关闭语义响应后仍有全画面强周期网格，气球轮廓仍被淹没；与正常H接近。",
+          "control_score_available": true
+        },
+        "direct_write_off": {
+          "utc": "2026-11-08T10:11:18.824890+00:00",
+          "same_checkpoint": true,
+          "panel": "experiments/physical_content_v7/semantic_feedback_fusion_r15h/reports/physical_content_68243/visual_predeclared/VP034_R15H_direct_write_off.png",
+          "reviewed_frames": [
+            0,
+            11,
+            22,
+            34,
+            45,
+            57,
+            68,
+            80
+          ],
+          "observation": "关闭直接写入后气球/背景清楚，正常H及semantic_response_off中的全局网格消失；仍主要位置变化，未证明完成充气拉伸。",
+          "control_score_available": true
+        },
+        "native_physical_query": {
+          "utc": "2026-11-08T10:44:42.111650+00:00",
+          "same_checkpoint": true,
+          "panel": "experiments/physical_content_v7/semantic_feedback_fusion_r15h/reports/physical_content_68243/visual_predeclared/VP034_R15H_native_physical_query.png",
+          "reviewed_frames": [
+            0,
+            11,
+            22,
+            34,
+            45,
+            57,
+            68,
+            80
+          ],
+          "observation": "换回原生Q后全画面周期纹理仍强烈，气球轮廓几乎无法辨认，视觉上比正常H更严重。",
+          "control_score_available": true
+        },
+        "reasoning_swapped": {
+          "utc": "2026-11-08T10:58:17.793600+00:00",
+          "same_checkpoint": true,
+          "panel": "experiments/physical_content_v7/semantic_feedback_fusion_r15h/reports/physical_content_68243/visual_predeclared/VP034_R15H_reasoning_swapped.png",
+          "reviewed_frames": [
+            0,
+            11,
+            22,
+            34,
+            45,
+            57,
+            68,
+            80
+          ],
+          "observation": "换成无关reasoning后，气球轮廓恢复可辨、强烈网格大幅减轻，但背景仍有较弱纹理，气球表面也不如no_c干净；未证明充气过程正确。",
+          "control_score_available": true
+        },
+        "empty_reasoning": {
+          "utc": "2026-11-08T11:26:56.687410+00:00",
+          "same_checkpoint": true,
+          "panel": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_feedback_fusion_r15h/reports/physical_content_68243/visual_predeclared/VP034_R15H_empty_reasoning.png",
+          "reviewed_frames": [
+            0,
+            11,
+            22,
+            34,
+            45,
+            57,
+            68,
+            80
+          ],
+          "observation": "空reasoning后，强网格基本消退，气球与蓝色背景恢复可辨；背景有较弱纹理，主要仍是上下位移，没有清楚的连续充气伸展过程。",
+          "control_score_available": true
+        },
+        "global_train_mean": {
+          "utc": "2026-11-08T11:43:20.461168+00:00",
+          "same_checkpoint": true,
+          "panel": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_feedback_fusion_r15h/reports/physical_content_68243/visual_predeclared/VP034_R15H_global_train_mean.png",
+          "reviewed_frames": [
+            0,
+            11,
+            22,
+            34,
+            45,
+            57,
+            68,
+            80
+          ],
+          "observation": "均值C下气球和背景清楚、强网格消失；主要上下位置变化，未显示清楚连续的充气拉伸。",
+          "control_score_available": true
+        }
+      }
+    },
+    "VP038": {
+      "utc": "2026-11-08T09:05:49.131490+00:00",
+      "case": "VP038",
+      "caption": "A paint roller, dipped in green paint, is used to cover a section of a metal fence, creating a uniform green coat.",
+      "reviewed_frames": [
+        0,
+        11,
+        22,
+        34,
+        45,
+        57,
+        68,
+        80
+      ],
+      "panels": {
+        "R15B": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_bound_fusion_r15b/reports/physical_content_67829/visual_predeclared/VP038_R15B.png",
+        "R15H": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_feedback_fusion_r15h/reports/physical_content_68243/visual_predeclared/VP038_R15H.png"
+      },
+      "observations": {
+        "R15H": "帧11起绿栅栏新增周期纹理；帧22起滚筒主体消失，余下水平杆/细支架移动并变形。没有清楚连续的滚筒涂抹成膜过程。",
+        "R15B": "滚筒大多保留但也有旋转/形变、后段重复和接触不自然问题；栅栏材质比H清楚。"
+      },
+      "conclusion": "H的物体持续性和材质稳定性进一步退步；B本身也不是该例完整成功。",
+      "scores_H": [
+        3,
+        4
+      ],
+      "scores_B": [
+        4,
+        4
+      ],
+      "next_comparisons": [
+        "no_c",
+        "semantic_response_off",
+        "direct_write_off"
+      ],
+      "scope": "预先选定的8帧诊断，不作额外自动质量均分。",
+      "control_visual_reviews": {
+        "no_c": {
+          "utc": "2026-11-08T09:21:50.017767+00:00",
+          "same_checkpoint": true,
+          "panel": "experiments/physical_content_v7/semantic_feedback_fusion_r15h/reports/physical_content_68243/visual_predeclared/VP038_R15H_no_c.png",
+          "reviewed_frames": [
+            0,
+            11,
+            22,
+            34,
+            45,
+            57,
+            68,
+            80
+          ],
+          "observation": "关闭注入后栅栏周期纹理消失；仍出现滚筒变为细杆/支架、稍后滚筒主体重新出现、局部涂层/接触不自然等缺陷。",
+          "control_score_available": true
+        },
+        "semantic_response_off": {
+          "utc": "2026-11-08T09:54:18.372731+00:00",
+          "same_checkpoint": true,
+          "panel": "experiments/physical_content_v7/semantic_feedback_fusion_r15h/reports/physical_content_68243/visual_predeclared/VP038_R15H_semantic_response_off.png",
+          "reviewed_frames": [
+            0,
+            11,
+            22,
+            34,
+            45,
+            57,
+            68,
+            80
+          ],
+          "observation": "关闭语义响应后栅栏周期纹理仍在，滚筒主体在后段仍消失，仅剩移动变形支架；与正常H接近。",
+          "control_score_available": true
+        },
+        "direct_write_off": {
+          "utc": "2026-11-08T10:11:18.825131+00:00",
+          "same_checkpoint": true,
+          "panel": "experiments/physical_content_v7/semantic_feedback_fusion_r15h/reports/physical_content_68243/visual_predeclared/VP038_R15H_direct_write_off.png",
+          "reviewed_frames": [
+            0,
+            11,
+            22,
+            34,
+            45,
+            57,
+            68,
+            80
+          ],
+          "observation": "关闭直接写入后栅栏周期纹理消失；滚筒仍会变为细杆、稍后重新出现，局部涂层/接触仍异常，与no_c有相似缺陷。",
+          "control_score_available": true
+        },
+        "native_physical_query": {
+          "utc": "2026-11-08T10:44:42.111765+00:00",
+          "same_checkpoint": true,
+          "panel": "experiments/physical_content_v7/semantic_feedback_fusion_r15h/reports/physical_content_68243/visual_predeclared/VP038_R15H_native_physical_query.png",
+          "reviewed_frames": [
+            0,
+            11,
+            22,
+            34,
+            45,
+            57,
+            68,
+            80
+          ],
+          "observation": "换回原生Q后栅栏周期纹理持续；滚筒主体仍消失，后段细杆也变模糊/消失，未修复物体持续性。",
+          "control_score_available": true
+        },
+        "empty_reasoning": {
+          "utc": "2026-11-08T11:26:56.687410+00:00",
+          "same_checkpoint": true,
+          "panel": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_feedback_fusion_r15h/reports/physical_content_68243/visual_predeclared/VP038_R15H_empty_reasoning.png",
+          "reviewed_frames": [
+            0,
+            11,
+            22,
+            34,
+            45,
+            57,
+            68,
+            80
+          ],
+          "observation": "空reasoning后栅栏强网格减弱，但滚筒明显变形、离开画面后出现异常支架/物体，随后重新出现；未修复连续涂抹和物体持续性。",
+          "control_score_available": true
+        },
+        "global_train_mean": {
+          "utc": "2026-11-08T11:43:20.461168+00:00",
+          "same_checkpoint": true,
+          "panel": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_feedback_fusion_r15h/reports/physical_content_68243/visual_predeclared/VP038_R15H_global_train_mean.png",
+          "reviewed_frames": [
+            0,
+            11,
+            22,
+            34,
+            45,
+            57,
+            68,
+            80
+          ],
+          "observation": "均值C下栅栏无强网格，滚筒主体在8个采样帧均可见；支架/接触仍有不自然处，但比正常H后段仅剩杆更完整。",
+          "control_score_available": true
+        }
+      }
+    }
+  },
+  "full40_scores_available_at_first_review": false,
+  "preliminary_summary": "五个预先选定案例已看完。H在VP027/034/038有明显周期纹理，VP004/038还有物体消失；40例SA2.925/PC3.525/Joint8，未达标。等待配对控制定位。",
+  "no_c_visual_finding": {
+    "confirmed": "三例VP027/034/038的正常H周期纹理在同权重no_c视频中消失，支持启用注入通路会造成这些伪影。",
+    "not_resolved": "仅关闭全部注入仍留有尺子、滚筒形变及任务过程缺失，尚不能作为达标方案。",
+    "next": "等待semantic_response_off与direct_write_off定位是哪条路径及其交互；统一16例评分尚未完成。"
+  },
+  "semantic_response_off_visual_finding": {
+    "confirmed": "在相同H权重上，保留直接物理写入、关闭语义响应，三例周期纹理仍存在；no_c时不存在。当前直接写入已足以引发这些伪影，删除语义响应不能修复。",
+    "scope": "推理时当前已训练参数的因果干预；不能直接据此断言语义分支在训练期间完全没有影响。",
+    "next": "完成direct_write_off及其余内容/Q控制、统一评分；比较H直接写入与R10A/R15B的实际机制和训练路径。"
+  },
+  "two_branch_factorial_visual_result": {
+    "cases": [
+      "VP027",
+      "VP034",
+      "VP038"
+    ],
+    "periodic_texture_present": {
+      "normal_both_on": true,
+      "semantic_response_off_direct_on": true,
+      "direct_write_off_semantic_on": false,
+      "no_c_both_off": false
+    },
+    "interpretation": "在这些同权重、同输入/种子案例中，启用H直接物理写入会引入周期纹理；语义响应不是其发生的必要条件，删除语义响应无效。",
+    "remaining_problem": "关闭直接写入仍留有物体持续性/形变/物理过程缺陷，不等于达标。",
+    "not_claimed": "尚无16例控制分数；未把这个推理干预等同于重新训练某架构，也未判定独立物理Q普遍无效。",
+    "next": "完成原生Q、正确/无关/空reasoning、均值C的已安排对照及评分，再确定I。"
+  },
+  "native_query_visual_finding": {
+    "confirmed": "换回原生Q/norm没有清除3例周期纹理；只替换查询不是H当前的修复方法。",
+    "design_implication": "不因H失败便去掉独立物理Q；当前证据应继续追查C内容与物理执行写入，以及训练后的组合。",
+    "scope": "同权重推理干预和可视诊断；完整16例量化评分尚待完成，不宣称物理Q已经有整体指标收益。"
+  },
+  "reasoning_swapped_visual_finding": {
+    "scope": [
+      "VP027",
+      "VP034"
+    ],
+    "finding": "替换reasoning会改变伪影；VP027清除，VP034大幅减轻。内容敏感性不等于有益利用；原配内容反而可能触发有害执行。",
+    "next": "比较原配/无关/空输入特征和C的幅值及内容结构，结合剩余控制和完整16评分。"
+  },
+  "empty_reasoning_visual_finding": {
+    "cases": [
+      "VP027",
+      "VP034",
+      "VP038"
+    ],
+    "finding": "正确配对reasoning并未在这些案例上稳定改善画质；删去reasoning能减轻强周期纹理，但未恢复完整物理过程及稳定物体形状。",
+    "scope": "同输入/种子/权重的抽帧诊断；不据此声称全部16例分数上升或应完全放弃reasoning。",
+    "next": "等待均值C余下案例和统一七组16例评分，再闭环H复盘。"
+  },
+  "all_seven_control_scores_available": true,
+  "global_train_mean_visual_finding": {
+    "cases": [
+      "VP027",
+      "VP034",
+      "VP038"
+    ],
+    "finding": "均值C在3例消除强网格，滚筒持续性也更好；16例PC相同、SA更高且多2个Joint。正常输入变化没有转成可靠综合收益。",
+    "limit": "均值干预改变了内容、幅值及条件/无条件两路；不能归因于单纯减少差异，也不是完整达标模型。"
+  }
+}

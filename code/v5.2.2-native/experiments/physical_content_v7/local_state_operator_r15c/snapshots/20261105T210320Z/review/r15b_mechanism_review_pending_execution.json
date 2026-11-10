@@ -1,0 +1,275 @@
+{
+  "utc": "2026-11-05T20:05:54.191448+00:00",
+  "candidate": "R15B",
+  "review_status": "preliminary_wait_remaining_three_controls",
+  "full40": {
+    "count": 40,
+    "sa_mean": 2.925,
+    "pc_mean": 3.7,
+    "sa_pass_rate": 0.275,
+    "pc_pass_rate": 0.575,
+    "joint_pass_count": 10,
+    "joint_pass_rate": 0.25
+  },
+  "numeric_targets": {
+    "pc": false,
+    "sa": false,
+    "joint": false
+  },
+  "overall_accepted": false,
+  "findings": [
+    {
+      "finding": "The same ten40-case Joint successes as R1 and native400; three successes recovered relative to R10A, none newly gained over R1.",
+      "evidence": {
+        "gains": [],
+        "losses": []
+      }
+    },
+    {
+      "finding": "SA declines against native400 on7 cases versus1 gain, despite11 PC gains versus1 loss. This remains a semantic/physical balance problem.",
+      "evidence": {
+        "sa": {
+          "mean_change": -0.15,
+          "wins": 1,
+          "ties": 32,
+          "losses": 7
+        },
+        "pc": {
+          "mean_change": 0.25,
+          "wins": 11,
+          "ties": 28,
+          "losses": 1
+        },
+        "joint": {
+          "gains": [],
+          "losses": []
+        }
+      }
+    },
+    {
+      "finding": "Internal C is not near-identical across tokens. Lower cosine alone is insufficient evidence of useful physical conditioning.",
+      "query_update_token_cosine": 0.20237957348581403,
+      "execution_C_token_cosine": 0.24018972599878907
+    },
+    {
+      "finding": "Inner request binding is selective and preserves differing values, but increases common components. The data do not support calling it fully uniform or a total content collapse.",
+      "layers": {
+        "2": {
+          "normalized_binding_entropy": 0.7285791784524918,
+          "binding_top1_mass": 0.09498646343126893,
+          "kl_to_relation_prior": 1.505076639354229,
+          "physical_values": {
+            "token_cosine": 0.23435832047834992,
+            "rms": 0.34264457039535046,
+            "common_token_energy_fraction": 0.26698199147358537
+          },
+          "request_bound_values": {
+            "token_cosine": 0.4934323485940695,
+            "rms": 0.2682869788259268,
+            "common_token_energy_fraction": 0.532495990395546
+          },
+          "per_head_bound_values": {
+            "token_cosine": 0.47199890576303005,
+            "rms": 0.26828697696328163,
+            "common_token_energy_fraction": 0.5324959829449654
+          },
+          "cross_sample_bound_means": {
+            "token_cosine": 0.8878607153892517,
+            "rms": 0.19817106425762177,
+            "common_token_energy_fraction": 0.8760629892349243
+          }
+        },
+        "14": {
+          "normalized_binding_entropy": 0.692249733954668,
+          "binding_top1_mass": 0.11165993381291628,
+          "kl_to_relation_prior": 1.7065298706293106,
+          "physical_values": {
+            "token_cosine": 0.2037185849621892,
+            "rms": 0.3985568881034851,
+            "common_token_energy_fraction": 0.21840102411806583
+          },
+          "request_bound_values": {
+            "token_cosine": 0.3698441032320261,
+            "rms": 0.3005140610039234,
+            "common_token_energy_fraction": 0.42953122965991497
+          },
+          "per_head_bound_values": {
+            "token_cosine": 0.3753870725631714,
+            "rms": 0.30051406286656857,
+            "common_token_energy_fraction": 0.42953122965991497
+          },
+          "cross_sample_bound_means": {
+            "token_cosine": 0.8564168214797974,
+            "rms": 0.20128533244132996,
+            "common_token_energy_fraction": 0.8253867626190186
+          }
+        },
+        "29": {
+          "normalized_binding_entropy": 0.7185001745820045,
+          "binding_top1_mass": 0.10402277344837785,
+          "kl_to_relation_prior": 1.5609665215015411,
+          "physical_values": {
+            "token_cosine": 0.20599091425538063,
+            "rms": 0.24963982868939638,
+            "common_token_energy_fraction": 0.22344286856241524
+          },
+          "request_bound_values": {
+            "token_cosine": 0.2895237850025296,
+            "rms": 0.1906074807047844,
+            "common_token_energy_fraction": 0.32622501254081726
+          },
+          "per_head_bound_values": {
+            "token_cosine": 0.34431667160242796,
+            "rms": 0.19060747977346182,
+            "common_token_energy_fraction": 0.32622501254081726
+          },
+          "cross_sample_bound_means": {
+            "token_cosine": 0.7412774562835693,
+            "rms": 0.11069494485855103,
+            "common_token_energy_fraction": 0.7245141267776489
+          }
+        }
+      }
+    },
+    {
+      "finding": "Request binding has mixed paired impact: versus direct physical read it loses1 SA point and3 PC points across16, but gains2 Joint cases and loses1. It is not established as an overall improvement.",
+      "evidence": {
+        "sa": {
+          "mean_change": -0.0625,
+          "wins": 2,
+          "ties": 11,
+          "losses": 3
+        },
+        "pc": {
+          "mean_change": -0.1875,
+          "wins": 0,
+          "ties": 13,
+          "losses": 3
+        },
+        "joint": {
+          "gains": [
+            "VP018",
+            "VP034"
+          ],
+          "losses": [
+            "VP015"
+          ]
+        }
+      }
+    },
+    {
+      "finding": "State-value execution has a PC-mean cost but supports two Joint successes; dropping it based only on PC would miss this tradeoff.",
+      "evidence": {
+        "sa": {
+          "mean_change": 0,
+          "wins": 1,
+          "ties": 14,
+          "losses": 1
+        },
+        "pc": {
+          "mean_change": -0.125,
+          "wins": 1,
+          "ties": 12,
+          "losses": 3
+        },
+        "joint": {
+          "gains": [
+            "VP010",
+            "VP018"
+          ],
+          "losses": []
+        }
+      }
+    },
+    {
+      "finding": "Normal C beats the fixed training mean on two Joint cases and one net PC point, with equal mean SA. This supports limited input-specific utility, not comprehensive efficacy.",
+      "evidence": {
+        "sa": {
+          "mean_change": 0,
+          "wins": 2,
+          "ties": 12,
+          "losses": 2
+        },
+        "pc": {
+          "mean_change": 0.0625,
+          "wins": 2,
+          "ties": 13,
+          "losses": 1
+        },
+        "joint": {
+          "gains": [
+            "VP018",
+            "VP034"
+          ],
+          "losses": []
+        }
+      }
+    },
+    {
+      "finding": "Visual criteria were corrected against exact prompts: VP027 asks for a smooth round boule, not a mandatory extended kneading sequence; VP034 asks inflation/stretching, not bursting. VP004 lacks clear bending/fracture; VP010 and VP038 have geometric defects.",
+      "evidence_directory": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_bound_fusion_r15b/reports/physical_content_67829/visual_predeclared"
+    }
+  ],
+  "unresolved": [
+    "Same-checkpoint no_c determines whether current physical fusion introduces the remaining semantic/process deficits beyond the jointly trained native branch.",
+    "Wrong and empty reasoning measure content utility with matched image/request/seed.",
+    "The outer video read, state multiplication and write magnitude have not been diagnosed by the inner-binding CPU probe.",
+    "Cross-benchmark quality is still unmeasured for this candidate."
+  ],
+  "next_version_policy": "Finish paired controls and review actual videos and relevant historical mechanisms before determining R15C. Do not claim achieved goals or commit next training based on partial results. MaximumR15E remains unchanged.",
+  "relevant_historical_mechanisms": [
+    {
+      "versions": [
+        "R1",
+        "R9"
+      ],
+      "verified": "Both use one C for K and V, and both already include state_value multiplication, independent physical K/V/O, and frozen native text projections. R1 reads the full cached Qwen memory; R9 uses normalized request/reasoning words with grouped local heads.",
+      "source_R1": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/snapshots/20261030T141432Z/physical_content/model.py",
+      "source_R9": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r1_content_reader_r9/snapshots/20261031T150803Z/physical_content/model.py",
+      "training_note": "R1 stored plan allowed1000 but the compared checkpoint is step400, with128 frozen-LoRA steps then272 actual joint updates."
+    },
+    {
+      "version": "R10B",
+      "verified": "Visual tokens are read in both normal and core_only. core_only changes routingC to executionC, bypassing only the extra routing residual. Thus its SA/J differences do not isolate a visual-branch benefit.",
+      "normal16": {
+        "sa": 3.25,
+        "pc": 3.625,
+        "joint": 6
+      },
+      "core_only16": {
+        "sa": 3.0,
+        "pc": 3.6875,
+        "joint": 4
+      },
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_execution_r10b/snapshots/20261101T054248Z/physical_content/model.py"
+    },
+    {
+      "version": "R12A",
+      "verified": "Reciprocal state reading was per-frame spatial pooling through the transposed address matrix. It did not explicitly exchange state information across frames. Its fixed16 read-on/off showed only one net SA point, with identical PC and Joint.",
+      "normal16": {
+        "sa": 3.25,
+        "pc": 3.6875,
+        "joint": 5
+      },
+      "video_read_off16": {
+        "sa": 3.1875,
+        "pc": 3.6875,
+        "joint": 5
+      },
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/reciprocal_fusion_r12a/snapshots/20261104T093834Z/physical_content/model.py"
+    }
+  ],
+  "pending_execution_probe": {
+    "experiment": 67903,
+    "pool": "ada-48g",
+    "cases": [
+      "VP004",
+      "VP025",
+      "VP027",
+      "VP038"
+    ],
+    "output_videos": 0,
+    "status": "submitted_queue_observed",
+    "purpose": "Measure actual write magnitudes and matched-state velocity effects by denoising time before attributing failures to inner binding or choosing the next operator."
+  }
+}

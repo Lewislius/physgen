@@ -1,0 +1,131 @@
+{
+  "utc": "2026-11-06T20:13:16.437165+00:00",
+  "status": "final_candidate_ready_to_freeze",
+  "candidate": "R15F",
+  "trained": false,
+  "quality_proven": false,
+  "evidence_sources": {
+    "current40_and_controls": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_addressing_r15e/reports/main40_review.json",
+    "execution_replay": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_addressing_r15e/reports/execution_probe_review.json",
+    "posterior_mass_repair16": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_addressing_r15e/reports/mass_retained_review.json",
+    "historical_R1_R9_R10A": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/reports/r10_final_evidence.json",
+    "recent_R15B": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_bound_fusion_r15b/reports/mechanism_review_completed.json",
+    "recent_R15D": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/denoising_matched_fusion_r15d/reports/mechanism_review_completed.json"
+  },
+  "measured_failures": {
+    "R15E40": {
+      "sa": 2.75,
+      "pc": 3.75,
+      "joint": 5,
+      "n": 40
+    },
+    "normal16": {
+      "sa": 2.75,
+      "pc": 3.875,
+      "joint": 2
+    },
+    "no_C16": {
+      "sa": 3.25,
+      "pc": 3.625,
+      "joint": 6
+    },
+    "empty_reasoning16": {
+      "sa": 3.25,
+      "pc": 3.6875,
+      "joint": 6
+    },
+    "mass_repair16": {
+      "sa": 3.0,
+      "pc": 3.75,
+      "joint": 4
+    },
+    "root_evidence": [
+      "Native-text semantic prior changed posterior C/reference mass by1.28-2.00x across the inspected positive layers, despite preserving prior mass.",
+      "Removing or repairing that prior removed both inspected stripe failures; useful process/shape quality still did not meet the goal.",
+      "In the replay, execution C token cosine was approximately0.93 while routing C was0.35-0.38; combined state/output writes reached0.975-0.998. This does not isolate output O alone or establish across-sample collapse.",
+      "Native-Q substitution raised automated PC but caused4/5 inspected cases to collapse into stripes; do not select it on scores.",
+      "All seven E controls completed. Fixed training-mean C improved raw scores but retained process failures and caused roller-head disappearance in the inspected case; therefore it is not a goal-achieving replacement."
+    ],
+    "mean_C16": {
+      "sa": 2.9375,
+      "pc": 3.9375,
+      "joint": 4
+    }
+  },
+  "design": [
+    {
+      "change": "One C with independent physical K and V projections",
+      "mechanism": "Use the R1/R9 shared semantic/physical content mechanism. Generation and the existing word-alignment loss act on the same C; remove the separate freely drifting execution memory.",
+      "support": "R1/R9 retain stronger joint/comprehensive behavior than high-PC but weak-SA split-memory variants. Current E shows that varied routing alone does not ensure useful writes.",
+      "limitation": "This is a causal design hypothesis, not proof that tying C alone explains historical differences or guarantees higher PC."
+    },
+    {
+      "change": "Grounded words plus full frozen-Qwen image/request/reasoning memory",
+      "mechanism": "Relation-local heads preserve specific physical words; global heads regain direct access to the complete input context as in R1. Input memory is not generated again or API-revised.",
+      "support": "Dedicated request-only refinement did not establish benefit in E; R1 full-context conditioning is a useful measured reference.",
+      "limitation": "Full-context use requires own16 words-only-memory intervention; contextual word tokens already contain some image/request information."
+    },
+    {
+      "change": "Physical residual first, then unchanged native text attention on the updated real hidden state",
+      "mechanism": "Keep direct physical values, state interaction and trainable independent physical Q/K/V/O. Recompute native norm3 after the physical residual and use the frozen native text reader; no semantic-log-prior product or added gate.",
+      "support": "In E, no-C restores semantic/visual behavior; parallel physical updates can dominate the native text update. The new composition gives generation gradients an explicit path through the native semantic response to the physical write.",
+      "limitation": "This order was not established superior by prior D post-text-read controls; compare normal/parallel on the same trained F checkpoint."
+    }
+  ],
+  "retained": {
+    "training_steps": 400,
+    "stages": {
+      "interface": 128,
+      "joint": 272
+    },
+    "data": "original WISA/original reasoning; matched1600 draws",
+    "losses": [
+      "0.8 mean FM +0.2 multiscale high-error tail",
+      "shared-C native word alignment,32step ramp to0.03"
+    ],
+    "native_text_QKVO": "frozen and original computation retained",
+    "native_LoRA": "original self-attention/FFN; joint272 only",
+    "guidance": 5,
+    "sampler": "same50-step shifted Euler",
+    "fresh_initialization": "official Wan/Qwen foundations; no trained project initializer"
+  },
+  "planned_controls16": [
+    "no_c",
+    "parallel_fusion",
+    "words_only_memory",
+    "native_physical_query",
+    "reasoning_swapped",
+    "empty_reasoning",
+    "global_train_mean"
+  ],
+  "validation": {
+    "actual_small_Wan_tests": {
+      "passed": 9,
+      "seconds": 4.338
+    },
+    "input_pipeline_tests": {
+      "passed": 5,
+      "seconds": 23.223
+    },
+    "input_contexts": 152,
+    "new_api_calls": 0,
+    "new_downloads": 0,
+    "syntax": "passed",
+    "full_size_disposable_GPU_preflight": "required before formal training; weights discarded",
+    "cross_benchmark_existing_contexts_checked": 260
+  },
+  "evaluation_efficiency": "Load generation model once across all control modes and evaluator once across the control directories; same persisted per-case noise and scoring seeds.",
+  "acceptance": {
+    "pc40_min": 3.8,
+    "sa40_min": 3.125,
+    "joint40_min": 12,
+    "cross_benchmarks": "strictly exceed raw-precision R1 on WMB70 and Physics-IQ60",
+    "actual_video_quality": "mandatory; artifact/stagnation-induced scores do not establish success"
+  },
+  "remaining_before_submission": [
+    "freeze final code/config and verify entrypoint from snapshot"
+  ],
+  "next_version": "R15G only after reviewing F; maximumR15G",
+  "predecessor_review_complete": true,
+  "predecessor_closure": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_addressing_r15e/reports/closure.json"
+}

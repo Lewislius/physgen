@@ -1,0 +1,37 @@
+{
+  "reviewed_utc": "2026-11-04T20:09:01.426327+00:00",
+  "models": [
+    "wan_lora",
+    "r1",
+    "r10a"
+  ],
+  "selected_before_official_model_PhysicsIQ_scores": true,
+  "scope": "Three predeclared center-view examples at six frame positions. Qualitative comparisons, not a full20-scene/60-view score; GTtake1 is an evaluation reference only. Different plausible dynamics need not be physically invalid merely because they differ from one real take.",
+  "cases": {
+    "trimmed-cut-paper.mp4": {
+      "GT": "参考纸张在较早阶段清楚分成两片，之后分离的纸片和夹具保留。",
+      "wan_lora": "出现两片分离，但夹具向下转动、纸张折叠与裂口形态同参考有明显差别。",
+      "r1": "夹具和纸张有明显折叠、转动，未像参考那样早期清楚分离；不能仅因动作更明显便断言撕裂过程更正确。",
+      "r10a": "纸张大部分时间仍相连，较晚才明显分开，并整体向画面下方移动；过程时序与参考差距明显。",
+      "finding": "各版本都产生一些与请求相关的变化，但时序、材料形态和交互过程存在差异；单凭纸张最终分开不足以证明完整过程准确。",
+      "selection_file": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/reports/physics_iq_visual_predeclared/trimmed-cut-paper_selection.json"
+    },
+    "trimmed-juice-in-water.mp4": {
+      "GT": "原有一个接收杯逐渐接收液体，液面和颜色缓慢变化，没有额外杯子进入。",
+      "wan_lora": "出现液流和接收杯变化，但后段凭空引入手和右侧第二个杯子。",
+      "r1": "保留原有单杯/容器组成，有液流与液面/颜色变化；该例的组成遵循优于另两者，但不据六帧宣称流体量与混合完全准确。",
+      "r10a": "保留一部分液体过程，但右侧出现额外杯子，杯中又出现未要求的内容。",
+      "finding": "R10A的更高总体物理分并不意味着条件语义或对象组成更可靠；R1在该例存在值得保留的实际优势。",
+      "selection_file": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/reports/physics_iq_visual_predeclared/trimmed-juice-in-water_selection.json"
+    },
+    "trimmed-light-on-mug-block.mp4": {
+      "GT": "杯子与方块绕平台中心转动，杯柄、两者相对屏幕位置和墙面投影随之改变。",
+      "wan_lora": "蓝色方块在中后段消失，旋转和投影联动没有正确展开。",
+      "r1": "保留杯子和方块，但旋转很弱，右侧还出现额外黑色形状。",
+      "r10a": "杯子、蓝色方块和阴影大部分维持初态，形态保存较好但请求的转动和相应投影变化基本没有执行。",
+      "finding": "R10A确有避免对象消失的局部收益，同时仍存在稳定但未执行物理过程的问题。",
+      "selection_file": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/reports/physics_iq_visual_predeclared/trimmed-light-on-mug-block_selection.json"
+    }
+  },
+  "interpretation": "这些真实首帧案例说明问题并不限于VideoPhy2所用的合成首帧。物体保存、语义组成、材料/流体响应与因果联动必须分开观察；不把稳定本身视为物理过程正确，不把所有稳定性收益一概否定。R13A尚未完成评分，下一版仍等待其完整证据。"
+}

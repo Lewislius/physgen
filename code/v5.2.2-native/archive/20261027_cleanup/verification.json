@@ -1,0 +1,143 @@
+{
+  "verified_at_utc": "2026-10-27T02:34:44.083780+00:00",
+  "current_launchers_preflight": {
+    "passed": 4,
+    "records": 3857,
+    "missing": []
+  },
+  "cpu_tests": {
+    "passed": 5,
+    "seconds": 6.503,
+    "scope": [
+      "SimpleVerifierTests.test_production_configs_and_dense_frame_coverage",
+      "TrainingRecoveryTests (4 tests)"
+    ]
+  },
+  "training_yaml_entrypoints_checked": 8,
+  "markdown_html_local_links_checked": 241,
+  "shell_python_syntax": "passed",
+  "broken_symlinks": [],
+  "main_checkpoint_files_loaded_before_cleanup": [
+    {
+      "run_id": 66356,
+      "path": "checkpoints/v522-h-content-message-verifier-frozen-simple_66356/latest.pt",
+      "step": 224,
+      "optimizer_step": null,
+      "revision": "v522_native_h_content_verifier_frozen_simple_v25",
+      "stages": {
+        "interface": 64,
+        "joint": 160
+      },
+      "keys": [
+        "revision",
+        "config",
+        "step",
+        "cursor",
+        "model",
+        "optimizer",
+        "scheduler",
+        "rng",
+        "verifier_state"
+      ]
+    },
+    {
+      "run_id": 66355,
+      "path": "checkpoints/v522-h-content-message-verifier-lora-simple_66355/latest.pt",
+      "step": 64,
+      "optimizer_step": null,
+      "revision": "v522_native_h_content_verifier_lora_simple_v26",
+      "stages": {
+        "interface": 64,
+        "calibration": 32,
+        "joint": 160
+      },
+      "keys": [
+        "revision",
+        "config",
+        "step",
+        "cursor",
+        "model",
+        "optimizer",
+        "scheduler",
+        "rng",
+        "verifier_state"
+      ]
+    },
+    {
+      "run_id": 66353,
+      "path": "checkpoints/v522-q-seed128-message-verifier-frozen-simple_66353/latest.pt",
+      "step": 224,
+      "optimizer_step": null,
+      "revision": "v522_native_q_seed128_verifier_frozen_simple_v27",
+      "stages": {
+        "interface": 64,
+        "joint": 160
+      },
+      "keys": [
+        "revision",
+        "config",
+        "step",
+        "cursor",
+        "model",
+        "optimizer",
+        "scheduler",
+        "rng",
+        "verifier_state"
+      ]
+    },
+    {
+      "run_id": 66384,
+      "path": "checkpoints/v522-q-seed128-message-verifier-lora-simple_66384/latest.pt",
+      "step": 64,
+      "optimizer_step": null,
+      "revision": "v522_native_q_seed128_verifier_lora_simple_v28",
+      "stages": {
+        "interface": 64,
+        "calibration": 32,
+        "joint": 160
+      },
+      "keys": [
+        "revision",
+        "config",
+        "step",
+        "cursor",
+        "model",
+        "optimizer",
+        "scheduler",
+        "rng",
+        "verifier_state"
+      ]
+    }
+  ],
+  "current_recovery_jobs_preserved": {
+    "H_LoRA": {
+      "experiment": 66419,
+      "state": "RUNNING",
+      "run_directory": "checkpoints/v522-h-content-message-verifier-lora-simple_66355"
+    },
+    "Q_LoRA": {
+      "experiment": 66418,
+      "state": "RUNNING",
+      "run_directory": "checkpoints/v522-q-seed128-message-verifier-lora-simple_66384"
+    }
+  },
+  "concurrent_edits_observed_and_preserved": [
+    "tests/test_simple_verifier.py",
+    "checkpoints/v522-h-content-message-verifier-lora-simple_66355/metrics.jsonl",
+    "checkpoints/v522-h-content-message-verifier-lora-simple_66355/latest.pt",
+    "checkpoints/v522-q-seed128-message-verifier-lora-simple_66384/metrics.jsonl",
+    "checkpoints/v522-q-seed128-message-verifier-lora-simple_66384/latest.pt",
+    "checkpoints/v522-h-content-message-verifier-lora-simple_66355/judge_evidence/train0065_micro1_source0001904.json",
+    "checkpoints/v522-h-content-message-verifier-lora-simple_66355/judge_evidence/train0066_micro1_source0002252.pt",
+    "checkpoints/v522-h-content-message-verifier-lora-simple_66355/judge_evidence/train0066_micro1_source0002252.json",
+    "checkpoints/v522-h-content-message-verifier-lora-simple_66355/judge_evidence/train0065_micro1_source0001904.pt"
+  ],
+  "top_level_entry_counts": {
+    "train": 14,
+    "analysis": 7,
+    "checkpoints": 6
+  },
+  "deleted_payload_files": 19,
+  "freed_allocated_bytes": 13883723776,
+  "notes": "Only resource preflight and CPU checks were run for this cleanup. Existing recovery/GPU work belongs to another concurrent task. Original experiment logs and immutable snapshots retain original paths; use cleanup_manifest moves to locate archived data."
+}

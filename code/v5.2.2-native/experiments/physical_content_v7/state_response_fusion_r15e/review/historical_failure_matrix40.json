@@ -1,0 +1,1525 @@
+{
+  "utc": "2026-11-06T09:02:01.179206+00:00",
+  "sources": {
+    "Wan+LoRA": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/inference_outputs/native_lora_66781/step0400_seed42_r1/videophy40/scores.json",
+    "R1": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/inference_outputs/physical_content_66778/step0400_seed42_r1/videophy40/scores.json",
+    "R10A": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/execution_value_r10/inference_outputs/physical_content_67003/step0400_full40_controls16_physical5_seed42/videophy40/scores.json",
+    "R15B": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_bound_fusion_r15b/inference_outputs/physical_content_67829/step0400_original_fixed40_controls16_seed42/videophy40/scores.json",
+    "R15D": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/denoising_matched_fusion_r15d/inference_outputs/physical_content_67920/step0400_original_fixed40_controls16_seed42/videophy40/scores.json"
+  },
+  "models": {
+    "Wan+LoRA": {
+      "full40": {
+        "n": 40,
+        "sa": 3.075,
+        "pc": 3.45,
+        "joint": 10
+      },
+      "fixed16": {
+        "n": 16,
+        "sa": 3.25,
+        "pc": 3.6875,
+        "joint": 6
+      },
+      "remaining24": {
+        "n": 24,
+        "sa": 2.9583333333333335,
+        "pc": 3.2916666666666665,
+        "joint": 4
+      },
+      "target_gap": {
+        "sa_integer_score_points_to_minimum": 2,
+        "pc_integer_score_points_to_minimum": 14,
+        "additional_joint_passes_to_minimum": 2
+      },
+      "joint_failure_types": {
+        "both_pass": [
+          "VP008",
+          "VP010",
+          "VP016",
+          "VP018",
+          "VP020",
+          "VP021",
+          "VP022",
+          "VP027",
+          "VP034",
+          "VP038"
+        ],
+        "pc_pass_sa_fail": [
+          "VP007",
+          "VP011",
+          "VP014",
+          "VP015",
+          "VP026",
+          "VP040"
+        ],
+        "sa_pass_pc_fail": [
+          "VP036"
+        ],
+        "both_fail": [
+          "VP001",
+          "VP002",
+          "VP003",
+          "VP004",
+          "VP005",
+          "VP006",
+          "VP009",
+          "VP012",
+          "VP013",
+          "VP017",
+          "VP019",
+          "VP023",
+          "VP024",
+          "VP025",
+          "VP028",
+          "VP029",
+          "VP030",
+          "VP031",
+          "VP032",
+          "VP033",
+          "VP035",
+          "VP037",
+          "VP039"
+        ]
+      },
+      "versus_R1": {
+        "sa": {
+          "wins": 6,
+          "losses": 1
+        },
+        "pc": {
+          "wins": 1,
+          "losses": 8
+        }
+      }
+    },
+    "R1": {
+      "full40": {
+        "n": 40,
+        "sa": 2.95,
+        "pc": 3.625,
+        "joint": 10
+      },
+      "fixed16": {
+        "n": 16,
+        "sa": 3.25,
+        "pc": 3.8125,
+        "joint": 6
+      },
+      "remaining24": {
+        "n": 24,
+        "sa": 2.75,
+        "pc": 3.5,
+        "joint": 4
+      },
+      "target_gap": {
+        "sa_integer_score_points_to_minimum": 7,
+        "pc_integer_score_points_to_minimum": 7,
+        "additional_joint_passes_to_minimum": 2
+      },
+      "joint_failure_types": {
+        "both_pass": [
+          "VP008",
+          "VP010",
+          "VP016",
+          "VP018",
+          "VP020",
+          "VP021",
+          "VP022",
+          "VP027",
+          "VP034",
+          "VP038"
+        ],
+        "pc_pass_sa_fail": [
+          "VP006",
+          "VP007",
+          "VP011",
+          "VP014",
+          "VP015",
+          "VP025",
+          "VP026",
+          "VP040"
+        ],
+        "sa_pass_pc_fail": [
+          "VP036"
+        ],
+        "both_fail": [
+          "VP001",
+          "VP002",
+          "VP003",
+          "VP004",
+          "VP005",
+          "VP009",
+          "VP012",
+          "VP013",
+          "VP017",
+          "VP019",
+          "VP023",
+          "VP024",
+          "VP028",
+          "VP029",
+          "VP030",
+          "VP031",
+          "VP032",
+          "VP033",
+          "VP035",
+          "VP037",
+          "VP039"
+        ]
+      },
+      "versus_R1": {
+        "sa": {
+          "wins": 0,
+          "losses": 0
+        },
+        "pc": {
+          "wins": 0,
+          "losses": 0
+        }
+      }
+    },
+    "R10A": {
+      "full40": {
+        "n": 40,
+        "sa": 2.825,
+        "pc": 3.75,
+        "joint": 7
+      },
+      "fixed16": {
+        "n": 16,
+        "sa": 3.0625,
+        "pc": 3.875,
+        "joint": 4
+      },
+      "remaining24": {
+        "n": 24,
+        "sa": 2.6666666666666665,
+        "pc": 3.6666666666666665,
+        "joint": 3
+      },
+      "target_gap": {
+        "sa_integer_score_points_to_minimum": 12,
+        "pc_integer_score_points_to_minimum": 2,
+        "additional_joint_passes_to_minimum": 5
+      },
+      "joint_failure_types": {
+        "both_pass": [
+          "VP016",
+          "VP018",
+          "VP020",
+          "VP021",
+          "VP022",
+          "VP027",
+          "VP034"
+        ],
+        "pc_pass_sa_fail": [
+          "VP004",
+          "VP006",
+          "VP007",
+          "VP008",
+          "VP010",
+          "VP011",
+          "VP014",
+          "VP015",
+          "VP017",
+          "VP019",
+          "VP023",
+          "VP025",
+          "VP026",
+          "VP039",
+          "VP040"
+        ],
+        "sa_pass_pc_fail": [
+          "VP036",
+          "VP038"
+        ],
+        "both_fail": [
+          "VP001",
+          "VP002",
+          "VP003",
+          "VP005",
+          "VP009",
+          "VP012",
+          "VP013",
+          "VP024",
+          "VP028",
+          "VP029",
+          "VP030",
+          "VP031",
+          "VP032",
+          "VP033",
+          "VP035",
+          "VP037"
+        ]
+      },
+      "versus_R1": {
+        "sa": {
+          "wins": 1,
+          "losses": 6
+        },
+        "pc": {
+          "wins": 10,
+          "losses": 5
+        }
+      }
+    },
+    "R15B": {
+      "full40": {
+        "n": 40,
+        "sa": 2.925,
+        "pc": 3.7,
+        "joint": 10
+      },
+      "fixed16": {
+        "n": 16,
+        "sa": 3.0625,
+        "pc": 3.8125,
+        "joint": 6
+      },
+      "remaining24": {
+        "n": 24,
+        "sa": 2.8333333333333335,
+        "pc": 3.625,
+        "joint": 4
+      },
+      "target_gap": {
+        "sa_integer_score_points_to_minimum": 8,
+        "pc_integer_score_points_to_minimum": 4,
+        "additional_joint_passes_to_minimum": 2
+      },
+      "joint_failure_types": {
+        "both_pass": [
+          "VP008",
+          "VP010",
+          "VP016",
+          "VP018",
+          "VP020",
+          "VP021",
+          "VP022",
+          "VP027",
+          "VP034",
+          "VP038"
+        ],
+        "pc_pass_sa_fail": [
+          "VP004",
+          "VP006",
+          "VP007",
+          "VP011",
+          "VP014",
+          "VP015",
+          "VP017",
+          "VP023",
+          "VP025",
+          "VP026",
+          "VP030",
+          "VP039",
+          "VP040"
+        ],
+        "sa_pass_pc_fail": [
+          "VP036"
+        ],
+        "both_fail": [
+          "VP001",
+          "VP002",
+          "VP003",
+          "VP005",
+          "VP009",
+          "VP012",
+          "VP013",
+          "VP019",
+          "VP024",
+          "VP028",
+          "VP029",
+          "VP031",
+          "VP032",
+          "VP033",
+          "VP035",
+          "VP037"
+        ]
+      },
+      "versus_R1": {
+        "sa": {
+          "wins": 3,
+          "losses": 4
+        },
+        "pc": {
+          "wins": 7,
+          "losses": 4
+        }
+      }
+    },
+    "R15D": {
+      "full40": {
+        "n": 40,
+        "sa": 3.0,
+        "pc": 3.575,
+        "joint": 10
+      },
+      "fixed16": {
+        "n": 16,
+        "sa": 3.25,
+        "pc": 3.875,
+        "joint": 6
+      },
+      "remaining24": {
+        "n": 24,
+        "sa": 2.8333333333333335,
+        "pc": 3.375,
+        "joint": 4
+      },
+      "target_gap": {
+        "sa_integer_score_points_to_minimum": 5,
+        "pc_integer_score_points_to_minimum": 9,
+        "additional_joint_passes_to_minimum": 2
+      },
+      "joint_failure_types": {
+        "both_pass": [
+          "VP008",
+          "VP010",
+          "VP016",
+          "VP018",
+          "VP020",
+          "VP021",
+          "VP022",
+          "VP027",
+          "VP034",
+          "VP038"
+        ],
+        "pc_pass_sa_fail": [
+          "VP004",
+          "VP007",
+          "VP011",
+          "VP014",
+          "VP015",
+          "VP026",
+          "VP030",
+          "VP039",
+          "VP040"
+        ],
+        "sa_pass_pc_fail": [
+          "VP036"
+        ],
+        "both_fail": [
+          "VP001",
+          "VP002",
+          "VP003",
+          "VP005",
+          "VP006",
+          "VP009",
+          "VP012",
+          "VP013",
+          "VP017",
+          "VP019",
+          "VP023",
+          "VP024",
+          "VP025",
+          "VP028",
+          "VP029",
+          "VP031",
+          "VP032",
+          "VP033",
+          "VP035",
+          "VP037"
+        ]
+      },
+      "versus_R1": {
+        "sa": {
+          "wins": 3,
+          "losses": 1
+        },
+        "pc": {
+          "wins": 5,
+          "losses": 7
+        }
+      }
+    }
+  },
+  "cases": [
+    {
+      "id": "VP001",
+      "caption": "A long jumper demonstrates a flawed technique, resulting in a short distance and an unbalanced landing.",
+      "in_fixed16": false,
+      "scores": {
+        "Wan+LoRA": {
+          "sa": 2,
+          "pc": 3
+        },
+        "R1": {
+          "sa": 2,
+          "pc": 3
+        },
+        "R10A": {
+          "sa": 2,
+          "pc": 3
+        },
+        "R15B": {
+          "sa": 2,
+          "pc": 3
+        },
+        "R15D": {
+          "sa": 2,
+          "pc": 3
+        }
+      }
+    },
+    {
+      "id": "VP002",
+      "caption": "A thin piece of wood is bent into a bow shape, exhibiting its flexibility.",
+      "in_fixed16": true,
+      "scores": {
+        "Wan+LoRA": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R1": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R10A": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R15B": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R15D": {
+          "sa": 3,
+          "pc": 3
+        }
+      }
+    },
+    {
+      "id": "VP003",
+      "caption": "A gymnast performs a back handspring, landing cleanly on their feet on a padded floor.",
+      "in_fixed16": false,
+      "scores": {
+        "Wan+LoRA": {
+          "sa": 3,
+          "pc": 2
+        },
+        "R1": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R10A": {
+          "sa": 3,
+          "pc": 2
+        },
+        "R15B": {
+          "sa": 3,
+          "pc": 2
+        },
+        "R15D": {
+          "sa": 3,
+          "pc": 2
+        }
+      }
+    },
+    {
+      "id": "VP004",
+      "caption": "A plastic ruler is bent until it cracks, displaying a visible stress fracture that propagates.",
+      "in_fixed16": true,
+      "scores": {
+        "Wan+LoRA": {
+          "sa": 2,
+          "pc": 3
+        },
+        "R1": {
+          "sa": 2,
+          "pc": 3
+        },
+        "R10A": {
+          "sa": 2,
+          "pc": 4
+        },
+        "R15B": {
+          "sa": 2,
+          "pc": 4
+        },
+        "R15D": {
+          "sa": 2,
+          "pc": 4
+        }
+      }
+    },
+    {
+      "id": "VP005",
+      "caption": "A close-up shot of a paddle making contact with the ping pong ball, showing the impact.",
+      "in_fixed16": true,
+      "scores": {
+        "Wan+LoRA": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R1": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R10A": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R15B": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R15D": {
+          "sa": 3,
+          "pc": 3
+        }
+      }
+    },
+    {
+      "id": "VP006",
+      "caption": "A large, wet canvas is twisted to remove excess paint, leaving drips down the side.",
+      "in_fixed16": false,
+      "scores": {
+        "Wan+LoRA": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R1": {
+          "sa": 2,
+          "pc": 4
+        },
+        "R10A": {
+          "sa": 3,
+          "pc": 4
+        },
+        "R15B": {
+          "sa": 2,
+          "pc": 4
+        },
+        "R15D": {
+          "sa": 3,
+          "pc": 3
+        }
+      }
+    },
+    {
+      "id": "VP007",
+      "caption": "Multiple ping pong balls are shown, illustrating different stages of a rally.",
+      "in_fixed16": false,
+      "scores": {
+        "Wan+LoRA": {
+          "sa": 3,
+          "pc": 5
+        },
+        "R1": {
+          "sa": 2,
+          "pc": 5
+        },
+        "R10A": {
+          "sa": 2,
+          "pc": 5
+        },
+        "R15B": {
+          "sa": 2,
+          "pc": 5
+        },
+        "R15D": {
+          "sa": 2,
+          "pc": 5
+        }
+      }
+    },
+    {
+      "id": "VP008",
+      "caption": "A person bounces to a specific rhythm on a trampoline, their body movement clearly timed to a beat.",
+      "in_fixed16": false,
+      "scores": {
+        "Wan+LoRA": {
+          "sa": 4,
+          "pc": 4
+        },
+        "R1": {
+          "sa": 4,
+          "pc": 4
+        },
+        "R10A": {
+          "sa": 3,
+          "pc": 5
+        },
+        "R15B": {
+          "sa": 4,
+          "pc": 4
+        },
+        "R15D": {
+          "sa": 4,
+          "pc": 4
+        }
+      }
+    },
+    {
+      "id": "VP009",
+      "caption": "A construction worker uses a suction cup to lift a heavy glass panel with a small picture adhered to it; the picture remains affixed.",
+      "in_fixed16": true,
+      "scores": {
+        "Wan+LoRA": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R1": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R10A": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R15B": {
+          "sa": 2,
+          "pc": 3
+        },
+        "R15D": {
+          "sa": 3,
+          "pc": 3
+        }
+      }
+    },
+    {
+      "id": "VP010",
+      "caption": "A person mops up a puddle of water on a concrete floor, the water disappearing as the mop passes.",
+      "in_fixed16": true,
+      "scores": {
+        "Wan+LoRA": {
+          "sa": 4,
+          "pc": 4
+        },
+        "R1": {
+          "sa": 4,
+          "pc": 4
+        },
+        "R10A": {
+          "sa": 3,
+          "pc": 4
+        },
+        "R15B": {
+          "sa": 4,
+          "pc": 4
+        },
+        "R15D": {
+          "sa": 4,
+          "pc": 4
+        }
+      }
+    },
+    {
+      "id": "VP011",
+      "caption": "A person on a unicycle stops abruptly, putting a foot down to maintain balance before continuing.",
+      "in_fixed16": false,
+      "scores": {
+        "Wan+LoRA": {
+          "sa": 2,
+          "pc": 4
+        },
+        "R1": {
+          "sa": 2,
+          "pc": 4
+        },
+        "R10A": {
+          "sa": 2,
+          "pc": 4
+        },
+        "R15B": {
+          "sa": 2,
+          "pc": 4
+        },
+        "R15D": {
+          "sa": 2,
+          "pc": 4
+        }
+      }
+    },
+    {
+      "id": "VP012",
+      "caption": "A player hits the ball off the side of the mallet, resulting in an unexpected trajectory.",
+      "in_fixed16": false,
+      "scores": {
+        "Wan+LoRA": {
+          "sa": 2,
+          "pc": 3
+        },
+        "R1": {
+          "sa": 2,
+          "pc": 3
+        },
+        "R10A": {
+          "sa": 2,
+          "pc": 3
+        },
+        "R15B": {
+          "sa": 2,
+          "pc": 3
+        },
+        "R15D": {
+          "sa": 2,
+          "pc": 3
+        }
+      }
+    },
+    {
+      "id": "VP013",
+      "caption": "A person uses a pair of pliers to open a stubborn metal bottle, bending the cap slightly in the process.",
+      "in_fixed16": true,
+      "scores": {
+        "Wan+LoRA": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R1": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R10A": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R15B": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R15D": {
+          "sa": 3,
+          "pc": 3
+        }
+      }
+    },
+    {
+      "id": "VP014",
+      "caption": "Multiple water balloons are tossed upwards, simultaneously bursting in the air in a small arc.",
+      "in_fixed16": false,
+      "scores": {
+        "Wan+LoRA": {
+          "sa": 2,
+          "pc": 4
+        },
+        "R1": {
+          "sa": 2,
+          "pc": 5
+        },
+        "R10A": {
+          "sa": 2,
+          "pc": 5
+        },
+        "R15B": {
+          "sa": 2,
+          "pc": 5
+        },
+        "R15D": {
+          "sa": 2,
+          "pc": 4
+        }
+      }
+    },
+    {
+      "id": "VP015",
+      "caption": "A rower pulls an oar from the water, the blade dripping water back into the lake. .",
+      "in_fixed16": true,
+      "scores": {
+        "Wan+LoRA": {
+          "sa": 3,
+          "pc": 4
+        },
+        "R1": {
+          "sa": 3,
+          "pc": 5
+        },
+        "R10A": {
+          "sa": 3,
+          "pc": 5
+        },
+        "R15B": {
+          "sa": 3,
+          "pc": 4
+        },
+        "R15D": {
+          "sa": 3,
+          "pc": 5
+        }
+      }
+    },
+    {
+      "id": "VP016",
+      "caption": "A scientist uses a probe to nudge a small, delicate insect on a leaf, causing it to twitch minimally.",
+      "in_fixed16": true,
+      "scores": {
+        "Wan+LoRA": {
+          "sa": 4,
+          "pc": 5
+        },
+        "R1": {
+          "sa": 4,
+          "pc": 5
+        },
+        "R10A": {
+          "sa": 4,
+          "pc": 4
+        },
+        "R15B": {
+          "sa": 4,
+          "pc": 5
+        },
+        "R15D": {
+          "sa": 4,
+          "pc": 5
+        }
+      }
+    },
+    {
+      "id": "VP017",
+      "caption": "A unicycle wheel rolls over a small curb; the rider adjusts their position to keep upright.",
+      "in_fixed16": true,
+      "scores": {
+        "Wan+LoRA": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R1": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R10A": {
+          "sa": 2,
+          "pc": 4
+        },
+        "R15B": {
+          "sa": 2,
+          "pc": 4
+        },
+        "R15D": {
+          "sa": 3,
+          "pc": 3
+        }
+      }
+    },
+    {
+      "id": "VP018",
+      "caption": "A bulldozer pulls a heavy load attached with a chain, moving it across the ground.",
+      "in_fixed16": true,
+      "scores": {
+        "Wan+LoRA": {
+          "sa": 4,
+          "pc": 4
+        },
+        "R1": {
+          "sa": 4,
+          "pc": 4
+        },
+        "R10A": {
+          "sa": 4,
+          "pc": 4
+        },
+        "R15B": {
+          "sa": 4,
+          "pc": 4
+        },
+        "R15D": {
+          "sa": 4,
+          "pc": 4
+        }
+      }
+    },
+    {
+      "id": "VP019",
+      "caption": "Javelin with a damaged tip is thrown; it wobbles in flight and lands off-target.",
+      "in_fixed16": false,
+      "scores": {
+        "Wan+LoRA": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R1": {
+          "sa": 2,
+          "pc": 3
+        },
+        "R10A": {
+          "sa": 2,
+          "pc": 4
+        },
+        "R15B": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R15D": {
+          "sa": 2,
+          "pc": 3
+        }
+      }
+    },
+    {
+      "id": "VP020",
+      "caption": "A time-lapse showing the process of someone tying a bow tie, quickly showing the steps in sequence.",
+      "in_fixed16": false,
+      "scores": {
+        "Wan+LoRA": {
+          "sa": 4,
+          "pc": 4
+        },
+        "R1": {
+          "sa": 4,
+          "pc": 4
+        },
+        "R10A": {
+          "sa": 4,
+          "pc": 5
+        },
+        "R15B": {
+          "sa": 4,
+          "pc": 5
+        },
+        "R15D": {
+          "sa": 4,
+          "pc": 4
+        }
+      }
+    },
+    {
+      "id": "VP021",
+      "caption": "A skateboarder rolls along a smooth concrete path, maintaining a steady pace.",
+      "in_fixed16": false,
+      "scores": {
+        "Wan+LoRA": {
+          "sa": 4,
+          "pc": 4
+        },
+        "R1": {
+          "sa": 4,
+          "pc": 5
+        },
+        "R10A": {
+          "sa": 4,
+          "pc": 4
+        },
+        "R15B": {
+          "sa": 4,
+          "pc": 4
+        },
+        "R15D": {
+          "sa": 4,
+          "pc": 4
+        }
+      }
+    },
+    {
+      "id": "VP022",
+      "caption": "A luger's sled impacts a small snowbank at the edge of the track, causing a slight spray of snow.",
+      "in_fixed16": false,
+      "scores": {
+        "Wan+LoRA": {
+          "sa": 4,
+          "pc": 4
+        },
+        "R1": {
+          "sa": 4,
+          "pc": 4
+        },
+        "R10A": {
+          "sa": 4,
+          "pc": 4
+        },
+        "R15B": {
+          "sa": 4,
+          "pc": 4
+        },
+        "R15D": {
+          "sa": 4,
+          "pc": 4
+        }
+      }
+    },
+    {
+      "id": "VP023",
+      "caption": "A surfer falls off their board, colliding briefly with another surfer, before swimming away.",
+      "in_fixed16": false,
+      "scores": {
+        "Wan+LoRA": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R1": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R10A": {
+          "sa": 3,
+          "pc": 4
+        },
+        "R15B": {
+          "sa": 3,
+          "pc": 4
+        },
+        "R15D": {
+          "sa": 3,
+          "pc": 3
+        }
+      }
+    },
+    {
+      "id": "VP024",
+      "caption": "A speeding car crashes into a brick wall, crumpling the front end and stopping abruptly.",
+      "in_fixed16": true,
+      "scores": {
+        "Wan+LoRA": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R1": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R10A": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R15B": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R15D": {
+          "sa": 3,
+          "pc": 3
+        }
+      }
+    },
+    {
+      "id": "VP025",
+      "caption": "A large, orange plastic egg is rolled up a plastic slide, then rolls down, ending at the bottom.",
+      "in_fixed16": true,
+      "scores": {
+        "Wan+LoRA": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R1": {
+          "sa": 2,
+          "pc": 4
+        },
+        "R10A": {
+          "sa": 2,
+          "pc": 5
+        },
+        "R15B": {
+          "sa": 2,
+          "pc": 4
+        },
+        "R15D": {
+          "sa": 3,
+          "pc": 3
+        }
+      }
+    },
+    {
+      "id": "VP026",
+      "caption": "Two people stretch a bungee cord, extending it to its maximum length.",
+      "in_fixed16": true,
+      "scores": {
+        "Wan+LoRA": {
+          "sa": 2,
+          "pc": 4
+        },
+        "R1": {
+          "sa": 3,
+          "pc": 4
+        },
+        "R10A": {
+          "sa": 2,
+          "pc": 5
+        },
+        "R15B": {
+          "sa": 2,
+          "pc": 4
+        },
+        "R15D": {
+          "sa": 2,
+          "pc": 5
+        }
+      }
+    },
+    {
+      "id": "VP027",
+      "caption": "Hands shape a lump of clay-like bread dough into a smooth, round boule on a wooden table.",
+      "in_fixed16": true,
+      "scores": {
+        "Wan+LoRA": {
+          "sa": 4,
+          "pc": 5
+        },
+        "R1": {
+          "sa": 4,
+          "pc": 5
+        },
+        "R10A": {
+          "sa": 4,
+          "pc": 4
+        },
+        "R15B": {
+          "sa": 4,
+          "pc": 4
+        },
+        "R15D": {
+          "sa": 4,
+          "pc": 5
+        }
+      }
+    },
+    {
+      "id": "VP028",
+      "caption": "A person skillfully tosses several coins in the air, catching them one by one.",
+      "in_fixed16": false,
+      "scores": {
+        "Wan+LoRA": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R1": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R10A": {
+          "sa": 2,
+          "pc": 3
+        },
+        "R15B": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R15D": {
+          "sa": 3,
+          "pc": 3
+        }
+      }
+    },
+    {
+      "id": "VP029",
+      "caption": "A player hits a forehand drive, the ball spinning rapidly as it crosses the net.",
+      "in_fixed16": false,
+      "scores": {
+        "Wan+LoRA": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R1": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R10A": {
+          "sa": 2,
+          "pc": 3
+        },
+        "R15B": {
+          "sa": 2,
+          "pc": 3
+        },
+        "R15D": {
+          "sa": 3,
+          "pc": 3
+        }
+      }
+    },
+    {
+      "id": "VP030",
+      "caption": "Someone throws a snowball into the air, it breaks apart during flight.",
+      "in_fixed16": false,
+      "scores": {
+        "Wan+LoRA": {
+          "sa": 2,
+          "pc": 3
+        },
+        "R1": {
+          "sa": 2,
+          "pc": 3
+        },
+        "R10A": {
+          "sa": 2,
+          "pc": 3
+        },
+        "R15B": {
+          "sa": 2,
+          "pc": 4
+        },
+        "R15D": {
+          "sa": 2,
+          "pc": 4
+        }
+      }
+    },
+    {
+      "id": "VP031",
+      "caption": "A tightly folded parachute is unfolded, revealing its vibrant colors and intricate design.",
+      "in_fixed16": false,
+      "scores": {
+        "Wan+LoRA": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R1": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R10A": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R15B": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R15D": {
+          "sa": 3,
+          "pc": 3
+        }
+      }
+    },
+    {
+      "id": "VP032",
+      "caption": "A player uses a quick set to spike the ball, driving it downward at a steep angle.",
+      "in_fixed16": false,
+      "scores": {
+        "Wan+LoRA": {
+          "sa": 2,
+          "pc": 3
+        },
+        "R1": {
+          "sa": 2,
+          "pc": 2
+        },
+        "R10A": {
+          "sa": 2,
+          "pc": 3
+        },
+        "R15B": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R15D": {
+          "sa": 2,
+          "pc": 3
+        }
+      }
+    },
+    {
+      "id": "VP033",
+      "caption": "A player jumps high to block a spike, their hands impacting the ball forcefully, sending it back across the net.",
+      "in_fixed16": false,
+      "scores": {
+        "Wan+LoRA": {
+          "sa": 3,
+          "pc": 2
+        },
+        "R1": {
+          "sa": 2,
+          "pc": 3
+        },
+        "R10A": {
+          "sa": 2,
+          "pc": 3
+        },
+        "R15B": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R15D": {
+          "sa": 3,
+          "pc": 2
+        }
+      }
+    },
+    {
+      "id": "VP034",
+      "caption": "A large, clear balloon is inflated with air, showing the internal pressure causing the balloon to stretch.",
+      "in_fixed16": true,
+      "scores": {
+        "Wan+LoRA": {
+          "sa": 4,
+          "pc": 5
+        },
+        "R1": {
+          "sa": 4,
+          "pc": 5
+        },
+        "R10A": {
+          "sa": 4,
+          "pc": 5
+        },
+        "R15B": {
+          "sa": 4,
+          "pc": 5
+        },
+        "R15D": {
+          "sa": 4,
+          "pc": 5
+        }
+      }
+    },
+    {
+      "id": "VP035",
+      "caption": "A woodcutter with a long handled axe chops down a thick tree in a forest.",
+      "in_fixed16": false,
+      "scores": {
+        "Wan+LoRA": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R1": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R10A": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R15B": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R15D": {
+          "sa": 3,
+          "pc": 3
+        }
+      }
+    },
+    {
+      "id": "VP036",
+      "caption": "A slow-motion view of the jump showing leg extension and body position.",
+      "in_fixed16": false,
+      "scores": {
+        "Wan+LoRA": {
+          "sa": 4,
+          "pc": 3
+        },
+        "R1": {
+          "sa": 4,
+          "pc": 3
+        },
+        "R10A": {
+          "sa": 4,
+          "pc": 3
+        },
+        "R15B": {
+          "sa": 4,
+          "pc": 3
+        },
+        "R15D": {
+          "sa": 4,
+          "pc": 3
+        }
+      }
+    },
+    {
+      "id": "VP037",
+      "caption": "A competitor approaches the runway, accelerates, jumps, and lands with their legs spread wide.",
+      "in_fixed16": false,
+      "scores": {
+        "Wan+LoRA": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R1": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R10A": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R15B": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R15D": {
+          "sa": 3,
+          "pc": 3
+        }
+      }
+    },
+    {
+      "id": "VP038",
+      "caption": "A paint roller, dipped in green paint, is used to cover a section of a metal fence, creating a uniform green coat.",
+      "in_fixed16": true,
+      "scores": {
+        "Wan+LoRA": {
+          "sa": 4,
+          "pc": 4
+        },
+        "R1": {
+          "sa": 4,
+          "pc": 4
+        },
+        "R10A": {
+          "sa": 4,
+          "pc": 3
+        },
+        "R15B": {
+          "sa": 4,
+          "pc": 4
+        },
+        "R15D": {
+          "sa": 4,
+          "pc": 4
+        }
+      }
+    },
+    {
+      "id": "VP039",
+      "caption": "A wedge is driven into a log using a sledgehammer, splitting the log cleanly apart.",
+      "in_fixed16": false,
+      "scores": {
+        "Wan+LoRA": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R1": {
+          "sa": 2,
+          "pc": 3
+        },
+        "R10A": {
+          "sa": 2,
+          "pc": 4
+        },
+        "R15B": {
+          "sa": 2,
+          "pc": 4
+        },
+        "R15D": {
+          "sa": 2,
+          "pc": 4
+        }
+      }
+    },
+    {
+      "id": "VP040",
+      "caption": "Poi are swung against a soft surface, making a thudding sound (NOTE: This prompt includes sound, but it's included to illustrate the effect of the action, not to describe it in detail.  The focus is still on the visible impact).",
+      "in_fixed16": false,
+      "scores": {
+        "Wan+LoRA": {
+          "sa": 3,
+          "pc": 4
+        },
+        "R1": {
+          "sa": 3,
+          "pc": 5
+        },
+        "R10A": {
+          "sa": 3,
+          "pc": 5
+        },
+        "R15B": {
+          "sa": 3,
+          "pc": 5
+        },
+        "R15D": {
+          "sa": 3,
+          "pc": 4
+        }
+      }
+    }
+  ],
+  "interpretation": [
+    "Fixed16 is a mechanism set, not an estimate of the complete40 acceptance result. Remaining24 are a descriptive complement, not a held-out test.",
+    "Target gaps count ordinal score points at the predeclared same40 thresholds; they are not a prediction of attainable gains or a training loss.",
+    "Historical scores are used to identify recurrent versus version-induced failure patterns; no per-case mixture or benchmark-label training is produced.",
+    "Independent physical and semantic means do not guarantee the two conditions pass in the same videos. Joint failure types must guide whole-model review."
+  ]
+}

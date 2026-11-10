@@ -1,0 +1,41 @@
+name: v522-q-workspace-b-final224-demo21-vp40-eval-amp80g-est3h
+description: 'Training 66523, dedicated b checkpoint loader. Sequential 21 demos then
+  fixed 40 VideoPhy2 I2V cases then independent AutoEval and nine-reference comparison.
+  Same Q inputs and saved FP32 noise, seed42, 832x480, 81 frames, 24fps, 50 Euler
+  steps, shift5 CFG5, R0+2 refinements, 128 slots. One amp-80g GPU for the entire
+  pipeline. Estimated GPU execution 2.5-3.5h (name: est3h), excludes queue; estimate
+  based on existing A100 40GB demo inference 138-148s/video plus loading/evaluation
+  margin. Resume verifies completed videos.'
+workspace: ALL-IN-ONE
+project: wan-animate
+max_restarts: 0
+resources:
+  resource_pool: amp-80g
+  slots_per_trial: 1
+  is_single_node: true
+  shm_size: 34359738368
+bind_mounts:
+- host_path: /mount/HOME/liuzhirui
+  container_path: /home/liuzhirui
+- host_path: /mount/NAS1/public
+  container_path: /run/determined/NAS1/public
+environment:
+  image: 10.130.130.5:8192/lab-dev:latest
+  environment_variables:
+  - OMP_NUM_THREADS=4
+  - PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+checkpoint_storage:
+  type: shared_fs
+  host_path: /mount/HOME/liuzhirui
+  storage_path: Project/physGen/code/v5.2.2-native/experiments/q_workspace_variants/determined_checkpoints
+  save_experiment_best: 0
+  save_trial_best: 0
+  save_trial_latest: 0
+searcher:
+  name: single
+  metric: completed_cases
+  max_length:
+    epochs: 1
+  smaller_is_better: false
+entrypoint: bash /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/q_workspace_variants/inference/run_b_amp80g.sh
+  --local

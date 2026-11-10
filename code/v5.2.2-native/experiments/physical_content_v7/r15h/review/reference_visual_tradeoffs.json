@@ -1,0 +1,48 @@
+{
+  "utc": "2026-11-08T06:24:11.292516+00:00",
+  "purpose": "Review useful B direct/request-bound tradeoffs before H scores; evaluation-only, never a training target",
+  "sampled_frames": [
+    0,
+    11,
+    22,
+    34,
+    45,
+    57,
+    68,
+    80
+  ],
+  "cases": [
+    {
+      "case": "VP034",
+      "caption": "A large, clear balloon is inflated with air, showing the internal pressure causing the balloon to stretch.",
+      "normal_score": {
+        "SA": 4,
+        "PC": 5
+      },
+      "direct_score": {
+        "SA": 3,
+        "PC": 5
+      },
+      "normal_panel": "experiments/physical_content_v7/request_bound_fusion_r15b/reports/physical_content_67829/visual_predeclared/VP034_R15B.png",
+      "direct_panel": "experiments/physical_content_v7/request_bound_fusion_r15b/reports/physical_content_67829/visual_predeclared/VP034_R15B_direct_physical_read.png",
+      "observation": "Both retain a balloon and predominantly translate/bob. Neither sampled sequence establishes sustained inflation/stretching. The normal SA gain does not by itself prove the requested process is solved."
+    },
+    {
+      "case": "VP038",
+      "caption": "A paint roller, dipped in green paint, is used to cover a section of a metal fence, creating a uniform green coat.",
+      "normal_score": {
+        "SA": 4,
+        "PC": 4
+      },
+      "direct_score": {
+        "SA": 4,
+        "PC": 5
+      },
+      "normal_panel": "experiments/physical_content_v7/request_bound_fusion_r15b/reports/physical_content_67829/visual_predeclared/VP038_R15B.png",
+      "direct_panel": "experiments/physical_content_v7/request_bound_fusion_r15b/reports/physical_content_67829/visual_predeclared/VP038_R15B_direct_physical_read.png",
+      "observation": "Direct-read roller body disappears after frame22, leaving a horizontal rail/handle and local rectangular defect. Normal retains a roller-like body but it rotates/deforms and has duplicate/contact defects later. Higher direct PC does not represent better roller identity or reliable coating progress. Shared first image is already largely green."
+    }
+  ],
+  "interpretation": "Direct physical read has measured aggregate PC benefit, but its4.000 fixed16 score is not proof of good actual videos. H must retain physical benefit and improve entity/process execution; query-response efficacy remains unproven until H evaluation.",
+  "scope": "Four existing sampled-frame panels only, not an exhaustive video or aggregate quality assessment; no new scoring or generation"
+}

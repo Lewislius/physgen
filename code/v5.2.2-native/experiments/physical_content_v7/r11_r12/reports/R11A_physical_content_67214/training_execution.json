@@ -1,0 +1,71 @@
+{
+  "utc": "2026-11-03T09:24:07.925836+00:00",
+  "source_paths": {
+    "R11A": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_adapt_r11a/runs/physical_content_67214/train.jsonl",
+    "R10A": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/execution_value_r10/runs/physical_content_67003/train.jsonl",
+    "R1": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/runs/physical_content_66778/train.jsonl"
+  },
+  "optimizer_updates": 400,
+  "last_update": 400,
+  "unique_input_samples": 1600,
+  "text_drop_count": 154,
+  "comparisons": {
+    "R10A": {
+      "new_microbatches": 1600,
+      "reference_microbatches": 1600,
+      "compared_fields": [
+        "step",
+        "micro",
+        "sample",
+        "sigma",
+        "text_dropped"
+      ],
+      "mismatches": [],
+      "total_mismatches": 0,
+      "matching": true
+    },
+    "R1": {
+      "new_microbatches": 1600,
+      "reference_microbatches": 1600,
+      "compared_fields": [
+        "step",
+        "micro",
+        "sample",
+        "sigma",
+        "text_dropped"
+      ],
+      "mismatches": [],
+      "total_mismatches": 0,
+      "matching": true
+    }
+  },
+  "optimizer_groups": {
+    "enhancement": {
+      "positive_lr_updates": 400,
+      "nonzero_gradient_updates": 400,
+      "median_gradient": 0.09557831287384033
+    },
+    "fusion_read": {
+      "positive_lr_updates": 400,
+      "nonzero_gradient_updates": 399,
+      "median_gradient": 0.004920335253700614
+    },
+    "fusion_write": {
+      "positive_lr_updates": 400,
+      "nonzero_gradient_updates": 400,
+      "median_gradient": 0.054212333634495735
+    },
+    "wan_lora": {
+      "positive_lr_updates": 272,
+      "nonzero_gradient_updates": 272,
+      "median_gradient": 0.005625925026834011
+    },
+    "native_text": {
+      "positive_lr_updates": 400,
+      "nonzero_gradient_updates": 400,
+      "median_gradient": 0.0021077170968055725
+    }
+  },
+  "wall_clock_complete_utc": "2026-11-03T08:52:57.659608+00:00",
+  "scope": "Training execution and logged sample/noise-level/dropout comparison. Does not compare every random-noise tensor or establish generation-quality benefit; actual videos/paired scores pending."
+}

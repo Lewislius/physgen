@@ -1,0 +1,52 @@
+{
+  "utc": "2026-11-08T09:57:42.984752+00:00",
+  "sources": {
+    "R10A": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/execution_value_r10/snapshots/20261101T034557Z/physical_content/model.py",
+    "R15B": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_bound_fusion_r15b/physical_content/model.py",
+    "R15H": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_feedback_fusion_r15h/snapshots/20261108T061417Z/physical_content/model.py"
+  },
+  "identical_enhancement_to_R10A": {
+    "R15B": true,
+    "R15H": true
+  },
+  "identical_content_block_to_R10A": {
+    "R15B": true,
+    "R15H": true
+  },
+  "physical_query": {
+    "R10A": "物理读取复用冻结原生attention.q及norm_q；独立可训练K/V/O、时间映射、state_value和零值参考。",
+    "R15B": "同样复用冻结原生attention.q/norm_q。新增的是物理值先绑定到原请求词，再由视频状态读取的串行寻址；没有独立physical Q矩阵。",
+    "R15H": "独立复制并训练physical query和query_norm；改回直接读取C，另有semantic_query修正原生文本读取。不能把H描述成只在B上加一个语义输出、其余融合完全相同。"
+  },
+  "trainable_parameters": {
+    "R15B": 670010368,
+    "R15H": 858815488
+  },
+  "inference_evidence": {
+    "normal_vs_semantic_off": "当前已看4例几乎保留相同主要缺陷；3个周期纹理案例关语义响应仍有纹理。",
+    "normal_vs_no_c": "同权重全关时3个周期纹理案例清除网格；尺子等仍有其他生成缺陷。"
+  },
+  "pending_query_test": "已有native_physical_query固定16例模式将替换成原生Q/norm；它回答当前H训练参数对查询的敏感性，不是重新训练的架构消融。",
+  "design_constraint": "不会因H整体失败就断言独立物理Q普遍无效，也不会把历史R10A/R15B的PC收益误归给它们并不存在的独立物理Q。具体结构/参数化依据对照选择。",
+  "additional_source_review": {
+    "R1": {
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/snapshots/20261030T141432Z/physical_content/model.py",
+      "C": "native anchor + projected Q refinement; same C supplies physical K and V; alignment applies to that shared C.",
+      "memory": "Full frozen Qwen input memory including its contextual visual/request tokens.",
+      "physical_query": "Frozen native Q/norm reused; independently trained physical K/V/O and state interaction."
+    },
+    "R9": {
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r1_content_reader_r9/snapshots/20261031T150803Z/physical_content/model.py",
+      "C": "Same anchor-plus-refinement form shared by K/V.",
+      "memory": "Fitted physical words and literal request words; grounded/global head split.",
+      "physical_query": "Frozen native Q/norm reused."
+    },
+    "R10A_R15B_R15H": "Identical Enhancement/ContentBlock: routing comes from grounded source-value read; execution comes from Q refinement, both retain native anchor. These are different value constructions, despite shared query/refinement parameters.",
+    "R15G": {
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/source_residual_fusion_r15g/physical_content/model.py",
+      "C": "Routing retains native anchor. Execution removes native anchor and uses a free learned shared prior plus projected input-value read.",
+      "caution": "G changed other fusion pieces too and failed quality; it does not independently prove source-derived values or removing the anchor is beneficial."
+    },
+    "interpretation": "These are verified structural facts. Shared ingredients in better versions are references, not proof that every common component is independently effective. Preserve actual paired evidence when deciding I."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "VP018",
+  "caption": "A bulldozer pulls a heavy load attached with a chain, moving it across the ground.",
+  "revision": "v522_native_generation_baseline_v11",
+  "optimizer_step": 32,
+  "seed": 42,
+  "fps": 23.999999284744284,
+  "conditions": "first frame, caption, existing requirements; no future target",
+  "physical_dependency_analysis": "OBSERVED: Bulldozer blade chained to load; ground shows initial displacement; motion direction implied but not yet executed.  \nINTERACTION: Continuous forward thrust → chain transmits force → load drags, compacts soil.  \nPERSISTENCE: Chain tension and blade contact sustain load attachment; ground deformation propagates under load.  \nINTERVENTION: If chain breaks → load detaches; if thrust stops → motion halts; ground compaction ceases.",
+  "latent_reasoning_steps": 2,
+  "latent_feedback": null,
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "condition_strength": 1.0,
+    "latent_feedback": {
+      "enabled": false,
+      "metric": "relative_rms",
+      "sigmas": [
+        0.85,
+        0.65
+      ],
+      "step_size": 0.1
+    }
+  }
+}

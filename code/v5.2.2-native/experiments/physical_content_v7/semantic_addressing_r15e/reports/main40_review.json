@@ -1,0 +1,665 @@
+{
+  "utc": "2026-11-06T15:19:54.062329+00:00",
+  "candidate": "R15E",
+  "experiment": 67955,
+  "trial": 69342,
+  "checkpoint_steps": 400,
+  "main40": {
+    "count": 40,
+    "sa_mean": 2.75,
+    "pc_mean": 3.75,
+    "sa_pass_rate": 0.15,
+    "pc_pass_rate": 0.6,
+    "joint_pass_count": 5,
+    "joint_pass_rate": 0.125
+  },
+  "normal_fixed16": {
+    "count": 16,
+    "sa_mean": 2.75,
+    "pc_mean": 3.875,
+    "sa_pass_rate": 0.125,
+    "pc_pass_rate": 0.625,
+    "joint_pass_count": 2,
+    "joint_pass_rate": 0.125
+  },
+  "primary_numeric_targets": {
+    "PC_at_least3_8": false,
+    "SA_at_least3_125": false,
+    "Joint_strictly_above_historical11of40": false
+  },
+  "primary_targets_met": false,
+  "quality_accepted": false,
+  "paired_references": {
+    "original40/R10-A": {
+      "sa": {
+        "mean_change": -0.075,
+        "wins": 5,
+        "ties": 27,
+        "losses": 8
+      },
+      "pc": {
+        "mean_change": 0,
+        "wins": 9,
+        "ties": 23,
+        "losses": 8
+      },
+      "joint": {
+        "gains": [
+          "VP008"
+        ],
+        "losses": [
+          "VP018",
+          "VP022",
+          "VP034"
+        ]
+      }
+    },
+    "original40/R1": {
+      "sa": {
+        "mean_change": -0.2,
+        "wins": 3,
+        "ties": 27,
+        "losses": 10
+      },
+      "pc": {
+        "mean_change": 0.125,
+        "wins": 9,
+        "ties": 27,
+        "losses": 4
+      },
+      "joint": {
+        "gains": [],
+        "losses": [
+          "VP010",
+          "VP018",
+          "VP022",
+          "VP034",
+          "VP038"
+        ]
+      }
+    },
+    "original40/native400": {
+      "sa": {
+        "mean_change": -0.325,
+        "wins": 2,
+        "ties": 24,
+        "losses": 14
+      },
+      "pc": {
+        "mean_change": 0.3,
+        "wins": 15,
+        "ties": 22,
+        "losses": 3
+      },
+      "joint": {
+        "gains": [],
+        "losses": [
+          "VP010",
+          "VP018",
+          "VP022",
+          "VP034",
+          "VP038"
+        ]
+      }
+    },
+    "original40/R15B": {
+      "sa": {
+        "mean_change": -0.175,
+        "wins": 2,
+        "ties": 30,
+        "losses": 8
+      },
+      "pc": {
+        "mean_change": 0.05,
+        "wins": 8,
+        "ties": 26,
+        "losses": 6
+      },
+      "joint": {
+        "gains": [],
+        "losses": [
+          "VP010",
+          "VP018",
+          "VP022",
+          "VP034",
+          "VP038"
+        ]
+      }
+    },
+    "original40/R15D": {
+      "sa": {
+        "mean_change": -0.25,
+        "wins": 2,
+        "ties": 27,
+        "losses": 11
+      },
+      "pc": {
+        "mean_change": 0.175,
+        "wins": 12,
+        "ties": 24,
+        "losses": 4
+      },
+      "joint": {
+        "gains": [],
+        "losses": [
+          "VP010",
+          "VP018",
+          "VP022",
+          "VP034",
+          "VP038"
+        ]
+      }
+    }
+  },
+  "gap_to_minimum40": {
+    "additional_SA_total_points": 15,
+    "additional_PC_total_points": 2,
+    "additional_Joint_passes": 7
+  },
+  "pc_pass_but_sa_fail_count": 19,
+  "visual_review": {
+    "VP004": {
+      "observed": "Eight sampled frames show almost unchanged people and already fragmented horizontal object. Requested bending and propagating fracture are not visibly executed. Initial image itself is a limitation shared with references.",
+      "scores": {
+        "sa": 2,
+        "pc": 4
+      },
+      "panel": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_addressing_r15e/reports/physical_content_67955/visual_predeclared/VP004_R15E.png"
+    },
+    "VP010": {
+      "observed": "After the first frame the scene degenerates into full-frame repeated vertical colored stripes. Exact evaluator sampling also shows stripes from its early sampled frames onward. AutoEval still returns SA2/PC4.",
+      "scores": {
+        "sa": 2,
+        "pc": 4
+      },
+      "panel": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_addressing_r15e/reports/physical_content_67955/visual_predeclared/VP010_R15E.png"
+    },
+    "VP027": {
+      "observed": "Hands and dough remain almost unchanged in eight sampled frames; requested shaping process is not convincingly visible despite SA4/PC4.",
+      "scores": {
+        "sa": 4,
+        "pc": 4
+      },
+      "panel": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_addressing_r15e/reports/physical_content_67955/visual_predeclared/VP027_R15E.png"
+    },
+    "VP034": {
+      "observed": "Initial balloon is quickly replaced by repeated vertical stripes. Exact evaluator sampling confirms degeneration while AutoEval returns SA3/PC5.",
+      "scores": {
+        "sa": 3,
+        "pc": 5
+      },
+      "panel": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_addressing_r15e/reports/physical_content_67955/visual_predeclared/VP034_R15E.png"
+    },
+    "VP038": {
+      "observed": "Roller and fence stay nearly unchanged across eight sampled frames; requested rolling/coating process is not visible. SA3/PC4.",
+      "scores": {
+        "sa": 3,
+        "pc": 4
+      },
+      "panel": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_addressing_r15e/reports/physical_content_67955/visual_predeclared/VP038_R15E.png"
+    }
+  },
+  "visual_scope": "Five predeclared cases, eight frames each, plus exact32 evaluator frames on VP010/VP034. Not a full40 visual-quality prevalence estimate.",
+  "verifier_input_audit": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_addressing_r15e/reports/verifier_input_audit/report.json",
+  "verifier_findings": "Correct R15E MP4 paths,32 distributed video frames, finite (1,3,32,224,224) input, visual token -2, freshly written scores. No evidence of first-frame-only loading or stale scores in these two cases. Numerical scores retained unchanged; their reliability on these degenerate clips is visibly limited.",
+  "mechanism_interpretation": "The proposed semantic address prior and request-focused Q refinement did not deliver the claimed combined generation benefit in this trained model. Independent physicalQ has actual gradients, but gradient flow did not establish beneficial execution. Separate causal responsibility still requires the already-running same-checkpoint controls.",
+  "next": "Complete the seven declared paired16 controls; compare removal of semantic support, request-only refinement, learned physicalQ, full injection, and condition substitutions. Inspect whether controls remove stripes and recover requested processes. Review before R15F design or training.",
+  "extra20_60_status": "Deferred pending this failed main40 and control review; not marked complete or removed.",
+  "cross_benchmark_status": "Preparation audited; not submitted; acceptance remains unmet.",
+  "early_paired_visual_evidence": {
+    "utc": "2026-11-06T15:23:30.072018+00:00",
+    "case": "VP010",
+    "intervention": "no_c",
+    "same_checkpoint": true,
+    "same_input_seed_sampler": true,
+    "normal_panel": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_addressing_r15e/reports/physical_content_67955/visual_predeclared/VP010_R15E.png",
+    "control_panel": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_addressing_r15e/reports/physical_content_67955/visual_predeclared/VP010_R15E_no_c.png",
+    "observation": "Disabling the whole physical operator eliminates the full-frame vertical stripes and restores recognizable mop displacement and water-pattern changes. Mop shape and water traces are still imperfect; this is not a claim of completely correct execution.",
+    "causal_conclusion": "For this checkpoint and paired example, the active physical injection causes the catastrophic visual degradation. This does not yet assign blame among request refinement, semantic support and learned physical Q, nor establish the result of retraining without those components.",
+    "control_scores_status": "Complete16 score pending at review time"
+  },
+  "completed_paired16_controls": {
+    "empty_reasoning": {
+      "summary": {
+        "count": 16,
+        "sa_mean": 3.25,
+        "pc_mean": 3.6875,
+        "sa_pass_rate": 0.375,
+        "pc_pass_rate": 0.5625,
+        "joint_pass_count": 6,
+        "joint_pass_rate": 0.375
+      },
+      "normal_minus_control": {
+        "sa": {
+          "mean_change": -0.5,
+          "wins": 0,
+          "ties": 9,
+          "losses": 7
+        },
+        "pc": {
+          "mean_change": 0.1875,
+          "wins": 5,
+          "ties": 9,
+          "losses": 2
+        },
+        "joint": {
+          "gains": [],
+          "losses": [
+            "VP010",
+            "VP018",
+            "VP034",
+            "VP038"
+          ]
+        }
+      },
+      "score_file": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_addressing_r15e/inference_outputs/physical_content_67955/step0400_original_fixed40_controls16_seed42/controls/empty_reasoning/videophy40/scores.json"
+    },
+    "global_train_mean": {
+      "summary": {
+        "count": 16,
+        "sa_mean": 2.9375,
+        "pc_mean": 3.9375,
+        "sa_pass_rate": 0.25,
+        "pc_pass_rate": 0.6875,
+        "joint_pass_count": 4,
+        "joint_pass_rate": 0.25
+      },
+      "normal_minus_control": {
+        "sa": {
+          "mean_change": -0.1875,
+          "wins": 0,
+          "ties": 13,
+          "losses": 3
+        },
+        "pc": {
+          "mean_change": -0.0625,
+          "wins": 1,
+          "ties": 14,
+          "losses": 1
+        },
+        "joint": {
+          "gains": [],
+          "losses": [
+            "VP018",
+            "VP038"
+          ]
+        }
+      },
+      "score_file": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_addressing_r15e/inference_outputs/physical_content_67955/step0400_original_fixed40_controls16_seed42/controls/global_train_mean/videophy40/scores.json"
+    },
+    "native_physical_query": {
+      "summary": {
+        "count": 16,
+        "sa_mean": 3,
+        "pc_mean": 4.0625,
+        "sa_pass_rate": 0.3125,
+        "pc_pass_rate": 0.75,
+        "joint_pass_count": 5,
+        "joint_pass_rate": 0.3125
+      },
+      "normal_minus_control": {
+        "sa": {
+          "mean_change": -0.25,
+          "wins": 0,
+          "ties": 12,
+          "losses": 4
+        },
+        "pc": {
+          "mean_change": -0.1875,
+          "wins": 1,
+          "ties": 11,
+          "losses": 4
+        },
+        "joint": {
+          "gains": [],
+          "losses": [
+            "VP015",
+            "VP018",
+            "VP034"
+          ]
+        }
+      },
+      "score_file": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_addressing_r15e/inference_outputs/physical_content_67955/step0400_original_fixed40_controls16_seed42/controls/native_physical_query/videophy40/scores.json"
+    },
+    "no_c": {
+      "summary": {
+        "count": 16,
+        "sa_mean": 3.25,
+        "pc_mean": 3.625,
+        "sa_pass_rate": 0.375,
+        "pc_pass_rate": 0.4375,
+        "joint_pass_count": 6,
+        "joint_pass_rate": 0.375
+      },
+      "normal_minus_control": {
+        "sa": {
+          "mean_change": -0.5,
+          "wins": 0,
+          "ties": 9,
+          "losses": 7
+        },
+        "pc": {
+          "mean_change": 0.25,
+          "wins": 5,
+          "ties": 10,
+          "losses": 1
+        },
+        "joint": {
+          "gains": [],
+          "losses": [
+            "VP010",
+            "VP018",
+            "VP034",
+            "VP038"
+          ]
+        }
+      },
+      "score_file": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_addressing_r15e/inference_outputs/physical_content_67955/step0400_original_fixed40_controls16_seed42/controls/no_c/videophy40/scores.json"
+    },
+    "reasoning_swapped": {
+      "summary": {
+        "count": 16,
+        "sa_mean": 2.875,
+        "pc_mean": 3.8125,
+        "sa_pass_rate": 0.1875,
+        "pc_pass_rate": 0.6875,
+        "joint_pass_count": 3,
+        "joint_pass_rate": 0.1875
+      },
+      "normal_minus_control": {
+        "sa": {
+          "mean_change": -0.125,
+          "wins": 0,
+          "ties": 14,
+          "losses": 2
+        },
+        "pc": {
+          "mean_change": 0.0625,
+          "wins": 2,
+          "ties": 13,
+          "losses": 1
+        },
+        "joint": {
+          "gains": [],
+          "losses": [
+            "VP018"
+          ]
+        }
+      },
+      "score_file": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_addressing_r15e/inference_outputs/physical_content_67955/step0400_original_fixed40_controls16_seed42/controls/reasoning_swapped/videophy40/scores.json"
+    },
+    "request_refinement_off": {
+      "summary": {
+        "count": 16,
+        "sa_mean": 3,
+        "pc_mean": 3.9375,
+        "sa_pass_rate": 0.25,
+        "pc_pass_rate": 0.6875,
+        "joint_pass_count": 4,
+        "joint_pass_rate": 0.25
+      },
+      "normal_minus_control": {
+        "sa": {
+          "mean_change": -0.25,
+          "wins": 0,
+          "ties": 12,
+          "losses": 4
+        },
+        "pc": {
+          "mean_change": -0.0625,
+          "wins": 1,
+          "ties": 14,
+          "losses": 1
+        },
+        "joint": {
+          "gains": [],
+          "losses": [
+            "VP015",
+            "VP038"
+          ]
+        }
+      },
+      "score_file": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_addressing_r15e/inference_outputs/physical_content_67955/step0400_original_fixed40_controls16_seed42/controls/request_refinement_off/videophy40/scores.json"
+    },
+    "semantic_routing_off": {
+      "summary": {
+        "count": 16,
+        "sa_mean": 3,
+        "pc_mean": 3.6875,
+        "sa_pass_rate": 0.25,
+        "pc_pass_rate": 0.5625,
+        "joint_pass_count": 4,
+        "joint_pass_rate": 0.25
+      },
+      "normal_minus_control": {
+        "sa": {
+          "mean_change": -0.25,
+          "wins": 0,
+          "ties": 12,
+          "losses": 4
+        },
+        "pc": {
+          "mean_change": 0.1875,
+          "wins": 4,
+          "ties": 11,
+          "losses": 1
+        },
+        "joint": {
+          "gains": [],
+          "losses": [
+            "VP018",
+            "VP038"
+          ]
+        }
+      },
+      "score_file": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_addressing_r15e/inference_outputs/physical_content_67955/step0400_original_fixed40_controls16_seed42/controls/semantic_routing_off/videophy40/scores.json"
+    }
+  },
+  "controls_complete": true,
+  "latest_control_interpretation": "On the fixed16, bypassing the physical operator raises SA from2.75 to3.25 and Joint from2 to6, while PC drops from3.875 to3.625. Together with VP010 matched videos, this establishes an adverse online fusion effect in this checkpoint; attribution to subcomponents awaits their interventions.",
+  "updated_utc": "2026-11-06T20:25:36.451945+00:00",
+  "paired_visual_no_c_additional": {
+    "VP027": "No_c restores hand repositioning and dough manipulation; normal injection holds nearly the initial arrangement. Both can receive high scores, so nominal pass does not establish execution quality.",
+    "VP034": "No_c removes the stripe collapse and preserves a recognizable balloon with position/size changes, but clear sustained inflation is not established and the tied end changes irregularly.",
+    "VP038": "No_c restores large roller movement and a painted region, but has severe roller/handle deformation. Normal injection largely holds the starting image. Neither is a fully satisfactory generation."
+  },
+  "quality_interpretation": "Higher PC under normal injection is not automatically a beneficial physical correction: on the inspected cases it coexists with catastrophic texture collapse or avoidance of requested evolution. Disabling injection recovers some processes but still has physical/shape errors and fails the PC target. The redesign must improve process execution and physical integrity together.",
+  "paired_visual_semantic_routing_off": {
+    "VP010": "Removing only semantic routing eliminates full-frame stripes and restores a recognizable moving mop. Water removal remains incomplete; other physical components and independent physical Q are retained.",
+    "VP034": "Removing only semantic routing eliminates stripes and restores a recognizable balloon. Sustained inflation is still weak or absent in the sampled frames.",
+    "conclusion": "The new semantic support prior has a direct harmful online effect in these two paired cases. Keeping the learned physical Q while removing the prior is sufficient to remove catastrophic texture collapse. This localizes the failure more narrowly than full no_c, but does not establish aggregate scores or successful process execution."
+  },
+  "posthoc_score_improvement_review": {
+    "selection": "VP008 improved SA versus R10A; VP021 improved SA versus R1. Chosen after scores to examine apparent successes, explicitly not predeclared.",
+    "VP008": {
+      "scores": {
+        "R1": [
+          4,
+          4
+        ],
+        "R10A": [
+          3,
+          5
+        ],
+        "R15E": [
+          4,
+          4
+        ]
+      },
+      "observation": "R1 shows changes in trampoline pose/position with later body deformation; R10A is nearly static. R15E collapses into repeated vertical stripes after the initial frame despite gaining nominal Joint versus R10A.",
+      "panel": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_addressing_r15e/reports/posthoc_score_movers/VP008.png"
+    },
+    "VP021": {
+      "scores": {
+        "R1": [
+          4,
+          5
+        ],
+        "R10A": [
+          4,
+          4
+        ],
+        "R15E": [
+          5,
+          5
+        ]
+      },
+      "observation": "R1 and R10A retain a recognizable skateboarder, with R10A showing road displacement. R15E becomes repeated vertical stripes despite SA5/PC5. This nominal best-scoring output is a severe generation failure.",
+      "panel": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_addressing_r15e/reports/posthoc_score_movers/VP021.png"
+    },
+    "conclusion": "The inspected apparent numeric gains do not establish real improvements. Even joint passing of SA and PC can miss catastrophic visual failure here. Preserve official-protocol raw scores but reject the model on actual-video grounds; all numeric targets and visual/cross-benchmark quality remain required together."
+  },
+  "semantic_routing_off_complete16": "SA3.0/PC3.6875/Joint4of16 versus normal2.75/3.875/2of16; removing routing repairs the inspected stripe collapses and improves SA/Joint, but reduces numeric PC and remains below the combined target. A deletion-only solution is not established.",
+  "pending_control_modes": [],
+  "execution_probe_review": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_addressing_r15e/reports/execution_probe_review.json",
+  "native_query_visual_review": {
+    "utc": "2026-11-06T18:05:00.328574+00:00",
+    "mode": "native_physical_query",
+    "selection": "Five predeclared cases; same checkpoint, inputs and seed. Sampled frames 0,11,22,34,45,57,68,80; not a full temporal or population rating.",
+    "scores": {
+      "sa_mean": 3.0,
+      "pc_mean": 4.0625,
+      "joint_count": 5,
+      "n": 16
+    },
+    "cases": {
+      "VP004": "From frame11 onward, full-frame repetitive vertical stripe collapse; normal E was already malformed but recognizable.",
+      "VP010": "Full-frame vertical stripe collapse persists after the initial frame.",
+      "VP027": "Full-frame striped/grid collapse after the first frame; worse than normal E recognizable but nearly static hands/dough.",
+      "VP034": "Full-frame striped/grid collapse persists after the initial frame.",
+      "VP038": "Roller and fence remain recognizable but almost unchanged; no convincing rolling/painting progression."
+    },
+    "conclusion": "Higher automated PC/Joint does not establish improved generation. Replacing learned physical Q by frozen native Q does not repair the observed failure, and adds catastrophic collapse in two inspected cases. This inference intervention does not independently establish whether a differently trained independent Q is beneficial."
+  },
+  "semantic_routing_off_additional_visuals": {
+    "utc": "2026-11-06T18:05:00.328574+00:00",
+    "cases": {
+      "VP004": "Motion returns but the already malformed horizontal object bends/merges implausibly; not correct bending/fracture.",
+      "VP027": "Hands reposition slightly; convincing kneading/shaping remains absent.",
+      "VP038": "Roller moves substantially but its geometry/handle becomes malformed; no clean physical/visual recovery."
+    },
+    "conclusion": "Removing the prior repairs the two inspected stripe failures but not overall process/shape correctness; insufficient as the next final model."
+  },
+  "reasoning_swapped_visual_review": {
+    "utc": "2026-11-06T18:49:07.174049+00:00",
+    "selection": "Same five predeclared cases and eight frame positions; scoring still pending at inspection.",
+    "cases": {
+      "VP004": "Recognizable but nearly unchanged malformed object/people; no convincing bending-to-fracture.",
+      "VP010": "Stripe collapse disappears and mop moves; water removal remains imperfect.",
+      "VP027": "Hands/dough remain nearly unchanged.",
+      "VP034": "Stripe collapse persists.",
+      "VP038": "Roller/fence remain nearly unchanged."
+    },
+    "interpretation": "Own reasoning is not reliably beneficial: mismatched reasoning removes a catastrophic failure in one paired case, but does not restore the other process failures. This is conditional execution instability, not evidence that irrelevant reasoning is a useful generation strategy."
+  },
+  "empty_reasoning_visual_review": {
+    "utc": "2026-11-06T19:33:59.597916+00:00",
+    "selection": "Five predeclared cases, eight sampled frame positions; scores pending at inspection.",
+    "cases": {
+      "VP004": "People/object move substantially; the malformed initial object stretches and merges unnaturally.",
+      "VP010": "Stripes disappear and mop moves, but the head deforms and lifts above the floor; water-removal process remains imperfect.",
+      "VP027": "Hands change pose slightly; little convincing dough-shaping progression.",
+      "VP034": "Stripes disappear; recognizable balloon changes position, without convincing inflation.",
+      "VP038": "Roller moves, but roller/handle geometry deforms."
+    },
+    "conclusion": "Empty reasoning eliminates both inspected normal-E stripe failures, but is not an acceptable physical-process solution. Normal reasoning has not established reliable benefit in this candidate."
+  },
+  "mass_retained_partial_visual_review": {
+    "utc": "2026-11-06T19:33:59.597916+00:00",
+    "experiment": 68029,
+    "training_updates": 0,
+    "scope": "Early qualitative inspection of completed cases; complete16 and scores pending.",
+    "cases": {
+      "VP004": "Close to prior-off intervention: movement returns but malformed horizontal object still bends/merges unnaturally.",
+      "VP010": "Catastrophic stripes disappear; recognizable mop moves. Water removal and shape consistency remain inadequate."
+    },
+    "interpretation": "Supports harmful posterior-C-mass amplification as one causal defect. Does not establish overall goal achievement or prove that within-C semantic routing helps."
+  },
+  "mass_retained_completed_visual_review": {
+    "utc": "2026-11-06T19:47:46.712402+00:00",
+    "experiment": 68029,
+    "selection": "Same five inherited predeclared review cases; all16 videos complete, scoring pending. Eight sampled frame positions per case.",
+    "cases": {
+      "VP004": "Movement returns but initially malformed horizontal object still bends/merges unnaturally.",
+      "VP010": "Stripes removed; recognizable mop motion. Water removal/shape consistency remain inadequate.",
+      "VP027": "Hands/dough nearly unchanged; no convincing shaping.",
+      "VP034": "Stripes removed; recognizable balloon nearly static, without inflation.",
+      "VP038": "Roller moves substantially but head/handle deform."
+    },
+    "relation_to_prior_off": "On these sampled frames, repaired videos closely resemble semantic_routing_off. The inspected stripe repair is supported, but useful extra within-C semantic routing is not established.",
+    "quality_goal_achieved": false
+  },
+  "mass_retained_repair_review": {
+    "utc": "2026-11-06T19:56:57.912558+00:00",
+    "experiment": 68029,
+    "trial": 69416,
+    "state": "STATE_COMPLETED",
+    "scores": {
+      "count": 16,
+      "sa_mean": 3.0,
+      "pc_mean": 3.75,
+      "sa_pass_rate": 0.25,
+      "pc_pass_rate": 0.5,
+      "joint_pass_rate": 0.25,
+      "scope": "Fixed60 historical VideoPhy2 captions adapted to common first-image I2V; seed42. Not the official590-caption T2V benchmark.",
+      "training_verifier_is_independent": true
+    },
+    "joint_count": 4,
+    "training_updates": 0,
+    "comparison_report": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_addressing_r15e/diagnostic_outputs/semantic_mass_retained_fixed16_20261106T175519Z/comparison16.json",
+    "differences_from_semantic_routing_off": [
+      {
+        "id": "VP010",
+        "repair": [
+          3,
+          3
+        ],
+        "prior_off": [
+          3,
+          4
+        ]
+      },
+      {
+        "id": "VP015",
+        "repair": [
+          3,
+          5
+        ],
+        "prior_off": [
+          3,
+          4
+        ]
+      },
+      {
+        "id": "VP026",
+        "repair": [
+          2,
+          5
+        ],
+        "prior_off": [
+          2,
+          4
+        ]
+      }
+    ],
+    "interpretation": "Retaining posterior C/reference mass fixes the two inspected catastrophic stripes and improves SA/Joint versus original E, but still fails goals and process/shape quality. Compared with prior-off, SA/Joint unchanged and PC increases by 1 total score point across16; this is limited evidence, not sufficient proof of robust semantic-routing benefit.",
+    "accepted_as_final_candidate": false
+  },
+  "global_train_mean_visual_review": {
+    "utc": "2026-11-06T20:26:24.640063+00:00",
+    "cases": {
+      "VP004": "Malformed initial object/people remain nearly static.",
+      "VP010": "Stripes removed and mop moves; water removal/shape still imperfect.",
+      "VP027": "Little hand/dough progression.",
+      "VP034": "Stripes removed; balloon shifts without convincing inflation.",
+      "VP038": "Roller head disappears, leaving a deforming floating handle."
+    },
+    "interpretation": "Mean C improves raw SA/PC/Joint over normal16 but does not solve process or visual quality. It changes C magnitude/content and retains own group prior and native states; it does not prove all conditional differences are harmful."
+  },
+  "review_complete": true,
+  "review_completed_utc": "2026-11-06T20:26:24.640063+00:00",
+  "accepted": false,
+  "goal_achieved": false,
+  "decision": "Reject R15E as final model. Preserve own400/main40/seven16/probes/repair16. Finalize the evidence-supported R15F redesign, then review before final R15G.",
+  "extended_evaluation_status": "Same60 and cross-benchmark acceptance are not completed for E; deferred after failed primary40/controls, not counted as passed or silently canceled."
+}

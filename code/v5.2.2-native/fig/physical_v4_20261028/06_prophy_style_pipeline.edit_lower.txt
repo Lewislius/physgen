@@ -1,0 +1,21 @@
+Precisely edit this scientific diagram, preserving its upper overview, all of panel (c), the bottom training strip, the typography, style, colors and aspect ratio. Correct ONLY the interiors of panels (a) and (b), as described here. Delete the outdated arrows before redrawing. Avoid adding any tensor shapes or extra labels.
+
+PANEL (a), lower grounding subgraph only:
+Preserve the upper three C projections and the bottom Mod(C) branch. COMPLETELY ERASE the six old shapes named Soft source read, A0_cond, A0_scope, Crop / resize geometry G, Weighted read and the g_cond/g_scope grid, including every arrow between them. Replace this entire little subgraph with THREE WIDE STACKED ROUNDED BOXES with straight downward arrows between them:
+1. "Soft source read: A₀_cond / A₀_scope"
+2. "Geometry mapping G + weighted read"
+3. "g_cond / g_scope"
+The preserved C and First-frame evidence H both point DOWN into box 1. Box 1 points DOWN into box 2. Box 2 points DOWN into box 3. Place the preserved blue Wan first-frame state X0 input to the left of box 2 and draw ONE BLUE ARROW from X0 into BOX 2. This compact layout replaces all previous A0 and G token grids. There is no X0 input to box 3 and no direct box-1-to-box-3 shortcut. The separate C → Mod(C) branch is untouched. Preserve the geometry notes.
+
+PANEL (b), time-conditioning cards:
+There are two purple cards at the bottom of the central interaction area. Replace the LEFT card, directly UNDER STATE INTERACTION, with exact text "Diffusion noise σ" and its arrow goes straight UP into State interaction. Replace the RIGHT card, directly UNDER TEMPORAL RESPONSE, with exact text "PTS → τ, Δτ" and smaller "History j ≤ t" and its arrow goes straight UP into Temporal response. This is a SWAP OF THE EXISTING CARD LABELS so each card's position matches the block above it. σ conditions interaction; τ conditions temporal response. No τ→interaction arrow and no σ→temporal-response arrow should remain.
+
+PANEL (b), response and native merge at right:
+Keep Current Wan state, both K + g roles, A_cond, A_scope, state reads, State interaction, and the big mint shared-A_scope connector exactly as they are. Keep the State interaction → Temporal response connection. REDRAW the response-to-output area to make the following exact flow:
+Temporal response → small circled plus → d[r,t] → "Write with SAME A_scope" → a small CORAL RECTANGLE "O_phys" → residual circled plus → a small BLUE RECTANGLE "Native FFN".
+The u_scope read feeds the SMALL FIRST circled plus immediately after Temporal response. It no longer feeds Temporal response directly. This skip can use one thin blue right-angle line along the bottom of the middle computation.
+The original big mint A_scope connector still terminates in Write with SAME A_scope.
+The arrow from O_phys into the FINAL residual plus is labeled "ΔX". Delete the old misleading ΔX grid AFTER the final plus. Use its space for Native FFN. Native residual and Native text attention below both feed this FINAL residual plus. The final plus has ONE outgoing blue arrow, pointing into Native FFN. The output of FFN may end at the right panel boundary. Delete the decorative O_phys token grid to gain room; O_phys is now a labeled operator rectangle.
+Remove the two decorative response token grids if needed for spacing; keep labels legible. Shrink shapes slightly as needed to fit within the existing panel border. Preserve both equations at the bottom, the first-frame note, and the central shared-read/write label.
+
+The finished diagram must clearly show: first-frame geometry weights are applied BEFORE reading state; σ and τ are separate; u_scope merges after temporal processing; physical ΔX merges with native paths BEFORE native FFN. Do not alter anything else in the figure.

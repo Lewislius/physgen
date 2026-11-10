@@ -1,0 +1,18 @@
+Edit this V6 diagram with surgical technical corrections. Preserve the excellent ProPhy typography, palette, panel borders and overall page arrangement. Render a large, highly legible academic figure. Correct these exact mistakes; do not add any old V4 components.
+
+TOP OVERVIEW:
+1. Native text embedding is FROZEN. Change its red trainable appearance/flame to frozen blue/orange with a snowflake; retain exact "4096 -> 3072 -> 3072".
+2. "Physical lane (from video)" should read "Physical condition". Inputs are first frame AND request, never future video.
+3. Native text T [B,512,3072] must feed the original text attention INSIDE the blue Wan backbone. Its arrow must NOT terminate at the red Physical fusion box. Use a clearly routed orange arrow into the blue Wan blocks.
+4. A blue CURRENT STATE arrow must go FROM Wan blocks UP INTO Physical fusion. A separate red delta H arrow goes FROM Physical fusion DOWN INTO the backbone plus-circle. The blue arrow must not point from physical fusion down to Wan.
+
+LOWER PANEL (b): replace the tangled wiring with a clean, unambiguous two-lane diagram. You may simplify the number of token-grid decorations to make room. Keep panel (a) unchanged.
+Left input: "Hs after native self-attention [B,8190,3072]" -> "native norm3" -> X -> "Frozen Wq 3072->3072" -> q_raw. Branch q_raw to TWO separate query paths.
+UPPER TEXT PATH: q_raw -> "native q norm" -> "Q_T [B,24,8190,128]" -> Native text attention. Separate input T [B,512,3072] -> "frozen text K/V" -> "K_T,V_T [B,24,512,128]" -> same Native text attention. -> "frozen W_O" -> "Y_T [B,8190,3072]".
+LOWER C PATH: q_raw -> "future slice: 7800 positions" -> plus E_l -> "q norm" -> "Q_C [B,24,7800,128]" -> C attention QUERY PORT. Place this query wire along the bottom of the attention row so it cannot accidentally feed a C projection.
+Above that C attention, place Cw [B,128,3072] -> two parallel boxes "K_C: 3072->3072; frozen copy + LoRA r32; key norm" and "V_C: 3072->3072; frozen copy + LoRA r32" -> "K_C,V_C [B,24,128,128]" -> the C attention KEY/VALUE PORT. Q_C must never feed Cw, K_C or V_C projections.
+C attention "separate softmax over 128" -> "[B,24,7800,128]" -> "merge heads [B,7800,3072]" -> "trainable O_C 3072->3072; zero init" -> "delta H_future [B,7800,3072]" -> "prepend 390 zeros" -> "delta H [B,8190,3072]".
+RIGHT SUM: place a single large plus-circle and route THREE incoming arrows into it: Hs via a long skip wire, Y_T from the text lane, and delta H from the C lane. Only its OUTPUT is "U [B,8190,3072]" -> "Native FFN + residual; 3072->14336->3072; stage-B LoRA" -> H_out. Do not draw delta H as an output of that sum. There must be no disconnected residual input.
+Retain time strip "PTS tau, delta_tau [B,21,2] -> sin/cos 256 -> Linear 3072 -> E_l [B,7800,3072]" feeding the query plus.
+Keep a small dashed purple LOSS TAP from the actual delta H_future before padding, label "L_write, page 2". All C base K/V weights are frozen copies, their LoRA increments are trainable; O_C is trainable; original text parameters and native text embedding are frozen.
+Preserve all correct tensor digits, stage strip and the proposed-not-trained footer. Overall diagram must remain elegant, readable and faithful to the supplied ProPhy-style figure.

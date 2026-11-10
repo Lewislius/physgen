@@ -1,0 +1,44 @@
+name: v522-grounded-qwen-raw-six-pairs
+description: 'Existing raw inputs: two known cases and four heldout phenomena. Completed
+  frame observations, symmetric direct verdicts; no truncated comparison chain. One
+  RGB derivative check. No Wan loading or generation.'
+workspace: ALL-IN-ONE
+project: wan-animate
+max_restarts: 0
+resources:
+  resource_pool: blk-96g
+  slots_per_trial: 1
+  is_single_node: true
+  shm_size: 34359738368
+bind_mounts:
+- host_path: /mount/HOME/liuzhirui
+  container_path: /home/liuzhirui
+- host_path: /mount/NAS1/public
+  container_path: /run/determined/NAS1/public
+environment:
+  image: 10.130.130.5:8192/lab-dev:latest
+  environment_variables:
+  - OMP_NUM_THREADS=4
+  - PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+checkpoint_storage:
+  type: shared_fs
+  host_path: /mount/HOME/liuzhirui
+  storage_path: Project/physGen/code/v5.2.2-native/determined_checkpoints
+  save_experiment_best: 0
+  save_trial_best: 0
+  save_trial_latest: 0
+searcher:
+  name: single
+  metric: completed_cases
+  max_length:
+    epochs: 1
+  smaller_is_better: false
+entrypoint: bash /home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261026_grounded_qwen/code/tools/runtime_python.sh
+  /home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261026_grounded_qwen/code/tools/probe_grounded_qwen.py
+  --pairs /home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261026_qwen_raw_evidence/code/checkpoints/v522-native-qwen-process-wisa3857_66263/judge_evidence/train0001_micro1_source0000527.json
+  /home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261026_qwen_raw_evidence/code/checkpoints/v522-native-qwen-process-wisa3857_66263/judge_evidence/train0001_micro2_wisa0013657.json
+  /home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261026_qwen_raw_evidence/code/checkpoints/v522-native-qwen-process-wisa3857_66263/judge_evidence/validation0001_view0_source0000042.json
+  /home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261026_qwen_raw_evidence/code/checkpoints/v522-native-qwen-process-wisa3857_66263/judge_evidence/validation0001_view0_source0001596.json
+  /home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261026_qwen_raw_evidence/code/checkpoints/v522-native-qwen-process-wisa3857_66263/judge_evidence/validation0001_view0_wisa0013758.json
+  /home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261026_qwen_raw_evidence/code/checkpoints/v522-native-qwen-process-wisa3857_66263/judge_evidence/validation0001_view0_wisa0032606.json
+  --output /home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261026_grounded_qwen/results

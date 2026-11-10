@@ -1,0 +1,26 @@
+--- R16A/model.py
++++ R16A-NOZERO/model.py
+@@ -149,7 +149,6 @@
+         self.time = nn.Linear(256, width, bias=False, device=device)
+         for layer in (self.output, self.state_value, self.time):
+             nn.init.zeros_(layer.weight)
+-        self.reference_key = nn.Parameter(torch.zeros(1, 1, width, device=device))
+         self.query = copy.deepcopy(attention.q).float().requires_grad_(True)
+         self.query_norm = copy.deepcopy(attention.norm_q).float().requires_grad_(True)
+ 
+@@ -177,13 +176,12 @@
+         q = split(norm(raw[:, known:] + temporal)).transpose(1, 2)
+         k = split(self.key_norm(self.key(c['routing']))).transpose(1, 2).to(q)
+         v = split(self.value(c['execution'])).transpose(1, 2).to(q)
+-        reference = split(self.reference_key.expand(batch, -1, -1)).transpose(1, 2).to(q)
+         if not 1 <= context_length <= context.shape[1]:
+             raise ValueError('Use real cached T5 tokens including EOS, excluding artificial padding')
+         request_keys = text_keys[:, :context_length].transpose(1, 2).to(q)
+-        prior = group_log_prior(groups).to(q)
++        prior = group_log_prior(groups)[:-1].to(q)
+         request_query = q if shared_physical_query else text_query[:, known:].transpose(1, 2).to(q)
+-        message = read_physical(q, k, v, request_keys, reference, prior, memory_mode,
++        message = read_physical(q, k, v, request_keys, prior, memory_mode,
+             request_query=request_query, relation_count=int(groups.max()) + 1).transpose(1, 2).flatten(2)
+         state = F.layer_norm(x[:, known:].float(), (width,))
+         physical = message + self.state_value(state) * message if state_value_enabled else message

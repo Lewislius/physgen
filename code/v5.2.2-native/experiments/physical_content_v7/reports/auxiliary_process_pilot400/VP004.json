@@ -1,0 +1,114 @@
+{
+  "case": "VP004",
+  "caption": "A plastic ruler is bent until it cracks, displaying a visible stress fracture that propagates.",
+  "sources": [
+    "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/inference_outputs/native_lora_66781/step0400_seed42_r1/videophy40",
+    "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/inference_outputs/physical_content_66778/step0400_seed42_r1/videophy40"
+  ],
+  "A_source": 0,
+  "B_source": 1,
+  "sampled_frames": [
+    {
+      "video": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/inference_outputs/native_lora_66781/step0400_seed42_r1/videophy40/cases/VP004/planned.mp4",
+      "indices": [
+        0,
+        5,
+        11,
+        16,
+        21,
+        27,
+        32,
+        37,
+        43,
+        48,
+        53,
+        59,
+        64,
+        69,
+        75,
+        80
+      ],
+      "times": [
+        0.0,
+        0.2083333283662796,
+        0.4583333432674408,
+        0.6666666865348816,
+        0.875,
+        1.125,
+        1.3333333730697632,
+        1.5416666269302368,
+        1.7916666269302368,
+        2.0,
+        2.2083332538604736,
+        2.4583332538604736,
+        2.6666667461395264,
+        2.875,
+        3.125,
+        3.3333332538604736
+      ]
+    },
+    {
+      "video": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/inference_outputs/physical_content_66778/step0400_seed42_r1/videophy40/cases/VP004/planned.mp4",
+      "indices": [
+        0,
+        5,
+        11,
+        16,
+        21,
+        27,
+        32,
+        37,
+        43,
+        48,
+        53,
+        59,
+        64,
+        69,
+        75,
+        80
+      ],
+      "times": [
+        0.0,
+        0.2083333283662796,
+        0.4583333432674408,
+        0.6666666865348816,
+        0.875,
+        1.125,
+        1.3333333730697632,
+        1.5416666269302368,
+        1.7916666269302368,
+        2.0,
+        2.2083332538604736,
+        2.4583332538604736,
+        2.6666667461395264,
+        2.875,
+        3.125,
+        3.3333332538604736
+      ]
+    }
+  ],
+  "prompt_template": "Two generated videos are shown in chronological order internally. Video1 is A; Video2 is B. Their model identities are hidden.\nRequested video: {caption}\nObservable process requirements: {criteria}\n\nEvaluate only what is visibly supported. The request is not evidence that an event happened. Do not invent hidden forces, events between observed frames, or audio. If a required interaction or response is absent, a plausible stable image does not count as completion. Intended bending, fluid deformation, fracture and disappearance by absorption can be valid; distinguish these from unsupported morphing or disappearance. Describe visible evidence with approximate times. If the sampled frames are insufficient, say unclear. An initial-scene problem can be shared by both videos; do not claim it was introduced by one model.\nReturn JSON only with this schema:\n{{\"A\":{{\"completion\":\"complete|partial|absent|unclear\",\"causal_order\":\"consistent|violated|not_observable|unclear\",\"result_persistence\":\"consistent|violated|not_applicable|unclear\",\"visual_defect\":\"none|minor|major|unclear\",\"evidence\":\"at most45 words\"}},\"B\":{{\"completion\":\"complete|partial|absent|unclear\",\"causal_order\":\"consistent|violated|not_observable|unclear\",\"result_persistence\":\"consistent|violated|not_applicable|unclear\",\"visual_defect\":\"none|minor|major|unclear\",\"evidence\":\"at most45 words\"}},\"process_preference\":\"A|B|tie|unclear\",\"visual_preference\":\"A|B|tie|unclear\"}}\nUse one permitted value in each categorical field, not the alternatives joined by bars.",
+  "raw_response": "{\n  \"A\": {\n    \"completion\": \"complete\",\n    \"causal_order\": \"consistent\",\n    \"result_persistence\": \"consistent\",\n    \"visual_defect\": \"none\",\n    \"evidence\": \"The plastic ruler visibly cracks and fractures as it bends, with the crack propagating from the center outward across frames.\"\n  },\n  \"B\": {\n    \"completion\": \"partial\",\n    \"causal_order\": \"consistent\",\n    \"result_persistence\": \"not_applicable\",\n    \"visual_defect\": \"minor\",\n    \"evidence\": \"The ruler bends slightly but shows no visible crack or fracture; deformation is minimal and lacks evidence of breaking.\"\n  },\n  \"process_preference\": \"A\",\n  \"visual_preference\": \"A\"\n}",
+  "parsed": {
+    "A": {
+      "completion": "complete",
+      "causal_order": "consistent",
+      "result_persistence": "consistent",
+      "visual_defect": "none",
+      "evidence": "The plastic ruler visibly cracks and fractures as it bends, with the crack propagating from the center outward across frames."
+    },
+    "B": {
+      "completion": "partial",
+      "causal_order": "consistent",
+      "result_persistence": "not_applicable",
+      "visual_defect": "minor",
+      "evidence": "The ruler bends slightly but shows no visible crack or fracture; deformation is minimal and lacks evidence of breaking."
+    },
+    "process_preference": "A",
+    "visual_preference": "A"
+  },
+  "generation_complete": true,
+  "seconds": 944.6116111990013,
+  "observer": "Existing frozen local Qwen3-VL-8B-Instruct; model identities and VideoPhy2 scores withheld",
+  "scope": "Supplementary model observations of16 sampled frames per clip, subject to visual review; no training or generation feedback."
+}

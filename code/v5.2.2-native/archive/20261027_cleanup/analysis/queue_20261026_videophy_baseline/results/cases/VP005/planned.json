@@ -1,0 +1,27 @@
+{
+  "id": "VP005",
+  "caption": "A close-up shot of a paddle making contact with the ping pong ball, showing the impact.",
+  "revision": "v522_native_generation_baseline_v11",
+  "optimizer_step": 32,
+  "seed": 42,
+  "fps": 23.999999284744284,
+  "conditions": "first frame, caption, existing requirements; no future target",
+  "physical_dependency_analysis": "OBSERVED: Ball stationary near net; paddle poised above net; no contact yet. Unknown: Ball’s motion onset, paddle’s strike timing, force magnitude.\n\nINTERACTION: Ball must be imparted motion by paddle strike → ball accelerates across net. Paddle’s force and angle determine ball’s trajectory and speed.\n\nPERSISTENCE: Ball’s motion persists until intercepted or slowed by surface/air; paddle’s impact duration is brief but decisive. Net position constrains ball’s path.\n\nINTERVENTION: If paddle strikes too weakly → ball fails to cross net. If paddle strikes too late → ball may not be in motion toward paddle. Net position remains fixed.",
+  "latent_reasoning_steps": 2,
+  "latent_feedback": null,
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "condition_strength": 1.0,
+    "latent_feedback": {
+      "enabled": false,
+      "metric": "relative_rms",
+      "sigmas": [
+        0.85,
+        0.65
+      ],
+      "step_size": 0.1
+    }
+  }
+}

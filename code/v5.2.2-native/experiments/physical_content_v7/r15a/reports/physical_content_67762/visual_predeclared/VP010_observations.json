@@ -1,0 +1,27 @@
+{
+  "utc": "2026-11-05T12:08:11.602998+00:00",
+  "case": "VP010",
+  "selection": "Predeclared before R15A scores.",
+  "frames": [
+    0,
+    11,
+    22,
+    34,
+    45,
+    57,
+    68,
+    80
+  ],
+  "observations": {
+    "R15A": "Mop initially moves sideways and changes head shape. In later sampled frames the handle/head appearance becomes discontinuous and the lower foreground develops strong block-like artifacts. Water remains broadly visible; the requested disappearance of water along the mop path is not clearly demonstrated.",
+    "R15A_no_c": "Mop motion and object persistence are visibly more coherent than normal R15A, without the strong late block-like foreground artifacts in the sampled frames. A swept/displaced wet path appears, but exact absorption or water disappearance is not established by these frames."
+  },
+  "input_note": "Original reasoning emphasizes outward displacement/spreading and absorption or evaporation, whereas the request requires water disappearance as mopping proceeds. This is a possible mismatch in the requested process, not proof of causality; native request is still supplied and reasoning controls are required.",
+  "limitations": "Sampled-frame evidence for one case; no aggregate conclusion or attribution to physical module versus jointly trained LoRA.",
+  "proves_goal": false,
+  "additional_review_20261105": {
+    "native_query": "Mop translates but later head/handle discontinuity and irregular wet shapes remain; no clean absorption event. Less late blocky foreground than normal does not establish full process correctness."
+  },
+  "review_scope": "Eight sampled frames at fixed indices; diagnostic comparison, not exhaustive video assessment.",
+  "mean_C_review": "MeanC avoids the severe late blocky foreground seen in normal, but mop-head/handle geometry changes and irregular splashing remain. The SA/Joint gain is not evidence of fully correct absorption."
+}

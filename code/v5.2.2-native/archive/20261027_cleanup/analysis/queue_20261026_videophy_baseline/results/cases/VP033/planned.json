@@ -1,0 +1,27 @@
+{
+  "id": "VP033",
+  "caption": "A player jumps high to block a spike, their hands impacting the ball forcefully, sending it back across the net.",
+  "revision": "v522_native_generation_baseline_v11",
+  "optimizer_step": 32,
+  "seed": 42,
+  "fps": 23.999999284744284,
+  "conditions": "first frame, caption, existing requirements; no future target",
+  "physical_dependency_analysis": "OBSERVED: Player in red near net, ball held aloft by opponent — no motion, no jump, no contact. Unknown: Ball trajectory, player’s intent, timing of action.\n\nINTERACTION: Ball must be served/spiked toward net → player must jump and extend arms → ball must be struck to redirect.\n\nPERSISTENCE: Ball’s motion and player’s airborne position sustain the block’s outcome; net remains fixed as spatial reference.\n\nINTERVENTION: If ball not in motion toward net → block cannot occur. If player does not jump or extend arms → no contact. If contact fails → ball continues forward or drops.",
+  "latent_reasoning_steps": 2,
+  "latent_feedback": null,
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "condition_strength": 1.0,
+    "latent_feedback": {
+      "enabled": false,
+      "metric": "relative_rms",
+      "sigmas": [
+        0.85,
+        0.65
+      ],
+      "step_size": 0.1
+    }
+  }
+}

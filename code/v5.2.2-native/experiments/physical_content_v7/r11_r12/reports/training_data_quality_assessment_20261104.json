@@ -1,0 +1,39 @@
+{
+  "utc": "2026-11-04T11:19:54.041917+00:00",
+  "r12a_training": "Original WISA captions, original Qwen evidence and original fitted interface; original inference reasoning. Frozen config data_revision=original_wisa4000_and_original_reasoning. No mix with API-revised training overlay.",
+  "caption_accuracy_evidence": {
+    "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/data_revision_qwen38/verification/completed_caption_spotcheck/review.json",
+    "scope": "Four randomly selected completed nonpilot records, qualitative visual review; not1600-record accuracy measurement.",
+    "findings": "Three main revised descriptions showed improved visible alignment or plausible support; one missed toy-train airborne event and was corrected before training readiness. Residual verbose/style and unsupported fine-causal clauses also identified.",
+    "conclusion": "Real local annotation improvements are established. Dataset-wide superiority is not measured; do not label allAPI revisions better or worse."
+  },
+  "generation_evidence": {
+    "matched_R10A_own400_original40": {
+      "original_training_and_inference": {
+        "sa": 2.825,
+        "pc": 3.75,
+        "joint": 7
+      },
+      "api_training_and_inference": {
+        "sa": 2.925,
+        "pc": 3.5,
+        "joint": 8
+      }
+    },
+    "scope": "Same architecture/update budget/evaluation inputs, but training captions, T5 features, physical evidence, fitted interface and inference reasoning change as a bundle. This is not an isolated caption-quality experiment.",
+    "inference_crossover_firstarm_fixed16": {
+      "old_weights_old_reasoning": {
+        "sa": 3.0625,
+        "pc": 3.875,
+        "joint": 4
+      },
+      "old_weights_api_reasoning": {
+        "sa": 3.0,
+        "pc": 3.8125,
+        "joint": 3
+      }
+    },
+    "second_crossarm": "Pending scoring at lastroutine check11:14UTC; not repolled for this question."
+  },
+  "current_policy": "Use original bundle for currentR12A to preserve the stronger measuredPC reference while testing fusion architecture. Preserve API-revised cache, complete crossover before deciding subsequent data/inference recipe. No claim original annotations inherently more accurate."
+}

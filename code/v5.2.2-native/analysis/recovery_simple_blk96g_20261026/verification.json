@@ -1,0 +1,114 @@
+{
+  "cpu_regression": {
+    "passed": 147,
+    "seconds": 177.094,
+    "log": "analysis/recovery_simple_blk96g_20261026/cpu_regression_final.log"
+  },
+  "gpu_stage_checks": [
+    {
+      "mode": "H frozen",
+      "experiment": 66348,
+      "trial": 67728,
+      "complete": true,
+      "phases": [
+        "interface",
+        "joint"
+      ],
+      "accumulation": 4,
+      "peak_gib": 63.590731143951416,
+      "feedback_C_grad_norm": 8.278072357177734,
+      "gradient_ownership_verified": true,
+      "observer_frames": 28,
+      "observer_size": [
+        480,
+        832
+      ],
+      "generation_steps": 16,
+      "gradient_steps": 16,
+      "metrics": "checkpoints/v522-h-content-message-verifier-frozen-simple-smoke-accum4_66348/metrics.jsonl"
+    },
+    {
+      "mode": "H LoRA",
+      "experiment": 66350,
+      "trial": 67730,
+      "complete": true,
+      "phases": [
+        "interface",
+        "calibration",
+        "joint"
+      ],
+      "accumulation": 4,
+      "peak_gib": 63.585466384887695,
+      "feedback_C_grad_norm": 20.969820022583008,
+      "gradient_ownership_verified": true,
+      "observer_frames": 28,
+      "observer_size": [
+        480,
+        832
+      ],
+      "generation_steps": 16,
+      "gradient_steps": 16,
+      "metrics": "checkpoints/v522-h-content-message-verifier-lora-simple-smoke-accum4_66350/metrics.jsonl"
+    },
+    {
+      "mode": "Q frozen",
+      "experiment": 66349,
+      "trial": 67729,
+      "complete": true,
+      "phases": [
+        "interface",
+        "joint"
+      ],
+      "accumulation": 4,
+      "peak_gib": 64.5350193977356,
+      "feedback_C_grad_norm": 15.759542465209961,
+      "gradient_ownership_verified": true,
+      "observer_frames": 28,
+      "observer_size": [
+        480,
+        832
+      ],
+      "generation_steps": 16,
+      "gradient_steps": 16,
+      "metrics": "checkpoints/v522-q-seed128-message-verifier-frozen-simple-smoke-accum4_66349/metrics.jsonl"
+    },
+    {
+      "mode": "Q LoRA",
+      "experiment": 66351,
+      "trial": 67731,
+      "complete": true,
+      "phases": [
+        "interface",
+        "calibration",
+        "joint"
+      ],
+      "accumulation": 4,
+      "peak_gib": 64.59076738357544,
+      "feedback_C_grad_norm": 31.101770401000977,
+      "gradient_ownership_verified": true,
+      "observer_frames": 28,
+      "observer_size": [
+        480,
+        832
+      ],
+      "generation_steps": 16,
+      "gradient_steps": 16,
+      "metrics": "checkpoints/v522-q-seed128-message-verifier-lora-simple-smoke-accum4_66351/metrics.jsonl"
+    }
+  ],
+  "original_failure": "All four original trials raised on non-EOS analysis at the 1024-token cap before any optimizer update.",
+  "recovery_probe_failure": "Q frozen/LoRA hit CUDA OOM in verifier whole-read recomputation; H frozen received exit 137 without a Python traceback. Added eval-mode Qwen vision/language block checkpoints.",
+  "analysis_policy": {
+    "prompt": "four short lines, <=100 words",
+    "initial_tokens": 512,
+    "max_tokens": 1024,
+    "on_limit": "retain nonempty analysis and continue",
+    "query_slots": 128
+  },
+  "teacher_policy": {
+    "prompt": "three short lines, <=75 words",
+    "tokens": 384,
+    "on_limit": "retain usable nonempty observation; preserve confidence/order filters"
+  },
+  "scope": "Real full-size GPU checks run one optimizer step per stage with accumulation=4. They verify training execution/gradients, not completion of the 224/256-step production runs or improved video quality."
+}

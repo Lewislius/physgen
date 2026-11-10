@@ -1,0 +1,43 @@
+{
+  "syntax": "passed",
+  "cpu_tests": 13,
+  "cpu_tests_result": "passed",
+  "data": [
+    {
+      "ready": true,
+      "rows": 3857,
+      "train": 3666,
+      "validation": 191,
+      "variant": "v5_ce",
+      "initialization": "official foundations; fresh project modules and LoRA",
+      "teacher_cache": "generated lazily from training data, before its gradient computation"
+    },
+    {
+      "ready": true,
+      "rows": 3857,
+      "train": 3666,
+      "validation": 191,
+      "variant": "v6_write",
+      "initialization": "official foundations; fresh project modules and LoRA",
+      "teacher_cache": "generated lazily from training data, before its gradient computation"
+    },
+    {
+      "ready": true,
+      "rows": 3857,
+      "train": 3666,
+      "validation": 191,
+      "variant": "v6_assoc",
+      "initialization": "official foundations; fresh project modules and LoRA",
+      "teacher_cache": "generated lazily from training data, before its gradient computation"
+    }
+  ],
+  "checks": [
+    "native text preservation",
+    "three gradient paths",
+    "Wan stage ownership and checkpoint recomputation",
+    "teacher selected rows versus native attention",
+    "input/target separation",
+    "RTX-only policy",
+    "single-slot job recipes"
+  ]
+}

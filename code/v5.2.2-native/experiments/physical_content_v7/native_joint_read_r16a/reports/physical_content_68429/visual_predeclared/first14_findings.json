@@ -1,0 +1,35 @@
+{
+  "utc": "2026-11-09T06:46:47.098068+00:00",
+  "scope": "Sampled frames0/20/40/80 of first14 completed cases; not full40 scores",
+  "count_inspected": 14,
+  "severe_full_frame_stripes": [
+    "VP002",
+    "VP004",
+    "VP009"
+  ],
+  "other_major_visual_failures": {
+    "VP007": "Ball objects multiply and the later image breaks into malformed broad regions",
+    "VP011": "Body/bicycle become malformed and largely disappear; initial image is already a bicycle despite unicycle caption"
+  },
+  "process_or_shape_concerns": {
+    "VP003": "No clean landing visible by the final sampled frame",
+    "VP006": "Canvas behaves like an unstable large panel; requested paint dripping not demonstrated",
+    "VP010": "Water/foam extent changes unnaturally; intended removal not clearly achieved",
+    "VP013": "Pliers/hand/bottle rim show deformation"
+  },
+  "videos": {
+    "VP002": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_joint_read_r16a/inference_outputs/physical_content_68429/step0400_original_fixed40_controls16_seed42/videophy40/cases/VP002/planned.mp4",
+    "VP004": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_joint_read_r16a/inference_outputs/physical_content_68429/step0400_original_fixed40_controls16_seed42/videophy40/cases/VP004/planned.mp4",
+    "VP007": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_joint_read_r16a/inference_outputs/physical_content_68429/step0400_original_fixed40_controls16_seed42/videophy40/cases/VP007/planned.mp4",
+    "VP009": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_joint_read_r16a/inference_outputs/physical_content_68429/step0400_original_fixed40_controls16_seed42/videophy40/cases/VP009/planned.mp4",
+    "VP011": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_joint_read_r16a/inference_outputs/physical_content_68429/step0400_original_fixed40_controls16_seed42/videophy40/cases/VP011/planned.mp4"
+  },
+  "paired_VP004": {
+    "normal": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_joint_read_r16a/runtime_failure_isolation/outputs/videophy40/cases/VP004/planned.mp4",
+    "no_c": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_joint_read_r16a/runtime_failure_isolation/outputs/controls/no_c/videophy40/cases/VP004/planned.mp4",
+    "finding": "Normal stripes reproduce on A100 and A6000; same400 noC on A6000 removes the full-frame stripe collapse, but local distortions remain.",
+    "causal_scope": "Physical branch causes the stripe collapse for this matched VP004 rollout; not proof that every other defect has the same internal cause."
+  },
+  "scores_available": false,
+  "CFG_analysis_requested": false
+}

@@ -1,0 +1,50 @@
+{
+  "recorded_utc": "2026-10-31T18:56:28.481473+00:00",
+  "selection": "VP010/027 chosen from oldR9 failures before R9.1 scores; VP026 added after scoring because bothSA/PC worsen versus matchedR1. Not representative/blind rates.",
+  "method": "Assistant visual inspection of existing matched250 frames0,27,54,80, same inputs/seed42/gamma5; no generation or scoring added.",
+  "cases": [
+    {
+      "id": "VP010",
+      "r9_1_scores": {
+        "sa": 3,
+        "pc": 4
+      },
+      "visible_observation_zh": "在已抽取的第27、54、80帧中，R9.1的拖把头均呈贴地形态，未出现R9第54帧的抬起拖把头与两条竖向亮带/片状伪影。R1在这些抽帧中也未出现该伪影。",
+      "process_completion_zh": "R9.1末帧仍保留明显反光水区，四个时刻并不能证明更充分地完成了吸水/清除过程，也不能证明视频所有中间帧均稳定；不能把这个局部形态改善当作SA或全局PC已提高。",
+      "interpretation_zh": "本例可见形态与接触表现优于R9的已知失败状态，但尚未证明超过R1，也未证明有益变化来自正确reasoning。后续使用原定评分和模块对照判断。",
+      "score_followup_zh": "R9.1为SA3/PC4：相对R9的SA4/PC3，局部形态改善伴随PC恢复，但SA下降；相对R1的4/4，未恢复联合达标。此前对过程完成度的疑虑得到评分方向支持，仍不把抽帧作为完整动作评价。"
+    },
+    {
+      "id": "VP027",
+      "r9_1_scores": {
+        "sa": 4,
+        "pc": 4
+      },
+      "visible_observation_zh": "R9.1在27/54/80帧的双手持续接触并压揉面团，第54帧可见面团表面下压和折叠；R1与R9在中间抽帧有不同程度的手离开或移向侧边。三版都保留手、面团和木台。",
+      "process_completion_zh": "面团受压、折叠本身符合揉面过程，四帧不足以认定哪版最终更平滑、更圆或具有更真实的完整动力学；不能把接触更持续自动等同于PC提高。",
+      "interpretation_zh": "保留实际行为差异，等待原定评分。旧R9的本例PC在自身400已从4恢复到5，所以250的比较不是最终400优势证据。"
+    },
+    {
+      "id": "VP026",
+      "scores": {
+        "R1_250": {
+          "sa": 3,
+          "pc": 4
+        },
+        "R9_250": {
+          "sa": 2,
+          "pc": 4
+        },
+        "R9_1_250": {
+          "sa": 2,
+          "pc": 3
+        }
+      },
+      "visible_observation_zh": "R9.1第54帧绳索呈不连续、弯曲片段，上端橙色人物/连接构型破碎；末帧上方绳索支撑与连接基本消失，黑色载荷仍在海面背景前，另有橙色人物片段出现在下方。R1抽帧保留更连续的双侧悬挂连接，旧R9后段也有整体构型离场/连接变化。",
+      "input_context_zh": "三版共享的首帧实际是海面上的悬挂载荷；请求却是两人把弹力绳拉到最大长度。现有Qwen描述主要是悬挂、张力与海面，并未具体表达双人拉伸完成。这增加语义完成难度，但相同输入下R9.1新增的连接破坏仍是候选的可见问题。",
+      "interpretation_zh": "可见连接结构连续性退化有直接抽帧证据；四帧不用于估计完整下落动力学，也不能单独定位是哪一条C内容造成。已声明的同case正确/无关/空/共享/锚点/关闭控制将帮助区分内容和执行影响，不新增测试。"
+    }
+  ],
+  "pending": [],
+  "quality_goal_achieved": false
+}

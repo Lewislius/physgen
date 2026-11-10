@@ -1,0 +1,83 @@
+{
+  "utc": "2026-11-06T11:42:02.033951+00:00",
+  "formal_candidate": "R15E-semantic-addressing",
+  "design_finalized_for_this_training": true,
+  "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_addressing_r15e/snapshots/20261106T101625Z",
+  "readonly_probe": {
+    "experiment": 67954,
+    "trial": 69341,
+    "summary": {
+      "count": 16,
+      "sa_mean": 3.0625,
+      "pc_mean": 3.9375,
+      "sa_pass_rate": 0.3125,
+      "pc_pass_rate": 0.6875,
+      "joint_pass_count": 5,
+      "joint_pass_rate": 0.3125
+    },
+    "paired_vs_R10A": {
+      "sa": {
+        "mean_change": 0,
+        "wins": 0,
+        "ties": 16,
+        "losses": 0
+      },
+      "pc": {
+        "mean_change": 0.0625,
+        "wins": 2,
+        "ties": 13,
+        "losses": 1
+      },
+      "joint": {
+        "gains": [
+          "VP038"
+        ],
+        "losses": []
+      }
+    }
+  },
+  "adopted": [
+    "Dedicated literal-request heads in Q refinement alongside physical-relation heads",
+    "Native-text-addressed semantic support combined with direct physical addressing; one direct physical value read",
+    "Independent trainable physical Q/K/V/O; native text projections unchanged",
+    "Matched fresh400 original-data training;128 physical interface plus272 joint; original FM/tail/routing objectives"
+  ],
+  "excluded": {
+    "native_video_response": "Small fixed16 PC gain but no SA change on any case; no convincing repair of5 predeclared process/structure failures. Do not add this extra operator to formalE.",
+    "new_temporal_loss": "Previously withdrawn; not reintroduced",
+    "native_text_adaptation": "Preserve frozen native text Q/K/V/O"
+  },
+  "evidence": [
+    "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_addressing_r15e/review/design_evidence.json",
+    "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_addressing_r15e/review/native_key_support_interpretation.json",
+    "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/state_response_fusion_r15e/reports/readonly_probe_review.json",
+    "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/state_response_fusion_r15e/reports/visual_probe/partial_review.json"
+  ],
+  "validation": {
+    "functional_tests": 16,
+    "full_size_gpu": "Required disposable preflight, then independent fresh load for400; no temporary/project checkpoint initializer"
+  },
+  "evaluation": {
+    "main40": true,
+    "paired16_controls": [
+      "no_c",
+      "semantic_routing_off",
+      "request_refinement_off",
+      "native_physical_query",
+      "reasoning_swapped",
+      "empty_reasoning",
+      "global_train_mean"
+    ],
+    "extra20": "After main40 review",
+    "cross_benchmark_readiness": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_addressing_r15e/review/cross_benchmark_readiness.json"
+  },
+  "targets": {
+    "pc40_min": 3.8,
+    "sa40_min": 3.125,
+    "joint40_min": 12,
+    "maximum_version": "R15G"
+  },
+  "quality_gain_proven": false,
+  "reason_for_submission": "Concrete condition-use/addressing changes address observed failures; code and real-input mechanism checks passed. Only actual own400 generation and paired/cross-benchmark results can establish success.",
+  "next_version": "No R15F design submission before reviewing the R15E results"
+}

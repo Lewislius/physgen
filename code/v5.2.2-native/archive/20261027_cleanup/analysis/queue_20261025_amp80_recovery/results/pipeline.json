@@ -1,0 +1,93 @@
+[
+  {
+    "name": "decoder_backward",
+    "state": "complete",
+    "started_utc": "2026-10-25T15:17:14.061874+00:00",
+    "command": [
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_amp80_recovery/code/tools/check_decoder_backward.py",
+      "--config",
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_amp80_recovery/code/configs/native_reasoning_operator_wisa3857.yaml",
+      "--output",
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_amp80_recovery/results/decoder_backward.json"
+    ],
+    "returncode": 0,
+    "terminating_signal": null,
+    "seconds": 81.488889105
+  },
+  {
+    "name": "real_three_stages",
+    "state": "complete",
+    "started_utc": "2026-10-25T15:18:35.555262+00:00",
+    "command": [
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_amp80_recovery/code/train/train.py",
+      "--config",
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_amp80_recovery/code/configs/native_reasoning_operator_wisa3857.yaml",
+      "--smoke",
+      "--smoke-accumulation",
+      "8"
+    ],
+    "returncode": 0,
+    "terminating_signal": null,
+    "seconds": 1527.735560136
+  },
+  {
+    "name": "single_trajectory_feedback",
+    "state": "complete",
+    "started_utc": "2026-10-25T15:44:03.301362+00:00",
+    "command": [
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_amp80_recovery/code/inference/infer_heldout.py",
+      "--checkpoint",
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_amp80_recovery/code/checkpoints/v522-native-reasoning-operator-wisa3857-smoke-accum8_66176/latest.pt",
+      "--output",
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_amp80_recovery/results/engineering_video",
+      "--samples",
+      "1",
+      "--refine-c"
+    ],
+    "returncode": 0,
+    "terminating_signal": null,
+    "seconds": 199.58415669399983
+  },
+  {
+    "name": "train_prefix",
+    "state": "complete",
+    "started_utc": "2026-10-25T15:47:22.891866+00:00",
+    "command": [
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_amp80_recovery/code/train/train.py",
+      "--config",
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_amp80_recovery/code/configs/native_reasoning_operator_wisa3857.yaml",
+      "--stop-after",
+      "128"
+    ],
+    "returncode": 0,
+    "terminating_signal": null,
+    "seconds": 81768.38856895901
+  },
+  {
+    "name": "condition_effect",
+    "state": "complete",
+    "started_utc": "2026-10-26T14:30:11.290169+00:00",
+    "command": [
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_amp80_recovery/code/tools/evaluate_condition_use.py",
+      "--checkpoint",
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_amp80_recovery/code/checkpoints/v522-native-reasoning-operator-wisa3857_66176/latest.pt",
+      "--output",
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_amp80_recovery/results/condition_effect",
+      "--case-ids",
+      "source0000042",
+      "source0000086",
+      "source0000107",
+      "source0000128",
+      "--seeds",
+      "42",
+      "314159",
+      "--full-samples",
+      "4",
+      "--sampling-seeds",
+      "42"
+    ],
+    "returncode": 0,
+    "terminating_signal": null,
+    "seconds": 1294.7844397679874
+  }
+]

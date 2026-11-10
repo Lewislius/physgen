@@ -1,0 +1,96 @@
+{
+  "utc": "2026-11-08T11:16:00.905322+00:00",
+  "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_feedback_fusion_r15h/review/condition_content_stats.json",
+  "scope": "16 paired prepared inputs; trained400 Enhancement on CPU FP32; not Wan rollout states or a quality score",
+  "input_check": "H/B consumed words, word_groups and request_words tensors match exactly across real/swapped/empty/negative modes; cache-format label differences do not change these consumed tensors.",
+  "normal_execution_C": {
+    "H": {
+      "mean_rms": 0.2191971242427826,
+      "mean_within_sample_token_cosine": 0.8342937491834164,
+      "across_sample_mean_cosine": 0.9184085130691528,
+      "mean_anchor_relative_correction": 2.803947776556015
+    },
+    "B": {
+      "mean_rms": 0.13922993000596762,
+      "mean_within_sample_token_cosine": 0.24018034897744656,
+      "across_sample_mean_cosine": 0.7625664472579956,
+      "mean_anchor_relative_correction": 1.622234508395195
+    }
+  },
+  "H_to_B_execution_rms_ratio": 1.5743534758179327,
+  "paired_case_evidence": [
+    {
+      "case": "VP027",
+      "mode": "real",
+      "execution_C_rms": 0.20851203799247742,
+      "execution_C_token_cosine": 0.8694371581077576,
+      "relative_C_change_from_real": 0.0
+    },
+    {
+      "case": "VP027",
+      "mode": "reasoning_swapped",
+      "execution_C_rms": 0.2173362374305725,
+      "execution_C_token_cosine": 0.8876867890357971,
+      "relative_C_change_from_real": 0.5275890231132507
+    },
+    {
+      "case": "VP027",
+      "mode": "empty_reasoning",
+      "execution_C_rms": 0.2081342190504074,
+      "execution_C_token_cosine": 0.8189729452133179,
+      "relative_C_change_from_real": 0.7960957288742065
+    },
+    {
+      "case": "VP034",
+      "mode": "real",
+      "execution_C_rms": 0.22588233649730682,
+      "execution_C_token_cosine": 0.8709263205528259,
+      "relative_C_change_from_real": 0.0
+    },
+    {
+      "case": "VP034",
+      "mode": "reasoning_swapped",
+      "execution_C_rms": 0.21436502039432526,
+      "execution_C_token_cosine": 0.8901820182800293,
+      "relative_C_change_from_real": 0.5326148867607117
+    },
+    {
+      "case": "VP034",
+      "mode": "empty_reasoning",
+      "execution_C_rms": 0.2163880616426468,
+      "execution_C_token_cosine": 0.811899721622467,
+      "relative_C_change_from_real": 0.7800407409667969
+    },
+    {
+      "case": "VP038",
+      "mode": "real",
+      "execution_C_rms": 0.2049705982208252,
+      "execution_C_token_cosine": 0.596398651599884,
+      "relative_C_change_from_real": 0.0
+    },
+    {
+      "case": "VP038",
+      "mode": "reasoning_swapped",
+      "execution_C_rms": 0.21575675904750824,
+      "execution_C_token_cosine": 0.8727105259895325,
+      "relative_C_change_from_real": 0.9351634979248047
+    },
+    {
+      "case": "VP038",
+      "mode": "empty_reasoning",
+      "execution_C_rms": 0.21110959351062775,
+      "execution_C_token_cosine": 0.7792261242866516,
+      "relative_C_change_from_real": 0.7667088508605957
+    }
+  ],
+  "interpretation": [
+    "H execution C is larger and more similar across tokens than B on identical inputs. This is a representation change associated with the different trained fusion, not evidence by itself that either amplitude or cosine caused quality regression.",
+    "VP027 wrong reasoning removes the grid while execution-C RMS rises slightly. VP034 wrong reasoning greatly reduces the grid with only a small RMS change. A rule that simply shrinks C amplitude is not a sufficient explanation or established repair.",
+    "Wrong reasoning makes H C more token-similar on average while improving these inspected artifacts. Lower token cosine alone cannot be the acceptance target.",
+    "Together with the same-checkpoint branch controls, the evidence prioritizes how current C content is converted into direct physical writes. The semantic response is not required for the artifacts at inference; its training influence is not isolated.",
+    "Substituting frozen native physical Q does not remove the inspected grids. Do not eliminate independent physical Q solely because H failed.",
+    "Original paired reasoning is not uniformly correct: balloon statements mix inflation with maintained inflated state. Both H/B receive the same inputs, so this cannot alone explain H-specific regression. Existing content must be used effectively rather than treated as guaranteed truth."
+  ],
+  "next": "Finish already-running empty/mean controls and all seven fixed16 scores, combine actual videos and R15B/R10A/R9/R1 evidence, then finalize I. No I launch or loss/stage change in this analysis.",
+  "quality_goal_achieved": false
+}

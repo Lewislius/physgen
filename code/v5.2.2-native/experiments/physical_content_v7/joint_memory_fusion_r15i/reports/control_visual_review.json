@@ -1,0 +1,77 @@
+{
+  "scope": "Same I400 weights/input/seed42. Seven complete16 scores are in controls16_completed.json; sampled-frame review complements those metrics. These are inference interventions, not separately trained architecture comparisons.",
+  "normal_vs_no_c": {
+    "VP010": {
+      "normal": "更多显著水面翻涌/扩散/高亮喷溅及拖把头异常。",
+      "no_c": "主要是拖地运动与较局部的水面变化，仍有拖把变形，未证实完整吸水。",
+      "inference": "开启当前物理分支增加了这例的夸张水面变化；不能将所有动态变化视为物理收益。",
+      "panels": {
+        "normal": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/reports/physical_content_68312/visual_predeclared/VP010_R15I.png",
+        "no_c": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/reports/physical_content_68312/visual_predeclared/VP010_R15I_no_c.png"
+      }
+    },
+    "VP038": {
+      "normal": "滚筒主体中段消失后再出现。",
+      "no_c": "中段同样消失，并有支架/滚筒形体变化。",
+      "inference": "该物体连续性失败在关闭物理分支后依然存在，不能全部归因新增C读取；当前物理模块也未可靠修复它。",
+      "panels": {
+        "normal": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/reports/physical_content_68312/visual_predeclared/VP038_R15I.png",
+        "no_c": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/reports/physical_content_68312/visual_predeclared/VP038_R15I_no_c.png"
+      }
+    }
+  },
+  "direct_vs_request_memory": {
+    "VP010": {
+      "direct_read_only": "前半段水面变化较局部，后段仍有拖把头扁平化和水面异常。",
+      "request_bound_only": "出现更明显的大范围波纹、高亮喷溅及水面扩张；正常联合读取的异常更接近这一侧。",
+      "conclusion": "在这一固定输入上，请求关联读取增加了不符合吸水过程的变化；简单与直接读取并用未消除它。",
+      "panels": {
+        "direct_read_only": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/reports/physical_content_68312/visual_predeclared/VP010_R15I_direct_read_only.png",
+        "request_bound_only": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/reports/physical_content_68312/visual_predeclared/VP010_R15I_request_bound_only.png"
+      }
+    },
+    "VP038": {
+      "direct_read_only": "滚筒主体在更多采样帧保持或恢复，但仍有短暂缺失/形变，不能视为完全正确。",
+      "request_bound_only": "后六个采样帧主要仅剩弯杆和深色矩形痕迹，滚筒主体持续难以辨认。",
+      "conclusion": "本例直接C读取在物体保持上优于请求关联读取，联合读取仍发生中段丢失。请求关联通路的副作用有具体可视证据。",
+      "panels": {
+        "direct_read_only": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/reports/physical_content_68312/visual_predeclared/VP038_R15I_direct_read_only.png",
+        "request_bound_only": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/reports/physical_content_68312/visual_predeclared/VP038_R15I_request_bound_only.png"
+      }
+    }
+  },
+  "native_physical_query": {
+    "VP010": {
+      "observation": "换回冻结原生Q后，夸张水面扩张、喷溅与拖把头变形依然存在，后段墙面/背景还有较明显块状或彩色纹理。该替换没有修复当前样例。",
+      "panel": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/reports/physical_content_68312/visual_predeclared/VP010_R15I_native_physical_query.png"
+    },
+    "VP038": {
+      "observation": "换回原生Q后滚筒仍在中段消失，墙面留下更明显深色矩形块，后段滚筒重新出现。独立Q正常版也有主体缺失，但替换原生Q并未修复且增添了背景痕迹。",
+      "panel": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/reports/physical_content_68312/visual_predeclared/VP038_R15I_native_physical_query.png"
+    }
+  },
+  "native_query_interpretation": "完整16例中，正常独立Q相比换回原生Q：SA/PC各+0.0625，Joint6对4；该I权重下保留已训练的Q更好。010/038的连续性与水面异常仍未解决。不能据此将整个I相对B的PC退化归因于是否独立Q。",
+  "reasoning_and_mean": {
+    "VP010": {
+      "reasoning_swapped": "第11帧起场景出现严重绿黄高亮、纹理与形体破坏；自动PC仍给5，SA2。明显说明该PC分不能代替视频质量。",
+      "empty_reasoning": "地面水在中后段明显减少，画面更稳定，比正常版夸张涌水更接近吸水过程；拖把头仍明显形变。自动SA4/PC4，与正常相同，但视觉有差别。",
+      "global_train_mean": "水面仍扩大/波动，拖把头变成较大黑色不规则形体；SA3/PC3，比正常数字低，过程仍失败。",
+      "panels": {
+        "reasoning_swapped": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/reports/physical_content_68312/visual_predeclared/VP010_R15I_reasoning_swapped.png",
+        "empty_reasoning": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/reports/physical_content_68312/visual_predeclared/VP010_R15I_empty_reasoning.png",
+        "global_train_mean": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/reports/physical_content_68312/visual_predeclared/VP010_R15I_global_train_mean.png"
+      }
+    },
+    "VP038": {
+      "reasoning_swapped": "滚筒主体在采样帧保持，但表面出现褶皱/熔化状纹理与形变。自动SA4/PC3，仍不能视为正确过程。",
+      "empty_reasoning": "滚筒在第22帧起的六个采样帧持续消失，只剩横向管线；自动PC5、SA3。空reasoning的更高PC包含明显视觉失败，不能用此直接宣布删除reasoning最优。",
+      "global_train_mean": "滚筒在采样帧中保持并移动/转向，仍有支架变形，主体连续性优于正常版中段消失。SA4/PC4与正常相同，说明评分未刻画这一差异。",
+      "panels": {
+        "reasoning_swapped": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/reports/physical_content_68312/visual_predeclared/VP038_R15I_reasoning_swapped.png",
+        "empty_reasoning": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/reports/physical_content_68312/visual_predeclared/VP038_R15I_empty_reasoning.png",
+        "global_train_mean": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/reports/physical_content_68312/visual_predeclared/VP038_R15I_global_train_mean.png"
+      }
+    }
+  },
+  "utc": "2026-11-08T17:58:48.523052+00:00"
+}

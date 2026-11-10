@@ -1,0 +1,27 @@
+{
+  "id": "VP032",
+  "caption": "A player uses a quick set to spike the ball, driving it downward at a steep angle.",
+  "revision": "v522_native_generation_baseline_v11",
+  "optimizer_step": 32,
+  "seed": 42,
+  "fps": 23.999999284744284,
+  "conditions": "first frame, caption, existing requirements; no future target",
+  "physical_dependency_analysis": "OBSERVED: Player crouched near net, ball held at waist height, posture ready for motion; no ball in flight, no contact made. Unknown: Whether set motion initiates, trajectory angle, force magnitude, or follow-through control.\n\nINTERACTION: If player initiates quick set motion → ball propelled downward at steep angle via wrist snap and arm extension; force vector determined by muscle torque and limb acceleration.\n\nPERSISTENCE: Downward trajectory sustains until gravity or air resistance decelerates it; player’s follow-through maintains directional control for 0.5–1.0s post-contact, influencing ball’s spin and landing zone.\n\nINTERVENTION: If set motion is absent or weak → ball remains stationary or arcs shallowly; if follow-through is incomplete → ball loses directional control, trajectory becomes erratic or flat. Force and angle remain dependent on player’s biomechanics.",
+  "latent_reasoning_steps": 2,
+  "latent_feedback": null,
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "condition_strength": 1.0,
+    "latent_feedback": {
+      "enabled": false,
+      "metric": "relative_rms",
+      "sigmas": [
+        0.85,
+        0.65
+      ],
+      "step_size": 0.1
+    }
+  }
+}

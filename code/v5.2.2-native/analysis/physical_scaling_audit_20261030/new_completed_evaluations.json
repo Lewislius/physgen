@@ -1,0 +1,126 @@
+{
+  "write1000": {
+    "summary": {
+      "sa": 3.0,
+      "pc": 3.475,
+      "mean": 3.2375,
+      "joint": 0.225
+    },
+    "paired_224": {
+      "sa": {
+        "wins": 2,
+        "ties": 34,
+        "losses": 4
+      },
+      "pc": {
+        "wins": 4,
+        "ties": 35,
+        "losses": 1
+      },
+      "joint": {
+        "wins": 0,
+        "ties": 40,
+        "losses": 0
+      }
+    },
+    "source": "experiments/physical_scaling_q256/inference_outputs/v6_write_66710/final1000_demo21_videophy40_r1/videophy40"
+  },
+  "ce1000": {
+    "summary": {
+      "sa": 3.075,
+      "pc": 3.45,
+      "mean": 3.2625,
+      "joint": 0.25
+    },
+    "paired_224": {
+      "sa": {
+        "wins": 0,
+        "ties": 37,
+        "losses": 3
+      },
+      "pc": {
+        "wins": 4,
+        "ties": 34,
+        "losses": 2
+      },
+      "joint": {
+        "wins": 0,
+        "ties": 40,
+        "losses": 0
+      }
+    },
+    "source": "experiments/physical_v5_scaling_q256/inference_outputs/v5_ce_66706/final1000_demo21_videophy40_r1/videophy40"
+  },
+  "ablation_image_only": {
+    "summary": {
+      "count": 2,
+      "sa_mean": 2.5,
+      "pc_mean": 4.5,
+      "joint_pass_rate": 0.0,
+      "scope": "Fixed 40 VideoPhy2 captions adapted to shared-first-image I2V; not official T2V leaderboard",
+      "training_verifier_is_independent": true
+    },
+    "cases": [
+      {
+        "id": "VP014",
+        "caption": "Multiple water balloons are tossed upwards, simultaneously bursting in the air in a small arc.",
+        "sa": 2,
+        "pc": 5
+      },
+      {
+        "id": "VP015",
+        "caption": "A rower pulls an oar from the water, the blade dripping water back into the lake. .",
+        "sa": 3,
+        "pc": 4
+      }
+    ]
+  },
+  "ablation_no_c": {
+    "summary": {
+      "count": 2,
+      "sa_mean": 2.5,
+      "pc_mean": 4.0,
+      "joint_pass_rate": 0.0,
+      "scope": "Fixed 40 VideoPhy2 captions adapted to shared-first-image I2V; not official T2V leaderboard",
+      "training_verifier_is_independent": true
+    },
+    "cases": [
+      {
+        "id": "VP014",
+        "caption": "Multiple water balloons are tossed upwards, simultaneously bursting in the air in a small arc.",
+        "sa": 2,
+        "pc": 4
+      },
+      {
+        "id": "VP015",
+        "caption": "A rower pulls an oar from the water, the blade dripping water back into the lake. .",
+        "sa": 3,
+        "pc": 4
+      }
+    ]
+  },
+  "ablation_swapped": {
+    "summary": {
+      "count": 2,
+      "sa_mean": 2.5,
+      "pc_mean": 4.5,
+      "joint_pass_rate": 0.0,
+      "scope": "Fixed 40 VideoPhy2 captions adapted to shared-first-image I2V; not official T2V leaderboard",
+      "training_verifier_is_independent": true
+    },
+    "cases": [
+      {
+        "id": "VP014",
+        "caption": "Multiple water balloons are tossed upwards, simultaneously bursting in the air in a small arc.",
+        "sa": 2,
+        "pc": 5
+      },
+      {
+        "id": "VP015",
+        "caption": "A rower pulls an oar from the water, the blade dripping water back into the lake. .",
+        "sa": 3,
+        "pc": 4
+      }
+    ]
+  }
+}

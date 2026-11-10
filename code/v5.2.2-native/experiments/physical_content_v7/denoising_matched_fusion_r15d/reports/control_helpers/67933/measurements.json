@@ -1,0 +1,2545 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/denoising_matched_fusion_r15d/runs/physical_content_67920/step0400.pt",
+  "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/denoising_matched_fusion_r15d/snapshots/20261106T011032Z",
+  "cases": [
+    "VP004",
+    "VP025",
+    "VP027",
+    "VP038"
+  ],
+  "inspected_steps": [
+    1,
+    15,
+    35,
+    50
+  ],
+  "inspected_layers": [
+    2,
+    14,
+    29
+  ],
+  "seed": 42,
+  "gamma": 5,
+  "output_videos": 0,
+  "training_updates": 0,
+  "api_calls": 0,
+  "selection": "Diagnostic cases inherited from the pre-existing R15B execution plan; not an aggregate quality sample.",
+  "scope": "Replay normal trajectory. Compare no-C, pre-text and no-time velocities at the identical latent only. Original native text and all parameters remain unchanged.",
+  "limitations": "Physical/text cosine and first-frame proximity diagnose mechanisms; neither is a quality target. Stable physical phenomena may correctly remain close to the first image. Replay measurements do not score alternative generated videos.",
+  "layers": [
+    {
+      "case": "VP004",
+      "step": 1,
+      "sigma": 1.0,
+      "arm": "positive",
+      "layer": 2,
+      "physical": {
+        "rms": 0.08804882317781448,
+        "temporal_variation_energy_fraction": 0.01090914011001587
+      },
+      "native_text": {
+        "rms": 0.03693994879722595,
+        "temporal_variation_energy_fraction": 0.5836502313613892
+      },
+      "physical_to_native_text_rms": 2.3835664651605204,
+      "physical_native_cosine": 0.02336648851633072,
+      "physical_sampled_token_cosine": 0.9968048930168152,
+      "read_value_sampled_token_cosine": 0.9388763308525085,
+      "reference_mass": 0.430649995803833,
+      "normalized_physical_attention_entropy": 0.8623676896095276
+    },
+    {
+      "case": "VP004",
+      "step": 1,
+      "sigma": 1.0,
+      "arm": "positive",
+      "layer": 14,
+      "physical": {
+        "rms": 0.024164797738194466,
+        "temporal_variation_energy_fraction": 0.09751492738723755
+      },
+      "native_text": {
+        "rms": 0.03789613023400307,
+        "temporal_variation_energy_fraction": 0.6377019882202148
+      },
+      "physical_to_native_text_rms": 0.637658715783917,
+      "physical_native_cosine": 0.018660321831703186,
+      "physical_sampled_token_cosine": 0.9507246613502502,
+      "read_value_sampled_token_cosine": 0.6974319219589233,
+      "reference_mass": 0.7116895914077759,
+      "normalized_physical_attention_entropy": 0.8424994945526123
+    },
+    {
+      "case": "VP004",
+      "step": 1,
+      "sigma": 1.0,
+      "arm": "positive",
+      "layer": 29,
+      "physical": {
+        "rms": 0.004952526185661554,
+        "temporal_variation_energy_fraction": 0.007005572319030762
+      },
+      "native_text": {
+        "rms": 0.04612145945429802,
+        "temporal_variation_energy_fraction": 0.06045639514923096
+      },
+      "physical_to_native_text_rms": 0.10738008389715067,
+      "physical_native_cosine": 0.038257528096437454,
+      "physical_sampled_token_cosine": 0.9476162791252136,
+      "read_value_sampled_token_cosine": 0.8164793848991394,
+      "reference_mass": 0.8331167101860046,
+      "normalized_physical_attention_entropy": 0.8522964119911194
+    },
+    {
+      "case": "VP004",
+      "step": 1,
+      "sigma": 1.0,
+      "arm": "negative",
+      "layer": 2,
+      "physical": {
+        "rms": 0.08897726237773895,
+        "temporal_variation_energy_fraction": 0.023037195205688477
+      },
+      "native_text": {
+        "rms": 0.03595876693725586,
+        "temporal_variation_energy_fraction": 0.6898626089096069
+      },
+      "physical_to_native_text_rms": 2.474424735781252,
+      "physical_native_cosine": 0.039589475840330124,
+      "physical_sampled_token_cosine": 0.9941354393959045,
+      "read_value_sampled_token_cosine": 0.9175348877906799,
+      "reference_mass": 0.5639925003051758,
+      "normalized_physical_attention_entropy": 0.8729512691497803
+    },
+    {
+      "case": "VP004",
+      "step": 1,
+      "sigma": 1.0,
+      "arm": "negative",
+      "layer": 14,
+      "physical": {
+        "rms": 0.020060423761606216,
+        "temporal_variation_energy_fraction": 0.121940016746521
+      },
+      "native_text": {
+        "rms": 0.023166730999946594,
+        "temporal_variation_energy_fraction": 0.4491799473762512
+      },
+      "physical_to_native_text_rms": 0.8659151678176977,
+      "physical_native_cosine": 0.004178162198513746,
+      "physical_sampled_token_cosine": 0.9495647549629211,
+      "read_value_sampled_token_cosine": 0.6525453329086304,
+      "reference_mass": 0.7977575659751892,
+      "normalized_physical_attention_entropy": 0.8400396108627319
+    },
+    {
+      "case": "VP004",
+      "step": 1,
+      "sigma": 1.0,
+      "arm": "negative",
+      "layer": 29,
+      "physical": {
+        "rms": 0.002790111815556884,
+        "temporal_variation_energy_fraction": 0.014183104038238525
+      },
+      "native_text": {
+        "rms": 0.048014018684625626,
+        "temporal_variation_energy_fraction": 0.0518951416015625
+      },
+      "physical_to_native_text_rms": 0.05811035801613278,
+      "physical_native_cosine": -0.02902497537434101,
+      "physical_sampled_token_cosine": 0.934115469455719,
+      "read_value_sampled_token_cosine": 0.6756789088249207,
+      "reference_mass": 0.9229075312614441,
+      "normalized_physical_attention_entropy": 0.8437345623970032
+    },
+    {
+      "case": "VP004",
+      "step": 15,
+      "sigma": 0.9278350472450256,
+      "arm": "positive",
+      "layer": 2,
+      "physical": {
+        "rms": 0.05936070531606674,
+        "temporal_variation_energy_fraction": 0.005483090877532959
+      },
+      "native_text": {
+        "rms": 0.015581888146698475,
+        "temporal_variation_energy_fraction": 0.1270662546157837
+      },
+      "physical_to_native_text_rms": 3.809596420998839,
+      "physical_native_cosine": 0.051161013543605804,
+      "physical_sampled_token_cosine": 0.9977507591247559,
+      "read_value_sampled_token_cosine": 0.9491673111915588,
+      "reference_mass": 0.6677013635635376,
+      "normalized_physical_attention_entropy": 0.8755329847335815
+    },
+    {
+      "case": "VP004",
+      "step": 15,
+      "sigma": 0.9278350472450256,
+      "arm": "positive",
+      "layer": 14,
+      "physical": {
+        "rms": 0.010518429800868034,
+        "temporal_variation_energy_fraction": 0.06968486309051514
+      },
+      "native_text": {
+        "rms": 0.02547990158200264,
+        "temporal_variation_energy_fraction": 0.49334728717803955
+      },
+      "physical_to_native_text_rms": 0.41281281118831226,
+      "physical_native_cosine": 0.01692398078739643,
+      "physical_sampled_token_cosine": 0.8805037140846252,
+      "read_value_sampled_token_cosine": 0.6155304312705994,
+      "reference_mass": 0.848731279373169,
+      "normalized_physical_attention_entropy": 0.816574215888977
+    },
+    {
+      "case": "VP004",
+      "step": 15,
+      "sigma": 0.9278350472450256,
+      "arm": "positive",
+      "layer": 29,
+      "physical": {
+        "rms": 0.004226233810186386,
+        "temporal_variation_energy_fraction": 0.006451606750488281
+      },
+      "native_text": {
+        "rms": 0.05082238093018532,
+        "temporal_variation_energy_fraction": 0.014257311820983887
+      },
+      "physical_to_native_text_rms": 0.08315694252876428,
+      "physical_native_cosine": 0.04772942513227463,
+      "physical_sampled_token_cosine": 0.9575747847557068,
+      "read_value_sampled_token_cosine": 0.7950376868247986,
+      "reference_mass": 0.8636420965194702,
+      "normalized_physical_attention_entropy": 0.8483541011810303
+    },
+    {
+      "case": "VP004",
+      "step": 15,
+      "sigma": 0.9278350472450256,
+      "arm": "negative",
+      "layer": 2,
+      "physical": {
+        "rms": 0.0552641935646534,
+        "temporal_variation_energy_fraction": 0.008739173412322998
+      },
+      "native_text": {
+        "rms": 0.016401134431362152,
+        "temporal_variation_energy_fraction": 0.12093383073806763
+      },
+      "physical_to_native_text_rms": 3.369534820651036,
+      "physical_native_cosine": 0.03973611816763878,
+      "physical_sampled_token_cosine": 0.9968793392181396,
+      "read_value_sampled_token_cosine": 0.9449986815452576,
+      "reference_mass": 0.8005387187004089,
+      "normalized_physical_attention_entropy": 0.8785083293914795
+    },
+    {
+      "case": "VP004",
+      "step": 15,
+      "sigma": 0.9278350472450256,
+      "arm": "negative",
+      "layer": 14,
+      "physical": {
+        "rms": 0.008617257699370384,
+        "temporal_variation_energy_fraction": 0.10475963354110718
+      },
+      "native_text": {
+        "rms": 0.02405439503490925,
+        "temporal_variation_energy_fraction": 0.4335942268371582
+      },
+      "physical_to_native_text_rms": 0.3582404665286522,
+      "physical_native_cosine": 0.016489004716277122,
+      "physical_sampled_token_cosine": 0.8906814455986023,
+      "read_value_sampled_token_cosine": 0.5565916299819946,
+      "reference_mass": 0.8885459303855896,
+      "normalized_physical_attention_entropy": 0.8190174102783203
+    },
+    {
+      "case": "VP004",
+      "step": 15,
+      "sigma": 0.9278350472450256,
+      "arm": "negative",
+      "layer": 29,
+      "physical": {
+        "rms": 0.0022700971458107233,
+        "temporal_variation_energy_fraction": 0.0132063627243042
+      },
+      "native_text": {
+        "rms": 0.04625103250145912,
+        "temporal_variation_energy_fraction": 0.016727983951568604
+      },
+      "physical_to_native_text_rms": 0.04908208580509217,
+      "physical_native_cosine": -0.02928294986486435,
+      "physical_sampled_token_cosine": 0.9393413662910461,
+      "read_value_sampled_token_cosine": 0.684883177280426,
+      "reference_mass": 0.9428178071975708,
+      "normalized_physical_attention_entropy": 0.8392471075057983
+    },
+    {
+      "case": "VP004",
+      "step": 35,
+      "sigma": 0.7017543315887451,
+      "arm": "positive",
+      "layer": 2,
+      "physical": {
+        "rms": 0.045991282910108566,
+        "temporal_variation_energy_fraction": 0.0021825432777404785
+      },
+      "native_text": {
+        "rms": 0.01458410732448101,
+        "temporal_variation_energy_fraction": 0.047338902950286865
+      },
+      "physical_to_native_text_rms": 3.1535206020396735,
+      "physical_native_cosine": 0.05900144949555397,
+      "physical_sampled_token_cosine": 0.9987120628356934,
+      "read_value_sampled_token_cosine": 0.9637178182601929,
+      "reference_mass": 0.6964969038963318,
+      "normalized_physical_attention_entropy": 0.8705328106880188
+    },
+    {
+      "case": "VP004",
+      "step": 35,
+      "sigma": 0.7017543315887451,
+      "arm": "positive",
+      "layer": 14,
+      "physical": {
+        "rms": 0.00852310098707676,
+        "temporal_variation_energy_fraction": 0.04734569787979126
+      },
+      "native_text": {
+        "rms": 0.022031323984265327,
+        "temporal_variation_energy_fraction": 0.3728748559951782
+      },
+      "physical_to_native_text_rms": 0.38686285913474466,
+      "physical_native_cosine": 0.020369140431284904,
+      "physical_sampled_token_cosine": 0.868959903717041,
+      "read_value_sampled_token_cosine": 0.6428068280220032,
+      "reference_mass": 0.8649412989616394,
+      "normalized_physical_attention_entropy": 0.8062021732330322
+    },
+    {
+      "case": "VP004",
+      "step": 35,
+      "sigma": 0.7017543315887451,
+      "arm": "positive",
+      "layer": 29,
+      "physical": {
+        "rms": 0.003529047127813101,
+        "temporal_variation_energy_fraction": 0.006232857704162598
+      },
+      "native_text": {
+        "rms": 0.04945267364382744,
+        "temporal_variation_energy_fraction": 0.011182010173797607
+      },
+      "physical_to_native_text_rms": 0.07136210982707075,
+      "physical_native_cosine": 0.04242396354675293,
+      "physical_sampled_token_cosine": 0.9580623507499695,
+      "read_value_sampled_token_cosine": 0.799368679523468,
+      "reference_mass": 0.8850773572921753,
+      "normalized_physical_attention_entropy": 0.8444600701332092
+    },
+    {
+      "case": "VP004",
+      "step": 35,
+      "sigma": 0.7017543315887451,
+      "arm": "negative",
+      "layer": 2,
+      "physical": {
+        "rms": 0.04162757843732834,
+        "temporal_variation_energy_fraction": 0.0029723644256591797
+      },
+      "native_text": {
+        "rms": 0.014278078451752663,
+        "temporal_variation_energy_fraction": 0.041468143463134766
+      },
+      "physical_to_native_text_rms": 2.915488843823972,
+      "physical_native_cosine": 0.05012721195816994,
+      "physical_sampled_token_cosine": 0.9985185861587524,
+      "read_value_sampled_token_cosine": 0.9708002209663391,
+      "reference_mass": 0.8339368104934692,
+      "normalized_physical_attention_entropy": 0.8763983845710754
+    },
+    {
+      "case": "VP004",
+      "step": 35,
+      "sigma": 0.7017543315887451,
+      "arm": "negative",
+      "layer": 14,
+      "physical": {
+        "rms": 0.006314895115792751,
+        "temporal_variation_energy_fraction": 0.08687645196914673
+      },
+      "native_text": {
+        "rms": 0.02146059274673462,
+        "temporal_variation_energy_fraction": 0.3514031171798706
+      },
+      "physical_to_native_text_rms": 0.2942553912800758,
+      "physical_native_cosine": 0.02515147626399994,
+      "physical_sampled_token_cosine": 0.8833034038543701,
+      "read_value_sampled_token_cosine": 0.599089503288269,
+      "reference_mass": 0.9050643444061279,
+      "normalized_physical_attention_entropy": 0.814245343208313
+    },
+    {
+      "case": "VP004",
+      "step": 35,
+      "sigma": 0.7017543315887451,
+      "arm": "negative",
+      "layer": 29,
+      "physical": {
+        "rms": 0.0017262439941987395,
+        "temporal_variation_energy_fraction": 0.011982858180999756
+      },
+      "native_text": {
+        "rms": 0.04698255658149719,
+        "temporal_variation_energy_fraction": 0.011622130870819092
+      },
+      "physical_to_native_text_rms": 0.03674223200698648,
+      "physical_native_cosine": -0.036033324897289276,
+      "physical_sampled_token_cosine": 0.9431443214416504,
+      "read_value_sampled_token_cosine": 0.6968370079994202,
+      "reference_mass": 0.9571704864501953,
+      "normalized_physical_attention_entropy": 0.8356140851974487
+    },
+    {
+      "case": "VP004",
+      "step": 50,
+      "sigma": 0.09259258210659027,
+      "arm": "positive",
+      "layer": 2,
+      "physical": {
+        "rms": 0.023109320551156998,
+        "temporal_variation_energy_fraction": 0.0020331740379333496
+      },
+      "native_text": {
+        "rms": 0.014560645446181297,
+        "temporal_variation_energy_fraction": 0.005635261535644531
+      },
+      "physical_to_native_text_rms": 1.5871082526233542,
+      "physical_native_cosine": 0.060618605464696884,
+      "physical_sampled_token_cosine": 0.9974370002746582,
+      "read_value_sampled_token_cosine": 0.963699460029602,
+      "reference_mass": 0.703153133392334,
+      "normalized_physical_attention_entropy": 0.8636665940284729
+    },
+    {
+      "case": "VP004",
+      "step": 50,
+      "sigma": 0.09259258210659027,
+      "arm": "positive",
+      "layer": 14,
+      "physical": {
+        "rms": 0.005796114448457956,
+        "temporal_variation_energy_fraction": 0.015441656112670898
+      },
+      "native_text": {
+        "rms": 0.016769781708717346,
+        "temporal_variation_energy_fraction": 0.0835685133934021
+      },
+      "physical_to_native_text_rms": 0.34562849708681614,
+      "physical_native_cosine": 0.03154356777667999,
+      "physical_sampled_token_cosine": 0.8516307473182678,
+      "read_value_sampled_token_cosine": 0.7092480063438416,
+      "reference_mass": 0.892127275466919,
+      "normalized_physical_attention_entropy": 0.7915698885917664
+    },
+    {
+      "case": "VP004",
+      "step": 50,
+      "sigma": 0.09259258210659027,
+      "arm": "positive",
+      "layer": 29,
+      "physical": {
+        "rms": 0.0023682171013206244,
+        "temporal_variation_energy_fraction": 0.013509392738342285
+      },
+      "native_text": {
+        "rms": 0.04806244745850563,
+        "temporal_variation_energy_fraction": 0.11093127727508545
+      },
+      "physical_to_native_text_rms": 0.04927375168243789,
+      "physical_native_cosine": -0.04153743386268616,
+      "physical_sampled_token_cosine": 0.9476208090782166,
+      "read_value_sampled_token_cosine": 0.8120568990707397,
+      "reference_mass": 0.9079205989837646,
+      "normalized_physical_attention_entropy": 0.8494554162025452
+    },
+    {
+      "case": "VP004",
+      "step": 50,
+      "sigma": 0.09259258210659027,
+      "arm": "negative",
+      "layer": 2,
+      "physical": {
+        "rms": 0.020981114357709885,
+        "temporal_variation_energy_fraction": 0.0017306804656982422
+      },
+      "native_text": {
+        "rms": 0.013697111047804356,
+        "temporal_variation_energy_fraction": 0.004601120948791504
+      },
+      "physical_to_native_text_rms": 1.531791213817541,
+      "physical_native_cosine": 0.05243761092424393,
+      "physical_sampled_token_cosine": 0.9976475834846497,
+      "read_value_sampled_token_cosine": 0.9726607203483582,
+      "reference_mass": 0.8446211814880371,
+      "normalized_physical_attention_entropy": 0.8671584129333496
+    },
+    {
+      "case": "VP004",
+      "step": 50,
+      "sigma": 0.09259258210659027,
+      "arm": "negative",
+      "layer": 14,
+      "physical": {
+        "rms": 0.0041183046996593475,
+        "temporal_variation_energy_fraction": 0.025927960872650146
+      },
+      "native_text": {
+        "rms": 0.01754811964929104,
+        "temporal_variation_energy_fraction": 0.0868532657623291
+      },
+      "physical_to_native_text_rms": 0.2346863813312175,
+      "physical_native_cosine": 0.03354345262050629,
+      "physical_sampled_token_cosine": 0.8472824692726135,
+      "read_value_sampled_token_cosine": 0.6595799922943115,
+      "reference_mass": 0.9284306764602661,
+      "normalized_physical_attention_entropy": 0.797171413898468
+    },
+    {
+      "case": "VP004",
+      "step": 50,
+      "sigma": 0.09259258210659027,
+      "arm": "negative",
+      "layer": 29,
+      "physical": {
+        "rms": 0.001279556774534285,
+        "temporal_variation_energy_fraction": 0.028743982315063477
+      },
+      "native_text": {
+        "rms": 0.04506419971585274,
+        "temporal_variation_energy_fraction": 0.06608295440673828
+      },
+      "physical_to_native_text_rms": 0.028394086272526462,
+      "physical_native_cosine": -0.12331636250019073,
+      "physical_sampled_token_cosine": 0.9265396595001221,
+      "read_value_sampled_token_cosine": 0.7208735942840576,
+      "reference_mass": 0.9689223170280457,
+      "normalized_physical_attention_entropy": 0.8393558859825134
+    },
+    {
+      "case": "VP025",
+      "step": 1,
+      "sigma": 1.0,
+      "arm": "positive",
+      "layer": 2,
+      "physical": {
+        "rms": 0.07761339098215103,
+        "temporal_variation_energy_fraction": 0.011334717273712158
+      },
+      "native_text": {
+        "rms": 0.05086768791079521,
+        "temporal_variation_energy_fraction": 0.5738801956176758
+      },
+      "physical_to_native_text_rms": 1.5257896352249933,
+      "physical_native_cosine": 0.017301011830568314,
+      "physical_sampled_token_cosine": 0.9965159893035889,
+      "read_value_sampled_token_cosine": 0.9343566298484802,
+      "reference_mass": 0.5295872688293457,
+      "normalized_physical_attention_entropy": 0.888818085193634
+    },
+    {
+      "case": "VP025",
+      "step": 1,
+      "sigma": 1.0,
+      "arm": "positive",
+      "layer": 14,
+      "physical": {
+        "rms": 0.02026093751192093,
+        "temporal_variation_energy_fraction": 0.10520124435424805
+      },
+      "native_text": {
+        "rms": 0.04984341189265251,
+        "temporal_variation_energy_fraction": 0.5885984301567078
+      },
+      "physical_to_native_text_rms": 0.40649178582631545,
+      "physical_native_cosine": 0.01882600225508213,
+      "physical_sampled_token_cosine": 0.9647916555404663,
+      "read_value_sampled_token_cosine": 0.7001143097877502,
+      "reference_mass": 0.7619487643241882,
+      "normalized_physical_attention_entropy": 0.862917423248291
+    },
+    {
+      "case": "VP025",
+      "step": 1,
+      "sigma": 1.0,
+      "arm": "positive",
+      "layer": 29,
+      "physical": {
+        "rms": 0.004993163514882326,
+        "temporal_variation_energy_fraction": 0.008732974529266357
+      },
+      "native_text": {
+        "rms": 0.06827666610479355,
+        "temporal_variation_energy_fraction": 0.032941579818725586
+      },
+      "physical_to_native_text_rms": 0.07313133167953213,
+      "physical_native_cosine": 0.08295567333698273,
+      "physical_sampled_token_cosine": 0.9799075722694397,
+      "read_value_sampled_token_cosine": 0.9003546833992004,
+      "reference_mass": 0.8303358554840088,
+      "normalized_physical_attention_entropy": 0.838271975517273
+    },
+    {
+      "case": "VP025",
+      "step": 1,
+      "sigma": 1.0,
+      "arm": "negative",
+      "layer": 2,
+      "physical": {
+        "rms": 0.08749230206012726,
+        "temporal_variation_energy_fraction": 0.014756441116333008
+      },
+      "native_text": {
+        "rms": 0.04277323558926582,
+        "temporal_variation_energy_fraction": 0.6029843091964722
+      },
+      "physical_to_native_text_rms": 2.0454917860383683,
+      "physical_native_cosine": 0.04773305356502533,
+      "physical_sampled_token_cosine": 0.9960347414016724,
+      "read_value_sampled_token_cosine": 0.9364087581634521,
+      "reference_mass": 0.5084418654441833,
+      "normalized_physical_attention_entropy": 0.8685749173164368
+    },
+    {
+      "case": "VP025",
+      "step": 1,
+      "sigma": 1.0,
+      "arm": "negative",
+      "layer": 14,
+      "physical": {
+        "rms": 0.022379551082849503,
+        "temporal_variation_energy_fraction": 0.11258745193481445
+      },
+      "native_text": {
+        "rms": 0.028248578310012817,
+        "temporal_variation_energy_fraction": 0.46761107444763184
+      },
+      "physical_to_native_text_rms": 0.7922363680481925,
+      "physical_native_cosine": 0.008581453002989292,
+      "physical_sampled_token_cosine": 0.9594939351081848,
+      "read_value_sampled_token_cosine": 0.71209716796875,
+      "reference_mass": 0.7573372721672058,
+      "normalized_physical_attention_entropy": 0.8345718383789062
+    },
+    {
+      "case": "VP025",
+      "step": 1,
+      "sigma": 1.0,
+      "arm": "negative",
+      "layer": 29,
+      "physical": {
+        "rms": 0.006549975369125605,
+        "temporal_variation_energy_fraction": 0.005136251449584961
+      },
+      "native_text": {
+        "rms": 0.06055159866809845,
+        "temporal_variation_energy_fraction": 0.02716296911239624
+      },
+      "physical_to_native_text_rms": 0.10817179914650961,
+      "physical_native_cosine": 0.09020359814167023,
+      "physical_sampled_token_cosine": 0.9822470545768738,
+      "read_value_sampled_token_cosine": 0.9276031851768494,
+      "reference_mass": 0.775633692741394,
+      "normalized_physical_attention_entropy": 0.8429531455039978
+    },
+    {
+      "case": "VP025",
+      "step": 15,
+      "sigma": 0.9278350472450256,
+      "arm": "positive",
+      "layer": 2,
+      "physical": {
+        "rms": 0.05123063921928406,
+        "temporal_variation_energy_fraction": 0.0075460076332092285
+      },
+      "native_text": {
+        "rms": 0.014157210476696491,
+        "temporal_variation_energy_fraction": 0.21165281534194946
+      },
+      "physical_to_native_text_rms": 3.6186958796446778,
+      "physical_native_cosine": 0.05501317232847214,
+      "physical_sampled_token_cosine": 0.9969714283943176,
+      "read_value_sampled_token_cosine": 0.9510419964790344,
+      "reference_mass": 0.7451846599578857,
+      "normalized_physical_attention_entropy": 0.8805696368217468
+    },
+    {
+      "case": "VP025",
+      "step": 15,
+      "sigma": 0.9278350472450256,
+      "arm": "positive",
+      "layer": 14,
+      "physical": {
+        "rms": 0.006998399738222361,
+        "temporal_variation_energy_fraction": 0.1507359743118286
+      },
+      "native_text": {
+        "rms": 0.029588088393211365,
+        "temporal_variation_energy_fraction": 0.5790203809738159
+      },
+      "physical_to_native_text_rms": 0.23652760682667354,
+      "physical_native_cosine": 0.02288234233856201,
+      "physical_sampled_token_cosine": 0.8948835730552673,
+      "read_value_sampled_token_cosine": 0.6400931477546692,
+      "reference_mass": 0.8902397155761719,
+      "normalized_physical_attention_entropy": 0.87200927734375
+    },
+    {
+      "case": "VP025",
+      "step": 15,
+      "sigma": 0.9278350472450256,
+      "arm": "positive",
+      "layer": 29,
+      "physical": {
+        "rms": 0.0036019315011799335,
+        "temporal_variation_energy_fraction": 0.03047281503677368
+      },
+      "native_text": {
+        "rms": 0.05044032260775566,
+        "temporal_variation_energy_fraction": 0.046338796615600586
+      },
+      "physical_to_native_text_rms": 0.0714097633591682,
+      "physical_native_cosine": 0.04370979964733124,
+      "physical_sampled_token_cosine": 0.9759619832038879,
+      "read_value_sampled_token_cosine": 0.8866385817527771,
+      "reference_mass": 0.8805867433547974,
+      "normalized_physical_attention_entropy": 0.8376177549362183
+    },
+    {
+      "case": "VP025",
+      "step": 15,
+      "sigma": 0.9278350472450256,
+      "arm": "negative",
+      "layer": 2,
+      "physical": {
+        "rms": 0.055210813879966736,
+        "temporal_variation_energy_fraction": 0.007660567760467529
+      },
+      "native_text": {
+        "rms": 0.013508990406990051,
+        "temporal_variation_energy_fraction": 0.10954433679580688
+      },
+      "physical_to_native_text_rms": 4.086968175756392,
+      "physical_native_cosine": 0.057718731462955475,
+      "physical_sampled_token_cosine": 0.9970823526382446,
+      "read_value_sampled_token_cosine": 0.9548937678337097,
+      "reference_mass": 0.7559411525726318,
+      "normalized_physical_attention_entropy": 0.8760429620742798
+    },
+    {
+      "case": "VP025",
+      "step": 15,
+      "sigma": 0.9278350472450256,
+      "arm": "negative",
+      "layer": 14,
+      "physical": {
+        "rms": 0.00912629347294569,
+        "temporal_variation_energy_fraction": 0.1294853687286377
+      },
+      "native_text": {
+        "rms": 0.024518674239516258,
+        "temporal_variation_energy_fraction": 0.48036426305770874
+      },
+      "physical_to_native_text_rms": 0.37221806463895285,
+      "physical_native_cosine": 0.028330855071544647,
+      "physical_sampled_token_cosine": 0.893112301826477,
+      "read_value_sampled_token_cosine": 0.6424425840377808,
+      "reference_mass": 0.8721804618835449,
+      "normalized_physical_attention_entropy": 0.8465895652770996
+    },
+    {
+      "case": "VP025",
+      "step": 15,
+      "sigma": 0.9278350472450256,
+      "arm": "negative",
+      "layer": 29,
+      "physical": {
+        "rms": 0.0051940688863396645,
+        "temporal_variation_energy_fraction": 0.018956661224365234
+      },
+      "native_text": {
+        "rms": 0.05025426670908928,
+        "temporal_variation_energy_fraction": 0.03619283437728882
+      },
+      "physical_to_native_text_rms": 0.10335577905070167,
+      "physical_native_cosine": 0.07400201261043549,
+      "physical_sampled_token_cosine": 0.9759211540222168,
+      "read_value_sampled_token_cosine": 0.9168717861175537,
+      "reference_mass": 0.820703387260437,
+      "normalized_physical_attention_entropy": 0.8449192643165588
+    },
+    {
+      "case": "VP025",
+      "step": 35,
+      "sigma": 0.7017543315887451,
+      "arm": "positive",
+      "layer": 2,
+      "physical": {
+        "rms": 0.04016484320163727,
+        "temporal_variation_energy_fraction": 0.004371166229248047
+      },
+      "native_text": {
+        "rms": 0.013507370837032795,
+        "temporal_variation_energy_fraction": 0.1454007625579834
+      },
+      "physical_to_native_text_rms": 2.9735500480610484,
+      "physical_native_cosine": 0.059455689042806625,
+      "physical_sampled_token_cosine": 0.9979985952377319,
+      "read_value_sampled_token_cosine": 0.9682508111000061,
+      "reference_mass": 0.7722810506820679,
+      "normalized_physical_attention_entropy": 0.8799532651901245
+    },
+    {
+      "case": "VP025",
+      "step": 35,
+      "sigma": 0.7017543315887451,
+      "arm": "positive",
+      "layer": 14,
+      "physical": {
+        "rms": 0.0050916834734380245,
+        "temporal_variation_energy_fraction": 0.13873672485351562
+      },
+      "native_text": {
+        "rms": 0.028609462082386017,
+        "temporal_variation_energy_fraction": 0.47891128063201904
+      },
+      "physical_to_native_text_rms": 0.17797201005651975,
+      "physical_native_cosine": 0.020828451961278915,
+      "physical_sampled_token_cosine": 0.9053817987442017,
+      "read_value_sampled_token_cosine": 0.6745204329490662,
+      "reference_mass": 0.9073523879051208,
+      "normalized_physical_attention_entropy": 0.8768496513366699
+    },
+    {
+      "case": "VP025",
+      "step": 35,
+      "sigma": 0.7017543315887451,
+      "arm": "positive",
+      "layer": 29,
+      "physical": {
+        "rms": 0.002844665665179491,
+        "temporal_variation_energy_fraction": 0.03852379322052002
+      },
+      "native_text": {
+        "rms": 0.04583806172013283,
+        "temporal_variation_energy_fraction": 0.04380929470062256
+      },
+      "physical_to_native_text_rms": 0.06205903038718732,
+      "physical_native_cosine": 0.026562761515378952,
+      "physical_sampled_token_cosine": 0.9754987359046936,
+      "read_value_sampled_token_cosine": 0.8903286457061768,
+      "reference_mass": 0.905400276184082,
+      "normalized_physical_attention_entropy": 0.8402792811393738
+    },
+    {
+      "case": "VP025",
+      "step": 35,
+      "sigma": 0.7017543315887451,
+      "arm": "negative",
+      "layer": 2,
+      "physical": {
+        "rms": 0.043330367654561996,
+        "temporal_variation_energy_fraction": 0.004065573215484619
+      },
+      "native_text": {
+        "rms": 0.013214361853897572,
+        "temporal_variation_energy_fraction": 0.09106063842773438
+      },
+      "physical_to_native_text_rms": 3.279035956002803,
+      "physical_native_cosine": 0.05205487459897995,
+      "physical_sampled_token_cosine": 0.9982746839523315,
+      "read_value_sampled_token_cosine": 0.9742575883865356,
+      "reference_mass": 0.7843510508537292,
+      "normalized_physical_attention_entropy": 0.8723234534263611
+    },
+    {
+      "case": "VP025",
+      "step": 35,
+      "sigma": 0.7017543315887451,
+      "arm": "negative",
+      "layer": 14,
+      "physical": {
+        "rms": 0.007192223332822323,
+        "temporal_variation_energy_fraction": 0.09503430128097534
+      },
+      "native_text": {
+        "rms": 0.023348383605480194,
+        "temporal_variation_energy_fraction": 0.4129972457885742
+      },
+      "physical_to_native_text_rms": 0.30803945379474607,
+      "physical_native_cosine": 0.0288829542696476,
+      "physical_sampled_token_cosine": 0.9089356660842896,
+      "read_value_sampled_token_cosine": 0.7006822824478149,
+      "reference_mass": 0.8908302187919617,
+      "normalized_physical_attention_entropy": 0.8533022403717041
+    },
+    {
+      "case": "VP025",
+      "step": 35,
+      "sigma": 0.7017543315887451,
+      "arm": "negative",
+      "layer": 29,
+      "physical": {
+        "rms": 0.004366581328213215,
+        "temporal_variation_energy_fraction": 0.020941972732543945
+      },
+      "native_text": {
+        "rms": 0.04787556082010269,
+        "temporal_variation_energy_fraction": 0.03676408529281616
+      },
+      "physical_to_native_text_rms": 0.09120689665905095,
+      "physical_native_cosine": 0.06727730482816696,
+      "physical_sampled_token_cosine": 0.9741981625556946,
+      "read_value_sampled_token_cosine": 0.9133995771408081,
+      "reference_mass": 0.8472888469696045,
+      "normalized_physical_attention_entropy": 0.8491774797439575
+    },
+    {
+      "case": "VP025",
+      "step": 50,
+      "sigma": 0.09259258210659027,
+      "arm": "positive",
+      "layer": 2,
+      "physical": {
+        "rms": 0.021954866126179695,
+        "temporal_variation_energy_fraction": 0.0061719417572021484
+      },
+      "native_text": {
+        "rms": 0.013220185413956642,
+        "temporal_variation_energy_fraction": 0.10101944208145142
+      },
+      "physical_to_native_text_rms": 1.6607078825839907,
+      "physical_native_cosine": 0.06200246885418892,
+      "physical_sampled_token_cosine": 0.9977580904960632,
+      "read_value_sampled_token_cosine": 0.9749726057052612,
+      "reference_mass": 0.7808687090873718,
+      "normalized_physical_attention_entropy": 0.8812060952186584
+    },
+    {
+      "case": "VP025",
+      "step": 50,
+      "sigma": 0.09259258210659027,
+      "arm": "positive",
+      "layer": 14,
+      "physical": {
+        "rms": 0.0030285732354968786,
+        "temporal_variation_energy_fraction": 0.08911806344985962
+      },
+      "native_text": {
+        "rms": 0.023214275017380714,
+        "temporal_variation_energy_fraction": 0.20916837453842163
+      },
+      "physical_to_native_text_rms": 0.13046167641373083,
+      "physical_native_cosine": 0.027522753924131393,
+      "physical_sampled_token_cosine": 0.9321717023849487,
+      "read_value_sampled_token_cosine": 0.7975435853004456,
+      "reference_mass": 0.9349495768547058,
+      "normalized_physical_attention_entropy": 0.8833162784576416
+    },
+    {
+      "case": "VP025",
+      "step": 50,
+      "sigma": 0.09259258210659027,
+      "arm": "positive",
+      "layer": 29,
+      "physical": {
+        "rms": 0.002017783233895898,
+        "temporal_variation_energy_fraction": 0.07299792766571045
+      },
+      "native_text": {
+        "rms": 0.04494988173246384,
+        "temporal_variation_energy_fraction": 0.19770002365112305
+      },
+      "physical_to_native_text_rms": 0.04488962275597287,
+      "physical_native_cosine": -0.05520486831665039,
+      "physical_sampled_token_cosine": 0.9587185978889465,
+      "read_value_sampled_token_cosine": 0.8623392581939697,
+      "reference_mass": 0.9245715141296387,
+      "normalized_physical_attention_entropy": 0.8501092791557312
+    },
+    {
+      "case": "VP025",
+      "step": 50,
+      "sigma": 0.09259258210659027,
+      "arm": "negative",
+      "layer": 2,
+      "physical": {
+        "rms": 0.024310223758220673,
+        "temporal_variation_energy_fraction": 0.005234837532043457
+      },
+      "native_text": {
+        "rms": 0.013103321194648743,
+        "temporal_variation_energy_fraction": 0.07247728109359741
+      },
+      "physical_to_native_text_rms": 1.8552719113798959,
+      "physical_native_cosine": 0.052362434566020966,
+      "physical_sampled_token_cosine": 0.9980844855308533,
+      "read_value_sampled_token_cosine": 0.9795001745223999,
+      "reference_mass": 0.7877151370048523,
+      "normalized_physical_attention_entropy": 0.8657677173614502
+    },
+    {
+      "case": "VP025",
+      "step": 50,
+      "sigma": 0.09259258210659027,
+      "arm": "negative",
+      "layer": 14,
+      "physical": {
+        "rms": 0.004540565423667431,
+        "temporal_variation_energy_fraction": 0.06423133611679077
+      },
+      "native_text": {
+        "rms": 0.01980504021048546,
+        "temporal_variation_energy_fraction": 0.19416850805282593
+      },
+      "physical_to_native_text_rms": 0.22926312572006302,
+      "physical_native_cosine": 0.03286640718579292,
+      "physical_sampled_token_cosine": 0.9151520729064941,
+      "read_value_sampled_token_cosine": 0.7734296917915344,
+      "reference_mass": 0.9186234474182129,
+      "normalized_physical_attention_entropy": 0.8662671446800232
+    },
+    {
+      "case": "VP025",
+      "step": 50,
+      "sigma": 0.09259258210659027,
+      "arm": "negative",
+      "layer": 29,
+      "physical": {
+        "rms": 0.002949115354567766,
+        "temporal_variation_energy_fraction": 0.0395580530166626
+      },
+      "native_text": {
+        "rms": 0.04271316155791283,
+        "temporal_variation_energy_fraction": 0.12657636404037476
+      },
+      "physical_to_native_text_rms": 0.06904465150792444,
+      "physical_native_cosine": 0.01176464557647705,
+      "physical_sampled_token_cosine": 0.9668039679527283,
+      "read_value_sampled_token_cosine": 0.9035616517066956,
+      "reference_mass": 0.8749210834503174,
+      "normalized_physical_attention_entropy": 0.8654068112373352
+    },
+    {
+      "case": "VP027",
+      "step": 1,
+      "sigma": 1.0,
+      "arm": "positive",
+      "layer": 2,
+      "physical": {
+        "rms": 0.0811544880270958,
+        "temporal_variation_energy_fraction": 0.012126684188842773
+      },
+      "native_text": {
+        "rms": 0.04175810515880585,
+        "temporal_variation_energy_fraction": 0.5267119407653809
+      },
+      "physical_to_native_text_rms": 1.943442781190998,
+      "physical_native_cosine": 0.0266403891146183,
+      "physical_sampled_token_cosine": 0.9964754581451416,
+      "read_value_sampled_token_cosine": 0.9317286014556885,
+      "reference_mass": 0.5135943293571472,
+      "normalized_physical_attention_entropy": 0.8867312073707581
+    },
+    {
+      "case": "VP027",
+      "step": 1,
+      "sigma": 1.0,
+      "arm": "positive",
+      "layer": 14,
+      "physical": {
+        "rms": 0.015460806898772717,
+        "temporal_variation_energy_fraction": 0.09340977668762207
+      },
+      "native_text": {
+        "rms": 0.03820435702800751,
+        "temporal_variation_energy_fraction": 0.6156489849090576
+      },
+      "physical_to_native_text_rms": 0.40468700696725357,
+      "physical_native_cosine": 0.006734837777912617,
+      "physical_sampled_token_cosine": 0.9412833452224731,
+      "read_value_sampled_token_cosine": 0.5891183018684387,
+      "reference_mass": 0.834080696105957,
+      "normalized_physical_attention_entropy": 0.8574400544166565
+    },
+    {
+      "case": "VP027",
+      "step": 1,
+      "sigma": 1.0,
+      "arm": "positive",
+      "layer": 29,
+      "physical": {
+        "rms": 0.0028234736528247595,
+        "temporal_variation_energy_fraction": 0.012904524803161621
+      },
+      "native_text": {
+        "rms": 0.041110217571258545,
+        "temporal_variation_energy_fraction": 0.05361461639404297
+      },
+      "physical_to_native_text_rms": 0.068680581607983,
+      "physical_native_cosine": 0.06346413493156433,
+      "physical_sampled_token_cosine": 0.922330379486084,
+      "read_value_sampled_token_cosine": 0.6711201071739197,
+      "reference_mass": 0.9143478870391846,
+      "normalized_physical_attention_entropy": 0.8735628128051758
+    },
+    {
+      "case": "VP027",
+      "step": 1,
+      "sigma": 1.0,
+      "arm": "negative",
+      "layer": 2,
+      "physical": {
+        "rms": 0.07736073434352875,
+        "temporal_variation_energy_fraction": 0.016847550868988037
+      },
+      "native_text": {
+        "rms": 0.03936115279793739,
+        "temporal_variation_energy_fraction": 0.670270562171936
+      },
+      "physical_to_native_text_rms": 1.9654082475852337,
+      "physical_native_cosine": 0.039864324033260345,
+      "physical_sampled_token_cosine": 0.9945457577705383,
+      "read_value_sampled_token_cosine": 0.9146393537521362,
+      "reference_mass": 0.5467789173126221,
+      "normalized_physical_attention_entropy": 0.8897168040275574
+    },
+    {
+      "case": "VP027",
+      "step": 1,
+      "sigma": 1.0,
+      "arm": "negative",
+      "layer": 14,
+      "physical": {
+        "rms": 0.014564970508217812,
+        "temporal_variation_energy_fraction": 0.12775003910064697
+      },
+      "native_text": {
+        "rms": 0.027792004868388176,
+        "temporal_variation_energy_fraction": 0.5247849822044373
+      },
+      "physical_to_native_text_rms": 0.5240705223387694,
+      "physical_native_cosine": -0.0051180655136704445,
+      "physical_sampled_token_cosine": 0.9532385468482971,
+      "read_value_sampled_token_cosine": 0.5879004597663879,
+      "reference_mass": 0.8525773882865906,
+      "normalized_physical_attention_entropy": 0.8593496680259705
+    },
+    {
+      "case": "VP027",
+      "step": 1,
+      "sigma": 1.0,
+      "arm": "negative",
+      "layer": 29,
+      "physical": {
+        "rms": 0.002514559542760253,
+        "temporal_variation_energy_fraction": 0.01297062635421753
+      },
+      "native_text": {
+        "rms": 0.03986363857984543,
+        "temporal_variation_energy_fraction": 0.03951531648635864
+      },
+      "physical_to_native_text_rms": 0.06307902721232235,
+      "physical_native_cosine": 0.11006468534469604,
+      "physical_sampled_token_cosine": 0.9223255515098572,
+      "read_value_sampled_token_cosine": 0.6953291296958923,
+      "reference_mass": 0.9228389263153076,
+      "normalized_physical_attention_entropy": 0.8854978084564209
+    },
+    {
+      "case": "VP027",
+      "step": 15,
+      "sigma": 0.9278350472450256,
+      "arm": "positive",
+      "layer": 2,
+      "physical": {
+        "rms": 0.05265474319458008,
+        "temporal_variation_energy_fraction": 0.007872819900512695
+      },
+      "native_text": {
+        "rms": 0.014944617636501789,
+        "temporal_variation_energy_fraction": 0.19406306743621826
+      },
+      "physical_to_native_text_rms": 3.523324883600395,
+      "physical_native_cosine": 0.045840971171855927,
+      "physical_sampled_token_cosine": 0.9963107109069824,
+      "read_value_sampled_token_cosine": 0.9291368722915649,
+      "reference_mass": 0.7406147718429565,
+      "normalized_physical_attention_entropy": 0.888647735118866
+    },
+    {
+      "case": "VP027",
+      "step": 15,
+      "sigma": 0.9278350472450256,
+      "arm": "positive",
+      "layer": 14,
+      "physical": {
+        "rms": 0.008914786390960217,
+        "temporal_variation_energy_fraction": 0.09873771667480469
+      },
+      "native_text": {
+        "rms": 0.03184535726904869,
+        "temporal_variation_energy_fraction": 0.5917263031005859
+      },
+      "physical_to_native_text_rms": 0.27993990821464965,
+      "physical_native_cosine": 0.00945940613746643,
+      "physical_sampled_token_cosine": 0.8707101345062256,
+      "read_value_sampled_token_cosine": 0.4689100980758667,
+      "reference_mass": 0.8920531272888184,
+      "normalized_physical_attention_entropy": 0.8419386744499207
+    },
+    {
+      "case": "VP027",
+      "step": 15,
+      "sigma": 0.9278350472450256,
+      "arm": "positive",
+      "layer": 29,
+      "physical": {
+        "rms": 0.002302329521626234,
+        "temporal_variation_energy_fraction": 0.02635955810546875
+      },
+      "native_text": {
+        "rms": 0.04218742623925209,
+        "temporal_variation_energy_fraction": 0.03258734941482544
+      },
+      "physical_to_native_text_rms": 0.0545738322259654,
+      "physical_native_cosine": 0.08449976146221161,
+      "physical_sampled_token_cosine": 0.9137809872627258,
+      "read_value_sampled_token_cosine": 0.6480026841163635,
+      "reference_mass": 0.9301213026046753,
+      "normalized_physical_attention_entropy": 0.8742290735244751
+    },
+    {
+      "case": "VP027",
+      "step": 15,
+      "sigma": 0.9278350472450256,
+      "arm": "negative",
+      "layer": 2,
+      "physical": {
+        "rms": 0.04877269268035889,
+        "temporal_variation_energy_fraction": 0.008675038814544678
+      },
+      "native_text": {
+        "rms": 0.013018566183745861,
+        "temporal_variation_energy_fraction": 0.08920812606811523
+      },
+      "physical_to_native_text_rms": 3.7463951092596752,
+      "physical_native_cosine": 0.05334358662366867,
+      "physical_sampled_token_cosine": 0.9958239197731018,
+      "read_value_sampled_token_cosine": 0.9282257556915283,
+      "reference_mass": 0.7894949913024902,
+      "normalized_physical_attention_entropy": 0.884709894657135
+    },
+    {
+      "case": "VP027",
+      "step": 15,
+      "sigma": 0.9278350472450256,
+      "arm": "negative",
+      "layer": 14,
+      "physical": {
+        "rms": 0.007358600851148367,
+        "temporal_variation_energy_fraction": 0.1354677677154541
+      },
+      "native_text": {
+        "rms": 0.026950638741254807,
+        "temporal_variation_energy_fraction": 0.4842917323112488
+      },
+      "physical_to_native_text_rms": 0.27303994245910607,
+      "physical_native_cosine": 0.004756819922477007,
+      "physical_sampled_token_cosine": 0.8688384294509888,
+      "read_value_sampled_token_cosine": 0.4246687889099121,
+      "reference_mass": 0.9181985855102539,
+      "normalized_physical_attention_entropy": 0.854229748249054
+    },
+    {
+      "case": "VP027",
+      "step": 15,
+      "sigma": 0.9278350472450256,
+      "arm": "negative",
+      "layer": 29,
+      "physical": {
+        "rms": 0.0019429255044087768,
+        "temporal_variation_energy_fraction": 0.03248584270477295
+      },
+      "native_text": {
+        "rms": 0.03961322829127312,
+        "temporal_variation_energy_fraction": 0.028810501098632812
+      },
+      "physical_to_native_text_rms": 0.04904739119272457,
+      "physical_native_cosine": 0.1295640766620636,
+      "physical_sampled_token_cosine": 0.910130500793457,
+      "read_value_sampled_token_cosine": 0.6713159680366516,
+      "reference_mass": 0.941535472869873,
+      "normalized_physical_attention_entropy": 0.8858368992805481
+    },
+    {
+      "case": "VP027",
+      "step": 35,
+      "sigma": 0.7017543315887451,
+      "arm": "positive",
+      "layer": 2,
+      "physical": {
+        "rms": 0.039534248411655426,
+        "temporal_variation_energy_fraction": 0.003985345363616943
+      },
+      "native_text": {
+        "rms": 0.012998338788747787,
+        "temporal_variation_energy_fraction": 0.06717759370803833
+      },
+      "physical_to_native_text_rms": 3.0414846892495877,
+      "physical_native_cosine": 0.05274730920791626,
+      "physical_sampled_token_cosine": 0.9978402853012085,
+      "read_value_sampled_token_cosine": 0.9571696519851685,
+      "reference_mass": 0.7927807569503784,
+      "normalized_physical_attention_entropy": 0.8864777088165283
+    },
+    {
+      "case": "VP027",
+      "step": 35,
+      "sigma": 0.7017543315887451,
+      "arm": "positive",
+      "layer": 14,
+      "physical": {
+        "rms": 0.007634155917912722,
+        "temporal_variation_energy_fraction": 0.08901393413543701
+      },
+      "native_text": {
+        "rms": 0.02949114702641964,
+        "temporal_variation_energy_fraction": 0.5503798723220825
+      },
+      "physical_to_native_text_rms": 0.2588626312524794,
+      "physical_native_cosine": 0.012437481433153152,
+      "physical_sampled_token_cosine": 0.8447778224945068,
+      "read_value_sampled_token_cosine": 0.48714712262153625,
+      "reference_mass": 0.8953310251235962,
+      "normalized_physical_attention_entropy": 0.8391462564468384
+    },
+    {
+      "case": "VP027",
+      "step": 35,
+      "sigma": 0.7017543315887451,
+      "arm": "positive",
+      "layer": 29,
+      "physical": {
+        "rms": 0.0017089142929762602,
+        "temporal_variation_energy_fraction": 0.03163725137710571
+      },
+      "native_text": {
+        "rms": 0.04149977117776871,
+        "temporal_variation_energy_fraction": 0.03543984889984131
+      },
+      "physical_to_native_text_rms": 0.04117888471374801,
+      "physical_native_cosine": 0.08228635042905807,
+      "physical_sampled_token_cosine": 0.9131917953491211,
+      "read_value_sampled_token_cosine": 0.6589717864990234,
+      "reference_mass": 0.9476318359375,
+      "normalized_physical_attention_entropy": 0.8735274076461792
+    },
+    {
+      "case": "VP027",
+      "step": 35,
+      "sigma": 0.7017543315887451,
+      "arm": "negative",
+      "layer": 2,
+      "physical": {
+        "rms": 0.03651561960577965,
+        "temporal_variation_energy_fraction": 0.0036538243293762207
+      },
+      "native_text": {
+        "rms": 0.012751536443829536,
+        "temporal_variation_energy_fraction": 0.040018677711486816
+      },
+      "physical_to_native_text_rms": 2.863625082877722,
+      "physical_native_cosine": 0.050187092274427414,
+      "physical_sampled_token_cosine": 0.9978514909744263,
+      "read_value_sampled_token_cosine": 0.9620460867881775,
+      "reference_mass": 0.8397955894470215,
+      "normalized_physical_attention_entropy": 0.8814359903335571
+    },
+    {
+      "case": "VP027",
+      "step": 35,
+      "sigma": 0.7017543315887451,
+      "arm": "negative",
+      "layer": 14,
+      "physical": {
+        "rms": 0.00597949605435133,
+        "temporal_variation_energy_fraction": 0.11733412742614746
+      },
+      "native_text": {
+        "rms": 0.025440029799938202,
+        "temporal_variation_energy_fraction": 0.4634515643119812
+      },
+      "physical_to_native_text_rms": 0.23504280857272639,
+      "physical_native_cosine": 0.007453570608049631,
+      "physical_sampled_token_cosine": 0.8386917114257812,
+      "read_value_sampled_token_cosine": 0.43546056747436523,
+      "reference_mass": 0.9265084266662598,
+      "normalized_physical_attention_entropy": 0.8532830476760864
+    },
+    {
+      "case": "VP027",
+      "step": 35,
+      "sigma": 0.7017543315887451,
+      "arm": "negative",
+      "layer": 29,
+      "physical": {
+        "rms": 0.0014009294100105762,
+        "temporal_variation_energy_fraction": 0.038974642753601074
+      },
+      "native_text": {
+        "rms": 0.04090813174843788,
+        "temporal_variation_energy_fraction": 0.03513693809509277
+      },
+      "physical_to_native_text_rms": 0.03424574406441996,
+      "physical_native_cosine": 0.12139847874641418,
+      "physical_sampled_token_cosine": 0.9136331677436829,
+      "read_value_sampled_token_cosine": 0.6977812051773071,
+      "reference_mass": 0.9573060870170593,
+      "normalized_physical_attention_entropy": 0.8858258724212646
+    },
+    {
+      "case": "VP027",
+      "step": 50,
+      "sigma": 0.09259258210659027,
+      "arm": "positive",
+      "layer": 2,
+      "physical": {
+        "rms": 0.020756904035806656,
+        "temporal_variation_energy_fraction": 0.005463957786560059
+      },
+      "native_text": {
+        "rms": 0.013036211021244526,
+        "temporal_variation_energy_fraction": 0.027009665966033936
+      },
+      "physical_to_native_text_rms": 1.5922497727276785,
+      "physical_native_cosine": 0.05753244459629059,
+      "physical_sampled_token_cosine": 0.9968690872192383,
+      "read_value_sampled_token_cosine": 0.9701201319694519,
+      "reference_mass": 0.8110722303390503,
+      "normalized_physical_attention_entropy": 0.8854511380195618
+    },
+    {
+      "case": "VP027",
+      "step": 50,
+      "sigma": 0.09259258210659027,
+      "arm": "positive",
+      "layer": 14,
+      "physical": {
+        "rms": 0.004761383403092623,
+        "temporal_variation_energy_fraction": 0.0690922737121582
+      },
+      "native_text": {
+        "rms": 0.021114343777298927,
+        "temporal_variation_energy_fraction": 0.27198994159698486
+      },
+      "physical_to_native_text_rms": 0.2255046831344965,
+      "physical_native_cosine": 0.017772886902093887,
+      "physical_sampled_token_cosine": 0.8492426872253418,
+      "read_value_sampled_token_cosine": 0.5654353499412537,
+      "reference_mass": 0.9225128889083862,
+      "normalized_physical_attention_entropy": 0.8448786735534668
+    },
+    {
+      "case": "VP027",
+      "step": 50,
+      "sigma": 0.09259258210659027,
+      "arm": "positive",
+      "layer": 29,
+      "physical": {
+        "rms": 0.0009771129116415977,
+        "temporal_variation_energy_fraction": 0.054636478424072266
+      },
+      "native_text": {
+        "rms": 0.03666933625936508,
+        "temporal_variation_energy_fraction": 0.05728334188461304
+      },
+      "physical_to_native_text_rms": 0.02664659389333916,
+      "physical_native_cosine": 0.04824957251548767,
+      "physical_sampled_token_cosine": 0.9242831468582153,
+      "read_value_sampled_token_cosine": 0.737200140953064,
+      "reference_mass": 0.9694482684135437,
+      "normalized_physical_attention_entropy": 0.8795873522758484
+    },
+    {
+      "case": "VP027",
+      "step": 50,
+      "sigma": 0.09259258210659027,
+      "arm": "negative",
+      "layer": 2,
+      "physical": {
+        "rms": 0.019261542707681656,
+        "temporal_variation_energy_fraction": 0.004864871501922607
+      },
+      "native_text": {
+        "rms": 0.012560968287289143,
+        "temporal_variation_energy_fraction": 0.010689854621887207
+      },
+      "physical_to_native_text_rms": 1.5334440997811487,
+      "physical_native_cosine": 0.05233770236372948,
+      "physical_sampled_token_cosine": 0.9970859885215759,
+      "read_value_sampled_token_cosine": 0.9752295017242432,
+      "reference_mass": 0.8568143844604492,
+      "normalized_physical_attention_entropy": 0.8795583248138428
+    },
+    {
+      "case": "VP027",
+      "step": 50,
+      "sigma": 0.09259258210659027,
+      "arm": "negative",
+      "layer": 14,
+      "physical": {
+        "rms": 0.003241735277697444,
+        "temporal_variation_energy_fraction": 0.09267157316207886
+      },
+      "native_text": {
+        "rms": 0.020663723349571228,
+        "temporal_variation_energy_fraction": 0.23870760202407837
+      },
+      "physical_to_native_text_rms": 0.15688050129478287,
+      "physical_native_cosine": 0.010765754617750645,
+      "physical_sampled_token_cosine": 0.8490569591522217,
+      "read_value_sampled_token_cosine": 0.5456169247627258,
+      "reference_mass": 0.9521746635437012,
+      "normalized_physical_attention_entropy": 0.858614444732666
+    },
+    {
+      "case": "VP027",
+      "step": 50,
+      "sigma": 0.09259258210659027,
+      "arm": "negative",
+      "layer": 29,
+      "physical": {
+        "rms": 0.0007339928997680545,
+        "temporal_variation_energy_fraction": 0.05577927827835083
+      },
+      "native_text": {
+        "rms": 0.037034228444099426,
+        "temporal_variation_energy_fraction": 0.05011218786239624
+      },
+      "physical_to_native_text_rms": 0.01981931123193144,
+      "physical_native_cosine": 0.08841695636510849,
+      "physical_sampled_token_cosine": 0.9339656829833984,
+      "read_value_sampled_token_cosine": 0.7692709565162659,
+      "reference_mass": 0.9755648374557495,
+      "normalized_physical_attention_entropy": 0.8928738832473755
+    },
+    {
+      "case": "VP038",
+      "step": 1,
+      "sigma": 1.0,
+      "arm": "positive",
+      "layer": 2,
+      "physical": {
+        "rms": 0.06508473306894302,
+        "temporal_variation_energy_fraction": 0.016723573207855225
+      },
+      "native_text": {
+        "rms": 0.054297350347042084,
+        "temporal_variation_energy_fraction": 0.5340021848678589
+      },
+      "physical_to_native_text_rms": 1.1986723597551865,
+      "physical_native_cosine": 0.036677516996860504,
+      "physical_sampled_token_cosine": 0.9928768277168274,
+      "read_value_sampled_token_cosine": 0.9166329503059387,
+      "reference_mass": 0.5827080011367798,
+      "normalized_physical_attention_entropy": 0.879416823387146
+    },
+    {
+      "case": "VP038",
+      "step": 1,
+      "sigma": 1.0,
+      "arm": "positive",
+      "layer": 14,
+      "physical": {
+        "rms": 0.01795053482055664,
+        "temporal_variation_energy_fraction": 0.1418379545211792
+      },
+      "native_text": {
+        "rms": 0.05297822877764702,
+        "temporal_variation_energy_fraction": 0.7069995403289795
+      },
+      "physical_to_native_text_rms": 0.33882851946402687,
+      "physical_native_cosine": 0.021317975595593452,
+      "physical_sampled_token_cosine": 0.9557487964630127,
+      "read_value_sampled_token_cosine": 0.6414022445678711,
+      "reference_mass": 0.7884843349456787,
+      "normalized_physical_attention_entropy": 0.8365968465805054
+    },
+    {
+      "case": "VP038",
+      "step": 1,
+      "sigma": 1.0,
+      "arm": "positive",
+      "layer": 29,
+      "physical": {
+        "rms": 0.003960306290537119,
+        "temporal_variation_energy_fraction": 0.006912827491760254
+      },
+      "native_text": {
+        "rms": 0.08187170326709747,
+        "temporal_variation_energy_fraction": 0.05553114414215088
+      },
+      "physical_to_native_text_rms": 0.04837210089079316,
+      "physical_native_cosine": -0.0046708788722753525,
+      "physical_sampled_token_cosine": 0.9792075157165527,
+      "read_value_sampled_token_cosine": 0.9111189246177673,
+      "reference_mass": 0.86747145652771,
+      "normalized_physical_attention_entropy": 0.8988730907440186
+    },
+    {
+      "case": "VP038",
+      "step": 1,
+      "sigma": 1.0,
+      "arm": "negative",
+      "layer": 2,
+      "physical": {
+        "rms": 0.09361621737480164,
+        "temporal_variation_energy_fraction": 0.007878005504608154
+      },
+      "native_text": {
+        "rms": 0.06372477114200592,
+        "temporal_variation_energy_fraction": 0.5444537997245789
+      },
+      "physical_to_native_text_rms": 1.4690710644716927,
+      "physical_native_cosine": 0.0491219200193882,
+      "physical_sampled_token_cosine": 0.9975845217704773,
+      "read_value_sampled_token_cosine": 0.9534106850624084,
+      "reference_mass": 0.3941973149776459,
+      "normalized_physical_attention_entropy": 0.8671342730522156
+    },
+    {
+      "case": "VP038",
+      "step": 1,
+      "sigma": 1.0,
+      "arm": "negative",
+      "layer": 14,
+      "physical": {
+        "rms": 0.036961425095796585,
+        "temporal_variation_energy_fraction": 0.0681273341178894
+      },
+      "native_text": {
+        "rms": 0.026765508577227592,
+        "temporal_variation_energy_fraction": 0.5816854238510132
+      },
+      "physical_to_native_text_rms": 1.3809349069213577,
+      "physical_native_cosine": -0.00026823929511010647,
+      "physical_sampled_token_cosine": 0.9780359864234924,
+      "read_value_sampled_token_cosine": 0.8013933300971985,
+      "reference_mass": 0.6208263635635376,
+      "normalized_physical_attention_entropy": 0.8286913633346558
+    },
+    {
+      "case": "VP038",
+      "step": 1,
+      "sigma": 1.0,
+      "arm": "negative",
+      "layer": 29,
+      "physical": {
+        "rms": 0.009991619735956192,
+        "temporal_variation_energy_fraction": 0.004658699035644531
+      },
+      "native_text": {
+        "rms": 0.07815852761268616,
+        "temporal_variation_energy_fraction": 0.03292316198348999
+      },
+      "physical_to_native_text_rms": 0.1278378705580224,
+      "physical_native_cosine": -0.023260027170181274,
+      "physical_sampled_token_cosine": 0.9895294308662415,
+      "read_value_sampled_token_cosine": 0.9271517992019653,
+      "reference_mass": 0.7176124453544617,
+      "normalized_physical_attention_entropy": 0.8901761770248413
+    },
+    {
+      "case": "VP038",
+      "step": 15,
+      "sigma": 0.9278350472450256,
+      "arm": "positive",
+      "layer": 2,
+      "physical": {
+        "rms": 0.04561760276556015,
+        "temporal_variation_energy_fraction": 0.004316806793212891
+      },
+      "native_text": {
+        "rms": 0.024235950782895088,
+        "temporal_variation_energy_fraction": 0.5727953910827637
+      },
+      "physical_to_native_text_rms": 1.8822287260030048,
+      "physical_native_cosine": 0.04341437667608261,
+      "physical_sampled_token_cosine": 0.9976553916931152,
+      "read_value_sampled_token_cosine": 0.9548184871673584,
+      "reference_mass": 0.7782880663871765,
+      "normalized_physical_attention_entropy": 0.8921569585800171
+    },
+    {
+      "case": "VP038",
+      "step": 15,
+      "sigma": 0.9278350472450256,
+      "arm": "positive",
+      "layer": 14,
+      "physical": {
+        "rms": 0.008220648393034935,
+        "temporal_variation_energy_fraction": 0.1354132890701294
+      },
+      "native_text": {
+        "rms": 0.029461998492479324,
+        "temporal_variation_energy_fraction": 0.7194026112556458
+      },
+      "physical_to_native_text_rms": 0.27902548413792755,
+      "physical_native_cosine": 0.011587289161980152,
+      "physical_sampled_token_cosine": 0.9110584259033203,
+      "read_value_sampled_token_cosine": 0.5943868160247803,
+      "reference_mass": 0.8827316761016846,
+      "normalized_physical_attention_entropy": 0.8290572166442871
+    },
+    {
+      "case": "VP038",
+      "step": 15,
+      "sigma": 0.9278350472450256,
+      "arm": "positive",
+      "layer": 29,
+      "physical": {
+        "rms": 0.0031016634311527014,
+        "temporal_variation_energy_fraction": 0.050776660442352295
+      },
+      "native_text": {
+        "rms": 0.047018229961395264,
+        "temporal_variation_energy_fraction": 0.14489883184432983
+      },
+      "physical_to_native_text_rms": 0.06596725214239987,
+      "physical_native_cosine": -0.01140250638127327,
+      "physical_sampled_token_cosine": 0.9522274732589722,
+      "read_value_sampled_token_cosine": 0.8435752987861633,
+      "reference_mass": 0.9015485644340515,
+      "normalized_physical_attention_entropy": 0.8992295265197754
+    },
+    {
+      "case": "VP038",
+      "step": 15,
+      "sigma": 0.9278350472450256,
+      "arm": "negative",
+      "layer": 2,
+      "physical": {
+        "rms": 0.06729435175657272,
+        "temporal_variation_energy_fraction": 0.0046190619468688965
+      },
+      "native_text": {
+        "rms": 0.022846920415759087,
+        "temporal_variation_energy_fraction": 0.5613937377929688
+      },
+      "physical_to_native_text_rms": 2.9454451861334974,
+      "physical_native_cosine": 0.04632800072431564,
+      "physical_sampled_token_cosine": 0.9972737431526184,
+      "read_value_sampled_token_cosine": 0.9495549201965332,
+      "reference_mass": 0.5853786468505859,
+      "normalized_physical_attention_entropy": 0.8796997666358948
+    },
+    {
+      "case": "VP038",
+      "step": 15,
+      "sigma": 0.9278350472450256,
+      "arm": "negative",
+      "layer": 14,
+      "physical": {
+        "rms": 0.02444780245423317,
+        "temporal_variation_energy_fraction": 0.05561041831970215
+      },
+      "native_text": {
+        "rms": 0.023251958191394806,
+        "temporal_variation_energy_fraction": 0.5499938726425171
+      },
+      "physical_to_native_text_rms": 1.0514298302532183,
+      "physical_native_cosine": 0.008857451379299164,
+      "physical_sampled_token_cosine": 0.9693583250045776,
+      "read_value_sampled_token_cosine": 0.8463428020477295,
+      "reference_mass": 0.7121963500976562,
+      "normalized_physical_attention_entropy": 0.8310565948486328
+    },
+    {
+      "case": "VP038",
+      "step": 15,
+      "sigma": 0.9278350472450256,
+      "arm": "negative",
+      "layer": 29,
+      "physical": {
+        "rms": 0.009188653901219368,
+        "temporal_variation_energy_fraction": 0.0294073224067688
+      },
+      "native_text": {
+        "rms": 0.044269006699323654,
+        "temporal_variation_energy_fraction": 0.11202245950698853
+      },
+      "physical_to_native_text_rms": 0.20756404054034835,
+      "physical_native_cosine": -0.006558820139616728,
+      "physical_sampled_token_cosine": 0.9828270077705383,
+      "read_value_sampled_token_cosine": 0.9005265831947327,
+      "reference_mass": 0.75457763671875,
+      "normalized_physical_attention_entropy": 0.8873848915100098
+    },
+    {
+      "case": "VP038",
+      "step": 35,
+      "sigma": 0.7017543315887451,
+      "arm": "positive",
+      "layer": 2,
+      "physical": {
+        "rms": 0.03668692708015442,
+        "temporal_variation_energy_fraction": 0.003259003162384033
+      },
+      "native_text": {
+        "rms": 0.022301383316516876,
+        "temporal_variation_energy_fraction": 0.5405179858207703
+      },
+      "physical_to_native_text_rms": 1.6450516346662363,
+      "physical_native_cosine": 0.04843172803521156,
+      "physical_sampled_token_cosine": 0.9983078241348267,
+      "read_value_sampled_token_cosine": 0.967465877532959,
+      "reference_mass": 0.8002778887748718,
+      "normalized_physical_attention_entropy": 0.8923841118812561
+    },
+    {
+      "case": "VP038",
+      "step": 35,
+      "sigma": 0.7017543315887451,
+      "arm": "positive",
+      "layer": 14,
+      "physical": {
+        "rms": 0.0073585547506809235,
+        "temporal_variation_energy_fraction": 0.0989643931388855
+      },
+      "native_text": {
+        "rms": 0.024028044193983078,
+        "temporal_variation_energy_fraction": 0.6248961687088013
+      },
+      "physical_to_native_text_rms": 0.30624859398767035,
+      "physical_native_cosine": 0.009841122664511204,
+      "physical_sampled_token_cosine": 0.9209793210029602,
+      "read_value_sampled_token_cosine": 0.6838047504425049,
+      "reference_mass": 0.8817975521087646,
+      "normalized_physical_attention_entropy": 0.835839033126831
+    },
+    {
+      "case": "VP038",
+      "step": 35,
+      "sigma": 0.7017543315887451,
+      "arm": "positive",
+      "layer": 29,
+      "physical": {
+        "rms": 0.0027460972778499126,
+        "temporal_variation_energy_fraction": 0.09496861696243286
+      },
+      "native_text": {
+        "rms": 0.04591503366827965,
+        "temporal_variation_energy_fraction": 0.1870516538619995
+      },
+      "physical_to_native_text_rms": 0.05980823835804026,
+      "physical_native_cosine": -0.014116172678768635,
+      "physical_sampled_token_cosine": 0.9371876120567322,
+      "read_value_sampled_token_cosine": 0.7906174659729004,
+      "reference_mass": 0.9139090776443481,
+      "normalized_physical_attention_entropy": 0.8992279767990112
+    },
+    {
+      "case": "VP038",
+      "step": 35,
+      "sigma": 0.7017543315887451,
+      "arm": "negative",
+      "layer": 2,
+      "physical": {
+        "rms": 0.05461286008358002,
+        "temporal_variation_energy_fraction": 0.004908502101898193
+      },
+      "native_text": {
+        "rms": 0.020328134298324585,
+        "temporal_variation_energy_fraction": 0.5206853151321411
+      },
+      "physical_to_native_text_rms": 2.6865652933078628,
+      "physical_native_cosine": 0.04971858114004135,
+      "physical_sampled_token_cosine": 0.9971444606781006,
+      "read_value_sampled_token_cosine": 0.9586312770843506,
+      "reference_mass": 0.6176869869232178,
+      "normalized_physical_attention_entropy": 0.8843295574188232
+    },
+    {
+      "case": "VP038",
+      "step": 35,
+      "sigma": 0.7017543315887451,
+      "arm": "negative",
+      "layer": 14,
+      "physical": {
+        "rms": 0.02148616313934326,
+        "temporal_variation_energy_fraction": 0.036378681659698486
+      },
+      "native_text": {
+        "rms": 0.022031139582395554,
+        "temporal_variation_energy_fraction": 0.5092089176177979
+      },
+      "physical_to_native_text_rms": 0.9752633566223797,
+      "physical_native_cosine": 0.013656461611390114,
+      "physical_sampled_token_cosine": 0.9756649732589722,
+      "read_value_sampled_token_cosine": 0.8876102566719055,
+      "reference_mass": 0.7207242846488953,
+      "normalized_physical_attention_entropy": 0.8394015431404114
+    },
+    {
+      "case": "VP038",
+      "step": 35,
+      "sigma": 0.7017543315887451,
+      "arm": "negative",
+      "layer": 29,
+      "physical": {
+        "rms": 0.008735309354960918,
+        "temporal_variation_energy_fraction": 0.04339724779129028
+      },
+      "native_text": {
+        "rms": 0.0441352054476738,
+        "temporal_variation_energy_fraction": 0.13744580745697021
+      },
+      "physical_to_native_text_rms": 0.19792157454251352,
+      "physical_native_cosine": -0.011079766787588596,
+      "physical_sampled_token_cosine": 0.9812381863594055,
+      "read_value_sampled_token_cosine": 0.8889545798301697,
+      "reference_mass": 0.7687783241271973,
+      "normalized_physical_attention_entropy": 0.8885957598686218
+    },
+    {
+      "case": "VP038",
+      "step": 50,
+      "sigma": 0.09259258210659027,
+      "arm": "positive",
+      "layer": 2,
+      "physical": {
+        "rms": 0.021903693675994873,
+        "temporal_variation_energy_fraction": 0.01123422384262085
+      },
+      "native_text": {
+        "rms": 0.020259292796254158,
+        "temporal_variation_energy_fraction": 0.4897323250770569
+      },
+      "physical_to_native_text_rms": 1.0811677335570546,
+      "physical_native_cosine": 0.06502276659011841,
+      "physical_sampled_token_cosine": 0.9970558881759644,
+      "read_value_sampled_token_cosine": 0.969818651676178,
+      "reference_mass": 0.8170305490493774,
+      "normalized_physical_attention_entropy": 0.8954107165336609
+    },
+    {
+      "case": "VP038",
+      "step": 50,
+      "sigma": 0.09259258210659027,
+      "arm": "positive",
+      "layer": 14,
+      "physical": {
+        "rms": 0.005012925714254379,
+        "temporal_variation_energy_fraction": 0.08689248561859131
+      },
+      "native_text": {
+        "rms": 0.020743591710925102,
+        "temporal_variation_energy_fraction": 0.38296037912368774
+      },
+      "physical_to_native_text_rms": 0.24166141447983686,
+      "physical_native_cosine": 0.009991875849664211,
+      "physical_sampled_token_cosine": 0.9481761455535889,
+      "read_value_sampled_token_cosine": 0.7502488493919373,
+      "reference_mass": 0.9029483199119568,
+      "normalized_physical_attention_entropy": 0.8384320735931396
+    },
+    {
+      "case": "VP038",
+      "step": 50,
+      "sigma": 0.09259258210659027,
+      "arm": "positive",
+      "layer": 29,
+      "physical": {
+        "rms": 0.0023253425024449825,
+        "temporal_variation_energy_fraction": 0.21025770902633667
+      },
+      "native_text": {
+        "rms": 0.06459923088550568,
+        "temporal_variation_energy_fraction": 0.4295855760574341
+      },
+      "physical_to_native_text_rms": 0.03599644253607866,
+      "physical_native_cosine": -0.058828890323638916,
+      "physical_sampled_token_cosine": 0.9410578608512878,
+      "read_value_sampled_token_cosine": 0.823441743850708,
+      "reference_mass": 0.9272933006286621,
+      "normalized_physical_attention_entropy": 0.9034824967384338
+    },
+    {
+      "case": "VP038",
+      "step": 50,
+      "sigma": 0.09259258210659027,
+      "arm": "negative",
+      "layer": 2,
+      "physical": {
+        "rms": 0.03404856473207474,
+        "temporal_variation_energy_fraction": 0.012950658798217773
+      },
+      "native_text": {
+        "rms": 0.01801362633705139,
+        "temporal_variation_energy_fraction": 0.45234501361846924
+      },
+      "physical_to_native_text_rms": 1.8901560460395377,
+      "physical_native_cosine": 0.0530608594417572,
+      "physical_sampled_token_cosine": 0.9966373443603516,
+      "read_value_sampled_token_cosine": 0.963570773601532,
+      "reference_mass": 0.6239110827445984,
+      "normalized_physical_attention_entropy": 0.888075590133667
+    },
+    {
+      "case": "VP038",
+      "step": 50,
+      "sigma": 0.09259258210659027,
+      "arm": "negative",
+      "layer": 14,
+      "physical": {
+        "rms": 0.016323376446962357,
+        "temporal_variation_energy_fraction": 0.022703051567077637
+      },
+      "native_text": {
+        "rms": 0.021504541859030724,
+        "temporal_variation_energy_fraction": 0.37427330017089844
+      },
+      "physical_to_native_text_rms": 0.7590664592609043,
+      "physical_native_cosine": 0.014598289504647255,
+      "physical_sampled_token_cosine": 0.9778512120246887,
+      "read_value_sampled_token_cosine": 0.9197035431861877,
+      "reference_mass": 0.7509014010429382,
+      "normalized_physical_attention_entropy": 0.8507399559020996
+    },
+    {
+      "case": "VP038",
+      "step": 50,
+      "sigma": 0.09259258210659027,
+      "arm": "negative",
+      "layer": 29,
+      "physical": {
+        "rms": 0.007139332592487335,
+        "temporal_variation_energy_fraction": 0.08852672576904297
+      },
+      "native_text": {
+        "rms": 0.05866055563092232,
+        "temporal_variation_energy_fraction": 0.3272629976272583
+      },
+      "physical_to_native_text_rms": 0.12170584672614161,
+      "physical_native_cosine": -0.10607389360666275,
+      "physical_sampled_token_cosine": 0.9810989499092102,
+      "read_value_sampled_token_cosine": 0.8924001455307007,
+      "reference_mass": 0.7918714880943298,
+      "normalized_physical_attention_entropy": 0.8921106457710266
+    }
+  ],
+  "velocities": [
+    {
+      "case": "VP004",
+      "step": 1,
+      "sigma": 1.0,
+      "normal": {
+        "rms": 1.2684046030044556,
+        "temporal_variation_energy_fraction": 0.5848624110221863
+      },
+      "no_c": {
+        "rms": 1.2395519018173218,
+        "temporal_variation_energy_fraction": 0.6311312913894653
+      },
+      "physical_effect": {
+        "rms": 0.2116108536720276,
+        "temporal_variation_energy_fraction": 0.2426372766494751
+      },
+      "physical_effect_to_no_c_rms": 0.1707156002521515,
+      "semantic_guidance_change_cosine": -0.35385817289352417,
+      "full_native_guidance_cosine": 0.6249983310699463,
+      "semantic_guidance_change_to_native_rms": 0.9068702459335327,
+      "full_clean_first_distance": 0.4846402704715729,
+      "no_c_clean_first_distance": 0.48115622997283936,
+      "pretext_effect": {
+        "rms": 0.029716938734054565,
+        "temporal_variation_energy_fraction": 0.645309567451477
+      },
+      "time_effect": {
+        "rms": 0.04091045260429382,
+        "temporal_variation_energy_fraction": 0.48954880237579346
+      }
+    },
+    {
+      "case": "VP004",
+      "step": 15,
+      "sigma": 0.9278350472450256,
+      "normal": {
+        "rms": 1.3796318769454956,
+        "temporal_variation_energy_fraction": 0.4961286783218384
+      },
+      "no_c": {
+        "rms": 1.3790968656539917,
+        "temporal_variation_energy_fraction": 0.513351321220398
+      },
+      "physical_effect": {
+        "rms": 0.22120745480060577,
+        "temporal_variation_energy_fraction": 0.58521968126297
+      },
+      "physical_effect_to_no_c_rms": 0.16040022671222687,
+      "semantic_guidance_change_cosine": -0.9338158369064331,
+      "full_native_guidance_cosine": 0.180984765291214,
+      "semantic_guidance_change_to_native_rms": 1.0003490447998047,
+      "full_clean_first_distance": 0.5357921123504639,
+      "no_c_clean_first_distance": 0.5399554371833801,
+      "pretext_effect": {
+        "rms": 0.023779762908816338,
+        "temporal_variation_energy_fraction": 0.7989650964736938
+      },
+      "time_effect": {
+        "rms": 0.028691958636045456,
+        "temporal_variation_energy_fraction": 0.7042373418807983
+      }
+    },
+    {
+      "case": "VP004",
+      "step": 35,
+      "sigma": 0.7017543315887451,
+      "normal": {
+        "rms": 1.3814806938171387,
+        "temporal_variation_energy_fraction": 0.49648892879486084
+      },
+      "no_c": {
+        "rms": 1.3967705965042114,
+        "temporal_variation_energy_fraction": 0.49407958984375
+      },
+      "physical_effect": {
+        "rms": 0.07188600301742554,
+        "temporal_variation_energy_fraction": 0.37776726484298706
+      },
+      "physical_effect_to_no_c_rms": 0.05146586149930954,
+      "semantic_guidance_change_cosine": -0.4549179673194885,
+      "full_native_guidance_cosine": 0.5708524584770203,
+      "semantic_guidance_change_to_native_rms": 0.931030809879303,
+      "full_clean_first_distance": 0.5378473997116089,
+      "no_c_clean_first_distance": 0.5411570072174072,
+      "pretext_effect": {
+        "rms": 0.027424629777669907,
+        "temporal_variation_energy_fraction": 0.7676184177398682
+      },
+      "time_effect": {
+        "rms": 0.033469267189502716,
+        "temporal_variation_energy_fraction": 0.7325640916824341
+      }
+    },
+    {
+      "case": "VP004",
+      "step": 50,
+      "sigma": 0.09259258210659027,
+      "normal": {
+        "rms": 1.3377642631530762,
+        "temporal_variation_energy_fraction": 0.4888812303543091
+      },
+      "no_c": {
+        "rms": 1.349943995475769,
+        "temporal_variation_energy_fraction": 0.49598777294158936
+      },
+      "physical_effect": {
+        "rms": 0.1237628310918808,
+        "temporal_variation_energy_fraction": 0.696408748626709
+      },
+      "physical_effect_to_no_c_rms": 0.09167997539043427,
+      "semantic_guidance_change_cosine": -0.28576231002807617,
+      "full_native_guidance_cosine": 0.7352965474128723,
+      "semantic_guidance_change_to_native_rms": 0.7544680237770081,
+      "full_clean_first_distance": 0.5416092872619629,
+      "no_c_clean_first_distance": 0.5416581630706787,
+      "pretext_effect": {
+        "rms": 0.08437345921993256,
+        "temporal_variation_energy_fraction": 0.8529683947563171
+      },
+      "time_effect": {
+        "rms": 0.09631992876529694,
+        "temporal_variation_energy_fraction": 0.8275921940803528
+      }
+    },
+    {
+      "case": "VP025",
+      "step": 1,
+      "sigma": 1.0,
+      "normal": {
+        "rms": 1.7024621963500977,
+        "temporal_variation_energy_fraction": 0.3382527232170105
+      },
+      "no_c": {
+        "rms": 1.695831298828125,
+        "temporal_variation_energy_fraction": 0.33607804775238037
+      },
+      "physical_effect": {
+        "rms": 0.13913564383983612,
+        "temporal_variation_energy_fraction": 0.31994181871414185
+      },
+      "physical_effect_to_no_c_rms": 0.08204568922519684,
+      "semantic_guidance_change_cosine": -0.07620979845523834,
+      "full_native_guidance_cosine": 0.8967994451522827,
+      "semantic_guidance_change_to_native_rms": 0.47681084275245667,
+      "full_clean_first_distance": 0.7849745750427246,
+      "no_c_clean_first_distance": 0.7918555736541748,
+      "pretext_effect": {
+        "rms": 0.025728555396199226,
+        "temporal_variation_energy_fraction": 0.8286097049713135
+      },
+      "time_effect": {
+        "rms": 0.03649068996310234,
+        "temporal_variation_energy_fraction": 0.6340479254722595
+      }
+    },
+    {
+      "case": "VP025",
+      "step": 15,
+      "sigma": 0.9278350472450256,
+      "normal": {
+        "rms": 1.6595193147659302,
+        "temporal_variation_energy_fraction": 0.3826090693473816
+      },
+      "no_c": {
+        "rms": 1.6679424047470093,
+        "temporal_variation_energy_fraction": 0.37964433431625366
+      },
+      "physical_effect": {
+        "rms": 0.1601077914237976,
+        "temporal_variation_energy_fraction": 0.6948469877243042
+      },
+      "physical_effect_to_no_c_rms": 0.09599120169878006,
+      "semantic_guidance_change_cosine": -0.8223401308059692,
+      "full_native_guidance_cosine": 0.43092477321624756,
+      "semantic_guidance_change_to_native_rms": 0.9140286445617676,
+      "full_clean_first_distance": 0.7353380918502808,
+      "no_c_clean_first_distance": 0.7528766989707947,
+      "pretext_effect": {
+        "rms": 0.02651563473045826,
+        "temporal_variation_energy_fraction": 0.912096381187439
+      },
+      "time_effect": {
+        "rms": 0.031302668154239655,
+        "temporal_variation_energy_fraction": 0.8596095442771912
+      }
+    },
+    {
+      "case": "VP025",
+      "step": 35,
+      "sigma": 0.7017543315887451,
+      "normal": {
+        "rms": 1.639474868774414,
+        "temporal_variation_energy_fraction": 0.3903462290763855
+      },
+      "no_c": {
+        "rms": 1.6426385641098022,
+        "temporal_variation_energy_fraction": 0.3861016631126404
+      },
+      "physical_effect": {
+        "rms": 0.06656534969806671,
+        "temporal_variation_energy_fraction": 0.7020473480224609
+      },
+      "physical_effect_to_no_c_rms": 0.040523432195186615,
+      "semantic_guidance_change_cosine": -0.4839766025543213,
+      "full_native_guidance_cosine": 0.5733580589294434,
+      "semantic_guidance_change_to_native_rms": 0.9121030569076538,
+      "full_clean_first_distance": 0.7211015820503235,
+      "no_c_clean_first_distance": 0.724543571472168,
+      "pretext_effect": {
+        "rms": 0.029474491253495216,
+        "temporal_variation_energy_fraction": 0.8995721340179443
+      },
+      "time_effect": {
+        "rms": 0.0338401161134243,
+        "temporal_variation_energy_fraction": 0.8551831841468811
+      }
+    },
+    {
+      "case": "VP025",
+      "step": 50,
+      "sigma": 0.09259258210659027,
+      "normal": {
+        "rms": 1.555162787437439,
+        "temporal_variation_energy_fraction": 0.34962618350982666
+      },
+      "no_c": {
+        "rms": 1.5567131042480469,
+        "temporal_variation_energy_fraction": 0.3462125062942505
+      },
+      "physical_effect": {
+        "rms": 0.10272747278213501,
+        "temporal_variation_energy_fraction": 0.7152279019355774
+      },
+      "physical_effect_to_no_c_rms": 0.06598998606204987,
+      "semantic_guidance_change_cosine": -0.25349506735801697,
+      "full_native_guidance_cosine": 0.7854704856872559,
+      "semantic_guidance_change_to_native_rms": 0.6751365065574646,
+      "full_clean_first_distance": 0.7217200398445129,
+      "no_c_clean_first_distance": 0.7218310832977295,
+      "pretext_effect": {
+        "rms": 0.06598452478647232,
+        "temporal_variation_energy_fraction": 0.8738006353378296
+      },
+      "time_effect": {
+        "rms": 0.07243457436561584,
+        "temporal_variation_energy_fraction": 0.8364307284355164
+      }
+    },
+    {
+      "case": "VP027",
+      "step": 1,
+      "sigma": 1.0,
+      "normal": {
+        "rms": 1.3581792116165161,
+        "temporal_variation_energy_fraction": 0.5427983403205872
+      },
+      "no_c": {
+        "rms": 1.3636449575424194,
+        "temporal_variation_energy_fraction": 0.5413200259208679
+      },
+      "physical_effect": {
+        "rms": 0.14749027788639069,
+        "temporal_variation_energy_fraction": 0.3713686466217041
+      },
+      "physical_effect_to_no_c_rms": 0.10815885663032532,
+      "semantic_guidance_change_cosine": -0.40352296829223633,
+      "full_native_guidance_cosine": 0.9431031942367554,
+      "semantic_guidance_change_to_native_rms": 0.3334733545780182,
+      "full_clean_first_distance": 0.5935699343681335,
+      "no_c_clean_first_distance": 0.6238884329795837,
+      "pretext_effect": {
+        "rms": 0.026173507794737816,
+        "temporal_variation_energy_fraction": 0.7113867402076721
+      },
+      "time_effect": {
+        "rms": 0.03475883603096008,
+        "temporal_variation_energy_fraction": 0.6359347105026245
+      }
+    },
+    {
+      "case": "VP027",
+      "step": 15,
+      "sigma": 0.9278350472450256,
+      "normal": {
+        "rms": 1.4299932718276978,
+        "temporal_variation_energy_fraction": 0.5072335004806519
+      },
+      "no_c": {
+        "rms": 1.4445867538452148,
+        "temporal_variation_energy_fraction": 0.500393271446228
+      },
+      "physical_effect": {
+        "rms": 0.12328432500362396,
+        "temporal_variation_energy_fraction": 0.6960209608078003
+      },
+      "physical_effect_to_no_c_rms": 0.08534228056669235,
+      "semantic_guidance_change_cosine": -0.6133906841278076,
+      "full_native_guidance_cosine": 0.6408984661102295,
+      "semantic_guidance_change_to_native_rms": 0.7856783866882324,
+      "full_clean_first_distance": 0.6382507085800171,
+      "no_c_clean_first_distance": 0.6542580127716064,
+      "pretext_effect": {
+        "rms": 0.02638048306107521,
+        "temporal_variation_energy_fraction": 0.8520301580429077
+      },
+      "time_effect": {
+        "rms": 0.033351343125104904,
+        "temporal_variation_energy_fraction": 0.804186224937439
+      }
+    },
+    {
+      "case": "VP027",
+      "step": 35,
+      "sigma": 0.7017543315887451,
+      "normal": {
+        "rms": 1.4264553785324097,
+        "temporal_variation_energy_fraction": 0.5062909126281738
+      },
+      "no_c": {
+        "rms": 1.4324805736541748,
+        "temporal_variation_energy_fraction": 0.5014851689338684
+      },
+      "physical_effect": {
+        "rms": 0.07898064702749252,
+        "temporal_variation_energy_fraction": 0.6904292106628418
+      },
+      "physical_effect_to_no_c_rms": 0.0551355816423893,
+      "semantic_guidance_change_cosine": -0.4352650046348572,
+      "full_native_guidance_cosine": 0.7460493445396423,
+      "semantic_guidance_change_to_native_rms": 0.6925477981567383,
+      "full_clean_first_distance": 0.6459119915962219,
+      "no_c_clean_first_distance": 0.6502564549446106,
+      "pretext_effect": {
+        "rms": 0.030160954222083092,
+        "temporal_variation_energy_fraction": 0.8419930338859558
+      },
+      "time_effect": {
+        "rms": 0.035156432539224625,
+        "temporal_variation_energy_fraction": 0.8153136968612671
+      }
+    },
+    {
+      "case": "VP027",
+      "step": 50,
+      "sigma": 0.09259258210659027,
+      "normal": {
+        "rms": 1.3040273189544678,
+        "temporal_variation_energy_fraction": 0.4391353726387024
+      },
+      "no_c": {
+        "rms": 1.2983711957931519,
+        "temporal_variation_energy_fraction": 0.43136805295944214
+      },
+      "physical_effect": {
+        "rms": 0.10666308552026749,
+        "temporal_variation_energy_fraction": 0.81258624792099
+      },
+      "physical_effect_to_no_c_rms": 0.08215145766735077,
+      "semantic_guidance_change_cosine": -0.324748694896698,
+      "full_native_guidance_cosine": 0.805803120136261,
+      "semantic_guidance_change_to_native_rms": 0.6204515099525452,
+      "full_clean_first_distance": 0.6583231091499329,
+      "no_c_clean_first_distance": 0.6586340069770813,
+      "pretext_effect": {
+        "rms": 0.07440484315156937,
+        "temporal_variation_energy_fraction": 0.8809409141540527
+      },
+      "time_effect": {
+        "rms": 0.08212044835090637,
+        "temporal_variation_energy_fraction": 0.8580254316329956
+      }
+    },
+    {
+      "case": "VP038",
+      "step": 1,
+      "sigma": 1.0,
+      "normal": {
+        "rms": 1.9477910995483398,
+        "temporal_variation_energy_fraction": 0.27329927682876587
+      },
+      "no_c": {
+        "rms": 2.1867034435272217,
+        "temporal_variation_energy_fraction": 0.2143237590789795
+      },
+      "physical_effect": {
+        "rms": 0.4271996021270752,
+        "temporal_variation_energy_fraction": 0.195814311504364
+      },
+      "physical_effect_to_no_c_rms": 0.195362389087677,
+      "semantic_guidance_change_cosine": -0.6655746698379517,
+      "full_native_guidance_cosine": 0.7426512241363525,
+      "semantic_guidance_change_to_native_rms": 0.6696886420249939,
+      "full_clean_first_distance": 0.8783019781112671,
+      "no_c_clean_first_distance": 1.1261160373687744,
+      "pretext_effect": {
+        "rms": 0.037006162106990814,
+        "temporal_variation_energy_fraction": 0.818112313747406
+      },
+      "time_effect": {
+        "rms": 0.04856349155306816,
+        "temporal_variation_energy_fraction": 0.6781606078147888
+      }
+    },
+    {
+      "case": "VP038",
+      "step": 15,
+      "sigma": 0.9278350472450256,
+      "normal": {
+        "rms": 1.874550461769104,
+        "temporal_variation_energy_fraction": 0.37362122535705566
+      },
+      "no_c": {
+        "rms": 1.8346740007400513,
+        "temporal_variation_energy_fraction": 0.36968177556991577
+      },
+      "physical_effect": {
+        "rms": 0.2562873661518097,
+        "temporal_variation_energy_fraction": 0.8408160209655762
+      },
+      "physical_effect_to_no_c_rms": 0.13969095051288605,
+      "semantic_guidance_change_cosine": -0.29092487692832947,
+      "full_native_guidance_cosine": 0.4768761396408081,
+      "semantic_guidance_change_to_native_rms": 1.2345720529556274,
+      "full_clean_first_distance": 0.8938475847244263,
+      "no_c_clean_first_distance": 0.8523656129837036,
+      "pretext_effect": {
+        "rms": 0.04940178617835045,
+        "temporal_variation_energy_fraction": 0.9232496023178101
+      },
+      "time_effect": {
+        "rms": 0.07345879822969437,
+        "temporal_variation_energy_fraction": 0.8778436779975891
+      }
+    },
+    {
+      "case": "VP038",
+      "step": 35,
+      "sigma": 0.7017543315887451,
+      "normal": {
+        "rms": 1.8719148635864258,
+        "temporal_variation_energy_fraction": 0.3691861033439636
+      },
+      "no_c": {
+        "rms": 1.8359060287475586,
+        "temporal_variation_energy_fraction": 0.37124472856521606
+      },
+      "physical_effect": {
+        "rms": 0.17992068827152252,
+        "temporal_variation_energy_fraction": 0.7455346584320068
+      },
+      "physical_effect_to_no_c_rms": 0.09800103306770325,
+      "semantic_guidance_change_cosine": -0.2831341028213501,
+      "full_native_guidance_cosine": 0.4701826274394989,
+      "semantic_guidance_change_to_native_rms": 1.2593228816986084,
+      "full_clean_first_distance": 0.9041880965232849,
+      "no_c_clean_first_distance": 0.8770968317985535,
+      "pretext_effect": {
+        "rms": 0.08177995681762695,
+        "temporal_variation_energy_fraction": 0.925993025302887
+      },
+      "time_effect": {
+        "rms": 0.09008350968360901,
+        "temporal_variation_energy_fraction": 0.8985145092010498
+      }
+    },
+    {
+      "case": "VP038",
+      "step": 50,
+      "sigma": 0.09259258210659027,
+      "normal": {
+        "rms": 1.7414277791976929,
+        "temporal_variation_energy_fraction": 0.2719046473503113
+      },
+      "no_c": {
+        "rms": 1.6939681768417358,
+        "temporal_variation_energy_fraction": 0.2828662395477295
+      },
+      "physical_effect": {
+        "rms": 0.2132822871208191,
+        "temporal_variation_energy_fraction": 0.7243582010269165
+      },
+      "physical_effect_to_no_c_rms": 0.12590689957141876,
+      "semantic_guidance_change_cosine": -0.2156890630722046,
+      "full_native_guidance_cosine": 0.6119791269302368,
+      "semantic_guidance_change_to_native_rms": 1.0295729637145996,
+      "full_clean_first_distance": 0.9315525889396667,
+      "no_c_clean_first_distance": 0.9267986416816711,
+      "pretext_effect": {
+        "rms": 0.10630743205547333,
+        "temporal_variation_energy_fraction": 0.9310429692268372
+      },
+      "time_effect": {
+        "rms": 0.1359986960887909,
+        "temporal_variation_energy_fraction": 0.8899377584457397
+      }
+    }
+  ]
+}

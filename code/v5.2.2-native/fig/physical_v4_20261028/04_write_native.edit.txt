@@ -1,0 +1,5 @@
+Edit ONLY panel (c) of the supplied diagram. All other panels, dimensions, footer, title and style must remain unchanged.
+Two mandatory technical corrections:
+1. The original Wq operator makes only QUERY, not three QKV tensors. Replace its incorrect line “3072→3×24×128” with EXACT “3072→3072 = 24×128”. Keep “原生 Wq＋norm＋split”.
+2. Correct the two-input text attention dataflow. Main query row: H_s -> norm3 -> X -> Wq+norm+split -> q_text [B,24,8190,128]. Then q_text MUST connect into the TOP input of the 原生文本 attention box. It must NOT connect into the blue result tensor after attention. Remove any bypass arrow from the Wq operator directly to attention. Lower key/value row: E -> native Wk/Wv + K norm -> k_text/v_text [B,24,512,128] -> LEFT input of 原生文本 attention. The sole output of attention goes right to [B,24,8190,128], then merge heads+native Wo, then Y_text.
+If needed redraw panel(c) layout with q_text directly above attention so its arrow can point vertically downward into the attention operator. Do not move other panels. No query-to-attention-output bypass, no extra arrows. Output corrected diagram only.

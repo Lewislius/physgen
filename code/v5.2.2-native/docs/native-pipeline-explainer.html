@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="V5.2.2 Native v8 的离线交互说明：条件 C、Wan 状态依赖注入、三阶段训练和 verifier 反馈。">
+  <title>V5.2.2 Native pipeline 交互讲解</title>
+  <style>
+    :root { color-scheme: light dark; --bg:#f7f8fb; --surface:#fff; --ink:#182331; --muted:#526174; --line:#d7dfe9; --accent:#1858ac; --soft:#e9f1fc; --warm:#85610f; --warm-bg:#fcf4dc; --mono:ui-monospace,SFMono-Regular,Consolas,monospace; }
+    @media (prefers-color-scheme:dark) { :root { --bg:#121820; --surface:#1b2531; --ink:#e5edf7; --muted:#adbdcf; --line:#3b4a5c; --accent:#9ac7ff; --soft:#223b58; --warm:#f0ce7d; --warm-bg:#342d1c; } }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:var(--bg); font:16px/1.8 system-ui,-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; }
+    main,header,footer { max-width:1120px; margin:auto; padding:0 32px; }
+    header { padding-top:52px; padding-bottom:30px; }
+    .eyebrow { color:var(--accent); font:600 13px/1.6 var(--mono); letter-spacing:.06em; }
+    h1 { font-size:clamp(28px,5vw,46px); line-height:1.25; letter-spacing:-.035em; margin:14px 0 22px; }
+    h2 { font-size:25px; line-height:1.4; margin:0 0 16px; }
+    h3 { font-size:19px; margin:0 0 12px; line-height:1.5; }
+    p { margin:0 0 16px; }
+    a { color:var(--accent); text-underline-offset:4px; overflow-wrap:anywhere; }
+    strong { font-weight:650; }
+    code { font-family:var(--mono); font-size:.9em; overflow-wrap:anywhere; }
+    .lead { max-width:800px; font-size:20px; line-height:1.8; }
+    .meta,.small { font-size:14px; color:var(--muted); }
+    nav { display:flex; gap:12px 24px; flex-wrap:wrap; margin-top:24px; }
+    section { padding:38px 0; border-top:1px solid var(--line); scroll-margin-top:16px; }
+    button { font:inherit; cursor:pointer; color:var(--ink); background:var(--surface); border:1px solid var(--line); border-radius:9px; min-height:44px; padding:9px 15px; touch-action:manipulation; }
+    button:hover { border-color:var(--accent); }
+    button[aria-pressed="true"] { background:var(--accent); color:var(--bg); border-color:var(--accent); }
+    button:disabled { opacity:.5; cursor:default; }
+    :focus-visible { outline:3px solid var(--accent); outline-offset:4px; }
+    .modes,.stage-controls,.actions { display:flex; flex-wrap:wrap; gap:10px; }
+    .modes { margin:22px 0 16px; }
+    .mode-caption { min-height:58px; color:var(--muted); }
+    .flow { list-style:none; padding:0; margin:24px 0; display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:24px; }
+    .flow li { position:relative; min-width:0; }
+    .flow li:not(:last-child)::after { content:'→'; position:absolute; right:-21px; top:43%; color:var(--muted); }
+    .node { display:flex; flex-direction:column; align-items:flex-start; text-align:left; width:100%; min-height:118px; padding:15px 13px; gap:8px; }
+    .node-number { font:500 13px var(--mono); opacity:.8; }
+    .node-label { font-size:15px; font-weight:600; overflow-wrap:anywhere; }
+    .branch { padding:12px 16px; background:var(--warm-bg); color:var(--warm); border-radius:7px; margin-bottom:16px; font-size:14px; }
+    .feedback-line { color:var(--accent); border-top:2px dashed var(--accent); padding-top:10px; font-size:14px; margin:0 0 20px; }
+    .detail { background:var(--surface); border-radius:12px; padding:26px; border:1px solid var(--line); }
+    .detail-header { display:flex; gap:15px; align-items:baseline; justify-content:space-between; flex-wrap:wrap; }
+    .step-count { color:var(--accent); font:500 14px var(--mono); white-space:nowrap; }
+    dl { display:grid; grid-template-columns:70px 1fr; gap:12px; margin:20px 0; }
+    dt { color:var(--muted); }
+    dd { margin:0; min-width:0; overflow-wrap:anywhere; }
+    .note { border-left:3px solid var(--accent); padding-left:16px; margin:18px 0; }
+    .actions { justify-content:space-between; margin-top:22px; }
+    .actions button { min-width:105px; }
+    .two-col { display:grid; grid-template-columns:1fr 1fr; gap:35px; }
+    .clocks { display:grid; grid-template-columns:repeat(3,1fr); gap:25px; margin-top:22px; }
+    .clock { padding-top:14px; border-top:3px solid var(--line); }
+    .clock .number { font-size:34px; line-height:1.3; font-weight:600; }
+    .clock .unit { color:var(--muted); font-size:14px; margin-left:8px; }
+    .clock h3 { margin-top:14px; }
+    .stage-controls { margin:20px 0; }
+    .objectives { font-family:var(--mono); font-size:15px; background:var(--soft); padding:16px; border-radius:8px; overflow-wrap:anywhere; }
+    table { width:100%; border-collapse:collapse; margin:20px 0; font-size:15px; }
+    th,td { padding:12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; overflow-wrap:anywhere; }
+    th { font-weight:600; color:var(--muted); }
+    .learn { color:var(--accent); font-weight:600; }
+    .stage-table th:first-child { width:37%; }
+    details { border-bottom:1px solid var(--line); padding:18px 0; }
+    summary { cursor:pointer; font-weight:600; padding:3px 0; }
+    details p { margin:14px 0 0; max-width:900px; }
+    .source-list { padding-left:22px; }
+    .source-list li { margin-bottom:10px; overflow-wrap:anywhere; }
+    .example { background:var(--soft); border-radius:10px; padding:24px; }
+    .example ol { padding-left:24px; margin-bottom:0; }
+    footer { padding-top:22px; padding-bottom:42px; color:var(--muted); font-size:14px; }
+    [hidden] { display:none !important; }
+    @media (max-width:760px) {
+      main,header,footer { padding-left:20px; padding-right:20px; }
+      header { padding-top:30px; }
+      .flow { grid-template-columns:1fr; gap:23px; }
+      .flow li:not(:last-child)::after { content:'↓'; right:auto; left:22px; top:auto; bottom:-24px; }
+      .node { min-height:56px; flex-direction:row; align-items:center; gap:16px; }
+      .two-col,.clocks { grid-template-columns:1fr; gap:22px; }
+      .clock { display:grid; grid-template-columns:100px 1fr; gap:6px 16px; }
+      .clock h3 { margin:0; }
+      .clock p { grid-column:2; margin:0; }
+      .mode-caption { min-height:0; }
+      .detail { padding:19px; }
+      section { padding:30px 0; }
+      .lead { font-size:18px; }
+      th,td { padding:10px 6px; }
+    }
+    @media (max-width:390px) {
+      main,header,footer { padding-left:15px; padding-right:15px; }
+      .modes button,.stage-controls button { flex:1 1 100%; }
+      dl { grid-template-columns:1fr; gap:5px; }
+      dd { margin-bottom:10px; }
+      .clock { grid-template-columns:85px 1fr; }
+    }
+    @media print {
+      :root { --bg:white; --surface:white; --ink:#111; --muted:#333; --line:#bbb; --accent:#163e75; --soft:#f3f5f8; --warm:#543e10; --warm-bg:#fff; }
+      body { font-size:11pt; }
+      header { padding-top:0; }
+      nav,.modes,.actions,.stage-controls { display:none; }
+      section { break-inside:avoid; }
+      .detail { border:0; padding:0; }
+      .flow { display:block; }
+      .flow li { display:inline-block; width:18%; margin-right:1%; vertical-align:top; }
+      .node { min-height:90px; }
+      footer::after { content:'完整可打印内容请使用配套 Markdown 文档。'; display:block; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="eyebrow">PHYSGEN / V5.2.2 NATIVE / v8</div>
+    <h1>条件怎样进入视频，<br>视频怎样反馈给条件</h1>
+    <p class="lead">Qwen 整理条件 <strong>C</strong>。Wan 读取 C，生成随时间变化的画面。训练反馈帮助模型学习：哪些条件该被使用，以及怎样使用。</p>
+    <p class="meta">代码核对：2026-10-26 · <code>v522_native_causal_response_v8</code><br>本页说明已实现的 pipeline；“完全冻结 Qwen”仍是另一份设计建议。</p>
+    <nav aria-label="文档导航">
+      <a href="#pipeline">看流程</a><a href="#stages">看训练分工</a><a href="#clocks">分清帧与步</a><a href="#evidence">看证据边界</a><a href="native-pipeline-guide.md">完整介绍文档</a>
+    </nav>
+  </header>
+  <main>
+    <section id="pipeline" aria-labelledby="pipeline-heading">
+      <h2 id="pipeline-heading">沿着一条路径，看清输入和输出</h2>
+      <p>选择计算场景，再点击流程中的模块。箭头表示计算顺序；反馈线表示梯度返回的方向。</p>
+      <div class="modes" role="group" aria-label="选择计算场景">
+        <button type="button" data-mode="inference" aria-pressed="true">普通推理</button>
+        <button type="button" data-mode="training" aria-pressed="false">训练中的反馈</button>
+        <button type="button" data-mode="online" aria-pressed="false">可选在线 C 修正</button>
+      </div>
+      <p class="mode-caption" id="mode-caption">从首帧和要求出发，完成一条 50 步去噪轨迹。默认不加载 verifier。C 在这条轨迹中保持固定。</p>
+      <div class="branch" id="branch" hidden></div>
+      <ol class="flow" id="flow" aria-label="普通推理计算顺序">
+        <li><button class="node" data-step="0" type="button" aria-pressed="true"><span class="node-number">01</span><span class="node-label">合法初始输入</span></button></li>
+        <li><button class="node" data-step="1" type="button" aria-pressed="false"><span class="node-number">02</span><span class="node-label">Qwen 整理条件</span></button></li>
+        <li><button class="node" data-step="2" type="button" aria-pressed="false"><span class="node-number">03</span><span class="node-label">C 与状态依赖注入</span></button></li>
+        <li><button class="node" data-step="3" type="button" aria-pressed="false"><span class="node-number">04</span><span class="node-label">Wan 反复去噪</span></button></li>
+        <li><button class="node" data-step="4" type="button" aria-pressed="false"><span class="node-number">05</span><span class="node-label">解码与保存</span></button></li>
+      </ol>
+      <p class="feedback-line" id="feedback-line" hidden></p>
+      <article class="detail" aria-live="polite" aria-atomic="true" aria-labelledby="detail-title">
+        <div class="detail-header"><h3 id="detail-title">先分清看见的事实和想要的未来</h3><span class="step-count" id="step-count">01 / 05</span></div>
+        <p id="detail-text">首帧给出当前可见事实。caption 和条款给出生成要求。时长限定这段视频覆盖的时间尺度。</p>
+        <dl>
+          <dt>输入</dt><dd id="detail-input">首帧 latent、caption、合法条款、时间位置与有效区域；另有原生 T5 文本条件。</dd>
+          <dt>输出</dt><dd id="detail-output">供 Qwen 和 Wan 使用的初始条件，不含参考未来。</dd>
+        </dl>
+        <p class="note" id="detail-note">条款必须来自首帧和文本。输入加载检查 caption_and_first_image 标记。</p>
+        <a id="detail-source" href="../physgen_native/data.py">代码：data.py · VideoDataset</a>
+      </article>
+      <div class="actions"><button id="previous" type="button" disabled>← 上一步</button><button id="next" type="button">下一步 →</button></div>
+      <noscript><p class="note">此浏览器未启用 JavaScript。下面的固定说明仍可阅读；完整流程请打开配套 Markdown 文档。</p></noscript>
+    </section>
+
+    <section id="roles">
+      <h2>Native 的意思是，演化状态留在 Wan 内部</h2>
+      <div class="two-col">
+        <div>
+          <h3>C 提供条件，H 承担当前状态</h3>
+          <p>C 是连续向量，可以理解为生成器随时读取的条件笔记。它不是写好的未来帧，也不是人工规则表。</p>
+          <p>H 是 Wan 当前的时空隐藏状态。同一组 C，会被不同时间、位置、网络深度和噪声水平下的 H 读取。接口让 C 选择当前状态的更新方式。</p>
+          <p class="small">每 3 个 Wan block 注入一次；仅更新未来位置。系统没有独立的 M／S 未来状态展开。</p>
+        </div>
+        <div class="example">
+          <h3>用液体混合理解分工</h3>
+          <p class="small">概念示例，不是实测结果。</p>
+          <ol>
+            <li>首帧显示容器和液体；文本要求继续混合。</li>
+            <li>Qwen 整理接触、持续作用和未知条件。</li>
+            <li>Wan 生成形态与颜色分布的变化。</li>
+            <li>训练检查过程是否持续、是否符合要求。</li>
+          </ol>
+        </div>
+      </div>
+      <details>
+        <summary>展开注入公式</summary>
+        <p><code>m = Attention(H, C)</code></p>
+        <p><code>ΔH = gate(H, σ, a) × W_o[SiLU(W_h Norm(H)) ⊙ W_c m]</code></p>
+        <p><code>H_new = H + condition_strength × ΔH</code></p>
+        <p>m 是当前状态从 C 读取的信息。a 是连续局部可见变化强度，σ 是噪声水平。a 进入软门控，低强度不会关闭生成或复制首帧。<a href="../physgen_native/conditioning.py">对应实现</a>。</p>
+      </details>
+    </section>
+
+    <section id="stages" aria-labelledby="stage-heading">
+      <h2 id="stage-heading">三个训练阶段，逐步建立条件和反馈的作用</h2>
+      <p>3,857 条既有缓存：3,666 条训练，191 条验证。一次优化器更新累积 8 个微批。下面的 400／460／400 都是更新次数。</p>
+      <div class="stage-controls" role="group" aria-label="选择训练阶段">
+        <button type="button" data-stage="interface" aria-pressed="true">1 · interface · 400 次</button>
+        <button type="button" data-stage="calibration" aria-pressed="false">2 · calibration · 460 次</button>
+        <button type="button" data-stage="joint" aria-pressed="false">3 · joint · 400 次</button>
+      </div>
+      <div aria-live="polite" aria-atomic="true">
+        <h3 id="stage-title">先让 C 和接口参与生成</h3>
+        <p id="stage-description">冻结 Wan，学习 Qwen LoRA、C 映射、注入接口和连续强度头。训练使用实际生成的视频估计。</p>
+        <p class="objectives" id="objectives">FM × 1 + 过程 × 0.1 + 强度 × 0.1</p>
+        <table class="stage-table"><thead><tr><th scope="col">参数</th><th scope="col">当前阶段的职责</th></tr></thead><tbody id="parameter-rows">
+          <tr><th scope="row">Qwen LoRA 与 C 映射</th><td class="learn">更新</td></tr>
+          <tr><th scope="row">注入注意力与状态算子</th><td class="learn">更新</td></tr>
+          <tr><th scope="row">连续强度预测头</th><td class="learn">更新</td></tr>
+          <tr><th scope="row">Wan LoRA</th><td>固定</td></tr>
+          <tr><th scope="row">verifier 评分头</th><td>不训练</td></tr>
+          <tr><th scope="row">基础模型、VAE 与 V-JEPA</th><td>固定</td></tr>
+        </tbody></table>
+        <p class="note" id="stage-note">常规生成损失只计算正确条件分支。非整体文本丢弃的微批中，有 25% 概率只移除原生 T5 文本；C 的 caption 保留，条款仍受独立 dropout 控制。</p>
+      </div>
+      <p class="small">来源：<a href="../configs/native_causal_response_wisa3857.yaml">v8 配置</a> · <a href="../physgen_native/operator_training.py">参数与目标归属</a> · <a href="../train/train.py">反馈执行频率</a></p>
+    </section>
+
+    <section id="clocks">
+      <h2>三种“时间”，数的东西不同</h2>
+      <div class="clocks">
+        <div class="clock"><div><span class="number">81</span><span class="unit">帧</span></div><h3>视频时间</h3><p>最终片段中的画面位置。VAE 把它压缩为 21 个 latent 时间位置；实际秒数由样本时间戳决定。</p></div>
+        <div class="clock"><div><span class="number">50</span><span class="unit">步</span></div><h3>去噪时间</h3><p>普通推理从噪声得到视频的更新次数。每一步处理整段时空状态；训练反馈另用 4 步补全。</p></div>
+        <div class="clock"><div><span class="number">2</span><span class="unit">轮</span></div><h3>条件内部更新</h3><p>复用 Qwen 后 4 层整理条件的次数。通常在 Wan 去噪开始前完成，不是逐帧运行 Qwen。</p></div>
+      </div>
+      <p class="note">FM velocity 是去噪路径的导数。RGB 变化强度是可见变化的弱监督。二者都不能直接叫作物体运动速度。</p>
+    </section>
+
+    <section id="feedback-explained">
+      <h2>反馈能到达 C，还需要方向有用</h2>
+      <div class="two-col">
+        <div><h3>过程损失看怎样变化</h3><p>覆盖全部 81 帧，在 1／2／4／8／16／32／64 帧跨度上比较有符号 RGB 变化。每个时间对独立归一化，保留后段的贡献。</p><p class="small">常规训练从含参考未来的加噪 latent 得到视频估计。这属于训练监督。</p></div>
+        <div><h3>verifier 看条件与过程是否匹配</h3><p>先用参考视频、生成补全和过程缺失视图训练评分头；再固定评分头，通过生成视频把反馈传回 C。</p><p class="small">冻结的 V-JEPA 读取覆盖首尾的 21 个双帧位置，同一上下文处理。它不是逐帧 RGB 过程损失。</p></div>
+      </div>
+      <details><summary>v8 为什么强调“响应”</summary><p>候选证据使用 <code>tanh(f_t − f_0)</code>，再扣除同一时间对的零响应读出。这个结构减少时间恒定的加性特征偏移带来的捷径。它不能保证任意冻结 RGB 视频都有恒定特征，也不把静止自动判为错误。<a href="../physgen_native/conditional_verifier.py">评分实现</a>。</p></details>
+      <details><summary>为什么要固定评分条件</summary><p>生成 C 可以接受训练或在线修正；verifier 的评分条件来自合法初始输入的固定编码。这样，优化的是候选视频对原始要求的符合程度，不是同时改动“答案”和“判题条件”。</p></details>
+      <details><summary>为什么固定 Wan 仍然要经过它反传</summary><p>只有经过“C 如何改变视频”这条计算关系，反馈才能到达 C。联合阶段 verifier 项不更新 Wan 和注入接口参数，但保留它们对 C 的导数。FM 和过程目标仍更新生成路径的相应参数。</p></details>
+      <details><summary>4 步训练反馈和在线修正有什么区别</summary><p>训练反馈从参考 latent 与噪声混合的状态开始，完整经过 4 步，对 C 映射和 Qwen LoRA 训练。在线修正使用正在生成的视频的一步干净估计，固定所有模型参数，只改变当前 C，供同一轨迹后续步骤使用。两者都不是最终 50 步视频的精确梯度。</p></details>
+    </section>
+
+    <section id="evidence">
+      <h2>现有证据与要回答的问题</h2>
+      <p>2026-10-25 的真实模型短检查执行了三个训练阶段，验证了反馈能到达 C，以及参数更新归属符合设计。这个记录不证明完整训练后的视频物理质量已经改善。</p>
+      <ol class="source-list">
+        <li><strong>C 的内容有用吗？</strong> 固定首帧与噪声，比较正确 C、关闭 C、替换条件后的 C；检查变化是否符合条件。</li>
+        <li><strong>反馈方向有用吗？</strong> 比较原始 C、梯度修正、等幅随机修正；分数升高和梯度非零都不够。</li>
+        <li><strong>过程能持续吗？</strong> 看中后段、材料与属性连续性、视觉质量，并在多个场景和种子上重复。</li>
+      </ol>
+      <p class="small">记录：<a href="../archive/20261027_cleanup/analysis/queue_20261025_blk_validation/verifier_gradient/result.json">三阶段真实模型检查</a> · <a href="../archive/20261027_cleanup/analysis/causal_response_20261025/implementation.json">v8 修订证据</a>。本页不是实时任务监控。</p>
+    </section>
+
+    <section id="sources">
+      <h2>继续阅读与追到实现</h2>
+      <ul class="source-list">
+        <li><a href="native-pipeline-guide.md">完整介绍文档</a>：输入边界、详细阶段矩阵、三种路径对照与代码索引。</li>
+        <li><a href="../configs/native_causal_response_wisa3857.yaml">当前 v8 配置</a>：模型、预算、损失权重和默认推理参数。</li>
+        <li><a href="../physgen_native/knowledge.py">Qwen 条件编码</a> → <a href="../physgen_native/latent_reasoning.py">连续隐藏状态更新</a> → <a href="../physgen_native/conditioning.py">C 映射与注入</a>。</li>
+        <li><a href="../physgen_native/operator_training.py">三阶段训练与反馈</a> → <a href="../physgen_native/conditional_verifier.py">评分头</a> → <a href="../physgen_native/feedback_sampling.py">在线 C 修正</a>。</li>
+        <li><a href="../archive/20261027_cleanup/analysis/冻结Qwen与直接优化C_设计分析_20261026.md">冻结 Qwen 与直接优化 C 的设计建议</a>：与本页描述的当前实现分开阅读。</li>
+        <li><a href="pipeline-source-snapshot.json">源码核对快照</a>：保存核对时间、配置摘要与源文件哈希。</li>
+      </ul>
+      <p class="note">推理读取 checkpoint 内保存的配置。工作区 YAML 的变化不会自动把旧断点升级为 v8。查看结果时，请同时阅读 MP4 和同名 JSON。</p>
+    </section>
+  </main>
+  <footer>本页可单文件离线打开，无网络资源和模型调用。代码链接需要随项目目录一起使用。流程交互用于解释计算，不运行模型，也不展示模拟性能分数。</footer>
+  <script>
+    'use strict';
+    const paths = {
+      inference: {
+        name:'普通推理',
+        caption:'从首帧和要求出发，完成一条 50 步去噪轨迹。默认不加载 verifier。C 在这条轨迹中保持固定。',
+        branch:'', feedback:'',
+        steps:[
+          {label:'合法初始输入', title:'先分清看见的事实和想要的未来', text:'首帧给出当前可见事实。caption 和条款给出生成要求。时长限定这段视频覆盖的时间尺度。', input:'首帧 latent、caption、合法条款、时间位置与有效区域；另有原生 T5 文本条件。', output:'供 Qwen 和 Wan 使用的初始条件，不含参考未来。', note:'条款必须来自首帧和文本。输入加载检查 caption_and_first_image 标记。', file:'data.py', symbol:'VideoDataset'},
+          {label:'Qwen 整理条件', title:'文字分析和连续更新是两种计算', text:'Qwen 先分析初始观察、相互作用、持续条件和条件变化后的响应。再编码这些内容，复用后 4 层进行 2 轮连续隐藏状态更新。', input:'合法初始输入，以及由这些输入产生的文字分析。', output:'最多 128 个内容 token 的连续表示，宽度 4096。', note:'文字生成不反传。训练可微的是后续编码和连续更新。v8 的工作 token 之间联合注意，初始记忆不能反向读取它们。', file:'knowledge.py', symbol:'dependency_reasoning / encode'},
+          {label:'C 与状态依赖注入', title:'当前状态决定怎样使用 C', text:'C 映射把 4096 维内容转换为 3072 维，并根据条款来源调制内容。Wan 当前状态读取 C，再通过低秩状态算子生成更新。', input:'连续内容表示，以及当前时间、空间、噪声水平下的 Wan 状态。', output:'加入未来位置的状态增量 ΔH。', note:'每 3 个 Wan block 注入一次。此节点在后续每个去噪步骤内重复使用；C 不是一份逐帧未来预测。', file:'conditioning.py', symbol:'KnowledgeCondition / NativeInterface'},
+          {label:'Wan 反复去噪', title:'50 步逐渐更新整段视频状态', text:'未来部分从噪声开始。每一步由 Wan 预测去噪导数，按 Euler 规则更新；首帧 latent 始终保持已知值。', input:'当前含噪视频 latent、首帧、T5 文本、正负条件 C。', output:'下一噪声水平的视频 latent，最终得到干净视频表示。', note:'默认 steps=50、shift=5、guidance=5。CFG 使用正负条件前向，但只有一条视频轨迹；50 步不等于 50 帧。', file:'system.py', symbol:'_sample_tokens'},
+          {label:'解码与保存', title:'把结果和生成条件一起保存', text:'VAE 解码最终 latent，得到 81 帧视频。输出 MP4，并写入同名 JSON，方便复现和比较。', input:'最终视频 latent、版本、种子与采样参数。', output:'视频；以及包含 optimizer_step、sampler、依赖分析和反馈信息的记录。', note:'推理配置来自 checkpoint。当前工作区存在 v8 配置，不代表一个旧断点就使用 v8。', href:'../train/train.py', file:'train.py', symbol:'export_video'}
+        ]
+      },
+      training: {
+        name:'训练中的反馈',
+        caption:'这是 joint 阶段按每 4 次更新追加的反馈计算，使用最后一个微批样本。常规 FM 与过程监督仍单独执行。',
+        branch:'训练专用支路：参考 latent + 噪声 → 含噪状态 zσ → 第 02 节点的四步补全。参考未来不进入 C 编码。',
+        feedback:'← 梯度穿过观察器、VAE 和四步 Wan，回到 C。这个反馈项只更新 C 映射与 Qwen LoRA 参数。',
+        steps:[
+          {label:'合法条件形成 C', title:'生成条件和评分条件承担不同职责', text:'生成侧编码形成可训练的 C。另用固定的 Qwen 编码生成评分条件，供 verifier 判断原始要求。', input:'当前样本的首帧、caption、条款和时长。', output:'生成条件 C，以及不随 C 优化而改变的评分条件。', note:'评分条件采用 adapt=False。训练参考未来另走补全起点支路，不会加入 Qwen 的条件内容。', file:'operator_training.py', symbol:'feedback_losses'},
+          {label:'4 步 Wan 补全', title:'完整求导一个短补全任务', text:'从参考 latent 与随机噪声组成的状态开始，在 σ∈[0.55,0.9] 中抽取起点，再连续执行 4 步条件去噪到零噪声。', input:'训练支路提供的 zσ、当前 C、首帧、原生文本。', output:'保留完整视频时间范围的补全 latent。', note:'4 步全部参与求导，不使用 CFG。Wan 和注入接口传递对 C 的导数，但不接受这个 verifier 项的参数更新。', file:'operator_training.py', symbol:'completion'},
+          {label:'VAE 解码 81 帧', title:'把 latent 变为可观察的视频', text:'冻结 VAE 的权重，解码补全结果。冻结权重并不阻止梯度穿过解码计算。', input:'4 步补全后的 latent。', output:'完整 81 帧视频，按 verifier 的 192×320 尺寸观察。', note:'本路径服务于 verifier。常规 RGB 过程监督则在另一生成估计上执行，覆盖全部帧和多个时间跨度。', file:'operator_training.py', symbol:'feedback_losses'},
+          {label:'V-JEPA 观察过程', title:'用同一个上下文观察首尾过程', text:'观察器读取 [0,0]、[3,4]、[7,8] … [79,80]，共 21 个双帧位置，并将它们作为同一上下文输入。', input:'生成视频的采样帧；观察器权重固定。', output:'随时间和空间变化的视频特征，特征宽度 1664。', note:'这是对已经生成的视频取证，不是独立预测未来。21 个观察位置不等于逐帧读取全部 81 帧。', file:'process_encoder.py', symbol:'VideoProcessEncoder.forward'},
+          {label:'固定 verifier', title:'让反馈回到生成条件', text:'评分头将响应特征与固定的初始条件交互，生成损失是平均分数的负值。梯度沿视频计算返回 C。', input:'视频响应特征、固定评分条件、时间和有效区域。', output:'对 C 的梯度，进一步更新 C 映射和 Qwen LoRA。', note:'joint 时评分头固定。四步任务的梯度不能称为最终 50 步自由生成视频的精确梯度；有梯度也不等于方向有效。', file:'conditional_verifier.py', symbol:'generation_loss'}
+        ]
+      },
+      online: {
+        name:'可选在线 C 修正',
+        caption:'默认关闭。启用 --refine-c 后，只在同一条推理轨迹内修正当前样本的正条件 C。所有模型参数固定，不使用参考未来。',
+        branch:'在噪声水平首次到达约 0.85、0.65 的指定步骤执行；使用保存的 relative_rms 度量。实际位置由采样调度决定。',
+        feedback:'→ 新 C 从下一去噪步骤开始生效。当前状态继续前进，不重新生成当前步骤，也不重启完整视频。',
+        steps:[
+          {label:'当前轨迹与 C', title:'从正在生成的视频继续', text:'保存当前含噪状态。将正条件 C 作为本次可求导变量，负条件和所有模型权重保持固定。', input:'当前 xσ、正条件 C、负条件、首帧和文本。', output:'用于当前一步局部反馈的计算入口。', note:'这里没有参考视频，也没有另开候选轨迹。需要显式启用 --refine-c 并加载观察器和 verifier。', file:'feedback_sampling.py', symbol:'sample_with_feedback'},
+          {label:'一步干净估计', title:'用当前一步估计视频会是什么样', text:'按普通 CFG 计算速度，再用 xσ − σv 得到干净视频估计。这个估计保留整段时空范围。', input:'当前状态、当前 C，以及这一步的 Wan 前向计算。', output:'供评分使用的干净 latent 估计；首帧保持固定。', note:'这是当前一步的估计，不是已经完成剩余所有步骤的视频。', file:'feedback_sampling.py', symbol:'sample_with_feedback'},
+          {label:'解码与观察', title:'读取当前估计中的过程', text:'VAE 将估计解码为视频，V-JEPA 提取全上下文过程特征。梯度可以经过二者回到当前 C。', input:'当前一步的干净视频估计。', output:'视频响应的观察特征。', note:'高噪声位置的视频估计可能不准；局部反馈能否改善最后的视频，需要实际验证。', file:'process_encoder.py', symbol:'VideoProcessEncoder.forward'},
+          {label:'固定 verifier', title:'评分要求固定，只求 C 的导数', text:'用初始合法输入得到的固定评分条件判断当前视频估计，再计算损失对正条件 C 的梯度。', input:'当前视频特征和固定评分条件。', output:'当前估计的局部梯度 ∂L/∂C。', note:'没有模型参数训练，也不把可变的生成 C 当成评分标准。', file:'feedback_sampling.py', symbol:'sample_with_feedback'},
+          {label:'修正 C 并继续', title:'更新当前条件，不更新长期权重', text:'根据 relative_rms 度量和梯度更新 C。当前步骤使用已经算出的速度前进；新 C 作用于后续去噪步骤。', input:'C、局部梯度、初始 C 的尺度和步长参数。', output:'同一轨迹后续步骤使用的新 C，以及更新记录。', note:'步长 0.1 不代表固定改变 C 的 10%。实际变化取决于梯度。这次样本修正不会自动成为下一个样本的长期能力。', file:'feedback_sampling.py', symbol:'latent_update / sample_with_feedback'}
+        ]
+      }
+    };
+    const stages = {
+      interface:{title:'先让 C 和接口参与生成',description:'冻结 Wan，学习 Qwen LoRA、C 映射、注入接口和连续强度头。训练使用实际生成的视频估计。',objectives:'FM × 1 + 过程 × 0.1 + 强度 × 0.1',rows:[['Qwen LoRA 与 C 映射','更新',true],['注入注意力与状态算子','更新',true],['连续强度预测头','更新',true],['Wan LoRA','固定',false],['verifier 评分头','不训练',false],['基础模型、VAE 与 V-JEPA','固定',false]],note:'常规生成损失只计算正确条件分支。非整体文本丢弃的微批中，有 25% 概率只移除原生 T5 文本；C 的 caption 保留，条款仍受独立 dropout 控制。'},
+      calibration:{title:'再让 verifier 学会比较过程',description:'固定生成路径。观察参考视频、四步生成补全、从中途保持画面的过程缺失视图；用正确和替换文本条件训练评分头。',objectives:'同场景过程排序 × 1 + 条件与过程交叉差分匹配 × 1',rows:[['Qwen LoRA 与 C 映射','固定',false],['注入注意力与状态算子','固定',false],['连续强度预测头','固定',false],['Wan LoRA','固定',false],['verifier 评分头','更新',true],['基础模型、VAE 与 V-JEPA','固定；生成和观察特征不保留训练图',false]],note:'保持画面不自动等于物理错误，标签来自相对参考的实际过程差异。文本替换也不提供真实反事实未来。'},
+      joint:{title:'让生成继续学习，让反馈打磨 C',description:'FM 和过程目标训练生成路径；固定 verifier 的反馈只更新 Qwen LoRA 与 C 映射。相同损失列表，不代表所有参数接受相同的梯度。',objectives:'FM × 1 + 过程 × 0.1 + verifier × 0.05（单独调度）',rows:[['Qwen LoRA 与 C 映射','FM、过程和 verifier 反馈都更新',true],['注入注意力与状态算子','FM 与过程更新；verifier 项只传递对 C 的导数',true],['连续强度预测头','固定参数，保留输入导数',false],['Wan LoRA','FM 与过程更新；verifier 项不更新参数',true],['verifier 评分头','固定参数，保留对视频的导数',false],['基础模型、VAE 与 V-JEPA','固定参数，保留反馈所需的输入导数',false]],note:'verifier 每 4 次优化器更新执行一次，使用该次最后一个微批样本。4 步连通补全保留全部 81 帧；该任务与 50 步自由生成的迁移效果仍需验证。'}
+    };
+    const byId = id => document.getElementById(id);
+    let mode = 'inference';
+    let selectedStep = 0;
+    function renderStep() {
+      const step = paths[mode].steps[selectedStep];
+      byId('detail-title').textContent = step.title;
+      byId('detail-text').textContent = step.text;
+      byId('detail-input').textContent = step.input;
+      byId('detail-output').textContent = step.output;
+      byId('detail-note').textContent = step.note;
+      byId('step-count').textContent = String(selectedStep + 1).padStart(2,'0') + ' / 05';
+      byId('detail-source').textContent = '代码：' + step.file + ' · ' + step.symbol;
+      byId('detail-source').setAttribute('href',step.href || '../physgen_native/' + step.file);
+      document.querySelectorAll('[data-step]').forEach(button => button.setAttribute('aria-pressed',String(Number(button.dataset.step) === selectedStep)));
+      byId('previous').disabled = selectedStep === 0;
+      byId('next').disabled = selectedStep === paths[mode].steps.length - 1;
+    }
+    function renderMode(value) {
+      mode = value; selectedStep = 0;
+      const path = paths[mode];
+      byId('mode-caption').textContent = path.caption;
+      byId('flow').setAttribute('aria-label',path.name + '计算顺序');
+      ['branch','feedback-line'].forEach((id,index) => {
+        const text = index === 0 ? path.branch : path.feedback;
+        byId(id).textContent = text; byId(id).hidden = !text;
+      });
+      document.querySelectorAll('[data-mode]').forEach(button => button.setAttribute('aria-pressed',String(button.dataset.mode === mode)));
+      document.querySelectorAll('[data-step]').forEach(button => { button.querySelector('.node-label').textContent = path.steps[Number(button.dataset.step)].label; });
+      renderStep();
+    }
+    function renderStage(value) {
+      const stage = stages[value];
+      byId('stage-title').textContent = stage.title;
+      byId('stage-description').textContent = stage.description;
+      byId('objectives').textContent = stage.objectives;
+      byId('stage-note').textContent = stage.note;
+      const body = byId('parameter-rows'); body.replaceChildren();
+      stage.rows.forEach(([name,description,learns]) => {
+        const row = document.createElement('tr'), heading = document.createElement('th'), cell = document.createElement('td');
+        heading.scope = 'row'; heading.textContent = name; cell.textContent = description;
+        if(learns) cell.className = 'learn';
+        row.append(heading,cell); body.append(row);
+      });
+      document.querySelectorAll('[data-stage]').forEach(button => button.setAttribute('aria-pressed',String(button.dataset.stage === value)));
+    }
+    document.querySelectorAll('[data-mode]').forEach(button => button.addEventListener('click',() => renderMode(button.dataset.mode)));
+    document.querySelectorAll('[data-step]').forEach(button => button.addEventListener('click',() => { selectedStep = Number(button.dataset.step); renderStep(); }));
+    document.querySelectorAll('[data-stage]').forEach(button => button.addEventListener('click',() => renderStage(button.dataset.stage)));
+    byId('previous').addEventListener('click',() => { if(selectedStep > 0) { selectedStep--; renderStep(); } });
+    byId('next').addEventListener('click',() => { if(selectedStep < paths[mode].steps.length - 1) { selectedStep++; renderStep(); } });
+  </script>
+</body>
+</html>

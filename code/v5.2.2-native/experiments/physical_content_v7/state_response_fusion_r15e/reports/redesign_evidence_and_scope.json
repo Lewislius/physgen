@@ -1,0 +1,48 @@
+{
+  "utc": "2026-11-06T09:12:16.216701+00:00",
+  "formal_R15E_training": false,
+  "probe_experiment": 67954,
+  "probe_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/state_response_fusion_r15e/diagnostic_snapshots/20261106T090919Z_rtx_recovery",
+  "new_model_downloads": 0,
+  "new_api_calls": 0,
+  "design_changes": [
+    "Independent trainable physical Q, with independent original K/V/O retained",
+    "Direct R10A physical values/state interaction retained",
+    "Physical write changes a native global-video query read with baseline keys/values held, using the difference from already-computed native attention",
+    "Original native text forward and original FM/tail/routing training losses retained"
+  ],
+  "required_evidence": "Read-only same16 real generated PC/SA/Joint and visual comparison against original R10A; fixed40 target not replaced by16",
+  "not_yet_claimed": [
+    "Quality gain",
+    "Fresh400 R15E performance",
+    "Independent physical-Q training efficacy"
+  ],
+  "scope": "Mechanism prototype only; final training design waits actual inference evidence",
+  "primary_reference": {
+    "url": "https://github.com/TencentARC/DiTCtrl",
+    "supported": "Official README describes KV sharing for preserving composition during video editing",
+    "inference": "Reusing video values is a useful mechanism to test here; this paper does not establish this specific physical execution structure or our short training performance"
+  },
+  "probe_observation": {
+    "utc": "2026-11-06T09:11:09.922197+00:00",
+    "experiment": 67954,
+    "trials": [
+      69341
+    ],
+    "state": "STATE_QUEUED",
+    "gpu": {},
+    "stage": null,
+    "generated": 0,
+    "expected": 16,
+    "latest_event": {},
+    "scores": null,
+    "formal_R15E_training": false,
+    "next_check_utc": "2026-11-06T09:26:09.922197+00:00"
+  },
+  "final_architecture_ready": false,
+  "latest_upstream_review": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/state_response_fusion_r15e/review/root_cause_design_update.json",
+  "maximum_version": "R15G",
+  "final_training_candidate": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_addressing_r15e",
+  "current_design_review": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_addressing_r15e/review/design_evidence.json",
+  "distinction": "This directory remains the historical native-video-response read-only prototype; current formal training candidate is semantic_addressing_r15e, not yet submitted."
+}

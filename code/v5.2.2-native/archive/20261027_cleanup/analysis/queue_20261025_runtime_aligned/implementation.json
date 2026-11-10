@@ -1,0 +1,21 @@
+{
+  "created_utc": "2026-10-25T12:39:20.692784+00:00",
+  "single_gpu": true,
+  "baseline_environment": "v5.2/inference/infer_joint_state_no_lora_demo21_1x96g.yaml",
+  "runtime_setup_matches_baseline": true,
+  "model_revision": "v522_native_reasoning_operator_v7",
+  "model_or_loss_changes_since_66143": false,
+  "changes": [
+    "Use same process-local runtime setup as existing v5.2 wrapper after bootstrap",
+    "Trace first real microbatch at Qwen/Wan/VAE/backward boundaries",
+    "Record GPU memory and available kernel termination messages",
+    "Propagate SIGKILL as 137 instead of wrapper-generated 247"
+  ],
+  "tests": {
+    "operator_behavior": 11,
+    "termination_monitor": 1,
+    "traced_loss_and_all_parameter_gradients_equal": true
+  },
+  "snapshot_files": 145,
+  "quality_claim": null
+}

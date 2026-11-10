@@ -1,0 +1,31 @@
+{
+  "training_experiment_id": 66678,
+  "training_trial_id": 68065,
+  "total_updates": 1000,
+  "microbatches": 4000,
+  "kl_active_microbatches": 3595,
+  "text_dropout_microbatches": 405,
+  "loss": "FM + scheduled_lambda * (1-sigma) * association_KL",
+  "lambda_peak": 0.03,
+  "lambda_final": 0.015,
+  "first50_kl": 0.12626942839473487,
+  "last50_kl": 0.06082309148274362,
+  "first50_weighted_kl": 0.0012904135721840066,
+  "last50_weighted_kl": 0.00048229417220142047,
+  "validation": [
+    {
+      "step": 128,
+      "fm": 0.18592487461864948
+    },
+    {
+      "step": 500,
+      "fm": 0.18457377701997757
+    },
+    {
+      "step": 1000,
+      "fm": 0.18426432460546494
+    }
+  ],
+  "interpretation": "Training-window means use different samples. Lower weak-association KL and small fixed-validation FM improvement do not establish physical-generation/VideoPhy2 gains; final1000 inference is running.",
+  "inference_experiment_id": 66720
+}

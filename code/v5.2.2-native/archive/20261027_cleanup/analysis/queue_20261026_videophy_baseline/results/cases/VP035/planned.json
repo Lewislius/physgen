@@ -1,0 +1,27 @@
+{
+  "id": "VP035",
+  "caption": "A woodcutter with a long handled axe chops down a thick tree in a forest.",
+  "revision": "v522_native_generation_baseline_v11",
+  "optimizer_step": 32,
+  "seed": 42,
+  "fps": 23.999999284744284,
+  "conditions": "first frame, caption, existing requirements; no future target",
+  "physical_dependency_analysis": "OBSERVED: Woodcutter mid-swing, axe embedded in trunk; cut is deep but incomplete; tree shows no visible separation; stance suggests control, not imminent fall.\n\nINTERACTION: Axe impact → wood fracture propagation → trunk separation → woodcutter repositions stance to track fall direction.\n\nPERSISTENCE: Fracture propagation continues as long as force is applied and wood integrity degrades; stance adjustment persists until tree’s fall vector is stabilized or controlled.\n\nINTERVENTION: If axe force drops or cut stalls → fracture propagation halts → tree remains upright → woodcutter must re-engage or brace; if tree begins to fall prematurely → stance must shift rapidly to avoid collision → separation accelerates.",
+  "latent_reasoning_steps": 2,
+  "latent_feedback": null,
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "condition_strength": 1.0,
+    "latent_feedback": {
+      "enabled": false,
+      "metric": "relative_rms",
+      "sigmas": [
+        0.85,
+        0.65
+      ],
+      "step_size": 0.1
+    }
+  }
+}

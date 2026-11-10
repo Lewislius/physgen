@@ -1,0 +1,18 @@
+{
+  "scope": "Formal I400, fixed16 paired inference interventions, original input/seed42; distinguish from frozen B400 joint-read evaluation.",
+  "findings": [
+    "物理分支整体收益很弱：正常对关闭C仅PC+0.0625（2胜13平1负），SA−0.0625，Joint仍同6例。它没有达到预期的显著PC和联合收益，且010存在夸张水面副作用。",
+    "双读取尚未形成稳定互补：请求关联单路与联合版的16例PC逐例完全相同，Joint同6例；仅SA两例互换、均值不变。直接单路SA和PC均高0.0625，但Joint少010一例。联合版没有同时胜过两条单路；010/038的实际失败与请求关联侧相近。",
+    "已训练物理Q在此模型有可测作用：正常比原生Q替换的SA/PC各高0.0625、Joint多2例，且没有任何SA或PC降低样例。保留独立Q有本模型的配对依据，但不足以弥补I对B全40的退化。",
+    "样本相关C有部分PC价值：正常比固定训练均值PC高0.1875（3胜13平0负）、Joint多1例；同时SA低0.0625。不是所有有效性都来自公共C，但这点收益尚不充分；038均值C反而保持主体更好。",
+    "正确reasoning的利用不均衡：对无关reasoning，正常SA+0.125、Joint+2，但PC−0.1875；对空reasoning，正常SA+0.0625、Joint净+1，PC−0.375（0胜11平5负）。这不是reasoning完全没被使用，而是当前执行没有把正确条件稳定转化为物理及画面收益。",
+    "PC自动评分会漏掉严重错误：无关reasoning的010严重绿黄纹理破坏仍PC5；空reasoning的038主体消失仍PC5。因此不能用空内容PC4.0625直接选作达标方案。视频证据必须与分数共同保留。"
+  ],
+  "decision": "正式I不是合格改进。保留本轮完整证据，完成60例和另行授权的B400跨基准评测后按用户约定暂停，不新增训练版本。",
+  "sources": [
+    "controls16_completed.json",
+    "control_visual_review.json",
+    "main40_review.json",
+    "joint_bottleneck40.json"
+  ]
+}

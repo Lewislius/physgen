@@ -1,0 +1,17 @@
+Correct this V6 training illustration surgically while preserving its ProPhy-style white background, serif type, colored modules and panel layout.
+
+PANEL (a), one arithmetic correction: below g_grid [B,R,21,15,26], write "21 x 15 x 26 = 8190". The NEXT Future g [B,7800,R] still has 7800 future tokens, because the observed first-frame 390 tokens are excluded. Preserve all other top-panel teacher construction and the D*_l=g@e_l multiplication.
+
+COMPLETELY REDRAW THE CONTENTS OF PANEL (c) to correct the wrong modules and arrows. Keep its title "Direct supervision of the ACTUAL write". It must depict the actual C branch, not a language readout and not a repeated C enhancer after C.
+Top student row:
+  "Cw [B,128,3072]" and "Current Wan X [B,8190,3072]" -> "Physical fusion: C K/V + attention + O_C" (red box, TRAINABLE flame, frozen-base + LoRA detail is optional) -> "Actual delta H_l [B,7800,3072]".
+  Branch actual delta H to TWO destinations: (1) down into the write-loss box; (2) right to "pad 390 zeros" -> a SUM NODE receiving "Hs + native text output" from above -> "Native FFN + residual; stage-B LoRA". Its solid arrow says "Actual residual addition before FFN". DO NOT put native self-attention AFTER the residual injection. Native self-attention already produced Hs. Do not label trainable C modules frozen.
+Lower target row:
+  "Cached D*_l [B,7800,3072]" -> "stopgrad" -> target input of write loss. NO gradient arrow may point into this target cache or out of it toward model parameters.
+Write-loss box exact formula:
+  "s_l = max(RMS(D*_l), 10^-3)"
+  "L_write = mean SmoothL1((delta H_l - stopgrad(D*_l))/s_l)"
+Small caption: "Target-only scale; future tokens; average over 10 injection layers".
+Total loss remains exactly "L = L_FM + lambda_write (1-sigma) L_write" and "initial lambda_write=0.02". (1-sigma) is only a training loss weight.
+The dashed purple BACKPROP arrows must originate AT THE LOSS BOX and point ONLY to the six parameter labels along the bottom: "C enhancement", "P", "C K/V LoRA r32", "O_C", "Wan self-attention LoRA (stage B)", "Wan FFN LoRA (stage B)". There must be NO gradient arrow to Cached D*, teacher Qwen or teacher T5.
+Remove the incorrect old chain C -> frozen C enhancement -> P(physical fusion) -> O_C as a tensor. Remove snowflakes on trainable student C modules. Preserve panel (b), the total loss and stage strip. Keep the teacher entirely offline and frozen. No language CE, verifier, cosine loss, source/scope branches, temporal response network or target-to-generator conditioning arrow.

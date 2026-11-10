@@ -1,0 +1,27 @@
+{
+  "id": "VP022",
+  "caption": "A luger's sled impacts a small snowbank at the edge of the track, causing a slight spray of snow.",
+  "revision": "v522_native_generation_baseline_v11",
+  "optimizer_step": 32,
+  "seed": 42,
+  "fps": 23.999999284744284,
+  "conditions": "first frame, caption, existing requirements; no future target",
+  "physical_dependency_analysis": "OBSERVED: Sled on groomed track, snowbank visible at edge, luge in motion, no current impact or spray.  \nINTERACTION: Sled contact with snowbank → localized snow displacement via compression and shear.  \nPERSISTENCE: Spray persists briefly (≤0.5s) due to inertia and air drag; luge momentum continues via frictional deceleration.  \nINTERVENTION: Absence of snowbank → no spray; reduced momentum → spray dissipates faster; track surface change → altered spray pattern.",
+  "latent_reasoning_steps": 2,
+  "latent_feedback": null,
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "condition_strength": 1.0,
+    "latent_feedback": {
+      "enabled": false,
+      "metric": "relative_rms",
+      "sigmas": [
+        0.85,
+        0.65
+      ],
+      "step_size": 0.1
+    }
+  }
+}

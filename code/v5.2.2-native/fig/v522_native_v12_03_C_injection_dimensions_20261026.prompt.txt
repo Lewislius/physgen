@@ -1,0 +1,105 @@
+Use case: infographic-diagram. Asset: a precise, high resolution Chinese scientific architecture diagram, saved as PNG. Create the UPDATED v12 diagram, using the supplied v9 image ONLY as a visual style reference: white background, stacked rounded panels, black orthogonal arrows, orange native video states, green C/message states, blue attention tensors, grey operators, purple auxiliary a branch. Keep its level of technical detail. Redraw the architecture from the specification below; do not retain the old 768-width attention, rank-64 state operator, or output scalar gate. This is a mathematical engineering figure: exact dimensions, correct arrow endpoints, readable Chinese labels matter more than decoration. Use a large landscape 4:3 canvas, ideally 3072×2304 or comparably sharp resolution. Generous panel spacing; no overlapping text or arrows. All five panels and the footer must fit fully within the canvas. Render ALL requested labels correctly. Do not add invented modules.
+
+Title EXACT: “V5.2.2-native · C 注入 Wan 的维度流”
+Subtitle: “v12 全维原生注意力｜B=1，N≤128，L=8190，S_f=7800”
+Small badge upper right: “更新版 · 含 a 完整流程”
+
+Five stacked panels, (a) to (e). Use the order and tensor convention below. All multihead tensors are shown in SDPA convention [B, heads, tokens, head_dim]; explicitly indicate reshape + transpose in projection blocks. The Wan native code internally starts [B,tokens,heads,head_dim] before transpose; use the displayed convention consistently.
+
+(a) “原生时空主干与注入位置”
+Main horizontal chain:
+z [B,48,21,30,52]
+→ “原生 Conv3D patch embedding / 48→3072；patch=(1,2,2)”
+→ [B,3072,21,15,26]
+→ “flatten + transpose”
+→ H [B,8190,3072]
+→ “原生时空 self-attention + 残差”
+→ H_s [B,8190,3072].
+Under chain clear notes:
+“15×26=390；21×390=8190；未来20×390=7800”
+“30 个 Wan blocks；第 3、6、…、30 个 block 内的 cross-attention 位置注入，共10处”
+“先 cross-attention 注入，再进入当前 block 的 FFN”
+
+(b) “全维 Q/K/V：复用该 block 的原生投影”
+Three clearly separated rows:
+TOP orange state row:
+H_s [B,8190,3072]
+→ “原生 norm3”
+→ X [B,8190,3072]
+→ “W_q：3072→3072 / RMSNorm / reshape + transpose”
+→ Q [B,24,8190,128].
+Annotate Q “计算一次，文本与 C 两路复用”; Q's future slice labelled “Q_future [B,24,7800,128]，送入(c)”.
+MIDDLE green condition row:
+C [B,N,3072]
+→ split into “W_k：3072→3072 + RMSNorm” → K_C [B,24,N,128]
+and “W_v：3072→3072，扣除重复的 V bias” → V_C [B,24,N,128].
+No extra C RMSNorm before W_k/W_v. Note “原生 V 的 bias 已由文本分支计入；C 值分支不重复添加”.
+BOTTOM light neutral text row:
+T（原生文本 context）[B,512,3072]
+→ “同一原生 W_k / W_v；K 后 RMSNorm”
+→ K_T / V_T [B,24,512,128].
+Note “Q/K/V 总宽度始终 3072 = 24×128；不同 block 各用自己的原生投影”.
+
+(c) “a 完整流程：预测可见变化强度，只软调制 C 的 query”
+This panel is prominent and fully explicit; do NOT compress or omit its individual dimension steps.
+PURPLE upper row:
+“X_future（X 的未来7800个位置）” [B,7800,3072]
+→ “RMSNorm” [B,7800,3072]
+→ “Linear 3072→192” [B,7800,192]
+→ “SiLU” [B,7800,192]
+→ “Linear 192→1” [B,7800,1]
+→ “sigmoid”
+→ a [B,7800,1].
+PURPLE lower row begins from this a:
+a [B,7800,1]
+→ “a − 0.5” [B,7800,1]
+→ multiplication node “× 广播” that also receives separate small box “可学习 r [3072]”
+→ “ΔQ_flat” [B,7800,3072]
+→ “reshape + transpose”
+→ “ΔQ” [B,24,7800,128]
+→ plus node receiving “Q_future” [B,24,7800,128]
+→ “Q_C” [B,24,7800,128].
+Connect the plus node correctly: ΔQ + Q_future gives Q_C. Q_C goes to C attention in (d).
+Two concise explanatory notes:
+“a 是可见变化强度，不是物理速度；C/value 消息不经过这个标量读出头”
+“a_grid = reshape(a)：[B,20,15,26]；十处取均值用于首阶段辅助监督”
+“低 a 仍可读取 C；没有输出标量门控 g”
+Ensure a has NO arrow to the value content or output multiplier.
+
+(d) “两路注意力分别归一化，在原生输出投影前合并”
+Two horizontal branches flowing to a merge:
+TEXT branch:
+“Q + K_T + V_T”
+→ “原生文本 Attention / 24 heads ×128”
+→ M_T [B,24,8190,128].
+C branch:
+“Q_C + K_C + V_C”
+→ “C 的 SDPA / 24 heads ×128”
+→ M_C [B,24,7800,128]
+→ “× strength；默认1 / 首帧补390个零”
+→ “Pad(M_C)” [B,24,8190,128].
+Both to plus node with exact annotation “M = M_T + strength × Pad(M_C)”.
+Avoid multiplying strength twice in the diagram: if multiplier shown on C branch, merger is simply “相加”; display the formula as a separate descriptive equation only. That equation is the definitive operation.
+Then merge output
+→ “合并 heads”
+→ M_flat [B,8190,3072]
+→ “原生 W_o：3072→3072 / 只执行一次”
+→ Y [B,8190,3072].
+Notes: “文本/C 各自 softmax，不拼成同一个 softmax”；“没有 768 维读取器；没有 3072→64→3072 状态算子”.
+
+(e) “原生残差更新与当前 block 的 FFN”
+H_s [B,8190,3072] and Y [B,8190,3072]
+→ plus node
+→ “H_1 = H_s + Y” [B,8190,3072]
+→ “原生 FFN 子层 + 原生残差 / 3072→14336→3072 / 保留去噪调制”
+→ “H_out” [B,8190,3072]
+→ “下一个 Wan block”.
+A skip arrow around FFN is optional, but do not draw an extra residual if the block label already says '+ 原生残差' without making the diagram ambiguous.
+
+Footer compact explanations:
+“首帧无直接 C 注入；原生时空交互保留。”
+“强度头与 r 在10处共享；Q/K/V/O 使用各 block 的原生参数。”
+“C 来自 Qwen reasoning；4096→3072 对接发生在 C 构造阶段，本图从 C 开始。”
+“LoRA 是原生全维矩阵的增量，不是 C 消息必经的低维通道。”
+“依据 v12 当前代码绘制；结构说明不代表已验证生成效果。”
+Ensure native is spelled correctly, not naive. Do not mention VJEPA2 or draw any separate future-state predictor. No fictional performance claims, no logos, no watermarks.

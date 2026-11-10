@@ -1,0 +1,230 @@
+{
+  "H": {
+    "step": 160,
+    "cursor": 640,
+    "train_seed": 42,
+    "verifier_model_keys": [],
+    "groups": [
+      {
+        "name": "alignment",
+        "role": "condition",
+        "schedule_group": "alignment",
+        "lr": 2.3594602922743256e-06,
+        "weight_decay": 0.0,
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "eps": 1e-08,
+        "amsgrad": false,
+        "maximize": false,
+        "foreach": false,
+        "capturable": false,
+        "differentiable": false,
+        "fused": null,
+        "decoupled_weight_decay": true,
+        "initial_lr": 1e-05
+      },
+      {
+        "name": "condition",
+        "role": "condition",
+        "schedule_group": "condition",
+        "lr": 2.3594602922743254e-05,
+        "weight_decay": 0.01,
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "eps": 1e-08,
+        "amsgrad": false,
+        "maximize": false,
+        "foreach": false,
+        "capturable": false,
+        "differentiable": false,
+        "fused": null,
+        "decoupled_weight_decay": true,
+        "initial_lr": 0.0001
+      },
+      {
+        "name": "condition_no_decay",
+        "role": "condition",
+        "schedule_group": "condition",
+        "lr": 2.3594602922743254e-05,
+        "weight_decay": 0.0,
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "eps": 1e-08,
+        "amsgrad": false,
+        "maximize": false,
+        "foreach": false,
+        "capturable": false,
+        "differentiable": false,
+        "fused": null,
+        "decoupled_weight_decay": true,
+        "initial_lr": 0.0001
+      },
+      {
+        "name": "wan_lora",
+        "role": "wan_lora",
+        "schedule_group": "wan_lora",
+        "lr": 4.971424148127018e-06,
+        "weight_decay": 0.01,
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "eps": 1e-08,
+        "amsgrad": false,
+        "maximize": false,
+        "foreach": false,
+        "capturable": false,
+        "differentiable": false,
+        "fused": null,
+        "decoupled_weight_decay": true,
+        "initial_lr": 1e-05
+      }
+    ],
+    "wan_lora": {
+      "tensors": 480,
+      "relative_l2": 0.018430618180105322
+    },
+    "project": {
+      "tensors": 1,
+      "relative_l2": 0.04114059672863445
+    },
+    "norm": {
+      "tensors": 1,
+      "relative_l2": 4.926531792231926e-05
+    },
+    "alignment": {
+      "gain": {
+        "mean": 0.08861861377954483,
+        "rms": 0.08898583799600601,
+        "min": 0.06657557189464569,
+        "max": 0.26505187153816223
+      },
+      "bias": {
+        "mean": -6.462186865974218e-05,
+        "rms": 0.00813671201467514,
+        "min": -0.0699785053730011,
+        "max": 0.06627039611339569
+      }
+    }
+  },
+  "Q": {
+    "step": 224,
+    "cursor": 896,
+    "train_seed": 42,
+    "verifier_model_keys": [],
+    "groups": [
+      {
+        "name": "condition_no_decay",
+        "role": "condition",
+        "schedule_group": "condition",
+        "lr": 1e-05,
+        "weight_decay": 0.0,
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "eps": 1e-08,
+        "amsgrad": false,
+        "maximize": false,
+        "foreach": false,
+        "capturable": false,
+        "differentiable": false,
+        "fused": null,
+        "decoupled_weight_decay": true,
+        "initial_lr": 0.0001
+      },
+      {
+        "name": "alignment",
+        "role": "condition",
+        "schedule_group": "alignment",
+        "lr": 1.0000000000000002e-06,
+        "weight_decay": 0.0,
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "eps": 1e-08,
+        "amsgrad": false,
+        "maximize": false,
+        "foreach": false,
+        "capturable": false,
+        "differentiable": false,
+        "fused": null,
+        "decoupled_weight_decay": true,
+        "initial_lr": 1e-05
+      },
+      {
+        "name": "condition",
+        "role": "condition",
+        "schedule_group": "condition",
+        "lr": 1e-05,
+        "weight_decay": 0.01,
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "eps": 1e-08,
+        "amsgrad": false,
+        "maximize": false,
+        "foreach": false,
+        "capturable": false,
+        "differentiable": false,
+        "fused": null,
+        "decoupled_weight_decay": true,
+        "initial_lr": 0.0001
+      },
+      {
+        "name": "wan_lora",
+        "role": "wan_lora",
+        "schedule_group": "wan_lora",
+        "lr": 2.0000000000000003e-06,
+        "weight_decay": 0.01,
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "eps": 1e-08,
+        "amsgrad": false,
+        "maximize": false,
+        "foreach": false,
+        "capturable": false,
+        "differentiable": false,
+        "fused": null,
+        "decoupled_weight_decay": true,
+        "initial_lr": 1e-05
+      }
+    ],
+    "wan_lora": {
+      "tensors": 480,
+      "relative_l2": 0.032169910720667265
+    },
+    "project": {
+      "tensors": 1,
+      "relative_l2": 0.04596661466975563
+    },
+    "norm": {
+      "tensors": 1,
+      "relative_l2": 3.9643198740817314e-05
+    },
+    "alignment": {
+      "gain": {
+        "mean": 0.08861235529184341,
+        "rms": 0.08897952735424042,
+        "min": 0.06654935330152512,
+        "max": 0.2650298476219177
+      },
+      "bias": {
+        "mean": -6.548076635226607e-05,
+        "rms": 0.008140499703586102,
+        "min": -0.06997927278280258,
+        "max": 0.0662812814116478
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "created_utc": "2026-10-25T12:04:45.429992+00:00",
+  "revision": "v522_native_reasoning_operator_v7",
+  "slots_per_trial": 1,
+  "training_devices": 1,
+  "software_environment": "Unchanged; reuse successful66128 task environment; no package or cluster modifications",
+  "previous_failure": {
+    "experiment": 66140,
+    "stage": "first training microbatch VAE backward",
+    "capacity_gib": 94.97,
+    "process_memory_gib": 94.76,
+    "pytorch_allocated_gib": 93.88,
+    "requested_mib": 586,
+    "optimizer_updates": 0
+  },
+  "changes": [
+    "Checkpoint each whole conditional generation/observation branch; preserve both contrastive derivatives",
+    "Skip redundant initial validation in the engineering smoke check only",
+    "Mirror compact progress to Determined logs",
+    "Single allocated GPU; remove multi-slot allocation/device-selection wrapper"
+  ],
+  "tests_passed": 54,
+  "native_vae_branch_derivative_equivalent": true,
+  "model_objectives_changed": false,
+  "normal_training_prefix_updates": 128,
+  "stage_budgets": {
+    "interface": 400,
+    "calibration": 460,
+    "joint": 400
+  },
+  "snapshot_files": 143
+}

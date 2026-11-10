@@ -1,0 +1,27 @@
+{
+  "id": "VP011",
+  "caption": "A person on a unicycle stops abruptly, putting a foot down to maintain balance before continuing.",
+  "revision": "v522_native_generation_baseline_v11",
+  "optimizer_step": 32,
+  "seed": 42,
+  "fps": 23.999999284744284,
+  "conditions": "first frame, caption, existing requirements; no future target",
+  "physical_dependency_analysis": "OBSERVED: Person on unicycle, one foot down on pavement, bike upright, motion paused. Unknown: Whether balance is maintained, whether motion resumes, whether bike remains upright.\n\nINTERACTION: Foot contact → ground reaction force → center of mass stabilization → balance hold → potential motion resumption.\n\nPERSISTENCE: Upright bike posture sustains balance; foot-ground contact duration determines stability window; rider’s body posture propagates control.\n\nINTERVENTION: If foot lifts prematurely → loss of balance → bike may fall. If foot remains down too long → motion not resumed → static state. Uprightness persists only if center of mass remains within base of support.",
+  "latent_reasoning_steps": 2,
+  "latent_feedback": null,
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "condition_strength": 1.0,
+    "latent_feedback": {
+      "enabled": false,
+      "metric": "relative_rms",
+      "sigmas": [
+        0.85,
+        0.65
+      ],
+      "step_size": 0.1
+    }
+  }
+}

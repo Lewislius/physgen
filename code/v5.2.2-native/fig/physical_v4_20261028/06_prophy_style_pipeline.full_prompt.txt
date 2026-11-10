@@ -1,0 +1,125 @@
+Use case: infographic-diagram
+Asset type: one publication-quality scientific pipeline figure for the proposed Physical Block V4 framework.
+Primary request: Create a NEW architecture figure in the visual style of the attached ProPhy reference. Use the reference only for visual style and composition, and completely replace its architecture with the exact architecture below. Landscape approximately 2:1, ideally 3840 x 1920, crisp readable text, flat vector-like raster drawing on pure white.
+
+STYLE
+Match the reference's Times New Roman-like serif labels, bold panel headings, pastel rounded rectangles, thin neat arrows, black circled-plus residual nodes, olive-black dashed rounded panel borders, small token-grid illustrations, and generous white space. Palette: native Wan light blue #DDEBFA and blue arrows; physical computation coral #EF8379 with pale coral fills; evidence/association mint #79D7C7; native text mustard-gold #E9BF58; training pale lavender with red loss arrows. Use small red flame glyphs sparingly to mark trainable NEW modules, and a small snowflake to mark frozen base weights only if legible. NO gradients, 3D blocks, shadows, ornamental header, page caption, watermark, or prose paragraphs. English labels throughout, with properly typeset subscripts and Greek letters. Module names and equations must be accurate. Do not reproduce the reference's ProPhy name, semantic experts, refinement experts, router, MoE, top-k, or balancing losses.
+
+LAYOUT
+One coherent figure: upper 36% is the end-to-end pipeline; lower 56% is three expanded panels labeled (a), (b), (c), with (b) approximately twice the width of each neighbor. Bottom 8% is a compact two-stage training strip and a tiny legend. Leave white gutters. Arrows must terminate at their intended boxes. Do not run arrows through labels. Panel (b) must make the shared scope association the single most visually salient mechanism.
+
+UPPER OVERVIEW — title at upper left: "Physical Block V4"; small subtitle "Proposed architecture".
+At upper left show two compact inputs: a first-frame thumbnail I₀ depicting colored dye at the inlet of a clear water tank, and a pale-gold text card labeled "Original request" containing "Colored dye disperses in water." These are illustrative inputs, not benchmark results.
+Physical lane, upper row, coral arrows left to right:
+"First frame + request" → "Qwen multimodal encoder" → a mint token-grid box "Evidence H" with small dimension "4096" → pale-coral "Native latent reasoning" with a small loop arrow and a mint 128-slot token grid labeled "Q: 128 × 4096" → "Physical context C" → a coral distribution bus feeding two or three repeated "Physical Block" modules.
+H is evidence read by Q; do not concatenate H into a separate bypass that directly supplies physics messages. C contains conditional relations, not future trajectories.
+Native text lane is a fine gold line: "Original request" → "Native T5" → gold bus into each displayed Wan block's native text attention. Keep this separate from C.
+Native video lane, below, blue arrows left to right:
+a gray 3x3 token-grid icon "Noisy video latent zσ" and small first-frame condition I₀ → "Wan Block" → circled plus → "Wan Block" → blue ellipsis → "Wan Block" → circled plus → "Denoising + VAE" → a small overlapping three-frame video stack of the dye spreading through the water, labeled "Generated video". This stack is schematic, not an empirical result.
+Blue label below the lane: "Native Wan denoising backbone · 3072".
+Each Physical Block reads current hidden X from the associated Wan block using a thin blue upward arrow and returns ΔX into its circled plus using a coral downward arrow. C only conditions these blocks; it never directly writes static C values into the video.
+Small bracket below physical modules: "Physical branch at blocks 3, 6, …, 30".
+
+LOWER PANEL (a) — heading "(a) Grounded physical context"
+Dashed rounded olive-black border, mint/pale-coral modules, compact vertical layout.
+Show "C · 128 × 4096" branching into independent projections "4096 → 3072", with three clearly readable outputs "K_cond", "K_scope", "V_rule". Small note: "Independent of text K/V".
+Below, show C and "First-frame evidence H" → "Soft source read" → two mint soft association grids labeled "A₀_cond / A₀_scope" → "Crop / resize geometry G".
+Geometry output and a blue grid "Wan first-frame state X₀" jointly enter a small weighted-read node → "g_cond / g_scope".
+At the bottom, a small side output from C → "Mod(C): γ, β" with dimension "2 × 3072" leading via a connector into panel (b)'s state interaction box.
+Panel notes, two short lines only: "Geometry maps shared pixels." and "Soft links are learned, not region labels."
+Do not show annotated boxes, masks, segmentation targets, or tracked objects.
+
+LOWER PANEL (b) — heading "(b) Physical Block: shared read and write"
+Largest panel, dashed rounded olive-black border, very pale coral interior subregion for interaction. Organize as a clean left-to-right computation with two read branches converging.
+At left, blue current-video token grids "Current Wan state X[t,p]" feed TWO parallel branches:
+upper branch: "K_cond + g_cond" conditions "A_cond" → "Read condition state u_cond";
+lower branch: "K_scope + g_scope" conditions a prominently mint-outlined box "A_scope" → "Read affected state u_scope".
+Both associations use current-state queries; show a small label "Current-state queries" on the blue split into the two association modules. Each association is softmax over spatial p. Scope and condition may attend different regions.
+The two state reads feed a central coral box "State interaction F_interact". Three small incoming arrows must also supply "g_cond, g_scope", "V_rule", and "Mod(C): γ, β". Tiny inside caption "Full-width · 3072".
+State interaction → pale-lavender "Temporal response" → coral token column "d[r,t]".
+Below Temporal response a small timing card "PTS → τ, Δτ" supplies a lavender arrow, with tiny label "History j ≤ t". A separate small card "Diffusion noise σ" conditions interaction; τ and σ are visibly different inputs.
+The current affected state u_scope also has a short skip connection to the response formation after temporal processing, visually represented by a small merge node before d[r,t].
+At right, d[r,t] flows into a mint outlined "Write with SAME A_scope" → "O_phys" → coral "ΔX" → circled plus merging with two blue inputs "Native residual" and "Native text attention" → "Native FFN".
+MOST IMPORTANT: a prominent mint curved connector from the very SAME A_scope box on the lower read branch runs along the bottom of the panel to "Write with SAME A_scope", labeled exactly "Shared association: read ↔ write". This is an actual tensor reuse connector, not a second predicted association. Draw no K_exec or separate write router.
+Set two short math lines near the bottom of this panel, with clear spacing from arrows:
+"u_scope[r,t] = Σ_p A_scope[r,t,p] W_scope X[t,p]"
+"ΔX[t,p] = O_phys(concat_heads Σ_r A_scope[r,t,p] d_head[r,t])"
+Small bottom note: "No added physical write at t = 0".
+Do not draw static V_rule going straight into ΔX, any motion-intensity gate, rollout predictor, object IDs, trajectories, or optical flow. Native Wan bidirectional attention and RoPE remain intact; the branch history is a temporal bias, not a proof of strict causality.
+
+LOWER PANEL (c) — heading "(c) Two training objectives"
+Dashed rounded olive-black border; two compact vertically separated paths. All targets and training-only decoder modules remain inside this panel, with dashed red or lavender connectors indicating training-only use.
+Top training path: "Real video + ε" → "FM target ε − z_real" → a red outlined loss pill "L_FM", also receiving "Predicted vθ" from the actual Wan output. Small note "Full video · valid future tokens". Do not label FM velocity as physical motion velocity.
+Second training path: "Actual C K/V at layer ℓ" → "Concat · 9216" → "Train-only bridge · 4096" → "Frozen language decoder" → red outlined loss pill "L_C_phys". A side target box "Existing phys_law → conditional text targets" points only to the CE loss. Tiny decoder note: "C-only; no image / caption / H bypass". The decoder uses a neutral question and teacher-forced answer prefix; this can be a small label "Neutral question + answer prefix" into decoder if space allows.
+Large concise formula at bottom: "L = L_FM + λ_phys L_C_phys".
+Two short bottom notes: "No verifier or video scoring" and "No dense region / event labels".
+There are exactly TWO objectives. Do not add temporal FM, source/scope/phase, alignment, load-balancing, reward, ranking or contrastive losses. Targets never become inference conditions. FM gradients train the actual physics execution path and reasoner; frozen Wan still passes input gradients.
+
+BOTTOM STRIP
+Pale-lavender thin rounded rectangle containing two connected stages:
+"A · Interface: train Qwen LoRA + C + Physical Block; freeze Wan"
+→
+"B · Joint: continue A + gradually enable Wan self-attention LoRA"
+Below it, tiny but readable centered note: "Official pretrained foundations; new project modules and LoRA · Proposed design, not a trained result".
+Do not invent training step counts, reasoning round counts, loss weights, accuracy metrics, or experimental claims. Keep all base weights and native text projections frozen; only Wan self-attention LoRA joins in B.
+
+QUALITY CHECK BEFORE FINALIZING
+All arrows and labels must be readable and unambiguous. Ensure the first-frame bridge, independent 4096→3072 C interface, current-state dual-role reading, modulated interaction, distinct presentation time and diffusion noise, SAME A_scope read/write, native text merge, and two training losses are visually represented. Use modest text size only for notes; every module label is prominent. Match the supplied reference's elegant scientific-paper diagram style while using this entirely new architecture.
+Use case: precise-object-edit / scientific diagram technical correction.
+Edit the provided Physical Block V4 figure. Preserve its white background, aspect ratio, serif typography, palette, three lower panels, and elegant ProPhy-like style. The current figure has excellent styling but several wrong technical annotations and connectors. Correct only its diagram accuracy as specified below. Remove spurious tensor dimensions instead of inventing replacements. Render crisp at the highest available landscape resolution.
+
+1. UPPER PIPELINE: retain the first-frame/request → Qwen → H → native latent reasoning → Q → C pathway. Simplify and redraw ONLY the Wan/physical/text lanes below that pathway so that their connections are completely correct. Show exactly TWO displayed Wan block groups with an ellipsis between them, representing all ten injection sites. Each group consists of a pale-blue "Wan Block" and a circled plus immediately to its right on the native blue main line. Place one coral "Physical Block" DIRECTLY ABOVE the corresponding circled plus. C's coral horizontal bus branches independently into these two Physical Blocks; do not connect the Physical Blocks serially. A blue arrow from EACH Wan Block goes UP into its own Physical Block, labeled "Current X". A coral arrow from that Physical Block goes DOWN into its own circled plus, labeled "ΔX". Their horizontal positions must align, with no crossed or reversed arrows. The blue main line flows from "Noisy video latent zσ" with I₀ → first Wan Block → plus → ellipsis → second Wan Block → plus → "Denoising + VAE" → illustrative video stack. Keep the note "Physical branch at blocks 3, 6, …, 30" below. Keep the "Native Wan denoising backbone · 3072" label. Remove the false noisy-grid dimension "3 × 3 × 3072". The gold Native T5 bus must have downward taps into BOTH BLUE WAN BLOCKS, NEVER into the coral Physical Blocks. Label the gold bus "Native text attention". I₀ remains an observed input. Do not let line colors or arrowheads swap their roles.
+
+2. DIMENSION CLEANUP: remove EVERY small tensor dimension annotation INSIDE lower panels (a) and (b), except the main C label "128 × 4096", the explicit projection operators "4096 → 3072", "Mod(C): γ, β" with "2 × 3072", and "Full-width · 3072" in State interaction. In particular delete all fabricated "256 × 256", "128 × 256 × 256", and "256 × 256 × 3072" labels. Keep the token grid icons, module names, and equations. Do not replace deleted dimensions with any other guessed values. This is an overview figure, not a tensor-debug diagram.
+
+3. PANEL (a) GEOMETRY BRIDGE: preserve the three independent C projections to K_cond, K_scope, V_rule. Redraw the smaller grounding subgraph under them as one simple unambiguous flow: C + "First-frame evidence H" → "Soft source read" → "A₀_cond / A₀_scope" → "Crop / resize geometry G" → "Weighted read" → "g_cond / g_scope". A separate blue arrow from "Wan first-frame state X₀" supplies Weighted read. Thus G maps source weights BEFORE the weighted read, rather than being fed by its result. Preserve the C → Mod(C) → State interaction connection. Preserve the two short geometry notes.
+
+4. PANEL (b) EXACT MECHANISM: preserve the dual current-state read branches and the large green shared-association connector. Change the small source-reference card currently printed as g_cond · g_cond into "g_cond, g_scope". Both source references enter State interaction, along with V_rule and Mod(C). The PTS → τ, Δτ card must point UP into "Temporal response", not State interaction. The separate "Diffusion noise σ" card must point into "State interaction". The history note "j ≤ t" remains under Temporal response. Preserve the u_scope skip into response formation. Preserve response d → "Write with SAME A_scope" → O_phys → ΔX. Preserve the curved green connector from the original A_scope into that SAME write box. At the far right, the circled-plus residual merge receives ΔX, Native residual, and Native text attention, and then has an outgoing arrow to a small readable "Native FFN" box. Provide room by slightly reducing nonessential token grids. Do not drop this FFN output. Preserve both math equations and "No added physical write at t = 0".
+
+5. PANEL (c) C-ONLY TRAINING READOUT: change the first mint box from the incorrect "Actual C K/V at layer ℓ · 128 × 4096" to the accurate "Actual K_cond / K_scope / V_rule" with smaller second line "Layer ℓ · each 128 × 3072". This box → "Concat · 9216" → "Train-only bridge · 4096" → Frozen language decoder → L_C_phys. Existing phys_law → conditional text targets points only to the CE loss. Keep the neutral question/answer prefix and the no image/caption/H bypass note. Keep L_FM and the total two-loss formula intact.
+
+6. Bottom training strip and base-weight legend: blue Wan base weights stay frozen in both stages; its new self-attention LoRA is enabled only in joint. Keep the stage strip wording already present. No verifier, no new labels or losses, no empirical claims. All other content and style stays unchanged.
+
+The intended result is the SAME beautiful figure with the technical labels and arrow topology corrected. The shared A_scope read/write mechanism must remain the visual centerpiece. Double-check that no incorrect numeric 256 labels survive and no T5 arrow points into a Physical Block.
+Edit the attached scientific figure. Preserve the typography, colors, white canvas, overall layout, and all wording outside the two specified subgraphs. This is a precise ARROW TOPOLOGY correction. Remove the old connectors completely and draw the new connectors cleanly. Do not merely add lines on top of old lines.
+
+SUBGRAPH 1 — THE OVERVIEW AT THE TOP, BELOW THE QWEN / H / Q / C ROW:
+Keep the Qwen / H / Q / C row unchanged. Simplify the physical branch to ONE displayed coral box, representing the repeated modules. Remove BOTH existing Physical Block boxes and their connecting arrows and redraw a single coral box centered directly above the first residual plus at approximately x=820, y=215, with exact text "Physical Blocks" and smaller "Layers 3, 6, …, 30". The native blue chain stays: noisy latent plus I0 → Wan Block → circled plus → ellipsis → Wan Block → circled plus → Denoising + VAE → video. Label the first and second blue blocks "Wan Block" without layer numbers.
+DELETE THE ENTIRE GOLD HORIZONTAL BUS and every gold branch under C. Replace it with ONE simple direct gold arrow from Native T5 into the LEFT BLUE Wan Block. Label this small arrow "Native text". Native T5 never points to a Physical Block, Denoising + VAE, or C. This one connection represents the unchanged native text path at every block.
+DELETE ALL OLD CORAL LINES LEAVING C. Draw ONE coral line from Physical context C that descends then bends left into the top of the NEW SINGLE coral Physical Blocks box. This is the only coral edge leaving C. Draw ONE blue upward arrow labeled "Current X" from the first BLUE Wan Block into the bottom-left of that same new Physical Blocks box. Draw ONE coral downward arrow labeled "ΔX" from the box's bottom-right into the first residual circled plus. These are the only three edges of this coral box: C in, Current X in, ΔX out. No edges enter the second residual plus from above; the ellipsis already represents repetition. Keep the lower bracket note and the blue backbone label. Do not cross lines through text.
+
+SUBGRAPH 2 — THE SOURCE BRIDGE IN LOWER PANEL (a):
+Keep the three K_cond / K_scope / V_rule projection columns at the top unchanged. Keep the bottom Mod(C) box and its outgoing red connector to panel (b), but remove every arrow entering Mod(C) except its own C input. The source bridge must have exactly this topology:
+C + First-frame evidence H → Soft source read → A0_cond / A0_scope → Crop / resize geometry G → Weighted read → g_cond / g_scope.
+Wan first-frame state X0 → Weighted read, as a second input.
+Move Weighted read to the right of X0, immediately below G. Put the g_cond / g_scope token grid to the right of Weighted read. A single arrow goes DOWN from G into Weighted read. A blue arrow goes RIGHT from X0 into Weighted read. A gold arrow goes RIGHT from Weighted read into the g_cond / g_scope grid. Remove all direct A0-to-Weighted-read edges and all direct G-to-g edges. Geometry G must feed the weighted read, not the final grid. The C → Mod(C) branch is separate and never receives a weighted-read result.
+
+Do not change lower panel (b), panel (c), the equations, or the bottom training strip in this edit. Match all preserved elements exactly. Check that no gold arrow touches any coral Physical Block or the Denoising + VAE box.
+Precisely edit this scientific diagram, preserving its upper overview, all of panel (c), the bottom training strip, the typography, style, colors and aspect ratio. Correct ONLY the interiors of panels (a) and (b), as described here. Delete the outdated arrows before redrawing. Avoid adding any tensor shapes or extra labels.
+
+PANEL (a), lower grounding subgraph only:
+Preserve the upper three C projections and the bottom Mod(C) branch. COMPLETELY ERASE the six old shapes named Soft source read, A0_cond, A0_scope, Crop / resize geometry G, Weighted read and the g_cond/g_scope grid, including every arrow between them. Replace this entire little subgraph with THREE WIDE STACKED ROUNDED BOXES with straight downward arrows between them:
+1. "Soft source read: A₀_cond / A₀_scope"
+2. "Geometry mapping G + weighted read"
+3. "g_cond / g_scope"
+The preserved C and First-frame evidence H both point DOWN into box 1. Box 1 points DOWN into box 2. Box 2 points DOWN into box 3. Place the preserved blue Wan first-frame state X0 input to the left of box 2 and draw ONE BLUE ARROW from X0 into BOX 2. This compact layout replaces all previous A0 and G token grids. There is no X0 input to box 3 and no direct box-1-to-box-3 shortcut. The separate C → Mod(C) branch is untouched. Preserve the geometry notes.
+
+PANEL (b), time-conditioning cards:
+There are two purple cards at the bottom of the central interaction area. Replace the LEFT card, directly UNDER STATE INTERACTION, with exact text "Diffusion noise σ" and its arrow goes straight UP into State interaction. Replace the RIGHT card, directly UNDER TEMPORAL RESPONSE, with exact text "PTS → τ, Δτ" and smaller "History j ≤ t" and its arrow goes straight UP into Temporal response. This is a SWAP OF THE EXISTING CARD LABELS so each card's position matches the block above it. σ conditions interaction; τ conditions temporal response. No τ→interaction arrow and no σ→temporal-response arrow should remain.
+
+PANEL (b), response and native merge at right:
+Keep Current Wan state, both K + g roles, A_cond, A_scope, state reads, State interaction, and the big mint shared-A_scope connector exactly as they are. Keep the State interaction → Temporal response connection. REDRAW the response-to-output area to make the following exact flow:
+Temporal response → small circled plus → d[r,t] → "Write with SAME A_scope" → a small CORAL RECTANGLE "O_phys" → residual circled plus → a small BLUE RECTANGLE "Native FFN".
+The u_scope read feeds the SMALL FIRST circled plus immediately after Temporal response. It no longer feeds Temporal response directly. This skip can use one thin blue right-angle line along the bottom of the middle computation.
+The original big mint A_scope connector still terminates in Write with SAME A_scope.
+The arrow from O_phys into the FINAL residual plus is labeled "ΔX". Delete the old misleading ΔX grid AFTER the final plus. Use its space for Native FFN. Native residual and Native text attention below both feed this FINAL residual plus. The final plus has ONE outgoing blue arrow, pointing into Native FFN. The output of FFN may end at the right panel boundary. Delete the decorative O_phys token grid to gain room; O_phys is now a labeled operator rectangle.
+Remove the two decorative response token grids if needed for spacing; keep labels legible. Shrink shapes slightly as needed to fit within the existing panel border. Preserve both equations at the bottom, the first-frame note, and the central shared-read/write label.
+
+The finished diagram must clearly show: first-frame geometry weights are applied BEFORE reading state; σ and τ are separate; u_scope merges after temporal processing; physical ΔX merges with native paths BEFORE native FFN. Do not alter anything else in the figure.
+Make only TWO tiny localized corrections to the attached diagram. Preserve absolutely everything else pixel-for-pixel: all text, all boxes, all other arrows, all colors and the exact layout.
+
+1. In LOWER LEFT PANEL (a), the bottom red Mod(C): γ,β box currently has an incorrect red right-angle line connecting its RIGHT EDGE to the BOTTOM of the g_cond / g_scope box above it. ERASE that entire short red L-shaped connector. Fill the removed line with plain white. Do not draw any replacement. The g_cond/g_scope box is a terminal output and must have NO outgoing arrow or line. The Mod(C) box receives ONLY the existing GOLD line from C at its LEFT EDGE. Keep that left gold line. The two boxes should have no connection to one another. Do not alter the correct downward arrow from Geometry mapping G + weighted read into g_cond/g_scope.
+
+2. In the small upper source-reference card inside CENTRAL PANEL (b), change the text "g_cond · g_scope" to "g_cond / g_scope". This card represents TWO input references, not their product. Keep the card, blue token grid, and its downward red arrow otherwise unchanged.
+
+No other changes. Do not redraw or rearrange any part of the figure. This is final cleanup of one stray connector and one separator glyph.

@@ -1,0 +1,42 @@
+{
+  "prepared_utc": "20261030T170217Z",
+  "jobs": {
+    "baseline_r1_resume1000_review": {
+      "launcher": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/inference/baseline_r1_resume1000_review_20261030T170217Z.yaml",
+      "submit_after": null,
+      "submitted": false,
+      "status": "deferred_by_user",
+      "reason": "User 2026-10-30: baseline continuation to1000 is not needed for now; do not submit."
+    },
+    "candidate400_guidance_then_process_r2": {
+      "launcher": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/inference/candidate400_guidance_then_process_r2_20261030T170217Z.yaml",
+      "submit_after": "66837 candidate400 full40 review complete",
+      "submitted": true,
+      "experiment_id": 66857,
+      "status": "killed_superseded_by_short_r3",
+      "note": "Independent heldout guidance pilot can run alongside full40 recovery",
+      "next_action": "Never resume; use standalone66864 guidance16 and R3 stop64.",
+      "state": "killed_superseded_by_short_r3"
+    },
+    "candidate1000_review_then_process_r2_baseline": {
+      "launcher": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/inference/candidate1000_review_then_process_r2_baseline_20261030T170217Z.yaml",
+      "submit_after": "66833 candidate1000 training complete",
+      "submitted": false,
+      "status": "superseded_by_server_recovery",
+      "replacement_training_and_review_experiment": 66856,
+      "note": "Own750 continuation now creates a new run; R2 baseline400 is separate, with66854 rejected before loading on H100"
+    }
+  },
+  "user_update_utc": "2026-10-30T17:23:13.939549+00:00",
+  "updated_utc": "2026-10-31T05:13:36.704145+00:00",
+  "latest_authoritative_progress": {
+    "native400_full40": "complete",
+    "candidate400_full40": "complete",
+    "candidate1000_scaling_reference": 66856,
+    "standalone400_guidance16": 66864,
+    "short_r3_baseline64": 66866,
+    "short_r3_candidate": "66865/66867 rejected H100; pending accepted RTX allocation",
+    "next_revision_requires1000": false,
+    "scores_reaggregation": "experiments/physical_content_v7/reports/videophy40_physvid_style.json"
+  }
+}

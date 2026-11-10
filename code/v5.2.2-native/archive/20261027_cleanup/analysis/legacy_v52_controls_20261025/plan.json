@@ -1,0 +1,31 @@
+{
+  "created_utc": "2026-10-25T14:01:53.774230+00:00",
+  "reference_yaml": "/home/liuzhirui/Project/physGen/code/v5.2/inference/infer_joint_state_no_lora_demo21_1x96g.yaml",
+  "entrypoint": "bash /home/liuzhirui/Project/physGen/code/v5.2/inference/infer_joint_state_no_lora_demo21_1x96g.sh",
+  "source_code_modified": false,
+  "runtime_wrapper_added": false,
+  "replicas": [
+    "a",
+    "b"
+  ],
+  "slots_per_task": 1,
+  "device_selection": "Determined allocation only; no CUDA_VISIBLE_DEVICES override",
+  "cases": [
+    "reference",
+    "P01"
+  ],
+  "frames": 81,
+  "resolution": [
+    832,
+    480
+  ],
+  "sampling_steps": 50,
+  "seed": 20261006,
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2/checkpoints/1d-v52-joint-state-no-lora-96g-832x480-f81_65316/joint/latest.pt",
+  "differences_from_reference_yaml": [
+    "experiment name/description",
+    "two fixed cases instead of all 21",
+    "new isolated OUTPUT directory"
+  ],
+  "interpretation": "Same old code succeeding on one allocation and failing on another narrows failure to allocation-specific execution; it does not identify a physical hardware defect. Both succeeding only validates old inference, not new backward."
+}

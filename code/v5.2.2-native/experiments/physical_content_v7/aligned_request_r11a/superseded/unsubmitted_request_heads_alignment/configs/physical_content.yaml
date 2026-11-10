@@ -1,0 +1,122 @@
+revision: physical_content_v7_aligned_request_r11a
+paths:
+  wan_code: /home/liuzhirui/model/Wan2.2
+  wan_checkpoint: /home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B
+  qwen_checkpoint: /home/liuzhirui/model/Qwen3-VL/Qwen3-VL-8B-Instruct
+  cache: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/data_revision_qwen38/runs/20261103_dataset/encoded
+  supervision_cache: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/input_overlay
+  runs: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/aligned_request_r11a/runs
+  supervision_cache_readonly: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_variants/supervision_cache
+  content_cache: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/data_revision_qwen38/runs/20261103_dataset/encoded/content
+  interface: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/data_revision_qwen38/runs/20261103_dataset/encoded/content/interface.pt
+  input_evidence: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/data_revision_qwen38/runs/20261103_dataset/encoded/content/input
+  inference_evidence: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/data_revision_qwen38/benchmark_inputs/videophy60_first_image_request_v1
+model:
+  width: 3072
+  qwen_width: 4096
+  q_tokens: 256
+  q_heads: 32
+  rounds: 2
+  condition_every: 3
+  lora_rank: 32
+  grounded_read_heads: 16
+  grounded_word_normalization: train_input_interface
+  global_reader_input: 16 relation heads,8 literal-request heads,8 mixed-context heads;
+    shared existing projections
+  final_readout: semantic_routing_q_execution
+  shared_content_offset: true
+  native_text_adaptation: frozen
+  fusion_order: r10a_parallel
+  literal_request_heads: 8
+knowledge:
+  image_size:
+  - 480
+  - 832
+  video_size:
+  - 480
+  - 832
+  max_text_tokens: 4096
+  gradient_checkpointing: true
+  reasoning_mode: q_seed128_message
+  latent_reasoning_steps: 2
+  reasoning_tokens: 256
+  reasoning_max_tokens: 128
+  reasoning_cache: 16
+  freeze_backbone: true
+verifier:
+  kind: none
+geometry:
+  mode: native
+  rgb_size:
+  - 480
+  - 832
+stages:
+  alignment: 64
+  joint: 336
+train:
+  seed: 42
+  accumulation: 4
+  peak_lrs:
+    enhancement: 5.0e-05
+    fusion_read: 2.0e-05
+    fusion_write: 3.0e-05
+    wan_lora: 2.0e-05
+  warmup: 32
+  wan_warmup: 128
+  grad_clip:
+    enhancement: 1.0
+    fusion_read: 1.0
+    fusion_write: 1.0
+    wan_lora: 1.0
+  text_dropout: 0.1
+  save_every: 50
+  keep_steps:
+  - 64
+  - 250
+  - 400
+  validation_steps: []
+  gradient_checkpointing: true
+  gradient_ownership: routing_alignment_then_joint_generation
+inference:
+  steps: 50
+  shift: 5.0
+  guidance: 5.0
+  sampler: shifted_euler
+variant: physical_content
+loss:
+  peak_weight: 0.03
+  warmup: 32
+  generation:
+    tail_weight: 0.2
+    tail_fraction: 0.25
+  semantic_target: routing_only
+source_snapshot: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/aligned_request_r11a
+evaluation_budget:
+  final_stop: 400
+  intermediate_step: null
+  intermediate_cases: 0
+  primary_cases: 40
+  control_cases: 16
+  control_modes:
+  - no_c
+  - reasoning_swapped
+  - empty_reasoning
+  - global_train_mean
+  - anchor_routing
+  - request_reader_global
+  automatic_extension: false
+  native_text_guidance: 5.0
+  physical_guidance: 5.0
+  seed: 42
+  extended_evaluation:
+    cases: 60
+    new_cases: 20
+    runner: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/videophy60/snapshots/20261031T150803Z/run_extra20.py
+    input_status: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/videophy60/preparation_status.json
+    protocol: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/videophy60/protocol.json
+    keep_original40_results: true
+data_revision: qwen38_wisa_reviewed_v1
+training_budget_note: 64 Q/routing-C alignment updates without Wan forward or FM,
+  then336 joint video-generation updates.400 total/1600 inputs;256 alignment-only
+  inputs and1344 video inputs. Execution C is never directly word-aligned; existing
+  Wan LoRA and fusion learn336 updates. Not equal generator update exposure toR10A400.

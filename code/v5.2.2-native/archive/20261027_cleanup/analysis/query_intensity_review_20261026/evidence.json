@@ -1,0 +1,176 @@
+{
+  "revision": "v522_native_fullwidth_attention_v12",
+  "native_equivalence_max_error": 0.0,
+  "sample": "source0000000",
+  "message_ratios": [
+    {
+      "layer": 3,
+      "C_message_rms": 1.112244963645935,
+      "text_message_rms": 0.002897957805544138,
+      "ratio": 383.8030220861319
+    },
+    {
+      "layer": 6,
+      "C_message_rms": 1.1666284799575806,
+      "text_message_rms": 0.012909209355711937,
+      "ratio": 90.37179952786052
+    },
+    {
+      "layer": 9,
+      "C_message_rms": 1.3401116132736206,
+      "text_message_rms": 0.0073096901178359985,
+      "ratio": 183.33357388211073
+    },
+    {
+      "layer": 12,
+      "C_message_rms": 1.3237881660461426,
+      "text_message_rms": 0.016216488555073738,
+      "ratio": 81.63223262239235
+    },
+    {
+      "layer": 15,
+      "C_message_rms": 1.2521532773971558,
+      "text_message_rms": 0.0121731236577034,
+      "ratio": 102.86211761307196
+    },
+    {
+      "layer": 18,
+      "C_message_rms": 1.0040783882141113,
+      "text_message_rms": 0.023992562666535378,
+      "ratio": 41.84956822534807
+    },
+    {
+      "layer": 21,
+      "C_message_rms": 0.9656123518943787,
+      "text_message_rms": 0.06343216449022293,
+      "ratio": 15.222755831439626
+    },
+    {
+      "layer": 24,
+      "C_message_rms": 0.9366167187690735,
+      "text_message_rms": 0.01624489575624466,
+      "ratio": 57.65606211471262
+    },
+    {
+      "layer": 27,
+      "C_message_rms": 0.9794402718544006,
+      "text_message_rms": 0.07981673628091812,
+      "ratio": 12.271114023094384
+    },
+    {
+      "layer": 30,
+      "C_message_rms": 0.9278799295425415,
+      "text_message_rms": 0.017391759902238846,
+      "ratio": 53.35169843410127
+    }
+  ],
+  "output_change_rms": 1.4536622762680054,
+  "native_output_rms": 1.3936231136322021,
+  "output_change_over_native_rms": 1.0430813482128056,
+  "generation_C_gradient_rms": 4.33189379691612e-05,
+  "verifier_C_gradient_rms": 8.281798500320292e-07,
+  "verifier_calibrated": false,
+  "existing_cache_intensity_scale": 0.2108154296875,
+  "train_constant": 0.20642641186714172,
+  "target_summary": {
+    "train": {
+      "ids": [
+        "source0000000",
+        "source0000159",
+        "source0000308",
+        "source0000456",
+        "source0000603",
+        "source0000764",
+        "source0000912",
+        "source0001060",
+        "source0001214",
+        "source0001367",
+        "source0001528",
+        "source0001685",
+        "source0001838",
+        "source0002003",
+        "source0002150",
+        "source0002306",
+        "wisa0003360",
+        "wisa0005261",
+        "wisa0007393",
+        "wisa0009337",
+        "wisa0011456",
+        "wisa0013457",
+        "wisa0015400",
+        "wisa0017551",
+        "wisa0019645",
+        "wisa0021614",
+        "wisa0023528",
+        "wisa0025637",
+        "wisa0027398",
+        "wisa0029273",
+        "wisa0030967",
+        "wisa0032661"
+      ],
+      "weighted_mean": 0.20642627775669098,
+      "fraction_below_half": 0.8184536099433899,
+      "train_constant_smooth_l1": 0.05508606508374214
+    },
+    "validation": {
+      "ids": [
+        "source0000042",
+        "source0000151",
+        "source0000298",
+        "source0000466",
+        "source0000614",
+        "source0000693",
+        "source0000994",
+        "source0001219",
+        "source0001287",
+        "source0001438",
+        "source0001573",
+        "source0001710",
+        "source0001866",
+        "source0001980",
+        "source0002166",
+        "source0002318",
+        "wisa0002790",
+        "wisa0005617",
+        "wisa0007079",
+        "wisa0009136",
+        "wisa0012118",
+        "wisa0014820",
+        "wisa0017034",
+        "wisa0019269",
+        "wisa0020356",
+        "wisa0021135",
+        "wisa0024089",
+        "wisa0025716",
+        "wisa0027851",
+        "wisa0029305",
+        "wisa0030386",
+        "wisa0032606"
+      ],
+      "weighted_mean": 0.07888227701187134,
+      "fraction_below_half": 0.9506651163101196,
+      "train_constant_smooth_l1": 0.023366903886198997
+    }
+  },
+  "single_sample_intensity": {
+    "sample": "source0000000",
+    "reported_model_intensity_loss": 0.010375117883086205,
+    "reported_weighted_rmse": 0.14404942126288606,
+    "target_mean": 0.027621539309620857,
+    "constant_losses": {
+      "0.0": 0.004037362989038229,
+      "0.20642641186714172": 0.01964147947728634,
+      "0.5": 0.11522659659385681
+    },
+    "interpretation": "One migrated unadapted model, one sample; constants use no model input. Not validation accuracy."
+  },
+  "algebra": {
+    "delta_Q_rank": 1,
+    "delta_Q_shape": [
+      9,
+      3072
+    ],
+    "attention_logit_identity_max_error": 3.608224830031759e-15,
+    "interpretation": "Synthetic arithmetic check of exact rank-one formula, not physical performance evidence."
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "time": "2026-10-26T13:18:16.192158+00:00",
+  "checks": [
+    {
+      "scope": "135 regression tests before final native-only RGB supervision change",
+      "tests": 135,
+      "seconds": 132.122,
+      "passed": true,
+      "log": "cpu_full_regression.log"
+    },
+    {
+      "scope": "final five integration checks including native-only RGB supervision",
+      "tests": 5,
+      "seconds": 22.306,
+      "passed": true,
+      "log": "cpu_native_geometry.log"
+    }
+  ],
+  "tests_overlap": true,
+  "configs": {
+    "v522_native_h_content_verifier_frozen_geometry_v21": {
+      "path": "configs/native_h_content_message_verifier_frozen_geometry_wisa3857.yaml",
+      "geometry": {
+        "mode": "native",
+        "rgb_size": [
+          480,
+          832
+        ]
+      },
+      "sequence": {
+        "size": [
+          480,
+          832
+        ],
+        "scales": [
+          1
+        ],
+        "lags": [
+          1,
+          2,
+          4,
+          8,
+          16,
+          32,
+          64
+        ],
+        "scale_floor": 0.03,
+        "state_weight": 0.0,
+        "perceptual_fraction": 0.0,
+        "max_sigma": 0.35
+      }
+    },
+    "v522_native_h_content_verifier_lora_geometry_v22": {
+      "path": "configs/native_h_content_message_verifier_lora_geometry_wisa3857.yaml",
+      "geometry": {
+        "mode": "native",
+        "rgb_size": [
+          480,
+          832
+        ]
+      },
+      "sequence": {
+        "size": [
+          480,
+          832
+        ],
+        "scales": [
+          1
+        ],
+        "lags": [
+          1,
+          2,
+          4,
+          8,
+          16,
+          32,
+          64
+        ],
+        "scale_floor": 0.03,
+        "state_weight": 0.0,
+        "perceptual_fraction": 0.0,
+        "max_sigma": 0.35
+      }
+    },
+    "v522_native_q_seed128_verifier_frozen_geometry_v23": {
+      "path": "configs/native_q_seed128_message_verifier_frozen_geometry_wisa3857.yaml",
+      "geometry": {
+        "mode": "native",
+        "rgb_size": [
+          480,
+          832
+        ]
+      },
+      "sequence": {
+        "size": [
+          480,
+          832
+        ],
+        "scales": [
+          1
+        ],
+        "lags": [
+          1,
+          2,
+          4,
+          8,
+          16,
+          32,
+          64
+        ],
+        "scale_floor": 0.03,
+        "state_weight": 0.0,
+        "perceptual_fraction": 0.0,
+        "max_sigma": 0.35
+      }
+    },
+    "v522_native_q_seed128_verifier_lora_geometry_v24": {
+      "path": "configs/native_q_seed128_message_verifier_lora_geometry_wisa3857.yaml",
+      "geometry": {
+        "mode": "native",
+        "rgb_size": [
+          480,
+          832
+        ]
+      },
+      "sequence": {
+        "size": [
+          480,
+          832
+        ],
+        "scales": [
+          1
+        ],
+        "lags": [
+          1,
+          2,
+          4,
+          8,
+          16,
+          32,
+          64
+        ],
+        "scale_floor": 0.03,
+        "state_weight": 0.0,
+        "perceptual_fraction": 0.0,
+        "max_sigma": 0.35
+      }
+    }
+  },
+  "dimension_inventory": "dimension_inventory.json",
+  "resource_audit": "resource_audit.json",
+  "corrected": [
+    "Native geometry for reasoning, teacher, verifier, training/inference feedback and RGB process loss",
+    "No 208x120 auxiliary view or spatial multiscale pooling",
+    "Reject mismatched geometry instead of stretching",
+    "Selected RGB outputs retain native geometry and causal VAE cache derivatives"
+  ],
+  "remaining": [
+    "Custom 4096->3072 projection before message updates is lossy in general",
+    "Q_seed128 has a fixed output-token capacity",
+    "Verifier observes 8 timestamped frames; transient events can be missed",
+    "Native Qwen/Wan projections, token merging and additive LoRA remain"
+  ],
+  "full_model_gpu_run": false,
+  "determined_jobs_submitted": []
+}

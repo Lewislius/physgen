@@ -1,0 +1,28 @@
+{
+  "utc": "2026-11-04T04:44:13.552579+00:00",
+  "viewed": [
+    "VP026",
+    "VP038"
+  ],
+  "sampling": "8 temporal frames per arm, score-selected diagnostic cases; not all frames or a full-suite estimate",
+  "observations": {
+    "VP026": {
+      "prompt": "Two people stretch a bungee cord, extending it to its maximum length.",
+      "first_image": "Shared first frame shows a suspended seat/ropes above water; no two visible people stretching a bungee cord. This is an input/request compatibility limitation for every compared arm.",
+      "R10A_API_full": "Sampled frames almost unchanged; no clear requested stretching. AutoEval SA2/PC4.",
+      "R10A_API_no_c": "An arm and cable-like pieces appear, but connection/topology becomes implausible. AutoEval SA3/PC3; higher SA does not mean adequate visual quality.",
+      "R11A_API_full": "Sampled frames almost unchanged again, SA2/PC5. Higher PC does not demonstrate the requested process."
+    },
+    "VP038": {
+      "prompt": "Paint roller coats metal fence green.",
+      "R10A_API_full": "Roller/whole background acquire strong repeated texture; limited vertical displacement, no clear localized contact-dependent paint deposition. SA3/PC5.",
+      "R10A_API_no_c": "More pronounced roller/handle movement, but roller separates or disappears and paint patch/connection is inconsistent. SA4/PC4 is not a clean successful clip.",
+      "R11A_API_full": "Less severe global repetitive texture, roller moves slightly downward then deforms/peels near end. SA4/PC4; partial improvement, not resolved physics."
+    }
+  },
+  "implications": [
+    "Physical generation often suppresses requested progression; disabling it can expose motion with serious artifacts, so merely increasing semantic motion is insufficient.",
+    "The old request-execution branch is insufficient. Independent literal request memory is a testable new route, not proven a solution.",
+    "Preserve fixed40/60 inputs for comparability; do not silently replace difficult or incompatible first images. Record the input limitation without excluding cases or explaining away the full failure."
+  ]
+}

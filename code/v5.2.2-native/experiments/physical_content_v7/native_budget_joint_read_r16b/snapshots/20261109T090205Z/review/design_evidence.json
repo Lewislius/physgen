@@ -1,0 +1,57 @@
+{
+  "candidate": "R16B",
+  "design": "Native query allocates direct/request/reference mass; independent full physical Q chooses content within direct C. Full physical K/V/O and R10A/R15B direct state-conditioned write retained. Frozen native text; no common-write subtraction or request probability product.",
+  "references": [
+    "R1",
+    "R9",
+    "R10A",
+    "R15B",
+    "B400+I"
+  ],
+  "basis": {
+    "I_direct_mass": 0.4788,
+    "Bjoint_direct_mass": 0.7564,
+    "I_reference_mass": 0.1196,
+    "Bjoint_reference_mass": 0.0375,
+    "I_normal16": [
+      3.1875,
+      3.6875,
+      6
+    ],
+    "I_all_native_query16": [
+      3.125,
+      3.625,
+      4
+    ]
+  },
+  "interpretation": "Do not remove learned physical Q: full native-query replacement loses quality in I. Separate allocation from physical content selection instead. Query alone cannot change total direct bank mass, but learned C/K can; no universal quality guarantee.",
+  "discarded": {
+    "experiment": 68490,
+    "formal_steps": 34,
+    "reason": "Common-write subtraction lacked evidence of preserving physical benefit and left severe deformations in old-weight replay. Canceled; not a training initializer."
+  },
+  "training": {
+    "steps": 400,
+    "phases": [
+      128,
+      272
+    ],
+    "fresh_official": true,
+    "loss": "0.8 mean FM + 0.2 high-error FM + 0.03 routing word auxiliary",
+    "data": "original1600"
+  },
+  "validation": {
+    "model_tests": 5,
+    "pipeline_tests": 6,
+    "syntax_all_passed": true,
+    "full_gpu_bridge_and_gradients": "required before formal training"
+  },
+  "targets": {
+    "pc40": 3.8,
+    "sa40": 3.125,
+    "joint40": 12,
+    "strictly_exceed_Bjoint40_and60": true,
+    "no_catastrophic_videos": true
+  },
+  "quality_proven": false
+}

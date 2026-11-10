@@ -1,0 +1,42 @@
+V6 ProPhy-style pipeline figures, 2026-10-28
+
+01_architecture.png：生成总览、Q增强和单层物理融合。
+02_supervision.png：离线弱目标构建、FM与实际写入监督。
+Physical_Write_Distillation_V6_pipeline.pdf：两页合并阅读版。
+manifest.json记录来源、原始尺寸、工具和完整提示词集合。
+图像由内置image_gen生成并作定向修订；PDF仅封装原图。
+
+维度约定：
+B为batch，图示通常取1；M为Qwen首帧/文本证据长度。
+RGB：[B,3,81,480,832]；Wan latent：[B,48,21,30,52]。
+原生patch=(1,2,2)，得到21×15×26=8190个token。
+已观测首帧15×26=390；未来20×15×26=7800。
+Q/C：[B,128,4096]；增强模块32 heads×128，FFN4096->8192->4096。
+两次refinement共享一个block，不额外增加第三次R0。
+P：4096->3072；Cw：[B,128,3072]。
+原生T5 context：[B,512,4096]，经Wan text embedding到[B,512,3072]。
+图中的4096->3072->3072表示原生文本嵌入宽度，实际使用原生非线性。
+原生Wan24 heads×128；文本Q：[B,24,8190,128]，文本K/V：[B,24,512,128]。
+C未来Q：[B,24,7800,128]，C K/V：[B,24,128,128]。
+C K/V使用复制官方冻结矩阵及各自LoRA r32；不是原生文本的可训练共享增量。
+C输出O_C是3072->3072完整矩阵，零初始化。
+实际写入deltaH_future：[B,7800,3072]，补首帧390个零后为[B,8190,3072]。
+U=Hs+Y_T+deltaH，Hs是原生self-attention之后的状态；原生FFN在合流后执行。
+原生FFN宽度3072->14336->3072；B阶段self-attention和FFN的新LoRA可训练。
+原生文本基础参数、Qwen、T5、VAE冻结。
+tau/delta_tau来自PTS，标准时间编码256->3072；sigma是扩散噪声，两者含义不同。
+
+训练目标维度：
+R<=4为短物理关系文本数；L_r为各句token长度。
+教师读取28个RGB观察，视频视觉token数Nv由实际video_grid_thw决定，不假设等于8190。
+局部attention目标从[B,R,Nv]按已知坐标/PTS映射为[B,R,21,15,26]。
+取未来后g：[B,7800,R]；语义e_l：[B,R,3072]。
+D*_l=g@e_l：[B,7800,3072]；只作训练损失目标，不进入生成条件。
+语义e_l使用该层官方冻结text V/O的线性权重；不重复添加bias。
+L_write直接监督同一份deltaH_future，采用教师尺度归一化后的SmoothL1。
+总损失为L_FM+lambda_write*(1-sigma)*L_write，初始lambda_write建议0.02。
+教师目标stopgrad；梯度从损失回到学生，教师分支没有反向梯度。
+图中染料图片是示意图，不是本项目新训练产生的视频结果。
+
+设计源：../../analysis/q_workspace_regression_20261028/PHYSICAL_WRITE_DISTILLATION_V6.txt。
+当前是设计图；离线教师图为弱标注，并不代表精确物理事件真值或已取得指标提升。

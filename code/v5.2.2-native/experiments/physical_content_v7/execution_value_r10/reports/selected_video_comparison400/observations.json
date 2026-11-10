@@ -1,0 +1,92 @@
+{
+  "recorded_utc": "2026-11-01T06:33:53.568991+00:00",
+  "status": "all_three_selected_cases_reviewed",
+  "selection": "Prespecified VP010/026/027, failure-focused examples reused across budgets; not a random estimate of quality.",
+  "cases": [
+    {
+      "id": "VP010",
+      "caption": "A person mops up a puddle of water on a concrete floor, the water disappearing as the mop passes.",
+      "frame_indices": [
+        0,
+        27,
+        54,
+        80
+      ],
+      "panel": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/execution_value_r10/reports/selected_video_comparison400/VP010/VP010.png",
+      "reference_budget250_panel": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/execution_value_r10/reports/selected_video_comparison250/VP010.png",
+      "observations": [
+        "At400, A mop-head position and handle angle change little across the four fixed times; the wet floor region remains visible.",
+        "R1-400 shows much clearer mop displacement and floor-trace changes. Its dark ring/arc patterns should not themselves be taken as proof of physically correct water removal.",
+        "A-250 previously showed a forward sweep toward the lower edge and a later position change; the matched four-frame A400 sample shows markedly weaker action progression.",
+        "No old R9.1 vertical bright-strip artifact is evident in the A400 sampled frames, but stable appearance alone does not establish request/process completion."
+      ],
+      "r1_400_score": {
+        "sa": 4,
+        "pc": 4
+      },
+      "a400_score": {
+        "sa": 3,
+        "pc": 4
+      },
+      "interpretation": "Selected evidence of weak requested-process execution at400; do not infer the whole clip is frozen, whole-model quality, or a causal effect of training steps independent of extra data.",
+      "scope": "Same request/first image/seed42/gamma5, reused prespecified frame positions; no additional generated videos or evaluation calls."
+    },
+    {
+      "frame_indices": [
+        0,
+        27,
+        54,
+        80
+      ],
+      "a400_score": {
+        "sa": 2,
+        "pc": 5
+      },
+      "scope": "Same request/first image/seed42/gamma5; four preselected times, existing generated clips only. Not a full-motion review or an unbiased rate of defects.",
+      "id": "VP026",
+      "caption": "Two people stretch a bungee cord, extending it to its maximum length.",
+      "panel": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/execution_value_r10/reports/selected_video_comparison400/VP026/VP026.png",
+      "reference_budget250_panel": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/execution_value_r10/reports/selected_video_comparison250/VP026.png",
+      "r1_400_score": {
+        "sa": 3,
+        "pc": 4
+      },
+      "observations": [
+        "The severe orange-body fragmentation and curved/chaotic connection structures seen in A250 are absent at the four sampled A400 times. This is a real visible stability improvement in these frames.",
+        "The A400 main suspended structure, rope arrangement and upper-left figure remain almost unchanged across the selected times; the requested two-person extension to maximum length is not visibly demonstrated.",
+        "R1-400 has larger changes in people/rope configurations, including a right-side figure at later sampled times; these changes alone do not establish correctly executed bungee stretching."
+      ],
+      "interpretation": "Both artifact reduction and weak requested-process execution must be reported. Do not count less visible change by itself as better physical correctness."
+    },
+    {
+      "frame_indices": [
+        0,
+        27,
+        54,
+        80
+      ],
+      "a400_score": {
+        "sa": 4,
+        "pc": 4
+      },
+      "scope": "Same request/first image/seed42/gamma5; four preselected times, existing generated clips only. Not a full-motion review or an unbiased rate of defects.",
+      "id": "VP027",
+      "caption": "Hands shape a lump of clay-like bread dough into a smooth, round boule on a wooden table.",
+      "panel": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/execution_value_r10/reports/selected_video_comparison400/VP027/VP027.png",
+      "reference_budget250_panel": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/execution_value_r10/reports/selected_video_comparison250/VP027.png",
+      "r1_400_score": {
+        "sa": 4,
+        "pc": 5
+      },
+      "observations": [
+        "A400 keeps very similar hand/dough contact and shape at all four fixed times, with little clear reshaping progression. The sampled images do not show an obvious new gross hand/deformation artifact.",
+        "R1-400 shows clearer changes in contact, hand position and dough profile, although it starts from the same already-rounded dough.",
+        "Weak process progression was already present in A250; it remains at400. The four frames do not prove the full clip is frozen or measure a general motion magnitude."
+      ],
+      "interpretation": "The observed issue is completion of the requested deformation/shaping process. It should be considered together with final SA/PC, not replaced by a pixel-change objective."
+    }
+  ],
+  "pending_cases": [],
+  "full40_or60_conclusion": "Original40 scores nowcomplete:SA2.825 PC3.75 Joint7/40. Selectedframe observations explain examples only; full60 andcontrols pending.",
+  "score_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/execution_value_r10/inference_outputs/physical_content_67003/step0400_full40_controls16_physical5_seed42/videophy40/scores.json"
+}

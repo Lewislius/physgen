@@ -1,0 +1,48 @@
+--- frozen_R16A/infer.py
++++ no_reference_eval/infer.py
+@@ -2,13 +2,16 @@
+ from pathlib import Path
+ import argparse,copy,json,os,random,sys,time
+ sys.path.insert(0,str(Path(__file__).resolve().parent))
++sys.path.insert(0, '/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_joint_read_r16a/snapshots/20261109T040426Z')
+ import bootstrap
+ import numpy as np
+ import torch
+ from benchmark_inputs import reference,case_input,load_noise,verify_video
+ from condition_controls import InferenceCache,mean_with_own_prior
+ from guidance import description,guided_velocity
+-from completed_suite import completion
++from reference_completion import completion
++from reference_control import install
++install()
+ 
+ 
+ @torch.no_grad()
+@@ -21,6 +24,7 @@
+     p.add_argument('--cases',nargs='+',required=True)
+     p.add_argument('--global-condition',type=Path)
+     args=p.parse_args()
++    if args.modes != ['no_reference']:raise ValueError('This frozen intervention only evaluates no_reference')
+     from physical_content.common import gpu_guard,atomic_json,REVISION
+     from physical_content.model import PhysicalModel
+     from physgen_native.decoder import VideoDecoder
+@@ -32,7 +36,8 @@
+     pending=[]
+     for mode in args.modes:
+         directory=root/args.suite if mode=='real' else root/'controls'/mode/args.suite
+-        generated,_=completion(directory,args.checkpoint,cfg['source_snapshot'],args.cases,mode)
++        generated,_=completion(directory,args.checkpoint,cfg['source_snapshot'],args.cases,mode,
++            inference_source=Path(__file__).resolve().parent)
+         if generated:print(json.dumps(dict(status='reused_complete_generation',mode=mode,cases=len(args.cases))),flush=True)
+         else:pending.append(mode)
+     if not pending:return
+@@ -54,7 +59,8 @@
+     base=reference()
+     selected=[case for case in base['cases'] if case['id'] in args.cases]
+     if len(selected)!=len(set(args.cases)):raise ValueError('Case selection differs')
+-    scopes=dict(real='Own first image, original request and original Qwen reasoning',
++    scopes=dict(no_reference='Remove only the zero-value reference from final physical attention in both CFG arms; own R16A400 weights and all C/request inputs retained',
++        real='Own first image, original request and original Qwen reasoning',
+         no_c='Native generation branch: physical fusion bypassed in both CFG arms',
+         direct_read_only='Read only direct C with the same trained physical Q/K/V/O and state interaction',
+         request_prior_only='Remove direct physical query-to-C similarity; keep native request-to-C prior and the same learned null/write',

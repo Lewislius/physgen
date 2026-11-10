@@ -1,0 +1,27 @@
+{
+  "id": "VP001",
+  "caption": "A long jumper demonstrates a flawed technique, resulting in a short distance and an unbalanced landing.",
+  "revision": "v522_native_generation_baseline_v11",
+  "optimizer_step": 32,
+  "seed": 42,
+  "fps": 23.999999284744284,
+  "conditions": "first frame, caption, existing requirements; no future target",
+  "physical_dependency_analysis": "OBSERVED: Jumper airborne with arms extended, legs asymmetrically positioned; landing zone unmarked, distance unmeasured; no visible ground contact or post-landing stance.\n\nINTERACTION: Takeoff momentum → airborne posture → landing impact → stance stabilization; unbalanced mid-air posture → asymmetric landing → instability propagation.\n\nPERSISTENCE: Airborne phase sustains until foot contact; imbalance propagates through landing mechanics; instability persists if center of mass not recentered within 0.5s post-impact.\n\nINTERVENTION: If takeoff lean is absent → reduced horizontal velocity → shorter jump; if landing feet are staggered → instability increases → recovery motion delayed; if no post-landing recentering → fall risk remains active.",
+  "latent_reasoning_steps": 2,
+  "latent_feedback": null,
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "condition_strength": 1.0,
+    "latent_feedback": {
+      "enabled": false,
+      "metric": "relative_rms",
+      "sigmas": [
+        0.85,
+        0.65
+      ],
+      "step_size": 0.1
+    }
+  }
+}

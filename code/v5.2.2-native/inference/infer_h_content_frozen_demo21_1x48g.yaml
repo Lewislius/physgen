@@ -1,0 +1,46 @@
+name: v522-h-content-frozen-final224-round1-demo21-amp48g
+description: Final run66356 step224; H-content round1; reference plus P01-P20; 832x480,
+  81 frames, 24 FPS, Euler50, shift5, CFG5, seed42. Run on one amp-48g GPU with unchanged
+  native sampling and training seed. Stage Qwen/Wan residency for 40GB and 48GB allocations.
+workspace: ALL-IN-ONE
+project: wan-animate
+max_restarts: 0
+resources:
+  resource_pool: amp-48g
+  slots_per_trial: 1
+  is_single_node: true
+  shm_size: 34359738368
+bind_mounts:
+- host_path: /mount/HOME/liuzhirui
+  container_path: /home/liuzhirui
+- host_path: /mount/NAS1/public
+  container_path: /run/determined/NAS1/public
+environment:
+  image: 10.130.130.5:8192/lab-dev:latest
+  environment_variables:
+  - CHECKPOINT=/home/liuzhirui/Project/physGen/code/v5.2.2-native/checkpoints/v522-h-content-message-verifier-frozen-simple_66356/latest.pt
+  - SAMPLE_IDS=all
+  - SEED=42
+  - FPS=24
+  - SAMPLING_STEPS=50
+  - SHIFT=5
+  - GUIDANCE=5
+  - RESUME=auto
+  - OMP_NUM_THREADS=4
+  - PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+  - OUTPUT=/home/liuzhirui/Project/physGen/code/v5.2.2-native/inference_outputs/v522-h-content-message-verifier-frozen-simple_66356/demo21_step0224_round1_seed42
+  - CPU_OFFLOAD=1
+checkpoint_storage:
+  type: shared_fs
+  host_path: /mount/HOME/liuzhirui
+  storage_path: Project/physGen/code/v5.2.2-native/determined_checkpoints
+  save_experiment_best: 0
+  save_trial_best: 0
+  save_trial_latest: 0
+searcher:
+  name: single
+  metric: completed_cases
+  max_length:
+    epochs: 1
+  smaller_is_better: false
+entrypoint: bash /home/liuzhirui/Project/physGen/code/v5.2.2-native/inference/infer_h_content_frozen_demo21_1x48g.sh

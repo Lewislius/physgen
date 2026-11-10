@@ -1,0 +1,63 @@
+{
+  "output": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_condition_credit/workers",
+  "exclude_gpu_uuids": [
+    "GPU-30085d8b-9408-7a7f-e544-be0280858108"
+  ],
+  "exclusion_reason": "Allocation repeatedly associated with SIGKILL; isolate while preserving all tested sampling paths.",
+  "workers": [
+    [
+      {
+        "name": "credit_case1",
+        "command": [
+          "/home/liuzhirui/miniconda3/envs/moviestory/bin/python",
+          "-I",
+          "-B",
+          "-u",
+          "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_condition_credit/code/tools/probe_condition_credit.py",
+          "--checkpoint",
+          "/home/liuzhirui/Project/physGen/code/v5.2.2-native/checkpoints/v522-diagnostic-reasoned_process-8cases32updates-seed42_65836/latest.pt",
+          "--condition-directory",
+          "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261024_recovery/c_feedback_k12/directions",
+          "--output",
+          "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_condition_credit/case1",
+          "--cases",
+          "1",
+          "--seeds",
+          "42",
+          "314159",
+          "--fractions",
+          "0.0001",
+          "0.001",
+          "0.01"
+        ]
+      }
+    ],
+    [
+      {
+        "name": "credit_case3",
+        "command": [
+          "/home/liuzhirui/miniconda3/envs/moviestory/bin/python",
+          "-I",
+          "-B",
+          "-u",
+          "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_condition_credit/code/tools/probe_condition_credit.py",
+          "--checkpoint",
+          "/home/liuzhirui/Project/physGen/code/v5.2.2-native/checkpoints/v522-diagnostic-reasoned_process-8cases32updates-seed42_65836/latest.pt",
+          "--condition-directory",
+          "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261024_recovery/c_feedback_k12/directions",
+          "--output",
+          "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_condition_credit/case3",
+          "--cases",
+          "3",
+          "--seeds",
+          "42",
+          "314159",
+          "--fractions",
+          "0.0001",
+          "0.001",
+          "0.01"
+        ]
+      }
+    ]
+  ]
+}

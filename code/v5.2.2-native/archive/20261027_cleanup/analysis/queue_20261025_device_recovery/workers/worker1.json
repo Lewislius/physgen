@@ -1,0 +1,68 @@
+[
+  {
+    "name": "real_training_check",
+    "device": {
+      "uuid": "GPU-d46ac459-b58f-cd15-f6b1-e0b8b5156d4b",
+      "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition"
+    },
+    "started_unix": 1792904807.178985,
+    "command": [
+      "/home/liuzhirui/miniconda3/envs/moviestory/bin/python",
+      "-I",
+      "-B",
+      "-u",
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_device_recovery/code/train/train.py",
+      "--config",
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_device_recovery/real_training_check.yaml",
+      "--initialize-generator",
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/checkpoints/v522-diagnostic-reasoned_process-8cases32updates-seed42_65836/latest.pt",
+      "--initialize-critic",
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261024_verifier_recovery/results/calibration/verifier_paired_seed42.pt",
+      "--stop-after",
+      "4"
+    ],
+    "state": "complete",
+    "returncode": 0,
+    "seconds": 1255.0398306846619
+  },
+  {
+    "name": "paired_k50_shard0",
+    "device": {
+      "uuid": "GPU-d46ac459-b58f-cd15-f6b1-e0b8b5156d4b",
+      "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition"
+    },
+    "started_unix": 1792906062.2214887,
+    "command": [
+      "/home/liuzhirui/miniconda3/envs/moviestory/bin/python",
+      "-I",
+      "-B",
+      "-u",
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_device_recovery/code/tools/check_temporal_feedback_split.py",
+      "--checkpoint",
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/checkpoints/v522-diagnostic-reasoned_process-8cases32updates-seed42_65836/latest.pt",
+      "--output",
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_device_recovery/paired_k50",
+      "--cases",
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "--seeds",
+      "42",
+      "314159",
+      "--gradient-steps",
+      "50",
+      "--shards",
+      "2",
+      "--shard",
+      "0",
+      "--discrete-adjoint",
+      "--single-device",
+      "--condition-controls",
+      "--verifier",
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261024_verifier_recovery/results/calibration/verifier_paired_seed42.pt"
+    ],
+    "state": "running"
+  }
+]

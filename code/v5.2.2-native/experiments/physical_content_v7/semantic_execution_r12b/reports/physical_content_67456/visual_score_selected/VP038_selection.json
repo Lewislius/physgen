@@ -1,0 +1,73 @@
+{
+  "case": "VP038",
+  "selection": "Post-score selection: Joint lost against R1 and both text-control interventions restore SA4. This is a diagnostic failure case, not a random sample.",
+  "videos": {
+    "normal": {
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/inference_outputs/physical_content_67456/step0400_original_fixed40_controls16_seed42/videophy40/cases/VP038/planned.mp4",
+      "panel": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/reports/physical_content_67456/visual_score_selected/VP038_normal.png",
+      "caption": "A paint roller, dipped in green paint, is used to cover a section of a metal fence, creating a uniform green coat.",
+      "frames": [
+        0,
+        11,
+        22,
+        34,
+        45,
+        57,
+        68,
+        80
+      ]
+    },
+    "no_c": {
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/inference_outputs/physical_content_67456/step0400_original_fixed40_controls16_seed42/controls/no_c/videophy40/cases/VP038/planned.mp4",
+      "panel": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/reports/physical_content_67456/visual_score_selected/VP038_no_c.png",
+      "caption": "A paint roller, dipped in green paint, is used to cover a section of a metal fence, creating a uniform green coat.",
+      "frames": [
+        0,
+        11,
+        22,
+        34,
+        45,
+        57,
+        68,
+        80
+      ]
+    },
+    "native_text_value_off": {
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/inference_outputs/physical_content_67456/step0400_original_fixed40_controls16_seed42/controls/native_text_value_off/videophy40/cases/VP038/planned.mp4",
+      "panel": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/reports/physical_content_67456/visual_score_selected/VP038_native_text_value_off.png",
+      "caption": "A paint roller, dipped in green paint, is used to cover a section of a metal fence, creating a uniform green coat.",
+      "frames": [
+        0,
+        11,
+        22,
+        34,
+        45,
+        57,
+        68,
+        80
+      ]
+    },
+    "pretext_read": {
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/inference_outputs/physical_content_67456/step0400_original_fixed40_controls16_seed42/controls/pretext_read/videophy40/cases/VP038/planned.mp4",
+      "panel": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/reports/physical_content_67456/visual_score_selected/VP038_pretext_read.png",
+      "caption": "A paint roller, dipped in green paint, is used to cover a section of a metal fence, creating a uniform green coat.",
+      "frames": [
+        0,
+        11,
+        22,
+        34,
+        45,
+        57,
+        68,
+        80
+      ]
+    }
+  },
+  "observations": {
+    "normal": "Roller sleeve changes into hollow/disconnected structures and nearly disappears through the middle sequence before reappearing. It mostly moves without a clear deposited paint strip. SA3PC4 does not reflect all deformation.",
+    "no_c": "A visible darker paint strip is deposited while roller moves across the fence. Roller is imperfect but remains more recognizable through the painting sequence. SA4PC4 aligns with improved action compliance in this example.",
+    "native_text_value_off": "Severe roller-sleeve disappearance and late fragmentation remain despite SA4PC4; a higher SA alone is not restoration of video quality.",
+    "pretext_read": "Hollow roller geometry, partial disappearance and weak paint deposition remain despite SA4PC4. Query-order control does not resolve the concrete shape/process defects."
+  },
+  "conclusion": "Here physical fusion disrupts requested action and object form versus noC; disabling only new text term or changing query order is insufficient. This supports revising physical execution interaction, not selecting an intervention solely by threshold score."
+}

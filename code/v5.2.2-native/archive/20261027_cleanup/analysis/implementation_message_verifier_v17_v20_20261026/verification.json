@@ -1,0 +1,66 @@
+{
+  "recorded_at": "2026-10-26T12:42:52.545109+00:00",
+  "revisions": [
+    "v522_native_h_content_verifier_frozen_v17",
+    "v522_native_h_content_verifier_lora_v18",
+    "v522_native_q_seed128_verifier_frozen_v19",
+    "v522_native_q_seed128_verifier_lora_v20"
+  ],
+  "interpretation": "Both architectures use a verifier. Frozen variants have no verifier LoRA; Wan LoRA remains in all variants.",
+  "checks": [
+    {
+      "scope": "full regression before final role-isolation hardening",
+      "passed": true,
+      "tests": 129,
+      "seconds": 104.974,
+      "log": "cpu_full_regression.log"
+    },
+    {
+      "scope": "final nine criterion tests including native teacher and trained optimizer resume",
+      "passed": true,
+      "tests": 9,
+      "seconds": 51.018,
+      "log": "cpu_criterion_integration.log"
+    }
+  ],
+  "test_counts_overlap": true,
+  "resource_audit": "resource_audit.json",
+  "cli_checks": [
+    "evaluate_message_verifier.py --help",
+    "train.py --config native_h_content_message_verifier_lora_wisa3857.yaml --check-only"
+  ],
+  "full_model_gpu_training_run": false,
+  "full_model_gpu_inference_run": false,
+  "determined_jobs_submitted": [],
+  "limitations": [
+    "CPU native tiny-model functional/gradient tests do not measure physical video quality.",
+    "Teacher labels are frozen-Qwen weak supervision, not audited physical truth.",
+    "Memory, throughput, frame sampling adequacy and reward reliability need actual GPU/heldout validation."
+  ],
+  "source_sha256": {
+    "physgen_native/lora.py": "a2991130b04a0dba4c6003c62ee5862c39233e8f0e6d709a94b3a773c2fda0c4",
+    "physgen_native/criterion_verifier.py": "8e95537bb77c543c84f3ccd27c78b33247eed4c78d08cd6efe1de2a4951a89e1",
+    "physgen_native/criterion_training.py": "5e88285d55dc9f0f39f463e3ac01d01f117b73e672276ab7981ca4c412d3bf00",
+    "physgen_native/knowledge.py": "01aca674e2680b6ec5822f5e1562441d7f4f950e74fec7848b7f4c23f3f8032c",
+    "physgen_native/multiround_knowledge.py": "726001f7354a41f6fdd2dfe52b932e8fad9b812f0f631cd863b2a207ac8b7c7d",
+    "physgen_native/config.py": "624ae88a68c812461783fad930e67b8f076b409ebdce5c6c85b02c97d578cfc4",
+    "physgen_native/system.py": "d6947f3f3f509c5774098ef2bb9ec4d1b7dd5a44933ba0ffeefff7ce00b885c4",
+    "physgen_native/operator_training.py": "f5a1523d2a7a432337d64af60311185613fedde21438245dd17cac1fe5b0744b",
+    "physgen_native/feedback_sampling.py": "3b3a4eaa6acb0d9ed43ff54018b6d81164134468cab75ed0bc2280ec071535e3",
+    "physgen_native/data.py": "e382632f4cedfaef9610985ddfcf53806be912c538aba54f26baf4dbcea89241",
+    "physgen_native/runtime.py": "282fb696f0ffe33604121f1f3858e0e8d18f2d4dd68e8075b2588dd89e81b807",
+    "train/train.py": "d32b52777007bce60d5f73fffa0e8d56decf242e3a00fcc2a2874ec8e3ca220d",
+    "inference/evaluate_message_verifier.py": "135c3a076771ac964c1a83665118773cc34542a19a03e9167222a7d5f28f3a7f",
+    "tests/test_criterion_verifier.py": "4c140993a5b7996b7f3f3396ef6fc98884ec8650ff7235b97f33311b72434411",
+    "README.md": "a09950649971bb25ec5e1bb2ed40d98822704f2c741e5aa2f7991e5b60fc76c3",
+    "docs/message_reasoning.md": "3316a6295b3c2ceecb2e02343d42cbb6a9db7449d9db249edd97c0db8e91ce15",
+    "configs/native_h_content_message_verifier_frozen_wisa3857.yaml": "8a7d75c188388b54871566114c1ca8f87dbe07bb7ca8b8e211cd3520c4c137c7",
+    "train/native_h_content_message_verifier_frozen_1x96g.yaml": "7730d60fae77fad6f8c2ba98fdf83da0793f9555533f7346d0075bb24cced15a",
+    "configs/native_h_content_message_verifier_lora_wisa3857.yaml": "d331c6b6cc67e4fff57fac9feefd450e7989d0609527e2bc943fa9059b5e5b98",
+    "train/native_h_content_message_verifier_lora_1x96g.yaml": "19433643503b0204d448406ba56d9d44d56c79da48bc23e17969bd422a4bac56",
+    "configs/native_q_seed128_message_verifier_frozen_wisa3857.yaml": "dc47015c5d1f9b81ef714628a9e5d167f049b0132e1c339b0a2fb5f66683f47c",
+    "train/native_q_seed128_message_verifier_frozen_1x96g.yaml": "b8b62656f5c3264dfde3a721bccc85ab2c8ea96f5902ecd85009538d8be77630",
+    "configs/native_q_seed128_message_verifier_lora_wisa3857.yaml": "b37c324a2c2349828325089b9bc46ab5f9906ad21fa0b74f5db7d5a619e43791",
+    "train/native_q_seed128_message_verifier_lora_1x96g.yaml": "8c0acc062b33651776767733d98433ef6a7a1fe382024262993e38d506ab6a3b"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "utc": "2026-11-03T11:30:29.462608+00:00",
+  "candidate": "R11A",
+  "checkpoint_step": 400,
+  "protocol": "original40, shared-input I2V, seed42, gamma5",
+  "decision": "rejected_for_adoption",
+  "reason": "PC gains over native400 are lost; SA and Joint are below matched native400 and R1. Does not meet the requested joint generation objective.",
+  "metrics": {
+    "R11A": {
+      "sa": 2.9,
+      "pc": 3.45,
+      "joint": 6,
+      "count": 40
+    },
+    "R10A": {
+      "sa": 2.825,
+      "pc": 3.75,
+      "joint": 7,
+      "count": 40
+    },
+    "R1": {
+      "sa": 2.95,
+      "pc": 3.625,
+      "joint": 10,
+      "count": 40
+    },
+    "Wan_LoRA400": {
+      "sa": 3.075,
+      "pc": 3.45,
+      "joint": 10,
+      "count": 40
+    }
+  },
+  "paired_pc_vs_R10A": {
+    "wins": 4,
+    "ties": 23,
+    "losses": 13
+  },
+  "paired_sa_vs_native400": {
+    "wins": 1,
+    "ties": 32,
+    "losses": 7
+  },
+  "no_continuation_training": true,
+  "no_automatic_next_architecture_from_r11a": true,
+  "empirical_pc_reference": "preserved R10A400",
+  "data_revision_independent": true,
+  "attribution": "The combination of400-step text Q/K/V/O adaptation and post-text physical execution failed. Existing controls can localize their roles; current evidence does not isolate either change alone.",
+  "current_declared_evaluation_unchanged": true,
+  "additional_jobs_submitted": false
+}

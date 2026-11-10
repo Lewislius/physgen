@@ -1,0 +1,48 @@
+{
+  "prepared_utc": "20261031T042117Z",
+  "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/review_snapshots/20261031T042117Z",
+  "jobs": {
+    "candidate400_finish": {
+      "launcher": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/recovery_20261031/candidate400_finish_20261031T042117Z.yaml",
+      "submitted": true,
+      "experiment_id": 66855,
+      "status": "running_accepted_rtx"
+    },
+    "candidate750_resume_review": {
+      "launcher": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/recovery_20261031/candidate750_resume_review_20261031T042117Z.yaml",
+      "submitted": true,
+      "experiment_id": 66856,
+      "status": "running_accepted_rtx"
+    },
+    "guidance_then_process_r2_candidate": {
+      "launcher": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/inference/candidate400_guidance_then_process_r2_20261030T170217Z.yaml",
+      "submitted": true,
+      "experiment_id": 66857,
+      "status": "killed_superseded_by_short_r3",
+      "reason": "Latest user requests first-wave completion and analysis before next inference/training/architecture revisions; pause66857 to prevent chained R2 training.",
+      "state": "killed_superseded_by_short_r3",
+      "next_action": "Never resume; use standalone66864 guidance16 and R3 stop64."
+    },
+    "process_r2_native400": {
+      "launcher": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/process_r2/train/native_lora_20261030T165330Z.yaml",
+      "submitted": true,
+      "scope": "Fresh matched R2 baseline reviewed at400; not paused R1 baseline1000 continuation",
+      "experiment_id": 66854,
+      "status": "deferred_pending_first_wave",
+      "reason": "Rejected H100 before model loading; do not resubmit until first-wave results have been examined."
+    }
+  },
+  "recorded_utc": "2026-10-31T04:22:29.436710+00:00",
+  "sequence_update_utc": "2026-10-31T04:25:25.592970+00:00",
+  "updated_utc": "2026-10-31T05:13:36.704145+00:00",
+  "latest_authoritative_progress": {
+    "native400_full40": "complete",
+    "candidate400_full40": "complete",
+    "candidate1000_scaling_reference": 66856,
+    "standalone400_guidance16": 66864,
+    "short_r3_baseline64": 66866,
+    "short_r3_candidate": "66865/66867 rejected H100; pending accepted RTX allocation",
+    "next_revision_requires1000": false,
+    "scores_reaggregation": "experiments/physical_content_v7/reports/videophy40_physvid_style.json"
+  }
+}

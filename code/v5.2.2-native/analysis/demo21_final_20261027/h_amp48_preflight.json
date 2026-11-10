@@ -1,0 +1,858 @@
+{
+  "status": "checked",
+  "total_cases": 21,
+  "cpu_offload": true,
+  "source_checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/checkpoints/v522-h-content-message-verifier-frozen-simple_66356/latest.pt",
+  "checkpoint_step": 224,
+  "revision": "v522_native_h_content_verifier_frozen_simple_v25",
+  "mode": "h_content_message",
+  "prepared_root": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/1d-v52-lora-demo21_20261010",
+  "input_keys": [
+    "first",
+    "text",
+    "null_text",
+    "times",
+    "valid"
+  ],
+  "training_reasoning_rounds": [
+    1
+  ],
+  "inference_reasoning_round": 1,
+  "message_block_calls_per_condition": 1,
+  "frames": 81,
+  "fps": 24.0,
+  "sampling": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "condition_strength": 1.0,
+    "latent_feedback": {
+      "enabled": false,
+      "metric": "relative_rms",
+      "sigmas": [
+        0.85,
+        0.65
+      ],
+      "step_size": 0.1
+    }
+  },
+  "seed": 42,
+  "training_seed": 42,
+  "seed_matches_training": true,
+  "cases": [
+    {
+      "id": "reference",
+      "caption": "The woman smiles and waves at the camera.",
+      "image": "/home/liuzhirui/model/Wan2.2/overfit_ref/overfit_ref5.jpg",
+      "prepared_inputs": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/1d-v52-lora-demo21_20261010/reference/i2v/seed42.inputs",
+      "geometry": {
+        "h": 480,
+        "w": 832,
+        "rh": 480,
+        "rw": 480,
+        "top": 0,
+        "left": 176,
+        "frames": 81
+      },
+      "seed": 42,
+      "output": "reference/i2v/seed42.mp4",
+      "clauses": [
+        {
+          "text": "The woman's facial expression transitions from neutral to a gentle smile.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "Her hand moves into the frame to wave toward the camera.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The smile and wave are sustained for a visible duration.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The lighting and background remain consistent throughout the action.",
+          "basis": "both",
+          "phase": "evolution"
+        }
+      ]
+    },
+    {
+      "id": "P01",
+      "caption": "A black scooter rolls into a metal trash can, then tilts to one side and stops beside it.",
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P01/P01-i0-1280x704.png",
+      "prepared_inputs": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/1d-v52-lora-demo21_20261010/P01/i2v/seed42.inputs",
+      "geometry": {
+        "h": 480,
+        "w": 832,
+        "rh": 458,
+        "rw": 832,
+        "top": 11,
+        "left": 0,
+        "frames": 81
+      },
+      "seed": 42,
+      "output": "P01/i2v/seed42.mp4",
+      "clauses": [
+        {
+          "text": "The scooter must be positioned to roll toward the trash can.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The scooter must make contact with the trash can during motion.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The scooter must tilt to one side after contacting the trash can.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The scooter must come to a stop beside the trash can.",
+          "basis": "both",
+          "phase": "evolution"
+        }
+      ]
+    },
+    {
+      "id": "P02",
+      "caption": "A red billiard ball rolls into a stationary blue billiard ball; after contact, the blue ball moves away while the red ball slows.",
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P02/P02-i0-1280x704.png",
+      "prepared_inputs": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/1d-v52-lora-demo21_20261010/P02/i2v/seed42.inputs",
+      "geometry": {
+        "h": 480,
+        "w": 832,
+        "rh": 458,
+        "rw": 832,
+        "top": 11,
+        "left": 0,
+        "frames": 81
+      },
+      "seed": 42,
+      "output": "P02/i2v/seed42.mp4",
+      "clauses": [
+        {
+          "text": "The red billiard ball must be in motion and approaching the stationary blue billiard ball.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The blue billiard ball must remain stationary until contacted by the red ball.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "After contact, the blue billiard ball must visibly move away from the point of impact.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "After contact, the red billiard ball must visibly slow down as it continues moving.",
+          "basis": "both",
+          "phase": "evolution"
+        }
+      ]
+    },
+    {
+      "id": "P03",
+      "caption": "A tennis racket strikes an approaching tennis ball, sending the same ball back in the opposite direction.",
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P03/P03-i0-1280x704.png",
+      "prepared_inputs": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/1d-v52-lora-demo21_20261010/P03/i2v/seed42.inputs",
+      "geometry": {
+        "h": 480,
+        "w": 832,
+        "rh": 458,
+        "rw": 832,
+        "top": 11,
+        "left": 0,
+        "frames": 81
+      },
+      "seed": 42,
+      "output": "P03/i2v/seed42.mp4",
+      "clauses": [
+        {
+          "text": "The tennis racket must be positioned to make contact with the approaching tennis ball.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The ball must be struck by the racket, causing a visible change in its direction.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The ball must be propelled back in the opposite direction from its initial trajectory.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The racket must remain in contact with the ball for a brief moment to transfer momentum.",
+          "basis": "both",
+          "phase": "evolution"
+        }
+      ]
+    },
+    {
+      "id": "P04",
+      "caption": "A row of upright wooden dominoes falls in sequence after the first domino is pushed.",
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P04/P04-i0-1280x704.png",
+      "prepared_inputs": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/1d-v52-lora-demo21_20261010/P04/i2v/seed42.inputs",
+      "geometry": {
+        "h": 480,
+        "w": 832,
+        "rh": 458,
+        "rw": 832,
+        "top": 11,
+        "left": 0,
+        "frames": 81
+      },
+      "seed": 42,
+      "output": "P04/i2v/seed42.mp4",
+      "clauses": [
+        {
+          "text": "The first domino must be pushed to initiate the chain reaction.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "Each domino must be positioned upright and close enough to topple the next one in sequence.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The surface must remain stable and flat to ensure consistent domino falls.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The push must be applied with sufficient force to start the sequence without disturbing the alignment of subsequent dominoes.",
+          "basis": "both",
+          "phase": "evolution"
+        }
+      ]
+    },
+    {
+      "id": "P05",
+      "caption": "A wooden block slides down a ramp onto a rough floor, slows continuously, and comes to rest.",
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P05/P05-i0-1280x704.png",
+      "prepared_inputs": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/1d-v52-lora-demo21_20261010/P05/i2v/seed42.inputs",
+      "geometry": {
+        "h": 480,
+        "w": 832,
+        "rh": 458,
+        "rw": 832,
+        "top": 11,
+        "left": 0,
+        "frames": 81
+      },
+      "seed": 42,
+      "output": "P05/i2v/seed42.mp4",
+      "clauses": [
+        {
+          "text": "The wooden block must be positioned at the top of the ramp initially.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The block must slide down the ramp under the influence of gravity.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The block must decelerate as it moves across the rough floor.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The block must come to a complete stop on the floor.",
+          "basis": "both",
+          "phase": "evolution"
+        }
+      ]
+    },
+    {
+      "id": "P06",
+      "caption": "A closed book is pushed past the edge of a shelf, falls, and lands open on the floor.",
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P06/P06-i0-1280x704.png",
+      "prepared_inputs": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/1d-v52-lora-demo21_20261010/P06/i2v/seed42.inputs",
+      "geometry": {
+        "h": 480,
+        "w": 832,
+        "rh": 458,
+        "rw": 832,
+        "top": 11,
+        "left": 0,
+        "frames": 81
+      },
+      "seed": 42,
+      "output": "P06/i2v/seed42.mp4",
+      "clauses": [
+        {
+          "text": "The hand must push the book horizontally from the shelf.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The book must be pushed past the shelf's edge to initiate the fall.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The book must fall under gravity and land on the floor.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The book must land in an open position with pages spread.",
+          "basis": "both",
+          "phase": "evolution"
+        }
+      ]
+    },
+    {
+      "id": "P07",
+      "caption": "A tall cardboard box is pulled sideways at its lower corner, tips over, and remains lying on one side.",
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P07/P07-i0-1280x704.png",
+      "prepared_inputs": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/1d-v52-lora-demo21_20261010/P07/i2v/seed42.inputs",
+      "geometry": {
+        "h": 480,
+        "w": 832,
+        "rh": 458,
+        "rw": 832,
+        "top": 11,
+        "left": 0,
+        "frames": 81
+      },
+      "seed": 42,
+      "output": "P07/i2v/seed42.mp4",
+      "clauses": [
+        {
+          "text": "A hand must grip the lower corner of the cardboard box.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The box must be pulled sideways with sufficient force to initiate tipping.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The box must tip over and come to rest on one of its sides.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The motion must be continuous from the initial pull until the box is fully tipped and stationary.",
+          "basis": "both",
+          "phase": "evolution"
+        }
+      ]
+    },
+    {
+      "id": "P08",
+      "caption": "A clear ice cube on a shallow plate gradually shrinks while a puddle of water grows around it.",
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P08/P08-i0-1280x704.png",
+      "prepared_inputs": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/1d-v52-lora-demo21_20261010/P08/i2v/seed42.inputs",
+      "geometry": {
+        "h": 480,
+        "w": 832,
+        "rh": 458,
+        "rw": 832,
+        "top": 11,
+        "left": 0,
+        "frames": 81
+      },
+      "seed": 42,
+      "output": "P08/i2v/seed42.mp4",
+      "clauses": [
+        {
+          "text": "The ice cube must be visibly melting, showing a gradual reduction in its volume.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "A puddle of liquid water must form around the ice cube and visibly expand as the ice melts.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The plate and surrounding environment must remain static to emphasize the melting process.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The lighting must remain consistent to highlight the changes in the ice cube and puddle without introducing shadows or reflections that obscure the process.",
+          "basis": "both",
+          "phase": "evolution"
+        }
+      ]
+    },
+    {
+      "id": "P09",
+      "caption": "A pat of butter in a warm pan softens, loses its sharp edges, and spreads into a liquid pool.",
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P09/P09-i0-1280x704.png",
+      "prepared_inputs": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/1d-v52-lora-demo21_20261010/P09/i2v/seed42.inputs",
+      "geometry": {
+        "h": 480,
+        "w": 832,
+        "rh": 458,
+        "rw": 832,
+        "top": 11,
+        "left": 0,
+        "frames": 81
+      },
+      "seed": 42,
+      "output": "P09/i2v/seed42.mp4",
+      "clauses": [
+        {
+          "text": "The pan must be preheated to a temperature sufficient to melt butter.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The butter must be placed in the center of the pan to ensure even melting.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The butter should visibly soften and lose its defined shape as it begins to melt.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The melted butter should spread across the pan's surface to form a smooth, liquid pool.",
+          "basis": "both",
+          "phase": "evolution"
+        }
+      ]
+    },
+    {
+      "id": "P10",
+      "caption": "A rubber balloon inflates steadily until it bursts, leaving deflated fragments in place.",
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P10/P10-i0-1280x704.png",
+      "prepared_inputs": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/1d-v52-lora-demo21_20261010/P10/i2v/seed42.inputs",
+      "geometry": {
+        "h": 480,
+        "w": 832,
+        "rh": 458,
+        "rw": 832,
+        "top": 11,
+        "left": 0,
+        "frames": 81
+      },
+      "seed": 42,
+      "output": "P10/i2v/seed42.mp4",
+      "clauses": [
+        {
+          "text": "The balloon must be connected to a source of air pressure capable of inflating it.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The balloon must visibly expand gradually as air enters, increasing in size and tautness.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The balloon must reach a point of rupture where it bursts suddenly, releasing air and leaving torn remnants attached to the inflation nozzle.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The deflated fragments must remain in place on the nozzle after the burst, without being displaced or removed.",
+          "basis": "both",
+          "phase": "evolution"
+        }
+      ]
+    },
+    {
+      "id": "P11",
+      "caption": "A glass bottle falls onto a hard tile floor, breaks on impact, and its fragments remain scattered.",
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P11/P11-i0-1280x704.png",
+      "prepared_inputs": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/1d-v52-lora-demo21_20261010/P11/i2v/seed42.inputs",
+      "geometry": {
+        "h": 480,
+        "w": 832,
+        "rh": 458,
+        "rw": 832,
+        "top": 11,
+        "left": 0,
+        "frames": 81
+      },
+      "seed": 42,
+      "output": "P11/i2v/seed42.mp4",
+      "clauses": [
+        {
+          "text": "The glass bottle must be positioned on the edge of the shelf to ensure it can fall.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The bottle must be released or allowed to fall naturally to initiate the breakage.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The bottle must shatter upon impact with the hard tile floor, producing visible fragments.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The fragments must remain scattered on the floor after the impact, without being cleaned or moved.",
+          "basis": "both",
+          "phase": "evolution"
+        }
+      ]
+    },
+    {
+      "id": "P12",
+      "caption": "A gust blows across a dry dandelion, detaching seeds that drift away while the seed head becomes depleted.",
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P12/P12-i0-1280x704.png",
+      "prepared_inputs": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/1d-v52-lora-demo21_20261010/P12/i2v/seed42.inputs",
+      "geometry": {
+        "h": 480,
+        "w": 832,
+        "rh": 458,
+        "rw": 832,
+        "top": 11,
+        "left": 0,
+        "frames": 81
+      },
+      "seed": 42,
+      "output": "P12/i2v/seed42.mp4",
+      "clauses": [
+        {
+          "text": "A gust must be present to initiate the detachment of dandelion seeds.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "Visible changes include seeds detaching from the seed head and drifting away.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The seed head must visibly become depleted as seeds are carried away.",
+          "basis": "both",
+          "phase": "evolution"
+        }
+      ]
+    },
+    {
+      "id": "P13",
+      "caption": "A transparent pitcher pours water into an empty clear glass; the pitcher level falls while the glass level rises.",
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P13/P13-i0-1280x704.png",
+      "prepared_inputs": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/1d-v52-lora-demo21_20261010/P13/i2v/seed42.inputs",
+      "geometry": {
+        "h": 480,
+        "w": 832,
+        "rh": 458,
+        "rw": 832,
+        "top": 11,
+        "left": 0,
+        "frames": 81
+      },
+      "seed": 42,
+      "output": "P13/i2v/seed42.mp4",
+      "clauses": [
+        {
+          "text": "The pitcher must contain water and be held at an angle to initiate pouring.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The glass must be empty and positioned directly under the spout of the pitcher.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "Water must flow visibly from the pitcher into the glass without spillage.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The water level in the pitcher must visibly decrease while the water level in the glass increases.",
+          "basis": "both",
+          "phase": "evolution"
+        }
+      ]
+    },
+    {
+      "id": "P14",
+      "caption": "A bottle pours orange juice through a visible stream into a glass until the bottle holds less and the glass holds more.",
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P14/P14-i0-1280x704.png",
+      "prepared_inputs": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/1d-v52-lora-demo21_20261010/P14/i2v/seed42.inputs",
+      "geometry": {
+        "h": 480,
+        "w": 832,
+        "rh": 458,
+        "rw": 832,
+        "top": 11,
+        "left": 0,
+        "frames": 81
+      },
+      "seed": 42,
+      "output": "P14/i2v/seed42.mp4",
+      "clauses": [
+        {
+          "text": "The bottle must be held at an angle to allow the orange juice to flow out.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The stream of orange juice must be visible as it moves from the bottle into the glass.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The level of orange juice in the bottle must visibly decrease as the glass fills.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The glass must visibly increase in liquid volume as it receives the poured juice.",
+          "basis": "both",
+          "phase": "evolution"
+        }
+      ]
+    },
+    {
+      "id": "P15",
+      "caption": "Dry sand pours from a cup onto a flat table, emptying the cup as a conical pile grows below.",
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P15/P15-i0-1280x704.png",
+      "prepared_inputs": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/1d-v52-lora-demo21_20261010/P15/i2v/seed42.inputs",
+      "geometry": {
+        "h": 480,
+        "w": 832,
+        "rh": 458,
+        "rw": 832,
+        "top": 11,
+        "left": 0,
+        "frames": 81
+      },
+      "seed": 42,
+      "output": "P15/i2v/seed42.mp4",
+      "clauses": [
+        {
+          "text": "The cup must be held at a slight angle to initiate the pouring motion.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The sand must flow continuously from the cup's opening onto the table surface.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The sand should accumulate on the table to form a conical pile as the cup empties.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The cup must be completely emptied before the pouring action concludes.",
+          "basis": "both",
+          "phase": "evolution"
+        }
+      ]
+    },
+    {
+      "id": "P16",
+      "caption": "A drop of blue dye enters still clear water and gradually spreads outward, coloring an expanding region of the water.",
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P16/P16-i0-1280x704.png",
+      "prepared_inputs": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/1d-v52-lora-demo21_20261010/P16/i2v/seed42.inputs",
+      "geometry": {
+        "h": 480,
+        "w": 832,
+        "rh": 458,
+        "rw": 832,
+        "top": 11,
+        "left": 0,
+        "frames": 81
+      },
+      "seed": 42,
+      "output": "P16/i2v/seed42.mp4",
+      "clauses": [
+        {
+          "text": "The blue dye drop must be positioned directly above the water surface to initiate the spreading motion.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The water must remain still and undisturbed before the dye drop enters to ensure a clean, controlled diffusion pattern.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The dye must disperse gradually outward from the point of entry, visibly coloring an expanding circular region.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The spreading must continue until the dye has diffused to a significant portion of the water volume, maintaining a smooth, non-turbulent transition.",
+          "basis": "both",
+          "phase": "evolution"
+        }
+      ]
+    },
+    {
+      "id": "P17",
+      "caption": "A hand presses a dry sponge flat, then lifts away as the same sponge gradually regains its shape.",
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P17/P17-i0-1280x704.png",
+      "prepared_inputs": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/1d-v52-lora-demo21_20261010/P17/i2v/seed42.inputs",
+      "geometry": {
+        "h": 480,
+        "w": 832,
+        "rh": 458,
+        "rw": 832,
+        "top": 11,
+        "left": 0,
+        "frames": 81
+      },
+      "seed": 42,
+      "output": "P17/i2v/seed42.mp4",
+      "clauses": [
+        {
+          "text": "The hand must be positioned directly above the sponge and apply downward pressure to flatten it.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The sponge must visibly compress under the hand's pressure, reducing its height.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "After the hand lifts away, the sponge must visibly begin to return to its original shape over time.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The sponge must fully regain its original shape after the hand has lifted away.",
+          "basis": "both",
+          "phase": "evolution"
+        }
+      ]
+    },
+    {
+      "id": "P18",
+      "caption": "A rubber ball drops onto a hard floor and bounces several times to progressively lower heights before resting.",
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P18/P18-i0-1280x704.png",
+      "prepared_inputs": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/1d-v52-lora-demo21_20261010/P18/i2v/seed42.inputs",
+      "geometry": {
+        "h": 480,
+        "w": 832,
+        "rh": 458,
+        "rw": 832,
+        "top": 11,
+        "left": 0,
+        "frames": 81
+      },
+      "seed": 42,
+      "output": "P18/i2v/seed42.mp4",
+      "clauses": [
+        {
+          "text": "The red rubber ball must be positioned above the floor to initiate the drop.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The ball must make contact with the hard floor to trigger the first bounce.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "Each subsequent bounce must reach a lower height than the previous one.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The ball must eventually come to rest on the floor without further motion.",
+          "basis": "both",
+          "phase": "evolution"
+        }
+      ]
+    },
+    {
+      "id": "P19",
+      "caption": "A sheet of paper pulled from both sides tears outward from a small notch and remains separated into two pieces.",
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P19/P19-i0-1280x704.png",
+      "prepared_inputs": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/1d-v52-lora-demo21_20261010/P19/i2v/seed42.inputs",
+      "geometry": {
+        "h": 480,
+        "w": 832,
+        "rh": 458,
+        "rw": 832,
+        "top": 11,
+        "left": 0,
+        "frames": 81
+      },
+      "seed": 42,
+      "output": "P19/i2v/seed42.mp4",
+      "clauses": [
+        {
+          "text": "The paper must have a small notch at its center before tearing begins.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The hands must grip the paper on opposite sides and pull it apart symmetrically.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The tear must originate from the notch and propagate outward along the paper's surface.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The paper must separate into two distinct pieces after the tear completes.",
+          "basis": "both",
+          "phase": "evolution"
+        }
+      ]
+    },
+    {
+      "id": "P20",
+      "caption": "On snowy ground beside a small campfire, a kettle pours coffee into a cup while the fire continues flickering.",
+      "image": "/home/liuzhirui/Project/physGen/code/v1/demo/P20/P20-i0-1280x704.png",
+      "prepared_inputs": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/1d-v52-lora-demo21_20261010/P20/i2v/seed42.inputs",
+      "geometry": {
+        "h": 480,
+        "w": 832,
+        "rh": 458,
+        "rw": 832,
+        "top": 11,
+        "left": 0,
+        "frames": 81
+      },
+      "seed": 42,
+      "output": "P20/i2v/seed42.mp4",
+      "clauses": [
+        {
+          "text": "Ensure the kettle is filled with hot liquid before pouring.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "Maintain the campfire's flickering state throughout the pouring action.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "Keep the cup stationary on the snowy ground during the pour.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "Ensure the pouring action is completed without spilling onto the snow.",
+          "basis": "both",
+          "phase": "evolution"
+        }
+      ]
+    }
+  ]
+}

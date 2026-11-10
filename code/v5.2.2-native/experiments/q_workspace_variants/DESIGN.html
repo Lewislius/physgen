@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>V5.2.2-native：五个 Q 工作区训练版本</title>
+<style>
+body{max-width:1120px;margin:40px auto;padding:0 24px;color:#192633;background:#fafbfc;font:16px/1.8 system-ui,sans-serif}h1{font-size:27px}h2{font-size:21px;margin-top:30px}table{border-collapse:collapse;width:100%;background:white}th,td{border:1px solid #dce2e8;padding:10px;text-align:left}th{background:#edf2f7}pre{padding:18px;background:#152332;color:#edf4fa;overflow:auto;border-radius:8px;line-height:1.6}code{font-family:ui-monospace,monospace}a{color:#185b9b}.note{padding:12px 18px;border-left:4px solid #4a789d;background:#edf3f8}.small{font-size:14px;color:#536373}
+</style>
+<h1>V5.2.2-native：B / C / D-N / D-S / D-I</h1>
+<p>五个独立的 no-verifier 训练版本。原项目源文件、历史 checkpoint 和缓存不变；实验代码使用本目录的独立源码快照，不在运行时修改原项目模块。五版沿用已有 Wan、Qwen、VAE 和原始 generator 初始化，不下载模型。</p>
+<table><thead><tr><th>版本 / revision</th><th>初始槽位</th><th>Message</th><th>资源池</th><th>文件</th></tr></thead><tbody>
+<tr><td>B / v31</td><td>Pool128(U_content) + E</td><td>Cross + 原 Self + FFN</td><td>amp-80g，单卡</td><td><a href="configs/b.yaml">训练配置</a> · <a href="train/b_1x80g.yaml">任务 YAML</a> · <a href="train/train_b.sh">SH</a></td></tr>
+<tr><td>C / v32</td><td>Pool128(U_content) + E</td><td>Cross + FFN</td><td>blk-96g，单卡</td><td><a href="configs/c.yaml">训练配置</a> · <a href="train/c_1x96g.yaml">任务 YAML</a> · <a href="train/train_c.sh">SH</a></td></tr>
+<tr><td>D-N / v33</td><td>E</td><td>持续身份 Cross + FFN</td><td>blk-96g，单卡</td><td><a href="configs/d_n.yaml">训练配置</a> · <a href="train/d_n_1x96g.yaml">任务 YAML</a> · <a href="train/train_d_n.sh">SH</a></td></tr>
+<tr><td>D-S / v34</td><td>E</td><td>持续身份 Cross + 原 Self + FFN</td><td>blk-96g，单卡</td><td><a href="configs/d_s.yaml">训练配置</a> · <a href="train/d_s_1x96g.yaml">任务 YAML</a> · <a href="train/train_d_s.sh">SH</a></td></tr>
+<tr><td>D-I / v35</td><td>E</td><td>持续身份 Cross + 身份 Q/K Self + FFN</td><td>blk-96g，单卡</td><td><a href="configs/d_i.yaml">训练配置</a> · <a href="train/d_i_1x96g.yaml">任务 YAML</a> · <a href="train/train_d_i.sh">SH</a></td></tr>
+</tbody></table>
+<h2>所有版本共同的训练流程</h2>
+<p>Q = 128，工作区宽度 4096，最终 P 为无偏置 4096→3072 线性层；P 后保留原有 FP32 LayerNorm、可训练 gain/bias 和 Wan 原生 C 注入。Qwen 完全冻结；输入仅包括首帧、caption、现有 requirements 和 Qwen 条件分析。未来视频 latent 只用于训练目标。</p>
+<pre>初始化槽位 → 第一次 Message 得到 R0
+          → 共享 Message 第一次 refinement 得到 R1
+          → 共享 Message 第二次 refinement 得到 R2
+          → P(4096→3072) → alignment → C → Wan
+
+interface 64 optimizer steps：训练 C 路径，冻结全部 Wan（含 LoRA）
+joint    160 optimizer steps：训练 C 路径及 Wan LoRA
+L = FM + 0.1 × temporal FM
+每 4 个 microbatch 更新一次参数；总计 224 optimizer steps / 896 样本访问
+训练 seed = 42；生成验证每个样本都使用 seed = 42，不加样本下标</pre>
+<p>沿用原有优化器、学习率、dropout、噪声采样和缓存。没有 verifier、JEPA、强化学习、额外损失或额外训练阶段。所有版本共同保留既有归一化；D 仅增加无参数的身份 RMS 归一化。</p>
+<h2>B / C：有明确边界的长度池化初始化</h2>
+<p>先对冻结 Qwen memory 使用现有 RMSNorm，再 gather 原有 content_positions。按 content_mask 去掉 padding 后，在 token 维压缩为 128 槽，每槽仍为 4096 维。这是长度池化对照，不预设语义角色，也不把平均向量称为物理摘要。</p>
+<pre>N ≥ 128：第 j 槽取 [floor(j*N/128), floor((j+1)*N/128)) 的均值。
+N = 384：每连续 3 个有效 token 取均值。
+1 ≤ N &lt; 128：按输出区间中心选择最近的有效 token，必要时重复。
+均值累积使用 FP32，结果转回当前计算 dtype。
+R_init = Pool128(U_content) + E</pre>
+<p>池化仅设置初始残差状态。每次 Cross 仍然读取完整 Qwen memory，视觉 token 和非 content span 不从 memory 删除。B 保留原 Self；C 删除 Self 及其输入 LayerNorm，其他更新相同。</p>
+<h2>D：每轮保留查询身份</h2>
+<p>E 仍是同一组 1×128×4096 可训练参数，在一次前向内不变；工作状态 R 随样本和轮次变化。没有另一组身份参数、固定物理角色或正交损失。</p>
+<pre>E_hat = E / sqrt(mean(E², feature_dim) + 1e-6)
+
+R0：保持原有首次 Cross 查询 q = Wq(LN(E))。
+R1 / R2 的 Cross：
+    q = Wq(LN(R) + E_hat)
+    k = Wk(LN(memory))
+    v = Wv(LN(memory))
+    R ← R + Wo(Attention(q, k, v))</pre>
+<p>明确选择 <code>identity_start_round: 1</code>：首次读取已从 E 构造查询，新增身份项从 R1 开始，避免在 R0 重复加入 E 改变初始查询强度。E_hat 在 LayerNorm 后、Wq 前加入；不执行每轮 R ← R + E_hat。E 保留全部梯度路径。</p>
+<p>D-S 的 Self 不变。D-N 完全删除 Self。D-I 在 R1/R2 的 Self 使用：</p>
+<pre>h = LN(R)
+q = Wq(h + E_hat)
+k = Wk(h + E_hat)
+v = Wv(h)
+R ← R + Wo(Attention(q, k, v))
+R ← R + FFN(LN(R))</pre>
+<p>D-I 的新增身份项只进入 Q/K，不直接进入 V；V 使用已有工作内容。R0 的 Self 与 D-S 相同。实现将 K 输入与 V 输入分开，避免一次给整个 memory 加 E 而把身份同时注入 V。</p>
+<h2>公平初始化、checkpoint 和恢复</h2>
+<p>五版先按原 Q 的顺序构造完整 Message，再为 C / D-N 删除 Self。因此公共层、query_seed 和之后的随机数流相同，避免“删层改变随机数消费顺序”造成额外差异。所有训练从原始 <code>v5.2.2-native/checkpoints/initialization/generator.pt</code> 初始化，不从 66443 的最终权重继续训练。</p>
+<p>新 revision 为 v31–v35，明确记录结构；实际状态保存模型、优化器、scheduler、样本 cursor 和 RNG。每版 run_name 独立。后续恢复或推理须使用本实验目录的代码；原版加载器不认识新 revision。</p>
+<pre>experiments/q_workspace_variants/checkpoints/v522-q-workspace-&lt;variant&gt;_&lt;experiment_id&gt;/
+    config.yaml
+    latest.pt
+    metrics.jsonl
+    validation_cases.jsonl
+
+生成验证：experiments/q_workspace_variants/inference_outputs/&lt;run_name&gt;/</pre>
+<h2>检查、提交和继续训练</h2>
+<p>以下命令从本实验目录执行。<code>--check</code> 为只读检查，不分配 GPU；<code>--submit</code> 才提交任务。B 使用 amp-80g 单卡，其余四版使用 blk-96g 单卡；B 检查单张可见 GPU 和至少 75 GiB 显存，其余检查单张 RTX PRO 6000 / RTX 6000 Blackwell，均在加载模型之前检查。</p>
+<pre>bash train/train_b.sh --check
+bash train/train_c.sh --check
+bash train/train_d_n.sh --check
+bash train/train_d_s.sh --check
+bash train/train_d_i.sh --check
+
+bash train/train_b.sh --submit
+bash train/train_c.sh --submit
+bash train/train_d_n.sh --submit
+bash train/train_d_s.sh --submit
+bash train/train_d_i.sh --submit</pre>
+<p>提交沿用现有 Determined 环境和镜像，使用显式空 submission_context，不上传缓存或模型。每个 SH 默认动作是 --check。可以从任意目录用 SH 的绝对路径执行。</p>
+<pre># 仅在已经分配的对应单卡环境中直接训练：
+bash train/train_d_n.sh --local
+
+# 继续某个 D-N run；会读取该 run 的 config.yaml 和 latest.pt：
+bash train/train_d_n.sh --resume /absolute/path/to/saved/run
+
+# CPU 行为、梯度、恢复测试：
+CUDA_VISIBLE_DEVICES='' bash tools/runtime_python.sh tests/test_q_variants.py</pre>
+<h2>验证范围</h2>
+<p>测试覆盖生产形状、pooling 的 padding/短输入、五版公共初始化、身份的轮次和 Q/K/V 路径、checkpoint 重算梯度、冻结 Qwen 边界、实际 FM/temporal-FM 代码的梯度归属、原生 Wan 接口小模型生成和恢复后的连续更新。CPU 测试采用小型替代 backbone；正式资源检查读取本机模型与数据索引。完整 GPU 训练显存和实际生成收益须通过正式训练测量。</p>
+<p><a href="reports/verification.json">验证结果</a> · <a href="variants.json">版本清单</a> · <a href="SOURCE.json">源码来源</a> · <a href="physgen_native/message_conditioning.py">Message 实现</a> · <a href="physgen_native/q_variants.py">版本与池化实现</a></p>
+</html>

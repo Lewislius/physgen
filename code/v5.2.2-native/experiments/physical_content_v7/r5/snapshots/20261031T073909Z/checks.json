@@ -1,0 +1,40 @@
+{
+  "recorded_utc": "2026-10-31 07:38:32 UTC",
+  "tests_passed": 7,
+  "configuration_audit_passed": true,
+  "scope": "CPU implementation, gradient and checkpoint checks only; no generation quality claim.",
+  "checks": [
+    {
+      "name": "fixed_interface",
+      "chunk_id": "b1498e",
+      "wall_time_seconds": 0.000001388,
+      "exit_code": 0,
+      "original_token_count": 265,
+      "output": "./home/liuzhirui/miniconda3/envs/moviestory/lib/python3.10/site-packages/torch/autograd/graph.py:829: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 304: OS call failed or operation not supported on this OS (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)\n  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass\n/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/fixed_interface_r5/test_fixed_interface.py:58: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.\nConsider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:835.)\n  self.assertGreater(float((model.enhancement.seed-seed).abs().max()),0)\n.\n----------------------------------------------------------------------\nRan 2 tests in 0.987s\n\nOK\n"
+    },
+    {
+      "name": "grounded_read",
+      "chunk_id": "a72d4b",
+      "wall_time_seconds": 8.39e-7,
+      "exit_code": 0,
+      "original_token_count": 267,
+      "output": "/home/liuzhirui/miniconda3/envs/moviestory/lib/python3.10/site-packages/torch/autograd/graph.py:829: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 304: OS call failed or operation not supported on this OS (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)\n  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass\n../home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/fixed_interface_r5/test_grounded_read.py:29: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.\nConsider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:835.)\n  self.assertGreater(float((changed[:,:2,4:]-original[:,:2,4:]).abs().max()),1e-4)\n.\n----------------------------------------------------------------------\nRan 3 tests in 0.914s\n\nOK\n"
+    },
+    {
+      "name": "native_output",
+      "chunk_id": "09d890",
+      "wall_time_seconds": 0.000002787,
+      "exit_code": 0,
+      "original_token_count": 154,
+      "output": "./home/liuzhirui/miniconda3/envs/moviestory/lib/python3.10/site-packages/torch/autograd/graph.py:829: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 304: OS call failed or operation not supported on this OS (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)\n  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass\n.\n----------------------------------------------------------------------\nRan 2 tests in 0.054s\n\nOK\n"
+    },
+    {
+      "name": "configuration_audit",
+      "chunk_id": "49d593",
+      "wall_time_seconds": 5.21e-7,
+      "exit_code": 0,
+      "original_token_count": 437,
+      "output": "{\n  \"ready\": true,\n  \"rows\": 3857,\n  \"train\": 3666,\n  \"validation\": 191,\n  \"variant\": \"physical_content\",\n  \"q_tokens\": 256,\n  \"steps\": 224,\n  \"sample_draws\": 896,\n  \"initialization\": \"official foundations; fresh project modules and LoRA\",\n  \"teacher_cache\": \"Input-only physical-word semantic calibration; no old weak association/write targets\",\n  \"generation_objective\": {\n    \"tail_weight\": 0.2,\n    \"tail_fraction\": 0.25\n  },\n  \"observed_state_objective\": {\n    \"kind\": \"frozen_qwen_visual_observations\",\n    \"weight\": 0.5,\n    \"warmup\": 8,\n    \"sigma_min\": 0.2,\n    \"sigma_max\": 0.8,\n    \"pairs\": 3,\n    \"frequency\": \"One rotating microbatch per update when its unmodified noise draw is in the interval\",\n    \"target\": \"Existing real training clip; ordered early/middle/final observations; four frozen visual feature levels\",\n    \"reduction\": \"0.8 mean + 0.2 top-quarter spatial-temporal feature errors\",\n    \"parameter_updates\": \"Only existing enhancement/fusion and phase-appropriate Wan LoRA; frozen vision and VAE\"\n  },\n  \"physical_output_initializer\": \"0.25 times corresponding official Wan cross-attention O; independent trainable physical K/V/O\",\n  \"early_evaluation\": \"Stop after64 updates; extension requires review of paired generation evidence\",\n  \"physical_evidence_read\": \"16 same-relation physical-word heads in the query-anchor training-input coordinates and16 full image/request/analysis context heads; shared Q/K/V/O\",\n  \"content_projection_initializer\": \"Fixed0.1 times training-input P0, stored as a checkpoint constant; generation gradients still reach Q, all full-width reader and fusion parameters remain trainable\",\n  \"future_video_scope\": \"Training targets only, after the generation forward; no future input to C\"\n}\n"
+    }
+  ]
+}

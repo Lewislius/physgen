@@ -1,0 +1,27 @@
+{
+  "id": "VP014",
+  "caption": "Multiple water balloons are tossed upwards, simultaneously bursting in the air in a small arc.",
+  "revision": "v522_native_generation_baseline_v11",
+  "optimizer_step": 32,
+  "seed": 42,
+  "fps": 23.999999284744284,
+  "conditions": "first frame, caption, existing requirements; no future target",
+  "physical_dependency_analysis": "OBSERVED: Water balloons suspended in air, forming an arc; no visible motion blur or splash; no simultaneous burst evidence; background static.\n\nINTERACTION: Tossing force → upward trajectory → apex burst → splash dispersion; simultaneous initiation required for synchronized apex bursts.\n\nPERSISTENCE: Gravity sustains arc; air resistance dampens trajectory; static background preserves visual continuity; splash dispersion decays rapidly.\n\nINTERVENTION: If toss timing is asynchronous → bursts desynchronize; if force insufficient → no arc or late burst; if background moves → continuity breaks; splash size unchanged if water volume and burst energy fixed.",
+  "latent_reasoning_steps": 2,
+  "latent_feedback": null,
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "condition_strength": 1.0,
+    "latent_feedback": {
+      "enabled": false,
+      "metric": "relative_rms",
+      "sigmas": [
+        0.85,
+        0.65
+      ],
+      "step_size": 0.1
+    }
+  }
+}

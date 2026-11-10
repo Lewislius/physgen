@@ -1,0 +1,66 @@
+{
+  "utc": "2026-11-08T08:09:16.427986+00:00",
+  "training_complete": true,
+  "optimizer_steps": 400,
+  "paired_microbatches": 1600,
+  "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_feedback_fusion_r15h/reports/training_signals_step0400.json",
+  "execution_audit": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_feedback_fusion_r15h/reports/completed_training_match.json",
+  "matched_sample_sigma_dropout_lr_stage_schedule": true,
+  "joint_phase_gradient_clipping": {
+    "H": {
+      "enhancement": 19,
+      "fusion_read": 0,
+      "fusion_write": 4,
+      "wan_lora": 0
+    },
+    "B": {
+      "enhancement": 0,
+      "fusion_read": 0,
+      "fusion_write": 0,
+      "wan_lora": 0
+    }
+  },
+  "final64_matched_window": {
+    "H": {
+      "steps": [
+        337,
+        400
+      ],
+      "updates": 64,
+      "microbatches": 256,
+      "clipped_updates": {
+        "enhancement": 6,
+        "fusion_read": 0,
+        "fusion_write": 1,
+        "wan_lora": 0
+      },
+      "execution_C_token_cosine_mean": 0.7312986516626552,
+      "auxiliary_objective_value_fraction": 0.051635933261069536
+    },
+    "B": {
+      "steps": [
+        337,
+        400
+      ],
+      "updates": 64,
+      "microbatches": 256,
+      "clipped_updates": {
+        "enhancement": 0,
+        "fusion_read": 0,
+        "fusion_write": 0,
+        "wan_lora": 0
+      },
+      "execution_C_token_cosine_mean": 0.25559373141732067,
+      "auxiliary_objective_value_fraction": 0.03941527447962067
+    }
+  },
+  "interpretation": [
+    "H与B的损失配方、阶段长度及数据/噪声播种/学习率调度相同。观察到的梯度与C差异不能归因为H新增了损失或训练阶段；计算图变化如何改变条件利用及优化路径仍需结合模块对照判断。",
+    "H联合272步中增强组19次裁剪，B为0；H最后64步仍有6次，不能全部归为阶段切换的暂时现象。但裁剪发生不直接判定生成退化，也不自动构成改变裁剪阈值或追加损失的依据。",
+    "同批最后64步execution C token cosine，H0.7313/B0.2556；这是同定义张量的结构差异，不等于C对生成的贡献。用正确/无关/空/均值/关闭及分支对照判断。",
+    "损失和阶段保持简洁。先根据完整40例、配对16例和真实视频确认主要问题及有效机制，再确定I是否需要改动损失、架构、条件利用或推理。",
+    "FM和tail只作为匹配条件下的单步去噪信号；不据此宣称收敛、物理效果或生成质量提升。"
+  ],
+  "generation_quality_proven": false,
+  "next": "H正常40例、七种固定16例控制、实际视频复盘；最后据H证据设计I，暂不启动WMB/Physics-IQ。"
+}

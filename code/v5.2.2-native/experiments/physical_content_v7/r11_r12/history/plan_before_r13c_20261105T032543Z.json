@@ -1,0 +1,478 @@
+{
+  "created_utc": "2026-11-03T05:06:12.506179+00:00",
+  "authorized_versions": [
+    "R11A",
+    "R11B",
+    "R12A",
+    "R12B",
+    "R13A",
+    "R13B",
+    "R13C"
+  ],
+  "maximum_version": "R13C",
+  "after_final": "Complete declared R13C training/evaluations/report, then pause and await user instruction. No R14 or further candidate without new authorization.",
+  "steps_each": 400,
+  "initialization": "Fresh official foundations and existing train-input fitted interface; no inherited project checkpoint",
+  "stages": {
+    "interface": 128,
+    "joint": 272
+  },
+  "accumulation": 4,
+  "seed": 42,
+  "physical_gamma": 5,
+  "main_evaluation": {
+    "original40": 40,
+    "added20": 20,
+    "combined60": 60,
+    "full599": false
+  },
+  "module_controls": {
+    "cases": 16,
+    "inputs": "Existing fixed16",
+    "core": [
+      "reasoning_swapped",
+      "empty_reasoning",
+      "global_train_mean",
+      "no_c"
+    ],
+    "architecture": [
+      "interaction_off",
+      "direct_write_off"
+    ]
+  },
+  "references": {
+    "R10A40": {
+      "sa": 2.825,
+      "pc": 3.75,
+      "joint": 7,
+      "count": 40
+    },
+    "R10A60": {
+      "sa": 2.75,
+      "pc": 3.8333333333333335,
+      "joint": 9,
+      "count": 60
+    },
+    "R1_40": {
+      "sa": 2.95,
+      "pc": 3.625,
+      "joint": 10,
+      "count": 40
+    },
+    "R1_60": {
+      "sa": 2.8833333333333333,
+      "pc": 3.6666666666666665,
+      "joint": 13,
+      "count": 60
+    }
+  },
+  "selection": "Matched VideoPhy2-40 PC>=3.8(prefer>=3.85), SA>=3.3(prefer>=3.35), Joint strictly exceeds all completed historical40 results before this update: known best11/40, target at least12/40; actual semantic/physical/visual quality must improve together. Verify full60 and paired16. No PC gain compensates for SA/Joint/visual degradation.",
+  "sequence": "Use completed R10A/R11B and subsequent paired40/60/16 results plus actual videos to choose substantive iterations; maximum R13C, then finish reports and pause.",
+  "status": "r13b_complete_r13c_design_pending",
+  "data_policy": "R13B uses the original WISA captions, original input-only reasoning, original frozen Qwen/T5 caches and original fitted interface, matched to R10A. API-revised artifacts and completed matched400/crossover comparisons remain preserved; their availability does not require adoption. No new API calls or preprocessing during this candidate.",
+  "design_policy": "Evidence-driven architecture changes to improve PC/SA/Joint and actual video quality together. R13B retains exact R10A enhancement/direct write and moves the extra state-value matrix budget to conditioning native video self-attention queries. Both physical actions train throughout400; native text Q/K/V/O frozen. Current128+272 is a matched-comparison choice, not a mandatory Goal constraint. R13C follows complete R13B evidence; maximumR13C.",
+  "prepared": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/prepared.json",
+  "r9_599": "User canceled Search67115 at410/599 generated; keep partial output, no restore/scoring.",
+  "current_candidate": {
+    "name": "R13B",
+    "experiment": 67610,
+    "trial": 68997,
+    "state": "STATE_COMPLETED",
+    "actual_gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+    "stage": "declared_evaluation_completed",
+    "training_complete": true,
+    "optimizer_steps_verified": 400,
+    "quality_established": false,
+    "phase": "joint",
+    "decision": "rejected"
+  },
+  "queue_check_policy": {
+    "interval_seconds": 600,
+    "source": "Explicit user request: check every10minutes",
+    "updated_utc": "2026-11-04T13:35:24+00:00",
+    "scope": "Active training/generation/scoring jobs; preserve canceled managers as disabled"
+  },
+  "superseded_r11a": [
+    {
+      "prepared_utc": "2026-11-03T05:15:04.561115+00:00",
+      "status": "canceled_by_user_redesign_required",
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_adapt_r11a/snapshots/20261103T051504Z",
+      "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_adapt_r11a/submissions/r11a_20261103T051504Z.yaml",
+      "empty_context": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_adapt_r11a/submission_context",
+      "gpu": "RTX6000 Blackwell only; guard before foundation loading",
+      "resource_pool": "blk-96g",
+      "slots_per_trial": 1,
+      "checkpoint_step": 400,
+      "seed": 42,
+      "gamma": 5,
+      "no_model_downloads": true,
+      "automatic_next_version": false,
+      "config": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_adapt_r11a/snapshots/20261103T051504Z/configs/physical_content.yaml",
+      "tests": {
+        "passed": 6,
+        "scope": "CPU actual adapter/fusion gradients, exact prior initializer/RNG, phase/optimizer/checkpoint ownership and paired control restoration; NOT quality evidence"
+      },
+      "additional_parameters": 17694720,
+      "main_cases": 40,
+      "extended_cases": 60,
+      "control_cases": 16,
+      "control_modes": [
+        "text_adapter_off",
+        "reasoning_swapped",
+        "empty_reasoning",
+        "global_train_mean",
+        "anchor_only",
+        "no_c"
+      ],
+      "training": "Fresh official foundations;128interface+272joint, same1600 input/noise/dropout positions as R1/R10A",
+      "quality_status": "Unmeasured; hypotheses and targets are not claimed improvements",
+      "experiment_id": 67212,
+      "submitted_utc": "2026-11-03T05:25:28.951814+00:00",
+      "trial_id": 68599,
+      "actual_gpu": null,
+      "training_or_generation_started": false,
+      "terminal_state": "STATE_CANCELED",
+      "canceled_utc": "2026-11-03T05:32:10.725082Z"
+    }
+  ],
+  "semantic_schedule": {
+    "physical_enhancement_updates": 400,
+    "native_query_interaction_updates": 400,
+    "direct_physical_write_updates": 400,
+    "backbone_lora_updates": 272,
+    "native_text_projection_updates": 0,
+    "standalone_request_branch": false
+  },
+  "api_data_work": {
+    "directory": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/data_revision_qwen38",
+    "status": "1600 captions/3200 reasoning and all local features/interface complete and preserved. R13B currently uses original caches based on completed matched comparisons.",
+    "model": "qwen3.8-flash",
+    "credentials_in_project": false,
+    "training_cache_overwritten": false
+  },
+  "data_revision_qwen38_400": {
+    "prepared_record": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/data_revision_qwen38/prepared400.json",
+    "scope": "actual400 1600 samples only",
+    "api_pid": null,
+    "manager_pid": null,
+    "encoding": "67257 completed; training-ready published13:59UTC; canceled manager remains disabled",
+    "active_r11a_unchanged": true,
+    "api_progress_seconds": 1800,
+    "queue_poll_seconds": 1800,
+    "api_retry_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/data_revision_qwen38/recovery/20261103T092319Z"
+  },
+  "post_r11a_data_comparisons": {
+    "user_authorized_utc": "2026-11-03T09:25:21.466935+00:00",
+    "architectures": [
+      "preserved R10A",
+      "preserved current R11A"
+    ],
+    "prerequisites": [
+      "Analyze currentR11A original40+20/60 and applicable paired16 interventions",
+      "Complete selected1600 caption/reasoning records and local encoding/native targets/fresh train-input interface"
+    ],
+    "training": "Fresh official foundations, unchanged respective architecture and matched400 sampling/budget; separate data-revision names and outputs, preserve old checkpoints",
+    "inference": "One shared input-only API reasoning set from original benchmark first images/prompts; frozen local Qwen3-VL4096 encoding; original prompts/images/seeds/gamma/evaluator unchanged",
+    "effectiveness": "PC retention/improvement, SA/Joint gains and actual video/process quality; paired16 tests of reasoning contribution before broad adoption",
+    "no_new_training_before_evidence_and_data": true,
+    "full599": false,
+    "historical_authorization_maximum": "R12B",
+    "status": "Completed historical data-reference work; not an active dispatch instruction or current version limit.",
+    "completed_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/reports/api400_completed_comparison.json"
+  },
+  "latest_work_policy": {
+    "utc": "2026-11-04T21:50:32.050644+00:00",
+    "action": "Complete R13B own400, original40+20/60, six fixed16 interventions and actual-video review before designing R13C.",
+    "routine_check_seconds": 600
+  },
+  "last_scheduled_observation": {
+    "utc": "2026-11-05T03:06:15.182146+00:00",
+    "candidate": 67610,
+    "state": "STATE_RUNNING",
+    "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+    "stage": "declared_evaluation_completed",
+    "next": "2026-11-05T03:16:15.182146+00:00",
+    "optimizer_steps_verified": 400
+  },
+  "r11a_original_data_decision": {
+    "utc": "2026-11-03T11:30:29.462608+00:00",
+    "candidate": "R11A",
+    "checkpoint_step": 400,
+    "protocol": "original40, shared-input I2V, seed42, gamma5",
+    "decision": "rejected_for_adoption",
+    "reason": "PC gains over native400 are lost; SA and Joint are below matched native400 and R1. Does not meet the requested joint generation objective.",
+    "metrics": {
+      "R11A": {
+        "sa": 2.9,
+        "pc": 3.45,
+        "joint": 6,
+        "count": 40
+      },
+      "R10A": {
+        "sa": 2.825,
+        "pc": 3.75,
+        "joint": 7,
+        "count": 40
+      },
+      "R1": {
+        "sa": 2.95,
+        "pc": 3.625,
+        "joint": 10,
+        "count": 40
+      },
+      "Wan_LoRA400": {
+        "sa": 3.075,
+        "pc": 3.45,
+        "joint": 10,
+        "count": 40
+      }
+    },
+    "paired_pc_vs_R10A": {
+      "wins": 4,
+      "ties": 23,
+      "losses": 13
+    },
+    "paired_sa_vs_native400": {
+      "wins": 1,
+      "ties": 32,
+      "losses": 7
+    },
+    "no_continuation_training": true,
+    "no_automatic_next_architecture_from_r11a": true,
+    "empirical_pc_reference": "preserved R10A400",
+    "data_revision_independent": true,
+    "attribution": "The combination of400-step text Q/K/V/O adaptation and post-text physical execution failed. Existing controls can localize their roles; current evidence does not isolate either change alone.",
+    "current_declared_evaluation_unchanged": true,
+    "additional_jobs_submitted": false
+  },
+  "next_architecture_policy": "Review completed model metrics, pairedcontrols, actualvideos and earlier architectures; identify useful/harmful mechanisms and combinations, then implement and validate nextcandidate. No automaticnexttraining when firstscorearrives; maximumR13C.",
+  "active_r11a_rework": "Completed67265; rejected on40/60; preserved",
+  "training_design_status": "Own400 complete; all1600 sample/noise/dropout/aux and400 schedules matchR10A. Full40/60 andsix16 now evaluating; qualityunmeasured.",
+  "user_training_preference": "The latest user Goal removes the requirement to retain128+272. Existing submitted recipes remain reproducible; future stage/loss design is evidence-driven, with approximately400 matched total updates.",
+  "latest_user_target": {
+    "updated_utc": "2026-11-04T08:59:21.838330+00:00",
+    "priority": "PC、SA、Joint 和实际画面质量必须共同改善；单独 PC 高不能抵消其他方面的退步。",
+    "primary_benchmark": "matched VideoPhy2-40 I2V",
+    "original40_pc_target": 3.8,
+    "original40_pc_preferred": 3.85,
+    "original40_sa_target": 3.3,
+    "original40_sa_preferred": 3.35,
+    "joint_above_R1": true,
+    "joint_reference_pass_count": 11,
+    "joint_reference_count": 40,
+    "joint_definition": "same video SA>=4 and PC>=4",
+    "actual_video_quality_required": true,
+    "no_pc_gain_at_expense_of_sa_joint_or_visual_quality": true,
+    "evaluation_sizes": {
+      "primary": 40,
+      "extended": 60,
+      "paired_controls": 16
+    },
+    "maximum_version": "R13C",
+    "goal_requirements_file": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/GOAL.zh.txt",
+    "goal_card_objective_edited": true,
+    "goal_card_state_changed": false,
+    "joint_reference": "highest completed40 result before this goal update, not R1 alone",
+    "joint_reference_rate": 0.275,
+    "joint_minimum_target_pass_count": 12,
+    "joint_minimum_target_rate": 0.3,
+    "joint_strictly_above_all_historical40": true,
+    "joint_historical_reference_source": "V6-assoc Search66642,224steps,11/40; located30 complete40 raw score files plus older13-method comparison",
+    "historical_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/reports/historical40_joint_goal_evidence.json",
+    "primary_audit_experiments": {
+      "R1": 66778,
+      "R10A": 67003,
+      "R11B": 67308,
+      "R9": 66968
+    },
+    "architecture_modification_authorized": true,
+    "design_policy": "Evidence-driven architecture/module/training/inference improvements; not restricted to defensive or patch-only changes; validate added modules.",
+    "goal_card_objective_verified": true,
+    "goal_card_status": "active",
+    "system_goal_update_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/reports/system_goal_update_verified.json",
+    "early_audit_experiments": {
+      "V6-assoc": 66678,
+      "V5-CE": 66706,
+      "V6-write": 66710
+    },
+    "fixed_128_272_required_by_goal": false,
+    "avoid_defensive_design": true,
+    "diversity_constraint_removed_from_goal": true
+  },
+  "new_design_working_directory": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b",
+  "r10a_api400_reference": {
+    "experiment": 67271,
+    "trial": 68658,
+    "state": "STATE_COMPLETED",
+    "prepared": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r10a_api400/prepared.json"
+  },
+  "updated_utc": "2026-11-05T03:11:13.377490+00:00",
+  "completed_api400_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/reports/api400_completed_comparison.json",
+  "goal_requirements_file": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/GOAL.zh.txt",
+  "system_goal_objective": "以早期 Search 66678（V6-assoc）、Search 66706（V5-CE）、Search 66710（V6-write），以及 R1（Search 66778）、R10A（Search 67003）、R11B（Search 67308）、R9（Search 66968）的实测审计为主要依据，结合完整训练记录、推理流程、配对消融与真实生成视频，持续优化 physGen。保留物理增强与融合的核心研究方向，允许根据证据修改、完善或增加必要的架构和模块，同时优化训练、数据与推理；不要防御性设计，不局限于局部补丁，不保留没有实际作用的复杂中间设计。新增设计必须通过训练、生成和消融证明实际贡献。\n\n以相同输入、首帧、随机种子及评分口径的 VideoPhy2-40 为主要验收依据：PC 争取达到 3.8 以上、优选 3.85 以上；SA 同时达到 3.3 以上、优选 3.35 以上；Joint 必须严格超过本次目标更新前所有已完成的 40 例评测中的历史最高值，不只超过 R1。当前已核对历史最高 Joint 为 11/40（27.5%），因此至少达到 12/40（30%）；如果补核对发现更高的既有历史结果，以更高值为基准。Joint 定义为同一视频 SA≥4 且 PC≥4。\n\nPC、SA、Joint 和实际画面生成质量必须同时改善。保持并争取进一步提高 R10A/R11B 的有效 PC 收益，同时改善语义遵循、请求动作与交互、物理过程、画面清晰稳定性和时序一致性。仅 PC 高，但 SA/Joint 退步、动作没有执行、近乎静止、严重形变伪影或重复纹理，均不能认定为成功；不能为了 PC 牺牲其他指标和画面质量。\n\n每版采用可比的约 400 步训练；完成 40 例主评测、60 例扩展验证及适当的 16 例模块/条件消融，包括正常、无关、空 reasoning、均值 C、关闭注入与新增模块开关。允许根据实测证据采用原版或 API 修订后的训练数据和推理 reasoning，并记录差异以便归因。C 的有效差异应服务于实际生成；不以 FM 标量、RGB 变化量或代码测试通过冒充生成效果改善。\n\n持续进行有实测依据的架构、训练与推理迭代，最多到 R13C。新版本完成实现和必要验证后提交训练及评测，不止于设计讨论。保留旧版本、原始评分、真实视频和可复现证据，不拼接各版本逐例最优结果，不用综合分掩盖退步。只使用已授权的 RTX6000 资源，不交 H100，不擅自下载模型。R13C 后完成已承诺的评测和中文分析报告并暂停，等待用户后续指示；未达到质量目标时必须明确报告未达标。",
+  "system_goal_updated_utc": "2026-11-04T08:59:21.838330+00:00",
+  "system_goal_objective_verified": true,
+  "historical_training_preference_before_latest_goal_edit": "Latest explicit selection:128+272; stage1 physical enhancement/fusion learn from FM+multiscale high-error+routing alignment with Wan/LoRA frozen; stage2 jointly train physical modules and original Wan self-attention/FFN LoRA.",
+  "completed_r11b_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/reports/r11b_completed_main_and_controls.json",
+  "architecture_decision": {
+    "design": "Preserve R10A direct physical write; replace extra state-value multiplication with C-conditioned native video self-attention query channels. Native K/V, native3D RoPE and frozen text Q/K/V/O retained.",
+    "design_record": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/DESIGN.zh.txt",
+    "validation": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/reports/implementation_validation.json",
+    "matched_design_audit": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/reports/matched_r10a_design_audit.json",
+    "prepared": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/prepared.json",
+    "quality_established": false
+  },
+  "withdrawn_aesthetic_constraint": "User withdrew the prohibition on many intermediate variables; measured usefulness and the full quality goal take priority.",
+  "r11b_final_report": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/reports/R11B_FINAL_ANALYSIS.zh.txt",
+  "scoring_input_audit": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/reports/videophy2_vp027_input_audit.json",
+  "r12a_stop_override": {
+    "utc": "2026-11-04T14:08:26.003925+00:00",
+    "user_instruction": "60例直接先不用搞了，这版效果太差，直接总结问题考虑更新下一版",
+    "experiment": 67346,
+    "state": "STATE_CANCELED",
+    "retained": [
+      "own400 checkpoint",
+      "complete original40",
+      "video_read_off16",
+      "pretext_read16",
+      "partial extra20 preserved but not scored as60"
+    ],
+    "next": "Implement R12B from R10A physical interaction and native text-conditioned execution; maxR13C unchanged"
+  },
+  "new_benchmarks": {
+    "WorldModelBench": {
+      "cases": 70,
+      "per_domain": 10,
+      "domains": 7
+    },
+    "PhysicsIQVerified": {
+      "scenes": 20,
+      "views_per_scene": 3,
+      "videos": 60,
+      "scene_counts": {
+        "Solid Mechanics": 8,
+        "Fluid Dynamics": 4,
+        "Optics": 3,
+        "Thermodynamics": 3,
+        "Magnetism": 2
+      }
+    },
+    "initial_models": [
+      "wan_lora",
+      "r1",
+      "r10a"
+    ],
+    "paired_inputs_and_seed": true,
+    "main_training_priority": true,
+    "preferred_pools": [
+      "ada-48g",
+      "amp-80g"
+    ],
+    "no_H100": true
+  },
+  "supplementary_benchmark_prepared": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/prepared.json",
+  "r13_decision_policy": {
+    "versions": [
+      "R13A",
+      "R13B",
+      "R13C"
+    ],
+    "sequential": true,
+    "automatic_next_training": false,
+    "review_before_submission": [
+      "Current full40 metrics and paired16 controls",
+      "Actual generated videos, including failures",
+      "Earlier R1/R9/R10A/R11B/R12 findings: useful, ineffective and harmful designs",
+      "Mechanism-level synthesis, architecture changes and functional verification"
+    ],
+    "quality_goal_unchanged": true
+  },
+  "design_review_file": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/reports/R13_DESIGN_REVIEW.zh.txt",
+  "current_priority": "R13B fully completed/rejected. Review completed evidence and finalize/implement/validate R13C architecture/training, then submit own400/40+20/60/six16. No further B jobs or polling.",
+  "completed_r12b_evidence": {
+    "experiment": 67456,
+    "trial": 68843,
+    "state": "STATE_COMPLETED",
+    "full40": {
+      "sa": 2.95,
+      "pc": 3.5,
+      "joint": 8,
+      "count": 40
+    },
+    "controls_complete": 6,
+    "decision": "rejected; preserve all evidence; no60extension",
+    "report": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/inference_outputs/physical_content_67456/step0400_original_fixed40_controls16_seed42/comparison_report.json"
+  },
+  "r13a_evaluation_prepared": {
+    "core_controls": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_operator_r13a/core_controls_helper_prepared.json",
+    "reasoning_controls": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_operator_r13a/reasoning_controls_helper_prepared.json",
+    "extra20": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_operator_r13a/extra20_prepared.json",
+    "policy": "Manual dependency-aware dispatch on spareRTX; same own400 and fixed16/40/60; no extra variants/seeds, no nextarchitecture before complete review.",
+    "active_helpers": {},
+    "status": "all declared evaluations complete; helper jobs terminal; no more dispatch"
+  },
+  "r13_support_evidence": {
+    "r10a_state_value16": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/r13_support/r10a_no_state_value16/prepared.json",
+    "purpose": "Resolve previously missing isolated execution-mechanism evidence; same oldown400, one16 inference intervention, no newmodelversion."
+  },
+  "r13a_main40_result": {
+    "count": 40,
+    "sa_mean": 2.925,
+    "pc_mean": 3.475,
+    "sa_pass_rate": 0.25,
+    "pc_pass_rate": 0.45,
+    "joint_pass_count": 9,
+    "joint_pass_rate": 0.225
+  },
+  "supplementary_complete_comparison": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/reports/current_comparison.json",
+  "completed_r13a_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_operator_r13a/reports/closure.json",
+  "r13b_evaluation_prepared": {
+    "core_controls": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/core_controls_helper_prepared.json",
+    "reasoning_controls": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/reasoning_controls_helper_prepared.json",
+    "status": "all_declared_evaluation_complete",
+    "active_helpers": {},
+    "policy": "Helpers generate only previously declared control16 modes and additional20 cases with the exact frozen own400 inference; the primary retains the complete40/60 reports and reuses completed transferred cases. No new cases, seeds, architecture or training.",
+    "remaining_helpers": {
+      "no_c": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/no_c_controls_helper_prepared.json",
+      "mean": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/mean_controls_helper_prepared.json"
+    },
+    "remaining_helpers_status": "complete",
+    "extra20_helper": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/extra20_prepared.json",
+    "main40_tail_helper": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/primary_tail_prepared.json",
+    "additional_helpers_status": "complete",
+    "dispatch_policy": "No further B helper or training submission; all results preserved.",
+    "completed_helpers": [
+      {
+        "role": "core",
+        "experiment": 67611,
+        "state": "STATE_COMPLETED",
+        "prepared": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/core_controls_helper_prepared.json"
+      },
+      {
+        "role": "reasoning",
+        "experiment": 67612,
+        "state": "STATE_COMPLETED",
+        "prepared": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/reasoning_controls_helper_prepared.json"
+      },
+      {
+        "role": "no_c",
+        "experiment": 67614,
+        "state": "STATE_COMPLETED",
+        "prepared": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/no_c_controls_helper_prepared.json"
+      },
+      {
+        "role": "extra20",
+        "experiment": 67613,
+        "state": "STATE_COMPLETED",
+        "prepared": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/extra20_prepared.json"
+      },
+      {
+        "role": "mean",
+        "experiment": 67645,
+        "state": "STATE_COMPLETED",
+        "prepared": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/mean_controls_helper_prepared.json"
+      }
+    ]
+  },
+  "completed_r13b_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/reports/closure.json"
+}

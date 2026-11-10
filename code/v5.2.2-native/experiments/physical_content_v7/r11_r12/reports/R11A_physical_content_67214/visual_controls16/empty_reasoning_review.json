@@ -1,0 +1,72 @@
+{
+  "utc": "2026-11-03T15:53:34.832047+00:00",
+  "scope": "Two cases selected after completed fixed16 scores: largest PC increase under empty reasoning and only Joint loss. Eight sampled frames per arm, not a full-suite temporal or quality estimate.",
+  "selection_file": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/reports/R11A_physical_content_67214/visual_controls16/empty_selection.json",
+  "scores_unchanged": true,
+  "evaluator_rerun": false,
+  "intervention": "Only positive reasoning text emptied; own first image/request, native T5 and own negative C retained by frozen infer.py. This is not removal of all text conditioning.",
+  "cases": [
+    {
+      "case": "VP034",
+      "normal_scores": {
+        "sa": 3,
+        "pc": 3
+      },
+      "empty_scores": {
+        "sa": 3,
+        "pc": 5
+      },
+      "normal": "正常条件的气球向上离开画面，后半段出现占据画面的巨大透明曲面，没有清楚展示连续充气过程。",
+      "empty": "空reasoning时气球保持近似大小，只见轻微飘动，画面较稳定，但没有清楚展示请求中的持续充气扩张。",
+      "interpretation": "PC从3到5包含明显的稳定性改善，却不能直接解释为完成充气物理过程；SA仍为3。该例贡献空条件PC净增加4分中的2分。"
+    },
+    {
+      "case": "VP010",
+      "normal_scores": {
+        "sa": 4,
+        "pc": 4
+      },
+      "empty_scores": {
+        "sa": 3,
+        "pc": 4
+      },
+      "normal": "正常条件下拖把位置与湿润区域变化较明显，但拖把头仍有形变，采样帧不足以证明准确的去水过程。",
+      "empty": "空reasoning时前半段变化较弱，后段拖把头逐渐拉宽并出现重影式多片形态；未建立清楚完整的拖地去水过程。",
+      "interpretation": "正常reasoning在此保留了更强的请求响应，也是16例中唯一额外Joint通过。不能据空条件较高PC均分判断应全面删除reasoning。"
+    }
+  ],
+  "quantitative_decomposition": {
+    "normal": {
+      "sa": 3.0625,
+      "pc": 3.625,
+      "joint": 4
+    },
+    "empty": {
+      "sa": 3.0,
+      "pc": 3.875,
+      "joint": 3
+    },
+    "normal_minus_empty": {
+      "sa": {
+        "wins": 2,
+        "ties": 13,
+        "losses": 1
+      },
+      "pc": {
+        "wins": 1,
+        "ties": 11,
+        "losses": 4
+      },
+      "joint": {
+        "gains": [
+          "VP010"
+        ],
+        "losses": []
+      }
+    },
+    "empty_minus_normal_pc_total": 4,
+    "VP034_empty_minus_normal_pc": 2,
+    "remaining15_empty_minus_normal_pc_total": 2
+  },
+  "decision": "保留正常与所有控制组的原始分数。旧失败版reasoning的PC净收益不成立，但个别请求执行受益；下一版要同时保留稳定性与过程执行，不能把接近静止的高PC当作完整成功。当前已提交新版保持冻结，待其同数据40/60/16结果再定位。"
+}

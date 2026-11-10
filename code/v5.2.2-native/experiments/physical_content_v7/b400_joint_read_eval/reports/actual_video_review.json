@@ -1,0 +1,290 @@
+{
+  "utc": "2026-11-08T13:26:13.298414+00:00",
+  "scope": "Paired sampled-frame review of three newly generated cases outside original16; not an aggregate perceptual score. Full VP40/60 still running.",
+  "frames": [
+    0,
+    11,
+    22,
+    34,
+    45,
+    57,
+    68,
+    80
+  ],
+  "selection_before_expanded_scores": true,
+  "paired_original_B400": true,
+  "cases": {
+    "VP001": {
+      "observation": "B原版与联合读取均长时间保持近似悬空姿态，只有姿态及少量位置变化；采样帧未呈现明确完整落地。联合读取没有明显修复该过程缺失。",
+      "quality_gain_established": false,
+      "evidence": {
+        "case": "VP001",
+        "frame_indices": [
+          0,
+          11,
+          22,
+          34,
+          45,
+          57,
+          68,
+          80
+        ],
+        "selected_before_expanded_scores": true,
+        "outside_reused16": true,
+        "panels": {
+          "B_request_bound": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/b400_joint_read_eval/reports/visual_outside16/VP001_B_request_bound.png",
+          "B_joint_extended": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/b400_joint_read_eval/reports/visual_outside16/VP001_B_joint_extended.png"
+        },
+        "scope": "Sampled-frame comparison, not a complete visual score"
+      }
+    },
+    "VP006": {
+      "observation": "两版均主要生成人物弯腰/起身，悬挂画布基本不变，未清楚呈现画布扭转和颜料滴落。联合读取改变人物姿态，但未体现目标物理过程改善。",
+      "quality_gain_established": false,
+      "evidence": {
+        "case": "VP006",
+        "frame_indices": [
+          0,
+          11,
+          22,
+          34,
+          45,
+          57,
+          68,
+          80
+        ],
+        "selected_before_expanded_scores": true,
+        "outside_reused16": true,
+        "panels": {
+          "B_request_bound": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/b400_joint_read_eval/reports/visual_outside16/VP006_B_request_bound.png",
+          "B_joint_extended": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/b400_joint_read_eval/reports/visual_outside16/VP006_B_joint_extended.png"
+        },
+        "scope": "Sampled-frame comparison, not a complete visual score"
+      }
+    },
+    "VP011": {
+      "observation": "两版画面均接近静止，未清楚呈现急停、脚落地支撑后继续骑行。共同首帧已是两轮车，而提示词要求独轮车，存在共享输入级语义冲突，不能将其全归因联合读取。",
+      "shared_input_issue": "Two wheels visible in common frame0; caption says unicycle.",
+      "quality_gain_established": false,
+      "evidence": {
+        "case": "VP011",
+        "frame_indices": [
+          0,
+          11,
+          22,
+          34,
+          45,
+          57,
+          68,
+          80
+        ],
+        "selected_before_expanded_scores": true,
+        "outside_reused16": true,
+        "panels": {
+          "B_request_bound": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/b400_joint_read_eval/reports/visual_outside16/VP011_B_request_bound.png",
+          "B_joint_extended": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/b400_joint_read_eval/reports/visual_outside16/VP011_B_joint_extended.png"
+        },
+        "scope": "Sampled-frame comparison, not a complete visual score"
+      }
+    }
+  },
+  "overall": "完整40的PC+0.075并未伴随SA或Joint改善。三例预先选择的新样例未见清楚的过程改善；两例得分变化样例中，PC上升伴随更静止/过程缺失。联合读取能减少某些形体变化错误，但目前不能认定达到所要求的综合生成收益。 WMB补查中，工业例相对R1物理4→5、指令3→1，视频确实缺失讲解手势；自然例指令1→3，但采样帧仍未明确证明积雪增加。跨基准小幅总分收益不能单独证明全面提升。 Physics-IQ中心视角补查中，联合读取的杯子与影子几乎静止，而R1有转动；撕纸场景虽指标更高，联合读取仍未可靠实现撕裂。",
+  "prior16_review": "../r15i_design/reports/completed_probe_review.json",
+  "postscore_cases": {
+    "VP019": {
+      "scores_B": [
+        3,
+        3
+      ],
+      "scores_joint": [
+        2,
+        4
+      ],
+      "observation": "B原版在后半段出现下落/翻转及末端形体异常；联合读取保留了悬空物体但多数采样帧近乎悬停，未完成提示词要求的飞行晃动并落地。PC+1同时SA-1，与过程被省略一致；不是已证实的物理过程改善。",
+      "evidence": {
+        "case": "VP019",
+        "frame_indices": [
+          0,
+          11,
+          22,
+          34,
+          45,
+          57,
+          68,
+          80
+        ],
+        "selected_before_expanded_scores": false,
+        "outside_reused16": true,
+        "selection_reason": "changed_PC/SA_case_after_scoring",
+        "panels": {
+          "B_request_bound": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/b400_joint_read_eval/reports/visual_score_changes/VP019_B_request_bound.png",
+          "B_joint_extended": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/b400_joint_read_eval/reports/visual_score_changes/VP019_B_joint_extended.png"
+        },
+        "scope": "Sampled-frame comparison, not a complete visual score"
+      }
+    },
+    "VP031": {
+      "scores_B": [
+        3,
+        3
+      ],
+      "scores_joint": [
+        3,
+        4
+      ],
+      "observation": "B原版伞面逐渐变成不合理的中空环状；联合读取较好保留伞面外形，但画面基本静止，未呈现展开。首帧本身已是展开伞面，与紧密折叠后展开的提示词也有共享输入冲突。PC+1包含形状稳定收益，不能等同于展开过程正确。",
+      "evidence": {
+        "case": "VP031",
+        "frame_indices": [
+          0,
+          11,
+          22,
+          34,
+          45,
+          57,
+          68,
+          80
+        ],
+        "selected_before_expanded_scores": false,
+        "outside_reused16": true,
+        "selection_reason": "changed_PC/SA_case_after_scoring",
+        "panels": {
+          "B_request_bound": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/b400_joint_read_eval/reports/visual_score_changes/VP031_B_request_bound.png",
+          "B_joint_extended": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/b400_joint_read_eval/reports/visual_score_changes/VP031_B_joint_extended.png"
+        },
+        "scope": "Sampled-frame comparison, not a complete visual score"
+      }
+    }
+  },
+  "cross_benchmark_examples": {
+    "selection": "Two post-score WMB pairs and center views of the largest positive/negative Physics-IQ scene-mean differences versus R1. Eight sampled frames/video, illustrative rather than a whole-subset quality estimate.",
+    "records": [
+      {
+        "case": "wmb_1m6h59wI_yI_33_35to192",
+        "selection": "Post-score illustrative paired cases, not a representative quality estimate.",
+        "reason": "Industrial: instruction 3 to 1, physical 4 to 5 versus R1.",
+        "frames": [
+          0,
+          11,
+          22,
+          34,
+          45,
+          57,
+          68,
+          80
+        ],
+        "videos": {
+          "r1": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/outputs/r1/seed42/cases/wmb_1m6h59wI_yI_33_35to192/video.mp4",
+          "r15b_joint_i": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/outputs/r15b_joint_i/seed42/cases/wmb_1m6h59wI_yI_33_35to192/video.mp4"
+        },
+        "panels": {
+          "r1": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/b400_joint_read_eval/reports/cross_visual/wmb_1m6h59wI_yI_33_35to192_r1.png",
+          "r15b_joint_i": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/b400_joint_read_eval/reports/cross_visual/wmb_1m6h59wI_yI_33_35to192_r15b_joint_i.png"
+        },
+        "caption": "The worker in the food and beverage processing plant gestures while explaining the industrial processes."
+      },
+      {
+        "case": "wmb_SwIB-QlxNCo_65_0to103",
+        "selection": "Post-score illustrative paired cases, not a representative quality estimate.",
+        "reason": "Natural: instruction 1 to 3, physical remains 5 versus R1.",
+        "frames": [
+          0,
+          11,
+          22,
+          34,
+          45,
+          57,
+          68,
+          80
+        ],
+        "videos": {
+          "r1": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/outputs/r1/seed42/cases/wmb_SwIB-QlxNCo_65_0to103/video.mp4",
+          "r15b_joint_i": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/outputs/r15b_joint_i/seed42/cases/wmb_SwIB-QlxNCo_65_0to103/video.mp4"
+        },
+        "panels": {
+          "r1": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/b400_joint_read_eval/reports/cross_visual/wmb_SwIB-QlxNCo_65_0to103_r1.png",
+          "r15b_joint_i": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/b400_joint_read_eval/reports/cross_visual/wmb_SwIB-QlxNCo_65_0to103_r15b_joint_i.png"
+        },
+        "caption": "Snow gradually covers a pine tree as the camera pans across a snowy landscape with rocky cliffs."
+      },
+      {
+        "case": "piq_0044",
+        "selection": "Post-score illustrative paired cases, not a representative quality estimate.",
+        "reason": "Center view of largest scene-mean Verified gain versus R1: cut-paper.",
+        "frames": [
+          0,
+          11,
+          22,
+          34,
+          45,
+          57,
+          68,
+          79
+        ],
+        "videos": {
+          "r1": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/outputs/r1/seed42/cases/piq_0044/video.mp4",
+          "r15b_joint_i": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/outputs/r15b_joint_i/seed42/cases/piq_0044/video.mp4"
+        },
+        "panels": {
+          "r1": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/b400_joint_read_eval/reports/cross_visual/piq_0044_r1.png",
+          "r15b_joint_i": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/b400_joint_read_eval/reports/cross_visual/piq_0044_r15b_joint_i.png"
+        },
+        "caption": "Static locked-off single-shot with fixed frame throughout filmed with constant framerate in real-time. The scene shows a realistic scientific demonstration. The scene only contains the described setup and actions. Two blue-black grabber tools pull the piece of green paper from opposite corners, causing it to tear."
+      },
+      {
+        "case": "piq_0077",
+        "selection": "Post-score illustrative paired cases, not a representative quality estimate.",
+        "reason": "Center view of largest scene-mean Verified loss versus R1: light-on-mug.",
+        "frames": [
+          0,
+          11,
+          22,
+          34,
+          45,
+          57,
+          68,
+          79
+        ],
+        "videos": {
+          "r1": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/outputs/r1/seed42/cases/piq_0077/video.mp4",
+          "r15b_joint_i": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/outputs/r15b_joint_i/seed42/cases/piq_0077/video.mp4"
+        },
+        "panels": {
+          "r1": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/b400_joint_read_eval/reports/cross_visual/piq_0077_r1.png",
+          "r15b_joint_i": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/b400_joint_read_eval/reports/cross_visual/piq_0077_r15b_joint_i.png"
+        },
+        "caption": "Static locked-off single-shot with fixed frame throughout filmed with constant framerate in real-time. The scene shows a realistic scientific demonstration. The scene only contains the described setup and actions. The yellow mug sits on the black, clockwise-rotating platform, and the spotlight points toward the yellow mug. The yellow mug rotates clockwise on the black platform while the spotlight casts a large shadow on the wall behind it."
+      }
+    ],
+    "observations": {
+      "wmb_1m6h59wI_yI_33_35to192": {
+        "R1": "工人约第11—22帧抬手并做讲解手势，后段姿势较固定，至少可见请求中的手势过程。",
+        "B400_joint": "工人主要站立、面部/头部轻微变化，八个采样帧未见明确讲解手势。",
+        "scores_R1_to_joint": "指令3→1，物理4→5，常识2→2；本例物理加分同时伴随请求过程缺失。"
+      },
+      "wmb_SwIB-QlxNCo_65_0to103": {
+        "R1": "可见沿雪山与树木的缓慢镜头移动，未能从采样帧明确确认逐渐积雪。",
+        "B400_joint": "也可见镜头移动、岩壁和树木位置改变，整体形体稳定；仍未明确确认新增积雪覆盖过程。",
+        "scores_R1_to_joint": "指令1→3，物理5→5，常识2→2；评分提升不等于已经完整实现积雪过程。"
+      },
+      "piq_0044": {
+        "R1": "夹具与纸张发生拉动、纸中央连接逐渐收窄，末帧可见间隙；工具形体仍不稳定，不能当成完美参考。",
+        "B400_joint": "纸张逐渐摊平、呈相连的整片/条状，后段夹具退出，未见可靠的相向拉扯撕裂过程。",
+        "interpretation": "此场景三视角Verified均值比R1高，但中心视角仍存在明显过程问题；指标收益不能直接等同撕裂过程正确。",
+        "Verified_center_view": {
+          "r1": 0.41572044340168135,
+          "r15b_joint_i": 0.6396206525382356
+        }
+      },
+      "piq_0077": {
+        "R1": "杯柄位置与墙上影子随时间变化，可见转动，仍有杯柄/阴影细节不稳定。",
+        "B400_joint": "杯柄与阴影在八个采样帧基本保持原位，未见请求要求的持续转动。",
+        "interpretation": "光学类别退化有具体过程证据：该例联合读取缺失转动与相应影子变化。",
+        "Verified_center_view": {
+          "r1": 0.13941247787829122,
+          "r15b_joint_i": 0.0031253965580817474
+        }
+      }
+    }
+  }
+}

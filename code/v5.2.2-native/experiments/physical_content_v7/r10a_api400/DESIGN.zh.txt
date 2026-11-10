@@ -1,0 +1,15 @@
+R10A＋API修订数据：独立400步参照
+用户2026-11-03明确要求。本实验保留原R10A，不继承其训练权重，也不是恢复已取消的R11A自动提交脚本。
+
+生成架构、参数初始化规则、两轮Q增强、route/execute全宽C、并行fusion、额外状态乘法与时间映射均与原R10A相同。
+训练仍为1–128步物理模块学习、Wan LoRA固定；129–400步物理模块与原self-attention/FFN LoRA联合。两个阶段都有真实视频FM，保持0.8全局FM+0.2原多尺度高误差项及routing-only词辅助。所有组学习率/warmup和400步内辅助系数与原R10A相同。
+唯一整组干预是API修订后的描述、输入reasoning、本地Qwen3-VL/T5/原生词特征及新拟合接口；旧视频latent、首帧、样本顺序保留。属于训练与推理数据更新的整体比较，不能进一步拆分归因给单一文本阶段。
+
+使用data_revision_qwen38/runs/20261103_dataset/encoded，覆盖本seed42/accumulation4的1600条输入；新接口已完成必要拟合。无需重复全缓存审核或可选holdout，不伪造未做的验证指标。
+API只生成文本，本地Qwen3-VL保留4096维编码，原Wan保留3072维接口；无模型下载。初始化来自官方基础模型和本轮新拟合的输入接口。
+与新版共用data_revision_qwen38/benchmark_inputs/videophy60_first_image_request_v1：原始评测提示词和公共首帧不改，API仅看首帧/请求；不读取未来视频或评分。
+
+训练到400后先原40例，再额外固定20并合成60；报告SA/PC五分均值与>=4通过率、Joint。seed42、gamma5、50步shift5保持相同。
+固定16正常结果复用原40，另测no_c、无关reasoning、空reasoning、固定训练均值C、anchor_routing，判断数据更新后物理条件的实际贡献。没有额外gamma扫描、模型下载、599例评测或基线1000步续训。
+只提交到单slot blk-96g，实际非RTX6000 Blackwell在加载模型前退出。直接提交本实验，不启动自动提交管理器。
+原R10A40/60为PC3.750/3.833333、SA2.825/2.750、Joint7/9；新结果尚未测得，不能预先宣称提升。以保留或提升PC，同时提高SA/Joint及实际画面质量判断。

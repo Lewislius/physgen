@@ -1,0 +1,93 @@
+{
+  "candidate": "R15E pre-training diagnostic only",
+  "status": "submitted_pending_actual_gpu",
+  "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/state_response_fusion_r15e/diagnostic_snapshots/20261106T090919Z_rtx_recovery",
+  "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/state_response_fusion_r15e/submissions/probe_20261106T090919Z_rtx_recovery.yaml",
+  "empty_context": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/denoising_matched_fusion_r15d/submissions/empty_context",
+  "resource_pool": "blk-96g",
+  "slots_per_trial": 1,
+  "gpu_policy": "Allocated RTX PRO6000 / RTX6000 Blackwell only; no H100",
+  "formal_training": false,
+  "training_updates": 0,
+  "tests": {
+    "actual_small_wan": 10,
+    "passed": true,
+    "quality_proof": false
+  },
+  "reference_checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/execution_value_r10/runs/physical_content_67003/step0400.pt",
+  "output": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/state_response_fusion_r15e/diagnostic_outputs/r10a400_native_video_response_fixed16",
+  "case_count": 16,
+  "seed": 42,
+  "gamma": 5,
+  "new_api_calls": 0,
+  "new_model_downloads": 0,
+  "attempts": [
+    {
+      "experiment_id": 67942,
+      "submitted_utc": "2026-11-06T07:26:10.657744+00:00",
+      "accepted": null,
+      "state": "STATE_ERROR",
+      "reason": "Entrypoint missing benchmark_inputs import that registers existing evaluator pipeline; no foundation/model loading; fixed and import-tested in new immutable snapshot"
+    },
+    {
+      "experiment_id": 67943,
+      "submitted_utc": "2026-11-06T07:30:12.253147+00:00",
+      "accepted": null,
+      "state": "STATE_CANCELED",
+      "reason": "User briefly requested cancellation then immediately revoked it; old task could not be reactivated, terminated before resumed ownership",
+      "generated": 0
+    },
+    {
+      "experiment_id": 67948,
+      "submitted_utc": "2026-11-06T07:42:44.461078+00:00",
+      "accepted": null,
+      "state": "STATE_CANCELED",
+      "reason": "User explicitly requested moving only this16 probe from queued blk-96g to amp-48g; terminal canceled verified before resubmission",
+      "generated": 0
+    },
+    {
+      "experiment_id": 67951,
+      "submitted_utc": "2026-11-06T08:13:52.696660+00:00",
+      "accepted": null,
+      "state": "STATE_CANCELED",
+      "generated": 0,
+      "reason": "Over30min without application GPU record or generation after container entry; independently canceled before diagnostic restart. Root cause not established; startup stage logs and one traceback added, same numeric code and protocol."
+    },
+    {
+      "experiment_id": 67953,
+      "submitted_utc": "2026-11-06T08:47:20.961859+00:00",
+      "accepted": null,
+      "state": "STATE_CANCELED",
+      "generated": 0,
+      "reason": "Instrumented AMP retry: shell08:47:56, Python08:58:09,09:00:09 traceback in importlib.get_data for stdlib copy; no application GPU/model start by09:06. Terminal canceled verified before returning to normal authorized RTX pool.",
+      "diagnostic": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/state_response_fusion_r15e/reports/amp48_startup_stall.txt"
+    },
+    {
+      "experiment_id": 67954,
+      "submitted_utc": "2026-11-06T09:09:20.973225+00:00",
+      "accepted": null
+    }
+  ],
+  "experiment_id": 67954,
+  "last_observed_utc": "2026-11-06T11:39:29.234657+00:00",
+  "state": "STATE_COMPLETED",
+  "trial_ids": [
+    69341
+  ],
+  "actual_gpu": {
+    "kind": "gpu_policy",
+    "actual": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+    "visible_count": 1,
+    "accepted": true,
+    "resource_pool": "blk-96g",
+    "experiment_id": "67954",
+    "time": 1793962237.7600935
+  },
+  "next_check_utc": "2026-11-06T11:54:29.234657+00:00",
+  "user_resume": true,
+  "source_change": "Normal RTX guard restored; diagnostic prints retained. Numeric model, inference, checkpoint, inputs and scorer unchanged.",
+  "later_resource_pool": "blk-96g",
+  "temporary_pool_exception": false,
+  "recovered_from": 67953,
+  "recovery_utc": "2026-11-06T09:09:19.727457+00:00"
+}

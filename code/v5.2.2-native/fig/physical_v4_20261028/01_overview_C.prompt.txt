@@ -1,0 +1,27 @@
+PAGE_NUMBER=1
+Title: “Physical Block V4 · ① 总览与 C 的形成”
+Subtitle: “首帧 480×832｜视频 81 帧｜Qwen 4096 → Wan 3072｜原生文本独立保留”
+
+(a) 原生视频主干
+Horizontal chain:
+“zσ · 带噪视频 latent [B,48,21,30,52]” -> “Conv3D patch embedding / 48→3072；patch=(1,2,2)” -> “[B,3072,21,15,26]” -> “flatten + transpose” -> “H [B,8190,3072]” -> “30 个原生 Wan blocks” -> “输出头＋unpatchify / v̂ [B,48,21,30,52]”.
+Below, a single orange band: “第 3、6、…、30 层：cross-attention 位置加入 Physical Block，共 10 处；详见图④”.
+Small size line: “P=15×26=390；T=21；L=T×P=8190；首帧 390 个位置”.
+
+(b) 首帧与文本进入 Qwen 的 4096 维证据空间
+Visual row: “首帧 I0 [B,3,480,832]” -> “原生视觉编码 / patch=16” -> “[B,1560,1152]” -> “2×2 merge＋原生映射 / 4×1152→4096” -> “视觉 tokens [B,390,4096]”.
+Text row: “原始请求” -> “原生 tokenizer＋embedding” -> “文本及特殊 tokens [B,Nt,4096]”.
+Both feed “Qwen 原生多模态语言层 / 宽度 4096；生成侧 LoRA 可训练” -> “证据 H [B,390+Nt,4096]”.
+Short note: “保留原生 DeepStack／位置编码；首帧网格坐标与有效 mask 随 H 保留”.
+
+(c) 主线：H 证据记忆＋Q latent reasoning
+Two inputs: “H [B,NH,4096] / NH=390+Nt” and “新 Q seed [B,128,4096]”.
+-> “Qwen 原生层／prefix KV 读取 / 4096→4096” -> “Q^(k) [B,128,4096]” -> “全宽反馈适配 4096→4096” with a return arrow to the native-layer input labelled “k=1…K”.
+Final output from Q^(K): “C ≡ R_hidden [B,128,4096] / 场景相关条件与物理关系”.
+At the side, small clearly secondary box: “H 路线：内容 hidden refinement [B,NH,4096]；同一后端，R 改为 NH”. Do not connect this as a parallel inference bypass to the main C.
+Short note: “K 为推理轮数，待定；Q 槽不等于对象 ID；全路径保留梯度”.
+
+(d) C 在最终 Wan 接口投影；原生文本另一路进入
+Green row: “C [B,128,4096]” branches to three independent operators labelled “Wc_ℓ 4096→3072”, “Ws_ℓ 4096→3072”, “Wv_ℓ 4096→3072”, yielding respectively “K_cond [B,128,3072]”, “K_scope [B,128,3072]”, “V_rule [B,128,3072]”; bracket under them: “每个注入层独立；K 的 norm 也独立；进入图②③”.
+Grey row: “原始请求” -> “原生 T5 [B,512,4096]” -> “Wan text embedding 4096→3072→3072” -> “文本 context E [B,512,3072]” -> “原生文本 attention；见图④”.
+Footer only: “B：batch；Nt：文本及特殊 token 数；R：关系槽数；ℓ：Wan 注入层。C 的推理在 4096 完成，状态执行在 3072 完成。”

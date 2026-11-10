@@ -1,0 +1,27 @@
+{
+  "id": "VP036",
+  "caption": "A slow-motion view of the jump showing leg extension and body position.",
+  "revision": "v522_native_generation_baseline_v11",
+  "optimizer_step": 32,
+  "seed": 42,
+  "fps": 23.999999284744284,
+  "conditions": "first frame, caption, existing requirements; no future target",
+  "physical_dependency_analysis": "OBSERVED: Subject airborne, legs mid-spread, background static; motion blur absent → unknown: exact trajectory, timing of peak extension, camera stabilization.\n\nINTERACTION: Subject’s muscle torque → leg extension; camera rig → steady frame; background depth → optical stability.\n\nPERSISTENCE: Gravity sustains arc; camera rig maintains angle; focus system preserves background clarity.\n\nINTERVENTION: If camera drifts → motion blur; if subject alters posture → body position violates Clause 0; if background shifts → focus loss violates Clause 3.",
+  "latent_reasoning_steps": 2,
+  "latent_feedback": null,
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "condition_strength": 1.0,
+    "latent_feedback": {
+      "enabled": false,
+      "metric": "relative_rms",
+      "sigmas": [
+        0.85,
+        0.65
+      ],
+      "step_size": 0.1
+    }
+  }
+}

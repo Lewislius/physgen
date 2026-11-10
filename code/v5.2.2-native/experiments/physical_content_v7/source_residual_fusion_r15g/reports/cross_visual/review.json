@@ -1,0 +1,37 @@
+{
+  "status": "complete_six_prior_diagnostics_plus_all_three_views_of_largest_thermal_regression",
+  "scope": "Six historical diagnostic selections, reused before R15G cross scores. Sampled frames are not exhaustive temporal ratings or a representative population metric.",
+  "selection_file": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/source_residual_fusion_r15g/reports/cross_visual/selection.json",
+  "reviewed_cases": {
+    "wmb_bridge_3357": {
+      "R15G": "第11抽样帧已出现打开的纸箱，后续可见机械手在箱内/前方移动，开箱终态确实出现；快速开启的完整接触/折盖过程不能由这8帧证明。",
+      "historical_comparison": "R1和Wan+LoRA也在后半段出现打开的纸箱，R10A抽样帧中始终未开；R15G比R10A有更明显的指令执行，不能据此认定整体优于R1。"
+    },
+    "wmb_ozHyEwawtZA_000479_000489": {
+      "R15G": "前段出现手和托盘，后半段切到烤箱内部；覆盖了托盘/烤箱语义，但场景与人物视角突然切换，托盘进入烤箱的连续过程不清。",
+      "historical_comparison": "Wan+LoRA和R1主要展示端托盘的女子，未明确放入烤箱；R10A基本保持初始厨房场景。R15G增加了目标场景，但伴随连续性问题。"
+    },
+    "wmb_92ec5d48-97a1-426a-b4e3-818e4d4ac5cf": {
+      "R15G": "开始在金属片上出现脸部符号，之后突变为不同风格的大幅人脸，面部有明显扭曲/不稳定色块，反射几何未保持。",
+      "historical_comparison": "Wan+LoRA/R1仍有反射/人物前后关系问题，但相对保持原动画画风；R10A接近静止。R15G的变化更大，画风、人物身份和反射一致性反而更差。"
+    },
+    "piq_0044": {
+      "R15G": "绿色纸张变为两块几何规整的矩形，夹具与纸张脱离，后段还新增人手拿放纸张；偏离真实参考中夹具持续夹持并拉开撕裂纸片的过程。",
+      "historical_comparison": "R1也有纸张形变和时序偏差，但夹具/纸片的关系相对更连贯；G增加的动作没有转化成对真实过程更好的遵循。"
+    },
+    "piq_0071": {
+      "R15G": "上方新增了倾倒容器，大股果汁从新容器注入杯子并迅速接近满杯；请求中的出液主体是原有饮料分配器，生成改换了因果主体。",
+      "historical_comparison": "R1保留原分配器向杯中出液的布局，尽管流束形态和颜色过程仍有问题；G不是对这一布局的可靠物理增强。"
+    },
+    "piq_0080": {
+      "R15G": "后半段蓝块不可见、杯体位置变化，但没有复现参考中杯柄朝向、蓝块绕行和影子随旋转协调变化的序列。",
+      "historical_comparison": "R1/R10A在抽样帧中也基本缺少目标旋转，G产生更多变化仍没有正确完成这个光学过程。"
+    }
+  },
+  "inspected_R15G_and_preserved_baseline_panels": true,
+  "scoring_status": "R15G cross scores were not available when all six observations were recorded",
+  "quality_goal_achieved": false,
+  "inspected_R15G_baseline_and_PhysicsIQ_GT_panels": true,
+  "conclusion": "部分WMB样例出现更多目标相关内容，但同时存在镜头/主体/画风跳变。PhysicsIQ样例仍有因果主体替换、夹持关系错误与目标运动/投影过程缺失。六例诊断不支持宣称实际生成综合达标，也不代替全70/60量化结果。",
+  "post_score_thermal_review": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/source_residual_fusion_r15g/reports/cross_visual/post_score_thermal_selection.json"
+}

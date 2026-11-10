@@ -1,0 +1,277 @@
+{
+  "updated_utc": "2026-11-08T06:10:46.708268+00:00",
+  "priority": "PC、SA、Joint 和实际画面质量必须共同改善；单独 PC 高不能抵消其他方面的退步。",
+  "primary_benchmark": "matched VideoPhy2-40 I2V",
+  "original40_pc_target": 3.8,
+  "original40_pc_preferred": 3.85,
+  "original40_sa_target": 3.125,
+  "original40_sa_preferred": 3.35,
+  "joint_above_R1": true,
+  "joint_reference_pass_count": 11,
+  "joint_reference_count": 40,
+  "joint_definition": "same video SA>=4 and PC>=4",
+  "actual_video_quality_required": true,
+  "no_pc_gain_at_expense_of_sa_joint_or_visual_quality": true,
+  "evaluation_sizes": {
+    "primary": 40,
+    "extended": 60,
+    "paired_controls": 16
+  },
+  "maximum_version": "R16B",
+  "goal_requirements_file": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/GOAL.zh.txt",
+  "goal_card_objective_edited": true,
+  "goal_card_state_changed": false,
+  "joint_reference": "highest completed40 result before this goal update, not R1 alone",
+  "joint_reference_rate": 0.275,
+  "joint_minimum_target_pass_count": 12,
+  "joint_minimum_target_rate": 0.3,
+  "joint_strictly_above_all_historical40": true,
+  "joint_historical_reference_source": "V6-assoc Search66642,224steps,11/40; located30 complete40 raw score files plus older13-method comparison",
+  "historical_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/reports/historical40_joint_goal_evidence.json",
+  "primary_audit_experiments": {
+    "R1": 66778,
+    "R10A": 67003,
+    "R11B": 67308,
+    "R9": 66968
+  },
+  "architecture_modification_authorized": true,
+  "design_policy": "Evidence-driven architecture/module/training/inference improvements; not restricted to defensive or patch-only changes; validate added modules.",
+  "goal_card_objective_verified": true,
+  "goal_card_status": "active",
+  "system_goal_update_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/reports/system_goal_update_verified.json",
+  "early_audit_experiments": {
+    "V6-assoc": 66678,
+    "V5-CE": 66706,
+    "V6-write": 66710
+  },
+  "fixed_128_272_required_by_goal": false,
+  "avoid_defensive_design": true,
+  "diversity_constraint_removed_from_goal": true,
+  "authorized_future_versions": [
+    "R15H",
+    "R15I"
+  ],
+  "physical_projections_trainable": true,
+  "independent_physical_query_authorized": true,
+  "independent_physical_output_authorized": true,
+  "physical_query_decision": "Prefer preserving native text and learning separate physical projections based on R1 and later evidence; specific Q/K/V/O structure is not a mandatory form. Actual generation/PC/SA/Joint determine acceptance.",
+  "balanced_cross_benchmark_required": true,
+  "cross_benchmark_does_not_lower_videophy_targets": true,
+  "sequential_review_before_next_training": true,
+  "cross_benchmark_evidence": {
+    "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/reports/current_comparison.json",
+    "R1": {
+      "wmb_instruction": 2.1,
+      "wmb_physical": 4.714285714285714,
+      "wmb_total": 8.571428571428571,
+      "physics_iq_verified": 0.2651032258
+    },
+    "R10A": {
+      "wmb_instruction": 1.7428571428571429,
+      "wmb_physical": 4.885714285714286,
+      "wmb_total": 8.428571428571429,
+      "physics_iq_verified": 0.2366916475
+    },
+    "interpretation": "R10A has real measured local physical gains but lower instruction/total/Physics-IQ than R1. Isolated PC cannot establish overall improvement. Preserve demanding VideoPhy2 thresholds and verify generalization separately."
+  },
+  "objective_simplified": true,
+  "independent_physical_projections_required": false,
+  "final_optimized_candidate_before_submission_required": true,
+  "rapid_effective_evidence_driven_iteration": true,
+  "native_text_qkvo_frozen_preferred": true,
+  "independent_physical_projections_preferred": true,
+  "architecture_preferences_not_hard_acceptance": true,
+  "latest_architecture_clarification": "User final clarification: architecture suggestions serve improved generation, not rigid requirements.",
+  "cross_benchmark_excellence_required": true,
+  "cross_benchmark_strict_improvement_over_r1_required": true,
+  "cross_benchmark_acceptance": {
+    "reference": "R1 own400, matched fixed inputs/seed42/protocol",
+    "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/reports/current_comparison.json",
+    "wmb70": {
+      "metric": "total_score /10",
+      "reference_value": 8.571428571428573,
+      "comparison": "strictly_greater",
+      "count": 70
+    },
+    "physics_iq": {
+      "metric": "final_score_view (Verified), continuous 0..1",
+      "reference_value": 0.2651032257782627,
+      "comparison": "strictly_greater",
+      "scenes": 20,
+      "views_each": 3,
+      "generated_videos": 60
+    },
+    "compare_unrounded_values": true,
+    "component_and_domain_quality_review_required": true,
+    "no_aggregate_masking_obvious_regression": true,
+    "does_not_replace_or_relax_videophy_targets": true
+  },
+  "review_current_candidate_itself_required": false,
+  "review_all_evaluated_historical_versions_required": false,
+  "review_not_limited_to_named_references": true,
+  "review_mechanism_categories": [
+    "effective",
+    "ineffective",
+    "harmful_side_effects",
+    "potentially_useful_combinations"
+  ],
+  "review_recent_versions_required": true,
+  "review_selection_policy": "Current candidate + recent versions + useful historical references such as R1/R9/R10A; older evidence only when relevant, no exhaustive history pass",
+  "prefer_proven_designs_and_improve_beyond_references": true,
+  "skipped_versions": [
+    "R14A",
+    "R14B"
+  ],
+  "current_candidate_user_stopped": false,
+  "avoid_unverifiable_design_complexity": true,
+  "physical_processes_not_limited_to_motion_or_actions": true,
+  "c_design_policy": "Compare current/recent/reference evidence to decide useful differentiated and shared C components; neither force nor categorically exclude C differentiation. Generation determines utility.",
+  "review_axes": [],
+  "expert_research_mechanisms_to_reference": true,
+  "comprehensive_targets_unchanged": true,
+  "remaining_untrained_versions": [
+    "R15H",
+    "R15I"
+  ],
+  "latest_target_update": "User confirms exactly two final versions H then I; all quality targets unchanged.",
+  "cross_benchmark_timing": "Defer WMB70/PhysicsIQ while focusing H/I on VideoPhy2 and actual videos; do not automatically submit cross suites. Cross-quality goals remain unevaluated until tested.",
+  "R15I_videophy_tests_explicitly_required": {
+    "training_steps": 400,
+    "primary_cases": 40,
+    "extended_cases": 60,
+    "paired_controls": 16,
+    "matched_protocol": true,
+    "actual_video_review": true
+  },
+  "priority_reference_versions": [
+    "R15B",
+    "R10A",
+    "R9",
+    "R1"
+  ],
+  "learn_from_recent_regressions": [
+    "R15E",
+    "R15F",
+    "R15G"
+  ],
+  "cross_benchmarks_automatic_submission": false,
+  "R15I_complete40_60_and_controls16_required": true,
+  "review_axes_not_mandatory": true,
+  "mandatory_start_from_R15G": false,
+  "effective_C_read_injection_use_required": true,
+  "C_effectiveness_acceptance": "Substantial PC improvement toward>=3.8/prefer3.85 together with SA>=3.125/aim3.3-3.35, Joint>=12/40 and better actual visuals; tiny PC gains or SA/Joint sacrifice are not success.",
+  "loss_and_stage_design_constraint": {
+    "user_requested": true,
+    "principle": "损失函数与训练阶段保持简洁；只有明确的问题证据、作用依据和可验证贡献才调整。",
+    "priority": "训练日志和损失分析只是定位问题的一部分，不预设主要瓶颈就在损失或阶段划分。根据完整生成结果及配对证据，在架构、条件读取/融合、训练和推理中选择有效的实质改动。",
+    "avoid": "不因损失值、梯度峰值或单个诊断异常就增加损失项、阶段或繁琐调度；不以新增项数量代替效果。",
+    "current_H_training_unchanged": true,
+    "apply_to": "H结果复盘及最后一版R15I设计"
+  },
+  "additional_b400_joint_read_evaluation": {
+    "authorized": true,
+    "training_updates": 0,
+    "not_formal_I": true,
+    "checkpoint": "R15B400/67829",
+    "videophy": [
+      40,
+      60
+    ],
+    "worldmodelbench": 70,
+    "physics_iq": 60,
+    "reuse_original16": true,
+    "resources": [
+      "blk-96g RTX6000",
+      "ada-48g"
+    ],
+    "main_I_priority": true,
+    "prepared": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/b400_joint_read_eval/prepared.json"
+  },
+  "latest_R16A_authorization": {
+    "maximum": "R16A",
+    "remaining_formal_versions": [
+      "R16A"
+    ],
+    "native_training_inference_same_design": true,
+    "training_updates": 400,
+    "evaluation": [
+      "videophy40",
+      "videophy60",
+      "paired_controls16"
+    ],
+    "cross_benchmarks": "Deferred for this round",
+    "reference": "B400 + I joint read",
+    "reference40": {
+      "SA": 2.9,
+      "PC": 3.775,
+      "Joint": 10
+    },
+    "reference60": {
+      "SA": 2.816666666666667,
+      "PC": 3.816666666666667,
+      "Joint": 12
+    },
+    "quality_goal_achieved": false
+  },
+  "current_candidate": "R16A-NOZERO",
+  "remaining_formal_candidates": [
+    "R16A",
+    "R16B"
+  ],
+  "latest_R16A_NOZERO_authorization": {
+    "candidates": [
+      "R16A",
+      "R16A-NOZERO"
+    ],
+    "fresh_official_initialization_each": true,
+    "training_updates_each": 400,
+    "evaluation_each": [
+      "videophy40",
+      "videophy60",
+      "paired_controls16"
+    ],
+    "only_architecture_change": "Remove physical zero-value reference parameter and attention option",
+    "preserve_current_R16A_experiment": 68429,
+    "quality_goal_achieved": false
+  },
+  "current_candidates": [
+    "R16A",
+    "R16A-NOZERO"
+  ],
+  "latest_resource_policy": {
+    "training_pool": "blk-96g",
+    "training_gpu": "RTX6000",
+    "evaluation_pools": [
+      "ada-48g",
+      "amp-48g",
+      "amp-80g"
+    ],
+    "H100_allowed": false,
+    "avoid_competing_with_NOZERO": true
+  },
+  "latest_R16B_authorization": {
+    "final_candidate": "R16B",
+    "preserve_running": [
+      "R16A",
+      "R16A-NOZERO"
+    ],
+    "native_matched_training_and_inference": true,
+    "fresh_official_initialization": true,
+    "training_updates": 400,
+    "evaluation": [
+      "videophy40",
+      "videophy60",
+      "paired_controls16"
+    ],
+    "beat_B400_joint_on_both_suites": true,
+    "catastrophic_visual_artifacts_are_failure": true,
+    "inspect_all_primary_videos": true,
+    "only_VideoPhy2_this_round": true,
+    "no_CFG_ablation_or_attribution": true,
+    "quality_goal_achieved": false
+  },
+  "routine_monitor_seconds": 1800,
+  "next_check_utc": "2026-11-09T08:56:02.407060+00:00",
+  "next_routine_check_utc": "2026-11-09T08:56:02.407060+00:00",
+  "nozero_evaluation": "stopped_by_explicit_user_instruction"
+}

@@ -1,0 +1,55 @@
+{
+  "utc": "2026-11-06T05:53:21.205618+00:00",
+  "status": "Mechanism references and candidate directions, not a finalized R15E architecture",
+  "sources": [
+    {
+      "title": "MotiF: Making Text Count in Image Animation with Motion Focal Loss",
+      "url": "https://arxiv.org/html/2412.16153v1",
+      "verified": "Studies excessive reliance on the conditional image and reweights generation loss using RAFT motion heatmaps. Text alignment and visual-quality tradeoffs are reported, including misleading static-video metrics.",
+      "relevance": "Inspect whether valid physical priors suppress requested processes; revisit whether high-error reduction addresses the correct signals.",
+      "limits": "Do not substitute larger motion for physical quality; our phenomena include static optics/stability/deformation. No RAFT/model download or RGB-change objective has been authorized here. Their32K-step experiment does not predict our400-step results."
+    },
+    {
+      "title": "Temporal-aware Flow Matching for Video Generation with Temporally Coherent Motion",
+      "url": "https://proceedings.mlr.press/v306/pan26m.html",
+      "code": "https://github.com/pzrain/TFM",
+      "verified": "Defines coupled frame-wise probability paths and a residual/direction loss. Official code numerically solves a tridiagonal system to generate training states/velocities; it is not just adjacent-frame MSE added to ordinary FM.",
+      "relevance": "Current generation objective pools scalar pointwise errors; it has no explicit error coupling across frames. Consider process-aware supervision while retaining useful physics fusion.",
+      "limits": "Standard video FM is not inherently incapable of learning temporal relations: the denoiser is joint. Full TFM changes training paths and targets, and its public implementation trains T2V Wan14B over much longer training. First-frame-fixed I2V requires a mathematically consistent boundary adaptation. Do not copy its residual loss while keeping incompatible straight-path targets."
+    },
+    {
+      "title": "IP-Adapter",
+      "url": "https://arxiv.org/abs/2308.06721",
+      "verified": "Separates image and text cross-attention while freezing the pretrained backbone.",
+      "relevance": "Preserve proven native text Q/K/V/O while investigating physical-read/write compatibility.",
+      "limits": "Decoupling alone has already failed to guarantee our SA/Joint; image adapter results do not prove a physics solution."
+    },
+    {
+      "title": "GLIGEN: Open-Set Grounded Text-to-Image Generation",
+      "url": "https://arxiv.org/html/2301.07093v2",
+      "code": "https://raw.githubusercontent.com/gligen/GLIGEN/master/ldm/modules/attention.py",
+      "verified": "Official Transformer block applies self-attention, new grounding fuser, native text cross-attention, then FFN; pretrained parameters frozen. New grounding is thus consumed by a subsequent native text read.",
+      "relevance": "Candidate mechanism: let the unchanged native text pathway respond immediately to physical-updated visual states, instead of adding a large physical write after the native text update.",
+      "limits": "Grounded image-generation evidence, not a demonstration of short-trained video physics. Their gating and inference schedule are separate choices; do not assume we must copy either. Changing read/write order needs same-weight comparison and fresh-training quality tests."
+    }
+  ],
+  "current_evidence": {
+    "R15B": "40 SA2.925 PC3.700 J10; direct-read16 SA3.125 PC4.000 J5 versus normal3.0625/3.8125/J6. Request binding has a real tradeoff, not established overall benefit.",
+    "R15C": "40 SA3.125 PC3.375 J10; a larger local video operator lost physical gains despite retaining the enhancement. Do not reuse it merely for parameter capacity.",
+    "R15D": "Main40 SA3.000 PC3.575 J10; six16 complete. Normal16 SA3.25 PC3.875 J6; remainder24 SA2.8333 PC3.375 J4. Physics helps paired16 vs noC and correct reasoning helps, but main40 and real tool geometry remain deficient."
+  },
+  "candidate_axes": [
+    "Preserve direct C-value physical execution and useful state interaction unless new causal evidence contradicts them.",
+    "Test whether learned semantic routing and physical execution actually act compatibly with the unchanged native request pathway. Do not average physical values again without evidence.",
+    "Analyze conditional/no-C velocity differences and real write fields before choosing a replacement fusion design.",
+    "Consider generation-supervision changes that penalize incorrect target processes/structure without rewarding arbitrary motion or using benchmark evaluator scores as training targets."
+  ],
+  "not_authorized_as_final_design": true,
+  "no_success_claim": true,
+  "ruled_out_shortcuts": [
+    "Do not treat output commonality by itself as a defect: compare R1/R10A/R15B actual execution first.",
+    "Native O initialization has already been tried in R5-R8 (e.g.R7 nativeO*0.25, trainable); do not present this alone as a new solution.",
+    "R15D time-map-off/pretext controls differ by only1 PC point on16 and no SA/Joint points. They do not establish a robust new benefit or explain the outside16 regressions.",
+    "Do not infer full40 success from selected16 metrics; use both fixed16 and remaining24 failure evidence."
+  ]
+}

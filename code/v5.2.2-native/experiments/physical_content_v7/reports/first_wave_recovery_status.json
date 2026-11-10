@@ -1,0 +1,70 @@
+{
+  "updated_utc": "2026-10-31T05:44:00.240585+00:00",
+  "first_wave": [
+    {
+      "task": "Baseline400 heldout8 and fixed40",
+      "state": "complete",
+      "training_run": "native_lora_66781",
+      "videophy40_experiment": 66821
+    },
+    {
+      "task": "Candidate400 heldout8 and six modes x four content controls",
+      "state": "complete",
+      "training_run": "physical_content_66778"
+    },
+    {
+      "task": "Candidate400 complete fixed40 and paired comparison",
+      "state": "running",
+      "experiment": 66855,
+      "complete_before_recovery": 21,
+      "total": 40
+    },
+    {
+      "task": "Candidate own750-to1000 exact resume; then heldout8/fixed40/content controls",
+      "state": "running",
+      "experiment": 66856,
+      "parent_checkpoint": "experiments/physical_content_v7/runs/physical_content_66833/step0750.pt"
+    }
+  ],
+  "next_wave": {
+    "guidance_and_r2_candidate_experiment": 66857,
+    "state": "killed_superseded_by_short_r3",
+    "r2_baseline_experiment": 66854,
+    "state_r2_baseline": "rejected_H100_then_deferred",
+    "status": "killed_superseded_by_short_r3",
+    "next_action": "Never resume; use standalone66864 guidance16 and R3 stop64."
+  },
+  "explicitly_deferred": [
+    "VBench",
+    "R1 native baseline400-to1000"
+  ],
+  "next_decision": "Examine complete paired generation, case-level SA/PC/Joint changes, process completion, stability, and content intervention results before choosing substantive next revision.",
+  "model_download_policy": {
+    "recorded_utc": "2026-10-31T04:25:51.180814+00:00",
+    "automatic_downloads": false,
+    "resume_previous_downloads": false,
+    "action_if_needed": "Explain purpose/size/necessity and wait for explicit user authorization",
+    "active_own_download_processes_observed": 0
+  },
+  "post_first_wave_module_tests": {
+    "protocol": "experiments/physical_content_v7/MODULE_EFFECTIVENESS.zh.txt",
+    "primary_scope": "Fixed16 process-covering cases for selected module comparisons; not40 per ablation",
+    "execution": "deferred until first-wave completion and analysis",
+    "cross_seed": "replicate key effects on the same recorded cases including non-improvements",
+    "architecture_claims": "selected matched-training ablations, not only inference-time disabling",
+    "subset": "experiments/physical_content_v7/reports/module_subset16.json",
+    "main_effectiveness": "Complete VideoPhy2-40 remains the primary overall generation comparison"
+  },
+  "latest_authoritative_progress": {
+    "native400_full40": "complete",
+    "candidate400_full40": "complete",
+    "candidate1000_training": "complete",
+    "candidate1000_heldout8": "complete, SA4.25 PC4.375 Joint5/8",
+    "candidate1000_full40_and_controls": "66856 active",
+    "standalone400_guidance16": "66864 completed; keep gamma5 as default",
+    "short_r3_baseline64": "66866 active",
+    "short_r3_candidate64": "66870 active, gamma5 evaluation, stop64",
+    "module_controls16": "prepared;20 existing videos reused;66869 rejected H100;pending RTX",
+    "next_revision_requires1000": false
+  }
+}

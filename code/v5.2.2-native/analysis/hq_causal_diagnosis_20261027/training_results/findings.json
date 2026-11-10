@@ -1,0 +1,49 @@
+{
+  "scope": "Old fixed-judge feedback-trained final224 checkpoints only. Eight preselected actually trained examples and four validation examples, three fixed noise levels. Not the new no-verifier runs.",
+  "module_results": {
+    "H": {
+      "train": {
+        "full_C_vs_C_off_FM_change_percent": 1.1519855556239689,
+        "full_C_vs_swapped_C_FM_change_percent": 0.05060533990264293,
+        "current_lora_vs_inherited_no_C_FM_change_percent": -0.2897499100209644,
+        "current_lora_vs_base_no_C_FM_change_percent": -1.3547478854913142
+      },
+      "validation": {
+        "full_C_vs_C_off_FM_change_percent": 0.6439952718003905,
+        "full_C_vs_swapped_C_FM_change_percent": -0.013282316069596067,
+        "current_lora_vs_inherited_no_C_FM_change_percent": -0.3044173501675629,
+        "current_lora_vs_base_no_C_FM_change_percent": -1.5494028319188446
+      },
+      "C_to_native_text_attention_message_RMS_before_output_projection": {
+        "min": 3.008611844744933,
+        "median": 6.053789583551907,
+        "max": 32.622779750449496,
+        "interpretation_limit": "Pre-output-projection message amplitude, not a measured contribution to final video or the whole residual stream."
+      }
+    },
+    "Q": {
+      "train": {
+        "full_C_vs_C_off_FM_change_percent": 1.0864570171355448,
+        "full_C_vs_swapped_C_FM_change_percent": 0.0022812016222673037,
+        "current_lora_vs_inherited_no_C_FM_change_percent": -0.4164746106466555,
+        "current_lora_vs_base_no_C_FM_change_percent": -1.480119048747608
+      },
+      "validation": {
+        "full_C_vs_C_off_FM_change_percent": 0.7546901889587065,
+        "full_C_vs_swapped_C_FM_change_percent": 0.0023164864614733105,
+        "current_lora_vs_inherited_no_C_FM_change_percent": -0.3190507971064682,
+        "current_lora_vs_base_no_C_FM_change_percent": -1.5638535382738517
+      },
+      "C_to_native_text_attention_message_RMS_before_output_projection": {
+        "min": 4.906635532105172,
+        "median": 9.022979298653262,
+        "max": 43.09027063719345,
+        "interpretation_limit": "Pre-output-projection message amplitude, not a measured contribution to final video or the whole residual stream."
+      }
+    }
+  },
+  "visual_observations": {
+    "wisa0003617": "Training target shows balls rolling; both old H/Q pure-noise 16/50-step outputs mostly keep balls in place and introduce a late cue/hand. Disabling C or Wan LoRA does not recover the target event.",
+    "wisa0005325": "Training target shows a partial ongoing domino process. Old H maintains the layout with a new hand; old Q alters/collapses the whole spiral and invents hand interaction. C-off/base-Wan also distort the spiral. H C improves structural stability here but does not realize the target event. Q round0 and full have closely similar visible behavior."
+  }
+}

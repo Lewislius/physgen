@@ -1,0 +1,153 @@
+{
+  "verified_utc": "2026-11-04T20:23:17.417456+00:00",
+  "states": [
+    {
+      "id": 67598,
+      "state": "STATE_RUNNING",
+      "trialIds": [
+        68985
+      ],
+      "endTime": null
+    },
+    {
+      "id": 67602,
+      "state": "STATE_RUNNING",
+      "trialIds": [
+        68989
+      ],
+      "endTime": null
+    },
+    {
+      "id": 67603,
+      "state": "STATE_RUNNING",
+      "trialIds": [
+        68990
+      ],
+      "endTime": null
+    },
+    {
+      "id": 67462,
+      "state": "STATE_ERROR",
+      "trialIds": [
+        68849
+      ],
+      "endTime": "2026-11-04T20:18:00.876250Z"
+    },
+    {
+      "id": 67465,
+      "state": "STATE_RUNNING",
+      "trialIds": [
+        68852
+      ],
+      "endTime": null
+    }
+  ],
+  "progress": {
+    "67598": {
+      "status": {
+        "status": "original40_generation",
+        "run": "physical_content_67598",
+        "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_operator_r13a/runs/physical_content_67598/step0400.pt"
+      },
+      "generated_by_mode": {
+        "real": 34
+      },
+      "recent_video_seconds": [
+        83.9,
+        83.9,
+        83.1
+      ],
+      "latest": {
+        "kind": "sampling",
+        "time": 1793823790.8452632,
+        "case": "VP035",
+        "mode": "real",
+        "step": 40
+      },
+      "score_files": [
+        "controls/reasoning_swapped/videophy40/scores.json"
+      ]
+    },
+    "67602": {
+      "status": {
+        "status": "empty_reasoning_generation",
+        "transferred": [
+          "reasoning_swapped"
+        ]
+      },
+      "generated_by_mode": {
+        "reasoning_swapped": 16,
+        "empty_reasoning": 11
+      },
+      "recent_video_seconds": [
+        91.7,
+        91.2,
+        91.7
+      ],
+      "latest": {
+        "kind": "sampling",
+        "time": 1793823781.659739,
+        "case": "VP025",
+        "mode": "empty_reasoning",
+        "step": 40
+      },
+      "score_files": [
+        "controls/reasoning_swapped/videophy40/scores.json"
+      ]
+    },
+    "67603": {
+      "status": {
+        "status": "scale_off_generation",
+        "transferred": []
+      },
+      "generated_by_mode": {
+        "scale_off": 14
+      },
+      "recent_video_seconds": [
+        191.7,
+        197.3,
+        186.1
+      ],
+      "latest": {
+        "kind": "sampling",
+        "time": 1793823769.797744,
+        "case": "VP034",
+        "mode": "scale_off",
+        "step": 20
+      },
+      "score_files": []
+    }
+  },
+  "supplementary": {
+    "wan_lora": {
+      "status": "completed",
+      "complete": 130,
+      "requested": 130,
+      "model": "wan_lora",
+      "job_stage": {
+        "status": "failed",
+        "stage": "evaluate_physics_iq",
+        "error": "Command '['/home/liuzhirui/benchmark/.venv-physicsiq/bin/python', '-I', '-B', '-u', '/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/snapshots/20261104T144800Z/evaluate_physics_iq.py', '--model', 'wan_lora']' returned non-zero exit status 1.",
+        "time": 1793823479.7352903,
+        "model": "wan_lora"
+      },
+      "raw_csv_exists": true,
+      "piq_summary_exists": false
+    },
+    "r10a": {
+      "status": "running",
+      "complete": 125,
+      "requested": 130,
+      "model": "r10a",
+      "job_stage": {
+        "status": "running",
+        "stage": "generate",
+        "experiment_id": "67465",
+        "time": 1793804606.8863604,
+        "model": "r10a"
+      },
+      "raw_csv_exists": false,
+      "piq_summary_exists": false
+    }
+  }
+}

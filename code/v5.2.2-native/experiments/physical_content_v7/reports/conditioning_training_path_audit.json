@@ -1,0 +1,37 @@
+{
+  "recorded_utc": "2026-10-31T15:28:06.167053+00:00",
+  "status": "existing_source_and_training_log_audit",
+  "runs": {
+    "R1_400": {
+      "microbatches": 1600,
+      "both_native_text_and_qwen_request_present": 1446,
+      "both_native_text_and_qwen_request_dropped": 154,
+      "qwen_request_present_native_text_dropped": 0,
+      "joint_drop_fraction": 0.09625
+    },
+    "R8_128": {
+      "microbatches": 512,
+      "both_native_text_and_qwen_request_present": 459,
+      "both_native_text_and_qwen_request_dropped": 53,
+      "qwen_request_present_native_text_dropped": 0,
+      "joint_drop_fraction": 0.103515625
+    }
+  },
+  "source": "experiments/physical_content_v7/r1_content_reader_r9/physical_content/train.py",
+  "source_lines": [
+    173,
+    176,
+    180
+  ],
+  "implementation": "The same drop boolean selects teacher.input(drop=drop) and null versus native caption context. Current training has no native-text-only dropout retaining positive Qwen request/reasoning.",
+  "inference": "These counts describe conditioning exposure. They do not prove that native T5 bypass caused C collapse or that a different dropout recipe will improve generation.",
+  "candidate_if_needed": "For R10 only after R9 evidence: retain existing joint-null CFG training and add a bounded positive-Qwen/native-text-null training mode with the same real-video FM target. This could assign more generation learning to Q/C without training wrong conditions to fail or adding arbitrary diversity, verifier rewards, or extra data.",
+  "not_decided": [
+    "Whether this should be R10 rather than a source/architecture change",
+    "The independent dropout probability; no active or frozen training config changed"
+  ],
+  "new_model_runs": 0,
+  "extra_tests": 0,
+  "maximum_revision": 10,
+  "attribution_limit": "Native-text-only dropout addresses the generation contribution of the Qwen/Q/C path as a whole. Because its positive input retains the literal request, this alone cannot prove use of correct reasoning beyond request information, or repair unsupported Qwen claims. Retain separate correct/unrelated/empty and no-C controls; do not worsen control outputs deliberately."
+}

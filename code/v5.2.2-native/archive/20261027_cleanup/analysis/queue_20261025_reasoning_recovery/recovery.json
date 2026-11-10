@@ -1,0 +1,17 @@
+{
+  "failed_experiment": 66135,
+  "failed_at": "container bootstrap before user entrypoint",
+  "model_updates_completed": 0,
+  "evidence": [
+    "prep_container.py rejected --download_context_directory",
+    "The previously successful Run66128 had the same automatic container pip bootstrap messages",
+    "66135 alone set PYTHONNOUSERSITE=1 globally, hiding the bootstrap-installed user-site package"
+  ],
+  "correction": "Reuse successful66128 environment; Python isolation remains local to our training interpreter via -I",
+  "determined_installation_modified": false,
+  "cluster_configuration_modified": false,
+  "model_code_modified": false,
+  "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_reasoning_operator/code",
+  "verified_snapshot_files": 143,
+  "recorded_at_utc": "2026-10-25T11:41:49.148254+00:00"
+}

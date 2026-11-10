@@ -1,0 +1,85 @@
+{
+  "created_at_utc": "2026-10-30T03:40:46.079719+00:00",
+  "status": "rtx6000_generation_running",
+  "variant": "v6_assoc",
+  "training_experiment_id": 66678,
+  "training_trial_id": 68065,
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_scaling_q256/runs/v6_assoc_66678/step1000.pt",
+  "checkpoint_step": 1000,
+  "q_tokens": 256,
+  "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_scaling_q256/inference_snapshots/20261030T034046Z",
+  "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_scaling_q256/inference_snapshots/20261030T034046Z/v6_assoc_blk96g.yaml",
+  "submission_context": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_scaling_q256/inference_snapshots/20261030T034046Z/submission_context",
+  "output": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_scaling_q256/inference_outputs/v6_assoc_66678/final1000_demo21_videophy40_r1",
+  "stages": [
+    "demo21",
+    "videophy40",
+    "independent_autoeval",
+    "comparison"
+  ],
+  "checks": {
+    "preflight": "passed",
+    "regression_tests": 3,
+    "shell_syntax": "passed",
+    "python_syntax": "passed",
+    "references": 16
+  },
+  "attempts": [
+    {
+      "experiment_id": 66717,
+      "status": "rejected_h100_killed",
+      "submitted_at_utc": "2026-10-30T03:42:37.525628+00:00",
+      "trial_id": 68104
+    },
+    {
+      "experiment_id": 66718,
+      "status": "rejected_h100_killed",
+      "submitted_at_utc": "2026-10-30T03:43:19.194064+00:00",
+      "trial_id": 68105
+    },
+    {
+      "experiment_id": 66719,
+      "status": "rejected_h100_killed",
+      "submitted_at_utc": "2026-10-30T03:45:38.532491+00:00"
+    },
+    {
+      "experiment_id": 66720,
+      "status": "rtx6000_running",
+      "submitted_at_utc": "2026-10-30T03:46:47.146067+00:00",
+      "trial_id": 68107,
+      "gpu": {
+        "kind": "gpu_policy",
+        "actual": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "visible_count": 1,
+        "accepted": true,
+        "resource_pool": "blk-96g",
+        "experiment_id": "66720",
+        "time": 1793331996.07341
+      }
+    }
+  ],
+  "active_experiment_id": 66720,
+  "active_trial_id": 68107,
+  "verified_at_utc": "2026-10-30T03:49:36.689325+00:00",
+  "runtime_validation": {
+    "full_model_restored": true,
+    "checkpoint_step": 1000,
+    "q_tokens": 256,
+    "enhancement_passes": 2,
+    "first_case_sampling_started": true,
+    "first_video_complete": true,
+    "first_video": {
+      "id": "reference",
+      "status": "completed",
+      "seconds": 90.20184171013534,
+      "peak_gpu_gib": 41.66737174987793,
+      "encoded": {
+        "width": 832,
+        "height": 480,
+        "avg_frame_rate": "24/1",
+        "nb_read_frames": "81"
+      }
+    },
+    "completed_demo_cases": 1
+  }
+}

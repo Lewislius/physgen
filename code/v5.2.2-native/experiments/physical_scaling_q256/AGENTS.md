@@ -1,0 +1,10 @@
+# Independent Q256 scaling scope
+
+- User request 2026-10-29: scale the original V6 synthetic residual regression and revised association-KL variants to Q=256 and 1000 total optimizer steps, using prior short-run records to choose loss coefficients and learning rates. This supersedes ancestor Q=128/224-step restrictions for this directory only.
+- Keep physical_variants sources, configurations, checkpoints, caches and inference jobs unchanged. New training modules, runs and cache writes belong here. The fixed 20261029T064043Z foundation-wrapper source is a read-only dependency.
+- Start new project modules/LoRA fresh from official foundations. Never initialize Q256 from the old Q128 checkpoint. Resume only this revision and matching configuration.
+- Retain the two distinct auxiliary objective definitions, native text path, full-width C, two shared Q updates, frozen Qwen and no generation verifier. Teacher future evidence is training-only; input C uses the first image and request only.
+- Current implementation choices are 128 interface + 872 joint updates, accumulation4, seed42, four optimizer roles and warmup/hold/cosine schedules. These coefficients are evidence-informed starting settings, not proven optimal or guaranteed quality improvements. Details and log provenance are in README.txt and reports/prior_training_analysis.json.
+- The shared weak-target cache may be read without modification. Cache misses and locks go to this directory's overlay cache; do not write legacy cache files.
+- Prepared launchers use direct det experiment create YAML, one blk-96g slot, and reject H100/other devices before foundation loading. Keep the existing software environments. As of implementation completion, these two scaled jobs have not been submitted or tested end-to-end on a GPU.
+- Later user authorization 2026-10-29: submit both variants with Wan LoRA peak 2e-5 and 128 joint warmup steps (global 129-256), hold through 600, decay to 4e-6 at 1000. The submitted immutable source is snapshots/20261029T140406Z; actual IDs, RTX6000 verification, H100 retries and runtime confirmation are in reports/latest_submission.json. Do not modify the running snapshot.

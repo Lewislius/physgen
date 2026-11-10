@@ -1,0 +1,29 @@
+{
+  "utc": "2026-11-06T05:12:21.312222+00:00",
+  "scope": "Read-only det slot list after rejected auxiliary allocations",
+  "pool": "blk-96g",
+  "agent": "node9-rtx6000-pro",
+  "slots": [
+    {
+      "slot": 0,
+      "gpu": "H100",
+      "allocation": "FREE"
+    },
+    {
+      "slot": 1,
+      "gpu": "RTX PRO6000",
+      "allocation": "67926"
+    },
+    {
+      "slot": 2,
+      "gpu": "RTX PRO6000",
+      "allocation": "FREE"
+    },
+    {
+      "slot": 3,
+      "gpu": "RTX PRO6000",
+      "allocation": "67920"
+    }
+  ],
+  "finding": "FREE is a literal string, so bool(allocation_id) does not mean occupied. The auxiliary scheduler repeatedly selected H100 even with one RTX free. No GPU/pool/device configuration was changed."
+}

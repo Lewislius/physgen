@@ -1,0 +1,166 @@
+run_name: v52-original-quick-training-control
+revision: pair2_stride2_fullwidth_sparse3_visible_change_v7_joint_state
+paths:
+  wan_code: /home/liuzhirui/model/Wan2.2
+  wan_checkpoint: /home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B
+  teacher_code: /home/liuzhirui/model/vjepa2
+  teacher_checkpoint: /home/liuzhirui/model/vjepa2/checkpoint/vjepa2_1_vitG_384.pt
+  qwen_checkpoint: /home/liuzhirui/model/Qwen3-VL/Qwen3-VL-8B-Instruct
+  base_cache: /home/liuzhirui/Project/physGen/code/v5.2-occam/cache/wisa_832x480_f81
+  legacy_cache: /home/liuzhirui/Project/physGen/code/v5.2/cache/wisa832x480_f81/no_legacy_reuse
+  null_text_cache: /home/liuzhirui/Project/physGen/code/v5.2-occam/cache/wisa_832x480_f81/null_text.pt
+  cache_root: /home/liuzhirui/Project/physGen/code/v5.2/cache/wisa832x480_f81
+  reuse_cache: null
+  video_cache: /home/liuzhirui/Project/physGen/code/v5.2/cache/wisa832x480_f81/video
+  checkpoint_root: /home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/legacy_v52_controls_20261025/training/runs
+  log_root: /home/liuzhirui/Project/physGen/code/v5.2/train/train_log
+  change_cache: /home/liuzhirui/Project/physGen/code/v5.2/cache/wisa832x480_f81/change
+  intensity_scale: /home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/legacy_v52_controls_20261025/training/preflight_scale.json
+data:
+  limit: 4027
+  frames: 81
+  max_long_side: 832
+  max_area: 399360
+  verify_cache_signatures: false
+  width: 832
+  height: 480
+  cache_schema: occam_wisa_832x480_f81_v1
+prepare:
+  cpu_workers: 4
+  teacher_frames: 2
+  teacher_stride: 2
+  teacher_size: 384
+  teacher_batch: 2
+  qwen_max_new_tokens: 384
+  qwen_max_pixels: 262144
+  text_length_per_requirement: 128
+  ssim_windows:
+  - 7
+  - 11
+  intensity_calibration:
+    videos: 256
+    quantile: 0.95
+    min_scale: 0.02
+model:
+  width: 3072
+  heads: 24
+  depth: 6
+  ffn_width: 14336
+  wan_depth: 30
+  wan_width: 3072
+  wan_heads: 24
+  condition_every: 3
+  init_layers:
+  - 4
+  - 9
+  - 14
+  - 19
+  - 24
+  - 29
+  vae_dim: 48
+  jepa_dim: 1664
+  jepa_grid: 24
+  text_dim: 4096
+  task_queries: 4
+  memory_recent: 4
+  memory_summary_grid: 4
+  condition_min: 0.1
+  condition_max: 0.8
+  branch_floor: 0.05
+  intensity_bias: 6.0
+  intensity_initial_gain: 1.0
+  delta_z_scale: 1.0
+  delta_j_scale: 1.0
+  condition_budget_init_logit: -0.1
+lora:
+  enabled: false
+  rank: 32
+  alpha: 32
+  targets:
+  - self_attn.q
+  - self_attn.k
+  - self_attn.v
+  - self_attn.o
+  - cross_attn.q
+  - cross_attn.k
+  - cross_attn.v
+  - cross_attn.o
+train:
+  seed: 20261006
+  global_batch_size: 8
+  workers: 2
+  pretrained_lr: 1.0e-05
+  new_lr: 0.0001
+  lora_lr: 5.0e-05
+  weight_decay: 0.01
+  warmup_ratio: 0.05
+  minimum_lr_ratio: 0.1
+  minimum_lr: 2.0e-06
+  grad_clip: 1.0
+  gradient_checkpointing: true
+  sigma_min: 0.02
+  sigma_max: 0.999
+  first_prefix_probability: 0.5
+  max_prefix_states: 4
+  text_dropout: 0.1
+  task_dropout: 0.1
+  reader_warmup_steps: 120
+  prior_every: 4
+  candidate_dropout: 0.25
+  execution_every: 4
+  execution_max_sigma: 0.5
+  execution_state_balance: false
+  history_teacher:
+    enabled: true
+    start_ratio: 0.3
+    end_ratio: 0.0
+    decay_fraction: 0.7
+    protect_recent: 1
+    warmup_rollouts: 3
+  save_every: 100
+  log_every: 1
+  zero_optimizer: true
+  reader_calibration:
+    first_prefix_probability: 0.6
+    first_weight: 2.0
+    later_weight: 1.0
+    independent_schedule: true
+  activation_cpu_offload: false
+  joint_activation_cpu_offload: false
+stages:
+  planner:
+    steps: 480
+  joint:
+    steps: 420
+loss:
+  video: 1.0
+  flow: 1.0
+  reader: 1.0
+  intensity: 0.2
+  execution: 0.2
+validation:
+  every: 25
+  samples: 2
+  sigmas:
+  - 0.2
+  - 0.5
+  - 0.85
+  seed: 61006
+inference:
+  condition_strength: 1.0
+  steps: 50
+  shift: 5.0
+  guidance: 5.0
+training_profile: geometry_832x480_f81_v1
+joint_training:
+  loss:
+    video: 1.0
+    flow: 0.1
+    intensity: 0.2
+    execution: 0.5
+  planner_lr: 2.0e-06
+  planner_head_lr: 1.0e-05
+  planner_minimum_lr: 2.0e-07
+  prior_every: 4
+  execution_every: 1
+  execution_max_sigma: 0.5

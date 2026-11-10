@@ -1,0 +1,40 @@
+[
+  {
+    "name": "oracle_k50_shard0",
+    "device": {
+      "uuid": "GPU-35f25538-cb19-c131-ca13-20b8a97ff177",
+      "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition"
+    },
+    "started_unix": 1792904807.178261,
+    "command": [
+      "/home/liuzhirui/miniconda3/envs/moviestory/bin/python",
+      "-I",
+      "-B",
+      "-u",
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_device_recovery/code/tools/check_temporal_feedback_split.py",
+      "--checkpoint",
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/checkpoints/v522-diagnostic-reasoned_process-8cases32updates-seed42_65836/latest.pt",
+      "--output",
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_device_recovery/oracle_k50",
+      "--cases",
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "--seeds",
+      "42",
+      "314159",
+      "--gradient-steps",
+      "50",
+      "--shards",
+      "2",
+      "--shard",
+      "0",
+      "--discrete-adjoint",
+      "--single-device",
+      "--condition-controls"
+    ],
+    "state": "running"
+  }
+]

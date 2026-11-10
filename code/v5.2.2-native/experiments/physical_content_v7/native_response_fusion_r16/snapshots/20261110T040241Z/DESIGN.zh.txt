@@ -1,0 +1,81 @@
+R16G / R16H / R16I 重新设计说明（2026-11-09）
+
+一、为什么之前的 PC 低，而不是简单“再多加条件”
+------------------------------------------------
+40例实测（同一 first-image/seed42/gamma5 协议）：
+  Wan+LoRA   SA 3.075  PC 3.450  Joint10
+  R1         SA 2.950  PC 3.625  Joint10
+  R10A       SA 2.825  PC 3.750  Joint 7
+  R15B       SA 2.925  PC 3.700  Joint10
+  B400+I     SA 2.900  PC 3.775  Joint10
+  R16D       SA 3.125  PC 3.350  Joint10
+  R16E       SA 2.900  PC 3.650  Joint 9
+
+逐例分析得到的结论：
+1) PC 的主要增益来自“全局物理执行写”：R10A 的直接 C 执行值全局读、R15B 的 request-bound C 值全局读、B400 的 direct+request 联合读。它们把 C execution 写进每个生成 token。
+2) R16C/D/E 是局部 5x3x3 视频状态算子，SA 好，但只改局部动力学，没有全局执行写，所以 PC 上限低于 R10A/R15B/B400。
+3) 单纯把全局写加大（R11B 的 literal request 全局残差）PC 可以到 3.95，但我们实际抽帧检查发现 VP005/VP023/VP038 出现整帧彩色块和横条撕裂；这是不可接受的 score-only 增益，已否决。原始 Qwen request 词不能直接做全局 3072 写。
+4) 各干净模型的 PC 逐例互补：
+   - R15C + R10A 的逐例 oracle PC = 3.80
+   - R15C + R10A + R15B = 3.85
+   - R15C + R10A + B400 = 3.875
+   - R15C + R10A + R15B + B400 (+R16E 的局部 request V correction) = 3.90
+   因此要稳定 >3.8，单个全局读不够，必须在一个模型里同时具备多个干净全局读，并保留 R15C 的 SA。
+
+二、共同结构（三个版本完全相同的部分）
+------------------------------------------------
+- 官方 Wan 2.2 TI2V-5B 新底座，400 updates（128 interface + 272 joint），accumulation 4（1600 micro-batches），seed42，first frame，gamma5，sampler/scoring 不变。
+- native text Q/K/V/O 全部冻结；无 verifier；无新 API/下载。
+- Enhancement：R10A/R15B 两套独立归一化的 routing C 与 execution C；Q256；两轮 ContentBlock。
+- 局部执行算子：R15C 原样
+  * local Q = native video Q + zero-init full-width direct C condition
+  * local K = native video K
+  * local V = native video V（视频状态，不被 C 覆盖）
+  * 5帧x3x3 非循环局部时空注意力，真实视频网格 RoPE，交替 shift，zero-init 输出
+- 全局执行写（每个读独立）
+  * state = LayerNorm(native normalized hidden)
+  * physical_read = z + state_value(state) * z，state_value 为 zero-init 3072x3072 乘性门
+  * global_output 为 zero-init 3072x3072 输出
+  * 只写生成帧，第一帧恒等；与局部输出相加
+  * 不使用任何高维->低维->高维 bottleneck；所有新增映射都是 3072->3072 或 4096->3072
+- 训练和正常推理使用完全相同的 forward；没有 inference-only 替换。
+- 所有全局写都来自 C execution 值经过 native K/V 的干净读；不使用 raw Qwen request 词的全局写。
+- 额外安全约束：G/H 的 local V 始终是视频状态；I 才启用 R16E 已验证过的 zero-init full-width request-bound V correction（局部，不写外观）。
+
+三、三个版本的差异（全部有 PC 保障路径）
+------------------------------------------------
+三个版本共同：global_execution = [direct, request_bound, joint]
+  逐例 oracle（R15C + R10A + R15B + B400）= PC 3.875 / SA 3.175 / Joint upper 11
+  这是三个版本共同的 PC 容量下限；不会出现某一版本只带一个全局读、PC 上限不足 3.8 的情况。
+
+R16G：pure R15C local
+  局部 Q = direct 条件
+  额外 local request/joint 条件 = 无；V = 视频状态
+  特点：最干净的 local V，最高 SA/画面稳定性；三全局读提供 PC。
+  若需要 R16E 的 VP015 Joint 增益，由 R16I 提供。
+
+R16H：joint-conditioned local
+  局部 Q = direct + zero-init joint condition
+  V = 视频状态
+  特点：在不写外观的前提下，让 B400 joint read 同时影响局部 Q；覆盖 VP015/VP031 类案例。
+
+R16I：full local conditioning + R16E V correction
+  局部 Q = direct + request + joint 三个 zero-init full-width 条件
+  额外 R16E request-bound local V correction（zero-init full-width，共享）
+  逐例 oracle（含 R16E）= PC 3.90 / SA 3.20 / Joint upper 12
+  特点：最大 PC/Joint 容量；局部 V correction 只改局部动力学，不写全局外观。
+
+四、为什么这不是“防御性设计”
+------------------------------------------------
+- 没有新增 loss、verifier、额外 rollout、低维瓶颈、raw-request 全局残差。
+- 所有新增路径都是历史已证实能提高 PC 的干净 read；局部算子是历史已证实能提高 SA 的 R15C。
+- 多读不是简单堆叠：每个读独立 zero-init 输出 + 独立乘性 state gate，模型可以选择性使用；训练目标仍是原始 real-video FM/tail + routing alignment。
+- 创新点：把“物理执行写”和“局部状态动力学”解耦为同一 forward 的两条零初始化全宽路径；同一 C read 同时驱动 local Q 和 global execution；不是全局覆盖外观。
+
+五、提交与验收门槛
+------------------------------------------------
+- 2 个 blk-96g RTX PRO6000/RTX6000 + 1 个 amp-80g A100（用户指定）。
+- 每个作业训练400后自动40、disjoint20/full60、paired16 controls；全程 H100 拒绝（amp-80 只允许 A100/A800，且仅一个授权作业）。
+- 训练前 full-size preflight：参数、显存、零初始化、梯度开启顺序、每个 read 的 active effect、first-frame 恒等。
+- 评测后逐视频检查所有40/60：任何整帧横条/雪花/色块即判定失败，即使 PC/SA 分数高也不接受。
+- 只有实测 40/60 分数和视频审查同时达标才声称成功；训练前不预先声称指标达成。

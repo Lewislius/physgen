@@ -1,0 +1,45 @@
+{
+  "utc": "2026-11-08T06:22:53.820640+00:00",
+  "declared_before_H_scores": true,
+  "primary": "Full fixed40; fixed16 and remaining24 reported separately to avoid subset optimism",
+  "criteria": {
+    "no_c": "Does normal add substantial PC benefit while preserving/improving SA, Joint and actual visuals on the same trained backbone?",
+    "semantic_response_off": "Does the native-request response improve SA/Joint/actual requested process while retaining the direct route PC benefit? Do not adopt it merely because it changes text attention.",
+    "direct_write_off": "Does direct physical writing add physical process/PC benefit to the new response, and what semantic/visual cost remains?",
+    "native_physical_query": "Does independent physical Q provide actual benefit on this checkpoint? Do not extrapolate infer-only equivalence to a universal architectural claim.",
+    "reasoning_swapped_empty_and_mean": "Test content contribution while preserving own image/request and relation priors; distinguish altered content from useful content."
+  },
+  "actual_video_cases": [
+    "VP004",
+    "VP010",
+    "VP027",
+    "VP034",
+    "VP038"
+  ],
+  "visual_rules": [
+    "Use literal captions. VP034 requests inflation/stretching, not bursting. VP027 requests a smooth round boule, not necessarily vigorous kneading.",
+    "High PC with omitted process, static output or deformed/missing entities does not prove improvement.",
+    "Compare matched historical videos and same-weight control videos; sampled frames are diagnostics, not an exhaustive video-quality score."
+  ],
+  "iteration": "Review full H evidence before deciding I architecture; no prewritten I training launch. I must complete400 and40/60+16. Cross-benchmark jobs deferred.",
+  "confidence": "Functional checks prove implementation only; quantitative generation and actual videos determine effectiveness.",
+  "training_record_review": {
+    "requested_by_user": true,
+    "report": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_feedback_fusion_r15h/review/loss_analysis_step0178.json",
+    "script": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_feedback_fusion_r15h/audit_training_signals.py",
+    "completion_command": "python3 experiments/physical_content_v7/semantic_feedback_fusion_r15h/audit_training_signals.py --through-step 400",
+    "FM_interpretation": "单样本单步去噪；不以数值下降、大小或所谓收敛直接推断生成质量。",
+    "scope": "同样本/sigma/dropout配对，按阶段和sigma分层；检查目标贡献、组梯度与裁剪、阶段切换、对齐与执行的共享参数；最终结合完整评分、配对控制及真实视频。",
+    "causal_limit": "组梯度不是分损失梯度；当前推理消融不是训练损失消融。",
+    "completion_report": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_feedback_fusion_r15h/review/loss_analysis_complete.json",
+    "complete_400_audit_done": true
+  },
+  "loss_and_stage_design_constraint": {
+    "user_requested": true,
+    "principle": "损失函数与训练阶段保持简洁；只有明确的问题证据、作用依据和可验证贡献才调整。",
+    "priority": "训练日志和损失分析只是定位问题的一部分，不预设主要瓶颈就在损失或阶段划分。根据完整生成结果及配对证据，在架构、条件读取/融合、训练和推理中选择有效的实质改动。",
+    "avoid": "不因损失值、梯度峰值或单个诊断异常就增加损失项、阶段或繁琐调度；不以新增项数量代替效果。",
+    "current_H_training_unchanged": true,
+    "apply_to": "H结果复盘及最后一版R15I设计"
+  }
+}

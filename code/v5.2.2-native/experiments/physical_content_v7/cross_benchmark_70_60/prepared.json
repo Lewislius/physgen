@@ -1,0 +1,82 @@
+{
+  "utc": "2026-11-04T14:57:52.696553+00:00",
+  "status": "complete_with_preserved_csv_scoring_recovery",
+  "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/snapshots/20261104T144800Z",
+  "protocol": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/protocol.json",
+  "yamls": {
+    "wan_lora": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/submissions/wan_lora_20261104T144800Z.yaml",
+    "r1": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/submissions/r1_20261104T144800Z.yaml",
+    "r10a": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/submissions/r10a_l40_20261104T145211Z.yaml"
+  },
+  "experiments": {
+    "wan_lora": {
+      "experiment": 67462,
+      "trial": 68849,
+      "state": "STATE_RUNNING",
+      "actual_gpu": "NVIDIA GeForce RTX4090 48GB",
+      "stage": "generate",
+      "first_actual_video_complete": true,
+      "generated_at_last_check": 50,
+      "prepared_inputs_at_last_check": 44,
+      "worldmodelbench_generated": 50,
+      "physics_iq_generated": 0
+    },
+    "r1": {
+      "experiment": 67463,
+      "trial": 68850,
+      "state": "STATE_RUNNING",
+      "actual_gpu": "NVIDIA GeForce RTX4090 48GB",
+      "stage": "generate",
+      "first_actual_video_complete": true,
+      "generated_at_last_check": 51,
+      "prepared_inputs_at_last_check": 43,
+      "worldmodelbench_generated": 51,
+      "physics_iq_generated": 0
+    },
+    "r10a": {
+      "experiment": 67465,
+      "state": "STATE_RUNNING",
+      "prior_experiment": 67464,
+      "prior_trial": 68851,
+      "prior_state": "STATE_ERROR",
+      "reason": "48GB L40S exposes44.39GiB, corrected nominal-card memory guard from45to44GiB; no model loaded in rejected attempt",
+      "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/snapshots/20261104T145211Z",
+      "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/submissions/r10a_l40_20261104T145211Z.yaml",
+      "trial": 68852,
+      "actual_gpu": "NVIDIA L40S",
+      "stage": "generate",
+      "first_actual_video_complete": true,
+      "generated_at_last_check": 45,
+      "prepared_inputs_at_last_check": 43,
+      "worldmodelbench_generated": 45,
+      "physics_iq_generated": 0
+    }
+  },
+  "models": [
+    "wan_lora",
+    "r1",
+    "r10a"
+  ],
+  "worldmodelbench_cases": 70,
+  "physics_iq_scenes": 20,
+  "physics_iq_videos": 60,
+  "main_training_priority": true,
+  "resource_pool": "ada-48g",
+  "routine_check_seconds": 600,
+  "no_H100": true,
+  "no_downloads": true,
+  "new_api_calls": 0,
+  "score_status": "All three WMB70 and PhysicsIQ20scene/60view summaries complete; original terminal parser errors retained.",
+  "next_routine_check_utc": null,
+  "last_verified_utc": "2026-11-04T20:52:51.601284+00:00",
+  "shared_inputs_ready": 130,
+  "evaluation_recovery": {
+    "r1": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/physics_iq_scoring_recovery/prepared.json",
+    "wan_lora": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/physics_iq_scoring_recovery/prepared.json"
+  },
+  "evaluation_complete_models": [
+    "wan_lora",
+    "r1",
+    "r10a"
+  ]
+}

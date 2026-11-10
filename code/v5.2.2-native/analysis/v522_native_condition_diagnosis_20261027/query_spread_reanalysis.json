@@ -1,0 +1,53 @@
+{
+  "source_files": [
+    "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/v522_native_condition_diagnosis_20261027/Q/query_scale/source0000042_C.pt",
+    "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/v522_native_condition_diagnosis_20261027/Q/query_scale/source0001596_C.pt",
+    "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/v522_native_condition_diagnosis_20261027/Q/query_scale/wisa0013758_C.pt",
+    "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/v522_native_condition_diagnosis_20261027/Q/query_scale/wisa0032606_C.pt"
+  ],
+  "scope": "Four saved validation cases from the fixed final224 Q checkpoint; not the VideoPhy40 benchmark.",
+  "decomposition": "D[s,i,d] = C[s,i,d] - mean_i(C[s,i,d]); shared_template[i,d] = mean_s(D[s,i,d]); interaction = D - shared_template.",
+  "interpretation": "Shared means common across these four inputs, not proven globally constant or semantically irrelevant. RMS and energy are representation diagnostics, not quality scores.",
+  "interventions": "Inference-only functional query_seed rescaling with all trained weights frozen; no retraining.",
+  "results": [
+    {
+      "variant": "original",
+      "count": 4,
+      "condition_rms": 0.08742143958806992,
+      "token_centered_rms": 0.00023332353157456964,
+      "token_centered_fraction": 0.0026689509195226115,
+      "input_shared_slot_template_rms": 0.00014323882351163775,
+      "input_slot_interaction_rms": 0.00018418062245473266,
+      "shared_slot_template_energy_fraction": 0.3768811523914337,
+      "input_slot_interaction_energy_fraction": 0.6231186985969543,
+      "caption_change_condition_rms": 0.00039214958087541163,
+      "caption_change_mean_condition_rms": 0.00026935114874504507
+    },
+    {
+      "variant": "rms0p2",
+      "count": 4,
+      "condition_rms": 0.08742068707942963,
+      "token_centered_rms": 0.0005077887908555567,
+      "token_centered_fraction": 0.005808565544608275,
+      "input_shared_slot_template_rms": 0.0004671320493798703,
+      "input_slot_interaction_rms": 0.00019909071852453053,
+      "shared_slot_template_energy_fraction": 0.8462781310081482,
+      "input_slot_interaction_energy_fraction": 0.15372192859649658,
+      "caption_change_condition_rms": 0.0003971921105403453,
+      "caption_change_mean_condition_rms": 0.00025388618814758956
+    },
+    {
+      "variant": "rms1p0",
+      "count": 4,
+      "condition_rms": 0.08742030709981918,
+      "token_centered_rms": 0.0024730339646339417,
+      "token_centered_fraction": 0.028289010261770824,
+      "input_shared_slot_template_rms": 0.0024645905941724777,
+      "input_slot_interaction_rms": 0.00020418288477230817,
+      "shared_slot_template_energy_fraction": 0.9931831955909729,
+      "input_slot_interaction_energy_fraction": 0.00681676808744669,
+      "caption_change_condition_rms": 0.0004214394139125943,
+      "caption_change_mean_condition_rms": 0.0002651983522810042
+    }
+  ]
+}

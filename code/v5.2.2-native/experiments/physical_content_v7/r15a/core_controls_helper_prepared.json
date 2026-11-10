@@ -1,0 +1,71 @@
+{
+  "status": "running_verified_rtx",
+  "kind": "core",
+  "experiment_id": 67810,
+  "modes": [
+    "native_query"
+  ],
+  "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_fusion_r15a/submissions/r15a_native_query_controls16_20261105T124617Z.yaml",
+  "wrapper": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_fusion_r15a/submissions/control_helpers/20261105T124617Z/assist_controls.py",
+  "config": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_fusion_r15a/snapshots/20261105T085307Z/configs/physical_content.yaml",
+  "source_snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_fusion_r15a/snapshots/20261105T085307Z",
+  "parent_experiment": 67762,
+  "plan": {
+    "parent_experiment": 67762,
+    "run_id": "physical_content_67762",
+    "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_fusion_r15a/runs/physical_content_67762/step0400.pt",
+    "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_fusion_r15a/snapshots/20261105T085307Z",
+    "primary_output": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_fusion_r15a/inference_outputs/physical_content_67762/step0400_original_fixed40_controls16_seed42",
+    "modes": [
+      "native_query"
+    ],
+    "cases": [
+      "VP002",
+      "VP004",
+      "VP005",
+      "VP009",
+      "VP010",
+      "VP013",
+      "VP015",
+      "VP016",
+      "VP017",
+      "VP018",
+      "VP024",
+      "VP025",
+      "VP026",
+      "VP027",
+      "VP034",
+      "VP038"
+    ],
+    "videos": 16,
+    "training_updates": 0,
+    "api_calls": 0,
+    "scope": "Same frozen inference source/own400 weights, inputs, seed42 andgamma5 as primary."
+  },
+  "submission_policy": "Own400 audited. Single-mode helper while original40 is running; primary still has original40 remainder plus extra20 before these controls. Same unstarted modes, no additional unique videos.",
+  "attempts": [
+    {
+      "experiment_id": 67803,
+      "submitted_utc": "2026-11-05T12:46:36.930996+00:00",
+      "state": "STATE_ERROR",
+      "actual_gpu": "NVIDIA H100",
+      "accepted": false
+    },
+    {
+      "experiment_id": 67810,
+      "submitted_utc": "2026-11-05T13:17:44.207290+00:00",
+      "state": "STATE_RUNNING",
+      "reason": "Prior controls completed; authorized RTX resources freed.",
+      "actual_gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "accepted": true
+    }
+  ],
+  "supersedes_first_batch": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_fusion_r15a/reports/core_helper_first_allocation_batch.json",
+  "submitted_utc": "2026-11-05T13:17:44.207290+00:00",
+  "verified_utc": "2026-11-05T13:20:38.926195+00:00",
+  "trial_ids": [
+    69197
+  ],
+  "actual_gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+  "fallback": "Same mode remains in the primary runner; no immediate retry while all RTX slots are used."
+}

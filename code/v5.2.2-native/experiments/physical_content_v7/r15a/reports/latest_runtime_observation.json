@@ -1,0 +1,175 @@
+{
+  "utc": "2026-11-05T13:45:54.409302+00:00",
+  "experiment": 67762,
+  "state": "STATE_CANCELED",
+  "trial_ids": [
+    69149
+  ],
+  "end_utc": "2026-11-05T13:41:57.544442Z",
+  "gpu": {
+    "kind": "gpu_policy",
+    "actual": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+    "visible_count": 1,
+    "accepted": true,
+    "resource_pool": "blk-96g",
+    "experiment_id": "67762",
+    "time": 1793869403.415041
+  },
+  "stage": "extra20_generation",
+  "step": 400,
+  "counts": {
+    "40": 40,
+    "extra20": 13
+  },
+  "scores": {
+    "40": {
+      "count": 40,
+      "sa_mean": 3.0,
+      "pc_mean": 3.5,
+      "joint_pass_rate": 0.2
+    }
+  },
+  "controls": {
+    "empty_reasoning": {
+      "count": 16,
+      "sa_mean": 3.125,
+      "pc_mean": 3.4375,
+      "joint_pass_rate": 0.3125
+    },
+    "execution_residual_off": {
+      "count": 16,
+      "sa_mean": 3.125,
+      "pc_mean": 3.625,
+      "joint_pass_rate": 0.3125
+    },
+    "native_query": {
+      "count": 16,
+      "sa_mean": 3.25,
+      "pc_mean": 3.625,
+      "joint_pass_rate": 0.3125
+    },
+    "no_c": {
+      "count": 16,
+      "sa_mean": 3.1875,
+      "pc_mean": 3.6875,
+      "joint_pass_rate": 0.375
+    },
+    "reasoning_swapped": {
+      "count": 16,
+      "sa_mean": 3.1875,
+      "pc_mean": 3.625,
+      "joint_pass_rate": 0.375
+    }
+  },
+  "next_check_utc": "2026-11-05T14:00:54.409302+00:00",
+  "error": null,
+  "helpers": {
+    "core": {
+      "experiment": 67810,
+      "state": "STATE_COMPLETED",
+      "trial_ids": [
+        69197
+      ],
+      "stage": "completed",
+      "gpu": {
+        "actual": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "accepted": true
+      },
+      "counts": {
+        "native_query": 16
+      },
+      "transferred": [
+        "native_query"
+      ]
+    },
+    "execution": {
+      "experiment": 67805,
+      "state": "STATE_COMPLETED",
+      "trial_ids": [
+        69192
+      ],
+      "stage": "completed",
+      "gpu": {
+        "actual": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "accepted": true
+      },
+      "counts": {
+        "execution_residual_off": 16
+      },
+      "transferred": [
+        "execution_residual_off"
+      ]
+    },
+    "mean": {
+      "experiment": 67808,
+      "state": "STATE_ERROR",
+      "trial_ids": [
+        69195
+      ],
+      "stage": null,
+      "gpu": {
+        "actual": "NVIDIA H100",
+        "accepted": false
+      },
+      "counts": {
+        "global_train_mean": 0
+      },
+      "transferred": []
+    },
+    "no_c": {
+      "experiment": 67804,
+      "state": "STATE_COMPLETED",
+      "trial_ids": [
+        69191
+      ],
+      "stage": "completed",
+      "gpu": {
+        "actual": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "accepted": true
+      },
+      "counts": {
+        "no_c": 16
+      },
+      "transferred": [
+        "no_c"
+      ]
+    },
+    "reasoning": {
+      "experiment": 67791,
+      "state": "STATE_COMPLETED",
+      "trial_ids": [
+        69178
+      ],
+      "stage": "completed",
+      "gpu": {
+        "actual": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "accepted": true
+      },
+      "counts": {
+        "reasoning_swapped": 16,
+        "empty_reasoning": 16
+      },
+      "transferred": [
+        "reasoning_swapped",
+        "empty_reasoning"
+      ]
+    },
+    "tails": {
+      "experiment": 67809,
+      "state": "STATE_COMPLETED",
+      "trial_ids": [
+        69196
+      ],
+      "stage": "completed",
+      "gpu": {
+        "actual": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "accepted": true
+      },
+      "counts": {
+        "videophy40": 3,
+        "videophy60": 10
+      },
+      "transferred": []
+    }
+  }
+}

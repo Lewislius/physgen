@@ -1,0 +1,697 @@
+{
+  "latest_user_target": {
+    "updated_utc": "2026-11-04T08:59:21.838330+00:00",
+    "priority": "PC、SA、Joint 和实际画面质量必须共同改善；单独 PC 高不能抵消其他方面的退步。",
+    "primary_benchmark": "matched VideoPhy2-40 I2V",
+    "original40_pc_target": 3.8,
+    "original40_pc_preferred": 3.85,
+    "original40_sa_target": 3.3,
+    "original40_sa_preferred": 3.35,
+    "joint_above_R1": true,
+    "joint_reference_pass_count": 11,
+    "joint_reference_count": 40,
+    "joint_definition": "same video SA>=4 and PC>=4",
+    "actual_video_quality_required": true,
+    "no_pc_gain_at_expense_of_sa_joint_or_visual_quality": true,
+    "evaluation_sizes": {
+      "primary": 40,
+      "extended": 60,
+      "paired_controls": 16
+    },
+    "maximum_version": "R13C",
+    "goal_requirements_file": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/GOAL.zh.txt",
+    "goal_card_objective_edited": true,
+    "goal_card_state_changed": false,
+    "joint_reference": "highest completed40 result before this goal update, not R1 alone",
+    "joint_reference_rate": 0.275,
+    "joint_minimum_target_pass_count": 12,
+    "joint_minimum_target_rate": 0.3,
+    "joint_strictly_above_all_historical40": true,
+    "joint_historical_reference_source": "V6-assoc Search66642,224steps,11/40; located30 complete40 raw score files plus older13-method comparison",
+    "historical_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/reports/historical40_joint_goal_evidence.json",
+    "primary_audit_experiments": {
+      "R1": 66778,
+      "R10A": 67003,
+      "R11B": 67308,
+      "R9": 66968
+    },
+    "architecture_modification_authorized": true,
+    "design_policy": "Evidence-driven architecture/module/training/inference improvements; not restricted to defensive or patch-only changes; validate added modules.",
+    "goal_card_objective_verified": true,
+    "goal_card_status": "active",
+    "system_goal_update_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/reports/system_goal_update_verified.json",
+    "early_audit_experiments": {
+      "V6-assoc": 66678,
+      "V5-CE": 66706,
+      "V6-write": 66710
+    },
+    "fixed_128_272_required_by_goal": false,
+    "avoid_defensive_design": true,
+    "diversity_constraint_removed_from_goal": true
+  },
+  "system_goal_objective": "以早期 Search 66678（V6-assoc）、Search 66706（V5-CE）、Search 66710（V6-write），以及 R1（Search 66778）、R10A（Search 67003）、R11B（Search 67308）、R9（Search 66968）的实测审计为主要依据，结合完整训练记录、推理流程、配对消融与真实生成视频，持续优化 physGen。保留物理增强与融合的核心研究方向，允许根据证据修改、完善或增加必要的架构和模块，同时优化训练、数据与推理；不要防御性设计，不局限于局部补丁，不保留没有实际作用的复杂中间设计。新增设计必须通过训练、生成和消融证明实际贡献。\n\n以相同输入、首帧、随机种子及评分口径的 VideoPhy2-40 为主要验收依据：PC 争取达到 3.8 以上、优选 3.85 以上；SA 同时达到 3.3 以上、优选 3.35 以上；Joint 必须严格超过本次目标更新前所有已完成的 40 例评测中的历史最高值，不只超过 R1。当前已核对历史最高 Joint 为 11/40（27.5%），因此至少达到 12/40（30%）；如果补核对发现更高的既有历史结果，以更高值为基准。Joint 定义为同一视频 SA≥4 且 PC≥4。\n\nPC、SA、Joint 和实际画面生成质量必须同时改善。保持并争取进一步提高 R10A/R11B 的有效 PC 收益，同时改善语义遵循、请求动作与交互、物理过程、画面清晰稳定性和时序一致性。仅 PC 高，但 SA/Joint 退步、动作没有执行、近乎静止、严重形变伪影或重复纹理，均不能认定为成功；不能为了 PC 牺牲其他指标和画面质量。\n\n每版采用可比的约 400 步训练；完成 40 例主评测、60 例扩展验证及适当的 16 例模块/条件消融，包括正常、无关、空 reasoning、均值 C、关闭注入与新增模块开关。允许根据实测证据采用原版或 API 修订后的训练数据和推理 reasoning，并记录差异以便归因。C 的有效差异应服务于实际生成；不以 FM 标量、RGB 变化量或代码测试通过冒充生成效果改善。\n\n持续进行有实测依据的架构、训练与推理迭代，最多到 R13C。新版本完成实现和必要验证后提交训练及评测，不止于设计讨论。保留旧版本、原始评分、真实视频和可复现证据，不拼接各版本逐例最优结果，不用综合分掩盖退步。只使用已授权的 RTX6000 资源，不交 H100，不擅自下载模型。R13C 后完成已承诺的评测和中文分析报告并暂停，等待用户后续指示；未达到质量目标时必须明确报告未达标。",
+  "system_goal_objective_verified": true,
+  "goal_requirements_updated_utc": "2026-11-04T08:55:00.122591+00:00",
+  "maximum_version": "R13C",
+  "routine_check_seconds": 600,
+  "supplementary_benchmark_prepared": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/prepared.json",
+  "supplementary_experiments": {
+    "wan_lora": 67462,
+    "r1": 67463,
+    "r10a": 67465
+  },
+  "design_review_file": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/reports/R13_DESIGN_REVIEW.zh.txt",
+  "current_priority": "R13B implementation after complete R13A40/60/six16 and actual video review.",
+  "mechanism_matrix": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/reports/prer13_mechanism_matrix.json",
+  "joint_bottleneck_report": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/reports/prer13_joint_bottlenecks40.json",
+  "r9_controls_report": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/reports/prer13_r9_controls16.json",
+  "worldmodel_scoring_helper_prepared": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/worldmodel_scoring_helpers/prepared.json",
+  "utc": "2026-11-04T20:52:51.601284+00:00",
+  "updated_utc": "2026-11-04T21:34:20.891676+00:00",
+  "goal_complete": false,
+  "turn_classification": "progress",
+  "previous_goal_turn_classification": "progress",
+  "candidate": "R13A",
+  "candidate_experiment": 67598,
+  "candidate_trial": 68985,
+  "candidate_state": "STATE_COMPLETED",
+  "candidate_stage": "declared_evaluation_completed",
+  "candidate_quality_status": "rejected_complete40_60_all6controls16",
+  "candidate_training_started": true,
+  "candidate_training_complete": true,
+  "candidate_last_verified_optimizer_step": 400,
+  "candidate_phase": "joint",
+  "candidate_training_cursor": 1600,
+  "candidate_last_verified_utc": "2026-11-04T21:34:20.891676+00:00",
+  "actual_gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+  "implementation": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_operator_r13a",
+  "candidate_prepared": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_operator_r13a/prepared.json",
+  "reference_experiment": 67003,
+  "reference_role": "Original-data R10A400 matched architecture/training reference",
+  "core_controls_helper_prepared": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_operator_r13a/core_controls_helper_prepared.json",
+  "active_control_helpers": [],
+  "completed_controls": [
+    "empty_reasoning",
+    "global_train_mean",
+    "no_c",
+    "reasoning_swapped",
+    "scale_off",
+    "shift_off"
+  ],
+  "main40_generated_at_last_check": 40,
+  "canceled_managers_restarted": false,
+  "next_routine_check_utc": null,
+  "progress": "Completed quality evidence; goal unmet; R13B decision awaits remaining R13A controls/60 and paired video review.",
+  "next": "At next600s check only67598. Complete finalmean16 and representative pairedvideo review; finalize R13A rejection/mechanism conclusions, then implement/test/submit R13B. Extra20 and all supplementary jobs terminal; do not poll/restart.",
+  "prior_candidate": {
+    "name": "R12B",
+    "experiment": 67456,
+    "trial": 68843,
+    "state": "STATE_COMPLETED",
+    "end_utc": "2026-11-04T17:59:35.769380+00:00",
+    "decision": "rejected",
+    "main40": {
+      "count": 40,
+      "sa_mean": 2.95,
+      "pc_mean": 3.5,
+      "sa_pass_rate": 0.225,
+      "pc_pass_rate": 0.45,
+      "joint_pass_count": 8,
+      "joint_pass_rate": 0.2
+    },
+    "normal_fixed16": {
+      "count": 16,
+      "sa_mean": 3.0625,
+      "pc_mean": 3.75,
+      "sa_pass_rate": 0.3125,
+      "pc_pass_rate": 0.5625,
+      "joint_pass_count": 5,
+      "joint_pass_rate": 0.3125
+    },
+    "controls": {
+      "empty_reasoning": {
+        "summary": {
+          "count": 16,
+          "sa_mean": 2.9375,
+          "pc_mean": 3.6875,
+          "sa_pass_rate": 0.1875,
+          "pc_pass_rate": 0.5625,
+          "joint_pass_count": 3,
+          "joint_pass_rate": 0.1875
+        },
+        "normal_minus_control": {
+          "sa": {
+            "mean_change": 0.125,
+            "wins": 2,
+            "ties": 14,
+            "losses": 0
+          },
+          "pc": {
+            "mean_change": 0.0625,
+            "wins": 3,
+            "ties": 11,
+            "losses": 2
+          },
+          "joint": {
+            "gains": [
+              "VP010",
+              "VP034"
+            ],
+            "losses": []
+          }
+        },
+        "score_file": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/inference_outputs/physical_content_67456/step0400_original_fixed40_controls16_seed42/controls/empty_reasoning/videophy40/scores.json"
+      },
+      "global_train_mean": {
+        "summary": {
+          "count": 16,
+          "sa_mean": 3.125,
+          "pc_mean": 3.8125,
+          "sa_pass_rate": 0.3125,
+          "pc_pass_rate": 0.5625,
+          "joint_pass_count": 5,
+          "joint_pass_rate": 0.3125
+        },
+        "normal_minus_control": {
+          "sa": {
+            "mean_change": -0.0625,
+            "wins": 1,
+            "ties": 13,
+            "losses": 2
+          },
+          "pc": {
+            "mean_change": -0.0625,
+            "wins": 2,
+            "ties": 11,
+            "losses": 3
+          },
+          "joint": {
+            "gains": [
+              "VP010"
+            ],
+            "losses": [
+              "VP038"
+            ]
+          }
+        },
+        "score_file": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/inference_outputs/physical_content_67456/step0400_original_fixed40_controls16_seed42/controls/global_train_mean/videophy40/scores.json"
+      },
+      "native_text_value_off": {
+        "summary": {
+          "count": 16,
+          "sa_mean": 3.125,
+          "pc_mean": 3.75,
+          "sa_pass_rate": 0.375,
+          "pc_pass_rate": 0.5625,
+          "joint_pass_count": 6,
+          "joint_pass_rate": 0.375
+        },
+        "normal_minus_control": {
+          "sa": {
+            "mean_change": -0.0625,
+            "wins": 0,
+            "ties": 15,
+            "losses": 1
+          },
+          "pc": {
+            "mean_change": 0,
+            "wins": 0,
+            "ties": 16,
+            "losses": 0
+          },
+          "joint": {
+            "gains": [],
+            "losses": [
+              "VP038"
+            ]
+          }
+        },
+        "score_file": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/inference_outputs/physical_content_67456/step0400_original_fixed40_controls16_seed42/controls/native_text_value_off/videophy40/scores.json"
+      },
+      "no_c": {
+        "summary": {
+          "count": 16,
+          "sa_mean": 3.25,
+          "pc_mean": 3.625,
+          "sa_pass_rate": 0.375,
+          "pc_pass_rate": 0.5,
+          "joint_pass_count": 6,
+          "joint_pass_rate": 0.375
+        },
+        "normal_minus_control": {
+          "sa": {
+            "mean_change": -0.1875,
+            "wins": 0,
+            "ties": 13,
+            "losses": 3
+          },
+          "pc": {
+            "mean_change": 0.125,
+            "wins": 3,
+            "ties": 12,
+            "losses": 1
+          },
+          "joint": {
+            "gains": [],
+            "losses": [
+              "VP038"
+            ]
+          }
+        },
+        "score_file": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/inference_outputs/physical_content_67456/step0400_original_fixed40_controls16_seed42/controls/no_c/videophy40/scores.json"
+      },
+      "pretext_read": {
+        "summary": {
+          "count": 16,
+          "sa_mean": 3.1875,
+          "pc_mean": 3.8125,
+          "sa_pass_rate": 0.375,
+          "pc_pass_rate": 0.625,
+          "joint_pass_count": 6,
+          "joint_pass_rate": 0.375
+        },
+        "normal_minus_control": {
+          "sa": {
+            "mean_change": -0.125,
+            "wins": 0,
+            "ties": 14,
+            "losses": 2
+          },
+          "pc": {
+            "mean_change": -0.0625,
+            "wins": 0,
+            "ties": 15,
+            "losses": 1
+          },
+          "joint": {
+            "gains": [],
+            "losses": [
+              "VP038"
+            ]
+          }
+        },
+        "score_file": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/inference_outputs/physical_content_67456/step0400_original_fixed40_controls16_seed42/controls/pretext_read/videophy40/scores.json"
+      },
+      "reasoning_swapped": {
+        "summary": {
+          "count": 16,
+          "sa_mean": 3.0625,
+          "pc_mean": 3.5625,
+          "sa_pass_rate": 0.3125,
+          "pc_pass_rate": 0.4375,
+          "joint_pass_count": 5,
+          "joint_pass_rate": 0.3125
+        },
+        "normal_minus_control": {
+          "sa": {
+            "mean_change": 0,
+            "wins": 2,
+            "ties": 12,
+            "losses": 2
+          },
+          "pc": {
+            "mean_change": 0.1875,
+            "wins": 3,
+            "ties": 13,
+            "losses": 0
+          },
+          "joint": {
+            "gains": [
+              "VP010"
+            ],
+            "losses": [
+              "VP038"
+            ]
+          }
+        },
+        "score_file": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/inference_outputs/physical_content_67456/step0400_original_fixed40_controls16_seed42/controls/reasoning_swapped/videophy40/scores.json"
+      }
+    },
+    "report": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/inference_outputs/physical_content_67456/step0400_original_fixed40_controls16_seed42/comparison_report.json",
+    "visual_review": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/reports/physical_content_67456/visual_predeclared/review.json",
+    "extra20": "Not expanded after failed main40/visual review"
+  },
+  "supplementary_completed_at_last_check": {
+    "wan_lora": 130,
+    "r1": 130,
+    "r10a": 130
+  },
+  "supplementary_last_verified_utc": "2026-11-04T20:52:51.601284+00:00",
+  "supplementary_comparison": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/reports/current_comparison.json",
+  "worldmodel_scoring_experiments": [
+    {
+      "experiment": 67596,
+      "trial": 68983,
+      "state": "STATE_COMPLETED",
+      "end_utc": "2026-11-04T18:16:35.244556+00:00",
+      "models": [
+        "wan_lora",
+        "r1"
+      ],
+      "actual_gpu": "NVIDIA A100-SXM4-80GB",
+      "judged_at_last_check": 70,
+      "last_verified_utc": "2026-11-04T18:28:35+00:00"
+    },
+    {
+      "experiment": 67597,
+      "trial": 68984,
+      "state": "STATE_COMPLETED",
+      "last_verified_utc": "2026-11-04T18:28:35+00:00",
+      "models": [
+        "r10a"
+      ],
+      "actual_gpu": "NVIDIA A100-SXM4-80GB",
+      "judged_at_last_check": 70,
+      "end_utc": "2026-11-04T18:24:17.266144+00:00"
+    }
+  ],
+  "supplementary_visual_review": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/reports/visual_score_selected/review.json",
+  "supplementary_tradeoff_report": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/reports/worldmodel70_tradeoffs.json",
+  "worldmodel70_complete": {
+    "wan_lora": {
+      "count": 70,
+      "instruction_mean": 2.2285714285714286,
+      "physical_sum": 4.485714285714286,
+      "common_sense_sum": 1.4714285714285715,
+      "total_score": 8.185714285714287,
+      "physical": {
+        "newton": 1.0,
+        "mass": 0.6428571428571429,
+        "fluid": 1.0,
+        "penetration": 0.8428571428571429,
+        "gravity": 1.0
+      },
+      "common_sense": {
+        "framewise_quality": 0.7428571428571429,
+        "temporal_consistency": 0.7285714285714285
+      }
+    },
+    "r1": {
+      "count": 70,
+      "instruction_mean": 2.1,
+      "physical_sum": 4.714285714285714,
+      "common_sense_sum": 1.7571428571428571,
+      "total_score": 8.571428571428573,
+      "physical": {
+        "newton": 1.0,
+        "mass": 0.7857142857142857,
+        "fluid": 1.0,
+        "penetration": 0.9285714285714286,
+        "gravity": 1.0
+      },
+      "common_sense": {
+        "framewise_quality": 0.8714285714285714,
+        "temporal_consistency": 0.8857142857142857
+      }
+    },
+    "r10a": {
+      "count": 70,
+      "instruction_mean": 1.7428571428571429,
+      "physical_sum": 4.885714285714286,
+      "common_sense_sum": 1.8,
+      "total_score": 8.428571428571429,
+      "physical": {
+        "newton": 1.0,
+        "mass": 0.9285714285714286,
+        "fluid": 1.0,
+        "penetration": 0.9571428571428572,
+        "gravity": 1.0
+      },
+      "common_sense": {
+        "framewise_quality": 0.8428571428571429,
+        "temporal_consistency": 0.9571428571428572
+      }
+    }
+  },
+  "candidate_visual_plan": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_operator_r13a/reports/visual_plan.json",
+  "this_turn_work": "R13A complete40/five actualvideo cases reviewed and rejected. R10A PhysicsIQ CSV parser recovery complete; allthree paired20scene/60view results available. Terminated slow67603 before overlap and handed seven complete shift controls to primary. Extra20 67608/68995 verified RTX RUNNING; failed mean helper leaves16mean controls to primary.",
+  "candidate_stage_transition_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_operator_r13a/reports/stage_transition_actual.json",
+  "candidate_extra20_prepared": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_operator_r13a/extra20_prepared.json",
+  "supplementary_generation_assistance": "No new tail worker: active frozen generators retain their pending lists in memory and would regenerate externally handed-off cases. Existing3 jobs continue unchanged; avoid duplicated inference or a cancel/requeue cycle while mainR13A trains.",
+  "candidate_reasoning_controls_helper_prepared": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_operator_r13a/reasoning_controls_helper_prepared.json",
+  "r10a_state_control_prepared": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/r13_support/r10a_no_state_value16/prepared.json",
+  "r10a_state_control": {
+    "experiment": 67599,
+    "trial": 68986,
+    "state": "STATE_COMPLETED",
+    "last_verified_utc": "2026-11-04T19:21:25+00:00",
+    "actual_gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+    "mode": "no_state_value",
+    "cases": 16,
+    "new_training": false,
+    "completed": 16,
+    "end_utc": "2026-11-04T19:21:20.486273+00:00",
+    "result": {
+      "SA": 3.0625,
+      "PC": 3.9375,
+      "Joint": 5,
+      "count": 16
+    },
+    "comparison_report": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/r13_support/r10a_no_state_value16/reports/comparison16.json"
+  },
+  "waiting_work_ready": true,
+  "candidate_completed_training_match": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_operator_r13a/reports/completed400_training_match.json",
+  "candidate_visual_review": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_operator_r13a/reports/physical_content_67598/visual_predeclared/review.json",
+  "physics_iq_scoring_recovery_prepared": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/physics_iq_scoring_recovery/prepared.json",
+  "physics_iq_visual_review": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/reports/physics_iq_visual_predeclared/review.json",
+  "physics_iq_complete": {
+    "wan_lora": {
+      "final_score_view": 0.26003635878678355,
+      "scene_count": 20,
+      "video_count": 60,
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/outputs/wan_lora/seed42/physics_iq_summary.json",
+      "scoring_recovered": true,
+      "do_not_poll_terminal_experiment": true
+    },
+    "r1": {
+      "final_score_view": 0.2651032257782627,
+      "scene_count": 20,
+      "video_count": 60,
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/outputs/r1/seed42/physics_iq_summary.json",
+      "scoring_recovered": true,
+      "do_not_poll_terminal_experiment": true
+    },
+    "r10a": {
+      "final_score_view": 0.23669164754462252,
+      "scene_count": 20,
+      "video_count": 60,
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/outputs/r10a/seed42/physics_iq_summary.json",
+      "scoring_recovered": true,
+      "do_not_poll_terminal_experiment": true
+    }
+  },
+  "physics_iq_first_paired_result": {
+    "scene_count": 20,
+    "view_count": 60,
+    "final_score_view_change": 0.005066866991479124,
+    "scene_wins": 12,
+    "scene_ties": 0,
+    "scene_losses": 8,
+    "categories": {
+      "Fluid Dynamics": {
+        "scene_count": 4,
+        "mean_change": 0.0076066030376295835
+      },
+      "Magnetism": {
+        "scene_count": 2,
+        "mean_change": -0.033061329042419
+      },
+      "Optics": {
+        "scene_count": 3,
+        "mean_change": -0.009603043412888217
+      },
+      "Solid Mechanics": {
+        "scene_count": 8,
+        "mean_change": 0.005459492871435554
+      },
+      "Thermodynamics": {
+        "scene_count": 3,
+        "mean_change": 0.04072225767702779
+      }
+    },
+    "component_changes": {
+      "score_spatiotemporal_view": 0.0357266354100681,
+      "score_spatial_view": -0.02080229660974947,
+      "score_weighted_spatial_view": -0.006229741904246883,
+      "score_mse_view": 0.011572871069845059
+    },
+    "scope": "Descriptive paired differences over20shared scenarios, each retaining all3views; no independent60-scene statistical claim."
+  },
+  "main40_result": {
+    "count": 40,
+    "sa_mean": 2.925,
+    "pc_mean": 3.475,
+    "sa_pass_rate": 0.25,
+    "pc_pass_rate": 0.45,
+    "joint_pass_count": 9,
+    "joint_pass_rate": 0.225
+  },
+  "extra20_active": {
+    "experiment": 67608,
+    "trial": 68995,
+    "state": "STATE_COMPLETED",
+    "actual_gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+    "end_utc": "2026-11-04T21:22:35.691922Z"
+  },
+  "physics_iq_paired_results": {
+    "r1_minus_wan_lora": {
+      "scene_count": 20,
+      "view_count": 60,
+      "final_score_view_change": 0.005066866991479124,
+      "scene_wins": 12,
+      "scene_ties": 0,
+      "scene_losses": 8,
+      "categories": {
+        "Fluid Dynamics": {
+          "scene_count": 4,
+          "mean_change": 0.0076066030376295835
+        },
+        "Magnetism": {
+          "scene_count": 2,
+          "mean_change": -0.033061329042419
+        },
+        "Optics": {
+          "scene_count": 3,
+          "mean_change": -0.009603043412888217
+        },
+        "Solid Mechanics": {
+          "scene_count": 8,
+          "mean_change": 0.005459492871435554
+        },
+        "Thermodynamics": {
+          "scene_count": 3,
+          "mean_change": 0.04072225767702779
+        }
+      },
+      "component_changes": {
+        "score_spatiotemporal_view": 0.0357266354100681,
+        "score_spatial_view": -0.02080229660974947,
+        "score_weighted_spatial_view": -0.006229741904246883,
+        "score_mse_view": 0.011572871069845059
+      }
+    },
+    "r10a_minus_wan_lora": {
+      "scene_count": 20,
+      "view_count": 60,
+      "final_score_view_change": -0.02334471124216103,
+      "scene_wins": 6,
+      "scene_ties": 0,
+      "scene_losses": 14,
+      "categories": {
+        "Fluid Dynamics": {
+          "scene_count": 4,
+          "mean_change": -0.0034877201019295617
+        },
+        "Magnetism": {
+          "scene_count": 2,
+          "mean_change": -0.04969922032457925
+        },
+        "Optics": {
+          "scene_count": 3,
+          "mean_change": -0.06718639817857168
+        },
+        "Solid Mechanics": {
+          "scene_count": 8,
+          "mean_change": -0.01685796640358567
+        },
+        "Thermodynamics": {
+          "scene_count": 3,
+          "mean_change": -0.005707326007314546
+        }
+      },
+      "component_changes": {
+        "score_spatiotemporal_view": -0.053569004515982066,
+        "score_spatial_view": -0.04919942754102363,
+        "score_weighted_spatial_view": -0.032608917881274874,
+        "score_mse_view": 0.04199850496963636
+      }
+    },
+    "wan_lora_minus_r1": {
+      "scene_count": 20,
+      "view_count": 60,
+      "final_score_view_change": -0.005066866991479124,
+      "scene_wins": 8,
+      "scene_ties": 0,
+      "scene_losses": 12,
+      "categories": {
+        "Fluid Dynamics": {
+          "scene_count": 4,
+          "mean_change": -0.0076066030376295835
+        },
+        "Magnetism": {
+          "scene_count": 2,
+          "mean_change": 0.033061329042419
+        },
+        "Optics": {
+          "scene_count": 3,
+          "mean_change": 0.009603043412888217
+        },
+        "Solid Mechanics": {
+          "scene_count": 8,
+          "mean_change": -0.005459492871435554
+        },
+        "Thermodynamics": {
+          "scene_count": 3,
+          "mean_change": -0.04072225767702779
+        }
+      },
+      "component_changes": {
+        "score_spatiotemporal_view": -0.0357266354100681,
+        "score_spatial_view": 0.02080229660974947,
+        "score_weighted_spatial_view": 0.006229741904246883,
+        "score_mse_view": -0.011572871069845059
+      }
+    },
+    "r10a_minus_r1": {
+      "scene_count": 20,
+      "view_count": 60,
+      "final_score_view_change": -0.028411578233640156,
+      "scene_wins": 5,
+      "scene_ties": 0,
+      "scene_losses": 15,
+      "categories": {
+        "Fluid Dynamics": {
+          "scene_count": 4,
+          "mean_change": -0.011094323139559145
+        },
+        "Magnetism": {
+          "scene_count": 2,
+          "mean_change": -0.016637891282160252
+        },
+        "Optics": {
+          "scene_count": 3,
+          "mean_change": -0.05758335476568346
+        },
+        "Solid Mechanics": {
+          "scene_count": 8,
+          "mean_change": -0.022317459275021226
+        },
+        "Thermodynamics": {
+          "scene_count": 3,
+          "mean_change": -0.046429583684342336
+        }
+      },
+      "component_changes": {
+        "score_spatiotemporal_view": -0.08929563992605016,
+        "score_spatial_view": -0.02839713093127416,
+        "score_weighted_spatial_view": -0.02637917597702799,
+        "score_mse_view": 0.030425633899791305
+      }
+    }
+  },
+  "r13b_design_status": "Finalize native spatiotemporal query modulation plus preserved direct R10A C write, then implement and validate; no R13B training submitted yet.",
+  "candidate_component_factorial": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_operator_r13a/reports/scale_shift_factorial16.json",
+  "full60_result": {
+    "count": 60,
+    "sa_mean": 2.8666666666666667,
+    "pc_mean": 3.55,
+    "sa_pass_rate": 0.2,
+    "pc_pass_rate": 0.4666666666666667,
+    "joint_pass_rate": 0.18333333333333332,
+    "scope": "Fixed60 historical VideoPhy2 captions adapted to common first-image I2V; seed42. Not the official590-caption T2V benchmark.",
+    "training_verifier_is_independent": true,
+    "joint_pass_count": 11
+  },
+  "active_jobs": [],
+  "completed_r13a_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_operator_r13a/reports/closure.json"
+}

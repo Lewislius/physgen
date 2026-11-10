@@ -1,0 +1,36 @@
+{
+  "utc": "2026-11-05T13:39:48.444239+00:00",
+  "user_request": "Stop R15A supplemental20; preserve completed40 and necessary16 controls for analysis. Maximum iteration extended to R15E; comprehensive targets unchanged.",
+  "actions": [
+    {
+      "experiment": 67762,
+      "observed_state": "STATE_RUNNING",
+      "trial_ids": [
+        69149
+      ],
+      "action": "cancel_user_requested_remaining20",
+      "returncode": 0,
+      "output": "Canceled experiment 67762\nCLI version 0.32.1 is less than master version 0.38.1. Consider upgrading the CLI.\n"
+    },
+    {
+      "experiment": 67809,
+      "observed_state": "STATE_COMPLETED",
+      "trial_ids": [
+        69196
+      ],
+      "action": "already_terminal_preserved"
+    }
+  ],
+  "retain_control_experiments": [
+    67810
+  ],
+  "no_new_R15A_extra20_or_full60_generation": true,
+  "stop_verification": {
+    "utc": "2026-11-05T13:41:55.193567+00:00",
+    "experiment": 67762,
+    "state": "STATE_STOPPING_CANCELED",
+    "end_utc": null,
+    "action": "kill_to_enforce_user_stop_remaining20",
+    "returncode": 0
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "scope": "Complete40 same-input B400 operator comparison, not formalI",
+  "summary": {
+    "original40": {
+      "count": 40,
+      "sa_mean": 2.9,
+      "pc_mean": 3.775,
+      "joint_count": 10,
+      "sa_pass_rate": 0.275,
+      "pc_pass_rate": 0.6,
+      "joint_pass_rate": 0.25
+    },
+    "reused_fixed16": {
+      "count": 16,
+      "sa_mean": 3.125,
+      "pc_mean": 3.9375,
+      "joint_count": 6,
+      "sa_pass_rate": 0.375,
+      "pc_pass_rate": 0.6875,
+      "joint_pass_rate": 0.375
+    },
+    "remaining24": {
+      "count": 24,
+      "sa_mean": 2.75,
+      "pc_mean": 3.6666666666666665,
+      "joint_count": 4,
+      "sa_pass_rate": 0.20833333333333334,
+      "pc_pass_rate": 0.5416666666666666,
+      "joint_pass_rate": 0.16666666666666666
+    }
+  },
+  "changed_cases": [
+    {
+      "case": "VP003",
+      "caption": "A gymnast performs a back handspring, landing cleanly on their feet on a padded floor.",
+      "B": [
+        3,
+        2
+      ],
+      "B_joint": [
+        2,
+        2
+      ]
+    },
+    {
+      "case": "VP009",
+      "caption": "A construction worker uses a suction cup to lift a heavy glass panel with a small picture adhered to it; the picture remains affixed.",
+      "B": [
+        2,
+        3
+      ],
+      "B_joint": [
+        3,
+        3
+      ]
+    },
+    {
+      "case": "VP019",
+      "caption": "Javelin with a damaged tip is thrown; it wobbles in flight and lands off-target.",
+      "B": [
+        3,
+        3
+      ],
+      "B_joint": [
+        2,
+        4
+      ]
+    },
+    {
+      "case": "VP023",
+      "caption": "A surfer falls off their board, colliding briefly with another surfer, before swimming away.",
+      "B": [
+        3,
+        4
+      ],
+      "B_joint": [
+        3,
+        3
+      ]
+    },
+    {
+      "case": "VP026",
+      "caption": "Two people stretch a bungee cord, extending it to its maximum length.",
+      "B": [
+        2,
+        4
+      ],
+      "B_joint": [
+        2,
+        5
+      ]
+    },
+    {
+      "case": "VP027",
+      "caption": "Hands shape a lump of clay-like bread dough into a smooth, round boule on a wooden table.",
+      "B": [
+        4,
+        4
+      ],
+      "B_joint": [
+        4,
+        5
+      ]
+    },
+    {
+      "case": "VP029",
+      "caption": "A player hits a forehand drive, the ball spinning rapidly as it crosses the net.",
+      "B": [
+        2,
+        3
+      ],
+      "B_joint": [
+        3,
+        3
+      ]
+    },
+    {
+      "case": "VP031",
+      "caption": "A tightly folded parachute is unfolded, revealing its vibrant colors and intricate design.",
+      "B": [
+        3,
+        3
+      ],
+      "B_joint": [
+        3,
+        4
+      ]
+    },
+    {
+      "case": "VP032",
+      "caption": "A player uses a quick set to spike the ball, driving it downward at a steep angle.",
+      "B": [
+        3,
+        3
+      ],
+      "B_joint": [
+        2,
+        3
+      ]
+    }
+  ],
+  "main_interpretation": "PC net+3 score-points across40 (4 improvements,1 regression), SA net-1 (2 improvements,3 regressions); same10 Joint passes. Does not meet any of the three40-case targets.",
+  "fixed16_limitation": "Selected fixed16 is easier than the remaining24; do not treat the16 result as a40/60 estimate.",
+  "visual_review": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/b400_joint_read_eval/reports/actual_video_review.json",
+  "new_training_updates": 0,
+  "visual_interpretation": "完整40的PC+0.075并未伴随SA或Joint改善。三例预先选择的新样例未见清楚的过程改善；两例得分变化样例中，PC上升伴随更静止/过程缺失。联合读取能减少某些形体变化错误，但目前不能认定达到所要求的综合生成收益。",
+  "candidate_accepted": false
+}

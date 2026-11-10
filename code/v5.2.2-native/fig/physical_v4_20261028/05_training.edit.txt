@@ -1,0 +1,11 @@
+Edit the supplied training diagram, preserving all dimensions, title, style, panels(c),(d) and footer. Fix only the dataflow in (a) and one redundant connection in (b).
+
+Panel(a) must be redrawn with independent sources and a clear fork:
+Sources are z_real [B,48,21,30,52] from video->VAE, independently sampled epsilon [B,48,21,30,52], and independent sigma [B]. No arrow epsilon -> sigma or z_real -> sigma.
+z_real and epsilon each feed TWO computations: (1) z_sigma=(1-sigma)z_real+sigma*epsilon, observed first frame fixed; (2) target v*=epsilon-z_real. sigma feeds ONLY computation (1).
+Computation (1) -> Wan+C+Physical Block -> vhat [B,48,21,30,52] -> upper input of L_FM.
+Computation (2), v* [B,48,21,30,52], -> lower input of L_FM directly. No arrow from z_sigma or vhat into the v* target box. Keep target branch visually separate from prediction branch until the loss.
+Use a clean two-row layout with input sources on left, noisy-input/model/prediction along upper row and target along lower row. If many connectors would cross, use explicit named input port labels “输入：z_real, ε, σ” on the mixture box and “输入：z_real, ε” on the target box; do not invent false dependency arrows. Keep L_FM formula, all shapes and future20 wording unchanged. Preserve the gradient-route orange strip.
+
+Panel(b): C prefix must have ONE arrow into the Qwen decoder. Remove the extra line going downward from C prefix to join the question/answer embedding line. Question+shifted-answer embedding is a separate second input to the decoder. Preserve the sole correct C-prefix-to-decoder arrow, all text and shapes.
+Output only the corrected diagram.

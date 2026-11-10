@@ -1,0 +1,147 @@
+revision: physical_content_v7_native_response_fusion_r16
+paths:
+  wan_code: /home/liuzhirui/model/Wan2.2
+  wan_checkpoint: /home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B
+  qwen_checkpoint: /home/liuzhirui/model/Qwen3-VL/Qwen3-VL-8B-Instruct
+  cache: /home/liuzhirui/Project/physGen/data_cache/wisa_4000
+  supervision_cache: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/input_overlay
+  runs: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_response_fusion_r16/runs
+  supervision_cache_readonly: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_variants/supervision_cache
+  content_cache: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cache
+  interface: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cache/interface.pt
+  inference_evidence: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs
+model:
+  width: 3072
+  qwen_width: 4096
+  q_tokens: 256
+  q_heads: 32
+  rounds: 2
+  condition_every: 3
+  lora_rank: 32
+  grounded_read_heads: 16
+  grounded_word_normalization: train_fitted_whitened_words_and_request
+  global_reader_input: original_contextual_request_and_physical_words
+  final_readout: evidence_complete_read_to_r15c_local_and_state_gated_global
+  shared_content_offset: true
+  native_text_adaptation: frozen
+  response_mode: rc_direct_bound_t5
+  candidate_label: R16J
+  fusion_order: request_conditioned_C_and_head_partitioned_direct_bound_t5_single_read_plus_r15c_t5_local_condition
+  global_execution:
+  - direct
+  - request_bound
+  - t5_literal
+  global_execution_gate: zero_init_full_width_state_value_no_bottleneck
+  local_execution_operator: r15c_5x3x3_video_state_V
+  local_query_condition: direct_plus_t5_request_zero_init_full_width
+  value_correction: none
+  physical_read_normalization: head_partitioned_direct_bound_t5_single_softmax
+  physical_output_initialization: zero_O_exact_native_start
+  physical_window:
+  - 5
+  - 3
+  - 3
+  physical_window_shift: alternating_0_and_1_noncyclic
+  physical_positions: official_video_grid_RoPE
+knowledge:
+  image_size:
+  - 480
+  - 832
+  video_size:
+  - 480
+  - 832
+  max_text_tokens: 4096
+  gradient_checkpointing: true
+  reasoning_mode: q_seed128_message
+  latent_reasoning_steps: 2
+  reasoning_tokens: 256
+  reasoning_max_tokens: 128
+  reasoning_cache: 16
+  freeze_backbone: true
+verifier:
+  kind: none
+geometry:
+  mode: native
+  rgb_size:
+  - 480
+  - 832
+stages:
+  interface: 128
+  joint: 272
+train:
+  seed: 42
+  accumulation: 4
+  peak_lrs:
+    enhancement: 5.0e-05
+    fusion_read: 2.0e-05
+    fusion_write: 3.0e-05
+    wan_lora: 2.0e-05
+  minimum_lr_ratio: 0.2
+  warmup: 32
+  wan_warmup: 128
+  decay_start: 600
+  grad_clip:
+    enhancement: 1.0
+    fusion_read: 1.0
+    fusion_write: 1.0
+    wan_lora: 1.0
+  text_dropout: 0.1
+  save_every: 50
+  keep_steps:
+  - 128
+  - 400
+  validation_steps: []
+  gradient_checkpointing: true
+  gradient_ownership: physical_interface_then_joint
+inference:
+  steps: 50
+  shift: 5.0
+  guidance: 5.0
+  sampler: shifted_euler
+  guidance_composition: joint_two_branch_cfg
+variant: physical_content
+loss:
+  peak_weight: 0.03
+  final_weight: 0.015
+  warmup: 32
+  decay_start: 600
+  temperature: 1.0
+  generation:
+    tail_weight: 0.2
+    tail_fraction: 0.25
+  semantic_target: routing_C_only
+source_snapshot: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_response_fusion_r16/snapshots/20261110T033758Z
+evaluation_budget:
+  final_stop: 400
+  intermediate_step: null
+  intermediate_cases: 0
+  primary_cases: 40
+  control_cases: 16
+  control_modes:
+  - no_c
+  - condition_off
+  - global_off
+  - local_off
+  - global_direct_off
+  - global_request_off
+  - global_literal_off
+  - execution_condition_off
+  - local_t5_condition_off
+  - temporal_off
+  - reasoning_swapped
+  - empty_reasoning
+  - global_train_mean
+  automatic_extension: true
+  native_text_guidance: 5.0
+  physical_guidance: 5.0
+  seed: 42
+  extended_evaluation:
+    policy: final_R16J_40_60_and_paired16_only; no_cross_benchmarks
+    cases: 60
+    new_cases: 20
+    runner: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/videophy60/snapshots/20261031T150803Z/run_extra20.py
+    input_status: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/videophy60/preparation_status.json
+    protocol: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/videophy60/protocol.json
+    keep_original_40_results: true
+  maximum_version: R16J
+data_revision: original_wisa4000_and_original_reasoning

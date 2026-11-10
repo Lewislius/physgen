@@ -1,0 +1,30 @@
+{
+  "created_utc": "2026-10-26T07:42:38.432034+00:00",
+  "revision": "v522_native_fullwidth_attention_v12",
+  "tool": "built-in image_gen",
+  "source": "/home/liuzhirui/.codex/generated_images/01a1625a-c1e0-7f62-9433-2b97feb6f455/exec-076800e4-aa35-46ab-bfdd-b420d6b97c0a.png",
+  "png": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/fig/v522_native_v12_03_C_injection_dimensions_20261026.png",
+  "size": [
+    1448,
+    1086
+  ],
+  "sha256": "fb67f07401493192a6760fbaa537c15da92c5de14562a09cb5c431e1ea82f258",
+  "prompts": [
+    "/home/liuzhirui/Project/physGen/code/v5.2.2-native/fig/v522_native_v12_03_C_injection_dimensions_20261026.prompt.txt",
+    "/home/liuzhirui/Project/physGen/code/v5.2.2-native/fig/v522_native_v12_03_C_injection_dimensions_20261026.review.txt",
+    "/home/liuzhirui/Project/physGen/code/v5.2.2-native/fig/v522_native_v12_03_C_injection_dimensions_20261026.textfix.txt"
+  ],
+  "code_hashes": {
+    "physgen_native/native_attention.py": "2fc2518276e2041dd6c2af1315eb51c27438f3548d68406e6b540315ab92ca15",
+    "physgen_native/generator.py": "b62b06ed4cc068bf8aef4c80decffe50290d4cc447323c45038fb0a78f8fb801",
+    "configs/native_fullwidth_attention_wisa3857.yaml": "7c36dbb7d207be1667d9839d8ce4b375cd84fe041c597adaee0eeb9e7fed5fe7"
+  },
+  "reviewed": [
+    "3072-wide native Q/K/V/O; 24 heads x 128",
+    "native norm3 is LayerNorm",
+    "a: RMSNorm -> 3072 to 192 -> SiLU -> 192 to 1 -> sigmoid",
+    "a broadcast with r[3072], reshape to [B,24,7800,128], add to Q_future",
+    "separate text and C attention; strength once; first 390 C tokens zero-padded",
+    "independent H_s and Y residual inputs; native FFN follows"
+  ]
+}

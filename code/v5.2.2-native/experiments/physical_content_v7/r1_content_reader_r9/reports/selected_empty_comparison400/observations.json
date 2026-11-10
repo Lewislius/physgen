@@ -1,0 +1,40 @@
+{
+  "recorded_utc": "2026-10-31T20:08:21.369729+00:00",
+  "observer": "Assistant inspection of fixed four-frame panels from existing paired videos",
+  "source_manifest": "experiments/physical_content_v7/r1_content_reader_r9/reports/selected_empty_comparison400/manifest.json",
+  "scope": "Both changed-PC cases only, selected after scoring; no new generation/model/evaluator/dense sweep.",
+  "cases": {
+    "VP004": {
+      "scores": {
+        "correct": {
+          "sa": 2,
+          "pc": 3
+        },
+        "empty": {
+          "sa": 2,
+          "pc": 4
+        }
+      },
+      "observations_zh": [
+        "两个版本共享首帧的复杂长条结构与遮挡。正常reasoning在第54/80帧中长条结构出现更多断续、片状残留和手部模糊；空reasoning保留更多连续的长条结构。",
+        "两组抽帧都未清楚呈现受力弯折后裂纹传播的过程，SA均2。空条件较少破坏原结构与其较高PC相符，但不代表它完成了请求。"
+      ]
+    },
+    "VP027": {
+      "scores": {
+        "correct": {
+          "sa": 4,
+          "pc": 5
+        },
+        "empty": {
+          "sa": 4,
+          "pc": 4
+        }
+      },
+      "observations_zh": [
+        "两组抽帧均可见手与面团接触、连续团块和挤压形变。",
+        "仅据0/27/54/80帧，没有可靠定位正常条件PC多1分的具体原因；保留完整视频已有评分，不虚构物理改进机制。"
+      ]
+    }
+  }
+}

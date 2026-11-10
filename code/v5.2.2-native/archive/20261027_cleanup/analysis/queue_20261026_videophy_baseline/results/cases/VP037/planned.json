@@ -1,0 +1,27 @@
+{
+  "id": "VP037",
+  "caption": "A competitor approaches the runway, accelerates, jumps, and lands with their legs spread wide.",
+  "revision": "v522_native_generation_baseline_v11",
+  "optimizer_step": 32,
+  "seed": 42,
+  "fps": 23.999999284744284,
+  "conditions": "first frame, caption, existing requirements; no future target",
+  "physical_dependency_analysis": "OBSERVED: A single aircraft is airborne mid-jump over a runway; no competitor, no legs spread, no acceleration phase visible. Unknown: whether this is the target event or a prior/parallel occurrence.\n\nINTERACTION: If a competitor were to approach and accelerate (Clause 1), lift would generate from dynamic pressure → jump initiation → landing posture (Clause 2) → contact with runway surface.\n\nPERSISTENCE: Acceleration sustains lift until jump apex; landing posture must be maintained through touchdown to satisfy Clause 3. Runway surface continuity and friction propagate stability.\n\nINTERVENTION: If acceleration fails (Clause 1 absent), no lift → no jump → no landing with legs spread. If landing posture fails (Clause 2 absent), stability (Clause 3) is compromised → potential runway exit or instability.",
+  "latent_reasoning_steps": 2,
+  "latent_feedback": null,
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "condition_strength": 1.0,
+    "latent_feedback": {
+      "enabled": false,
+      "metric": "relative_rms",
+      "sigmas": [
+        0.85,
+        0.65
+      ],
+      "step_size": 0.1
+    }
+  }
+}

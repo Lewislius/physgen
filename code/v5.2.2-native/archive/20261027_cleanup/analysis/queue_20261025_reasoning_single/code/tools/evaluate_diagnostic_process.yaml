@@ -1,0 +1,41 @@
+name: v522-independent-video-evaluation-reasoned-process32
+description: Independent VideoPhy2 AutoEval on all four held-out cases, both paired
+  seeds, before and after 32 updates; not official benchmark.
+workspace: ALL-IN-ONE
+project: wan-animate
+max_restarts: 0
+resources:
+  resource_pool: amp-48g
+  slots_per_trial: 1
+  is_single_node: true
+  shm_size: 34359738368
+bind_mounts:
+- host_path: /mount/HOME/liuzhirui
+  container_path: /home/liuzhirui
+- host_path: /mount/NAS1/public
+  container_path: /run/determined/NAS1/public
+environment:
+  image: 10.130.130.5:8192/lab-dev:latest
+  environment_variables:
+  - AUTO_RESUME=1
+  - CONFIG=/home/liuzhirui/Project/physGen/code/v5.2.2-native/configs/native_physical_wisa3857.yaml
+  - OMP_NUM_THREADS=4
+  - PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+checkpoint_storage:
+  type: shared_fs
+  host_path: /mount/HOME/liuzhirui
+  storage_path: Project/physGen/code/v5.2.2-native/determined_checkpoints
+  save_experiment_best: 0
+  save_trial_best: 0
+  save_trial_latest: 0
+searcher:
+  name: single
+  metric: validation_loss
+  max_length:
+    epochs: 1
+  smaller_is_better: true
+entrypoint: /home/liuzhirui/miniconda3/envs/physvid/bin/python -I -B -u /home/liuzhirui/Project/physGen/code/v5.2.2-native/tools/evaluate_videophy2.py
+  /home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/independent_video_evaluation_v2/v522-diagnostic-reasoned_process-8cases32updates-seed42_65836/step0000_repeat0
+  /home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/independent_video_evaluation_v2/v522-diagnostic-reasoned_process-8cases32updates-seed42_65836/step0000_repeat1
+  /home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/independent_video_evaluation_v2/v522-diagnostic-reasoned_process-8cases32updates-seed42_65836/step0032_repeat0
+  /home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/independent_video_evaluation_v2/v522-diagnostic-reasoned_process-8cases32updates-seed42_65836/step0032_repeat1

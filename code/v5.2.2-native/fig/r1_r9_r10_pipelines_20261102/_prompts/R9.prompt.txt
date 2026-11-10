@@ -1,0 +1,19 @@
+Edit the referenced academic architecture figure into a clean final PNG. Keep the white OPAQUE background, serif typography, pastel blue/coral/gold/mint/lavender style, and its correct TOP whole-pipeline layout. Do not introduce transparency. Replace BOTH LOWER DETAIL PANELS completely with the simplified graph specified here. Remove ALL old lower-panel nodes and inter-row edges first. Keep the same title position; use the variant title below.
+Top pipeline keeps Frozen Qwen→Physical Enhancement→C tensor(s)→Wan denoising; independent Request→T5/Wan text embed4096→3072→T512×3072→Wan; noisy latent48×21×30×52→patch1×2×2→H8190×3072→Wan iterative denoising→denoised latent48×21×30×52→VAE→video81×3×480×832. Wan label "30 blocks; fusion every3". No claim of30 denoising steps.
+BOTTOM LEFT panel "Physical Enhancement":
+Only THREE main boxes, so large readable labels. Box1 "Word anchors" contains exact short lines "Wr: Lr×4096 → a:256×4096", "Normalize +4-group resample", "A=FrozenAffine(a):256×3072", "4096→3072". Box1 has a labeled output a to box2 and labeled output A to box3.
+Box2 "Q refinement ×2" contains the reader specification given below, then "Group exchange + FFN", "4096→8192→4096", and "U=Q2−a:256×4096". An external small "Memory:..." box containing ONLY the input specification below feeds Box2, not Box1. Seed caption "Q0=a+S" inside box2. For A/B add final word-value read within this SAME box as a separate bottom subline, specified below, yielding Zr256×4096. Do not draw lots of interior arrows; these short labeled stages are enough.
+Box3 "C construction" contains ONLY the variant equations and projection dimensions below. This box receives U (and Zr if present) from box2, and A from box1. Label outputs with256×3072. Put a tiny dashed red loss tag specifying exactly the supervised C next to this box; NO long training-target arrows.
+BOTTOM RIGHT panel "Physical Fusion":
+A simple left-to-right branching flow, NOT a four-row diagram.
+At left two stacked source boxes:
+(upper) "Future Hf:7800×3072" → small purple box "q=WqHf+Wtφ(τ,Δτ)" with small label "24×7800×128; Wt:256→3072".
+(lower) content source(s), shape256×3072, → ONE purple box "K,V projection:3072→3072" with variant K,V equations from below; output annotation "24×257×128 (+1 null)".
+These two branches merge at ONE coral "Physical Attention" box → "Z:7800×3072" → ONE coral box "State-conditioned write", containing "ΔHf=O[Z+Ws(LN(Hf))⊙Z]" and "Ws,O:3072→3072". Hf is an argument named in formula, no extra long crossing arrow needed.
+Then → ONE blue box "Zero-pad + Add before FFN" containing the compact EXACT formula "Hmid = Hnative + Pad(ΔHf)" and shape"8190×3072". A small independent gold input labeled "Hnative = Hs + TextAttn(Hs,T)" feeds THIS blue box directly. That small input is NOT H′.
+Finally blue box → "Native FFN + residual" → "H′:8190×3072".
+There is ONLY ONE FFN in the entire fusion panel, and it is AFTER the physical/native addition. No other FFN row or output/sum loop. Avoid long edge routing by arranging Fusion as a compact U-shaped path if necessary. C is not produced from Hf; the K,V box ONLY receives C. No unnecessary detail or extra tables.
+Footer "Shapes omit B; 81 frames at480×832" and "L=0.8LFM+0.2Ltail+λLsem". All labels short. No invented modules, no long paragraphs. Fully opaque white PNG.
+
+VARIANT:
+TITLE "R9 | Relation-grounded reader". Top single C256×3072. Memory box "Wr:reasoning; Wp:request; width4096". Q Reader "16 same-relation heads +16 context heads"; context is[Wp;Wr], Wr alone anchors a. No direct image tokens and no final word-value read. C construction"C=A+PU", "P:4096→3072"; loss tag"Lsem(C)". Fusion input"C:256×3072", equations"K=WkC; V=WvC".

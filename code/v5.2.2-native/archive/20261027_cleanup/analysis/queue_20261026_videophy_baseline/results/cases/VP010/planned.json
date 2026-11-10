@@ -1,0 +1,27 @@
+{
+  "id": "VP010",
+  "caption": "A person mops up a puddle of water on a concrete floor, the water disappearing as the mop passes.",
+  "revision": "v522_native_generation_baseline_v11",
+  "optimizer_step": 32,
+  "seed": 42,
+  "fps": 23.999999284744284,
+  "conditions": "first frame, caption, existing requirements; no future target",
+  "physical_dependency_analysis": "OBSERVED: Mop stands in puddle; water reflects light; floor wet; no person visible; water level static.\n\nINTERACTION: Mop dragged across surface → water adheres to fibers → water is lifted and redistributed → visible level drop.\n\nPERSISTENCE: Water absorption rate depends on mop saturation, floor porosity, and drag speed; puddle shrinks continuously as long as mop moves.\n\nINTERVENTION: If mop stops moving → water level stabilizes or rises slightly; if mop is lifted without full absorption → residual puddle remains; if floor is non-porous → absorption ceases prematurely.",
+  "latent_reasoning_steps": 2,
+  "latent_feedback": null,
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "condition_strength": 1.0,
+    "latent_feedback": {
+      "enabled": false,
+      "metric": "relative_rms",
+      "sigmas": [
+        0.85,
+        0.65
+      ],
+      "step_size": 0.1
+    }
+  }
+}

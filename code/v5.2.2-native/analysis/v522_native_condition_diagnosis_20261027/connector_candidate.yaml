@@ -1,0 +1,50 @@
+status: prototype_only_not_wired_or_trained
+implementation: connector_response_candidate.py
+base: current_v522_native_H_Q_no_verifier
+priority: H_first_then_Q_if_H_shows_actual_generation_benefit
+source_policy: Keep original model, training code, configs and checkpoints unchanged; integrate only in a separate experiment with a new checkpoint revision.
+hypothesis: Native response supervision may teach the existing connector to carry conditional differences instead of a nearly common additive message.
+architecture:
+  keep_workspace_width: 4096
+  keep_Q_slots: 128
+  keep_projector: Linear_4096_to_3072_plus_full_width_alignment
+  keep_message_refinements: 2
+  keep_Q_initial_grounding_R0: true
+  keep_native_Wan_K_V_O: true
+  additional_model: none
+training_proposal:
+  seed: 42
+  accumulation: 4
+  stages: {interface: 64, joint: 160}
+  interface:
+    Wan_and_inherited_LoRA: frozen
+    existing_losses: {fm: 1.0, flow_temporal: 0.1}
+    candidate_loss: normalized_MSE_of_C_response_difference_versus_native_text_response_difference
+    initial_candidate_weight: 0.01
+    weight_status: unvalidated_starting_value_not_selected_from_VideoPhy2
+    activate_only_when_caption_is_present: true
+    native_query_gradient: detached
+    native_teacher_gradient: detached
+    native_query_samples_per_layer: 64
+    target_energy_floor: 0.0001
+  joint:
+    losses: {fm: 1.0, flow_temporal: 0.1}
+    candidate_loss_weight: 0.0
+  allowed_inputs: Existing training first frame, caption, original legal requirements and cached T5 text.
+  alternate_C: Change caption and prompt clauses while retaining the same first image.
+  alternate_future_video: forbidden
+  reinforcement_learning: false
+  extra_ranking_loss: false
+  extra_training_stage: false
+  VideoPhy2_training_signal: forbidden
+decision_rules:
+  - Audit prompt/first-image compatibility before attributing low semantic scores to the connector; keep corrected-input diagnostics separate.
+  - Query-seed rescaling alone is not promoted; the completed frozen-checkpoint test did not strengthen input selectivity.
+  - Do not equate increased token variance or reduced alignment/FM loss with video-quality improvement.
+  - First compare current full C and C off with the same trained LoRA and saved noise.
+  - Compare any trained candidate with the unchanged H/Q control and the same-checkpoint C-off control.
+  - Require complete prespecified generation cases and independent SA/PC/joint results before claiming improvement.
+limitations:
+  - Native T5 response is a communication reference, not physical ground truth.
+  - Matching native text response alone cannot establish added physical reasoning or better generation.
+  - The extra interface response pass has not yet been timed or validated at training scale.

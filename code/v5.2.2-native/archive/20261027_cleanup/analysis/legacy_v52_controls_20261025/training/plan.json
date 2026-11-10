@@ -1,0 +1,26 @@
+{
+  "status": "not_submitted_superseded_by_inference_evidence",
+  "based_on": "/home/liuzhirui/Project/physGen/code/v5.2/train/train_joint_state_no_lora_1x96g.yaml",
+  "entrypoint": "bash /home/liuzhirui/Project/physGen/code/v5.2/train/train_joint_state_no_lora_1x96g.sh",
+  "quick_test": true,
+  "stages": {
+    "planner": {
+      "steps": 2
+    },
+    "joint": {
+      "steps": 2
+    }
+  },
+  "frames": 81,
+  "train_samples": 8,
+  "validation_samples": 2,
+  "source_code_changes": false,
+  "new_training_data": false,
+  "slots_per_trial": 1,
+  "configuration_changes": [
+    "run name and isolated output paths",
+    "existing QUICK_TEST=1"
+  ],
+  "audit_status": "ready",
+  "next_decision": "Recover actual native training on another allocated single GPU; old inference already reproduces SIGKILL."
+}

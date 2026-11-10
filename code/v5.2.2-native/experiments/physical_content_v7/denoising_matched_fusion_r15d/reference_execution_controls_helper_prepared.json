@@ -1,0 +1,68 @@
+{
+  "parent_experiment": 67920,
+  "experiment_id": 67939,
+  "status": "running_actual_accepted_gpu",
+  "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/denoising_matched_fusion_r15d/submissions/r15d_reference_execution_20261106T062612Z.yaml",
+  "bundle": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/denoising_matched_fusion_r15d/submissions/reference_execution/20261106T062612Z",
+  "modes": [],
+  "references": [
+    "R1",
+    "R10A",
+    "R15B"
+  ],
+  "cases": [
+    "VP004",
+    "VP038"
+  ],
+  "training_updates": 0,
+  "output_videos": 0,
+  "reason": "Do not misclassify shared physical writes as harmful without matched useful historical references.",
+  "attempts": [
+    {
+      "experiment_id": 67936,
+      "submitted_utc": "2026-11-06T06:23:20.510119+00:00",
+      "accepted": false,
+      "actual_gpu": "NVIDIA H100",
+      "state": "STATE_ERROR",
+      "trial_ids": [
+        69323
+      ],
+      "reason": "Actual GPU guard rejected H100 before foundation loading"
+    },
+    {
+      "experiment_id": 67937,
+      "submitted_utc": "2026-11-06T06:26:14.483251+00:00",
+      "accepted": false,
+      "actual_gpu": "NVIDIA H100",
+      "state": "STATE_ERROR",
+      "trial_ids": [
+        69324
+      ],
+      "reason": "Actual GPU guard rejected H100 before foundation loading"
+    },
+    {
+      "experiment_id": 67939,
+      "submitted_utc": "2026-11-06T06:32:22.266183+00:00",
+      "accepted": true,
+      "actual_gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "state": "STATE_RUNNING",
+      "trial_ids": [
+        69326
+      ]
+    }
+  ],
+  "retry_policy": "Retry only when usable RTX allocation is possible",
+  "prior_bundles": [
+    {
+      "bundle": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/denoising_matched_fusion_r15d/submissions/reference_execution/20261106T062318Z",
+      "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/denoising_matched_fusion_r15d/submissions/r15d_reference_execution_20261106T062318Z.yaml",
+      "reason": "R1 requires original full Qwen memory rather than new compact word-only evidence. Prior allocation rejected H100 before model loading."
+    }
+  ],
+  "input_validation": "Both polarities for both R1 cases recovered from immutable source; scope/caption/relations and memory dimensions checked on CPU; no encoder/API call.",
+  "actual_gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+  "trial_ids": [
+    69326
+  ],
+  "verified_utc": "2026-11-06T06:32:37.896550+00:00"
+}

@@ -1,0 +1,57 @@
+{
+  "utc": "2026-11-03T09:54:06.445516+00:00",
+  "future_comparisons": [
+    "R10A with optimized400 data and legal API reasoning",
+    "R11A with optimized400 data and legal API reasoning"
+  ],
+  "prerequisite": "Analyze currentR11A results and finish paired data preparation first",
+  "required_adaptations": [
+    {
+      "component": "mean-C control",
+      "finding": "Existing frozen prepare_mean_condition.py requires all sampled positive/negative relation group tensors to match. New API supports1-4 relations, so that assumption is invalid for the new data. It is valid for current old-dataR11A and must remain unchanged there.",
+      "action": "Adapt the new comparison/control implementation before evaluation; document relation-layout effects and preserve a train-only mean without evaluation outcomes.",
+      "implementation": "condition_controls.py MeanContent/mean_with_own_prior; prepare_mean_condition.py for fresh new-data checkpoints. Old fixed4 helpers unchanged.",
+      "control_definition": "Fixed train-mean routing/execution tensors, retain each own positive/negative relation-count prior. Relation-count metadata remains; do not call this removal of all Qwen information. Mean amplitude changes are reported."
+    },
+    {
+      "component": "input cache integration",
+      "finding": "Training overlay and prepare_inference.py preserve local4096 features but current legacy inference loaders do not automatically select those new caches.",
+      "action": "Use explicit new cache roots in future copied runners; keep original benchmark prompts/images/seeds and own-image/request paired reasoning controls. No silent legacy fallback.",
+      "implementation": "condition_controls.py InferenceCache; prepare_inference.py supports own-image/request empty and same-count donor controls. No legacy evidence fallback.",
+      "remaining": "Connect these explicit readers/helpers in separately frozen new-data R10A/R11A runners after current R11A evidence and full-data readiness. Not wired into current generation."
+    }
+  ],
+  "current_training_changed": false,
+  "current_evaluation_changed": false,
+  "relation_prior_finding": {
+    "source": "physical_scaling_q256/snapshots/20261029T140406Z/physical_scaling/supervision.py:group_log_prior",
+    "definition": "Each relation and zero-valued reference have equal total prior mass at equal raw logits. Nonreference mass is R/(R+1), not independent of relation count.",
+    "equal_logit_nonreference_mass": {
+      "1": 0.5,
+      "2": 0.6666666666666666,
+      "3": 0.75,
+      "4": 0.8
+    },
+    "partial_api_counts": {
+      "positive": {
+        "4": 582,
+        "3": 156,
+        "2": 2
+      },
+      "negative": {
+        "4": 355,
+        "3": 381,
+        "2": 2,
+        "1": 1
+      }
+    },
+    "interpretation": "This is a code-supported conditioning difference. It does not measure trained attention or prove a generation effect. Keep original architecture for the matched data comparison; preserve per-arm priors in content controls."
+  },
+  "verification": {
+    "new_control_checks": 4,
+    "result": "passed",
+    "scope": "Real local tokenizer/template, empty/donor input boundaries, mean variable groups, explicit cache isolation; no GPU/model-quality result",
+    "gpu_encoding_pending": true,
+    "new_training_submitted": false
+  }
+}

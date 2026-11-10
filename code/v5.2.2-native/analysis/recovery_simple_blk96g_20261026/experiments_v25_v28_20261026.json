@@ -1,0 +1,319 @@
+{
+  "recorded_at_utc": "2026-10-26T16:00:40.104157+00:00",
+  "project_root": "/home/liuzhirui/Project/physGen/code/v5.2.2-native",
+  "pipeline_family": "physGen v5.2.2-native / simple message + criterion verifier",
+  "comparison": "2×2：H_content_message 与 Q_seed128_message；冻结 verifier 与独立 verifier LoRA。四个版本均保留 verifier，不是 no-verifier 对照。",
+  "data": {
+    "dataset": "既有 wisa_4000 缓存",
+    "records": 3857,
+    "train": 3666,
+    "validation": 191
+  },
+  "implementation": {
+    "training": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/train/train.py",
+    "system": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/physgen_native/system.py",
+    "knowledge": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/physgen_native/knowledge.py",
+    "analysis": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/physgen_native/multiround_knowledge.py",
+    "message": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/physgen_native/message_conditioning.py",
+    "injection": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/physgen_native/native_attention.py",
+    "verifier": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/physgen_native/criterion_verifier.py",
+    "calibration": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/physgen_native/criterion_training.py",
+    "optimizer_schedule": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/physgen_native/runtime.py",
+    "resumable_launcher": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/tools/run_resumable_training.py",
+    "resource_monitor": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/tools/run_recorded.py"
+  },
+  "design": {
+    "memory_and_G_width": 4096,
+    "final_projection": [
+      4096,
+      3072
+    ],
+    "query_slots": 128,
+    "generated_frames": 81,
+    "verifier_frames": 28,
+    "frame_stride": 3,
+    "include_final_frame": true,
+    "rgb_size": [
+      480,
+      832
+    ],
+    "analysis_prompt": "四行，每行最多25词，总计100词；caption/clauses单独保留",
+    "analysis_token_budget": [
+      512,
+      1024
+    ],
+    "analysis_on_limit": "保留已有非空分析作为条件继续训练",
+    "teacher_prompt": "三行，总计75词",
+    "teacher_token_budget": 384,
+    "teacher_on_limit": "保留非空观察，继续置信度和顺序一致性筛选",
+    "rgb_process_training_loss": false
+  },
+  "stages": [
+    {
+      "name": "interface",
+      "steps": 64,
+      "loss_terms": 2,
+      "weights": {
+        "fm": 1.0,
+        "flow_temporal": 0.1
+      },
+      "updated": "C：G/P/Q seeds（仅Q版）及输入norm、输出gain/bias",
+      "peak_lr": {
+        "C": 0.0001,
+        "alignment": 1e-05,
+        "wan_lora": 0,
+        "verifier_lora": 0
+      }
+    },
+    {
+      "name": "calibration",
+      "steps": 32,
+      "only": "verifier LoRA 版本",
+      "loss_terms": 1,
+      "weights": {
+        "judge_soft_ce": 1.0
+      },
+      "updated": "verifier LoRA",
+      "peak_lr": {
+        "C": 0,
+        "alignment": 0,
+        "wan_lora": 0,
+        "verifier_lora": 1e-05
+      }
+    },
+    {
+      "name": "joint",
+      "steps": 160,
+      "loss_terms": 3,
+      "weights": {
+        "fm": 1.0,
+        "flow_temporal": 0.1,
+        "verifier_support_nll": 0.05
+      },
+      "updated": "FM/时间FM更新C与Wan LoRA；verifier反馈只更新C",
+      "peak_lr": {
+        "C": 5e-05,
+        "alignment": 5e-06,
+        "wan_lora": 1e-05,
+        "verifier_lora": 0
+      }
+    }
+  ],
+  "loss_parameters": {
+    "verifier_temperature": 1.0,
+    "criteria": 4,
+    "label_orders": 2,
+    "teacher_min_confidence": 0.55,
+    "teacher_max_order_gap": 0.15,
+    "feedback_every_joint_updates": 4,
+    "feedback_steps": 16,
+    "feedback_guidance": 5,
+    "feedback_shift": 5,
+    "feedback_weight_not_divided_by_accumulation": true,
+    "verifier_lora": {
+      "rank": 16,
+      "alpha": 16,
+      "last_layers": 12
+    }
+  },
+  "lr_schedule": {
+    "C_interface_warmup": 8,
+    "C_interface_end_ratio": 0.5,
+    "C_joint_cosine_floor": 0.2,
+    "Wan_joint_warmup": 8,
+    "Wan_joint_cosine_floor": 0.2,
+    "verifier_calibration_warmup": 4,
+    "verifier_calibration_cosine_floor": 0.2,
+    "optimizer": "AdamW",
+    "matrix_weight_decay": 0.01,
+    "norm_bias_query_weight_decay": 0,
+    "clip_by_owner": 1.0
+  },
+  "checkpoint_notes": [
+    "latest.pt 在保存间隔、阶段边界和训练结束时原子替换；不是每步保留独立ckpt文件。",
+    "checkpoint包含可学习参数、optimizer、scheduler、RNG、step/cursor、config/revision及verifier状态；冻结基座仍从原路径加载。",
+    "H LoRA恢复任务66385从已保存的第60步恢复，继续写原66355目录；amp-80g临时恢复66374已按用户要求停止。",
+    "Q LoRA旧任务未到保存点；66384从原初始化开始，输出66384目录；未运行的amp任务66375已取消。"
+  ],
+  "recovery": {
+    "reason": "重复SIGKILL/137集中在H100 slot0分配路径；未确定具体信号发送者。监测的失败66365/66366容器OOM计数均为0。",
+    "mitigation": "按用户要求全部提交blk-96g单卡；LoRA恢复入口最多2次调度重试，自动恢复latest.pt及optimizer/scheduler/RNG，每4步保存。没有更改共享GPU槽位或资源池配置；H100路径的SIGKILL触发原因仍未确定。",
+    "unchanged": "模型、损失、学习率、224/256步预算、accumulation=4、运行镜像和conda环境未改。",
+    "verification": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/recovery_simple_blk96g_20261026/verification.json",
+    "new_tests": "149项回归通过；随后新增的首次启动监控目录回归包含在3项恢复专项测试中，均通过。",
+    "failed_gpu_uuid": "GPU-30085d8b-9408-7a7f-e544-be0280858108",
+    "legacy_control": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/legacy_v52_controls_20261025/comparison.json",
+    "signal_source_confirmed": false,
+    "canceled_amp_experiments": [
+      66374,
+      66375
+    ],
+    "confirmed_scope": "用户澄清为H/Q对应的verifier训练版本；本次恢复v26和v28。"
+  },
+  "experiments": [
+    {
+      "pipeline_version": "v25",
+      "checkpoint_revision": "v522_native_h_content_verifier_frozen_simple_v25",
+      "experiment": "H 完整内容消息 × 冻结 verifier",
+      "message_mode": "h_content_message",
+      "verifier_mode": "frozen",
+      "search_id": 66356,
+      "run_id": 67736,
+      "scheduler_state": "STATE_RUNNING",
+      "resource_pool": "blk-96g",
+      "slots_per_trial": 1,
+      "training_yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/train/native_h_content_message_verifier_frozen_simple_1x96g.yaml",
+      "training_config": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/configs/native_h_content_message_verifier_frozen_simple_wisa3857.yaml",
+      "original_blk96g_yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/train/native_h_content_message_verifier_frozen_simple_1x96g.yaml",
+      "original_shell_launcher": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/train/train_h_content_message_verifier_frozen_blk96g.sh",
+      "stages": {
+        "interface": 64,
+        "joint": 160
+      },
+      "total_steps": 224,
+      "accumulation": 4,
+      "resumed_from_step": null,
+      "superseded_failed_searches": [
+        66333
+      ],
+      "run_directory": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/checkpoints/v522-h-content-message-verifier-frozen-simple_66356",
+      "saved_runtime_config": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/checkpoints/v522-h-content-message-verifier-frozen-simple_66356/config.yaml",
+      "metrics_jsonl": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/checkpoints/v522-h-content-message-verifier-frozen-simple_66356/metrics.jsonl",
+      "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/checkpoints/v522-h-content-message-verifier-frozen-simple_66356/latest.pt",
+      "checkpoint_exists": true,
+      "checkpoint_logged_step": 80,
+      "latest_observed_step": 92,
+      "latest_observed_phase": "joint",
+      "checkpoint_every": 16,
+      "max_restarts": 0,
+      "recovery_resource_logs": null,
+      "observed_at_utc": "2026-10-26T16:00:40.104157+00:00"
+    },
+    {
+      "pipeline_version": "v26",
+      "checkpoint_revision": "v522_native_h_content_verifier_lora_simple_v26",
+      "experiment": "H 完整内容消息 × 独立 verifier LoRA 校准",
+      "message_mode": "h_content_message",
+      "verifier_mode": "lora",
+      "search_id": 66385,
+      "run_id": 67765,
+      "scheduler_state": "STATE_QUEUED",
+      "resource_pool": "blk-96g",
+      "slots_per_trial": 1,
+      "training_yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/train/native_h_content_message_verifier_lora_simple_resume_66355_1x96g.yaml",
+      "training_config": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/configs/native_h_content_message_verifier_lora_simple_wisa3857.yaml",
+      "original_blk96g_yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/train/native_h_content_message_verifier_lora_simple_1x96g.yaml",
+      "original_shell_launcher": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/train/train_h_content_message_verifier_lora_blk96g.sh",
+      "stages": {
+        "interface": 64,
+        "calibration": 32,
+        "joint": 160
+      },
+      "total_steps": 256,
+      "accumulation": 4,
+      "resumed_from_step": 60,
+      "superseded_failed_searches": [
+        66335,
+        66355,
+        66365
+      ],
+      "run_directory": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/checkpoints/v522-h-content-message-verifier-lora-simple_66355",
+      "saved_runtime_config": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/checkpoints/v522-h-content-message-verifier-lora-simple_66355/config.yaml",
+      "metrics_jsonl": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/checkpoints/v522-h-content-message-verifier-lora-simple_66355/metrics.jsonl",
+      "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/checkpoints/v522-h-content-message-verifier-lora-simple_66355/latest.pt",
+      "checkpoint_exists": true,
+      "checkpoint_logged_step": 60,
+      "latest_observed_step": 63,
+      "latest_observed_phase": "interface",
+      "checkpoint_every": 4,
+      "max_restarts": 2,
+      "recovery_resource_logs": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/checkpoints/recovery_logs/v522-h-content-message-verifier-lora-simple_66355",
+      "canceled_intermediate_searches": [
+        66374
+      ],
+      "observed_at_utc": "2026-10-26T16:00:40.104157+00:00"
+    },
+    {
+      "pipeline_version": "v27",
+      "checkpoint_revision": "v522_native_q_seed128_verifier_frozen_simple_v27",
+      "experiment": "Q128 固定槽位消息 × 冻结 verifier",
+      "message_mode": "q_seed128_message",
+      "verifier_mode": "frozen",
+      "search_id": 66353,
+      "run_id": 67733,
+      "scheduler_state": "STATE_RUNNING",
+      "resource_pool": "blk-96g",
+      "slots_per_trial": 1,
+      "training_yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/train/native_q_seed128_message_verifier_frozen_simple_1x96g.yaml",
+      "training_config": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/configs/native_q_seed128_message_verifier_frozen_simple_wisa3857.yaml",
+      "original_blk96g_yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/train/native_q_seed128_message_verifier_frozen_simple_1x96g.yaml",
+      "original_shell_launcher": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/train/train_q_seed128_message_verifier_frozen_blk96g.sh",
+      "stages": {
+        "interface": 64,
+        "joint": 160
+      },
+      "total_steps": 224,
+      "accumulation": 4,
+      "resumed_from_step": null,
+      "superseded_failed_searches": [
+        66334
+      ],
+      "run_directory": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/checkpoints/v522-q-seed128-message-verifier-frozen-simple_66353",
+      "saved_runtime_config": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/checkpoints/v522-q-seed128-message-verifier-frozen-simple_66353/config.yaml",
+      "metrics_jsonl": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/checkpoints/v522-q-seed128-message-verifier-frozen-simple_66353/metrics.jsonl",
+      "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/checkpoints/v522-q-seed128-message-verifier-frozen-simple_66353/latest.pt",
+      "checkpoint_exists": true,
+      "checkpoint_logged_step": 80,
+      "latest_observed_step": 94,
+      "latest_observed_phase": "joint",
+      "checkpoint_every": 16,
+      "max_restarts": 0,
+      "recovery_resource_logs": null,
+      "observed_at_utc": "2026-10-26T16:00:40.104157+00:00"
+    },
+    {
+      "pipeline_version": "v28",
+      "checkpoint_revision": "v522_native_q_seed128_verifier_lora_simple_v28",
+      "experiment": "Q128 固定槽位消息 × 独立 verifier LoRA 校准",
+      "message_mode": "q_seed128_message",
+      "verifier_mode": "lora",
+      "search_id": 66384,
+      "run_id": 67764,
+      "scheduler_state": "STATE_RUNNING",
+      "resource_pool": "blk-96g",
+      "slots_per_trial": 1,
+      "training_yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/train/native_q_seed128_message_verifier_lora_simple_recovery_1x96g.yaml",
+      "training_config": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/configs/native_q_seed128_message_verifier_lora_simple_wisa3857.yaml",
+      "original_blk96g_yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/train/native_q_seed128_message_verifier_lora_simple_1x96g.yaml",
+      "original_shell_launcher": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/train/train_q_seed128_message_verifier_lora_blk96g.sh",
+      "stages": {
+        "interface": 64,
+        "calibration": 32,
+        "joint": 160
+      },
+      "total_steps": 256,
+      "accumulation": 4,
+      "resumed_from_step": null,
+      "superseded_failed_searches": [
+        66336,
+        66357,
+        66366
+      ],
+      "run_directory": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/checkpoints/v522-q-seed128-message-verifier-lora-simple_66384",
+      "saved_runtime_config": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/checkpoints/v522-q-seed128-message-verifier-lora-simple_66384/config.yaml",
+      "metrics_jsonl": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/checkpoints/v522-q-seed128-message-verifier-lora-simple_66384/metrics.jsonl",
+      "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/checkpoints/v522-q-seed128-message-verifier-lora-simple_66384/latest.pt",
+      "checkpoint_exists": true,
+      "checkpoint_logged_step": 4,
+      "latest_observed_step": 4,
+      "latest_observed_phase": "interface",
+      "checkpoint_every": 4,
+      "max_restarts": 2,
+      "recovery_resource_logs": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/checkpoints/recovery_logs/v522-q-seed128-message-verifier-lora-simple_66384",
+      "canceled_intermediate_searches": [
+        66375
+      ],
+      "observed_at_utc": "2026-10-26T16:00:40.104157+00:00"
+    }
+  ]
+}

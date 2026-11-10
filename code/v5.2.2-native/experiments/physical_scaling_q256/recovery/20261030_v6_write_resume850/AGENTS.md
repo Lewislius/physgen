@@ -1,0 +1,1 @@
+User explicitly requests recovery of V6-WRITE 66674 from its own exact checkpoint through step 1000. Preserve model, data, losses and all schedule values. Keep the failed run and submitted snapshot unchanged. This recovery may resume matching checkpoint optimizer/RNG/cursor. Single blk-96g slot, RTX6000 only; reject H100 before foundation loading.

@@ -1,0 +1,9 @@
+Edit this diagram, preserving title, style, dimensions, panels (a),(b), and the footer. Correct the arithmetic/dataflow depiction in panels (c),(d) without altering formulas or tensor shapes.
+Panel (c): K_cond and U_cond(g_cond) are TWO independent additive operands, not a serial chain. Likewise K_scope and U_scope(g_scope). Display boxed equations:
+[K_cond B,128,3072] + [U_cond(g_cond) B,128,3072] -> [相加＋key norm＋split heads] -> [K̃_cond B,24,128,128].
+[K_scope B,128,3072] + [U_scope(g_scope) B,128,3072] -> [相加＋key norm＋split heads] -> [K̃_scope B,24,128,128].
+Do not draw an arrow from K_cond to U_cond(g_cond), nor K_scope to U_scope(g_scope). The plus sign between operand boxes is arithmetic, not a flow arrow. Each sum should feed the normalization/split block. Preserve current score/softmax/A tensors and A_scope to figure④.
+Panel (d): A and V are TWO matrix-multiplication operands. Use two clear boxed equations, with no arrows from A to V:
+[A_cond B,24,21,128,390] @ [V_state_cond B,24,21,390,128] = [U_cond B,24,21,128,128] -> [merge heads＋permute] -> [u_cond B,128,21,3072].
+[A_scope B,24,21,128,390] @ [V_state_scope B,24,21,390,128] = [U_scope B,24,21,128,128] -> [merge heads＋permute] -> [u_scope B,128,21,3072].
+Use the @ and = glyphs visibly between operand/result boxes. Do NOT put A -> multiplication circle -> V -> U, which falsely presents V as the product. All other content remains unchanged. Output the corrected diagram.

@@ -1,0 +1,66 @@
+{
+  "utc": "2026-11-09T08:19:19.936835+00:00",
+  "candidate": "R16B",
+  "status": "preflight_failed_no_training",
+  "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_budget_joint_read_r16b/snapshots/20261109T081919Z",
+  "config": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_budget_joint_read_r16b/snapshots/20261109T081919Z/configs/physical_content.yaml",
+  "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_budget_joint_read_r16b/submissions/r16b_20261109T081919Z.yaml",
+  "empty_context": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_budget_joint_read_r16b/empty_context",
+  "revision": "physical_content_v7_native_budget_joint_read_r16b",
+  "fresh_initialization": "official foundations only; no old or canceled project checkpoints",
+  "design_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_budget_joint_read_r16b/snapshots/20261109T081919Z/review/design_evidence.json",
+  "validation": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_budget_joint_read_r16b/snapshots/20261109T081919Z/review/validation.json",
+  "preflight_required": true,
+  "formal_training_updates": 400,
+  "main40_required": true,
+  "full60_required": true,
+  "controls16": [
+    "no_c",
+    "direct_read_only",
+    "request_memory_only",
+    "shared_physical_query",
+    "native_physical_query",
+    "reasoning_swapped",
+    "empty_reasoning",
+    "global_train_mean"
+  ],
+  "automatic_next_candidate": false,
+  "maximum_authorized_version": "R16B",
+  "routine_monitor_seconds": 1800,
+  "quality_goal_achieved": false,
+  "job_scope": "fresh400_then_full_evaluation",
+  "reason_same_RTX_evaluation": "NOZERO training completed; one uninterrupted job avoids handoff dependence under remaining assistant quota. No concurrent project training to displace.",
+  "rejected_draft": 68490,
+  "experiment": 68511,
+  "run_id": "physical_content_68511",
+  "state": "STATE_ERROR",
+  "submission_utc": "2026-11-09T08:20:51.461221+00:00",
+  "next_check_utc": null,
+  "last_observation": {
+    "utc": "2026-11-09T08:53:59.936699+00:00",
+    "experiment": 68511,
+    "state": "STATE_ERROR",
+    "trial_ids": [
+      69898
+    ],
+    "active_task_ids": [],
+    "gpu": {
+      "actual": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "accepted": true,
+      "visible_count": 1
+    },
+    "stage": "fresh_model_preflight",
+    "training": {},
+    "preflight": {
+      "status": "failed",
+      "error": "AssertionError('B400 full-model bridge differs materially: 0.009725215844810009')"
+    },
+    "next_check_utc": null,
+    "generated": {},
+    "scores": {}
+  },
+  "training_step_observed": null,
+  "training_complete": false,
+  "formal_steps_completed": 0,
+  "reason": "B400 bridge equivalence failed. Explicitly match native query output type and evaluate log-normalizer difference before adding it; retain original tolerance."
+}

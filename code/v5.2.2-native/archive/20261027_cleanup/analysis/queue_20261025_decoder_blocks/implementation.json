@@ -1,0 +1,58 @@
+{
+  "created_utc": "2026-10-25T13:37:04.335079+00:00",
+  "replaces": 66148,
+  "revision": "v522_native_reasoning_operator_v7",
+  "software_environment_changed": false,
+  "slots_per_trial": 1,
+  "forward_peak_66148_gib": 45.04474639892578,
+  "last_driver_usage_66148_mib": 82803,
+  "failure_location": "first backward after both successful forward branches",
+  "root_implementation_gap": "Temporal chunk recomputation materializes all internal decoder layers together; added functional native residual-block recomputation to bound inner backward peak",
+  "math_and_parameters_changed": false,
+  "frames": 81,
+  "cross_time_cache_derivatives": "preserved; late-only output gradient matches native through early latent",
+  "tests_passed": 54,
+  "protected_files_unchanged": 20,
+  "scope": [
+    "actual pretrained VAE paired backward",
+    "three full-model stage updates with eight microbatches each",
+    "one single-trajectory C-feedback engineering sample",
+    "128 normal training updates then fixed C comparisons"
+  ],
+  "quality_claim": null,
+  "decoder_backward": {
+    "kind": "decoder_backward_complete",
+    "sample": "source0000527",
+    "frames": 81,
+    "latent_shape": [
+      1,
+      48,
+      21,
+      30,
+      52
+    ],
+    "seconds": 100.96042243298143,
+    "loss": 0.07410894334316254,
+    "peak_gib": 34.965529918670654,
+    "reserved_gib": 36.80859375,
+    "gradient_rms": [
+      2.131229848600924e-06,
+      1.784708842933469e-06
+    ],
+    "scope": "actual pretrained decoder backward and memory; not generation quality or full-model fit"
+  },
+  "checked_at_utc": "2026-10-25T13:42:54.954951+00:00",
+  "full_model_first_micro": {
+    "signal": 9,
+    "first_complete_micro_peak_gib": 68.96228218078613,
+    "first_complete_micro_forward_seconds": 38.089833088219166,
+    "first_complete_micro_backward_seconds": 92.3884400408715,
+    "last_driver_used_mib": 73253,
+    "last_driver_seconds_before_child_exit": 0.9702224731445312,
+    "cgroup_oom_kill": 0,
+    "kernel_access": "Operation not permitted",
+    "sender": "unconfirmed",
+    "next_sample_cache_cpu_read": "passed; wisa0013657, same [1,48,21,30,52] geometry"
+  },
+  "current_state": "STATE_ERROR"
+}

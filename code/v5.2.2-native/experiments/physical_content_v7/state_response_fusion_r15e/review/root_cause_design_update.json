@@ -1,0 +1,120 @@
+{
+  "utc": "2026-11-06T09:05:41.105778+00:00",
+  "formal_training_submitted": false,
+  "final_architecture_ready": false,
+  "maximum_version": "R15G",
+  "remaining": [
+    "R15E",
+    "R15F",
+    "R15G"
+  ],
+  "targets": {
+    "pc40_min": 3.8,
+    "pc40_preferred": 3.85,
+    "sa40_min": 3.125,
+    "sa40_preferred": 3.35,
+    "joint40_min": 12,
+    "cross_benchmark_must_beat_R1": true,
+    "actual_video_quality_required": true
+  },
+  "evidence": [
+    {
+      "issue": "Requested process is not necessarily the content supervised by the physical routing target",
+      "code": "execution_value_r10/snapshots/20261101T034557Z/physical_content/model.py:content_loss; prepare_native.py",
+      "facts": "Native auxiliary targets encode each reasoning relation separately, while the original caption enters only contextual request memory in the global heads. VP010/VP025 cached reasoning omits or drifts from parts of the requested process.",
+      "scope": "A concrete conditioning/supervision mismatch; does not prove the sole cause of all quality losses."
+    },
+    {
+      "issue": "Explicit request path has modest content sensitivity in the trained R10A reader",
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/state_response_fusion_r15e/review/r10a_literal_request_path16.json",
+      "measured": {
+        "explicit_request_removed": {
+          "routing": {
+            "relative_l2": 0.06520682573318481,
+            "mean_token_cosine": 0.9974551759660244,
+            "delta_rms": 0.004959265599609353,
+            "reference_rms": 0.07608151389285922
+          },
+          "execution": {
+            "relative_l2": 0.09332638909108937,
+            "mean_token_cosine": 0.9948331192135811,
+            "delta_rms": 0.018314462387934327,
+            "reference_rms": 0.20358273945748806
+          }
+        },
+        "explicit_request_swapped": {
+          "routing": {
+            "relative_l2": 0.02724571869475767,
+            "mean_token_cosine": 0.9995497241616249,
+            "delta_rms": 0.0020768388640135527,
+            "reference_rms": 0.07608151389285922
+          },
+          "execution": {
+            "relative_l2": 0.03621480174479075,
+            "mean_token_cosine": 0.9992823638021946,
+            "delta_rms": 0.007228836395370308,
+            "reference_rms": 0.20358273945748806
+          }
+        }
+      },
+      "scope": "Same16 CPU intervention of explicit request words only. Other reasoning states still contain original request/image context. No claim that the whole model ignores text or that a particular percent change proves quality."
+    },
+    {
+      "issue": "Correct text is insufficient when fusion execution damages requested content",
+      "sources": [
+        "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/execution_value_r10/reports/selected_reasoning_comparison400/observations.json",
+        "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/execution_value_r10/reports/selected_video_comparison400/observations.json"
+      ],
+      "facts": "VP038 reasoning describes roller transfer and coating. R10A normal/noC have equalSA4 but PC3/4; original video evidence documents structural defects. VP017 has coherent requested reasoning yet normal/noC SA2/3.",
+      "scope": "Existing same-checkpoint interventions; input-only repair cannot account for every failure."
+    },
+    {
+      "issue": "A fixed16 improvement is not evidence of full40 acceptance",
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/state_response_fusion_r15e/review/historical_failure_matrix40.json",
+      "facts": "R10A full40 needs +12 SA score points, +2 PC points and +5 joint passes to reach current minima; R15D fixed16PC3.875 but other24PC3.375. These are aggregate ordinal-score gaps, not predicted improvements."
+    }
+  ],
+  "design_work": [
+    "Prioritize request-grounded physical memory formation: preserve literal entities, states, requested relations, ordered transitions and final outcomes; reasoning supplies physical evidence instead of replacing the requested scenario. Static/stability/optical phenomena remain valid; do not force motion.",
+    "Keep semantic correspondence between what addresses a physical update and what its value writes. Independent physical Q remains part of the redesign; native textQKVO stay frozen. R10A/R1/R9 mechanisms are references, not compulsory topology.",
+    "The running native-video-response probe tests one downstream execution mechanism only. It does not recover information already lost before the physical write and will not automatically become the formal R15E design.",
+    "Use current complete40, relevant recent controls and useful historical evidence to finalize one coherent architecture and training design. Do not launch a formal400 job merely to enumerate switches.",
+    "Do not reuse the withdrawn temporal-loss proposal or assume that lower C cosine proves useful physics. Keep all scoring protocols, shared inputs and existing outputs intact; no hand edits of benchmark reasoning to maximize scores."
+  ],
+  "new_gpu_for_this_analysis": false,
+  "new_model_downloads": false,
+  "new_api_calls": false,
+  "joint_failure_evidence": {
+    "Wan+LoRA": {
+      "both_pass": 10,
+      "pc_pass_sa_fail": 6,
+      "sa_pass_pc_fail": 1,
+      "both_fail": 23
+    },
+    "R1": {
+      "both_pass": 10,
+      "pc_pass_sa_fail": 8,
+      "sa_pass_pc_fail": 1,
+      "both_fail": 21
+    },
+    "R10A": {
+      "both_pass": 7,
+      "pc_pass_sa_fail": 15,
+      "sa_pass_pc_fail": 2,
+      "both_fail": 16
+    },
+    "R15B": {
+      "both_pass": 10,
+      "pc_pass_sa_fail": 13,
+      "sa_pass_pc_fail": 1,
+      "both_fail": 16
+    },
+    "R15D": {
+      "both_pass": 10,
+      "pc_pass_sa_fail": 9,
+      "sa_pass_pc_fail": 1,
+      "both_fail": 20
+    }
+  },
+  "joint_failure_interpretation": "R10A has15/40 PC-pass butSA-fail cases versusR1 8/40; R15B has13/40. R10A losesR1 joint casesVP008,VP010,VP038, which R15B/D already recover. Recovering only those historical cases still leaves current Joint>=12 unmet."
+}

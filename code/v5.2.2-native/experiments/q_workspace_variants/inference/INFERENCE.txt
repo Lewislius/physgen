@@ -1,0 +1,60 @@
+Q workspace 最终版单卡推理与评分（2026-10-28）
+
+入口：每个模型只需要一份 run_<variant>_amp80g.sh 和一份 <variant>_amp80g.yaml。
+四个任务均已提交；每个任务从头到尾只申请 amp-80g 的一个 slot。
+任务名 est3h 表示预计每个任务 GPU 执行约 3 小时，参考范围 2.5–3.5 小时，不含排队。
+估时依据：已有 A100 40GB 的 Q demo 推理约 138–148 秒/条 × 61 条，另加模型装载、编码、评分余量；80GB 全驻留的实际耗时以日志为准。
+
+模型与提交记录：
+B: 训练 Search 66523 / Run 67903，最终 step224；推理 Search 66538 / Run 67918。
+  SH: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/q_workspace_variants/inference/run_b_amp80g.sh
+  YAML: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/q_workspace_variants/inference/b_amp80g.yaml
+  输出: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/q_workspace_variants/inference_outputs/v522-q-workspace-b_66523/final224_demo21_videophy40_amp80g
+C: 训练 Search 66524 / Run 67904，最终 step224；推理 Search 66539 / Run 67919。
+  SH: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/q_workspace_variants/inference/run_c_amp80g.sh
+  YAML: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/q_workspace_variants/inference/c_amp80g.yaml
+  输出: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/q_workspace_variants/inference_outputs/v522-q-workspace-c_66524/final224_demo21_videophy40_amp80g
+D-S: 训练 Search 66526 / Run 67906，最终 step224；推理 Search 66540 / Run 67920。
+  SH: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/q_workspace_variants/inference/run_d_s_amp80g.sh
+  YAML: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/q_workspace_variants/inference/d_s_amp80g.yaml
+  输出: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/q_workspace_variants/inference_outputs/v522-q-workspace-d-s_66526/final224_demo21_videophy40_amp80g
+D-I: 训练 Search 66527 / Run 67907，最终 step224；推理 Search 66541 / Run 67921。
+  SH: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/q_workspace_variants/inference/run_d_i_amp80g.sh
+  YAML: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/q_workspace_variants/inference/d_i_amp80g.yaml
+  输出: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/q_workspace_variants/inference_outputs/v522-q-workspace-d-i_66527/final224_demo21_videophy40_amp80g
+
+执行顺序：
+1. 使用实验目录专用 physgen_native 加载器，校验最终224步、各自revision、128槽、R0+两轮、已保存的C对齐和Wan LoRA。
+2. 固定最终权重硬链接；生成 reference 和 P01–P20 共21条demo。
+3. 生成固定 VP001–VP040 共40条VideoPhy2视频。
+4. 生成子进程退出后释放模型显存；在同一张卡上启动现有 physvid 环境的独立 VideoPhy2 AutoEval，产生80个SA/PC评分。
+5. 与已有Q、H、联合LoRA关闭模块、no-intensity、learned-gate、SSIM、独立LoRA、Occam无LoRA、v5.2+LoRA九组逐例比较。
+
+相同条件：
+21个demo完全沿用Q的caption、首图、首帧VAE、T5文本输入和seed42。
+40个测试完全沿用Q的输入文件及每例保存的FP32初始噪声noise.pt。
+832x480，81帧，24fps，50步Euler，shift5，CFG5，condition_strength1。
+评分器不参与生成。评分为现有VideoPhy2 AutoEval checkpoint，32观察帧，seed20261009，do_sample=false，max_length256。
+仅从conditions.pt允许的first/text/null_text/times/valid取输入，未读取未来latent/video/JEPA作为条件。
+
+每个模型输出内容：
+demo21/<reference或Pxx>/i2v/seed42.mp4 和逐视频json元数据。
+videophy40/cases/VPxxx/planned.mp4，以及 planned.sa.json / planned.pc.json。
+videophy40/scores.json：独立评分原始汇总。
+videophy40/summary.csv：本模型加九个参考方法的SA、PC、总均分、通过计数和通过率。
+videophy40/scores_by_case_40.csv：40例、10个方法的宽表。
+videophy40/candidate_minus_reference.csv：相对九个参考方法的均分和联合通过率差值、胜平负数。
+videophy40/paired_differences.csv：40×9逐例差值。
+videophy40/comparison.json / comparison.txt：完整计算及可读汇总。
+pipeline_status.json、demo21.log、videophy40.log、evaluation.log：阶段状态与日志。
+
+计算：总均分=(SA总分+PC总分)/80；联合通过率=同时满足SA>=4且PC>=4的条数/40。
+同一SH --local会校验manifest和已完成视频，再从中断处继续；--submit会创建新Search，重复提交前先检查现有任务。
+默认或--check仅作CPU预检查；--local需要已分配的单卡80GB。
+
+验证：4个真实checkpoint和61条输入全部预检查通过；12项架构测试和4项推理/比较测试通过。
+用归档Q评分回放新汇总程序得到SA=121、PC=138、总均分3.2375、联合9/40=22.5%，相对Q差值为0。
+代码通过预检查不代表新视频质量已提升。最终分数待各任务完成后自动产生。
+
+提交登记：/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/q_workspace_variants/reports/inference_submissions_20261028.json
+验证登记：/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/q_workspace_variants/reports/inference_validation_20261028.json

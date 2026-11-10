@@ -1,0 +1,121 @@
+{
+  "recorded_utc": "2026-10-31T06:33:26.642404+00:00",
+  "status": "partial_representative_review",
+  "observer": "Assistant visual inspection, not an independent human or validated automatic metric",
+  "frame_indices": [
+    0,
+    16,
+    32,
+    48,
+    64,
+    80
+  ],
+  "criteria": "../evaluation/process_criteria16.json",
+  "same_budget_comparison": "native64 versus R3 physical64, identical initial image/request/noise",
+  "reviewed_cases": 5,
+  "planned_fixed_cases": 16,
+  "records": [
+    {
+      "id": "VP002",
+      "baseline": "基本保持初始弯曲形状；后段出现悬浮鞋形物和复制碎片。",
+      "candidate": "出现明显抬起和弯曲动作，但木条中部变成Y形分叉/垂直延伸，末段又回到近初态。",
+      "baseline_completion": "not_demonstrated",
+      "candidate_completion": "partial",
+      "baseline_visual_defect": "major",
+      "candidate_visual_defect": "major",
+      "process_evidence": "新增弯曲有可见证据，但材料连续性破坏，不能记为正确完成。",
+      "panel": "experiments/physical_content_v7/early_execution_r3/reports/visual64_first/VP002.png"
+    },
+    {
+      "id": "VP004",
+      "baseline": "举起杆后，杆和人物衣服在中后段碎裂或消失。",
+      "candidate": "杆更早消失，人物头部、脸部与躯干发生明显重影和形变。",
+      "baseline_completion": "unclear",
+      "candidate_completion": "unclear",
+      "baseline_visual_defect": "major",
+      "candidate_visual_defect": "major",
+      "process_evidence": "所取帧未建立可信的应力裂纹传播；不能把任意碎裂当作所需断裂。",
+      "panel": "experiments/physical_content_v7/early_execution_r3/reports/visual64_representative/VP004.png"
+    },
+    {
+      "id": "VP005",
+      "baseline": "球前段近静止，后段位置突变到球拍表面并停留。",
+      "candidate": "球前段近静止，后段到球拍下方附近，球拍形状/朝向变化。",
+      "baseline_completion": "unclear",
+      "candidate_completion": "unclear",
+      "baseline_visual_defect": "unclear",
+      "candidate_visual_defect": "unclear",
+      "process_evidence": "六帧不能解析短暂接触及其先后；不据此认定击球成功或不存在。",
+      "panel": "experiments/physical_content_v7/early_execution_r3/reports/visual64_representative/VP005.png"
+    },
+    {
+      "id": "VP009",
+      "baseline": "人物起身并改变工具位置，玻璃结构与画面视角也改变。",
+      "candidate": "人物起身并持续举高工具；后段工具和人物上部移出所取画面。",
+      "baseline_completion": "partial",
+      "candidate_completion": "partial",
+      "baseline_visual_defect": "unclear",
+      "candidate_visual_defect": "unclear",
+      "process_evidence": "起身/举工具可见，但玻璃确实被吸盘提起及图片持续附着的完整关系尚不清楚。",
+      "panel": "experiments/physical_content_v7/early_execution_r3/reports/visual64_representative/VP009.png"
+    },
+    {
+      "id": "VP010",
+      "baseline": "拖把移动和转向，积水区域仍明显；拖把头外形有变化。",
+      "candidate": "拖把向前移动，后段水面变为离散斑块，拖把头与反光结构也有明显变化。",
+      "baseline_completion": "partial",
+      "candidate_completion": "partial",
+      "baseline_visual_defect": "minor",
+      "candidate_visual_defect": "minor",
+      "process_evidence": "有拖动与水面变化，是否为所接触水被持续清除而非外观变化，凭六帧尚不能完全确定。",
+      "panel": "experiments/physical_content_v7/early_execution_r3/reports/visual64_representative/VP010.png"
+    }
+  ],
+  "interpretation": "Several new R3 videos contain visible process activity with structural failures. Activity alone does not establish physical correctness. These five early available examples are not a representative rate estimate for all16 or40; unclear brief events remain unscored.",
+  "counts_on_reviewed_cases": {
+    "baseline": {
+      "major_visual_defects": 2,
+      "visible_complete_process": 0,
+      "completion_unclear": 2
+    },
+    "candidate": {
+      "major_visual_defects": 2,
+      "visible_complete_process": 0,
+      "completion_unclear": 2
+    }
+  },
+  "updated_utc": "2026-10-31T06:47:30.388755+00:00",
+  "additional_reference_comparison": {
+    "reference": "R1-400 versus R3-64, identical inputs/noise, different training budget; complementary observed behavior, not an architecture-only ablation",
+    "records": [
+      {
+        "id": "VP015",
+        "r1": "大体保持初始持桨姿态与原有水迹。",
+        "r3": "桨的转动更明显，但桨叶下方出现大片竖向白色延伸；滴水与叶片形变难以可靠区分。",
+        "assessment": "有更多桨操作，但未确立完整可信的离水滴落过程。",
+        "panel": "experiments/physical_content_v7/early_execution_r3/reports/visual64_process_reference/VP015.png"
+      },
+      {
+        "id": "VP027",
+        "r1": "主要为小幅手掌动作，面团保持近圆形。",
+        "r3": "按压、抬指再接触的过程更清楚，面团随接触轻微改变；所取帧未见明显严重结构破坏。",
+        "assessment": "这是局部正面过程信号，SA4/PC5未变化；初态已近圆，不能据此宣称所有整形过程完成。",
+        "panel": "experiments/physical_content_v7/early_execution_r3/reports/visual64_process_reference/VP027.png"
+      },
+      {
+        "id": "VP034",
+        "r1": "气球主要上升，大小近似保持。",
+        "r3": "整体上升较少、竖向外形变化稍明显；持续充气膨胀仍不清晰。",
+        "assessment": "两者SA4/PC5，不能把高分本身当成展示充气过程。",
+        "panel": "experiments/physical_content_v7/early_execution_r3/reports/visual64_process_reference/VP034.png"
+      },
+      {
+        "id": "VP038",
+        "r1": "滚筒移动，后段换向；初始栅栏已整体绿色。",
+        "r3": "滚筒上下移动更明显，支架与滚筒方向变化；没有清楚可辨的新覆盖区域。",
+        "assessment": "初态已涂绿使新增覆盖过程难评；不把更多滚筒运动直接当成涂覆成功，也不删掉该基准样本。",
+        "panel": "experiments/physical_content_v7/early_execution_r3/reports/visual64_process_reference/VP038.png"
+      }
+    ]
+  }
+}

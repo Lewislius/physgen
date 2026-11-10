@@ -1,0 +1,199 @@
+{
+  "source_checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_scaling_q256/runs/v6_assoc_66678/step1000.pt",
+  "checkpoint_step": 1000,
+  "revision": "physical_scaling_q256_s1000_20261029_r1",
+  "mode": "v6_assoc_q256",
+  "suite": "videophy40",
+  "training_experiment_id": 66678,
+  "prepared_root": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42",
+  "input_keys": [
+    "first",
+    "text",
+    "null_text",
+    "times",
+    "valid"
+  ],
+  "verifier": {
+    "kind": "none"
+  },
+  "training_reasoning_rounds": [
+    2
+  ],
+  "inference_reasoning_round": 2,
+  "message_block_calls_per_condition": 2,
+  "frames": 81,
+  "fps": 24.0,
+  "sampling": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "condition_strength": 1.0
+  },
+  "seed": 42,
+  "training_seed": 42,
+  "cases": [
+    {
+      "caption": "Multiple water balloons are tossed upwards, simultaneously bursting in the air in a small arc.",
+      "category": "Sports and Physical Activities",
+      "action": "throwing water balloon",
+      "id": "VP014",
+      "seed": 42,
+      "image_seed": 20261022,
+      "first_prompt": "A single realistic photograph of the initial scene immediately BEFORE the following action begins: Multiple water balloons are tossed upwards, simultaneously bursting in the air in a small arc. Show the participants and objects in their starting positions, with enough room for the action. Show one moment only, not a montage, not the completed outcome. No text or diagrams.",
+      "image": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP014/first.png",
+      "prepared_inputs": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP014",
+      "geometry": {
+        "h": 480,
+        "w": 832,
+        "rh": 480,
+        "rw": 832,
+        "top": 0,
+        "left": 0,
+        "frames": 81
+      },
+      "initial_noise": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP014/noise.pt",
+      "canvas": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP014/first.png",
+      "output": "cases/VP014/planned.mp4",
+      "clauses": [
+        {
+          "text": "Water balloons must be tossed upwards with sufficient force to create a visible arc before bursting.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "Bursting must occur simultaneously at the apex or peak of each balloon's trajectory.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The burst should produce a small, localized splash or droplet dispersion consistent with water balloons.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The background and lighting must remain static to maintain visual continuity of the event.",
+          "basis": "both",
+          "phase": "evolution"
+        }
+      ]
+    },
+    {
+      "caption": "A rower pulls an oar from the water, the blade dripping water back into the lake. .",
+      "category": "",
+      "action": "",
+      "id": "VP015",
+      "seed": 42,
+      "image_seed": 20261023,
+      "first_prompt": "A single realistic photograph of the initial scene immediately BEFORE the following action begins: A rower pulls an oar from the water, the blade dripping water back into the lake. . Show the participants and objects in their starting positions, with enough room for the action. Show one moment only, not a montage, not the completed outcome. No text or diagrams.",
+      "image": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP015/first.png",
+      "prepared_inputs": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP015",
+      "geometry": {
+        "h": 480,
+        "w": 832,
+        "rh": 480,
+        "rw": 832,
+        "top": 0,
+        "left": 0,
+        "frames": 81
+      },
+      "initial_noise": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP015/noise.pt",
+      "canvas": "/home/liuzhirui/Project/physGen/code/v5.2/inference_outputs/videophy2_lora_run64543_joint400_60_seed42/cases/VP015/first.png",
+      "output": "cases/VP015/planned.mp4",
+      "clauses": [
+        {
+          "text": "The oar blade must be fully submerged in the water before being pulled upward.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "Water must visibly drip from the oar blade as it is lifted out of the water.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The rower must maintain a consistent posture and grip on the oar handle during the pull.",
+          "basis": "both",
+          "phase": "evolution"
+        },
+        {
+          "text": "The kayak must remain stable and level on the water surface throughout the motion.",
+          "basis": "both",
+          "phase": "evolution"
+        }
+      ]
+    }
+  ],
+  "noise_policy": "saved per-case FP32 noise",
+  "settings": {
+    "width": 832,
+    "height": 480,
+    "frames": 81,
+    "fps": 24.0,
+    "seed": 42,
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "solver": "existing Occam Euler",
+    "condition_strength": 1.0,
+    "image_seed": 20261009,
+    "image_generator": "native Wan2.2-TI2V-5B, one frame, no trained LoRA, no Planner",
+    "image_solver": "unipc",
+    "image_steps": 50,
+    "image_shift": 5.0,
+    "image_guidance": 5.0,
+    "image_negative": "native Wan default",
+    "image_prompt_template": "A single realistic photograph of the initial scene immediately BEFORE the following action begins: {caption} Show the participants and objects in their starting positions, with enough room for the action. Show one moment only, not a montage, not the completed outcome. No text or diagrams.",
+    "qwen_template": "Given this initial image and the requested video, describe up to four short process requirements. Describe prerequisites, visible changes and continuation of existing results. Do not assign object IDs, boxes, masks, numerical forces or future timestamps. Do not invent unseen facts. Uncertain requirements may be omitted. Return JSON only: {\"requirements\": [\"...\"]}. Requested video: ",
+    "qwen_do_sample": false,
+    "qwen_max_new_tokens": 384,
+    "initial_noise": "one FP32 CUDA noise tensor per case, persisted and cloned for both arms",
+    "video_encoding": "shared write_video: RGB lossless archive; baseline H264 yuv420p CRF18 for scoring"
+  },
+  "evaluation": {
+    "code": "/home/liuzhirui/benchmark/videophy/VIDEOPHY2",
+    "checkpoint": "/home/liuzhirui/benchmark/videophy/videophy_2_auto",
+    "num_frames": 32,
+    "seed": 20261009,
+    "tasks": [
+      "sa",
+      "pc"
+    ],
+    "generation": {
+      "do_sample": false,
+      "top_k": 1,
+      "temperature": 0.001,
+      "max_length": 256
+    },
+    "joint_threshold": 4,
+    "average_definition": "mean of (SA + PC) / 2; custom summary, not official Joint Score",
+    "missing_policy": "no final comparison unless every selected case has both valid SA and PC scores"
+  },
+  "case_ids_file": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/videophy40_20261026/case_ids.json",
+  "scope": "Fixed 40 VideoPhy2 captions adapted to shared-first-image I2V; not official T2V leaderboard",
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_scaling_q256/runs/v6_assoc_66678/step1000.pt",
+  "variant": "v6_assoc",
+  "training_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_scaling_q256/snapshots/20261029T140406Z",
+  "conditioning": "Fresh frozen-Qwen first-image/request reasoning; two Q enhancement passes; native text retained",
+  "original_clauses_used": false,
+  "physical_input_image": "prepared raw first-frame canvas",
+  "architecture": {
+    "c_tokens": 256,
+    "enhancement_width": 4096,
+    "wan_width": 3072,
+    "fusion_layers": [
+      3,
+      6,
+      9,
+      12,
+      15,
+      18,
+      21,
+      24,
+      27,
+      30
+    ],
+    "relation_groups": true
+  },
+  "audit_intervention": "no_c",
+  "audit_reference": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_scaling_q256/inference_outputs/v6_assoc_66678/final1000_demo21_videophy40_r1"
+}

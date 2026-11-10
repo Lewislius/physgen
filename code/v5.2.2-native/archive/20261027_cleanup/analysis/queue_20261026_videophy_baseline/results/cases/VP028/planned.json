@@ -1,0 +1,27 @@
+{
+  "id": "VP028",
+  "caption": "A person skillfully tosses several coins in the air, catching them one by one.",
+  "revision": "v522_native_generation_baseline_v11",
+  "optimizer_step": 32,
+  "seed": 42,
+  "fps": 23.999999284744284,
+  "conditions": "first frame, caption, existing requirements; no future target",
+  "physical_dependency_analysis": "OBSERVED: One coin held, two coins airborne; hands positioned for catch; red pegs below suggest surface target. Unknown: coin trajectories, timing of toss/catch sequence, hand adjustments.\n\nINTERACTION: Holding coin → controlled toss → airborne coins → hand repositioning → sequential catch. Each toss triggers a catch response dependent on timing and grip.\n\nPERSISTENCE: Coin-airborne state sustains until caught; hand position persists until coin is secured; visual continuity of motion persists across 3.333s.\n\nINTERVENTION: If toss is erratic → catch fails → coin lands → sequence breaks; if grip unchanged → catch fails → coin lost. Hand motion and coin timing remain critical.",
+  "latent_reasoning_steps": 2,
+  "latent_feedback": null,
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "condition_strength": 1.0,
+    "latent_feedback": {
+      "enabled": false,
+      "metric": "relative_rms",
+      "sigmas": [
+        0.85,
+        0.65
+      ],
+      "step_size": 0.1
+    }
+  }
+}

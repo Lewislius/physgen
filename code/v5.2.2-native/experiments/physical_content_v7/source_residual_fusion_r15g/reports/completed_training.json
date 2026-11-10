@@ -1,0 +1,51 @@
+{
+  "status": "completed400_verified",
+  "experiment": 68103,
+  "trial": 69490,
+  "optimizer_steps": 400,
+  "micro_draws": 1600,
+  "unique_samples": 1600,
+  "same_sample_sigma_and_text_dropout_as_F": true,
+  "phases": {
+    "interface": {
+      "steps": 128,
+      "median_step_seconds": 10.897904887795448,
+      "peak_gib": 27.630064964294434,
+      "mean_gradients": {
+        "enhancement": 0.4576774269226007,
+        "fusion_read": 0.040682307688257424,
+        "fusion_write": 0.0240738011727899,
+        "wan_lora": 0.0
+      },
+      "LoRA_updates": 0
+    },
+    "joint": {
+      "steps": 272,
+      "median_step_seconds": 12.244800372049212,
+      "peak_gib": 28.643200397491455,
+      "mean_gradients": {
+        "enhancement": 0.14509208805119508,
+        "fusion_read": 0.017000326794325647,
+        "fusion_write": 0.013028554358136128,
+        "wan_lora": 0.013030455690835985
+      },
+      "LoRA_updates": 272
+    }
+  },
+  "execution_C_training_diagnostics": {
+    "interface_end": {
+      "c_pair_cosine": 0.8818098451010883,
+      "c_centered_energy": 0.13715825401595794,
+      "c_rms": 0.043292440197546966,
+      "c_nonzero_token_fraction": 1.0
+    },
+    "last50": {
+      "c_pair_cosine": 0.8619262430071831,
+      "c_centered_energy": 0.14274320397526025,
+      "c_rms": 0.037205778276547787,
+      "c_nonzero_token_fraction": 1.0
+    }
+  },
+  "representation_scope": "Residual execution C, without native anchor; not interchangeable with shared/full semantic C in older versions and not a quality metric.",
+  "quality_proven": false
+}

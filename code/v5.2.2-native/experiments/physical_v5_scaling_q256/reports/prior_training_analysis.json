@@ -1,0 +1,104 @@
+{
+  "created_at_utc": "2026-10-29T14:25:20.348201+00:00",
+  "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_variants/runs/v5_ce_20261029T064043Z-retry1/train.jsonl",
+  "windows": [
+    {
+      "start": 1,
+      "end": 32,
+      "fm": 0.6578569677076302,
+      "aux": 2.712401730939746,
+      "weighted_aux": 0.13562008654698732,
+      "weighted_ce_to_fm": 0.2061543666848576,
+      "physical_clipped_steps": 32,
+      "physical_max_norm": 56.53627395629883
+    },
+    {
+      "start": 33,
+      "end": 64,
+      "fm": 0.3821159322105814,
+      "aux": 2.3267962131649256,
+      "weighted_aux": 0.11633981065824628,
+      "weighted_ce_to_fm": 0.30446207773962225,
+      "physical_clipped_steps": 31,
+      "physical_max_norm": 8.841267585754395
+    },
+    {
+      "start": 65,
+      "end": 112,
+      "fm": 0.2897633080622957,
+      "aux": 2.4184081523368754,
+      "weighted_aux": 0.12092040761684378,
+      "weighted_ce_to_fm": 0.417307520491336,
+      "physical_clipped_steps": 18,
+      "physical_max_norm": 20.01104164123535
+    },
+    {
+      "start": 113,
+      "end": 160,
+      "fm": 0.27787974308012053,
+      "aux": 2.0997699896494546,
+      "weighted_aux": 0.10498849948247274,
+      "weighted_ce_to_fm": 0.3778199098600778,
+      "physical_clipped_steps": 0,
+      "physical_max_norm": 0.6626299023628235
+    },
+    {
+      "start": 161,
+      "end": 192,
+      "fm": 0.2710240249580238,
+      "aux": 2.034985908307135,
+      "weighted_aux": 0.10174929541535677,
+      "weighted_ce_to_fm": 0.375425372090595,
+      "physical_clipped_steps": 0,
+      "physical_max_norm": 0.39317581057548523
+    },
+    {
+      "start": 193,
+      "end": 224,
+      "fm": 0.2765631302027032,
+      "aux": 1.9613132402300835,
+      "weighted_aux": 0.09806566201150417,
+      "weighted_ce_to_fm": 0.35458689645155617,
+      "physical_clipped_steps": 0,
+      "physical_max_norm": 0.6541622281074524
+    }
+  ],
+  "validation": [
+    {
+      "kind": "validation",
+      "time": 1793258887.2461827,
+      "step": 64,
+      "fm": 0.2058638408780098,
+      "video": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_variants/runs/v5_ce_20261029T064043Z-retry1/videos/val_source0000042_step0064_seed42.mp4",
+      "sample": "source0000042"
+    },
+    {
+      "kind": "validation",
+      "time": 1793265301.6834943,
+      "step": 224,
+      "fm": 0.18614652566611767,
+      "video": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_variants/runs/v5_ce_20261029T064043Z-retry1/videos/val_source0000042_step0224_seed42.mp4",
+      "sample": "source0000042"
+    }
+  ],
+  "old_ce_coefficient": 0.05,
+  "new_ce_schedule": {
+    "peak_weight": 0.03,
+    "final_weight": 0.015,
+    "warmup": 64,
+    "decay_start": 600
+  },
+  "peak_lrs": {
+    "enhancement": 5e-05,
+    "fusion_read": 2e-05,
+    "fusion_write": 1e-05,
+    "wan_lora": 2e-05,
+    "semantic_bridge": 5e-05
+  },
+  "notes": [
+    "Same V5 architecture/targets except Q size; full C K/V retained.",
+    "V5 CE is not multiplied by (1-sigma).",
+    "Loss magnitude ratios are not gradient contribution ratios or evidence of physical execution.",
+    "The semantic bridge is separately optimized; frozen decoder retains input gradients."
+  ]
+}

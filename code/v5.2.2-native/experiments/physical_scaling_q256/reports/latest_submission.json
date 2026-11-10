@@ -1,0 +1,287 @@
+{
+  "created_at_utc": "2026-10-29T14:04:06.236165+00:00",
+  "status": "v6_write_recovering_on_rtx6000",
+  "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_scaling_q256/snapshots/20261029T140406Z",
+  "submission_context": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_scaling_q256/snapshots/20261029T140406Z/submission_context",
+  "settings": {
+    "q_tokens": 256,
+    "total_steps": 1000,
+    "wan_lora_peak_lr": 2e-05,
+    "wan_warmup": 128,
+    "wan_final_lr": 4e-06
+  },
+  "experiments": [
+    {
+      "variant": "v6_write",
+      "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_scaling_q256/snapshots/20261029T140406Z/train/v6_write_q256_s1000_blk96g.yaml",
+      "attempts": [
+        {
+          "experiment_id": 66674,
+          "submitted_at_utc": "2026-10-29T14:04:47.182409+00:00",
+          "run": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_scaling_q256/runs/v6_write_66674",
+          "status": "training",
+          "gpu": {
+            "kind": "gpu_policy",
+            "actual": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+            "visible_count": 1,
+            "accepted": true,
+            "resource_pool": "blk-96g",
+            "experiment_id": "66674",
+            "time": 1793282668.918695
+          },
+          "trial_id": 68061,
+          "first_optimizer_update": {
+            "kind": "train",
+            "time": 1793283122.7931042,
+            "step": 1,
+            "phase": "interface",
+            "cursor": 4,
+            "seconds": 13.59426125511527,
+            "fm": 0.1951081994920969,
+            "aux": 0.12638732884079218,
+            "weighted_aux": 6.322708480789956e-06,
+            "aux_samples": 4,
+            "gradients": {
+              "enhancement": 0.0,
+              "fusion_read": 0.0,
+              "fusion_write": 0.8276609778404236,
+              "wan_lora": 0.0
+            },
+            "clip_scales": {
+              "enhancement": 1.0,
+              "fusion_read": 1.0,
+              "fusion_write": 1.0,
+              "wan_lora": 1.0
+            },
+            "aux_coefficient": 0.00015625,
+            "learning_rates": {
+              "enhancement": 1.5625e-06,
+              "fusion_read": 6.25e-07,
+              "fusion_write": 3.125e-07,
+              "wan_lora": 0.0
+            },
+            "peak_gib": 35.36519479751587
+          },
+          "latest_confirmed_update": {
+            "kind": "train",
+            "time": 1793283190.8047326,
+            "step": 7,
+            "phase": "interface",
+            "cursor": 28,
+            "seconds": 11.828990598209202,
+            "fm": 0.2467058738693595,
+            "aux": 0.8331749513745308,
+            "weighted_aux": 0.0003135961628526302,
+            "aux_samples": 4,
+            "gradients": {
+              "enhancement": 0.029465455561876297,
+              "fusion_read": 5.3046958782942966e-05,
+              "fusion_write": 1.1179379224777222,
+              "wan_lora": 0.0
+            },
+            "clip_scales": {
+              "enhancement": 1.0,
+              "fusion_read": 1.0,
+              "fusion_write": 0.8945032504849814,
+              "wan_lora": 1.0
+            },
+            "aux_coefficient": 0.00109375,
+            "learning_rates": {
+              "enhancement": 1.09375e-05,
+              "fusion_read": 4.3750000000000005e-06,
+              "fusion_write": 2.1875000000000002e-06,
+              "wan_lora": 0.0
+            },
+            "peak_gib": 37.76020669937134
+          },
+          "model_ready": {
+            "kind": "model_ready",
+            "time": 1793283109.1783154,
+            "variant": "v6_write",
+            "parameters": 378217472,
+            "groups": {
+              "enhancement": 215002112,
+              "fusion_read": 11827200,
+              "fusion_write": 94371840,
+              "wan_lora": 57016320
+            },
+            "stages": {
+              "interface": 128,
+              "joint": 872
+            },
+            "initialization": "official foundations only",
+            "verifier": false
+          }
+        }
+      ],
+      "active_experiment_id": 66674,
+      "active_run": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_scaling_q256/runs/v6_write_66674"
+    },
+    {
+      "variant": "v6_assoc",
+      "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_scaling_q256/snapshots/20261029T140406Z/train/v6_assoc_q256_s1000_blk96g.yaml",
+      "attempts": [
+        {
+          "experiment_id": 66675,
+          "submitted_at_utc": "2026-10-29T14:04:47.182591+00:00",
+          "run": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_scaling_q256/runs/v6_assoc_66675",
+          "status": "rejected_h100_killed",
+          "gpu": {
+            "kind": "gpu_policy",
+            "actual": "NVIDIA H100",
+            "visible_count": 1,
+            "accepted": false,
+            "resource_pool": "blk-96g",
+            "experiment_id": "66675",
+            "time": 1793282669.706356
+          }
+        },
+        {
+          "experiment_id": 66676,
+          "submitted_at_utc": "2026-10-29T14:05:44.282843+00:00",
+          "run": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_scaling_q256/runs/v6_assoc_66676",
+          "status": "rejected_h100_killed",
+          "gpu": {
+            "kind": "gpu_policy",
+            "actual": "NVIDIA H100",
+            "visible_count": 1,
+            "accepted": false,
+            "resource_pool": "blk-96g",
+            "experiment_id": "66676",
+            "time": 1793282787.2920494
+          }
+        },
+        {
+          "experiment_id": 66677,
+          "submitted_at_utc": "2026-10-29T14:07:37.174140+00:00",
+          "run": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_scaling_q256/runs/v6_assoc_66677",
+          "status": "rejected_h100_killed",
+          "gpu": {
+            "kind": "gpu_policy",
+            "actual": "NVIDIA H100",
+            "visible_count": 1,
+            "accepted": false,
+            "resource_pool": "blk-96g",
+            "experiment_id": "66677",
+            "time": 1793282916.2966428
+          },
+          "trial_id": 68064
+        },
+        {
+          "experiment_id": 66678,
+          "submitted_at_utc": "2026-10-29T14:10:27.630408+00:00",
+          "run": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_scaling_q256/runs/v6_assoc_66678",
+          "status": "training",
+          "gpu": {
+            "kind": "gpu_policy",
+            "actual": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+            "visible_count": 1,
+            "accepted": true,
+            "resource_pool": "blk-96g",
+            "experiment_id": "66678",
+            "time": 1793283015.2662492
+          },
+          "trial_id": 68065,
+          "first_optimizer_update": {
+            "kind": "train",
+            "time": 1793283144.5014198,
+            "step": 1,
+            "phase": "interface",
+            "cursor": 4,
+            "seconds": 10.608916162513196,
+            "fm": 0.1951081994920969,
+            "aux": 0.19076105952262878,
+            "weighted_aux": 5.559370705614377e-05,
+            "aux_samples": 4,
+            "gradients": {
+              "enhancement": 0.004163609817624092,
+              "fusion_read": 4.4090833398513496e-05,
+              "fusion_write": 0.5328143835067749,
+              "wan_lora": 0.0
+            },
+            "clip_scales": {
+              "enhancement": 1.0,
+              "fusion_read": 1.0,
+              "fusion_write": 1.0,
+              "wan_lora": 1.0
+            },
+            "aux_coefficient": 0.0009375,
+            "learning_rates": {
+              "enhancement": 1.5625e-06,
+              "fusion_read": 6.25e-07,
+              "fusion_write": 3.125e-07,
+              "wan_lora": 0.0
+            },
+            "peak_gib": 35.45935916900635
+          },
+          "latest_confirmed_update": {
+            "kind": "train",
+            "time": 1793283192.7838662,
+            "step": 6,
+            "phase": "interface",
+            "cursor": 24,
+            "seconds": 9.669102412648499,
+            "fm": 0.15229035168886185,
+            "aux": 0.16180183365941048,
+            "weighted_aux": 0.00038185786131462616,
+            "aux_samples": 4,
+            "gradients": {
+              "enhancement": 0.023214764893054962,
+              "fusion_read": 0.0003478453145362437,
+              "fusion_write": 0.9252821207046509,
+              "wan_lora": 0.0
+            },
+            "clip_scales": {
+              "enhancement": 1.0,
+              "fusion_read": 1.0,
+              "fusion_write": 1.0,
+              "wan_lora": 1.0
+            },
+            "aux_coefficient": 0.005625,
+            "learning_rates": {
+              "enhancement": 9.375000000000001e-06,
+              "fusion_read": 3.7500000000000005e-06,
+              "fusion_write": 1.8750000000000003e-06,
+              "wan_lora": 0.0
+            },
+            "peak_gib": 37.853379249572754
+          },
+          "model_ready": {
+            "kind": "model_ready",
+            "time": 1793283133.8770194,
+            "variant": "v6_assoc",
+            "parameters": 378252288,
+            "groups": {
+              "enhancement": 215006208,
+              "fusion_read": 11857920,
+              "fusion_write": 94371840,
+              "wan_lora": 57016320
+            },
+            "stages": {
+              "interface": 128,
+              "joint": 872
+            },
+            "initialization": "official foundations only",
+            "verifier": false
+          }
+        }
+      ],
+      "active_experiment_id": 66678,
+      "active_run": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_scaling_q256/runs/v6_assoc_66678"
+    }
+  ],
+  "verified_at_utc": "2026-10-29T14:13:18.671956+00:00",
+  "v6_write_recovery": {
+    "experiment_id": 66710,
+    "trial_id": 68097,
+    "source_experiment": 66674,
+    "source_checkpoint_step": 850,
+    "intermediate_checkpoint_experiment": 66707,
+    "resumed_step": 860,
+    "checkpoint_every": 20,
+    "run": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_scaling_q256/runs/v6_write_resume860_s20_66710",
+    "report": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_scaling_q256/reports/recovery_v6_write_20261030.json",
+    "status": "training_past_original_failure_point"
+  },
+  "recovery_updated_at_utc": "2026-10-30T03:24:54.534161+00:00"
+}

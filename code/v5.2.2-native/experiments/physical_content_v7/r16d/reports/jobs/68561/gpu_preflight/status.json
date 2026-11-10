@@ -1,0 +1,150 @@
+{
+  "status": "passed",
+  "gpu": {
+    "kind": "gpu_policy",
+    "actual": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+    "visible_count": 1,
+    "accepted": true,
+    "resource_pool": "blk-96g",
+    "experiment_id": "68561",
+    "time": 1794229691.015999
+  },
+  "parameters": 1236395008,
+  "parameter_groups": {
+    "enhancement": 227580928,
+    "fusion_read": 857425920,
+    "fusion_write": 94371840,
+    "wan_lora": 57016320
+  },
+  "initial_native_max_abs": 0.0,
+  "condition_dependency": {
+    "full_vs_condition_off": 0.15107569098472595,
+    "full_vs_direct_only": 0.1011057049036026,
+    "full_vs_request_only": 0.1075141653418541,
+    "direct_vs_request": 0.1331120878458023,
+    "full_vs_key_condition_off": 0.13133497536182404,
+    "full_vs_query_residual_off": 0.06805481016635895
+  },
+  "rows": [
+    {
+      "disposable_iteration": 1,
+      "phase": "interface",
+      "sample": "source0000527",
+      "seconds": 3.0748857967555523,
+      "peak_gib": 27.43551731109619,
+      "gradients": {
+        "output": 0.11828972399234772,
+        "condition_query": 0.0,
+        "request_condition_query": 0.0,
+        "key_condition": 0.0,
+        "query_residual": 0.0,
+        "video_q": 0.0,
+        "video_k": 0.0,
+        "video_v": 0.0,
+        "key": 0.0,
+        "value": 0.0,
+        "routing_C": 0.0007047936087474227,
+        "execution_C": 0.0
+      },
+      "group_gradients": {
+        "enhancement": 0.0007059723720885813,
+        "fusion_read": 0.0,
+        "fusion_write": 0.23685911297798157,
+        "wan_lora": 0.0
+      },
+      "generation": 0.2157878577709198,
+      "aux": 0.31560176610946655
+    },
+    {
+      "disposable_iteration": 2,
+      "phase": "interface",
+      "sample": "source0000527",
+      "seconds": 2.8187058195471764,
+      "peak_gib": 31.971320152282715,
+      "gradients": {
+        "output": 0.10659025609493256,
+        "condition_query": 2.0608174509106902e-06,
+        "request_condition_query": 2.2340311716106953e-06,
+        "key_condition": 0.0,
+        "query_residual": 0.0,
+        "video_q": 7.932336302474141e-06,
+        "video_k": 7.90187459642766e-06,
+        "video_v": 6.0927999584237114e-05,
+        "key": 0.0,
+        "value": 0.0,
+        "routing_C": 0.0013581996317952871,
+        "execution_C": 0.0
+      },
+      "group_gradients": {
+        "enhancement": 0.0013604467967525125,
+        "fusion_read": 0.00013874775322619826,
+        "fusion_write": 0.21136844158172607,
+        "wan_lora": 0.0
+      },
+      "generation": 0.21470312774181366,
+      "aux": 0.3129510283470154
+    },
+    {
+      "disposable_iteration": 3,
+      "phase": "interface",
+      "sample": "source0000527",
+      "seconds": 2.8220912013202906,
+      "peak_gib": 31.971320152282715,
+      "gradients": {
+        "output": 0.08451040089130402,
+        "condition_query": 4.833389539271593e-06,
+        "request_condition_query": 5.248347861197544e-06,
+        "key_condition": 6.491318593759843e-10,
+        "query_residual": 3.5376407359066775e-10,
+        "video_q": 1.8584243662189692e-05,
+        "video_k": 1.742584390740376e-05,
+        "video_v": 0.00012312878970988095,
+        "key": 3.344227117452192e-10,
+        "value": 4.690587918076972e-10,
+        "routing_C": 0.0018932211678475142,
+        "execution_C": 2.2028272894658585e-07
+      },
+      "group_gradients": {
+        "enhancement": 0.0018964768387377262,
+        "fusion_read": 0.0002909672912210226,
+        "fusion_write": 0.1683209091424942,
+        "wan_lora": 0.0
+      },
+      "generation": 0.2128344178199768,
+      "aux": 0.3080385625362396
+    },
+    {
+      "disposable_iteration": 4,
+      "phase": "joint",
+      "sample": "source0000527",
+      "seconds": 3.0203736601397395,
+      "peak_gib": 32.54057788848877,
+      "gradients": {
+        "output": 0.0672207623720169,
+        "condition_query": 7.519547580159269e-06,
+        "request_condition_query": 8.182279088941868e-06,
+        "key_condition": 3.882054233628196e-09,
+        "query_residual": 2.068934357168928e-09,
+        "video_q": 2.9286880817380734e-05,
+        "video_k": 2.676155236258637e-05,
+        "video_v": 0.00012171173875685781,
+        "key": 1.9660644223762347e-09,
+        "value": 2.7589974749275825e-09,
+        "routing_C": 0.018072256818413734,
+        "execution_C": 1.479086790823203e-06
+      },
+      "group_gradients": {
+        "enhancement": 0.01810814067721367,
+        "fusion_read": 0.00030082170269452035,
+        "fusion_write": 0.13506968319416046,
+        "wan_lora": 0.004456854425370693
+      },
+      "generation": 0.21063192188739777,
+      "aux": 0.3013841211795807
+    }
+  ],
+  "quality_proof": false,
+  "condition_dependency_scope": "Active-operator connectivity check with disposable small random zero-init projections; not learned magnitude and not a quality claim",
+  "temporary_weights_saved": false,
+  "formal_training": "Separate process reloads official foundations, seed42, cursor0; never uses these temporary weights"
+}

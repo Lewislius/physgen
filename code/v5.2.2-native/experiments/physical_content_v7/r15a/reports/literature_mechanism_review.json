@@ -1,0 +1,36 @@
+{
+  "utc": "2026-11-05T12:35:39.574193+00:00",
+  "status": "mechanism_review_pending_R15A_full_results",
+  "sources": [
+    {
+      "title": "PhysVid: Physics Aware Local Conditioning for Generative Video Models",
+      "url": "https://arxiv.org/html/2603.26285v2",
+      "read_scope": "Sections 3.1-3.3, 4.1, 9.2, configuration table",
+      "verified_mechanism": "Video chunks receive physically grounded captions consistent with the global caption. A local attention pathway uses aligned video/text positional coordinates. Inference adds paired physics counterfactual conditioning.",
+      "transfer_question": "Can current global Q/C express when a requested physical state or interaction applies? Any positional scheme needs meaningful temporal alignment rather than arbitrary learned-query indices.",
+      "limitations": "Their training uses substantially more data and updates, and their reported fidelity tradeoff is not acceptable as success for our simultaneous targets. No direct claim that copying their modules will improve this I2V system."
+    },
+    {
+      "title": "IP-Adapter: Text Compatible Image Prompt Adapter for Text-to-Image Diffusion Models",
+      "url": "https://arxiv.org/html/2308.06721v1",
+      "read_scope": "Sections 3.2, 4.1, 4.4",
+      "verified_mechanism": "Separate image attention retains the native query and trains separate image K/V initialized from text K/V. Text and image conditions are dropped separately as well as jointly during training. Fine-grained features improve reference fidelity but can capture unwanted spatial structure.",
+      "transfer_question": "R15A native_query control can assess whether independently learned physical queries help. Condition-use controls can distinguish useful physical context from generic corrections; no conclusion that dropout is the root cause.",
+      "limitations": "Image generation with large-scale training is not evidence of sufficient capacity or preserved semantics for our 400-step video setup. No automatic decision to freeze physical Q or change the training paradigm."
+    },
+    {
+      "title": "Physically Plausible Video Generation via Visual-Semantic Chain-of-Events Conditioning",
+      "url": "https://arxiv.org/abs/2609.00656",
+      "read_scope": "Abstract only",
+      "verified_mechanism": "The abstract describes event chains, intermediate state transitions, routed keyframes and positive/counterfactual guidance.",
+      "transfer_question": "Represent requested process evolution, not only a static statement that the final phenomenon is already present.",
+      "limitations": "Implementation and ablations not yet reviewed; not accepted as a ready design. No model download or keyframe-generation job authorized by this note."
+    }
+  ],
+  "current_evidence": [
+    "VP004 normal and unrelated reasoning both exhibit composition/identity changes and omit fracture propagation.",
+    "VP010 normal clip shows late object/foreground artifacts and does not clearly realize water disappearance.",
+    "Full40 and normal fixed16 comparisons are still incomplete; these cases do not establish a global root cause."
+  ],
+  "decision_rule": "Use R15A controls, actual videos and useful historical references to choose a substantive next design. Preserve all numerical/cross-benchmark goals; no running model or evaluation source changed."
+}

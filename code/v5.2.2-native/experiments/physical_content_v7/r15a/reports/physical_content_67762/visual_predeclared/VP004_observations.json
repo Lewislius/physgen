@@ -1,0 +1,39 @@
+{
+  "utc": "2026-11-05T12:04:49.442332+00:00",
+  "case": "VP004",
+  "selection": "Same predeclared physical-process case as prior review; inspected before R15A scores.",
+  "frames": [
+    0,
+    11,
+    22,
+    34,
+    45,
+    57,
+    68,
+    80
+  ],
+  "observations": {
+    "R15A": "The person and child shrink/translate downward; the child leaves the sampled frame. The adult face becomes severely occluded/distorted and later changes appearance. The held transparent structure fades/disappears without visible bending-to-fracture propagation. Background retains a faint head-shaped silhouette. These are adverse content/identity/process changes, not successful physical execution.",
+    "R10A": "Held structure and people remain largely stable with minor later translation, but no clear requested bending/fracture propagation. Better persistence in this case does not establish successful process generation.",
+    "R15A_reasoning_swapped": "Also exhibits strong subject shrinkage/downward translation, child loss and adult face artifacts, while the ruler disappears without the requested fracture process. Some final adult appearance is more stable than normal, but neither clip fulfills the request.",
+    "R15A_no_c": "Adult face and overall subject scale remain substantially more stable than normal R15A, but the ruler/arms become stretched broad strips and the requested fracture progression is still not demonstrated.",
+    "R15A_execution_residual_off": "Adult facial identity is more stable than normal. Subject shrinkage/downward composition drift and disappearance of the held structure remain."
+  },
+  "input_note": "Original positive reasoning describes the ruler as visibly cracking and calls it a static fracture event. This is a possible process-conditioning issue to compare with paired reasoning controls, not an established root cause. The transparent irregular structure already exists in the shared initial frame.",
+  "limitations": "Eight sampled frames, one predeclared case. Cannot infer full40 scores or isolate fusion versus joint-trained LoRA until paired controls are available.",
+  "pending_controls": [
+    "no_c",
+    "native_query",
+    "execution_residual_off",
+    "reasoning_swapped",
+    "empty_reasoning",
+    "global_train_mean"
+  ],
+  "proves_goal": false,
+  "paired_interpretation": "For this fixed case, disabling the execution residual alleviates facial corruption but does not remove composition drift; disabling all physical fusion further stabilizes scale/identity, while leaving other native-generation defects. Thus the physical pathway contributes to these observed artifacts, and neither one removal alone nor the specific normal reasoning text explains all failures. This is an inference intervention on one joint-trained checkpoint, not an independently retrained model comparison.",
+  "additional_review_20261105": {
+    "native_query": "Reusing native Q/Q-norm does not remove severe face/held-object corruption, shrinking/downward drift and loss of child. Native query alone is insufficient."
+  },
+  "review_scope": "Eight sampled frames at fixed indices; diagnostic comparison, not exhaustive video assessment.",
+  "mean_C_review": "MeanC improves facial identity relative to normal in the sampled frames, but the child/held structure still disappears and the composition shrinks downward. It does not produce a convincing bend-to-fracture progression."
+}

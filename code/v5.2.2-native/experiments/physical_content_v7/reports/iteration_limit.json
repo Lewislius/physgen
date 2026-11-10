@@ -1,0 +1,126 @@
+{
+  "recorded_utc": "2026-10-31T13:40:09.126303+00:00",
+  "source": "Explicit user instruction: at most R10, deliver evaluation results, then rest until a new user message",
+  "maximum_revision": 10,
+  "current_trained_candidates": [
+    "R7",
+    "R8"
+  ],
+  "additional_revisions_are_optional": [],
+  "beyond_R10_authorized": false,
+  "stop_after": "R10 and its declared evaluation/result delivery; await a new explicit user message",
+  "required_reporting": [
+    "complete fixed40 SA/PC and pass rates",
+    "paired reference and same-budget comparisons",
+    "declared fixed16 module controls",
+    "actual generation/process conclusions and unresolved limitations",
+    "Original40, additional20 and combined60 paired outcomes for final candidates and matched references; no reused40 regeneration"
+  ],
+  "after_delivery": "No new versions, continuation training or extra evaluations; await explicit user instruction",
+  "research_goal_completion": "Must remain unproven unless actual evidence satisfies the full objective",
+  "updated_utc": "2026-10-31T17:46:43.597584+00:00",
+  "training_budget_followup": "R9.1 66970/68357 is actually training on RTX at fresh-official400; oldR9 66968 continues as reference. FinalR10 design follows R9.1 results.",
+  "prepared_unsubmitted_revisions": [],
+  "latest_evaluation_expansion": {
+    "user_request": "Consider the existingVideoPhy2-60 for finalR9/R10, retaining the40 evaluation",
+    "protocol": "videophy60/protocol.json",
+    "original_cases": 40,
+    "added_cases": 20,
+    "combined_cases": 60,
+    "references": "Existing R1/native400 checkpoints, add only the same20 generations; no training",
+    "module_controls": 16,
+    "intermediate250": 16,
+    "no_new_versions_beyond_R10": true
+  },
+  "training_revisions": [
+    "R9",
+    "R9.1"
+  ],
+  "final_candidate_comparison": {
+    "source": "Explicit latest user instruction: R9/R10 must compare at the same400 updates",
+    "required_total_updates": 400,
+    "revisions": [
+      "R9",
+      "R9.1",
+      "R10"
+    ],
+    "reference_checkpoints": [
+      "physical_content_66778/step0400.pt",
+      "native_lora_66781/step0400.pt"
+    ],
+    "r9_stages": {
+      "interface": 128,
+      "joint": 272
+    },
+    "r10_starting_recipe": "Use R9.1 actual results as the design basis; keep400 total and explicitly document any chosen recipe changes.",
+    "intermediate": {
+      "step": 250,
+      "cases": 16,
+      "purpose": "Intermediate paired observation only; not a replacement for final400 evaluation"
+    },
+    "final_partitions": [
+      40,
+      20,
+      60
+    ],
+    "control_cases": 16,
+    "gamma": 5,
+    "seed": 42,
+    "new_baseline_training": false,
+    "sa_gain_offsets_pc_loss": false,
+    "strict_pc_improvement_over_r1": true,
+    "r9_1_stages": {
+      "interface": 128,
+      "joint": 272
+    },
+    "r9_1_control_modes": [
+      "reasoning_swapped",
+      "empty_reasoning",
+      "global_train_mean",
+      "shared_only",
+      "anchor_only",
+      "no_c"
+    ],
+    "sa_must_also_exceed_r1": true,
+    "actual_visual_quality_must_improve": true
+  },
+  "r9_then_r10_sequence": {
+    "recorded_utc": "2026-10-31T17:15:01.300865+00:00",
+    "explicit_user_request": true,
+    "required_order": [
+      "Finish R9 training and declared generation/module evaluation",
+      "Analyze R9 actual benefits and remaining failures",
+      "Only then design and implement R10 if needed"
+    ],
+    "parallel_r10_design_or_implementation": false,
+    "premature_prototype_status": "Held, unselected, unsubmitted; not the default next architecture",
+    "superseded_by": "latest_user_update: R9.1 now, then R10 from R9.1"
+  },
+  "required_remaining_revisions": [
+    "R9.1",
+    "R10"
+  ],
+  "latest_user_update": {
+    "recorded_utc": "2026-10-31T17:26:40.421677+00:00",
+    "instruction": "Implement R9.1 immediately from the observed R9 problems; then design final R10 from R9.1 results, not from R9. PC must exceed R1; equal PC is not success.",
+    "r9_1_authorized_now": true,
+    "r10_depends_on": "R9.1 completed generation and module evidence",
+    "strict_pc_improvement_over_r1": true
+  },
+  "latest_pc_sa_visual_target": {
+    "original40": {
+      "pc_mean_strictly_greater_than": 3.625,
+      "sa_mean_strictly_greater_than": 2.95,
+      "reference_pc_pass_count": 18
+    },
+    "combined60": {
+      "pc_mean_strictly_greater_than": 3.6666666666666665,
+      "sa_mean_strictly_greater_than": 2.8833333333333333,
+      "reference_pc_pass_count": 28
+    },
+    "priority": "PC first; both scores and actual visual quality must improve",
+    "visual_quality": "Paired actual process/contact/shape continuity and visible artifacts; never inferred solely from score means",
+    "useful_conditioning": "Must establish beneficial sample-specific C/reasoning beyond shared or unrelated controls",
+    "automatic_success": false
+  }
+}

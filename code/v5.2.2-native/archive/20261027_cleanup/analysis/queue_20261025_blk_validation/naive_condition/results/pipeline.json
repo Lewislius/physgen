@@ -1,0 +1,40 @@
+[
+  {
+    "name": "normal_training_16",
+    "state": "complete",
+    "command": [
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_blk_validation/code/train/train.py",
+      "--config",
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_blk_validation/code/configs/ablation_native_text_causal_response.yaml",
+      "--stop-after",
+      "16"
+    ],
+    "returncode": 0
+  },
+  {
+    "name": "matched_conditions",
+    "state": "complete",
+    "command": [
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_blk_validation/code/tools/evaluate_condition_use.py",
+      "--checkpoint",
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_blk_validation/code/checkpoints/v522-native-causal-response-naive-text-wisa3857_66201/latest.pt",
+      "--output",
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261025_blk_validation/naive_condition/results/comparison",
+      "--case-ids",
+      "source0000042",
+      "source0000086",
+      "--seeds",
+      "42",
+      "314159",
+      "--paired-variants",
+      "correct",
+      "--full-samples",
+      "2",
+      "--sampling-seeds",
+      "42",
+      "--sampling-variants",
+      "correct"
+    ],
+    "returncode": 0
+  }
+]

@@ -1,0 +1,184 @@
+{
+  "checked_at_utc": "2026-10-27T02:32:19.251404+00:00",
+  "comparisons": [
+    {
+      "mode": "h_content_message",
+      "frozen_search": 66356,
+      "frozen_run": 67736,
+      "devices": [
+        "NVIDIA RTX PRO 6000 Blackwell Server Edition"
+      ],
+      "completed_steps": 224,
+      "completed": true,
+      "max_training_peak_gib": 63.99960708618164,
+      "feedback_updates": 40,
+      "configuration_differences": {
+        "verifier.adapter.alpha": {
+          "frozen": null,
+          "lora": 16
+        },
+        "verifier.adapter.last_layers": {
+          "frozen": null,
+          "lora": 12
+        },
+        "verifier.adapter.enabled": {
+          "frozen": false,
+          "lora": true
+        },
+        "verifier.adapter.rank": {
+          "frozen": null,
+          "lora": 16
+        },
+        "run_name": {
+          "frozen": "v522-h-content-message-verifier-frozen-simple",
+          "lora": "v522-h-content-message-verifier-lora-simple"
+        },
+        "stages.calibration": {
+          "frozen": null,
+          "lora": 32
+        },
+        "loss.calibration": {
+          "frozen": null,
+          "lora": {
+            "judge": 1.0
+          }
+        },
+        "train.verifier_lr": {
+          "frozen": 0.0,
+          "lora": 1e-05
+        },
+        "revision": {
+          "frozen": "v522_native_h_content_verifier_frozen_simple_v25",
+          "lora": "v522_native_h_content_verifier_lora_simple_v26"
+        }
+      }
+    },
+    {
+      "mode": "q_seed128_message",
+      "frozen_search": 66353,
+      "frozen_run": 67733,
+      "devices": [
+        "NVIDIA RTX PRO 6000 Blackwell Server Edition"
+      ],
+      "completed_steps": 224,
+      "completed": true,
+      "max_training_peak_gib": 65.00192356109619,
+      "feedback_updates": 40,
+      "configuration_differences": {
+        "verifier.adapter.alpha": {
+          "frozen": null,
+          "lora": 16
+        },
+        "verifier.adapter.last_layers": {
+          "frozen": null,
+          "lora": 12
+        },
+        "verifier.adapter.enabled": {
+          "frozen": false,
+          "lora": true
+        },
+        "verifier.adapter.rank": {
+          "frozen": null,
+          "lora": 16
+        },
+        "run_name": {
+          "frozen": "v522-q-seed128-message-verifier-frozen-simple",
+          "lora": "v522-q-seed128-message-verifier-lora-simple"
+        },
+        "stages.calibration": {
+          "frozen": null,
+          "lora": 32
+        },
+        "loss.calibration": {
+          "frozen": null,
+          "lora": {
+            "judge": 1.0
+          }
+        },
+        "train.verifier_lr": {
+          "frozen": 0.0,
+          "lora": 1e-05
+        },
+        "revision": {
+          "frozen": "v522_native_q_seed128_verifier_frozen_simple_v27",
+          "lora": "v522_native_q_seed128_verifier_lora_simple_v28"
+        }
+      }
+    }
+  ],
+  "code_review": [
+    {
+      "area": "Adapter placement",
+      "source": "physgen_native/lora.py:105",
+      "finding": "Verifier LoRA is rank 16 on q/k/v/o in the last 12 language layers, 5,111,808 parameters. It does not train the vision encoder or alter the 4096-to-3072 condition projection."
+    },
+    {
+      "area": "Calibration gradient ownership",
+      "source": "physgen_native/criterion_training.py:18",
+      "finding": "Reference/generated RGB and the observation-first teacher use no_grad; student uses detached RGB. Only verifier LoRA requires gradients in calibration; Wan, C and the Qwen base are frozen."
+    },
+    {
+      "area": "Teacher/generator isolation",
+      "source": "physgen_native/knowledge.py:177",
+      "finding": "Generation explicitly disables verifier LoRA. Verifier reads bind the role in the checkpoint closure; block recomputation captures the same role."
+    },
+    {
+      "area": "Checkpoint memory and numerical agreement",
+      "source": "physgen_native/lora.py:23",
+      "finding": "Vision and language block checkpointing remains enabled in eval mode. RGB/adapter gradients agree with plain evaluation in native tiny-Qwen tests."
+    },
+    {
+      "area": "Accumulation and consecutive optimizer updates",
+      "source": "tests/test_simple_verifier.py:97",
+      "finding": "New H and Q test: four reference/generated microbatches per update, two updates, checkpointed vs plain gradients and AdamW parameters agree. Only verifier parameters change; generator/base/vision/C remain bitwise unchanged."
+    },
+    {
+      "area": "Native geometry",
+      "source": "physgen_native/operator_training.py:359",
+      "finding": "Frozen and LoRA share selected native decoder and visual patch construction; 81 video frames, stride 3 plus final RGB frame => 28 observations at 480x832; 4096-wide messages project to 3072 only at final Wan interface."
+    },
+    {
+      "area": "Failure location",
+      "source": "checkpoints/v522-q-seed128-message-verifier-lora-simple_66384/metrics.jsonl",
+      "finding": "First Q attempt ended after saved interface step 32; verifier LoRA calibration had not begun. Last retries start from step 64. H previously performed one real calibration update with nonzero verifier-only gradient before a subsequent SIGKILL."
+    },
+    {
+      "area": "Recovery deficiencies repaired",
+      "source": "tools/run_resumable_training.py",
+      "finding": "Repeated retries had used the same failing GPU and the four-step save interval lost H step 65. New jobs reject that GPU UUID, checkpoint each update and trace microbatch execution. Scheduler itself is not modified."
+    }
+  ],
+  "tests": [
+    {
+      "suite": "test_training_recovery.py",
+      "passed": 4
+    },
+    {
+      "suite": "test_simple_verifier.py existing tests",
+      "passed": 10,
+      "seconds": 38.461
+    },
+    {
+      "suite": "test_criterion_verifier.py",
+      "passed": 9,
+      "seconds": 64.601
+    },
+    {
+      "suite": "test_simple_verifier.py::test_calibration_accumulation_matches_without_checkpointing",
+      "passed": 1,
+      "seconds": 28.216
+    }
+  ],
+  "limitations": [
+    "CPU tests use small native Qwen with tiny/fake Wan fixtures; full-size GPU execution is checked separately.",
+    "SIGKILL sender is still unknown; device association is not proof of a hardware defect or proof that no platform-specific software issue exists.",
+    "Frozen and LoRA old jobs used different GPU types, so old success/failure does not isolate the adapter effect.",
+    "A completed training run is not evidence of improved video physics quality."
+  ],
+  "calibration_work_per_microbatch": {
+    "teacher": "one observation generation plus eight criterion/label-order forwards without gradients",
+    "student": "eight direct criterion/label-order reads plus backward into the isolated verifier adapter",
+    "video_sources": "alternates cached reference and freshly generated current model; generated samples use 16-step CFG",
+    "frozen_difference": "frozen variant skips calibration; joint verifier feedback differentiates the sampled video into C every four updates"
+  }
+}

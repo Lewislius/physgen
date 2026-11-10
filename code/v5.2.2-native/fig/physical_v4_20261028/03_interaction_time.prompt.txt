@@ -1,0 +1,30 @@
+PAGE_NUMBER=3
+Title: “Physical Block V4 · ③ 物理交互与真实时间”
+Subtitle: “C 调节状态交互｜关系状态 [B,128,21,3072]｜视频时间 τ 与扩散噪声 σ 分开”
+
+(a) 从实际 PTS 建立时钟
+“RGB PTS [B,81]” -> “减去首帧 PTS；映射 latent 时间块” -> two outputs: “τ [B,21] / 代表时刻” and “Δτ [B,21] / 时间间隔”.
+Both -> “拼接 Fourier(τ), Fourier(Δτ), τ/D, log(1+D)” -> “[B,21,2F+2]” -> “clock MLP / (2F+2)→3072” -> “clock [B,21,3072]”.
+One small timing example: “81 帧／24 FPS：τ_rgb[n]=n/24；首末跨度 D=80/24 秒”.
+Separate purple box: “σ [B] / 扩散噪声；单独编码至 3072” with no merger that confuses σ and τ.
+
+(b) C 条件化的全宽物理交互 F_interact
+Inputs arranged clearly:
+“u_cond / u_scope 各 [B,128,21,3072]”
+“g_cond / g_scope 各 [B,128,3072] → 沿 T 广播”
+“V_rule [B,128,3072] → 沿 T 广播”.
+All feed “角色输入融合 F_mix / 5×3072 → 3072” -> “s [B,128,21,3072]”.
+Separate green branch “C [B,128,4096]” -> “全宽调制投影 / 4096→2×3072” -> “γ, β 各 [B,128,1,3072]”.
+s and gamma/beta -> “(1+γ) ⊙ Norm(s) + β” -> “[B,128,21,3072]” -> “交互 FFN / 3072→D_int→3072” -> “h [B,128,21,3072]”.
+clock and sigma feed F_mix as additional state/time conditioning (broadcast across R); keep them separate from the five role inputs. Short note: “D_int 为待定的内部宽度；调制是全宽特征计算，不是运动强度”.
+
+(c) 同一关系沿视频时间读取历史
+“h [B,128,21,3072]” -> “Norm＋时间 Q/K/V / 各 3072→3072；split heads” -> “q_t / k_t / v_t 各 [B,128,24,21,128]”.
+-> “q_t @ k_tᵀ / √128” -> “scores [B,128,24,21,21]”.
+Incoming purple box: “b_h(τ_t−τ_j, Δτ_j) [B,1,24,21,21]”.
+-> “相加＋历史 mask j≤t” -> “softmax over j” -> “A_time [B,128,24,21,21]”.
+A_time multiplied by v_t -> “[B,128,24,21,128]” -> “merge heads＋3072→3072＋残差” -> “h_time [B,128,21,3072]”.
+
+(d) 生成待写回的响应
+“h_time [B,128,21,3072]” and “u_scope [B,128,21,3072]” -> “响应融合 F_out / 2×3072→3072” -> “d_response [B,128,21,3072]” -> “split heads＋permute” -> “D_head [B,24,21,128,128]” -> connector “图④共享关联写回”.
+Footer: “F_mix／F_out 是待实现算子；图示为接口维度。F=单组 Fourier 编码宽度；D=片段时间跨度；D_int=交互中间宽度。原生 Wan 双向时序保持；历史 mask 仅是新分支的顺序偏置。”

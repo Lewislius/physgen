@@ -1,0 +1,72 @@
+{
+  "utc": "2026-11-03T16:23:24.431269+00:00",
+  "scope": "Two post-score selected cases: all new Joint passes under global training-mean C. Eight sampled frames per arm; no whole-suite visual estimate.",
+  "selection_file": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/reports/R11A_physical_content_67214/visual_controls16/mean_selection.json",
+  "scores_unchanged": true,
+  "evaluator_rerun": false,
+  "cases": [
+    {
+      "case": "VP034",
+      "normal_scores": {
+        "sa": 3,
+        "pc": 3
+      },
+      "mean_scores": {
+        "sa": 4,
+        "pc": 5
+      },
+      "normal": "正常条件的气球上移离开画面，后半段出现巨大透明曲面，充气过程不清楚。",
+      "mean": "均值C视频保持稳定、气球大小变化很弱；与空reasoning相似，采样帧没有清楚展示充气扩张。",
+      "interpretation": "这个新Joint通过不能直接视为完整执行了请求。该例PC增加2分，超过16例净增加的1分，其余15例PC总分反而少1；仍保留全部原始分数。"
+    },
+    {
+      "case": "VP038",
+      "normal_scores": {
+        "sa": 3,
+        "pc": 4
+      },
+      "mean_scores": {
+        "sa": 4,
+        "pc": 4
+      },
+      "normal": "正常条件出现明显周期纹理，滚筒逐渐收窄消失，未形成清楚的涂刷过程。",
+      "mean": "均值C条件显著减少周期纹理，滚筒移动并留下可见的深绿色涂刷带，语义响应有实际改善；但中段滚筒与左侧杆的连接中断，后段出现不同朝向的支架，仍有接触/连接问题。",
+      "interpretation": "这例确有画面和请求响应改善，不应把均值C优势全部解释为静止或评分失真；但还不能称为无缺陷的物理执行。"
+    }
+  ],
+  "quantitative_decomposition": {
+    "normal": {
+      "sa": 3.0625,
+      "pc": 3.625,
+      "joint": 4
+    },
+    "mean": {
+      "sa": 3.1875,
+      "pc": 3.6875,
+      "joint": 6
+    },
+    "normal_minus_mean": {
+      "sa": {
+        "wins": 1,
+        "ties": 12,
+        "losses": 3
+      },
+      "pc": {
+        "wins": 2,
+        "ties": 12,
+        "losses": 2
+      },
+      "joint": {
+        "gains": [],
+        "losses": [
+          "VP034",
+          "VP038"
+        ]
+      }
+    },
+    "mean_minus_normal_pc_total": 1,
+    "VP034_mean_minus_normal_pc": 2,
+    "remaining15_mean_minus_normal_pc_total": -1
+  },
+  "decision": "旧版逐样本C的净贡献仍未成立。均值替换同时改变内容、幅度及正负条件差，不能把差异全部归因于语义信息；也不能据两例把所有均值收益否定为静止。下一版需让原请求绑定的物理作用在保留画面稳定性的同时改善动作/关系，当前新架构仍等待自身配对结果。"
+}

@@ -1,0 +1,87 @@
+{
+  "experiment": 66259,
+  "state": "STATE_COMPLETED",
+  "complete_updates": 3,
+  "phases": [
+    {
+      "phase": "calibration",
+      "seconds": 35.8070163577795,
+      "peak_gib": 40.020906925201416,
+      "gradients": {
+        "condition": 0.0,
+        "interface": 0.0,
+        "critic": 0.2975829631472776,
+        "knowledge": 0.0,
+        "wan_lora": 0.0
+      }
+    },
+    {
+      "phase": "interface",
+      "seconds": 190.7928600469604,
+      "peak_gib": 64.69888877868652,
+      "gradients": {
+        "condition": 0.017402858940663703,
+        "interface": 0.1258482600618006,
+        "critic": 0.0,
+        "knowledge": 0.0004662000553424725,
+        "wan_lora": 0.0
+      }
+    },
+    {
+      "phase": "joint",
+      "seconds": 209.14571571536362,
+      "peak_gib": 65.09041786193848,
+      "gradients": {
+        "condition": 0.022719859897703813,
+        "interface": 0.004390909974950449,
+        "critic": 0.0,
+        "knowledge": 0.0006655491331786079,
+        "wan_lora": 0.003949889659022996
+      }
+    }
+  ],
+  "feedback": [
+    {
+      "kind": "completion_feedback",
+      "step": 2,
+      "phase": "interface",
+      "sample": "wisa0013657",
+      "verifier_active": 1,
+      "completion_sigma": 1.0,
+      "completion_steps": 16,
+      "gradient_steps": 16,
+      "generated_from_pure_noise": true,
+      "qwen_verifier_active": 1,
+      "verifier_frozen": 1,
+      "full_video_frames": 81,
+      "feedback_updates_reader": false,
+      "loss/verifier": 0.3515625,
+      "weighted/verifier": 0.017578125,
+      "loss": 0.017578125,
+      "C_gradient_rms": 7.4315408937764e-08
+    },
+    {
+      "kind": "completion_feedback",
+      "step": 3,
+      "phase": "joint",
+      "sample": "source0000900",
+      "verifier_active": 1,
+      "completion_sigma": 1.0,
+      "completion_steps": 16,
+      "gradient_steps": 16,
+      "generated_from_pure_noise": true,
+      "qwen_verifier_active": 1,
+      "verifier_frozen": 1,
+      "full_video_frames": 81,
+      "feedback_updates_reader": false,
+      "loss/verifier": 0.36328125,
+      "weighted/verifier": 0.0181884765625,
+      "loss": 0.0181884765625,
+      "C_gradient_rms": 1.0802181549252055e-07
+    }
+  ],
+  "metrics": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/analysis/queue_20261026_qwen_process/code/checkpoints/v522-native-qwen-process-wisa3857-smoke_66259/metrics.jsonl",
+  "quality_goals_proven": false,
+  "verifier_training_steps": 1,
+  "note": "Real execution and C derivative evidence only; this judge has received one update, not calibrated quality."
+}
