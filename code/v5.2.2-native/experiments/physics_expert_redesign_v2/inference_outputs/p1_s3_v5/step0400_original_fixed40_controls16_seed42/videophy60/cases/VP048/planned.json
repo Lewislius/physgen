@@ -1,0 +1,35 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physics_expert_redesign_v2/runs/p1_s3_v5/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP048",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physics_expert_redesign_v2",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physics_expert_redesign_v2/prepared_inputs",
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "A flat piece of Styrofoam rests on a ramp of plywood, its flat base creating friction.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP048/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "1. Styrofoam’s flat base contacts plywood ramp, creating frictional resistance.\n2. Gravity pulls Styrofoam downward, potentially causing it to slide or remain still.\n3. Plywood ramp’s angle may influence whether Styrofoam slides or stays put.\n4. No fluids present; no continuous processes affect Styrofoam’s position.",
+  "positive_relations": [
+    "Styrofoam’s flat base contacts plywood ramp, creating frictional resistance.",
+    "Gravity pulls Styrofoam downward, potentially causing it to slide or remain still.",
+    "Plywood ramp’s angle may influence whether Styrofoam slides or stays put.",
+    "No fluids present; no continuous processes affect Styrofoam’s position."
+  ],
+  "negative_analysis": "1. Sponge rests on wooden surface, supported by its own weight and surface friction.\n2. Sponge’s porous structure may absorb moisture if liquid is present nearby.\n3. If pressure applied, sponge may compress slightly, altering its shape temporarily.\n4. Ambient humidity could cause sponge to swell minimally over time.",
+  "donor": null,
+  "scope": "Own first image, original request and original Qwen reasoning",
+  "seconds": 94.16915314923972
+}

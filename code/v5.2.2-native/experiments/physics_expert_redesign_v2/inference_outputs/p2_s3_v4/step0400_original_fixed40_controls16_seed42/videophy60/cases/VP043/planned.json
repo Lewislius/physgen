@@ -1,0 +1,35 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physics_expert_redesign_v2/runs/p2_s3_v4/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP043",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physics_expert_redesign_v2",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physics_expert_redesign_v2/prepared_inputs",
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "A spinnaker is deployed on a racing yacht, expanding like a parachute and creating a large amount of thrust.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP043/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "1. Parachute above boat provides lift, reducing descent speed over water surface.\n2. Two people in boat hold lines, controlling parachute’s orientation and stability.\n3. Water beneath boat shows wake, indicating continuous motion and resistance.\n4. If parachute loses tension, boat may sink faster or drift uncontrollably.",
+  "positive_relations": [
+    "Parachute above boat provides lift, reducing descent speed over water surface.",
+    "Two people in boat hold lines, controlling parachute’s orientation and stability.",
+    "Water beneath boat shows wake, indicating continuous motion and resistance.",
+    "If parachute loses tension, boat may sink faster or drift uncontrollably."
+  ],
+  "negative_analysis": "1. Parachute canopy above boat provides lift, reducing descent speed as it interacts with air.\n2. Boat moves through water, creating wake and displacement as it travels.\n3. People in boat hold lines, maintaining control as parachute pulls them forward.\n4. Water surface ripples continuously due to boat’s motion and wind interaction.",
+  "donor": null,
+  "scope": "Own first image, original request and original Qwen reasoning",
+  "seconds": 181.435256594792
+}

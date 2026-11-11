@@ -1,0 +1,35 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physics_expert_redesign_v2/runs/p4_s3_v5/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP031",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physics_expert_redesign_v2",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physics_expert_redesign_v2/prepared_inputs",
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "A tightly folded parachute is unfolded, revealing its vibrant colors and intricate design.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP031/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "1. Parachute lies flat on ground, surrounded by equipment and textured surfaces.  \n2. Small yellow object stands upright near parachute’s edge.  \n3. Green box-like device rests nearby, with yellow tether attached.  \n4. Parachute’s fabric remains static, no motion or unfolding visible.",
+  "positive_relations": [
+    "Parachute lies flat on ground, surrounded by equipment and textured surfaces.",
+    "Small yellow object stands upright near parachute’s edge.",
+    "Green box-like device rests nearby, with yellow tether attached.",
+    "Parachute’s fabric remains static, no motion or unfolding visible."
+  ],
+  "negative_analysis": "1. Parachute’s deployment causes visible ground indentation from its weight and impact.\n2. Small object’s tethered position suggests it remains anchored unless force displaces it.\n3. Nearby equipment’s placement implies readiness for interaction or movement.\n4. Surface texture and shadows indicate consistent lighting and static environmental conditions.",
+  "donor": null,
+  "scope": "Own first image, original request and original Qwen reasoning",
+  "seconds": 91.02964027039707
+}

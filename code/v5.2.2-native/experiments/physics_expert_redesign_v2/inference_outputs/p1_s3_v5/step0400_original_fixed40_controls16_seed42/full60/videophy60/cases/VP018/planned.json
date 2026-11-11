@@ -1,0 +1,35 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physics_expert_redesign_v2/runs/p1_s3_v5/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP018",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physics_expert_redesign_v2",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physics_expert_redesign_v2/prepared_inputs",
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "A bulldozer pulls a heavy load attached with a chain, moving it across the ground.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP018/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "1. Chain links connect load to bulldozer, transferring force as machine moves.\n2. Soil load shifts slightly under chain tension as bulldozer advances.\n3. Ground surface deforms beneath tires, creating displaced soil trails.\n4. Engine fluids circulate continuously to support mechanical operation.",
+  "positive_relations": [
+    "Chain links connect load to bulldozer, transferring force as machine moves.",
+    "Soil load shifts slightly under chain tension as bulldozer advances.",
+    "Ground surface deforms beneath tires, creating displaced soil trails.",
+    "Engine fluids circulate continuously to support mechanical operation."
+  ],
+  "negative_analysis": "1. Heavy loader’s bucket holds soil, chain secures load as machine moves forward.  \n2. Tires press into muddy ground, displacing earth and creating ruts beneath.  \n3. Engine exhaust emits fumes, visible as faint plume near radiator grille.  \n4. Soil in bucket may shift or spill if loader tilts further or accelerates.",
+  "donor": null,
+  "scope": "Own first image, original request and original Qwen reasoning",
+  "seconds": 93.65731292683631
+}

@@ -1,0 +1,35 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physics_expert_redesign_v2/runs/p2_s3_v4/step0400.pt",
+  "step": 400,
+  "mode": "real",
+  "case": "VP032",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physics_expert_redesign_v2",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physics_expert_redesign_v2/prepared_inputs",
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "A player uses a quick set to spike the ball, driving it downward at a steep angle.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP032/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "1. Player holds ball near net, poised to strike with racquet.  \n2. Racquet face angled downward, ready to drive ball steeply.  \n3. Legs bent low, body weight forward for explosive downward motion.  \n4. Sweat may bead on skin as muscles prepare for rapid force application.",
+  "positive_relations": [
+    "Player holds ball near net, poised to strike with racquet.",
+    "Racquet face angled downward, ready to drive ball steeply.",
+    "Legs bent low, body weight forward for explosive downward motion.",
+    "Sweat may bead on skin as muscles prepare for rapid force application."
+  ],
+  "negative_analysis": "1. Player holds stick near net, ready to deflect incoming ball.\n2. Net stretches taut behind player, absorbing potential impact.\n3. Player’s stance lowers center of gravity, preparing for quick lateral movement.\n4. Sweat may bead on player’s skin as physical exertion continues.",
+  "donor": null,
+  "scope": "Own first image, original request and original Qwen reasoning",
+  "seconds": 182.51222875807434
+}
