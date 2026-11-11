@@ -46,11 +46,21 @@ data/cases.json               captions, availability, R18D scores
 data/snapshot.json            exact snapshot counts/status
 scores/r18d_fixed40_scores.json
 scores/r18d_fixed40_summary.json
+evaluation/videophy40/       per-case PC/SA verdicts, CSV, evaluator log
 videos/r18c/VPxxx.mp4
 videos/r18d/VPxxx.mp4
 videos/r18d_extra20/VPxxx.mp4
 visual_review/                R18D contact sheets
 ```
+
+## Per-case evaluation results
+
+`evaluation/videophy40/` contains the raw VideoPhy2 scorer verdicts for all 40 R18D cases:
+
+- `cases/VPxxx/planned.pc.json` and `planned.sa.json` — original per-case `raw`/`score` files
+- `per_case_scores.csv` — flat PC/SA table
+- `scores.json` — aggregate summary and per-case scores
+- `original40_scoring.log` — evaluator log with the full per-case run
 
 To browse locally:
 
