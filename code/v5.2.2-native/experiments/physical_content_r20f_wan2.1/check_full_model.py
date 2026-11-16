@@ -8,7 +8,7 @@ import time
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import bootstrap
 import torch
-from physical_content.common import load_config, gpu_guard, atomic_json
+from physical_content.common import load_config, gpu_guard, atomic_json, design_hash
 from physical_content.model import PhysicalModel
 from physical_content.data import TrainingData
 from physical_content.teacher import Teacher
@@ -19,9 +19,12 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--config', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--gpu-policy', choices=('any48', 'ada48', 'rtx6000'),
+                        default=None)
     args = parser.parse_args()
     cfg = load_config(args.config)
-    gpu_guard(args.output.parent, cfg['train'].get('gpu_policy', 'any48'))
+    policy = args.gpu_policy or cfg['train'].get('gpu_policy', 'any48')
+    gpu_guard(args.output.parent, policy)
     torch.set_num_threads(4)
     torch.manual_seed(42)
     torch.cuda.manual_seed_all(42)
@@ -76,7 +79,10 @@ def main():
         raise RuntimeError(f'Missing generation gradients: {sorted(set(required)-reached)}')
     model.base_bank.assert_frozen()
     atomic_json(dict(passed=True, records=records, seconds=time.monotonic()-started,
-                     parameters=sum(model.trainable_count().values()), checkpoint_saved=False,
+                     design_hash=design_hash(cfg), model=cfg['base']['model'],
+                     latent_shape=list(cfg['data']['latent_shape']),
+                     gpu_policy=policy, checkpoint_saved=False,
+                     parameters=sum(model.trainable_count().values()),
                      quality_improvement_proven=False,
                      formal_initialization='separate official-fresh process'), args.output)
 

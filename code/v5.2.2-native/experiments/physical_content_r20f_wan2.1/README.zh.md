@@ -48,25 +48,37 @@ $PY prepare_wan21_cache.py --config configs/r20ft_wan21.yaml --stage vae --limit
 UMT5 `text` 和 `null_text`（Wan2.1 与 Wan2.2 的 T5 checkpoint sha256 相同），
 但 **不会** 复用 5B 的 `base/vae` 和 3072 维 `native_words`。
 
-## 训练与评测
+## 资源分工
 
-```bash
-# 训练输入归一化
-$PY fit_interface.py --config configs/r20ft_wan21.yaml
+- **ada-48g**：缓存准备、训练输入归一化、准备 60 例 inference、全尺寸
+  21×60×104 梯度/显存预检。对应 `--stage prepare-check --gpu-policy ada48`。
+- **blk-96g**：正式 400 步训练、fixed 40/60 生成与评分、三组配对 16。
+  对应 `--stage train-eval --gpu-policy rtx6000`。
 
-# 全尺寸一次性预检（不保存权重）
-$PY check_full_model.py --config configs/r20ft_wan21.yaml \
-    --output reports/full_model_check.json
-
-# 正式 400 步 + fixed40 + disjoint20 + 配对16
-$PY run_candidate.py --config configs/r20ft_wan21.yaml
-```
+预检成功后会把 `preparation/full_model_check.json` 写成设计绑定的 marker；
+blk-96g 的 `train` 阶段会校验 marker 的 `design_hash`、模型名和 latent 形状，
+不匹配或缺失时拒绝开始正式训练。
 
 Determined 提交：
 
 ```bash
-det experiment create submissions/r20ft_wan21_ada48.yaml .
+# 1) 先在 ada-48g 跑准备与全尺寸预检
+det experiment create submissions/r20ft_wan21_check_ada48.yaml .
+
+# 2) marker 通过后，再在 blk-96g 跑正式训练和评测
+det experiment create submissions/r20ft_wan21_train_blk96g.yaml .
 ```
+
+也可以手动分阶段执行：
+
+```bash
+$PY run_candidate.py --config configs/r20ft_wan21.yaml \
+    --stage prepare-check --gpu-policy ada48
+$PY run_candidate.py --config configs/r20ft_wan21.yaml \
+    --stage train-eval --gpu-policy rtx6000
+```
+
+其他可用阶段：`prepare`、`check`、`train`、`eval`、`all`。
 
 ## 检查
 

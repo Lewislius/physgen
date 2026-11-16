@@ -37,8 +37,9 @@ searcher:
   max_length:
     epochs: 1
   smaller_is_better: false
-name: physical-r20ft-wan21-1.3b-fresh400-videophy40-60-controls16-rtx96
-description: 'Same Wan2.1-T2V-1.3B R20FT candidate as the ada48 submission, pinned
-  to the RTX6000 pool. Wan2.1 VAE latents and 1536-wide native words are rebuilt;
-  no Wan2.2 dimensions, noise or native words are reused.'
-entrypoint: bash /home/liuzhirui/Project/physGen/code/v5.2.2-native/tools/runtime_python.sh /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f_wan2.1/run_candidate.py --config /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f_wan2.1/configs/r20ft_wan21.yaml
+name: physical-r20ft-wan21-1.3b-train-eval-blk96g
+description: 'Formal blk-96g run: consume the ada-48g design-bound full-model check
+  marker, train the official-fresh Wan2.1-T2V-1.3B R20FT candidate for 400 updates,
+  then generate and score fixed 40 + disjoint 20 and the three paired 16-case
+  controls. The train stage refuses to start without the matching check marker.'
+entrypoint: bash /home/liuzhirui/Project/physGen/code/v5.2.2-native/tools/runtime_python.sh /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f_wan2.1/run_candidate.py --config /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f_wan2.1/configs/r20ft_wan21.yaml --stage train-eval --gpu-policy rtx6000

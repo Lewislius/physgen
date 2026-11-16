@@ -23,7 +23,7 @@ environment:
   - WAN_CODE=/home/liuzhirui/model/Wan2.1
   - WAN_CKPT=/home/liuzhirui/model/Wan2.1/Wan2.1-T2V-1.3B
   - QWEN_CKPT=/home/liuzhirui/model/Qwen3-VL/Qwen3-VL-8B-Instruct
-  - GPU_POLICY=any48
+  - GPU_POLICY=ada48
 checkpoint_storage:
   type: shared_fs
   host_path: /mount/HOME/liuzhirui
@@ -37,10 +37,9 @@ searcher:
   max_length:
     epochs: 1
   smaller_is_better: false
-name: physical-r20ft-wan21-1.3b-fresh400-videophy40-60-controls16
-description: 'Official-fresh Wan2.1-T2V-1.3B R20FT: full reasoning, depth-matched
-  physical blocks at 0/7/14/21/28, 1536-wide C/video binding and QK-conditioned
-  physical execution. Same 1600 samples and fixed 40+20 protocol. Wan2.1 VAE
-  latents are rebuilt; no Wan2.2 dimensions, noise or native words are reused.
-  Scores and quality are unverified until the run completes.'
-entrypoint: bash /home/liuzhirui/Project/physGen/code/v5.2.2-native/tools/runtime_python.sh /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f_wan2.1/run_candidate.py --config /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f_wan2.1/configs/r20ft_wan21.yaml
+name: physical-r20ft-wan21-1.3b-prepare-check-ada48
+description: 'ada-48g preflight only: build the Wan2.1 VAE latents, 1536-wide
+  native words and fixed-60 inference conditions, fit training normalization,
+  then run the disposable full-size 21x60x104 gradient/VRAM check. Writes the
+  design-bound check marker consumed by the blk-96g formal training job.'
+entrypoint: bash /home/liuzhirui/Project/physGen/code/v5.2.2-native/tools/runtime_python.sh /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f_wan2.1/run_candidate.py --config /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f_wan2.1/configs/r20ft_wan21.yaml --stage prepare-check --gpu-policy ada48
