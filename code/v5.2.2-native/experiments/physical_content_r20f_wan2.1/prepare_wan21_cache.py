@@ -124,7 +124,8 @@ def _decode_clip(row):
     return video.permute(1, 0, 2, 3).contiguous()
 
 
-def stage_vae(cfg, output, limit=None):
+def stage_vae(cfg, output, limit=None, shard_index=0, shard_count=1,
+              device='cuda'):
     source = Path(cfg['paths'].get('source_cache', SOURCE_CACHE))
     rows = json.loads((source / 'base/manifest.json').read_text())['records']
     by_id = {row['id']: row for row in rows}
@@ -134,12 +135,15 @@ def stage_vae(cfg, output, limit=None):
         raise ValueError(f'Expected 1600 fixed training ids, got {len(ids)}')
     if limit is not None:
         ids = ids[:int(limit)]
+    if shard_count < 1 or not 0 <= shard_index < shard_count:
+        raise ValueError('Invalid prep shard index/count')
+    ids = ids[shard_index::shard_count]
     install_wan21_namespace(cfg['paths']['wan_code'])
     from wan.modules.vae import WanVAE
 
     vae = WanVAE(z_dim=16,
                  vae_pth=str(Path(cfg['paths']['wan_checkpoint']) / 'Wan2.1_VAE.pth'),
-                 dtype=torch.bfloat16, device='cuda')
+                 dtype=torch.bfloat16, device=device)
     destination = output / 'base/vae'
     destination.mkdir(parents=True, exist_ok=True)
     started = time.monotonic()
@@ -151,7 +155,7 @@ def stage_vae(cfg, output, limit=None):
                 raise ValueError(f'{sample_id}: existing Wan2.1 latent has wrong shape')
             continue
         row = by_id[sample_id]
-        video = _decode_clip(row).cuda()
+        video = _decode_clip(row).to(device)
         with torch.autocast('cuda', dtype=torch.bfloat16):
             latent = vae.encode([video])[0].float().cpu()[None]
         if tuple(latent.shape) != (1, 16, 21, 60, 104):
@@ -168,14 +172,17 @@ def stage_vae(cfg, output, limit=None):
             print(json.dumps(dict(stage='vae', done=index + 1, total=len(ids),
                                   seconds=round(time.monotonic() - started, 1))), flush=True)
     total = len(list(destination.glob('*.pt')))
+    name = 'ready.json' if shard_count == 1 else f'ready.shard{shard_index}.json'
     atomic_json(dict(status=('completed' if total == 1600 else 'partial'),
                      stage='vae', records=1600, files=total,
+                     shard_index=shard_index, shard_count=shard_count,
                      revision=ENCODING),
-                output / 'base/vae/ready.json')
-    print(json.dumps(dict(stage='vae', done=len(ids), files=total)), flush=True)
+                output / 'base/vae' / name)
+    print(json.dumps(dict(stage='vae', shard=shard_index, done=len(ids),
+                          files=total)), flush=True)
 
 
-def _native_encoder(cfg):
+def _native_encoder(cfg, device='cuda'):
     install_wan21_namespace(cfg['paths']['wan_code'])
     from torch import nn
     from safetensors import safe_open
@@ -193,16 +200,16 @@ def _native_encoder(cfg):
         with safe_open(str(path), framework='pt', device='cpu') as reader:
             state[key] = reader.get_tensor(full)
     model.load_state_dict(state)
-    return model.to(device='cuda', dtype=torch.bfloat16).eval().requires_grad_(False)
+    return model.to(device=device, dtype=torch.bfloat16).eval().requires_grad_(False)
 
 
-def _t5_encoder(cfg):
+def _t5_encoder(cfg, device='cuda'):
     install_wan21_namespace(cfg['paths']['wan_code'])
     from wan.modules.t5 import T5EncoderModel
 
     checkpoint = Path(cfg['paths']['wan_checkpoint'])
     return T5EncoderModel(
-        text_len=512, dtype=torch.bfloat16, device='cuda',
+        text_len=512, dtype=torch.bfloat16, device=device,
         checkpoint_path=str(checkpoint / 'models_t5_umt5-xxl-enc-bf16.pth'),
         tokenizer_path=str(checkpoint / 'google/umt5-xxl'))
 
@@ -235,7 +242,8 @@ def _encode_relations(encoder, native, relations, word_strings):
     return torch.stack(features).cpu().to(torch.bfloat16)
 
 
-def stage_native(cfg, output, limit=None):
+def stage_native(cfg, output, limit=None, shard_index=0, shard_count=1,
+                 device='cuda'):
     words_root = Path(cfg['paths']['words_cache'])
     input_root = Path(cfg['paths']['input_cache'])
     names = sorted(path.stem for path in words_root.glob('*.pt'))
@@ -243,7 +251,10 @@ def stage_native(cfg, output, limit=None):
         raise ValueError(f'Expected 3320 train/inference word arms, got {len(names)}')
     if limit is not None:
         names = names[:int(limit)]
-    encoder, native = _t5_encoder(cfg), _native_encoder(cfg)
+    if shard_count < 1 or not 0 <= shard_index < shard_count:
+        raise ValueError('Invalid prep shard index/count')
+    names = names[shard_index::shard_count]
+    encoder, native = _t5_encoder(cfg, device), _native_encoder(cfg, device)
     destination = output / 'native_words'
     destination.mkdir(parents=True, exist_ok=True)
     started = time.monotonic()
@@ -277,24 +288,31 @@ def stage_native(cfg, output, limit=None):
             print(json.dumps(dict(stage='native', done=index + 1, total=len(names),
                                   seconds=round(time.monotonic() - started, 1))), flush=True)
     total = len(list(destination.glob('*.pt')))
+    name = 'ready.json' if shard_count == 1 else f'ready.shard{shard_index}.json'
     atomic_json(dict(status=('completed' if total == 3320 else 'partial'),
                      stage='native', records=3320, width=NATIVE_WIDTH,
-                     revision=ENCODING, files=total),
-                output / 'native_words/ready.json')
-    print(json.dumps(dict(stage='native', done=len(names), files=total)), flush=True)
+                     revision=ENCODING, files=total,
+                     shard_index=shard_index, shard_count=shard_count),
+                output / 'native_words' / name)
+    print(json.dumps(dict(stage='native', shard=shard_index, done=len(names),
+                          files=total)), flush=True)
 
 
-def stage_inference(cfg, output, limit=None):
+def stage_inference(cfg, output, limit=None, shard_index=0, shard_count=1,
+                    device='cuda'):
     source = Path(cfg['paths']['input_cache']).parent / 'inference'
     if not source.is_dir():
         raise FileNotFoundError(source)
-    encoder, native = _t5_encoder(cfg), _native_encoder(cfg)
+    encoder, native = _t5_encoder(cfg, device), _native_encoder(cfg, device)
     destination = output / 'inference'
     folders = sorted(path for path in source.iterdir() if path.is_dir())
     if len(folders) != 60:
         raise ValueError(f'Expected 60 fixed inference arms, got {len(folders)}')
     if limit is not None:
         folders = folders[:int(limit)]
+    if shard_count < 1 or not 0 <= shard_index < shard_count:
+        raise ValueError('Invalid prep shard index/count')
+    folders = folders[shard_index::shard_count]
     started = time.monotonic()
     for index, folder in enumerate(folders):
         target = destination / folder.name
@@ -316,39 +334,60 @@ def stage_inference(cfg, output, limit=None):
             print(json.dumps(dict(stage='inference', done=index + 1, total=len(folders),
                                   seconds=round(time.monotonic() - started, 1))), flush=True)
     total = len(list(destination.glob('*/positive.pt')))
+    name = 'ready.json' if shard_count == 1 else f'ready.shard{shard_index}.json'
     atomic_json(dict(status=('completed' if total == 60 else 'partial'),
                      stage='inference', records=60, revision=ENCODING,
-                     native_width=NATIVE_WIDTH, files=total),
-                destination / 'ready.json')
-    print(json.dumps(dict(stage='inference', done=len(folders), files=total)), flush=True)
+                     native_width=NATIVE_WIDTH, files=total,
+                     shard_index=shard_index, shard_count=shard_count),
+                destination / name)
+    print(json.dumps(dict(stage='inference', shard=shard_index,
+                          done=len(folders), files=total)), flush=True)
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--config', type=Path, required=True)
-    parser.add_argument('--stage', choices=('base', 'vae', 'native', 'inference', 'all'),
-                        default='all')
+    parser.add_argument('--stage', choices=('base', 'vae', 'native', 'inference',
+                                            'shard', 'all'), default='all')
     parser.add_argument('--output', type=Path)
     parser.add_argument('--limit', type=int)
+    parser.add_argument('--shard-index', type=int, default=0)
+    parser.add_argument('--shard-count', type=int, default=1)
+    parser.add_argument('--device', default='cuda')
     args = parser.parse_args()
+    if (args.shard_count < 1 or not 0 <= args.shard_index < args.shard_count):
+        raise ValueError('Invalid shard index/count')
+    if args.shard_count > 1 and args.stage in ('all', 'base'):
+        raise ValueError('Multi-GPU preparation uses --stage shard; base runs once')
     cfg = load_config(args.config)
     if cfg['task'] != 't2v':
         raise ValueError('R20FT-Wan2.1 cache is text-to-video only')
     output = args.output or Path(cfg['paths']['train_cache'])
     output.mkdir(parents=True, exist_ok=True)
-    stages = ('base', 'vae', 'native', 'inference') if args.stage == 'all' else (args.stage,)
+    if args.stage == 'all':
+        stages = ('base', 'vae', 'native', 'inference')
+    elif args.stage == 'shard':
+        stages = ('vae', 'native', 'inference')
+    else:
+        stages = (args.stage,)
     for stage in stages:
         if stage == 'base':
             stage_base(cfg, output)
         elif stage == 'vae':
-            stage_vae(cfg, output, args.limit)
+            stage_vae(cfg, output, args.limit, args.shard_index,
+                      args.shard_count, args.device)
         elif stage == 'native':
-            stage_native(cfg, output, args.limit)
+            stage_native(cfg, output, args.limit, args.shard_index,
+                         args.shard_count, args.device)
         elif stage == 'inference':
-            stage_inference(cfg, output, args.limit)
+            stage_inference(cfg, output, args.limit, args.shard_index,
+                            args.shard_count, args.device)
         if torch.cuda.is_available():
             torch.cuda.empty_cache()
-    print(json.dumps(dict(status='completed', stages=list(stages), output=str(output))), flush=True)
+    print(json.dumps(dict(status='completed', stages=list(stages),
+                          shard_index=args.shard_index,
+                          shard_count=args.shard_count,
+                          output=str(output))), flush=True)
 
 
 if __name__ == '__main__':
