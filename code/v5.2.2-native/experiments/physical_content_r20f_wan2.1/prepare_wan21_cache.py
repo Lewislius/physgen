@@ -89,7 +89,8 @@ def stage_base(cfg, output):
         revision=ENCODING,
         source_5b_cache=str(source),
         manifest='audited WISA records and unchanged 1600 order',
-        text='reused 4096-wide UMT5 features; T5 checkpoint sha256=' + _sha256(t5),
+        text=('reused 4096-wide UMT5 features; T5 checkpoint size=' +
+              str(t5.stat().st_size)),
         null_text='reused 4096-wide UMT5 null feature',
         vae='Wan2.1 VAE z=16 stride 4x8x8',
         vae_checkpoint=str(vae),

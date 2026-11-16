@@ -62,12 +62,18 @@ blk-96g 的 `train` 阶段会校验 marker 的 `design_hash`、模型名和 late
 Determined 提交：
 
 ```bash
-# 1) 先在 ada-48g 跑准备与全尺寸预检
+# 1) 先在 ada-48g 跑准备与全尺寸预检（推荐 8 卡分片）
+det experiment create submissions/r20ft_wan21_check_ada48_8gpu.yaml .
+
+# 1-GPU 回退版本（缓存已存在或只做小规模检查时）
 det experiment create submissions/r20ft_wan21_check_ada48.yaml .
 
 # 2) marker 通过后，再在 blk-96g 跑正式训练和评测
 det experiment create submissions/r20ft_wan21_train_blk96g.yaml .
 ```
+
+8 卡版本把 1600 条 VAE latent、3320 个 native words 和 60 例 inference
+按 8 个 rank 分片；全尺寸梯度/显存检查仍在其中一张卡上单独执行。
 
 也可以手动分阶段执行：
 

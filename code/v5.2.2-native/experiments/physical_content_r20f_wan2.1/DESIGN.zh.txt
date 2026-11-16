@@ -120,10 +120,12 @@ Wan2.1-T2V-1.3B 的真实值，并保证没有任何 Wan2.2 的 3072/14336/24-he
 - ada-48g：缓存准备、归一化、60 例 inference、全尺寸梯度/显存预检。
 - blk-96g：正式 400 步训练、fixed 40/60、三组配对 16。
 
-1. ada-48g 一次性完成准备与预检：
-   python run_candidate.py --config configs/r20ft_wan21.yaml \
-       --stage prepare-check --gpu-policy ada48
-   或提交 submissions/r20ft_wan21_check_ada48.yaml。
+1. ada-48g 一次性完成准备与预检（推荐 8 卡分片）：
+   python run_prepare_sharded.py --config configs/r20ft_wan21.yaml \
+       --gpus 8 --stage prepare-check
+   或提交 submissions/r20ft_wan21_check_ada48_8gpu.yaml。
+   1 卡回退：run_candidate.py --stage prepare-check --gpu-policy ada48，
+   或 submissions/r20ft_wan21_check_ada48.yaml。
    成功后写出 preparation/full_model_check.json（含 design_hash、模型名、
    latent_shape 和 passed）。
 2. blk-96g 正式训练与评测：
