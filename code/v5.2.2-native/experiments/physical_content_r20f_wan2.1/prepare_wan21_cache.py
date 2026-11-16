@@ -274,14 +274,16 @@ def stage_native(cfg, output, limit=None, shard_index=0, shard_count=1,
             raise ValueError(f'{name}: missing relations')
         if list(strings) != list(source.get('word_strings', [])):
             raise ValueError(f'{name}: Qwen words and input relations disagree')
+        if not source.get('scope') or not source.get('sample'):
+            raise ValueError(f'{name}: input cache lacks scope/sample provenance')
         value = _encode_relations(encoder, native, relations, strings)
         atomic_torch(dict(
             native_words=value,
             word_strings=list(strings),
             relations=list(relations),
             caption=source.get('caption', ''),
-            scope=words['scope'],
-            sample=words['sample'],
+            scope=source['scope'],
+            sample=source['sample'],
             teacher='official frozen Wan2.1 UMT5 then official Wan2.1 text_embedding',
             revision=ENCODING,
         ), target)
