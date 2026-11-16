@@ -88,7 +88,7 @@ def validate_config(cfg):
     inference = cfg['inference']
     if (int(inference['num_frames']), int(inference['width']), int(inference['height']),
             int(inference['steps']), float(inference['shift']), float(inference['cfg']),
-            float(inference['fps']), int(inference['seed'])) != (81, 832, 480, 50, 5.0, 5.0, 24.0, 42):
+            float(inference['fps']), int(inference['seed'])) != (81, 832, 480, 50, 5.0, 5.0, 16.0, 42):
         raise ValueError('Wan2.1 fixed VideoPhy2 inference protocol differs')
     if int(inference.get('best_of_n', 1)) != 1 or bool(inference.get('clamp_first', False)):
         raise ValueError('Use one sample per prompt and no first-frame clamp')

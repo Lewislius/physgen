@@ -12,7 +12,7 @@
 | VAE | Wan2.1_VAE.pth，z=16，stride 4x8x8 |
 | 81 帧 832x480 latent | `[1, 16, 21, 60, 104]` |
 | 文本 | UMT5-XXL 4096 宽，text_len 512 |
-| 采样 | 50 步、shift 5、CFG 5、24 fps |
+| 采样 | 50 步、shift 5、CFG 5、**16 fps（Wan2.1 原生）** |
 | 注入层 | 0 / 7 / 14 / 21 / 28 |
 | 视频 LoRA | 180 个 rank32/alpha32 目标 |
 

@@ -134,7 +134,13 @@ def generate_selected(model, decoder, cache, cfg, protocol, selected, args,
         begin = time.monotonic()
         inputs, item = case_input(case, 't2v')
         sample = {key: value.cuda() for key, value in inputs.items()}
-        sample['times'] = sample['times'][None]
+        policy = cfg['inference']
+        latent_fps = float(policy['fps']) / float(cfg['data']['vae_stride'][0])
+        # Rebase the 21 latent times to the configured native presentation rate.
+        # R20FT's physical block does not consume these values, but keeping them
+        # consistent with the writer avoids a silent 24-vs-16 fps metadata split.
+        sample['times'] = (torch.arange(sample['times'].numel(), device='cuda',
+                                        dtype=torch.float32) / latent_fps)[None]
         positive = cache.input(item, image=None, duration=item['duration'])
         negative = cache.input(item, image=None, duration=item['duration'], drop=True)
         physical_evidence = positive
@@ -154,7 +160,6 @@ def generate_selected(model, decoder, cache, cfg, protocol, selected, args,
             null_content, null_groups = model.prepare_content(
                 negative, sample['null_text'], anchor_only=mode == 'source_queries_off')
             x = wan21_noise(case, cfg)
-            policy = cfg['inference']
             grid = torch.linspace(1, 0, policy['steps'] + 1, device='cuda')
             grid = policy['shift'] * grid / (1 + (policy['shift'] - 1) * grid)
             for index in range(policy['steps']):
@@ -171,8 +176,8 @@ def generate_selected(model, decoder, cache, cfg, protocol, selected, args,
                                           step=index + 1)), flush=True)
             frames = decoder(x)
         frames = ((frames.permute(0, 2, 3, 1).clamp(-1, 1) + 1) * 127.5).round().byte().cpu().numpy()
-        write_video(frames, path)
-        verify_video(path)
+        write_video(frames, path, policy['fps'])
+        verify_video(path, policy['fps'])
         atomic_json(dict(
             **provenance, caption=case['caption'],
             sampler=policy, positive_analysis=positive.get('analysis'),

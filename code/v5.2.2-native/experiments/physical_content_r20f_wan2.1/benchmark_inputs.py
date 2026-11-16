@@ -1,22 +1,22 @@
-"""Fixed VideoPhy2 60 prompts and Wan2.1-shaped seed42 noise.
+"""Fixed VideoPhy2 60 prompts, Wan2.1 noise and Wan2.1-native fps verification.
 
-The fixed prompts, captions and positive/null UMT5 text tensors are shared with
-the project protocol.  The Wan2.2 persisted noise is intentionally not reused:
+The prompts, captions and positive/null UMT5 text tensors are shared with the
+project protocol.  The Wan2.2 persisted noise is intentionally not reused:
 Wan2.1 uses a 16-channel, 4x8x8 VAE and therefore a different noise tensor.
-The Wan2.1 noise is drawn exactly as in the native Wan2.1 baseline, one
-generation seed per case.
+The formal Wan2.1 protocol writes and verifies 16 fps; Wan2.2 candidates remain
+on 24 fps and do not use this module.
 """
 from pathlib import Path
+from fractions import Fraction
 import json
+import math
+import subprocess
 import sys
 
 import bootstrap
 
 BASE = bootstrap.BASE
 ROOT = BASE / 'experiments/physical_content_v7'
-PINNED = BASE / 'experiments/physical_scaling_q256/inference_snapshots/20261030T034046Z'
-sys.path.insert(0, str(PINNED))
-from protocol import verify_video  # noqa: E402,F401
 
 
 def reference():
@@ -61,3 +61,20 @@ def wan21_noise(case, cfg):
     value = torch.randn(shape, device='cuda', dtype=torch.float32,
                         generator=generator)
     return value[None]
+
+
+def verify_video(path, fps):
+    """Verify Wan2.1 geometry, 81 frames and the configured native fps."""
+    value = subprocess.run(
+        ['ffprobe', '-v', 'error', '-select_streams', 'v:0', '-count_frames',
+         '-show_entries', 'stream=width,height,nb_read_frames,avg_frame_rate',
+         '-of', 'json', str(path)],
+        check=True, capture_output=True, text=True)
+    stream, = json.loads(value.stdout)['streams']
+    if (int(stream['width']), int(stream['height']),
+            int(stream['nb_read_frames'])) != (832, 480, 81):
+        raise ValueError(f'{path}: invalid geometry/length')
+    if not math.isclose(float(Fraction(stream['avg_frame_rate'])), float(fps),
+                        rel_tol=1e-6):
+        raise ValueError(f'{path}: expected {fps} fps, got {stream["avg_frame_rate"]}')
+    return stream
