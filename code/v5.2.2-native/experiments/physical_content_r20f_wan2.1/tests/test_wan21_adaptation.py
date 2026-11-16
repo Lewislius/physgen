@@ -32,6 +32,7 @@ class ConfigTest(unittest.TestCase):
         self.assertEqual(cfg['model']['width'], 1536)
         self.assertEqual(cfg['model']['ffn_width'], 8960)
         self.assertEqual(cfg['data']['latent_shape'], [16, 21, 60, 104])
+        self.assertEqual(cfg['inference']['fps'], 16.0)
 
     def test_wan22_dimensions_are_rejected(self):
         cfg = copy.deepcopy(self.raw)
