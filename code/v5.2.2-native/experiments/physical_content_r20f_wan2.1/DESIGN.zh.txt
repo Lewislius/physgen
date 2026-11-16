@@ -1,0 +1,142 @@
+R20FT -> Wan2.1-T2V-1.3B 适配设计
+
+状态：代码适配已完成，待 Wan2.1 缓存准备、全尺寸 GPU 预检和正式 400 步。
+目标不是重新设计 R20FT，而是把 R20FT 的每一个 Wan2.2 隐含值替换为
+Wan2.1-T2V-1.3B 的真实值，并保证没有任何 Wan2.2 的 3072/14336/24-head/
+48-channel/16x16-VAE 配置残留。
+
+======================================================================
+一、R20FT 保留不变的设计
+======================================================================
+1. 完整物理 reasoning + 原始请求经冻结 Qwen3-VL 编码；256 个可学习 Q
+   做关系内读取、全请求读取和关系间交换。
+2. C 为全宽（本条为 1536），路由 C 和执行 C 各自保留本条输入的原生
+   Wan 文本锚点，并学习不同的修正。
+3. 在 Wan 的 0、7、14、21、28 层执行五个物理块；每个物理块复制同编号
+   的官方预训练块，并接收该层实际视频输入。
+4. 物理查询使用原生块真正送入文本交叉注意力的特征；不把块末端 FFN
+   后的状态当作同一种输入。
+5. 物理 C 先读取当前视频证据，再被视频位置读取；反向读取只汇集该物理
+   条件对应的局部视频偏离，不把全场景公共外观重复装入每个 C。
+6. 读取值不做逐头单位归一化；独立 K/V 不含与 C 无关的偏置。
+7. 两个独立全宽投影作用于物理视频注意力 Q/K，之后经过该物理块的文本
+   读取与 FFN；视频 V 取自本层视频特征。
+8. 写入为同一个物理块在有/无 C 调制下的响应差；输出投影完整可训练。
+9. 原生三维 RoPE、去噪时间调制、真实视频 token 网格；不给全局 C 虚构
+   视频时间坐标。
+10. 400 步、每步累积 4 条、128 步物理生成 + 272 步联合视频 LoRA；
+    原生文本交叉注意力始终冻结；0.8 平均 FM + 0.2 多尺度高误差区域项。
+
+======================================================================
+二、Wan2.1-T2V-1.3B 的真实参数（全部写入配置和运行时检查）
+======================================================================
+- 主干：Wan-AI/Wan2.1-T2V-1.3B，单文件
+  diffusion_pytorch_model.safetensors（不是 Wan2.2 的分片索引）。
+- 隐藏宽度 dim = 1536（不是 3072）。
+- FFN 宽度 ffn_dim = 8960（不是 14336）。
+- 注意力头数 num_heads = 12（不是 24）。
+- 层数 num_layers = 30（与 R20FT 注入深度 0/7/14/21/28 兼容）。
+- 文本宽度 text_dim = 4096，text_len = 512，UMT5-XXL。
+- VAE：Wan2.1_VAE.pth，z_dim = 16，stride = (4, 8, 8)。
+- 81 帧 832x480 的 latent = [1, 16, 21, 60, 104]
+  （不是 Wan2.2 的 [1, 48, 21, 30, 52]）。
+- patch_size = (1, 2, 2)；patch 后视频 token 数 =
+  21 * 30 * 52 = 32760（Wan2.2 5B 为 8190）。
+- 采样：50 步、shift 5.0、CFG 5.0、81 帧、24 fps、832x480、seed 42。
+- 解码：官方 Wan2.1 VAE；不使用 physgen_native.decoder 的 Wan2.2 路径。
+
+======================================================================
+三、逐项适配清单（防止 Wan2.2 残留）
+======================================================================
+1. common.validate_config：
+   - 只接受 width=1536、ffn_width=8960、native_heads=12、
+     native_layers=30、physics_width=1536、latent_shape=(16,21,60,104)。
+   - 只接受 base.model=Wan2.1-T2V-1.3B。
+   - 只接受 paths.wan_code 以 Wan2.1 结尾、wan_checkpoint 目录名为
+     Wan2.1-T2V-1.3B。
+   - 显式拒绝 3072/48-channel/16x16 VAE 配置。
+2. common.data_ready：
+   - 接受单文件或分片 Wan checkpoint；记录 checkpoint_kind。
+   - 检查 Wan2.1_VAE.pth、Wan2.1 T5、Wan2.1 配置。
+   - 训练 latent 形状必须是 [1,16,21,60,104]。
+3. physical_content/data.py：
+   - valid_grid 使用 Wan2.1 latent 空间网格 60x104。
+   - 每个 latent 强制检查 [1,16,21,60,104]；不再有 Wan2.2 的 30x52。
+   - 只允许 T2V，不构建 I2V first-image 视图。
+4. physical_content/model.py：
+   - 使用本地 wan21_loader.load_wan，从 Wan2.1 单文件/索引加载。
+   - 校验 wan.dim=1536、ffn_dim=8960、num_heads=12、num_layers=30、
+     in_dim=out_dim=16。
+   - 显式调用 install_wan21_namespace，杜绝已安装的 Wan2.2 `wan` 包
+     混入 rope_apply/flash_attention。
+5. physical_content/architecture.py：
+   - NativePhysicalVelocity 强制 wan.dim=1536、30 层、注入深度 < 30。
+   - native_condition 必须是 [N,1536]；latent 通道必须是 16。
+   - 时间网格必须等于 Wan2.1 的 21 个 latent 帧。
+6. physical_content/native_residual.py：
+   - NativeAnchoredContent 默认宽度 1536，并显式拒绝非 1536 的 C。
+7. physical_content/grounded_physics.py：
+   - GroundedCondition/GroundedPhysicalBlock 全部从被复制块读取
+     dim/num_heads/head_dim，没有硬编码；Wan2.1 块自动给出
+     1536/12/128。
+   - flash_attention/rope_apply 在真正执行时从已安装的 Wan2.1 源导入。
+8. physical_content/wan21_loader.py：
+   - 同时支持 Wan2.1 单文件和 Wan2.2 风格索引，但配置校验只允许
+     Wan2.1；加载后再次校验维度。
+   - 官方权重中 time_embedding/time_projection/head/modulation/norm 等
+     按既有 R20 规则恢复为 float32。
+9. physical_content/wan21_decoder.py：
+   - 使用官方 Wan2.1 VAE（16 通道、4x8x8），输出 [T,3,H,W]。
+   - 不导入 physgen_native.decoder 的 vae2_2 / 48 通道路径。
+10. benchmark_inputs.wan21_noise：
+   - 按 Wan2.1 latent 形状 [16,21,60,104] 和每例 seed 42 现场生成噪声。
+   - 不再复用 5B 的持久化 [1,48,21,30,52] 噪声；同 seed 不等于同噪声。
+11. prepare_wan21_cache.py：
+   - base：复用 manifest、4096 维 UMT5 text、null_text（Wan2.1 与
+     Wan2.2 的 T5 checkpoint 字节相同，已核对 sha256）。
+   - vae：用官方 Wan2.1 VAE 重新编码 1600 条训练片段，得到
+     [1,16,21,60,104]；视频按 manifest 的 81 个连续源帧、bilinear
+     resize、crop_left/crop_top 解码。
+   - native：用 Wan2.1 UMT5 + 1536 宽 text_embedding 重建 3320 个
+     训练臂的 native_words；空物理条件写零。
+   - inference：重建 60 个固定评测臂的 native_condition 为 1536 宽，
+     Qwen 4096 特征保持原样。
+12. condition_controls：
+   - ENCODING = Wan21-R20FT-20261116；推理缓存必须是 Wan2.1 宽度。
+   - 推理缓存不再接受 I2V first-image 证据。
+13. run_candidate/check_full_model/training：
+   - gpu_guard 使用可配置 policy（any48/ada48/rtx6000），不再强制
+     RTX6000；默认 any48，允许 L40S/RTX4090-48G/RTX6000。
+   - provenance 记录 wan_checkpoint_hash/kind 和 latent_shape。
+14. 视频 LoRA：Wan2.1 也是 30 层 x 6 个目标 = 180 个 rank32/alpha32
+    适配器；不触碰 cross_attn。
+15. 评测：仍用 fixed 40 + disjoint 20、同 caption、同 seed、832x480、
+    81 帧、24 fps、50 步 shift5、CFG5、同一 VideoPhy2 AutoEval。
+
+======================================================================
+四、数据准备与运行顺序
+======================================================================
+1. 生成 Wan2.1 缓存（需要单卡 GPU）：
+   python prepare_wan21_cache.py --config configs/r20ft_wan21.yaml --stage all
+   若只想先做小样本：
+   python prepare_wan21_cache.py --config configs/r20ft_wan21.yaml \
+       --stage vae --limit 8
+2. 拟合训练归一化（CPU）：
+   python fit_interface.py --config configs/r20ft_wan21.yaml
+3. 全尺寸梯度/显存预检（一次性，权重丢弃）：
+   python check_full_model.py --config configs/r20ft_wan21.yaml \
+       --output reports/full_model_check.json
+4. 正式 400 步 + 40/60 + 配对 16：
+   python run_candidate.py --config configs/r20ft_wan21.yaml
+   或通过 Determined 提交 submissions/r20ft_wan21_ada48.yaml。
+
+======================================================================
+五、边界
+======================================================================
+- 代码适配和形状检查不等于生成质量。R20FT 在 Wan2.2 5B 上的结果不能
+  直接当作 Wan2.1 1.3B 的结果。
+- Wan2.1 与 Wan2.2 的 T5 checkpoint 已核对为同一 sha256；但 VAE、latent
+  空间、默认噪声和视频 token 数不同，不能跨模型复用 latent/噪声。
+- 本适配不新增损失、不新增教师、不使用未来视频、不改变 1600 顺序。
+- 现有 5B 的 full_reasoning_cache 只复用其 4096 维 Qwen 特征和关系文本；
+  1536 维 native_words 与 60 例 native_condition 必须由本目录脚本重建。
