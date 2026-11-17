@@ -174,7 +174,11 @@ def audit(cfg):
 
 def is_allowed_gpu(name, policy='rtx6000'):
     normalized=re.sub(r'[^A-Z0-9]','',name.upper())
-    return policy=='rtx6000' and 'H100' not in normalized and ('RTXPRO6000' in normalized or 'RTX6000BLACKWELL' in normalized)
+    # blk-96g currently schedules both RTX PRO 6000 and H100.  Both have
+    # enough memory for the 5B model; record the actual device in gpu.json.
+    return policy=='rtx6000' and (
+        'H100' in normalized or 'RTXPRO6000' in normalized
+        or 'RTX6000BLACKWELL' in normalized)
 
 def gpu_guard(run):
     import torch
@@ -191,5 +195,5 @@ def gpu_guard(run):
     print(json.dumps(record), flush=True)
     if not accepted:
         raise RuntimeError(
-            f'R20B requires actual RTX6000 on blk-96g, got {name}')
+            f'R20IT requires one blk-96g RTX6000/H100 device, got {name}')
     return record
