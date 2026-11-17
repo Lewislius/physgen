@@ -1,0 +1,33 @@
+R20IT：C 全局先验 + 完整 reasoning words 的 token-level 物理执行
+
+目标
+- 保持 R20FT 的画面/细节，提升真实物理一致性。
+- 目标 SA>=3.25、PC>=3.85（3.9+ 更好）、Joint>=13/40；不以画面损坏换 PC。
+
+与 GT/HT 的关键区别
+1. 保留 256-slot source-valued C 分支，作为全局物理先验：
+   execute = N_slot + D N + W_execute(A H)
+   C 的读取和 physical Q/K 更新保留；不使用 feature_update。
+2. 物理块新增 PWCA（Physical Word Cross-Attention）：
+   - Q 来自当前 native_read_state + 真实帧索引 E_time + 前后帧局部残差；
+   - K 来自完整 Qwen reasoning words（4096 -> width）；
+   - V 来自逐词对齐的 native Wan words；
+   - K/V 为冻结满秩投影，训练不会把词级差异压平；
+   - W_o 零初始化，初始模型严格回到 native/C 路径；
+   - 使用可学习 logit scale 的 softmax，读取完整 1-4 条关系句；
+   - 不拆 relation、不绑定 C slot、不做 q-memory。
+3. 物理块完整 FFN 保留；物理信息通过 C Q/K 与 PWCA 改变进入 FFN 的状态，不再使用 14336 维全局增益。
+4. 不使用低秩 adapter、learned gate、motion/contact gate、速度专用路径。
+5. 不引入反事实、wrong reasoning 或中间 checkpoint 选择。
+
+训练与评测
+- 官方 Wan2.2-TI2V-5B 重新初始化；400 步、1600 条固定顺序、128 + 272。
+- 固定 40 + 补充 20 + 完整 60；noC 16 例。
+- 人工复核接触、因果、过程完成、主体/几何和工具消失。
+
+代码审计点
+- physical_blocks[i].native 必须逐参数等于 wan.blocks[site]，site = [0,7,14,21,28]。
+- word_query 必须来自对应 site 的 native cross_attn.q。
+- word_key/word_value 是冻结 buffer，必须随 checkpoint constants 保存/恢复。
+- PWCA 的 W_o 零初始化；空物理条件严格回到 native 路径。
+- 真实 T/H/W 网格与 RoPE 轴序。
