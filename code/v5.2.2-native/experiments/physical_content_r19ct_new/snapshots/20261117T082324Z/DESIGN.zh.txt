@@ -1,0 +1,108 @@
+R19CTN：每个注入层独立的同深度物理状态专家
+
+状态：代码与配置已改写，CPU 形状/初始化/梯度/检查点测试通过；正式提交前必须先在真实
+RTX6000 上跑 check_full_model.py。该检查会同时验证逐层初始化映射和全尺寸显存/梯度。
+
+一、目标
+把 R19CT 中“所有注入层共享同一个 Wan 第14层 PhysicalStateExpert”改成：
+每个注入层都有自己的 PhysicalStateExpert，并且每个专家的 attention/FFN 都从
+同编号的官方 Wan block 复制初始化。不同注入层之间不共享任何物理参数。
+
+同时修正 R19CT 的三个共享/部分复制问题：
+1. 每个注入层的 PhysicalStateExpert 独立，初始化来源 = wan.blocks[site]。
+2. 每个注入层的 video_value 独立，默认从同层 cross_attn.v 初始化，也可配置为 identity。
+3. 每个注入层新增独立的 read_output（cross_attn.o），从同层 cross_attn.o 初始化；
+   每个注入层的 feature_output 保持独立且零初始化。
+
+二、与 R19CT 的差异
+| 项目 | R19CT | R19CTN |
+|---|---|---|
+| 注入层数 | 10（2,5,...,29） | **5（ProPhy 0/7/14/21/28）** |
+| PhysicalStateExpert | 共享一个，固定 Wan 第14层 | 每层一个，wan.blocks[site] |
+| video_value | 共享 identity 投影 | 每层独立，默认同层 cross_attn.v |
+| read_output (O) | 无 | 每层独立，同层 cross_attn.o |
+| feature_output | 每层独立、零初始化 | 每层独立、零初始化（保持） |
+| state expert 的 FFN | 共享第14层 | 每层独立，同层 FFN |
+| 参数共享 | 共享 expert 和 V | 注入层之间零共享 |
+| 初始化审计 | 无强制断言 | PhysicalModel.audit_initialization() 失败即拒绝启动 |
+
+三、注入层与初始化
+injection_layers = [0, 7, 14, 21, 28]
+参考 ProPhy 的 30 层 Wan 五处分布式注入：0/7/14/21/28；相邻注入层之间隔 6 层。
+physical_initialization_blocks 必须与 injection_layers 完全相同；配置校验会拒绝不一致。
+
+每个 site 的初始化来源：
+1. GroundedPhysicalFusion
+   - video_query      <- wan.blocks[site].cross_attn.q
+   - content_key      <- wan.blocks[site].cross_attn.k
+   - video_value      <- wan.blocks[site].cross_attn.v   （默认；identity 可配置）
+   - read_output      <- wan.blocks[site].cross_attn.o   （默认；identity 可配置）
+   - query_norm       <- wan.blocks[site].cross_attn.norm_q
+   - key_norm         <- wan.blocks[site].cross_attn.norm_k
+   - feature_output   <- 零初始化
+2. PhysicalStateExpert[site]
+   - condition_attention Q/K/V/O <- 同层 cross_attn Q/K/V/O
+   - condition norms             <- 同层 cross_attn norm_q/norm_k
+   - relation_attention Q/K/V/O  <- 同层 self_attn Q/K/V/O
+   - temporal_attention Q/K/V/O  <- 同层 self_attn Q/K/V/O
+   - relation/temporal norms     <- 同层 self_attn norm_q/norm_k
+   - relation_norm/temporal_norm  <- 同层 norm1
+   - video_norm                  <- 同层 norm3
+   - ffn.norm                    <- 同层 norm2
+   - ffn.layers[0]/[2]           <- 同层 ffn[0]/[2]
+   - ffn.layers[1]               <- 同层 ffn[1]（GELU）
+   - noise_modulation            <- 零初始化
+
+V/O 必须成对使用：默认是 official V + official O（同层 cross_attn.v/o），
+可选 identity V + identity O。混合对（identity V + official O 或反之）会被配置和
+模块构造拒绝。原因是：official V 把 read 送入 cross-attn 的 value 空间，official O
+负责把它映射回 state expert 的视频 query 空间；identity V 保持原生视频空间，
+此时 O 也必须是 identity，否则会把 read 旋转到不匹配的坐标。
+
+初始化顺序：先创建全部新模块，再逐 site 从官方 Wan 复制，最后安装 video LoRA。
+因此复制的是官方 Linear，不会复制 LoRA wrapper。官方冻结 base 由 OfficialBaseBank
+记录，训练前后做不变性检查。
+
+四、强制初始化审计
+PhysicalModel.__init__ 在默认配置下调用 audit_initialization()：
+- 逐 site 比较 Q/K/V/O、norms、state expert 的 cross/self attention、FFN 是否与同号
+  Wan block 完全一致；
+- 检查 feature_output 和 noise_modulation 是否为零；
+- 检查不同 site 的物理参数对象是否互不共享；
+- 任何一项不匹配立即抛错，模型不会进入训练。
+check_full_model.py 会把审计报告、参数分组规模、估算 optimizer/grad 显存写入
+full_model_check.json；正式训练前必须通过该检查。
+
+五、训练与评测
+数据、样本顺序、噪声、loss、评测协议与 R19CT 完全一致：
+- 1600 条固定训练样本，400 updates，有效 batch 4，global accumulation 4；
+- Wan2.2-TI2V-5B，832x480，81 帧，24 fps，Euler50/shift5/CFG5/seed42；
+- 固定 VideoPhy2 40 + 补充20 / 完整60；
+- 固定16 配对对照：no_c、semantic_expert_off、no_video_feedback、no_temporal、
+  reasoning_swapped、empty_reasoning、global_train_mean。
+- 40/60 和配对对照完成后先做实际视频审查，不自动提交 WMB/Physics-IQ。
+
+六、资源与风险
+- 每个 PhysicalStateExpert 约 286.4M 参数；5 个约 1.432B。
+- 每层新增 video_value/read_output 各 3072x3072；5 层约 94M。
+- 预计总可训练参数约 2.371B；AdamW fp32 master/grad/state 估算约 35.3 GiB，
+  加上冻结 Wan 权重与激活后，估算峰值约 52.3 GiB；96 GiB 单卡有较充足余量。
+- R19CT 的共享专家在每个注入层都会被调用（10 次）；现在只在 ProPhy 的 5 层调用
+  5 个独立专家，attention/FFN 的 forward FLOPs 约为 R19CT 的一半；相对 R19CT
+  新增的是专家参数和 optimizer 显存，而不是更多前向调用。
+- check_full_model.py 是硬门槛；如果实测 OOM，优先考虑减少 injection sites、
+  使用 activation/optimizer offload，或改成多卡 FSDP；不要静默缩小专家宽度或
+  退回共享 expert，否则设计假设就变了。
+- 每层独立 expert 只有 400 steps / 1600 样本，存在过拟合和深度特异性收益不足的风险；
+  必须同时看 40/60 和实际视频，不能只看 PC。
+
+七、文件
+- configs/r19ctn.yaml：唯一正式配置
+- physical_content/grounded_experts.py：per-site read + V/O + state expert
+- physical_content/model.py：per-site ModuleDict、初始化审计、角色分组
+- physical_content/common.py：配置校验和审计
+- check_full_model.py：全尺寸梯度/显存 + 初始化审计
+- tests/test_execution.py：CPU 形状、逐层初始化、独立性、梯度、检查点测试
+- analysis/audit_checkpoint_initialization.py：训练后 checkpoint 的真实 Wan 逐层审计
+- run_candidate.py：训练 + 40/60 + 配对16 总入口
+- submissions/：Determined 提交 YAML

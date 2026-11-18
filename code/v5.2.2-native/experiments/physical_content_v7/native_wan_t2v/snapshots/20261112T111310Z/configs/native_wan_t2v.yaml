@@ -1,0 +1,43 @@
+name: native_wan_t2v
+description: Official Wan2.2-TI2V-5B text-to-video baseline, no project LoRA or
+  physical modules, on the fixed VideoPhy2 40 + disjoint 20 protocol.
+paths:
+  wan_code: /home/liuzhirui/model/Wan2.2
+  wan_checkpoint: /home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B
+  eval_native_inputs: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_wan_t2v/eval_native_inputs
+  eval_protocol: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/videophy60/protocol.json
+  output: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_wan_t2v/outputs
+  report_script: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r15bt/report_results.py
+sampling:
+  steps: 50
+  shift: 5.0
+  guidance: 5.0
+  seed: 42
+  fps: 24.0
+  frames: 81
+  width: 832
+  height: 480
+train:
+  gradient_checkpointing: false
+geometry:
+  mode: native
+  rgb_size:
+  - 480
+  - 832
+evaluation:
+  code: /home/liuzhirui/benchmark/videophy/VIDEOPHY2
+  checkpoint: /home/liuzhirui/benchmark/videophy/videophy_2_auto
+  num_frames: 32
+  batch_size: 1
+  seed: 20261009
+  tasks:
+  - sa
+  - pc
+  joint_threshold: 4
+  average_definition: mean of (SA + PC) / 2; custom summary, not official Joint Score
+  missing_policy: no final comparison unless every selected case has both valid SA and PC scores
+  generation:
+    do_sample: false
+    top_k: 1
+    temperature: 0.001
+    max_length: 256

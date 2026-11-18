@@ -1,0 +1,644 @@
+{
+  "scope": "CPU algebraic audit against real Wan blocks, including native RoPE/time.\n\nOnly the CUDA attention kernel is replaced by identical float32 CPU SDPA on\nboth sides. Native modules, flattening, RoPE, time modulation and unpatchify\nremain real implementations. This does not test trained full-model quality.\n",
+  "cpu_only": true,
+  "full_gpu_equivalence_proven": false,
+  "attention_kernel": "same float32 CPU SDPA for both paths; no mask/padded video tokens in test",
+  "native_forward_cases": [
+    {
+      "version": "R18E",
+      "task": "t2v",
+      "grid": [
+        5,
+        6,
+        8
+      ],
+      "sigma": 0.01,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "reference_rms": 0.46905282139778137
+    },
+    {
+      "version": "R18E",
+      "task": "t2v",
+      "grid": [
+        5,
+        6,
+        8
+      ],
+      "sigma": 0.5,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "reference_rms": 0.4693154990673065
+    },
+    {
+      "version": "R18E",
+      "task": "t2v",
+      "grid": [
+        5,
+        6,
+        8
+      ],
+      "sigma": 0.98,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "reference_rms": 0.46969306468963623
+    },
+    {
+      "version": "R18E",
+      "task": "t2v",
+      "grid": [
+        21,
+        4,
+        6
+      ],
+      "sigma": 0.01,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "reference_rms": 0.4617539644241333
+    },
+    {
+      "version": "R18E",
+      "task": "t2v",
+      "grid": [
+        21,
+        4,
+        6
+      ],
+      "sigma": 0.5,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "reference_rms": 0.4623083174228668
+    },
+    {
+      "version": "R18E",
+      "task": "t2v",
+      "grid": [
+        21,
+        4,
+        6
+      ],
+      "sigma": 0.98,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "reference_rms": 0.4626675248146057
+    },
+    {
+      "version": "R18E",
+      "task": "i2v",
+      "grid": [
+        5,
+        6,
+        8
+      ],
+      "sigma": 0.01,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "reference_rms": 0.44515788555145264
+    },
+    {
+      "version": "R18E",
+      "task": "i2v",
+      "grid": [
+        5,
+        6,
+        8
+      ],
+      "sigma": 0.5,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "reference_rms": 0.445514053106308
+    },
+    {
+      "version": "R18E",
+      "task": "i2v",
+      "grid": [
+        5,
+        6,
+        8
+      ],
+      "sigma": 0.98,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "reference_rms": 0.4455166459083557
+    },
+    {
+      "version": "R18E",
+      "task": "i2v",
+      "grid": [
+        21,
+        4,
+        6
+      ],
+      "sigma": 0.01,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "reference_rms": 0.4667084217071533
+    },
+    {
+      "version": "R18E",
+      "task": "i2v",
+      "grid": [
+        21,
+        4,
+        6
+      ],
+      "sigma": 0.5,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "reference_rms": 0.46726566553115845
+    },
+    {
+      "version": "R18E",
+      "task": "i2v",
+      "grid": [
+        21,
+        4,
+        6
+      ],
+      "sigma": 0.98,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "reference_rms": 0.4676070213317871
+    },
+    {
+      "version": "R19CT",
+      "task": "t2v",
+      "grid": [
+        5,
+        6,
+        8
+      ],
+      "sigma": 0.01,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "reference_rms": 0.46733516454696655
+    },
+    {
+      "version": "R19CT",
+      "task": "t2v",
+      "grid": [
+        5,
+        6,
+        8
+      ],
+      "sigma": 0.5,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "reference_rms": 0.46771618723869324
+    },
+    {
+      "version": "R19CT",
+      "task": "t2v",
+      "grid": [
+        5,
+        6,
+        8
+      ],
+      "sigma": 0.98,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "reference_rms": 0.46821877360343933
+    },
+    {
+      "version": "R19CT",
+      "task": "t2v",
+      "grid": [
+        21,
+        4,
+        6
+      ],
+      "sigma": 0.01,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "reference_rms": 0.4500567615032196
+    },
+    {
+      "version": "R19CT",
+      "task": "t2v",
+      "grid": [
+        21,
+        4,
+        6
+      ],
+      "sigma": 0.5,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "reference_rms": 0.450606107711792
+    },
+    {
+      "version": "R19CT",
+      "task": "t2v",
+      "grid": [
+        21,
+        4,
+        6
+      ],
+      "sigma": 0.98,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "reference_rms": 0.45104867219924927
+    },
+    {
+      "version": "R19CT",
+      "task": "i2v",
+      "grid": [
+        5,
+        6,
+        8
+      ],
+      "sigma": 0.01,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "reference_rms": 0.45077598094940186
+    },
+    {
+      "version": "R19CT",
+      "task": "i2v",
+      "grid": [
+        5,
+        6,
+        8
+      ],
+      "sigma": 0.5,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "reference_rms": 0.45114508271217346
+    },
+    {
+      "version": "R19CT",
+      "task": "i2v",
+      "grid": [
+        5,
+        6,
+        8
+      ],
+      "sigma": 0.98,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "reference_rms": 0.4512249827384949
+    },
+    {
+      "version": "R19CT",
+      "task": "i2v",
+      "grid": [
+        21,
+        4,
+        6
+      ],
+      "sigma": 0.01,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "reference_rms": 0.4582479000091553
+    },
+    {
+      "version": "R19CT",
+      "task": "i2v",
+      "grid": [
+        21,
+        4,
+        6
+      ],
+      "sigma": 0.5,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "reference_rms": 0.45883414149284363
+    },
+    {
+      "version": "R19CT",
+      "task": "i2v",
+      "grid": [
+        21,
+        4,
+        6
+      ],
+      "sigma": 0.98,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "reference_rms": 0.45927122235298157
+    },
+    {
+      "version": "R19EI",
+      "task": "t2v",
+      "grid": [
+        5,
+        6,
+        8
+      ],
+      "sigma": 0.01,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "reference_rms": 0.4573705792427063
+    },
+    {
+      "version": "R19EI",
+      "task": "t2v",
+      "grid": [
+        5,
+        6,
+        8
+      ],
+      "sigma": 0.5,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "reference_rms": 0.4578600525856018
+    },
+    {
+      "version": "R19EI",
+      "task": "t2v",
+      "grid": [
+        5,
+        6,
+        8
+      ],
+      "sigma": 0.98,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "reference_rms": 0.45863619446754456
+    },
+    {
+      "version": "R19EI",
+      "task": "t2v",
+      "grid": [
+        21,
+        4,
+        6
+      ],
+      "sigma": 0.01,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "reference_rms": 0.4577232003211975
+    },
+    {
+      "version": "R19EI",
+      "task": "t2v",
+      "grid": [
+        21,
+        4,
+        6
+      ],
+      "sigma": 0.5,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "reference_rms": 0.45813512802124023
+    },
+    {
+      "version": "R19EI",
+      "task": "t2v",
+      "grid": [
+        21,
+        4,
+        6
+      ],
+      "sigma": 0.98,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "reference_rms": 0.45851314067840576
+    },
+    {
+      "version": "R19EI",
+      "task": "i2v",
+      "grid": [
+        5,
+        6,
+        8
+      ],
+      "sigma": 0.01,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "reference_rms": 0.4382081627845764
+    },
+    {
+      "version": "R19EI",
+      "task": "i2v",
+      "grid": [
+        5,
+        6,
+        8
+      ],
+      "sigma": 0.5,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "reference_rms": 0.4385409355163574
+    },
+    {
+      "version": "R19EI",
+      "task": "i2v",
+      "grid": [
+        5,
+        6,
+        8
+      ],
+      "sigma": 0.98,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "reference_rms": 0.4388742446899414
+    },
+    {
+      "version": "R19EI",
+      "task": "i2v",
+      "grid": [
+        21,
+        4,
+        6
+      ],
+      "sigma": 0.01,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "reference_rms": 0.45784813165664673
+    },
+    {
+      "version": "R19EI",
+      "task": "i2v",
+      "grid": [
+        21,
+        4,
+        6
+      ],
+      "sigma": 0.5,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "reference_rms": 0.45826825499534607
+    },
+    {
+      "version": "R19EI",
+      "task": "i2v",
+      "grid": [
+        21,
+        4,
+        6
+      ],
+      "sigma": 0.98,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "reference_rms": 0.4586089253425598
+    },
+    {
+      "version": "R19DT",
+      "task": "t2v",
+      "grid": [
+        5,
+        6,
+        8
+      ],
+      "sigma": 0.01,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "reference_rms": 0.4580560624599457
+    },
+    {
+      "version": "R19DT",
+      "task": "t2v",
+      "grid": [
+        5,
+        6,
+        8
+      ],
+      "sigma": 0.5,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "reference_rms": 0.4588746428489685
+    },
+    {
+      "version": "R19DT",
+      "task": "t2v",
+      "grid": [
+        5,
+        6,
+        8
+      ],
+      "sigma": 0.98,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "reference_rms": 0.45907434821128845
+    },
+    {
+      "version": "R19DT",
+      "task": "t2v",
+      "grid": [
+        21,
+        4,
+        6
+      ],
+      "sigma": 0.01,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "reference_rms": 0.45632240176200867
+    },
+    {
+      "version": "R19DT",
+      "task": "t2v",
+      "grid": [
+        21,
+        4,
+        6
+      ],
+      "sigma": 0.5,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "reference_rms": 0.45674410462379456
+    },
+    {
+      "version": "R19DT",
+      "task": "t2v",
+      "grid": [
+        21,
+        4,
+        6
+      ],
+      "sigma": 0.98,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "reference_rms": 0.4572078585624695
+    },
+    {
+      "version": "R19DT",
+      "task": "i2v",
+      "grid": [
+        5,
+        6,
+        8
+      ],
+      "sigma": 0.01,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "reference_rms": 0.478371798992157
+    },
+    {
+      "version": "R19DT",
+      "task": "i2v",
+      "grid": [
+        5,
+        6,
+        8
+      ],
+      "sigma": 0.5,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "reference_rms": 0.4787682592868805
+    },
+    {
+      "version": "R19DT",
+      "task": "i2v",
+      "grid": [
+        5,
+        6,
+        8
+      ],
+      "sigma": 0.98,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "reference_rms": 0.47917231917381287
+    },
+    {
+      "version": "R19DT",
+      "task": "i2v",
+      "grid": [
+        21,
+        4,
+        6
+      ],
+      "sigma": 0.01,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "reference_rms": 0.4535497725009918
+    },
+    {
+      "version": "R19DT",
+      "task": "i2v",
+      "grid": [
+        21,
+        4,
+        6
+      ],
+      "sigma": 0.5,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "reference_rms": 0.45418351888656616
+    },
+    {
+      "version": "R19DT",
+      "task": "i2v",
+      "grid": [
+        21,
+        4,
+        6
+      ],
+      "sigma": 0.98,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "reference_rms": 0.45467233657836914
+    }
+  ],
+  "temporal_rope_same_integer_coordinates": [
+    {
+      "head_width": 32,
+      "max_abs": 4.76837158203125e-07
+    },
+    {
+      "head_width": 128,
+      "max_abs": 1.0728836059570312e-06
+    }
+  ],
+  "temporal_units": "Native video RoPE uses latent-frame index; added branch uses elapsed seconds. Different units are intentional, not equivalent pretrained coordinates.",
+  "passed": true
+}

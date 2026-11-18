@@ -177,13 +177,21 @@ def is_allowed_gpu(name, policy='rtx6000'):
     return policy=='rtx6000' and 'H100' not in normalized and (
         'RTXPRO6000' in normalized or 'RTX6000BLACKWELL' in normalized)
 
+TARGET_GPU_UUID = 'GPU-d46ac459-b58f-cd15-f6b1-e0b8b5156d4b'
+
 def gpu_guard(run):
     import torch
     count = torch.cuda.device_count()
     name = torch.cuda.get_device_name(0) if count else 'NO CUDA DEVICE'
+    uuid = ''
+    if count == 1:
+        uuid = str(torch.cuda.get_device_properties(0).uuid)
+        if not uuid.startswith('GPU-'):
+            uuid = 'GPU-' + uuid
     policy = 'rtx6000'
-    accepted = count == 1 and is_allowed_gpu(name, policy)
-    record = dict(kind='gpu_policy', actual=name, visible_count=count,
+    accepted = (count == 1 and is_allowed_gpu(name, policy)
+                and uuid == TARGET_GPU_UUID)
+    record = dict(kind='gpu_policy', actual=name, uuid=uuid, visible_count=count,
                   accepted=accepted, resource_pool=policy,
                   experiment_id=os.getenv('DET_EXPERIMENT_ID'))
     path = Path(run) / 'gpu.json'
@@ -192,5 +200,6 @@ def gpu_guard(run):
     print(json.dumps(record), flush=True)
     if not accepted:
         raise RuntimeError(
-            f'R20IT requires actual RTX6000 on blk-96g, got {name}')
+            f'R20IT requires {TARGET_GPU_UUID} on blk-96g, '
+            f'got {name} {uuid}')
     return record

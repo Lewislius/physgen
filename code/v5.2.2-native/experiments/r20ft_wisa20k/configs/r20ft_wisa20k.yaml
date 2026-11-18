@@ -1,0 +1,45 @@
+run_name: r20ft_wisa20k_qwen3vl_thinking_v1
+
+paths:
+  output_root: /run/determined/NAS1/public/Dataset/WISA/data/r20ft_wisa20k
+  source_catalog: /run/determined/NAS1/public/Dataset/WISA/data/wisa-80k.json
+  video_root: /run/determined/NAS1/public/Dataset/WISA/data/videos
+
+  # Existing R20FT main-training cache: 1,600 qwen38-revised clips.
+  existing_manifest: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/data_revision_qwen38/runs/20261103_dataset/encoded/base/manifest.json
+  existing_sequence: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19/preparation/sample_sequence_at.json
+  existing_vae: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/data_revision_qwen38/runs/20261103_dataset/encoded/base/vae
+  existing_text: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/data_revision_qwen38/runs/20261103_dataset/encoded/base/text
+  existing_input: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f/preparation/full_reasoning_cache/input
+  existing_words: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f/preparation/full_reasoning_cache/words
+  existing_native_words: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f/preparation/full_reasoning_cache/native_words
+  existing_null_text: /home/liuzhirui/Project/physGen/data_cache/wisa_4000/base/null_text.pt
+
+  qwen_checkpoint: /home/liuzhirui/model/Qwen3-VL/Qwen3-VL-8B-Thinking
+  wan_code: /home/liuzhirui/model/Wan2.2
+  wan_checkpoint: /home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B
+
+data:
+  frames: 81
+  width: 832
+  height: 480
+
+prepare:
+  # 16 chronological frames keep the caption style faithful while avoiding the
+  # very slow 40-image Thinking prefill; no-thinking prefill is used for the
+  # caption edit, while the T2V reasoning still uses the Thinking trace.
+  caption_frames: 16
+  caption_max_new_tokens: 768
+  qwen_max_pixels: 262144
+  qwen_max_new_tokens: 3072
+  reasoning_max_new_tokens: 2048
+
+selection:
+  seed: 20261117
+  target_total: 20000
+  existing_training_records: 1600
+  new_records: 18400
+  per_shard_target: 9200
+  candidates_total: 22400
+  shard_count: 2
+  shard_size: 11200

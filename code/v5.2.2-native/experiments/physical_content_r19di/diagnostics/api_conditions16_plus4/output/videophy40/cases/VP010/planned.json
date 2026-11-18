@@ -1,0 +1,35 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19di/runs/r19di_parallel_400/step0400.pt",
+  "step": 400,
+  "case": "VP010",
+  "seed": 42,
+  "guidance": {
+    "kind": "two_arm_joint_condition_cfg",
+    "scale": 5.0,
+    "formula": "v = v_neg + 5 * (v_pos - v_neg)",
+    "positive": "own first image, original request, positive native T5 and positive Qwen C",
+    "negative": "same first image, null native T5 and null Qwen C",
+    "separate_physical_guidance": false
+  },
+  "suite": "videophy40",
+  "task": "i2v",
+  "caption": "A person mops up a puddle of water on a concrete floor, the water disappearing as the mop passes.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP010/first.png",
+  "sampler": {
+    "num_frames": 81,
+    "width": 832,
+    "height": 480,
+    "steps": 50,
+    "sampler": "shifted_euler",
+    "shift": 5.0,
+    "cfg": 5.0,
+    "seed": 42,
+    "best_of_n": 1,
+    "clamp_first": true
+  },
+  "positive_analysis": "As the mop head sweeps across the puddle, displaced water is absorbed into the bristles, reducing the visible wet area.\nThe concrete floor beneath the mop's path transitions from reflective wetness to matte dryness as the bristles pass.\nRemaining puddle edges recede inward as the mop removes water from the center outward.\nThe mop handle tilts and translates with the sweeping motion, maintaining bristle contact with the floor surface.",
+  "physical_analysis": "As the mop head sweeps across the puddle, displaced water is absorbed into the bristles, reducing the visible wet area.\nThe concrete floor beneath the mop's path transitions from reflective wetness to matte dryness as the bristles pass.\nRemaining puddle edges recede inward as the mop removes water from the center outward.\nThe mop handle tilts and translates with the sweeping motion, maintaining bristle contact with the floor surface.",
+  "negative_analysis": "The broom's upright posture depends on its bristles resting flat against the wet floor.\nA slight lateral force would cause the broom to tip over onto the slick surface.\nThe soapy water on the floor may slowly spread outward or evaporate.",
+  "scope": "own image/request",
+  "seconds": 269.84406185895205
+}

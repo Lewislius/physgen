@@ -1,0 +1,532 @@
+{
+  "created_utc": "2026-11-05T03:08:36.521189+00:00",
+  "candidate": "R13B",
+  "experiment": 67610,
+  "trial": 68997,
+  "state": "STATE_COMPLETED",
+  "independently_verified_utc": "2026-11-05T03:06:15.182146+00:00",
+  "end_utc": "2026-11-05T03:05:48.443469Z",
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/runs/physical_content_67610/step0400.pt",
+  "steps": 400,
+  "main": {
+    "original40": {
+      "count": 40,
+      "sa_mean": 2.875,
+      "pc_mean": 3.525,
+      "sa_pass_rate": 0.2,
+      "pc_pass_rate": 0.425,
+      "joint_pass_count": 7,
+      "joint_pass_rate": 0.175
+    },
+    "full60": {
+      "count": 60,
+      "sa_mean": 2.8666666666666667,
+      "pc_mean": 3.566666666666667,
+      "sa_pass_rate": 0.2,
+      "pc_pass_rate": 0.45,
+      "joint_pass_count": 10,
+      "joint_pass_rate": 0.16666666666666666
+    }
+  },
+  "normal_fixed16": {
+    "count": 16,
+    "sa_mean": 3.0625,
+    "pc_mean": 3.5625,
+    "sa_pass_rate": 0.25,
+    "pc_pass_rate": 0.4375,
+    "joint_pass_count": 4,
+    "joint_pass_rate": 0.25
+  },
+  "controls": {
+    "direct_write_off": {
+      "summary": {
+        "count": 16,
+        "sa_mean": 3.1875,
+        "pc_mean": 3.6875,
+        "sa_pass_rate": 0.375,
+        "pc_pass_rate": 0.5,
+        "joint_pass_count": 6,
+        "joint_pass_rate": 0.375
+      },
+      "normal_minus_control": {
+        "sa": {
+          "mean_change": -0.125,
+          "wins": 1,
+          "ties": 12,
+          "losses": 3
+        },
+        "pc": {
+          "mean_change": -0.125,
+          "wins": 1,
+          "ties": 12,
+          "losses": 3
+        },
+        "joint": {
+          "gains": [],
+          "losses": [
+            "VP010",
+            "VP038"
+          ]
+        }
+      },
+      "score_file": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/inference_outputs/physical_content_67610/step0400_original_fixed40_controls16_seed42/controls/direct_write_off/videophy40/scores.json"
+    },
+    "empty_reasoning": {
+      "summary": {
+        "count": 16,
+        "sa_mean": 3.25,
+        "pc_mean": 3.75,
+        "sa_pass_rate": 0.375,
+        "pc_pass_rate": 0.5,
+        "joint_pass_count": 6,
+        "joint_pass_rate": 0.375
+      },
+      "normal_minus_control": {
+        "sa": {
+          "mean_change": -0.1875,
+          "wins": 0,
+          "ties": 13,
+          "losses": 3
+        },
+        "pc": {
+          "mean_change": -0.1875,
+          "wins": 0,
+          "ties": 13,
+          "losses": 3
+        },
+        "joint": {
+          "gains": [],
+          "losses": [
+            "VP010",
+            "VP038"
+          ]
+        }
+      },
+      "score_file": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/inference_outputs/physical_content_67610/step0400_original_fixed40_controls16_seed42/controls/empty_reasoning/videophy40/scores.json"
+    },
+    "global_train_mean": {
+      "summary": {
+        "count": 16,
+        "sa_mean": 3.1875,
+        "pc_mean": 3.6875,
+        "sa_pass_rate": 0.375,
+        "pc_pass_rate": 0.4375,
+        "joint_pass_count": 5,
+        "joint_pass_rate": 0.3125
+      },
+      "normal_minus_control": {
+        "sa": {
+          "mean_change": -0.125,
+          "wins": 0,
+          "ties": 14,
+          "losses": 2
+        },
+        "pc": {
+          "mean_change": -0.125,
+          "wins": 2,
+          "ties": 10,
+          "losses": 4
+        },
+        "joint": {
+          "gains": [],
+          "losses": [
+            "VP010"
+          ]
+        }
+      },
+      "score_file": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/inference_outputs/physical_content_67610/step0400_original_fixed40_controls16_seed42/controls/global_train_mean/videophy40/scores.json"
+    },
+    "interaction_off": {
+      "summary": {
+        "count": 16,
+        "sa_mean": 3.125,
+        "pc_mean": 3.625,
+        "sa_pass_rate": 0.375,
+        "pc_pass_rate": 0.5,
+        "joint_pass_count": 6,
+        "joint_pass_rate": 0.375
+      },
+      "normal_minus_control": {
+        "sa": {
+          "mean_change": -0.0625,
+          "wins": 1,
+          "ties": 13,
+          "losses": 2
+        },
+        "pc": {
+          "mean_change": -0.0625,
+          "wins": 0,
+          "ties": 15,
+          "losses": 1
+        },
+        "joint": {
+          "gains": [],
+          "losses": [
+            "VP010",
+            "VP038"
+          ]
+        }
+      },
+      "score_file": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/inference_outputs/physical_content_67610/step0400_original_fixed40_controls16_seed42/controls/interaction_off/videophy40/scores.json"
+    },
+    "no_c": {
+      "summary": {
+        "count": 16,
+        "sa_mean": 3.3125,
+        "pc_mean": 3.5625,
+        "sa_pass_rate": 0.375,
+        "pc_pass_rate": 0.4375,
+        "joint_pass_count": 6,
+        "joint_pass_rate": 0.375
+      },
+      "normal_minus_control": {
+        "sa": {
+          "mean_change": -0.25,
+          "wins": 0,
+          "ties": 12,
+          "losses": 4
+        },
+        "pc": {
+          "mean_change": 0,
+          "wins": 2,
+          "ties": 11,
+          "losses": 3
+        },
+        "joint": {
+          "gains": [],
+          "losses": [
+            "VP010",
+            "VP038"
+          ]
+        }
+      },
+      "score_file": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/inference_outputs/physical_content_67610/step0400_original_fixed40_controls16_seed42/controls/no_c/videophy40/scores.json"
+    },
+    "reasoning_swapped": {
+      "summary": {
+        "count": 16,
+        "sa_mean": 3.125,
+        "pc_mean": 3.6875,
+        "sa_pass_rate": 0.3125,
+        "pc_pass_rate": 0.5,
+        "joint_pass_count": 5,
+        "joint_pass_rate": 0.3125
+      },
+      "normal_minus_control": {
+        "sa": {
+          "mean_change": -0.0625,
+          "wins": 0,
+          "ties": 15,
+          "losses": 1
+        },
+        "pc": {
+          "mean_change": -0.125,
+          "wins": 0,
+          "ties": 14,
+          "losses": 2
+        },
+        "joint": {
+          "gains": [],
+          "losses": [
+            "VP038"
+          ]
+        }
+      },
+      "score_file": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/inference_outputs/physical_content_67610/step0400_original_fixed40_controls16_seed42/controls/reasoning_swapped/videophy40/scores.json"
+    }
+  },
+  "paired": {
+    "original40/R10-A": {
+      "sa": {
+        "mean_change": 0.05,
+        "wins": 4,
+        "ties": 34,
+        "losses": 2
+      },
+      "pc": {
+        "mean_change": -0.225,
+        "wins": 2,
+        "ties": 28,
+        "losses": 10
+      },
+      "joint": {
+        "gains": [],
+        "losses": []
+      }
+    },
+    "original40/R1": {
+      "sa": {
+        "mean_change": -0.075,
+        "wins": 1,
+        "ties": 35,
+        "losses": 4
+      },
+      "pc": {
+        "mean_change": -0.1,
+        "wins": 5,
+        "ties": 26,
+        "losses": 9
+      },
+      "joint": {
+        "gains": [],
+        "losses": [
+          "VP008",
+          "VP010",
+          "VP038"
+        ]
+      }
+    },
+    "original40/native400": {
+      "sa": {
+        "mean_change": -0.2,
+        "wins": 1,
+        "ties": 30,
+        "losses": 9
+      },
+      "pc": {
+        "mean_change": 0.075,
+        "wins": 6,
+        "ties": 31,
+        "losses": 3
+      },
+      "joint": {
+        "gains": [],
+        "losses": [
+          "VP008",
+          "VP010",
+          "VP038"
+        ]
+      }
+    },
+    "original40/R11B-different-data": {
+      "sa": {
+        "mean_change": 0.275,
+        "wins": 12,
+        "ties": 27,
+        "losses": 1
+      },
+      "pc": {
+        "mean_change": -0.425,
+        "wins": 2,
+        "ties": 23,
+        "losses": 15
+      },
+      "joint": {
+        "gains": [
+          "VP022",
+          "VP034"
+        ],
+        "losses": [
+          "VP008"
+        ]
+      }
+    },
+    "original40/R12A": {
+      "sa": {
+        "mean_change": -0.15,
+        "wins": 2,
+        "ties": 30,
+        "losses": 8
+      },
+      "pc": {
+        "mean_change": 0.075,
+        "wins": 6,
+        "ties": 31,
+        "losses": 3
+      },
+      "joint": {
+        "gains": [
+          "VP034"
+        ],
+        "losses": [
+          "VP008",
+          "VP010",
+          "VP038"
+        ]
+      }
+    },
+    "original40/R12B": {
+      "sa": {
+        "mean_change": -0.075,
+        "wins": 1,
+        "ties": 35,
+        "losses": 4
+      },
+      "pc": {
+        "mean_change": 0.025,
+        "wins": 6,
+        "ties": 29,
+        "losses": 5
+      },
+      "joint": {
+        "gains": [],
+        "losses": [
+          "VP010"
+        ]
+      }
+    },
+    "original40/R13A": {
+      "sa": {
+        "mean_change": -0.05,
+        "wins": 2,
+        "ties": 34,
+        "losses": 4
+      },
+      "pc": {
+        "mean_change": 0.05,
+        "wins": 7,
+        "ties": 28,
+        "losses": 5
+      },
+      "joint": {
+        "gains": [],
+        "losses": [
+          "VP010",
+          "VP038"
+        ]
+      }
+    },
+    "full60/R10-A": {
+      "sa": {
+        "mean_change": 0.11666666666666667,
+        "wins": 9,
+        "ties": 49,
+        "losses": 2
+      },
+      "pc": {
+        "mean_change": -0.26666666666666666,
+        "wins": 2,
+        "ties": 41,
+        "losses": 17
+      },
+      "joint": {
+        "gains": [
+          "VP041"
+        ],
+        "losses": []
+      }
+    },
+    "full60/R1": {
+      "sa": {
+        "mean_change": -0.016666666666666666,
+        "wins": 3,
+        "ties": 53,
+        "losses": 4
+      },
+      "pc": {
+        "mean_change": -0.1,
+        "wins": 5,
+        "ties": 44,
+        "losses": 11
+      },
+      "joint": {
+        "gains": [],
+        "losses": [
+          "VP008",
+          "VP010",
+          "VP038"
+        ]
+      }
+    },
+    "full60/native400": {
+      "sa": {
+        "mean_change": -0.11666666666666667,
+        "wins": 2,
+        "ties": 49,
+        "losses": 9
+      },
+      "pc": {
+        "mean_change": 0.05,
+        "wins": 8,
+        "ties": 47,
+        "losses": 5
+      },
+      "joint": {
+        "gains": [],
+        "losses": [
+          "VP008",
+          "VP010",
+          "VP038"
+        ]
+      }
+    },
+    "full60/R11B-different-data": {
+      "sa": {
+        "mean_change": 0.36666666666666664,
+        "wins": 23,
+        "ties": 35,
+        "losses": 2
+      },
+      "pc": {
+        "mean_change": -0.45,
+        "wins": 3,
+        "ties": 34,
+        "losses": 23
+      },
+      "joint": {
+        "gains": [
+          "VP022",
+          "VP034",
+          "VP041",
+          "VP048",
+          "VP060"
+        ],
+        "losses": [
+          "VP008"
+        ]
+      }
+    },
+    "full60/R13A": {
+      "sa": {
+        "mean_change": 0,
+        "wins": 4,
+        "ties": 52,
+        "losses": 4
+      },
+      "pc": {
+        "mean_change": 0.016666666666666666,
+        "wins": 8,
+        "ties": 45,
+        "losses": 7
+      },
+      "joint": {
+        "gains": [
+          "VP048"
+        ],
+        "losses": [
+          "VP010",
+          "VP038"
+        ]
+      }
+    }
+  },
+  "primary_numeric_targets": {
+    "PC_at_least3_8": false,
+    "SA_at_least3_3": false,
+    "Joint_strictly_above_historical11of40": false
+  },
+  "quality_goal_achieved": false,
+  "decision": "reject_current_design; proceed to evidence-led R13C design within authorization",
+  "evidence": {
+    "comparison": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/inference_outputs/physical_content_67610/step0400_original_fixed40_controls16_seed42/comparison_report.json",
+    "execution_factorial16": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/reports/execution_factorial16.json",
+    "main40_per_case": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/reports/main40_paired_detail.json",
+    "training_match": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/reports/completed400_training_match.json",
+    "training_dynamics": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/reports/matched_training_dynamics.json",
+    "predeclared_visual_review": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/reports/physical_content_67610/visual_predeclared/review.json",
+    "score_selected_visual_review": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/reports/physical_content_67610/visual_score_selected/review.json"
+  },
+  "findings": [
+    "Full40: SA2.875 PC3.525 Joint7; versusR10A PC-.225 (2wins/28ties/10losses), SA+.05 and no Joint improvement. Eight of ten PC losses have tiedSA, one SA improves, one degrades; the loss is not a broad price paid for better semantics.",
+    "Paired16: both execution paths giveSA3.0625 PC3.5625 Joint4 versusnoC3.3125/3.5625/6; no netPC gain and four SA losses with no wins.",
+    "Query-only givesPC+.125 versusnoC (2wins/14ties/0losses), but SA-.125 and unchangedJoint. Adding it on top of directwrite givesPC-.0625 and losesJointVP010/038. Directwrite has conditional local benefits but also suppresses movement or damages persistence. Two paths cannot be treated as additive benefits.",
+    "Correct reasoning is not superior in these means: empty3.25/3.75/6, unrelated3.125/3.6875/5, trainmean3.1875/3.6875/5. They preserve own native input; mean also changes amplitude. Do not equate these interventions with removal of all Qwen information or a causal retraining experiment.",
+    "Late matched execution-C within-sample cosine .90876 versusR10A .82035, centeredenergy .09299 versus.18199; 513of519 matched positive samples have higher cosine. No persistent late gradient clipping. Similar FM/tail cannot certify physical/semantic quality.",
+    "Five prespecified paired video reviews plus two labeled result-selected cases show persistence/deformation defects and omitted processes. Some artifact suppression is real; full targets remain unmet."
+  ],
+  "operational_notes": [
+    "All60 normal unique cases and six16 controls complete. No new downloads/API/observer/environment changes.",
+    "The optional tail helper had GPU-guard rejections and one missing-import failure before generation, corrected in a new helper snapshot with actual import/subprocess validation. Accepted67670 completed3 videos, publishedonlyVP040; primary-ownedVP038/039 retained. This was ownership-based reuse, not score selection; duplicates remain isolated."
+  ],
+  "next": "Review historical useful/harmful mechanisms with completed B evidence, then finalize/implement/validate and submit R13C. No further B training or test jobs required; maximumR13C and all quality targets unchanged."
+}

@@ -1,0 +1,36 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20g/runs/r20gt_source_local_execution400/step0400.pt",
+  "step": 400,
+  "case": "VP018",
+  "seed": 42,
+  "guidance": {
+    "kind": "two_arm_joint_condition_cfg",
+    "scale": 5.0,
+    "formula": "v = v_neg + 5 * (v_pos - v_neg)",
+    "positive": "request only, positive native T5 and positive request-only Qwen C",
+    "negative": "null request, null native T5 and null request-only Qwen C",
+    "separate_physical_guidance": false
+  },
+  "suite": "videophy40",
+  "task": "t2v",
+  "intervention": "no_c",
+  "caption": "A bulldozer pulls a heavy load attached with a chain, moving it across the ground.",
+  "canvas": null,
+  "sampler": {
+    "num_frames": 81,
+    "width": 832,
+    "height": 480,
+    "steps": 50,
+    "sampler": "shifted_euler",
+    "shift": 5.0,
+    "cfg": 5.0,
+    "seed": 42,
+    "best_of_n": 1,
+    "clamp_first": false
+  },
+  "positive_analysis": "1. Bulldozer’s engine torque drives wheels, creating friction against ground to propel the chain and load forward.  \n2. Chain links must remain taut and connected to load to transmit force without slippage or detachment.  \n3. Load’s mass resists acceleration, requiring continuous force to maintain motion across uneven terrain.  \n4. Ground surface must provide sufficient friction to prevent bulldozer or load from sliding backward or tipping.",
+  "physical_analysis": "1. Bulldozer’s engine torque drives wheels, creating friction against ground to propel the chain and load forward.  \n2. Chain links must remain taut and connected to load to transmit force without slippage or detachment.  \n3. Load’s mass resists acceleration, requiring continuous force to maintain motion across uneven terrain.  \n4. Ground surface must provide sufficient friction to prevent bulldozer or load from sliding backward or tipping.",
+  "negative_analysis": "",
+  "scope": "request only; no image",
+  "seconds": 86.12076098006219
+}

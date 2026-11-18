@@ -1,0 +1,38 @@
+{
+  "status": "checked",
+  "variant": "v5_ce",
+  "training_experiment_id": 66706,
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_v5_scaling_q256/runs/v5_ce_66706/step1000.pt",
+  "training_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_v5_scaling_q256/snapshots/20261029T142617Z",
+  "output": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_v5_scaling_q256/inference_outputs/v5_ce_66706/final1000_demo21_videophy40_r1",
+  "demo_cases": 21,
+  "videophy_cases": 40,
+  "fps": 24,
+  "frames": 81,
+  "steps": 50,
+  "shift": 5.0,
+  "guidance": 5.0,
+  "checkpoint_step": 1000,
+  "parameter_tensors": 434,
+  "parameters": 575611904,
+  "comparison_references": 17,
+  "evaluation": {
+    "code": "/home/liuzhirui/benchmark/videophy/VIDEOPHY2",
+    "checkpoint": "/home/liuzhirui/benchmark/videophy/videophy_2_auto",
+    "num_frames": 32,
+    "seed": 20261009,
+    "tasks": [
+      "sa",
+      "pc"
+    ],
+    "generation": {
+      "do_sample": false,
+      "top_k": 1,
+      "temperature": 0.001,
+      "max_length": 256
+    },
+    "joint_threshold": 4,
+    "average_definition": "mean of (SA + PC) / 2; custom summary, not official Joint Score",
+    "missing_policy": "no final comparison unless every selected case has both valid SA and PC scores"
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "scores": {
+    "B": {
+      "main40": {
+        "SA": 2.925,
+        "PC": 3.7,
+        "Joint": 10,
+        "n": 40
+      },
+      "fixed16": {
+        "SA": 3.0625,
+        "PC": 3.8125,
+        "Joint": 6,
+        "n": 16
+      }
+    },
+    "B_joint": {
+      "main40": {
+        "SA": 2.9,
+        "PC": 3.775,
+        "Joint": 10,
+        "n": 40
+      },
+      "fixed16": {
+        "SA": 3.125,
+        "PC": 3.9375,
+        "Joint": 6,
+        "n": 16
+      }
+    },
+    "I": {
+      "main40": {
+        "SA": 3.025,
+        "PC": 3.475,
+        "Joint": 10,
+        "n": 40
+      },
+      "fixed16": {
+        "SA": 3.1875,
+        "PC": 3.6875,
+        "Joint": 6,
+        "n": 16
+      }
+    },
+    "B_noC": {
+      "SA": 3.3125,
+      "PC": 3.6875,
+      "Joint": 6,
+      "n": 16
+    },
+    "I_noC": {
+      "SA": 3.25,
+      "PC": 3.625,
+      "Joint": 6,
+      "n": 16
+    },
+    "I_nativeQ": {
+      "SA": 3.125,
+      "PC": 3.625,
+      "Joint": 4,
+      "n": 16
+    },
+    "I_direct": {
+      "SA": 3.25,
+      "PC": 3.75,
+      "Joint": 5,
+      "n": 16
+    },
+    "I_bound": {
+      "SA": 3.1875,
+      "PC": 3.6875,
+      "Joint": 6,
+      "n": 16
+    }
+  },
+  "paired16_accounting": {
+    "I_minus_B_joint": {
+      "SA": 0.0625,
+      "PC": -0.25,
+      "Joint": 0
+    },
+    "I_noC_minus_B_noC": {
+      "SA": -0.0625,
+      "PC": -0.0625,
+      "Joint": 0
+    },
+    "B_joint_physical_effect": {
+      "SA": -0.1875,
+      "PC": 0.25,
+      "Joint": 0
+    },
+    "I_physical_effect": {
+      "SA": -0.0625,
+      "PC": 0.0625,
+      "Joint": 0
+    }
+  },
+  "interpretation": "Arithmetic decomposition at shared16, not a causal attribution of percentages; noC keeps each model own learned LoRA.",
+  "source_audit": {
+    "Enhancement_and_ContentBlock_AST_equal": true,
+    "read_physical_AST_equal": true,
+    "training_protocol_match": "completed_training_match.json,400/1600/128+272/data/sigma/dropout/LR all match",
+    "formal_I_added_physical_query_trainables": 94433280,
+    "B_trainable_parameters": 670010368,
+    "I_trainable_parameters": 764443648,
+    "native_text_QKVO_frozen": true
+  },
+  "training_submitted": false,
+  "completed_diagnostic": 68408,
+  "diagnostic_summary": "review/completed_read_diagnostic.json"
+}

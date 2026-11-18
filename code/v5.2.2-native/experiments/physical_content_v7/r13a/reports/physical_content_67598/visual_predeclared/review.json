@@ -1,0 +1,209 @@
+{
+  "cases": {
+    "VP004": {
+      "caption": "A plastic ruler is bent until it cracks, displaying a visible stress fracture that propagates.",
+      "frames": [
+        0,
+        11,
+        22,
+        34,
+        45,
+        57,
+        68,
+        80
+      ],
+      "selection": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_operator_r13a/reports/physical_content_67598/visual_predeclared/VP004_selection.json",
+      "observations": {
+        "R13A": "横向物体大部分时间维持初始形态，未看到清楚的弯折至断裂过程；后段人物手部/领口与物体接触位置出现涂抹和白色形变，不能认定过程或画质改善。",
+        "R10-A": "同样未清楚完成请求的弯折/断裂；人物与背景较稳定，后段仍有手部重影/物体边缘异常。",
+        "R1": "同样大部分保留初始横向物体和人物姿态，未看到清楚断裂；后段存在局部重影。",
+        "native400": "早期横向物体迅速碎裂/消失，人物和衣领随后明显形变；较大变化不代表正确的材料弯折断裂。",
+        "R13A_scale_off": "关闭scale后，同样未清楚执行弯折/断裂；后段手部与横向物体、衣领交界仍发生重影/白色形变。不能据此认为关闭scale即可修复本例。",
+        "R13A_reasoning_swapped": "保持首帧、原生caption、seed和采样器后换为无关reasoning，人物与横向物体明显扭曲，头部/躯干在中段出现分离或消失；远未正确执行弯折至断裂。",
+        "R13A_no_c": "关闭C后横向物体中段出现拉伸、人物衣领/躯干出现大片白色缺失，末段儿童头部也严重破损；正常C保住更多形态，但两者都没有可信的尺子弯折至断裂过程。",
+        "R13A_shift_off": "关闭shift、只留scale后，横向物体连同人物衣领出现大片破碎和白色缺口，末段儿童头部也破损；正常C的形态保留更好，但均未显示正确弯裂。",
+        "R13A_global_train_mean": "固定训练均值C大部分保持初始人物/横向物体，领口仍有白色异常，但未执行弯折至断裂。画面更接近静态并非完整物理成功。",
+        "R13A_empty_reasoning": "空reasoning也大部分保持初始横向物体，末段出现色偏/纹理异常；未执行弯裂，不能把稳定保持直接当成条件物理推理。"
+      },
+      "interpretation": "本例的输出明显受Qwen条件内容影响，不能描述成完全忽略C或reasoning；正确内容相对无关内容保住了更多人物/物体形态，但仍未恢复请求的材料弯折/断裂。关闭scale也未修复过程。无关输入导致更坏结果不等于已证明模型学会物理推理；尚需完整16评分、no_c/shift_off等对照及其他预定视频。",
+      "controls_from_unscored_helper_outputs": true,
+      "control_quality_scores_available": false
+    },
+    "VP010": {
+      "caption": "A person mops up a puddle of water on a concrete floor, the water disappearing as the mop passes.",
+      "frames": [
+        0,
+        11,
+        22,
+        34,
+        45,
+        57,
+        68,
+        80
+      ],
+      "selection": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_operator_r13a/reports/physical_content_67598/visual_predeclared/VP010_selection.json",
+      "controls_from_unscored_helper_outputs": true,
+      "control_quality_scores_available": false,
+      "observations": {
+        "R13A": "拖把有较明确的左右/前后移动，比R10A静止更接近拖地动作；后半段出现大块异常明亮的白色水面/薄片状形变和喷溅，未清楚呈现拖过后水被吸收、地面自然变干。",
+        "R13A_reasoning_swapped": "也有拖把移动，后半段水面出现重复同心圆/条纹状痕迹；与正常内容产生不同缺陷，不能把较大变化直接算成更好物理过程。",
+        "R10-A": "拖把和积水几乎保持初始状态，缺少明显拖地与吸水过程。",
+        "R1": "有拖把移动，后半段产生明显重复的环状水纹/拖痕。",
+        "native400": "有拖动和水面变化，但中后段拖把部分消失/细杆扭曲，并出现异常水面边缘。",
+        "R13A_scale_off": "关闭scale后仍有与正常内容非常相近的拖把运动、后半段大块白色水面形变与喷溅；未消除物理响应错误。当前这一例没有呈现关闭scale即可修复的证据，也不足以评价scale在全部16例中的净贡献。",
+        "R13A_no_c": "关闭C后仍有拖把移动与白色水面/拖痕异常，后段拖把形体较可辨；与正常版同样没有可靠显示水被吸收、地面自然变干。正常版的动作恢复不能单独归功于C。",
+        "R13A_shift_off": "仅scale仍有拖把前后运动，但后段出现格纹/白色薄片状水面，未恢复可信吸水消失；本例PC从正常4降到3，形态/流体缺陷与评分退步方向相符。",
+        "R13A_global_train_mean": "均值C有拖把前后移动，末段出现反复环形/弧形水纹和异常拖痕，仍非自然吸水消失；与正常C不同，但未解决流体响应。",
+        "R13A_empty_reasoning": "空reasoning早中段几乎保持拖把位置，逐渐出现彩色颗粒/纹理噪声，末段才有大幅拖把变形移动；正常reasoning更能带出动作，但正常仍有白色水面伪影。"
+      },
+      "interpretation": "R13A在本例恢复了一些请求动作，但物理过程与画质仍有明显缺陷；与VP004合看，当前失败不是所有样本都完全静止，也不是完全无视reasoning。必须同时考察有用动作、材料/流体响应和形态一致性，完整40/16评分尚未出。"
+    },
+    "VP027": {
+      "caption": "Hands shape a lump of clay-like bread dough into a smooth, round boule on a wooden table.",
+      "selection": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_operator_r13a/reports/physical_content_67598/visual_predeclared/VP027_selection.json",
+      "frames": [
+        0,
+        11,
+        22,
+        34,
+        45,
+        57,
+        68,
+        80
+      ],
+      "observations": {
+        "R13A": "后半段有双手按压和位置变化，面团保留连续形体，动作响应比R10A更充分；尚不足以从抽帧判断完整揉面/成形质量。",
+        "R13A_reasoning_swapped": "手部和面团变化与正常内容非常接近，未看到明显的正确内容专属收益。",
+        "R10-A": "大部分维持初始手与面团位置，缺少明显的按压/成形进展。",
+        "R1": "有与R13A相近的后半段按压动作和面团形变，物体连续性总体保留。",
+        "R13A_no_c": "关闭C后有明显双手按压、手位变化和面团转动/揉塑，整体连续；正常版PC4而关闭后5，不能把正常C当作这个过程不可缺少的来源。抽帧不等于验证完整揉面质量。",
+        "R13A_shift_off": "仅scale可见手部按压、面团偏转/成形，形体大体连续，和正常/noC接近；与正常同PC4，抽帧不足以确认完整揉面质量。",
+        "R13A_global_train_mean": "固定均值C也有后段按压/面团形变，与正常类似，未呈现内容差异的明确优势。"
+      },
+      "interpretation": "本例R13A相对R10A恢复了一些动作，并非所有案例都仅有伪影；但正常/无关内容相似，不能把这种恢复直接归因于正确reasoning。需要noC/shift等对照与完整评分来区分作用。"
+    },
+    "VP034": {
+      "caption": "A large, clear balloon is inflated with air, showing the internal pressure causing the balloon to stretch.",
+      "selection": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_operator_r13a/reports/physical_content_67598/visual_predeclared/VP034_selection.json",
+      "frames": [
+        0,
+        11,
+        22,
+        34,
+        45,
+        57,
+        68,
+        80
+      ],
+      "observations": {
+        "R13A": "气球形态连续，主要变化是向上漂移，未看到清楚、持续的充气膨胀过程。",
+        "R13A_reasoning_swapped": "同样主要上移，末端带出细线，未恢复明确的膨胀过程。",
+        "R10-A": "气球近乎保持原位和大小，缺少充气过程。",
+        "R1": "有上移，仍以近似固定大小的漂浮为主，缺少明确的持续膨胀。",
+        "R13A_no_c": "关闭C后气球缓慢上移、尺寸接近恒定，末段气球嘴和附近边缘有少量碎片/形变；与正常版一样未看到持续充气。评分两版SA4/PC5不能直接当成目标过程成功。",
+        "R13A_shift_off": "仅scale仍主要保持气球大小、缓慢上移，嘴部有细小碎裂；没有清晰持续充气，与正常/noC属于相同过程遗漏。",
+        "R13A_global_train_mean": "均值C气球近乎保持初始大小和位置；没有持续充气。"
+      },
+      "interpretation": "R13A较R10A更会动，但此例所需的状态变化并未因此完成。动作量、形态保存与目标物理过程不是同一项；这仍不能作为生成目标达成证据。"
+    },
+    "VP038": {
+      "caption": "A paint roller, dipped in green paint, is used to cover a section of a metal fence, creating a uniform green coat.",
+      "selection": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_operator_r13a/reports/physical_content_67598/visual_predeclared/VP038_selection.json",
+      "frames": [
+        0,
+        11,
+        22,
+        34,
+        45,
+        57,
+        68,
+        80
+      ],
+      "observations": {
+        "R13A": "滚筒有移动，但中段滚筒头明显扭曲/缩成团，后段重新恢复筒形；刷柄出现并移动，未见可靠连续的涂覆过程。背景横杆较R10A保持完整，仍不能算整体修复。",
+        "R13A_reasoning_swapped": "后半段滚筒头消失，只剩细杆/空柄移动，明显不符合涂刷过程。",
+        "R10-A": "中段滚筒头和支架严重形变/消失再现，背景横杆也有不连续；后段恢复部分筒形。",
+        "R1": "滚筒头总体较连续地保留并移动，但仍有残影/附着关系和涂覆一致性问题，不是完美参考。",
+        "R13A_no_c": "关闭C后滚筒中段近乎侧薄片/消失，末段重新出现圆柱并与手柄改变相对位置；可见较明显涂色带但工具连续性仍有问题。正常版也有滚筒塌缩再出现，C没有消除这一缺陷。",
+        "R13A_shift_off": "仅scale也有滚筒移动，中段筒体塌缩、侧面薄片/空管与后段重新成筒，涂色变化不连续；未修复正常版本的工具连续性缺陷。",
+        "R13A_global_train_mean": "均值C滚筒中段变成圆块/空壳，后段再次形成圆柱，未形成连续可信的涂色过程。"
+      },
+      "interpretation": "正确内容相对无关内容保住了一部分执行物体，但自身仍发生形态破坏。R13A相较R10A有局部背景/动作差异，尚不能据此认定PC/SA/Joint或真实画质共同提升。"
+    }
+  },
+  "updated_utc": "2026-11-04T21:36:25.878806+00:00",
+  "experiment": 67598,
+  "checkpoint_step": 400,
+  "scope": "Predeclared diagnostic eight-frame review of existing matched videos; not a whole-suite quality score or replacement for complete metrics.",
+  "completed_all_five_cases": true,
+  "normal_and_historical_five_cases_complete": true,
+  "all_control_review_complete": true,
+  "interim_synthesis": "五个预定案例显示：R13A在拖地、揉面等恢复部分动作；尺子和气球仍缺少指定状态变化，拖地和滚筒仍有明显物理/形态缺陷。无关reasoning在尺子/滚筒明显更坏，在揉面/气球与正常较接近，内容影响与收益具有案例差异。不能用单一趋同或完全忽略条件解释所有失败，也不能把恢复动作当整体成功。等待完整40/16评分与其余控制。",
+  "no_c_five_cases_complete": true,
+  "no_c16_interpretation": "正常相对noC：SA0胜14平2负（VP017/025），PC2胜13平1负（004/025正、027负），Joint同6/16且同一批通过案例。仅局部稳定性收益，未建立完整目标改善。五个预选画面说明C对004形态有用，但没有普遍恢复请求过程或消除其他缺陷。",
+  "shift_off_five_cases_complete": true,
+  "scale_shift_factorial_report": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_operator_r13a/reports/scale_shift_factorial16.json",
+  "visual_review_coverage": {
+    "R1": [
+      "VP004",
+      "VP010",
+      "VP027",
+      "VP034",
+      "VP038"
+    ],
+    "R10-A": [
+      "VP004",
+      "VP010",
+      "VP027",
+      "VP034",
+      "VP038"
+    ],
+    "R13A": [
+      "VP004",
+      "VP010",
+      "VP027",
+      "VP034",
+      "VP038"
+    ],
+    "R13A_empty_reasoning": [
+      "VP004",
+      "VP010"
+    ],
+    "R13A_global_train_mean": [
+      "VP004",
+      "VP010"
+    ],
+    "R13A_no_c": [
+      "VP004",
+      "VP010",
+      "VP027",
+      "VP034",
+      "VP038"
+    ],
+    "R13A_reasoning_swapped": [
+      "VP004",
+      "VP010",
+      "VP027",
+      "VP034",
+      "VP038"
+    ],
+    "R13A_scale_off": [
+      "VP004",
+      "VP010"
+    ],
+    "R13A_shift_off": [
+      "VP004",
+      "VP010",
+      "VP027",
+      "VP034",
+      "VP038"
+    ],
+    "native400": [
+      "VP004",
+      "VP010"
+    ]
+  },
+  "all_control_scores_complete": true,
+  "control_visual_scope": "Each control mode has representative paired visual observations; this is not exhaustive review of all96 control videos.",
+  "mean_c_five_cases_complete": true
+}

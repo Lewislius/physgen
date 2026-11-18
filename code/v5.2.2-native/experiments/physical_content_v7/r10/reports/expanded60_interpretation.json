@@ -1,0 +1,1276 @@
+{
+  "recorded_utc": "2026-11-01T07:12:40.564298+00:00",
+  "summary": {
+    "normal_20": {
+      "path": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/videophy60/inference_outputs/R10_physical_content_67003/extra20_gamma5_seed42/videophy60",
+      "generated": 20,
+      "status": "completed",
+      "count": 20,
+      "sa_mean": 2.6,
+      "pc_mean": 4.0,
+      "sa_pass_rate": 0.1,
+      "pc_pass_rate": 0.7,
+      "joint_pass_rate": 0.1
+    },
+    "normal_60": {
+      "path": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/videophy60/inference_outputs/R10_physical_content_67003/full60_gamma5_seed42/videophy60",
+      "generated": 60,
+      "status": "completed",
+      "count": 60,
+      "sa_mean": 2.75,
+      "pc_mean": 3.8333333333333335,
+      "sa_pass_rate": 0.18333333333333332,
+      "pc_pass_rate": 0.6,
+      "joint_pass_rate": 0.15
+    },
+    "r1_reference_20": {
+      "path": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/videophy60/inference_outputs/R1_400/extra20_gamma5_seed42/videophy60",
+      "generated": 20,
+      "status": "completed",
+      "count": 20,
+      "sa_mean": 2.75,
+      "pc_mean": 3.75,
+      "sa_pass_rate": 0.15,
+      "pc_pass_rate": 0.5,
+      "joint_pass_rate": 0.15
+    },
+    "r1_reference_60": {
+      "path": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/videophy60/inference_outputs/R1_400/full60_gamma5_seed42/videophy60",
+      "generated": 60,
+      "status": "completed",
+      "count": 60,
+      "sa_mean": 2.8833333333333333,
+      "pc_mean": 3.6666666666666665,
+      "sa_pass_rate": 0.23333333333333334,
+      "pc_pass_rate": 0.4666666666666667,
+      "joint_pass_rate": 0.21666666666666667
+    },
+    "native_20": {
+      "path": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/videophy60/inference_outputs/native400/extra20_gamma5_seed42/videophy60",
+      "generated": 20,
+      "status": "completed",
+      "count": 20,
+      "sa_mean": 2.8,
+      "pc_mean": 3.65,
+      "sa_pass_rate": 0.15,
+      "pc_pass_rate": 0.45,
+      "joint_pass_rate": 0.15
+    },
+    "native_60": {
+      "path": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/videophy60/inference_outputs/native400/full60_gamma5_seed42/videophy60",
+      "generated": 60,
+      "status": "completed",
+      "count": 60,
+      "sa_mean": 2.9833333333333334,
+      "pc_mean": 3.5166666666666666,
+      "sa_pass_rate": 0.23333333333333334,
+      "pc_pass_rate": 0.4166666666666667,
+      "joint_pass_rate": 0.21666666666666667
+    }
+  },
+  "comparisons": {
+    "normal_20_vs_r1_reference_20": {
+      "count": 20,
+      "metrics": {
+        "sa": {
+          "baseline": 2.75,
+          "candidate": 2.6,
+          "difference": -0.15,
+          "paired_bootstrap_95_interval": [
+            -0.3,
+            0.0
+          ],
+          "wins": 0,
+          "ties": 17,
+          "losses": 3
+        },
+        "pc": {
+          "baseline": 3.75,
+          "candidate": 4.0,
+          "difference": 0.25,
+          "paired_bootstrap_95_interval": [
+            0.1,
+            0.45
+          ],
+          "wins": 5,
+          "ties": 15,
+          "losses": 0
+        },
+        "mean": {
+          "baseline": 3.25,
+          "candidate": 3.3,
+          "difference": 0.05,
+          "paired_bootstrap_95_interval": [
+            -0.05,
+            0.15
+          ],
+          "wins": 3,
+          "ties": 16,
+          "losses": 1
+        },
+        "joint": {
+          "baseline": 0.15,
+          "candidate": 0.1,
+          "difference": -0.05,
+          "paired_bootstrap_95_interval": [
+            -0.15,
+            0.0
+          ],
+          "wins": 0,
+          "ties": 19,
+          "losses": 1
+        },
+        "sa_pass_rate": {
+          "baseline": 0.15,
+          "candidate": 0.1,
+          "difference": -0.05,
+          "paired_bootstrap_95_interval": [
+            -0.15,
+            0.0
+          ],
+          "wins": 0,
+          "ties": 19,
+          "losses": 1
+        },
+        "pc_pass_rate": {
+          "baseline": 0.5,
+          "candidate": 0.7,
+          "difference": 0.2,
+          "paired_bootstrap_95_interval": [
+            0.05,
+            0.4
+          ],
+          "wins": 4,
+          "ties": 16,
+          "losses": 0
+        }
+      },
+      "joint_lost": [
+        "VP041"
+      ],
+      "joint_gained": [],
+      "pc_gain_sa_loss": [
+        "VP051",
+        "VP054"
+      ],
+      "pc_gain_sa_tie": [
+        "VP042",
+        "VP044",
+        "VP056"
+      ],
+      "changed_cases": [
+        {
+          "id": "VP041",
+          "caption": "Two swimmers race side-by-side, their hands entering the water simultaneously, creating small trails of bubbles.",
+          "baseline": {
+            "sa": 4,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 4
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP042",
+          "caption": "A player throws a sidearm pass; the football travels on a sideways trajectory before being caught.",
+          "baseline": {
+            "sa": 2,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 2,
+            "pc": 4
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP044",
+          "caption": "Multiple paragliders launch sequentially from a cliff edge, showcasing the staggered takeoffs and individual flight paths.",
+          "baseline": {
+            "sa": 3,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 5
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP051",
+          "caption": "A billiard ball is struck and rolls across a felt-covered pool table, hitting another ball.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 2,
+            "pc": 4
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP054",
+          "caption": "An athlete throws a hammer, the rotation of the hammer head clearly visible against the sky.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 2,
+            "pc": 4
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP056",
+          "caption": "Arrows are shot at a moving target, with some arrows hitting and some missing visibly.",
+          "baseline": {
+            "sa": 2,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 2,
+            "pc": 4
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        }
+      ]
+    },
+    "normal_60_vs_r1_reference_60": {
+      "count": 60,
+      "metrics": {
+        "sa": {
+          "baseline": 2.8833333333333333,
+          "candidate": 2.75,
+          "difference": -0.13333333333333333,
+          "paired_bootstrap_95_interval": [
+            -0.23333333333333334,
+            -0.03333333333333333
+          ],
+          "wins": 1,
+          "ties": 50,
+          "losses": 9
+        },
+        "pc": {
+          "baseline": 3.6666666666666665,
+          "candidate": 3.8333333333333335,
+          "difference": 0.16666666666666666,
+          "paired_bootstrap_95_interval": [
+            0.03333333333333333,
+            0.3
+          ],
+          "wins": 15,
+          "ties": 40,
+          "losses": 5
+        },
+        "mean": {
+          "baseline": 3.275,
+          "candidate": 3.2916666666666665,
+          "difference": 0.016666666666666666,
+          "paired_bootstrap_95_interval": [
+            -0.058333333333333334,
+            0.09166666666666666
+          ],
+          "wins": 11,
+          "ties": 40,
+          "losses": 9
+        },
+        "joint": {
+          "baseline": 0.21666666666666667,
+          "candidate": 0.15,
+          "difference": -0.06666666666666667,
+          "paired_bootstrap_95_interval": [
+            -0.13333333333333333,
+            -0.016666666666666666
+          ],
+          "wins": 0,
+          "ties": 56,
+          "losses": 4
+        },
+        "sa_pass_rate": {
+          "baseline": 0.23333333333333334,
+          "candidate": 0.18333333333333332,
+          "difference": -0.05,
+          "paired_bootstrap_95_interval": [
+            -0.11666666666666667,
+            0.0
+          ],
+          "wins": 0,
+          "ties": 57,
+          "losses": 3
+        },
+        "pc_pass_rate": {
+          "baseline": 0.4666666666666667,
+          "candidate": 0.6,
+          "difference": 0.13333333333333333,
+          "paired_bootstrap_95_interval": [
+            0.03333333333333333,
+            0.23333333333333334
+          ],
+          "wins": 9,
+          "ties": 50,
+          "losses": 1
+        }
+      },
+      "joint_lost": [
+        "VP008",
+        "VP010",
+        "VP038",
+        "VP041"
+      ],
+      "joint_gained": [],
+      "pc_gain_sa_loss": [
+        "VP008",
+        "VP017",
+        "VP026",
+        "VP051",
+        "VP054"
+      ],
+      "pc_gain_sa_tie": [
+        "VP004",
+        "VP019",
+        "VP020",
+        "VP023",
+        "VP025",
+        "VP032",
+        "VP039",
+        "VP042",
+        "VP044",
+        "VP056"
+      ],
+      "changed_cases": [
+        {
+          "id": "VP003",
+          "caption": "A gymnast performs a back handspring, landing cleanly on their feet on a padded floor.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 2
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP004",
+          "caption": "A plastic ruler is bent until it cracks, displaying a visible stress fracture that propagates.",
+          "baseline": {
+            "sa": 2,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 2,
+            "pc": 4
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP006",
+          "caption": "A large, wet canvas is twisted to remove excess paint, leaving drips down the side.",
+          "baseline": {
+            "sa": 2,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 4
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP008",
+          "caption": "A person bounces to a specific rhythm on a trampoline, their body movement clearly timed to a beat.",
+          "baseline": {
+            "sa": 4,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 5
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP010",
+          "caption": "A person mops up a puddle of water on a concrete floor, the water disappearing as the mop passes.",
+          "baseline": {
+            "sa": 4,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 4
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP016",
+          "caption": "A scientist uses a probe to nudge a small, delicate insect on a leaf, causing it to twitch minimally.",
+          "baseline": {
+            "sa": 4,
+            "pc": 5
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 4
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 1
+        },
+        {
+          "id": "VP017",
+          "caption": "A unicycle wheel rolls over a small curb; the rider adjusts their position to keep upright.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 2,
+            "pc": 4
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP019",
+          "caption": "Javelin with a damaged tip is thrown; it wobbles in flight and lands off-target.",
+          "baseline": {
+            "sa": 2,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 2,
+            "pc": 4
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP020",
+          "caption": "A time-lapse showing the process of someone tying a bow tie, quickly showing the steps in sequence.",
+          "baseline": {
+            "sa": 4,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 5
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 1
+        },
+        {
+          "id": "VP021",
+          "caption": "A skateboarder rolls along a smooth concrete path, maintaining a steady pace.",
+          "baseline": {
+            "sa": 4,
+            "pc": 5
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 4
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 1
+        },
+        {
+          "id": "VP023",
+          "caption": "A surfer falls off their board, colliding briefly with another surfer, before swimming away.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 4
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP025",
+          "caption": "A large, orange plastic egg is rolled up a plastic slide, then rolls down, ending at the bottom.",
+          "baseline": {
+            "sa": 2,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 2,
+            "pc": 5
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP026",
+          "caption": "Two people stretch a bungee cord, extending it to its maximum length.",
+          "baseline": {
+            "sa": 3,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 2,
+            "pc": 5
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP027",
+          "caption": "Hands shape a lump of clay-like bread dough into a smooth, round boule on a wooden table.",
+          "baseline": {
+            "sa": 4,
+            "pc": 5
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 4
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 1
+        },
+        {
+          "id": "VP028",
+          "caption": "A person skillfully tosses several coins in the air, catching them one by one.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 2,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP029",
+          "caption": "A player hits a forehand drive, the ball spinning rapidly as it crosses the net.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 2,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP032",
+          "caption": "A player uses a quick set to spike the ball, driving it downward at a steep angle.",
+          "baseline": {
+            "sa": 2,
+            "pc": 2
+          },
+          "candidate": {
+            "sa": 2,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP038",
+          "caption": "A paint roller, dipped in green paint, is used to cover a section of a metal fence, creating a uniform green coat.",
+          "baseline": {
+            "sa": 4,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 3
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP039",
+          "caption": "A wedge is driven into a log using a sledgehammer, splitting the log cleanly apart.",
+          "baseline": {
+            "sa": 2,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 2,
+            "pc": 4
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP041",
+          "caption": "Two swimmers race side-by-side, their hands entering the water simultaneously, creating small trails of bubbles.",
+          "baseline": {
+            "sa": 4,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 4
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP042",
+          "caption": "A player throws a sidearm pass; the football travels on a sideways trajectory before being caught.",
+          "baseline": {
+            "sa": 2,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 2,
+            "pc": 4
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP044",
+          "caption": "Multiple paragliders launch sequentially from a cliff edge, showcasing the staggered takeoffs and individual flight paths.",
+          "baseline": {
+            "sa": 3,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 5
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP051",
+          "caption": "A billiard ball is struck and rolls across a felt-covered pool table, hitting another ball.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 2,
+            "pc": 4
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP054",
+          "caption": "An athlete throws a hammer, the rotation of the hammer head clearly visible against the sky.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 2,
+            "pc": 4
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP056",
+          "caption": "Arrows are shot at a moving target, with some arrows hitting and some missing visibly.",
+          "baseline": {
+            "sa": 2,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 2,
+            "pc": 4
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        }
+      ]
+    },
+    "normal_60_vs_native_60": {
+      "count": 60,
+      "metrics": {
+        "sa": {
+          "baseline": 2.9833333333333334,
+          "candidate": 2.75,
+          "difference": -0.23333333333333334,
+          "paired_bootstrap_95_interval": [
+            -0.35,
+            -0.13333333333333333
+          ],
+          "wins": 0,
+          "ties": 46,
+          "losses": 14
+        },
+        "pc": {
+          "baseline": 3.5166666666666666,
+          "candidate": 3.8333333333333335,
+          "difference": 0.31666666666666665,
+          "paired_bootstrap_95_interval": [
+            0.16666666666666666,
+            0.4666666666666667
+          ],
+          "wins": 21,
+          "ties": 36,
+          "losses": 3
+        },
+        "mean": {
+          "baseline": 3.25,
+          "candidate": 3.2916666666666665,
+          "difference": 0.041666666666666664,
+          "paired_bootstrap_95_interval": [
+            -0.03333333333333333,
+            0.11666666666666667
+          ],
+          "wins": 13,
+          "ties": 39,
+          "losses": 8
+        },
+        "joint": {
+          "baseline": 0.21666666666666667,
+          "candidate": 0.15,
+          "difference": -0.06666666666666667,
+          "paired_bootstrap_95_interval": [
+            -0.13333333333333333,
+            -0.016666666666666666
+          ],
+          "wins": 0,
+          "ties": 56,
+          "losses": 4
+        },
+        "sa_pass_rate": {
+          "baseline": 0.23333333333333334,
+          "candidate": 0.18333333333333332,
+          "difference": -0.05,
+          "paired_bootstrap_95_interval": [
+            -0.11666666666666667,
+            0.0
+          ],
+          "wins": 0,
+          "ties": 57,
+          "losses": 3
+        },
+        "pc_pass_rate": {
+          "baseline": 0.4166666666666667,
+          "candidate": 0.6,
+          "difference": 0.18333333333333332,
+          "paired_bootstrap_95_interval": [
+            0.08333333333333333,
+            0.3
+          ],
+          "wins": 12,
+          "ties": 47,
+          "losses": 1
+        }
+      },
+      "joint_lost": [
+        "VP008",
+        "VP010",
+        "VP038",
+        "VP041"
+      ],
+      "joint_gained": [],
+      "pc_gain_sa_loss": [
+        "VP008",
+        "VP017",
+        "VP019",
+        "VP025",
+        "VP033",
+        "VP039",
+        "VP050",
+        "VP051",
+        "VP054"
+      ],
+      "pc_gain_sa_tie": [
+        "VP004",
+        "VP006",
+        "VP014",
+        "VP015",
+        "VP020",
+        "VP023",
+        "VP026",
+        "VP040",
+        "VP042",
+        "VP043",
+        "VP045",
+        "VP056"
+      ],
+      "changed_cases": [
+        {
+          "id": "VP004",
+          "caption": "A plastic ruler is bent until it cracks, displaying a visible stress fracture that propagates.",
+          "baseline": {
+            "sa": 2,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 2,
+            "pc": 4
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP006",
+          "caption": "A large, wet canvas is twisted to remove excess paint, leaving drips down the side.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 4
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP007",
+          "caption": "Multiple ping pong balls are shown, illustrating different stages of a rally.",
+          "baseline": {
+            "sa": 3,
+            "pc": 5
+          },
+          "candidate": {
+            "sa": 2,
+            "pc": 5
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP008",
+          "caption": "A person bounces to a specific rhythm on a trampoline, their body movement clearly timed to a beat.",
+          "baseline": {
+            "sa": 4,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 5
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP010",
+          "caption": "A person mops up a puddle of water on a concrete floor, the water disappearing as the mop passes.",
+          "baseline": {
+            "sa": 4,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 4
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP014",
+          "caption": "Multiple water balloons are tossed upwards, simultaneously bursting in the air in a small arc.",
+          "baseline": {
+            "sa": 2,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 2,
+            "pc": 5
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP015",
+          "caption": "A rower pulls an oar from the water, the blade dripping water back into the lake. .",
+          "baseline": {
+            "sa": 3,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 5
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP016",
+          "caption": "A scientist uses a probe to nudge a small, delicate insect on a leaf, causing it to twitch minimally.",
+          "baseline": {
+            "sa": 4,
+            "pc": 5
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 4
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 1
+        },
+        {
+          "id": "VP017",
+          "caption": "A unicycle wheel rolls over a small curb; the rider adjusts their position to keep upright.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 2,
+            "pc": 4
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP019",
+          "caption": "Javelin with a damaged tip is thrown; it wobbles in flight and lands off-target.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 2,
+            "pc": 4
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP020",
+          "caption": "A time-lapse showing the process of someone tying a bow tie, quickly showing the steps in sequence.",
+          "baseline": {
+            "sa": 4,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 5
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 1
+        },
+        {
+          "id": "VP023",
+          "caption": "A surfer falls off their board, colliding briefly with another surfer, before swimming away.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 4
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP025",
+          "caption": "A large, orange plastic egg is rolled up a plastic slide, then rolls down, ending at the bottom.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 2,
+            "pc": 5
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP026",
+          "caption": "Two people stretch a bungee cord, extending it to its maximum length.",
+          "baseline": {
+            "sa": 2,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 2,
+            "pc": 5
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP027",
+          "caption": "Hands shape a lump of clay-like bread dough into a smooth, round boule on a wooden table.",
+          "baseline": {
+            "sa": 4,
+            "pc": 5
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 4
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 1
+        },
+        {
+          "id": "VP028",
+          "caption": "A person skillfully tosses several coins in the air, catching them one by one.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 2,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP029",
+          "caption": "A player hits a forehand drive, the ball spinning rapidly as it crosses the net.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 2,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP033",
+          "caption": "A player jumps high to block a spike, their hands impacting the ball forcefully, sending it back across the net.",
+          "baseline": {
+            "sa": 3,
+            "pc": 2
+          },
+          "candidate": {
+            "sa": 2,
+            "pc": 3
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP038",
+          "caption": "A paint roller, dipped in green paint, is used to cover a section of a metal fence, creating a uniform green coat.",
+          "baseline": {
+            "sa": 4,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 4,
+            "pc": 3
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP039",
+          "caption": "A wedge is driven into a log using a sledgehammer, splitting the log cleanly apart.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 2,
+            "pc": 4
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP040",
+          "caption": "Poi are swung against a soft surface, making a thudding sound (NOTE: This prompt includes sound, but it's included to illustrate the effect of the action, not to describe it in detail.  The focus is still on the visible impact).",
+          "baseline": {
+            "sa": 3,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 5
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP041",
+          "caption": "Two swimmers race side-by-side, their hands entering the water simultaneously, creating small trails of bubbles.",
+          "baseline": {
+            "sa": 4,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 4
+          },
+          "baseline_joint": 1,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP042",
+          "caption": "A player throws a sidearm pass; the football travels on a sideways trajectory before being caught.",
+          "baseline": {
+            "sa": 2,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 2,
+            "pc": 4
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP043",
+          "caption": "A spinnaker is deployed on a racing yacht, expanding like a parachute and creating a large amount of thrust.",
+          "baseline": {
+            "sa": 3,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 5
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP045",
+          "caption": "A sailor uses a winch to tighten the halyard raising a heavy mainsail high up the mast.",
+          "baseline": {
+            "sa": 3,
+            "pc": 4
+          },
+          "candidate": {
+            "sa": 3,
+            "pc": 5
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP050",
+          "caption": "A sledgehammer is swung at a pile of rocks, scattering and breaking some of them.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 2,
+            "pc": 4
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP051",
+          "caption": "A billiard ball is struck and rolls across a felt-covered pool table, hitting another ball.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 2,
+            "pc": 4
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP054",
+          "caption": "An athlete throws a hammer, the rotation of the hammer head clearly visible against the sky.",
+          "baseline": {
+            "sa": 3,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 2,
+            "pc": 4
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        },
+        {
+          "id": "VP056",
+          "caption": "Arrows are shot at a moving target, with some arrows hitting and some missing visibly.",
+          "baseline": {
+            "sa": 2,
+            "pc": 3
+          },
+          "candidate": {
+            "sa": 2,
+            "pc": 4
+          },
+          "baseline_joint": 0,
+          "candidate_joint": 0
+        }
+      ]
+    }
+  },
+  "requested_targets40": {
+    "status": "not_met",
+    "count": 40,
+    "targets": {
+      "pc_mean_strictly_above": 3.7,
+      "pc_preferred": 3.8,
+      "sa_mean_strictly_above": 3.25,
+      "minimum_joint_passes": 11
+    },
+    "observed": {
+      "pc": 3.75,
+      "sa": 2.825,
+      "joint_passes": 7
+    },
+    "checks": {
+      "pc": true,
+      "sa": false,
+      "joint": false
+    },
+    "preferred_pc_reached": false,
+    "visual_quality": "Requires actual paired video/process evidence",
+    "automatic_success": false
+  },
+  "requested_targets60": {
+    "status": "not_met",
+    "count": 60,
+    "targets": {
+      "pc_mean_strictly_above": 3.7,
+      "pc_preferred": 3.8,
+      "sa_mean_strictly_above": 3.25,
+      "minimum_joint_passes": 14
+    },
+    "observed": {
+      "pc": 3.8333333333333335,
+      "sa": 2.75,
+      "joint_passes": 9
+    },
+    "checks": {
+      "pc": true,
+      "sa": false,
+      "joint": false
+    },
+    "preferred_pc_reached": true,
+    "visual_quality": "Requires actual paired video/process evidence",
+    "automatic_success": false
+  },
+  "interpretation": [
+    "ObservedPC improvement persists on theadded20(+.25,5wins15ties0losses) andcombined60(+.166667,15/40/5); retain thispositiveevidence.",
+    "On thesame60,SA-.133333 andJoint13to9 alsohavepairedintervals belowzero. PC-only targets aremet but theoverallgoal isnot.",
+    "The60 reuseoriginal40 pluspreexistinghistorical20, one seed/common-first-image I2V. Thisisnot theofficial590 T2Vbenchmark or an untouchedindependenttest.",
+    "Actualprocess completion remainsneeded alongside PC/SA; thefour reviewedexamples haveexplicitlylimited, selected-frame evidence.",
+    "Informationcontrols andB400 completecomparisons arepending; no automaticadoption or newrevision."
+  ],
+  "new_generation": false,
+  "new_scoring": false
+}

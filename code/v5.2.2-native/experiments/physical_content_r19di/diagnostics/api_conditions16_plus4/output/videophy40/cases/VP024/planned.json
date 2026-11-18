@@ -1,0 +1,35 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19di/runs/r19di_parallel_400/step0400.pt",
+  "step": 400,
+  "case": "VP024",
+  "seed": 42,
+  "guidance": {
+    "kind": "two_arm_joint_condition_cfg",
+    "scale": 5.0,
+    "formula": "v = v_neg + 5 * (v_pos - v_neg)",
+    "positive": "own first image, original request, positive native T5 and positive Qwen C",
+    "negative": "same first image, null native T5 and null Qwen C",
+    "separate_physical_guidance": false
+  },
+  "suite": "videophy40",
+  "task": "i2v",
+  "caption": "A speeding car crashes into a brick wall, crumpling the front end and stopping abruptly.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP024/first.png",
+  "sampler": {
+    "num_frames": 81,
+    "width": 832,
+    "height": 480,
+    "steps": 50,
+    "sampler": "shifted_euler",
+    "shift": 5.0,
+    "cfg": 5.0,
+    "seed": 42,
+    "best_of_n": 1,
+    "clamp_first": true
+  },
+  "positive_analysis": "The car's front bumper collides with the brick wall surface.\nThe impact force deforms the car's front end and shatters the wall bricks.\nThe wall's structural resistance abruptly stops the car's forward motion.\nThe car comes to rest with its crumpled front embedded in the wall.",
+  "physical_analysis": "The car's front bumper collides with the brick wall surface.\nThe impact force deforms the car's front end and shatters the wall bricks.\nThe wall's structural resistance abruptly stops the car's forward motion.\nThe car comes to rest with its crumpled front embedded in the wall.",
+  "negative_analysis": "The car's rear section intersects with the hole in the brick wall.\nIf the car moves forward, its rear will emerge from the wall's opening.\nIf the car reverses, its body will retreat deeper into the wall cavity.\nThe car's front wheels and bumper rest on the paved street surface.",
+  "scope": "own image/request",
+  "seconds": 281.7306772759184
+}

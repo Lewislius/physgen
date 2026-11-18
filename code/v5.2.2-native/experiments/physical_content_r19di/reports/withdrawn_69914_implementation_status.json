@@ -1,0 +1,23 @@
+{
+  "updated_utc": "2026-11-13T17:14:03.483758+00:00",
+  "status": "submitted_on_actual_RTX6000",
+  "submitted": true,
+  "training_started": false,
+  "tests": {
+    "suite": "tests/test_execution.py",
+    "passed": 4,
+    "scope": "CPU forward/backward; independent physical parameter gradients; native-domain execution; native text reads corrected state; first-frame write mask; constant video-value cancellation"
+  },
+  "quality_priority": "Actual video quality and physical process first; metrics auxiliary.",
+  "planned_task": "i2v",
+  "planned_updates": 400,
+  "predecessor": "R19CI own400, primary40/60 complete; condition controls finishing",
+  "operator": "Native-domain physical relation correction before frozen text read, followed by full-width state FFN",
+  "user_steering": "Simple losses and strong generalization; no universal assumptions of rigidity, contact or a closed physical system. Continue architecture review before submission.",
+  "review": "reports/PHYSICAL_CONSTRAINT_REVIEW.zh.txt",
+  "physical_constraint_decision": "No added rigid/contact/conservation losses; keep broad process generality and simple generation plus route alignment objectives.",
+  "losses": "0.8 mean FM + 0.2 multiscale high-error tail + 0.03 warmed-up route word alignment; no additional specialized physics loss",
+  "experiment_id": 69914,
+  "trial_id": 71510,
+  "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19di/snapshots/20261113T171136Z"
+}

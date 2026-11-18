@@ -1,0 +1,28 @@
+{
+  "candidate": "R19CI",
+  "updated_utc": "2026-11-13T13:30:04.419534+00:00",
+  "comparison": "same400 checkpoint/request/image/seed42; normal versus no_c inference",
+  "scope": "fixed16 frames0/40/80",
+  "scoring_pending": false,
+  "findings": {
+    "VP002": "Normal periodic yellow grid; noC grid absent but odd shoe-like objects later appear.",
+    "VP004": "Normal yellow grid; noC grid absent but faces/clothes/ruler break into implausible fragments.",
+    "VP009": "Normal yellow/grid and slow stand; noC visible glass-moving gesture but object correspondence incomplete.",
+    "VP010": "NoC stronger mop motion and no broad introduced grid, but late mop shape deforms; normal largely stationary.",
+    "VP015": "NoC oar lift/drop progression more visible, normal nearly fixed.",
+    "VP017": "NoC wheel/rider move but body/wheel deform; normal nearly frozen.",
+    "VP024": "NoC vehicle deforms more severely; normal stays nearly fixed at wall.",
+    "VP025": "NoC egg shifts/tilts slightly, neither up/down slide process.",
+    "VP026": "Normal strong grid and static structure; noC grid absent but ropes/harness break and rearrange.",
+    "VP027": "NoC kneading becomes visible; normal nearly fixed.",
+    "VP034": "Normal strong yellow grid; noC grid absent, balloon drifts but does not clearly inflate.",
+    "VP038": "Both contain later roller/handle deformation; neither full quality pass."
+  },
+  "supported_inference": "Runtime physical branch causes the observed grid/color contamination on matched examples. It also suppresses some process progression while preventing some structural break-up seen with no_c. Removing the branch does not solve all goals.",
+  "not_established": "Specific native-anchor, semantic-copy or complete-block component attribution awaits their existing controls; no_c is not retrained baseline.",
+  "quality_acceptance": false,
+  "score_report": "reports/no_c16_early_verified.json",
+  "additional_matched_VP004_frame40": "Frozen physical semantic attention and estimated-anchor controls retain yellow/grid contamination; no_c removes grid but introduces body/ruler fragmentation. This does not equal independently retrained ablations.",
+  "grid_spectrum_report": "reports/grid_spectrum_diagnostic.json",
+  "spectrum_inference": "Prominent spatial16/32px periodicity in two flat-background crops with physical branch; absent as dominant peaks in no_c. Supports periodic output contamination, not a proof of a specific layer or reason to change official VAE/patch configuration."
+}

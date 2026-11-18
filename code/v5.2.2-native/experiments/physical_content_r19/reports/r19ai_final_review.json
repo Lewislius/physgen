@@ -1,0 +1,152 @@
+{
+  "candidate": "R19AI",
+  "status": "own400_and_all_declared_videophy_tests_complete",
+  "accepted_as_improvement": false,
+  "targets_met": false,
+  "scores40": {
+    "SA": 2.975,
+    "PC": 3.6,
+    "Joint": 10,
+    "n": 40
+  },
+  "scores60": {
+    "SA": 2.9166666666666665,
+    "PC": 3.6333333333333333,
+    "Joint": 13,
+    "n": 60
+  },
+  "paired16": {
+    "normal": {
+      "count": 16,
+      "sa": 3.1875,
+      "pc": 3.8125,
+      "sa_pass_rate": 0.375,
+      "pc_pass_rate": 0.5625,
+      "joint": 6,
+      "joint_pass_rate": 0.375
+    },
+    "controls": {
+      "empty_reasoning": {
+        "count": 16,
+        "sa": 3.1875,
+        "pc": 3.5625,
+        "joint": 5,
+        "differences": {
+          "sa": {
+            "normal_minus_control": 0.0,
+            "normal_wins": 2,
+            "ties": 12,
+            "normal_losses": 2
+          },
+          "pc": {
+            "normal_minus_control": 0.25,
+            "normal_wins": 4,
+            "ties": 12,
+            "normal_losses": 0
+          }
+        }
+      },
+      "global_train_mean": {
+        "count": 16,
+        "sa": 3.1875,
+        "pc": 3.875,
+        "joint": 5,
+        "differences": {
+          "sa": {
+            "normal_minus_control": 0.0,
+            "normal_wins": 1,
+            "ties": 14,
+            "normal_losses": 1
+          },
+          "pc": {
+            "normal_minus_control": -0.0625,
+            "normal_wins": 1,
+            "ties": 13,
+            "normal_losses": 2
+          }
+        }
+      },
+      "no_c": {
+        "count": 16,
+        "sa": 3.25,
+        "pc": 3.75,
+        "joint": 6,
+        "differences": {
+          "sa": {
+            "normal_minus_control": -0.0625,
+            "normal_wins": 0,
+            "ties": 15,
+            "normal_losses": 1
+          },
+          "pc": {
+            "normal_minus_control": 0.0625,
+            "normal_wins": 3,
+            "ties": 11,
+            "normal_losses": 2
+          }
+        }
+      },
+      "official_executor": {
+        "count": 16,
+        "sa": 3.1875,
+        "pc": 3.6875,
+        "joint": 6,
+        "differences": {
+          "sa": {
+            "normal_minus_control": 0.0,
+            "normal_wins": 0,
+            "ties": 16,
+            "normal_losses": 0
+          },
+          "pc": {
+            "normal_minus_control": 0.125,
+            "normal_wins": 2,
+            "ties": 14,
+            "normal_losses": 0
+          }
+        }
+      },
+      "reasoning_swapped": {
+        "count": 16,
+        "sa": 3.0,
+        "pc": 3.75,
+        "joint": 4,
+        "differences": {
+          "sa": {
+            "normal_minus_control": 0.1875,
+            "normal_wins": 3,
+            "ties": 13,
+            "normal_losses": 0
+          },
+          "pc": {
+            "normal_minus_control": 0.0625,
+            "normal_wins": 2,
+            "ties": 13,
+            "normal_losses": 1
+          }
+        }
+      }
+    }
+  },
+  "conclusions": [
+    "Correct reasoning adds PC0.25 and one Joint vs empty, and SA0.1875/PC0.0625/two Joint vs unrelated. Physical content is used.",
+    "Learned executor gains PC0.125 vs its official frozen replacement (two wins,fourteen ties); no SA/Joint gain. Do not remove it based on one bad clip.",
+    "Full branch vs no-C gives only PC0.0625, costs SA0.0625, and unchanged Joint. Net module benefit is inadequate.",
+    "Fixed mean C has higher PC but lower Joint than correct C; neither C diversity alone nor PC alone establishes success.",
+    "Original40 SA/Joint pass cases are identical to B400+I. Physical process execution bottleneck persists.",
+    "Visual review finds incomplete processes and instance continuity/shape defects; no claim of all-frame visual acceptance."
+  ],
+  "evidence": [
+    "r19ai_vs_b400i_40.json",
+    "r19ai_training_completion.json",
+    "r19ai_module_visual_interim.json",
+    "early_visual/r19a_additional_review.json",
+    "early_visual/r19ai_screen40_1.jpg",
+    "early_visual/r19ai_screen40_2.jpg",
+    "early_visual/r19ai_screen40_3.jpg",
+    "early_visual/r19ai_screen40_4.jpg",
+    "early_visual/r19ai_screen40_5.jpg"
+  ],
+  "cross_benchmarks": "not eligible; no WMB/Physics-IQ submitted",
+  "next": "R19BI full video-block physical execution; own400 fresh weights, original data, no MoE"
+}

@@ -1,0 +1,102 @@
+{
+  "prepared_utc": "2026-10-31T10:58:22.605650+00:00",
+  "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/content_modulation_r6/control_dispatch/snapshots/20261031T105822Z",
+  "training_run": "physical_content_66910",
+  "checkpoint_step": 128,
+  "case_count_each": 16,
+  "gamma": 5,
+  "seed": 42,
+  "items": [
+    {
+      "mode": "reasoning_swapped",
+      "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/content_modulation_r6/control_dispatch/submissions/reasoning_swapped_20261031T105822Z.yaml",
+      "status": "completed_and_published",
+      "experiment_id": 66924,
+      "attempts": [
+        {
+          "experiment_id": 66914,
+          "submitted_utc": "2026-10-31T11:15:41.510044+00:00",
+          "status": "H100_rejected_before_models",
+          "trial_id": 68301
+        },
+        {
+          "experiment_id": 66917,
+          "submitted_utc": "2026-10-31T11:21:31.046117+00:00",
+          "status": "H100_rejected_before_models",
+          "trial_id": 68304
+        },
+        {
+          "experiment_id": 66921,
+          "trial_id": 68308,
+          "status": "H100_rejected_before_models",
+          "actual_gpu": "NVIDIA H100",
+          "accepted": false
+        },
+        {
+          "experiment_id": 66922,
+          "trial_id": 68309,
+          "status": "H100_rejected_before_models",
+          "actual_gpu": "NVIDIA H100",
+          "accepted": false
+        },
+        {
+          "experiment_id": 66923,
+          "trial_id": 68310,
+          "status": "H100_rejected_before_models",
+          "actual_gpu": "NVIDIA H100",
+          "accepted": false
+        },
+        {
+          "experiment_id": 66924,
+          "trial_id": 68311,
+          "status": "completed_and_published",
+          "actual_gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+          "accepted": true
+        }
+      ],
+      "trial_id": 68311,
+      "result": {
+        "count": 16,
+        "sa_mean": 3.25,
+        "pc_mean": 3.6875,
+        "sa_pass_rate": 0.375,
+        "pc_pass_rate": 0.5625,
+        "joint_pass_rate": 0.375,
+        "scope": "Fixed16 diagnostic subset of the existing videophy40 shared-first-image protocol",
+        "training_verifier_is_independent": true
+      },
+      "canonical": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/content_modulation_r6/inference_outputs/physical_content_66910/step0128_full40_controls16_physical5_seed42/controls/reasoning_swapped"
+    },
+    {
+      "mode": "no_c",
+      "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/content_modulation_r6/control_dispatch/submissions/no_c_20261031T105822Z.yaml",
+      "status": "completed_and_published",
+      "experiment_id": 66915,
+      "attempts": [
+        {
+          "experiment_id": 66915,
+          "submitted_utc": "2026-10-31T11:15:41.510044+00:00",
+          "status": "completed_and_published",
+          "trial_id": 68302
+        }
+      ],
+      "trial_id": 68302,
+      "result": {
+        "count": 16,
+        "sa_mean": 3.25,
+        "pc_mean": 3.6875,
+        "sa_pass_rate": 0.375,
+        "pc_pass_rate": 0.5,
+        "joint_pass_rate": 0.375,
+        "scope": "Fixed16 diagnostic subset of the existing videophy40 shared-first-image protocol",
+        "training_verifier_is_independent": true
+      },
+      "canonical": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/content_modulation_r6/inference_outputs/physical_content_66910/step0128_full40_controls16_physical5_seed42/controls/no_c"
+    }
+  ],
+  "priority": "Use the next released RTX slots for the already-declared R6 controls, then resume the pending request-anchor seed43 confirmation.",
+  "publication": "Generate/score into isolated folders; atomically link only a complete control into an absent canonical directory. Original inference reuses matching existing videos and per-case scores. No modification to running sources or overwrite of an owner directory.",
+  "additional_cases": 0,
+  "additional_seeds": 0,
+  "updated_utc": "2026-10-31T12:42:54.467119+00:00"
+}

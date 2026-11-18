@@ -1,0 +1,179 @@
+{
+  "created_utc": "2026-11-15T15:57:13.614851+00:00",
+  "candidate": "R20BI",
+  "experiment": 70238,
+  "trial": 71937,
+  "state": "STATE_COMPLETED",
+  "main40": {
+    "sa": 3.025,
+    "pc": 3.4,
+    "joint": 9,
+    "count": 40
+  },
+  "main60": {
+    "sa": 2.9833333333333334,
+    "pc": 3.466666666666667,
+    "joint": 13,
+    "count": 60
+  },
+  "paired16": {
+    "normal": {
+      "count": 16,
+      "sa": 3.1875,
+      "pc": 3.5625,
+      "sa_pass_rate": 0.375,
+      "pc_pass_rate": 0.4375,
+      "joint": 5,
+      "joint_pass_rate": 0.3125
+    },
+    "controls": {
+      "direct_only": {
+        "sa": 3.1875,
+        "pc": 3.625,
+        "joint": 4,
+        "differences": {
+          "sa": {
+            "normal_minus_control": 0.0,
+            "normal_wins": 1,
+            "ties": 14,
+            "normal_losses": 1
+          },
+          "pc": {
+            "normal_minus_control": -0.0625,
+            "normal_wins": 1,
+            "ties": 13,
+            "normal_losses": 2
+          }
+        }
+      },
+      "empty_reasoning": {
+        "sa": 3.125,
+        "pc": 3.75,
+        "joint": 5,
+        "differences": {
+          "sa": {
+            "normal_minus_control": 0.0625,
+            "normal_wins": 2,
+            "ties": 13,
+            "normal_losses": 1
+          },
+          "pc": {
+            "normal_minus_control": -0.1875,
+            "normal_wins": 0,
+            "ties": 13,
+            "normal_losses": 3
+          }
+        }
+      },
+      "global_train_mean": {
+        "sa": 3.25,
+        "pc": 3.625,
+        "joint": 5,
+        "differences": {
+          "sa": {
+            "normal_minus_control": -0.0625,
+            "normal_wins": 1,
+            "ties": 13,
+            "normal_losses": 2
+          },
+          "pc": {
+            "normal_minus_control": -0.0625,
+            "normal_wins": 0,
+            "ties": 15,
+            "normal_losses": 1
+          }
+        }
+      },
+      "no_c": {
+        "sa": 3.25,
+        "pc": 3.5,
+        "joint": 6,
+        "differences": {
+          "sa": {
+            "normal_minus_control": -0.0625,
+            "normal_wins": 0,
+            "ties": 15,
+            "normal_losses": 1
+          },
+          "pc": {
+            "normal_minus_control": 0.0625,
+            "normal_wins": 2,
+            "ties": 13,
+            "normal_losses": 1
+          }
+        }
+      },
+      "physical_condition_off": {
+        "sa": 3.0625,
+        "pc": 3.5625,
+        "joint": 3,
+        "differences": {
+          "sa": {
+            "normal_minus_control": 0.125,
+            "normal_wins": 3,
+            "ties": 12,
+            "normal_losses": 1
+          },
+          "pc": {
+            "normal_minus_control": 0.0,
+            "normal_wins": 1,
+            "ties": 14,
+            "normal_losses": 1
+          }
+        }
+      },
+      "reasoning_swapped": {
+        "sa": 3.25,
+        "pc": 3.625,
+        "joint": 6,
+        "differences": {
+          "sa": {
+            "normal_minus_control": -0.0625,
+            "normal_wins": 0,
+            "ties": 15,
+            "normal_losses": 1
+          },
+          "pc": {
+            "normal_minus_control": -0.0625,
+            "normal_wins": 1,
+            "ties": 13,
+            "normal_losses": 2
+          }
+        }
+      },
+      "source_queries_off": {
+        "sa": 3.1875,
+        "pc": 3.5625,
+        "joint": 5,
+        "differences": {
+          "sa": {
+            "normal_minus_control": 0.0,
+            "normal_wins": 1,
+            "ties": 14,
+            "normal_losses": 1
+          },
+          "pc": {
+            "normal_minus_control": 0.0,
+            "normal_wins": 0,
+            "ties": 16,
+            "normal_losses": 0
+          }
+        }
+      }
+    }
+  },
+  "visuals": {
+    "reviewed_main_cases": 60,
+    "frames_per_video": 5,
+    "all_frames_certified": false,
+    "quality_accepted": false,
+    "direct_only_review": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20b/review_bi_direct_first5/review.json"
+  },
+  "decision": "CI retains independently normalized direct/request-associated C reads because direct-only has no SA gain, only +.0625 PC and -1 Joint, and retains reproduced artifacts. Rebuild free-content values and generic video-state write instead; prior branch contributions are mixed, not fully proven useful.",
+  "failures": [
+    "Correct condition not superior to wrong/empty/mean.",
+    "Coff does not eliminate every visual artifact: unconditional additional video hints are implicated.",
+    "Fullbranch-off reduces artifacts in some cases but worsens structure in others; retain physical execution capacity through conditional interaction."
+  ],
+  "no_cross_benchmark": true
+}

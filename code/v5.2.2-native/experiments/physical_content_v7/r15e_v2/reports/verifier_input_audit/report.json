@@ -1,0 +1,173 @@
+{
+  "utc": "2026-11-06T15:16:46.600788+00:00",
+  "model_inference": false,
+  "scores_modified": false,
+  "evaluator": {
+    "code": "/home/liuzhirui/benchmark/videophy/VIDEOPHY2",
+    "checkpoint": "/home/liuzhirui/benchmark/videophy/videophy_2_auto",
+    "num_frames": 32,
+    "seed": 20261009,
+    "tasks": [
+      "sa",
+      "pc"
+    ],
+    "generation": {
+      "do_sample": false,
+      "top_k": 1,
+      "temperature": 0.001,
+      "max_length": 256
+    },
+    "joint_threshold": 4,
+    "average_definition": "mean of (SA + PC) / 2; custom summary, not official Joint Score",
+    "missing_policy": "no final comparison unless every selected case has both valid SA and PC scores"
+  },
+  "cases": {
+    "VP010": {
+      "video": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_addressing_r15e/inference_outputs/physical_content_67955/step0400_original_fixed40_controls16_seed42/videophy40/cases/VP010/planned.mp4",
+      "video_mtime": 1793973595.84737,
+      "sampled_frame_indices": [
+        1,
+        3,
+        6,
+        9,
+        11,
+        13,
+        16,
+        19,
+        21,
+        23,
+        26,
+        29,
+        31,
+        33,
+        36,
+        39,
+        41,
+        43,
+        46,
+        49,
+        51,
+        53,
+        56,
+        59,
+        61,
+        63,
+        66,
+        69,
+        71,
+        73,
+        76,
+        79
+      ],
+      "video_pixel_values_shape": [
+        1,
+        3,
+        32,
+        224,
+        224
+      ],
+      "finite": true,
+      "input_keys": [
+        "input_ids",
+        "attention_mask",
+        "video_pixel_values"
+      ],
+      "negative_visual_token_ids": [
+        -2
+      ],
+      "sample_panel": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_addressing_r15e/reports/verifier_input_audit/VP010_actual32.png",
+      "raw_scores": {
+        "sa": {
+          "task": "sa",
+          "raw": "2",
+          "score": 2,
+          "case_id": "VP010"
+        },
+        "pc": {
+          "task": "pc",
+          "raw": "4",
+          "score": 4,
+          "case_id": "VP010"
+        }
+      },
+      "scores_written_after_video": true
+    },
+    "VP034": {
+      "video": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_addressing_r15e/inference_outputs/physical_content_67955/step0400_original_fixed40_controls16_seed42/videophy40/cases/VP034/planned.mp4",
+      "video_mtime": 1793975651.5073252,
+      "sampled_frame_indices": [
+        1,
+        3,
+        6,
+        9,
+        11,
+        13,
+        16,
+        19,
+        21,
+        23,
+        26,
+        29,
+        31,
+        33,
+        36,
+        39,
+        41,
+        43,
+        46,
+        49,
+        51,
+        53,
+        56,
+        59,
+        61,
+        63,
+        66,
+        69,
+        71,
+        73,
+        76,
+        79
+      ],
+      "video_pixel_values_shape": [
+        1,
+        3,
+        32,
+        224,
+        224
+      ],
+      "finite": true,
+      "input_keys": [
+        "input_ids",
+        "attention_mask",
+        "video_pixel_values"
+      ],
+      "negative_visual_token_ids": [
+        -2
+      ],
+      "sample_panel": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_addressing_r15e/reports/verifier_input_audit/VP034_actual32.png",
+      "raw_scores": {
+        "sa": {
+          "task": "sa",
+          "raw": "3",
+          "score": 3,
+          "case_id": "VP034"
+        },
+        "pc": {
+          "task": "pc",
+          "raw": "5",
+          "score": 5,
+          "case_id": "VP034"
+        }
+      },
+      "scores_written_after_video": true
+    }
+  },
+  "scope": "Reproduces the original local processor on the exact generated MP4 files. Checks video selection, decoded frames, visual token and input tensor; does not rerun the evaluator or establish that its quality judgment is reliable.",
+  "additional_static_model_path_audit": {
+    "code": "/home/liuzhirui/benchmark/videophy/VIDEOPHY2/mplug_owl_video/modeling_mplug_owl.py",
+    "finding": "generate at lines1699-1720 passes the full video tensor to the vision model and combines spatial and temporal abstractor queries; no first-frame-only selection found in this path. This static inspection does not certify learned evaluator judgment.",
+    "new_gpu_calls": 0,
+    "scores_changed": false
+  }
+}

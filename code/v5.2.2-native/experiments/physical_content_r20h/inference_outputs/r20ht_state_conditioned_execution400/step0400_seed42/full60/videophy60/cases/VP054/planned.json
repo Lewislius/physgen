@@ -1,0 +1,35 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20h/runs/r20ht_state_conditioned_execution400/step0400.pt",
+  "step": 400,
+  "case": "VP054",
+  "seed": 42,
+  "guidance": {
+    "kind": "two_arm_joint_condition_cfg",
+    "scale": 5.0,
+    "formula": "v = v_neg + 5 * (v_pos - v_neg)",
+    "positive": "request only, positive native T5 and positive request-only Qwen C",
+    "negative": "null request, null native T5 and null request-only Qwen C",
+    "separate_physical_guidance": false
+  },
+  "suite": "videophy60",
+  "task": "t2v",
+  "caption": "An athlete throws a hammer, the rotation of the hammer head clearly visible against the sky.",
+  "canvas": null,
+  "sampler": {
+    "num_frames": 81,
+    "width": 832,
+    "height": 480,
+    "steps": 50,
+    "sampler": "shifted_euler",
+    "shift": 5.0,
+    "cfg": 5.0,
+    "seed": 42,
+    "best_of_n": 1,
+    "clamp_first": false
+  },
+  "positive_analysis": "1. Athlete’s arm torque initiates hammer head rotation, transferring angular momentum through grip contact.  \n2. Hammer head’s mass and aerodynamic shape cause visible spin against sky during flight.  \n3. Air resistance gradually slows rotation, but inertia maintains spin until aerodynamic drag dominates.  \n4. Grip friction sustains initial rotation; release occurs when athlete’s hand loses contact with hammer handle.",
+  "physical_analysis": "1. Athlete’s arm torque initiates hammer head rotation, transferring angular momentum through grip contact.  \n2. Hammer head’s mass and aerodynamic shape cause visible spin against sky during flight.  \n3. Air resistance gradually slows rotation, but inertia maintains spin until aerodynamic drag dominates.  \n4. Grip friction sustains initial rotation; release occurs when athlete’s hand loses contact with hammer handle.",
+  "negative_analysis": "",
+  "scope": "request only; no image",
+  "seconds": 118.30582190304995
+}

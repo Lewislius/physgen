@@ -1,0 +1,46 @@
+workspace: ALL-IN-ONE
+project: wan-animate
+max_restarts: 0
+resources:
+  resource_pool: amp-48g
+  slots_per_trial: 1
+  is_single_node: true
+  shm_size: 34359738368
+bind_mounts:
+- host_path: /mount/HOME/liuzhirui
+  container_path: /home/liuzhirui
+- host_path: /mount/NAS1/public
+  container_path: /run/determined/NAS1/public
+environment:
+  image: 10.130.130.5:8192/lab-dev:latest
+  environment_variables:
+  - OMP_NUM_THREADS=4
+  - PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+  - HF_HUB_OFFLINE=1
+  - TRANSFORMERS_OFFLINE=1
+  - HF_DATASETS_OFFLINE=1
+  - PYTHONUNBUFFERED=1
+  - WAN_CODE=/home/liuzhirui/model/Wan2.2
+  - WAN_CKPT=/home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B
+  - GPU_POLICY=amp-48g
+checkpoint_storage:
+  type: shared_fs
+  host_path: /mount/HOME/liuzhirui
+  storage_path: Project/physGen/code/v5.2.2-native/experiments/native_wan22_amp48_controls/determined_checkpoints/lora400
+  save_experiment_best: 0
+  save_trial_best: 0
+  save_trial_latest: 0
+searcher:
+  name: single
+  metric: completed
+  max_length:
+    epochs: 1
+  smaller_is_better: false
+name: native-wan22-video-lora400-videophy2-40-60-amp48-resume100-20261118
+description: Official Wan2.2-TI2V-5B with a rank32/alpha32 video LoRA trained for
+  400 updates on exactly the R20 fixed1600 data order, then fixed VideoPhy2 40 +
+  disjoint 20. No physical modules, no counterfactual data, no text LoRA. One
+  amp-48g GPU; rejects H100 and requires at least 44 GiB.
+entrypoint: bash /home/liuzhirui/Project/physGen/code/v5.2.2-native/tools/runtime_python.sh
+  /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/native_wan22_amp48_controls/run_lora.py
+  --config /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/native_wan22_amp48_controls/configs/lora400.yaml

@@ -1,0 +1,173 @@
+{
+  "candidate": "R15I fresh400/68312",
+  "complete40": {
+    "count": 40,
+    "sa_mean": 3.025,
+    "pc_mean": 3.475,
+    "sa_pass_rate": 0.275,
+    "pc_pass_rate": 0.425,
+    "joint_pass_count": 10,
+    "joint_pass_rate": 0.25
+  },
+  "normal16": {
+    "count": 16,
+    "sa_mean": 3.1875,
+    "pc_mean": 3.6875,
+    "sa_pass_rate": 0.375,
+    "pc_pass_rate": 0.5625,
+    "joint_pass_count": 6,
+    "joint_pass_rate": 0.375
+  },
+  "remaining24": {
+    "count": 24,
+    "SA": 2.9166666666666665,
+    "PC": 3.3333333333333335,
+    "Joint": 4
+  },
+  "paired_references": {
+    "original40/R10-A": {
+      "sa": {
+        "mean_change": 0.2,
+        "wins": 8,
+        "ties": 32,
+        "losses": 0
+      },
+      "pc": {
+        "mean_change": -0.275,
+        "wins": 2,
+        "ties": 26,
+        "losses": 12
+      },
+      "joint": {
+        "gains": [
+          "VP008",
+          "VP010",
+          "VP038"
+        ],
+        "losses": []
+      }
+    },
+    "original40/R1": {
+      "sa": {
+        "mean_change": 0.075,
+        "wins": 5,
+        "ties": 33,
+        "losses": 2
+      },
+      "pc": {
+        "mean_change": -0.15,
+        "wins": 1,
+        "ties": 32,
+        "losses": 7
+      },
+      "joint": {
+        "gains": [],
+        "losses": []
+      }
+    },
+    "original40/native400": {
+      "sa": {
+        "mean_change": -0.05,
+        "wins": 2,
+        "ties": 34,
+        "losses": 4
+      },
+      "pc": {
+        "mean_change": 0.025,
+        "wins": 3,
+        "ties": 35,
+        "losses": 2
+      },
+      "joint": {
+        "gains": [],
+        "losses": []
+      }
+    },
+    "original40/R15B": {
+      "sa": {
+        "mean_change": 0.1,
+        "wins": 6,
+        "ties": 32,
+        "losses": 2
+      },
+      "pc": {
+        "mean_change": -0.225,
+        "wins": 0,
+        "ties": 31,
+        "losses": 9
+      },
+      "joint": {
+        "gains": [],
+        "losses": []
+      }
+    },
+    "original40/R15H": {
+      "sa": {
+        "mean_change": 0.1,
+        "wins": 9,
+        "ties": 26,
+        "losses": 5
+      },
+      "pc": {
+        "mean_change": -0.05,
+        "wins": 3,
+        "ties": 33,
+        "losses": 4
+      },
+      "joint": {
+        "gains": [
+          "VP034",
+          "VP038"
+        ],
+        "losses": []
+      }
+    },
+    "original40/R9": {
+      "sa": {
+        "mean_change": 0.05,
+        "wins": 5,
+        "ties": 32,
+        "losses": 3
+      },
+      "pc": {
+        "mean_change": -0.125,
+        "wins": 2,
+        "ties": 31,
+        "losses": 7
+      },
+      "joint": {
+        "gains": [
+          "VP008"
+        ],
+        "losses": []
+      }
+    }
+  },
+  "versus_B400_joint_inference": {
+    "sa": {
+      "mean_change": 0.125,
+      "wins": 6,
+      "ties": 33,
+      "losses": 1
+    },
+    "pc": {
+      "mean_change": -0.3,
+      "wins": 0,
+      "ties": 28,
+      "losses": 12
+    }
+  },
+  "hard_target_deficit": {
+    "SA_total_score_points": 4,
+    "PC_total_score_points": 13,
+    "Joint_cases": 2
+  },
+  "accepted": false,
+  "interpretation": [
+    "Compared with B original40, PC declines on9cases and improves on none, while SA improves on6 and declines on2.",
+    "The positive fixed-weight read-only16 did not transfer to a successful freshly trained model; independent physical Q and learned enhancement/fusion/LoRA changes require the declared paired controls before specific attribution.",
+    "Training execution/data/noise/phase matched B, no evidence here of a schedule/input mismatch.",
+    "Matched joint-phase executionC token cosine is I0.25436 vsB0.27543, so this measured token collapse is not an established explanation of the PC regression. This is within-sample training C, not cross-sample inference C.",
+    "Single-step FM/tail and objective magnitudes cannot establish rollout quality or isolate a loss cause."
+  ]
+}

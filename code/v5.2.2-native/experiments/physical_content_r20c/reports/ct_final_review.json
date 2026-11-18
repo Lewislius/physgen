@@ -1,0 +1,344 @@
+{
+  "scope": "own400/main40+20/full60 and two design-decisive fixed16 controls",
+  "main40": {
+    "count": 40,
+    "sa_mean": 3.1,
+    "pc_mean": 3.55,
+    "sa_pass_rate": 0.225,
+    "pc_pass_rate": 0.525,
+    "joint_pass_rate": 0.2,
+    "scope": "T2V: request only; fixed protocol prompts/noise, no initial image",
+    "training_verifier_is_independent": true
+  },
+  "main60": {
+    "count": 60,
+    "sa_mean": 3.033333333333333,
+    "pc_mean": 3.5833333333333335,
+    "sa_pass_rate": 0.23333333333333334,
+    "pc_pass_rate": 0.55,
+    "joint_pass_rate": 0.21666666666666667,
+    "pass_threshold": 4,
+    "scope": "T2V: request only; fixed protocol prompts/noise, no initial image",
+    "training_verifier_is_independent": true
+  },
+  "paired": {
+    "task": "t2v",
+    "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20c/runs/r20ct_source_physics400/step0400.pt",
+    "cases": [
+      "VP002",
+      "VP004",
+      "VP005",
+      "VP009",
+      "VP010",
+      "VP013",
+      "VP015",
+      "VP016",
+      "VP017",
+      "VP018",
+      "VP024",
+      "VP025",
+      "VP026",
+      "VP027",
+      "VP034",
+      "VP038"
+    ],
+    "normal": {
+      "count": 16,
+      "sa": 3.1875,
+      "pc": 3.875,
+      "sa_pass_rate": 0.25,
+      "pc_pass_rate": 0.75,
+      "joint": 4,
+      "joint_pass_rate": 0.25
+    },
+    "controls": {
+      "no_c": {
+        "count": 16,
+        "sa": 3.1875,
+        "pc": 3.875,
+        "sa_pass_rate": 0.25,
+        "pc_pass_rate": 0.6875,
+        "joint": 4,
+        "joint_pass_rate": 0.25,
+        "differences": {
+          "sa": {
+            "normal_minus_control": 0.0,
+            "normal_wins": 2,
+            "ties": 12,
+            "normal_losses": 2
+          },
+          "pc": {
+            "normal_minus_control": 0.0,
+            "normal_wins": 3,
+            "ties": 10,
+            "normal_losses": 3
+          }
+        },
+        "paired_cases": [
+          {
+            "id": "VP002",
+            "normal_sa": 3,
+            "normal_pc": 4,
+            "control_sa": 3,
+            "control_pc": 3
+          },
+          {
+            "id": "VP004",
+            "normal_sa": 2,
+            "normal_pc": 4,
+            "control_sa": 3,
+            "control_pc": 3
+          },
+          {
+            "id": "VP005",
+            "normal_sa": 3,
+            "normal_pc": 4,
+            "control_sa": 3,
+            "control_pc": 3
+          },
+          {
+            "id": "VP009",
+            "normal_sa": 3,
+            "normal_pc": 4,
+            "control_sa": 3,
+            "control_pc": 4
+          },
+          {
+            "id": "VP010",
+            "normal_sa": 4,
+            "normal_pc": 4,
+            "control_sa": 4,
+            "control_pc": 4
+          },
+          {
+            "id": "VP013",
+            "normal_sa": 3,
+            "normal_pc": 3,
+            "control_sa": 2,
+            "control_pc": 4
+          },
+          {
+            "id": "VP015",
+            "normal_sa": 3,
+            "normal_pc": 3,
+            "control_sa": 3,
+            "control_pc": 3
+          },
+          {
+            "id": "VP016",
+            "normal_sa": 4,
+            "normal_pc": 4,
+            "control_sa": 5,
+            "control_pc": 5
+          },
+          {
+            "id": "VP017",
+            "normal_sa": 3,
+            "normal_pc": 4,
+            "control_sa": 2,
+            "control_pc": 4
+          },
+          {
+            "id": "VP018",
+            "normal_sa": 3,
+            "normal_pc": 4,
+            "control_sa": 3,
+            "control_pc": 4
+          },
+          {
+            "id": "VP024",
+            "normal_sa": 3,
+            "normal_pc": 3,
+            "control_sa": 3,
+            "control_pc": 4
+          },
+          {
+            "id": "VP025",
+            "normal_sa": 3,
+            "normal_pc": 4,
+            "control_sa": 3,
+            "control_pc": 4
+          },
+          {
+            "id": "VP026",
+            "normal_sa": 3,
+            "normal_pc": 3,
+            "control_sa": 3,
+            "control_pc": 3
+          },
+          {
+            "id": "VP027",
+            "normal_sa": 4,
+            "normal_pc": 5,
+            "control_sa": 4,
+            "control_pc": 5
+          },
+          {
+            "id": "VP034",
+            "normal_sa": 3,
+            "normal_pc": 5,
+            "control_sa": 3,
+            "control_pc": 5
+          },
+          {
+            "id": "VP038",
+            "normal_sa": 4,
+            "normal_pc": 4,
+            "control_sa": 4,
+            "control_pc": 4
+          }
+        ],
+        "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20c/inference_outputs/r20ct_source_physics400/step0400_seed42/controls/no_c/videophy40/scores.json"
+      },
+      "physical_condition_off": {
+        "count": 16,
+        "sa": 3.0625,
+        "pc": 3.9375,
+        "sa_pass_rate": 0.1875,
+        "pc_pass_rate": 0.6875,
+        "joint": 3,
+        "joint_pass_rate": 0.1875,
+        "differences": {
+          "sa": {
+            "normal_minus_control": 0.125,
+            "normal_wins": 2,
+            "ties": 14,
+            "normal_losses": 0
+          },
+          "pc": {
+            "normal_minus_control": -0.0625,
+            "normal_wins": 3,
+            "ties": 9,
+            "normal_losses": 4
+          }
+        },
+        "paired_cases": [
+          {
+            "id": "VP002",
+            "normal_sa": 3,
+            "normal_pc": 4,
+            "control_sa": 3,
+            "control_pc": 5
+          },
+          {
+            "id": "VP004",
+            "normal_sa": 2,
+            "normal_pc": 4,
+            "control_sa": 2,
+            "control_pc": 4
+          },
+          {
+            "id": "VP005",
+            "normal_sa": 3,
+            "normal_pc": 4,
+            "control_sa": 3,
+            "control_pc": 3
+          },
+          {
+            "id": "VP009",
+            "normal_sa": 3,
+            "normal_pc": 4,
+            "control_sa": 3,
+            "control_pc": 4
+          },
+          {
+            "id": "VP010",
+            "normal_sa": 4,
+            "normal_pc": 4,
+            "control_sa": 3,
+            "control_pc": 3
+          },
+          {
+            "id": "VP013",
+            "normal_sa": 3,
+            "normal_pc": 3,
+            "control_sa": 3,
+            "control_pc": 3
+          },
+          {
+            "id": "VP015",
+            "normal_sa": 3,
+            "normal_pc": 3,
+            "control_sa": 3,
+            "control_pc": 4
+          },
+          {
+            "id": "VP016",
+            "normal_sa": 4,
+            "normal_pc": 4,
+            "control_sa": 4,
+            "control_pc": 5
+          },
+          {
+            "id": "VP017",
+            "normal_sa": 3,
+            "normal_pc": 4,
+            "control_sa": 2,
+            "control_pc": 4
+          },
+          {
+            "id": "VP018",
+            "normal_sa": 3,
+            "normal_pc": 4,
+            "control_sa": 3,
+            "control_pc": 4
+          },
+          {
+            "id": "VP024",
+            "normal_sa": 3,
+            "normal_pc": 3,
+            "control_sa": 3,
+            "control_pc": 4
+          },
+          {
+            "id": "VP025",
+            "normal_sa": 3,
+            "normal_pc": 4,
+            "control_sa": 3,
+            "control_pc": 3
+          },
+          {
+            "id": "VP026",
+            "normal_sa": 3,
+            "normal_pc": 3,
+            "control_sa": 3,
+            "control_pc": 3
+          },
+          {
+            "id": "VP027",
+            "normal_sa": 4,
+            "normal_pc": 5,
+            "control_sa": 4,
+            "control_pc": 5
+          },
+          {
+            "id": "VP034",
+            "normal_sa": 3,
+            "normal_pc": 5,
+            "control_sa": 3,
+            "control_pc": 5
+          },
+          {
+            "id": "VP038",
+            "normal_sa": 4,
+            "normal_pc": 4,
+            "control_sa": 4,
+            "control_pc": 4
+          }
+        ],
+        "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20c/inference_outputs/r20ct_source_physics400/step0400_seed42/controls/physical_condition_off/videophy40/scores.json"
+      }
+    },
+    "interpretation": "same-checkpoint inference interventions, not independently retrained architectures"
+  },
+  "actual_quality_accepted": false,
+  "all60_sampled_frames_reviewed": true,
+  "all_frames_continuously_reviewed": false,
+  "decisions": [
+    "CT is not the selected final architecture. Source-valued C improves some colors/subjects versus BT but loses broad PC benefits.",
+    "CT physical C has no measured positive mean PC contribution over its generic copied branch on the fixed16: normal3.875 versus C-off3.9375. It helps SA by0.125 and Joint by1 on that same subset.",
+    "Whole-branch-off and normal have equal16 means3.1875/3.875/J4; individual outcomes differ. Do not claim no effect on all60 or equivalence to official native weights.",
+    "Finalize new physics-to-generation execution and repaired local reasoning for DT rather than extend CT training or add low-value diagnostics."
+  ],
+  "low_priority_controls_deferred_by_user": true
+}

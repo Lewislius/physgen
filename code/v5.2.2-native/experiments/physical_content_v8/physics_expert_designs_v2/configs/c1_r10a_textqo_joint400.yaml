@@ -1,0 +1,154 @@
+# 设计配置：不是已运行结果。paths=null须由实际环境解析。
+schema_version: physics-expert-design-v2
+status: design_not_project_training_results
+project:
+  repository: Lewislius/physgen
+  ref: 1defd6f4b41e42302bc3e4b9b2bf938abbbc686c
+  base_variant: execution_value_r10
+  new_workspace: experiments/physics_expert_redesign_v2
+  reuse_future_candidates: false
+paths:
+  wan_code: null
+  wan_checkpoint: null
+  qwen_checkpoint: null
+  training_video_cache: null
+  input_condition_cache: null
+  interface_checkpoint: null
+  fixed40_protocol: null
+  independent_validation_protocol: null
+  output_root: null
+execution:
+  auto_download: false
+  auto_launch_training: false
+  batch_size_per_device: 1
+geometry:
+  mode: native_i2v
+  infer_from_patch_embedding: true
+  default_rgb_size:
+  - 480
+  - 832
+  default_rgb_frames: 81
+  known_frames: 1
+  exclude_known_frame_from_generation_loss: true
+model:
+  width: 3072
+  num_layers: 30
+  num_heads: 24
+  ffn_dim: 14336
+  qwen_width: 4096
+  q_tokens: 256
+  q_heads: 32
+  rounds: 2
+  condition_every: 3
+  sites:
+  - 2
+  - 5
+  - 8
+  - 11
+  - 14
+  - 17
+  - 20
+  - 23
+  - 26
+  - 29
+physics:
+  enhancement: r10a_route_execute
+  reader: direct_original_values
+  query: frozen_native_text_q_base
+  key_value_init: copy_corresponding_native_base
+  output_init: zero
+  group_prior: existing_group_log_prior
+  reference_slot: existing_zero_value_reference
+  video_time_query: true
+  new_sigma_mapper: false
+  direct_write: true
+  state_value: true
+  query_chunk_size: 2048
+  mask_known_direct_write: true
+  write_position: post_self_parallel_text
+native_lora:
+  self_attn_targets:
+  - q
+  - k
+  - v
+  - o
+  ffn_targets: both_linear_layers
+  self_ffn_rank: 32
+  self_ffn_alpha: 32
+  text_targets:
+  - q
+  - o
+  text_rank: 16
+  text_alpha: 16
+  text_kv_trainable: false
+  start_update: 1
+request_key:
+  enabled: false
+experts:
+  enabled: false
+train:
+  preset: joint400
+  initialization: fresh_official
+  updates: 400
+  accumulation: 4
+  seed: 42
+  warmup_updates: 32
+  schedule_after_warmup: constant_for_initial_400
+  train_all_selected_parameters_from_update: 1
+  gradient_checkpointing: true
+  text_dropout: 0.1
+  condition_dropout: paired_native_text_and_matching_negative_physics_cache
+  precision: bf16_with_fp32_sensitive_ops
+  optimizer: AdamW
+  betas:
+  - 0.9
+  - 0.999
+  eps: 1.0e-08
+  matrix_weight_decay: 0.01
+  norm_bias_reference_weight_decay: 0.0
+  grad_clip_per_group: 1.0
+  peak_lrs:
+    enhancement: 5.0e-05
+    physics_read: 2.0e-05
+    physics_write: 3.0e-05
+    native_self_ffn_lora: 2.0e-05
+    native_text_qo_lora: 1.0e-05
+  save_updates:
+  - 128
+  - 250
+  - 400
+loss:
+  velocity_target: noise_minus_clean
+  mean_fm_weight: 0.8
+  tail_weight: 0.2
+  tail_fraction: 0.25
+  tail_windows: exact_existing_supervision_py
+  route_target: raw_route_only
+  route_peak_weight: 0.03
+  route_warmup_updates: 32
+  extra_teacher_loss: false
+  intervention_learning: false
+  reward_training: false
+inference:
+  steps: 50
+  shift: 5.0
+  guidance: 5.0
+  sampler: shifted_euler
+  seed: 42
+  persist_initial_noise: true
+  best_of_n: 1
+  cache_conditions_per_cfg_arm: true
+evaluation:
+  pc_mean_min: 3.85
+  pc_mean_stretch: 3.9
+  sa_mean_min: 3.25
+  joint_pass_count_min: 15
+  fixed40_count: 40
+  catastrophic_artifacts_max: 0
+  actual_results: null
+variant: r10a_matched_control
+config_id: c1_r10a_textqo_joint400
+design_id: control
+parameter_budget:
+  estimated_trainable: 675908608
+  estimate_not_measured: true

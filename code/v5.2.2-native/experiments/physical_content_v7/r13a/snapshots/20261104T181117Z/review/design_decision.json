@@ -1,0 +1,98 @@
+{
+  "utc": "2026-11-04T18:10:38.070239+00:00",
+  "predecessor": {
+    "model": "R12B",
+    "experiment": 67456,
+    "trial": 68843,
+    "state": "STATE_COMPLETED",
+    "end_time": "2026-11-04T17:59:35.769380Z",
+    "full40": {
+      "count": 40,
+      "sa_mean": 2.95,
+      "pc_mean": 3.5,
+      "sa_pass_rate": 0.225,
+      "pc_pass_rate": 0.45,
+      "joint_pass_count": 8,
+      "joint_pass_rate": 0.2
+    },
+    "normal_fixed16": {
+      "count": 16,
+      "sa_mean": 3.0625,
+      "pc_mean": 3.75,
+      "sa_pass_rate": 0.3125,
+      "pc_pass_rate": 0.5625,
+      "joint_pass_count": 5,
+      "joint_pass_rate": 0.3125
+    },
+    "controls": {
+      "empty_reasoning": {
+        "count": 16,
+        "sa_mean": 2.9375,
+        "pc_mean": 3.6875,
+        "sa_pass_rate": 0.1875,
+        "pc_pass_rate": 0.5625,
+        "joint_pass_count": 3,
+        "joint_pass_rate": 0.1875
+      },
+      "global_train_mean": {
+        "count": 16,
+        "sa_mean": 3.125,
+        "pc_mean": 3.8125,
+        "sa_pass_rate": 0.3125,
+        "pc_pass_rate": 0.5625,
+        "joint_pass_count": 5,
+        "joint_pass_rate": 0.3125
+      },
+      "native_text_value_off": {
+        "count": 16,
+        "sa_mean": 3.125,
+        "pc_mean": 3.75,
+        "sa_pass_rate": 0.375,
+        "pc_pass_rate": 0.5625,
+        "joint_pass_count": 6,
+        "joint_pass_rate": 0.375
+      },
+      "no_c": {
+        "count": 16,
+        "sa_mean": 3.25,
+        "pc_mean": 3.625,
+        "sa_pass_rate": 0.375,
+        "pc_pass_rate": 0.5,
+        "joint_pass_count": 6,
+        "joint_pass_rate": 0.375
+      },
+      "pretext_read": {
+        "count": 16,
+        "sa_mean": 3.1875,
+        "pc_mean": 3.8125,
+        "sa_pass_rate": 0.375,
+        "pc_pass_rate": 0.625,
+        "joint_pass_count": 6,
+        "joint_pass_rate": 0.375
+      },
+      "reasoning_swapped": {
+        "count": 16,
+        "sa_mean": 3.0625,
+        "pc_mean": 3.5625,
+        "sa_pass_rate": 0.3125,
+        "pc_pass_rate": 0.4375,
+        "joint_pass_count": 5,
+        "joint_pass_rate": 0.3125
+      }
+    }
+  },
+  "predecessor_decision": "rejected: all40 numeric goals fail, meaningful semantic/process and shape defects",
+  "evidence": [
+    "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/inference_outputs/physical_content_67456/step0400_original_fixed40_controls16_seed42/comparison_report.json",
+    "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/reports/R13_DESIGN_REVIEW.zh.txt",
+    "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/reports/prer13_joint_bottlenecks40.json",
+    "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/reports/physical_content_67456/visual_predeclared/review.json",
+    "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_execution_r12b/reports/physical_content_67456/visual_score_selected/VP038_selection.json"
+  ],
+  "selected_design": "Physical C scale/shift of the existing native Wan FFN input, with native time gate and frozen native text QKVO; preserve R10A Q/C enhancement, matched original data/400 budget",
+  "why": "Correct content has local benefits; independent physical writes damage request execution and shape. Use physical conditioning to modify a pretrained visual operator rather than write a free new hidden-state residual.",
+  "quality_established": false,
+  "stage_split": "128+272 for matched comparison, not a permanent goal restriction",
+  "maximum_version": "R13C",
+  "next_architecture_requires_completed_R13A_review": true
+}

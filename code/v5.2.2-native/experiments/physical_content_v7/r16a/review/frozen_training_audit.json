@@ -1,0 +1,26 @@
+{
+  "ready": true,
+  "rows": 3857,
+  "train": 3666,
+  "validation": 191,
+  "variant": "physical_content",
+  "q_tokens": 256,
+  "steps": 400,
+  "sample_draws": 1600,
+  "initialization": "Fresh official foundations; no trained project initializer",
+  "teacher_cache": "Input-only physical-word semantic calibration; no old weak association/write targets",
+  "manifest_records": 3857,
+  "data_revision": "original_wisa4000_and_original_reasoning",
+  "source": "existing original training cache used by R10A",
+  "new_api_calls": 0,
+  "generation_objective": {
+    "tail_weight": 0.2,
+    "tail_fraction": 0.25
+  },
+  "architecture": "R10A/R15B Q/C retained. Native request attention and request-to-C binding supply a normalized C prior of total mass R. Independent physical Q selects original C values using that prior, with one learned null. State interaction and frozen native text remain. No added parameters or loss versus I; identical training/inference reader.",
+  "quality_proven": false,
+  "optimizer_updates": 400,
+  "physical_updates": 400,
+  "native_lora_updates": 272,
+  "generator_forward_backward_views_per_sample": 1
+}

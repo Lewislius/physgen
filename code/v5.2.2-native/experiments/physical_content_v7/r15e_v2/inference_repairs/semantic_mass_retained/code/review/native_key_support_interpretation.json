@@ -1,0 +1,72 @@
+{
+  "utc": "2026-11-06T10:15:23.219754+00:00",
+  "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_addressing_r15e/review/native_key_support4.json",
+  "scope": "Four preselected input cases; frozen R10A400 enhancement and physical values; official frozen Wan text embedding/K/norm. One same-weight request-refinement intervention. No R15E training or video generation.",
+  "finding": "Real native text keys produce strongly token-dependent, partly interpretable C affinities; the prior is not constant. This validates availability of a signal, not correctness of every physical relation or generation gains.",
+  "ranges": {
+    "normalized_entropy": [
+      0.6696307063102722,
+      0.8002321720123291
+    ],
+    "mean_token_variation_TV": [
+      0.48635026812553406,
+      0.6729190349578857
+    ],
+    "value_selection_relative_variation_proxy": [
+      0.2000046968460083,
+      0.43271034955978394
+    ]
+  },
+  "examples": [
+    {
+      "case": "VP004",
+      "native_token": "crack",
+      "layer": 14,
+      "relation_index": 1,
+      "probability": 0.698,
+      "interpretation": "Affinities favor the actual fracture description"
+    },
+    {
+      "case": "VP034",
+      "native_token": "stretch",
+      "layer": 14,
+      "relation_index": 0,
+      "probability": 0.746,
+      "interpretation": "Affinities favor elastic stretching"
+    },
+    {
+      "case": "VP010",
+      "native_token": "mop",
+      "layer": 14,
+      "relation_index": 1,
+      "probability": 0.735,
+      "interpretation": "Lexical matching still selects outward water flow, while the request requires removing water; physical process mismatch cannot be solved by lexical routing alone"
+    }
+  ],
+  "request_refinement_intervention": {
+    "VP004": {
+      "routing": 0.005517837591469288,
+      "execution": 0.08275775611400604
+    },
+    "VP010": {
+      "routing": 0.021116817370057106,
+      "execution": 0.2286979705095291
+    },
+    "VP034": {
+      "routing": 0.0086385952308774,
+      "execution": 0.13156989216804504
+    },
+    "VP038": {
+      "routing": 0.028022201731801033,
+      "execution": 0.39881810545921326
+    }
+  },
+  "cautions": [
+    "Same frozen R10A weights, not trained R15E; no benchmark or video quality gain measured.",
+    "The value-selection metric omits video-dependent physical query logits and state interaction; it is not the final write.",
+    "Changing to request-only contextual refinement decreases this proxy value variation in all4 cases. More diversity is not a success criterion; evaluate physical/semantic processes and scores.",
+    "Semantic affinity may retrieve a relevant entity with an incorrect process. Request refinement and direct generation training remain necessary parts of the proposed approach."
+  ],
+  "decision": "Retain the combined candidate for full training evaluation; no new loss, gate or extra branch added in response to this feasibility audit.",
+  "quality_proven": false
+}

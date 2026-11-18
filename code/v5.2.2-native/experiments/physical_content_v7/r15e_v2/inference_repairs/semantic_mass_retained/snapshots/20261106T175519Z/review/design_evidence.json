@@ -1,0 +1,115 @@
+{
+  "utc": "2026-11-06T10:15:23.219754+00:00",
+  "candidate": "R15E-semantic-addressing",
+  "formal_training_submitted": false,
+  "quality_proven": false,
+  "targets": {
+    "videophy40": {
+      "pc_min": 3.8,
+      "pc_preferred": 3.85,
+      "sa_min": 3.125,
+      "sa_preferred": [
+        3.3,
+        3.35
+      ],
+      "joint_min": 12
+    },
+    "cross_benchmark": "Both WMB70 and PhysicsIQ60 must exceed R1; inspect actual semantic,physical and visual quality"
+  },
+  "evidence": [
+    {
+      "finding": "R10A40 has15 PC-pass/SA-fail cases, with SA2.825,PC3.75,Joint7; noC16 recoversSA/Joint but losesPC. Need coordination of direct physics with semantics rather than indiscriminate attenuation.",
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/state_response_fusion_r15e/review/historical_failure_matrix40.json"
+    },
+    {
+      "finding": "Removing explicit request changes R10A executionC by9.33% relative L2 on16; swapping it changes3.62%. The request path is not absent, but input conditioning is weak and not isolated from reasoning.",
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/state_response_fusion_r15e/review/r10a_literal_request_path16.json"
+    },
+    {
+      "finding": "Correct reasoning still fails VP038 structure; input correction alone cannot solve execution.",
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/state_response_fusion_r15e/review/input_semantic_audit16_raw.json"
+    },
+    {
+      "finding": "R1 request-anchor inference40 raisesSA2.95->3.0, leavesPC3.625/Joint10; fixed16 PC benefit is not stable across seeds. This differs from trained request refinement and does not establish its quality.",
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_anchor_r1/reports/cross_seed_confirmation16.json"
+    },
+    {
+      "finding": "R10A original/API crossing gives no stable joint gain from API inference; VP034 losesJoint with API inference and high-scoring videos may contain repeated textures. Keep original data/inference for matched architecture comparison.",
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/r10a_data_crossover20/factorial_report.json"
+    },
+    {
+      "finding": "R15B serial physical-value pooling sometimes helps semantics but does not beatR1 Joint40. Current prior does not perform intermediate value pooling.",
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_bound_fusion_r15b/inference_outputs/physical_content_67829/step0400_original_fixed40_controls16_seed42/comparison_report.json"
+    },
+    {
+      "finding": "Real native text keys produce strongly token-dependent, partly interpretable C affinities; the prior is not constant. This validates availability of a signal, not correctness of every physical relation or generation gains.",
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_addressing_r15e/review/native_key_support_interpretation.json"
+    }
+  ],
+  "architecture": {
+    "enhancement": "During both Q refinement rounds, global half-heads read the literal request; relation-local heads read their own physical words. Final input-value read keeps the original full memory.",
+    "routing": "Cr retains native physical-word calibration. Frozen native text addressing composed with native-key affinity gives semantic support over C. Multiply the direct physical addressing by this soft support, preserving original total C/reference prior mass.",
+    "execution": "Independent trainable physical Q/K/V/O; a single direct execution-C value read plus video-state interaction. No serial value pooling, new semantic write branch, new amplitude gate or hard semantic mask.",
+    "preserved": "Native text Q/K/V/O and forward stay frozen; no forced C diversity, no temporal-MSE loss, no new API/model downloads.",
+    "caveat": "Native-key semantic affinity is a concrete hypothesis, not proof of semantic correctness or improved scores. Actual noise/video state, input reasoning errors and decoder artifacts remain possible failure modes."
+  },
+  "training": {
+    "initialization": "fresh official foundations",
+    "data": "original WISA/T5/Qwen cache",
+    "steps": 400,
+    "stages": {
+      "interface": 128,
+      "joint": 272
+    },
+    "interface_updates": "enhancement and physical fusion, including independent Q; Wan LoRA frozen",
+    "joint_updates": "enhancement,physical fusion and original self-attention/FFN LoRA",
+    "objective": "0.8 meanFM +0.2 multiscale high-error tail +lambda routing-word alignment; lambda ramps to0.03 in32 steps; executionC has no word alignment",
+    "losses_added": 0,
+    "views_per_sample": 1
+  },
+  "evaluation": {
+    "main": 40,
+    "paired_controls": 16,
+    "control_modes": [
+      "no_c",
+      "semantic_routing_off",
+      "request_refinement_off",
+      "native_physical_query",
+      "reasoning_swapped",
+      "empty_reasoning",
+      "global_train_mean"
+    ],
+    "extra20": "Only after reviewing40 and controls",
+    "same_seed": 42,
+    "gamma": 5,
+    "sampler": "50-step shiftedEuler,shift5",
+    "intervention_limit": "Same-checkpoint controls measure reliance under intervention; retrained architecture superiority is not inferred from them alone",
+    "visual_review": "Five predeclared matched cases automatically extracted after main40 and controls; original videos and metadata retained; inspect full processes beyond sampled frames."
+  },
+  "validation": {
+    "core_tests": 10,
+    "core_elapsed_seconds": 6.366,
+    "new_checkpoint_resume_tests": 1,
+    "resume_elapsed_seconds": 4.599,
+    "input_reporting_tests": 4,
+    "input_reporting_elapsed_seconds": 12.037,
+    "actual_cached_contexts_checked": 152,
+    "configuration_audit": "passed:3857 manifest records,3666 train,191 validation,1600 draws",
+    "syntax_files": 24,
+    "full_size_gpu_preflight": "pending;3 disposable passes then separate fresh process, never reused initialization",
+    "quality_evidence": false,
+    "visual_io_tests": 1,
+    "visual_io_elapsed_seconds": 24.308,
+    "tests_passed": 16
+  },
+  "readonly16": {
+    "experiment": 67954,
+    "trial": 69341,
+    "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/state_response_fusion_r15e/diagnostic_snapshots/20261106T090919Z_rtx_recovery",
+    "purpose": "OldR10A400 + native-video-response inference prototype; not the trained semantic-addressing architecture",
+    "status": "queued at last authoritative observation; pending paired score/video review",
+    "topology_decision": "Do not include native-video response in this candidate merely because the diagnostic exists"
+  },
+  "next": "Finish required16 review, freeze any resulting final corrections, then submit one formalE400 onblk-96gRTX only. ReviewE beforeF, andF beforeG.",
+  "maximum_version": "R15G"
+}

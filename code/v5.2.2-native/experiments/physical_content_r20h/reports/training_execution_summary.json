@@ -1,0 +1,45 @@
+{
+  "scope": "Formal HT updates351-400; training samples/noise, not matched generated-video measurements. Spatial metrics sample32 video tokens, not full-map measurements.",
+  "updates": 400,
+  "micro_batches": 1600,
+  "metrics": {
+    "c_pair_cosine": {
+      "mean": 0.3947874645446427,
+      "min": 0.18156818277202547,
+      "max": 0.5013424158096313
+    },
+    "c_centered_energy": {
+      "mean": 0.5388372868299485,
+      "min": 0.3224838823080063,
+      "max": 0.6886854618787766
+    },
+    "write_relative_rms_mean": {
+      "mean": 0.02724650769494474,
+      "min": 0.012124171480536461,
+      "max": 0.03584906319156289
+    },
+    "write_relative_rms_max": {
+      "mean": 0.04314007447101176,
+      "min": 0.01682558236643672,
+      "max": 0.06353987054899335
+    },
+    "sampled_feature_change_relative_rms": {
+      "mean": 0.039292459171265365,
+      "min": 0.016413332894444466,
+      "max": 0.053332758136093616
+    },
+    "sampled_condition_token_variation_fraction": {
+      "mean": 0.0017982163095439318,
+      "min": 0.0006349750910885632,
+      "max": 0.005935880646575242
+    }
+  },
+  "nonzero_gradient_updates_last50": {
+    "wan_video_lora": 50,
+    "enhancement": 50,
+    "physics_video": 50,
+    "physics_read": 50,
+    "physics_write": 50
+  },
+  "interpretation": "Nonzero execution and gradients exclude a completely inert path in these records. Nearly spatially uniform condition shifts persist; a state-dependent gate alone does not provide supervised local physical correspondence. C cosine is a diagnostic, not a quality objective. Single-noise FM values are not used as generation-quality evidence."
+}

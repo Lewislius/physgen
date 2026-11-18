@@ -1,0 +1,38 @@
+{
+  "case": "PV0419",
+  "caption": "A child pours colorful beads from a plastic container into a glass jar until they overflow, scattering on the floor.",
+  "is_hard": "1",
+  "source_case": "PV0405",
+  "seed": 460,
+  "model": {
+    "name": "wan22_ti2v_5b",
+    "source": "/home/liuzhirui/model/Wan2.2",
+    "checkpoint": "/home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B",
+    "task": "t2v",
+    "precision": "bf16",
+    "project_checkpoint": null,
+    "prompt_extension": false
+  },
+  "sampling": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "seed": 42,
+    "fps": 16,
+    "frames": 81,
+    "width": 832,
+    "height": 480,
+    "solver": "unipc",
+    "seed_policy": "42+index",
+    "negative_prompt": "official Wan2.1 sample_neg_prompt",
+    "size": [
+      832,
+      480
+    ]
+  },
+  "task": "t2v",
+  "first_frame_used": false,
+  "scope": "Official Wan2.2-TI2V-5B T2V. Matches the local Wan2.1-T2V-1.3B ProPhy VideoPhy2 replay: 600 ALL, 180 HARD, same prompts, seeds, sampling, video encoding, and AutoEval settings.",
+  "seconds": 142.81893581990153,
+  "peak_gpu_gib": 14.132943153381348
+}

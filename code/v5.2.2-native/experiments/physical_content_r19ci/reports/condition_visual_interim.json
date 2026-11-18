@@ -1,0 +1,14 @@
+{
+  "updated_utc": "2026-11-13T16:46:42.884996+00:00",
+  "frame": 40,
+  "panel": "reports/early_visual/condition_grid_frame40.jpg",
+  "same_checkpoint_seed_and_native_inputs": true,
+  "observations": {
+    "VP002": "Normal yellow grid; noC clean background; swapped reduced grid; mean clean background; empty blurry colored blocks.",
+    "VP004": "Normal strong yellow grid; swapped and mean much less periodic contamination but ruler geometry remains implausible; empty severe blue/white distortion. noC removes grid but worsens face/ruler structure.",
+    "VP026": "Normal grid; swapped much less grid; empty mottled sea/seat/rope damage. Mean unavailable at inspection.",
+    "VP034": "Normal grid; swapped clean background but balloon rises out of frame; empty large colored blocks. Mean unavailable at inspection."
+  },
+  "implication": "Corruption is condition-dependent under trained branch; both representation choice and deployment computation need consideration. Neither noC nor replacing C is a complete generation solution.",
+  "scope": "Selected frame40 comparisons, not full-video acceptance or retrained ablation."
+}

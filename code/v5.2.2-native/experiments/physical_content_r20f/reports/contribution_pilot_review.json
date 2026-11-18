@@ -1,0 +1,82 @@
+{
+  "updated_utc": "2026-11-16T09:47:22.663504+00:00",
+  "experiment": 70422,
+  "trial": 72138,
+  "complete": true,
+  "actual_gpu": "RTX PRO 6000",
+  "training_submitted": false,
+  "new_model_download": false,
+  "approved_for_training": false,
+  "decision": "Do not convert language-answer visual attribution into physical spatial labels; finalize FT without this auxiliary. No further teacher sweep.",
+  "reason": "Whole-video feature contributions can affect an answer through contextualized features and background appearance; causal answer support does not establish accurate physical localization.",
+  "records": [
+    {
+      "id": "source0000000",
+      "answer": "A raw, red burger patty sizzles on a hot, dark surface, surrounded by bubbling oil. Steam rises faintly. The patty’s surface glistens as oil pools and moves around its edges, indicating heat transfer and moisture evaporation during cooking.",
+      "occlusion": {
+        "top": {
+          "tokens": 93,
+          "answer_log_probability": -0.290414422750473,
+          "support_drop": 0.05283421277999878
+        },
+        "random": {
+          "tokens": 93,
+          "answer_log_probability": -0.2295830249786377,
+          "support_drop": -0.007997184991836548
+        }
+      },
+      "visual_review": "Strong isolated highlight below the patty; weak support near bubbling edges; does not cover the visibly rising steam."
+    },
+    {
+      "id": "source0000053",
+      "answer": "A hand holds a glass bottle, pouring orange liquid into a clear glass. The liquid flows steadily, filling the glass. The background shows patterned curtains. The pouring action continues uninterrupted, with no visible splashes or changes in liquid consistency.",
+      "occlusion": {
+        "top": {
+          "tokens": 93,
+          "answer_log_probability": -0.2158406674861908,
+          "support_drop": 0.026921093463897705
+        },
+        "random": {
+          "tokens": 93,
+          "answer_log_probability": -0.19296762347221375,
+          "support_drop": 0.004048049449920654
+        }
+      },
+      "visual_review": "Dominant later hotspots on patterned curtains rather than the continuous liquid stream or filling level."
+    },
+    {
+      "id": "wisa0028206",
+      "answer": "An ice sculpture, resembling a star or gear, sits on a wooden surface against a blue backdrop. The ice appears to be melting slightly, with visible water pooling at its base. No significant movement or transformation occurs within the visible timeframe.",
+      "occlusion": {
+        "top": {
+          "tokens": 93,
+          "answer_log_probability": -0.5460129976272583,
+          "support_drop": 0.22170954942703247
+        },
+        "random": {
+          "tokens": 93,
+          "answer_log_probability": -0.5314894318580627,
+          "support_drop": 0.20718598365783691
+        }
+      },
+      "visual_review": "Dominant later hotspot on blue backdrop above the ice; fails to track the melting/pooling area."
+    },
+    {
+      "id": "source0001535",
+      "answer": "A small fire smolders in a forest clearing, emitting smoke. The smoke rapidly expands into a large, billowing cloud, obscuring the surrounding trees and ground. The cloud grows denser and more voluminous, indicating an intensification of the smoke emission.",
+      "occlusion": {
+        "top": {
+          "tokens": 93,
+          "answer_log_probability": -0.4264393448829651,
+          "support_drop": 0.13563776016235352
+        },
+        "random": {
+          "tokens": 93,
+          "answer_log_probability": -0.3006395995616913,
+          "support_drop": 0.009838014841079712
+        }
+      },
+      "visual_review": "Some smoke-source relevance but isolated ground/tree hotspots; misses the expanding smoke cloud."
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "parent_experiment": 67920,
+  "experiment_id": 67933,
+  "status": "running_actual_accepted_gpu",
+  "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/denoising_matched_fusion_r15d/submissions/r15d_execution_probe_20261106T055159Z.yaml",
+  "bundle": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/denoising_matched_fusion_r15d/submissions/execution_probe/20261106T055159Z",
+  "modes": [],
+  "cases": [
+    "VP004",
+    "VP025",
+    "VP027",
+    "VP038"
+  ],
+  "training_updates": 0,
+  "output_videos": 0,
+  "source_sha256": "84b69094653620296b17b03deb7cb5ca8ba9651d01c3c63cabfad15099561534",
+  "reason": "Distinguish lost C variation after read, overbroad write, and text-guidance interference before finalizing R15E.",
+  "checks": [
+    "CPU describe passed",
+    "Python parsed; frozen model source is read-only"
+  ],
+  "plan": {
+    "inspected_steps": [
+      1,
+      15,
+      35,
+      50
+    ],
+    "inspected_layers": [
+      2,
+      14,
+      29
+    ]
+  },
+  "attempts": [
+    {
+      "experiment_id": 67931,
+      "submitted_utc": "2026-11-06T05:52:01.566351+00:00",
+      "accepted": false,
+      "actual_gpu": "NVIDIA H100",
+      "state": "STATE_ERROR",
+      "trial_ids": [
+        69318
+      ],
+      "reason": "Actual GPU guard rejected H100 before foundation loading"
+    },
+    {
+      "experiment_id": 67933,
+      "submitted_utc": "2026-11-06T06:09:53.088870+00:00",
+      "accepted": true,
+      "actual_gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "state": "STATE_RUNNING",
+      "trial_ids": [
+        69320
+      ]
+    }
+  ],
+  "retry_policy": "Retry only when usable RTX allocation is possible",
+  "actual_gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+  "trial_ids": [
+    69320
+  ],
+  "verified_utc": "2026-11-06T06:10:03.131825+00:00"
+}

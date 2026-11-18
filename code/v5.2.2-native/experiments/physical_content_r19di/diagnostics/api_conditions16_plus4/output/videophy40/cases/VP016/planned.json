@@ -1,0 +1,35 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19di/runs/r19di_parallel_400/step0400.pt",
+  "step": 400,
+  "case": "VP016",
+  "seed": 42,
+  "guidance": {
+    "kind": "two_arm_joint_condition_cfg",
+    "scale": 5.0,
+    "formula": "v = v_neg + 5 * (v_pos - v_neg)",
+    "positive": "own first image, original request, positive native T5 and positive Qwen C",
+    "negative": "same first image, null native T5 and null Qwen C",
+    "separate_physical_guidance": false
+  },
+  "suite": "videophy40",
+  "task": "i2v",
+  "caption": "A scientist uses a probe to nudge a small, delicate insect on a leaf, causing it to twitch minimally.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP016/first.png",
+  "sampler": {
+    "num_frames": 81,
+    "width": 832,
+    "height": 480,
+    "steps": 50,
+    "sampler": "shifted_euler",
+    "shift": 5.0,
+    "cfg": 5.0,
+    "seed": 42,
+    "best_of_n": 1,
+    "clamp_first": true
+  },
+  "positive_analysis": "The glass probe moves toward the insect, making light contact with its body.\nThe probe's touch causes the insect to twitch and shift slightly on the leaf.\nThe leaf remains stationary, providing a stable base for the insect's minimal movement.",
+  "physical_analysis": "The glass probe moves toward the insect, making light contact with its body.\nThe probe's touch causes the insect to twitch and shift slightly on the leaf.\nThe leaf remains stationary, providing a stable base for the insect's minimal movement.",
+  "negative_analysis": "Pipette tip contacting the insect -> red liquid may transfer onto the insect's body.\nInsect resting on the leaf -> leaf surface supports the insect's weight.\nGloved hand holding the pipette -> hand stabilizes the pipette's position over the leaf.",
+  "scope": "own image/request",
+  "seconds": 268.1204585796222
+}

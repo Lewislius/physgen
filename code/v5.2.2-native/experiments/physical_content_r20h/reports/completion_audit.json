@@ -1,0 +1,108 @@
+{
+  "verified_utc": "2026-11-17T03:33:49.988412+00:00",
+  "previous_goal_turn_classification": "progress: completed HT evaluation, visual reviews, reports and terminal handoff",
+  "goal_achieved": false,
+  "requirements": [
+    {
+      "requirement": "VideoPhy2-40 PC>=3.85, SA>=3.25, Joint>=13",
+      "status": "contradicted",
+      "actual": {
+        "n": 40,
+        "SA": 3.075,
+        "PC": 3.625,
+        "Joint": 11
+      },
+      "evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20h/inference_outputs/r20ht_state_conditioned_execution400/step0400_seed42/videophy40/scores.json"
+    },
+    {
+      "requirement": "Complete60 comprehensive improvement and improved physics versus native",
+      "status": "not_achieved",
+      "actual": {
+        "HT": {
+          "n": 60,
+          "SA": 3.0,
+          "PC": 3.716666666666667,
+          "Joint": 16
+        },
+        "native": {
+          "n": 60,
+          "SA": 2.9,
+          "PC": 3.716666666666667,
+          "Joint": 12
+        },
+        "same_case_prompts": true,
+        "same_generation_seed": true,
+        "paired": {
+          "sa": {
+            "wins": 9,
+            "ties": 47,
+            "losses": 4
+          },
+          "pc": {
+            "wins": 8,
+            "ties": 43,
+            "losses": 9
+          }
+        }
+      },
+      "evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20h/reports/ht_native_comparison.json"
+    },
+    {
+      "requirement": "Preserve/improve detail, identity, structure and actual physical processes",
+      "status": "contradicted",
+      "evidence": [
+        "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20h/reports/main40_visual/review.json",
+        "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20h/reports/extra20_visual/review.json",
+        "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20h/reports/paired_visual/normal_no_c4_review.json"
+      ]
+    },
+    {
+      "requirement": "Exceed ProPhy under comparable evaluation",
+      "status": "unverified",
+      "reason": "No same-protocol ProPhy40/60 result available; published full-benchmark pass rates are not interchangeable with these five-point means."
+    },
+    {
+      "requirement": "Fresh400 plus40+20 and required paired16 tests",
+      "status": "proved",
+      "video_counts": {
+        "main40": 40,
+        "extra20": 20,
+        "no_c": 16,
+        "wrong": 16,
+        "features_off": 16
+      },
+      "evidence": [
+        "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20h/runs/r20ht_state_conditioned_execution400/status.json",
+        "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20h/inference_outputs/r20ht_state_conditioned_execution400/step0400_seed42/paired_summary.json"
+      ]
+    },
+    {
+      "requirement": "Key code, depth0/7/14/21/28, RoPE, gradient and phase checks",
+      "status": "proved_for_tested_implementation",
+      "evidence": [
+        "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20h/reports/implementation_audit.json",
+        "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20h/reports/stage_transition.json"
+      ]
+    },
+    {
+      "requirement": "Retain GT workflow, artifacts, local-only inputs and resource/version limits",
+      "status": "completed_within_authorized_scope",
+      "evidence": [
+        "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20/CONTINUATION.json",
+        "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20h/reports/submission_ht.json",
+        "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20h/runs/r20ht_state_conditioned_execution400/gpu.json"
+      ]
+    },
+    {
+      "requirement": "I2V cross-benchmarks only after prerequisite improvements",
+      "status": "not_triggered",
+      "reason": "No new qualified I2V candidate; no additional WMB/Physics-IQ submission."
+    },
+    {
+      "requirement": "Chinese analysis and preserved evidence, then wait for instructions",
+      "status": "complete",
+      "evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20h/RESULTS.zh.txt"
+    }
+  ],
+  "next_action": "Do not mark goal complete. Authorized maximumHT is exhausted and requested tests are complete. Wait for user direction; no automatic new training/version, no terminal-job polling."
+}

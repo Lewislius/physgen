@@ -1,0 +1,73 @@
+{
+  "utc": "2026-11-05T15:10:12.231471+00:00",
+  "status": "reviewed_for_r15b_design",
+  "sources": [
+    {
+      "title": "PhysVid: Physics Aware Local Conditioning for Generative Video Models",
+      "url": "https://arxiv.org/html/2603.26285v2",
+      "read_scope": "Sections 3.1-3.3, 4.1, 9.2, configuration table",
+      "verified_mechanism": "Video chunks receive physically grounded captions consistent with the global caption. A local attention pathway uses aligned video/text positional coordinates. Inference adds paired physics counterfactual conditioning.",
+      "transfer_question": "Can current global Q/C express when a requested physical state or interaction applies? Any positional scheme needs meaningful temporal alignment rather than arbitrary learned-query indices.",
+      "limitations": "Their training uses substantially more data and updates, and their reported fidelity tradeoff is not acceptable as success for our simultaneous targets. No direct claim that copying their modules will improve this I2V system."
+    },
+    {
+      "title": "IP-Adapter: Text Compatible Image Prompt Adapter for Text-to-Image Diffusion Models",
+      "url": "https://arxiv.org/html/2308.06721v1",
+      "read_scope": "Sections 3.2, 4.1, 4.4",
+      "verified_mechanism": "Separate image attention retains the native query and trains separate image K/V initialized from text K/V. Text and image conditions are dropped separately as well as jointly during training. Fine-grained features improve reference fidelity but can capture unwanted spatial structure.",
+      "transfer_question": "R15A native_query control can assess whether independently learned physical queries help. Condition-use controls can distinguish useful physical context from generic corrections; no conclusion that dropout is the root cause.",
+      "limitations": "Image generation with large-scale training is not evidence of sufficient capacity or preserved semantics for our 400-step video setup. No automatic decision to freeze physical Q or change the training paradigm."
+    },
+    {
+      "title": "Physically Plausible Video Generation via Visual-Semantic Chain-of-Events Conditioning",
+      "url": "https://arxiv.org/abs/2609.00656",
+      "read_scope": "Abstract only",
+      "verified_mechanism": "The abstract describes event chains, intermediate state transitions, routed keyframes and positive/counterfactual guidance.",
+      "transfer_question": "Represent requested process evolution, not only a static statement that the final phenomenon is already present.",
+      "limitations": "Implementation and ablations not yet reviewed; not accepted as a ready design. No model download or keyframe-generation job authorized by this note."
+    },
+    {
+      "title": "Text Embedding is Not All You Need",
+      "url": "https://arxiv.org/html/2411.15236v1",
+      "read_scope": "Analysis of semantic binding and attention-map relationships",
+      "verified_mechanism": "Text-feature differences alone do not guarantee appropriate cross-attention binding; the paper transfers text attention relations through inference optimization.",
+      "transfer_question": "Bind physical information to the original request rather than treating low C cosine as success.",
+      "limitations": "Image/CLIP results do not establish equivalent Wan/T5 behavior. R15B does not copy their test-time optimization or claim this paper proves its new bridge."
+    },
+    {
+      "title": "VideoREPA",
+      "url": "https://arxiv.org/html/2505.23656v1",
+      "read_scope": "Sections3.3-3.4",
+      "verified_mechanism": "Aligns spatial/temporal token relations from a frozen video model instead of directly matching individual feature vectors.",
+      "transfer_question": "Judge whether useful relations reach the generator, not just feature similarity statistics.",
+      "limitations": "No VideoREPA teacher or new loss is added. It would require justified teacher targets and extra preprocessing; no model download is authorized."
+    }
+  ],
+  "current_evidence": [
+    {
+      "claim": "Physical injection has not demonstrated a net benefit on the fixed16.",
+      "evidence": "Normal3.1875/3.625/J4; noC3.1875/3.6875/J6. NoC retains this model jointly trained LoRA; it is not an independently trained baseline."
+    },
+    {
+      "claim": "Correct reasoning does not beat the unrelated control on these16.",
+      "evidence": "Both3.1875/3.625 but normalJ4 versus swappedJ6; empty3.125/3.4375/J5. Individual changes remain, so not equivalent tensors or total information independence."
+    },
+    {
+      "claim": "C geometry improved substantially without a quality improvement.",
+      "evidence": "Own400 fixed16 executionC tokencos.248044, Qupdate.160898. Rawfeature differences are not proven useful physical corrections."
+    },
+    {
+      "claim": "Recovering native Q alone does not solve the problem.",
+      "evidence": "NativeQ3.25/3.625/J5. VP004 severe face/object deformation persists; VP010 still has object continuity defects."
+    },
+    {
+      "claim": "The free execution residual contributes some artifacts but is not the sole failure mechanism.",
+      "evidence": "ExecutionOff3.125/3.625/J5; VP004 face improves but composition drift/object loss remains."
+    },
+    {
+      "claim": "Some apparent positive examples are not attributable to physics injection.",
+      "evidence": "VP027 coherent kneading/visible deformation is also present under noC."
+    }
+  ],
+  "decision_rule": "Use R15A controls, actual videos and useful historical references to choose a substantive next design. Preserve all numerical/cross-benchmark goals; no running model or evaluation source changed."
+}

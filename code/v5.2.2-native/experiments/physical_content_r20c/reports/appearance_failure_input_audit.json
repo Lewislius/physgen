@@ -1,0 +1,53 @@
+{
+  "scope": "Existing immutable T2V positive reasoning, six inspected cases; no encoding or dataset changed",
+  "cases": [
+    {
+      "case": "VP004",
+      "explicit_blue_purple_words": [],
+      "has_worker_word": false,
+      "has_person_word": false,
+      "caption": "A plastic ruler is bent until it cracks, displaying a visible stress fracture that propagates."
+    },
+    {
+      "case": "VP009",
+      "explicit_blue_purple_words": [],
+      "has_worker_word": false,
+      "has_person_word": false,
+      "caption": "A construction worker uses a suction cup to lift a heavy glass panel with a small picture adhered to it; the picture remains affixed."
+    },
+    {
+      "case": "VP010",
+      "explicit_blue_purple_words": [],
+      "has_worker_word": false,
+      "has_person_word": false,
+      "caption": "A person mops up a puddle of water on a concrete floor, the water disappearing as the mop passes."
+    },
+    {
+      "case": "VP015",
+      "explicit_blue_purple_words": [],
+      "has_worker_word": false,
+      "has_person_word": true,
+      "caption": "A rower pulls an oar from the water, the blade dripping water back into the lake. ."
+    },
+    {
+      "case": "VP026",
+      "explicit_blue_purple_words": [],
+      "has_worker_word": false,
+      "has_person_word": false,
+      "caption": "Two people stretch a bungee cord, extending it to its maximum length."
+    },
+    {
+      "case": "VP027",
+      "explicit_blue_purple_words": [],
+      "has_worker_word": false,
+      "has_person_word": false,
+      "caption": "Hands shape a lump of clay-like bread dough into a smooth, round boule on a wooden table."
+    }
+  ],
+  "interpretation": [
+    "蓝紫偏色在这六例的显式reasoning中没有相应颜色指令；这不能排除隐特征、训练分布或采样其他因素。",
+    "BT和CT的Q增强已经同时读取原始请求词与物理词；主干和BT/CT物理视频块也有原生文本注意力。因此不能把问题解释为模型没有拿到原始请求，也不应以重复拼接请求替代有效融合。",
+    "物理说明弱化了部分人物主体，但主体本应由原生请求保留。CT恢复009工人的例子也表明，物理C无需自行重写所有外观信息才能保留主体。",
+    "015把水阻写为拉起划船者手臂的力，026把最大伸长写为必须超过弹性极限，属于不可靠物理解释。它们并不能解释多例共同偏色；保持同协议原始输入，纳入条件利用复盘。"
+  ]
+}

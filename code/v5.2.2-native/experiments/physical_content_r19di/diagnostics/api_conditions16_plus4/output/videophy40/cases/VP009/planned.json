@@ -1,0 +1,35 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19di/runs/r19di_parallel_400/step0400.pt",
+  "step": 400,
+  "case": "VP009",
+  "seed": 42,
+  "guidance": {
+    "kind": "two_arm_joint_condition_cfg",
+    "scale": 5.0,
+    "formula": "v = v_neg + 5 * (v_pos - v_neg)",
+    "positive": "own first image, original request, positive native T5 and positive Qwen C",
+    "negative": "same first image, null native T5 and null Qwen C",
+    "separate_physical_guidance": false
+  },
+  "suite": "videophy40",
+  "task": "i2v",
+  "caption": "A construction worker uses a suction cup to lift a heavy glass panel with a small picture adhered to it; the picture remains affixed.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP009/first.png",
+  "sampler": {
+    "num_frames": 81,
+    "width": 832,
+    "height": 480,
+    "steps": 50,
+    "sampler": "shifted_euler",
+    "shift": 5.0,
+    "cfg": 5.0,
+    "seed": 42,
+    "best_of_n": 1,
+    "clamp_first": true
+  },
+  "positive_analysis": "The suction cup adheres to the glass, creating a grip that supports the panel's weight.\nThe worker pulls the handle upward, transferring force to lift the heavy glass panel.\nAs the panel lifts, the small picture remains affixed to the glass surface.",
+  "physical_analysis": "The suction cup adheres to the glass, creating a grip that supports the panel's weight.\nThe worker pulls the handle upward, transferring force to lift the heavy glass panel.\nAs the panel lifts, the small picture remains affixed to the glass surface.",
+  "negative_analysis": "The crouching man's grip on the handle maintains contact between the plunger cup and the glass surface.\nIf the man pulls the handle backward, the plunger cup may detach from the vertical glass.\nPushing the handle forward causes the plunger cup to compress against the glass surface.\nThe framed picture remains fixed to the glass panel above the plunger's contact area.",
+  "scope": "own image/request",
+  "seconds": 278.8626584224403
+}

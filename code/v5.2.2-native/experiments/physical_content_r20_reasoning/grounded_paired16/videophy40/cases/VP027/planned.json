@@ -1,0 +1,30 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20b/runs/r20bt_video_physics400/step0400.pt",
+  "step": 400,
+  "case": "VP027",
+  "seed": 42,
+  "guidance": {
+    "kind": "two_arm_joint_condition_cfg",
+    "scale": 5.0,
+    "formula": "v = v_neg + 5 * (v_pos - v_neg)",
+    "positive": "request only, positive native T5 and positive request-only Qwen C",
+    "negative": "null request, null native T5 and null request-only Qwen C",
+    "separate_physical_guidance": false
+  },
+  "suite": "videophy40",
+  "task": "t2v",
+  "caption": "Hands shape a lump of clay-like bread dough into a smooth, round boule on a wooden table.",
+  "canvas": null,
+  "sampler": "unchanged frozen BT sampler; same native prompts/noise/gamma5",
+  "positive_analysis": "Hands shape a lump of clay-like bread dough into a smooth, round boule on a wooden table.",
+  "physical_analysis": "Hands shape a lump of clay-like bread dough into a smooth, round boule on a wooden table.",
+  "negative_analysis": "",
+  "scope": "request only; no image",
+  "seconds": 95.79019460268319,
+  "comparison": "BT400_revised_reasoning",
+  "reference_checkpoint_config": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20b/runs/r20bt_video_physics400/step0400.pt",
+  "project_weights_loaded": true,
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20_reasoning/full_features/inference",
+  "new_training": false,
+  "paid_api_calls": 0
+}

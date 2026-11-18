@@ -1,0 +1,88 @@
+{
+  "utc": "2026-11-05T15:10:12.231471+00:00",
+  "status": "full40_six_controls_and_predeclared_video_review_complete",
+  "main40": {
+    "SA": 3.0,
+    "PC": 3.5,
+    "Joint": 8,
+    "count": 40
+  },
+  "quantitative_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_fusion_r15a/reports/main40_review.json",
+  "representation_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_fusion_r15a/reports/own400_fixed16_representation.json",
+  "verdict": "R15A fails all main40 targets and is not an accepted improvement. Remaining20 stopped by user; no full60 score.",
+  "findings": [
+    {
+      "claim": "Physical injection has not demonstrated a net benefit on the fixed16.",
+      "evidence": "Normal3.1875/3.625/J4; noC3.1875/3.6875/J6. NoC retains this model jointly trained LoRA; it is not an independently trained baseline."
+    },
+    {
+      "claim": "Correct reasoning does not beat the unrelated control on these16.",
+      "evidence": "Both3.1875/3.625 but normalJ4 versus swappedJ6; empty3.125/3.4375/J5. Individual changes remain, so not equivalent tensors or total information independence."
+    },
+    {
+      "claim": "C geometry improved substantially without a quality improvement.",
+      "evidence": "Own400 fixed16 executionC tokencos.248044, Qupdate.160898. Rawfeature differences are not proven useful physical corrections."
+    },
+    {
+      "claim": "Recovering native Q alone does not solve the problem.",
+      "evidence": "NativeQ3.25/3.625/J5. VP004 severe face/object deformation persists; VP010 still has object continuity defects."
+    },
+    {
+      "claim": "The free execution residual contributes some artifacts but is not the sole failure mechanism.",
+      "evidence": "ExecutionOff3.125/3.625/J5; VP004 face improves but composition drift/object loss remains."
+    },
+    {
+      "claim": "Some apparent positive examples are not attributable to physics injection.",
+      "evidence": "VP027 coherent kneading/visible deformation is also present under noC."
+    }
+  ],
+  "three_axes": {
+    "local_capacity": "670M trainable parameters does not prove sufficient useful capacity, but merely enlarging the reader is not supported. The observed deficiency is that the learned physical message can disrupt local identity and structure. Explicit state interaction from R10A is retained in the next candidate rather than replacing it with a C-only additive write.",
+    "condition_use": "A has diverse C but the correct/wrong control does not show net benefit. Existing physical slots describe reasoning sentences, whereas the native generation task is the original request; the two attentions can select different semantic content.",
+    "fusion_execution_match": "Current direct physical addressing is independent of the current layer native request attention. This is a code fact. That independence is a plausible source of mismatch, not uniquely established by the controls. The next candidate makes physical values available through native request keys and tests the binding directly."
+  },
+  "historical_basis": {
+    "R1": "Cross-benchmark reference remains WMB600/700 and PIQ.2651032257782627. Its balanced results are the acceptance reference, not PC alone.",
+    "R9": "Native-query grounded conditioning is a useful reference; no claim of having solved all targets.",
+    "R10A": "Own40 PC3.75, butSA2.825/J7; fixed16 full3.0625/3.875/J4 versus noC3.25/3.625/J6. Preserve its physical execution capacity while addressing semantic mismatch.",
+    "R11B": "Independent request writing harmedSA/Joint and some videos; do not reproduce that independent output path.",
+    "R12B_R13A_R13B_R13C": "Text multiplication, native FFN modulation and native videoQ/K modulation did not achieve combined targets. Do not repeat them merely with different weights."
+  },
+  "inference_limits": "Paired inference interventions establish dependence of a trained checkpoint, not retrained component causality. Selected frames do not replace exhaustive video judgment. No conclusion from FM scalar alone.",
+  "next": "Proceed with tested R15B request-bound fusion; no R15A20 resume.",
+  "mean16": {
+    "summary": {
+      "count": 16,
+      "SA": 3.3125,
+      "PC": 3.625,
+      "Joint": 6
+    },
+    "control_minus_normal": {
+      "sa": {
+        "delta_mean": 0.125,
+        "wins": [
+          "VP010",
+          "VP025"
+        ],
+        "losses": []
+      },
+      "pc": {
+        "delta_mean": 0.0,
+        "wins": [
+          "VP010",
+          "VP038"
+        ],
+        "losses": [
+          "VP004",
+          "VP027"
+        ]
+      },
+      "joint_gains": [
+        "VP010",
+        "VP038"
+      ],
+      "joint_losses": []
+    },
+    "limits": "Own relation priors remain; full mean C also changes amplitude, so the content/amplitude effects are not isolated."
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "scope": "Same fixed16 case IDs and within-checkpoint paired no-C interventions. Across-version differences include their jointly trained LoRA and physical modules; not a single-factor retraining experiment.",
+  "models": {
+    "R10A": {
+      "normal": {
+        "SA": 3.0625,
+        "PC": 3.875,
+        "Joint": 4
+      },
+      "no_c": {
+        "SA": 3.25,
+        "PC": 3.625,
+        "Joint": 6
+      },
+      "normal_minus_no_c": {
+        "SA": -0.1875,
+        "PC": 0.25,
+        "Joint": -2
+      },
+      "normal_scores": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/execution_value_r10/inference_outputs/physical_content_67003/step0400_full40_controls16_physical5_seed42/videophy40/scores.json",
+      "no_c_scores": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/execution_value_r10/inference_outputs/physical_content_67003/step0400_full40_controls16_physical5_seed42/controls/no_c/videophy40/scores.json"
+    },
+    "R15F": {
+      "normal": {
+        "SA": 3.0625,
+        "PC": 3.8125,
+        "Joint": 5
+      },
+      "no_c": {
+        "SA": 3.25,
+        "PC": 3.5,
+        "Joint": 5
+      },
+      "normal_minus_no_c": {
+        "SA": -0.1875,
+        "PC": 0.3125,
+        "Joint": 0
+      },
+      "normal_scores": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/inference_outputs/physical_content_68038/step0400_original_fixed40_controls16_seed42/videophy40/scores.json",
+      "no_c_scores": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/inference_outputs/physical_content_68038/step0400_original_fixed40_controls16_seed42/controls/no_c/videophy40/scores.json"
+    },
+    "R15G": {
+      "normal": {
+        "SA": 3.125,
+        "PC": 3.5625,
+        "Joint": 5
+      },
+      "no_c": {
+        "SA": 3.3125,
+        "PC": 3.6875,
+        "Joint": 6
+      },
+      "normal_minus_no_c": {
+        "SA": -0.1875,
+        "PC": -0.125,
+        "Joint": -1
+      },
+      "normal_scores": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/source_residual_fusion_r15g/inference_outputs/physical_content_68103/step0400_original_fixed40_controls16_seed42/videophy40/scores.json",
+      "no_c_scores": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/source_residual_fusion_r15g/inference_outputs/physical_content_68103/step0400_original_fixed40_controls16_seed42/controls/no_c/videophy40/scores.json"
+    }
+  },
+  "conclusions": [
+    "R15F的物理注入在16例中带来PC+0.3125，R15G则PC-0.125，贡献方向反转；SA代价两者都是-0.1875。",
+    "R15G关闭注入的SA/PC/Joint均高于R15F关闭注入，因此这组数据不支持把G正常模式退化简单归因于基础LoRA更差。",
+    "较低C趋同没有换来更好的融合执行。G的输入值执行与融合组合未保住F/R10A的物理增益，且未消除语义代价。",
+    "固定16的机制结论必须连同完整40/60及跨基准结果使用，不能用16例分数替代完整验收。"
+  ],
+  "quality_goal_achieved": false
+}

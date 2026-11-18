@@ -1,0 +1,43 @@
+name: physical-r16gt-t2v-400-fixed40-extra20-20261112T111840Z
+description: 'R16Gt: R16G triple global direct/request-bound/joint execution plus the R15C 5x3x3 local video-state operator, retrained for T2V with no first frame and request-only evidence. Fresh official foundations, matched 400 updates/1600 microbatches, seed42, gamma5; automatically completes fixed VideoPhy2 40 + disjoint 20 + full60 report on blk-96g RTX PRO6000/RTX6000. H100 is rejected before foundation loading and will be resubmitted on RTX PRO 6000/RTX6000. No automatic later-version training.'
+workspace: ALL-IN-ONE
+project: wan-animate
+max_restarts: 0
+resources:
+  resource_pool: blk-96g
+  slots_per_trial: 1
+  is_single_node: true
+  shm_size: 34359738368
+bind_mounts:
+- host_path: /mount/HOME/liuzhirui
+  container_path: /home/liuzhirui
+- host_path: /mount/NAS1/public
+  container_path: /run/determined/NAS1/public
+environment:
+  image: 10.130.130.5:8192/lab-dev:latest
+  environment_variables:
+  - OMP_NUM_THREADS=4
+  - PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+  - HF_HUB_OFFLINE=1
+  - TRANSFORMERS_OFFLINE=1
+  - HF_DATASETS_OFFLINE=1
+  - PYTHONUNBUFFERED=1
+  - WAN_CODE=/home/liuzhirui/model/Wan2.2
+  - WAN_CKPT=/home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B
+  - QWEN_CKPT=/home/liuzhirui/model/Qwen3-VL/Qwen3-VL-8B-Instruct
+checkpoint_storage:
+  type: shared_fs
+  host_path: /mount/HOME/liuzhirui
+  storage_path: Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r16gt/determined_checkpoints
+  save_experiment_best: 0
+  save_trial_best: 0
+  save_trial_latest: 0
+searcher:
+  name: single
+  metric: completed
+  max_length:
+    epochs: 1
+  smaller_is_better: false
+entrypoint: bash /home/liuzhirui/Project/physGen/code/v5.2.2-native/tools/runtime_python.sh
+  /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r16gt/snapshots/20261112T111840Z/run_candidate.py
+  --config /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r16gt/snapshots/20261112T111840Z/configs/r16gt.yaml

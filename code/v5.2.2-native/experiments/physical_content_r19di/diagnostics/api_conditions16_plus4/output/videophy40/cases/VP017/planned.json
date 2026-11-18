@@ -1,0 +1,35 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19di/runs/r19di_parallel_400/step0400.pt",
+  "step": 400,
+  "case": "VP017",
+  "seed": 42,
+  "guidance": {
+    "kind": "two_arm_joint_condition_cfg",
+    "scale": 5.0,
+    "formula": "v = v_neg + 5 * (v_pos - v_neg)",
+    "positive": "own first image, original request, positive native T5 and positive Qwen C",
+    "negative": "same first image, null native T5 and null Qwen C",
+    "separate_physical_guidance": false
+  },
+  "suite": "videophy40",
+  "task": "i2v",
+  "caption": "A unicycle wheel rolls over a small curb; the rider adjusts their position to keep upright.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP017/first.png",
+  "sampler": {
+    "num_frames": 81,
+    "width": 832,
+    "height": 480,
+    "steps": 50,
+    "sampler": "shifted_euler",
+    "shift": 5.0,
+    "cfg": 5.0,
+    "seed": 42,
+    "best_of_n": 1,
+    "clamp_first": true
+  },
+  "positive_analysis": "The wheel contacting the curb edge rotates forward to climb over the raised stone.\nThe rider's leg drives the pedal so the wheel rolls up and over the curb.\nAs the wheel rises, the rider shifts their torso to keep the seat balanced.\nThe bracing foot lifts once the wheel clears the top of the curb.",
+  "physical_analysis": "The wheel contacting the curb edge rotates forward to climb over the raised stone.\nThe rider's leg drives the pedal so the wheel rolls up and over the curb.\nAs the wheel rises, the rider shifts their torso to keep the seat balanced.\nThe bracing foot lifts once the wheel clears the top of the curb.",
+  "negative_analysis": "The BMX front wheel contacts the concrete curb edge, supporting the bike's tilt.\nThe rider leans forward over the handlebars, centering weight above the frame.\nAny forward pedaling or weight shift may cause the bike to roll off the curb.\nThe rear tire remains in contact with the asphalt surface behind the curb.",
+  "scope": "own image/request",
+  "seconds": 249.47778541129082
+}

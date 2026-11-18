@@ -1,0 +1,35 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19di/runs/r19di_parallel_400/step0400.pt",
+  "step": 400,
+  "case": "VP036",
+  "seed": 42,
+  "guidance": {
+    "kind": "two_arm_joint_condition_cfg",
+    "scale": 5.0,
+    "formula": "v = v_neg + 5 * (v_pos - v_neg)",
+    "positive": "own first image, original request, positive native T5 and positive Qwen C",
+    "negative": "same first image, null native T5 and null Qwen C",
+    "separate_physical_guidance": false
+  },
+  "suite": "videophy40",
+  "task": "i2v",
+  "caption": "A slow-motion view of the jump showing leg extension and body position.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP036/first.png",
+  "sampler": {
+    "num_frames": 81,
+    "width": 832,
+    "height": 480,
+    "steps": 50,
+    "sampler": "shifted_euler",
+    "shift": 5.0,
+    "cfg": 5.0,
+    "seed": 42,
+    "best_of_n": 1,
+    "clamp_first": true
+  },
+  "positive_analysis": "The legs stay fully extended in a split position as the jump continues.\nThe body maintains its horizontal alignment relative to the ground throughout the sequence.\nThe vertical position remains constant while the person is suspended in mid-air.",
+  "physical_analysis": "The legs stay fully extended in a split position as the jump continues.\nThe body maintains its horizontal alignment relative to the ground throughout the sequence.\nThe vertical position remains constant while the person is suspended in mid-air.",
+  "negative_analysis": "The person is mid-air in a split; gravity will pull them down toward the grass below.\nThe extended legs will bend upon landing to absorb the impact with the ground.\nThe small object on the grass remains stationary unless the landing person strikes it.",
+  "scope": "own image/request",
+  "seconds": 258.3167400434613
+}

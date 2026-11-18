@@ -1,0 +1,119 @@
+{
+  "recorded_utc": "2026-10-31T20:01:42.270953+00:00",
+  "scope": "Read actual frozen model/teacher/evidence/trainer, existing native-target builder, actual run config/logs, and one existing word/target cache pair. No model pass, new test, scoring or loss change.",
+  "sources": {
+    "model": "experiments/physical_content_v7/content_value_r9_1/snapshots/20261031T173355Z/physical_content/model.py",
+    "teacher": "experiments/physical_content_v7/content_value_r9_1/snapshots/20261031T173355Z/physical_content/teacher.py",
+    "resampling": "experiments/physical_content_v7/content_value_r9_1/snapshots/20261031T173355Z/physical_content/evidence.py",
+    "trainer": "experiments/physical_content_v7/content_value_r9_1/snapshots/20261031T173355Z/physical_content/train.py",
+    "native_target_builder": "experiments/physical_content_v7/prepare_native.py",
+    "schedule": "experiments/physical_scaling_q256/physical_scaling/schedule.py",
+    "run_config": "experiments/physical_content_v7/content_value_r9_1/runs/physical_content_66970/config.json",
+    "run_log": "experiments/physical_content_v7/content_value_r9_1/runs/physical_content_66970/train.jsonl"
+  },
+  "actual_loss_config": {
+    "peak_weight": 0.03,
+    "final_weight": 0.015,
+    "warmup": 32,
+    "decay_start": 600,
+    "temperature": 1.0,
+    "generation": {
+      "tail_weight": 0.2,
+      "tail_fraction": 0.25
+    }
+  },
+  "objective": "L = L_generation + lambda * mean((C - T_reasoning_words)^2) / target_scale^2",
+  "equivalent_residual_form": "For C = C_anchor + delta, L_sem = ||delta - (T - C_anchor)||^2 / (N * target_scale^2), delta = shared_offset + PZ.",
+  "confirmed_facts": [
+    "Native targets encode each reasoning relation separately with frozen official T5 and Wan text embedding; no separate literal-request or image target is constructed. Reasoning text can itself carry information from those inputs.",
+    "R9/R9.1 reader adds literal request features; content_loss still resamples native_words belonging to the reasoning relations.",
+    "The full C receives per-slot MSE; both shared_offset and PZ receive its gradient. The loss does not label which difference helps physical generation.",
+    "Resampling linearly interpolates the actual lexical sequence to64 slots in each of4 relations. It does not replicate one sentence mean64 times.",
+    "Actual lambda reaches.03 at step32 and stays.03 through400 because decay_start600 is beyond this budget; final_weight.015 is not reached.",
+    "R1 used the same objective and matched schedule. These facts alone do not establish why R9.1 performs worse or that removing the auxiliary would improve PC."
+  ],
+  "training_log_samples": [
+    {
+      "step": 1,
+      "sample": "source0000527",
+      "aux": 0.31560176610946655,
+      "aux_coefficient": 0.0009375,
+      "weighted_aux": 0.0002958766557276249,
+      "generation": 0.17552374303340912,
+      "sigma": 0.8462600708007812,
+      "text_dropped": false
+    },
+    {
+      "step": 32,
+      "sample": "wisa0010653",
+      "aux": 0.39318206906318665,
+      "aux_coefficient": 0.03,
+      "weighted_aux": 0.011795462071895598,
+      "generation": 0.16539642214775085,
+      "sigma": 0.9320577383041382,
+      "text_dropped": false
+    },
+    {
+      "step": 128,
+      "sample": "wisa0024204",
+      "aux": 0.3101503551006317,
+      "aux_coefficient": 0.03,
+      "weighted_aux": 0.009304510653018952,
+      "generation": 0.9609663486480713,
+      "sigma": 0.018538745120167732,
+      "text_dropped": true
+    },
+    {
+      "step": 250,
+      "sample": "source0000221",
+      "aux": 0.46634557843208313,
+      "aux_coefficient": 0.03,
+      "weighted_aux": 0.013990367352962493,
+      "generation": 0.08985938131809235,
+      "sigma": 0.9683082699775696,
+      "text_dropped": false
+    },
+    {
+      "step": 400,
+      "sample": "source0000354",
+      "aux": 0.4239480197429657,
+      "aux_coefficient": 0.03,
+      "weighted_aux": 0.01271844059228897,
+      "generation": 0.16184358298778534,
+      "sigma": 0.9437128305435181,
+      "text_dropped": false
+    }
+  ],
+  "one_observed_cache_example": {
+    "sample": "source0000354_text",
+    "source_shape": [
+      34,
+      4096
+    ],
+    "target_shape": [
+      34,
+      3072
+    ],
+    "per_relation_words": [
+      9,
+      7,
+      9,
+      9
+    ],
+    "output_slots": 256,
+    "lexical_lists_match": true,
+    "native_teacher": "official frozen T5 then official Wan text_embedding",
+    "cache_scope_label": "first_image_request_reasoning_only",
+    "interpretation": "Scope describes input provenance; the target encoder itself reads relation texts.34 original word features are interpolated to256 targets; this is one example, not a corpus statistic.",
+    "source_words": "experiments/physical_content_v7/cache/words/source0000354_text.pt",
+    "source_targets": "experiments/physical_content_v7/cache/native_words/source0000354_text.pt"
+  },
+  "hypothesis_for_later_review": "Full-vector lexical reconstruction may oppose request-specific or image-context-specific generation corrections that are not represented in the lexical target. Native semantic alignment can still help and R1 already benefits; actual gradient conflict and the effect of changing the loss remain unmeasured.",
+  "not_established": [
+    "Semantic loss is the primary cause of PC regression",
+    "All C slots or PZ have collapsed",
+    "Reducing or deleting semantic loss will increase quality",
+    "R10 architecture or objective selected"
+  ],
+  "r10_status": "Deferred until completed R9.1 generation/module evidence."
+}

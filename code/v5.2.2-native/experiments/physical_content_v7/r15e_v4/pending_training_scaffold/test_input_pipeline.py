@@ -1,0 +1,101 @@
+"""Exercise real original caches and the partial/full evaluation contract on CPU."""
+from pathlib import Path
+import contextlib
+import copy
+import io
+import json
+import shutil
+import sys
+import tempfile
+import unittest
+from unittest.mock import patch
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import bootstrap
+import torch
+from benchmark_inputs import ROOT, reference, case_input
+from condition_controls import InferenceCache
+from physical_content.common import load_config
+from physical_content.teacher import Teacher
+import report_results
+
+HERE = Path(__file__).resolve().parent
+
+
+class PipelineTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        torch.set_num_threads(4)
+        cls.cfg = load_config(HERE / 'configs/physical_content.yaml')
+        cls.reader = InferenceCache(cls.cfg['paths']['inference_evidence'], device='cpu')
+
+    def test_all_original_inputs_and_control_requests(self):
+        controls = {v['id'] for v in json.loads((HERE / 'subset16.json').read_text())['cases']}
+        count = 0
+        for case in reference()['cases']:
+            _, item = case_input(case)
+            normal = self.reader.input(item, image=item['image'], duration=item['duration'])
+            negative = self.reader.input(item, image=item['image'], duration=item['duration'], drop=True)
+            self.assertEqual(normal['request_word_strings'], case['caption'].split())
+            self.assertEqual(negative['request_words'].shape, (0, 4096))
+            count += 2
+            if case['id'] in controls:
+                for mode in ('empty_reasoning', 'reasoning_swapped'):
+                    changed = self.reader.input(item, image=item['image'], duration=item['duration'], mode=mode)
+                    self.assertEqual(changed['caption'], normal['caption'])
+                    self.assertEqual(changed['own_relation_count'], len(normal['relations']))
+                    self.assertEqual(changed['request_word_strings'], normal['request_word_strings'])
+                    if mode == 'empty_reasoning':
+                        self.assertFalse(any(changed['relations']))
+                    else:
+                        self.assertNotEqual(changed['donor'], changed['sample'])
+                    count += 1
+        self.assertEqual(count, 152)
+
+    def test_compaction_preserves_original_tensors_and_catches_wrong_input(self):
+        teacher = Teacher(self.cfg, device='cpu')
+        for index in (9, 40):
+            case = reference()['cases'][index]
+            _, item = case_input(case)
+            for drop in (False, True):
+                arm = 'negative' if drop else 'positive'
+                original = (teacher.input(item, drop=drop) if index < 40 else
+                            torch.load(ROOT / 'videophy60/inputs' / case['id'] / (arm + '.pt'),
+                                       map_location='cpu', weights_only=True))
+                compact = self.reader.input(item, image=item['image'], duration=item['duration'], drop=drop)
+                for key in ('words', 'word_groups', 'word_positions', 'request_words'):
+                    torch.testing.assert_close(compact[key], original[key], rtol=0, atol=0)
+            wrong = dict(item, caption='A deliberately different literal request.')
+            with self.assertRaises(ValueError):
+                self.reader.input(wrong, image=item['image'], duration=item['duration'])
+
+    def test_reports_partial40_then60_without_changing_historical_scores(self):
+        # Fixture uses already scored R11B videos to test reporting, not R12B quality.
+        previous = ROOT / 'request_memory_r11b/inference_outputs/physical_content_67308/step0400_api_fixed60_controls16_seed42'
+        with tempfile.TemporaryDirectory(prefix='r12_report_contract_') as tmp:
+            destination = Path(tmp)
+            for folder in ('videophy40', 'controls/request_memory_off/videophy40'):
+                (destination / folder).mkdir(parents=True)
+                shutil.copyfile(previous / folder / 'scores.json', destination / folder / 'scores.json')
+            with patch.object(sys, 'argv', ['report_results.py', '--output', str(destination)]), contextlib.redirect_stdout(io.StringIO()):
+                report_results.main()
+            result = json.loads((destination / 'comparison_report.json').read_text())
+            self.assertEqual(result['pending_main'], [])
+            self.assertIn('extension requires',result['full60_status'])
+            self.assertEqual(result['main']['original40']['joint_pass_count'], 6)
+            self.assertFalse(result['primary_numeric_targets_met'])
+            self.assertEqual(result['historical_joint_reference']['required_minimum'], 12)
+            self.assertEqual(result['controls']['request_memory_off']['normal_minus_control']['sa']['losses'], 5)
+            folder = 'full60/videophy60'
+            (destination / folder).mkdir(parents=True)
+            shutil.copyfile(previous / folder / 'scores.json', destination / folder / 'scores.json')
+            with patch.object(sys, 'argv', ['report_results.py', '--output', str(destination)]), contextlib.redirect_stdout(io.StringIO()):
+                report_results.main()
+            result = json.loads((destination / 'comparison_report.json').read_text())
+            self.assertEqual(result['pending_main'], [])
+            self.assertEqual(result['main']['full60']['count'], 60)
+            self.assertFalse(result['quality_goal_achieved'])
+
+
+if __name__ == '__main__':
+    unittest.main(verbosity=2)

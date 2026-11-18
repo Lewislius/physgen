@@ -1,0 +1,93 @@
+{
+  "passed": true,
+  "revision": "R19CTN-per-site-state-experts-20261117",
+  "sample": "source0002263",
+  "parameter_count": 2370971648,
+  "role_parameter_counts": {
+    "wan_video_lora:matrix": 57016320,
+    "enhancement:matrix": 472907776,
+    "enhancement:no_decay": 172032,
+    "physics_state:matrix": 1431306240,
+    "physics_state:no_decay": 532480,
+    "physics_read:matrix": 188743680,
+    "physics_read:no_decay": 92160,
+    "physics_write:matrix": 220200960
+  },
+  "estimated_optimizer_gradient_fp32_gib": 35.330230712890625,
+  "initialization": {
+    "sites": [
+      0,
+      7,
+      14,
+      21,
+      28
+    ],
+    "video_value_init": "official_cross_attn_v",
+    "read_output_init": "official_cross_attn_o",
+    "per_site_physical_parameters": {
+      "0": 368175104,
+      "7": 368175104,
+      "14": 368175104,
+      "21": 368175104,
+      "28": 368175104
+    },
+    "physical_parameters": 1840875520,
+    "same_depth_qkvo": true,
+    "independent_per_site": true,
+    "zero_initialized_write": true
+  },
+  "records": [
+    {
+      "disposable_update": 1,
+      "gradient_norms": {
+        "wan_video_lora": 0.00551689462736249,
+        "enhancement": 0.0,
+        "physics_read": 0.0,
+        "physics_write": 0.14654336869716644,
+        "physics_state": 0.0
+      },
+      "peak_allocated_gib": 45.297287940979004,
+      "generation": 0.24594959616661072
+    },
+    {
+      "disposable_update": 2,
+      "gradient_norms": {
+        "wan_video_lora": 0.016883058473467827,
+        "enhancement": 2.1576881408691406,
+        "physics_read": 0.14160358905792236,
+        "physics_write": 0.5669474601745605,
+        "physics_state": 0.044448770582675934
+      },
+      "peak_allocated_gib": 50.71701431274414,
+      "generation": 0.27480876445770264
+    },
+    {
+      "disposable_update": 3,
+      "gradient_norms": {
+        "wan_video_lora": 0.00422578863799572,
+        "enhancement": 0.04813895747065544,
+        "physics_read": 0.004627708345651627,
+        "physics_write": 0.0730665773153305,
+        "physics_state": 0.003708646632730961
+      },
+      "peak_allocated_gib": 50.71701431274414,
+      "generation": 0.2443515807390213
+    },
+    {
+      "disposable_update": 4,
+      "gradient_norms": {
+        "wan_video_lora": 0.02083585225045681,
+        "enhancement": 0.7713489532470703,
+        "physics_read": 0.14095039665699005,
+        "physics_write": 1.423457145690918,
+        "physics_state": 0.0461038276553154
+      },
+      "peak_allocated_gib": 50.71701431274414,
+      "generation": 0.2938232123851776
+    }
+  ],
+  "seconds": 47.490332960151136,
+  "checkpoint_saved": false,
+  "formal_training_initialization": "separate process; official fresh seed42",
+  "video_quality_or_score_improvement_proven": false
+}

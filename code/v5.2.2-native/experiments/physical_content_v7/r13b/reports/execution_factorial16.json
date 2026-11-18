@@ -1,0 +1,405 @@
+{
+  "status": "complete",
+  "cases": [
+    "VP002",
+    "VP004",
+    "VP005",
+    "VP009",
+    "VP010",
+    "VP013",
+    "VP015",
+    "VP016",
+    "VP017",
+    "VP018",
+    "VP024",
+    "VP025",
+    "VP026",
+    "VP027",
+    "VP034",
+    "VP038"
+  ],
+  "source_scores": {
+    "neither": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/inference_outputs/physical_content_67610/step0400_original_fixed40_controls16_seed42/controls/no_c/videophy40/scores.json",
+    "first_only": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/inference_outputs/physical_content_67610/step0400_original_fixed40_controls16_seed42/controls/direct_write_off/videophy40/scores.json",
+    "second_only": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/inference_outputs/physical_content_67610/step0400_original_fixed40_controls16_seed42/controls/interaction_off/videophy40/scores.json",
+    "both": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/inference_outputs/physical_content_67610/step0400_original_fixed40_controls16_seed42/videophy40/scores.json"
+  },
+  "first_path_disabled_by": "interaction_off",
+  "second_path_disabled_by": "direct_write_off",
+  "scope": "Same own400 checkpoint, fixed16 paired inference interventions. These are not independently retrained architecture ablations. Numeric interactions are descriptive ordinal-score differences; actual video review and complete40/60 remain necessary.",
+  "summaries": {
+    "neither": {
+      "sa": 3.3125,
+      "pc": 3.5625,
+      "joint": 6,
+      "count": 16
+    },
+    "first_only": {
+      "sa": 3.1875,
+      "pc": 3.6875,
+      "joint": 6,
+      "count": 16
+    },
+    "second_only": {
+      "sa": 3.125,
+      "pc": 3.625,
+      "joint": 6,
+      "count": 16
+    },
+    "both": {
+      "sa": 3.0625,
+      "pc": 3.5625,
+      "joint": 4,
+      "count": 16
+    }
+  },
+  "effects": {
+    "first_without_second": {
+      "sa": {
+        "mean_change": -0.125,
+        "wins": 0,
+        "ties": 14,
+        "losses": 2,
+        "changed": [
+          {
+            "case": "VP017",
+            "before": 3,
+            "after": 2
+          },
+          {
+            "case": "VP026",
+            "before": 3,
+            "after": 2
+          }
+        ]
+      },
+      "pc": {
+        "mean_change": 0.125,
+        "wins": 2,
+        "ties": 14,
+        "losses": 0,
+        "changed": [
+          {
+            "case": "VP002",
+            "before": 2,
+            "after": 3
+          },
+          {
+            "case": "VP026",
+            "before": 3,
+            "after": 4
+          }
+        ]
+      },
+      "joint": {
+        "gains": [],
+        "losses": []
+      }
+    },
+    "first_with_second": {
+      "sa": {
+        "mean_change": -0.0625,
+        "wins": 1,
+        "ties": 13,
+        "losses": 2,
+        "changed": [
+          {
+            "case": "VP009",
+            "before": 2,
+            "after": 3
+          },
+          {
+            "case": "VP010",
+            "before": 4,
+            "after": 3
+          },
+          {
+            "case": "VP038",
+            "before": 4,
+            "after": 3
+          }
+        ]
+      },
+      "pc": {
+        "mean_change": -0.0625,
+        "wins": 0,
+        "ties": 15,
+        "losses": 1,
+        "changed": [
+          {
+            "case": "VP010",
+            "before": 4,
+            "after": 3
+          }
+        ]
+      },
+      "joint": {
+        "gains": [],
+        "losses": [
+          "VP010",
+          "VP038"
+        ]
+      }
+    },
+    "second_without_first": {
+      "sa": {
+        "mean_change": -0.1875,
+        "wins": 0,
+        "ties": 13,
+        "losses": 3,
+        "changed": [
+          {
+            "case": "VP009",
+            "before": 3,
+            "after": 2
+          },
+          {
+            "case": "VP025",
+            "before": 3,
+            "after": 2
+          },
+          {
+            "case": "VP026",
+            "before": 3,
+            "after": 2
+          }
+        ]
+      },
+      "pc": {
+        "mean_change": 0.0625,
+        "wins": 2,
+        "ties": 12,
+        "losses": 2,
+        "changed": [
+          {
+            "case": "VP002",
+            "before": 2,
+            "after": 3
+          },
+          {
+            "case": "VP016",
+            "before": 5,
+            "after": 4
+          },
+          {
+            "case": "VP026",
+            "before": 3,
+            "after": 5
+          },
+          {
+            "case": "VP027",
+            "before": 5,
+            "after": 4
+          }
+        ]
+      },
+      "joint": {
+        "gains": [],
+        "losses": []
+      }
+    },
+    "second_with_first": {
+      "sa": {
+        "mean_change": -0.125,
+        "wins": 1,
+        "ties": 12,
+        "losses": 3,
+        "changed": [
+          {
+            "case": "VP010",
+            "before": 4,
+            "after": 3
+          },
+          {
+            "case": "VP017",
+            "before": 2,
+            "after": 3
+          },
+          {
+            "case": "VP025",
+            "before": 3,
+            "after": 2
+          },
+          {
+            "case": "VP038",
+            "before": 4,
+            "after": 3
+          }
+        ]
+      },
+      "pc": {
+        "mean_change": -0.125,
+        "wins": 1,
+        "ties": 12,
+        "losses": 3,
+        "changed": [
+          {
+            "case": "VP010",
+            "before": 4,
+            "after": 3
+          },
+          {
+            "case": "VP016",
+            "before": 5,
+            "after": 4
+          },
+          {
+            "case": "VP026",
+            "before": 4,
+            "after": 5
+          },
+          {
+            "case": "VP027",
+            "before": 5,
+            "after": 4
+          }
+        ]
+      },
+      "joint": {
+        "gains": [],
+        "losses": [
+          "VP010",
+          "VP038"
+        ]
+      }
+    },
+    "both_vs_neither": {
+      "sa": {
+        "mean_change": -0.25,
+        "wins": 0,
+        "ties": 12,
+        "losses": 4,
+        "changed": [
+          {
+            "case": "VP010",
+            "before": 4,
+            "after": 3
+          },
+          {
+            "case": "VP025",
+            "before": 3,
+            "after": 2
+          },
+          {
+            "case": "VP026",
+            "before": 3,
+            "after": 2
+          },
+          {
+            "case": "VP038",
+            "before": 4,
+            "after": 3
+          }
+        ]
+      },
+      "pc": {
+        "mean_change": 0,
+        "wins": 2,
+        "ties": 11,
+        "losses": 3,
+        "changed": [
+          {
+            "case": "VP002",
+            "before": 2,
+            "after": 3
+          },
+          {
+            "case": "VP010",
+            "before": 4,
+            "after": 3
+          },
+          {
+            "case": "VP016",
+            "before": 5,
+            "after": 4
+          },
+          {
+            "case": "VP026",
+            "before": 3,
+            "after": 5
+          },
+          {
+            "case": "VP027",
+            "before": 5,
+            "after": 4
+          }
+        ]
+      },
+      "joint": {
+        "gains": [],
+        "losses": [
+          "VP010",
+          "VP038"
+        ]
+      }
+    }
+  },
+  "interactions": {
+    "sa": {
+      "definition": "both - first_only - second_only + neither",
+      "mean": 0.0625,
+      "per_case": {
+        "VP002": 0,
+        "VP004": 0,
+        "VP005": 0,
+        "VP009": 1,
+        "VP010": -1,
+        "VP013": 0,
+        "VP015": 0,
+        "VP016": 0,
+        "VP017": 1,
+        "VP018": 0,
+        "VP024": 0,
+        "VP025": 0,
+        "VP026": 1,
+        "VP027": 0,
+        "VP034": 0,
+        "VP038": -1
+      }
+    },
+    "pc": {
+      "definition": "both - first_only - second_only + neither",
+      "mean": -0.1875,
+      "per_case": {
+        "VP002": -1,
+        "VP004": 0,
+        "VP005": 0,
+        "VP009": 0,
+        "VP010": -1,
+        "VP013": 0,
+        "VP015": 0,
+        "VP016": 0,
+        "VP017": 0,
+        "VP018": 0,
+        "VP024": 0,
+        "VP025": 0,
+        "VP026": -1,
+        "VP027": 0,
+        "VP034": 0,
+        "VP038": 0
+      }
+    },
+    "joint": {
+      "definition": "both - first_only - second_only + neither",
+      "mean": -0.125,
+      "per_case": {
+        "VP002": 0,
+        "VP004": 0,
+        "VP005": 0,
+        "VP009": 0,
+        "VP010": -1,
+        "VP013": 0,
+        "VP015": 0,
+        "VP016": 0,
+        "VP017": 0,
+        "VP018": 0,
+        "VP024": 0,
+        "VP025": 0,
+        "VP026": 0,
+        "VP027": 0,
+        "VP034": 0,
+        "VP038": -1
+      }
+    }
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "complete": true,
+  "main40": {
+    "count": 40,
+    "sa_mean": 3.025,
+    "pc_mean": 3.55,
+    "sa_pass_rate": 0.25,
+    "pc_pass_rate": 0.475,
+    "joint_pass_rate": 0.225,
+    "scope": "T2V: request only; fixed protocol prompts/noise, no initial image",
+    "training_verifier_is_independent": true
+  },
+  "full60": {
+    "count": 60,
+    "sa_mean": 2.966666666666667,
+    "pc_mean": 3.5833333333333335,
+    "sa_pass_rate": 0.25,
+    "pc_pass_rate": 0.55,
+    "joint_pass_rate": 0.23333333333333334,
+    "pass_threshold": 4,
+    "scope": "T2V: request only; fixed protocol prompts/noise, no initial image",
+    "training_verifier_is_independent": true
+  },
+  "normal16": {
+    "count": 16,
+    "sa": 3.25,
+    "pc": 3.8125,
+    "sa_pass_rate": 0.3125,
+    "pc_pass_rate": 0.625,
+    "joint": 5,
+    "joint_pass_rate": 0.3125
+  },
+  "controls": {
+    "no_c": {
+      "sa": 3.0,
+      "pc": 3.8125,
+      "joint": 4,
+      "differences": {
+        "sa": {
+          "normal_minus_control": 0.25,
+          "normal_wins": 4,
+          "ties": 12,
+          "normal_losses": 0
+        },
+        "pc": {
+          "normal_minus_control": 0.0,
+          "normal_wins": 2,
+          "ties": 12,
+          "normal_losses": 2
+        }
+      }
+    },
+    "reasoning_swapped": {
+      "sa": 3.0625,
+      "pc": 3.625,
+      "joint": 3,
+      "differences": {
+        "sa": {
+          "normal_minus_control": 0.1875,
+          "normal_wins": 3,
+          "ties": 13,
+          "normal_losses": 0
+        },
+        "pc": {
+          "normal_minus_control": 0.1875,
+          "normal_wins": 3,
+          "ties": 13,
+          "normal_losses": 0
+        }
+      }
+    }
+  },
+  "visual_acceptance": false,
+  "goal_met": false,
+  "native_forward_assembly_max_error": 0.0,
+  "native_inference_recipe16": {
+    "SA": 3.0,
+    "PC": 3.625,
+    "Joint": 4,
+    "adopt": false
+  },
+  "decision": "Retain measured condition-dependent native routing; add local physical feature execution through native FFN activation basis, rather than independent image values. New final ET400 remains to be trained and evaluated."
+}

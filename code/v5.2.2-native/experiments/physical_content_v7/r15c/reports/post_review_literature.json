@@ -1,0 +1,26 @@
+{
+  "utc": "2026-11-06T00:14:29.901561+00:00",
+  "purpose": "Mechanism reference for post-R15C review; no model download or new API call",
+  "sources": [
+    {
+      "url": "https://arxiv.org/html/2403.05135v1",
+      "title": "ELLA",
+      "read_sections": [
+        "3.1",
+        "5.1",
+        "5.3",
+        "6"
+      ],
+      "evidence": "A timestep-conditioned resampler uses adaptive normalization to connect frozen language and image diffusion models. Table6 reports DPG70.27 without timestep,70.43 AdaLN-Zero,72.91 AdaLN; parameter counts also differ, so this is not a perfectly parameter-matched timing ablation.",
+      "limitation": "Image generation,34M training pairs and140k ablation updates; it does not demonstrate physical video improvements or efficacy at our400 steps."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/TencentQQGYLab/ELLA/main/model.py",
+      "title": "Official ELLA model implementation",
+      "evidence": "Learned query resampling explicitly receives diffusion timestep embedding; adaptive normalization modulates query/memory/FFN features. Existing model weights were not downloaded."
+    }
+  ],
+  "local_code_fact": "R10A/R15B Q-to-C returns a fixed memory per input and the fusion time features use physical video timestamps, not an explicit diffusion noise embedding. The video hidden states and native timestep modulation nevertheless already provide indirect diffusion-time information; absence of all time information is not claimed.",
+  "prospective_hypothesis": "A physical execution decoder aware of diffusion noise may align physical priors with denoising stages, while keeping direct C values and native text weights. Must be tested, not yet finalized.",
+  "implementation_status": "No R15D code or training submitted."
+}

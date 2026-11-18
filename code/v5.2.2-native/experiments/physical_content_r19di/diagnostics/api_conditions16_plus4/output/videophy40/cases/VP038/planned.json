@@ -1,0 +1,35 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19di/runs/r19di_parallel_400/step0400.pt",
+  "step": 400,
+  "case": "VP038",
+  "seed": 42,
+  "guidance": {
+    "kind": "two_arm_joint_condition_cfg",
+    "scale": 5.0,
+    "formula": "v = v_neg + 5 * (v_pos - v_neg)",
+    "positive": "own first image, original request, positive native T5 and positive Qwen C",
+    "negative": "same first image, null native T5 and null Qwen C",
+    "separate_physical_guidance": false
+  },
+  "suite": "videophy40",
+  "task": "i2v",
+  "caption": "A paint roller, dipped in green paint, is used to cover a section of a metal fence, creating a uniform green coat.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP038/first.png",
+  "sampler": {
+    "num_frames": 81,
+    "width": 832,
+    "height": 480,
+    "steps": 50,
+    "sampler": "shifted_euler",
+    "shift": 5.0,
+    "cfg": 5.0,
+    "seed": 42,
+    "best_of_n": 1,
+    "clamp_first": true
+  },
+  "positive_analysis": "When the textured roller contacts the vertical bars, it deposits green paint to coat the metal uniformly.\nAs the roller translates horizontally, the applied green paint spreads across the fence grid.\nThe existing green coating persists, allowing newly rolled areas to blend seamlessly into the uniform color.\nThe horizontal rod holding the roller maintains alignment with the vertical bars during the painting process.",
+  "physical_analysis": "When the textured roller contacts the vertical bars, it deposits green paint to coat the metal uniformly.\nAs the roller translates horizontally, the applied green paint spreads across the fence grid.\nThe existing green coating persists, allowing newly rolled areas to blend seamlessly into the uniform color.\nThe horizontal rod holding the roller maintains alignment with the vertical bars during the painting process.",
+  "negative_analysis": "The textured roller rests centrally on a horizontal groove, aligned with the vertical panel divisions.\nIf the roller shifts horizontally, its textured surface would interact with the intersecting vertical grid lines.\nThe uniform green coating on the roller matches the background, suggesting a continuous surface interaction.",
+  "scope": "own image/request",
+  "seconds": 196.7536676954478
+}

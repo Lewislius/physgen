@@ -1,0 +1,224 @@
+schema_version: ABCD-official-fresh-lora-400-batch4-v5
+variant: A
+description: 独立联合时空专家
+source:
+  repository: Lewislius/physgen
+  reference_commit: 24b957dd4c962db24621cc94286ad6a2ce8a7c23
+  official_wan_model: Wan-AI/Wan2.2-TI2V-5B
+  official_model_revision: REQUIRED_AT_RUNTIME
+paths:
+  wan_code: ${WAN_CODE}
+  wan_checkpoint: ${WAN_CKPT}
+  qwen_checkpoint: ${QWEN_CKPT}
+  train_cache: ${TRAIN_CACHE}
+  run_dir: ${RUN_ROOT}/a_fresh400_batch4
+  interface_output: ${RUN_ROOT}/prep/interface_fresh.pt
+initialization:
+  mode: official_fresh
+  project_checkpoint: null
+  load_project_lora: false
+  load_project_optimizer: false
+  interface_fit: recompute_train_only_closed_form
+  new_adapter_seed: 42
+  resume_same_run_only: true
+model:
+  width: 3072
+  ffn_width: 14336
+  native_layers: 30
+  native_heads: 24
+  qwen_width: 4096
+  q_tokens: 256
+  q_heads: 32
+  grounded_heads: 16
+  content_rounds: 2
+  native_base_trainable: false
+  native_text_lora: false
+  native_text_params_trainable: false
+  native_video_lora:
+    enabled: true
+    rank: 32
+    alpha: 32
+    dropout: 0.0
+    targets:
+    - self_attn.q
+    - self_attn.k
+    - self_attn.v
+    - self_attn.o
+    - ffn.0
+    - ffn.2
+    layers:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+    - 9
+    - 10
+    - 11
+    - 12
+    - 13
+    - 14
+    - 15
+    - 16
+    - 17
+    - 18
+    - 19
+    - 20
+    - 21
+    - 22
+    - 23
+    - 24
+    - 25
+    - 26
+    - 27
+    - 28
+    - 29
+    active_updates:
+    - 1
+    - 400
+    rank64_layers: []
+  sites_zero_based:
+  - 4
+  - 9
+  - 14
+  - 19
+  - 24
+  - 29
+  site_period: 5
+  expert_base_policy: shared_official_frozen
+  expert_lora_rank: 32
+  expert_lora_alpha: 32
+  expert_lora_independent_from_native: true
+  expert_norm_and_time_base_trainable: false
+  semantic_reader: true
+  semantic_reader_lora_rank: 32
+  memory_enhancer:
+    enabled: false
+  semantic_guide:
+    enabled: false
+  physics_reader:
+    k_v_trainable_dense: true
+    query: official_frozen_native_cross_q
+    value_source: raw_execute
+    output_coordinates: official_cross_o_no_bias
+    reference_null_slot: false
+    equal_group_prior: true
+    old_state_value: false
+  write_head:
+    width: 3072
+    bias: false
+    init: zeros
+    future_only: true
+    inference_multiplier: 1.0
+  physical_value_executor_zero_preserving: false
+  video_rope: native_grid_only
+  ffn_conditional_mode: none
+train:
+  max_updates: 400
+  effective_global_batch: 4
+  world_size: 1
+  microbatch_per_device: 1
+  gradient_accumulation: 4
+  seed: 42
+  condition_dropout: 0.1
+  optimizer: AdamW
+  betas:
+  - 0.9
+  - 0.999
+  eps: 1.0e-08
+  matrix_weight_decay: 0.01
+  bias_norm_weight_decay: 0.0
+  grad_clip_per_group: 1.0
+  autocast_dtype: bfloat16
+  trainable_master_dtype: float32
+  gradient_checkpointing: true
+  checkpoint_use_reentrant: false
+  activation_offload: false
+  sigma_min: 0.001
+  sigma_max: 0.999
+  sample_order: shuffle_without_replacement_by_epoch
+  data_revision: qwen38_wisa_reviewed_v1
+  freeze_wan_lora_updates: 0
+  extra_training_views: 0
+  post_training: false
+  peak_lrs:
+    wan_video_lora: 2.0e-05
+    enhancement: 3.0e-05
+    physics_read: 2.0e-05
+    writer: 3.0e-05
+    expert_lora: 2.0e-05
+    semantic_reader_lora: 2.0e-05
+    content_memory: 2.0e-05
+    semantic_guide: 2.0e-05
+  lr_schedule:
+    warmup_updates: 32
+    decay_start_update: 128
+    decay_end_update: 320
+    min_ratio: 0.2
+    final_phase_start_update: 321
+    final_ratio: 0.2
+  save_every: 100
+  keep_updates:
+  - 32
+  - 128
+  - 200
+  - 320
+  - 400
+  resume_over_400: forbidden
+loss:
+  fm_weight: 0.8
+  tail_weight: 0.2
+  tail_fraction: 0.25
+  exclude_known_first_frame: true
+  apply_valid_mask: true
+  route:
+    enabled: true
+    target: raw_route_only
+    peak: 0.03
+    warmup_updates: 32
+    hold_end_update: 128
+    decay_end_update: 320
+    final_weight: 0.01
+    after_final: 0.01
+  preference_weight: 0.0
+  reward_weight: 0.0
+  temporal_weight: 0.0
+  rgb_weight: 0.0
+  teacher_feature_weight: 0.0
+inference:
+  task: historical_i2v
+  rgb_frames: 81
+  height: 480
+  width: 832
+  steps: 50
+  shift: 5.0
+  cfg: 5.0
+  sampler: shifted_euler
+  seed: 42
+  best_of_n: 1
+  external_guidance_optimizer: false
+evaluation:
+  primary_fixed40: true
+  extra_disjoint20: true
+  pc_mean_target: 3.85
+  pc_mean_stretch: 3.95
+  sa_mean_target: 3.25
+  joint_count_target40: 14
+  joint_count_stretch40: 15
+  pass_threshold: 4
+  expected_collapsed_videos: 0
+  benchmark_targets_are_unverified: true
+  cross_benchmarks:
+  - WMB
+  - Physics-IQ
+  - VBench
+  full_eval_protocol_required_for_sota: true
+parameter_budget:
+  major_trainable_estimate: 470588416
+  is_exact_runtime_count: false
+  official_shared_bases_included_in_new_count: false
+  must_report_flops_and_unique_params: true

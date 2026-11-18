@@ -1,0 +1,34 @@
+{
+  "candidate": "R19BT",
+  "updated_utc": "2026-11-13T12:56:27.599423+00:00",
+  "comparison": "same400 weights, same raw request, seed42 and sampling protocol; normal versus no_c at inference",
+  "review_scope": "all fixed16 at frames0/40/80",
+  "scoring_pending": false,
+  "findings": {
+    "VP002": "normal dark bowed strip; noC visible hand and bend developing, though bending geometry imperfect",
+    "VP004": "both exhibit a crack; noC detached/multiple ruler segments, not a blanket improvement",
+    "VP005": "normal ball/table but paddle absent from sampled views; noC paddle and ball visible",
+    "VP009": "normal very dark panel/worker; noC visible glass, picture, worker and lifting tool, sequence still imperfect",
+    "VP010": "noC brighter mop and puddle; neither guarantees absorption, normal late stick ghosting",
+    "VP013": "noC visible pliers/cap interaction; normal bottle neck/tool ambiguous",
+    "VP015": "normal almost black water/oar; noC clearly visible blade lifting with downward drips. Strong visibility/process recovery",
+    "VP016": "normal tiny insect/probe; noC clearer insect/probe but twitch still uncertain",
+    "VP017": "both are bicycle rather than unicycle; noC has clearer traversal, not complete request correctness",
+    "VP018": "both loader examples omit attached chain/heavy dragging; noC brighter",
+    "VP024": "noC clearer car impact/crumpling, but geometry and chronology still need dense check; normal dark and malformed",
+    "VP025": "normal extreme orange close-up; noC actual slide/egg visible, up/down full cycle not established",
+    "VP026": "normal dark arms/cord; noC shows multiple people stretching red fabric instead of bungee. Visibility improves but semantic material remains wrong",
+    "VP027": "normal yellow flattened lump; noC visible dough shaping with indentation; neither clear round boule",
+    "VP034": "both balloon expansion/camera framing ambiguous; noC brighter",
+    "VP038": "normal roller on already-green fence; noC paint mark grows on initially lighter fence, stronger visible coating progression"
+  },
+  "supported_inference": "The deployed physical branch causes large appearance/visibility changes for these matched cases. no_c retains the trained main-video LoRA, so the difference isolates use of the full physical branch at inference, not one component or a separately trained baseline.",
+  "not_yet_established": [
+    "Which branch component causes the shift: native anchors, learned C, reading, or complete-block execution",
+    "Whether finer position routing would repair it",
+    "Quantitative no_c SA/PC/Joint until evaluator completes"
+  ],
+  "quality_acceptance": false,
+  "score_report": "reports/no_c16_early_verified.json",
+  "additional_matched_VP015_frame40": "Frozen physical semantic attention retains dark low-visibility output; no_c restores visible oar/drips."
+}

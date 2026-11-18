@@ -1,0 +1,77 @@
+{
+  "candidate": "R20CT",
+  "training_updates": 400,
+  "scope": "Fixed primary40 only; full60/paired16 pending",
+  "scores": {
+    "sa": 3.1,
+    "pc": 3.55,
+    "joint": 8,
+    "count": 40
+  },
+  "paired_version_differences": {
+    "AT": {
+      "sa": {
+        "wins": 8,
+        "ties": 30,
+        "losses": 2,
+        "mean_delta": 0.15
+      },
+      "pc": {
+        "wins": 7,
+        "ties": 22,
+        "losses": 11,
+        "mean_delta": -0.1
+      },
+      "joint_gains": [
+        "VP016"
+      ],
+      "joint_losses": [
+        "VP022",
+        "VP040"
+      ]
+    },
+    "BT": {
+      "sa": {
+        "wins": 7,
+        "ties": 31,
+        "losses": 2,
+        "mean_delta": 0.125
+      },
+      "pc": {
+        "wins": 4,
+        "ties": 20,
+        "losses": 16,
+        "mean_delta": -0.325
+      },
+      "joint_gains": [
+        "VP010",
+        "VP016"
+      ],
+      "joint_losses": [
+        "VP018"
+      ]
+    }
+  },
+  "actual_visual_review": {
+    "primary_cases_reviewed": 40,
+    "sampled_frames": [
+      0,
+      20,
+      40,
+      60,
+      80
+    ],
+    "dense_cases": [
+      "VP001",
+      "VP015"
+    ],
+    "quality_accepted": false
+  },
+  "interpretation": [
+    "Compared withBT, PC drops on16 cases and improves on4; not a single outlier. SA improves on7 and drops on2, giving +.125 mean.",
+    "Better recognizable source content/color in some cases has not translated to retained physics score or complete requested processes.",
+    "Shared source-valued C changes content parameterization; its own same-checkpoint controls are needed before attributing the PC loss to selection, physical execution or trained backbone.",
+    "No C-convergence-only or sampledFM explanation; native/RoPE correctness does not guarantee learned-write quality."
+  ],
+  "goal_met": false
+}

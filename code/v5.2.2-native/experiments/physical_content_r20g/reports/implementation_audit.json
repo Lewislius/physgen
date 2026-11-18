@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "command": "bash tools/runtime_python.sh experiments/physical_content_r20g/tests/test_grounded_execution.py",
+  "observed_result": "PASS actual small Wan: native start; correct depth copies; physical/video and C gradients;128/272 ownership; original text frozen; exact blank-condition response; video-value contract. Source alignment/offset, asymmetric T/H/W RoPE and checkpoint reconstruction pass. Quality is unproven.",
+  "checked_utc": "2026-11-16T16:03:40.957278+00:00",
+  "full_model_startup_pending": false,
+  "revision": "R20-source-local-execution-20261116",
+  "additional_check": "Shared Qwen physical content retained, not subtracted as a mean",
+  "new_checks": [
+    "New feature_update receives real backward gradients in small actualWan",
+    "Physical response remains possible with constant SA values through the local FFN path",
+    "When both video interaction and native FFN features are absent, condition alone does not create an arbitrary value write",
+    "Feature-off ablation removes new feature execution while retaining QK physical response"
+  ],
+  "final_full_model_startup": {
+    "passed": true,
+    "seconds": 56.30646582785994,
+    "parameters": 1606224896,
+    "disposable_updates": 4,
+    "peak_gib": 41.63450384140015,
+    "weights_saved": false
+  },
+  "full_model_report": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20g/reports/jobs/70452/full_model_check.json"
+}

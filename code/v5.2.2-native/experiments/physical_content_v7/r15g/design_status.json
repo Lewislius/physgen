@@ -1,0 +1,172 @@
+{
+  "status": "all_declared_evaluations_completed_failed",
+  "final_version": "R15G",
+  "inference_pending": null,
+  "no_quality_claim": true,
+  "training_updates": 0,
+  "proposed_guidance": "joint_two_branch_cfg",
+  "architecture_small_Wan_checks": "8 passed; initialization identity, actual generation gradients, ownership, input use, post-text normalization, controls, resume",
+  "finalized_utc": "2026-11-07T03:59:50.083007+00:00",
+  "frozen_F_guidance16": {
+    "experiment": 68085,
+    "trial": 69472,
+    "state": "STATE_COMPLETED",
+    "training_updates": 0,
+    "cases": 16,
+    "normal": {
+      "sa": 3.0625,
+      "pc": 3.8125,
+      "joint": 5
+    },
+    "native_guidance": {
+      "sa": 3.1875,
+      "pc": 3.6875,
+      "joint": 6
+    },
+    "paired": {
+      "SA_wins_ties_losses": [
+        2,
+        14,
+        0
+      ],
+      "PC_wins_ties_losses": [
+        1,
+        13,
+        2
+      ],
+      "joint_gain": [
+        "VP034"
+      ],
+      "joint_loss": []
+    },
+    "changes": {
+      "VP025": {
+        "old": [
+          2,
+          4
+        ],
+        "new": [
+          3,
+          3
+        ]
+      },
+      "VP026": {
+        "old": [
+          2,
+          5
+        ],
+        "new": [
+          2,
+          3
+        ]
+      },
+      "VP027": {
+        "old": [
+          4,
+          4
+        ],
+        "new": [
+          4,
+          5
+        ]
+      },
+      "VP034": {
+        "old": [
+          3,
+          5
+        ],
+        "new": [
+          4,
+          5
+        ]
+      }
+    },
+    "score_file": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/inference_outputs/physical_content_68038/native_guidance16_seed42/controls/native_guidance/videophy40/scores.json",
+    "visual_review": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/reports/native_guidance16/visual_review.json",
+    "decision": "Do not adopt as R15G default: PC decreases and visual defects persist. Keep as one predefined G16 inference control because changed architecture may alter effects.",
+    "limits": "Frozen F, fixed16 only; not a trained version, not a new40 score, not a causal proof that conditioning decomposition is always harmful."
+  },
+  "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/source_residual_fusion_r15g/snapshots/20261107T040316Z",
+  "unique_CPU_checks_passed": 16,
+  "experiment": 68103,
+  "trial": 69490,
+  "trained_steps": 400,
+  "main40": {
+    "SA": 3.05,
+    "PC": 3.325,
+    "Joint": 9,
+    "count": 40
+  },
+  "accepted": false,
+  "quality_goal_achieved": false,
+  "cross_experiment": 68142,
+  "cross_status": "queued_ada48",
+  "evaluation_recovery": {
+    "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/source_residual_fusion_r15g/submissions/r15g_resume_20261107T095737Z.yaml",
+    "empty_context": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/source_residual_fusion_r15g/empty_context",
+    "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/source_residual_fusion_r15g/snapshots/20261107T040316Z",
+    "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/source_residual_fusion_r15g/runs/physical_content_68103/step0400.pt",
+    "original_experiment": 68103,
+    "resource_pool": "blk-96g",
+    "new_training_steps": 0,
+    "experiment": 68181,
+    "trial_ids": [
+      69568
+    ],
+    "state": "STATE_STARTING",
+    "submitted_utc": "2026-11-07T09:58:05.523869+00:00"
+  },
+  "evaluation_status": "complete",
+  "observed_videophy": {
+    "original40": {
+      "count": 40,
+      "sa_mean": 3.05,
+      "pc_mean": 3.325,
+      "sa_pass_rate": 0.25,
+      "pc_pass_rate": 0.325,
+      "joint_pass_count": 9,
+      "joint_pass_rate": 0.225
+    },
+    "full60": {
+      "count": 60,
+      "sa_mean": 3,
+      "pc_mean": 3.3666666666666667,
+      "sa_pass_rate": 0.21666666666666667,
+      "pc_pass_rate": 0.38333333333333336,
+      "joint_pass_count": 12,
+      "joint_pass_rate": 0.2
+    }
+  },
+  "targets_met": {
+    "PC_at_least3_8": false,
+    "SA_at_least3_125": false,
+    "Joint_strictly_above_historical11of40": false
+  },
+  "evaluation_recovery_completed": {
+    "experiment": 68181,
+    "trial": 69568,
+    "original_training_experiment": 68103,
+    "new_training_steps": 0
+  },
+  "goal_achieved": false,
+  "further_training_versions_authorized": 0,
+  "final_report": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/source_residual_fusion_r15g/reports/final_report.zh.md",
+  "cross_scores": {
+    "wan_lora": {
+      "WMB70": 8.185714285714287,
+      "PhysicsIQ_Verified": 0.26003635878678355
+    },
+    "r1": {
+      "WMB70": 8.571428571428573,
+      "PhysicsIQ_Verified": 0.2651032257782627
+    },
+    "r10a": {
+      "WMB70": 8.428571428571429,
+      "PhysicsIQ_Verified": 0.23669164754462252
+    },
+    "r15g": {
+      "WMB70": 7.9,
+      "PhysicsIQ_Verified": 0.17007230252222866
+    }
+  }
+}

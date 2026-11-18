@@ -1,0 +1,34 @@
+{
+  "updated_utc": "2026-11-14T04:27:33.607753+00:00",
+  "scope": "Existing official native baseline12 versus DI400; no new generation. Same retained shared first images/settings; not an isolated one-module training comparison.",
+  "native12": {
+    "sa": 3.1666666666666665,
+    "pc": 3.5833333333333335,
+    "joint": 3
+  },
+  "di_matched12": {
+    "sa": 2.9166666666666665,
+    "pc": 4.0,
+    "joint": 3
+  },
+  "sampled_frames": [
+    0,
+    20,
+    40,
+    60,
+    80
+  ],
+  "captions": {
+    "VP026": "Two people stretch a bungee cord, extending it to its maximum length.",
+    "VP031": "A tightly folded parachute is unfolded, revealing its vibrant colors and intricate design.",
+    "VP036": "A slow-motion view of the jump showing leg extension and body position.",
+    "VP051": "A billiard ball is struck and rolls across a felt-covered pool table, hitting another ball."
+  },
+  "observations": {
+    "VP026": "Native grows disembodied arms and rearranges cables; DI mostly keeps initial sea/cable apparatus static. Image/target object consistency needs consideration; suppressing hallucination alone is not successful process completion.",
+    "VP036": "Both remain close to initial airborne split pose across sampled frames; neither shows a completed flight/landing. Native itself is not a successful process reference.",
+    "VP031": "Native changes canopy colors and inflates into large colorful geometry; DI also changes colors/shape to a red/green circular object. Neither establishes retained identity plus correct deployment.",
+    "VP051": "Native changes scene/composition and adds/mutates billiard balls; DI retains composition but ball/process mostly static and later surface identity changes. Both contain quality/process failures."
+  },
+  "conclusion": "Native generation is not uniformly visually valid on these shared I2V inputs. DI trades some scene stability for weak process execution; preserving native channels alone cannot establish final quality. Review first-image/request consistency without silently replacing shared benchmark inputs or reporting mixed protocols."
+}

@@ -1,0 +1,161 @@
+{
+  "scope": "Existing fixed40 T2V source scores; matched protocol primary runs, threshold4. Actual visual quality assessed separately. No new scoring or generations.",
+  "versions": {
+    "R18E": {
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physics_content_v10_impl/inference_outputs/r18e_nchunks400/step0400_fixed40_extra20_seed42/videophy40/scores.json",
+      "count": 40,
+      "sa": 2.975,
+      "pc": 3.4,
+      "joint_count": 8,
+      "sa_pass_count": 9,
+      "pc_pass_count": 17,
+      "pc_pass_sa_fail_count": 9,
+      "sa_pass_pc_fail_count": 1,
+      "joint_ids": [
+        "VP008",
+        "VP016",
+        "VP018",
+        "VP020",
+        "VP021",
+        "VP027",
+        "VP036",
+        "VP038"
+      ],
+      "pc_pass_sa_fail_ids": [
+        "VP011",
+        "VP013",
+        "VP014",
+        "VP017",
+        "VP019",
+        "VP028",
+        "VP030",
+        "VP034",
+        "VP040"
+      ]
+    },
+    "R18G": {
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physics_content_v10_impl/inference_outputs/r18g_nchunks400/step0400_fixed40_extra20_seed42/videophy40/scores.json",
+      "count": 40,
+      "sa": 2.975,
+      "pc": 3.725,
+      "joint_count": 9,
+      "sa_pass_count": 9,
+      "pc_pass_count": 24,
+      "pc_pass_sa_fail_count": 15,
+      "sa_pass_pc_fail_count": 0,
+      "joint_ids": [
+        "VP008",
+        "VP010",
+        "VP016",
+        "VP020",
+        "VP021",
+        "VP027",
+        "VP034",
+        "VP036",
+        "VP038"
+      ],
+      "pc_pass_sa_fail_ids": [
+        "VP001",
+        "VP002",
+        "VP003",
+        "VP004",
+        "VP007",
+        "VP009",
+        "VP011",
+        "VP017",
+        "VP019",
+        "VP022",
+        "VP024",
+        "VP026",
+        "VP028",
+        "VP030",
+        "VP031"
+      ]
+    },
+    "R19CT": {
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19ct/inference_outputs/r19ct_grounded400/step0400_seed42/videophy40/scores.json",
+      "count": 40,
+      "sa": 2.9,
+      "pc": 3.925,
+      "joint_count": 8,
+      "sa_pass_count": 10,
+      "pc_pass_count": 29,
+      "pc_pass_sa_fail_count": 21,
+      "sa_pass_pc_fail_count": 2,
+      "joint_ids": [
+        "VP008",
+        "VP010",
+        "VP015",
+        "VP016",
+        "VP020",
+        "VP021",
+        "VP022",
+        "VP036"
+      ],
+      "pc_pass_sa_fail_ids": [
+        "VP001",
+        "VP002",
+        "VP004",
+        "VP006",
+        "VP007",
+        "VP011",
+        "VP012",
+        "VP013",
+        "VP014",
+        "VP017",
+        "VP019",
+        "VP023",
+        "VP024",
+        "VP025",
+        "VP026",
+        "VP027",
+        "VP028",
+        "VP030",
+        "VP031",
+        "VP034",
+        "VP040"
+      ]
+    },
+    "R19DT": {
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19dt/inference_outputs/r19dt_interaction400/step0400_seed42/videophy40/scores.json",
+      "count": 40,
+      "sa": 3.1,
+      "pc": 3.55,
+      "joint_count": 10,
+      "sa_pass_count": 10,
+      "pc_pass_count": 20,
+      "pc_pass_sa_fail_count": 10,
+      "sa_pass_pc_fail_count": 0,
+      "joint_ids": [
+        "VP006",
+        "VP008",
+        "VP010",
+        "VP016",
+        "VP020",
+        "VP021",
+        "VP022",
+        "VP027",
+        "VP036",
+        "VP038"
+      ],
+      "pc_pass_sa_fail_ids": [
+        "VP002",
+        "VP004",
+        "VP015",
+        "VP017",
+        "VP018",
+        "VP019",
+        "VP024",
+        "VP025",
+        "VP030",
+        "VP034"
+      ]
+    }
+  },
+  "interpretation_zh": [
+    "CT有29例PC通过，但其中21例SA未通过；高PC不能直接视为所要求的过程已成功生成，也不能充当画质指标。",
+    "DT有20例PC通过，其中10例同时SA通过；对比CT，Joint上升2例但PC均分下降0.375，说明当前内容恢复与物理执行尚未共同达标。",
+    "后续机制选择必须保留有效物理执行，同时让物理信息对应实际请求与可见状态；不能用减少画面内容、停滞或降低物理作用来交换单项分数。",
+    "这些跨版本结果涉及多个同时变动的因素；机制归因以同权重配对控制和实际视频为补充，不以FM或C余弦值单独判断。"
+  ]
+}

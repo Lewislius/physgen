@@ -1,0 +1,319 @@
+{
+  "utc": "2026-11-06T17:39:58.359055+00:00",
+  "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_addressing_r15e/reports/execution_probe/68021/measurements.json",
+  "experiment": 68021,
+  "trial": 69408,
+  "actual_gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+  "cases": [
+    "VP010",
+    "VP034"
+  ],
+  "scope": "Replay normal full50 trajectory. Alternative velocities are computed at the SAME latent; paired16 runs separately assess their generated videos.",
+  "selection": "Two predeclared visual-review cases with observed stripe collapse; diagnostic selection, not a population sample.",
+  "completed": true,
+  "training_updates": 0,
+  "output_videos": 0,
+  "content": [
+    {
+      "case": "VP010",
+      "content": {
+        "positive": {
+          "routing": {
+            "rms": 0.0753869116306305,
+            "token_cosine": 0.34624430537223816
+          },
+          "execution": {
+            "rms": 0.2555047571659088,
+            "token_cosine": 0.9298855662345886
+          }
+        },
+        "negative": {
+          "routing": {
+            "rms": 0.07789598405361176,
+            "token_cosine": 0.3547724783420563
+          },
+          "execution": {
+            "rms": 0.2519667446613312,
+            "token_cosine": 0.820026695728302
+          }
+        }
+      },
+      "request_refinement_relative_change": {
+        "routing": 0.02771900134015137,
+        "execution": 0.1391447003534338
+      }
+    },
+    {
+      "case": "VP034",
+      "content": {
+        "positive": {
+          "routing": {
+            "rms": 0.07971471548080444,
+            "token_cosine": 0.37732771039009094
+          },
+          "execution": {
+            "rms": 0.2562870979309082,
+            "token_cosine": 0.9290862083435059
+          }
+        },
+        "negative": {
+          "routing": {
+            "rms": 0.0813664123415947,
+            "token_cosine": 0.32361069321632385
+          },
+          "execution": {
+            "rms": 0.2717428207397461,
+            "token_cosine": 0.9200246334075928
+          }
+        }
+      },
+      "request_refinement_relative_change": {
+        "routing": 0.01747169401328781,
+        "execution": 0.09708075597518387
+      }
+    }
+  ],
+  "positive_layer_summaries": [
+    {
+      "case": "VP010",
+      "layer": 2,
+      "mean_physical_to_native_text_rms": 5.0463546983899,
+      "mean_write_token_cosine": 0.9975682199001312,
+      "mean_read_value_token_cosine": 0.9614077359437943,
+      "mean_physical_query_to_native_cosine": 0.984172984957695,
+      "C_attention_mass_with_semantic_prior": 0.3563973754644394,
+      "C_attention_mass_without_semantic_prior_at_same_state": 0.27936600148677826,
+      "ratio_of_mean_C_masses": 1.2757363944349072,
+      "mean_attention_TV_due_to_semantic_prior": 0.1823384314775467
+    },
+    {
+      "case": "VP010",
+      "layer": 14,
+      "mean_physical_to_native_text_rms": 1.2661748357252447,
+      "mean_write_token_cosine": 0.9755656123161316,
+      "mean_read_value_token_cosine": 0.7742135971784592,
+      "mean_physical_query_to_native_cosine": 0.954947292804718,
+      "C_attention_mass_with_semantic_prior": 0.14779254794120789,
+      "C_attention_mass_without_semantic_prior_at_same_state": 0.08348535001277924,
+      "ratio_of_mean_C_masses": 1.7702812280068905,
+      "mean_attention_TV_due_to_semantic_prior": 0.09016542695462704
+    },
+    {
+      "case": "VP010",
+      "layer": 29,
+      "mean_physical_to_native_text_rms": 0.24206865190853682,
+      "mean_write_token_cosine": 0.980016753077507,
+      "mean_read_value_token_cosine": 0.9080355316400528,
+      "mean_physical_query_to_native_cosine": 0.9649258553981781,
+      "C_attention_mass_with_semantic_prior": 0.20477429032325745,
+      "C_attention_mass_without_semantic_prior_at_same_state": 0.14353369176387787,
+      "ratio_of_mean_C_masses": 1.4266635784727413,
+      "mean_attention_TV_due_to_semantic_prior": 0.09866626933217049
+    },
+    {
+      "case": "VP034",
+      "layer": 2,
+      "mean_physical_to_native_text_rms": 4.935267509159011,
+      "mean_write_token_cosine": 0.9976045787334442,
+      "mean_read_value_token_cosine": 0.9624549150466919,
+      "mean_physical_query_to_native_cosine": 0.9852173924446106,
+      "C_attention_mass_with_semantic_prior": 0.30311064422130585,
+      "C_attention_mass_without_semantic_prior_at_same_state": 0.22581446170806885,
+      "ratio_of_mean_C_masses": 1.3422995229294254,
+      "mean_attention_TV_due_to_semantic_prior": 0.16492881253361702
+    },
+    {
+      "case": "VP034",
+      "layer": 14,
+      "mean_physical_to_native_text_rms": 1.4812875710088675,
+      "mean_write_token_cosine": 0.9850235283374786,
+      "mean_read_value_token_cosine": 0.8272169083356857,
+      "mean_physical_query_to_native_cosine": 0.9536291807889938,
+      "C_attention_mass_with_semantic_prior": 0.16594797372817993,
+      "C_attention_mass_without_semantic_prior_at_same_state": 0.0831504613161087,
+      "ratio_of_mean_C_masses": 1.995755298305614,
+      "mean_attention_TV_due_to_semantic_prior": 0.10717024561017752
+    },
+    {
+      "case": "VP034",
+      "layer": 29,
+      "mean_physical_to_native_text_rms": 0.15481124333279975,
+      "mean_write_token_cosine": 0.9900741428136826,
+      "mean_read_value_token_cosine": 0.9688745141029358,
+      "mean_physical_query_to_native_cosine": 0.964510589838028,
+      "C_attention_mass_with_semantic_prior": 0.14659197628498077,
+      "C_attention_mass_without_semantic_prior_at_same_state": 0.09431532025337219,
+      "ratio_of_mean_C_masses": 1.5542753382077337,
+      "mean_attention_TV_due_to_semantic_prior": 0.07225836347788572
+    }
+  ],
+  "velocities": [
+    {
+      "case": "VP010",
+      "step": 1,
+      "sigma": 1.0,
+      "latent_rms": 0.9994158744812012,
+      "normal_velocity_rms": 1.3723564147949219,
+      "no_c_velocity_rms": 1.4032573699951172,
+      "normal_velocity_finite": true,
+      "full_native_conditional_difference_cosine": 0.7332373857498169,
+      "conditional_difference_change_to_native_rms": 0.7867028886820294,
+      "normal_clean_estimate_rms": 0.927074134349823,
+      "no_c_clean_estimate_rms": 0.988192617893219,
+      "intervention_effect_to_no_c_velocity_rms": {
+        "no_c": 0.2841833231730938,
+        "semantic_routing_off": 0.13925518350615934,
+        "request_refinement_off": 0.04681292675554668,
+        "native_physical_query": 2.2453935716606113
+      }
+    },
+    {
+      "case": "VP010",
+      "step": 15,
+      "sigma": 0.9278350472450256,
+      "latent_rms": 0.9348584413528442,
+      "normal_velocity_rms": 2.0876314640045166,
+      "no_c_velocity_rms": 2.0080888271331787,
+      "normal_velocity_finite": true,
+      "full_native_conditional_difference_cosine": 0.5662369132041931,
+      "conditional_difference_change_to_native_rms": 0.910434267805988,
+      "normal_clean_estimate_rms": 1.8189810514450073,
+      "no_c_clean_estimate_rms": 1.7626615762710571,
+      "intervention_effect_to_no_c_velocity_rms": {
+        "no_c": 0.22592758593463844,
+        "semantic_routing_off": 0.10466608331102216,
+        "request_refinement_off": 0.04370468258665592,
+        "native_physical_query": 0.1243740824466743
+      }
+    },
+    {
+      "case": "VP010",
+      "step": 35,
+      "sigma": 0.7017543315887451,
+      "latent_rms": 0.8931710720062256,
+      "normal_velocity_rms": 2.2467265129089355,
+      "no_c_velocity_rms": 2.1746788024902344,
+      "normal_velocity_finite": true,
+      "full_native_conditional_difference_cosine": 0.7722280025482178,
+      "conditional_difference_change_to_native_rms": 0.6672468533026936,
+      "normal_clean_estimate_rms": 1.956944465637207,
+      "no_c_clean_estimate_rms": 1.9112690687179565,
+      "intervention_effect_to_no_c_velocity_rms": {
+        "no_c": 0.1219697319362755,
+        "semantic_routing_off": 0.06329977950424415,
+        "request_refinement_off": 0.03652545442166787,
+        "native_physical_query": 0.08151049569445638
+      }
+    },
+    {
+      "case": "VP010",
+      "step": 50,
+      "sigma": 0.09259258210659027,
+      "latent_rms": 1.7771645784378052,
+      "normal_velocity_rms": 2.352015972137451,
+      "no_c_velocity_rms": 2.5167720317840576,
+      "normal_velocity_finite": true,
+      "full_native_conditional_difference_cosine": 0.9246399998664856,
+      "conditional_difference_change_to_native_rms": 0.38369347476555,
+      "normal_clean_estimate_rms": 1.968274712562561,
+      "no_c_clean_estimate_rms": 1.9755584001541138,
+      "intervention_effect_to_no_c_velocity_rms": {
+        "no_c": 0.19200646128350157,
+        "semantic_routing_off": 0.059905530277402454,
+        "request_refinement_off": 0.027000747647783412,
+        "native_physical_query": 0.09127608549250212
+      }
+    },
+    {
+      "case": "VP034",
+      "step": 1,
+      "sigma": 1.0,
+      "latent_rms": 0.9994158744812012,
+      "normal_velocity_rms": 1.5733166933059692,
+      "no_c_velocity_rms": 1.6948912143707275,
+      "normal_velocity_finite": true,
+      "full_native_conditional_difference_cosine": 0.4774991273880005,
+      "conditional_difference_change_to_native_rms": 0.8813756126337154,
+      "normal_clean_estimate_rms": 1.2309070825576782,
+      "no_c_clean_estimate_rms": 1.370080590248108,
+      "intervention_effect_to_no_c_velocity_rms": {
+        "no_c": 0.19881772313507778,
+        "semantic_routing_off": 0.09311356528425187,
+        "request_refinement_off": 0.022943051913597187,
+        "native_physical_query": 0.8995218521487676
+      }
+    },
+    {
+      "case": "VP034",
+      "step": 15,
+      "sigma": 0.9278350472450256,
+      "latent_rms": 0.9308699369430542,
+      "normal_velocity_rms": 1.9400488138198853,
+      "no_c_velocity_rms": 1.9786065816879272,
+      "normal_velocity_finite": true,
+      "full_native_conditional_difference_cosine": 0.4250760078430176,
+      "conditional_difference_change_to_native_rms": 0.937594296180266,
+      "normal_clean_estimate_rms": 1.6274279356002808,
+      "no_c_clean_estimate_rms": 1.6823844909667969,
+      "intervention_effect_to_no_c_velocity_rms": {
+        "no_c": 0.17858823377016952,
+        "semantic_routing_off": 0.09814172157620112,
+        "request_refinement_off": 0.03140442600520372,
+        "native_physical_query": 0.07801604795347322
+      }
+    },
+    {
+      "case": "VP034",
+      "step": 35,
+      "sigma": 0.7017543315887451,
+      "latent_rms": 0.8561576008796692,
+      "normal_velocity_rms": 1.9243271350860596,
+      "no_c_velocity_rms": 1.856940746307373,
+      "normal_velocity_finite": true,
+      "full_native_conditional_difference_cosine": 0.8674145936965942,
+      "conditional_difference_change_to_native_rms": 0.500038014855693,
+      "normal_clean_estimate_rms": 1.6624668836593628,
+      "no_c_clean_estimate_rms": 1.6253900527954102,
+      "intervention_effect_to_no_c_velocity_rms": {
+        "no_c": 0.10663461950801263,
+        "semantic_routing_off": 0.06790683057001191,
+        "request_refinement_off": 0.025482306276476286,
+        "native_physical_query": 0.07290788243136677
+      }
+    },
+    {
+      "case": "VP034",
+      "step": 50,
+      "sigma": 0.09259258210659027,
+      "latent_rms": 1.5465354919433594,
+      "normal_velocity_rms": 1.9332849979400635,
+      "no_c_velocity_rms": 1.9406795501708984,
+      "normal_velocity_finite": true,
+      "full_native_conditional_difference_cosine": 0.8022393584251404,
+      "conditional_difference_change_to_native_rms": 0.608435250402679,
+      "normal_clean_estimate_rms": 1.6925746202468872,
+      "no_c_clean_estimate_rms": 1.6849738359451294,
+      "intervention_effect_to_no_c_velocity_rms": {
+        "no_c": 0.24520332194894223,
+        "semantic_routing_off": 0.1523424715594978,
+        "request_refinement_off": 0.09471717671195852,
+        "native_physical_query": 0.16426137620088946
+      }
+    }
+  ],
+  "findings": [
+    "In both diagnosed failures, early physical writes average about5 times the native text update RMS and have sampled-position cosine about0.998. This is a relative update-scale comparison, not a universal acceptable-ratio rule.",
+    "C routing-token cosine is0.346/0.377 and execution-token cosine about0.93. Mid-layer read values have position cosine0.774/0.827, while final physical writes reach0.976/0.985. The state-product plus output mapping concentrates update directions; these data do not isolate the linear output projection alone.",
+    "The semantic prior preserves total C/reference PRIOR mass but does not preserve POSTERIOR C/reference attention mass after adding physical logits and applying softmax. In the balloon case at layer14, mean C mass increases from0.08315 to0.16595, approximately2 times. This is a measured simultaneous routing-and-strength change.",
+    "Null native text has one EOS and bypasses the semantic prior; the prior-induced strength change occurs in the positive arm. Guided full-minus-null predictions therefore change, with early full/native conditional-difference cosine0.425 to0.733 in these cases. This difference includes native text and Qwen conditions and is not a pure semantic vector.",
+    "All inspected physical writes and normal velocities are finite; latent/clean estimate RMS is not an unbounded explosion. The observed stripe failures should not be attributed to nonfinite arithmetic or insufficient numerical precision without separate evidence.",
+    "Substituting frozen native Q causes a large first-step velocity intervention (2.245 and0.900 times the no-C velocity RMS); independent physical Q cannot be dismissed as unused. Whether it helps generation requires the ongoing paired16 result.",
+    "Actual videos establish that disabling semantic routing removes stripes in both cases, while restoring the older Q refinement alone does not. Reference allocation and value execution need to be reviewed together; numeric improvements on striped videos do not qualify as success."
+  ],
+  "inference_repair_hypothesis": {
+    "proposal": "Separate the already-learned C-versus-zero-reference allocation from within-C semantic redistribution. Preserve the original physical posterior C mass computed from physical logits and the original group/reference prior; apply semantic support only within C. No new learned gate, scalar amplitude cap or weight updates.",
+    "basis": "The original design intended semantic addressing while preserving total prior mass, but measured posterior physical mass changes strongly. Same-checkpoint semantic-off removes the observed artifacts.",
+    "status": "Mechanistically motivated proposal only; not yet implemented or generation-validated; it is not the final R15F design.",
+    "limits": "Fixing the mass coupling alone may fail to restore requested processes or reach SA/PC/Joint targets. Review all pending controls and actual videos before choosing the next trained architecture."
+  }
+}

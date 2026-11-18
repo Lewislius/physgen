@@ -1,0 +1,108 @@
+{
+  "prepared_utc": "2026-11-05T03:23:30.754791+00:00",
+  "status": "stopped_by_user",
+  "candidate": "R13C",
+  "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/coupled_attention_r13c/snapshots/20261105T032330Z",
+  "config": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/coupled_attention_r13c/snapshots/20261105T032330Z/configs/physical_content.yaml",
+  "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/coupled_attention_r13c/submissions/r13c_coupled_attention_20261105T032330Z.yaml",
+  "empty_context": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/coupled_attention_r13c/submissions/empty_context",
+  "revision": "physical_content_v7_coupled_attention_r13c",
+  "resource_pool": "blk-96g",
+  "slots_per_trial": 1,
+  "gpu": "RTX6000 Blackwell only; guard before foundation loading",
+  "training_stages": {
+    "interface": 32,
+    "joint": 368
+  },
+  "optimizer_steps": 400,
+  "sample_draws": 1600,
+  "native_lora_updates": 368,
+  "physical_updates": 400,
+  "source_data": "original_wisa4000_and_original_reasoning",
+  "main_cases": 40,
+  "extended_cases": 60,
+  "control_cases": 16,
+  "control_modes": [
+    "no_c",
+    "query_modulation_off",
+    "key_modulation_off",
+    "reasoning_swapped",
+    "empty_reasoning",
+    "global_train_mean"
+  ],
+  "seed": 42,
+  "gamma": 5,
+  "tests": {
+    "passed": 12,
+    "scope": "Actual installed Wan operators/RoPE on a tiny fixture: initialization, gradients, controls and checkpoint ownership; real input cache and report contracts. Not quality evidence."
+  },
+  "input_contexts": 152,
+  "api_calls": 0,
+  "new_model_downloads": 0,
+  "automatic_next_candidate": false,
+  "quality_status": "Unmeasured; final quality requires all scores and actual video review",
+  "predeclared_visual_cases": [
+    "VP004",
+    "VP010",
+    "VP027",
+    "VP034",
+    "VP038"
+  ],
+  "attempts": [
+    {
+      "experiment_id": 67678,
+      "submitted_utc": "2026-11-05T03:24:05.456713+00:00",
+      "state": "STATE_ERROR",
+      "trial_id": 69065,
+      "actual_gpu": "NVIDIA H100",
+      "accepted": false,
+      "end_utc": "2026-11-05T03:24:46.909071Z",
+      "model_work_started": false
+    },
+    {
+      "experiment_id": 67679,
+      "submitted_utc": "2026-11-05T03:25:45.942264+00:00",
+      "state": "STATE_ERROR",
+      "trial_id": 69066,
+      "actual_gpu": "NVIDIA H100",
+      "accepted": false,
+      "end_utc": "2026-11-05T03:26:17.796533Z",
+      "model_work_started": false
+    },
+    {
+      "experiment_id": 67680,
+      "submitted_utc": "2026-11-05T03:26:57.332193+00:00",
+      "state": "STATE_ERROR",
+      "trial_id": 69067,
+      "actual_gpu": "NVIDIA H100",
+      "accepted": false,
+      "end_utc": "2026-11-05T03:27:09.042104Z",
+      "model_work_started": false
+    },
+    {
+      "experiment_id": 67682,
+      "submitted_utc": "2026-11-05T03:28:33.643067+00:00",
+      "state": "STATE_STOPPING_CANCELED",
+      "trial_id": 69069,
+      "actual_gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "accepted": true,
+      "last_verified_utc": "2026-11-05T08:10:56.370065+00:00",
+      "model_work_started": true
+    }
+  ],
+  "experiment_id": 67682,
+  "submitted_utc": "2026-11-05T03:28:33.643067+00:00",
+  "trial_id": 69069,
+  "actual_gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+  "optimizer_steps_verified": 400,
+  "state": "STATE_CANCELED",
+  "accepted": true,
+  "last_verified_utc": "2026-11-05T08:10:56.370065+00:00",
+  "actual_training_started": true,
+  "training_start_verified_utc": "2026-11-05T03:34:50.323660+00:00",
+  "training_complete": true,
+  "user_stopped_r13c": true,
+  "no_resume_or_retry": true,
+  "stop_utc": "2026-11-05T08:23:33.878622+00:00",
+  "end_utc": "2026-11-05T08:15:50.253523Z"
+}

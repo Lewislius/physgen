@@ -1,0 +1,165 @@
+schema_version: R20-native-physical-v1
+revision: R20-native-physical-20261114
+status: ready_for_training
+source:
+  repository: Lewislius/physgen
+  reference_commit: 24b957dd4c962db24621cc94286ad6a2ce8a7c23
+  official_model: Wan-AI/Wan2.2-TI2V-5B
+  architecture: source_preserving_physics_independent_native_semantic_read_noise_conditioned_postblock_execution
+  reference_task: Own-task R18E/R18G or R15B+I/R1/R9/R10A, recent R19 controls and
+    actual-video failures; no project weights
+initialization:
+  mode: official_fresh
+  project_checkpoint: null
+  new_adapter_seed: 42
+base:
+  model: Wan2.2-TI2V-5B
+  project_checkpoint: null
+  freeze_text_qkvo: true
+  video_lora_rank: 32
+  video_lora_alpha: 32
+  video_lora_from_update: 129
+model:
+  width: 3072
+  ffn_width: 14336
+  native_layers: 30
+  native_heads: 24
+  qwen_width: 4096
+  q_tokens: 256
+  q_heads: 32
+  content_rounds: 2
+  injection_layers:
+  - 2
+  - 5
+  - 8
+  - 11
+  - 14
+  - 17
+  - 20
+  - 23
+  - 26
+  - 29
+  extra_video_blocks: 0
+  conditioned_ffn_rank: null
+  physics_slots: 256
+  physics_width: 3072
+  grounded_heads: 16
+  content_anchor: native_input_words_normalized_query_enhancement
+  physical_query: independent_fullwidth_official_initialized
+  associated_query: actual_native_text_input_frozen_native_query
+  physical_read: independently_normalized_direct_and_request_associated
+  physical_execution: post_native_block_state_interaction_residual
+  native_block_intact: true
+  diffusion_modulation: true
+  presentation_time: true
+paths:
+  wan_code: /home/liuzhirui/model/Wan2.2
+  wan_checkpoint: /home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B
+  qwen_checkpoint: /home/liuzhirui/model/Qwen3-VL/Qwen3-VL-8B-Instruct
+  train_cache: /home/liuzhirui/Project/physGen/data_cache/wisa_4000
+  input_cache: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_scaling_q256/supervision_cache/r1/input
+  words_cache: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cache/words
+  native_words_cache: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cache/native_words
+  eval_input_cache: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_variants/inference_cache/physical_r1_first_image_request/input
+  run_dir: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20/runs/r20ai_native_physical400
+  interface_output: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20/preparation/normalization_ai.pt
+  inference_evidence: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19ei/prepared_inputs/ei
+  input_cache_fallbacks:
+  - /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_variants/supervision_cache/r1/input
+  - /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_v5_scaling_q256/supervision_cache/r1/input
+  prepared_evidence_reference: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19ci/prepared_inputs/ci
+  control_cache: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19ei/prepared_inputs/ei
+  normalization_reference: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19ei/preparation/input_normalization.pt
+train:
+  max_updates: 400
+  effective_global_batch: 4
+  world_size: 1
+  microbatch_per_device: 1
+  gradient_accumulation: 4
+  seed: 42
+  condition_dropout: 0.1
+  optimizer: AdamW
+  betas:
+  - 0.9
+  - 0.999
+  eps: 1.0e-08
+  matrix_weight_decay: 0.01
+  bias_norm_weight_decay: 0.0
+  grad_clip_per_group: 1.0
+  autocast_dtype: bfloat16
+  trainable_master_dtype: float32
+  gradient_checkpointing: true
+  checkpoint_use_reentrant: false
+  activation_offload: false
+  sigma_min: 0.001
+  sigma_max: 0.999
+  sample_order: fixed_same_task_reference1600
+  data_revision: original_wisa4000_and_original_reasoning
+  post_training: false
+  noise_strategy: unchanged_linear_FM
+  physics_warmup: 13
+  video_lora_warmup: 51
+  peak_end_update: 240
+  minimum_lr_ratio: 0.2
+  peak_lrs:
+    wan_video_lora: 2.0e-05
+    enhancement: 5.0e-05
+    physics_read: 2.0e-05
+    physics_write: 3.0e-05
+    physics_state: 2.0e-05
+  save_every: 100
+  keep_updates:
+  - 400
+  interface_updates: 128
+  sample_sequence: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19/preparation/sample_sequence_ai.json
+loss:
+  fm: 0.8
+  tail: 0.2
+  tail_fraction: 0.25
+  route_peak: 0.03
+  route_warmup: 32
+  route_decay_start: 240
+  route_final: 0.015
+  local_semantic_enabled: false
+  st_enabled: false
+  supervise_known_latent: false
+  unknown_scope: future_valid_frames
+  route_target: same_input_native_words
+inference:
+  num_frames: 81
+  width: 832
+  height: 480
+  steps: 50
+  sampler: shifted_euler
+  shift: 5.0
+  cfg: 5.0
+  seed: 42
+  best_of_n: 1
+  clamp_first: true
+evaluation:
+  primary_fixed40: true
+  extra_disjoint20: true
+  pc_mean_target: 3.85
+  pc_mean_stretch: 3.9
+  sa_mean_target: 3.25
+  joint_count_target40: 13
+  joint_count_stretch40: 14
+  pass_threshold: 4
+  expected_collapsed_videos: 0
+  benchmark_targets_are_unverified: true
+  cross_benchmark_policy: I2V only after40+60 and actual-video gains over best comparable
+    references
+  catastrophic_visual_failure_allowed: false
+plan: AI
+task: i2v
+mechanism: 20
+input:
+  external_image: true
+  evidence_scope: first_image_and_request_only
+  known_latent_frames: 1
+  future_targets_in_condition: false
+  chunk_descriptions: false
+  local_annotation_preprocessing: false
+  native_physics_scope: first_image_request_reasoning_only
+design_plan: AI
+variant_id: R20AI

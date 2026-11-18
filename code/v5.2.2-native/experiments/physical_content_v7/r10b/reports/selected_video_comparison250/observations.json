@@ -1,0 +1,62 @@
+{
+  "recorded_utc": "2026-11-01T07:17:24.892267+00:00",
+  "selection": "Same three prespecified cases used for A250/A400, not selected from B scores. Existing generated videos only.",
+  "training_step": 250,
+  "frames": [
+    0,
+    27,
+    54,
+    80
+  ],
+  "comparison": [
+    "R1-250",
+    "R10-B-250"
+  ],
+  "source_manifest": "experiments/physical_content_v7/grounded_execution_r10b/reports/selected_video_comparison250/manifest.json",
+  "scope": "Four sampled moments establish local observations, not continuous-motion validity or population defect rates. Final400/40+20/60 still required.",
+  "cases": {
+    "VP010": {
+      "scores": {
+        "R1": {
+          "sa": 4,
+          "pc": 4
+        },
+        "R10-B": {
+          "sa": 4,
+          "pc": 4
+        }
+      },
+      "observed_zh": "R1四时刻可见拖把接触地面并改变位置。B在帧54拖把头明显离开地面，其下出现两条可疑亮色长条，帧80又回到地面；积水仍明显。相同SA/PC评分未区分这个中间接触/形状问题，不能把B当作已验证的除水过程改善。",
+      "limits_zh": "不由单个中间帧确定伪影的具体生成机制；未新增运动/RGB指标。"
+    },
+    "VP026": {
+      "scores": {
+        "R1": {
+          "sa": 3,
+          "pc": 4
+        },
+        "R10-B": {
+          "sa": 3,
+          "pc": 4
+        }
+      },
+      "observed_zh": "B在帧54出现弯曲、松散的绳线，末帧主体和连接结构整体下移至画面下缘；四时刻未清晰展示两个人将弹力绳拉至最大长度。R1同四帧也不能直接证明该过程完成。两版评分相同不等于物理过程或画面相同。",
+      "limits_zh": "不把主体变小或位移本身当作错误，不从四帧给出全片连续性结论。"
+    },
+    "VP027": {
+      "scores": {
+        "R1": {
+          "sa": 4,
+          "pc": 5
+        },
+        "R10-B": {
+          "sa": 4,
+          "pc": 4
+        }
+      },
+      "observed_zh": "R1有按压、抬手和再次接触；B也有双手向两侧移动、接触与面团轮廓变化，不能归为没有动作。所抽帧未出现明显新增的严重手部形变。B的PC低1分，但四帧尚不能定位这1分的确切视觉原因。",
+      "limits_zh": "评估器的失分保留，不为解释分数强行认定具体视觉缺陷。"
+    }
+  },
+  "conclusion_zh": "250步B未证明PC超越R1；有可见过程变化，也仍有评分未充分覆盖的局部接触/形状问题。保持既定400步主评测，不追加候选。"
+}

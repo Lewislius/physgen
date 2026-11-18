@@ -1,0 +1,40 @@
+{
+  "candidate": "R19AI",
+  "checkpoint": "own400",
+  "paired_modes": [
+    "normal",
+    "no_c",
+    "official_executor"
+  ],
+  "protocol": "same input/image/noise/seed42/50steps/CFG5; official_executor changes only copied FFN body to official pretrained weights",
+  "coverage": "five sampled frames per video; aggregate ratings pending",
+  "cases": [
+    {
+      "case": "VP009",
+      "normal": "Person partially fades/disappears in late frames.",
+      "no_c": "Person remains visible through standing/lowering sequence.",
+      "official_executor": "Person remains visible but late body texture/geometry is distorted.",
+      "finding": "Learned physical execution can damage entity continuity in this case; no-C visual control is better. Input request completion remains imperfect across variants."
+    },
+    {
+      "case": "VP025",
+      "normal": "No red appendage; egg jumps/penetrates slide instead of rolling up/down correctly.",
+      "no_c": "Adds spurious red appendage and still has wrong trajectory.",
+      "official_executor": "No red appendage, but wrong egg/slide contact and path persist.",
+      "finding": "Physical branch has a real favorable visual contribution here while failing the contact/process requirement. Body learning does not clearly solve the event."
+    },
+    {
+      "case": "VP034",
+      "normal": "Balloon translates upward with ambiguous inflation.",
+      "no_c": "Similar mainly upward motion.",
+      "official_executor": "Similar balloon behavior; no clear evidence that learning the body produces required inflation.",
+      "finding": "Requested physical change is not visibly improved in these sampled views."
+    }
+  ],
+  "next_design_constraints": [
+    "Preserve useful physical conditioning such as removal of spurious appearance in VP025.",
+    "Address video-state interaction/contact/process completion rather than only increasing pointwise FFN capacity.",
+    "Learned-body efficacy and physical-condition efficacy are distinct; await completed16 ratings before final design.",
+    "No multi-expert routing selected."
+  ]
+}

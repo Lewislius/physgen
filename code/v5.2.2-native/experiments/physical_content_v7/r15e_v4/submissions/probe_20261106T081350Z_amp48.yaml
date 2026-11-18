@@ -1,0 +1,39 @@
+name: physical-r10a400-readonly-video-response16-temporary-amp48-20261106T081350Z
+description: User-authorized temporary amp-48g read-only16 recovery. Same R10A400/prototype/inputs/sampler/scorer;
+  no training. Later tasks remain blk-96g RTX6000; no H100.
+workspace: ALL-IN-ONE
+project: wan-animate
+max_restarts: 0
+resources:
+  resource_pool: amp-48g
+  slots_per_trial: 1
+  is_single_node: true
+  shm_size: 34359738368
+bind_mounts:
+- host_path: /mount/HOME/liuzhirui
+  container_path: /home/liuzhirui
+- host_path: /mount/NAS1/public
+  container_path: /run/determined/NAS1/public
+environment:
+  image: 10.130.130.5:8192/lab-dev:latest
+  environment_variables:
+  - OMP_NUM_THREADS=4
+  - PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+  - HF_HUB_OFFLINE=1
+  - TRANSFORMERS_OFFLINE=1
+  - HF_DATASETS_OFFLINE=1
+checkpoint_storage:
+  type: shared_fs
+  host_path: /mount/HOME/liuzhirui
+  storage_path: Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/determined_checkpoints
+  save_experiment_best: 0
+  save_trial_best: 0
+  save_trial_latest: 0
+searcher:
+  name: single
+  metric: completed
+  max_length:
+    epochs: 1
+  smaller_is_better: false
+entrypoint: bash /home/liuzhirui/Project/physGen/code/v5.2.2-native/tools/runtime_python.sh
+  /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/state_response_fusion_r15e/diagnostic_snapshots/20261106T081350Z_amp48/run_readonly_probe.py

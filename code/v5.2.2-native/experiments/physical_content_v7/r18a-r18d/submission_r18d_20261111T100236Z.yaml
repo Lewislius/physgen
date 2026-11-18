@@ -1,0 +1,43 @@
+workspace: ALL-IN-ONE
+project: wan-animate
+max_restarts: 0
+resources:
+  resource_pool: blk-96g
+  slots_per_trial: 1
+  is_single_node: true
+  shm_size: 34359738368
+bind_mounts:
+- host_path: /mount/HOME/liuzhirui
+  container_path: /home/liuzhirui
+- host_path: /mount/NAS1/public
+  container_path: /run/determined/NAS1/public
+environment:
+  image: 10.130.130.5:8192/lab-dev:latest
+  environment_variables:
+  - OMP_NUM_THREADS=4
+  - PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+  - HF_HUB_OFFLINE=1
+  - TRANSFORMERS_OFFLINE=1
+  - HF_DATASETS_OFFLINE=1
+  - PYTHONUNBUFFERED=1
+  - WAN_CODE=/home/liuzhirui/model/Wan2.2
+  - WAN_CKPT=/home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B
+  - QWEN_CKPT=/home/liuzhirui/model/Qwen3-VL/Qwen3-VL-8B-Instruct
+  - TRAIN_CACHE=/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/data_revision_qwen38/runs/20261103_dataset/encoded
+  - RUN_ROOT=/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physics_expert_abcd_fresh1000/runs
+checkpoint_storage:
+  type: shared_fs
+  host_path: /mount/HOME/liuzhirui
+  storage_path: Project/physGen/code/v5.2.2-native/experiments/physics_expert_abcd_fresh1000/determined_checkpoints
+  save_experiment_best: 0
+  save_trial_best: 0
+  save_trial_latest: 0
+searcher:
+  name: single
+  metric: completed
+  max_length:
+    epochs: 1
+  smaller_is_better: false
+name: r18-d-guided-physical400-fixed40-60-blk-rtx96-20261111T100236Z
+description: 'R18D: official-fresh, semantic-guided physical-value executor, full-width Uq Uk G, six sites, 400 updates effective batch4, fixed VideoPhy2 40+20.'
+entrypoint: bash /home/liuzhirui/Project/physGen/code/v5.2.2-native/tools/runtime_python.sh /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physics_expert_abcd_fresh1000/run_candidate.py --config /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physics_expert_abcd_fresh1000/configs/r18d.yaml

@@ -1,0 +1,83 @@
+{
+  "candidate": "R19AT",
+  "data": {
+    "manifest_records": 3857,
+    "manifest_train_records": 3666,
+    "train_records": 1600,
+    "unavailable_train_records": 2066,
+    "validation_records": 191,
+    "interface": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19/preparation/interface_at.pt",
+    "interface_hash": "c492688ecba5e835e2feb1715f6eb2eeb40b81969ab98362b5dc2e09d3f910a2",
+    "train_manifest_hash": "f8c14fefd8c4d1c84b4ef287222c954cc2bbdeabdb976efa90608f4178d5cb29",
+    "wan_index_hash": "bfa2337f1163e195d24151a72298daf34a620543898109be47e414c8daa5b3fe",
+    "qwen_index_hash": "520b2e05079402e9468a8701d03d1154d14b2599593afb6effa7fb60c1bff070",
+    "data_revision": "qwen38_wisa_reviewed_v1",
+    "source": "existing original training cache and frozen input feature cache",
+    "revision": "R19-state-execution-20261112",
+    "plan": "AT",
+    "design_plan": "AT",
+    "task": "t2v",
+    "mechanism": 3,
+    "sites": [
+      2,
+      5,
+      8,
+      11,
+      14,
+      17,
+      20,
+      23,
+      26,
+      29
+    ],
+    "max_updates": 400,
+    "effective_batch": 4,
+    "initialization": "official Wan/Qwen/T5/VAE only; fresh project weights",
+    "native_text_lora": false,
+    "old_project_checkpoint": false,
+    "local_semantic_loss": false,
+    "st_loss": false,
+    "post_training": false,
+    "quality_proven": false
+  },
+  "learning_rates": {
+    "1": {
+      "wan_video_lora": 3.921568627450981e-07,
+      "enhancement": 3.846153846153847e-06,
+      "physics_read": 1.5384615384615387e-06,
+      "physics_write": 2.307692307692308e-06,
+      "physics_executor": 1.5384615384615387e-06
+    },
+    "128": {
+      "wan_video_lora": 2e-05,
+      "enhancement": 5e-05,
+      "physics_read": 2e-05,
+      "physics_write": 3e-05,
+      "physics_executor": 2e-05
+    },
+    "129": {
+      "wan_video_lora": 2e-05,
+      "enhancement": 5e-05,
+      "physics_read": 2e-05,
+      "physics_write": 3e-05,
+      "physics_executor": 2e-05
+    },
+    "256": {
+      "wan_video_lora": 1.960845213036123e-05,
+      "enhancement": 4.9021130325903075e-05,
+      "physics_read": 1.960845213036123e-05,
+      "physics_write": 2.9412678195541846e-05,
+      "physics_executor": 1.960845213036123e-05
+    },
+    "400": {
+      "wan_video_lora": 4.000000000000001e-06,
+      "enhancement": 1e-05,
+      "physics_read": 4.000000000000001e-06,
+      "physics_write": 6e-06,
+      "physics_executor": 4.000000000000001e-06
+    }
+  },
+  "inference_cases": 60,
+  "cpu_checks": "both tasks: initial native equivalence, nonzero execution/C/Q/K/V gradients, independent full FFN, frozen native text, first-latent mask, correct stage ownership passed",
+  "model_quality_proven": false
+}

@@ -1,0 +1,36 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/runs/physical_content_68038/step0400.pt",
+  "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/snapshots/20261106T202709Z",
+  "cases": [
+    "VP010",
+    "VP027",
+    "VP034"
+  ],
+  "steps": [
+    1,
+    15,
+    35,
+    50
+  ],
+  "inspected_layers": [
+    2,
+    14,
+    29
+  ],
+  "seed": 42,
+  "gamma": 5,
+  "interventions": [
+    "no_c",
+    "parallel_fusion",
+    "words_only_memory",
+    "native_physical_query",
+    "anchor_only"
+  ],
+  "training_updates": 0,
+  "output_videos": 0,
+  "api_calls": 0,
+  "model_downloads": 0,
+  "selection": "Predeclared visual cases:010/034 match the R15E replay;027 shows reduced shaping with physical fusion versus no_c.",
+  "scope": "Normal full50 trajectory. Each alternative velocity uses the SAME normal-trajectory latent. These are intervention diagnostics, not generated-video scores or retrained ablations.",
+  "limitations": "Conditional-minus-null includes native text and Qwen. Projection onto native guidance is not a pure semantic score. Anchor-only changes learned correction and C amplitude; observed effects do not prove all common corrections harmful."
+}

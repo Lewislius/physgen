@@ -1,0 +1,276 @@
+{
+  "updated_utc": "2026-11-14T16:24:29.129377+00:00",
+  "active_goal_unmet": true,
+  "status": "R19_closed_after_main60_and_key16",
+  "jobs": {
+    "DT": {
+      "candidate": "R19DT",
+      "revision": "R19DT-source-interaction-20261114",
+      "experiment_id": 70047,
+      "trial_id": 71746,
+      "status": "STATE_RUNNING",
+      "phase": "no_c_generation",
+      "update": 400,
+      "actual_gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19dt/snapshots/20261114T121915Z",
+      "last_checked_utc": "2026-11-14T16:24:29.129377+00:00",
+      "next_routine_check_utc": "2026-11-14T16:54:29.129377+00:00",
+      "automatic_next_candidate": false,
+      "cursor": 56,
+      "full_model_check_passed": true,
+      "full_model_peak_gib": 34.791194915771484,
+      "trainable_parameters": 1163456512,
+      "main40_generated": 0,
+      "extra20_generated": 0
+    },
+    "CT": {
+      "candidate": "R19CT",
+      "revision": "R19CT-grounded-state-experts-20261114",
+      "experiment_id": 70050,
+      "trial_id": 71749,
+      "status": "STATE_ERROR",
+      "phase": "evaluation_recovery_pending",
+      "update": 400,
+      "actual_gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "next_routine_check_utc": "2026-11-14T13:41:23.690171+00:00",
+      "automatic_next_candidate": false,
+      "full400_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19ct/snapshots/20261114T060200Z",
+      "old_CT41_will_not_resume": true,
+      "full_model_check_passed": true,
+      "last_checked_utc": "2026-11-14T13:11:23.690171+00:00",
+      "cursor": 1600,
+      "main40_generated": 40,
+      "extra20_generated": 20,
+      "control_counts": {
+        "reasoning_swapped": 11,
+        "no_temporal": 16,
+        "no_c": 16,
+        "semantic_expert_off": 16,
+        "no_video_feedback": 16
+      },
+      "resume_required": false,
+      "resumed_from": 69990,
+      "evaluation_only": true,
+      "recovery": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19ct/reports/pending_control_recovery.json",
+      "automatic_cross_benchmark": false
+    },
+    "EI": {
+      "candidate": "R19EI",
+      "revision": "R19EI-scene-process-experts-20261114",
+      "experiment_id": 70061,
+      "trial_id": 71760,
+      "status": "STATE_COMPLETED",
+      "phase": "complete",
+      "update": 400,
+      "cursor": 1600,
+      "actual_gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19ei/snapshots/20261114T065127Z",
+      "last_startup_verified_utc": "2026-11-14T06:55:44.713443+00:00",
+      "next_routine_check_utc": "2026-11-14T16:54:29.129377+00:00",
+      "parameter_count": 1694364672,
+      "full_model_validation_passed": true,
+      "validation_peak_allocated_gib": 42.39183521270752,
+      "validation_weights_reused": false,
+      "automatic_next_candidate": false,
+      "automatic_cross_benchmark": false,
+      "video_quality_or_metrics_proven": false,
+      "last_checked_utc": "2026-11-14T16:24:29.129377+00:00",
+      "main40_generated": 40,
+      "extra20_generated": 20,
+      "main60_scored": true,
+      "actual_video_quality_accepted": false,
+      "original_experiment_terminal": {
+        "id": 70005,
+        "state": "STATE_CANCELED"
+      },
+      "remaining_generation_deferred": true
+    }
+  },
+  "DT": {
+    "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19dt/snapshots/20261114T121915Z",
+    "design": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19dt/design/DESIGN.zh.txt",
+    "run": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19dt/runs/r19dt_interaction400",
+    "full_model_check": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19dt/reports/jobs/70047/full_model_check.json",
+    "parameters": 1163456512,
+    "full_gpu_check_seconds": 50.633986555971205,
+    "full_gpu_peak_gib": 34.791194915771484,
+    "nonzero_functional_gradient_paths": 14,
+    "discarded_check_updates": 4,
+    "official_fresh_formal_updates": 400,
+    "new_generation_scores": null,
+    "last_verified_update": 285
+  },
+  "CT": {
+    "original_experiment": 69990,
+    "original_state": "STATE_CANCELED",
+    "resume_experiment": 70050,
+    "resume_trial": 71749,
+    "evaluation_only": true,
+    "same_immutable_snapshot": true,
+    "training_400_not_repeated": true,
+    "core_visual_controls_reviewed16": [
+      "no_c",
+      "semantic_expert_off",
+      "no_video_feedback",
+      "no_temporal"
+    ],
+    "reasoning_swapped_reviewed": 16,
+    "remaining_condition_scores_pending": true,
+    "manual_full60_review_backup": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19ct/reports/full60_visual_review_before_resume.json",
+    "review_restored_after_recovery_helper": true,
+    "eval_gpu_note": "Available RTX previously had training SIGKILL; evaluation-only attempt accepted, no optimizer/backward. Observe actual progress before calling it reliable.",
+    "empty_reasoning_reviewed": 11,
+    "resume_terminal_state": "STATE_ERROR",
+    "resume_failed_experiment": 70050,
+    "remaining_control_videos": 21,
+    "completed_control_videos": 91,
+    "pending_recovery": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19ct/reports/pending_control_recovery.json",
+    "r18g_selected6_visually_compared": true
+  },
+  "EI": {
+    "main40": {
+      "sa": 3.1,
+      "pc": 3.4,
+      "joint": 10
+    },
+    "main40_sampled_review_complete": true,
+    "confirmed_severe_cases": [
+      "VP003",
+      "VP004",
+      "VP009",
+      "VP024",
+      "VP030",
+      "VP033",
+      "VP056",
+      "VP058",
+      "VP059"
+    ],
+    "extra20_generated_at_last_check": 13,
+    "extra20_not_reviewed": false,
+    "cross_benchmarks_allowed": false,
+    "extra20_reviewed_cases": [
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60
+    ],
+    "extra20_pending_review": [],
+    "fixed16_content_audit": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19ei/reports/fixed16_content_path_audit.json",
+    "content_audit_summary": {
+      "native_execution": {
+        "token_cosine": 0.17505616508424282,
+        "rms": 0.10276827355846763,
+        "centered_energy": 0.836347009986639
+      },
+      "initial_route": {
+        "token_cosine": 0.1887024873867631,
+        "rms": 0.13328380836173892,
+        "centered_energy": 0.8065249919891357
+      },
+      "execution": {
+        "token_cosine": 0.9815717451274395,
+        "rms": 0.7122345566749573,
+        "centered_energy": 0.018942314200103283
+      },
+      "route": {
+        "token_cosine": 0.999884445220232,
+        "rms": 2.8770598769187927,
+        "centered_energy": 0.0007034288391878363
+      },
+      "physical_queries": {
+        "token_cosine": 0.844407707452774,
+        "rms": 2.159868076443672,
+        "centered_energy": 0.15705889649689198
+      },
+      "execution_delta": {
+        "token_cosine": 0.9990646280348301,
+        "rms": 0.7012301832437515,
+        "centered_energy": 0.0013759162175119855
+      },
+      "execution_delta_to_native_norm": 6.840655297040939,
+      "route_delta_to_initial_norm": 21.68894588947296,
+      "execution_native_mean_cosine": 0.1430608327500522,
+      "image_encoder_off_relative_change": {
+        "route": 0.8014397397637367,
+        "execute": 0.8351377882063389
+      }
+    },
+    "analysis_report": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19ei/reports/content_and_visual_failure_analysis.zh.txt",
+    "full60": {
+      "count": 60,
+      "sa": 3.033333333333333,
+      "pc": 3.4166666666666665,
+      "joint": 14,
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19ei/inference_outputs/r19ei_scene400/step0400_seed42/full60/videophy60/scores.json"
+    },
+    "extra20": {
+      "count": 20,
+      "sa": 2.9,
+      "pc": 3.45,
+      "joint": 4,
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19ei/inference_outputs/r19ei_scene400/step0400_seed42/videophy60/scores.json"
+    },
+    "main60_sampled_review_complete": true,
+    "b400i_matched_protocol_comparison": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19ei/reports/main40_60_vs_b400i.json",
+    "all8_sa_gain_cases_visually_compared": true,
+    "no_c_visual_reviewed": 10
+  },
+  "next_work": [
+    "Next combined scheduled check14:14:02 UTC, then30min; DT70047 andEI70005 only active",
+    "CT70050 terminal SIGKILL; prepared same-snapshot recovery waits healthyRTX without preempting DT/EI",
+    "DT400 then own40+20/full60 and paired16; ET only after actual own outcomes",
+    "EI main60 scored and sampled visual review rejected; finish existing sevenpaired16, no WMB/PhysicsIQ or newI2V beyondEI"
+  ],
+  "do_not": [
+    "poll canceled69990 or pre-model-rejected70031..70046/70048/70049",
+    "modify any live snapshot or normalization file",
+    "claim functional tests or C cosine prove video-quality gains",
+    "run models on H100",
+    "download models",
+    "mark Goal complete while targets unmet",
+    "repoll or blindly restart terminal70050; it also SIGKILLed on previously avoided GPU; use pending healthyRTX recovery"
+  ],
+  "previous_goal_turn_classification": "progress: EI fixed16 content audit; full60 scoring and sampled review; CT error identified and recovery prepared",
+  "current_turn_progress": "EI pairedprotocol B400+I40/60 andall8SA-gains reviewed; CT reference6+empty11 reviewed; EI first10noC reviewed; R19 all8 scored versions recomputed from raw rows in reports/r19_main_scores_current.json",
+  "superseding_scope": {
+    "updated_utc": "2026-11-14T14:15:47.336341+00:00",
+    "T2V": [
+      "R20AT",
+      "R20BT"
+    ],
+    "I2V": [
+      "R20AI",
+      "R20BI"
+    ],
+    "R19DT_finish": true,
+    "R19ET_submit": false,
+    "training_updates": 400,
+    "reference_analysis": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19ct/reports/physvid_r18e_matched_visual/review.json",
+    "rope_audit": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19ct/reports/native_position_audit.json",
+    "goal_verified": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/reports/system_goal_r20_verified.json"
+  },
+  "active_handoff": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20/CONTINUATION.json",
+  "experiment_terminal": {
+    "id": 70047,
+    "state": "STATE_CANCELED",
+    "intentional": true
+  },
+  "next_routine_check_utc": null,
+  "do_not_repoll_terminal_jobs": true
+}

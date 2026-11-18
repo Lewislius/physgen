@@ -1,0 +1,180 @@
+revision: physical_content_v7_response_fusion_r16gt_t2v
+variant: physical_content
+task: t2v
+plan: R16Gt
+source_snapshot: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r16gt/snapshots/20261112T111840Z
+paths:
+  wan_code: /home/liuzhirui/model/Wan2.2
+  wan_checkpoint: /home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B
+  qwen_checkpoint: /home/liuzhirui/model/Qwen3-VL/Qwen3-VL-8B-Instruct
+  cache: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/data_revision_qwen38/runs/20261103_dataset/encoded
+  t2v_input_cache: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physics_content_v10_impl/runs/t2v_cache/input
+  t2v_words_cache: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physics_content_v10_impl/runs/t2v_cache/words
+  t2v_native_words_cache: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physics_content_v10_impl/runs/t2v_cache/native_words
+  t2v_eval_cache: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physics_content_v10_impl/runs/t2v_cache/eval_input
+  runs: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r16gt/runs
+  interface: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r16gt/cache/interface_r16gt.pt
+  inference_evidence: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r16gt/prepared_inputs
+  eval_native_inputs: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r16gt/eval_native_inputs
+  eval_protocol: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/videophy60/protocol.json
+model:
+  width: 3072
+  qwen_width: 4096
+  q_tokens: 256
+  q_heads: 32
+  rounds: 2
+  condition_every: 3
+  lora_rank: 32
+  grounded_read_heads: 16
+  grounded_word_normalization: train_fitted_whitened_words_and_request
+  global_reader_input: original_contextual_request_and_physical_words
+  final_readout: R10A_R15B_B400_reads_to_r15c_local_and_state_gated_global
+  shared_content_offset: true
+  native_text_adaptation: frozen
+  response_mode: triple_global_pure_local
+  candidate_label: R16Gt
+  fusion_order: triple_global_pure_r15c_local
+  global_execution:
+  - direct
+  - request_bound
+  - joint
+  global_execution_gate: zero_init_full_width_state_value_no_bottleneck
+  local_execution_operator: r15c_5x3x3_video_state_V
+  local_query_condition: direct_read_only
+  value_correction: none
+  physical_read_normalization: independent_direct_and_request_bound_softmax
+  physical_output_initialization: zero_O_exact_native_start
+  physical_window:
+  - 5
+  - 3
+  - 3
+  physical_window_shift: alternating_0_and_1_noncyclic
+  physical_positions: official_video_grid_RoPE
+knowledge:
+  image_size:
+  - 480
+  - 832
+  video_size:
+  - 480
+  - 832
+  max_text_tokens: 4096
+  gradient_checkpointing: true
+  reasoning_mode: q_seed128_message
+  latent_reasoning_steps: 2
+  reasoning_tokens: 256
+  reasoning_max_tokens: 128
+  reasoning_cache: 16
+  freeze_backbone: true
+verifier:
+  kind: none
+geometry:
+  mode: native
+  rgb_size:
+  - 480
+  - 832
+data:
+  latent_shape:
+  - 1
+  - 48
+  - 21
+  - 30
+  - 52
+  frames: 81
+  fps: 24.0
+  match_r18_t2v_loader: true
+input:
+  external_image: false
+  evidence_scope: request_only
+  known_latent_frames: 0
+  future_targets_in_condition: false
+  chunk_descriptions: false
+  local_annotation_preprocessing: false
+stages:
+  interface: 128
+  joint: 272
+train:
+  seed: 42
+  accumulation: 4
+  peak_lrs:
+    enhancement: 5.0e-05
+    fusion_read: 2.0e-05
+    fusion_write: 3.0e-05
+    wan_lora: 2.0e-05
+  minimum_lr_ratio: 0.2
+  warmup: 32
+  wan_warmup: 128
+  decay_start: 600
+  grad_clip:
+    enhancement: 1.0
+    fusion_read: 1.0
+    fusion_write: 1.0
+    wan_lora: 1.0
+  text_dropout: 0.1
+  save_every: 50
+  keep_steps:
+  - 128
+  - 250
+  - 400
+  validation_steps: []
+  gradient_checkpointing: true
+  gradient_ownership: physical_interface_then_joint
+inference:
+  steps: 50
+  shift: 5.0
+  guidance: 5.0
+  sampler: shifted_euler
+  guidance_composition: joint_two_branch_cfg
+loss:
+  peak_weight: 0.03
+  final_weight: 0.03
+  warmup: 32
+  decay_start: 400
+  temperature: 1.0
+  generation:
+    tail_weight: 0.2
+    tail_fraction: 0.25
+  semantic_target: routing_C_only
+data_revision: request_only_qwen38_wisa_reviewed_v1
+t2v_protocol:
+  reference_plans:
+  - R16G
+  - R18E
+  - R18G
+  - R15Bt
+  train_cache: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/data_revision_qwen38/runs/20261103_dataset/encoded
+  t2v_cache_root: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physics_content_v10_impl/runs/t2v_cache
+  train_samples: 1600
+  eval_cases: 60
+  primary_cases: 40
+  extra_cases: 20
+  frames: 81
+  fps: 24.0
+  width: 832
+  height: 480
+  steps: 50
+  shift: 5.0
+  cfg: 5.0
+  seed: 42
+  noise: persisted_seed42
+  evaluator: official local VideoPhy2 AutoEval
+evaluation_budget:
+  final_stop: 400
+  primary_cases: 40
+  extra_cases: 20
+  control_cases: 0
+  control_modes:
+  - no_c
+  - global_off
+  - local_off
+  - global_direct_off
+  - global_request_off
+  - global_joint_off
+  - temporal_off
+  seed: 42
+  native_text_guidance: 5.0
+  physical_guidance: 5.0
+  extended_evaluation:
+    policy: review_main40_before_60
+    cases: 60
+    new_cases: 20
+    keep_original40_results: true

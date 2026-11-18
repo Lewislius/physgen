@@ -1,0 +1,75 @@
+{
+  "selection_plan": "experiments/physical_content_v7/grounded_execution_r10b/reports/selected_video_comparison400/selection_plan.json",
+  "checkpoint_step": 400,
+  "frames": [
+    0,
+    27,
+    54,
+    80
+  ],
+  "cases": {
+    "VP010": {
+      "b400_score_at_review": null,
+      "comparison": [
+        "R1-400",
+        "R10-B-400"
+      ],
+      "observed_zh": "B400四时刻呈现较明显的拖把前移、地面接触与浅色擦拭区变化；相对B250，所抽时刻没有再出现中间离地及白色长条。相对A400所见的弱推进，B400有更明显的过程变化。R1-400后段有多重黑色弧线/环状轨迹，B400的浅色擦拭区及深色边缘较为连贯、层叠弧线较少。",
+      "interpretation_zh": "这是预选单例中可见的过程/形状改善信号。地面仍有湿亮区域，边缘纹理本身不等于完整、正确的除水过程；最终PC/SA、其余两例与模块对照继续。",
+      "panel": "experiments/physical_content_v7/grounded_execution_r10b/reports/selected_video_comparison400/VP010/VP010.png",
+      "relative_own250_source": "experiments/physical_content_v7/grounded_execution_r10b/reports/selected_video_comparison250/observations.json",
+      "relative_a400_source": "experiments/physical_content_v7/execution_value_r10/reports/selected_video_comparison400/observations.json",
+      "final400_scores": {
+        "R1": {
+          "sa": 4,
+          "pc": 4
+        },
+        "B": {
+          "sa": 4,
+          "pc": 4
+        }
+      }
+    },
+    "VP026": {
+      "final400_scores": {
+        "R1": {
+          "sa": 3,
+          "pc": 4
+        },
+        "B": {
+          "sa": 2,
+          "pc": 4
+        }
+      },
+      "comparison": [
+        "R1-400",
+        "R10-B-400"
+      ],
+      "panel": "experiments/physical_content_v7/grounded_execution_r10b/reports/selected_video_comparison400/remaining026_027/VP026.png",
+      "observed_zh": "B在帧0/27仍有从画面上方连接中央黑色构件的长绳；到54/80，原长绳/上方人物不再见，中央物体只剩很短的弯曲线段，未展示请求的双人把绳拉长。R1的54/80仍可见长连接和人物，但也不能据此认定正确完成了双人拉伸。",
+      "interpretation_zh": "B的所抽后段失去原连接结构，SA由R1的3降到2；PC仍同为4，显示PC评分没有细分所见的连续性问题。四帧不能重建整个消失/出画过程，故不据此指定唯一物理机制。"
+    },
+    "VP027": {
+      "final400_scores": {
+        "R1": {
+          "sa": 4,
+          "pc": 5
+        },
+        "B": {
+          "sa": 4,
+          "pc": 4
+        }
+      },
+      "comparison": [
+        "R1-400",
+        "R10-B-400"
+      ],
+      "panel": "experiments/physical_content_v7/grounded_execution_r10b/reports/selected_video_comparison400/remaining026_027/VP027.png",
+      "observed_zh": "B在27/54手抬离面团，80又双手接触/按压，存在明显手部动作；R1四时刻的手与面团接触更连续，后两时刻有局部形状变化。B并非四帧静止，但中间离开面团也不能单独视为违规物理。",
+      "interpretation_zh": "R1为SA4/PC5，B为4/4。所抽时刻未定位足以单独解释这1分PC差距的明确新严重手部伪影，不把正常抬手动作任意判错；请求的连续整形完成度仍须与全视频区分。"
+    }
+  },
+  "pending_cases": [],
+  "scope": "Same three prespecified cases; VP010 viewed before B400 scores, VP026/027 completed after scores became available. Existing outputs only; no population defect-rate claim.",
+  "recorded_utc": "2026-11-01T09:08:09.657874+00:00"
+}

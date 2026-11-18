@@ -1,0 +1,52 @@
+{
+  "created_utc": "2026-11-15T11:10:52.121202+00:00",
+  "same_checkpoint": true,
+  "same_prompt_seed": true,
+  "cases": [
+    {
+      "case": "VP002",
+      "normal": "空场景/木片分叉",
+      "branch_off": "人手持木片，略弯，仍非完整弓形",
+      "condition_off": "人手/木片出现，但后段分叉",
+      "finding": "C读入改变主体和画面；额外视频分支自身也未修复条状物结构"
+    },
+    {
+      "case": "VP004",
+      "normal": "蓝色杆代替有刻度塑料尺",
+      "branch_off": "有手/刻度尺，裂纹形状异常",
+      "condition_off": "刻度尺恢复，末段过度碎裂",
+      "finding": "C读入改变外观与对象细节，分支自身仍可能影响断裂"
+    },
+    {
+      "case": "VP009",
+      "normal": "蓝墙/玻璃上小画框，工人缺失",
+      "branch_off": "工人与玻璃恢复，手臂有重影",
+      "condition_off": "工人/玻璃恢复且抽样手臂较完整，未有整块玻璃抬起",
+      "finding": "相同权重关闭C读取即可恢复主体与较自然色彩，C路径有实测副作用"
+    },
+    {
+      "case": "VP010",
+      "normal": "偏蓝地板/深色湿痕",
+      "branch_off": "自然灰色地板与水洼，水消失未完全",
+      "condition_off": "自然灰色地板/水，拖把后段断成小块",
+      "finding": "色彩变化可归于C读入干预；过程和结构在其他分支条件下仍不全好"
+    },
+    {
+      "case": "VP015",
+      "normal": "深蓝湖面/桨，人物很少",
+      "branch_off": "自然亮湖面，船/桨结构仍不全好",
+      "condition_off": "自然湖景与较完整船/划船者",
+      "finding": "仅关闭C也恢复自然色彩/场景，不需删除整个视频分支"
+    },
+    {
+      "case": "VP026",
+      "normal": "蓝背景近景手臂和红细绳",
+      "branch_off": "室外两人拉大幅红布",
+      "condition_off": "室外两人拉布/绳，末段有多余手臂",
+      "finding": "C有把布改为细绳的对象收益，也有改变整个场景/色彩的副作用"
+    }
+  ],
+  "scope": "Six existing fixed16 cases, five sampledframes fornormal/wholebranchoff/Conlyoff; not all-video certification.",
+  "conclusion": "C读取在这些样本中实质改变全局颜色/主体，有负作用及局部物理对象收益；只去掉整个视频分支不一定最好。当前仍需native-source-Qoff等结果区分学习的C增量与C阅读写入。",
+  "quality_accepted": false
+}

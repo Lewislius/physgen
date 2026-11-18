@@ -1,0 +1,338 @@
+{
+  "utc": "2026-11-06T23:43:08.217500+00:00",
+  "candidate": "R15F",
+  "experiment": 68038,
+  "trial": 69425,
+  "checkpoint_step": 400,
+  "main40": {
+    "count": 40,
+    "sa_mean": 2.925,
+    "pc_mean": 3.6,
+    "sa_pass_rate": 0.25,
+    "pc_pass_rate": 0.475,
+    "joint_pass_count": 9,
+    "joint_pass_rate": 0.225
+  },
+  "fixed16": {
+    "count": 16,
+    "sa_mean": 3.0625,
+    "pc_mean": 3.8125,
+    "sa_pass_rate": 0.3125,
+    "pc_pass_rate": 0.625,
+    "joint_pass_count": 5,
+    "joint_pass_rate": 0.3125
+  },
+  "remaining24": {
+    "count": 24,
+    "sa_mean": 2.8333333333333335,
+    "pc_mean": 3.4583333333333335,
+    "sa_pass_rate": 0.20833333333333334,
+    "pc_pass_rate": 0.375,
+    "joint_pass_count": 4,
+    "joint_pass_rate": 0.16666666666666666
+  },
+  "numeric_targets": {
+    "PC_at_least3_8": false,
+    "SA_at_least3_125": false,
+    "Joint_strictly_above_historical11of40": false
+  },
+  "minimum_remaining_gap": {
+    "SA_total_points": 8,
+    "PC_total_points": 8,
+    "Joint_passes": 3
+  },
+  "paired_reference_report": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/inference_outputs/physical_content_68038/step0400_original_fixed40_controls16_seed42/paired40_review.json",
+  "main_findings": [
+    "未达到 PC3.8、SA3.125、Joint12/40；相对 R1 三项均未提升。",
+    "相对 Wan+LoRA，SA0胜34平6负；PC7胜32平1负。",
+    "相对 R15E，SA和Joint恢复，但PC下降；已检查的严重条纹案例修复，但部分物理过程仍缺失、工具形变仍明显。",
+    "固定16例 PC3.8125；其余24例 PC3.45833，不能用小子集宣称达到40例PC目标。"
+  ],
+  "visual_predeclared": {
+    "VP004": {
+      "caption": "A plastic ruler is bent until it cracks, displaying a visible stress fracture that propagates.",
+      "panel": "experiments/physical_content_v7/grounded_semantic_fusion_r15f/reports/physical_content_68038/visual_predeclared/VP004_R15F.png",
+      "video": "experiments/physical_content_v7/grounded_semantic_fusion_r15f/inference_outputs/physical_content_68038/step0400_original_fixed40_controls16_seed42/videophy40/cases/VP004/planned.mp4",
+      "observation": "人物和姿态在八帧中变化很小；横向物体从首帧已不自然，后半段中心出现明显聚团/形变，没有清楚呈现预期的弯折过程。"
+    },
+    "VP010": {
+      "caption": "A person mops up a puddle of water on a concrete floor, the water disappearing as the mop passes.",
+      "panel": "experiments/physical_content_v7/grounded_semantic_fusion_r15f/reports/physical_content_68038/visual_predeclared/VP010_R15F.png",
+      "video": "experiments/physical_content_v7/grounded_semantic_fusion_r15f/inference_outputs/physical_content_68038/step0400_original_fixed40_controls16_seed42/videophy40/cases/VP010/planned.mp4",
+      "observation": "八帧中没有出现 R15E 的满屏条纹；拖把/扫帚明显移动，地面水迹也发生变化。但工具头在移动中仍有形变，不能据此确认清理过程完全正确。"
+    },
+    "VP027": {
+      "caption": "Hands shape a lump of clay-like bread dough into a smooth, round boule on a wooden table.",
+      "panel": "experiments/physical_content_v7/grounded_semantic_fusion_r15f/reports/physical_content_68038/visual_predeclared/VP027_R15F.png",
+      "video": "experiments/physical_content_v7/grounded_semantic_fusion_r15f/inference_outputs/physical_content_68038/step0400_original_fixed40_controls16_seed42/videophy40/cases/VP027/planned.mp4",
+      "observation": "手部有小幅姿态变化，但八帧中面团基本保持原有圆形，没有明确呈现连续揉捏塑形过程。"
+    },
+    "VP034": {
+      "caption": "A large, clear balloon is inflated with air, showing the internal pressure causing the balloon to stretch.",
+      "panel": "experiments/physical_content_v7/grounded_semantic_fusion_r15f/reports/physical_content_68038/visual_predeclared/VP034_R15F.png",
+      "video": "experiments/physical_content_v7/grounded_semantic_fusion_r15f/inference_outputs/physical_content_68038/step0400_original_fixed40_controls16_seed42/videophy40/cases/VP034/planned.mp4",
+      "observation": "没有 R15E 的满屏条纹；气球轻微平移，未见清楚的充气膨胀伸展。"
+    },
+    "VP038": {
+      "caption": "A paint roller, dipped in green paint, is used to cover a section of a metal fence, creating a uniform green coat.",
+      "panel": "experiments/physical_content_v7/grounded_semantic_fusion_r15f/reports/physical_content_68038/visual_predeclared/VP038_R15F.png",
+      "video": "experiments/physical_content_v7/grounded_semantic_fusion_r15f/inference_outputs/physical_content_68038/step0400_original_fixed40_controls16_seed42/videophy40/cases/VP038/planned.mp4",
+      "observation": "滚筒有运动，但与围栏/横杆混连，后段手柄和滚筒变形明显；得到 SA4/PC4 不能替代画面质量验收。"
+    }
+  },
+  "visual_scope": "五个预声明案例各8帧；补充008/021来自上一版条纹失败名单。非全量人工逐帧评分。",
+  "visual_quality_goal_met": false,
+  "completed_paired16_controls": {
+    "empty_reasoning": {
+      "summary": {
+        "count": 16,
+        "sa_mean": 2.9375,
+        "pc_mean": 3.875,
+        "sa_pass_rate": 0.25,
+        "pc_pass_rate": 0.6875,
+        "joint_pass_count": 4,
+        "joint_pass_rate": 0.25
+      },
+      "normal_minus_control": {
+        "sa": {
+          "mean_change": 0.125,
+          "wins": 2,
+          "ties": 14,
+          "losses": 0
+        },
+        "pc": {
+          "mean_change": -0.0625,
+          "wins": 1,
+          "ties": 13,
+          "losses": 2
+        },
+        "joint": {
+          "gains": [
+            "VP010"
+          ],
+          "losses": []
+        }
+      },
+      "score_file": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/inference_outputs/physical_content_68038/step0400_original_fixed40_controls16_seed42/controls/empty_reasoning/videophy40/scores.json"
+    },
+    "global_train_mean": {
+      "summary": {
+        "count": 16,
+        "sa_mean": 3.125,
+        "pc_mean": 3.8125,
+        "sa_pass_rate": 0.3125,
+        "pc_pass_rate": 0.5,
+        "joint_pass_count": 5,
+        "joint_pass_rate": 0.3125
+      },
+      "normal_minus_control": {
+        "sa": {
+          "mean_change": -0.0625,
+          "wins": 0,
+          "ties": 15,
+          "losses": 1
+        },
+        "pc": {
+          "mean_change": 0,
+          "wins": 2,
+          "ties": 12,
+          "losses": 2
+        },
+        "joint": {
+          "gains": [],
+          "losses": []
+        }
+      },
+      "score_file": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/inference_outputs/physical_content_68038/step0400_original_fixed40_controls16_seed42/controls/global_train_mean/videophy40/scores.json"
+    },
+    "native_physical_query": {
+      "summary": {
+        "count": 16,
+        "sa_mean": 3.125,
+        "pc_mean": 3.8125,
+        "sa_pass_rate": 0.375,
+        "pc_pass_rate": 0.625,
+        "joint_pass_count": 6,
+        "joint_pass_rate": 0.375
+      },
+      "normal_minus_control": {
+        "sa": {
+          "mean_change": -0.0625,
+          "wins": 0,
+          "ties": 15,
+          "losses": 1
+        },
+        "pc": {
+          "mean_change": 0,
+          "wins": 0,
+          "ties": 16,
+          "losses": 0
+        },
+        "joint": {
+          "gains": [],
+          "losses": [
+            "VP034"
+          ]
+        }
+      },
+      "score_file": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/inference_outputs/physical_content_68038/step0400_original_fixed40_controls16_seed42/controls/native_physical_query/videophy40/scores.json"
+    },
+    "no_c": {
+      "summary": {
+        "count": 16,
+        "sa_mean": 3.25,
+        "pc_mean": 3.5,
+        "sa_pass_rate": 0.375,
+        "pc_pass_rate": 0.4375,
+        "joint_pass_count": 5,
+        "joint_pass_rate": 0.3125
+      },
+      "normal_minus_control": {
+        "sa": {
+          "mean_change": -0.1875,
+          "wins": 0,
+          "ties": 13,
+          "losses": 3
+        },
+        "pc": {
+          "mean_change": 0.3125,
+          "wins": 5,
+          "ties": 11,
+          "losses": 0
+        },
+        "joint": {
+          "gains": [
+            "VP010"
+          ],
+          "losses": [
+            "VP034"
+          ]
+        }
+      },
+      "score_file": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/inference_outputs/physical_content_68038/step0400_original_fixed40_controls16_seed42/controls/no_c/videophy40/scores.json"
+    },
+    "parallel_fusion": {
+      "summary": {
+        "count": 16,
+        "sa_mean": 3.0625,
+        "pc_mean": 3.875,
+        "sa_pass_rate": 0.3125,
+        "pc_pass_rate": 0.6875,
+        "joint_pass_count": 5,
+        "joint_pass_rate": 0.3125
+      },
+      "normal_minus_control": {
+        "sa": {
+          "mean_change": 0,
+          "wins": 0,
+          "ties": 16,
+          "losses": 0
+        },
+        "pc": {
+          "mean_change": -0.0625,
+          "wins": 0,
+          "ties": 15,
+          "losses": 1
+        },
+        "joint": {
+          "gains": [],
+          "losses": []
+        }
+      },
+      "score_file": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/inference_outputs/physical_content_68038/step0400_original_fixed40_controls16_seed42/controls/parallel_fusion/videophy40/scores.json"
+    },
+    "reasoning_swapped": {
+      "summary": {
+        "count": 16,
+        "sa_mean": 3.0625,
+        "pc_mean": 3.75,
+        "sa_pass_rate": 0.3125,
+        "pc_pass_rate": 0.5,
+        "joint_pass_count": 5,
+        "joint_pass_rate": 0.3125
+      },
+      "normal_minus_control": {
+        "sa": {
+          "mean_change": 0,
+          "wins": 0,
+          "ties": 16,
+          "losses": 0
+        },
+        "pc": {
+          "mean_change": 0.0625,
+          "wins": 2,
+          "ties": 13,
+          "losses": 1
+        },
+        "joint": {
+          "gains": [],
+          "losses": []
+        }
+      },
+      "score_file": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/inference_outputs/physical_content_68038/step0400_original_fixed40_controls16_seed42/controls/reasoning_swapped/videophy40/scores.json"
+    },
+    "words_only_memory": {
+      "summary": {
+        "count": 16,
+        "sa_mean": 3.125,
+        "pc_mean": 3.875,
+        "sa_pass_rate": 0.375,
+        "pc_pass_rate": 0.6875,
+        "joint_pass_count": 6,
+        "joint_pass_rate": 0.375
+      },
+      "normal_minus_control": {
+        "sa": {
+          "mean_change": -0.0625,
+          "wins": 0,
+          "ties": 15,
+          "losses": 1
+        },
+        "pc": {
+          "mean_change": -0.0625,
+          "wins": 0,
+          "ties": 15,
+          "losses": 1
+        },
+        "joint": {
+          "gains": [],
+          "losses": [
+            "VP015"
+          ]
+        }
+      },
+      "score_file": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/inference_outputs/physical_content_68038/step0400_original_fixed40_controls16_seed42/controls/words_only_memory/videophy40/scores.json"
+    }
+  },
+  "pending_control_modes": [],
+  "controls_complete": true,
+  "extra20_full60": "deferred_after_failed_main40_review_not_completed",
+  "cross_benchmarks": "deferred_after_failed_main40_review_not_completed",
+  "next_version": "R15G only after complete R15F paired-control and mechanism review; not designed or submitted",
+  "candidate_accepted": false,
+  "goal_achieved": false,
+  "condition_representation_audit": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/reports/condition_representation16.json",
+  "representation_finding": {
+    "fixed16_shared_C_token_cosine": 0.4036839921027422,
+    "fixed16_Q_update_token_cosine": 0.9979596138000488,
+    "fixed16_projected_update_token_cosine": 0.9967490434646606,
+    "projected_update_centered_energy": 0.0035213607479818165,
+    "interpretation": "Shared C retains variation from frozen native word anchors, while learned Q updates and projected corrections remain strongly common-direction. This does not establish that the common correction is useless; its benefit/harm requires the paired generated controls. Training-sample C cosine and fixed16 component cosines are distinct measurements."
+  },
+  "supplemental_visual_reviews": [
+    "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/reports/prior_stripe_failure_cases/VP008.json",
+    "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/reports/prior_stripe_failure_cases/VP021.json",
+    "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/reports/score_gain_cases/VP018.json",
+    "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/reports/score_gain_cases/VP022.json"
+  ],
+  "q_update_source_audit": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/reports/q_update_source_audit16.json",
+  "request_reasoning_alignment_audit": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/reports/request_reasoning_alignment5.json",
+  "all_seven_controls_visual_review": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/reports/control_visual_review.json",
+  "updated_utc": "2026-11-07T02:44:37.429193+00:00",
+  "execution_probe": {
+    "experiment": 68075,
+    "trial": 69462,
+    "purpose": "Locate loss of condition information and interference with native conditional responses",
+    "status": "running_RTX6000"
+  }
+}

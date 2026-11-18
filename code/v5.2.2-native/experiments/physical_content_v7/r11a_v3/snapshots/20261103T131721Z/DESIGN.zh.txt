@@ -1,0 +1,46 @@
+R11A-rework：R10A分阶段训练与API数据/输入reasoning更新
+2026-11-03。旧失败67214和未提交的120444/125840双路准备版均保留，不继承其项目权重。
+
+核心结构
+原始请求 → 原生T5 → Wan原有文本cross-attention。
+首帧+请求 → qwen3.8-flash生成文本reasoning → 本地冻结Qwen3-VL4096编码 → Q256两轮物理enhancement → 全宽C → R10A并行physical fusion。
+物理Q/C及fusion的参数集合、完整前向计算与R10A一致。Wan保留原self-attention/FFN LoRA；官方基础权重及原生文本Q/K/V/O冻结。移除失败版新增文本适配和post-text融合，不新增语义网络或可学习参数。
+
+明确的两阶段，共400步
+第一阶段：第1–128步，完整物理路径生成。固定Wan LoRA，仅更新enhancement/fusion，让新物理模块先适配预训练Wan。
+第二阶段：第129–400步，继续同一完整物理路径。开放原有self-attention/FFN LoRA，与enhancement/fusion联合训练；官方基础权重和文本Q/K/V/O仍冻结。
+每个样本只有一次生成前向/反向，累积4条样本后更新一次。没有独立native训练路径，没有两路梯度平均，也没有额外阶段。
+两个阶段均使用真实视频生成损失：0.8全局FM+0.2多尺度高误差区域项，加routing-only原生词辅助。辅助系数前32步升到0.03，400步内不衰减；执行C无词对齐约束。
+相同seed42、400updates/1600samples、sigma/noise/drop计划；物理400次更新，Wan LoRA272次，所有组LR、warmup、裁剪和损失设置均与原R10A一致。
+从官方基础权重及新数据训练输入拟合的接口新初始化。只恢复本次运行自身checkpoint，禁止继承旧项目权重/优化器。
+
+为何采用这版
+用户明确拒绝同时双路/梯度平均，要求分阶段。恢复R10A已实测的128+272分工，避免把尚无实证的梯度隔离或混合当成保护SA/PC的保证。
+旧R10A同40/60 PC3.750/3.833333，SA2.825/2.750，Joint7/9，具有需保留的PC收益，但未满足完整目标。
+现有固定16：R10A no_c与native400的SA16/16逐例一致，均3.25；开启物理后SA3.0625，0胜13平3负，同时PC3.625→3.875。该子集更直接指向物理条件/注入干扰，不支持把低SA简单归因于LoRA先冻结。证据r11_r12/reports/r10a_native_vs_physical16.json。
+保留128+272是为本轮数据/推理干预保留可比较参照，不是声称128最优；FM在固定Wan参数时仍能经Wan向物理模块传导梯度。
+本版的实际更新是API修订后的训练文本、输入reasoning、对应本地特征与推理reasoning；生成架构及训练阶段保持R10A。不得称其为已证明的新架构改进，也不把结果归因于不存在的额外语义模块。
+这也提供用户要求的“原R10A架构应用API更新数据/推理”的比较，无需再重复提交同一配方。历史原数据R10A继续作为参照。
+数据改变了监督内容及条件，可能改善请求/视频一致性，但不保证PC、SA或Joint必然提高。用完整40/60与固定16配对、实际视频判断；失败后才基于证据决定下一授权版本。
+
+API数据与推理
+训练必须等待data_revision_qwen38/runs/20261103_dataset/encoded/readiness.json确认1600条/3200正负本地上下文以及新接口拟合完成。
+训练Teacher显式读取新caption对应的新T5/Qwen/词目标缓存；不静默回退旧缓存。历史WISA和失败R11A不修改。
+固定60推理用原始公共首帧和原始benchmark请求，API分别生成正请求/空请求reasoning，120次预计成功调用，重复运行复用已完成文本。
+本地Qwen3-VL保持同一模板、4096隐藏维度，恢复request/reasoning词特征；不调用API embeddings。原T5提示词、初始latent、seed、采样条件全部沿用。
+同一GPU编码进程只加载一次Qwen，完成60正负输入及16例空/无关reasoning特征后释放，再训练Wan。无模型下载。
+无关控制保留本图/本请求/本关系数，供体只换reasoning文本；优先同关系数的其他benchmark输入，罕见关系数使用已有训练输入reasoning，不看评分。均值C保留每臂自身关系数prior并披露幅度变化。
+
+评测/简化依据
+训练到400，保留128/250/400检查点，不增加中途评测。
+先原40，再固定额外20并聚合60；报告5分均分和>=4的SA/PC/Joint通过率。gamma5/nativeCFG5、seed42、50Euler、shift5。
+固定16五项：no_c、reasoning_swapped、empty_reasoning、global_train_mean、anchor_routing。正常16复用原40。
+anchor_routing保留完整执行C给V，K只用输入锚点，定位学习寻址是否有净收益。它不是anchor_only，也不用于声称该结构已可删；后续凭结果简化。
+选择须保持R10A PC40/60至少3.750/3.833并争取更高，SA>3.25、Joint超过R1的10/40和13/60，同时复看过程与视觉伪影。
+新数据+新训练法对旧模型的比较是整体方案比较；不能全归因于架构，后续同数据R10A参照仍应考虑。
+
+执行
+单slot blk-96g，仅实际RTX PRO6000/RTX6000 Blackwell；非RTX/H100在模型加载前退出86。
+代码检查完成后冻结snapshot/YAML；独立manager每1800秒读取既有数据准备状态，全部ready后准备benchmark API文本并提交本候选。
+不改变现有预处理manager和失败R11A的已声明评测。不自动训练R11B，不超过R12B。
+最终质量以实测为准；功能验证见verification.json，提交状态见prepared.json及submission_manager/status.json。

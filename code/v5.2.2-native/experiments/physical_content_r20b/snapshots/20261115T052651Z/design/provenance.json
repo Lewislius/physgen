@@ -1,0 +1,42 @@
+{
+  "created_utc": "2026-11-15T05:14:29.731466+00:00",
+  "status": "finalized_ready_for_training",
+  "previous_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20",
+  "A_checkpoints_used_for_training": false,
+  "candidate_tasks": [
+    "R20BT",
+    "R20BI"
+  ],
+  "goal_maxima": [
+    "R20CT",
+    "R20CI"
+  ],
+  "training_updates": 400,
+  "reference": "https://github.com/zijunwa/ProPhy/blob/main/prophy/models/transformer_wan.py",
+  "reviewed_evidence": [
+    "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20/review_at_paired/review.json",
+    "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20/review_ai_paired/review.json",
+    "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20/reports/at_fixed16_content_review.json",
+    "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20/reports/ai_fixed16_content_review.json"
+  ],
+  "architecture": "Full spatial-temporal physical video stream initialized from first five official Wan blocks, frozen original caption attention, independent C reader, zero-initialized fullwidth output hints to native Wan. No relation-slot pooling, no native FFN rewrite, no conditional/unconditional block difference.",
+  "task_reading": {
+    "BT": "direct C only, based on own AT paired16",
+    "BI": "direct and caption-associated C, based on own AI paired16"
+  },
+  "training_losses": "unchanged FM.8/tail.2 + route-source fidelity;128physical/272joint; no new physical label/constraint",
+  "quality_improved": false,
+  "differences_from_failed_designs": {
+    "R20A": "A adds per-position language-derived messages directly to the main video state. B first evolves a separate full video grid with pretrained self-attention, frozen caption reads, C reads and FFN; its learned fullwidth hints enter intact main blocks.",
+    "R19CT/EI": "Those pool video into relation slots and alter main FFN activations. B retains every native T/H/W position and original3D RoPE, evolves video states persistently, and leaves main FFN execution intact.",
+    "R19BI": "BI uses B(h+physical)-B(h) differences of video blocks. B has a persistent independent video stream and learned output maps, without subtracting two nonlinear block outputs.",
+    "R19BT": "No learned semantic attention copy or MoE is added. Both original and copied caption Q/K/V/O are frozen; the C reader is separately trainable."
+  },
+  "limits": [
+    "Architecture and generated quality remain unverified until actual400/main60/paired16 results.",
+    "Some shared I2V input images conflict with the request; preserve them for matched protocol and report separately.",
+    "The external ProPhy architecture has different supervision/budget; do not attribute its published gains to this adaptation."
+  ],
+  "finalized_utc": "2026-11-15T05:26:51.664678+00:00",
+  "full_gpu_validation_pending": true
+}

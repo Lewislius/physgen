@@ -1,0 +1,530 @@
+{
+  "finalized_utc": "2026-11-17T03:30:47.784533+00:00",
+  "experiment": 70506,
+  "trial": 72294,
+  "state": "STATE_COMPLETED",
+  "formal_updates": 400,
+  "all_declared_evaluations_complete": true,
+  "goal_met": false,
+  "comparison": {
+    "FT": {
+      "40": {
+        "n": 40,
+        "SA": 3.225,
+        "PC": 3.625,
+        "Joint": 9,
+        "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f/inference_outputs/r20ft_grounded_physical_response400/step0400_seed42/videophy40/scores.json"
+      },
+      "60": {
+        "n": 60,
+        "SA": 3.0833333333333335,
+        "PC": 3.7,
+        "Joint": 13,
+        "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f/inference_outputs/r20ft_grounded_physical_response400/step0400_seed42/full60/videophy60/scores.json"
+      }
+    },
+    "GT": {
+      "40": {
+        "n": 40,
+        "SA": 3.1,
+        "PC": 3.75,
+        "Joint": 9,
+        "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20g/inference_outputs/r20gt_source_local_execution400/step0400_seed42/videophy40/scores.json"
+      },
+      "60": {
+        "n": 60,
+        "SA": 3.066666666666667,
+        "PC": 3.783333333333333,
+        "Joint": 15,
+        "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20g/inference_outputs/r20gt_source_local_execution400/step0400_seed42/full60/videophy60/scores.json"
+      }
+    },
+    "HT": {
+      "40": {
+        "n": 40,
+        "SA": 3.075,
+        "PC": 3.625,
+        "Joint": 11,
+        "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20h/inference_outputs/r20ht_state_conditioned_execution400/step0400_seed42/videophy40/scores.json"
+      },
+      "60": {
+        "n": 60,
+        "SA": 3.0,
+        "PC": 3.716666666666667,
+        "Joint": 16,
+        "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20h/inference_outputs/r20ht_state_conditioned_execution400/step0400_seed42/full60/videophy60/scores.json"
+      }
+    },
+    "native_official": {
+      "40": {
+        "n": 40,
+        "SA": 2.975,
+        "PC": 3.625,
+        "Joint": 8,
+        "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_wan_t2v/outputs/native_t2v_69505/videophy40/scores.json"
+      },
+      "60": {
+        "n": 60,
+        "SA": 2.9,
+        "PC": 3.716666666666667,
+        "Joint": 12,
+        "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_wan_t2v/outputs/native_t2v_69505/full60/videophy60/scores.json"
+      }
+    }
+  },
+  "paired16": {
+    "task": "t2v",
+    "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20h/runs/r20ht_state_conditioned_execution400/step0400.pt",
+    "cases": [
+      "VP002",
+      "VP004",
+      "VP005",
+      "VP009",
+      "VP010",
+      "VP013",
+      "VP015",
+      "VP016",
+      "VP017",
+      "VP018",
+      "VP024",
+      "VP025",
+      "VP026",
+      "VP027",
+      "VP034",
+      "VP038"
+    ],
+    "normal": {
+      "count": 16,
+      "sa": 3.1875,
+      "pc": 3.9375,
+      "sa_pass_rate": 0.375,
+      "pc_pass_rate": 0.6875,
+      "joint": 6,
+      "joint_pass_rate": 0.375
+    },
+    "controls": {
+      "no_c": {
+        "count": 16,
+        "sa": 3.125,
+        "pc": 3.75,
+        "sa_pass_rate": 0.1875,
+        "pc_pass_rate": 0.625,
+        "joint": 3,
+        "joint_pass_rate": 0.1875,
+        "differences": {
+          "sa": {
+            "normal_minus_control": 0.0625,
+            "normal_wins": 4,
+            "ties": 9,
+            "normal_losses": 3
+          },
+          "pc": {
+            "normal_minus_control": 0.1875,
+            "normal_wins": 4,
+            "ties": 10,
+            "normal_losses": 2
+          }
+        },
+        "paired_cases": [
+          {
+            "id": "VP002",
+            "normal_sa": 3,
+            "normal_pc": 4,
+            "control_sa": 3,
+            "control_pc": 4
+          },
+          {
+            "id": "VP004",
+            "normal_sa": 2,
+            "normal_pc": 4,
+            "control_sa": 3,
+            "control_pc": 3
+          },
+          {
+            "id": "VP005",
+            "normal_sa": 3,
+            "normal_pc": 3,
+            "control_sa": 3,
+            "control_pc": 3
+          },
+          {
+            "id": "VP009",
+            "normal_sa": 2,
+            "normal_pc": 5,
+            "control_sa": 3,
+            "control_pc": 3
+          },
+          {
+            "id": "VP010",
+            "normal_sa": 4,
+            "normal_pc": 4,
+            "control_sa": 3,
+            "control_pc": 4
+          },
+          {
+            "id": "VP013",
+            "normal_sa": 3,
+            "normal_pc": 3,
+            "control_sa": 2,
+            "control_pc": 4
+          },
+          {
+            "id": "VP015",
+            "normal_sa": 4,
+            "normal_pc": 4,
+            "control_sa": 3,
+            "control_pc": 3
+          },
+          {
+            "id": "VP016",
+            "normal_sa": 4,
+            "normal_pc": 5,
+            "control_sa": 4,
+            "control_pc": 4
+          },
+          {
+            "id": "VP017",
+            "normal_sa": 3,
+            "normal_pc": 4,
+            "control_sa": 3,
+            "control_pc": 4
+          },
+          {
+            "id": "VP018",
+            "normal_sa": 4,
+            "normal_pc": 4,
+            "control_sa": 3,
+            "control_pc": 4
+          },
+          {
+            "id": "VP024",
+            "normal_sa": 3,
+            "normal_pc": 3,
+            "control_sa": 3,
+            "control_pc": 3
+          },
+          {
+            "id": "VP025",
+            "normal_sa": 3,
+            "normal_pc": 3,
+            "control_sa": 3,
+            "control_pc": 4
+          },
+          {
+            "id": "VP026",
+            "normal_sa": 2,
+            "normal_pc": 3,
+            "control_sa": 3,
+            "control_pc": 3
+          },
+          {
+            "id": "VP027",
+            "normal_sa": 4,
+            "normal_pc": 5,
+            "control_sa": 4,
+            "control_pc": 5
+          },
+          {
+            "id": "VP034",
+            "normal_sa": 3,
+            "normal_pc": 5,
+            "control_sa": 3,
+            "control_pc": 5
+          },
+          {
+            "id": "VP038",
+            "normal_sa": 4,
+            "normal_pc": 4,
+            "control_sa": 4,
+            "control_pc": 4
+          }
+        ],
+        "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20h/inference_outputs/r20ht_state_conditioned_execution400/step0400_seed42/controls/no_c/videophy40/scores.json"
+      },
+      "physical_features_off": {
+        "count": 16,
+        "sa": 3.1875,
+        "pc": 3.875,
+        "sa_pass_rate": 0.3125,
+        "pc_pass_rate": 0.75,
+        "joint": 5,
+        "joint_pass_rate": 0.3125,
+        "differences": {
+          "sa": {
+            "normal_minus_control": 0.0,
+            "normal_wins": 1,
+            "ties": 14,
+            "normal_losses": 1
+          },
+          "pc": {
+            "normal_minus_control": 0.0625,
+            "normal_wins": 2,
+            "ties": 13,
+            "normal_losses": 1
+          }
+        },
+        "paired_cases": [
+          {
+            "id": "VP002",
+            "normal_sa": 3,
+            "normal_pc": 4,
+            "control_sa": 3,
+            "control_pc": 4
+          },
+          {
+            "id": "VP004",
+            "normal_sa": 2,
+            "normal_pc": 4,
+            "control_sa": 2,
+            "control_pc": 4
+          },
+          {
+            "id": "VP005",
+            "normal_sa": 3,
+            "normal_pc": 3,
+            "control_sa": 3,
+            "control_pc": 3
+          },
+          {
+            "id": "VP009",
+            "normal_sa": 2,
+            "normal_pc": 5,
+            "control_sa": 2,
+            "control_pc": 4
+          },
+          {
+            "id": "VP010",
+            "normal_sa": 4,
+            "normal_pc": 4,
+            "control_sa": 4,
+            "control_pc": 4
+          },
+          {
+            "id": "VP013",
+            "normal_sa": 3,
+            "normal_pc": 3,
+            "control_sa": 3,
+            "control_pc": 3
+          },
+          {
+            "id": "VP015",
+            "normal_sa": 4,
+            "normal_pc": 4,
+            "control_sa": 3,
+            "control_pc": 4
+          },
+          {
+            "id": "VP016",
+            "normal_sa": 4,
+            "normal_pc": 5,
+            "control_sa": 4,
+            "control_pc": 4
+          },
+          {
+            "id": "VP017",
+            "normal_sa": 3,
+            "normal_pc": 4,
+            "control_sa": 3,
+            "control_pc": 4
+          },
+          {
+            "id": "VP018",
+            "normal_sa": 4,
+            "normal_pc": 4,
+            "control_sa": 4,
+            "control_pc": 4
+          },
+          {
+            "id": "VP024",
+            "normal_sa": 3,
+            "normal_pc": 3,
+            "control_sa": 3,
+            "control_pc": 4
+          },
+          {
+            "id": "VP025",
+            "normal_sa": 3,
+            "normal_pc": 3,
+            "control_sa": 3,
+            "control_pc": 3
+          },
+          {
+            "id": "VP026",
+            "normal_sa": 2,
+            "normal_pc": 3,
+            "control_sa": 3,
+            "control_pc": 3
+          },
+          {
+            "id": "VP027",
+            "normal_sa": 4,
+            "normal_pc": 5,
+            "control_sa": 4,
+            "control_pc": 5
+          },
+          {
+            "id": "VP034",
+            "normal_sa": 3,
+            "normal_pc": 5,
+            "control_sa": 3,
+            "control_pc": 5
+          },
+          {
+            "id": "VP038",
+            "normal_sa": 4,
+            "normal_pc": 4,
+            "control_sa": 4,
+            "control_pc": 4
+          }
+        ],
+        "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20h/inference_outputs/r20ht_state_conditioned_execution400/step0400_seed42/controls/physical_features_off/videophy40/scores.json"
+      },
+      "reasoning_swapped": {
+        "count": 16,
+        "sa": 3.1875,
+        "pc": 3.75,
+        "sa_pass_rate": 0.25,
+        "pc_pass_rate": 0.625,
+        "joint": 4,
+        "joint_pass_rate": 0.25,
+        "differences": {
+          "sa": {
+            "normal_minus_control": 0.0,
+            "normal_wins": 2,
+            "ties": 12,
+            "normal_losses": 2
+          },
+          "pc": {
+            "normal_minus_control": 0.1875,
+            "normal_wins": 3,
+            "ties": 13,
+            "normal_losses": 0
+          }
+        },
+        "paired_cases": [
+          {
+            "id": "VP002",
+            "normal_sa": 3,
+            "normal_pc": 4,
+            "control_sa": 3,
+            "control_pc": 4
+          },
+          {
+            "id": "VP004",
+            "normal_sa": 2,
+            "normal_pc": 4,
+            "control_sa": 2,
+            "control_pc": 4
+          },
+          {
+            "id": "VP005",
+            "normal_sa": 3,
+            "normal_pc": 3,
+            "control_sa": 3,
+            "control_pc": 3
+          },
+          {
+            "id": "VP009",
+            "normal_sa": 2,
+            "normal_pc": 5,
+            "control_sa": 3,
+            "control_pc": 4
+          },
+          {
+            "id": "VP010",
+            "normal_sa": 4,
+            "normal_pc": 4,
+            "control_sa": 4,
+            "control_pc": 4
+          },
+          {
+            "id": "VP013",
+            "normal_sa": 3,
+            "normal_pc": 3,
+            "control_sa": 3,
+            "control_pc": 3
+          },
+          {
+            "id": "VP015",
+            "normal_sa": 4,
+            "normal_pc": 4,
+            "control_sa": 3,
+            "control_pc": 4
+          },
+          {
+            "id": "VP016",
+            "normal_sa": 4,
+            "normal_pc": 5,
+            "control_sa": 4,
+            "control_pc": 4
+          },
+          {
+            "id": "VP017",
+            "normal_sa": 3,
+            "normal_pc": 4,
+            "control_sa": 3,
+            "control_pc": 4
+          },
+          {
+            "id": "VP018",
+            "normal_sa": 4,
+            "normal_pc": 4,
+            "control_sa": 3,
+            "control_pc": 3
+          },
+          {
+            "id": "VP024",
+            "normal_sa": 3,
+            "normal_pc": 3,
+            "control_sa": 3,
+            "control_pc": 3
+          },
+          {
+            "id": "VP025",
+            "normal_sa": 3,
+            "normal_pc": 3,
+            "control_sa": 3,
+            "control_pc": 3
+          },
+          {
+            "id": "VP026",
+            "normal_sa": 2,
+            "normal_pc": 3,
+            "control_sa": 3,
+            "control_pc": 3
+          },
+          {
+            "id": "VP027",
+            "normal_sa": 4,
+            "normal_pc": 5,
+            "control_sa": 4,
+            "control_pc": 5
+          },
+          {
+            "id": "VP034",
+            "normal_sa": 3,
+            "normal_pc": 5,
+            "control_sa": 3,
+            "control_pc": 5
+          },
+          {
+            "id": "VP038",
+            "normal_sa": 4,
+            "normal_pc": 4,
+            "control_sa": 4,
+            "control_pc": 4
+          }
+        ],
+        "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20h/inference_outputs/r20ht_state_conditioned_execution400/step0400_seed42/controls/reasoning_swapped/videophy40/scores.json"
+      }
+    },
+    "interpretation": "same-checkpoint inference interventions, not independently retrained architectures"
+  },
+  "training_execution_summary": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20h/reports/training_execution_summary.json",
+  "visual_review_scope": "60 main videos x5 sampled frames, selected paired noC/feature-off/wrong-condition frames; not continuous-motion acceptance",
+  "report": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20h/RESULTS.zh.txt",
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20h/runs/r20ht_state_conditioned_execution400/step0400.pt",
+  "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20h/snapshots/20261116T213719Z",
+  "conclusion": "Joint rises modestly versusGT but SA/PC fall. Physical conditioning has partial measured benefits; new FFN execution gains are small and semantic/structural failures remain. Goals unmet; no further version authorized.",
+  "native_comparison": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20h/reports/ht_native_comparison.json"
+}

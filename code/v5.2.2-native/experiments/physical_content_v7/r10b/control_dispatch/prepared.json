@@ -1,0 +1,140 @@
+{
+  "prepared_utc": "2026-11-01T05:50:47.326847+00:00",
+  "status": "all_evaluations_complete_paused_by_user",
+  "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_execution_r10b/control_dispatch/snapshots/20261101T055047Z",
+  "inference_snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_execution_r10b/snapshots/20261101T054248Z",
+  "training_run": "physical_content_67008",
+  "dispatch_groups": {
+    "mean_core16": {
+      "status": "superseded_by_core_only16_single_mean_retained_by_primary",
+      "modes": [
+        "global_train_mean",
+        "core_only"
+      ],
+      "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_execution_r10b/control_dispatch/submissions/mean_core16_20261101T055047Z.yaml",
+      "empty_context": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_execution_r10b/control_dispatch/submission_context",
+      "cases_each": 16,
+      "checkpoint_step": 400,
+      "additional_cases": 0,
+      "additional_seeds": 0,
+      "describe_only_passed": true
+    },
+    "anchor_off16": {
+      "status": "left_to_primary_no_group_dispatch",
+      "modes": [
+        "anchor_only",
+        "no_c"
+      ],
+      "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_execution_r10b/control_dispatch/submissions/anchor_off16_20261101T055047Z.yaml",
+      "empty_context": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_execution_r10b/control_dispatch/submission_context",
+      "cases_each": 16,
+      "checkpoint_step": 400,
+      "additional_cases": 0,
+      "additional_seeds": 0,
+      "describe_only_passed": true
+    },
+    "core_only16_single": {
+      "status": "completed_and_published",
+      "modes": [
+        "core_only"
+      ],
+      "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_execution_r10b/control_dispatch/submissions/core_only16_single_20261101T090329Z.yaml",
+      "empty_context": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_execution_r10b/control_dispatch/submission_context",
+      "cases_each": 16,
+      "checkpoint_step": 400,
+      "additional_cases": 0,
+      "additional_seeds": 0,
+      "wrapper_unchanged": "20261101T055047Z",
+      "reason": "One late control per worker; avoid the observed slower helper overlapping primary with a two-mode group.",
+      "experiment_id": 67034,
+      "trial_id": 68421,
+      "describe_only_passed": true,
+      "verified_utc": "2026-11-01T09:32:10.476047+00:00",
+      "independently_verified_state": "STATE_COMPLETED"
+    },
+    "no_c16_single": {
+      "status": "completed_unpublished_original_owner_started",
+      "modes": [
+        "no_c"
+      ],
+      "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_execution_r10b/control_dispatch/submissions/no_c16_single_20261101T093210Z.yaml",
+      "empty_context": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_execution_r10b/control_dispatch/submission_context",
+      "cases_each": 16,
+      "checkpoint_step": 400,
+      "additional_cases": 0,
+      "additional_seeds": 0,
+      "wrapper_unchanged": "20261101T055047Z",
+      "reason": "Original core helper completed; two actual RTX slots free. Each single late mode should finish before original owner, which still has empty and mean16 first. No mode already started.",
+      "describe_only_passed": true,
+      "attempts": [
+        {
+          "experiment_id": 67033,
+          "trial_id": 68420,
+          "state": "STATE_ERROR",
+          "actual_gpu": "NVIDIA H100",
+          "before_model_load": true
+        }
+      ],
+      "next_action": "Preserve unscored duplicate output; canonical no_c scores are from primary67008.",
+      "experiment_id": 67036,
+      "trial_id": 68423,
+      "verified_utc": "2026-11-01T09:34:56.510875+00:00",
+      "actual_gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "independently_verified_state": "STATE_COMPLETED"
+    },
+    "anchor_only16_single": {
+      "status": "completed_and_published",
+      "modes": [
+        "anchor_only"
+      ],
+      "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_execution_r10b/control_dispatch/submissions/anchor_only16_single_20261101T093210Z.yaml",
+      "empty_context": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_execution_r10b/control_dispatch/submission_context",
+      "cases_each": 16,
+      "checkpoint_step": 400,
+      "additional_cases": 0,
+      "additional_seeds": 0,
+      "wrapper_unchanged": "20261101T055047Z",
+      "reason": "Original core helper completed; two actual RTX slots free. Each single late mode should finish before original owner, which still has empty and mean16 first. No mode already started.",
+      "experiment_id": 67035,
+      "trial_id": 68422,
+      "verified_utc": "2026-11-01T09:34:56.510875+00:00",
+      "actual_gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "independently_verified_state": "STATE_COMPLETED"
+    }
+  },
+  "dispatch_condition": "Only after own400 fully saved and actual freeRTX. Check measured remaining primary headstart; main retains original40+20 and unrelated/empty16. Do not dispatch a mode already started/published.",
+  "publication": "Exact frozen inference and same checkpoint/gamma5/seed42; exclusive completed-mode publication; original runner reuses outputs. No additional generation cases.",
+  "attempts": [
+    {
+      "group": "no_c16_single",
+      "experiment_id": 67033,
+      "trial_id": 68420,
+      "state": "STATE_ERROR",
+      "gpu": "H100_rejected"
+    },
+    {
+      "group": "core_only16_single",
+      "experiment_id": 67034,
+      "trial_id": 68421,
+      "state": "STATE_RUNNING",
+      "gpu": "RTX_PRO6000_accepted"
+    },
+    {
+      "group": "anchor_only16_single",
+      "experiment_id": 67035,
+      "trial_id": 68422,
+      "state": "STATE_RUNNING",
+      "gpu": "RTX_PRO6000_accepted"
+    },
+    {
+      "group": "no_c16_single",
+      "experiment_id": 67036,
+      "trial_id": 68423,
+      "state": "STATE_RUNNING",
+      "gpu": "RTX_PRO6000_accepted"
+    }
+  ],
+  "describe_only_passed": true,
+  "updated_utc": "2026-11-01T13:49:25.586548+00:00",
+  "next_action": "No further dispatch; wait for user."
+}

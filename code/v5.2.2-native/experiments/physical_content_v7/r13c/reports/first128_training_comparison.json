@@ -1,0 +1,173 @@
+{
+  "utc": "2026-11-05T04:28:30.054024+00:00",
+  "status": "first128_complete",
+  "sources": {
+    "R10A": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/execution_value_r10/runs/physical_content_67003/train.jsonl",
+    "R13B": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/runs/physical_content_67610/train.jsonl",
+    "R13C": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/coupled_attention_r13c/runs/physical_content_67682/train.jsonl"
+  },
+  "matched_microbatches": 512,
+  "matched_fields": [
+    "sample",
+    "sigma",
+    "text_dropped",
+    "aux_coefficient"
+  ],
+  "windows": [
+    {
+      "steps": [
+        1,
+        32
+      ],
+      "matched_positive_microbatches": 121,
+      "models": {
+        "R10A": {
+          "total_execution_c_token_cosine": 0.3976240461030282,
+          "token_centered_energy_fraction": 0.6165985590662838,
+          "cosine_at_least_0_9": 0
+        },
+        "R13B": {
+          "total_execution_c_token_cosine": 0.39135153172922527,
+          "token_centered_energy_fraction": 0.6229044713757255,
+          "cosine_at_least_0_9": 0
+        },
+        "R13C": {
+          "total_execution_c_token_cosine": 0.6332099616281257,
+          "token_centered_energy_fraction": 0.37755392959787826,
+          "cosine_at_least_0_9": 2
+        }
+      }
+    },
+    {
+      "steps": [
+        33,
+        64
+      ],
+      "matched_positive_microbatches": 111,
+      "models": {
+        "R10A": {
+          "total_execution_c_token_cosine": 0.555558377423802,
+          "token_centered_energy_fraction": 0.45435989144686106,
+          "cosine_at_least_0_9": 0
+        },
+        "R13B": {
+          "total_execution_c_token_cosine": 0.6434583862622579,
+          "token_centered_energy_fraction": 0.3605206299338255,
+          "cosine_at_least_0_9": 0
+        },
+        "R13C": {
+          "total_execution_c_token_cosine": 0.718467393168458,
+          "token_centered_energy_fraction": 0.291393448372145,
+          "cosine_at_least_0_9": 0
+        }
+      }
+    },
+    {
+      "steps": [
+        65,
+        96
+      ],
+      "matched_positive_microbatches": 115,
+      "models": {
+        "R10A": {
+          "total_execution_c_token_cosine": 0.8135158427383589,
+          "token_centered_energy_fraction": 0.19170978516340256,
+          "cosine_at_least_0_9": 22
+        },
+        "R13B": {
+          "total_execution_c_token_cosine": 0.7935569799464682,
+          "token_centered_energy_fraction": 0.21346645837892655,
+          "cosine_at_least_0_9": 28
+        },
+        "R13C": {
+          "total_execution_c_token_cosine": 0.8373755353948344,
+          "token_centered_energy_fraction": 0.16832042038440703,
+          "cosine_at_least_0_9": 51
+        }
+      }
+    },
+    {
+      "steps": [
+        97,
+        128
+      ],
+      "matched_positive_microbatches": 112,
+      "models": {
+        "R10A": {
+          "total_execution_c_token_cosine": 0.9370595669107777,
+          "token_centered_energy_fraction": 0.06436252846781697,
+          "cosine_at_least_0_9": 102
+        },
+        "R13B": {
+          "total_execution_c_token_cosine": 0.9143388548067638,
+          "token_centered_energy_fraction": 0.08753177832945117,
+          "cosine_at_least_0_9": 94
+        },
+        "R13C": {
+          "total_execution_c_token_cosine": 0.9138024231152875,
+          "token_centered_energy_fraction": 0.08858189934731595,
+          "cosine_at_least_0_9": 89
+        }
+      }
+    }
+  ],
+  "phases": {
+    "R10A": {
+      "interface_updates": 128,
+      "joint_updates": 0,
+      "gradient_medians_last32": {
+        "enhancement": 0.12268823012709618,
+        "fusion_read": 0.00871898839250207,
+        "fusion_write": 0.10561248660087585,
+        "wan_lora": 0.0
+      },
+      "clip_events_last32": {
+        "enhancement": 2,
+        "fusion_read": 0,
+        "fusion_write": 2,
+        "wan_lora": 0
+      }
+    },
+    "R13B": {
+      "interface_updates": 128,
+      "joint_updates": 0,
+      "gradient_medians_last32": {
+        "enhancement": 0.14322661608457565,
+        "fusion_read": 0.005370176397264004,
+        "fusion_write": 0.04704676568508148,
+        "wan_lora": 0.0
+      },
+      "clip_events_last32": {
+        "enhancement": 3,
+        "fusion_read": 0,
+        "fusion_write": 0,
+        "wan_lora": 0
+      }
+    },
+    "R13C": {
+      "interface_updates": 32,
+      "joint_updates": 96,
+      "gradient_medians_last32": {
+        "enhancement": 0.032301975414156914,
+        "fusion_read": 0.022573809139430523,
+        "fusion_write": 0.03987560793757439,
+        "wan_lora": 0.007566895568743348
+      },
+      "clip_events_last32": {
+        "enhancement": 0,
+        "fusion_read": 0,
+        "fusion_write": 0,
+        "wan_lora": 0
+      }
+    }
+  },
+  "scope": "Within-sample token cosine of total execution C, not cross-sample similarity or pre-projection correction. Identical positive microbatches compared across revisions inside each window; samples differ across windows. R13C changes both fusion architecture and phase allocation, so these data cannot isolate either effect. C statistics and gradient magnitudes are not generated-video quality evidence.",
+  "quality_established": false,
+  "interpretation": {
+    "total_execution_c": "The matched positive97..128 window is R13C0.913802 versus R13B0.914339, essentially unchanged. No evidence yet that the combined new architecture/earlier joint phase solved within-sample C-token convergence.",
+    "first32": "R13C0.633210 versusR13B0.391352 even before the phase schedules diverge; the new Q/K-only operation changes representation learning early and does not automatically preserve more token differences.",
+    "gradients": "All last32 group clipping counts are zero; R13C nativeLoRA receives generation gradients and enhancement gradient median is lower than frozen-interface references. Gradient sizes do not establish generation quality.",
+    "attribution": "At97..128 both architecture and optimization phases differ. This comparison cannot identify a causal schedule effect or cross-sample C diversity.",
+    "next": "Complete the alreadydeclared own400 generation and paired reasoning/module controls. Do not count this statistic as a quality gain or assume longer training will fix it."
+  }
+}

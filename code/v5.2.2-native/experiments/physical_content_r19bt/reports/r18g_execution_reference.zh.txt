@@ -1,0 +1,38 @@
+R18G与AT/BT的执行位置核对（2026-11-13，BT评分待完成）
+
+同范式参考
+R18G为T2V、官方新初始化、400步；主40 SA2.975/PC3.725/Joint9，完整60 2.950/3.716667/13。
+同权重固定16：正常3.125/4.000/5；关闭条件FFN为3.0625/3.875/4；关闭物理为3.250/3.750/4。
+条件FFN对部署结果有正贡献，直接读取/写入与它的组合仍有SA不足。
+这些推理干预不等于分别重训；不能由rank64直接推断容量不足是根因。
+
+实际代码差异
+R18G：视频自注意力→原生文本更新＋直接物理写入→原生FFN。
+物理读取使用原生冻结文本Q；独立K/V、状态调制和writer可训练。
+在正在生成的原生FFN激活f上，另加 B[A(f)×R(norm(C读取))]，中间rank64，B零初始化。
+因此直接物理写入在同层就接受原生FFN处理，条件化修正使用同一份真实原生激活。
+
+AT：读取改为独立可训练物理Q；移除直接物理残差，C改变独立全宽FFN的输入，
+添加该FFN在有/无C输入偏移时的输出差，并使用原生噪声时间输出调制。
+这扩充了执行参数，但改变了直接写入和原生激活参与方式。AT完整40 PC低于G，不能用参数增加解释为改善。
+
+BT：恢复直接写入，并将输出差扩为独立完整视频块（视频自注意力、请求交叉注意力、FFN）。
+读取位置是当前原生块文本更新之后，物理块的有/无C两次执行则从原生块输入hidden出发；
+响应差加在原生块最终输出。该结构具有额外跨视频token交互，但不同于G在同层原生FFN内执行。
+独立请求分支只通过这两次执行的差影响输出；C写入为零时，该分支整体贡献亦为零。
+这是一项结构性质，不是已经证明的性能缺陷。它意味着“参数多、可以读请求”尚不足以证明语义错误能独立被纠正。
+
+对后续设计的约束来自证据而非保守回退
+要区分读取内容/位置问题、物理更新进入原生计算的位置问题、独立分支执行问题，不能统称粒度不足。
+值得研究物理信息如何调制已经携带请求和视频状态的原生生成特征，以及是否需要更丰富的条件执行能力。
+保留G中有配对收益的机制作为参照，不把简单恢复rank64或盲目增加rank/整块参数当作下一版答案。
+BT已有极暗画面及过程失败；先看own40/60与no-C、frozen-semantic、estimated-anchor等对照，再确定CT。
+I2V仍依据BI/CI自身及B400+I/R1/R9/R10A复盘，不能直接套用T2V结论。
+
+证据路径（相对于experiments）
+physics_content_v10_impl/physical_content/mechanisms.py（Mechanism2、ConditionedFFN）
+physics_content_v10_impl/physical_content/model.py（run_block）
+physics_content_v10_impl/inference_outputs/r18g_r19_controls16_seed42/paired_summary.json
+physical_content_r19/physical_content/executor.py
+physical_content_r19bt/physical_content/executor.py、physical_content/model.py
+physical_content_r19bt/reports/early_visual_review.json

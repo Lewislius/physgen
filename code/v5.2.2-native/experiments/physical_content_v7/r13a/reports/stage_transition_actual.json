@@ -1,0 +1,59 @@
+{
+  "verified_utc": "2026-11-04T18:38:59+00:00",
+  "experiment": 67598,
+  "trial": 68985,
+  "actual_gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+  "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_operator_r13a/runs/physical_content_67598/train.jsonl",
+  "stage_boundary": [
+    {
+      "time": 1793817374.3539815,
+      "step": 128,
+      "phase": "interface",
+      "cursor": 512,
+      "gradients": {
+        "enhancement": 0.1693999469280243,
+        "fusion_read": 0.025594618171453476,
+        "fusion_write": 0.08987323194742203,
+        "wan_lora": 0.0
+      },
+      "learning_rates": {
+        "enhancement": 5e-05,
+        "fusion_read": 2e-05,
+        "fusion_write": 3e-05,
+        "wan_lora": 0.0
+      },
+      "clip_scales": {
+        "enhancement": 1.0,
+        "fusion_read": 1.0,
+        "fusion_write": 1.0,
+        "wan_lora": 1.0
+      }
+    },
+    {
+      "time": 1793817459.0518682,
+      "step": 129,
+      "phase": "joint",
+      "cursor": 516,
+      "gradients": {
+        "enhancement": 0.11923723667860031,
+        "fusion_read": 0.03340781852602959,
+        "fusion_write": 0.12042084336280823,
+        "wan_lora": 0.0048186262138187885
+      },
+      "learning_rates": {
+        "enhancement": 5e-05,
+        "fusion_read": 2e-05,
+        "fusion_write": 3e-05,
+        "wan_lora": 1.5625e-07
+      },
+      "clip_scales": {
+        "enhancement": 1.0,
+        "fusion_read": 1.0,
+        "fusion_write": 1.0,
+        "wan_lora": 1.0
+      }
+    }
+  ],
+  "status": "actual_logged_stage_transition_verified",
+  "scope": "Real optimization records show expected frozen-to-joint LoRA transition and finite physical gradients. This is execution evidence, not generation-quality evidence."
+}

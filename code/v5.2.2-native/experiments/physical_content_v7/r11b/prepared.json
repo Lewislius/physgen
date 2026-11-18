@@ -1,0 +1,98 @@
+{
+  "candidate": "R11B-request-memory",
+  "utc": "2026-11-04T10:29:19.637165+00:00",
+  "status": "all_declared_evaluations_complete_rejected_quality",
+  "submitted": true,
+  "training_started": true,
+  "code_checks_passed": true,
+  "quality_status": "rejected_sa_joint_and_visual_failure",
+  "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_memory_r11b",
+  "training_stages": {
+    "interface": 128,
+    "joint": 272
+  },
+  "training_data_revision": "qwen38_wisa_reviewed_v1",
+  "maximum_version": "R13C",
+  "additional_parameters_planned": 106957824,
+  "required_before_submission": [],
+  "no_new_api_calls": true,
+  "no_model_downloads": true,
+  "code_tests": {
+    "real_tiny_wan": 8,
+    "input_report_contract": 5,
+    "ast_files": 26,
+    "runner_describe": true
+  },
+  "additional_parameters": 106957824,
+  "output_design": "full_width_3072_not_rank32",
+  "evidence_review": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/reports/api400_visual_review/review.json",
+  "target_priority": "PC first; SA/Joint must improve, preferably exceed R1/native400; preferred40 PC>=3.85 SA>=3.35",
+  "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_memory_r11b/snapshots/20261104T044513Z",
+  "config": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_memory_r11b/snapshots/20261104T044513Z/configs/physical_content.yaml",
+  "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_memory_r11b/submissions/r11b_request_memory_20261104T044513Z.yaml",
+  "submission_context": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_memory_r11b/submissions/empty_context",
+  "dispatch": "direct det; no manager/observer",
+  "control_modes": [
+    "no_c",
+    "request_memory_off",
+    "request_memory_swapped",
+    "reasoning_swapped",
+    "empty_reasoning",
+    "global_train_mean",
+    "anchor_routing"
+  ],
+  "main_cases": 40,
+  "extended_cases": 60,
+  "control_cases": 16,
+  "shared_inference_cache": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/data_revision_qwen38/benchmark_inputs/videophy60_first_image_request_v1",
+  "experiment_id": 67308,
+  "submitted_utc": "2026-11-04T04:45:41.402482+00:00",
+  "state": "STATE_COMPLETED",
+  "trial_id": 68695,
+  "accepted_gpu": true,
+  "actual_gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+  "stage": "declared_evaluation_completed",
+  "last_checked_utc": "2026-11-04T10:29:19.637165+00:00",
+  "next_routine_check_utc": null,
+  "main_scores": {
+    "original40": {
+      "count": 40,
+      "sa_mean": 2.6,
+      "pc_mean": 3.95,
+      "sa_pass_rate": 0.175,
+      "pc_pass_rate": 0.725,
+      "joint_pass_count": 6,
+      "joint_pass_rate": 0.15
+    },
+    "extra20": {
+      "count": 20,
+      "sa_mean": 2.3,
+      "pc_mean": 4.15,
+      "sa_pass_rate": 0.0,
+      "pc_pass_rate": 0.85,
+      "joint_pass_count": 0,
+      "joint_pass_rate": 0.0
+    },
+    "full60": {
+      "count": 60,
+      "sa_mean": 2.5,
+      "pc_mean": 4.016666666666667,
+      "sa_pass_rate": 0.11666666666666667,
+      "pc_pass_rate": 0.7666666666666667,
+      "joint_pass_count": 6,
+      "joint_pass_rate": 0.1
+    }
+  },
+  "completed_controls": [
+    "anchor_routing",
+    "empty_reasoning",
+    "global_train_mean",
+    "no_c",
+    "reasoning_swapped",
+    "request_memory_off",
+    "request_memory_swapped"
+  ],
+  "evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/reports/r11b_completed_main_and_controls.json",
+  "end_utc": "2026-11-04T10:23:49.293978Z",
+  "all_declared_evaluations_complete": true
+}

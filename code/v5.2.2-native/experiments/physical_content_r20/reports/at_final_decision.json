@@ -1,0 +1,70 @@
+{
+  "normal": {
+    "count": 16,
+    "sa": 3.1875,
+    "pc": 3.875,
+    "sa_pass_rate": 0.25,
+    "pc_pass_rate": 0.75,
+    "joint": 4,
+    "joint_pass_rate": 0.25
+  },
+  "controls": {
+    "no_c": {
+      "count": 16,
+      "sa": 3.25,
+      "pc": 3.8125,
+      "sa_pass_rate": 0.25,
+      "pc_pass_rate": 0.5625,
+      "joint": 4,
+      "joint_pass_rate": 0.25,
+      "differences": {
+        "sa": {
+          "normal_minus_control": -0.0625,
+          "normal_wins": 0,
+          "ties": 15,
+          "normal_losses": 1
+        },
+        "pc": {
+          "normal_minus_control": 0.0625,
+          "normal_wins": 3,
+          "ties": 11,
+          "normal_losses": 2
+        }
+      },
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19dt/inference_outputs/r19dt_interaction400/step0400_seed42/controls/no_c/videophy40/scores.json"
+    },
+    "source_queries_off": {
+      "count": 16,
+      "sa": 3.3125,
+      "pc": 3.75,
+      "sa_pass_rate": 0.3125,
+      "pc_pass_rate": 0.5625,
+      "joint": 5,
+      "joint_pass_rate": 0.3125,
+      "differences": {
+        "sa": {
+          "normal_minus_control": -0.125,
+          "normal_wins": 0,
+          "ties": 14,
+          "normal_losses": 2
+        },
+        "pc": {
+          "normal_minus_control": 0.125,
+          "normal_wins": 3,
+          "ties": 12,
+          "normal_losses": 1
+        }
+      },
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19dt/inference_outputs/r19dt_interaction400/step0400_seed42/controls/source_queries_off/videophy40/scores.json"
+    }
+  },
+  "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19dt/inference_outputs/r19dt_interaction400/step0400_seed42/paired_summary.json",
+  "source_queries_off_means": "Skip learned Q refinements and its source/caption query offsets; retain source-value binding, caption binding, physical reader, executor and fusion. Not noC or meanC.",
+  "decision_zh": "保留物理/Q增强，其正常组有部分PC收益；不沿用DT自由Q增量、纯源值凸组合执行C和原生FFN重加权。采用R18E归一化的有来源Q增强与可学习执行C、独立全宽直接/原生请求关联物理读取、噪声调制的原生完整块后写入。语义和物理需要同时改善，单独去Q或去物理均不足。",
+  "visual_reference": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20/dt_source6_content/manifest.json",
+  "visual_acceptance": false,
+  "reasoning_audit": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20/reports/t2v_reasoning_content_audit.json",
+  "initialization": "Official foundations only, fresh400; no R checkpoint",
+  "protocol_changes": false,
+  "new_architecture_quality_proven": false
+}

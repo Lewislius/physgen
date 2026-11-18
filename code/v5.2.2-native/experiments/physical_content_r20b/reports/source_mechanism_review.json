@@ -1,0 +1,33 @@
+{
+  "checked_utc": "2026-11-15T10:28:36.308477+00:00",
+  "status": "reference_mechanism_audit_not_final_C_design",
+  "sources": [
+    {
+      "url": "https://raw.githubusercontent.com/tencent-ailab/IP-Adapter/main/ip_adapter/attention_processor.py",
+      "fact": "额外输入有独立K/V，使用原生查询；两路结果相加后经过原生输出投影。不是重新学习一套任意输出坐标。",
+      "local_question": "B的内层物理O与外层提示O从零学习；应结合C-off/branch-off核验是否有与原生输出空间不匹配的问题，不能仅凭代码认定根因。"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/zijunwa/ProPhy/main/prophy/models/transformer_wan.py",
+      "fact": "持续的物理视频状态经过时空注意力等处理，各层零初始化输出提示加入主干；专家输入与监督也属于完整方法。",
+      "local_question": "B只借鉴完整视频网格机制，不等价于复现ProPhy；增加视频块本身未解决已观察到的语义和画面问题。"
+    },
+    {
+      "url": "https://arxiv.org/html/2603.26285v1",
+      "fact": "PhysVid用分段标注与时间对齐，训练1000步新增模块＋2000步全模型，batch64。论文也报告部分内容保真度折衷。",
+      "local_source": "/home/liuzhirui/model/PhysVid/physvid/models/wan/local_conditioning_model.py",
+      "local_fact": "完整原生block后添加局部cross-attention，经单独时间调制和ZeroInitLinear合并。",
+      "local_question": "共享RoPE频率须对应真实时间来源，不能把无时间标注的learnableQ编号当帧。论文的画质不能作为400×4下必然改善的证明。"
+    }
+  ],
+  "next_required_evidence": [
+    "BT/BI complete main60",
+    "paired no_c versus physical_condition_off versus normal scores and actual frames",
+    "condition/content controls to separate learned C effect from added video capacity"
+  ],
+  "unchanged_constraints": [
+    "No extra training updates",
+    "No model downloads/API calls",
+    "No new C candidate submitted before own B review"
+  ]
+}

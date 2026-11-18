@@ -1,0 +1,46 @@
+{
+  "scope": "Six existing fixed16 cases, five sampled frames per video, same EI400 checkpoint and input/noise",
+  "frames": [
+    0,
+    20,
+    40,
+    60,
+    80
+  ],
+  "viewed_all_listed_panels": true,
+  "scores_computed": false,
+  "observations": [
+    {
+      "case": "VP002",
+      "observation": "正常分支使木条/绳状物明显运动，但中段连接和弯曲关系不合理；关闭物理或输入语义专家后近乎停在首帧。减少运动不是质量与过程同时改善。",
+      "panel": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20/ei_semantic6_content/VP002.jpg"
+    },
+    {
+      "case": "VP004",
+      "observation": "正常出现严重人脸/手臂融化、遮挡块及女孩消失；语义专家关闭仍融化/消失。noC保留两人的时间更长，但存在白片伪影。首帧本身不是塑料尺场景。",
+      "panel": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20/ei_semantic6_content/VP004.jpg"
+    },
+    {
+      "case": "VP009",
+      "observation": "正常与语义专家关闭后工人离开画面，工具/画片悬浮、玻璃环境扭曲；noC更长时间保留工人和工具，但抬升关系仍不准确。",
+      "panel": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20/ei_semantic6_content/VP009.jpg"
+    },
+    {
+      "case": "VP015",
+      "observation": "三路均保留船、划船人及湖面，不能概称全是空画面；桨叶/滴水形状不稳定，noC尤其呈白色帘状水流。单关语义专家没有解决桨叶结构问题。",
+      "panel": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20/ei_semantic6_content/VP015.jpg"
+    },
+    {
+      "case": "VP026",
+      "observation": "输入本身为海面悬吊黑物而非两人拉绳。正常/语义关闭均维持黑物与部分线条，noC后段主体缩小/结构丢失；都未满足描述。",
+      "panel": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20/ei_semantic6_content/VP026.jpg"
+    },
+    {
+      "case": "VP038",
+      "observation": "正常与语义关闭的滚筒/把手发生弯折、破碎或异常缩形；noC的滚筒形状相对完整，但涂刷接触和过程仍不正确。",
+      "panel": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20/ei_semantic6_content/VP038.jpg"
+    }
+  ],
+  "conclusion": "物理路径确实影响可见过程，不能用全关物理作为完成方案；但EI额外输入语义专家关闭后仍有严重结构损伤，具体实现没有展示稳定的修复价值。保留正确请求与物理信息的联系，重做其执行方式。",
+  "caveat": "抽帧是定性证据，不是完整连续视频的无异常证明。未以此替代16/40/60评分。"
+}

@@ -1,0 +1,613 @@
+{
+  "recorded_utc": "2026-10-31T18:50:26.375370+00:00",
+  "method": "Descriptive decomposition of already completed paired scores; no new generation, scoring, tests or resampling. Confidence intervals remain in the standard generation_review.",
+  "sources": {
+    "R1_250": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/training_budget_reference/inference_outputs/r1_step0250_subset16_physical5_seed42/videophy40/scores.json",
+    "R1_400": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/inference_outputs/physical_content_66778/step0400_seed42_r1/videophy40/scores.json",
+    "R9_250": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r1_content_reader_r9/inference_outputs/physical_content_66968/step0250_subset16_physical5_seed42/videophy40/scores.json",
+    "R9_400": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r1_content_reader_r9/inference_outputs/physical_content_66968/step0400_full40_controls16_physical5_seed42/videophy40/scores.json",
+    "native400": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/inference_outputs/native_lora_66781/step0400_seed42_r1/videophy40/scores.json"
+  },
+  "fixed16_ids": [
+    "VP002",
+    "VP004",
+    "VP005",
+    "VP009",
+    "VP010",
+    "VP013",
+    "VP015",
+    "VP016",
+    "VP017",
+    "VP018",
+    "VP024",
+    "VP025",
+    "VP026",
+    "VP027",
+    "VP034",
+    "VP038"
+  ],
+  "remaining24_ids": [
+    "VP001",
+    "VP003",
+    "VP006",
+    "VP007",
+    "VP008",
+    "VP011",
+    "VP012",
+    "VP014",
+    "VP019",
+    "VP020",
+    "VP021",
+    "VP022",
+    "VP023",
+    "VP028",
+    "VP029",
+    "VP030",
+    "VP031",
+    "VP032",
+    "VP033",
+    "VP035",
+    "VP036",
+    "VP037",
+    "VP039",
+    "VP040"
+  ],
+  "comparisons": {
+    "R9_vs_R1_full40": {
+      "count": 40,
+      "before": {
+        "count": 40,
+        "sa_mean": 2.95,
+        "pc_mean": 3.625,
+        "sa_pass": 11,
+        "pc_pass": 18,
+        "joint_pass": 10
+      },
+      "after": {
+        "count": 40,
+        "sa_mean": 2.975,
+        "pc_mean": 3.6,
+        "sa_pass": 10,
+        "pc_pass": 17,
+        "joint_pass": 9
+      },
+      "pc": {
+        "mean_difference": -0.025,
+        "wins": 3,
+        "ties": 33,
+        "losses": 4,
+        "changed_cases": [
+          {
+            "id": "VP003",
+            "caption": "A gymnast performs a back handspring, landing cleanly on their feet on a padded floor.",
+            "before": 3,
+            "after": 2
+          },
+          {
+            "id": "VP006",
+            "caption": "A large, wet canvas is twisted to remove excess paint, leaving drips down the side.",
+            "before": 4,
+            "after": 3
+          },
+          {
+            "id": "VP008",
+            "caption": "A person bounces to a specific rhythm on a trampoline, their body movement clearly timed to a beat.",
+            "before": 4,
+            "after": 3
+          },
+          {
+            "id": "VP017",
+            "caption": "A unicycle wheel rolls over a small curb; the rider adjusts their position to keep upright.",
+            "before": 3,
+            "after": 4
+          },
+          {
+            "id": "VP020",
+            "caption": "A time-lapse showing the process of someone tying a bow tie, quickly showing the steps in sequence.",
+            "before": 4,
+            "after": 5
+          },
+          {
+            "id": "VP021",
+            "caption": "A skateboarder rolls along a smooth concrete path, maintaining a steady pace.",
+            "before": 5,
+            "after": 4
+          },
+          {
+            "id": "VP032",
+            "caption": "A player uses a quick set to spike the ball, driving it downward at a steep angle.",
+            "before": 2,
+            "after": 3
+          }
+        ]
+      },
+      "sa": {
+        "mean_difference": 0.025,
+        "wins": 3,
+        "ties": 35,
+        "losses": 2,
+        "changed_cases": [
+          {
+            "id": "VP007",
+            "caption": "Multiple ping pong balls are shown, illustrating different stages of a rally.",
+            "before": 2,
+            "after": 3
+          },
+          {
+            "id": "VP008",
+            "caption": "A person bounces to a specific rhythm on a trampoline, their body movement clearly timed to a beat.",
+            "before": 4,
+            "after": 3
+          },
+          {
+            "id": "VP026",
+            "caption": "Two people stretch a bungee cord, extending it to its maximum length.",
+            "before": 3,
+            "after": 2
+          },
+          {
+            "id": "VP033",
+            "caption": "A player jumps high to block a spike, their hands impacting the ball forcefully, sending it back across the net.",
+            "before": 2,
+            "after": 3
+          },
+          {
+            "id": "VP039",
+            "caption": "A wedge is driven into a log using a sledgehammer, splitting the log cleanly apart.",
+            "before": 2,
+            "after": 3
+          }
+        ]
+      },
+      "joint_changes": [
+        {
+          "id": "VP008",
+          "before": [
+            4,
+            4
+          ],
+          "after": [
+            3,
+            3
+          ]
+        }
+      ]
+    },
+    "R9_vs_native_full40": {
+      "count": 40,
+      "before": {
+        "count": 40,
+        "sa_mean": 3.075,
+        "pc_mean": 3.45,
+        "sa_pass": 11,
+        "pc_pass": 16,
+        "joint_pass": 10
+      },
+      "after": {
+        "count": 40,
+        "sa_mean": 2.975,
+        "pc_mean": 3.6,
+        "sa_pass": 10,
+        "pc_pass": 17,
+        "joint_pass": 9
+      },
+      "pc": {
+        "mean_difference": 0.15,
+        "wins": 7,
+        "ties": 32,
+        "losses": 1,
+        "changed_cases": [
+          {
+            "id": "VP008",
+            "caption": "A person bounces to a specific rhythm on a trampoline, their body movement clearly timed to a beat.",
+            "before": 4,
+            "after": 3
+          },
+          {
+            "id": "VP014",
+            "caption": "Multiple water balloons are tossed upwards, simultaneously bursting in the air in a small arc.",
+            "before": 4,
+            "after": 5
+          },
+          {
+            "id": "VP015",
+            "caption": "A rower pulls an oar from the water, the blade dripping water back into the lake. .",
+            "before": 4,
+            "after": 5
+          },
+          {
+            "id": "VP017",
+            "caption": "A unicycle wheel rolls over a small curb; the rider adjusts their position to keep upright.",
+            "before": 3,
+            "after": 4
+          },
+          {
+            "id": "VP020",
+            "caption": "A time-lapse showing the process of someone tying a bow tie, quickly showing the steps in sequence.",
+            "before": 4,
+            "after": 5
+          },
+          {
+            "id": "VP025",
+            "caption": "A large, orange plastic egg is rolled up a plastic slide, then rolls down, ending at the bottom.",
+            "before": 3,
+            "after": 4
+          },
+          {
+            "id": "VP033",
+            "caption": "A player jumps high to block a spike, their hands impacting the ball forcefully, sending it back across the net.",
+            "before": 2,
+            "after": 3
+          },
+          {
+            "id": "VP040",
+            "caption": "Poi are swung against a soft surface, making a thudding sound (NOTE: This prompt includes sound, but it's included to illustrate the effect of the action, not to describe it in detail.  The focus is still on the visible impact).",
+            "before": 4,
+            "after": 5
+          }
+        ]
+      },
+      "sa": {
+        "mean_difference": -0.1,
+        "wins": 0,
+        "ties": 36,
+        "losses": 4,
+        "changed_cases": [
+          {
+            "id": "VP006",
+            "caption": "A large, wet canvas is twisted to remove excess paint, leaving drips down the side.",
+            "before": 3,
+            "after": 2
+          },
+          {
+            "id": "VP008",
+            "caption": "A person bounces to a specific rhythm on a trampoline, their body movement clearly timed to a beat.",
+            "before": 4,
+            "after": 3
+          },
+          {
+            "id": "VP019",
+            "caption": "Javelin with a damaged tip is thrown; it wobbles in flight and lands off-target.",
+            "before": 3,
+            "after": 2
+          },
+          {
+            "id": "VP025",
+            "caption": "A large, orange plastic egg is rolled up a plastic slide, then rolls down, ending at the bottom.",
+            "before": 3,
+            "after": 2
+          }
+        ]
+      },
+      "joint_changes": [
+        {
+          "id": "VP008",
+          "before": [
+            4,
+            4
+          ],
+          "after": [
+            3,
+            3
+          ]
+        }
+      ]
+    },
+    "R9_vs_R1_fixed16_at400": {
+      "count": 16,
+      "before": {
+        "count": 16,
+        "sa_mean": 3.25,
+        "pc_mean": 3.8125,
+        "sa_pass": 6,
+        "pc_pass": 9,
+        "joint_pass": 6
+      },
+      "after": {
+        "count": 16,
+        "sa_mean": 3.1875,
+        "pc_mean": 3.875,
+        "sa_pass": 6,
+        "pc_pass": 10,
+        "joint_pass": 6
+      },
+      "pc": {
+        "mean_difference": 0.0625,
+        "wins": 1,
+        "ties": 15,
+        "losses": 0,
+        "changed_cases": [
+          {
+            "id": "VP017",
+            "caption": "A unicycle wheel rolls over a small curb; the rider adjusts their position to keep upright.",
+            "before": 3,
+            "after": 4
+          }
+        ]
+      },
+      "sa": {
+        "mean_difference": -0.0625,
+        "wins": 0,
+        "ties": 15,
+        "losses": 1,
+        "changed_cases": [
+          {
+            "id": "VP026",
+            "caption": "Two people stretch a bungee cord, extending it to its maximum length.",
+            "before": 3,
+            "after": 2
+          }
+        ]
+      },
+      "joint_changes": []
+    },
+    "R9_vs_R1_remaining24_at400": {
+      "count": 24,
+      "before": {
+        "count": 24,
+        "sa_mean": 2.75,
+        "pc_mean": 3.5,
+        "sa_pass": 5,
+        "pc_pass": 9,
+        "joint_pass": 4
+      },
+      "after": {
+        "count": 24,
+        "sa_mean": 2.8333333333333335,
+        "pc_mean": 3.4166666666666665,
+        "sa_pass": 4,
+        "pc_pass": 7,
+        "joint_pass": 3
+      },
+      "pc": {
+        "mean_difference": -0.08333333333333333,
+        "wins": 2,
+        "ties": 18,
+        "losses": 4,
+        "changed_cases": [
+          {
+            "id": "VP003",
+            "caption": "A gymnast performs a back handspring, landing cleanly on their feet on a padded floor.",
+            "before": 3,
+            "after": 2
+          },
+          {
+            "id": "VP006",
+            "caption": "A large, wet canvas is twisted to remove excess paint, leaving drips down the side.",
+            "before": 4,
+            "after": 3
+          },
+          {
+            "id": "VP008",
+            "caption": "A person bounces to a specific rhythm on a trampoline, their body movement clearly timed to a beat.",
+            "before": 4,
+            "after": 3
+          },
+          {
+            "id": "VP020",
+            "caption": "A time-lapse showing the process of someone tying a bow tie, quickly showing the steps in sequence.",
+            "before": 4,
+            "after": 5
+          },
+          {
+            "id": "VP021",
+            "caption": "A skateboarder rolls along a smooth concrete path, maintaining a steady pace.",
+            "before": 5,
+            "after": 4
+          },
+          {
+            "id": "VP032",
+            "caption": "A player uses a quick set to spike the ball, driving it downward at a steep angle.",
+            "before": 2,
+            "after": 3
+          }
+        ]
+      },
+      "sa": {
+        "mean_difference": 0.08333333333333333,
+        "wins": 3,
+        "ties": 20,
+        "losses": 1,
+        "changed_cases": [
+          {
+            "id": "VP007",
+            "caption": "Multiple ping pong balls are shown, illustrating different stages of a rally.",
+            "before": 2,
+            "after": 3
+          },
+          {
+            "id": "VP008",
+            "caption": "A person bounces to a specific rhythm on a trampoline, their body movement clearly timed to a beat.",
+            "before": 4,
+            "after": 3
+          },
+          {
+            "id": "VP033",
+            "caption": "A player jumps high to block a spike, their hands impacting the ball forcefully, sending it back across the net.",
+            "before": 2,
+            "after": 3
+          },
+          {
+            "id": "VP039",
+            "caption": "A wedge is driven into a log using a sledgehammer, splitting the log cleanly apart.",
+            "before": 2,
+            "after": 3
+          }
+        ]
+      },
+      "joint_changes": [
+        {
+          "id": "VP008",
+          "before": [
+            4,
+            4
+          ],
+          "after": [
+            3,
+            3
+          ]
+        }
+      ]
+    },
+    "R9_250_to400_fixed16": {
+      "count": 16,
+      "before": {
+        "count": 16,
+        "sa_mean": 3.25,
+        "pc_mean": 3.5625,
+        "sa_pass": 6,
+        "pc_pass": 7,
+        "joint_pass": 5
+      },
+      "after": {
+        "count": 16,
+        "sa_mean": 3.1875,
+        "pc_mean": 3.875,
+        "sa_pass": 6,
+        "pc_pass": 10,
+        "joint_pass": 6
+      },
+      "pc": {
+        "mean_difference": 0.3125,
+        "wins": 5,
+        "ties": 11,
+        "losses": 0,
+        "changed_cases": [
+          {
+            "id": "VP010",
+            "caption": "A person mops up a puddle of water on a concrete floor, the water disappearing as the mop passes.",
+            "before": 3,
+            "after": 4
+          },
+          {
+            "id": "VP015",
+            "caption": "A rower pulls an oar from the water, the blade dripping water back into the lake. .",
+            "before": 4,
+            "after": 5
+          },
+          {
+            "id": "VP017",
+            "caption": "A unicycle wheel rolls over a small curb; the rider adjusts their position to keep upright.",
+            "before": 3,
+            "after": 4
+          },
+          {
+            "id": "VP025",
+            "caption": "A large, orange plastic egg is rolled up a plastic slide, then rolls down, ending at the bottom.",
+            "before": 3,
+            "after": 4
+          },
+          {
+            "id": "VP027",
+            "caption": "Hands shape a lump of clay-like bread dough into a smooth, round boule on a wooden table.",
+            "before": 4,
+            "after": 5
+          }
+        ]
+      },
+      "sa": {
+        "mean_difference": -0.0625,
+        "wins": 0,
+        "ties": 15,
+        "losses": 1,
+        "changed_cases": [
+          {
+            "id": "VP025",
+            "caption": "A large, orange plastic egg is rolled up a plastic slide, then rolls down, ending at the bottom.",
+            "before": 3,
+            "after": 2
+          }
+        ]
+      },
+      "joint_changes": [
+        {
+          "id": "VP010",
+          "before": [
+            4,
+            3
+          ],
+          "after": [
+            4,
+            4
+          ]
+        }
+      ]
+    },
+    "R1_250_to400_fixed16": {
+      "count": 16,
+      "before": {
+        "count": 16,
+        "sa_mean": 3.1875,
+        "pc_mean": 3.6875,
+        "sa_pass": 5,
+        "pc_pass": 8,
+        "joint_pass": 5
+      },
+      "after": {
+        "count": 16,
+        "sa_mean": 3.25,
+        "pc_mean": 3.8125,
+        "sa_pass": 6,
+        "pc_pass": 9,
+        "joint_pass": 6
+      },
+      "pc": {
+        "mean_difference": 0.125,
+        "wins": 2,
+        "ties": 14,
+        "losses": 0,
+        "changed_cases": [
+          {
+            "id": "VP015",
+            "caption": "A rower pulls an oar from the water, the blade dripping water back into the lake. .",
+            "before": 4,
+            "after": 5
+          },
+          {
+            "id": "VP025",
+            "caption": "A large, orange plastic egg is rolled up a plastic slide, then rolls down, ending at the bottom.",
+            "before": 3,
+            "after": 4
+          }
+        ]
+      },
+      "sa": {
+        "mean_difference": 0.0625,
+        "wins": 1,
+        "ties": 15,
+        "losses": 0,
+        "changed_cases": [
+          {
+            "id": "VP034",
+            "caption": "A large, clear balloon is inflated with air, showing the internal pressure causing the balloon to stretch.",
+            "before": 3,
+            "after": 4
+          }
+        ]
+      },
+      "joint_changes": [
+        {
+          "id": "VP034",
+          "before": [
+            3,
+            5
+          ],
+          "after": [
+            4,
+            5
+          ]
+        }
+      ]
+    }
+  },
+  "interpretation_zh": [
+    "R9在既定250到400预算内，固定16的PC由3.5625升至3.875，5胜11平0负；SA由3.250降到3.1875，Joint5到6。不能沿用250失分作为其400仍失分的证据。",
+    "同400固定16，R9 PC比R1高0.0625，SA低0.0625；完整40则PC低0.025、SA高0.025。剩余24的PC差为-0.083333，四个对R1的PC退化例均位于固定16之外。固定16不能代替主40或60的模型排序。",
+    "此前拖地VP010与揉面VP027的PC退化在R9自身400结果中均已恢复；R9.1在250的局部视觉改善不等于独有修复或最终超越R9/R1。",
+    "完整40的Joint由R1的10降至9，唯一变动是蹦床VP008从SA4/PC4到3/3；其余SA均分增益没有增加Joint。",
+    "R9仍高于native400 PC0.150，但低SA0.100；完整40未达到用户要求的R1 PC严格提升。继续原定20/60及内容对照，无追加训练或自动采用。",
+    "步骤变化同时改变已见训练样本/优化状态，不能称为独立于数据的纯步数因果效应。R10须依据R9.1最终生成与模块证据。"
+  ],
+  "adopted": false,
+  "goal_achieved": false
+}

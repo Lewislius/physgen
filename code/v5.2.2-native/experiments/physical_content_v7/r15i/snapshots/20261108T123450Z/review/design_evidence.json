@@ -1,0 +1,54 @@
+{
+  "utc": "2026-11-08T12:33:43.064039+00:00",
+  "candidate": "R15I",
+  "status": "final_design_implemented_validated_not_yet_submitted",
+  "previous_H_complete_review": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_feedback_fusion_r15h/reports/final_review.json",
+  "read_only_operator_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r15i_design/reports/completed_probe_review.json",
+  "selection": {
+    "Q_to_C": "Keep exact R10A/R15B native-anchored routing/execution enhancement; no cosine target or extra source-value redesign.",
+    "physical_read": "Joint attention over direct C and request-associated C; tested operator, one null and original total relation prior.",
+    "physical_query": "Independent trainable copy of native Q/norm. H same-checkpoint own-Q versus native-Q gives+0.1875SA, -0.0625PC, sameJoint; this supports keeping query adaptation but does not prove final retraining gains.",
+    "physical_write": "Keep B state-value interaction and independent zero-initialized O. B state-off loses2Joint despite a PC-mean increase.",
+    "native_text": "Frozen original Q/K/V/O and exact original text read. No H semantic-query response: removing that response gave equalSA, higherPC and1moreJoint.",
+    "training": "Fresh official foundations; original1600 samples/400updates,128interface+272joint; original0.8meanFM+0.2multiscale high-error FM and routing-word auxiliary, no new loss or stage."
+  },
+  "evidence_limits": [
+    "Fixed16 is easier than remaining24; the probe is not a full40 result.",
+    "Probe uses B native query and trained B weights; final I independently trains Q from official native initialization.",
+    "Probe still loses0.1875SA versus same-weight noC and has no newJoint success versus B.",
+    "Five inspected videos retain process and shape defects; no quality goal is declared achieved.",
+    "No architecture can guarantee the unmeasured target; formal400/40/60 and seven16 determine effectiveness."
+  ],
+  "validation": {
+    "actual_small_Wan_tests": 7,
+    "input_and_evaluation_tests": 6,
+    "passed": true,
+    "logs": [
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/validation_model.log",
+      "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/joint_memory_fusion_r15i/validation_pipeline.log"
+    ],
+    "GPU_preflight": "required on actual allocated RTX before formal training; temporary updates discarded"
+  },
+  "evaluation": {
+    "main40": true,
+    "mandatory_disjoint20_full60": true,
+    "controls16": [
+      "no_c",
+      "direct_read_only",
+      "request_bound_only",
+      "native_physical_query",
+      "reasoning_swapped",
+      "empty_reasoning",
+      "global_train_mean"
+    ],
+    "seed": 42,
+    "gamma": 5,
+    "sampler_steps": 50,
+    "cross_benchmarks": "deferred",
+    "after_report": "pause at user-requested final I limit"
+  },
+  "formal_initializer_is_not_probe_checkpoint": true,
+  "new_API_calls": 0,
+  "new_model_downloads": 0,
+  "quality_goal_achieved": false
+}

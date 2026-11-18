@@ -1,0 +1,68 @@
+{
+  "candidate": "R20AT",
+  "checkpoint_update": 400,
+  "reviewed_utc": "2026-11-14T19:31:50.707819+00:00",
+  "scope": "All first ten completed normal main-evaluation videos, frames 0/20/40/60/80; three matched-caption reference panels. This is sampled-frame visual review, not full-video certification or a 40-case score.",
+  "official_scores_available_at_review": false,
+  "quality_goal_met": false,
+  "cases": {
+    "VP001": {
+      "observed": "Athlete and sports setting are present, but body/limbs change irregularly across the airborne and landing states. Extra thin structures appear near the body. A flawed landing requested by the prompt does not justify unstable anatomy.",
+      "issue": "body geometry and process"
+    },
+    "VP002": {
+      "observed": "A hand and wooden strip remain visible. Late frames contain extra intersecting wooden pieces; the single strip does not form the requested continuous bow.",
+      "issue": "object identity and deformation"
+    },
+    "VP003": {
+      "observed": "Gymnast, mat and clothing remain recognizable. The sampled sequence ends lying across the mat rather than landing cleanly on both feet; the middle body configuration is implausible.",
+      "issue": "process execution and body geometry"
+    },
+    "VP004": {
+      "observed": "The ruler and fingers remain recognizable and a crack develops. The sampled frames do not establish bending under force preceding the fracture; late edges and fracture surface are irregular.",
+      "issue": "causal process and local geometry",
+      "partial_success": "visible object and fracture rather than a blank scene"
+    },
+    "VP005": {
+      "observed": "Paddle, ball and table remain recognizable, with a round ball in the later samples. Five frames alone do not verify a correct impact or trajectory.",
+      "issue": "impact requires denser temporal inspection",
+      "partial_success": "main objects and ball shape retained in sampled frames"
+    },
+    "VP006": {
+      "observed": "The canvas dominates the frame with yellow/brown blur and weak texture; the intended twisting action and removal of excess paint are not clearly represented.",
+      "issue": "detail and process"
+    },
+    "VP007": {
+      "observed": "Large flat colored court regions dominate early frames; later objects are flattened circular discs rather than stable ping pong balls in a rally.",
+      "issue": "flat/empty content and object geometry"
+    },
+    "VP008": {
+      "observed": "Trampoline and lower body remain recognizable. Cropping and five-frame sampling prevent a confident assessment of whole-body geometry and rhythmic timing.",
+      "issue": "not yet a verified process pass",
+      "partial_success": "retained recognizable person/trampoline content"
+    },
+    "VP009": {
+      "observed": "Worker, glass-like surface and adhered picture remain present. The tool changes shape and position while the surface stays essentially in place in the samples; no convincing suction-based panel lifting is established.",
+      "issue": "tool identity and object interaction",
+      "partial_success": "worker and picture content retained"
+    },
+    "VP010": {
+      "observed": "Floor and mop are present, but the mop leaves the frame and later views contain mostly floor. The causal removal of the puddle is not clear from these five frames.",
+      "issue": "process coverage",
+      "partial_success": "recognizable scene rather than total visual corruption"
+    }
+  },
+  "references": {
+    "scope": "Same captions; R-series protocols recorded in the manifest. PhysVid is a different model/settings qualitative reference, not a controlled architectural ablation.",
+    "VP002": "R18E, R19DT and R20AT all introduce extra slats/branching; R18G retains a more stable double-arch shape, but not a clear single-strip bending process. PhysVid preserves wood texture and continuous loop structures with little visible change. No unconditional visual winner is inferred.",
+    "VP004": "R18E shows a badly deformed blue ruler, R18G a stable ruler with no clear fracture, DT a mostly straight ruler with a crack. R20AT retains the object and introduces a crack but does not convincingly solve the bend-then-fracture process. PhysVid also does not establish the requested ruler bending in these sampled frames.",
+    "VP009": "PhysVid has clearer glass/device identity; R18G has a more stable suction disc. R18E/DT have changing tools, and R20AT still lacks a stable tool-plus-lift interaction. Keeping the person in view is insufficient for success."
+  },
+  "interpretation": [
+    "The current A design has not yet resolved the required structural/process quality; its successful training and noncollapsed intermediate C cannot establish that it has.",
+    "Several failure motifs recur across different physical executors. Same-checkpoint no-C and direct-only controls are needed to distinguish learned base/LoRA behavior from the contribution of the new physical write.",
+    "A stable or detailed frame alone does not establish physical improvement; static/no-process outputs are not a successful replacement.",
+    "Do not infer a RoPE bug, sampler bug, or a single cause from these images. Preserve the fixed evaluation inputs and obtain the already scheduled paired controls.",
+    "Continue the submitted main40+20 and necessary paired16 pipeline. Do not submit R20BT or change the running design based only on this first-ten view."
+  ]
+}

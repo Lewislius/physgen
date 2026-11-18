@@ -1,0 +1,189 @@
+{
+  "updated_utc": "2026-11-13T00:15:36.971184+00:00",
+  "phase": "AI_completed_AT_controls_BI_training",
+  "source_snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19/snapshots/20261112T174301Z",
+  "submission_plan": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19/submission_plan.json",
+  "actual_trainable_parameters": 1551019008,
+  "r19ai_confirmed": {
+    "experiment_id": 69674,
+    "trial_id": 71076,
+    "gpu": "RTX PRO6000 Blackwell",
+    "observed_update": 3,
+    "gradient_paths_open": [
+      "physics_read",
+      "physics_write",
+      "physics_executor",
+      "enhancement"
+    ],
+    "peak_gib": 40.030134201049805
+  },
+  "r19at": {
+    "experiment_id": 69685,
+    "trial_id": 71088,
+    "state": "RUNNING",
+    "actual_gpu": "RTX PRO6000 Blackwell",
+    "submission_mode": "manual"
+  },
+  "primary_evaluation": "own400 fixed40 + disjoint20/full60; paired16",
+  "cross_benchmarks": "deferred until explicit40/60 + actual-video acceptance",
+  "latest_user_experts": "No multi-expert routing currently; reconsider only with evidence",
+  "next_routine_poll_not_before": "2026-11-13T04:31:07.425088+00:00",
+  "goal_achieved": false,
+  "priority": "New R19 training and evaluation first; legacy diagnostics yield resources",
+  "legacy_H": {
+    "experiment_id": 69670,
+    "state": "CANCELED",
+    "preserved_no_c_videos": 16,
+    "preserved_ffn_off_videos": 16,
+    "scoring_deferred": true,
+    "controller_stopped": true
+  },
+  "last_check_utc": "2026-11-13T04:01:07.425088+00:00",
+  "latest_candidates": [
+    {
+      "candidate": "R19AT",
+      "experiment_id": 69686,
+      "state": "STATE_RUNNING",
+      "run_ids": [
+        71089
+      ],
+      "job_stage": "paired16_generation",
+      "original40": {
+        "generated": 40,
+        "scores": {
+          "n": 40,
+          "SA": 3.1,
+          "PC": 3.55,
+          "Joint": 8
+        }
+      },
+      "extra20": {
+        "generated": 20,
+        "scores": {
+          "n": 20,
+          "SA": 2.85,
+          "PC": 3.65,
+          "Joint": 5
+        }
+      },
+      "full60": {
+        "generated": 60,
+        "scores": {
+          "n": 60,
+          "SA": 3.0166666666666666,
+          "PC": 3.5833333333333335,
+          "Joint": 13
+        }
+      },
+      "controls": {
+        "no_c": {
+          "generated": 9,
+          "scores": null
+        }
+      }
+    },
+    {
+      "candidate": "R19AI",
+      "experiment_id": 69674,
+      "state": "STATE_COMPLETED",
+      "run_ids": [
+        71076
+      ],
+      "job_stage": "declared_videophy_evaluation_completed",
+      "original40": {
+        "generated": 40,
+        "scores": {
+          "n": 40,
+          "SA": 2.975,
+          "PC": 3.6,
+          "Joint": 10
+        }
+      },
+      "extra20": {
+        "generated": 20,
+        "scores": {
+          "n": 20,
+          "SA": 2.8,
+          "PC": 3.7,
+          "Joint": 3
+        }
+      },
+      "full60": {
+        "generated": 60,
+        "scores": {
+          "n": 60,
+          "SA": 2.9166666666666665,
+          "PC": 3.6333333333333333,
+          "Joint": 13
+        }
+      },
+      "controls": {
+        "reasoning_swapped": {
+          "generated": 16,
+          "scores": {
+            "n": 16,
+            "SA": 3.0,
+            "PC": 3.75,
+            "Joint": 4
+          }
+        },
+        "empty_reasoning": {
+          "generated": 16,
+          "scores": {
+            "n": 16,
+            "SA": 3.1875,
+            "PC": 3.5625,
+            "Joint": 5
+          }
+        },
+        "no_c": {
+          "generated": 16,
+          "scores": {
+            "n": 16,
+            "SA": 3.25,
+            "PC": 3.75,
+            "Joint": 6
+          }
+        },
+        "official_executor": {
+          "generated": 16,
+          "scores": {
+            "n": 16,
+            "SA": 3.1875,
+            "PC": 3.6875,
+            "Joint": 6
+          }
+        },
+        "global_train_mean": {
+          "generated": 16,
+          "scores": {
+            "n": 16,
+            "SA": 3.1875,
+            "PC": 3.875,
+            "Joint": 5
+          }
+        }
+      }
+    }
+  ],
+  "recovery_checked_utc": "2026-11-12T20:09:25.092855+00:00",
+  "next_iteration_workspace": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19b",
+  "r19bi_submission": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19b/submission_plan.json",
+  "latest_observation": {
+    "experiment_id": 69686,
+    "state": "STATE_RUNNING",
+    "stage": "paired16_generation",
+    "generated": {
+      "videophy40": 40,
+      "videophy60": 20,
+      "controls/empty_reasoning/videophy40": 16,
+      "controls/global_train_mean/videophy40": 10,
+      "controls/no_c/videophy40": 16,
+      "controls/official_executor/videophy40": 16,
+      "controls/reasoning_swapped/videophy40": 16
+    }
+  },
+  "r19at_final_state": "STATE_COMPLETED",
+  "r19at_final_review": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19/reports/r19at_final_review.json",
+  "do_not_repoll_terminal_AT": 69686
+}

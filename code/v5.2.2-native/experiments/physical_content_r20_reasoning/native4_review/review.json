@@ -1,0 +1,18 @@
+{
+  "reviewed_at": "2026-11-15T18:46:11.597105+00:00",
+  "scope": "4 matched T2V cases, frames0/20/40/60/80; not a full-video or full60 acceptance",
+  "conditions": [
+    "official native with no project weights",
+    "BT400 with all physical blocks off, trained LoRA retained",
+    "BT400 normal"
+  ],
+  "sources": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20_reasoning/native4_review/sources.json",
+  "observations": {
+    "VP002": "Native and BT-noC retain natural wood/hand/background; native later forms a white triangular artifact, noC bends more smoothly but retains white underside. BT normal changes to dark empty field, separated strips and geometric arch.",
+    "VP004": "Native and BT-noC retain marked ruler and hand, both produce implausible fracture fragments. BT normal becomes blue bar/red fixture with lost markings and abnormal tearing.",
+    "VP009": "Native and BT-noC retain construction worker, natural glass and attached picture, but lifting/hand-tool action still wrong. BT normal shifts to deep blue glass and mostly removes worker.",
+    "VP015": "Native and BT-noC already misframe oar as boat-like object with elongated reflection and no full rower. BT normal adds strong blue cast and unstable surface geometry."
+  },
+  "decision": "Keep existing native video LoRA schedule; no evidence here for broadly freezing/removing it. Replace free physical residual image writes. Repair reasoning, while recognizing that base-model process/geometry errors also need useful physical guidance.",
+  "not_claimed": "No whole-benchmark native score, no guarantee that proposed QK conditioning improves scores."
+}

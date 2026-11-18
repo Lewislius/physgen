@@ -1,0 +1,37 @@
+{
+  "candidate": "R19BI",
+  "updated_utc": "2026-11-13T05:54:33.204489+00:00",
+  "status": "visual_module_interim_scores_pending",
+  "intervention": "no_c same checkpoint, same inputs and noise",
+  "reviewed_cases": [
+    "VP009",
+    "VP010",
+    "VP025",
+    "VP026"
+  ],
+  "observations": {
+    "VP009": "Normal barely changes; no-C makes the worker stand/move. Neither clearly lifts glass with adhered picture. Physical path suppresses some response, but movement alone is not success.",
+    "VP010": "No-C produces a larger mop sweep and changed water pattern than normal, with some late mop distortion/duplication. A useful process-response signal but not an unconditional win.",
+    "VP025": "Normal keeps a plausible stationary egg. No-C moves it but creates implausible egg/slide intersections and fragments. Physics provides real stabilization while requested rolling is absent.",
+    "VP026": "Normal loses person/cables; no-C has stronger body/cord deformation. Disabling physical guidance does not resolve this failure."
+  },
+  "conclusions": [
+    "Preserve useful physical stabilization; simply weakening/removing physics is not supported.",
+    "Improve correct transition/process execution without losing structural stability.",
+    "Completion of direct_write_only and all scored16 controls is required before CI finalization."
+  ],
+  "input_evidence": {
+    "VP010_I2V": "Reasoning emphasizes outward spreading and absorption OR evaporation; request specifically asks mop absorption/removal.",
+    "VP025_I2V": "Reasoning is mostly resting/potential motion, includes unsupported fluid-like slide and aerodynamic wording, does not specify requested ascent/descent.",
+    "VP026_I2V": "Reasoning follows the initial ocean/harness/weight image rather than the requested two-person stretch.",
+    "VP039_I2V": "Reasoning describes axe already embedded and undisturbed grass, unlike requested wedge/sledgehammer splitting process.",
+    "T2V_comparison": "Request-only reasoning often preserves requested mechanism better (VP010 capillary absorption, VP039 wedge), but is not a truth oracle: VP026 incorrectly demands exceeding elastic limit and VP025 has a questionable initial-at-top ascent statement."
+  },
+  "design_implication": "The content source and its use need semantic/physical cooperation. More detailed injection of an inaccurate or static description is insufficient; do not equate native encoding fidelity with physical factual correctness. No new architecture submitted from these four cases alone.",
+  "direct_write_only_visual": {
+    "VP009": "Direct-only raises the tool more than full-block normal, while glass lifting still absent.",
+    "VP010": "Both small sweep; direct-only shows late forward movement. No claim of completed water absorption.",
+    "VP026": "Direct-only also has severe detached ropes/objects; removing the block does not restore B400+I stability.",
+    "VP034": "Direct-only balloon grows in sampled frames; full-block normal rises/shrinks. Full-block response can alter the requested process, not just its rendering."
+  }
+}

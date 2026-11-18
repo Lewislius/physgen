@@ -1,0 +1,27 @@
+{
+  "scope": "eight_training_clips_whole_video",
+  "reviewed_files": [
+    "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f/preparation/localization_pilot8/source0000000/panel_normalized.jpg",
+    "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f/preparation/localization_pilot8/source0000053/panel_normalized.jpg",
+    "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f/preparation/localization_pilot8/source0000579/panel_normalized.jpg",
+    "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f/preparation/localization_pilot8/source0001535/panel_normalized.jpg",
+    "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f/preparation/localization_pilot8/wisa0025412/panel_normalized.jpg",
+    "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f/preparation/localization_pilot8/wisa0028206/panel_normalized.jpg",
+    "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f/preparation/localization_pilot8/wisa0029131/panel_normalized.jpg",
+    "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f/preparation/localization_pilot8/wisa0032401/panel_normalized.jpg"
+  ],
+  "raw_contrast_issue": "Prompt-dependent global and temporal logit offsets make positive raw subtraction unusable as a common probability target. Burger has only0.216%positive positions despite visible oil bubbles/steam.",
+  "relative_spatial_normalization": "per-frame log-softmax physical minus neutral; preserves whole-video input, does not supply event presence/time labels",
+  "visual_observations": {
+    "source0000000": "Some oil/steam areas highlighted, but background peaks and weak active-area specificity.",
+    "source0000053": "Pouring stream/bottle mouth/glass localized; background curtain hotspots remain.",
+    "wisa0028206": "Ice and meltwater base highlighted, plus several irrelevant blue-background hotspots.",
+    "wisa0025412": "Ball stream and trough region highlighted; checkerboard and rails also respond.",
+    "wisa0029131": "Bowing body/dress localized across whole video, some background hotspots.",
+    "source0000579": "Some lit objects and reflections selected; other background peaks, camera pan dominates text answer.",
+    "wisa0032401": "Nozzle/steam/cloth region partly localized, several carpet artifacts.",
+    "source0001535": "Emerging/expanding smoke localized across time with residual background noise."
+  },
+  "decision": "Do not train against raw zero-threshold maps. Validate probability aggregation/phenomenon-specific semantic query maps before scaling1600. Targets remain weak relative localization, not physical law truth.",
+  "new_model_training_started": false
+}

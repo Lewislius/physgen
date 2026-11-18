@@ -1,0 +1,58 @@
+R20IT2：R20FT C 锚点 + 完整 native reasoning words 的 PWCA Q/K 注入
+
+目标
+- 以 R20FT 的画面质量/细节为锚点，提升真实物理一致性，而不是用画面损坏换 PC。
+- 目标 SA>=3.25、PC>=3.85（3.9+ 更好）、Joint>=13/40；不以画面损坏换 PC。
+- 初始（零初始化更新）严格等价于 native Wan；不做多层共享、不做错误层注入。
+
+与 R20I / GT / HT 的关键区别
+1. 保留 R20FT 的 256-slot source-valued C 分支作为 SA/视觉锚点：
+   route   = N_slot + route_update(read_values)
+   execute = N_slot + execute_update(state - anchor)
+   C 的 physical Q/K 读取和 query_update/key_update 保留；完整保留 R20FT 的
+   video-to-C 绑定（conditioning.video_to_content 零初始化，
+   作用于 C execute，不作用于视频 state）；不使用 R20I 的 source_details，
+   不把 word_read 直接加到 state。
+2. 物理块新增 PWCA（Physical Word Cross-Attention），只更新 physical
+   self-attention 的 Q/K：
+   - Q 来自 native_read_state + 真实帧索引 E_time（小初始化）+ 前后帧局部
+     残差（word_local 零初始化）；
+   - K/V 直接使用对应深度 Wan 原生 text cross-attention 的 k/v 权重，
+     输入是完整 native reasoning words（T5 后 Wan text_embedding 的特征）；
+     K/V 及其 key norm 冻结，不用随机投影、不做 4096->width 随机重投影；
+   - Q 及其 norm 从对应深度原生 text cross-attention q/norm_q 初始化，
+     word_query_update / word_key_update 零初始化，因此初始注入严格为零；
+   - 无 word_out、无 q-memory、无 feature_update、无 learned gate、无低秩
+     adapter；word_read 不进入 state、不进入 FFN 的全局增益。
+3. word_read 的语义是“按完整 reasoning words 重新路由物理视频 token 的
+   Q/K”，不是把词向量直接当内容写进视频状态；内容仍由原生 physical
+   block 的 V/FFN 和 C 分支承担。
+4. 物理块完整 FFN 保留；不使用低秩 adapter、learned gate、motion/contact
+   gate、速度专用路径。
+5. 不引入反事实、wrong reasoning、correct-vs-wrong margin 或中间 checkpoint
+   选择；不拆 relation、不绑定 C slot、不做数据规模扩展。
+
+训练与评测
+- 官方 Wan2.2-TI2V-5B 重新初始化；400 步、1600 条固定顺序、128 + 272。
+- 固定 40 + 补充 20 + 完整 60；noC（physical residual off）16 例。
+- 目标 GPU：blk-96g 上的指定好卡
+  GPU-d46ac459-b58f-cd15-f6b1-e0b8b5156d4b；拒绝 H100 和已知问题 RTX。
+- 人工复核接触、因果、过程完成、主体/几何和工具消失。
+
+代码审计点
+- physical_blocks[i].native 必须逐参数等于 wan.blocks[site]，
+  site = [0,7,14,21,28]；physical_initialization_blocks 与 injection_layers
+  必须完全一致。
+- physical_blocks[i].word_query / word_query_norm / word_key / word_key_norm /
+  word_value 必须逐参数来自对应 site 的 native cross_attn，禁止第 0 层复制
+  到所有深度。
+- word_key / word_value / word_key_norm 必须 requires_grad=False，且不进入
+  optimizer；从 checkpoint 恢复时由对应 native 深度重建，不保存随机 buffer。
+- word_query_update / word_key_update 零初始化；空物理条件或 source 缺失时
+  word_read 严格为零；physical_mode=off 时物理 residual 严格为零。
+- conditioning.video_to_content 必须是 R20FT 的零初始化 C execute 绑定，
+  只改变 C 的 value 合成，不直接写视频 state。
+- 无多层共享：每个物理块的 native、conditioning、word_* 和 output 都是独立
+  模块；测试逐对检查对象身份。
+- 真实 T/H/W 网格、RoPE 轴序和 native block 执行路径必须与原始 Wan 等价；
+  测试同时检查 native read-state 暴露路径和 _execute 的严格等价。

@@ -1,0 +1,33 @@
+{
+  "candidate": "R19AI",
+  "source": "first three completed own400 normal I2V videos, seed42",
+  "review_type": "9 sampled frames per video, not full-frame temporal certification",
+  "cases": [
+    {
+      "case": "VP001",
+      "catastrophic_failure_observed": false,
+      "request_completed": false,
+      "notes": "Athlete rotates in air across sampled frames, no visible landing by final frame; unchanged wide court. The sampled views do not establish plausible long-jump trajectory."
+    },
+    {
+      "case": "VP002",
+      "catastrophic_failure_observed": false,
+      "request_completed": false,
+      "notes": "Two men and pre-bent wood remain almost unchanged across nine sampled frames; requested bending process is not evident."
+    },
+    {
+      "case": "VP003",
+      "catastrophic_failure_observed": false,
+      "request_completed": false,
+      "notes": "Gymnast remains on hands in almost identical inverted pose from first to last frame; requested back-handspring and feet landing absent."
+    }
+  ],
+  "conclusion": "No broad stripe/snow/scene-collapse visible in these samples, but process completion and semantic execution remain weak; no claim of improvement from stability alone. Await full40/60 scores and paired physical controls.",
+  "matched_reference": "R15B400+I, same prompts/initial images/seed42/50 steps/CFG5",
+  "matched_reference_findings": {
+    "VP001": "Both fail to visibly complete long-jump landing; R19AI rotates earlier/more across sampled frames, which is not evidence of a better physical trajectory.",
+    "VP002": "Both remain nearly static in pre-bent pose.",
+    "VP003": "Both remain nearly static in inverted hands-down pose, without back-handspring completion or feet landing."
+  },
+  "implication": "I2V request/process execution is an existing bottleneck that the first three samples do not show solved by the new executor. Preserve paired scores/controls before attributing the cause or choosing the B design."
+}

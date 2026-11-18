@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WISA 缓存数据浏览器</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div>
+      <h1>WISA 缓存数据浏览器</h1>
+      <p class="sub">当前 qwen38 400-step 训练缓存 · 原始文本 · 旧 Qwen · Qwen3.8 前后对照</p>
+    </div>
+    <div class="stats" id="stats"></div>
+  </header>
+
+  <aside class="sidebar">
+    <div class="controls">
+      <input id="search" type="search" placeholder="搜索 ID / caption / 原始文本" autocomplete="off">
+      <div class="control-row">
+        <label>范围
+          <select id="scope">
+            <option value="qwen38">Qwen3.8 已配对 1600</option>
+            <option value="all">全部 WISA 3857</option>
+          </select>
+        </label>
+        <label>Split
+          <select id="split">
+            <option value="all">全部</option>
+            <option value="train">train</option>
+            <option value="validation">validation</option>
+          </select>
+        </label>
+      </div>
+      <div class="control-row">
+        <label>旧 Qwen
+          <select id="oldFilter">
+            <option value="all">全部</option>
+            <option value="available">有缓存</option>
+            <option value="missing">缺失</option>
+          </select>
+        </label>
+        <label>Qwen3.8
+          <select id="newFilter">
+            <option value="all">全部</option>
+            <option value="available">有缓存</option>
+            <option value="missing">缺失</option>
+          </select>
+        </label>
+      </div>
+      <div class="pager">
+        <button id="prevPage" type="button">上一页</button>
+        <span id="pageInfo"></span>
+        <button id="nextPage" type="button">下一页</button>
+      </div>
+      <div id="resultCount" class="muted"></div>
+    </div>
+    <div id="sampleList" class="sample-list"></div>
+  </aside>
+
+  <main class="main">
+    <div id="empty" class="empty">从左侧选择一个样本</div>
+    <article id="sample" class="sample hidden">
+      <div class="sample-head">
+        <div>
+          <div class="eyebrow" id="sampleSplit"></div>
+          <h2 id="sampleId"></h2>
+        </div>
+        <div id="sampleBadges" class="badges"></div>
+      </div>
+
+      <div class="media-grid">
+        <section class="media-card">
+          <div class="card-title">缓存裁剪片段 <span class="hint" id="clipMeta"></span></div>
+          <div class="video-wrap">
+            <video id="clip" controls muted loop playsinline preload="metadata"></video>
+            <div id="videoMessage" class="video-message hidden"></div>
+          </div>
+          <div class="media-meta" id="clipDetails"></div>
+        </section>
+        <section class="media-card first-card">
+          <div class="card-title">缓存首帧</div>
+          <div class="first-wrap"><img id="firstFrame" alt="缓存首帧"></div>
+          <div class="media-meta" id="firstMeta"></div>
+        </section>
+      </div>
+
+      <section class="text-card original-card">
+        <div class="card-title">原始 WISA 文本</div>
+        <div class="label-row"><span>original_caption</span></div>
+        <pre id="originalCaption"></pre>
+        <div class="label-row"><span>当前 manifest caption</span></div>
+        <pre id="manifestCaption"></pre>
+      </section>
+
+      <div class="arm-bar">
+        <div class="segmented">
+          <button id="armText" type="button" class="active">正例 text</button>
+          <button id="armNull" type="button">空条件 null</button>
+        </div>
+        <span class="muted">切换只改变 Qwen 文本；上方视频与首帧相同。</span>
+      </div>
+
+      <div class="qwen-grid">
+        <section class="text-card old-card">
+          <div class="card-title">Qwen 处理前 <span class="tag old">旧缓存</span></div>
+          <div id="oldText" class="qwen-body"></div>
+        </section>
+        <section class="text-card new-card">
+          <div class="card-title">Qwen3.8 <span class="tag new">qwen38</span></div>
+          <div id="newText" class="qwen-body"></div>
+        </section>
+      </div>
+
+      <section class="text-card source-card">
+        <div class="card-title">来源与裁剪</div>
+        <pre id="sourceInfo"></pre>
+      </section>
+    </article>
+  </main>
+</div>
+<script src="/static/app.js"></script>
+</body>
+</html>

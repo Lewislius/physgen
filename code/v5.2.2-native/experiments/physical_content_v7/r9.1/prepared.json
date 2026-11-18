@@ -1,0 +1,138 @@
+{
+  "prepared_utc": "2026-10-31T17:33:55.937981+00:00",
+  "status": "all_declared_training_and_evaluation_complete",
+  "revision": "R9.1",
+  "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/content_value_r9_1/snapshots/20261031T173355Z",
+  "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/content_value_r9_1/submissions/candidate400_full60_20261031T173355Z.yaml",
+  "config": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/content_value_r9_1/snapshots/20261031T173355Z/configs/physical_content.yaml",
+  "empty_context": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/content_value_r9_1/submission_context",
+  "final_stop": 400,
+  "intermediate_step": 250,
+  "primary_cases": 40,
+  "extended_primary_cases": 60,
+  "additional_cases": 20,
+  "intermediate_cases": 16,
+  "control_cases": 16,
+  "control_modes": [
+    "reasoning_swapped",
+    "empty_reasoning",
+    "global_train_mean",
+    "shared_only",
+    "anchor_only",
+    "no_c"
+  ],
+  "gamma": 5,
+  "seed": 42,
+  "automatic_extension": false,
+  "automatic_adoption": false,
+  "maximum_authorized_revision": 10,
+  "new_trainable_parameters": 3072,
+  "architecture": "C=C_anchor+b_theta+P_theta Attention(Q_refined,K(E),V_theta(E)); Q retains R9 reader/exchange; final values use fitted actual words through bias-free shared V, without final latent residual or RMSNorm. Original R1 fusion remains.",
+  "initialization": "Official pretrained foundations and training-input fitted interface only; all project modules/LoRA fresh. Existing parameter initializer/RNG and initial C match R9; new shared offset is zero.",
+  "staging": "128 interface+272 joint; original R1 warmups32/128, data/order/noise/dropout/rates and objectives. Resume only this run own250 optimizer/RNG to400.",
+  "loss": "Original tail-sensitive real-video FM plus native-word semantic auxiliary; no new loss or independent T5 dropout.",
+  "decision_basis": "Matched250 R9 PC3.5625 vs R1 3.6875 (0wins14ties2losses); R9 last50 totalC cosine .39393 vs R1 .33400 and auxiliary .46559 vs .39996. R1 learned U/common correction already highly similar. Change final content transmission while retaining generic correction capacity; no quality guarantee from architecture.",
+  "strict_pc_target": {
+    "same40_mean_greater_than": 3.625,
+    "same60_mean_greater_than": 3.6666666666666665,
+    "reference_pc_pass_counts": {
+      "40": 18,
+      "60": 28
+    },
+    "tie_is_success": false,
+    "SA_offsets_PC_loss": false
+  },
+  "additional_control_reason": "shared_only16 retains own anchor+b and removes only PZ, distinguishing useful content readout from a generic learned offset. Same predeclared16 inputs and seed.",
+  "tests": {
+    "passed": 6,
+    "exit_code": 0,
+    "command": "bash tools/runtime_python.sh experiments/physical_content_v7/content_value_r9_1/test_content_value.py",
+    "scope": [
+      "existing initializer/RNG/initial C",
+      "identical queries transmit input values",
+      "actual inference anchor/shared controls in both CFG arms",
+      "generation gradient via original Fusion reaches Q",
+      "actual parameter ownership and own checkpoint/optimizer restore",
+      "all400 rates/objectives and declared evaluation scope"
+    ],
+    "configuration_audit_ready": true,
+    "quality_claim": false,
+    "frozen_configuration_audit_ready": true
+  },
+  "input_preparation": "Reuse existing local Qwen input caches and common20; no downloads, no new teacher pass or training labels.",
+  "next_version": "Only after R9.1 actual generation/module evidence, design finalR10 from R9.1; no parallelR10 design.",
+  "allocation_attempts": [
+    {
+      "experiment_id": 66970,
+      "trial_id": 68357,
+      "actual_gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "accepted": true,
+      "status": "STATE_COMPLETED"
+    }
+  ],
+  "updated_utc": "2026-11-01T03:39:38.062685+00:00",
+  "experiment_id": 66970,
+  "trial_id": 68357,
+  "successful_candidate_run": "physical_content_66970",
+  "first_real_update_verified": true,
+  "completed_updates_at_least_at_phase_check": 13,
+  "phase_check_utc": "2026-10-31T17:37:11.967203+00:00",
+  "quality_status": "Full40 PC3.450 andfull60 PC3.533333 below matchedR1; six16controls complete, no normalPCadvantage overmean/off/anchor. Not adopted or extended.",
+  "latest_pc_sa_visual_target": {
+    "original40": {
+      "pc_mean_strictly_greater_than": 3.625,
+      "sa_mean_strictly_greater_than": 2.95,
+      "reference_pc_pass_count": 18
+    },
+    "combined60": {
+      "pc_mean_strictly_greater_than": 3.6666666666666665,
+      "sa_mean_strictly_greater_than": 2.8833333333333333,
+      "reference_pc_pass_count": 28
+    },
+    "priority": "PC first; both scores and actual visual quality must improve",
+    "visual_quality": "Paired actual process/contact/shape continuity and visible artifacts; never inferred solely from score means",
+    "useful_conditioning": "Must establish beneficial sample-specific C/reasoning beyond shared or unrelated controls",
+    "automatic_success": false
+  },
+  "last_phase_observed": "declared_evaluation_completed",
+  "last_phase_step": 400,
+  "completed_training_steps": 400,
+  "training_log_audit250": "experiments/physical_content_v7/content_value_r9_1/reports/training_comparison_through0250.json",
+  "intermediate250_completed": true,
+  "intermediate250_summary": {
+    "count": 16,
+    "sa_mean": 3.1875,
+    "pc_mean": 3.5,
+    "sa_pass_rate": 0.3125,
+    "pc_pass_rate": 0.4375,
+    "joint_pass_rate": 0.3125,
+    "scope": "Fixed16 diagnostic subset of the existing videophy40 shared-first-image protocol",
+    "training_verifier_is_independent": true
+  },
+  "last_observed_training_step": 400,
+  "adopted": false,
+  "last_evidence_utc": "2026-10-31T19:29:00.449020+00:00",
+  "training_log_match400": {
+    "passed": true,
+    "micro_count": 1600,
+    "report": "experiments/physical_content_v7/content_value_r9_1/reports/training_comparison_through0400.json"
+  },
+  "own400_checkpoint_ready": true,
+  "final40_summary": {
+    "count": 40,
+    "sa_mean": 3.025,
+    "pc_mean": 3.45,
+    "sa_pass_rate": 0.275,
+    "pc_pass_rate": 0.4,
+    "joint_pass_rate": 0.225
+  },
+  "expanded60_summary": {
+    "count": 60,
+    "sa_mean": 2.9,
+    "pc_mean": 3.533333333333333,
+    "sa_pass_rate": 0.23333333333333334,
+    "pc_pass_rate": 0.4666666666666667,
+    "joint_pass_rate": 0.2
+  },
+  "all_controls_completed": true
+}

@@ -1,0 +1,51 @@
+{
+  "prepared_utc": "2026-10-31T14:53:12.349152+00:00",
+  "status": "combined_tail8_and_existing_controls_completed",
+  "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_coordinate_r7/generation_dispatch/snapshots/20261031T145312Z",
+  "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_coordinate_r7/generation_dispatch/submissions/tail8_then_existing_controls_20261031T145312Z.yaml",
+  "training_run": "physical_content_66920",
+  "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_coordinate_r7/snapshots/20261031T120744Z",
+  "normal_cases": [
+    "VP033",
+    "VP034",
+    "VP035",
+    "VP036",
+    "VP037",
+    "VP038",
+    "VP039",
+    "VP040"
+  ],
+  "subsequent_modes": [
+    "reasoning_swapped",
+    "no_c"
+  ],
+  "control_cases_each": 16,
+  "additional_cases": 0,
+  "additional_seeds": 0,
+  "training": false,
+  "gamma": 5,
+  "reason": "Actual R7 generation is about3minutes/case and only9/40complete14:46. Shortening the existing accelerator to the final8 preserves head start when a slot frees; then the same allocation finishes its prepared controls.",
+  "readiness": "Check actual freeRTX and original progress before submission. Do not submit if main has insufficient head start, owns final8 or its controlpair is active. Leave existing original pipeline unchanged.",
+  "old_tail16": "Preserved, unsubmitted; do not launch concurrently.",
+  "allocation_attempts": [
+    {
+      "experiment_id": 66963,
+      "trial_id": 68350,
+      "actual_gpu": "NVIDIA H100",
+      "accepted": false,
+      "status": "rejected_before_models"
+    },
+    {
+      "experiment_id": 66964,
+      "trial_id": 68351,
+      "actual_gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "accepted": true,
+      "status": "generation_pipeline_started"
+    }
+  ],
+  "experiment_id": 66964,
+  "trial_id": 68351,
+  "updated_utc": "2026-10-31T16:00:39.366230+00:00",
+  "completed_experiment_id": 66964,
+  "completed_trial_id": 68351
+}

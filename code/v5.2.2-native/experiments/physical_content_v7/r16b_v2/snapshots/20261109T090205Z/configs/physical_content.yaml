@@ -1,0 +1,130 @@
+revision: physical_content_v7_native_budget_joint_read_r16b
+paths:
+  wan_code: /home/liuzhirui/model/Wan2.2
+  wan_checkpoint: /home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B
+  qwen_checkpoint: /home/liuzhirui/model/Qwen3-VL/Qwen3-VL-8B-Instruct
+  cache: /home/liuzhirui/Project/physGen/data_cache/wisa_4000
+  supervision_cache: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/input_overlay
+  runs: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_budget_joint_read_r16b/runs
+  supervision_cache_readonly: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_variants/supervision_cache
+  content_cache: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cache
+  interface: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cache/interface.pt
+  inference_evidence: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/prepared_inputs
+model:
+  width: 3072
+  qwen_width: 4096
+  q_tokens: 256
+  q_heads: 32
+  rounds: 2
+  condition_every: 3
+  lora_rank: 32
+  grounded_read_heads: 16
+  grounded_word_normalization: train_fitted_whitened_words_and_request
+  global_reader_input: original_contextual_request_and_physical_words
+  final_readout: R10A_R15B_routing_values_and_execution_update
+  shared_content_offset: true
+  native_text_adaptation: frozen
+  fusion_order: parallel_native_text_and_native_budget_physics
+  physical_execution: native_bank_mass_and_learned_physical_content_selection_with_R10A_R15B_write
+  physical_query_initialization: independent_native_Q_copy; native query controls
+    memory allocation
+  physical_output_initialization: zero_O_exact_native_start
+  state_value_initialization: zero; same R1_R9_R10A_R15B initialization
+knowledge:
+  image_size:
+  - 480
+  - 832
+  video_size:
+  - 480
+  - 832
+  max_text_tokens: 4096
+  gradient_checkpointing: true
+  reasoning_mode: q_seed128_message
+  latent_reasoning_steps: 2
+  reasoning_tokens: 256
+  reasoning_max_tokens: 128
+  reasoning_cache: 16
+  freeze_backbone: true
+verifier:
+  kind: none
+geometry:
+  mode: native
+  rgb_size:
+  - 480
+  - 832
+stages:
+  interface: 128
+  joint: 272
+train:
+  seed: 42
+  accumulation: 4
+  peak_lrs:
+    enhancement: 5.0e-05
+    fusion_read: 2.0e-05
+    fusion_write: 3.0e-05
+    wan_lora: 2.0e-05
+  minimum_lr_ratio: 0.2
+  warmup: 32
+  wan_warmup: 128
+  decay_start: 600
+  grad_clip:
+    enhancement: 1.0
+    fusion_read: 1.0
+    fusion_write: 1.0
+    wan_lora: 1.0
+  text_dropout: 0.1
+  save_every: 50
+  keep_steps:
+  - 128
+  - 250
+  - 400
+  validation_steps: []
+  gradient_checkpointing: true
+  gradient_ownership: physical_interface_then_joint
+inference:
+  steps: 50
+  shift: 5.0
+  guidance: 5.0
+  sampler: shifted_euler
+  guidance_composition: joint_two_branch_cfg
+variant: physical_content
+loss:
+  peak_weight: 0.03
+  final_weight: 0.03
+  warmup: 32
+  decay_start: 400
+  temperature: 1.0
+  generation:
+    tail_weight: 0.2
+    tail_fraction: 0.25
+  semantic_target: routing_C_only
+source_snapshot: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_budget_joint_read_r16b/snapshots/20261109T090205Z
+evaluation_budget:
+  final_stop: 400
+  intermediate_step: null
+  intermediate_cases: 0
+  primary_cases: 40
+  control_cases: 16
+  control_modes:
+  - no_c
+  - direct_read_only
+  - request_memory_only
+  - shared_physical_query
+  - native_physical_query
+  - reasoning_swapped
+  - empty_reasoning
+  - global_train_mean
+  automatic_extension: true
+  native_text_guidance: 5.0
+  physical_guidance: 5.0
+  seed: 42
+  extended_evaluation:
+    policy: final_R16B_40_60_and_paired16_only; no_cross_benchmarks
+    cases: 60
+    new_cases: 20
+    runner: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/videophy60/snapshots/20261031T150803Z/run_extra20.py
+    input_status: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/videophy60/preparation_status.json
+    protocol: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/videophy60/protocol.json
+    keep_original40_results: true
+  maximum_version: R16B
+data_revision: original_wisa4000_and_original_reasoning

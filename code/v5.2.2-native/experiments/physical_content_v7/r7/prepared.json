@@ -1,0 +1,155 @@
+{
+  "prepared_utc": "2026-10-31T11:57:45.190919+00:00",
+  "status": "completed_declared_evaluations",
+  "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_coordinate_r7/snapshots/20261031T120744Z",
+  "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_coordinate_r7/submissions/candidate128_20261031T120744Z.yaml",
+  "config": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_coordinate_r7/snapshots/20261031T120744Z/configs/physical_content.yaml",
+  "first_stop": 128,
+  "automatic_extension": false,
+  "primary_cases": 40,
+  "control_cases": 16,
+  "control_modes": [
+    "mean_query_update",
+    "global_train_mean",
+    "anchor_only",
+    "reasoning_swapped",
+    "no_c"
+  ],
+  "gamma": 5,
+  "seed": 42,
+  "architecture": "C=W0*A+b0+v+B*v; v=0.1*W0*(A*U); fitted W0 fixed; full3072x3072 B trainable and zero-initialized",
+  "new_parameters": 9437184,
+  "initial_output_and_rng_equal_to": "R6 snapshot20261031T092555Z",
+  "unchanged": [
+    "Qwen input/evidence",
+    "learnable full-width Q and relation exchange",
+    "native T5 and full state-dependent fusion",
+    "data order/noise/seed",
+    "losses, learning rates and16-interface+112-joint updates",
+    "gamma5 and fixed40/fixed16 cases"
+  ],
+  "initialization": "Official local Wan/Qwen and training-input-fitted interface only; no project trained weights",
+  "matched_native128": "native_lora128_66913",
+  "matched_native128_outputs": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/content_modulation_r6/inference_outputs/native_lora128_66913/step0128_full40_text5_seed42/videophy40",
+  "same_budget_architecture_reference": "physical_content_66910",
+  "tests": {
+    "recorded_utc": "2026-10-31T11:57:45.190919+00:00",
+    "command": "bash tools/runtime_python.sh experiments/physical_content_v7/native_coordinate_r7/test_native_coordinate_write.py",
+    "exit_code": 0,
+    "tests_passed": 3,
+    "coverage": [
+      "R6 exact initial output/state/RNG equivalence",
+      "Generation-fusion gradients reach Q and native write transform; anchor intervention remains exact",
+      "Optimizer ownership, frozen fitted map, checkpoint restore and next-update equivalence"
+    ],
+    "quality_claim": false
+  },
+  "quality_status": "Full40 SA3.025/PC3.425; normal/unrelated16 PC identical, off control has limited netPC benefit. No adoption or extension. MeanU/globalmean/anchor16 remain in original job.",
+  "decision_basis": "R6 preserves differentiated correction but full40 PC equals native128 at3.4; R1-400 PC3.625 remains reference. Test learnable writing direction, not longer R6 training. R6 normal/no_c16 have identical SA/PC means; normal versus train-meanU has2 SA gains and1 PC gain, no losses. Retain content-dependent Q while testing learnable write coordinates.",
+  "measurement_policy": "Final128 normal16 decomposition only if needed to interpret generated outcomes; no intermediate diagnostic sweeps",
+  "allocation_attempts": [
+    {
+      "experiment_id": 66918,
+      "status": "failed_before_model_load",
+      "actual_gpu": "not_checked_before_configuration_error",
+      "trial_id": 68305,
+      "reason": "Copied configuration loader still required R6 revision and run directory",
+      "completed_updates": 0
+    },
+    {
+      "experiment_id": 66919,
+      "status": "H100_rejected_before_models",
+      "actual_gpu": "NVIDIA H100",
+      "accepted": false,
+      "model_loaded": false,
+      "trial_id": 68306
+    },
+    {
+      "experiment_id": 66920,
+      "status": "training_on_RTX",
+      "actual_gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "trial_id": 68307,
+      "accepted": true
+    }
+  ],
+  "experiment_id": 66920,
+  "updated_utc": "2026-10-31T18:36:51.532262+00:00",
+  "configuration_load_and_audit_passed": true,
+  "historical_snapshots": [
+    {
+      "path": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_coordinate_r7/snapshots/20261031T115745Z",
+      "experiment_id": 66918,
+      "status": "configuration_entry_failure_before_models"
+    }
+  ],
+  "trial_id": 68307,
+  "successful_candidate_run": "physical_content_66920",
+  "first_real_update_verified": true,
+  "remote_state_at_phase_check": "STATE_RUNNING",
+  "phase_check_utc": "2026-10-31T12:51:00+00:00",
+  "completed_updates_at_least_at_phase_check": 128,
+  "parallel_control_dispatch": {
+    "status": "completed_and_published",
+    "manifest": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_coordinate_r7/control_dispatch/prepared.json",
+    "modes": [
+      "reasoning_swapped",
+      "no_c"
+    ],
+    "additional_cases": 0
+  },
+  "training_completed_at_least_utc": "2026-10-31T14:15:36.065481+00:00",
+  "training_completion_evidence": "experiments/physical_content_v7/native_coordinate_r7/runs/physical_content_66920/status.json",
+  "existing_evaluation_acceleration": {
+    "experiment_id": 66964,
+    "trial_id": 68351,
+    "plan": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_coordinate_r7/generation_dispatch/prepared_tail8.json",
+    "status": "RTXaccepted; final8 then unrelated16/off16",
+    "additional_cases": 0
+  },
+  "full40": {
+    "path": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_coordinate_r7/inference_outputs/physical_content_66920/step0128_full40_controls16_physical5_seed42/videophy40",
+    "generated": 40,
+    "status": "completed",
+    "count": 40,
+    "sa_mean": 3.025,
+    "pc_mean": 3.425,
+    "sa_pass_rate": 0.275,
+    "pc_pass_rate": 0.4,
+    "joint_pass_rate": 0.25
+  },
+  "pc_reference_preservation": {
+    "reference": "R1_400",
+    "reference_metrics": {
+      "pc_mean": 3.625,
+      "pc_pass_rate": 0.45,
+      "sa_mean": 2.95,
+      "sa_pass_rate": 0.275,
+      "joint_pass_rate": 0.25
+    },
+    "comparison_case_count": 40,
+    "sa_gain_can_offset_pc_loss": false,
+    "automatic_replacement": false,
+    "status": "pc_not_retained",
+    "candidate_metrics": {
+      "pc_mean": 3.425,
+      "pc_pass_rate": 0.4,
+      "sa_mean": 3.025,
+      "sa_pass_rate": 0.275,
+      "joint_pass_rate": 0.25
+    },
+    "differences": {
+      "pc_mean": -0.2,
+      "pc_pass_rate": -0.05,
+      "sa_mean": 0.075,
+      "sa_pass_rate": 0.0,
+      "joint_pass_rate": 0.0
+    },
+    "pc_mean_retained": false,
+    "pc_pass_rate_retained": false,
+    "pc_retained_on_this_set": false,
+    "interpretation": "This is the measured replacement reference on the same40 cases, not by itself an equal-training-budget ablation or proof of retention on other samples/seeds. SA cannot compensate for lost PC. Research continuation requires generation/module evidence; it is not automatic adoption."
+  },
+  "det_state": "STATE_COMPLETED",
+  "all_declared_controls_completed": true,
+  "adopted": false
+}

@@ -1,0 +1,246 @@
+{
+  "updated_utc": "2026-11-16T14:20:50.896330+00:00",
+  "status": "pending_remaining_FT_controls; no_GT_submission",
+  "normal16_vs_noC16": {
+    "task": "t2v",
+    "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f/runs/r20ft_grounded_physical_response400/step0400.pt",
+    "cases": [
+      "VP002",
+      "VP004",
+      "VP005",
+      "VP009",
+      "VP010",
+      "VP013",
+      "VP015",
+      "VP016",
+      "VP017",
+      "VP018",
+      "VP024",
+      "VP025",
+      "VP026",
+      "VP027",
+      "VP034",
+      "VP038"
+    ],
+    "normal": {
+      "count": 16,
+      "sa": 3.25,
+      "pc": 3.9375,
+      "sa_pass_rate": 0.3125,
+      "pc_pass_rate": 0.75,
+      "joint": 5,
+      "joint_pass_rate": 0.3125
+    },
+    "controls": {
+      "no_c": {
+        "count": 16,
+        "sa": 3.1875,
+        "pc": 3.75,
+        "sa_pass_rate": 0.25,
+        "pc_pass_rate": 0.5625,
+        "joint": 4,
+        "joint_pass_rate": 0.25,
+        "differences": {
+          "sa": {
+            "normal_minus_control": 0.0625,
+            "normal_wins": 3,
+            "ties": 11,
+            "normal_losses": 2
+          },
+          "pc": {
+            "normal_minus_control": 0.1875,
+            "normal_wins": 5,
+            "ties": 9,
+            "normal_losses": 2
+          }
+        },
+        "paired_cases": [
+          {
+            "id": "VP002",
+            "normal_sa": 3,
+            "normal_pc": 4,
+            "control_sa": 3,
+            "control_pc": 5
+          },
+          {
+            "id": "VP004",
+            "normal_sa": 2,
+            "normal_pc": 4,
+            "control_sa": 3,
+            "control_pc": 3
+          },
+          {
+            "id": "VP005",
+            "normal_sa": 3,
+            "normal_pc": 3,
+            "control_sa": 3,
+            "control_pc": 3
+          },
+          {
+            "id": "VP009",
+            "normal_sa": 3,
+            "normal_pc": 4,
+            "control_sa": 3,
+            "control_pc": 3
+          },
+          {
+            "id": "VP010",
+            "normal_sa": 4,
+            "normal_pc": 4,
+            "control_sa": 4,
+            "control_pc": 4
+          },
+          {
+            "id": "VP013",
+            "normal_sa": 3,
+            "normal_pc": 3,
+            "control_sa": 2,
+            "control_pc": 3
+          },
+          {
+            "id": "VP015",
+            "normal_sa": 3,
+            "normal_pc": 4,
+            "control_sa": 3,
+            "control_pc": 3
+          },
+          {
+            "id": "VP016",
+            "normal_sa": 3,
+            "normal_pc": 5,
+            "control_sa": 4,
+            "control_pc": 4
+          },
+          {
+            "id": "VP017",
+            "normal_sa": 3,
+            "normal_pc": 3,
+            "control_sa": 3,
+            "control_pc": 4
+          },
+          {
+            "id": "VP018",
+            "normal_sa": 4,
+            "normal_pc": 4,
+            "control_sa": 3,
+            "control_pc": 4
+          },
+          {
+            "id": "VP024",
+            "normal_sa": 3,
+            "normal_pc": 4,
+            "control_sa": 3,
+            "control_pc": 3
+          },
+          {
+            "id": "VP025",
+            "normal_sa": 3,
+            "normal_pc": 4,
+            "control_sa": 3,
+            "control_pc": 4
+          },
+          {
+            "id": "VP026",
+            "normal_sa": 3,
+            "normal_pc": 3,
+            "control_sa": 3,
+            "control_pc": 3
+          },
+          {
+            "id": "VP027",
+            "normal_sa": 4,
+            "normal_pc": 5,
+            "control_sa": 4,
+            "control_pc": 5
+          },
+          {
+            "id": "VP034",
+            "normal_sa": 4,
+            "normal_pc": 5,
+            "control_sa": 3,
+            "control_pc": 5
+          },
+          {
+            "id": "VP038",
+            "normal_sa": 4,
+            "normal_pc": 4,
+            "control_sa": 4,
+            "control_pc": 4
+          }
+        ],
+        "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f/inference_outputs/r20ft_grounded_physical_response400/step0400_seed42/controls/no_c/videophy40/scores.json"
+      }
+    },
+    "interpretation": "same-checkpoint inference interventions, not independently retrained architectures"
+  },
+  "joint_phase_noise_bins": [
+    {
+      "sigma_range": [
+        0,
+        0.25
+      ],
+      "count": 246,
+      "write_relative_rms_mean": 0.027791269653575208,
+      "write_relative_rms_max": 0.04910506030953512,
+      "c_pair_cosine": 0.888884831734789,
+      "c_update_over_train_source_rms": 2.2030797726739713
+    },
+    {
+      "sigma_range": [
+        0.25,
+        0.5
+      ],
+      "count": 267,
+      "write_relative_rms_mean": 0.03182637101311362,
+      "write_relative_rms_max": 0.06059044563954466,
+      "c_pair_cosine": 0.8868947154127257,
+      "c_update_over_train_source_rms": 2.1944983036777055
+    },
+    {
+      "sigma_range": [
+        0.5,
+        0.75
+      ],
+      "count": 231,
+      "write_relative_rms_mean": 0.03479756238301853,
+      "write_relative_rms_max": 0.0671569759921207,
+      "c_pair_cosine": 0.8880750542079215,
+      "c_update_over_train_source_rms": 2.19317284445742
+    },
+    {
+      "sigma_range": [
+        0.75,
+        1.01
+      ],
+      "count": 243,
+      "write_relative_rms_mean": 0.03921903747252722,
+      "write_relative_rms_max": 0.07610968238225689,
+      "c_pair_cosine": 0.8864128859445392,
+      "c_update_over_train_source_rms": 2.1878603407384927
+    }
+  ],
+  "code_audit": {
+    "physical_sources_and_injection": [
+      0,
+      7,
+      14,
+      21,
+      28
+    ],
+    "flatten_order": "time,height,width; same official rope_apply for native and both physical arms",
+    "physical_qk_rotation": "C update precedes native Q/K normalization and 3D RoPE; one rotation per Q/K",
+    "C_slot_positions": "Global reasoning slots have no actual video timestamps; assigning slot index as a frame position would be unjustified.",
+    "binding_limit": "Current video-to-C pooling collapses all F*H*W positions into one observation per C slot before reading back. Whether it helps is being measured by video_binding_off16.",
+    "scope": "Source audit; not a claim that all runtime position behavior or quality is verified."
+  },
+  "research": {
+    "PhysVid": "https://arxiv.org/html/2603.26285v1#S6.SS2",
+    "finding": "PhysVid aligns local caption chunks with video time in a common rotary basis. Its chunk caption mechanism is outside the authorized design. A temporal coordinate for C must instead be grounded in actual current video-state positions, not arbitrary learnable query order."
+  },
+  "GT_decision_requirements": [
+    "Finish wrong-reasoning and video-binding controls.",
+    "Preserve the matched-depth pretrained execution and the observed visual improvement.",
+    "Resolve actual process/structure failures; do not optimize the evaluator by suppressing processes.",
+    "Audit initialization, injection state/order, rotary coordinates, checkpoint loading and generation gradient ownership before fresh400."
+  ]
+}

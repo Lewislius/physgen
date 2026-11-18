@@ -1,0 +1,35 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19di/runs/r19di_parallel_400/step0400.pt",
+  "step": 400,
+  "case": "VP013",
+  "seed": 42,
+  "guidance": {
+    "kind": "two_arm_joint_condition_cfg",
+    "scale": 5.0,
+    "formula": "v = v_neg + 5 * (v_pos - v_neg)",
+    "positive": "own first image, original request, positive native T5 and positive Qwen C",
+    "negative": "same first image, null native T5 and null Qwen C",
+    "separate_physical_guidance": false
+  },
+  "suite": "videophy40",
+  "task": "i2v",
+  "caption": "A person uses a pair of pliers to open a stubborn metal bottle, bending the cap slightly in the process.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP013/first.png",
+  "sampler": {
+    "num_frames": 81,
+    "width": 832,
+    "height": 480,
+    "steps": 50,
+    "sampler": "shifted_euler",
+    "shift": 5.0,
+    "cfg": 5.0,
+    "seed": 42,
+    "best_of_n": 1,
+    "clamp_first": true
+  },
+  "positive_analysis": "Pliers jaws gripping the cap rim -> cap bends slightly and pries open.\nHand applying force through pliers -> stubborn metal seal begins to separate.\nBottle neck remains stable -> deformed cap edges pull away from the rim.",
+  "physical_analysis": "Pliers jaws gripping the cap rim -> cap bends slightly and pries open.\nHand applying force through pliers -> stubborn metal seal begins to separate.\nBottle neck remains stable -> deformed cap edges pull away from the rim.",
+  "negative_analysis": "The pliers' jaws clamp the bottle's upper rim, applying localized force to the material.\nIncreased pressure from the handles may deform or crack the bottle's neck.\nThe hand maintains a steady grip on the pliers to control the tool's position.",
+  "scope": "own image/request",
+  "seconds": 250.81976793613285
+}

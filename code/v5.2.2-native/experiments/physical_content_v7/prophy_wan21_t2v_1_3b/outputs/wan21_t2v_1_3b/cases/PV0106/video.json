@@ -1,0 +1,37 @@
+{
+  "case": "PV0106",
+  "caption": "A person expertly rides a Segway down a ramp, performing a controlled jump before landing smoothly.",
+  "is_hard": "0",
+  "source_case": "PV0177",
+  "seed": 147,
+  "model": {
+    "name": "wan21_t2v_1_3b",
+    "checkpoint": "/home/liuzhirui/model/Wan2.1/Wan2.1-T2V-1.3B",
+    "source": "/home/liuzhirui/model/Wan2.1",
+    "task": "t2v",
+    "precision": "bf16",
+    "project_checkpoint": null,
+    "prompt_extension": false
+  },
+  "sampling": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "seed": 42,
+    "fps": 16,
+    "frames": 81,
+    "width": 832,
+    "height": 480,
+    "solver": "unipc",
+    "seed_policy": "42+index",
+    "negative_prompt": "official Wan2.1 sample_neg_prompt",
+    "size": [
+      832,
+      480
+    ]
+  },
+  "task": "t2v",
+  "first_frame_used": false,
+  "seconds": 254.56944264704362,
+  "scope": "ProPhy/VideoPhy2 prompt list: 600 ALL captions and 180 HARD; official Wan2.1-T2V-1.3B text-to-video; no first image. Generation settings follow the established local ProPhy replay protocol; ProPhy paper does not report model-specific sampling settings."
+}

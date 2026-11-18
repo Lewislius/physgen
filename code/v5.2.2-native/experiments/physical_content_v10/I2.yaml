@@ -1,0 +1,77 @@
+revision: NoChunks-v2-20261111
+plan: I2
+task: i2v
+mechanism: 2
+status: unvalidated_candidate
+base:
+  model: Wan2.2-TI2V-5B
+  project_checkpoint: null
+  freeze_text_qkvo: true
+  video_lora_rank: 32
+  video_lora_alpha: 32
+  video_lora_from_update: 1
+model:
+  physics_slots: 256
+  physics_width: 3072
+  q_width: 4096
+  q_heads: 32
+  q_rounds: 2
+  injection_layers:
+  - 2
+  - 5
+  - 8
+  - 11
+  - 14
+  - 17
+  - 20
+  - 23
+  - 26
+  - 29
+  extra_video_blocks: 0
+  split_temporal_physics_memory: false
+  conditioned_ffn_rank: 64
+input:
+  external_image: true
+  evidence_scope: first_image_and_request_only
+  known_latent_frames: 1
+  future_targets_in_condition: false
+  chunk_descriptions: false
+  local_annotation_preprocessing: false
+train:
+  max_updates: 1000
+  effective_global_batch: 4
+  microbatch_per_device: 1
+  gradient_accumulation: 4
+  world_size: 1
+  seed: 42
+  physics_warmup: 32
+  video_lora_warmup: 128
+  peak_end_update: 600
+  minimum_lr_ratio: 0.2
+  post_training: false
+  noise_strategy: unchanged_linear_FM
+  sigma_min: 0.001
+  sigma_max: 0.999
+loss:
+  fm: 0.8
+  tail: 0.2
+  tail_fraction: 0.25
+  route_peak: 0.03
+  route_warmup: 32
+  route_decay_start: 600
+  route_final: 0.015
+  local_semantic_enabled: false
+  st_enabled: false
+  supervise_known_latent: false
+  unknown_scope: valid_future_frames
+inference:
+  num_frames: 81
+  width: 832
+  height: 480
+  steps: 50
+  sampler: shifted_euler
+  shift: 5.0
+  cfg: 5.0
+  seed: 42
+  best_of_n: 1
+  clamp_first: true

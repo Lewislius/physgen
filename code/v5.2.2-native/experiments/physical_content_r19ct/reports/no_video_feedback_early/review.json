@@ -1,0 +1,70 @@
+{
+  "reviewed_utc": "2026-11-14T11:06:38.045250+00:00",
+  "sample_count": 8,
+  "visual_scope": "5 sampled frames per pair",
+  "pixel_scope": "all81 original-resolution decoded frames; arithmetic RGB/BGR MAE only measures change, not quality/physics/motion",
+  "intervention": "zero only the pooled video-value input to the state expert; video-dependent read/write queries remain active",
+  "cases": [
+    {
+      "case": "VP002",
+      "frames": 81,
+      "normal_vs_no_video_mae01": 0.005269480632418631,
+      "normal_vs_no_c_mae01": 0.27754313174782547,
+      "visual_note": "置零池化视频输入后，空背景和晚期白弧几乎保持；未恢复手/木条。"
+    },
+    {
+      "case": "VP004",
+      "frames": 81,
+      "normal_vs_no_video_mae01": 0.03508518584144379,
+      "normal_vs_no_c_mae01": 0.2749584810157642,
+      "visual_note": "置零后尺子轮廓略有变化，仍退化成细线/消失。"
+    },
+    {
+      "case": "VP005",
+      "frames": 81,
+      "normal_vs_no_video_mae01": 0.006605735561147008,
+      "normal_vs_no_c_mae01": 0.2242612484017032,
+      "visual_note": "正常和置零画面及球/拍安排非常相近，平涂表现保持。"
+    },
+    {
+      "case": "VP009",
+      "frames": 81,
+      "normal_vs_no_video_mae01": 0.028977934169374463,
+      "normal_vs_no_c_mae01": 0.3090025773263365,
+      "visual_note": "位置/附图细节有变化，但手和玻璃近景及缺少正确吸盘举升问题保持。"
+    },
+    {
+      "case": "VP010",
+      "frames": 81,
+      "normal_vs_no_video_mae01": 0.025635490641235128,
+      "normal_vs_no_c_mae01": 0.18970077792183138,
+      "visual_note": "拖把时间位置有变化，仍缺少可信水洼擦除。"
+    },
+    {
+      "case": "VP013",
+      "frames": 81,
+      "normal_vs_no_video_mae01": 0.01298986960594225,
+      "normal_vs_no_c_mae01": 0.24649680467526386,
+      "visual_note": "钳子移动时机改变，后期仍针状/丢失主体，没有恢复开瓶。"
+    },
+    {
+      "case": "VP015",
+      "frames": 81,
+      "normal_vs_no_video_mae01": 0.04112444144472841,
+      "normal_vs_no_c_mae01": 0.3124081094101405,
+      "visual_note": "水面细节和移动位置有变化，但仍是异常尖长物及不清楚的提桨滴水。"
+    },
+    {
+      "case": "VP016",
+      "frames": 81,
+      "normal_vs_no_video_mae01": 0.03436083625028966,
+      "normal_vs_no_c_mae01": 0.2006777715966623,
+      "visual_note": "置零后探针很早离开而虫/叶保留，正常版接近/接触/撤回过程更清楚；此例视频反馈确有可辨识的作用。"
+    }
+  ],
+  "mean_mae01": {
+    "no_video_feedback": 0.023756121768322418,
+    "no_c": 0.2543811127619409
+  },
+  "interpretation": "多例的失败在置零池化视频输入后保持，不能将专家存在或梯度存在当成视频状态被有效利用。016有实际过程作用，因此不把结果说成所有样本完全不依赖视频。"
+}

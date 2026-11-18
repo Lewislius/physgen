@@ -1,0 +1,35 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20h/runs/r20ht_state_conditioned_execution400/step0400.pt",
+  "step": 400,
+  "case": "VP043",
+  "seed": 42,
+  "guidance": {
+    "kind": "two_arm_joint_condition_cfg",
+    "scale": 5.0,
+    "formula": "v = v_neg + 5 * (v_pos - v_neg)",
+    "positive": "request only, positive native T5 and positive request-only Qwen C",
+    "negative": "null request, null native T5 and null request-only Qwen C",
+    "separate_physical_guidance": false
+  },
+  "suite": "videophy60",
+  "task": "t2v",
+  "caption": "A spinnaker is deployed on a racing yacht, expanding like a parachute and creating a large amount of thrust.",
+  "canvas": null,
+  "sampler": {
+    "num_frames": 81,
+    "width": 832,
+    "height": 480,
+    "steps": 50,
+    "sampler": "shifted_euler",
+    "shift": 5.0,
+    "cfg": 5.0,
+    "seed": 42,
+    "best_of_n": 1,
+    "clamp_first": false
+  },
+  "positive_analysis": "1. Wind contacts spinnaker fabric, accelerating it outward due to aerodynamic pressure differential.  \n2. Spinnaker’s lightweight, taut sail material expands rapidly, resisting collapse from internal tension.  \n3. Yacht’s rigging holds spinnaker taut, maintaining aerodynamic profile for thrust generation.  \n4. Sail’s surface area increases, enhancing wind capture and thrust force proportional to wind speed.",
+  "physical_analysis": "1. Wind contacts spinnaker fabric, accelerating it outward due to aerodynamic pressure differential.  \n2. Spinnaker’s lightweight, taut sail material expands rapidly, resisting collapse from internal tension.  \n3. Yacht’s rigging holds spinnaker taut, maintaining aerodynamic profile for thrust generation.  \n4. Sail’s surface area increases, enhancing wind capture and thrust force proportional to wind speed.",
+  "negative_analysis": "",
+  "scope": "request only; no image",
+  "seconds": 121.50005669891834
+}

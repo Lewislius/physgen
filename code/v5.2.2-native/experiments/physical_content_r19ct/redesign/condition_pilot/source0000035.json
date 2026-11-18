@@ -1,0 +1,42 @@
+{
+  "id": "source0000035",
+  "caption": "The video captures a press test, a cylindrical steel platen pressing on a stack of bricks atop a yellow-and-black striped base, framed by striped poles and a camera. The platen, already touching the top dark brick, descends, shortening the column as the reddish and dark bricks bear the load. After a brief intact interval, a vertical crack opens in the upper reddish brick, soon matched by one in the lower brick as dust escapes. The reddish bricks split into fragments that detach, fall, and eject sideways while the middle crumbles into loose rubble. As the platen keeps pressing, the top dark brick remains under it, joined to the lower pile by a thin column of debris, with pieces blurring past the base. Fragments and dust accumulate on the base and rubble pile while the background poles, camera, and housing stay in place.",
+  "old_relations": [
+    "Platen’s downward force must exceed brick stack’s compressive strength to initiate cracking and fragmentation.",
+    "Reddish bricks’ lower tensile strength causes them to crack first under load, releasing dust.",
+    "Middle brick’s weaker cohesion allows it to crumble into rubble as platen continues pressing.",
+    "Top dark brick remains intact due to higher compressive strength and direct platen contact."
+  ],
+  "proposed": {
+    "semantic_focus": "A steel platen presses a brick stack, causing vertical cracks, fragmentation, and sideways ejection of debris while the top brick remains under load.",
+    "relations": [
+      "The descending platen compresses the column, inducing stress that initiates vertical cracking in the reddish bricks.",
+      "Crack propagation leads to fragment detachment, with pieces falling and ejecting sideways due to release of stored elastic energy.",
+      "Continued pressing maintains contact on the top dark brick while lower fragments crumble into loose rubble and dust.",
+      "Ejected debris accumulates on the base as the static background elements remain unaffected by the localized failure."
+    ]
+  },
+  "trace": {
+    "model": "qwen3.8-flash",
+    "request_id": "chatcmpl-efa30340-6338-9208-862a-6ecf186f8226",
+    "usage": {
+      "prompt_tokens": 452,
+      "total_tokens": 589,
+      "completion_tokens": 137,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "text_tokens": 452
+      }
+    },
+    "finish_reason": "stop",
+    "raw": "{\n\"semantic_focus\": \"A steel platen presses a brick stack, causing vertical cracks, fragmentation, and sideways ejection of debris while the top brick remains under load.\",\n\"relations\": [\n\"The descending platen compresses the column, inducing stress that initiates vertical cracking in the reddish bricks.\",\n\"Crack propagation leads to fragment detachment, with pieces falling and ejecting sideways due to release of stored elastic energy.\",\n\"Continued pressing maintains contact on the top dark brick while lower fragments crumble into loose rubble and dust.\",\n\"Ejected debris accumulates on the base as the static background elements remain unaffected by the localized failure.\"\n]\n}",
+    "seconds": 3.3977859360165894,
+    "image_count": 0,
+    "video_sequence": false,
+    "thinking": false,
+    "explicit_times": null,
+    "prompt": "Prepare conditioning for a video generator from the request alone.\nThe request may describe a cropped temporal segment: its cause may have begun\nbefore the clip and its consequences may continue afterwards. Do not force a\ncomplete start/contact/end cycle or invent missing actions.\nReturn JSON with these two fields:\n\"semantic_focus\": one sentence, at most 35 words, preserving the main specified\nparticipants, their roles, and the requested visible phenomenon or process.\n\"relations\": one to four sentences, each at most 24 words, specifying physical\ndependencies that are directly relevant to producing that requested process.\nUse concrete qualitative cause/response or persistence relationships. Preserve\nthe request's actual direction, sequence and material state. Do not add numeric\nthresholds, hidden material properties, failure or rupture, rest/motion phases,\nor strong necessity claims that are not entailed by the request and basic physics.\nDo not equate motion with breakage or a continuous visible process with stasis.\nNo physics category labels, camera aesthetics, instructions to the scorer, or\npredicted quality. A short set of useful dependencies is better than four padded\nstatements. The original request remains the generator's semantic input.\nRequest:\nThe video captures a press test, a cylindrical steel platen pressing on a stack of bricks atop a yellow-and-black striped base, framed by striped poles and a camera. The platen, already touching the top dark brick, descends, shortening the column as the reddish and dark bricks bear the load. After a brief intact interval, a vertical crack opens in the upper reddish brick, soon matched by one in the lower brick as dust escapes. The reddish bricks split into fragments that detach, fall, and eject sideways while the middle crumbles into loose rubble. As the platen keeps pressing, the top dark brick remains under it, joined to the lower pile by a thin column of debris, with pieces blurring past the base. Fragments and dust accumulate on the base and rubble pile while the background poles, camera, and housing stay in place."
+  },
+  "source": "request_only",
+  "used_for_training": false
+}

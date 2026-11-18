@@ -1,0 +1,193 @@
+{
+  "created_at_utc": "2026-10-29T14:26:17.791471+00:00",
+  "status": "completed_rtx6000_running",
+  "variant": "v5_ce",
+  "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_v5_scaling_q256/snapshots/20261029T142617Z",
+  "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_v5_scaling_q256/snapshots/20261029T142617Z/train/v5_ce_q256_s1000_blk96g.yaml",
+  "submission_context": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_v5_scaling_q256/snapshots/20261029T142617Z/submission_context",
+  "settings": {
+    "q_tokens": 256,
+    "total_steps": 1000,
+    "ce_peak": 0.03,
+    "ce_final": 0.015,
+    "ce_warmup": 64,
+    "wan_lora_peak_lr": 2e-05,
+    "wan_warmup": 128
+  },
+  "attempts": [
+    {
+      "experiment_id": 66685,
+      "submitted_at_utc": "2026-10-29T14:27:07.468690+00:00",
+      "run": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_v5_scaling_q256/runs/v5_ce_66685",
+      "status": "rejected_h100_killed",
+      "trial_id": 68072,
+      "gpu": {
+        "kind": "gpu_policy",
+        "actual": "NVIDIA H100",
+        "visible_count": 1,
+        "accepted": false,
+        "resource_pool": "blk-96g",
+        "experiment_id": "66685",
+        "time": 1793284845.0618176
+      }
+    },
+    {
+      "experiment_id": 66705,
+      "submitted_at_utc": "2026-10-30T02:50:16.138223+00:00",
+      "run": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_v5_scaling_q256/runs/v5_ce_66705",
+      "status": "rejected_h100_killed",
+      "trial_id": 68092,
+      "gpu": {
+        "kind": "gpu_policy",
+        "actual": "NVIDIA H100",
+        "visible_count": 1,
+        "accepted": false,
+        "resource_pool": "blk-96g",
+        "experiment_id": "66705",
+        "time": 1793328607.2833776
+      }
+    },
+    {
+      "experiment_id": 66706,
+      "submitted_at_utc": "2026-10-30T02:51:16.769815+00:00",
+      "run": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_v5_scaling_q256/runs/v5_ce_66706",
+      "status": "running_verified",
+      "gpu": {
+        "kind": "gpu_policy",
+        "actual": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "visible_count": 1,
+        "accepted": true,
+        "resource_pool": "blk-96g",
+        "experiment_id": "66706",
+        "time": 1793328644.2524428
+      },
+      "trial_id": 68093
+    }
+  ],
+  "last_checked_at_utc": "2026-10-30T03:27:49.020943+00:00",
+  "active_experiment_id": 66706,
+  "active_run": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_v5_scaling_q256/runs/v5_ce_66706",
+  "gpu_verified_at_utc": "2026-10-30T02:51:39.837085+00:00",
+  "trial_id": 68093,
+  "first_updates": [
+    {
+      "kind": "train",
+      "time": 1793329047.0924156,
+      "step": 1,
+      "phase": "interface",
+      "cursor": 4,
+      "seconds": 14.361761034466326,
+      "fm": 0.1951081994920969,
+      "aux": 2.9783195853233337,
+      "weighted_aux": 0.0013960873056203128,
+      "aux_samples": 4,
+      "gradients": {
+        "enhancement": 0.14080078899860382,
+        "fusion_read": 0.0,
+        "fusion_write": 0.8276421427726746,
+        "semantic_bridge": 0.049801625311374664,
+        "wan_lora": 0.0
+      },
+      "clip_scales": {
+        "enhancement": 1.0,
+        "fusion_read": 1.0,
+        "fusion_write": 1.0,
+        "semantic_bridge": 1.0,
+        "wan_lora": 1.0
+      },
+      "aux_coefficient": 0.00046875,
+      "learning_rates": {
+        "enhancement": 1.5625e-06,
+        "fusion_read": 6.25e-07,
+        "fusion_write": 3.125e-07,
+        "semantic_bridge": 1.5625e-06,
+        "wan_lora": 0.0
+      },
+      "peak_gib": 36.337106227874756
+    },
+    {
+      "kind": "train",
+      "time": 1793329058.1562173,
+      "step": 2,
+      "phase": "interface",
+      "cursor": 8,
+      "seconds": 11.054717442952096,
+      "fm": 0.29607026278972626,
+      "aux": 2.8255180716514587,
+      "weighted_aux": 0.0026489231921732422,
+      "aux_samples": 4,
+      "gradients": {
+        "enhancement": 0.138116717338562,
+        "fusion_read": 0.00010376278078183532,
+        "fusion_write": 0.6192328929901123,
+        "semantic_bridge": 0.049582235515117645,
+        "wan_lora": 0.0
+      },
+      "clip_scales": {
+        "enhancement": 1.0,
+        "fusion_read": 1.0,
+        "fusion_write": 1.0,
+        "semantic_bridge": 1.0,
+        "wan_lora": 1.0
+      },
+      "aux_coefficient": 0.0009375,
+      "learning_rates": {
+        "enhancement": 3.125e-06,
+        "fusion_read": 1.25e-06,
+        "fusion_write": 6.25e-07,
+        "semantic_bridge": 3.125e-06,
+        "wan_lora": 0.0
+      },
+      "peak_gib": 40.20161581039429
+    }
+  ],
+  "joint_training_check": {
+    "last_step": 131,
+    "first_joint_update": {
+      "kind": "train",
+      "time": 1793330831.638072,
+      "step": 129,
+      "phase": "joint",
+      "cursor": 516,
+      "seconds": 11.158584761433303,
+      "fm": 0.4372454732656479,
+      "aux": 1.2806314527988434,
+      "weighted_aux": 0.038418943583965304,
+      "aux_samples": 3,
+      "gradients": {
+        "enhancement": 0.10393773019313812,
+        "fusion_read": 0.009200815111398697,
+        "fusion_write": 0.3203933537006378,
+        "semantic_bridge": 0.06414466351270676,
+        "wan_lora": 0.004729143343865871
+      },
+      "clip_scales": {
+        "enhancement": 1.0,
+        "fusion_read": 1.0,
+        "fusion_write": 1.0,
+        "semantic_bridge": 1.0,
+        "wan_lora": 1.0
+      },
+      "aux_coefficient": 0.03,
+      "learning_rates": {
+        "enhancement": 5e-05,
+        "fusion_read": 2e-05,
+        "fusion_write": 1e-05,
+        "semantic_bridge": 5e-05,
+        "wan_lora": 1.5625e-07
+      },
+      "peak_gib": 43.41799592971802
+    },
+    "validation": {
+      "kind": "validation",
+      "time": 1793330820.4576714,
+      "step": 128,
+      "fm": 0.18567884899675846,
+      "video": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_v5_scaling_q256/runs/v5_ce_66706/videos/val_source0000042_step0128_seed42.mp4",
+      "sample": "source0000042"
+    },
+    "wan_gradient_nonzero": true,
+    "wan_warmup_correct": true,
+    "stage_checkpoint": "experiments/physical_v5_scaling_q256/runs/v5_ce_66706/step0128.pt"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19di/runs/r19di_parallel_400/step0400.pt",
+  "step": 400,
+  "case": "VP018",
+  "seed": 42,
+  "guidance": {
+    "kind": "two_arm_joint_condition_cfg",
+    "scale": 5.0,
+    "formula": "v = v_neg + 5 * (v_pos - v_neg)",
+    "positive": "own first image, original request, positive native T5 and positive Qwen C",
+    "negative": "same first image, null native T5 and null Qwen C",
+    "separate_physical_guidance": false
+  },
+  "suite": "videophy40",
+  "task": "i2v",
+  "caption": "A bulldozer pulls a heavy load attached with a chain, moving it across the ground.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP018/first.png",
+  "sampler": {
+    "num_frames": 81,
+    "width": 832,
+    "height": 480,
+    "steps": 50,
+    "sampler": "shifted_euler",
+    "shift": 5.0,
+    "cfg": 5.0,
+    "seed": 42,
+    "best_of_n": 1,
+    "clamp_first": true
+  },
+  "positive_analysis": "The taut chain linking the bulldozer to the dirt load transmits forward pulling force.\nAs the bulldozer advances, the chain drags the heavy dirt pile across the ground.\nThe dragged dirt load shifts and deforms along the terrain during movement.",
+  "physical_analysis": "The taut chain linking the bulldozer to the dirt load transmits forward pulling force.\nAs the bulldozer advances, the chain drags the heavy dirt pile across the ground.\nThe dragged dirt load shifts and deforms along the terrain during movement.",
+  "negative_analysis": "If the tractor advances, the front blade will push the pile of dark soil across the muddy terrain.\nThe chains attached to the blade will remain connected and adjust tension as the soil pile is displaced.\nThe tractor's heavily treaded tires will sink deeper into the soft mud while exerting forward pushing force.",
+  "scope": "own image/request",
+  "seconds": 254.6288488805294
+}

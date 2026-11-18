@@ -1,0 +1,38 @@
+{
+  "recorded_utc": "2026-10-31T17:42:46.317532+00:00",
+  "selection": "Both PC-loss cases in the completed R9 versus R1 matched250 fixed16 comparison; selected after scores, not a blind or representative quality sample.",
+  "method": "Assistant inspection of existing paired frames0,27,54,80; no new generation, evaluator, model or dense-frame sweep.",
+  "cases": [
+    {
+      "id": "VP010",
+      "scores": {
+        "R1_250": {
+          "sa": 4,
+          "pc": 4
+        },
+        "R9_250": {
+          "sa": 4,
+          "pc": 3
+        }
+      },
+      "visible_observation_zh": "R9第54帧中黑色拖把头离开地面，下方出现两条明显竖向亮带/片状结构；原R1同帧的拖把头仍为贴地横向形态。R9第80帧又恢复贴地，显示采样中间状态的形态与接触不稳定。两版均仍可见反光湿区；这四帧不能量化吸水完成度。",
+      "interpretation_zh": "局部接触与形态错误可以与整体场景及FM均值相近同时出现，不能用整体FM相近排除过程问题；未测定该片段在训练损失中的具体权重，也不能据此定位到某一个C通道。"
+    },
+    {
+      "id": "VP027",
+      "scores": {
+        "R1_250": {
+          "sa": 4,
+          "pc": 5
+        },
+        "R9_250": {
+          "sa": 4,
+          "pc": 4
+        }
+      },
+      "visible_observation_zh": "两版均保留手、面团和木台，采样状态中都有手接触及面团形状变化；R9第27/54帧的面团更高、更接近竖立的圆团，R1更扁。仅凭这四个时刻没有清晰识别出足以解释PC下降一分的确定物理错误。",
+      "interpretation_zh": "保留逐例评分退化，不将合法的揉面形变或时序错位强行解释为已证实伪影。完整视频已在配对查看页可播放。"
+    }
+  ],
+  "design_implication_zh": "R9的读取内容改变没有保证真实接触/形态执行改善。R9.1需要在完成评分和内容控制后同时核对这样的实际过程；输入差异和低cosine本身不算成功。"
+}

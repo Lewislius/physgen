@@ -1,0 +1,159 @@
+{
+  "status": "passed",
+  "gpu": {
+    "kind": "gpu_policy",
+    "actual": "NVIDIA L40S",
+    "visible_count": 1,
+    "accepted": true,
+    "resource_pool": "ada-48g",
+    "experiment_id": "69626"
+  },
+  "parameters": 1528947712,
+  "parameter_groups": {
+    "enhancement": 227580928,
+    "fusion_read": 866863104,
+    "fusion_write": 377487360,
+    "wan_lora": 57016320
+  },
+  "response_mode": "triple_global_pure_local",
+  "global_execution": [
+    "direct",
+    "request_bound",
+    "joint"
+  ],
+  "architecture": "R16G design unchanged except task entry: R15C local 5x3x3 video-state operator (video V, direct zero-init full-width local Q condition) plus three independent state-gated global execution writes from direct C, request-bound C, and joint direct+request C. Each read has its own zero-init full-width 3072->3072 output and zero-init full-width 3072->3072 multiplicative state gate. No raw Qwen request word is written globally and there is no low-dimensional bottleneck. T2V has no first latent frame: all 21 frames are noisy, every token receives a native time position, the physical write covers every token, and the generation loss covers every frame. Native text Q/K/V/O stay frozen; training and normal inference use the same forward.",
+  "first_frame_used": false,
+  "known_latent_frames": 0,
+  "initial_native_max_abs": 0.0,
+  "memory_policy": "one video per GPU; gradient accumulation 4",
+  "rows": [
+    {
+      "disposable_iteration": 1,
+      "phase": "interface",
+      "sample": "source0002263",
+      "seconds": 6.064876737014856,
+      "peak_gib": 31.683763027191162,
+      "gradients": {
+        "output": 0.11693073064088821,
+        "condition_query": 0.0,
+        "direct_output": 0.025393376126885414,
+        "request_output": 0.025719711557030678,
+        "joint_output": 0.025280490517616272,
+        "direct_state_value": 0.0,
+        "request_state_value": 0.0,
+        "joint_state_value": 0.0,
+        "video_q": 0.0,
+        "video_k": 0.0,
+        "video_v": 0.0,
+        "key": 0.0,
+        "value": 0.0,
+        "routing_C": 0.0006195271271280944,
+        "execution_C": 0.0
+      },
+      "group_gradients": {
+        "enhancement": 0.0006205141544342041,
+        "fusion_read": 0.0,
+        "fusion_write": 0.25895053148269653,
+        "wan_lora": 0.0
+      },
+      "generation": 0.21874608099460602,
+      "aux": 0.3440908193588257
+    },
+    {
+      "disposable_iteration": 2,
+      "phase": "interface",
+      "sample": "source0002263",
+      "seconds": 5.790812515013386,
+      "peak_gib": 37.16765356063843,
+      "gradients": {
+        "output": 0.09108050167560577,
+        "condition_query": 1.9023846107302234e-06,
+        "direct_output": 0.018035026267170906,
+        "request_output": 0.018276479095220566,
+        "joint_output": 0.017962154000997543,
+        "direct_state_value": 2.2733231162419543e-05,
+        "request_state_value": 2.2907597667654045e-05,
+        "joint_state_value": 2.2531430659000762e-05,
+        "video_q": 6.608267995034112e-06,
+        "video_k": 6.7597616180137265e-06,
+        "video_v": 5.132894148118794e-05,
+        "key": 1.9730694475583732e-05,
+        "value": 3.670038131531328e-05,
+        "routing_C": 0.0020264300983399153,
+        "execution_C": 0.01621788926422596
+      },
+      "group_gradients": {
+        "enhancement": 0.016344336792826653,
+        "fusion_read": 0.00019514671294018626,
+        "fusion_write": 0.19978094100952148,
+        "wan_lora": 0.0
+      },
+      "generation": 0.21715645492076874,
+      "aux": 0.3417781889438629
+    },
+    {
+      "disposable_iteration": 3,
+      "phase": "interface",
+      "sample": "source0002263",
+      "seconds": 5.806509763991926,
+      "peak_gib": 37.17936992645264,
+      "gradients": {
+        "output": 0.06354223191738129,
+        "condition_query": 4.102054390386911e-06,
+        "direct_output": 0.010339401662349701,
+        "request_output": 0.010550078004598618,
+        "joint_output": 0.010418248362839222,
+        "direct_state_value": 2.443994344503153e-05,
+        "request_state_value": 2.4743747417232953e-05,
+        "joint_state_value": 2.446267353661824e-05,
+        "video_q": 1.280742981180083e-05,
+        "video_k": 1.2272810636204667e-05,
+        "video_v": 5.140572466189042e-05,
+        "key": 1.910508217406459e-05,
+        "value": 3.640573413576931e-05,
+        "routing_C": 0.0019521147478371859,
+        "execution_C": 0.012464617379009724
+      },
+      "group_gradients": {
+        "enhancement": 0.012618436478078365,
+        "fusion_read": 0.00017721811309456825,
+        "fusion_write": 0.14043088257312775,
+        "wan_lora": 0.0
+      },
+      "generation": 0.21496933698654175,
+      "aux": 0.33846068382263184
+    },
+    {
+      "disposable_iteration": 4,
+      "phase": "joint",
+      "sample": "source0002263",
+      "seconds": 6.145588664978277,
+      "peak_gib": 37.88013172149658,
+      "gradients": {
+        "output": 0.08558196574449539,
+        "condition_query": 7.248212568811141e-06,
+        "direct_output": 0.021590067073702812,
+        "request_output": 0.02239445596933365,
+        "joint_output": 0.022222062572836876,
+        "direct_state_value": 4.041305146529339e-05,
+        "request_state_value": 4.2316867620684206e-05,
+        "joint_state_value": 4.189683386357501e-05,
+        "video_q": 2.0379453417262994e-05,
+        "video_k": 2.3638289349037223e-05,
+        "video_v": 9.017671982292086e-05,
+        "key": 2.483715070411563e-05,
+        "value": 5.457664519781247e-05,
+        "routing_C": 0.01646631956100464,
+        "execution_C": 0.03261401131749153
+      },
+      "group_gradients": {
+        "enhancement": 0.03656740114092827,
+        "fusion_read": 0.00053675431990996,
+        "fusion_write": 0.21297870576381683,
+        "wan_lora": 0.0040609403513371944
+      },
+      "generation": 0.2135511040687561,
+      "aux": 0.33383724093437195
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+schema_version: native-wan22-lora-amp48-v1
+revision: native-wan22-video-lora-400-20261117
+status: ready_for_training
+task: t2v
+base:
+  model: Wan2.2-TI2V-5B
+  project_checkpoint: null
+  freeze_text_qkvo: true
+  video_lora_rank: 32
+  video_lora_alpha: 32
+paths:
+  wan_code: /home/liuzhirui/model/Wan2.2
+  wan_checkpoint: /home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B
+  train_cache: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/data_revision_qwen38/runs/20261103_dataset/encoded
+  cache: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/data_revision_qwen38/runs/20261103_dataset/encoded
+  words_cache: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f/preparation/full_reasoning_cache/words
+  native_words_cache: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f/preparation/full_reasoning_cache/native_words
+  input_cache: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f/preparation/full_reasoning_cache/input
+  eval_input_cache: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f/preparation/full_reasoning_cache/input
+  eval_native_inputs: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_wan_t2v/eval_native_inputs
+  eval_protocol: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/videophy60/protocol.json
+  run_dir: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/native_wan22_amp48_controls/runs/wan22_video_lora400
+  output: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/native_wan22_amp48_controls/inference_outputs
+train:
+  max_updates: 400
+  effective_global_batch: 4
+  microbatch_per_device: 1
+  gradient_accumulation: 4
+  seed: 42
+  condition_dropout: 0.1
+  sigma_min: 0.001
+  sigma_max: 0.999
+  sample_sequence: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19/preparation/sample_sequence_at.json
+  data_revision: same_native_captions_latents_and1600_order; restored_full_legacy_reasoning_with_documented_causal_repairs; unchanged fromGT for controlled architecture comparison
+  optimizer: AdamW
+  betas:
+  - 0.9
+  - 0.999
+  eps: 1.0e-08
+  peak_lr: 2.0e-05
+  min_lr_ratio: 0.2
+  warmup_updates: 51
+  peak_end_update: 240
+  grad_clip: 1.0
+  save_every: 100
+  keep_updates:
+  - 400
+  gradient_checkpointing: true
+loss:
+  fm: 0.8
+  tail: 0.2
+  tail_fraction: 0.25
+sampling:
+  steps: 50
+  shift: 5.0
+  guidance: 5.0
+  seed: 42
+  fps: 24.0
+  frames: 81
+  width: 832
+  height: 480
+evaluation:
+  code: /home/liuzhirui/benchmark/videophy/VIDEOPHY2
+  checkpoint: /home/liuzhirui/benchmark/videophy/videophy_2_auto
+  num_frames: 32
+  batch_size: 1
+  seed: 20261009
+  tasks:
+  - sa
+  - pc
+  joint_threshold: 4
+  average_definition: mean of (SA + PC) / 2; custom summary, not official Joint Score
+  missing_policy: no final comparison unless every selected case has both valid SA and PC scores
+  generation:
+    do_sample: false
+    top_k: 1
+    temperature: 0.001
+    max_length: 256

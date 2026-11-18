@@ -1,0 +1,240 @@
+{
+  "prepared_utc": "2026-10-31T14:47:12.128893+00:00",
+  "status": "declared_evaluation_completed",
+  "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r1_content_reader_r9/snapshots/20261031T150803Z",
+  "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r1_content_reader_r9/submissions/candidate400_full60_20261031T150803Z.yaml",
+  "config": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r1_content_reader_r9/snapshots/20261031T150803Z/configs/physical_content.yaml",
+  "final_stop": 400,
+  "intermediate_step": 250,
+  "primary_cases": 40,
+  "intermediate_cases": 16,
+  "control_cases": 16,
+  "control_modes": [
+    "reasoning_swapped",
+    "empty_reasoning",
+    "global_train_mean",
+    "anchor_only",
+    "no_c"
+  ],
+  "gamma": 5,
+  "seed": 42,
+  "automatic_extension": false,
+  "automatic_adoption": false,
+  "maximum_authorized_revision": 10,
+  "architecture": "R1 additive C=W0A+b0+Ptheta U, trainable zero-initialized P, original zero-initialized fusion O and native state-dependent write. Only reader changes: half relation-local heads and half all literal-request/reasoning word heads in shared fitted input coordinates; self-attention remains.",
+  "architecture_reference": "R1 snapshot20261030T141432Z; official foundations and training-input interface only, never trained R1 weights",
+  "comparison_reference": "Existing R1-400 PC3.625 SA2.950 and native400 PC3.450 SA3.075; R1-250 normal16 prepared once for reuse.",
+  "staging": "128 interface+272 joint; module/Wan warmup32/128. Losses, data order, noise, text dropout and all rates match original R1 through400. The intermediate250 evaluation resumes only this new run own optimizer/RNG.",
+  "loss": "Original tail-sensitive FM + native-word semantic auxiliary; no R6/R8 visual-feature objective.",
+  "new_trainable_parameters": 0,
+  "initial_parameter_and_rng_state_equal_to": "R1",
+  "tests": {
+    "tests_passed": 4,
+    "exit_code": 0,
+    "command": "bash tools/runtime_python.sh experiments/physical_content_v7/r1_content_reader_r9/test_reader_transfer.py",
+    "coverage": [
+      "R1 parameter/RNG/initial C equality",
+      "Literal-request sensitivity, empty request and anchor control",
+      "Generation gradient through original zero-initialized fusion into Q after initial updates",
+      "All400 learning rates/auxiliary weights and original trainer equality"
+    ],
+    "configuration_audit_passed": true,
+    "quality_claim": false
+  },
+  "input_preparation": "Reuse exact R8 request-word recovery and existing unrelated/empty16 caches; local tokenizer only, no new Qwen forward or model download.",
+  "decision_basis": "R7 full40 PC3.425 versus matched native3.400 and R1-4003.625; normal/unrelated16 PC identical case by case. R8 full40PC3.475 and limited Q/off benefits, but no correct-over-unrelated advantage. Neither replaces R1. Test the aligned content reader inside the original useful R1 architecture/training at matched400; R1 already has a trainable full-width P, so R7 B is not blindly added to it. Fresh initialization only; not an R8 training extension.",
+  "submission_prerequisite": "Review R7 full40 and useful R8 controls; common extra20 input preparation complete; actualRTX free. Architecture/training are unchanged from tested144712 preparation.",
+  "quality_status": "R9-250 fixed16 PC3.5625 vs matched R1-2503.6875; SA3.250 vs3.1875 and Joint5/16 both. Full400 generation and information controls remain pending; no adoption.",
+  "allocation_attempts": [
+    {
+      "experiment_id": 66967,
+      "trial_id": 68354,
+      "status": "H100_rejected_before_models",
+      "actual_gpu": "NVIDIA H100",
+      "accepted": false,
+      "model_loaded": false
+    },
+    {
+      "experiment_id": 66968,
+      "trial_id": 68355,
+      "status": "training_on_RTX",
+      "actual_gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "accepted": true
+    }
+  ],
+  "previous_preparation_snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r1_content_reader_r9/snapshots/20261031T144712Z",
+  "updated_utc": "2026-10-31T17:53:14.180619+00:00",
+  "extended_primary_cases": 60,
+  "original_primary_cases": 40,
+  "extended_evaluation": {
+    "cases": 60,
+    "new_cases": 20,
+    "runner": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/videophy60/snapshots/20261031T150803Z/run_extra20.py",
+    "input_status": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/videophy60/preparation_status.json",
+    "protocol": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/videophy60/protocol.json",
+    "keep_original40_results": true
+  },
+  "prerequisite_evidence": {
+    "shared_extra20_inputs_completed": "experiments/physical_content_v7/videophy60/preparation_status.json",
+    "r8_complete40_and_controls": "experiments/physical_content_v7/content_reader_r8/reports/module_attribution16.json",
+    "still_pending": [],
+    "r7_complete40_reviewed": "experiments/physical_content_v7/native_coordinate_r7/reports/physical_content_66920/generation_review.json",
+    "rtx_slot_observed_free": "node9 slot1 after DetCOMPLETED66964; recheck at actual submission"
+  },
+  "decision_confirmed_utc": "2026-10-31T16:00:39.366230+00:00",
+  "experiment_id": 66968,
+  "trial_id": 68355,
+  "successful_candidate_run": "physical_content_66968",
+  "first_real_update_verified": true,
+  "completed_updates_at_least_at_phase_check": 19,
+  "phase_check_utc": "2026-10-31T16:05:03.525265+00:00",
+  "explicit_user_budget": 400,
+  "budget_confirmation": "Active config and frozen runner already enforce400 total updates, with250 normal16 followed by own-state resume; no change to running source.",
+  "current_stage": "final_evaluation",
+  "intermediate250_result": {
+    "count": 16,
+    "R9": {
+      "path": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r1_content_reader_r9/inference_outputs/physical_content_66968/step0250_subset16_physical5_seed42/videophy40",
+      "generated": 16,
+      "status": "completed",
+      "count": 16,
+      "sa_mean": 3.25,
+      "pc_mean": 3.5625,
+      "sa_pass_rate": 0.375,
+      "pc_pass_rate": 0.4375,
+      "joint_pass_rate": 0.3125
+    },
+    "R1": {
+      "path": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/training_budget_reference/inference_outputs/r1_step0250_subset16_physical5_seed42/videophy40",
+      "generated": 16,
+      "status": "completed",
+      "count": 16,
+      "sa_mean": 3.1875,
+      "pc_mean": 3.6875,
+      "sa_pass_rate": 0.3125,
+      "pc_pass_rate": 0.5,
+      "joint_pass_rate": 0.3125
+    },
+    "paired_metrics": {
+      "sa": {
+        "baseline": 3.1875,
+        "candidate": 3.25,
+        "difference": 0.0625,
+        "paired_bootstrap_95_interval": [
+          -0.125,
+          0.25
+        ],
+        "wins": 2,
+        "ties": 13,
+        "losses": 1
+      },
+      "pc": {
+        "baseline": 3.6875,
+        "candidate": 3.5625,
+        "difference": -0.125,
+        "paired_bootstrap_95_interval": [
+          -0.3125,
+          0.0
+        ],
+        "wins": 0,
+        "ties": 14,
+        "losses": 2
+      },
+      "mean": {
+        "baseline": 3.4375,
+        "candidate": 3.40625,
+        "difference": -0.03125,
+        "paired_bootstrap_95_interval": [
+          -0.15625,
+          0.09375
+        ],
+        "wins": 2,
+        "ties": 11,
+        "losses": 3
+      },
+      "joint": {
+        "baseline": 0.3125,
+        "candidate": 0.3125,
+        "difference": 0.0,
+        "paired_bootstrap_95_interval": [
+          -0.1875,
+          0.1875
+        ],
+        "wins": 1,
+        "ties": 14,
+        "losses": 1
+      },
+      "sa_pass_rate": {
+        "baseline": 0.3125,
+        "candidate": 0.375,
+        "difference": 0.0625,
+        "paired_bootstrap_95_interval": [
+          0.0,
+          0.1875
+        ],
+        "wins": 1,
+        "ties": 15,
+        "losses": 0
+      },
+      "pc_pass_rate": {
+        "baseline": 0.5,
+        "candidate": 0.4375,
+        "difference": -0.0625,
+        "paired_bootstrap_95_interval": [
+          -0.1875,
+          0.0
+        ],
+        "wins": 0,
+        "ties": 15,
+        "losses": 1
+      }
+    },
+    "decision": "No PC advantage at matched250; retain original400 budget and await final main/control evaluation, without assuming more steps repair it."
+  },
+  "completed_training_steps": 400,
+  "first400_training_log_audit": "experiments/physical_content_v7/r1_content_reader_r9/reports/training_comparison_through0400.json",
+  "normal40_completed": true,
+  "normal40_summary": {
+    "count": 40,
+    "sa_mean": 2.975,
+    "pc_mean": 3.6,
+    "sa_pass": 10,
+    "pc_pass": 17,
+    "joint_pass": 9
+  },
+  "adopted": false,
+  "last_evidence_utc": "2026-10-31T19:22:05.490844+00:00",
+  "expanded20_completed": true,
+  "expanded60_completed": true,
+  "expanded20_summary": {
+    "path": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/videophy60/inference_outputs/R9_physical_content_66968/extra20_gamma5_seed42/videophy60",
+    "generated": 20,
+    "status": "completed",
+    "count": 20,
+    "sa_mean": 2.8,
+    "pc_mean": 3.85,
+    "sa_pass_rate": 0.2,
+    "pc_pass_rate": 0.55,
+    "joint_pass_rate": 0.2
+  },
+  "expanded60_summary": {
+    "path": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/videophy60/inference_outputs/R9_physical_content_66968/full60_gamma5_seed42/videophy60",
+    "generated": 60,
+    "status": "completed",
+    "count": 60,
+    "sa_mean": 2.9166666666666665,
+    "pc_mean": 3.683333333333333,
+    "sa_pass_rate": 0.23333333333333334,
+    "pc_pass_rate": 0.4666666666666667,
+    "joint_pass_rate": 0.21666666666666667
+  },
+  "completed_utc": "2026-10-31T20:31:18.056872+00:00",
+  "final_det_state": "STATE_COMPLETED",
+  "completed_controls": [
+    "reasoning_swapped",
+    "empty_reasoning",
+    "global_train_mean",
+    "anchor_only",
+    "no_c"
+  ]
+}

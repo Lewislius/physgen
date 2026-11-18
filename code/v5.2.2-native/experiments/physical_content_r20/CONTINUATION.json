@@ -1,0 +1,834 @@
+{
+  "updated_utc": "2026-11-17T03:33:49.988412+00:00",
+  "status": "authorized_work_complete_goal_unmet_waiting_user_direction",
+  "full_goal_met": false,
+  "version_limits": {
+    "T2V": "R20HT final authorized version",
+    "I2V": "R20CI final authorized version"
+  },
+  "current_jobs": {},
+  "next_routine_check_utc": null,
+  "next_action": "HT70506/72294 and GT70452/72222 are terminal COMPLETED. Training, main60, declared controls and sampled visual review completed. Read HT/RESULTS.zh.txt and reports/FINAL_RESULTS.json. Do not repoll or submit another version beyond authorized HT.",
+  "active_handoff": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20h/progress.json",
+  "historical_handoff": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20/reports/continuation_before_ET_compact_20261116.json",
+  "goal": "Active and unmet; actual system Goal is authoritative. PC/SA/Joint and real video quality must improve together; solve physical-write damage.",
+  "ET": {
+    "worktree": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20e",
+    "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20e/snapshots/20261116T015816Z",
+    "config": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20e/snapshots/20261116T015816Z/configs/r20et.yaml",
+    "design": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20e/DESIGN.zh.txt",
+    "native_initialization": "Official foundations, no old project weights",
+    "training": "400=128 physical generation +272 joint video LoRA, same1600 sequence and original losses",
+    "architecture": "DT native-QK interaction plus fullwidth14336 local FFN preactivation gain; physical read times local native features; original text frozen, original output maps",
+    "controls": [
+      "physical_feature_off",
+      "no_c",
+      "reasoning_swapped"
+    ],
+    "main40": {
+      "SA": 3.025,
+      "PC": 3.425,
+      "Joint": 8
+    },
+    "main40_goal_met": false,
+    "visual_pass": false,
+    "terminal": true,
+    "experiment": 70376,
+    "full60": {
+      "SA": 3.0166666666666666,
+      "PC": 3.466666666666667,
+      "Joint": 12
+    },
+    "normal16": [
+      3.125,
+      3.625,
+      4
+    ],
+    "feature_off16": [
+      3.125,
+      3.8125,
+      4
+    ],
+    "noC16": [
+      3.125,
+      3.875,
+      3
+    ],
+    "wrong16": [
+      3.0,
+      3.75,
+      4
+    ]
+  },
+  "inputs": {
+    "ready": true,
+    "root": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20_reasoning/full_features",
+    "revision": "R20-source-grounded-physical-memory-v5",
+    "records": 1660,
+    "paid_API_calls": 0,
+    "rebuild_needed": false,
+    "applies_to": "historical DT/ET only; FT restores complete old reasoning caches"
+  },
+  "DT": {
+    "terminal": true,
+    "experiment": 70335,
+    "trial": 72034,
+    "final_decision": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20d/reports/final_decision.json",
+    "main40": {
+      "SA": 3.025,
+      "PC": 3.55,
+      "Joint": 9
+    },
+    "full60": {
+      "SA": 2.966666666666667,
+      "PC": 3.5833333333333335,
+      "Joint": 14
+    },
+    "normal16": [
+      3.25,
+      3.8125,
+      5
+    ],
+    "noC16": [
+      3.0,
+      3.8125,
+      4
+    ],
+    "wrong16": [
+      3.0625,
+      3.625,
+      3
+    ],
+    "visual_pass": false
+  },
+  "native_inference_recipe": {
+    "experiment": 70336,
+    "terminal": true,
+    "adopted": false,
+    "score16": [
+      3.0,
+      3.625,
+      4
+    ],
+    "path": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20d/native_recipe16",
+    "instruction": "Do not rerun; original matched Euler50/shift5/gamma5 retained"
+  },
+  "prior_terminal_jobs": [
+    70237,
+    70238,
+    70265,
+    70318,
+    70326,
+    70327,
+    70328,
+    70329,
+    70330,
+    70331,
+    70332,
+    70333,
+    70334,
+    70335,
+    70336
+  ],
+  "resources": {
+    "pool": "blk-96g",
+    "slots": 1,
+    "actual_GPU": "RTX6000 only; H100 exits before model load and resubmit",
+    "monitor_minutes": 30,
+    "avoid_gpu_uuid": "GPU-35f25538-cb19-c131-ca13-20b8a97ff177",
+    "other_users_jobs": "Do not cancel. Earlier queue cleared without intervention."
+  },
+  "evidence": {
+    "BT": "physical_content_r20b; main40 SA2.975 PC3.875 J7, full60 SA2.9167 PC3.8667 J10, visual write damage",
+    "CI": "physical_content_r20c/reports/ci_final_interpretation.json; completed cap, no WMB/PIQ",
+    "references": "physical_content_r20c/reports/references and physical_content_r20/PHYSVID_SOURCE_NOTES.zh.txt",
+    "ET_initial_visual": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20e/review_initial/visual_review.json",
+    "ET_full40_visual": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20e/review40/visual_review.json"
+  },
+  "report_after_completion": "Finish authorized FT/GT training/evaluation and Chinese evidence analysis; do not equate measured visual recovery or metric-only gains with full success.",
+  "new_user_priority": "User judges ET visual content and overall quality substantially improved, but physics and deformation remain deficient. Retain/improve visible quality while strengthening physical process generation.",
+  "FTGT_constraints": {
+    "whole_video": true,
+    "chunk_conditioning": false,
+    "training_local_physics_supervision": "Explicitly encouraged; train-only observed-video evidence, no future conditions at T2V inference",
+    "WISA": "Restored as main design reference by latest explicit correction",
+    "architecture_inheritance_required": false,
+    "branch_count_is_goal": false
+  },
+  "FT": {
+    "worktree": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f",
+    "design_state": "pre_training_code_audit_no_bbox",
+    "research": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f/reports/design_research.json",
+    "localizer": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f/prepare_physical_read_targets.py",
+    "training_submitted": false,
+    "late_concentrated_draft": "withdrawn_untrained",
+    "reasoning": "full legacy1600/60 +14 documented causal corrections encoded; training-only normalization fitted",
+    "localization_status": "Native Wan pilot rejected; Qwen2.5-VL32B download stopped by user, no retries and no new Qwen models. Use existing local models and continue non-bbox whole-video supervision/execution design.",
+    "design_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f/physical_content/grounded_physics.py",
+    "prototype_checks": "Active no-bbox actual-small-Wan tests pass including native operation equality, depth copies, physical/C generation gradients,128/272 ownership, empty-condition exact response, unamplified weak reads, same video values",
+    "latest_localization_job": {
+      "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f/snapshots/whole_video_grounding_v3_20261116T070456Z",
+      "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f/preparation/submitted_region_v3_pilot8.yaml",
+      "output": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f/preparation/whole_video_region_v3_pilot8",
+      "stage": "H100_rejected_before_model_load",
+      "training_submitted": false,
+      "experiment": 70402,
+      "attempts": [
+        70398,
+        70399,
+        70400,
+        70402
+      ],
+      "retry_allowed": false
+    },
+    "remaining_before_formal_training": [],
+    "user_latest": "Joint physics, content and all comparable scores above ProPhy; audit code/design logic and fix hidden issues before formal400.",
+    "bounding_box_work": "stopped_by_explicit_user_instruction",
+    "withdrawn_bbox_prototype": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f/prototype/withdrawn_bbox_20261116T071836Z",
+    "preparation_job": {
+      "experiment": 70410,
+      "terminal": true,
+      "formal_training": false,
+      "successful": true
+    },
+    "local_supervision_model": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f/reports/local_supervision_model.json",
+    "new_qwen_downloads_allowed": false,
+    "local_supervision_model_status": "stopped_no_retry_by_user",
+    "next_work": "Await own full60 and noC/wrong/video-binding16. Reuse existing matched native60. Diagnose identity/geometry/process omission using paired visual results, then design finalGT400 without extra teacher sweeps.",
+    "contribution_pilot_job": {
+      "experiment": 70422,
+      "trial": 72138,
+      "terminal": true,
+      "successful_execution": true,
+      "approved_for_training": false,
+      "review": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f/reports/contribution_pilot_review.json"
+    },
+    "status": "official_fresh400_running",
+    "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f/snapshots/20261116T094921Z",
+    "config": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f/snapshots/20261116T094921Z/configs/r20ft.yaml",
+    "submission": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f/reports/submission_ft.json",
+    "formal_training_submitted": true,
+    "formal_training_started": true,
+    "job": {
+      "experiment": 70431,
+      "trial": 72148,
+      "state": "STATE_COMPLETED",
+      "stage": "declared_videophy_evaluation_completed",
+      "verified_update": 400,
+      "actual_gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "full_model_check": {
+        "passed": true,
+        "seconds": 44.82422568835318,
+        "trainable_parameters": 1433209856,
+        "peak_gib": 37.889710426330566,
+        "checkpoint_saved": false
+      },
+      "last_check_utc": "2026-11-16T15:13:18.773418+00:00",
+      "next_check_utc": null,
+      "routine_interval_minutes": 30,
+      "quality_proven": false,
+      "new_qwen_downloads": false,
+      "phase": "joint",
+      "recent_mean_step_seconds": 15.078466487117112,
+      "formal_peak_gib": 42.756450176239014,
+      "observations": [
+        {
+          "time": "2026-11-16T10:26:53.414823+00:00",
+          "state": "STATE_RUNNING",
+          "update": 120,
+          "phase": "physical_generation"
+        },
+        {
+          "time": "2026-11-16T10:57:28.056942+00:00",
+          "state": "STATE_RUNNING",
+          "update": 234,
+          "stage": "train400"
+        },
+        {
+          "time": "2026-11-16T11:28:25.216029+00:00",
+          "state": "STATE_RUNNING",
+          "update": 347,
+          "stage": "train400"
+        },
+        {
+          "time": "2026-11-16T11:58:44.265264+00:00",
+          "state": "STATE_RUNNING",
+          "update": 400,
+          "stage": "original40_generation"
+        },
+        {
+          "time": "2026-11-16T12:28:58.473865+00:00",
+          "state": "STATE_RUNNING",
+          "update": 400,
+          "stage": "original40_generation"
+        },
+        {
+          "time": "2026-11-16T12:59:18.994347+00:00",
+          "state": "STATE_RUNNING",
+          "update": 400,
+          "stage": "original40_generation"
+        },
+        {
+          "time": "2026-11-16T13:05:54.101744+00:00",
+          "state": "STATE_RUNNING",
+          "update": 400,
+          "stage": "extra20_generation"
+        },
+        {
+          "time": "2026-11-16T13:38:28.967489+00:00",
+          "state": "STATE_RUNNING",
+          "update": 400,
+          "stage": "extra20_generation"
+        },
+        {
+          "time": "2026-11-16T14:08:55.862248+00:00",
+          "state": "STATE_RUNNING",
+          "update": 400,
+          "stage": "reasoning_swapped_generation"
+        },
+        {
+          "time": "2026-11-16T14:12:53.933890+00:00",
+          "state": "STATE_RUNNING",
+          "update": 400,
+          "stage": "reasoning_swapped_generation"
+        },
+        {
+          "time": "2026-11-16T14:44:02.485647+00:00",
+          "state": "STATE_RUNNING",
+          "update": 400,
+          "stage": "video_binding_off_generation"
+        },
+        {
+          "time": "2026-11-16T15:13:18.773418+00:00",
+          "state": "STATE_COMPLETED",
+          "update": 400,
+          "stage": "declared_videophy_evaluation_completed"
+        }
+      ],
+      "evaluation": {
+        "main40": {
+          "generated": 40,
+          "scores": {
+            "count": 40,
+            "sa_mean": 3.225,
+            "pc_mean": 3.625,
+            "sa_pass_rate": 0.325,
+            "pc_pass_rate": 0.525,
+            "joint_pass_rate": 0.225,
+            "scope": "T2V: request only; fixed protocol prompts/noise, no initial image",
+            "training_verifier_is_independent": true
+          }
+        },
+        "extra20": {
+          "generated": 20,
+          "scores": {
+            "count": 20,
+            "sa_mean": 2.8,
+            "pc_mean": 3.85,
+            "sa_pass_rate": 0.2,
+            "pc_pass_rate": 0.6,
+            "joint_pass_rate": 0.2,
+            "scope": "T2V: request only; fixed protocol prompts/noise, no initial image",
+            "training_verifier_is_independent": true
+          }
+        },
+        "full60": {
+          "generated": 60,
+          "scores": {
+            "count": 60,
+            "sa_mean": 3.0833333333333335,
+            "pc_mean": 3.7,
+            "sa_pass_rate": 0.2833333333333333,
+            "pc_pass_rate": 0.55,
+            "joint_pass_rate": 0.21666666666666667,
+            "pass_threshold": 4,
+            "scope": "T2V: request only; fixed protocol prompts/noise, no initial image",
+            "training_verifier_is_independent": true
+          }
+        },
+        "no_c16": {
+          "generated": 16,
+          "scores": {
+            "count": 16,
+            "sa_mean": 3.1875,
+            "pc_mean": 3.75,
+            "sa_pass_rate": 0.25,
+            "pc_pass_rate": 0.5625,
+            "joint_pass_rate": 0.25,
+            "scope": "T2V: request only; fixed protocol prompts/noise, no initial image",
+            "training_verifier_is_independent": true
+          }
+        },
+        "wrong16": {
+          "generated": 16,
+          "scores": {
+            "count": 16,
+            "sa_mean": 3.1875,
+            "pc_mean": 3.9375,
+            "sa_pass_rate": 0.3125,
+            "pc_pass_rate": 0.75,
+            "joint_pass_rate": 0.3125,
+            "scope": "T2V: request only; fixed protocol prompts/noise, no initial image",
+            "training_verifier_is_independent": true
+          }
+        },
+        "binding_off16": {
+          "generated": 16,
+          "scores": {
+            "count": 16,
+            "sa_mean": 3.25,
+            "pc_mean": 4.0,
+            "sa_pass_rate": 0.3125,
+            "pc_pass_rate": 0.8125,
+            "joint_pass_rate": 0.3125,
+            "scope": "T2V: request only; fixed protocol prompts/noise, no initial image",
+            "training_verifier_is_independent": true
+          }
+        }
+      }
+    },
+    "matched_native_reference": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f/reports/matched_native_baseline.json",
+    "native60_regeneration_needed": false,
+    "early_visual_review": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f/reports/early_visual2/review.json",
+    "quality_proven": false,
+    "main40": {
+      "SA": 3.225,
+      "PC": 3.625,
+      "Joint": 9,
+      "count": 40
+    },
+    "main40_sampled_visual_review": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f/reports/main40_visual/review.json",
+    "training_summary": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f/reports/training_summary.json",
+    "user_visual_assessment": {
+      "updated_utc": "2026-11-16T13:12:21.662142+00:00",
+      "user_visual_assessment": "FT visible detail and image quality show a qualitative improvement; PC remains insufficient. User suspects corrected physical initialization depths matter.",
+      "GT_priority": "Preserve FT detail and quality while strengthening physical process consistency and PC, with SA/Joint improvement. Preserve matched-depth physical initialization and actual-depth inputs unless compelling own evidence supports change.",
+      "attribution": "Depth correction is a plausible mechanism; FT also changed reader input state, full reasoning, weak-read scaling and conditional write execution. No isolated causal estimate yet.",
+      "next_action": "Use already-running noC/wrong/video-binding controls; no additional isolated layer-sweep or teacher experiments."
+    },
+    "GT_priority": "Preserve FT detail and quality while strengthening physical process consistency and PC, with SA/Joint improvement. Preserve matched-depth physical initialization and actual-depth inputs unless compelling own evidence supports change.",
+    "latest_GT_direction": {
+      "user_steering": "Preserve FT image quality and fine details; improve actual physical consistency/enhancement through extraction, enhancement, reading, injection and fusion. PC is auxiliary evidence; actual physical processes and SA/Joint also assessed.",
+      "updated_utc": "2026-11-16T13:18:32.389602+00:00",
+      "PC_target": 3.85,
+      "PC_stretch": 3.95,
+      "visual_requirement": "Preserve FT detail, natural rich content and identity; repair remaining excess deformation and detail failures; high PC with flat/blank scene or omitted processes is failure."
+    },
+    "GT_pre_submission_audit": {
+      "requested_utc": "2026-11-16T13:26:24.353754+00:00",
+      "scope": [
+        "Verify actual physical block source layer, initialization weights and injection index correspondence in normal full-size model construction.",
+        "Trace actual states and execution order through physical reading, native/physical attention, FFN and residual write.",
+        "Verify training/inference source inputs, RoPE, gradient ownership and checkpoint restore match design.",
+        "Retain decisive checks with submission; avoid repeating generic diagnostics."
+      ],
+      "RoPE_design_consideration": "User explicitly asks to consider evidence-supported RoPE design optimization for spatial/temporal physical interactions, not only mechanical checks. Review native/physical coordinate ordering, QK conditioning-normalization-rotation sequence and process-stage use; preserve visual detail/identity."
+    }
+  },
+  "next_routine_check": null,
+  "quota_priority": {
+    "user_reported_remaining": "10%",
+    "updated_utc": "2026-11-16T10:30:09.526518+00:00",
+    "priority": "Cover FT outcomes, one evidence-led GT design/implementation, fresh400 and final40+20/full60/necessary16 plus actual-video review.",
+    "workflow": "30min single compact status; existing automated pipeline; no new teacher sweep, repeated logs, redundant tests or speculative variants. Preserve required checks and visual review.",
+    "no_new_qwen_downloads": true
+  },
+  "gt_preliminary_evidence": "experiments/physical_content_r20f/reports/gt_evidence_preliminary.json",
+  "ft_paired_visual_review": "experiments/physical_content_r20f/reports/paired_visual/review.json",
+  "ft_extra20_visual_review": "experiments/physical_content_r20f/reports/extra20_visual/review.json",
+  "gt_status": "declared_videophy_evaluation_completed",
+  "gt_worktree": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20g",
+  "gt_evidence_report": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20g/reports/design_evidence.json",
+  "GT": {
+    "job": {
+      "observations": [
+        {
+          "time": "2026-11-16T16:11:19.251452+00:00",
+          "state": "STATE_RUNNING",
+          "update": 10,
+          "stage": "train400"
+        },
+        {
+          "time": "2026-11-16T16:41:43.489570+00:00",
+          "state": "STATE_RUNNING",
+          "update": 118,
+          "stage": "train400"
+        },
+        {
+          "time": "2026-11-16T17:16:12.067698+00:00",
+          "state": "STATE_RUNNING",
+          "update": 237,
+          "stage": "train400"
+        },
+        {
+          "time": "2026-11-16T17:27:53.671874+00:00",
+          "state": "STATE_RUNNING",
+          "update": 283,
+          "stage": "train400"
+        },
+        {
+          "time": "2026-11-16T17:58:05.904307+00:00",
+          "state": "STATE_RUNNING",
+          "update": 386,
+          "stage": "train400"
+        },
+        {
+          "time": "2026-11-16T18:28:34.246413+00:00",
+          "state": "STATE_RUNNING",
+          "update": 400,
+          "stage": "original40_generation"
+        },
+        {
+          "time": "2026-11-16T18:59:22.833857+00:00",
+          "state": "STATE_RUNNING",
+          "update": 400,
+          "stage": "original40_generation"
+        },
+        {
+          "time": "2026-11-16T19:29:41.599692+00:00",
+          "state": "STATE_RUNNING",
+          "update": 400,
+          "stage": "extra20_generation"
+        },
+        {
+          "time": "2026-11-16T19:59:55.674878+00:00",
+          "state": "STATE_RUNNING",
+          "update": 400,
+          "stage": "extra20_generation"
+        },
+        {
+          "time": "2026-11-16T20:31:18.316905+00:00",
+          "state": "STATE_RUNNING",
+          "update": 400,
+          "stage": "reasoning_swapped_generation"
+        },
+        {
+          "time": "2026-11-16T21:03:23.575032+00:00",
+          "state": "STATE_RUNNING",
+          "update": 400,
+          "stage": "physical_features_off_generation"
+        },
+        {
+          "time": "2026-11-16T21:35:10.671102+00:00",
+          "state": "STATE_COMPLETED",
+          "update": 400,
+          "stage": "declared_videophy_evaluation_completed"
+        }
+      ],
+      "experiment": 70452,
+      "trial": [
+        72222
+      ],
+      "state": "STATE_COMPLETED",
+      "stage": "declared_videophy_evaluation_completed",
+      "verified_update": 400,
+      "phase": "joint",
+      "last_check_utc": "2026-11-16T21:35:10.671102+00:00",
+      "next_check_utc": null,
+      "actual_gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "full_model_gradient_check_passed": true,
+      "evaluation": {
+        "main40": {
+          "generated": 40,
+          "scores": {
+            "count": 40,
+            "sa_mean": 3.1,
+            "pc_mean": 3.75,
+            "sa_pass_rate": 0.25,
+            "pc_pass_rate": 0.625,
+            "joint_pass_rate": 0.225,
+            "scope": "T2V: request only; fixed protocol prompts/noise, no initial image",
+            "training_verifier_is_independent": true
+          }
+        },
+        "extra20": {
+          "generated": 20,
+          "scores": {
+            "count": 20,
+            "sa_mean": 3.0,
+            "pc_mean": 3.85,
+            "sa_pass_rate": 0.3,
+            "pc_pass_rate": 0.65,
+            "joint_pass_rate": 0.3,
+            "scope": "T2V: request only; fixed protocol prompts/noise, no initial image",
+            "training_verifier_is_independent": true
+          }
+        },
+        "full60": {
+          "generated": 60,
+          "scores": {
+            "count": 60,
+            "sa_mean": 3.066666666666667,
+            "pc_mean": 3.783333333333333,
+            "sa_pass_rate": 0.26666666666666666,
+            "pc_pass_rate": 0.6333333333333333,
+            "joint_pass_rate": 0.25,
+            "pass_threshold": 4,
+            "scope": "T2V: request only; fixed protocol prompts/noise, no initial image",
+            "training_verifier_is_independent": true
+          }
+        },
+        "no_c16": {
+          "generated": 16,
+          "scores": {
+            "count": 16,
+            "sa_mean": 3.125,
+            "pc_mean": 3.875,
+            "sa_pass_rate": 0.25,
+            "pc_pass_rate": 0.75,
+            "joint_pass_rate": 0.25,
+            "scope": "T2V: request only; fixed protocol prompts/noise, no initial image",
+            "training_verifier_is_independent": true
+          }
+        },
+        "wrong16": {
+          "generated": 16,
+          "scores": {
+            "count": 16,
+            "sa_mean": 3.25,
+            "pc_mean": 4.0625,
+            "sa_pass_rate": 0.4375,
+            "pc_pass_rate": 0.75,
+            "joint_pass_rate": 0.4375,
+            "scope": "T2V: request only; fixed protocol prompts/noise, no initial image",
+            "training_verifier_is_independent": true
+          }
+        },
+        "features_off16": {
+          "generated": 16,
+          "scores": {
+            "count": 16,
+            "sa_mean": 3.1875,
+            "pc_mean": 4.0,
+            "sa_pass_rate": 0.25,
+            "pc_pass_rate": 0.75,
+            "joint_pass_rate": 0.25,
+            "scope": "T2V: request only; fixed protocol prompts/noise, no initial image",
+            "training_verifier_is_independent": true
+          }
+        }
+      },
+      "run_dir": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20g/runs/r20gt_source_local_execution400",
+      "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20g/snapshots/20261116T160340Z",
+      "recent_mean_step_seconds": 15.872028666175902,
+      "formal_peak_gib": 46.62733793258667
+    },
+    "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20g/snapshots/20261116T160340Z",
+    "implementation_audit": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20g/reports/implementation_audit.json",
+    "design": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20g/DESIGN.zh.txt"
+  },
+  "HT": {
+    "workspace": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20h",
+    "status": "completed_goals_unmet",
+    "gt_interruption_prohibited": true,
+    "goal_updated": true,
+    "latest_measured_evidence": "HT40 SA3.075/PC3.625/J11;60 SA3.0/PC3.716667/J16. Same16 normal3.1875/3.9375/J6,noC3.125/3.75/J3,wrong3.1875/3.75/J4,featureoff3.1875/3.875/J5.",
+    "next": "No pending declared HT work; no new version authorized. Report goals unmet.",
+    "design": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20h/DESIGN.zh.txt",
+    "code_audit": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20h/reports/implementation_audit.json",
+    "visual_issue": "All60 sampled; continued subject/process omission and structural defects. noC/featureoff restore some omitted detail/tools while worsening other cases. See paired visual evidence.",
+    "parallel_gt_controls": "reports/gt_controls_submission.json;8 existing declared videos only, stored at original GT output and reused by owner",
+    "submission": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20h/reports/submission_ht.json",
+    "goal_met": false,
+    "job": {
+      "observations": [
+        {
+          "time": "2026-11-16T21:41:38.966738+00:00",
+          "state": "STATE_RUNNING",
+          "update": 0,
+          "stage": "full_model_gradient_check"
+        },
+        {
+          "time": "2026-11-16T21:45:06.228375+00:00",
+          "state": "STATE_RUNNING",
+          "update": 11,
+          "stage": "train400"
+        },
+        {
+          "time": "2026-11-16T22:18:51.339699+00:00",
+          "state": "STATE_RUNNING",
+          "update": 130,
+          "stage": "train400"
+        },
+        {
+          "time": "2026-11-16T22:49:22.037346+00:00",
+          "state": "STATE_RUNNING",
+          "update": 232,
+          "stage": "train400"
+        },
+        {
+          "time": "2026-11-16T23:19:46.321879+00:00",
+          "state": "STATE_RUNNING",
+          "update": 334,
+          "stage": "train400"
+        },
+        {
+          "time": "2026-11-16T23:50:43.508003+00:00",
+          "state": "STATE_RUNNING",
+          "update": 400,
+          "stage": "original40_generation"
+        },
+        {
+          "time": "2026-11-17T00:21:55.001584+00:00",
+          "state": "STATE_RUNNING",
+          "update": 400,
+          "stage": "original40_generation"
+        },
+        {
+          "time": "2026-11-17T00:52:24.419352+00:00",
+          "state": "STATE_RUNNING",
+          "update": 400,
+          "stage": "original40_generation"
+        },
+        {
+          "time": "2026-11-17T01:22:52.641099+00:00",
+          "state": "STATE_RUNNING",
+          "update": 400,
+          "stage": "extra20_generation"
+        },
+        {
+          "time": "2026-11-17T01:50:09.868306+00:00",
+          "state": "STATE_RUNNING",
+          "update": 400,
+          "stage": "no_c_generation"
+        },
+        {
+          "time": "2026-11-17T02:20:39.966250+00:00",
+          "state": "STATE_RUNNING",
+          "update": 400,
+          "stage": "reasoning_swapped_generation"
+        },
+        {
+          "time": "2026-11-17T02:55:24.757605+00:00",
+          "state": "STATE_RUNNING",
+          "update": 400,
+          "stage": "physical_features_off_generation"
+        },
+        {
+          "time": "2026-11-17T03:22:25.775583+00:00",
+          "state": "STATE_COMPLETED",
+          "update": 400,
+          "stage": "declared_videophy_evaluation_completed"
+        }
+      ],
+      "experiment": 70506,
+      "trial": [
+        72294
+      ],
+      "state": "STATE_COMPLETED",
+      "stage": "declared_videophy_evaluation_completed",
+      "verified_update": 400,
+      "phase": "joint",
+      "last_check_utc": "2026-11-17T03:22:25.775583+00:00",
+      "next_check_utc": null,
+      "actual_gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "full_model_gradient_check_passed": true,
+      "evaluation": {
+        "main40": {
+          "generated": 40,
+          "scores": {
+            "count": 40,
+            "sa_mean": 3.075,
+            "pc_mean": 3.625,
+            "sa_pass_rate": 0.3,
+            "pc_pass_rate": 0.525,
+            "joint_pass_rate": 0.275,
+            "scope": "T2V: request only; fixed protocol prompts/noise, no initial image",
+            "training_verifier_is_independent": true
+          }
+        },
+        "extra20": {
+          "generated": 20,
+          "scores": {
+            "count": 20,
+            "sa_mean": 2.85,
+            "pc_mean": 3.9,
+            "sa_pass_rate": 0.25,
+            "pc_pass_rate": 0.6,
+            "joint_pass_rate": 0.25,
+            "scope": "T2V: request only; fixed protocol prompts/noise, no initial image",
+            "training_verifier_is_independent": true
+          }
+        },
+        "full60": {
+          "generated": 60,
+          "scores": {
+            "count": 60,
+            "sa_mean": 3.0,
+            "pc_mean": 3.716666666666667,
+            "sa_pass_rate": 0.2833333333333333,
+            "pc_pass_rate": 0.55,
+            "joint_pass_rate": 0.26666666666666666,
+            "pass_threshold": 4,
+            "scope": "T2V: request only; fixed protocol prompts/noise, no initial image",
+            "training_verifier_is_independent": true
+          }
+        },
+        "no_c16": {
+          "generated": 16,
+          "scores": {
+            "count": 16,
+            "sa_mean": 3.125,
+            "pc_mean": 3.75,
+            "sa_pass_rate": 0.1875,
+            "pc_pass_rate": 0.625,
+            "joint_pass_rate": 0.1875,
+            "scope": "T2V: request only; fixed protocol prompts/noise, no initial image",
+            "training_verifier_is_independent": true
+          }
+        },
+        "wrong16": {
+          "generated": 16,
+          "scores": {
+            "count": 16,
+            "sa_mean": 3.1875,
+            "pc_mean": 3.75,
+            "sa_pass_rate": 0.25,
+            "pc_pass_rate": 0.625,
+            "joint_pass_rate": 0.25,
+            "scope": "T2V: request only; fixed protocol prompts/noise, no initial image",
+            "training_verifier_is_independent": true
+          }
+        },
+        "features_off16": {
+          "generated": 16,
+          "scores": {
+            "count": 16,
+            "sa_mean": 3.1875,
+            "pc_mean": 3.875,
+            "sa_pass_rate": 0.3125,
+            "pc_pass_rate": 0.75,
+            "joint_pass_rate": 0.3125,
+            "scope": "T2V: request only; fixed protocol prompts/noise, no initial image",
+            "training_verifier_is_independent": true
+          }
+        }
+      },
+      "run_dir": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20h/runs/r20ht_state_conditioned_execution400",
+      "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20h/snapshots/20261116T213719Z",
+      "recent_mean_step_seconds": 16.239000809472053,
+      "formal_peak_gib": 49.02515459060669,
+      "final_report": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20h/RESULTS.zh.txt",
+      "final_results": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20h/reports/FINAL_RESULTS.json",
+      "full_goal_met": false,
+      "actual_visual_review": "sampled60_complete_not_accepted",
+      "work_status": "authorized_HT_experiment_complete_goals_unmet"
+    },
+    "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20h/snapshots/20261116T213719Z",
+    "implementation_audit": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20h/reports/implementation_audit.json",
+    "final_report": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20h/RESULTS.zh.txt",
+    "final_results": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20h/reports/FINAL_RESULTS.json",
+    "native_comparison": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20h/reports/ht_native_comparison.json"
+  },
+  "ht_status": "completed_goals_unmet",
+  "completion_audit": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20h/reports/completion_audit.json",
+  "pending_authorization": {
+    "reason": "HT is the final authorized candidate; completed results fail core targets. Further design/training needs new user direction.",
+    "first_goal_continuation_utc": "2026-11-17T03:33:49.988412+00:00",
+    "consecutive_goal_turns": 3,
+    "last_verified_utc": "2026-11-17T03:35:26.534445+00:00",
+    "previous_turn_classification": "no progress: required user direction remains unanswered; no live jobs or unfinished authorized deliverables",
+    "current_blocker": "User instruction requires waiting after authorized HT work; metric/visual goals fail and no further model revision/training is authorized.",
+    "blocked_threshold_satisfied": true
+  }
+}

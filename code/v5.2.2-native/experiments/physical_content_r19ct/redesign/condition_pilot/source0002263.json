@@ -1,0 +1,42 @@
+{
+  "id": "source0002263",
+  "caption": "The video captures a wide desert scrubland beneath a towering, dark storm cloud that dominates the sky. A broad gray column of rain or outflow descends from the cloud base near the center-left and touches the flat ground. Its lower portion is lit by a bright sunlit patch that persists. Along the right horizon, a low mountain range stands partly veiled by a tan dust band that thickens and rises toward the ridgeline. This dust front advances steadily leftward along the ground, spreading toward the center and increasingly obscuring the mountains. The base of the central column blends with the rising dust near the horizon, while the dark shelf overhead shifts subtly. The foreground shrubs and the camera viewpoint appear fixed, framing an ongoing storm process.",
+  "old_relations": [
+    "Rain column descends from cloud base, contacting ground where sunlight illuminates its lower edge.",
+    "Dust band advances leftward, thickening at ridgeline, obscuring mountains as it spreads across terrain.",
+    "Dust front merges with rain column’s base near horizon, altering visible contrast at contact zone.",
+    "Camera remains fixed, preserving foreground shrubs and framing evolving storm dynamics."
+  ],
+  "proposed": {
+    "semantic_focus": "A rain column descends from a storm cloud onto desert scrubland while a tan dust front advances leftward, obscuring distant mountains and blending with the rain base.",
+    "relations": [
+      "The descending rain column impacts the flat ground, creating a visible vertical structure beneath the dark cloud base.",
+      "The advancing dust front moves horizontally along the surface, thickening as it rises toward the mountain ridgeline.",
+      "The rising dust near the horizon visually merges with the lower portion of the central rain column.",
+      "A persistent sunlit patch illuminates the lower section of the rain column despite the overhead storm conditions."
+    ]
+  },
+  "trace": {
+    "model": "qwen3.8-flash",
+    "request_id": "chatcmpl-a08e129d-ec0c-9418-b96f-6a1ec444d7b4",
+    "usage": {
+      "prompt_tokens": 427,
+      "total_tokens": 560,
+      "completion_tokens": 133,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "text_tokens": 427
+      }
+    },
+    "finish_reason": "stop",
+    "raw": "{\n\"semantic_focus\": \"A rain column descends from a storm cloud onto desert scrubland while a tan dust front advances leftward, obscuring distant mountains and blending with the rain base.\",\n\"relations\": [\n\"The descending rain column impacts the flat ground, creating a visible vertical structure beneath the dark cloud base.\",\n\"The advancing dust front moves horizontally along the surface, thickening as it rises toward the mountain ridgeline.\",\n\"The rising dust near the horizon visually merges with the lower portion of the central rain column.\",\n\"A persistent sunlit patch illuminates the lower section of the rain column despite the overhead storm conditions.\"\n]\n}",
+    "seconds": 3.0957389029790647,
+    "image_count": 0,
+    "video_sequence": false,
+    "thinking": false,
+    "explicit_times": null,
+    "prompt": "Prepare conditioning for a video generator from the request alone.\nThe request may describe a cropped temporal segment: its cause may have begun\nbefore the clip and its consequences may continue afterwards. Do not force a\ncomplete start/contact/end cycle or invent missing actions.\nReturn JSON with these two fields:\n\"semantic_focus\": one sentence, at most 35 words, preserving the main specified\nparticipants, their roles, and the requested visible phenomenon or process.\n\"relations\": one to four sentences, each at most 24 words, specifying physical\ndependencies that are directly relevant to producing that requested process.\nUse concrete qualitative cause/response or persistence relationships. Preserve\nthe request's actual direction, sequence and material state. Do not add numeric\nthresholds, hidden material properties, failure or rupture, rest/motion phases,\nor strong necessity claims that are not entailed by the request and basic physics.\nDo not equate motion with breakage or a continuous visible process with stasis.\nNo physics category labels, camera aesthetics, instructions to the scorer, or\npredicted quality. A short set of useful dependencies is better than four padded\nstatements. The original request remains the generator's semantic input.\nRequest:\nThe video captures a wide desert scrubland beneath a towering, dark storm cloud that dominates the sky. A broad gray column of rain or outflow descends from the cloud base near the center-left and touches the flat ground. Its lower portion is lit by a bright sunlit patch that persists. Along the right horizon, a low mountain range stands partly veiled by a tan dust band that thickens and rises toward the ridgeline. This dust front advances steadily leftward along the ground, spreading toward the center and increasingly obscuring the mountains. The base of the central column blends with the rising dust near the horizon, while the dark shelf overhead shifts subtly. The foreground shrubs and the camera viewpoint appear fixed, framing an ongoing storm process."
+  },
+  "source": "request_only",
+  "used_for_training": false
+}

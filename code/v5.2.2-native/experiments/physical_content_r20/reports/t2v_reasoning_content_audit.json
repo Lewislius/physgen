@@ -1,0 +1,23 @@
+{
+  "scope": "Manual audit of existing request-only T2V reasoning on the same six sentinel cases; inputs unchanged, no API calls, no benchmark-specific rewrite.",
+  "issues": [
+    {
+      "case": "VP015",
+      "type": "directional reasoning error / unsupported mechanism",
+      "original": "Oar blade contacts water, creating drag force pulling rower’s arm upward.",
+      "analysis_zh": "对于从水中向上提桨的描述，水阻力反对桨相对水的运动，不能直接解释成把手臂向上拉的驱动力；外力提桨与水阻力的作用被混淆。",
+      "reference": "https://openstax.org/books/university-physics-volume-1/pages/6-4-drag-force-and-terminal-speed"
+    },
+    {
+      "case": "VP026",
+      "type": "unjustified irreversible-deformation condition",
+      "original": "Stretching force must exceed cord’s elastic limit to achieve maximum extension.",
+      "analysis_zh": "最大伸展的日常描述不推出必须超过材料弹性极限；超过该极限意味着不再完全弹性恢复，不能把它当作所有此类伸展所必需的条件。",
+      "reference": "https://openstax.org/books/university-physics-volume-1/pages/12-4-elasticity-and-plasticity"
+    }
+  ],
+  "other_cases_zh": "002/009/038主体与接触关系总体相关；004还含具体材料失效机制的过强假设。不能据6例估计整个缓存的错误率。",
+  "causal_limit_zh": "015/026在noC也未恢复正确主体/过程，因此这些输入错误不能单独解释全部形变，也未测得单独改正reasoning的收益。",
+  "design_implication_zh": "将正常缓存称为正常条件，而非已核验正确物理标签。R20的来源辅助只用于路由C，执行C继续由真实视频目标学习；保留caption关联读取，并通过正常/空/无关/均值/关闭判断实际贡献。不可把来源忠实度等同物理正确性。",
+  "followup_boundary": "Review this evidence with A actual outputs before deciding B data/representation changes; do not silently hand-edit selected benchmark inputs."
+}

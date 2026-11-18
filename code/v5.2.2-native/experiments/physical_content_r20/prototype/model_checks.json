@@ -1,0 +1,101 @@
+{
+  "status": "passed_unsubmitted_integration_prototype",
+  "scope": "Tiny real Wan CPU; native RoPE/time/head, same CPU SDPA on both paths; not fullGPU or quality evidence",
+  "native_equality": [
+    {
+      "task": "t2v",
+      "shape": [
+        3,
+        4,
+        6
+      ],
+      "sigma": 0.05,
+      "max_abs": 0.0
+    },
+    {
+      "task": "t2v",
+      "shape": [
+        3,
+        4,
+        6
+      ],
+      "sigma": 0.95,
+      "max_abs": 0.0
+    },
+    {
+      "task": "t2v",
+      "shape": [
+        5,
+        4,
+        4
+      ],
+      "sigma": 0.05,
+      "max_abs": 0.0
+    },
+    {
+      "task": "t2v",
+      "shape": [
+        5,
+        4,
+        4
+      ],
+      "sigma": 0.95,
+      "max_abs": 0.0
+    },
+    {
+      "task": "i2v",
+      "shape": [
+        3,
+        4,
+        6
+      ],
+      "sigma": 0.05,
+      "max_abs": 0.0
+    },
+    {
+      "task": "i2v",
+      "shape": [
+        3,
+        4,
+        6
+      ],
+      "sigma": 0.95,
+      "max_abs": 0.0
+    },
+    {
+      "task": "i2v",
+      "shape": [
+        5,
+        4,
+        4
+      ],
+      "sigma": 0.05,
+      "max_abs": 0.0
+    },
+    {
+      "task": "i2v",
+      "shape": [
+        5,
+        4,
+        4
+      ],
+      "sigma": 0.95,
+      "max_abs": 0.0
+    }
+  ],
+  "max_initial_error": 0.0,
+  "generation_gradient_paths": {
+    "enhancement.seed": 0.00931688491255045,
+    "enhancement.block.cross.q.weight": 0.006092035211622715,
+    "enhancement.route_update.weight": 0.05005698278546333,
+    "enhancement.execute_update.weight": 0.49493393301963806,
+    "noise_modulation.project.1.weight": 0.0004990668967366219,
+    "physics.0.direct.query_base.weight": 0.014285982586443424,
+    "physics.0.direct_output.weight": 0.18146498501300812,
+    "physics.2.associated_output.weight": 0.21095675230026245
+  },
+  "unchanged_native": true,
+  "physical_effect_nonzero": true,
+  "correct_condition_dependency": true,
+  "training_submitted": false
+}

@@ -1,0 +1,390 @@
+{
+  "prepared_utc": "2026-10-31T09:02:11.122897+00:00",
+  "status": "completed_full40_and_all_declared_controls16",
+  "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/content_modulation_r6/snapshots/20261031T092555Z",
+  "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/content_modulation_r6/submissions/candidate128_20261031T092555Z.yaml",
+  "native128_yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/content_modulation_r6/submissions/native128_20261031T093821Z.yaml",
+  "first_stop": 128,
+  "checkpoints": [
+    16,
+    32,
+    64,
+    128
+  ],
+  "main_evaluation_cases": 40,
+  "control_cases": 16,
+  "control_modes": [
+    "mean_query_update",
+    "global_train_mean",
+    "anchor_only",
+    "reasoning_swapped",
+    "no_c"
+  ],
+  "gamma": 5,
+  "seed": 42,
+  "automatic_extension": false,
+  "tests_passed": 9,
+  "configuration_audit_passed": true,
+  "unchanged_training_sections": [
+    "stages",
+    "train",
+    "loss",
+    "geometry",
+    "knowledge",
+    "inference"
+  ],
+  "official_foundation_initialization": true,
+  "reference_preserved": true,
+  "architecture": "C=W0*A+b0+0.1*W0*(A*DeltaH); fixed full-width native coordinates, learned Q/read/exchange/fusion retained",
+  "mean_update_control": "Training-only64 positive and64 negative input caches; keep each test anchor and replace only raw DeltaH",
+  "quality_status": "No mean PC gain versus matched native128; do not replace preserved R1 or extend R6 automatically",
+  "native128_status": "completed_full40",
+  "native64_remaining24_priority": true,
+  "experiment_id": 66910,
+  "updated_utc": "2026-10-31T12:52:16.746846+00:00",
+  "allocation_attempts": [
+    {
+      "experiment_id": 66905,
+      "actual": "NVIDIA H100",
+      "accepted": false,
+      "model_loaded": false,
+      "trial_id": 68292
+    },
+    {
+      "experiment_id": 66906,
+      "trial_id": 68293,
+      "actual": "NVIDIA H100",
+      "accepted": false,
+      "model_loaded": false
+    },
+    {
+      "experiment_id": 66907,
+      "trial_id": 68294,
+      "actual": "NVIDIA H100",
+      "accepted": false,
+      "model_loaded": false
+    }
+  ],
+  "trial_id": 68297,
+  "historical_snapshots": [
+    {
+      "path": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/content_modulation_r6/snapshots/20261031T090211Z",
+      "status": "H100_rejected_before_model_loading",
+      "experiment_id": 66905
+    }
+  ],
+  "total_planned_videos": 120,
+  "mean_controls": "One pass over the same64 positive/64 negative train caches saves both raw-update and complete-C means; distinct interventions.",
+  "confirmation_followups": {
+    "status": "not_started_and_not_planned_for_R6; full40 and declared controls do not justify adoption or further confirmation",
+    "real_heldout8": "Existing preselected real-input cases; paired candidate/native128 generation and visible physical-process review",
+    "cross_seed": "Small matched second-seed confirmation of the candidate/reference and the most informative module intervention",
+    "scope": "Supplement the complete40 main evidence; do not treat cosine, FM, a single discrete score or one seed alone as goal completion"
+  },
+  "native128_experiment_id": 66913,
+  "native128_trial_id": 68300,
+  "native128_snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/content_modulation_r6/snapshots/20261031T093821Z",
+  "native128_attempts": [
+    {
+      "experiment_id": 66908,
+      "trial_id": 68295,
+      "status": "failed_before_updates",
+      "reason": "Historical YAML loader parsed JSON scientific-notation floats as strings"
+    },
+    {
+      "experiment_id": 66909,
+      "trial_id": 68296,
+      "status": "H100_rejected_before_models",
+      "snapshot": "20261031T093821Z"
+    },
+    {
+      "experiment_id": 66911,
+      "trial_id": 68298,
+      "status": "H100_rejected_before_models",
+      "snapshot": "20261031T093821Z"
+    }
+  ],
+  "successful_candidate_run": "physical_content_66910",
+  "successful_native128_run": "native_lora128_66913",
+  "early_content_step16": {
+    "recorded_utc": "2026-10-31T09:49:10.218034+00:00",
+    "path": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/content_modulation_r6/reports/content_step0016.json",
+    "cases": 16,
+    "raw_query_update_cosine": 0.6878586038947105,
+    "content_modulated_update_cosine": 0.2459221174940467,
+    "projected_correction_cosine": 0.3426384720951319,
+    "total_C_cosine": 0.27931159920990467,
+    "correction_to_C_rms": 0.1579983700066805,
+    "generation_success_established": false,
+    "scope": "One normal-condition pass; no repeated counterfactual diagnostics. Content multiplication itself contributes to separation; actual paired generation remains decisive."
+  },
+  "measurement_policy": {
+    "normal_condition_representation_steps": [
+      16,
+      128
+    ],
+    "saved_checkpoints": [
+      16,
+      32,
+      64,
+      128
+    ],
+    "intermediate_diagnostics": "Skip standalone32/64 diagnostics unless a concrete training failure requires investigation",
+    "decisive_evidence": "128-step normal40 plus existing fixed16 information controls and paired video process outcomes"
+  },
+  "native128_training_completed_updates": 128,
+  "completed_training_updates": 128,
+  "final_content_step128": {
+    "status": "complete",
+    "report": "experiments/physical_content_v7/content_modulation_r6/reports/content_step0128.json",
+    "cases": 16,
+    "normal_only": true,
+    "raw_query_update_cosine": 0.8575030639767647,
+    "projected_correction_cosine": 0.34242376498878,
+    "total_c_cosine": 0.28264071978628635,
+    "cross_sample_raw_update_mean_cosine": 0.9456769824028015,
+    "correction_to_c_rms": 0.14720360841602087,
+    "generation_benefit_established": false
+  },
+  "parallel_control_dispatch": {
+    "status": "both_declared_accelerated_controls_completed_and_published",
+    "manifest": "experiments/physical_content_v7/content_modulation_r6/control_dispatch/prepared.json",
+    "modes": [
+      "reasoning_swapped",
+      "no_c"
+    ],
+    "additional_cases": 0,
+    "inference_source_unchanged": true,
+    "experiments": {
+      "reasoning_swapped": 66924,
+      "no_c": 66915
+    }
+  },
+  "native128_result": {
+    "count": 40,
+    "sa_mean": 3.05,
+    "pc_mean": 3.4,
+    "sa_pass_count": 11,
+    "pc_pass_count": 16,
+    "joint_pass_count": 9
+  },
+  "full40_result": {
+    "path": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/content_modulation_r6/inference_outputs/physical_content_66910/step0128_full40_controls16_physical5_seed42/videophy40",
+    "generated": 40,
+    "status": "completed",
+    "count": 40,
+    "sa_mean": 3.1,
+    "pc_mean": 3.4,
+    "sa_pass_rate": 0.275,
+    "pc_pass_rate": 0.35,
+    "joint_pass_rate": 0.25
+  },
+  "full40_matched_native_comparison": {
+    "sa": {
+      "baseline": 3.05,
+      "candidate": 3.1,
+      "difference": 0.05,
+      "paired_bootstrap_95_interval": [
+        -0.075,
+        0.175
+      ],
+      "wins": 4,
+      "ties": 34,
+      "losses": 2
+    },
+    "pc": {
+      "baseline": 3.4,
+      "candidate": 3.4,
+      "difference": 0.0,
+      "paired_bootstrap_95_interval": [
+        -0.15,
+        0.15
+      ],
+      "wins": 5,
+      "ties": 30,
+      "losses": 5
+    },
+    "mean": {
+      "baseline": 3.225,
+      "candidate": 3.25,
+      "difference": 0.025,
+      "paired_bootstrap_95_interval": [
+        -0.0625,
+        0.125
+      ],
+      "wins": 6,
+      "ties": 29,
+      "losses": 5
+    },
+    "joint": {
+      "baseline": 0.225,
+      "candidate": 0.25,
+      "difference": 0.025,
+      "paired_bootstrap_95_interval": [
+        -0.05,
+        0.125
+      ],
+      "wins": 2,
+      "ties": 37,
+      "losses": 1
+    },
+    "sa_pass_rate": {
+      "baseline": 0.275,
+      "candidate": 0.275,
+      "difference": 0.0,
+      "paired_bootstrap_95_interval": [
+        -0.075,
+        0.075
+      ],
+      "wins": 1,
+      "ties": 38,
+      "losses": 1
+    },
+    "pc_pass_rate": {
+      "baseline": 0.4,
+      "candidate": 0.35,
+      "difference": -0.05,
+      "paired_bootstrap_95_interval": [
+        -0.175,
+        0.075
+      ],
+      "wins": 2,
+      "ties": 34,
+      "losses": 4
+    }
+  },
+  "full40_reference_comparison": {
+    "sa": {
+      "baseline": 2.95,
+      "candidate": 3.1,
+      "difference": 0.15,
+      "paired_bootstrap_95_interval": [
+        0.0,
+        0.3
+      ],
+      "wins": 8,
+      "ties": 30,
+      "losses": 2
+    },
+    "pc": {
+      "baseline": 3.625,
+      "candidate": 3.4,
+      "difference": -0.225,
+      "paired_bootstrap_95_interval": [
+        -0.375,
+        -0.1
+      ],
+      "wins": 0,
+      "ties": 32,
+      "losses": 8
+    },
+    "mean": {
+      "baseline": 3.2875,
+      "candidate": 3.25,
+      "difference": -0.0375,
+      "paired_bootstrap_95_interval": [
+        -0.125,
+        0.0375
+      ],
+      "wins": 3,
+      "ties": 32,
+      "losses": 5
+    },
+    "joint": {
+      "baseline": 0.25,
+      "candidate": 0.25,
+      "difference": 0.0,
+      "paired_bootstrap_95_interval": [
+        -0.075,
+        0.075
+      ],
+      "wins": 1,
+      "ties": 38,
+      "losses": 1
+    },
+    "sa_pass_rate": {
+      "baseline": 0.275,
+      "candidate": 0.275,
+      "difference": 0.0,
+      "paired_bootstrap_95_interval": [
+        -0.075,
+        0.075
+      ],
+      "wins": 1,
+      "ties": 38,
+      "losses": 1
+    },
+    "pc_pass_rate": {
+      "baseline": 0.45,
+      "candidate": 0.35,
+      "difference": -0.1,
+      "paired_bootstrap_95_interval": [
+        -0.2,
+        -0.025
+      ],
+      "wins": 0,
+      "ties": 36,
+      "losses": 4
+    }
+  },
+  "completed_module_results": {
+    "mean_query_update": {
+      "path": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/content_modulation_r6/inference_outputs/physical_content_66910/step0128_full40_controls16_physical5_seed42/controls/mean_query_update/videophy40",
+      "generated": 16,
+      "status": "completed",
+      "count": 16,
+      "sa_mean": 3.125,
+      "pc_mean": 3.625,
+      "sa_pass_rate": 0.3125,
+      "pc_pass_rate": 0.4375,
+      "joint_pass_rate": 0.3125
+    },
+    "global_train_mean": {
+      "path": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/content_modulation_r6/inference_outputs/physical_content_66910/step0128_full40_controls16_physical5_seed42/controls/global_train_mean/videophy40",
+      "generated": 16,
+      "status": "completed",
+      "count": 16,
+      "sa_mean": 3.1875,
+      "pc_mean": 3.6875,
+      "sa_pass_rate": 0.3125,
+      "pc_pass_rate": 0.5,
+      "joint_pass_rate": 0.3125
+    },
+    "anchor_only": {
+      "path": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/content_modulation_r6/inference_outputs/physical_content_66910/step0128_full40_controls16_physical5_seed42/controls/anchor_only/videophy40",
+      "generated": 16,
+      "status": "completed",
+      "count": 16,
+      "sa_mean": 3.125,
+      "pc_mean": 3.625,
+      "sa_pass_rate": 0.3125,
+      "pc_pass_rate": 0.4375,
+      "joint_pass_rate": 0.3125
+    },
+    "reasoning_swapped": {
+      "path": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/content_modulation_r6/inference_outputs/physical_content_66910/step0128_full40_controls16_physical5_seed42/controls/reasoning_swapped/videophy40",
+      "generated": 16,
+      "status": "completed",
+      "count": 16,
+      "sa_mean": 3.25,
+      "pc_mean": 3.6875,
+      "sa_pass_rate": 0.375,
+      "pc_pass_rate": 0.5625,
+      "joint_pass_rate": 0.375
+    },
+    "no_c": {
+      "path": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/content_modulation_r6/inference_outputs/physical_content_66910/step0128_full40_controls16_physical5_seed42/controls/no_c/videophy40",
+      "generated": 16,
+      "status": "completed",
+      "count": 16,
+      "sa_mean": 3.25,
+      "pc_mean": 3.6875,
+      "sa_pass_rate": 0.375,
+      "pc_pass_rate": 0.5,
+      "joint_pass_rate": 0.375
+    }
+  },
+  "remote_state": "STATE_COMPLETED",
+  "module_attribution_report": "experiments/physical_content_v7/content_modulation_r6/reports/module_attribution16.json",
+  "automatic_adoption": false
+}

@@ -1,0 +1,64 @@
+{
+  "VP010": {
+    "normal": {
+      "provenance": "experiments/physical_content_v7/execution_value_r10/inference_outputs/physical_content_67003/step0400_full40_controls16_physical5_seed42/videophy40/cases/VP010/planned.json",
+      "caption": "A person mops up a puddle of water on a concrete floor, the water disappearing as the mop passes.",
+      "positive_analysis": "1. Mop bristles contact water, initiating displacement and spreading across floor surface.  \n2. Water flows outward from mop path, thinning as it moves away from center.  \n3. Floor reflects light where water pools, diminishing as absorption or evaporation begins.  \n4. Mop handle remains upright, suggesting continued motion through liquid zone.",
+      "positive_relations": [
+        "Mop bristles contact water, initiating displacement and spreading across floor surface.",
+        "Water flows outward from mop path, thinning as it moves away from center.",
+        "Floor reflects light where water pools, diminishing as absorption or evaporation begins.",
+        "Mop handle remains upright, suggesting continued motion through liquid zone."
+      ],
+      "negative_analysis": "1. Water pools where broom rests, reflecting light as it remains still.\n2. Broom bristles press into wet floor, displacing water outward.\n3. If broom moves, water will splash and spread further across floor.\n4. Water’s surface tension may cause droplets to form and roll along floor.",
+      "donor": null
+    },
+    "unrelated": {
+      "provenance": "experiments/physical_content_v7/execution_value_r10/inference_outputs/physical_content_67003/step0400_full40_controls16_physical5_seed42/controls/reasoning_swapped/videophy40/cases/VP010/planned.json",
+      "caption": "A person mops up a puddle of water on a concrete floor, the water disappearing as the mop passes.",
+      "positive_analysis": "1. Air inside balloon exerts pressure, stretching the elastic material outward visibly.\n2. Internal pressure remains balanced with external atmospheric pressure as balloon floats.\n3. Continuous air molecules collide with balloon walls, maintaining its inflated shape.\n4. If air escapes, balloon will shrink; if sealed, shape persists under current pressure.",
+      "positive_relations": [
+        "Air inside balloon exerts pressure, stretching the elastic material outward visibly.",
+        "Internal pressure remains balanced with external atmospheric pressure as balloon floats.",
+        "Continuous air molecules collide with balloon walls, maintaining its inflated shape.",
+        "If air escapes, balloon will shrink; if sealed, shape persists under current pressure."
+      ],
+      "negative_analysis": "1. Water pools where broom rests, reflecting light as it remains still.\n2. Broom bristles press into wet floor, displacing water outward.\n3. If broom moves, water will splash and spread further across floor.\n4. Water’s surface tension may cause droplets to form and roll along floor.",
+      "donor": "VP034"
+    }
+  },
+  "VP025": {
+    "normal": {
+      "provenance": "experiments/physical_content_v7/execution_value_r10/inference_outputs/physical_content_67003/step0400_full40_controls16_physical5_seed42/videophy40/cases/VP025/planned.json",
+      "caption": "A large, orange plastic egg is rolled up a plastic slide, then rolls down, ending at the bottom.",
+      "positive_analysis": "1. Orange egg rests on surface beneath transparent curved slide.\n2. Slide’s curvature suggests potential for rolling motion.\n3. Egg’s smooth surface may interact with slide’s texture during motion.\n4. Fluid-like slide implies possible frictional or aerodynamic effects during roll.",
+      "positive_relations": [
+        "Orange egg rests on surface beneath transparent curved slide.",
+        "Slide’s curvature suggests potential for rolling motion.",
+        "Egg’s smooth surface may interact with slide’s texture during motion.",
+        "Fluid-like slide implies possible frictional or aerodynamic effects during roll."
+      ],
+      "negative_analysis": "1. Orange sphere rests on surface; its position remains unchanged unless displaced.\n2. Transparent wave curves above sphere; it may alter if sphere moves or fluid shifts.\n3. Sphere’s shadow forms beneath; it persists as long as lighting and position are stable.\n4. Wave’s curvature suggests fluid motion; it may change if sphere interacts or fluid flows.",
+      "donor": null
+    },
+    "unrelated": {
+      "provenance": "experiments/physical_content_v7/execution_value_r10/inference_outputs/physical_content_67003/step0400_full40_controls16_physical5_seed42/controls/reasoning_swapped/videophy40/cases/VP025/planned.json",
+      "caption": "A large, orange plastic egg is rolled up a plastic slide, then rolls down, ending at the bottom.",
+      "positive_analysis": "1. Paddle edge near net, ball resting on table—contact imminent, motion pending.\n2. Ball stationary, paddle poised—impact will alter ball’s trajectory and spin.\n3. Net’s mesh and table lines remain fixed—impact may cause slight vibration.\n4. Air around ball and paddle will compress and disperse with contact.",
+      "positive_relations": [
+        "Paddle edge near net, ball resting on table—contact imminent, motion pending.",
+        "Ball stationary, paddle poised—impact will alter ball’s trajectory and spin.",
+        "Net’s mesh and table lines remain fixed—impact may cause slight vibration.",
+        "Air around ball and paddle will compress and disperse with contact."
+      ],
+      "negative_analysis": "1. Orange sphere rests on surface; its position remains unchanged unless displaced.\n2. Transparent wave curves above sphere; it may alter if sphere moves or fluid shifts.\n3. Sphere’s shadow forms beneath; it persists as long as lighting and position are stable.\n4. Wave’s curvature suggests fluid motion; it may change if sphere interacts or fluid flows.",
+      "donor": "VP005"
+    }
+  },
+  "scope": {
+    "source": "Actual generated-case metadata; no new Qwen generation. Normal means own generated reasoning, not verified physically correct or complete reasoning.",
+    "VP010": "Own reasoning partly covers water thinning but emphasizes spreading, reflection and absorption/evaporation; it does not clearly link mop traversal to the requested removal. The donor is balloon-pressure text.",
+    "VP025": "Own reasoning describes resting/potential rolling and a fluid-like slide; it omits the explicit up-then-down-to-bottom sequence. Donor text concerns paddle/ball contact.",
+    "causal_limit": "Native T5 still contains the full request and contextual Qwen states can retain it. These are input-content weaknesses, not proof the request is absent from all features or the sole cause of A-versus-R1 differences."
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "status": "STATE_CANCELED",
+  "parent_experiment": 67598,
+  "parent_trial": 68985,
+  "script": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_operator_r13a/submissions/control_helpers/20261104T181728Z/assist_controls.py",
+  "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_operator_r13a/submissions/r13a_core_controls_helper_20261104T181728Z.yaml",
+  "plan": {
+    "parent_experiment": 67598,
+    "run_id": "physical_content_67598",
+    "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_operator_r13a/runs/physical_content_67598/step0400.pt",
+    "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_operator_r13a/snapshots/20261104T181117Z",
+    "primary_output": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_operator_r13a/inference_outputs/physical_content_67598/step0400_original_fixed40_controls16_seed42",
+    "modes": [
+      "scale_off",
+      "shift_off"
+    ],
+    "cases": [
+      "VP002",
+      "VP004",
+      "VP005",
+      "VP009",
+      "VP010",
+      "VP013",
+      "VP015",
+      "VP016",
+      "VP017",
+      "VP018",
+      "VP024",
+      "VP025",
+      "VP026",
+      "VP027",
+      "VP034",
+      "VP038"
+    ],
+    "videos": 32,
+    "training_updates": 0,
+    "api_calls": 0,
+    "scope": "Same frozen inference source/own400 weights, inputs, seed42 andgamma5 as primary."
+  },
+  "additional_cases": 0,
+  "automatic_dispatch": false,
+  "prerequisite": "Own400 checkpoint saved and primary original40 <20 completed. Confirm spareRTX, then submit manually. Do not launch during unfinished training or restart canceled managers.",
+  "attempts": [
+    {
+      "experiment_id": 67600,
+      "trial_id": 68987,
+      "state": "STATE_ERROR",
+      "end_utc": "2026-11-04T19:35:59.817258Z",
+      "actual_gpu": "NVIDIA H100",
+      "accepted": false,
+      "reason": "GPU guard rejected before model loading"
+    },
+    {
+      "experiment_id": 67603,
+      "state": "STATE_CANCELED",
+      "submission_utc": "2026-11-04T19:40:06.398260+00:00",
+      "trial_id": 68990,
+      "actual_gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "accepted": true,
+      "last_verified_utc": "2026-11-04T19:42:59.430252+00:00",
+      "end_utc": "2026-11-04T20:49:55.574326Z"
+    }
+  ],
+  "experiment_id": 67603,
+  "submission_utc": "2026-11-04T19:40:06.398260+00:00",
+  "trial_id": 68990,
+  "actual_gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+  "last_verified_utc": "2026-11-04T20:52:51.601284+00:00",
+  "stage": "partial_shift_handed_to_primary",
+  "actual_sampling_verified": true,
+  "actual_sampling_verified_utc": "2026-11-04T19:43:24+00:00",
+  "first_video_seconds": 89.69139071926475,
+  "first_video_completed": true,
+  "generated_by_mode": {
+    "scale_off": 16,
+    "shift_off": 7
+  },
+  "median_seconds": 162.6634059306234,
+  "overlap_watch": "Actual speed became about178s/video. First complete scoredscale_off should hand off before primary reaches it. Reassess unfinishedshift_off when primaryno_c progresses. If overlap approaches, cancelhelper, independently verify terminal, then copy only complete matched metadata/video pairs atomically to unstartedprimary mode; frozeninfer resumes missing cases. Never let both generate the same mode concurrently.",
+  "recent_video_seconds": [
+    174.9,
+    173.7,
+    181.9
+  ],
+  "end_utc": "2026-11-04T20:49:55.574326Z",
+  "transferred": [
+    "scale_off"
+  ],
+  "partial_handoff": {
+    "status": "partial_helper_handoff",
+    "source_experiment": 67603,
+    "source_state": "STATE_CANCELED",
+    "source_end_utc": "2026-11-04T20:49:55.574326Z",
+    "cases": [
+      "VP002",
+      "VP004",
+      "VP005",
+      "VP009",
+      "VP010",
+      "VP013",
+      "VP015"
+    ],
+    "completed_cases": 7,
+    "requested_cases": 16,
+    "remaining": [
+      "VP016",
+      "VP017",
+      "VP018",
+      "VP024",
+      "VP025",
+      "VP026",
+      "VP027",
+      "VP034",
+      "VP038"
+    ],
+    "utc": "2026-11-04T20:50:31.089970+00:00",
+    "scope": "Only complete own400 matched video/metadata pairs; primary frozen inference resumes missing fixed16 cases and scores once."
+  },
+  "reason": "Avoid overlap: terminated and independently verified terminal before atomically handing seven completed shift_off pairs to primary; primary resumes remaining nine and scores16."
+}

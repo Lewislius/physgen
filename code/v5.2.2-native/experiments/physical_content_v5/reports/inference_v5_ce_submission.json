@@ -1,0 +1,89 @@
+{
+  "created_at_utc": "2026-10-30T11:54:19.519989+00:00",
+  "status": "rtx6000_generation_running",
+  "variant": "v5_ce",
+  "training_experiment_id": 66706,
+  "training_trial_id": 68093,
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_v5_scaling_q256/runs/v5_ce_66706/step1000.pt",
+  "checkpoint_step": 1000,
+  "q_tokens": 256,
+  "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_v5_scaling_q256/inference_snapshots/20261030T115419Z_v5_ce",
+  "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_v5_scaling_q256/inference_snapshots/20261030T115419Z_v5_ce/v5_ce_blk96g.yaml",
+  "submission_context": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_v5_scaling_q256/inference_snapshots/20261030T115419Z_v5_ce/submission_context",
+  "output": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_v5_scaling_q256/inference_outputs/v5_ce_66706/final1000_demo21_videophy40_r1",
+  "stages": [
+    "demo21",
+    "videophy40",
+    "independent_autoeval",
+    "comparison"
+  ],
+  "checks": {
+    "preflight": "passed",
+    "regression_tests": 3,
+    "shell_syntax": "passed",
+    "python_syntax": "passed",
+    "references": 17
+  },
+  "attempts": [
+    {
+      "experiment_id": 66759,
+      "status": "rejected_h100_exited86",
+      "submitted_at_utc": "2026-10-30T11:54:48.562413+00:00",
+      "gpu": {
+        "kind": "gpu_policy",
+        "actual": "NVIDIA H100",
+        "visible_count": 1,
+        "accepted": false,
+        "resource_pool": "blk-96g",
+        "experiment_id": "66759",
+        "time": 1793361285.5379136
+      },
+      "trial_id": 68146
+    },
+    {
+      "experiment_id": 66761,
+      "status": "rtx6000_running",
+      "submitted_at_utc": "2026-10-30T11:56:24.051620+00:00",
+      "gpu": {
+        "kind": "gpu_policy",
+        "actual": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "visible_count": 1,
+        "accepted": true,
+        "resource_pool": "blk-96g",
+        "experiment_id": "66761",
+        "time": 1793361412.40937
+      },
+      "trial_id": 68148
+    }
+  ],
+  "active_experiment_id": 66761,
+  "active_trial_id": 68148,
+  "verified_at_utc": "2026-10-30T12:04:28.555545+00:00",
+  "runtime_validation": {
+    "full_model_restored": true,
+    "checkpoint_step": 1000,
+    "q_tokens": 256,
+    "enhancement_passes": 2,
+    "first_case_sampling_started": true,
+    "first_video_complete": true,
+    "first_video": {
+      "kind": "video_complete",
+      "time": 1793361838.1401997,
+      "variant": "v5_ce",
+      "suite": "demo21",
+      "count": 1,
+      "total": 21,
+      "id": "reference",
+      "status": "completed",
+      "seconds": 81.25917765777558,
+      "peak_gpu_gib": 42.0510311126709,
+      "encoded": {
+        "width": 832,
+        "height": 480,
+        "avg_frame_rate": "24/1",
+        "nb_read_frames": "81"
+      }
+    },
+    "completed_demo_cases": 1
+  }
+}

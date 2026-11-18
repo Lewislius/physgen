@@ -1,0 +1,29 @@
+R20前置复盘：2026-11-14
+
+授权：T2V R20AT→R20BT；I2V R20AI→R20BI，各两版，400步。当前R19DT收尾，不再启动R19ET。每条线A实测后才设计B。当前仅完成证据整理，未选定最终R20架构、未提交R20训练。
+
+已直接查看8个固定同提示案例的PhysVid、R18E、R19CT及已有CT关闭物理视频。R18E在木条、玻璃搬运、划船、拉绳、滚筒等保留更多材质和可读主体；CT在其中多个案例丢失物体、形成平涂或空背景。R18E自身也存在木条分裂、人物复制、不正确翻转落地、桨船不稳定，不能原样回退就当成达标。
+同CT权重关闭物理分支后，002/004/009/026/038恢复明显对象和纹理。这是当前物理路径造成部分画面退化的直接干预证据；015仍有悬浮薄片船，说明关闭并不能修好全部问题。关闭新增时间模块后大部分原问题保留，部分案例如038反而工具连接更差。
+
+R18E与CT全部1600个训练样本、sigma、dropout、更新号和micro号完全相同。最后50步181个正条件样本，C token cosine：R18E 0.20933，CT 0.92661；中心化能量比：R18E 0.79252，CT 0.07560。CT固定16输入审计进一步显示执行修正项幅度为原生物理表示的3.51倍，执行修正token cosine约0.99484；路由修正约6.64倍，路由最终cosine约0.99859。说明新增自由修正确实在淹没原始信息，而不是仅凭训练FM标量猜测退化。尚未单独证明哪个上游组件导致塌缩，需把“已测现象”和“单模块原因”分清。
+
+RoPE核对：R18E/CT/EI/DT主干继续调用原生Wan的self-attention、时空RoPE、网格和unpatchify，视频顺序为F→H→W。用真实Wan小型模块、非零输出头，在4个包装实现×T2V/I2V×2个形状×3个噪声水平共48项比较，关闭物理路径的输出与官方forward逐项相同（float32 CPU同SDPA内核，maxabs=0）。这排除了所测路径中的展平、时空轴和扩散时间分配错误；不是完整大模型GPU等价证明。
+新增分支的时间RoPE旋转在同整数坐标下与官方temporal子空间一致（误差约1e-6）；训练/推理用视频经过秒数，原生主干用latent帧号，二者单位不同。这个差异是预训练迁移适配问题，不是已证实的画面崩坏根因。不能把语义槽序号任意当真实时间/空间坐标。
+
+PhysVid本机代码证据：原生self-attention→原生文本attention→原生FFN之后，独立local-conditioning attention经扩散时间调制和zero-init merge再加入；代码提供train_new_layers_only模式，但不能据此断言实际全程冻结：本机train.yaml设为false。论文§4.1/表5明确先冻结基础模型训练新增层1000步，再全模型联合训练2000步，有效batch64；不能把物理效果归结于永久冻结或直接压缩等同我们的400步。局部Q和K使用RoPE，K按物理描述块及词位置组织；当前实现没有给flex_attention添加硬chunk mask。其num_frame_per_block=3、7段描述不能直接当我们无时间标签Q槽的同义物；借鉴的是有位置含义的条件对应和独立执行，不是照抄编号。实际PhysVid视频用Wan2.1-1.3B与不同采样，材质优势不能单独归到RoPE。8例中它也有动作或对象描述偏差。
+
+下一步设计依据：恢复完整原生内容生成路径与独立物理修正的清晰分工，保留有效条件内容，避免自由公共C和大幅FFN预激活偏移接管画面；认真评估R18E式直接/语义关联双读、PhysVid式扩散时间调制和写入位置、基础能力保留方式。变形约束需同时适用于非刚体、流体及静态现象，不采用一刀切刚体/接触/守恒规则，不以逐帧差值压制合理运动。具体训练约束及架构待现有DT结果和EI必要配对结果后决定；不因提出一个模块就宣称画面或PC/SA/Joint改善。
+
+证据路径
+physical_content_r19ct/reports/physvid_r18e_matched_visual/{manifest.json,review.json,VPxxx.jpg}
+physical_content_r19ct/reports/native_position_audit.json
+physical_content_r19ct/reports/r18e_ct_same_training_content.json
+physical_content_r19ct/reports/fixed16_content_path_audit.json
+physical_content_r19ei/reports/fixed16_content_path_audit.json
+官方本机PhysVid代码：/home/liuzhirui/model/PhysVid/physvid/models/wan/local_conditioning_model.py、wan_wrapper.py
+
+补充固定输入与原生视频复盘：R18E固定16输入执行C cosine0.22280、中心化能量0.76604、执行修正/锚点范数0.87377；路由cosine0.31053。该锚点由旧版回归接口估计，CT锚点为原生编码，不能将范数倍数当成完全相同坐标实验；同训练样本C趋势和实际关闭物理对照提供额外证据。R18E ContentBlock每轮将状态增量RMS归一化再加回来源锚点；CT/EI改为多层自由残差内容更新，存在覆盖输入的通道。这个区别应进入R20内容设计，而不只抑制最终写入幅度。
+
+新增检查官方原生Wan2.2同设置6例：015本来就有悬浮薄船/异常滴水，R18E有船、人物、桨与湖景改善；038原生滚筒偏光滑，R18E恢复更丰富绒毛与涂层。002/026原生也有分裂/复制问题。因此不能用永久关闭物理或全局模仿基础输出作为质量解决方案。
+
+EI固定16关闭物理已全部抽帧复盘：009人物消失、017车架等部分异常缓解；024车仍严重软化/漂移，015片状滴水仍在，002应有弯曲也减弱。需要保留真正有用的条件执行，并修复额外损伤。

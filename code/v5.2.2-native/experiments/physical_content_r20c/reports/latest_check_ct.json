@@ -1,0 +1,62 @@
+{
+  "tag": "ct",
+  "experiment": 70265,
+  "state": "STATE_CANCELED",
+  "checked_utc": "2026-11-15T18:05:45.873036+00:00",
+  "next_check_utc": null,
+  "gpu.json": {
+    "kind": "gpu_policy",
+    "actual": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+    "visible_count": 1,
+    "accepted": true,
+    "resource_pool": "rtx6000",
+    "experiment_id": "70265"
+  },
+  "status.json": {
+    "status": "source_queries_off_generation"
+  },
+  "full_model_check.json": {
+    "passed": true,
+    "seconds": 38.099696496501565,
+    "parameters": 1190689792
+  },
+  "train": {
+    "update": 400,
+    "phase": "joint",
+    "seconds": 12.856065368279815,
+    "peak_gib": 34.84187459945679
+  },
+  "generation": {
+    "videophy40": 40,
+    "videophy60": 20,
+    "controls": {
+      "physical_condition_off": 16,
+      "no_c": 16,
+      "source_queries_off": 11
+    }
+  },
+  "main_scores": [
+    {
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20c/inference_outputs/r20ct_source_physics400/step0400_seed42/videophy40/scores.json",
+      "count": 40,
+      "sa_mean": 3.1,
+      "pc_mean": 3.55,
+      "sa_pass_rate": 0.225,
+      "pc_pass_rate": 0.525,
+      "joint_pass_rate": 0.2,
+      "joint_count": 8
+    },
+    {
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20c/inference_outputs/r20ct_source_physics400/step0400_seed42/full60/videophy60/scores.json",
+      "count": 60,
+      "sa_mean": 3.033333333333333,
+      "pc_mean": 3.5833333333333335,
+      "sa_pass_rate": 0.23333333333333334,
+      "pc_pass_rate": 0.55,
+      "joint_pass_rate": 0.21666666666666667,
+      "joint_count": 13
+    }
+  ],
+  "terminal_verified": true,
+  "terminal_source": "experiment describe70265 after explicit kill of remaining low-priority controls"
+}

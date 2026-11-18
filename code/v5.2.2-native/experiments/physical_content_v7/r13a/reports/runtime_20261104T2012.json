@@ -1,0 +1,198 @@
+{
+  "verified_utc": "2026-11-04T20:12:30.523226+00:00",
+  "states": [
+    {
+      "id": 67598,
+      "state": "STATE_RUNNING",
+      "trialIds": [
+        68985
+      ],
+      "endTime": null
+    },
+    {
+      "id": 67602,
+      "state": "STATE_RUNNING",
+      "trialIds": [
+        68989
+      ],
+      "endTime": null
+    },
+    {
+      "id": 67603,
+      "state": "STATE_RUNNING",
+      "trialIds": [
+        68990
+      ],
+      "endTime": null
+    },
+    {
+      "id": 67462,
+      "state": "STATE_RUNNING",
+      "trialIds": [
+        68849
+      ],
+      "endTime": null
+    },
+    {
+      "id": 67463,
+      "state": "STATE_ERROR",
+      "trialIds": [
+        68850
+      ],
+      "endTime": "2026-11-04T20:12:28.348404Z"
+    },
+    {
+      "id": 67465,
+      "state": "STATE_RUNNING",
+      "trialIds": [
+        68852
+      ],
+      "endTime": null
+    }
+  ],
+  "progress": {
+    "67598": {
+      "status": {
+        "status": "original40_generation",
+        "run": "physical_content_67598",
+        "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_operator_r13a/runs/physical_content_67598/step0400.pt"
+      },
+      "generated_by_mode": {
+        "real": 27
+      },
+      "recent_video_seconds": [
+        82.4,
+        83.3,
+        82.8
+      ],
+      "latest": {
+        "kind": "video_complete",
+        "time": 1793823145.42616,
+        "case": "VP027",
+        "mode": "real",
+        "seconds": 82.8362159319222
+      },
+      "scores": {
+        "controls/reasoning_swapped/videophy40/scores.json": {
+          "summary": {
+            "count": 16,
+            "sa_mean": 3.125,
+            "pc_mean": 3.75,
+            "sa_pass_rate": 0.3125,
+            "pc_pass_rate": 0.5625,
+            "joint_pass_rate": 0.25,
+            "scope": "Fixed60 historical VideoPhy2 captions adapted to common first-image I2V; seed42. Not the official590-caption T2V benchmark.",
+            "training_verifier_is_independent": true
+          }
+        }
+      }
+    },
+    "67602": {
+      "status": {
+        "status": "empty_reasoning_generation",
+        "transferred": [
+          "reasoning_swapped"
+        ]
+      },
+      "generated_by_mode": {
+        "reasoning_swapped": 16,
+        "empty_reasoning": 4
+      },
+      "recent_video_seconds": [
+        89.3,
+        88.9,
+        89.1
+      ],
+      "latest": {
+        "kind": "sampling",
+        "time": 1793823144.0093424,
+        "case": "VP010",
+        "mode": "empty_reasoning",
+        "step": 40
+      },
+      "scores": {
+        "controls/reasoning_swapped/videophy40/scores.json": {
+          "summary": {
+            "count": 16,
+            "sa_mean": 3.125,
+            "pc_mean": 3.75,
+            "sa_pass_rate": 0.3125,
+            "pc_pass_rate": 0.5625,
+            "joint_pass_rate": 0.25,
+            "scope": "Fixed60 historical VideoPhy2 captions adapted to common first-image I2V; seed42. Not the official590-caption T2V benchmark.",
+            "training_verifier_is_independent": true
+          }
+        }
+      }
+    },
+    "67603": {
+      "status": {
+        "status": "scale_off_generation",
+        "transferred": []
+      },
+      "generated_by_mode": {
+        "scale_off": 11
+      },
+      "recent_video_seconds": [
+        198.6,
+        180.6,
+        175.7
+      ],
+      "latest": {
+        "kind": "video_complete",
+        "time": 1793823125.9065316,
+        "case": "VP024",
+        "mode": "scale_off",
+        "seconds": 175.74330689851195
+      },
+      "scores": {}
+    }
+  },
+  "supplementary": {
+    "wan_lora": {
+      "status": "completed",
+      "complete": 130,
+      "requested": 130,
+      "model": "wan_lora",
+      "job_stage": {
+        "status": "running",
+        "stage": "evaluate_physics_iq",
+        "experiment_id": "67462",
+        "time": 1793823128.7353833,
+        "model": "wan_lora"
+      },
+      "raw_csv_exists": false,
+      "piq_summary_exists": false
+    },
+    "r1": {
+      "status": "completed",
+      "complete": 130,
+      "requested": 130,
+      "model": "r1",
+      "job_stage": {
+        "status": "failed",
+        "stage": "evaluate_physics_iq",
+        "error": "Command '['/home/liuzhirui/benchmark/.venv-physicsiq/bin/python', '-I', '-B', '-u', '/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/cross_benchmark_70_60/snapshots/20261104T144800Z/evaluate_physics_iq.py', '--model', 'r1']' returned non-zero exit status 1.",
+        "time": 1793823147.449076,
+        "model": "r1"
+      },
+      "raw_csv_exists": true,
+      "piq_summary_exists": false
+    },
+    "r10a": {
+      "status": "running",
+      "complete": 121,
+      "requested": 130,
+      "model": "r10a",
+      "job_stage": {
+        "status": "running",
+        "stage": "generate",
+        "experiment_id": "67465",
+        "time": 1793804606.8863604,
+        "model": "r10a"
+      },
+      "raw_csv_exists": false,
+      "piq_summary_exists": false
+    }
+  }
+}

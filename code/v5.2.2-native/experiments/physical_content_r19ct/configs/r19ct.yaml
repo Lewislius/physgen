@@ -1,0 +1,162 @@
+schema_version: R19CT-grounded-state-experts-v4
+revision: R19CT-grounded-state-experts-20261114
+status: ready_for_training
+source:
+  repository: Lewislius/physgen
+  reference_commit: 24b957dd4c962db24621cc94286ad6a2ce8a7c23
+  official_model: Wan-AI/Wan2.2-TI2V-5B
+  architecture: request_grounded_content_current_video_physical_state_expert_native_feature_execution
+  reference_task: 'T2V: own BT full review, R18G/AT; no inherited project weights'
+initialization:
+  mode: official_fresh
+  project_checkpoint: null
+  new_adapter_seed: 42
+base:
+  model: Wan2.2-TI2V-5B
+  project_checkpoint: null
+  freeze_text_qkvo: true
+  video_lora_rank: 32
+  video_lora_alpha: 32
+  video_lora_from_update: 1
+model:
+  width: 3072
+  ffn_width: 14336
+  native_layers: 30
+  native_heads: 24
+  qwen_width: 4096
+  q_tokens: 256
+  q_heads: 32
+  grounded_heads: 16
+  content_rounds: 2
+  injection_layers:
+  - 2
+  - 5
+  - 8
+  - 11
+  - 14
+  - 17
+  - 20
+  - 23
+  - 26
+  - 29
+  extra_video_blocks: 0
+  split_temporal_physics_memory: false
+  conditioned_ffn_rank: null
+  physics_slots: 256
+  physics_width: 3072
+  q_width: 4096
+  q_rounds: 2
+  physical_query: independent_full_width_official_init
+  physical_execution: current_video_read_relation_temporal_expert_then_native_FFN
+  physical_read_state: native_text_updated_state
+  content_anchor: original_request_values_physics_queries
+  direct_C_residual: false
+  trainable_semantic_attention_copy: false
+  read_amplitude_preserved: true
+  physical_feature_output: same_native_FFN_output_including_video_LoRA
+  state_initialization_layer: 14
+  physical_state_width: 3072
+  shared_video_value: true
+paths:
+  wan_code: /home/liuzhirui/model/Wan2.2
+  wan_checkpoint: /home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B
+  qwen_checkpoint: /home/liuzhirui/model/Qwen3-VL/Qwen3-VL-8B-Instruct
+  train_cache: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/data_revision_qwen38/runs/20261103_dataset/encoded
+  input_cache: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physics_content_v10_impl/runs/t2v_cache/input
+  words_cache: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physics_content_v10_impl/runs/t2v_cache/words
+  native_words_cache: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physics_content_v10_impl/runs/t2v_cache/native_words
+  eval_input_cache: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physics_content_v10_impl/runs/t2v_cache/eval_input
+  run_dir: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19ct/runs/r19ct_grounded400
+  interface_output: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19ct/preparation/interface_ct.pt
+  inference_evidence: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19ct/prepared_inputs/grounded_ct
+train:
+  max_updates: 400
+  effective_global_batch: 4
+  world_size: 1
+  microbatch_per_device: 1
+  gradient_accumulation: 4
+  seed: 42
+  condition_dropout: 0.1
+  optimizer: AdamW
+  betas:
+  - 0.9
+  - 0.999
+  eps: 1.0e-08
+  matrix_weight_decay: 0.01
+  bias_norm_weight_decay: 0.0
+  grad_clip_per_group: 1.0
+  autocast_dtype: bfloat16
+  trainable_master_dtype: float32
+  gradient_checkpointing: true
+  checkpoint_use_reentrant: false
+  activation_offload: false
+  sigma_min: 0.001
+  sigma_max: 0.999
+  sample_order: fixed_same_task_reference1600
+  data_revision: qwen38_wisa_reviewed_v1
+  post_training: false
+  noise_strategy: unchanged_linear_FM
+  physics_warmup: 13
+  video_lora_warmup: 51
+  peak_end_update: 240
+  minimum_lr_ratio: 0.2
+  peak_lrs:
+    wan_video_lora: 2.0e-05
+    enhancement: 5.0e-05
+    physics_read: 2.0e-05
+    physics_write: 3.0e-05
+    physics_state: 2.0e-05
+  save_every: 100
+  keep_updates:
+  - 400
+  interface_updates: 0
+  sample_sequence: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19/preparation/sample_sequence_at.json
+loss:
+  fm: 0.8
+  tail: 0.2
+  tail_fraction: 0.25
+  route_peak: 0.0
+  route_warmup: 13
+  route_decay_start: 240
+  route_final: 0.0
+  local_semantic_enabled: false
+  st_enabled: false
+  supervise_known_latent: false
+  unknown_scope: all_valid_frames
+inference:
+  num_frames: 81
+  width: 832
+  height: 480
+  steps: 50
+  sampler: shifted_euler
+  shift: 5.0
+  cfg: 5.0
+  seed: 42
+  best_of_n: 1
+  clamp_first: false
+evaluation:
+  primary_fixed40: true
+  extra_disjoint20: true
+  pc_mean_target: 3.85
+  pc_mean_stretch: 3.9
+  sa_mean_target: 3.25
+  joint_count_target40: 13
+  joint_count_stretch40: 14
+  pass_threshold: 4
+  expected_collapsed_videos: 0
+  benchmark_targets_are_unverified: true
+  cross_benchmark_policy: I2V only after40+60 and actual-video gains over best comparable
+    references
+  catastrophic_visual_failure_allowed: false
+plan: CT
+task: t2v
+mechanism: 8
+input:
+  external_image: false
+  evidence_scope: request_only
+  known_latent_frames: 0
+  future_targets_in_condition: false
+  chunk_descriptions: false
+  local_annotation_preprocessing: false
+design_plan: CT
+variant_id: R19CT

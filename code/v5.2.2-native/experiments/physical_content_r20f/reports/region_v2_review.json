@@ -1,0 +1,22 @@
+{
+  "updated_utc": "2026-11-16T07:13:16.103887+00:00",
+  "pilot": "whole_video_region_v2_pilot8",
+  "reviewed_cases": 8,
+  "format_success": 8,
+  "unchanged_boxes_across_five_observations": 7,
+  "accuracy_rate": null,
+  "accuracy_note": "No independent pixel ground truth; repeated coordinates do not alone establish error for stationary scenes. Actual moving/deforming examples show clear misses.",
+  "approved_for_training": false,
+  "formal_training_submitted": false,
+  "findings": {
+    "source0000000": "Cooking meat/oil localized coarsely but visible steam excluded.",
+    "source0000053": "Bottle and glass reasonably covered; narrow liquid process not separately resolved.",
+    "source0000579": "Entire image box offers almost no physical-localization discrimination.",
+    "wisa0029131": "Copies first-frame box; later bent head and torso extend outside.",
+    "wisa0028206": "Coarse central material box; not evidence that melting process or its timing is correct.",
+    "wisa0025412": "Static trough box misses changing lower/front ball regions.",
+    "wisa0032401": "Entire image box, not a useful local process target.",
+    "source0001535": "Early smoke box then empty observations despite clearly expanded smoke; unacceptable missed physical regions."
+  },
+  "decision": "Do not scale or train with v2 boxes. Evaluate independent image grounding with shared whole-video context. Bounding boxes are coarse participation supervision, not physical truth or deformation constraints."
+}

@@ -1,0 +1,72 @@
+R15Bt：把 R15B＋I 的请求绑定物理读取范式从 I2V 迁到 T2V
+
+目标
+R15B＋I 在固定 VideoPhy2-40/60 的 I2V 协议上取得较高 PC（40 例 PC 3.775，60 例 PC 3.817）。
+本版只回答一个问题：同一套物理范式在文生视频（T2V）里是否仍然有效。除任务入口外，
+不改变 R15B 的增强结构、请求绑定读取、B400 联合读取、训练预算、采样器和评测口径。
+本版记为 R15Bt，训练与评测均在 blk-96g 的 RTX PRO 6000 上执行，拒绝 H100。
+
+保留的 R15B＋I 设计
+1. 原 R15B Enhancement：256 个 Q 槽、两轮共享增强、关系内/摘要交互、H 组 grounded read、
+   C_route/C_execute 独立投影、零初始化输出、冻结原生文本 Q/K/V/O。参数名、形状、初始化、
+   可训练参数预算与 R15B 一致。
+2. 原 B400 联合物理读取（joint read）：物理值先以原生请求 key 绑定到物理记忆，
+   视频 query 再读取“直接 C + 请求绑定 C + 零值 reference”。两路先验总质量保持 R:1，
+   不新增请求写入器、不新增投影、不新增损失、不改变原生文本注意力。
+3. 原状态交互：物理消息经逐位置 state-value 交互和输出映射后注入；首帧不参与物理注入
+   （T2V 根本没有首帧）。
+4. 原训练预算：400 个优化更新，累积 4，共 1600 次样本使用；128 步 interface +
+   272 步 joint；Wan LoRA 在第 129 步才参与更新；学习率、warmup、梯度裁剪、
+   text dropout、辅助系数、保存步点与 R15B 完全一致；从官方 Wan2.2-TI2V-5B 与
+   全新项目参数开始训练，不加载 R15B 权重。
+5. 原评测协议：固定 VideoPhy2 40 + 追加 20，共 60 条历史 caption；seed42 持久化噪声；
+   832x480、81 帧、24fps、50 步 shifted-Euler、shift5、CFG5；官方本地 VideoPhy2
+   AutoEval 的 SA/PC 1-5 分，>=4 为通过，Joint = 同视频 SA>=4 且 PC>=4。
+
+唯一任务改动：I2V → T2V
+1. 不接收任何首帧、首帧 latent、首帧 RGB 或首帧派生的条件。模型入口断言 first is None。
+2. 整个 21 帧 latent 全部为噪声，patch_embedding 直接编码完整 noisy latent；
+   所有 token 使用 sigma*1000 的时间位置；物理增量写入所有帧，不存在 known 前缀。
+3. Fusion 的时间特征在 T2V 下使用全部 21 个时间点（I2V 使用 times[1:] 对应未知帧）；
+   这是本版唯一需要改动的物理分支细节。
+4. 生成损失覆盖全部 21 帧（I2V 排除已知首帧）；FM/tail 口径不变，只改覆盖范围。
+5. Qwen 证据为 request-only：只给 caption/时长，不给图像、未来帧、评分或物理标签。
+   本版直接使用现有 v10 T2V 处理数据：训练 latent/native T5 来自
+   data_revision_qwen38 的 encoded cache，request-only 证据与 native words 来自
+   physics_content_v10_impl/runs/t2v_cache。两边是同一批 1600 个 draw、同一套
+   caption；data_ready 会逐条核对。接口在 train split 上重新闭式拟合，不使用
+   测试样本。
+
+数据配对
+R15B 的 400 步训练在 3666 条 train 记录上以 SampleOrder(seed42) 抽取 1600 条样本。
+R15Bt 直接复用现有 qwen38 T2V 处理数据：训练 cache 与 t2v_cache 的证据文件覆盖
+同一批 1600 个样本。与 R18E/G 一样，Data 先从 3666 条 train 行中过滤出
+evidence-complete 的 1600 行，再使用 SampleOrder(seed42)；因此样本集合与 R15B
+的 1600 条相同，加载顺序与 R18E/G T2V 分支一致。差异只在任务入口（无图像）
+和物理范式。
+data_ready 会逐条核对 1600 个 draw 的 evidence caption/request words 与训练 manifest。
+不新增 Qwen/T5 数据构建，不读取 validation/test 视频。
+
+评测与解释边界
+- 这是固定 60 条历史 caption 的 T2V 评测，不是官方 590 条 caption 的全量 T2V 榜单。
+- R15Bt 使用与 R18E/G T2V 相同的 qwen38 reviewed revision；R15B 使用原始
+  WISA caption。R15B 与 R15Bt 的分数差不能当作纯任务/范式差异，数据修订不同。
+- 评测器为本地官方 VideoPhy2 AutoEval；不声称与 ProPhy 或任何外部论文的 judge 相同。
+- 主结果输出 40、20、60 三套 SA/PC/Joint；不预写目标分数，不把 I2V 成绩当作 T2V 成绩。
+- 可选推理干预：no_c、direct_physical_read、state_value_off。它们是同一权重的推理干预，
+  不是独立重训消融。
+- 本版只做一次 400 步训练；是否继续迭代由 40/60 结果与真实视频复盘决定。
+
+代码与验证
+- physical_content/model.py：T2V 入口 + R15B Enhancement + B400 joint read。
+- physical_content/data.py：T2V latent/text/times/valid，无 first 字段。
+- physical_content/train.py：400 步训练、无首帧采样、全帧损失。
+- prepare_inputs.py：把 request-only 评测证据压成推理用 positive/negative。
+- infer.py：无首帧采样，输出 manifest/summary/video.json；推理只读
+  r15bt/eval_native_inputs（text/null_text/times），不读 I2V prepared_inputs。
+- I2V R15B+I 仍在 r15b/（及 b400_joint_read_eval/），配置、输入、权重、输出均未改动；
+  T2V 的 prepared_inputs/eval_native_inputs/runs/inference_outputs 全部独立。
+- report_results.py：独立合并 40+20=60，避开旧 merge 脚本的 guidance 字段依赖。
+- tests/：T2V 无首帧契约、joint read 等价性、全帧损失、真实缓存样例匹配、
+  fake-Wan 与官方 tiny Wan 前向/反向、validation sampler 负条件路径。
+- 训练/评测入口：run_candidate.py；提交 YAML 只指向 blk-96g，不自动提交。

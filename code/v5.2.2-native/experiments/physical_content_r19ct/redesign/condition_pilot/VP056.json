@@ -1,0 +1,41 @@
+{
+  "id": "VP056",
+  "caption": "Arrows are shot at a moving target, with some arrows hitting and some missing visibly.",
+  "old_relations": [
+    "Arrows must be propelled toward target with sufficient velocity to reach it within 3.333 seconds.",
+    "Target must move predictably during interval to allow arrow impact or miss observation.",
+    "Arrow contact with target causes visible deformation or displacement, confirming hit.",
+    "Missed arrows remain airborne or fall without contact, visibly distinct from hits."
+  ],
+  "proposed": {
+    "semantic_focus": "Arrows are shot at a moving target, with some arrows hitting and some missing visibly.",
+    "relations": [
+      "The target's continuous motion shifts its position relative to the fixed arrow trajectories.",
+      "Arrow paths intersect the target volume only when spatial alignment occurs during flight.",
+      "Missed arrows pass through empty space adjacent to the moving target without contact."
+    ]
+  },
+  "trace": {
+    "model": "qwen3.8-flash",
+    "request_id": "chatcmpl-e47e6164-af6e-9158-9ef1-ae54f6495acc",
+    "usage": {
+      "prompt_tokens": 295,
+      "total_tokens": 378,
+      "completion_tokens": 83,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "text_tokens": 295
+      }
+    },
+    "finish_reason": "stop",
+    "raw": "{\n\"semantic_focus\": \"Arrows are shot at a moving target, with some arrows hitting and some missing visibly.\",\n\"relations\": [\n\"The target's continuous motion shifts its position relative to the fixed arrow trajectories.\",\n\"Arrow paths intersect the target volume only when spatial alignment occurs during flight.\",\n\"Missed arrows pass through empty space adjacent to the moving target without contact.\"\n]\n}",
+    "seconds": 2.5397020719829015,
+    "image_count": 0,
+    "video_sequence": false,
+    "thinking": false,
+    "explicit_times": null,
+    "prompt": "Prepare conditioning for a video generator from the request alone.\nThe request may describe a cropped temporal segment: its cause may have begun\nbefore the clip and its consequences may continue afterwards. Do not force a\ncomplete start/contact/end cycle or invent missing actions.\nReturn JSON with these two fields:\n\"semantic_focus\": one sentence, at most 35 words, preserving the main specified\nparticipants, their roles, and the requested visible phenomenon or process.\n\"relations\": one to four sentences, each at most 24 words, specifying physical\ndependencies that are directly relevant to producing that requested process.\nUse concrete qualitative cause/response or persistence relationships. Preserve\nthe request's actual direction, sequence and material state. Do not add numeric\nthresholds, hidden material properties, failure or rupture, rest/motion phases,\nor strong necessity claims that are not entailed by the request and basic physics.\nDo not equate motion with breakage or a continuous visible process with stasis.\nNo physics category labels, camera aesthetics, instructions to the scorer, or\npredicted quality. A short set of useful dependencies is better than four padded\nstatements. The original request remains the generator's semantic input.\nRequest:\nArrows are shot at a moving target, with some arrows hitting and some missing visibly."
+  },
+  "source": "request_only",
+  "used_for_training": false
+}

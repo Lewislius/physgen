@@ -1,0 +1,26 @@
+{
+  "candidate": "R20AT",
+  "frozen_utc": "20261114T172739Z",
+  "initialization": "official fresh; no R checkpoint",
+  "normalization": "training input statistics only",
+  "design": "source-preserving Q/C; independent direct and actual-native-request read; diffusion-conditioned post-native-block write",
+  "training_updates": 400,
+  "training_stages": [
+    128,
+    272
+  ],
+  "references": [
+    "R18E",
+    "R18G",
+    "own DT60/noC16/sourceQ16 and actual videos",
+    "BI/BT/EI failure controls",
+    "PhysVid native-preserving physical attention"
+  ],
+  "tests": [
+    "reports/training_path_tests.json",
+    "reports/data_readiness.json",
+    "reports/AT_inputs.json"
+  ],
+  "final_review": "reports/at_final_decision.json",
+  "own_generation_quality_proven": false
+}

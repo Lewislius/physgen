@@ -1,0 +1,148 @@
+{
+  "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_joint_read_r16a/physical_write_trace/reports/jobs/68464/physical_write.jsonl",
+  "scope": "VP004 positive physical branch, unchanged native rollout, layers3/15/30 at seven fixed denoising steps",
+  "no_CFG_ablation_or_attribution": true,
+  "rows": 21,
+  "layers": {
+    "3": {
+      "physical_to_native_rms": {
+        "min": 0.7468807697296143,
+        "max": 4.1648054122924805,
+        "first": 2.696418285369873,
+        "last": 0.7468807697296143
+      },
+      "physical_output_common_energy": {
+        "min": 0.9594690799713135,
+        "max": 0.9970439076423645,
+        "first": 0.9594690799713135,
+        "last": 0.9970439076423645
+      },
+      "message_common_energy": {
+        "min": 0.8832059502601624,
+        "max": 0.9931556582450867,
+        "first": 0.8832059502601624,
+        "last": 0.9931556582450867
+      },
+      "state_input_amplification": {
+        "min": 0.46624302864074707,
+        "max": 0.8953065872192383,
+        "first": 0.8953065872192383,
+        "last": 0.46624302864074707
+      },
+      "request_prior_write_ratio": {
+        "min": 1.1120226383209229,
+        "max": 1.1533257961273193,
+        "first": 1.1120226383209229,
+        "last": 1.1501294374465942
+      },
+      "actual_direct_write_cosine": {
+        "min": 0.9787057638168335,
+        "max": 0.9939785599708557,
+        "first": 0.9939785599708557,
+        "last": 0.9787057638168335
+      },
+      "physical_mass": {
+        "min": 0.2182941436767578,
+        "max": 0.4970960319042206,
+        "first": 0.4970960319042206,
+        "last": 0.2182941436767578
+      }
+    },
+    "15": {
+      "physical_to_native_rms": {
+        "min": 0.8686289191246033,
+        "max": 2.03080677986145,
+        "first": 2.03080677986145,
+        "last": 0.8686289191246033
+      },
+      "physical_output_common_energy": {
+        "min": 0.8696486353874207,
+        "max": 0.9869477152824402,
+        "first": 0.8696486353874207,
+        "last": 0.9869477152824402
+      },
+      "message_common_energy": {
+        "min": 0.6190791130065918,
+        "max": 0.9427674412727356,
+        "first": 0.673917293548584,
+        "last": 0.9427674412727356
+      },
+      "state_input_amplification": {
+        "min": 0.5960490703582764,
+        "max": 0.8670375347137451,
+        "first": 0.8670375347137451,
+        "last": 0.5960490703582764
+      },
+      "request_prior_write_ratio": {
+        "min": 1.309173345565796,
+        "max": 1.6392115354537964,
+        "first": 1.309173345565796,
+        "last": 1.6392115354537964
+      },
+      "actual_direct_write_cosine": {
+        "min": 0.9850382804870605,
+        "max": 0.993202269077301,
+        "first": 0.993202269077301,
+        "last": 0.9912165403366089
+      },
+      "physical_mass": {
+        "min": 0.14847791194915771,
+        "max": 0.31390631198883057,
+        "first": 0.31390631198883057,
+        "last": 0.18440285325050354
+      }
+    },
+    "30": {
+      "physical_to_native_rms": {
+        "min": 0.060410771518945694,
+        "max": 0.19553229212760925,
+        "first": 0.19553229212760925,
+        "last": 0.060410771518945694
+      },
+      "physical_output_common_energy": {
+        "min": 0.8008615970611572,
+        "max": 0.9869253039360046,
+        "first": 0.8008615970611572,
+        "last": 0.9869253039360046
+      },
+      "message_common_energy": {
+        "min": 0.626162052154541,
+        "max": 0.9724825620651245,
+        "first": 0.626162052154541,
+        "last": 0.9724825620651245
+      },
+      "state_input_amplification": {
+        "min": 0.7756624817848206,
+        "max": 0.8316875100135803,
+        "first": 0.8299815058708191,
+        "last": 0.7756624817848206
+      },
+      "request_prior_write_ratio": {
+        "min": 1.1886008977890015,
+        "max": 1.7068006992340088,
+        "first": 1.616496205329895,
+        "last": 1.1886008977890015
+      },
+      "actual_direct_write_cosine": {
+        "min": 0.9642952680587769,
+        "max": 0.9723091125488281,
+        "first": 0.964500367641449,
+        "last": 0.964530885219574
+      },
+      "physical_mass": {
+        "min": 0.15504620969295502,
+        "max": 0.22756922245025635,
+        "first": 0.1601027250289917,
+        "last": 0.15676149725914001
+      }
+    }
+  },
+  "findings": [
+    "The matched noC intervention removes stripe collapse; it isolates a physical-branch failure for VP004.",
+    "Early layer3 write is2.70-4.16 times the same-layer native text output; its common spatiotemporal component accounts for95.95-99.70% of energy across sampled steps.",
+    "The request prior changes the direction little (cosine about0.964-0.994) while increasing matched sampled physical output RMS by1.11-1.71x versus direct read on the same states. This local counterfactual is not a separate full-generation result.",
+    "The state multiplication reduces total message RMS to0.466-0.895x in observed rows; it is not supported as the source of overall magnitude amplification here.",
+    "All observed writes are finite. The failure is an excessively common learned update relative to native text in early layers, not demonstrated numerical overflow."
+  ],
+  "limits": "One failed case traced; three layers/seven steps. These identify physical-write pathologies, but do not prove which learned parameter or individual layer is the sole cause, nor that all failures share exactly the same mechanism."
+}

@@ -1,0 +1,39 @@
+{
+  "verified_utc": "2026-11-16T18:40:27.344257+00:00",
+  "status": "small_and_full_actual_Wan_checks_passed",
+  "actual_source_layers": [
+    0,
+    7,
+    14,
+    21,
+    28
+  ],
+  "native_copy_check": "all named parameters checked against each corresponding pretrained layer before LoRA installation",
+  "checks": [
+    "exact native prediction at initialization",
+    "empty C exact noC prediction",
+    "full generation-gradient reachability",
+    "128/272 parameter ownership",
+    "frozen original text QKVO",
+    "native 3D RoPE on asymmetric3x2x5 grid",
+    "save/reload prediction equality",
+    "source word permutation and shared physics preservation",
+    "feature-off leaves QK execution active",
+    "physical feature execution with constant SA values",
+    "zero source/zero native-feature behavior",
+    "native GELU none/tanh identities, sign/amplitude and gradient checks",
+    "same physical condition gives different gains at different video preactivations"
+  ],
+  "changed_parameters_over_GT": 0,
+  "quality_improvement_proven": false,
+  "formal_training_submitted": true,
+  "final_design_basis": "GT400 all60 and3x16 complete: feature gain PC benefit accompanied SA/detail harm; state-conditioned native feature selection replaces global multiplicative gain, other physical execution retained.",
+  "source_snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20h/snapshots/20261116T213719Z",
+  "full_model_gradient_check": {
+    "passed": true,
+    "source": "Project/physGen/code/v5.2.2-native/experiments/physical_content_r20h/reports/jobs/70506/full_model_check.json",
+    "seconds": 38.09655842743814,
+    "parameters": 1606224896,
+    "checkpoint_saved": false
+  }
+}

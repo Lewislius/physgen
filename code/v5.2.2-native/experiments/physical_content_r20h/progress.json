@@ -1,0 +1,184 @@
+{
+  "observations": [
+    {
+      "time": "2026-11-16T21:41:38.966738+00:00",
+      "state": "STATE_RUNNING",
+      "update": 0,
+      "stage": "full_model_gradient_check"
+    },
+    {
+      "time": "2026-11-16T21:45:06.228375+00:00",
+      "state": "STATE_RUNNING",
+      "update": 11,
+      "stage": "train400"
+    },
+    {
+      "time": "2026-11-16T22:18:51.339699+00:00",
+      "state": "STATE_RUNNING",
+      "update": 130,
+      "stage": "train400"
+    },
+    {
+      "time": "2026-11-16T22:49:22.037346+00:00",
+      "state": "STATE_RUNNING",
+      "update": 232,
+      "stage": "train400"
+    },
+    {
+      "time": "2026-11-16T23:19:46.321879+00:00",
+      "state": "STATE_RUNNING",
+      "update": 334,
+      "stage": "train400"
+    },
+    {
+      "time": "2026-11-16T23:50:43.508003+00:00",
+      "state": "STATE_RUNNING",
+      "update": 400,
+      "stage": "original40_generation"
+    },
+    {
+      "time": "2026-11-17T00:21:55.001584+00:00",
+      "state": "STATE_RUNNING",
+      "update": 400,
+      "stage": "original40_generation"
+    },
+    {
+      "time": "2026-11-17T00:52:24.419352+00:00",
+      "state": "STATE_RUNNING",
+      "update": 400,
+      "stage": "original40_generation"
+    },
+    {
+      "time": "2026-11-17T01:22:52.641099+00:00",
+      "state": "STATE_RUNNING",
+      "update": 400,
+      "stage": "extra20_generation"
+    },
+    {
+      "time": "2026-11-17T01:50:09.868306+00:00",
+      "state": "STATE_RUNNING",
+      "update": 400,
+      "stage": "no_c_generation"
+    },
+    {
+      "time": "2026-11-17T02:20:39.966250+00:00",
+      "state": "STATE_RUNNING",
+      "update": 400,
+      "stage": "reasoning_swapped_generation"
+    },
+    {
+      "time": "2026-11-17T02:55:24.757605+00:00",
+      "state": "STATE_RUNNING",
+      "update": 400,
+      "stage": "physical_features_off_generation"
+    },
+    {
+      "time": "2026-11-17T03:22:25.775583+00:00",
+      "state": "STATE_COMPLETED",
+      "update": 400,
+      "stage": "declared_videophy_evaluation_completed"
+    }
+  ],
+  "experiment": 70506,
+  "trial": [
+    72294
+  ],
+  "state": "STATE_COMPLETED",
+  "stage": "declared_videophy_evaluation_completed",
+  "verified_update": 400,
+  "phase": "joint",
+  "last_check_utc": "2026-11-17T03:22:25.775583+00:00",
+  "next_check_utc": null,
+  "actual_gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+  "full_model_gradient_check_passed": true,
+  "evaluation": {
+    "main40": {
+      "generated": 40,
+      "scores": {
+        "count": 40,
+        "sa_mean": 3.075,
+        "pc_mean": 3.625,
+        "sa_pass_rate": 0.3,
+        "pc_pass_rate": 0.525,
+        "joint_pass_rate": 0.275,
+        "scope": "T2V: request only; fixed protocol prompts/noise, no initial image",
+        "training_verifier_is_independent": true
+      }
+    },
+    "extra20": {
+      "generated": 20,
+      "scores": {
+        "count": 20,
+        "sa_mean": 2.85,
+        "pc_mean": 3.9,
+        "sa_pass_rate": 0.25,
+        "pc_pass_rate": 0.6,
+        "joint_pass_rate": 0.25,
+        "scope": "T2V: request only; fixed protocol prompts/noise, no initial image",
+        "training_verifier_is_independent": true
+      }
+    },
+    "full60": {
+      "generated": 60,
+      "scores": {
+        "count": 60,
+        "sa_mean": 3.0,
+        "pc_mean": 3.716666666666667,
+        "sa_pass_rate": 0.2833333333333333,
+        "pc_pass_rate": 0.55,
+        "joint_pass_rate": 0.26666666666666666,
+        "pass_threshold": 4,
+        "scope": "T2V: request only; fixed protocol prompts/noise, no initial image",
+        "training_verifier_is_independent": true
+      }
+    },
+    "no_c16": {
+      "generated": 16,
+      "scores": {
+        "count": 16,
+        "sa_mean": 3.125,
+        "pc_mean": 3.75,
+        "sa_pass_rate": 0.1875,
+        "pc_pass_rate": 0.625,
+        "joint_pass_rate": 0.1875,
+        "scope": "T2V: request only; fixed protocol prompts/noise, no initial image",
+        "training_verifier_is_independent": true
+      }
+    },
+    "wrong16": {
+      "generated": 16,
+      "scores": {
+        "count": 16,
+        "sa_mean": 3.1875,
+        "pc_mean": 3.75,
+        "sa_pass_rate": 0.25,
+        "pc_pass_rate": 0.625,
+        "joint_pass_rate": 0.25,
+        "scope": "T2V: request only; fixed protocol prompts/noise, no initial image",
+        "training_verifier_is_independent": true
+      }
+    },
+    "features_off16": {
+      "generated": 16,
+      "scores": {
+        "count": 16,
+        "sa_mean": 3.1875,
+        "pc_mean": 3.875,
+        "sa_pass_rate": 0.3125,
+        "pc_pass_rate": 0.75,
+        "joint_pass_rate": 0.3125,
+        "scope": "T2V: request only; fixed protocol prompts/noise, no initial image",
+        "training_verifier_is_independent": true
+      }
+    }
+  },
+  "run_dir": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20h/runs/r20ht_state_conditioned_execution400",
+  "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20h/snapshots/20261116T213719Z",
+  "recent_mean_step_seconds": 16.239000809472053,
+  "formal_peak_gib": 49.02515459060669,
+  "final_report": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20h/RESULTS.zh.txt",
+  "final_results": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20h/reports/FINAL_RESULTS.json",
+  "full_goal_met": false,
+  "actual_visual_review": "sampled60_complete_not_accepted",
+  "work_status": "authorized_HT_experiment_complete_goals_unmet"
+}

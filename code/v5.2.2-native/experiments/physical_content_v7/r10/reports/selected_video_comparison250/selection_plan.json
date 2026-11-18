@@ -1,0 +1,54 @@
+{
+  "prepared_utc": "2026-11-01T04:50:16.334484+00:00",
+  "status": "selected_frame_review_complete",
+  "selection": "Reuse VP010, VP026, VP027 from the existing R9.1 matched250 review, selected before R10-A scores. These are failure-focused examples, not an unbiased aggregate quality sample.",
+  "baseline": "experiments/physical_content_v7/training_budget_reference/inference_outputs/r1_step0250_subset16_physical5_seed42/videophy40",
+  "candidate": "experiments/physical_content_v7/execution_value_r10/inference_outputs/physical_content_67003/step0250_subset16_physical5_seed42/videophy40",
+  "frame_indices": [
+    0,
+    27,
+    54,
+    80
+  ],
+  "cases": [
+    {
+      "id": "VP010",
+      "focus": "Requested water removal, mop contact and visible artifacts"
+    },
+    {
+      "id": "VP026",
+      "focus": "Support/rope connection continuity and request completion"
+    },
+    {
+      "id": "VP027",
+      "focus": "Hand/dough contact, deformation and final shaping"
+    }
+  ],
+  "scope": "Review existing same250/seed42/gamma5 videos only. Selected frames cannot establish full temporal quality by themselves; full synchronized videos remain available in the paired viewer.",
+  "command": [
+    "bash",
+    "tools/runtime_python.sh",
+    "experiments/physical_content_v7/review_video_pairs.py",
+    "experiments/physical_content_v7/training_budget_reference/inference_outputs/r1_step0250_subset16_physical5_seed42/videophy40",
+    "experiments/physical_content_v7/execution_value_r10/inference_outputs/physical_content_67003/step0250_subset16_physical5_seed42/videophy40",
+    "--output",
+    "experiments/physical_content_v7/execution_value_r10/reports/selected_video_comparison250",
+    "--cases",
+    "VP010",
+    "VP026",
+    "VP027",
+    "--frames",
+    "0",
+    "27",
+    "54",
+    "80",
+    "--labels",
+    "R1-250",
+    "R10-A-250"
+  ],
+  "reviewed_cases": [
+    "VP010",
+    "VP026",
+    "VP027"
+  ]
+}

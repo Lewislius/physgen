@@ -1,0 +1,80 @@
+{
+  "created_utc": "2026-11-15T13:41:51.342851+00:00",
+  "task": "t2v",
+  "experiment": 70237,
+  "state": "STATE_COMPLETED",
+  "training_updates": 400,
+  "main40": {
+    "sa": 2.975,
+    "pc": 3.875,
+    "joint": 7
+  },
+  "main60": {
+    "sa": 2.9166666666666665,
+    "pc": 3.8666666666666667,
+    "joint": 10
+  },
+  "normal16": {
+    "count": 16,
+    "sa": 3.0625,
+    "pc": 4.125,
+    "sa_pass_rate": 0.1875,
+    "pc_pass_rate": 0.875,
+    "joint": 3,
+    "joint_pass_rate": 0.1875
+  },
+  "controls16": {
+    "empty_reasoning": {
+      "count": 16,
+      "sa": 3.25,
+      "pc": 3.9375,
+      "joint": 5
+    },
+    "global_train_mean": {
+      "count": 16,
+      "sa": 3.125,
+      "pc": 3.875,
+      "joint": 4
+    },
+    "no_c": {
+      "count": 16,
+      "sa": 3.125,
+      "pc": 3.875,
+      "joint": 4
+    },
+    "noise_modulation_off": {
+      "count": 16,
+      "sa": 3.125,
+      "pc": 4.0625,
+      "joint": 3
+    },
+    "physical_condition_off": {
+      "count": 16,
+      "sa": 3.1875,
+      "pc": 3.9375,
+      "joint": 5
+    },
+    "reasoning_swapped": {
+      "count": 16,
+      "sa": 3.125,
+      "pc": 3.9375,
+      "joint": 3
+    },
+    "source_queries_off": {
+      "count": 16,
+      "sa": 3.25,
+      "pc": 3.875,
+      "joint": 5
+    }
+  },
+  "visual_acceptance": false,
+  "all60_sampled_frames_reviewed": true,
+  "full_video_temporal_acceptance": false,
+  "paired_visual_evidence": [
+    "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20b/review_bt_branch_controls/review.json",
+    "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20b/review_bt_qoff6/review.json",
+    "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20b/review_bt_conditions6/review.json"
+  ],
+  "next_candidate": "R20CT",
+  "decision": "保留完整视频物理分支及独立Q/K/V/O；将Q生成自由Cr/Ce向量改为对齐原生物理词的可学习选择组合，C统一内容后用独立K/V定位和执行。理由是Qoff恢复颜色/主体且SA/Joint提高，正常C仍有PC收益，不能删掉物理路径；固定均值C也重现偏色，须解决自由物理值对外观的公共改写。新设计收益仍须正式400和同协议评测。"
+}

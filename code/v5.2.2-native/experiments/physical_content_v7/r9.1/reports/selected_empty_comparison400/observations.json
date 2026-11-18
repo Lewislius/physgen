@@ -1,0 +1,21 @@
+{
+  "recorded_utc": "2026-10-31T21:10:44.545242+00:00",
+  "case": "VP015",
+  "scores": {
+    "empty_reasoning": {
+      "sa": 4,
+      "pc": 4
+    },
+    "normal": {
+      "sa": 4,
+      "pc": 3
+    }
+  },
+  "observations": [
+    "Empty and normal share the initial frame. Empty sampled frames retain a near-horizontal paddle and much more similar boat/person composition, with comparatively limited water streams/splash regions.",
+    "Normal frame27 has a broad curtain-like water shape under the left blade, then a large raised splash around the rower/paddle at54 and a tall water arc with larger composition change at80. The added reasoning changes visible evolution substantially and is associated with worse PC.",
+    "The empty condition also does not clearly establish a complete lift-out sequence in four sampled frames, despite AutoEvalSA4. Equal SA scores do not establish identical motions or fully correct process completion. Retain the original scores alongside this visual limitation.",
+    "This selected same-checkpoint comparison supports an adverse content effect in water/shape stability, not a proof that all content differences are harmful or that removing reasoning is the final solution. Other cases have positiveSA/Joint effects."
+  ],
+  "scope": "Existing four frames only; no extra model/generation/evaluator or dense review. Selected after scores, not a blind visual rate."
+}

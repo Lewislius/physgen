@@ -1,0 +1,144 @@
+{
+  "prepared_utc": "2026-10-31T12:33:19.969602+00:00",
+  "status": "declared_evaluation_completed",
+  "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/content_reader_r8/snapshots/20261031T123319Z",
+  "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/content_reader_r8/submissions/candidate128_20261031T123319Z.yaml",
+  "config": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/content_reader_r8/snapshots/20261031T123319Z/configs/physical_content.yaml",
+  "first_stop": 128,
+  "automatic_extension": false,
+  "primary_cases": 40,
+  "control_cases": 16,
+  "control_modes": [
+    "mean_query_update",
+    "global_train_mean",
+    "anchor_only",
+    "reasoning_swapped",
+    "no_c"
+  ],
+  "gamma": 5,
+  "seed": 42,
+  "architecture": "Keep R6 fixedP0 and A*U write; half reader heads use same-relation physical words, half all literal-request and physical-reasoning words; both normalize in training-fitted coordinates before LayerNorm. Original Qwen word states retain image context.",
+  "same_budget_architecture_reference": "physical_content_66910",
+  "matched_native128": "native_lora128_66913",
+  "new_trainable_parameters": 0,
+  "initial_parameter_and_rng_state_equal_to": "R6 snapshot20261031T092555Z",
+  "new_input_scope": "Literal request word states recovered from immutable first-image/request Qwen memory, with existing local tokenizer only. No new Qwen forward, reasoning generation, targets, source-cache edits or models.",
+  "unchanged": [
+    "Official-foundation initialization plus train-input interface",
+    "Q256, two shared updates and existing relation self-attention",
+    "Fixed full-width R6 content projection and content modulation",
+    "Native Wan text and full state-dependent fusion",
+    "Training data order, objectives, rates, seed and16-interface+112-joint budget",
+    "Gamma5 and fixed40/fixed16 cases"
+  ],
+  "relationship_to_r7": "Independent reader revision from R6; does not include R7 native-coordinate B, allowing each change to be compared with the same R6 reference.",
+  "tests": {
+    "recorded_utc": "2026-10-31T12:33:19.969602+00:00",
+    "tests_passed": 3,
+    "exit_code": 0,
+    "command": "bash tools/runtime_python.sh experiments/physical_content_v7/content_reader_r8/test_content_reader.py",
+    "coverage": [
+      "R6-identical parameter state and initialization RNG",
+      "Request sensitivity, prefix exclusion and gradient through actual fusion",
+      "Image-only, fixed-Q-update and anchor controls"
+    ],
+    "input_wiring_report": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/content_reader_r8/reports/input_wiring_check.json",
+    "configuration_load_and_audit_passed": true,
+    "quality_claim": false
+  },
+  "quality_status": "Full40 SA3.000/PC3.475; allfive16 controls completed. Limited branch/Q PC utility but no correct-over-unrelated advantage; no adoption or extension.",
+  "decision_basis": "R6 full40 PC equals native128; normal16 has no PC net gain over global meanC or no_c. Raw Q updates remain strongly common. Test whether reading aligned content rather than the full prefix/template pool helps useful conditional computation. R6 unrelated reasoning16 subsequently completed with identical SA/PC means and one more PC pass than normal, supporting a targeted reader revision.",
+  "measurement_policy": "No intermediate representation scans; normal40 and existing16 module controls decide usefulness. Final normal16 decomposition only when needed to interpret generation.",
+  "allocation_attempts": [
+    {
+      "experiment_id": 66925,
+      "trial_id": 68312,
+      "status": "H100_rejected_before_models",
+      "actual_gpu": "NVIDIA H100",
+      "accepted": false,
+      "model_loaded": false
+    },
+    {
+      "experiment_id": 66926,
+      "trial_id": 68313,
+      "status": "declared_evaluation_completed",
+      "actual_gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "accepted": true
+    }
+  ],
+  "experiment_id": 66926,
+  "trial_id": 68313,
+  "successful_candidate_run": "physical_content_66926",
+  "first_real_update_verified": true,
+  "updated_utc": "2026-10-31T15:51:02.355844+00:00",
+  "remote_state_at_phase_check": "STATE_COMPLETED",
+  "phase_check_utc": "2026-10-31T15:51:02.355844+00:00",
+  "completed_updates_at_least_at_phase_check": 21,
+  "parallel_control_dispatch": {
+    "status": "completed_and_published",
+    "manifest": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/content_reader_r8/control_dispatch/prepared.json",
+    "modes": [
+      "reasoning_swapped",
+      "no_c"
+    ],
+    "additional_cases": 0,
+    "experiment": 66962,
+    "trial": 68349
+  },
+  "training_completed_utc": "2026-10-31T13:44:55+00:00",
+  "training_completion_evidence": "runs/physical_content_66926/status.json paused128; stage observer confirmed completion",
+  "primary_tail_accelerator": {
+    "experiment": 66960,
+    "trial": 68347,
+    "cases": "VP025-VP040",
+    "source": "generation_dispatch/prepared.json",
+    "status": "completed; all16 cases published for original full40 reuse"
+  },
+  "full40": {
+    "path": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/content_reader_r8/inference_outputs/physical_content_66926/step0128_full40_controls16_physical5_seed42/videophy40",
+    "generated": 40,
+    "status": "completed",
+    "count": 40,
+    "sa_mean": 3.0,
+    "pc_mean": 3.475,
+    "sa_pass_rate": 0.25,
+    "pc_pass_rate": 0.425,
+    "joint_pass_rate": 0.225
+  },
+  "pc_reference_preservation": {
+    "reference": "R1_400",
+    "reference_metrics": {
+      "pc_mean": 3.625,
+      "pc_pass_rate": 0.45,
+      "sa_mean": 2.95,
+      "sa_pass_rate": 0.275,
+      "joint_pass_rate": 0.25
+    },
+    "sa_gain_can_offset_pc_loss": false,
+    "automatic_replacement": false,
+    "status": "pc_not_retained",
+    "candidate_metrics": {
+      "pc_mean": 3.475,
+      "pc_pass_rate": 0.425,
+      "sa_mean": 3.0,
+      "sa_pass_rate": 0.25,
+      "joint_pass_rate": 0.225
+    },
+    "differences": {
+      "pc_mean": -0.15,
+      "pc_pass_rate": -0.025,
+      "sa_mean": 0.05,
+      "sa_pass_rate": -0.025,
+      "joint_pass_rate": -0.025
+    },
+    "pc_mean_retained": false,
+    "pc_pass_rate_retained": false,
+    "pc_retained_on_this_set": false,
+    "interpretation": "This is the measured replacement reference on the same40 cases, not an equal-training-budget ablation or proof of retention on other samples/seeds. SA cannot compensate for lost PC. Short-budget research continuation requires its own generation/module evidence; it is not automatic adoption."
+  },
+  "automatic_adoption": false,
+  "declared_control_scores_completed": true,
+  "module_attribution": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/content_reader_r8/reports/module_attribution16.json",
+  "remaining_declared_controls": [],
+  "legacy_runner_note": "The immutable short runner may list empty_reasoning/mean as remaining_selected_controls. These are not part of the declared R8 five-control scope and must not trigger new R8 evaluations."
+}

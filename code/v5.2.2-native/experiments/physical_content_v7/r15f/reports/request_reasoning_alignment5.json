@@ -1,0 +1,74 @@
+{
+  "utc": "2026-11-07T01:04:29.389995+00:00",
+  "candidate": "R15F",
+  "scope": "The five predeclared visual cases; original cached input-only Qwen reasoning. Qualitative request/analysis consistency review, not a full dataset error rate.",
+  "cases": {
+    "VP004": {
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/inference_outputs/physical_content_68038/step0400_original_fixed40_controls16_seed42/videophy40/cases/VP004/planned.json",
+      "caption": "A plastic ruler is bent until it cracks, displaying a visible stress fracture that propagates.",
+      "positive_analysis": "1. Man and child hold ruler horizontally, hands gripping ends firmly.\n2. Ruler visibly cracks mid-span, fracture line propagating under applied stress.\n3. Crack path appears jagged, indicating material failure under bending load.\n4. Fluids or continuous processes not visibly involved in this static fracture event.",
+      "positive_relations": [
+        "Man and child hold ruler horizontally, hands gripping ends firmly.",
+        "Ruler visibly cracks mid-span, fracture line propagating under applied stress.",
+        "Crack path appears jagged, indicating material failure under bending load.",
+        "Fluids or continuous processes not visibly involved in this static fracture event."
+      ],
+      "finding": "请求强调弯折至开裂及裂纹传播；reasoning 将其写成已可见裂纹，并明确称为 static fracture event。动态过程与已发生状态混在一起。",
+      "category": "requested_transition_recast_as_current_state"
+    },
+    "VP010": {
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/inference_outputs/physical_content_68038/step0400_original_fixed40_controls16_seed42/videophy40/cases/VP010/planned.json",
+      "caption": "A person mops up a puddle of water on a concrete floor, the water disappearing as the mop passes.",
+      "positive_analysis": "1. Mop bristles contact water, initiating displacement and spreading across floor surface.  \n2. Water flows outward from mop path, thinning as it moves away from center.  \n3. Floor reflects light where water pools, diminishing as absorption or evaporation begins.  \n4. Mop handle remains upright, suggesting continued motion through liquid zone.",
+      "positive_relations": [
+        "Mop bristles contact water, initiating displacement and spreading across floor surface.",
+        "Water flows outward from mop path, thinning as it moves away from center.",
+        "Floor reflects light where water pools, diminishing as absorption or evaporation begins.",
+        "Mop handle remains upright, suggesting continued motion through liquid zone."
+      ],
+      "finding": "请求要求拖过后积水消失；reasoning 重点却是水向外流散，以及未从首帧证实的吸收/蒸发。这些信息不能直接等同于清理目标。",
+      "category": "process_emphasis_mismatch"
+    },
+    "VP027": {
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/inference_outputs/physical_content_68038/step0400_original_fixed40_controls16_seed42/videophy40/cases/VP027/planned.json",
+      "caption": "Hands shape a lump of clay-like bread dough into a smooth, round boule on a wooden table.",
+      "positive_analysis": "1. Hands press dough downward, flattening its top surface slightly.\n2. Flour dusts table and board, clinging to hands and dough edges.\n3. Dough resists compression, maintaining its rounded form under pressure.\n4. Hands move in tandem, applying even force to shape the dough’s exterior.",
+      "positive_relations": [
+        "Hands press dough downward, flattening its top surface slightly.",
+        "Flour dusts table and board, clinging to hands and dough edges.",
+        "Dough resists compression, maintaining its rounded form under pressure.",
+        "Hands move in tandem, applying even force to shape the dough’s exterior."
+      ],
+      "finding": "请求要求塑形为圆面包；reasoning 同时强调面团抵抗压缩并维持圆形。并非完全矛盾，但可能偏向维持首帧形状，而没有明确描述塑形进程。",
+      "category": "static_state_emphasis"
+    },
+    "VP034": {
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/inference_outputs/physical_content_68038/step0400_original_fixed40_controls16_seed42/videophy40/cases/VP034/planned.json",
+      "caption": "A large, clear balloon is inflated with air, showing the internal pressure causing the balloon to stretch.",
+      "positive_analysis": "1. Air inside balloon exerts pressure, stretching the elastic material outward visibly.\n\n2. Internal pressure remains balanced with external atmospheric pressure as balloon floats.\n\n3. Continuous air molecules collide with balloon walls, maintaining its inflated shape.\n\n4. If air escapes, balloon will shrink; if sealed, shape persists under current pressure.",
+      "positive_relations": [
+        "Air inside balloon exerts pressure, stretching the elastic material outward visibly.",
+        "Internal pressure remains balanced with external atmospheric pressure as balloon floats.",
+        "Continuous air molecules collide with balloon walls, maintaining its inflated shape.",
+        "If air escapes, balloon will shrink; if sealed, shape persists under current pressure."
+      ],
+      "finding": "请求要求充气使气球伸展；reasoning 转向已充好后浮动、维持形状、密封则不变，并包含首帧无法证实的气压相等断言。",
+      "category": "requested_transition_recast_as_maintenance"
+    },
+    "VP038": {
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/inference_outputs/physical_content_68038/step0400_original_fixed40_controls16_seed42/videophy40/cases/VP038/planned.json",
+      "caption": "A paint roller, dipped in green paint, is used to cover a section of a metal fence, creating a uniform green coat.",
+      "positive_analysis": "1. Roller’s textured surface contacts metal fence, transferring green paint via physical adhesion.  \n2. Paint flows continuously from roller to fence as it rolls, covering surface uniformly.  \n3. Fence’s metal grid remains structurally intact while paint layer builds on its surface.  \n4. If roller continues rolling, more fence area will become coated with green paint.",
+      "positive_relations": [
+        "Roller’s textured surface contacts metal fence, transferring green paint via physical adhesion.",
+        "Paint flows continuously from roller to fence as it rolls, covering surface uniformly.",
+        "Fence’s metal grid remains structurally intact while paint layer builds on its surface.",
+        "If roller continues rolling, more fence area will become coated with green paint."
+      ],
+      "finding": "reasoning 与请求较一致：接触围栏、转移油漆、逐步扩大涂层，同时要求围栏结构保持。但正常生成仍有滚筒/围栏混连与形变，因此不能把全部失败归咎于reasoning文本。",
+      "category": "aligned_text_but_failed_execution"
+    }
+  },
+  "inference": "Both condition-content problems and downstream utilization/execution problems exist. Increasing representational variation alone can amplify irrelevant or conflicting details. Literal requested processes must be retained; this does not imply every phenomenon requires motion.",
+  "api_caveat": "No new API calls. Existing original/API crossover is confounded and does not establish that replacing all data or reasoning improves quality."
+}

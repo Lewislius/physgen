@@ -1,0 +1,48 @@
+{
+  "utc": "2026-11-04T17:49:42.760568+00:00",
+  "revision": "physical_content_v7_native_operator_r13a",
+  "status": "implementation_validated_pending_final_R12B_controls",
+  "training_submitted": false,
+  "quality_established": false,
+  "tests": [
+    {
+      "command": "tools/runtime_python.sh native_operator_r13a/test_native_operator.py",
+      "result": "passed",
+      "count": 7,
+      "seconds": 4.427,
+      "scope": [
+        "Installed Wan tiny-model integration",
+        "R10A initializer and per-optimizer-group parameter budgets match",
+        "Native initial function and both-off intervention",
+        "Physical effect passes through actual native FFN/time gate",
+        "Generation gradients reach physical maps at zero initialization without auxiliary loss",
+        "Interface/joint parameter ownership",
+        "Checkpoint restores normal and intervention outputs"
+      ]
+    },
+    {
+      "command": "tools/runtime_python.sh native_operator_r13a/test_input_pipeline.py",
+      "result": "passed",
+      "count": 3,
+      "seconds": 5.639,
+      "scope": [
+        "152 original positive/negative/wrong/empty contexts and exact request words",
+        "Original feature tensor preservation",
+        "40/60 raw-score report and historical Joint threshold"
+      ]
+    }
+  ],
+  "python_sources_parsed": 20,
+  "generation_views_per_sample": 1,
+  "physical_updates": 400,
+  "native_lora_updates": 272,
+  "matched_reference": "R10A67003 original data/initializer/optimizer budgets",
+  "inputs": {
+    "positive_negative": 120,
+    "controls": 32,
+    "model_forward_calls": 0,
+    "api_calls": 0,
+    "model_downloads": 0
+  },
+  "pending": "Review complete R12B wrong-reasoning16 and train-mean-C16 before freezing/submitting the next candidate"
+}

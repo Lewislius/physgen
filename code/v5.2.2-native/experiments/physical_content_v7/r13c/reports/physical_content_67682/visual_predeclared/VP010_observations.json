@@ -1,0 +1,27 @@
+{
+  "utc": "2026-11-05T07:00:31.591417+00:00",
+  "case": "VP010",
+  "selection": "predeclared before R13C generation/scores",
+  "frames": [
+    0,
+    11,
+    22,
+    34,
+    45,
+    57,
+    68,
+    80
+  ],
+  "metadata_and_video_paths": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/coupled_attention_r13c/reports/physical_content_67682/visual_predeclared/VP010_selection.json",
+  "caption": "A person mops up a puddle of water on a concrete floor, the water disappearing as the mop passes.",
+  "observations": {
+    "R13C": "Mop shifts/approaches the foreground and remains recognizably present, unlike near-static R10A. Head becomes taller and changes shape late. Water reflections/rings remain; sampled frames do not clearly establish disappearance/absorption along the mop path.",
+    "R10A": "Near-static mop and puddle throughout sampled frames; requested cleanup not demonstrated.",
+    "R1": "More motion, but head becomes partly translucent/merged with bright circular water-like patterns in late sampled frames.",
+    "R13C_query_modulation_off": "Motion remains with Q modulation disabled (K still enabled); head becomes flatter/stretched late. Full versus this arm differs in geometry/trajectory; this one case does not establish a better overall arm.",
+    "R13C_reasoning_swapped": "Trajectory and head deformation differ; some midframes show a compact dark block-like head and end moves toward/crops at foreground. This confirms output sensitivity in this example, not that normal reasoning universally improves physics."
+  },
+  "inference_intervention_scope": "Same own400 weights, image, prompt, noise/seed and gamma5; conditional replacement affects the declared reasoning control. Reference versions have different trained weights.",
+  "limitations": "Diagnostic sampled-frame review. No aggregate visual score or complete physics-success claim; await normal and all declared paired scores.",
+  "goal_achieved": false
+}

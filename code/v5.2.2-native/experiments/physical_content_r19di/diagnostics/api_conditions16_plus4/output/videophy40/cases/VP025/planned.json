@@ -1,0 +1,35 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19di/runs/r19di_parallel_400/step0400.pt",
+  "step": 400,
+  "case": "VP025",
+  "seed": 42,
+  "guidance": {
+    "kind": "two_arm_joint_condition_cfg",
+    "scale": 5.0,
+    "formula": "v = v_neg + 5 * (v_pos - v_neg)",
+    "positive": "own first image, original request, positive native T5 and positive Qwen C",
+    "negative": "same first image, null native T5 and null Qwen C",
+    "separate_physical_guidance": false
+  },
+  "suite": "videophy40",
+  "task": "i2v",
+  "caption": "A large, orange plastic egg is rolled up a plastic slide, then rolls down, ending at the bottom.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP025/first.png",
+  "sampler": {
+    "num_frames": 81,
+    "width": 832,
+    "height": 480,
+    "steps": 50,
+    "sampler": "shifted_euler",
+    "shift": 5.0,
+    "cfg": 5.0,
+    "seed": 42,
+    "best_of_n": 1,
+    "clamp_first": true
+  },
+  "positive_analysis": "The orange egg rests on the pale floor beneath the transparent plastic slide.\nIf rolled upward along the slide, the egg moves against the incline before reversing.\nWhen slowed or released near the top, the egg rolls downward on the plastic surface.\nRolling down the slide, the egg descends toward the bottom and comes to rest there.",
+  "physical_analysis": "The orange egg rests on the pale floor beneath the transparent plastic slide.\nIf rolled upward along the slide, the egg moves against the incline before reversing.\nWhen slowed or released near the top, the egg rolls downward on the plastic surface.\nRolling down the slide, the egg descends toward the bottom and comes to rest there.",
+  "negative_analysis": "The orange egg rests in contact with the flat surface below it.\nThe transparent wavy tube arches above the egg without touching it.\nObjects moving through the tube will pass over the stationary egg.",
+  "scope": "own image/request",
+  "seconds": 273.38107093423605
+}

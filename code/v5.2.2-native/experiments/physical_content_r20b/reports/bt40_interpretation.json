@@ -1,0 +1,53 @@
+{
+  "created_utc": "2026-11-15T10:14:06.083178+00:00",
+  "BT40": {
+    "count": 40,
+    "sa_mean": 2.975,
+    "pc_mean": 3.875,
+    "sa_pass_rate": 0.175,
+    "pc_pass_rate": 0.725,
+    "joint_pass_rate": 0.175,
+    "scope": "T2V: request only; fixed protocol prompts/noise, no initial image",
+    "training_verifier_is_independent": true,
+    "joint_count": 7
+  },
+  "AT40": {
+    "sa_mean": 2.95,
+    "pc_mean": 3.65,
+    "joint_count": 9
+  },
+  "BT_minus_AT": {
+    "sa_mean": 0.025,
+    "pc_mean": 0.225,
+    "joint_count": -2
+  },
+  "BT_vs_AT_wins_ties_losses": {
+    "sa": [
+      7,
+      27,
+      6
+    ],
+    "pc": [
+      13,
+      22,
+      5
+    ]
+  },
+  "joint_gained": [
+    "VP018"
+  ],
+  "joint_lost": [
+    "VP010",
+    "VP022",
+    "VP040"
+  ],
+  "SA_pass_count": 7,
+  "PC_pass_count": 29,
+  "interpretation": "All7 SA passes also pass PC. The major joint bottleneck is semantic/process fulfillment, despite higher meanPC; meanSA+0.025 hides loss of3 oldpasses and gainof1. Inference branch controls still pending, so do not attribute the gain solely to C.",
+  "visual_counterexamples": [
+    "BT VP007 PC5 yet flat graphic-like rendering",
+    "BT VP009 SA2/PC4 but worker and lifting process missing"
+  ],
+  "quality_accepted": false,
+  "new_candidate_finalized": false
+}

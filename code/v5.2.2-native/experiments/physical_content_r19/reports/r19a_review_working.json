@@ -1,0 +1,96 @@
+{
+  "status": "interim_evidence_not_final_B_design",
+  "r19ai40": {
+    "SA": 2.975,
+    "PC": 3.6,
+    "Joint": 10,
+    "n": 40,
+    "reference_B400I": {
+      "SA": 2.9,
+      "PC": 3.775,
+      "Joint": 10
+    },
+    "same_SA_pass_cases": true,
+    "same_Joint_pass_cases": true,
+    "PC_wins_ties_losses": [
+      2,
+      29,
+      9
+    ]
+  },
+  "visual_screen": {
+    "coverage": "all40, frames0/20/40/60/80; selected cases also7/9 frames",
+    "no_global_stripe_or_snow_observed_in_screen": true,
+    "acceptance": "not_passed",
+    "clear_process_execution_weakness": [
+      "VP002 bending",
+      "VP003 back handspring and landing",
+      "VP013 cap removal",
+      "VP027 shaping dough",
+      "VP034 balloon inflation",
+      "VP036 requested athletic process"
+    ],
+    "continuity_or_shape_concerns": [
+      "VP009 late person fading",
+      "VP024 late car geometry",
+      "VP028 objects/hand merging",
+      "VP037 body shape during approach",
+      "VP040 object dissolution"
+    ],
+    "qualification": "Sparse-frame screening does not certify all-frame temporal quality. Static appearance is a failure only where the prompt requires a process/change. Source-image defects and generated defects must be separated."
+  },
+  "architecture_findings": {
+    "verified": "The new physical executor is a full-width pointwise FFN conditioned by C and contextual post-text video state. Video-token interactions still occur in the native self-attention path.",
+    "not_established": "Whether lack of independently trainable physical spatiotemporal interaction causes the observed failures; whether learned executor improves over official-body control.",
+    "next_design_question": "Evaluate single physical branch with pretrained video-block interaction and semantic grounding against evidence from no-C/official-executor controls. Do not equate more parameters or an expert label with effectiveness.",
+    "MoE": "not selected"
+  },
+  "research": {
+    "source": "https://arxiv.org/html/2512.05564v2",
+    "verified_points": [
+      "ProPhy physical blocks copy the corresponding video transformer architecture and initial weights.",
+      "Its Semantic Expert Block predicts physical-category priors; this is not equivalent to full prompt/action adherence.",
+      "PB-only ablation has a limited PC gain and no SA improvement; the combined system has stronger gains."
+    ],
+    "boundary": "Different task/backbone/data size/full600 evaluation. It supports a design principle, not a claim that our model will improve."
+  },
+  "pending": [
+    "I2V paired16 aggregate scores",
+    "T2V full60 and paired16 scores",
+    "targeted dense review for visual continuity concerns"
+  ],
+  "cross_benchmarks": "deferred: currentI2V40 fails required score improvement over best reference",
+  "r19at40": {
+    "SA": 3.1,
+    "PC": 3.55,
+    "Joint": 8,
+    "n": 40,
+    "reference_R18G": {
+      "SA": 2.975,
+      "PC": 3.725,
+      "Joint": 9
+    },
+    "SA_wins_ties_losses": [
+      7,
+      31,
+      2
+    ],
+    "PC_wins_ties_losses": [
+      4,
+      26,
+      10
+    ]
+  },
+  "r19ai60": {
+    "SA": 2.9166666666666665,
+    "PC": 3.6333333333333333,
+    "Joint": 13,
+    "n": 60
+  },
+  "cross_task_observation": "Both A packages lose0.175 PC on matched40 while slightly raising SA; neither improves Joint. Replacing effective direct physics write with a larger pointwise FFN executor did not achieve the target. This does not isolate every changed component.",
+  "historical_semantic_branch_check": {
+    "source": "experiments/physical_content_v7/r15h/physical_content/model.py:144",
+    "verified": "R15H already retained direct C write and added a C-conditioned query-shift difference over the frozen native text K/V/O. That semantic-response-only addition did not improve its paired16 aggregate.",
+    "implication": "Do not claim that a generic extra text-query response is new or empirically supported."
+  }
+}

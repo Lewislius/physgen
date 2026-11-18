@@ -1,0 +1,322 @@
+{
+  "run": "physical_content_67610",
+  "selected_before_R13B_scores": true,
+  "predeclared_cases": [
+    "VP004",
+    "VP010",
+    "VP027",
+    "VP034",
+    "VP038"
+  ],
+  "frames": [
+    0,
+    11,
+    22,
+    34,
+    45,
+    57,
+    68,
+    80
+  ],
+  "observations": {
+    "VP004": {
+      "selection": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/reports/physical_content_67610/visual_predeclared/VP004_selection.json",
+      "reviewed_video_panels": [
+        "R13B",
+        "R10-A",
+        "R1",
+        "R13B_interaction_off",
+        "R13B_reasoning_swapped",
+        "R13B_direct_write_off",
+        "R13B_empty_reasoning",
+        "R13B_no_c",
+        "R13B_global_train_mean"
+      ],
+      "normal": "从约第22帧起杆状物及举起的手臂明显淡出/缺失，肩部和外套出现与背景连成一片的空缺；后半段保持这些缺损。没有可信的尺子弯曲、裂纹发展与断裂过程。",
+      "historical_comparison": "同一首帧下，R10A更好保留人物、双臂与杆状物，虽同样缺少指定过程。R1后段也有杆和手的淡化，但没有本次R13B这种大块肩部/手臂缺失。R13B本例的形态保存较差。",
+      "interaction_off": "仅关闭新增查询调节仍有杆状物淡出、手臂与肩部缺失；不能将该例失败归因为推理时查询调节开关一项。直接写入及联合训练后其他参数的作用仍需noC/direct_write_off对照。",
+      "reasoning_swapped": "人物整体缩小并向画面下方移动，杆状物消失，儿童后段大部分离开画面；与正常内容明显不同，但不是正确弯裂过程。",
+      "interpretation": "这一例有实际退步，不能把更多移动或不同构图当成有效物理变化。对照是同权重推理干预，不能据此分离训练期间对LoRA/直接写入的间接影响。",
+      "scores_available_at_review": false,
+      "scope": "预选单例、8个固定时间点；不外推为40例总体分数，不替换官方评分。",
+      "direct_write_off": "只留查询调节后，杆状物有分离/碎片变化，但伴随跨越衣物及面部的大块白色碎片、形态破损；不是可信的局部塑料尺弯曲后应力裂纹传播。与正常相比，没有简单恢复稳定且正确的过程。",
+      "empty_reasoning": "整体人物逐渐缩小，杆状物后段消失，构图变化明显；没有目标弯裂过程。空内容仍保留自己的图像/请求，不能称为无Qwen信息。",
+      "available_scores": {
+        "R1": {
+          "sa": 2,
+          "pc": 3
+        },
+        "R10-A": {
+          "sa": 2,
+          "pc": 4
+        },
+        "R13B_interaction_off": {
+          "sa": 2,
+          "pc": 3
+        },
+        "R13B_reasoning_swapped": {
+          "sa": 2,
+          "pc": 3
+        },
+        "R13B_normal": {
+          "sa": 2,
+          "pc": 3
+        },
+        "R13B_no_c": {
+          "sa": 2,
+          "pc": 3
+        },
+        "R13B_direct_write_off": {
+          "sa": 2,
+          "pc": 3
+        },
+        "R13B_empty_reasoning": {
+          "sa": 2,
+          "pc": 3
+        },
+        "R13B_global_train_mean": {
+          "sa": 2,
+          "pc": 3
+        }
+      },
+      "no_c": "关闭全部物理注入后，人物手臂较正常输出持续可见，但杆状物出现多重水平条带并在后段扩展成跨衣物/脸部的白色碎片。正常输出减少了此类大片碎片，却发生杆、手臂和肩部消失。两者都未完成可信弯裂过程；物理通路改变了错误类型，不能据此称为改善。",
+      "no_c_panel": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/reports/physical_content_67610/visual_predeclared/VP004_R13B_no_c.png",
+      "no_c_scope": "同一R13B-400权重关闭两条物理通路；保留其联合训练后的LoRA，不是独立训练的Wan基线。8个预定时间点的局部诊断。",
+      "global_train_mean": "训练均值C较正常保留更多手臂，但双手/手指与杆状物产生明显拉伸、跨物体碎片和异常形态；仍不是可信的弯曲应力断裂过程。它改变错误类型，未同时解决人物稳定和指定物理过程。"
+    },
+    "VP010": {
+      "selection": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/reports/physical_content_67610/visual_predeclared/VP010_selection.json",
+      "reviewed_video_panels": [
+        "R13B",
+        "R1",
+        "R10-A",
+        "R13B_interaction_off",
+        "R13B_direct_write_off",
+        "R13B_reasoning_swapped",
+        "R13B_empty_reasoning",
+        "R13B_no_c",
+        "R13B_global_train_mean"
+      ],
+      "normal": "拖把向前移动多于R10A；第57采样帧的杆和头变得透明/模糊、近乎消失，之后又出现且头部形态改变。水面有局部变化，但未清楚显示经过处水迹随之消退。",
+      "historical_comparison": "R10A较好保持拖把形状与场景，但基本停在原处；R1有更大往返动作，同时出现不自然的白色弧形水纹。R13B没有取得动作、物体稳定与水迹消退三者兼得的明确改善。",
+      "interaction_off": "与正常的移动过程相近；第57帧头部较可见，但出现抬离地面/影子分离，仍无可信的吸水过程。关闭新查询没有整体修复该例。",
+      "direct_write_off": "只留查询调节时有更大幅前后动作，但水面变为大片白色弯曲/片状结构，背景右上出现额外绿色内容。直接写入在本例抑制了这些背景/水面改变，同时正常仍有拖把形态问题。",
+      "reasoning_swapped": "后段拖把头较持续可见，水面大体保留；仍未清楚完成随拖把经过的水迹消退。正常内容并未在所有可见形态细节上占优。",
+      "empty_reasoning": "也有前后/抬起动作，水迹未清楚随经过而消退；正常的第57帧近乎透明现象在这一采样点较弱。",
+      "available_scores": {
+        "R1": {
+          "sa": 4,
+          "pc": 4
+        },
+        "R10-A": {
+          "sa": 3,
+          "pc": 4
+        },
+        "R13B_interaction_off": {
+          "sa": 4,
+          "pc": 4
+        },
+        "R13B_reasoning_swapped": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R13B_normal": {
+          "sa": 3,
+          "pc": 3
+        },
+        "R13B_no_c": {
+          "sa": 4,
+          "pc": 4
+        },
+        "R13B_direct_write_off": {
+          "sa": 4,
+          "pc": 4
+        },
+        "R13B_empty_reasoning": {
+          "sa": 4,
+          "pc": 4
+        },
+        "R13B_global_train_mean": {
+          "sa": 4,
+          "pc": 4
+        }
+      },
+      "interpretation": "已有对照4/4评分也不能代替物体接触、持续性及实际水迹消退的检查。两种物理作用的局部取舍必须结合完整16/40；目前不能把简单关闭某一路当作最终修复。",
+      "scope": "预选案例、8个固定时间点；不是全片逐帧或全40人工评级，不替换原评分。",
+      "no_c": "关闭全部物理注入后，拖把前后移动，后段水面出现大片白色弧形/刷状纹理；第57采样帧的拖把杆和头比正常输出更可见。正常通路抑制部分白色水纹，但未解决吸水过程，且带来本例的拖把透明/接触连续性问题。",
+      "no_c_panel": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/reports/physical_content_67610/visual_predeclared/VP010_R13B_no_c.png",
+      "no_c_scope": "同一R13B-400权重关闭两条物理通路；保留其联合训练后的LoRA，不是独立训练的Wan基线。8个预定时间点的局部诊断。",
+      "global_train_mean": "训练均值C减少了正常第57采样帧拖把近乎透明的现象，但拖把头抬起并与地面接触/阴影分离；水面仍大体保留。均值改变局部形态，不等于恢复吸水过程。"
+    },
+    "VP027": {
+      "selection": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/reports/physical_content_67610/visual_predeclared/VP027_selection.json",
+      "reviewed_video_panels": [
+        "R13B",
+        "R1",
+        "R10-A",
+        "R13B_no_c",
+        "R13B_interaction_off",
+        "R13B_direct_write_off",
+        "R13B_reasoning_swapped",
+        "R13B_empty_reasoning",
+        "R13B_global_train_mean"
+      ],
+      "normal": "手、面团和背景保持清晰稳定；主要是后段左手轻微按压，面团只有小幅变形，没有清楚展开的整形成圆过程。首帧本已近圆，因此不把缺少大幅变化本身判作错误，但未见明显优于参照的整形过程。",
+      "historical_comparison": "R10A几乎保持初始手势；R1后段双手重新落位并产生局部按压。R13B有小幅动作，但没有超过R1的清晰过程收益。",
+      "no_c": "双手出现更明显的按压、提起与重新落位，面团保持完整且有局部形变；本例没有看到启用物理通路能提供额外过程/画质优势。",
+      "interaction_off": "只保留直接写入，手部变化略多于正常但仍明显弱于noC及query-only；形态稳定。",
+      "direct_write_off": "只保留查询调节时，双手有离开、重新接触、按压和面团转位，未见VP004/010那种大块碎片/水纹问题。说明新查询并非所有例子都产生有害变化，直接写入在本例伴随明显动作抑制。",
+      "reasoning_swapped": "比正常更接近初始姿态，只有末段少量手部按压；没有正确内容所带来强过程优势的证据。",
+      "empty_reasoning": "后段双手重新落位、按压更明显，形态稳定；空reasoning仍保留本例图像/请求。",
+      "available_scores": {
+        "R13B_normal": {
+          "sa": 4,
+          "pc": 4
+        },
+        "R13B_no_c": {
+          "sa": 4,
+          "pc": 5
+        },
+        "R13B_interaction_off": {
+          "sa": 4,
+          "pc": 4
+        },
+        "R13B_direct_write_off": {
+          "sa": 4,
+          "pc": 5
+        },
+        "R13B_reasoning_swapped": {
+          "sa": 4,
+          "pc": 4
+        },
+        "R13B_empty_reasoning": {
+          "sa": 4,
+          "pc": 5
+        },
+        "R13B_global_train_mean": {
+          "sa": 4,
+          "pc": 5
+        }
+      },
+      "interpretation": "本例支持拆分两种执行作用来判断：不能笼统把查询调节视为无效，也不能把直接写入的稳定性当作已实现语义过程。两者同时打开并未在此例显示出叠加优势。完整16/40/60用于判断普遍性。",
+      "scope": "预选单例、8个固定采样帧；不作全片逐帧或总体质量评分，不替换既有评测。",
+      "global_train_mean": "训练均值C的后段双手重新落位、按压比正常明显，面团与手的形态保持较稳定；与空reasoning近似，未见正常样本C带来额外整形过程优势。"
+    },
+    "VP034": {
+      "selection": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/reports/physical_content_67610/visual_predeclared/VP034_selection.json",
+      "reviewed_video_panels": [
+        "R13B",
+        "R1",
+        "R10-A",
+        "R13B_no_c",
+        "R13B_interaction_off",
+        "R13B_direct_write_off",
+        "R13B_reasoning_swapped",
+        "R13B_empty_reasoning",
+        "R13B_global_train_mean"
+      ],
+      "caption": "A large, clear balloon is inflated with air, showing the internal pressure causing the balloon to stretch.",
+      "normal": "球体保持透明完整，尺寸大致不变，主要作上下漂移；未见清楚的充气膨胀与拉伸过程。后段移到画面上缘。",
+      "historical_comparison": "R10A更接近固定位置；R1和R13B均有上下漂移，未显示清楚的充气膨胀。新增位置变化不能当成目标过程的提升。",
+      "no_c": "漂移轨迹略不同，后段气嘴出现局部形状异常；仍无清楚的持续膨胀。",
+      "interaction_off": "与正常非常接近，尺寸大致稳定、上下漂移。",
+      "direct_write_off": "漂移相位略不同，未见清楚的膨胀进展。",
+      "reasoning_swapped": "更大幅向上漂移，后段被画面上缘部分裁切；没有因此完成充气过程。",
+      "empty_reasoning": "有上下漂移、形态较稳定，同样没有清楚的尺寸增长。",
+      "available_scores": {
+        "R13B_normal": {
+          "sa": 4,
+          "pc": 5
+        },
+        "R13B_no_c": {
+          "sa": 4,
+          "pc": 5
+        },
+        "R13B_interaction_off": {
+          "sa": 4,
+          "pc": 5
+        },
+        "R13B_direct_write_off": {
+          "sa": 4,
+          "pc": 5
+        },
+        "R13B_reasoning_swapped": {
+          "sa": 4,
+          "pc": 5
+        },
+        "R13B_empty_reasoning": {
+          "sa": 4,
+          "pc": 5
+        },
+        "R13B_global_train_mean": {
+          "sa": 4,
+          "pc": 5
+        }
+      },
+      "interpretation": "五项已出分的对照均4/5并通过Joint，但采样帧没有清楚展示提示词要求的充气膨胀。暴露本例自动评分对过程完成度的覆盖不足；保留原始评分，不把静态/漂移的高分视为全部目标达成。",
+      "scope": "预选单例、8个固定采样帧；仅作可见过程诊断，不改自动评分、不外推全40。",
+      "global_train_mean": "训练均值C也主要让尺寸大致稳定的气球上下漂移，没有清楚的充气拉伸过程；没有修复该例的过程遵循问题。"
+    },
+    "VP038": {
+      "selection": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/reports/physical_content_67610/visual_predeclared/VP038_selection.json",
+      "reviewed_video_panels": [
+        "R13B",
+        "R1",
+        "R10-A",
+        "R13B_no_c",
+        "R13B_interaction_off",
+        "R13B_direct_write_off",
+        "R13B_reasoning_swapped",
+        "R13B_empty_reasoning",
+        "R13B_global_train_mean"
+      ],
+      "caption": "A paint roller, dipped in green paint, is used to cover a section of a metal fence, creating a uniform green coat.",
+      "normal": "从第22帧起滚筒变扁，约第34帧后圆柱形滚筒头持续缺失，主要剩下弯折支架/长柄；围栏中部横向杆也出现缺失。出现绿色涂抹区域，但没有物体保持完整的可信滚涂过程。",
+      "historical_comparison": "R10A中段也有滚筒形变/消失，但末段滚筒头重新可见；R1滚筒主体较持续可见，同时有围栏横杆复制/端盖变化等瑕疵。R13B并未整体改善该例的物体持续性。",
+      "no_c": "中段也只剩支架，但后段滚筒头重新出现，涂过处有可见深绿色条带；形态问题仍在，持续性较正常后段好。",
+      "interaction_off": "只留直接写入，滚筒头同样从中段起持续缺失，未修复正常的核心问题。",
+      "direct_write_off": "只留查询调节时，滚筒头在更多采样帧持续可见，后段保持圆柱纹理，也有涂色条带；仍有杆/接触形态变化，但比正常/只留直接写入少了持续丢失滚筒头的问题。",
+      "reasoning_swapped": "约第22帧后滚筒与支架整体淡出，后段主要只剩围栏；正确内容相对无关内容保留了部分工具结构，却未保住完整滚筒。",
+      "empty_reasoning": "有明显涂色矩形区域，但滚筒头变成扁薄/黑色边条，后段只剩细支架和柄，未完成完整工具的稳定滚涂。",
+      "global_train_mean": "有涂色条带，滚筒头变为薄片并消失，后段仅细支架/柄；没有解决形态持续性。",
+      "interpretation": "本例有内容依赖，但不是正确内容就充分正确。两种物理作用的实测副作用不同：直接写入与滚筒头持续消失相关；查询-only更好保留工具，又不能据单例宣称全40更优。",
+      "scope": "预选案例、8个固定时间点；同权重推理干预，不能单独归因训练期的模块间适配。",
+      "available_scores": {
+        "R13B_no_c": {
+          "sa": 4,
+          "pc": 4
+        },
+        "R13B_interaction_off": {
+          "sa": 4,
+          "pc": 4
+        },
+        "R13B_direct_write_off": {
+          "sa": 4,
+          "pc": 4
+        },
+        "R13B_reasoning_swapped": {
+          "sa": 4,
+          "pc": 4
+        },
+        "R13B_empty_reasoning": {
+          "sa": 4,
+          "pc": 4
+        },
+        "R13B_global_train_mean": {
+          "sa": 4,
+          "pc": 3
+        },
+        "R13B_normal": {
+          "sa": 3,
+          "pc": 4
+        }
+      }
+    }
+  },
+  "quality_goal_achieved": false,
+  "updated_utc": "2026-11-05T02:50:24.154934+00:00",
+  "all_predeclared_cases_reviewed": true,
+  "all_control_scores_complete": true,
+  "all_control_review_complete": true,
+  "normal_scores_available": true
+}

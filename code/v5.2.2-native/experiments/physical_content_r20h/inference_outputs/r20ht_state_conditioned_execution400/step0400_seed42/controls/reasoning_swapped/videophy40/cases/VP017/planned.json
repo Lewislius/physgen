@@ -1,0 +1,37 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20h/runs/r20ht_state_conditioned_execution400/step0400.pt",
+  "step": 400,
+  "case": "VP017",
+  "seed": 42,
+  "guidance": {
+    "kind": "two_arm_joint_condition_cfg",
+    "scale": 5.0,
+    "formula": "v = v_neg + 5 * (v_pos - v_neg)",
+    "positive": "request only, positive native T5 and positive request-only Qwen C",
+    "negative": "null request, null native T5 and null request-only Qwen C",
+    "separate_physical_guidance": false
+  },
+  "suite": "videophy40",
+  "task": "t2v",
+  "intervention": "reasoning_swapped",
+  "donor": "VP018",
+  "caption": "A unicycle wheel rolls over a small curb; the rider adjusts their position to keep upright.",
+  "canvas": null,
+  "sampler": {
+    "num_frames": 81,
+    "width": 832,
+    "height": 480,
+    "steps": 50,
+    "sampler": "shifted_euler",
+    "shift": 5.0,
+    "cfg": 5.0,
+    "seed": 42,
+    "best_of_n": 1,
+    "clamp_first": false
+  },
+  "positive_analysis": "1. Wheel contacts curb, causing torque shift; rider leans inward to counterbalance rotational force.  \n2. Rider’s center of mass must remain above wheel’s contact point to prevent tipping.  \n3. Tire’s grip on ground enables rider to adjust stance without slipping during transition.  \n4. Rider’s body weight distribution shifts dynamically to maintain equilibrium over uneven surface.",
+  "physical_analysis": "1. Bulldozer’s engine torque drives wheels, creating friction against ground to propel the chain and load forward.  \n2. Chain links must remain taut and connected to load to transmit force without slippage or detachment.  \n3. Load’s mass resists acceleration, requiring continuous force to maintain motion across uneven terrain.  \n4. Ground surface must provide sufficient friction to prevent bulldozer or load from sliding backward or tipping.",
+  "negative_analysis": "",
+  "scope": "request only; no image",
+  "seconds": 119.17558635212481
+}

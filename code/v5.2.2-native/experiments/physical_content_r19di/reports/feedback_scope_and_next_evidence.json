@@ -1,0 +1,34 @@
+{
+  "updated_utc": "2026-11-14T03:19:34.327308+00:00",
+  "current_model_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19di/snapshots/20261113T173930Z/physical_content/model.py",
+  "current_experiment": 69919,
+  "status": "completed_not_quality_accepted",
+  "within_block": {
+    "text_input": "norm3(h_sa), before physical_update",
+    "physics_read_input": "same norm3(h_sa)",
+    "native_text_calls_per_block": 1,
+    "combination": "h_text = h_sa + text_update + physical_update; then native-feature FFN",
+    "original_text_weights": "frozen"
+  },
+  "remaining_coupling": "Later transformer blocks and later diffusion steps necessarily see the combined video state; parallel reads do not make the complete generation independent of physics.",
+  "causal_limit": "CI and final DI differ in more than the text-read order. Reduced grid in DI is observed, but cannot be attributed exclusively to parallel reading.",
+  "content_anchor_correction": "DI uses its fresh closed-form Qwen-to-native estimate and route auxiliary, not BT/CT direct native_condition anchors. Native-feature execution describes the actual Wan FFN activation, not the C anchor provenance.",
+  "supported_problem": "Some periodic contamination is reduced, but process stagnation and severe geometry failures remain. No comprehensive visual success.",
+  "next_evidence": {
+    "experiment_id": 69951,
+    "trial_id": 71577,
+    "actual_gpu": "RTX PRO 6000 Blackwell",
+    "scope": "same DI400, fixed16 plus separately reported four failures, existing API positive/negative reasoning; no new API/download/training",
+    "decision": "Select final I2V data/representation/execution only after scored and visual comparison; do not assume stronger or more factual-looking reasoning is automatically better."
+  },
+  "primary_literature": [
+    {
+      "url": "https://arxiv.org/abs/2308.06721",
+      "relevance": "Independent conditioning attentions can coexist with frozen native text; image-adapter evidence does not guarantee physical-video stability."
+    },
+    {
+      "url": "https://arxiv.org/abs/2603.26285",
+      "relevance": "Supports studying local physical conditioning; its chunk supervision is not available as verified temporal labels in current caches and is not silently imported."
+    }
+  ]
+}

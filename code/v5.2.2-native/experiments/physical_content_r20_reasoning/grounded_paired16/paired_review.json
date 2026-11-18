@@ -1,0 +1,142 @@
+{
+  "n": 16,
+  "reference": "same BT400 weights, native prompt, noise, sampler and evaluator",
+  "changed": "physical source selection plus joint native encoding; not a single-factor text-only ablation",
+  "old": {
+    "SA": 3.0625,
+    "PC": 4.125,
+    "Joint": 3
+  },
+  "new": {
+    "count": 16,
+    "sa_mean": 3.125,
+    "pc_mean": 4.0,
+    "sa_pass_rate": 0.25,
+    "pc_pass_rate": 0.75,
+    "joint_pass_rate": 0.25,
+    "scope": "T2V: request only; fixed protocol prompts/noise, no initial image",
+    "training_verifier_is_independent": true
+  },
+  "cases": [
+    {
+      "id": "VP002",
+      "old_sa": 3,
+      "old_pc": 5,
+      "new_sa": 3,
+      "new_pc": 5
+    },
+    {
+      "id": "VP004",
+      "old_sa": 2,
+      "old_pc": 3,
+      "new_sa": 2,
+      "new_pc": 4
+    },
+    {
+      "id": "VP005",
+      "old_sa": 3,
+      "old_pc": 3,
+      "new_sa": 3,
+      "new_pc": 3
+    },
+    {
+      "id": "VP009",
+      "old_sa": 2,
+      "old_pc": 4,
+      "new_sa": 2,
+      "new_pc": 4
+    },
+    {
+      "id": "VP010",
+      "old_sa": 3,
+      "old_pc": 4,
+      "new_sa": 4,
+      "new_pc": 4
+    },
+    {
+      "id": "VP013",
+      "old_sa": 3,
+      "old_pc": 4,
+      "new_sa": 3,
+      "new_pc": 3
+    },
+    {
+      "id": "VP015",
+      "old_sa": 3,
+      "old_pc": 4,
+      "new_sa": 3,
+      "new_pc": 4
+    },
+    {
+      "id": "VP016",
+      "old_sa": 3,
+      "old_pc": 5,
+      "new_sa": 3,
+      "new_pc": 5
+    },
+    {
+      "id": "VP017",
+      "old_sa": 3,
+      "old_pc": 4,
+      "new_sa": 3,
+      "new_pc": 3
+    },
+    {
+      "id": "VP018",
+      "old_sa": 4,
+      "old_pc": 4,
+      "new_sa": 4,
+      "new_pc": 4
+    },
+    {
+      "id": "VP024",
+      "old_sa": 3,
+      "old_pc": 4,
+      "new_sa": 3,
+      "new_pc": 4
+    },
+    {
+      "id": "VP025",
+      "old_sa": 3,
+      "old_pc": 4,
+      "new_sa": 3,
+      "new_pc": 4
+    },
+    {
+      "id": "VP026",
+      "old_sa": 3,
+      "old_pc": 4,
+      "new_sa": 3,
+      "new_pc": 3
+    },
+    {
+      "id": "VP027",
+      "old_sa": 4,
+      "old_pc": 5,
+      "new_sa": 4,
+      "new_pc": 5
+    },
+    {
+      "id": "VP034",
+      "old_sa": 3,
+      "old_pc": 5,
+      "new_sa": 3,
+      "new_pc": 5
+    },
+    {
+      "id": "VP038",
+      "old_sa": 4,
+      "old_pc": 4,
+      "new_sa": 4,
+      "new_pc": 4
+    }
+  ],
+  "visual_sampled_frames": {
+    "VP002": "Detached strips and sparse dark scene persist; correct bow process not established",
+    "VP004": "Strong blue bar/red clamp persists; ruler markings absent, crack process still weak",
+    "VP009": "Strong blue glass persists and worker remains largely absent",
+    "VP015": "Blue cast and wrong boat-like oar persist; no full rower"
+  },
+  "decision": "Input repair does not resolve learned write damage; use source-grounded cache for fresh native-attention execution training, not BT input swap as final model.",
+  "fresh_DT_metrics_measured": false
+}

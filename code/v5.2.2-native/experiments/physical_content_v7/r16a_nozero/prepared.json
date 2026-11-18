@@ -1,0 +1,148 @@
+{
+  "utc": "2026-11-09T05:02:40.026048+00:00",
+  "candidate": "R16A-NOZERO",
+  "status": "stopped_by_user",
+  "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_joint_read_r16a_nozero/snapshots/20261109T055740Z",
+  "config": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_joint_read_r16a_nozero/snapshots/20261109T055740Z/configs/physical_content.yaml",
+  "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_joint_read_r16a_nozero/submissions/r16a_nozero_train_20261109T055740Z.yaml",
+  "empty_context": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_joint_read_r16a_nozero/empty_context",
+  "revision": "physical_content_v7_native_joint_read_r16a_nozero",
+  "fresh_initialization": "official foundations only; no R16A/B/I project checkpoint",
+  "design_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_joint_read_r16a_nozero/snapshots/20261109T055740Z/review/design_evidence.json",
+  "validation": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_joint_read_r16a_nozero/snapshots/20261109T055740Z/review/validation.json",
+  "preflight_required": true,
+  "formal_training_updates": 400,
+  "main40_required": true,
+  "full60_required": true,
+  "controls16": [
+    "no_c",
+    "direct_read_only",
+    "request_prior_only",
+    "shared_physical_query",
+    "legacy_joint_read",
+    "reasoning_swapped",
+    "empty_reasoning",
+    "global_train_mean"
+  ],
+  "automatic_next_candidate": false,
+  "cross_benchmarks": "deferred",
+  "maximum_authorized_version": "R16A-NOZERO",
+  "routine_monitor_seconds": 1800,
+  "quality_goal_achieved": false,
+  "companion_R16A_experiment": 68429,
+  "experiment": 68488,
+  "run_id": "physical_content_68458",
+  "submission_utc": "2026-11-09T05:58:10.513041+00:00",
+  "submission_stdout": "Created experiment 68458",
+  "state": "STATE_CANCELED",
+  "next_check_utc": null,
+  "rejected_allocations": [
+    {
+      "experiment": 68444,
+      "trial_ids": [
+        69831
+      ],
+      "gpu": {
+        "actual": "NVIDIA H100",
+        "accepted": false,
+        "visible_count": 1
+      },
+      "state": "STATE_ERROR",
+      "models_loaded": false,
+      "optimizer_updates": 0
+    },
+    {
+      "experiment": 68447,
+      "trial_ids": [
+        69834
+      ],
+      "gpu": {
+        "actual": "NVIDIA H100",
+        "accepted": false,
+        "visible_count": 1
+      },
+      "state": "STATE_ERROR",
+      "models_loaded": false,
+      "optimizer_updates": 0
+    },
+    {
+      "experiment": 68450,
+      "trial_ids": [
+        69837
+      ],
+      "gpu": {
+        "actual": "NVIDIA H100",
+        "accepted": false,
+        "visible_count": 1
+      },
+      "state": "STATE_ERROR",
+      "models_loaded": false,
+      "optimizer_updates": 0
+    }
+  ],
+  "superseded_untrained_sources": [
+    {
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_joint_read_r16a_nozero/snapshots/20261109T050239Z",
+      "reason": "CFG helper missed shared_physical_query argument; repaired before any NOZERO update. Training-only entrypoint releasesRTX before evaluation."
+    }
+  ],
+  "job_scope": "evaluation_only",
+  "evaluation_pending": false,
+  "evaluation_pools": [
+    "ada-48g",
+    "amp-48g",
+    "amp-80g"
+  ],
+  "trial": 69845,
+  "pending_evaluation_manifest": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r16_evaluation_runtime/nozero_evaluation_pending.json",
+  "last_observation": {
+    "utc": "2026-11-09T09:48:40.879998+00:00",
+    "experiment": 68488,
+    "state": "STATE_CANCELED",
+    "trial_ids": [
+      69875
+    ],
+    "active_task_ids": [],
+    "gpu": {
+      "actual": "NVIDIA RTX A6000",
+      "accepted": true,
+      "visible_count": 1
+    },
+    "stage": "original40_generation",
+    "training": {
+      "status": "complete",
+      "step": 400,
+      "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/native_joint_read_r16a_nozero/runs/physical_content_68458/latest.pt"
+    },
+    "preflight": {},
+    "next_check_utc": null,
+    "last_train": {
+      "step": 400,
+      "phase": "joint",
+      "seconds": 10.822168768383563,
+      "peak_gib": 29.01642894744873,
+      "generation": 0.22983639501035213
+    },
+    "generated": {
+      "main40": 22
+    },
+    "scores": {},
+    "last_generation": {
+      "kind": "sampling",
+      "case": "VP023",
+      "mode": "real",
+      "step": 40,
+      "time": 1794214632.9087806
+    },
+    "seconds_since_generation_event": 3088
+  },
+  "training_step_observed": 400,
+  "training_complete": true,
+  "training_experiment": 68458,
+  "training_trial": 69845,
+  "training_completed": true,
+  "pool": "amp-48g",
+  "evaluation_yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r16_evaluation_runtime/submissions/r16a_nozero_evaluation_pending_amp48.yaml",
+  "user_instruction_utc": "2026-11-09T10:57:55.025574+00:00",
+  "user_instruction": "Keep NOZERO evaluation stopped; prioritize completing R16B. Preserve 22 completed videos and trained400 checkpoint. No automatic resubmission."
+}

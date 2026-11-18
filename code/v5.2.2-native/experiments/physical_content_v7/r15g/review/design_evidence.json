@@ -1,0 +1,266 @@
+{
+  "status": "all_declared_evaluations_completed_failed",
+  "utc": "2026-11-07T03:18:29.538974+00:00",
+  "target": {
+    "videophy40": {
+      "PC_min": 3.8,
+      "PC_preferred": 3.85,
+      "SA_min": 3.125,
+      "SA_aspiration": [
+        3.3,
+        3.35
+      ],
+      "Joint_min": 12
+    },
+    "WMB70_total_strictly_above": 8.571428571428573,
+    "PhysicsIQ60_verified_strictly_above": 0.2651032257782627,
+    "actual_video_quality_required": true,
+    "last_version": "R15G"
+  },
+  "evidence": [
+    {
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/reports/main40_review.json",
+      "finding": "F full40 SA2.925/PC3.600/J9; fixed16 optimistic relative remaining24. NoC16 improvesSA3.0625->3.25 whilePC3.8125->3.5, Joint unchanged5."
+    },
+    {
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/reports/condition_representation16.json",
+      "finding": "F Q update .99796 and projected update .99675 cosine; shared totalC .40368 mostly inherits anchors. Raw full-memory restoration did not yield input-specific learned corrections."
+    },
+    {
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/reports/q_update_source_audit16.json",
+      "finding": "First cross-attention correction already .99424; exchange/FFN amplify common update. Per-tokenLN retains raw Qwen common direction; training-fitted whitening removes much of it."
+    },
+    {
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/reports/execution_probe_review.json",
+      "finding": "Three-case replay: shallow O output cosine .9983-.9993, write token-mean energy .989-.992. Mid-sampling native conditional direction retention .279-.426, physical CFG contribution opposes native guidance."
+    },
+    {
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/content_value_r9_1/reports/matched_final_content_comparison16.json",
+      "finding": "R9.1 source-valued read achieved substantially varied input-conditioned corrections but full40PC3.45; diversity alone and shared word-aligned execution are insufficient."
+    },
+    {
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/reports/r10_final_evidence.json",
+      "finding": "R10A separate unaligned execution improvesPC3.75 butSA2.825/J7; unconstrained free-Q execution is not an adequate final solution."
+    },
+    {
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/denoising_matched_fusion_r15d/reports",
+      "finding": "Post-text reading is coherent and previously implemented correctly; D full40 3/3.575/J10 did not meet goal. It is not treated as a sufficient standalone fix."
+    }
+  ],
+  "architecture": [
+    {
+      "change": "Whitened source-valued final read",
+      "reason": "Queries choose relation-local/global source values; no free Q/FFN residual after the last value read. Literal request is explicitly included; image context remains in the cached contextual word states."
+    },
+    {
+      "change": "Semantic routing C plus residual execution C",
+      "reason": "Routing alone receives native-word auxiliary. Execution learns from actual generation and consists of a common vector plus projected input-valued read; neither is forced to be diverse."
+    },
+    {
+      "change": "Independent physical Q/K/V/O initialized from native projections, zero execution C",
+      "reason": "Preserve a pretrained dense output mapping instead of relearning O from zero into one dominant write direction. Initial branch remains exactlyzero, but generation gradients reach execution values immediately. No gate or amplitude cap. Only the native O matrix is copied, not its additive bias: no unconditional physical bias is introduced at initialization."
+    },
+    {
+      "change": "Physical Q reads real post-text state; direct and state-dependent execution retained",
+      "reason": "Physical addressing sees the request-conditioned state while original text Q/K/V/O remain untouched. Useful direct/common physical effects are still available."
+    },
+    {
+      "change": "Default historical jointCFG5; native-guidance decomposition only as16 control",
+      "reason": "Completed frozen F16 gives SA+.125, Joint+1 butPC-.125 and persistent real-video failures, so it does not justify changing the default. No gamma sweep."
+    }
+  ],
+  "training": {
+    "initialization": "Fresh official Wan/Qwen foundations and existing training-only fitted interface, never historical trained weights",
+    "data": "Original WISA and original frozen input reasoning; same1600draws",
+    "steps": 400,
+    "stages": {
+      "interface": 128,
+      "joint": 272
+    },
+    "loss": "0.8 meanFM +0.2 multiscale high-error tail + route alignment ramp32 to0.03",
+    "first_stage": "Enhancement+fusion update; Wan self-attention/FFN LoRA frozen",
+    "second_stage": "Enhancement+fusion+existing self-attention/FFN LoRA update",
+    "native_text_QKVO": "frozen throughout",
+    "extra_generation_views_per_training_sample": 0,
+    "generation_views_per_microbatch": 1
+  },
+  "validation": {
+    "actual_small_Wan_tests": 8,
+    "guidance_actual_Wan_tests": 2,
+    "input_and_report_integration_tests": 6,
+    "passed": true,
+    "quality_proof": false,
+    "full_size_GPU_preflight": "required before formal fresh400; disposable weights are never reused",
+    "training_check_only_passed": true,
+    "runner_describe_with_extra20_passed": true,
+    "native_O_bias_excluded": true
+  },
+  "controls16": [
+    "no_c",
+    "execution_prior_only",
+    "native_physical_query",
+    "reasoning_swapped",
+    "empty_reasoning",
+    "global_train_mean",
+    "native_guidance"
+  ],
+  "evaluation": "Complete final own400/main40/extra20same60/paired16/WMB70/PhysicsIQ60 and inspect real processes. Preserve all results, then pause; no R15H.",
+  "limitations": [
+    "Separate native-guidance composition improved SA/Joint but harmed PC on frozen F; it is a control, not the default or a proven quality fix.",
+    "Pretrained O may still learn harmful common updates; no diversity/quality guarantee follows from initialization.",
+    "Source-valued execution can still ignore some inputs through learned attention or projection; controls determine contribution.",
+    "Reasoning can emphasize static states instead of requested change; the native request remains independent, but this does not guarantee task success.",
+    "No new model downloads, API calls, verifier/JEPA training, flow/trajectory labels, temporal MSE or RGB-change objectives."
+  ],
+  "references": [
+    {
+      "url": "https://github.com/timothybrooks/instruct-pix2pix/blob/main/edit_cli.py",
+      "use": "Primary code demonstrates separate conditional-score composition; our model conditions/formula differ and its results are not evidence for our400-step performance."
+    },
+    {
+      "url": "https://arxiv.org/abs/2308.06721",
+      "use": "Separate adapter attention preserves the original text path; general architectural context, not proof of physical-quality gains."
+    },
+    {
+      "url": "https://arxiv.org/html/2505.23656v1",
+      "use": "Relational-video supervision considered; no VFM/JEPA added here, no direct transplantation of its results or new loss."
+    }
+  ],
+  "quality_achieved": false,
+  "training_submitted": true,
+  "inference_decision": {
+    "experiment": 68085,
+    "trial": 69472,
+    "state": "STATE_COMPLETED",
+    "training_updates": 0,
+    "cases": 16,
+    "normal": {
+      "sa": 3.0625,
+      "pc": 3.8125,
+      "joint": 5
+    },
+    "native_guidance": {
+      "sa": 3.1875,
+      "pc": 3.6875,
+      "joint": 6
+    },
+    "paired": {
+      "SA_wins_ties_losses": [
+        2,
+        14,
+        0
+      ],
+      "PC_wins_ties_losses": [
+        1,
+        13,
+        2
+      ],
+      "joint_gain": [
+        "VP034"
+      ],
+      "joint_loss": []
+    },
+    "changes": {
+      "VP025": {
+        "old": [
+          2,
+          4
+        ],
+        "new": [
+          3,
+          3
+        ]
+      },
+      "VP026": {
+        "old": [
+          2,
+          5
+        ],
+        "new": [
+          2,
+          3
+        ]
+      },
+      "VP027": {
+        "old": [
+          4,
+          4
+        ],
+        "new": [
+          4,
+          5
+        ]
+      },
+      "VP034": {
+        "old": [
+          3,
+          5
+        ],
+        "new": [
+          4,
+          5
+        ]
+      }
+    },
+    "score_file": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/inference_outputs/physical_content_68038/native_guidance16_seed42/controls/native_guidance/videophy40/scores.json",
+    "visual_review": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/reports/native_guidance16/visual_review.json",
+    "decision": "Do not adopt as R15G default: PC decreases and visual defects persist. Keep as one predefined G16 inference control because changed architecture may alter effects.",
+    "limits": "Frozen F, fixed16 only; not a trained version, not a new40 score, not a causal proof that conditioning decomposition is always harmful."
+  },
+  "trained_steps": 400,
+  "current_result": "Main40 failed all numeric minima; mechanism hypotheses did not deliver the target quality. Complete remaining declared evidence without further training versions.",
+  "evaluation_status": "complete",
+  "observed_videophy": {
+    "original40": {
+      "count": 40,
+      "sa_mean": 3.05,
+      "pc_mean": 3.325,
+      "sa_pass_rate": 0.25,
+      "pc_pass_rate": 0.325,
+      "joint_pass_count": 9,
+      "joint_pass_rate": 0.225
+    },
+    "full60": {
+      "count": 60,
+      "sa_mean": 3,
+      "pc_mean": 3.3666666666666667,
+      "sa_pass_rate": 0.21666666666666667,
+      "pc_pass_rate": 0.38333333333333336,
+      "joint_pass_count": 12,
+      "joint_pass_rate": 0.2
+    }
+  },
+  "targets_met": {
+    "PC_at_least3_8": false,
+    "SA_at_least3_125": false,
+    "Joint_strictly_above_historical11of40": false
+  },
+  "accepted": false,
+  "evaluation_recovery_completed": {
+    "experiment": 68181,
+    "trial": 69568,
+    "original_training_experiment": 68103,
+    "new_training_steps": 0
+  },
+  "goal_achieved": false,
+  "further_training_versions_authorized": 0,
+  "final_report": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/source_residual_fusion_r15g/reports/final_report.zh.md",
+  "cross_scores": {
+    "wan_lora": {
+      "WMB70": 8.185714285714287,
+      "PhysicsIQ_Verified": 0.26003635878678355
+    },
+    "r1": {
+      "WMB70": 8.571428571428573,
+      "PhysicsIQ_Verified": 0.2651032257782627
+    },
+    "r10a": {
+      "WMB70": 8.428571428571429,
+      "PhysicsIQ_Verified": 0.23669164754462252
+    },
+    "r15g": {
+      "WMB70": 7.9,
+      "PhysicsIQ_Verified": 0.17007230252222866
+    }
+  }
+}

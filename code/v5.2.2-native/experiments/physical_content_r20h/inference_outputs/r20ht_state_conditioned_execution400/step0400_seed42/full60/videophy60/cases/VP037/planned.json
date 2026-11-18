@@ -1,0 +1,35 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20h/runs/r20ht_state_conditioned_execution400/step0400.pt",
+  "step": 400,
+  "case": "VP037",
+  "seed": 42,
+  "guidance": {
+    "kind": "two_arm_joint_condition_cfg",
+    "scale": 5.0,
+    "formula": "v = v_neg + 5 * (v_pos - v_neg)",
+    "positive": "request only, positive native T5 and positive request-only Qwen C",
+    "negative": "null request, null native T5 and null request-only Qwen C",
+    "separate_physical_guidance": false
+  },
+  "suite": "videophy40",
+  "task": "t2v",
+  "caption": "A competitor approaches the runway, accelerates, jumps, and lands with their legs spread wide.",
+  "canvas": null,
+  "sampler": {
+    "num_frames": 81,
+    "width": 832,
+    "height": 480,
+    "steps": 50,
+    "sampler": "shifted_euler",
+    "shift": 5.0,
+    "cfg": 5.0,
+    "seed": 42,
+    "best_of_n": 1,
+    "clamp_first": false
+  },
+  "positive_analysis": "1. Competitor accelerates on runway, gaining sufficient speed for airborne jump.  \n2. Feet leave ground, body clears runway surface during brief flight phase.  \n3. Legs spread wide at landing, contacting runway with controlled impact force.  \n4. Runway surface must remain intact and level to absorb landing without deformation.",
+  "physical_analysis": "1. Competitor accelerates on runway, gaining sufficient speed for airborne jump.  \n2. Feet leave ground, body clears runway surface during brief flight phase.  \n3. Legs spread wide at landing, contacting runway with controlled impact force.  \n4. Runway surface must remain intact and level to absorb landing without deformation.",
+  "negative_analysis": "",
+  "scope": "request only; no image",
+  "seconds": 119.36094804201275
+}

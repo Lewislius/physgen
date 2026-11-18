@@ -1,0 +1,40 @@
+{
+  "created_utc": "2026-11-15T12:15:35.588197+00:00",
+  "status": "evidence_review_not_final_C_design",
+  "scope": "Existing matched16 input C on CPU; existing paired videos. No new generation.",
+  "representation": {
+    "bt": {
+      "native_rms": 0.10342549392953515,
+      "route_rms": 0.10361830750480294,
+      "execution_rms": 0.1773816728964448,
+      "execution_increment_over_native_norm": 1.4018868654966354,
+      "execution_token_cosine": 0.2847048877738416,
+      "execution_increment_token_cosine": 0.36066135577857494,
+      "across_sample_mean_increment_cosine": 0.5597774386405945
+    },
+    "bi": {
+      "native_rms": 0.10276827355846763,
+      "route_rms": 0.10384903941303492,
+      "execution_rms": 0.17680687829852104,
+      "execution_increment_over_native_norm": 1.4445780664682388,
+      "execution_token_cosine": 0.22914549242705107,
+      "execution_increment_token_cosine": 0.29306773375719786,
+      "across_sample_mean_increment_cosine": 0.5280454158782959
+    }
+  },
+  "established": [
+    "BT学习到的Cr/Ce增量一起关闭后，009/010/015的自然色彩/主体明显恢复，且固定16 SA3.0625→3.25、Joint3→5，PC4.125→3.875。",
+    "两任务执行增量范数约为原生物理词1.40/1.44倍，不能视为很小的修正；完整C token cosine约.285/.229，不是全体趋同到1。",
+    "BT额外视频分支单独运行(Coff)为3.1875/3.9375/J5，优于整分支关闭3.125/3.875/J4，故删除全部额外容量没有现成支持。",
+    "BI整分支关闭有009/010减少伪影的收益，同时002/004/026结构变差；尚待仅C关闭和Qoff。"
+  ],
+  "hypotheses_to_resolve": [
+    "独立自由学习的执行值增量可能离开原生词/物理读写所需的表示空间；token cosine不高并不代表其值对生成有益。",
+    "Cr/Ce独立产生可能使定位与执行内容不协调；现有干预同时去掉二者，不能称为已经分别隔离的因果结果。",
+    "可考虑Q通过输入原生物理词的可学习重组形成全宽C，再由独立物理K/V形成地址和值，减少与源内容无关的自由外观向量；不是已证明提升的新模型。"
+  ],
+  "remaining_before_finalization": [
+    "Finish existing B controls, especially source/empty/mean and BI C-off",
+    "Use own-task visual and score findings to finalize CT/CI separately"
+  ]
+}

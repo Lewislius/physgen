@@ -1,0 +1,168 @@
+schema_version: R20-dual-branch-native-word-v12
+revision: R20-dual-branch-native-word-20261117
+status: ready_for_training
+source:
+  repository: Lewislius/physgen
+  reference_commit: 24b957dd4c962db24621cc94286ad6a2ce8a7c23
+  official_model: Wan-AI/Wan2.2-TI2V-5B
+  architecture: source_C_global_prior_plus_native_word_PWCA_QK_updates
+  reference_task: Own-task R18E/R18G or R15B+I/R1/R9/R10A, recent R19 controls and actual-video failures; no project weights
+initialization:
+  mode: official_fresh
+  project_checkpoint: null
+  new_adapter_seed: 42
+base:
+  model: Wan2.2-TI2V-5B
+  project_checkpoint: null
+  freeze_text_qkvo: true
+  video_lora_rank: 32
+  video_lora_alpha: 32
+  video_lora_from_update: 129
+model:
+  width: 3072
+  ffn_width: 14336
+  native_layers: 30
+  native_heads: 24
+  qwen_width: 4096
+  q_tokens: 256
+  q_heads: 32
+  content_rounds: 2
+  injection_layers:
+  - 0
+  - 7
+  - 14
+  - 21
+  - 28
+  extra_video_blocks: 5
+  conditioned_ffn_rank: null
+  physics_slots: 256
+  physics_width: 3072
+  grounded_heads: 16
+  content_anchor: native_input_words_normalized_query_enhancement
+  physical_query: independent_fullwidth_official_initialized
+  associated_query: none
+  physical_read: independent_state_dependent_QK_read_of_source_valued_execution_C; no_clip_pool_feedback
+  physical_execution: source_C_global_prior_plus_native_word_PWCA_QK_updates
+  native_block_intact: true
+  diffusion_modulation: native_pretrained_block_modulation
+  presentation_time: native_video_3D_RoPE; no_timestamps_for_global_Q_slots
+  physical_initialization_blocks:
+  - 0
+  - 7
+  - 14
+  - 21
+  - 28
+  physical_text_qkvo_frozen: false
+  original_text_path_intact: true
+  physical_value_write: false
+  physical_video_value: current_video_features_only
+  shared_physical_reader: false
+  empty_physical_condition: exact_zero_physical_response; native_text_and_video_retained
+  word_memory: complete_native_reasoning_words_native_text_kv_qk_updates
+paths:
+  wan_code: /home/liuzhirui/model/Wan2.2
+  wan_checkpoint: /home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B
+  qwen_checkpoint: /home/liuzhirui/model/Qwen3-VL/Qwen3-VL-8B-Instruct
+  train_cache: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/data_revision_qwen38/runs/20261103_dataset/encoded
+  input_cache: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f/preparation/full_reasoning_cache/input
+  words_cache: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f/preparation/full_reasoning_cache/words
+  native_words_cache: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f/preparation/full_reasoning_cache/native_words
+  eval_input_cache: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f/preparation/full_reasoning_cache/input
+  run_dir: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20i2/runs/r20it2_dual_branch400
+  interface_output: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f/preparation/input_normalization.pt
+  inference_evidence: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20f/preparation/full_reasoning_cache/inference
+  normalization_reference: null
+train:
+  max_updates: 400
+  effective_global_batch: 4
+  world_size: 1
+  microbatch_per_device: 1
+  gradient_accumulation: 4
+  seed: 42
+  condition_dropout: 0.1
+  optimizer: AdamW
+  betas:
+  - 0.9
+  - 0.999
+  eps: 1.0e-08
+  matrix_weight_decay: 0.01
+  bias_norm_weight_decay: 0.0
+  grad_clip_per_group: 1.0
+  autocast_dtype: bfloat16
+  trainable_master_dtype: float32
+  gradient_checkpointing: true
+  checkpoint_use_reentrant: false
+  activation_offload: false
+  sigma_min: 0.001
+  sigma_max: 0.999
+  sample_order: fixed_same_task_reference1600
+  data_revision: same_native_captions_latents_and1600_order; restored_full_legacy_reasoning_with_documented_causal_repairs; unchanged fromGT for controlled architecture comparison
+  post_training: false
+  noise_strategy: unchanged_linear_FM
+  physics_warmup: 13
+  video_lora_warmup: 51
+  peak_end_update: 240
+  minimum_lr_ratio: 0.2
+  peak_lrs:
+    wan_video_lora: 2.0e-05
+    enhancement: 5.0e-05
+    physics_read: 2.0e-05
+    physics_write: 3.0e-05
+    physics_video: 2.0e-05
+  save_every: 100
+  keep_updates:
+  - 400
+  interface_updates: 128
+  sample_sequence: /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19/preparation/sample_sequence_at.json
+loss:
+  fm: 0.8
+  tail: 0.2
+  tail_fraction: 0.25
+  route_peak: 0.03
+  route_warmup: 32
+  route_decay_start: 240
+  route_final: 0.015
+  local_distribution_enabled: false
+  local_distribution_decision: existing_model_maps_rejected_by_spatial_review; real_video_generation_supervision_retained
+  local_semantic_enabled: false
+  st_enabled: false
+  supervise_known_latent: false
+  unknown_scope: all_valid_frames
+  route_target: native input route anchor; source-selected execute C trained by video generation
+inference:
+  num_frames: 81
+  width: 832
+  height: 480
+  steps: 50
+  sampler: shifted_euler
+  shift: 5.0
+  cfg: 5.0
+  seed: 42
+  best_of_n: 1
+  clamp_first: false
+evaluation:
+  primary_fixed40: true
+  extra_disjoint20: true
+  pc_mean_target: 3.85
+  pc_mean_stretch: 3.95
+  sa_mean_target: 3.25
+  joint_count_target40: 13
+  joint_count_stretch40: 14
+  pass_threshold: 4
+  expected_collapsed_videos: 0
+  benchmark_targets_are_unverified: true
+  cross_benchmark_policy: I2V only after40+60 and actual-video gains over best comparable references
+  catastrophic_visual_failure_allowed: false
+  prophy_target: exceed SA PC Joint under matched task/data/scoring, and improve real visual content; not yet demonstrated
+plan: IT2
+task: t2v
+mechanism: 30
+input:
+  external_image: false
+  evidence_scope: request_only
+  known_latent_frames: 0
+  future_targets_in_condition: false
+  chunk_descriptions: false
+  local_annotation_preprocessing: false
+design_plan: IT2
+variant_id: R20IT2

@@ -1,0 +1,51 @@
+workspace: ALL-IN-ONE
+project: wan-animate
+max_restarts: 0
+resources:
+  resource_pool: blk-96g
+  slots_per_trial: 1
+  is_single_node: true
+  shm_size: 34359738368
+bind_mounts:
+- host_path: /mount/HOME/liuzhirui
+  container_path: /home/liuzhirui
+- host_path: /mount/NAS1/public
+  container_path: /run/determined/NAS1/public
+environment:
+  image: 10.130.130.5:8192/lab-dev:latest
+  environment_variables:
+  - OMP_NUM_THREADS=4
+  - PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+  - HF_HUB_OFFLINE=1
+  - TRANSFORMERS_OFFLINE=1
+  - HF_DATASETS_OFFLINE=1
+  - PYTHONUNBUFFERED=1
+  - WAN_CODE=/home/liuzhirui/model/Wan2.2
+  - WAN_CKPT=/home/liuzhirui/model/Wan2.2/Wan2.2-TI2V-5B
+  - QWEN_CKPT=/home/liuzhirui/model/Qwen3-VL/Qwen3-VL-8B-Instruct
+  - GPU_POLICY=rtx6000
+checkpoint_storage:
+  type: shared_fs
+  host_path: /mount/HOME/liuzhirui
+  storage_path: Project/physGen/code/v5.2.2-native/experiments/physical_content_r20i2/determined_checkpoints
+  save_experiment_best: 0
+  save_trial_best: 0
+  save_trial_latest: 0
+searcher:
+  name: single
+  metric: completed
+  max_length:
+    epochs: 1
+  smaller_is_better: false
+name: physical-r20it2-native-word-qk400-v2-40-60-controls16-20261117
+description: 'R20IT2 v2: exact R20FT 256-slot C anchor (including zero-initialized
+  video-to-C execute binding) plus complete native reasoning-word PWCA that updates
+  only physical self-attention Q/K. Word K/V/norm are per-depth frozen native Wan
+  text cross-attention weights, never random projections; word updates are
+  zero-initialized and word_read never enters state. No feature_update, q-memory,
+  low-rank, learned gate, motion gate, counterfactual training or multi-layer
+  sharing. Official-fresh Wan2.2-TI2V-5B 400 steps, fixed1600, 40+20/full60 and
+  noC16. Exact target GPU UUID enforced.'
+entrypoint: bash /home/liuzhirui/Project/physGen/code/v5.2.2-native/tools/runtime_python.sh
+  /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20i2/run_candidate.py
+  --config /home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r20i2/configs/r20it2.yaml

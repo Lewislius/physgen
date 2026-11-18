@@ -1,0 +1,92 @@
+{
+  "candidate": "R12A-reciprocal-fusion",
+  "utc": "2026-11-04T10:52:25.906047+00:00",
+  "submitted": true,
+  "training_started": true,
+  "status": "running_on_verified_rtx6000",
+  "quality_status": "rejected_on_complete40",
+  "training_data_revision": "original_wisa4000_and_original_reasoning",
+  "maximum_version": "R13C",
+  "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/reciprocal_fusion_r12a",
+  "design_hypothesis": "Preserve native request attention; physical C reads current per-frame video state before writing, using the same routing attention. Remove R11B independent request write.",
+  "pipeline_ready": true,
+  "code_checks_passed": true,
+  "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/reciprocal_fusion_r12a/snapshots/20261104T093834Z",
+  "config": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/reciprocal_fusion_r12a/snapshots/20261104T093834Z/configs/physical_content.yaml",
+  "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/reciprocal_fusion_r12a/submissions/r12a_reciprocal_20261104T093834Z.yaml",
+  "submission_context": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/reciprocal_fusion_r12a/submissions/empty_context",
+  "dispatch": "direct det; no observer/manager; actual RTX6000 guard before model loading",
+  "code_tests": {
+    "real_tiny_wan": 7,
+    "original_input_and_report_contract": 3,
+    "ast_files": 20,
+    "train_check_only": true,
+    "runner_describe": true
+  },
+  "training_stages": {
+    "interface": 128,
+    "joint": 272
+  },
+  "steps": 400,
+  "sample_draws": 1600,
+  "training_schedule_policy": "Matched-R10A choice for this candidate, not a fixed Goal constraint",
+  "additional_parameters_vs_R10A": 0,
+  "control_modes": [
+    "no_c",
+    "video_read_off",
+    "pretext_read",
+    "reasoning_swapped",
+    "empty_reasoning",
+    "global_train_mean"
+  ],
+  "main_cases": 40,
+  "extended_cases": 60,
+  "control_cases": 16,
+  "prepared_contexts": 152,
+  "api_calls": 0,
+  "model_downloads": 0,
+  "evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/r11_r12/reports/r11b_completed_main_and_controls.json",
+  "experiment_id": 67346,
+  "trial_id": 68733,
+  "state": "STATE_CANCELED",
+  "stage": "stopped_by_user_after_failed40",
+  "accepted_gpu": true,
+  "actual_gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+  "submitted_utc": "2026-11-04T09:39:00+00:00",
+  "last_checked_utc": "2026-11-04T14:08:26.003925+00:00",
+  "next_routine_check_utc": null,
+  "last_verified_step": 400,
+  "training_runtime_status": {
+    "step": 400,
+    "phase": "complete",
+    "cursor": 1600,
+    "checkpoint400_exists": true
+  },
+  "verified_peak_gib": 27.49415683746338,
+  "recent_step_median_seconds": 13.967390157748014,
+  "first_joint_step": 129,
+  "first_joint_lora_gradient_norm": 0.00946999154984951,
+  "training_completed_utc": "2026-11-04T11:36:09.940413+00:00",
+  "generation_progress": {
+    "original40": 39,
+    "original40_scored": false,
+    "extra20": 0
+  },
+  "completed_control_results": {
+    "video_read_off": {
+      "count": 16,
+      "sa": 3.1875,
+      "pc": 3.6875,
+      "joint": 5
+    }
+  },
+  "routine_check_interval_seconds": 600,
+  "end_utc": "2026-11-04T14:02:58.970361Z",
+  "main40": {
+    "sa": 3.025,
+    "pc": 3.45,
+    "joint": 9,
+    "count": 40
+  },
+  "user_stop_scope": "R12A extra20/full60 stopped at explicit user request; do not restart. Unstarted remaining controls deferred while progressing R12B."
+}

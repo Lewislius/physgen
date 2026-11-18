@@ -1,0 +1,87 @@
+{
+  "kind": "core",
+  "status": "running_actual_accepted_gpu",
+  "experiment_id": 67926,
+  "parent_experiment": 67920,
+  "modes": [
+    "pretext_read",
+    "denoising_off"
+  ],
+  "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/denoising_matched_fusion_r15d/submissions/r15d_core_controls_20261106T011541Z.yaml",
+  "wrapper": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/denoising_matched_fusion_r15d/submissions/control_helpers/20261106T011541Z/assist_controls.py",
+  "source_snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/denoising_matched_fusion_r15d/snapshots/20261106T011032Z",
+  "plan": {
+    "parent_experiment": 67920,
+    "run_id": "physical_content_67920",
+    "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/denoising_matched_fusion_r15d/runs/physical_content_67920/step0400.pt",
+    "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/denoising_matched_fusion_r15d/snapshots/20261106T011032Z",
+    "primary_output": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/denoising_matched_fusion_r15d/inference_outputs/physical_content_67920/step0400_original_fixed40_controls16_seed42",
+    "modes": [
+      "pretext_read",
+      "denoising_off"
+    ],
+    "cases": [
+      "VP002",
+      "VP004",
+      "VP005",
+      "VP009",
+      "VP010",
+      "VP013",
+      "VP015",
+      "VP016",
+      "VP017",
+      "VP018",
+      "VP024",
+      "VP025",
+      "VP026",
+      "VP027",
+      "VP034",
+      "VP038"
+    ],
+    "videos": 32,
+    "training_updates": 0,
+    "api_calls": 0,
+    "scope": "Same frozen inference source/own400 weights, inputs, seed42 andgamma5 as primary.",
+    "mean_prepare": null
+  },
+  "attempts": [
+    {
+      "experiment_id": 67922,
+      "submitted_utc": "2026-11-06T04:05:27.855309+00:00",
+      "accepted": false,
+      "actual_gpu": "NVIDIA H100",
+      "state": "STATE_ERROR",
+      "trial_ids": [
+        69309
+      ],
+      "reason": "Actual GPU guard rejected H100 before foundation loading"
+    },
+    {
+      "experiment_id": 67925,
+      "submitted_utc": "2026-11-06T04:05:47.178683+00:00",
+      "accepted": false,
+      "actual_gpu": "NVIDIA H100",
+      "state": "STATE_ERROR",
+      "trial_ids": [
+        69312
+      ],
+      "reason": "Actual GPU guard rejected H100 before foundation loading"
+    },
+    {
+      "experiment_id": 67926,
+      "submitted_utc": "2026-11-06T05:07:16.272888+00:00",
+      "accepted": true,
+      "actual_gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "state": "STATE_RUNNING",
+      "trial_ids": [
+        69313
+      ]
+    }
+  ],
+  "retry_policy": "Retry only when usable RTX allocation is possible",
+  "actual_gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+  "trial_ids": [
+    69313
+  ],
+  "verified_utc": "2026-11-06T05:07:32.701551+00:00"
+}

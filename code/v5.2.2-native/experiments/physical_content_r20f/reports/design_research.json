@@ -1,0 +1,184 @@
+{
+  "status": "FT_official_fresh400_running",
+  "updated_utc": "2026-11-16T10:24:53.749883+00:00",
+  "user_constraints": [
+    "whole-video processing; no temporal chunk conditions",
+    "local physical distribution supervision explicitly encouraged",
+    "WISA restored as main reference by latest user correction",
+    "FT and GT independently designed; no mandatory previous-architecture inheritance",
+    "official fresh400 each, matched40+20/full60 and decisive16; blk-96g actualRTX6000 only"
+  ],
+  "reference_provenance": {
+    "ProPhy": {
+      "source": "https://github.com/zijunwa/ProPhy",
+      "commit": "827dcf12662b3b226c6f0fb271516aa23ad16d26",
+      "license": "MIT; preserved in references/PROPHY_LICENSE",
+      "mechanism": "observed-video phenomenon-minus-generic generated-text-query/video-key logits; supervise actual physical localization",
+      "caution": "Attention contrast is weak localization, not physical-law ground truth. Pilot not yet validated.",
+      "injection_config": {
+        "paper": "https://arxiv.org/html/2512.05564v1#A1.SS1",
+        "backbone": "Wan2.1-T2V-1.3B",
+        "native_layers": 30,
+        "physical_layers": [
+          0,
+          7,
+          14,
+          21,
+          28
+        ],
+        "indexing": "zero-based",
+        "code_caveat": "Generic40-layer constructor defaults to8 sites0,5,...35; inference loads physical_layers from checkpoint config. Five-site30-layer choice is explicitly in paper appendix, not a universal default."
+      }
+    },
+    "PhysVid": {
+      "source": "https://arxiv.org/html/2603.26285v1",
+      "takeaway": "separate global semantic pathway and actual grounded physical conditions",
+      "not_adopting": "temporal chunk conditioning, explicitly rejected by user"
+    },
+    "WISA": {
+      "source": "https://arxiv.org/html/2503.08153",
+      "takeaway": "physics-specific structured information and conditional processing, not an ungrounded extra residual",
+      "caution": "Do not reuse near-uniform earlier five-class labels as useful supervision."
+    },
+    "ControlNet": {
+      "source": "https://openaccess.thecvf.com/content/ICCV2023/html/Zhang_Adding_Conditional_Control_to_Text-to-Image_Diffusion_Models_ICCV_2023_paper.html",
+      "takeaway": "pretrained branch initialization plus learned conditioning path",
+      "caution": "Initialization alone does not ensure quality after training; BT damage is direct local counterevidence."
+    },
+    "GLIGEN": {
+      "source": "https://openaccess.thecvf.com/content/CVPR2023/html/Li_GLIGEN_Open-Set_Grounded_Text-to-Image_Generation_CVPR_2023_paper.html",
+      "takeaway": "joint visual/condition interaction while preserving original text pathway",
+      "caution": "Layout/box-conditioning success is not evidence of open-domain physical-process correctness."
+    },
+    "VideoREPA": {
+      "source": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/b1d4973f5d21708abef3cd6f17d842c8-Abstract-Conference.html",
+      "takeaway": "relational guidance avoids directly forcing incompatible feature spaces",
+      "not_adopting": "No V-JEPA or adjacent-frame-difference loss is planned."
+    }
+  },
+  "local_evidence": {
+    "ET40": [
+      3.025,
+      3.425,
+      8
+    ],
+    "BT40": [
+      2.975,
+      3.875,
+      7
+    ],
+    "DT40": [
+      3.025,
+      3.55,
+      9
+    ],
+    "ET_vs_BT_PC_case_counts": {
+      "better": 0,
+      "equal": 24,
+      "worse": 16
+    },
+    "BT_fixed16_normal": [
+      3.0625,
+      4.125,
+      3
+    ],
+    "BT_fixed16_noC": [
+      3.125,
+      3.875,
+      4
+    ],
+    "DT_fixed16_normal": [
+      3.25,
+      3.8125,
+      5
+    ],
+    "DT_fixed16_noC": [
+      3.0,
+      3.8125,
+      4
+    ],
+    "DT_fixed16_wrong": [
+      3.0625,
+      3.625,
+      3
+    ],
+    "ET_controls": "complete",
+    "user_visual_assessment": "ET content and overall quality noticeably improved; preserve this gain while addressing physics and deformation",
+    "ET_fixed16_normal": [
+      3.125,
+      3.625,
+      4
+    ],
+    "ET_fixed16_feature_off": [
+      3.125,
+      3.8125,
+      4
+    ],
+    "ET_fixed16_noC": [
+      3.125,
+      3.875,
+      3
+    ],
+    "BT_frozen_physical_initialization": {
+      "actual_blocks": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "injection_sites": [
+        2,
+        8,
+        14,
+        20,
+        26
+      ],
+      "source": "physical_content_r20b/snapshots/20261115T052651Z/physical_content/architecture.py:27",
+      "causality": "Verified implementation difference; not isolated proof of visual harm"
+    },
+    "historical_response_counterexample": "R19BT and R20CI show conditional-response structure alone does not prove a gain. FT differs in source-preserving full C, physical state/QK execution and actual corresponding-depth inputs; still requires new generated outcomes.",
+    "ET_fixed16_wrong": [
+      3.0,
+      3.75,
+      4
+    ]
+  },
+  "next_work": "Finish FT400/40+20/full60/three paired16 and real video comparison; then design GT.",
+  "working_hypotheses": [
+    {
+      "finding": "BT has a measured PC benefit from physical conditions but damaged color/subjects; DT/ET remove direct learned image residuals and recover some visual content while losing PC.",
+      "implication": "Need stronger physical execution with spatial/temporal grounding; neither suppressing conditions nor reusing a free image-writing branch alone resolves both objectives."
+    },
+    {
+      "finding": "ET learned C becomes substantially less internally similar (last32 positive training microbatches cosine ~0.453 vs DT~0.843), yet main40 PC falls.",
+      "implication": "C diversity is not the bottleneck criterion; inspect condition use and process-local execution."
+    },
+    {
+      "finding": "All ET time positions read the same request-derived C bank; actual-video grounding is not supervised. Video time embeddings and native RoPE alone do not teach which phenomena should be applied where.",
+      "implication": "Evaluate training-only full-video localization supervision of actual physical read/write decisions. Do not attach a disconnected auxiliary classifier or fabricate chunk labels."
+    },
+    {
+      "finding": "Historical direct/request-associated reads have useful whole-design comparisons, but outcomes depend on execution architecture and task.",
+      "implication": "Review applicable T2V R18E/G and BT plus I2V B400+I/R1/R9/R10A mechanisms; no assumption that transplanting one reader reproduces their scores."
+    }
+  ],
+  "candidate_architecture_status": "Full-size gradient/memory check passed;70431/72148 actualRTX formal400 started; quality unproven.",
+  "latest_user_reasoning": "Restore full physical reasoning; do not use sentence-selection v5 as physical analysis. Reuse matching local legacy caches after checking train/infer pairing. No paid API.",
+  "injection_frequency_review": "FT adopts paper AppendixA.1 five physical sites0/7/14/21/28 for a30-layer Wan. ProPhy other backbones/configurations differ.",
+  "latest_user_injection": "Use ProPhy-like distributed frequency and injection approach; do not concentrate physical execution at the tail.",
+  "localization_status": "All tested local teacher maps rejected; preserved for analysis only; FT uses actual-video generation/tail and route fidelity losses.",
+  "latest_user_localization": "No bounding-box localization or related annotation/supervision. All bbox work withdrawn before training.",
+  "pre_training_hidden_issues": [
+    "BT copied0..4 despite later hints; FT now copies0/7/14/21/28 and uses actual native-depth input",
+    "Physical-reader value bias would make zero C nonzero; independent K/V retain pretrained weights without bias",
+    "Per-head unit read normalization amplified weak reads; removed",
+    "Uniform C would import scene-wide mean appearance via video pooling; source-specific centered video observation used",
+    "Empty reasoning receives zero physical response; existing native generation retained",
+    "Final physical FFN bias cancels, so excluded from trainables",
+    "Pretrained caption query must receive actual native cross-attention input rather than post-FFN state; corrected in generator and local teacher, original-block arithmetic verified exactly on actual small Wan",
+    "Data encoder assumed thinking/model metadata for manually reviewed complete reasoning; corrected explicit review provenance instead of inventing model-generated thinking"
+  ],
+  "local_supervision_risk": "Even a correct map must not force exact future locations from nearly pure noise. If pilot is useful, supervise actual physical spatial read, weighted by observed signal, not a detached classifier or all-sigma hard target.",
+  "local_supervision_current": "70422/72138 completed4 whole-video contribution samples; background hotspots render maps unsuitable for physical spatial supervision. FT does not train on these maps. No more teacher sweeps or model downloads."
+}

@@ -1,0 +1,61 @@
+{
+  "status": "BT_submitted_69751_actual_RTX",
+  "updated_utc": "2026-11-13T04:18:56.687017+00:00",
+  "AT_complete_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19/reports/r19at_final_review.json",
+  "BI_live_experiment": 69695,
+  "BI_original40": {
+    "SA": 2.85,
+    "PC": 3.75,
+    "Joint": 8
+  },
+  "BI_wait_for_own60_and_controls_before_CI": true,
+  "historical_semantic_evidence": {
+    "R11B_fixed16_normal": [
+      2.8125,
+      3.875,
+      3
+    ],
+    "R11B_request_memory_off": [
+      3.1875,
+      3.8125,
+      6
+    ],
+    "R11B_request_memory_swapped": [
+      2.875,
+      4.0625,
+      3
+    ],
+    "lesson": "A direct Qwen-request extra read/write already hurt SA/Joint; do not merely rename it semantic expert. R15H C-conditioned native text query response also had no clear net benefit."
+  },
+  "BT_candidate_direction": "Use a complete official-initialized physical video block with trainable video interaction, independently trainable request-semantic attention inside the physical branch, and full FFN; retain original native text Q/K/V/O unchanged. Preserve direct+request physical C read. Consider the whole path together, rather than duplicating raw Qwen request residuals. No MoE router. This remains a design proposal requiring implementation/review before submission.",
+  "proposed_training": "official fresh400, task-matched G/AT1600 inputs/noise/drop, joint400; existing FM+tail+route objective, no additional objective merely for expert naming",
+  "proposed_controls": [
+    "no_c",
+    "direct_write_only",
+    "frozen_semantic",
+    "reasoning_swapped",
+    "empty_reasoning",
+    "global_train_mean"
+  ],
+  "research_references": [
+    "https://arxiv.org/html/2512.05564v2",
+    "https://arxiv.org/abs/2302.05543"
+  ],
+  "remaining_questions": [
+    "Decide whether a C-dependent full-block semantic response sufficiently addresses the identified request-execution failure, or a more explicit semantic/physical cooperative architecture is warranted.",
+    "Evidence must support the expected change; capacity and pretrained copying alone are not proof of quality.",
+    "Finalize BT only after this design assessment; CI awaits own BI controls."
+  ],
+  "final_design": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19bt/DESIGN.zh.txt",
+  "final_loss": "0.8FM+0.2multiscale-tail;native-input anchors replace route regression",
+  "final_controls": [
+    "no_c",
+    "frozen_semantic",
+    "estimated_anchor",
+    "spatial_read_shift",
+    "reasoning_swapped",
+    "empty_reasoning",
+    "global_train_mean"
+  ],
+  "final_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19bt/snapshots/20261113T044754Z"
+}

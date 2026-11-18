@@ -1,0 +1,280 @@
+R20BT-new：R20BT 的深度匹配、逐 site 独立物理分支（T2V）
+
+状态：代码与配置已完成；小型真实 Wan CPU 检查通过；尚未提交正式 400 步训练。
+
+一、范围与目标
+
+R20BT-new 只修正 R20BT 中已经确认的物理分支注入/共享问题，不是重新设计 C 或物理执行算子。具体：
+
+1. 每个物理块复制它自己注入深度的官方 Wan block，而不是统一复制 0–4 层。
+2. 物理分支从“一条共享 5 层串行流”改为“5 个逐 site 独立块”；每个块读取该 site 真实的 native block 输入，块之间不交换状态。
+3. 删除共享 NoiseConditioning；物理块 self-attn/FFN 和 C reader 的时间调制都来自
+   `block.modulation + native_mod`（每块独立、预训练初始化）。
+4. C 保持共享（照 R20FT）：每个样本只生成一份 route/execute，五个物理块共用。
+5. text context、grid、freqs、lengths 保持共享。
+6. times 继续使用：每个物理块的 DirectPhysicalReader 保留自己的
+   VideoTimeEmbedding，把 presentation time 加到 C 读 query 上。
+7. 保留 R20BT 的其他语义：物理 caption cross-attn/norm3 冻结、物理 output
+   零初始化、单次 conditioned forward、site 列表 [2,8,14,20,26]。
+8. 本候选只支持 T2V；没有 I2V 代码路径。
+
+二、与 R20BT 的逐项差异
+
+| 项目 | R20BT | R20BT-new |
+|---|---|---|
+| 物理块初始化 | 复制 wan.blocks[0..4] | 复制 wan.blocks[2/8/14/20/26] |
+| 物理分支结构 | 一条 5 层共享串行流 | 5 个逐 site 独立块；无状态交换 |
+| 物理块输入 | 上一个物理块输出 | 该 site 真实 native block 输入 |
+| reader 初始化 | 从浅层 block 的 cross_attn | 从同 site block 的 cross_attn |
+| NoiseConditioning | 一个共享投影 + 每块零初始化 layer_modulation | 删除；用 native_mod + block.modulation |
+| C | 共享 | 共享（不变，照 FT） |
+| context | 共享 | 共享（不变） |
+| grid / freqs / lengths | 共享 | 共享（不变） |
+| times | 每块 VideoTimeEmbedding | 每块 VideoTimeEmbedding（保留） |
+| 物理 caption attention | 冻结 | 冻结（保留 BT） |
+| physical output | 零初始化 | 零初始化（保留 BT） |
+| 物理执行 | 单次 conditioned forward | 单次 conditioned forward（保留 BT） |
+| site 列表 | 2/8/14/20/26 | 2/8/14/20/26（不变） |
+| 任务 | T2V / I2V | 仅 T2V |
+
+三、逐 site 独立的物理执行
+
+R20BT-new 在 native block 循环内执行物理块：
+
+1. `block_input = x`（进入该 site 的 native block 之前的真实状态）。
+2. 运行 native block，得到新的 `x`。
+3. 如果当前 index 是注入 site：
+   - 取对应 site 的独立 `PhysicalVideoBlock`；
+   - 以 `block_input`、`native_mod`、`lengths`、`grid`、`freqs`、共享 context、
+     共享 route/execute、groups、times、spatial、known 和 mode 为输入；
+   - 得到该块唯一的 `hint`；
+   - `x = x.float() + hint.float()`。
+4. 物理块返回的 `hint` 只属于当前 site；块内部 state 不外传，也不作为其他
+   site 的输入。
+
+物理块在 `block_input` 上重新执行自己的 self-attn、冻结 text cross-attn、
+C conditioning 和 FFN；它不复用主干的 `read_state`，也不把主干的中间状态
+注入物理块。这样每个 site 的物理块是独立、可并行解释的执行器，而不是
+“从主干某处读状态再回写”的耦合模块。
+
+因此：
+
+- 没有共享 `physical_state`；
+- 没有“浅层 5 层流写深层”的第二次深度错配；
+- 每个物理块的梯度只经过自己的 hint 和后续 native block；
+- 每个 site 的物理块输入严格等于该 site 的 native block 输入。
+
+启动时 `architecture.py::_validate_depth_mapping` 会逐 site 检查：
+
+- `physical.native` 的 self_attn q/k/v/o、ffn.0/ffn.2 和 modulation 与
+  `wan.blocks[site]` 完全相等；
+- `physical.conditioning.direct` 的 query_base/key/value 与同 site
+  `cross_attn` 的 q/k/v 完全相等。
+
+任何一项不等立即报错，而不是留给训练或人工检查。
+
+四、NoiseConditioning 删除后的时间处理（详细分析）
+
+先澄清一个容易混淆的点：在 R20BT 里，NoiseConditioning 和
+`native_mod + block.modulation` 不是同一处的两种替代，而是三条不同的时间路径：
+
+1. 共享 NoiseConditioning：
+   - 输入是时间 embedding `e`；
+   - 输出 shift/scale/gate 三组全宽向量；
+   - 只作用于 C reader 的 query 归一化和输出 gate；
+   - 一个共享投影（约 28.3M）+ 每块 9,216 零初始化 layer_modulation；
+   - 不作用于物理块 self-attn/FFN。
+2. 每块 DirectPhysicalReader.time(times)：
+   - 每个物理块自己的 VideoTimeEmbedding；
+   - 把 presentation time 加到 C 读 query；
+   - 零初始化，初始无效果。
+3. `block.modulation + native_mod`：
+   - `native_mod` 是 Wan 原生 time_projection(e)；
+   - `block.modulation` 是每个物理块复制来的预训练 per-depth modulation；
+   - 作用于物理块 self-attn/FFN 的 6 组 shift/scale/gate。
+
+R20BT-new 的选择：
+
+- 删除路径 1（共享 NoiseConditioning 和 layer_modulation）；
+- 路径 3 作为**唯一**扩散时间调制：同一个
+  `parts = block.modulation + native_mod` 同时用于
+  - 物理块 self-attn/FFN（6 组向量）；
+  - C reader 的 query shift/scale（parts[0]/parts[1]）和输出 gate（parts[2]）；
+- 路径 2 继续保留（times）。
+
+为什么这样设计：
+
+- 删除共享投影后，五个物理块的扩散时间调制不再由一个共享网络控制；
+  每块使用自己复制来的、对应深度的预训练 modulation。
+- 不新增每块 NoiseConditioning 副本：那会重新引入 5×28.3M 的新增时间
+  adapter，且仍然是全新初始化的调制；用户要求删除共享 NoiseConditioning，
+  本设计不把它改成“每块一份”的隐藏共享。
+- reader 和 self-attn 共用同一个 per-block modulation，是明确的取舍：
+  - 好处：没有额外的 reader 专用时间投影；时间调制与物理块自身的
+    per-depth 时间行为一致；参数少；初始行为来自官方 block。
+  - 代价：如果 C reader 的最优时间调制与 self-attn 不同，两者被绑定，
+    没有独立的 reader 时间调制；唯一额外的 reader 时间信号是 times。
+  - 这是一条需要在结果中观察的设计约束，不是被隐藏的实现细节。
+- 初始等价性：物理 output 零初始化，所以无论 reader 读到什么，初始
+  hint 都是 0；删除 NoiseConditioning 不会破坏“初始输出等于 native”。
+- `native_mod` 仍然全局共享，但它是 Wan 原生扩散时间投影，不是跨层
+  学习的共享 adapter；per-depth 差异由每块自己的 `block.modulation` 提供。
+
+五、times 继续使用的分析与风险
+
+实现位置：
+
+- `PhysicalVideoBlock.forward` 把 `times` 传给 `PhysicalConditionRead`；
+- `DirectPhysicalReader.query` 中：
+  `frame_time = self.time(times)`，
+  `q_input = query_base(hidden) + frame_time.repeat_interleave(spatial, 1)`，
+  然后 `norm_q`；
+- 每个物理块有自己的 `VideoTimeEmbedding`，零初始化、可训练；
+- `times` 只进入 C 读 query，不进入 value、不进入物理 self-attn/FFN，
+  也不进入 native text context。
+
+潜在问题与当前处理：
+
+1. presentation time 与 diffusion time 混淆。
+   - `times` 是视频帧时间；`native_mod + block.modulation` 是 denoising sigma
+     的时间调制。两者语义不同。
+   - 当前实现把两者放在不同位置：`times` 只加在 C 读 query；
+     diffusion modulation 控制 self-attn/FFN 和 reader 的 shift/scale/gate。
+   - 没有把 `times` 当作 sigma，也没有把 `native_mod` 当作帧时间。
+
+2. 每块独立的时间投影可能过拟合帧索引。
+   - 5 个块各自有 `VideoTimeEmbedding`（约 5×786k 参数）；
+   - 零初始化使初始无效果；
+   - 只在 C 读 query 上加性出现，经过 `norm_q`，不直接写 value；
+   - 训练/评测都是 81 像素帧（VAE 后 21 个 latent 时间位置）、固定采样协议，
+     输入 times 来自同一缓存；
+   - 需要在训练后检查每块 time 参数是否产生异常大的帧偏置（当前没有
+     额外正则；如果出现，可在后续版本单独处理，不在本版本静默加入）。
+
+3. times 的数据合法性。
+   - `velocity` 现在检查：`times.numel() == frames`、全部 finite、非递减；
+   - 不合法直接报错，避免把错位/乱序的帧时间喂给 reader；
+   - 如果训练和评测的 fps/帧数不同，时间分布可能 OOD；当前两者都是
+     81 像素帧（21 个 latent 时间位置）的同一协议。
+
+4. 与 `block.modulation` 的叠加。
+   - reader query 同时受到 shift/scale（来自 block.modulation+native_mod）
+     和 frame_time（来自 times）影响；
+   - 两者作用不同：前者是扩散时间条件，后者是帧位置条件；
+   - 如果发现 reader 被 times 主导，可后续做 time-off 对照；本版本保留
+     times，因为用户明确要求物理分支继续使用它。
+
+5. times 是共享输入、每块独立投影。
+   - `times` 张量本身在 5 个块之间共享；
+   - 每个块的 `time.proj` 是独立的，梯度独立；
+   - 这符合“逐 site 独立块”的要求，不是跨层共享时间 adapter。
+
+六、C、context、grid、freqs、lengths
+
+- C：`NativeAnchoredContent` 每样本只生成一份 route/execute，五个物理块
+  共用；每个物理块用自己的 reader 投影和 query 去读它。没有 per-site C。
+- context：每样本计算一次 `native_text_context`，五个物理块共享；每个
+  物理块有自己的、冻结的 cross_attn 权重。
+- grid/freqs/lengths：所有 site 共享；这是视频几何和 native 3D RoPE，
+  必须一致。
+- 没有共享物理状态、没有共享 reader、没有共享 output。
+
+七、保留的 R20BT 语义与已知限制
+
+以下内容本版本刻意不改，避免把未请求的改动混入：
+
+1. 单次 conditioned forward：物理块在 state 中加入 C delta，再经过 FFN
+   和 output；不是 R20FT 的“有 C/无 C 两次响应之差”。
+   - 因此仍可能存在条件无关的物理写入；
+   - `physical_condition_off` 只跳过 C delta，物理块其余路径仍运行；
+   - `physical_mode='off'` 才是整条物理分支关闭的干净基线。
+   - 如果后续要消除条件无关写入，应单独做一个 FT 风格 difference 版本，
+     不应在本版本中静默替换。
+2. 物理 caption cross-attn 和 norm3 冻结（R20BT 原有）。
+3. 物理 output 零初始化（R20BT 原有）。
+4. reader 仍使用 DirectPhysicalReader 的 group prior、零 reference key
+   和 times 路径；没有 FT 的 video-to-C 反读。
+5. site 列表保持 R20BT 的 [2,8,14,20,26]。
+6. 只支持 T2V。
+
+八、训练与评测
+
+训练：
+
+- 官方基础权重初始化，不加载项目 checkpoint；
+- 400 步：128 步 physical generation + 272 步 joint video LoRA；
+- 有效 batch 4，固定 1600 条顺序、原有噪声/丢弃协议；
+- 损失：0.8 FM + 0.2 多尺度高误差尾项 + 原有 route source fidelity；
+- 主 Wan video LoRA rank32/alpha32，原生 text Q/K/V/O 冻结；
+- 物理块完整可训练（caption cross-attn/norm3 冻结）；
+- 只提交 blk-96g 单卡实际 RTX6000。
+
+评测：
+
+- 固定 40 + 补充 20 = 完整 60；
+- 固定 16 例配对控制：no_c、physical_condition_off、source_queries_off、
+  reasoning_swapped、empty_reasoning、global_train_mean；
+- 实际视频抽帧复核；
+- 不做自动跨基准评测。
+
+九、实现与验证
+
+配置守卫（`physical_content/common.py`）：
+
+- `plan == BTNEW`、`task == t2v`；
+- `injection_layers == [2,8,14,20,26]`；
+- `physical_initialization_blocks == injection_layers`；
+- `physical_stream == per_site_independent`；
+- `noise_conditioning == none`；
+- `physical_time_modulation == native_mod_plus_block_modulation`；
+- `reader_time == per_block_times_embedding`；
+- `c_sharing == shared`；
+- `context_sharing == shared`；
+- `grid_sharing == shared`；
+- `physical_text_qkvo_frozen is True`；
+- `physical_output_init == zero`；
+- `peak_lrs` 的角色集合与 `ROUTE_GROUPS` 完全一致；
+- 配置字段与实现不一致时直接拒绝加载。
+
+启动检查（`architecture.py::_validate_depth_mapping`）：
+
+- 逐 site 检查 physical block 的 self_attn/ffn/modulation 与同 site 官方
+  block 完全相等；
+- 逐 site 检查 reader 的 query_base/key/value 与同 site cross_attn 的
+  q/k/v 完全相等。
+
+小型真实 Wan CPU 测试（`tests/test_training_path.py`）：
+
+- depth copies / reader copies；
+- 物理块参数无别名、无共享；
+- 每个物理块输入等于该 site 的 native block 输入；
+- C/context/grid/freqs/lengths 跨 site 共享；
+- times 进入每块 reader 并被调用；
+- 初始 normal 输出严格等于 native；physical_condition_off 初始也等于 native；
+- 128/272 阶段、LoRA 梯度、物理 reader/time/modulation 梯度；
+- 原生 text 冻结、base bank 不变；
+- checkpoint 保存/恢复输出严格一致；
+- 训练后 normal 与 physical_condition_off、physical off 均不同（说明物理
+  写入确实进入生成）。
+
+验证记录：`reports/training_path_tests.json`。本次检查全部通过。
+
+全尺寸 GPU 预检：`check_full_model.py` 会在正式 400 步之前运行 4 次一次性
+更新，检查实际生成梯度、显存、物理 reader/time/modulation 梯度覆盖；
+检查权重丢弃后再从官方基础权重启动正式训练。
+
+十、文件地图
+
+- `configs/r20bt_new.yaml`：唯一配置。
+- `physical_content/architecture.py`：逐 site 独立执行、共享 C/context、
+  启动深度校验。
+- `physical_content/video_branch.py`：单 site 物理块、reader、native
+  modulation、times。
+- `physical_content/native_residual.py`：共享 C 生成。
+- `physical_content/model.py`：参数角色与优化器分组。
+- `physical_content/common.py`：配置守卫、数据审计、GPU 策略。
+- `physical_content/interventions.py`：六个配对控制。
+- `check_full_model.py`：全尺寸一次性梯度/显存检查。
+- `tests/test_training_path.py`：小型真实 Wan 检查。
+- `run_candidate.py`：400 步 + 40/20/60 + 六个 16 例控制。
+- `submissions/r20bt_new_blk96g.yaml`：Determined 提交模板。

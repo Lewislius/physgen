@@ -1,0 +1,53 @@
+{
+  "created_utc": "2026-11-12T16:13:57.409606+00:00",
+  "goal": "Effective physics extraction/read/write with correct conditions outperforming unrelated/mean/off while preserving video quality.",
+  "models": [
+    "R18G",
+    "R18H"
+  ],
+  "cases": [
+    "VP002",
+    "VP004",
+    "VP005",
+    "VP009",
+    "VP010",
+    "VP013",
+    "VP015",
+    "VP016",
+    "VP017",
+    "VP018",
+    "VP024",
+    "VP025",
+    "VP026",
+    "VP027",
+    "VP034",
+    "VP038"
+  ],
+  "case_count": 16,
+  "status": "submission_controllers_started",
+  "normal": "Reuse each own400 same-protocol normal video on the exact16 IDs.",
+  "controls": {
+    "reasoning_swapped": "Replace physical analysis word evidence from a fixed cyclic donor, retaining own Qwen request words, native prompt, I2V first image, persisted noise and null arm. I2V donor word vectors retain donor visual context.",
+    "empty_reasoning": "Replace positive physical analysis word evidence with own negative evidence while preserving own Qwen request words and native prompt. Negative I2V word encoding retains its own initial image context. Null arm unchanged.",
+    "global_train_mean": "Fixed token-position mean of C from this checkpoint on all complete training input evidence records only. Fixed modal training relation grouping. Native prompt and null arm unchanged.",
+    "no_c": "Disable every physical writer and conditioned FFN contribution in both arms, preserving learned video LoRA and native operators.",
+    "conditioned_ffn_off": "Disable only the physical-conditioned FFN residual in both arms, preserving the joint C read and its direct write."
+  },
+  "mechanism_scope": "Same-checkpoint inference interventions. They establish deployed contributions; they do not substitute for retrained architectural ablations.",
+  "sampler": {
+    "steps": 50,
+    "shift": 5,
+    "cfg": 5,
+    "seed": 42
+  },
+  "metrics": [
+    "SA",
+    "PC",
+    "Joint",
+    "paired case wins/losses",
+    "physical process completion",
+    "catastrophic artifacts and subject/object integrity"
+  ],
+  "resource_policy": "blk-96g actual RTX6000 only; reject H100 before model load and resubmit same frozen job after confirmed terminal rejection; no duplicate active job",
+  "next": "Collect module and condition paired16 scores, inspect videos, determine separate R19AT/R19AI designs."
+}

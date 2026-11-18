@@ -1,0 +1,35 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19di/runs/r19di_parallel_400/step0400.pt",
+  "step": 400,
+  "case": "VP027",
+  "seed": 42,
+  "guidance": {
+    "kind": "two_arm_joint_condition_cfg",
+    "scale": 5.0,
+    "formula": "v = v_neg + 5 * (v_pos - v_neg)",
+    "positive": "own first image, original request, positive native T5 and positive Qwen C",
+    "negative": "same first image, null native T5 and null Qwen C",
+    "separate_physical_guidance": false
+  },
+  "suite": "videophy40",
+  "task": "i2v",
+  "caption": "Hands shape a lump of clay-like bread dough into a smooth, round boule on a wooden table.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP027/first.png",
+  "sampler": {
+    "num_frames": 81,
+    "width": 832,
+    "height": 480,
+    "steps": 50,
+    "sampler": "shifted_euler",
+    "shift": 5.0,
+    "cfg": 5.0,
+    "seed": 42,
+    "best_of_n": 1,
+    "clamp_first": true
+  },
+  "positive_analysis": "As hands press and rotate the dough against the table, its surface smooths toward a round boule.\nFingers folding the dough edge inward cause the lump to gather into a tighter spherical shape.\nContact between palms and dough transfers gentle pressure, deforming the mass while it rests on the wood.\nScattered flour on the table persists as the dough surface becomes taut and even.",
+  "physical_analysis": "As hands press and rotate the dough against the table, its surface smooths toward a round boule.\nFingers folding the dough edge inward cause the lump to gather into a tighter spherical shape.\nContact between palms and dough transfers gentle pressure, deforming the mass while it rests on the wood.\nScattered flour on the table persists as the dough surface becomes taut and even.",
+  "negative_analysis": "Hands pressing on the dough -> dough deforms and yields under applied pressure.\nFlour dust on the wooden surface -> flour remains stationary unless disturbed by moving hands.\nContinuous kneading motion -> dough shifts position and changes shape over time.\nSmooth surface of the dough -> reflects soft lighting as hands move across it.",
+  "scope": "own image/request",
+  "seconds": 256.84383180737495
+}

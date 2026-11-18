@@ -1,0 +1,33 @@
+{
+  "updated_utc": "2026-11-12T16:36:26.442976+00:00",
+  "status": "R19A designs implemented from historical paired and visual evidence; ongoing R18 module comparisons are supplementary, not a wait for full condition matrices",
+  "findings": [
+    {
+      "source": "R18 G-E own400 matched training; reports/goal_evidence_audit.json",
+      "finding": "T2V40 PC +0.325, SA unchanged, Joint +1; reader and conditioned FFN both changed, so current evidence supports the combination but does not isolate the source of improvement."
+    },
+    {
+      "source": "R18 H-F own400 matched training; reports/goal_evidence_audit.json",
+      "finding": "I2V40 PC +0.025, SA unchanged, Joint +1. Do not assume the T2V physical benefit transfers unchanged to I2V."
+    },
+    {
+      "source": "../physical_content_v7/r15i/reports/joint_bottleneck40.json",
+      "finding": "B400, B400+I and native R15I have exactly the same11 SA-pass cases and10 Joint-pass cases on fixed40. B+I improves PC coverage but leaves the semantic-success bottleneck unchanged; copying the reader alone is not evidence for meeting SA/Joint targets."
+    },
+    {
+      "source": "../physical_content_v7/r15i/reports/module_conclusions.json",
+      "finding": "Within trained R15I, learned physical Q beats replacing it with native Q by +0.0625 SA/+0.0625 PC/+2 Joint on16. Keep independent query adaptation under consideration; R15I overall failure does not show physical Q is harmful."
+    },
+    {
+      "source": "../physical_content_v7/r15i/reports/module_conclusions.json",
+      "finding": "Empty or wrong conditions can earn high PC despite severe visual failures. Correct-condition efficacy must be established jointly with SA/Joint and actual video review, not chosen by PC alone."
+    }
+  ],
+  "design_requirements": [
+    "Separate task-specific input and fusion reasoning for T2V and I2V.",
+    "Prefer official-fresh400; train/infer consistency preferred, empirical inference improvements allowed.",
+    "Retain effective physics capacity and address semantic/process completion explicitly; do not select based only on zero-init tests or FM scalar values.",
+    "Recheck each mechanism decision against actual paired scores and visual evidence before formal submission."
+  ],
+  "r19_design": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_r19/DESIGN.zh.txt"
+}

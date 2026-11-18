@@ -1,0 +1,87 @@
+{
+  "status": "STATE_CANCELED",
+  "candidate": "R15D",
+  "prepared_utc": "2026-11-06T01:10:32.061258+00:00",
+  "snapshot": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/denoising_matched_fusion_r15d/snapshots/20261106T011032Z",
+  "config": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/denoising_matched_fusion_r15d/snapshots/20261106T011032Z/configs/physical_content.yaml",
+  "yaml": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/denoising_matched_fusion_r15d/submissions/r15d_20261106T011032Z.yaml",
+  "empty_context": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/denoising_matched_fusion_r15d/submissions/empty_context",
+  "resource_pool": "blk-96g",
+  "slots_per_trial": 1,
+  "gpu_policy": "Actual RTX PRO6000 or RTX6000 Blackwell only; reject H100 before foundation loading",
+  "steps": 400,
+  "stages": {
+    "interface": 128,
+    "joint": 272
+  },
+  "seed": 42,
+  "gamma": 5,
+  "tests": {
+    "utc": "2026-11-06T01:10:32.061258+00:00",
+    "candidate": "R15D",
+    "actual_small_wan_tests": {
+      "count": 9,
+      "passed": true,
+      "seconds": 3.57
+    },
+    "input_and_report_tests": {
+      "count": 3,
+      "passed": true,
+      "seconds": 4.781
+    },
+    "checked_original_contexts": 152,
+    "python_files_parsed": 25,
+    "expected_parameters": 685739008,
+    "additional_parameters_vs_R10A": 15728640,
+    "full_size_gpu_check": "Required disposable preflight in job; reload official foundations before formal400",
+    "quality_proof": false
+  },
+  "control_modes": [
+    "no_c",
+    "denoising_off",
+    "pretext_read",
+    "reasoning_swapped",
+    "empty_reasoning",
+    "global_train_mean"
+  ],
+  "main_cases": 40,
+  "extra20": "Deferred for main40 and controls review",
+  "maximum_version": "R15E",
+  "automatic_next_candidate": false,
+  "data_revision": "original_wisa4000_and_original_reasoning",
+  "new_api_calls": 0,
+  "new_model_downloads": 0,
+  "expected_parameters": 685739008,
+  "additional_parameters_relative_to_R10A": 15728640,
+  "review": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/denoising_matched_fusion_r15d/review/r15c_mechanism_completed.json",
+  "quality_goal_achieved": false,
+  "attempts": [
+    {
+      "experiment_id": 67920,
+      "submitted_utc": "2026-11-06T01:10:32.832555+00:00",
+      "accepted": true,
+      "actual_gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "state": "STATE_RUNNING",
+      "trial_ids": [
+        69307
+      ]
+    }
+  ],
+  "experiment_id": 67920,
+  "actual_gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+  "trial_ids": [
+    69307
+  ],
+  "verified_utc": "2026-11-06T06:59:41.086200+00:00",
+  "verified_step": 400,
+  "next_check_utc": "2026-11-06T07:14:41.086200+00:00",
+  "phase": null,
+  "training_complete": true,
+  "additional_mechanism_control": {
+    "mode": "denoising_time_mean",
+    "count": 16,
+    "status": "tested_prepared_unsubmitted_wait_spare_RTX",
+    "plan": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/denoising_matched_fusion_r15d/time_mean_controls_helper_prepared.json",
+    "scope": "Posthoc own400 map audit follow-up; no new training, data or changes to normal inference. Do not infer adaptive-time effectiveness from a nonzero map or denoising_off alone."
+  }
+}

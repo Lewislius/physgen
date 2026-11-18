@@ -1,0 +1,178 @@
+{
+  "experiment": 70431,
+  "trial": 72148,
+  "state": "STATE_COMPLETED",
+  "stage": "declared_videophy_evaluation_completed",
+  "verified_update": 400,
+  "actual_gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+  "full_model_check": {
+    "passed": true,
+    "seconds": 44.82422568835318,
+    "trainable_parameters": 1433209856,
+    "peak_gib": 37.889710426330566,
+    "checkpoint_saved": false
+  },
+  "last_check_utc": "2026-11-16T15:13:18.773418+00:00",
+  "next_check_utc": null,
+  "routine_interval_minutes": 30,
+  "quality_proven": false,
+  "new_qwen_downloads": false,
+  "phase": "joint",
+  "recent_mean_step_seconds": 15.078466487117112,
+  "formal_peak_gib": 42.756450176239014,
+  "observations": [
+    {
+      "time": "2026-11-16T10:26:53.414823+00:00",
+      "state": "STATE_RUNNING",
+      "update": 120,
+      "phase": "physical_generation"
+    },
+    {
+      "time": "2026-11-16T10:57:28.056942+00:00",
+      "state": "STATE_RUNNING",
+      "update": 234,
+      "stage": "train400"
+    },
+    {
+      "time": "2026-11-16T11:28:25.216029+00:00",
+      "state": "STATE_RUNNING",
+      "update": 347,
+      "stage": "train400"
+    },
+    {
+      "time": "2026-11-16T11:58:44.265264+00:00",
+      "state": "STATE_RUNNING",
+      "update": 400,
+      "stage": "original40_generation"
+    },
+    {
+      "time": "2026-11-16T12:28:58.473865+00:00",
+      "state": "STATE_RUNNING",
+      "update": 400,
+      "stage": "original40_generation"
+    },
+    {
+      "time": "2026-11-16T12:59:18.994347+00:00",
+      "state": "STATE_RUNNING",
+      "update": 400,
+      "stage": "original40_generation"
+    },
+    {
+      "time": "2026-11-16T13:05:54.101744+00:00",
+      "state": "STATE_RUNNING",
+      "update": 400,
+      "stage": "extra20_generation"
+    },
+    {
+      "time": "2026-11-16T13:38:28.967489+00:00",
+      "state": "STATE_RUNNING",
+      "update": 400,
+      "stage": "extra20_generation"
+    },
+    {
+      "time": "2026-11-16T14:08:55.862248+00:00",
+      "state": "STATE_RUNNING",
+      "update": 400,
+      "stage": "reasoning_swapped_generation"
+    },
+    {
+      "time": "2026-11-16T14:12:53.933890+00:00",
+      "state": "STATE_RUNNING",
+      "update": 400,
+      "stage": "reasoning_swapped_generation"
+    },
+    {
+      "time": "2026-11-16T14:44:02.485647+00:00",
+      "state": "STATE_RUNNING",
+      "update": 400,
+      "stage": "video_binding_off_generation"
+    },
+    {
+      "time": "2026-11-16T15:13:18.773418+00:00",
+      "state": "STATE_COMPLETED",
+      "update": 400,
+      "stage": "declared_videophy_evaluation_completed"
+    }
+  ],
+  "evaluation": {
+    "main40": {
+      "generated": 40,
+      "scores": {
+        "count": 40,
+        "sa_mean": 3.225,
+        "pc_mean": 3.625,
+        "sa_pass_rate": 0.325,
+        "pc_pass_rate": 0.525,
+        "joint_pass_rate": 0.225,
+        "scope": "T2V: request only; fixed protocol prompts/noise, no initial image",
+        "training_verifier_is_independent": true
+      }
+    },
+    "extra20": {
+      "generated": 20,
+      "scores": {
+        "count": 20,
+        "sa_mean": 2.8,
+        "pc_mean": 3.85,
+        "sa_pass_rate": 0.2,
+        "pc_pass_rate": 0.6,
+        "joint_pass_rate": 0.2,
+        "scope": "T2V: request only; fixed protocol prompts/noise, no initial image",
+        "training_verifier_is_independent": true
+      }
+    },
+    "full60": {
+      "generated": 60,
+      "scores": {
+        "count": 60,
+        "sa_mean": 3.0833333333333335,
+        "pc_mean": 3.7,
+        "sa_pass_rate": 0.2833333333333333,
+        "pc_pass_rate": 0.55,
+        "joint_pass_rate": 0.21666666666666667,
+        "pass_threshold": 4,
+        "scope": "T2V: request only; fixed protocol prompts/noise, no initial image",
+        "training_verifier_is_independent": true
+      }
+    },
+    "no_c16": {
+      "generated": 16,
+      "scores": {
+        "count": 16,
+        "sa_mean": 3.1875,
+        "pc_mean": 3.75,
+        "sa_pass_rate": 0.25,
+        "pc_pass_rate": 0.5625,
+        "joint_pass_rate": 0.25,
+        "scope": "T2V: request only; fixed protocol prompts/noise, no initial image",
+        "training_verifier_is_independent": true
+      }
+    },
+    "wrong16": {
+      "generated": 16,
+      "scores": {
+        "count": 16,
+        "sa_mean": 3.1875,
+        "pc_mean": 3.9375,
+        "sa_pass_rate": 0.3125,
+        "pc_pass_rate": 0.75,
+        "joint_pass_rate": 0.3125,
+        "scope": "T2V: request only; fixed protocol prompts/noise, no initial image",
+        "training_verifier_is_independent": true
+      }
+    },
+    "binding_off16": {
+      "generated": 16,
+      "scores": {
+        "count": 16,
+        "sa_mean": 3.25,
+        "pc_mean": 4.0,
+        "sa_pass_rate": 0.3125,
+        "pc_pass_rate": 0.8125,
+        "joint_pass_rate": 0.3125,
+        "scope": "T2V: request only; fixed protocol prompts/noise, no initial image",
+        "training_verifier_is_independent": true
+      }
+    }
+  }
+}

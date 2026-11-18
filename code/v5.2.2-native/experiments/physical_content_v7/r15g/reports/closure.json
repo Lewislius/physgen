@@ -1,0 +1,360 @@
+{
+  "utc": "2026-11-08T05:23:43.860356+00:00",
+  "candidate": "R15G",
+  "work_status": "all_declared_evaluations_completed",
+  "quality_status": "failed_not_accepted",
+  "goal_achieved": false,
+  "last_authorized_model": "R15G",
+  "further_training_versions_authorized": 0,
+  "pause_requested_after_report": true,
+  "main": {
+    "original40": {
+      "count": 40,
+      "sa_mean": 3.05,
+      "pc_mean": 3.325,
+      "sa_pass_rate": 0.25,
+      "pc_pass_rate": 0.325,
+      "joint_pass_count": 9,
+      "joint_pass_rate": 0.225
+    },
+    "full60": {
+      "count": 60,
+      "sa_mean": 3,
+      "pc_mean": 3.3666666666666667,
+      "sa_pass_rate": 0.21666666666666667,
+      "pc_pass_rate": 0.38333333333333336,
+      "joint_pass_count": 12,
+      "joint_pass_rate": 0.2
+    }
+  },
+  "history40": {
+    "Wan+LoRA": {
+      "SA": 3.075,
+      "PC": 3.45,
+      "Joint": 10,
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/inference_outputs/native_lora_66781/step0400_seed42_r1/videophy40/scores.json"
+    },
+    "R1": {
+      "SA": 2.95,
+      "PC": 3.625,
+      "Joint": 10,
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/inference_outputs/physical_content_66778/step0400_seed42_r1/videophy40/scores.json"
+    },
+    "R10A": {
+      "SA": 2.825,
+      "PC": 3.75,
+      "Joint": 7,
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/execution_value_r10/inference_outputs/physical_content_67003/step0400_full40_controls16_physical5_seed42/videophy40/scores.json"
+    },
+    "R15B": {
+      "SA": 2.925,
+      "PC": 3.7,
+      "Joint": 10,
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/request_bound_fusion_r15b/inference_outputs/physical_content_67829/step0400_original_fixed40_controls16_seed42/videophy40/scores.json"
+    },
+    "R15E": {
+      "SA": 2.75,
+      "PC": 3.75,
+      "Joint": 5,
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/semantic_addressing_r15e/inference_outputs/physical_content_67955/step0400_original_fixed40_controls16_seed42/videophy40/scores.json"
+    },
+    "R15F": {
+      "SA": 2.925,
+      "PC": 3.6,
+      "Joint": 9,
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/grounded_semantic_fusion_r15f/inference_outputs/physical_content_68038/step0400_original_fixed40_controls16_seed42/videophy40/scores.json"
+    },
+    "R15G": {
+      "SA": 3.05,
+      "PC": 3.325,
+      "Joint": 9,
+      "source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/source_residual_fusion_r15g/inference_outputs/physical_content_68103/step0400_original_fixed40_controls16_seed42/videophy40/scores.json"
+    }
+  },
+  "normal16": {
+    "count": 16,
+    "sa_mean": 3.125,
+    "pc_mean": 3.5625,
+    "sa_pass_rate": 0.3125,
+    "pc_pass_rate": 0.375,
+    "joint_pass_count": 5,
+    "joint_pass_rate": 0.3125
+  },
+  "controls16": {
+    "empty_reasoning": {
+      "summary": {
+        "count": 16,
+        "sa_mean": 3.1875,
+        "pc_mean": 3.5,
+        "sa_pass_rate": 0.3125,
+        "pc_pass_rate": 0.375,
+        "joint_pass_count": 4,
+        "joint_pass_rate": 0.25
+      },
+      "normal_minus_control": {
+        "sa": {
+          "mean_change": -0.0625,
+          "wins": 0,
+          "ties": 15,
+          "losses": 1
+        },
+        "pc": {
+          "mean_change": 0.0625,
+          "wins": 3,
+          "ties": 12,
+          "losses": 1
+        },
+        "joint": {
+          "gains": [
+            "VP010"
+          ],
+          "losses": []
+        }
+      },
+      "score_file": "experiments/physical_content_v7/source_residual_fusion_r15g/inference_outputs/physical_content_68103/step0400_original_fixed40_controls16_seed42/controls/empty_reasoning/videophy40/scores.json"
+    },
+    "execution_prior_only": {
+      "summary": {
+        "count": 16,
+        "sa_mean": 3.25,
+        "pc_mean": 3.6875,
+        "sa_pass_rate": 0.375,
+        "pc_pass_rate": 0.5,
+        "joint_pass_count": 6,
+        "joint_pass_rate": 0.375
+      },
+      "normal_minus_control": {
+        "sa": {
+          "mean_change": -0.125,
+          "wins": 0,
+          "ties": 14,
+          "losses": 2
+        },
+        "pc": {
+          "mean_change": -0.125,
+          "wins": 0,
+          "ties": 14,
+          "losses": 2
+        },
+        "joint": {
+          "gains": [],
+          "losses": [
+            "VP034"
+          ]
+        }
+      },
+      "score_file": "experiments/physical_content_v7/source_residual_fusion_r15g/inference_outputs/physical_content_68103/step0400_original_fixed40_controls16_seed42/controls/execution_prior_only/videophy40/scores.json"
+    },
+    "global_train_mean": {
+      "summary": {
+        "count": 16,
+        "sa_mean": 3.1875,
+        "pc_mean": 3.6875,
+        "sa_pass_rate": 0.375,
+        "pc_pass_rate": 0.5,
+        "joint_pass_count": 6,
+        "joint_pass_rate": 0.375
+      },
+      "normal_minus_control": {
+        "sa": {
+          "mean_change": -0.0625,
+          "wins": 1,
+          "ties": 13,
+          "losses": 2
+        },
+        "pc": {
+          "mean_change": -0.125,
+          "wins": 0,
+          "ties": 14,
+          "losses": 2
+        },
+        "joint": {
+          "gains": [],
+          "losses": [
+            "VP034"
+          ]
+        }
+      },
+      "score_file": "experiments/physical_content_v7/source_residual_fusion_r15g/inference_outputs/physical_content_68103/step0400_original_fixed40_controls16_seed42/controls/global_train_mean/videophy40/scores.json"
+    },
+    "native_guidance": {
+      "summary": {
+        "count": 16,
+        "sa_mean": 3.1875,
+        "pc_mean": 3.625,
+        "sa_pass_rate": 0.375,
+        "pc_pass_rate": 0.4375,
+        "joint_pass_count": 6,
+        "joint_pass_rate": 0.375
+      },
+      "normal_minus_control": {
+        "sa": {
+          "mean_change": -0.0625,
+          "wins": 1,
+          "ties": 13,
+          "losses": 2
+        },
+        "pc": {
+          "mean_change": -0.0625,
+          "wins": 0,
+          "ties": 15,
+          "losses": 1
+        },
+        "joint": {
+          "gains": [],
+          "losses": [
+            "VP034"
+          ]
+        }
+      },
+      "score_file": "experiments/physical_content_v7/source_residual_fusion_r15g/inference_outputs/physical_content_68103/step0400_original_fixed40_controls16_seed42/controls/native_guidance/videophy40/scores.json"
+    },
+    "native_physical_query": {
+      "summary": {
+        "count": 16,
+        "sa_mean": 3.1875,
+        "pc_mean": 3.5625,
+        "sa_pass_rate": 0.3125,
+        "pc_pass_rate": 0.5,
+        "joint_pass_count": 5,
+        "joint_pass_rate": 0.3125
+      },
+      "normal_minus_control": {
+        "sa": {
+          "mean_change": -0.0625,
+          "wins": 0,
+          "ties": 15,
+          "losses": 1
+        },
+        "pc": {
+          "mean_change": 0,
+          "wins": 2,
+          "ties": 12,
+          "losses": 2
+        },
+        "joint": {
+          "gains": [],
+          "losses": []
+        }
+      },
+      "score_file": "experiments/physical_content_v7/source_residual_fusion_r15g/inference_outputs/physical_content_68103/step0400_original_fixed40_controls16_seed42/controls/native_physical_query/videophy40/scores.json"
+    },
+    "no_c": {
+      "summary": {
+        "count": 16,
+        "sa_mean": 3.3125,
+        "pc_mean": 3.6875,
+        "sa_pass_rate": 0.375,
+        "pc_pass_rate": 0.5,
+        "joint_pass_count": 6,
+        "joint_pass_rate": 0.375
+      },
+      "normal_minus_control": {
+        "sa": {
+          "mean_change": -0.1875,
+          "wins": 0,
+          "ties": 13,
+          "losses": 3
+        },
+        "pc": {
+          "mean_change": -0.125,
+          "wins": 0,
+          "ties": 14,
+          "losses": 2
+        },
+        "joint": {
+          "gains": [],
+          "losses": [
+            "VP034"
+          ]
+        }
+      },
+      "score_file": "experiments/physical_content_v7/source_residual_fusion_r15g/inference_outputs/physical_content_68103/step0400_original_fixed40_controls16_seed42/controls/no_c/videophy40/scores.json"
+    },
+    "reasoning_swapped": {
+      "summary": {
+        "count": 16,
+        "sa_mean": 3.3125,
+        "pc_mean": 3.375,
+        "sa_pass_rate": 0.375,
+        "pc_pass_rate": 0.3125,
+        "joint_pass_count": 5,
+        "joint_pass_rate": 0.3125
+      },
+      "normal_minus_control": {
+        "sa": {
+          "mean_change": -0.1875,
+          "wins": 0,
+          "ties": 13,
+          "losses": 3
+        },
+        "pc": {
+          "mean_change": 0.1875,
+          "wins": 3,
+          "ties": 12,
+          "losses": 1
+        },
+        "joint": {
+          "gains": [
+            "VP038"
+          ],
+          "losses": [
+            "VP015"
+          ]
+        }
+      },
+      "score_file": "experiments/physical_content_v7/source_residual_fusion_r15g/inference_outputs/physical_content_68103/step0400_original_fixed40_controls16_seed42/controls/reasoning_swapped/videophy40/scores.json"
+    }
+  },
+  "primary_numeric_targets": {
+    "PC_at_least3_8": false,
+    "SA_at_least3_125": false,
+    "Joint_strictly_above_historical11of40": false
+  },
+  "cross_acceptance": {
+    "wmb70_total_points": 553.0,
+    "wmb70_r1_total_points": 600.0,
+    "wmb70_strictly_above_r1": false,
+    "physics_iq_verified_strictly_above_r1": false,
+    "both_numeric_requirements_met": false,
+    "overall_quality_goal_achieved": false,
+    "remaining_review": "VideoPhy2-40/60, paired16 and actual videos remain separate requirements; inspect benchmark components and domains for substantial regressions."
+  },
+  "cross_scores": {
+    "wan_lora": {
+      "WMB70": 8.185714285714287,
+      "PhysicsIQ_Verified": 0.26003635878678355
+    },
+    "r1": {
+      "WMB70": 8.571428571428573,
+      "PhysicsIQ_Verified": 0.2651032257782627
+    },
+    "r10a": {
+      "WMB70": 8.428571428571429,
+      "PhysicsIQ_Verified": 0.23669164754462252
+    },
+    "r15g": {
+      "WMB70": 7.9,
+      "PhysicsIQ_Verified": 0.17007230252222866
+    }
+  },
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/source_residual_fusion_r15g/runs/physical_content_68103/step0400.pt",
+  "frozen_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/source_residual_fusion_r15g/snapshots/20261107T040316Z",
+  "training_experiment": 68103,
+  "training_trial": 69490,
+  "trained_steps": 400,
+  "completed_evaluation_experiment": 68181,
+  "completed_evaluation_trial": 69568,
+  "completed_cross_experiment": 68142,
+  "completed_cross_trial": 69529,
+  "recovery_added_training_steps": 0,
+  "new_downloads": 0,
+  "new_API_calls": 0,
+  "monitoring_next_check_utc": null,
+  "visual_reviews": [
+    "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/source_residual_fusion_r15g/reports/initial_visual_review.json",
+    "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/source_residual_fusion_r15g/reports/control_visual_review.json",
+    "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/source_residual_fusion_r15g/reports/cross_visual/review.json",
+    "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/source_residual_fusion_r15g/reports/cross_visual/post_score_thermal_selection.json"
+  ]
+}

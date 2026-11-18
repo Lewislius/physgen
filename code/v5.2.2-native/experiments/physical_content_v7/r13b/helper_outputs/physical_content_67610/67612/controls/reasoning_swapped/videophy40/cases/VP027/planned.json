@@ -1,0 +1,35 @@
+{
+  "checkpoint": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/runs/physical_content_67610/step0400.pt",
+  "step": 400,
+  "mode": "reasoning_swapped",
+  "case": "VP027",
+  "seed": 42,
+  "inference_source": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/snapshots/20261104T214359Z",
+  "inference_evidence": "/home/liuzhirui/Project/physGen/code/v5.2.2-native/experiments/physical_content_v7/interaction_query_r13b/prepared_inputs",
+  "guidance": {
+    "kind": "separate_native_text_and_reasoning",
+    "text_scale": 5.0,
+    "physical_scale": 5.0,
+    "neutral": "Same positive native T5 request, own image-only negative C",
+    "legacy_equivalence": "Physical scale equal to text scale is exactly the original two-branch formula"
+  },
+  "caption": "Hands shape a lump of clay-like bread dough into a smooth, round boule on a wooden table.",
+  "canvas": "/home/liuzhirui/Project/physGen/code/v5.2-occam/inference_outputs/videophy2_joint400_60_pair_seed42/cases/VP027/first.png",
+  "sampler": {
+    "steps": 50,
+    "shift": 5.0,
+    "guidance": 5.0,
+    "sampler": "shifted_euler"
+  },
+  "positive_analysis": "1. Pliers grip metal cap, applying force to deform it slightly.\n2. Hand holds pliers steady, maintaining pressure on cap’s edge.\n3. Cap begins to bend under applied mechanical stress.\n4. Bottle remains stationary, fluids inside unchanged during manipulation.",
+  "positive_relations": [
+    "Pliers grip metal cap, applying force to deform it slightly.",
+    "Hand holds pliers steady, maintaining pressure on cap’s edge.",
+    "Cap begins to bend under applied mechanical stress.",
+    "Bottle remains stationary, fluids inside unchanged during manipulation."
+  ],
+  "negative_analysis": "1. Hands press dough downward, deforming its shape on the wooden surface.\n2. Flour dusts the table, scattering slightly as dough is manipulated.\n3. Dough resists compression, gradually flattening under applied pressure.\n4. Hands maintain contact, adjusting grip as dough’s form changes.",
+  "donor": "VP013",
+  "scope": "Same-count unrelated reasoning with own image/request; own negative condition",
+  "seconds": 92.40547907259315
+}
